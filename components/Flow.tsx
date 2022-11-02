@@ -24,21 +24,23 @@ const reactFlowStyle: CSSProperties = {
 
 function Flow({ nodes, edges }: { nodes: Node[]; edges: Edge[] }) {
   return (
-    <div className="container" style={{ height: 400, width: '100%' }}>
-      <ReactFlow
-        style={reactFlowStyle}
-        nodes={nodes}
-        edges={edges}
-        defaultEdgeOptions={defaultEdgeOptions}
-        connectionLineType={ConnectionLineType.SmoothStep}
-        fitView
-        snapToGrid
-        fitViewOptions={{ padding: 0.1, maxZoom: 1 }}
-      >
-        <Background />
-        <Controls showInteractive={false} />
-      </ReactFlow>
-    </div>
+    nodes && (
+      <div className="container" style={{ height: 400, width: '100%' }}>
+        <ReactFlow
+          style={reactFlowStyle}
+          nodes={nodes}
+          edges={edges}
+          defaultEdgeOptions={defaultEdgeOptions}
+          connectionLineType={ConnectionLineType.SmoothStep}
+          fitView
+          snapToGrid
+          fitViewOptions={{ padding: 0.1, maxZoom: 1 }}
+        >
+          <Background />
+          <Controls showInteractive={false} />
+        </ReactFlow>
+      </div>
+    )
   );
 }
 

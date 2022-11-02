@@ -38,7 +38,29 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 
-{% /flow %}
+{% flow
+   nodes=[
+    {
+      id: "1",
+      data: { label: "Node 1" },
+      position: { x: 250, y: 5 }
+    },
+    {
+      id: "2",
+      data: { label: "Node 2" },
+      position: { x: 100, y: 100 }
+    },
+    {
+      id: "3",
+      data: { label: "Node 3" },
+      position: { x: 400, y: 100 }
+    }
+  ]
+  edges=[
+    { id: "e1-2", source: "1", target: "2" },
+    { id: "e1-3", source: "1", target: "3" }
+  ]
+/%}
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 
