@@ -65,7 +65,7 @@ function Collapsible({
         <style jsx>
           {`
             .header {
-              font-size: 14px;
+              font-size: 16px;
             }
 
             h3 {
@@ -73,21 +73,25 @@ function Collapsible({
               margin: 0.5rem 0 0;
               padding-bottom: 0.5rem;
             }
+
             ul {
               margin: 0;
               padding: 0;
               padding-top: 1rem;
               flex: none;
             }
+
             li {
               list-style-type: none;
-              margin: 0 0 0.7rem 1.5rem;
-              font-size: 14px;
+              margin: 0 0 1rem 1.5rem;
+              font-size: 16px;
               font-weight: 400;
             }
+
             li a {
               text-decoration: none;
             }
+
             li a:hover,
             li.active > a {
               text-decoration: underline;
@@ -110,7 +114,7 @@ function getStyles() {
       top: var(--nav-height);
       height: calc(100vh - var(--nav-height));
       width: 260px;
-      padding: 2rem 0 2rem 0.7rem;
+      padding: 2rem 0 2rem 1rem;
       gap: 3rem;
       border-right: 1px solid var(--border-color);
       flex-shrink: 0;
@@ -146,8 +150,8 @@ function getStyles() {
     }
 
     .overview {
-      font-size: 14px;
-      padding-bottom: 0.8rem;
+      font-size: 16px;
+      padding-bottom: 1rem;
       padding-left: 0.8rem;
       flex: 0 0 auto;
       justify-content: space-between;
