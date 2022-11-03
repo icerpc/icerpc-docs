@@ -114,10 +114,10 @@ function getStyles() {
       top: var(--nav-height);
       height: calc(100vh - var(--nav-height));
       width: 260px;
-      padding: 2rem 0 0 2rem;
+      padding: 2rem 0 2rem 1rem;
+      gap: 3rem;
       border-right: 1px solid var(--border-color);
       flex-shrink: 0;
-      margin-top: 0;
     }
 
     @media screen and (max-width: 1000px) {
@@ -228,7 +228,7 @@ export function SideNav({ path }) {
                 {open ? (
                   <BsArrowBarLeft strokeWidth={1} />
                 ) : (
-                  <BsArrowBarRight strokeWidth={1} style={{ width: '100%' }} />
+                  <BsArrowBarRight strokeWidth={1} style={{ margin: 0 }} />
                 )}
               </motion.button>
             </motion.div>
