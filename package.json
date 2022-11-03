@@ -9,6 +9,7 @@
     "@docsearch/react": "^3.2.1",
     "@markdoc/markdoc": "latest",
     "@markdoc/next.js": "latest",
+    "@next/font": "^13.0.1",
     "copy-to-clipboard": "^3.3.2",
     "framer-motion": "^7.6.2",
     "next": "^12.3.1",

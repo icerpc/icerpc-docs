@@ -61,11 +61,13 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
             padding-top: var(--nav-height);
             min-height: 100vh;
             max-width: 100vw;
+            max-width: 1500px;
+            margin: 0 auto;
           }
 
           main {
             flex-grow: 1;
-            max-width: 100%;
+            max-width: 800%;
             /* https://stackoverflow.com/questions/36230944/prevent-flex-items-from-overflowing-a-container */
             min-width: 0;
           }

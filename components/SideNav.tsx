@@ -43,7 +43,7 @@ function Collapsible({
           {children.some(function (link) {
             return link.href === router.pathname;
           }) ? (
-            <b style={{ color: '#527FCA' }}>{header}</b>
+            <b style={{ color: 'var(--primary-color)' }}>{header}</b>
           ) : (
             header
           )}
@@ -65,7 +65,7 @@ function Collapsible({
         <style jsx>
           {`
             .header {
-              font-size: 16px;
+              font-size: 14px;
             }
 
             h3 {
@@ -84,7 +84,7 @@ function Collapsible({
             li {
               list-style-type: none;
               margin: 0 0 1rem 1.5rem;
-              font-size: 16px;
+              font-size: 14px;
               font-weight: 400;
             }
 
@@ -114,10 +114,10 @@ function getStyles() {
       top: var(--nav-height);
       height: calc(100vh - var(--nav-height));
       width: 260px;
-      padding: 2rem 0 2rem 1rem;
-      gap: 3rem;
+      padding: 2rem 0 0 2rem;
       border-right: 1px solid var(--border-color);
       flex-shrink: 0;
+      margin-top: 0;
     }
 
     @media screen and (max-width: 1000px) {
@@ -130,7 +130,7 @@ function getStyles() {
       border: none;
       background: none;
       align-self: flex-start;
-      font-size: 14pt;
+      font-size: 14px;
       padding: 0;
       margin: 0;
       margin-left: 1rem;
@@ -150,7 +150,7 @@ function getStyles() {
     }
 
     .overview {
-      font-size: 16px;
+      font-size: 14px;
       padding-bottom: 1rem;
       padding-left: 0.8rem;
       flex: 0 0 auto;
@@ -204,7 +204,9 @@ export function SideNav({ path }) {
                   <motion.div className={`${className} overview`}>
                     <Link href={data.base}>
                       {router.pathname === data.base ? (
-                        <b style={{ color: '#527FCA' }}>Overview</b>
+                        <b style={{ color: 'var(--primary-color)' }}>
+                          Overview
+                        </b>
                       ) : (
                         <a>Overview</a>
                       )}

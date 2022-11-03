@@ -2,81 +2,146 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { DocSearch } from '@docsearch/react';
-import '@docsearch/css';
+import Image from 'next/image';
+import { FaTwitter, FaGithub } from 'react-icons/fa';
 import { useRouter } from 'next/router';
+import { SearchButton } from './SearchButton';
 
-// TODO: Update the DocSearch API keys, these are test keys that DocSearch makes publically available.
-function Search() {
-  return (
-    <DocSearch
-      appId="R2IYF7ETH7"
-      apiKey="599cec31baffa4868cae4e79f180729b"
-      indexName="docsearch"
-    />
-  );
-}
+import lightLogo from '../public/images/icerpc-logo-light.svg';
 
 export function TopNav() {
   const router = useRouter();
   return (
     <nav>
-      <div className="flex top-row">
-        <Link href="/">LOGO HERE: DOCS</Link>
-        <Search />
-      </div>
-      <div className="flex bottom-row">
-        <Link href="/" className="flex">
-          <a className={router.pathname == '/' ? 'active' : ''}>Home</a>
-        </Link>
-        <Link href="/docs/slice" className="flex">
-          <a
-            className={
-              router.pathname.startsWith('/docs/slice') ? 'active' : ''
-            }
-          >
-            Slice
-          </a>
-        </Link>
-        <Link href="/docs/rpc" className="flex">
-          <a
-            className={router.pathname.startsWith('/docs/rpc') ? 'active' : ''}
-          >
-            Remote Procedure Calls
-          </a>
-        </Link>
+      <div className="nav-container">
+        <div className="left-col">
+          <Link href="/">
+            <div className="image-container">
+              <Image src={lightLogo} alt="Logo" />
+            </div>
+          </Link>
+          <SearchButton />
+        </div>
+        <div className="right-col">
+          <Link href="/" className="flex">
+            <a className={router.pathname == '/' ? 'active' : ''}>Home</a>
+          </Link>
+          <Link href="/docs/slice" className="flex">
+            <a
+              className={
+                router.pathname.startsWith('/docs/slice') ? 'active' : ''
+              }
+            >
+              Slice
+            </a>
+          </Link>
+          <Link href="/docs/rpc" className="flex">
+            <a
+              className={
+                router.pathname.startsWith('/docs/rpc') ? 'active' : ''
+              }
+            >
+              Remote Procedure Calls
+            </a>
+          </Link>
+          <div className="icons">
+            <a href="https://github.com/zeroc-ice">
+              <FaGithub size={20} />
+            </a>
+            <a href="https://twitter.com/zeroc">
+              <FaTwitter size={20} />
+            </a>
+          </div>
+        </div>
       </div>
       <style jsx>
         {`
           nav {
             top: 0;
             position: fixed;
-            width: 100%;
-            height: 115px;
+            height: var(--nav-height);
             z-index: 100;
-            flex-direction: row;
-            flex-wrap: wrap;
-            background: var(--off-white);
+            display: flex;
+            align-items: center;
+            background: white;
             border-bottom: 1px solid var(--border-color);
+            width: 100%;
+            font-size: 14px;
           }
 
           nav :global(a) {
             text-decoration: none;
           }
 
+          // Search button styles
+
           nav :global(.DocSearch-Button) {
             background: white;
-            height: 40px;
+            height: 30px;
             border-radius: 5px;
-            border: 1px solid var(--border-color);
-            width: 30%;
+            width: 150px;
+            color: gray;
+            font-size: 12px;
+            padding: 0;
+            margin: 0;
+            padding-right: 1rem;
+            justify-content: cemter;
           }
+
           nav :global(.DocSearch-Button:hover) {
             box-shadow: none;
-            background: #e8eef3;
           }
-          :global(.dark) nav :global(.DocSearch-Button:hover) {
-            background: #424248;
+
+          nav
+            :global(.DocSearch-Button:hover)
+            :global(.DocSearch-Button-Placeholder) {
+            color: var(--primary-color);
+          }
+
+          nav :global(.DocSearch-Button:hover) :global(.DocSearch-Button-Keys) {
+            border: 1px solid var(--primary-color);
+          }
+
+          nav :global(.DocSearch-Button:hover) :global(.DocSearch-Button-Key) {
+            color: var(--primary-color);
+          }
+
+          nav :global(.DocSearch-Button-Key) {
+            background: white;
+            box-shadow: none;
+            color: var(--docsearch-muted-color);
+            padding: 0;
+            margin: 0;
+            width: 15px;
+            height: 20px;
+            transition: 0.3s;
+            justify-content: center;
+            align-items: center;
+            font-family: Inter;
+          }
+
+          nav :global(.DocSearch-Button-Keys) {
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background: white;
+            color: gray;
+            font-size: 12px;
+            padding-top: 2px;
+            display: flex;
+            justify-content: center;
+            transition: 0.3s;
+          }
+
+          nav :global(.DocSearch-Search-Icon) {
+            margin-right: 5px;
+            padding-right: 5px;
+          }
+
+          nav :global(.DocSearch-Button-Placeholder) {
+            font-size: 10pt;
+            color: gray;
+            padding: 0;
+            margin-right: 0.5rem;
           }
 
           .active {
@@ -84,8 +149,56 @@ export function TopNav() {
             opacity: 1;
             text-decoration: underline;
             text-decoration-thickness: 2px;
-            text-underline-offset: 0.8rem;
+            text-underline-offset: 1.3rem;
             animation: fadeIn 0.4s;
+          }
+
+          .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 1rem;
+          }
+
+          .left-col {
+            height: 50%;
+            width: 100%;
+            gap: 5px;
+            display: flex;
+            align-items: center;
+          }
+
+          .right-col {
+            height: 50%;
+            width: 100%;
+            gap: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 2rem;
+            margin-right: 0px;
+          }
+
+          .right-col a {
+            transition: 0.3s;
+          }
+
+          .right-col a:hover {
+            color: var(--primary-color);
+          }
+
+          .image-container {
+            display: flex;
+            align-items: center;
+            width: 100px;
+          }
+
+          .icons {
+            display: flex;
+            gap: 20px;
           }
 
           @keyframes fadeIn {
@@ -97,26 +210,6 @@ export function TopNav() {
               opacity: 1;
               text-decoration-thickness: 2px;
             }
-          }
-
-          .top-row {
-            height: 50%;
-            width: 100%;
-            gap: 20px;
-            padding-left: 2rem;
-            padding-top: 1rem;
-            display: flex;
-            align-items: center;
-          }
-
-          .bottom-row {
-            height: 50%;
-            width: 100%;
-            gap: 40px;
-            padding-left: 1.5rem;
-            padding-top: 1rem;
-            display: flex;
-            align-items: center;
           }
         `}
       </style>

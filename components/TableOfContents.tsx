@@ -45,7 +45,9 @@ export function TableOfContents({ toc }) {
                   <a
                     style={{
                       color:
-                        activeId === item.id ? '#527FCA' : 'rgba(75, 85, 99, 1)'
+                        activeId === item.id
+                          ? 'var(--primary-color)'
+                          : 'rgba(75, 85, 99, 1)'
                     }}
                   >
                     {item.children}
@@ -72,7 +74,7 @@ export function TableOfContents({ toc }) {
           .toc-header {
             margin: 0 0 1rem 0rem;
             text-transform: uppercase;
-            font-size: 9.75pt;
+            font-size: 14px;
             font-weight: 500;
           }
           ul {

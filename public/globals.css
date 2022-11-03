@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 :root {
-  --nav-height: 115px;
+  --nav-height: 55px;
   --border-color: #dce6e9;
-  --primary-color: #527FCA;
+  --primary-color: #1a9ae4;
   --off-white: #F8FAFC;
   --toc-border: rgba(0, 0, 0, 0.14);
 }
@@ -13,11 +15,10 @@
 }
 
 body {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+  font-family: Inter, system-ui, -apple-system, Inter, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   color: rgba(60, 66, 87, 1);
-  margin: 0;
 }
 
 p {
