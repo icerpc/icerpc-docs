@@ -7,7 +7,7 @@ import useCollapse from 'react-collapsed';
 import { motion, useCycle, AnimatePresence, LayoutGroup } from 'framer-motion';
 import css from 'styled-jsx/css';
 
-import { sideBarData } from '../data/sideBarData';
+import { sideBarData } from '../../data/sideBarData';
 
 import {
   BsFillCaretRightFill,

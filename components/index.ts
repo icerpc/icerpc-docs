@@ -2,9 +2,9 @@
 
 export * from './Callout';
 export * from './Heading';
-export * from './SideNav';
-export * from './TableOfContents';
-export * from './TopNav';
-export * from './Footer';
+export * from './Shell/SideNav';
+export * from './Shell/TableOfContents';
+export * from './Shell/TopNav';
+export * from './Shell/Footer';
 export * from './CodeBlock';
 export * from './Flow';

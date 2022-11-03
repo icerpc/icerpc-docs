@@ -21,7 +21,7 @@ export function SearchButton() {
       <style jsx>{`
         // Search button styles
 
-        nav :global(.DocSearch-Button) {
+        :global(.DocSearch-Button) {
           background: white;
           height: 30px;
           border-radius: 5px;
@@ -34,25 +34,24 @@ export function SearchButton() {
           justify-content: cemter;
         }
 
-        nav :global(.DocSearch-Button:hover) {
+        :global(.DocSearch-Button:hover) {
           box-shadow: none;
         }
 
-        nav
-          :global(.DocSearch-Button:hover)
+        :global(.DocSearch-Button:hover)
           :global(.DocSearch-Button-Placeholder) {
           color: var(--primary-color);
         }
 
-        nav :global(.DocSearch-Button:hover) :global(.DocSearch-Button-Keys) {
+        :global(.DocSearch-Button:hover) :global(.DocSearch-Button-Keys) {
           border: 1px solid var(--primary-color);
         }
 
-        nav :global(.DocSearch-Button:hover) :global(.DocSearch-Button-Key) {
+        :global(.DocSearch-Button:hover) :global(.DocSearch-Button-Key) {
           color: var(--primary-color);
         }
 
-        nav :global(.DocSearch-Button-Key) {
+        :global(.DocSearch-Button-Key) {
           background: white;
           box-shadow: none;
           color: var(--docsearch-muted-color);
@@ -66,7 +65,7 @@ export function SearchButton() {
           font-family: Inter;
         }
 
-        nav :global(.DocSearch-Button-Keys) {
+        :global(.DocSearch-Button-Keys) {
           border: 1px solid var(--border-color);
           border-radius: 5px;
           background: white;
@@ -78,12 +77,12 @@ export function SearchButton() {
           transition: 0.3s;
         }
 
-        nav :global(.DocSearch-Search-Icon) {
+        :global(.DocSearch-Search-Icon) {
           margin-right: 5px;
           padding-right: 5px;
         }
 
-        nav :global(.DocSearch-Button-Placeholder) {
+        :global(.DocSearch-Button-Placeholder) {
           font-size: 10pt;
           color: gray;
           padding: 0;

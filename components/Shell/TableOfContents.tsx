@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { useHeadsObserver } from '../hooks/hooks';
+import { useHeadsObserver } from '../../hooks/hooks';
 
 export function TableOfContents({ toc }) {
   const [headings, setHeadings] = useState([]);

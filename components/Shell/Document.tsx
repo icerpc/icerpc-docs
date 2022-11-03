@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/router';
 import React from 'react';
-import { TableOfContents, Footer } from '.';
-import { HorizontalDivider } from './Divider';
+import { TableOfContents, Footer } from '..';
+import { HorizontalDivider } from '../Divider';
 
 export function Document({ children, config }) {
   const toc =
