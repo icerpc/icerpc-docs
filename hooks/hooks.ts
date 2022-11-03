@@ -16,7 +16,7 @@ export function useHeadsObserver(toc) {
     }
 
     observer.current = new IntersectionObserver(handleObsever, {
-      rootMargin: "-25% 0px -75% 0px"}
+      rootMargin: "-20% 0px -50% 0px", threshold: 0.5}
     )
 
     toc
