@@ -26,6 +26,17 @@ export function TopNav() {
           <Link href="/" className="flex">
             <a className={router.pathname == '/' ? 'active' : ''}>Home</a>
           </Link>
+          <Link href="/docs/getting-started" className="flex">
+            <a
+              className={
+                router.pathname.startsWith('/docs/getting-started')
+                  ? 'active'
+                  : ''
+              }
+            >
+              Getting Started
+            </a>
+          </Link>
           <Link href="/docs/slice" className="flex">
             <a
               className={
@@ -41,7 +52,7 @@ export function TopNav() {
                 router.pathname.startsWith('/docs/rpc') ? 'active' : ''
               }
             >
-              Remote Procedure Calls
+              RPC Core
             </a>
           </Link>
           <div className="icons">
