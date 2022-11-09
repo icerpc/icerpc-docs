@@ -40,6 +40,20 @@ export function TableOfContents({ toc }) {
               >
                 <Link href={href} passHref>
                   <a
+                    href={`#${item.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const y =
+                        document
+                          .querySelector(`#${item.id}`)
+                          .getBoundingClientRect().top +
+                        window.pageYOffset -
+                        100;
+                      window.scrollTo({
+                        top: y,
+                        behavior: 'smooth'
+                      });
+                    }}
                     style={{
                       color:
                         activeId === item.id
