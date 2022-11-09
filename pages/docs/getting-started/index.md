@@ -2,6 +2,6 @@
 title: Overview
 ---
 
-# {% $markdoc.frontmatter.title %}
+{% title /%}
 
 Getting started

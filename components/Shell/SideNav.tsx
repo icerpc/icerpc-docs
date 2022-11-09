@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import useCollapse from 'react-collapsed';
@@ -23,7 +23,8 @@ function Collapsible({
   title: string;
   children: any;
 }): React.ReactElement {
-  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+  const [isExpanded, setExpanded] = useState(true);
+  const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
   const router = useRouter();
   const caret = isExpanded ? (
     <BsFillCaretDownFill size={8} />
@@ -39,7 +40,10 @@ function Collapsible({
   if (children.length > 0) {
     return (
       <div className="collapsible" style={{ paddingBottom: '1rem' }}>
-        <div className="header" {...getToggleProps()}>
+        <div
+          className="header"
+          {...getToggleProps({ onClick: () => setExpanded(!isExpanded) })}
+        >
           {children.some(function (link) {
             return link.href === router.pathname;
           }) ? (

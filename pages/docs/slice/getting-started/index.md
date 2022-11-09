@@ -2,7 +2,7 @@
 title: Getting Started
 ---
 
-# {% $markdoc.frontmatter.title %}
+{% title /%}
 
 Getting started page
 

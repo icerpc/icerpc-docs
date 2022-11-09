@@ -37,9 +37,6 @@ export function TableOfContents({ toc }) {
                 ]
                   .filter(Boolean)
                   .join(' ')}
-                style={{
-                  fontWeight: activeId === item.id ? 'bold' : 'normal'
-                }}
               >
                 <Link href={href} passHref>
                   <a
@@ -67,15 +64,15 @@ export function TableOfContents({ toc }) {
             flex: 0 0 10rem;
             /* https://stackoverflow.com/questions/44446671/my-position-sticky-element-isnt-sticky-when-using-flexbox */
             align-self: flex-start;
-            padding-top: 20px;
-            padding-left: 35px;
+            padding-top: 10px;
+            padding-left: 50px;
           }
 
           .toc-header {
             margin: 0 0 1rem 0rem;
             text-transform: uppercase;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 12px;
+            font-weight: 800;
           }
           ul {
             margin: 0;
