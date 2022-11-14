@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 :root {
-  --nav-height: 55px;
+  --nav-height: 65px;
+  --nav-background: #fff;
   --border-color: #dce6e9;
   --primary-color: #1a9ae4;
   --off-white: #F8FAFC;
@@ -9,15 +10,18 @@
   --background: white;
   --foreground: black;
   --link-color: rgba(75, 85, 99, 1);
+  --highlighted-link-color: black;
   --text-color: rgba(75, 85, 99, 1);
 
 }
 
 [data-theme='dark'] {
-  --background: rgb(36,39,46);
+  --background: rgb(33,35,39);
+  --nav-background: rgb(33,35,39);
   --foreground: white;
   --border-color: rgb(49, 54, 60);
-  --link-color: white;
+  --link-color: rgba(255, 255, 255, 0.8);
+  --highlighted-link-color: white;
   --text-color: white;
 }
 

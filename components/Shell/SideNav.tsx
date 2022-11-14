@@ -4,17 +4,11 @@ import React, { Fragment, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import useCollapse from 'react-collapsed';
-import { motion, useCycle, AnimatePresence, LayoutGroup } from 'framer-motion';
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import css from 'styled-jsx/css';
 
 import { sideBarData } from '../../data/sideBarData';
-
-import {
-  BsFillCaretRightFill,
-  BsFillCaretDownFill,
-  BsArrowBarLeft,
-  BsArrowBarRight
-} from 'react-icons/bs';
+import { FaChevronRight, FaChevronDown } from 'react-icons/fa';
 
 function Collapsible({
   title,
@@ -27,19 +21,20 @@ function Collapsible({
   const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
   const router = useRouter();
   const caret = isExpanded ? (
-    <BsFillCaretDownFill size={8} />
+    <FaChevronDown size={12} />
   ) : (
-    <BsFillCaretRightFill size={8} />
+    <FaChevronRight size={12} />
   );
   const header = (
     <Fragment>
-      {caret} {title}{' '}
+      {title}
+      {caret}
     </Fragment>
   );
 
   if (children.length > 0) {
     return (
-      <div className="collapsible" style={{ paddingBottom: '1rem' }}>
+      <div className="collapsible">
         <div
           className="header"
           {...getToggleProps({ onClick: () => setExpanded(!isExpanded) })}
@@ -47,7 +42,10 @@ function Collapsible({
           {children.some(function (link) {
             return link.href === router.pathname;
           }) ? (
-            <b style={{ color: 'var(--primary-color)' }}>{header}</b>
+            <>
+              {title}
+              <div className="header-highlighted">{caret}</div>
+            </>
           ) : (
             header
           )}
@@ -70,35 +68,50 @@ function Collapsible({
           {`
             .header {
               font-size: 14px;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              width: 12rem;
+              padding: 0.5rem;
+              margin: 0;
+              color: var(--link-color);
+            }
+
+            .header-highlighted {
+              color: var(--primary-color);
             }
 
             h3 {
               font-weight: 500;
               margin: 0.5rem 0 0;
-              padding-bottom: 0.5rem;
             }
 
             ul {
               margin: 0;
               padding: 0;
-              padding-top: 1rem;
               flex: none;
             }
 
             li {
               list-style-type: none;
-              margin: 0 0 1rem 1.5rem;
+              margin: 0 0 0 0.5rem;
               font-size: 14px;
               font-weight: 400;
+              padding: 0.5rem;
             }
 
             li a {
               text-decoration: none;
+              color: var(--link-color);
             }
 
-            li a:hover,
+            li a:hover {
+              color: var(--highlighted-link-color);
+            }
             li.active > a {
-              text-decoration: underline;
+              text-decoration: none;
+              color: var(--primary-color);
+              font-weight: 400;
             }
           `}
         </style>
@@ -119,7 +132,6 @@ function getStyles() {
       height: calc(100vh - var(--nav-height));
       width: 260px;
       padding: 2rem 0 2rem 1rem;
-      gap: 3rem;
       border-right: 1px solid var(--border-color);
       flex-shrink: 0;
     }
@@ -137,17 +149,10 @@ function getStyles() {
       font-size: 14px;
       padding: 0;
       margin: 0;
-      margin-left: 1rem;
-      margin-right: 2rem;
       color: gray;
     }
 
     .content {
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-      justify-content: space-between;
-      justify-items: center;
       height: 100%;
       width: 100%;
       text-wrap: none;
@@ -155,86 +160,42 @@ function getStyles() {
 
     .overview {
       font-size: 14px;
-      padding-bottom: 1rem;
-      padding-left: 0.8rem;
-      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
       justify-content: space-between;
+      margin: 0;
+      padding: 0.5rem;
     }
   `;
 }
 
 export function SideNav({ path }) {
-  const [open, cycleOpen] = useCycle(true, false);
   const data = sideBarData.find((item) => path.startsWith(item.base));
   const { className, styles } = getStyles();
   const router = useRouter();
 
-  const categories = {
-    close: { opacity: 0 },
-    open: { opacity: 1 }
-  };
-
   if (data) {
     return (
-      <motion.nav
-        className={className}
-        initial="open"
-        animate={{
-          width: open ? 260 : 80,
-          transition: {
-            duration: 0.1,
-            when: open ? 'afterChildren' : 'beforeChildren',
-            type: 'spring',
-            stiffness: 700,
-            damping: 100
-          }
-        }}
-      >
+      <motion.nav className={className}>
         <LayoutGroup>
           <AnimatePresence>
-            <motion.div className={`${className} content`} initial="open">
-              {open && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  variants={categories}
-                  animate={{
-                    opacity: 1
-                  }}
-                  exit={{
-                    opacity: 0
-                  }}
-                  style={{ flex: 'none' }}
-                >
-                  <motion.div className={`${className} overview`}>
-                    <Link href={data.base}>
-                      {router.pathname === data.base ? (
-                        <b style={{ color: 'var(--primary-color)' }}>
-                          Overview
-                        </b>
-                      ) : (
-                        <a>Overview</a>
-                      )}
-                    </Link>
-                  </motion.div>
-                  {data.categories.map((category) => (
-                    <Collapsible key={category.title} title={category.title}>
-                      {category.links}
-                    </Collapsible>
-                  ))}
+            <motion.div className={`${className} content`}>
+              <motion.div initial={{ opacity: 1 }} style={{ flex: 'none' }}>
+                <motion.div className={`${className} overview`}>
+                  <Link href={data.base}>
+                    {router.pathname === data.base ? (
+                      <b style={{ color: 'var(--primary-color)' }}>Overview</b>
+                    ) : (
+                      <a>Overview</a>
+                    )}
+                  </Link>
                 </motion.div>
-              )}
-
-              <motion.button
-                className={className}
-                onClick={() => cycleOpen()}
-                layout
-              >
-                {open ? (
-                  <BsArrowBarLeft strokeWidth={1} />
-                ) : (
-                  <BsArrowBarRight strokeWidth={1} style={{ margin: 0 }} />
-                )}
-              </motion.button>
+                {data.categories.map((category) => (
+                  <Collapsible key={category.title} title={category.title}>
+                    {category.links}
+                  </Collapsible>
+                ))}
+              </motion.div>
             </motion.div>
           </AnimatePresence>
         </LayoutGroup>

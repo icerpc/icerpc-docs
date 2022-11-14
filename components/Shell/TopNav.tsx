@@ -18,7 +18,7 @@ export function TopNav() {
       <div className="nav-container">
         <div className="left-col">
           <Link href="/">
-            Icerpc Docs
+            IceRPC Docs
             {/* <div className="image-container">
               <Image src={lightLogo} alt="Logo" />
             </div> */}
@@ -83,6 +83,9 @@ export function TopNav() {
             border-bottom: 1px solid var(--border-color);
             width: 100%;
             font-size: 14px;
+            left: 0;
+            border-radius: 5px;
+            background: var(--nav-background);
           }
 
           nav :global(a) {
