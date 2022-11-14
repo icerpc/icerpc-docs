@@ -27,9 +27,9 @@ export function Document({ children, config }) {
       <style jsx>
         {`
           article {
-            background: white;
+            background: var(--background);
             padding-top: 4rem;
-            width: 80%;
+            width: 85%;
             margin: auto;
             display: flex;
             flex-direction: row;

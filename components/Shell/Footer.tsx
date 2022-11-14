@@ -57,6 +57,7 @@ export function Footer({ landing: boolean }) {
           flex-direction: row;
           gap: 0.5rem;
           align-items: center;
+          color: var(--text-color);
         }
 
         a {
@@ -71,9 +72,10 @@ export function Footer({ landing: boolean }) {
         form {
           display: flex;
           flex-direction: column;
-          gap: 0.5rem;
+          gap: 0.8rem;
           margin-left: 2rem;
           padding-top: 1rem;
+          color: var(--text-color);
         }
 
         .email {
@@ -93,7 +95,7 @@ export function Footer({ landing: boolean }) {
           border: 1px solid var(--border-color);
           border-radius: 0.25rem;
           background: var(--primary-color);
-          color: white;
+          color: var(--background);
           font-weight: bold;
         }
 

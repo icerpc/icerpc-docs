@@ -23,7 +23,7 @@ export function TableOfContents({ toc }) {
     <nav className="toc">
       {headings.length > 1 ? (
         <ul className="flex column">
-          <div className="toc-header">On this page</div>
+          <h2>On this page</h2>
           {headings.map((item) => {
             const href = `#${item.id}`;
             const active =
@@ -58,7 +58,7 @@ export function TableOfContents({ toc }) {
                       color:
                         activeId === item.id
                           ? 'var(--primary-color)'
-                          : 'rgba(75, 85, 99, 1)'
+                          : 'var(--link-color)'
                     }}
                   >
                     {item.children}
@@ -82,12 +82,13 @@ export function TableOfContents({ toc }) {
             padding-left: 50px;
           }
 
-          .toc-header {
+          h2 {
             margin: 0 0 1rem 0rem;
             text-transform: uppercase;
             font-size: 12px;
             font-weight: 800;
           }
+
           ul {
             margin: 0;
             padding: 0;
@@ -100,6 +101,7 @@ export function TableOfContents({ toc }) {
           li a {
             text-decoration: none;
           }
+
           li a:hover,
           li.active a {
             text-decoration: none;

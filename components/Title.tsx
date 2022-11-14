@@ -32,7 +32,6 @@ export function Title({
           .header h2 {
             margin-top: 10px;
             padding-left: 2px;
-            color: #3d4356;
             font-weight: normal;
           }
         `}

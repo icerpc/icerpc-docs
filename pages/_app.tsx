@@ -3,6 +3,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { ThemeProvider } from 'next-themes';
 
 import { SideNav, TopNav } from '../components';
 import '../public/globals.css';
@@ -45,14 +46,17 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <TopNav />
-      <div className="page">
-        {isDocs ? <SideNav path={router.pathname} /> : null}
-        <main className="flex column" id="main">
-          <div id="skip-nav" />
-          <Component {...pageProps} />
-        </main>
-      </div>
+      <ThemeProvider>
+        <TopNav />
+        <div className="page">
+          {isDocs ? <SideNav path={router.pathname} /> : null}
+          <main className="flex column" id="main">
+            <div id="skip-nav" />
+
+            <Component {...pageProps} />
+          </main>
+        </div>
+      </ThemeProvider>
       <style jsx global>
         {`
           .page {

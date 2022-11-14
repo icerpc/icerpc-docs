@@ -7,7 +7,7 @@ export function HorizontalDivider() {
         {`
           .horizontal-divider {
             height: 1px;
-            background: #eaeaea;
+            background: var(--border-color);
             margin-top: 2rem;
             margin-bottom: 2rem;
           }

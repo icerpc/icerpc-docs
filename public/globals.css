@@ -6,6 +6,19 @@
   --primary-color: #1a9ae4;
   --off-white: #F8FAFC;
   --toc-border: rgba(0, 0, 0, 0.14);
+  --background: white;
+  --foreground: black;
+  --link-color: rgba(75, 85, 99, 1);
+  --text-color: rgba(75, 85, 99, 1);
+
+}
+
+[data-theme='dark'] {
+  --background: rgb(36,39,46);
+  --foreground: white;
+  --border-color: rgb(49, 54, 60);
+  --link-color: white;
+  --text-color: white;
 }
 
 *,
@@ -19,10 +32,15 @@ body {
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   color: rgba(60, 66, 87, 1);
+  background-color: var(--background);
 }
 
 p {
   line-height: 1.5em;
+}
+
+[data-theme='dark'] p {
+  color: white;
 }
 
 h1 {
@@ -32,10 +50,23 @@ h1 {
   margin-top: 0;
 }
 
+[data-theme='dark'] h1   {
+  color: white;
+}
+
 h2 {
   margin: 1.5em 0;
+  color: #3d4356;
+}
+
+[data-theme='dark'] h2 {
+  color: white;
 }
 
 a {
   color: rgba(75, 85, 99, 1);
+}
+
+[data-theme='dark'] a {
+  color: rgb(255, 255, 255);
 }

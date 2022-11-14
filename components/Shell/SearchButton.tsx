@@ -22,7 +22,7 @@ export function SearchButton() {
         // Search button styles
 
         :global(.DocSearch-Button) {
-          background: white;
+          background: var(--background);
           height: 30px;
           border-radius: 5px;
           width: 150px;
@@ -30,12 +30,14 @@ export function SearchButton() {
           font-size: 12px;
           padding: 0;
           margin: 0;
-          padding-right: 1rem;
           justify-content: cemter;
+          padding-right: 1rem;
+          width: 130px;
         }
 
         :global(.DocSearch-Button:hover) {
           box-shadow: none;
+          background: none;
         }
 
         :global(.DocSearch-Button:hover)
@@ -52,7 +54,7 @@ export function SearchButton() {
         }
 
         :global(.DocSearch-Button-Key) {
-          background: white;
+          background: none;
           box-shadow: none;
           color: var(--docsearch-muted-color);
           padding: 0;
@@ -68,7 +70,7 @@ export function SearchButton() {
         :global(.DocSearch-Button-Keys) {
           border: 1px solid var(--border-color);
           border-radius: 5px;
-          background: white;
+          background: none;
           color: gray;
           font-size: 12px;
           padding-top: 2px;
@@ -84,7 +86,7 @@ export function SearchButton() {
 
         :global(.DocSearch-Button-Placeholder) {
           font-size: 10pt;
-          color: gray;
+          color: var(--docsearch-muted-color);
           padding: 0;
           margin-right: 0.5rem;
         }

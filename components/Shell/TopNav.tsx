@@ -2,23 +2,26 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { FaTwitter, FaGithub } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import { SearchButton } from './SearchButton';
+import { ThemeToggle } from '../ThemeToggle';
 
-import lightLogo from '../../public/images/icerpc-logo-light.svg';
+// import lightLogo from '../../public/images/icerpc-logo-light.svg';
 
 export function TopNav() {
   const router = useRouter();
+
   return (
     <nav>
       <div className="nav-container">
         <div className="left-col">
           <Link href="/">
-            <div className="image-container">
+            Icerpc Docs
+            {/* <div className="image-container">
               <Image src={lightLogo} alt="Logo" />
-            </div>
+            </div> */}
           </Link>
           <SearchButton />
         </div>
@@ -55,7 +58,9 @@ export function TopNav() {
               RPC Core
             </a>
           </Link>
+
           <div className="icons">
+            <ThemeToggle />
             <a href="https://github.com/zeroc-ice">
               <FaGithub size={20} />
             </a>
@@ -74,7 +79,7 @@ export function TopNav() {
             z-index: 100;
             display: flex;
             align-items: center;
-            background: white;
+            background: var(--background);
             border-bottom: 1px solid var(--border-color);
             width: 100%;
             font-size: 14px;
@@ -106,7 +111,7 @@ export function TopNav() {
           .left-col {
             height: 50%;
             width: 100%;
-            gap: 5px;
+            gap: 20px;
             display: flex;
             align-items: center;
           }
@@ -138,7 +143,9 @@ export function TopNav() {
 
           .icons {
             display: flex;
+            align-items: center;
             gap: 20px;
+            padding-left: 1rem;
           }
 
           @keyframes fadeIn {

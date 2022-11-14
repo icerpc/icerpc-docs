@@ -2,5 +2,6 @@ node_modules/
 .DS_Store
 .next/
 .vercel
+.out/
 package-lock.json
 yarn.lock
