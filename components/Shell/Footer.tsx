@@ -5,7 +5,7 @@ import React from 'react';
 import { MdHelpCenter, MdVideocam } from 'react-icons/md';
 
 // eslint-disable-next-line no-unused-vars
-export function Footer({ landing: boolean }) {
+export function Footer({ children }) {
   return (
     <footer>
       <ul>
