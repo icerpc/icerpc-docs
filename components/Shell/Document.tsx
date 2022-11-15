@@ -18,8 +18,12 @@ export function Document({ children, config }) {
       <article>
         <div className="root">
           {children}
-          <HorizontalDivider />
-          <Feedback />
+          {isDocs && (
+            <>
+              <HorizontalDivider />
+              <Feedback />
+            </>
+          )}
           <HorizontalDivider />
           {isDocs && (
             <div className="edit-container">
@@ -38,6 +42,11 @@ export function Document({ children, config }) {
       </article>
       <style jsx>
         {`
+          a {
+            color: var(--primary-color);
+            text-decoration: none;
+          }
+
           article {
             background: var(--background);
             padding-top: 4rem;
@@ -47,21 +56,16 @@ export function Document({ children, config }) {
             flex-direction: row;
           }
 
-          a {
-            color: var(--primary-color);
-            text-decoration: none;
-          }
-
-          .root {
-            display: inline-block;
-            width: 100%;
-          }
-
           .edit-container {
             display: flex;
             flex-direction: row;
             justify-content: flex-end;
             font-size: 14px;
+          }
+
+          .root {
+            display: inline-block;
+            width: 100%;
           }
 
           @media screen and (min-width: 1200px) {

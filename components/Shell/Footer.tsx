@@ -36,31 +36,6 @@ export function Footer({ children }) {
         </span>
       </form>
       <style jsx>{`
-        footer {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          padding-bottom: 4rem;
-          padding-top: 2rem;
-        }
-
-        ul {
-          list-style: none;
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-          padding-top: 0;
-        }
-
-        li {
-          display: flex;
-          flex-direction: row;
-          gap: 0.5rem;
-          align-items: center;
-          color: var(--text-color);
-        }
-
         a {
           color: var(--primary-color);
           text-decoration: none;
@@ -68,6 +43,14 @@ export function Footer({ children }) {
 
         a:hover {
           color: black;
+        }
+
+        footer {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding-bottom: 4rem;
+          padding-top: 2rem;
         }
 
         form {
@@ -79,18 +62,6 @@ export function Footer({ children }) {
           color: var(--text-color);
         }
 
-        .email {
-          display: flex;
-          flex-direction: row;
-        }
-
-        form input {
-          width: 20rem;
-          padding: 0.5rem;
-          border: 1px solid var(--border-color);
-          border-radius: 0.25rem;
-        }
-
         form button {
           padding: 0.5rem;
           border: 1px solid var(--border-color);
@@ -100,8 +71,37 @@ export function Footer({ children }) {
           font-weight: bold;
         }
 
+        form input {
+          width: 20rem;
+          padding: 0.5rem;
+          border: 1px solid var(--border-color);
+          border-radius: 0.25rem;
+        }
+
         form span {
           font-size: 8pt;
+        }
+
+        li {
+          display: flex;
+          flex-direction: row;
+          gap: 0.5rem;
+          align-items: center;
+          color: var(--text-color);
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          padding-top: 0;
+        }
+
+        .email {
+          display: flex;
+          flex-direction: row;
         }
       `}</style>
     </footer>
