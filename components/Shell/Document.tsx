@@ -1,9 +1,9 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { useRouter } from 'next/router';
 import React from 'react';
-import { TableOfContents, Footer } from '..';
-import { HorizontalDivider } from '../Divider';
+import { useRouter } from 'next/router';
+import { TableOfContents, Footer, HorizontalDivider } from '..';
+import { Feedback } from './Feedback';
 
 export function Document({ children, config }) {
   const toc =
@@ -18,6 +18,9 @@ export function Document({ children, config }) {
       <article>
         <div className="root">
           {children}
+          <HorizontalDivider />
+          <Feedback />
+          <HorizontalDivider />
           {isDocs && (
             <div className="edit-container">
               <a
@@ -27,7 +30,6 @@ export function Document({ children, config }) {
               </a>
             </div>
           )}
-          <HorizontalDivider />
           <Footer {...{ children }} />
         </div>
         {isDocs && toc.some((header) => header.level > 1) ? (

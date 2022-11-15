@@ -8,3 +8,4 @@ export * from './Shell/TopNav';
 export * from './Shell/Footer';
 export * from './CodeBlock';
 export * from './Flow';
+export * from './Divider';
