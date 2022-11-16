@@ -1,64 +1,97 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-const slice_base_url = '/docs/slice';
-const rpc_base_url = '/docs/rpc';
+const SLICE_BASE_URL = '/docs/slice';
+const RPC_CORE_BASE_URL = '/docs/rpc';
+const GETTING_STARTED_BASE_URL = '/docs/getting-started';
 
-export const sideBarData = [
-  {
-    base: slice_base_url,
-    categories: [
+export type SideBarLink = {
+  kind: 'link';
+  title: string;
+  path: string;
+}
+
+export type SideBarCategory = {
+  kind: 'category';
+  title: string;
+  links: SideBarLink[];
+}
+
+export type SideBarSourceType = SideBarCategory | SideBarLink;
+
+export const baseUrls = [SLICE_BASE_URL, RPC_CORE_BASE_URL, GETTING_STARTED_BASE_URL];
+
+// The order of the data is the order they appear in the sidebar.
+export const sideBarData: { [base_url: string]: SideBarSourceType[] } = {
+  // Data for "Getting Started" section
+  '/docs/getting-started': [
       {
-        title: 'Getting started',
+        kind: 'category',
+        title: 'Quick Start',
         links: [
-          {
-            href: slice_base_url + '/getting-started/',
-            name: 'Overview'
-          },
-          {
-            href: slice_base_url + '/getting-started/what-is-slice',
-            name: 'What is Slice?'
-          },
-          { href: slice_base_url + '/getting-started/faq', name: 'FAQ' }
+          { title: 'What is IceRPC?', path: GETTING_STARTED_BASE_URL + '/what-is-icerpc/', kind: 'link' },
+          { title: 'Installation', path: GETTING_STARTED_BASE_URL + 'installation/',  kind: 'link'}
         ]
       },
-      {
-        title: 'Core concepts',
-        links: [
-          { href: slice_base_url + '/core-concepts', name: 'Installation' }
-        ]
-      },
-      {
-        title: 'Integration guides',
-        links: []
-      },
-      {
-        title: 'Advanced concepts',
-        links: []
-      }
-    ]
-  },
-  {
-    base: rpc_base_url,
-    categories: [
-      {
-        title: 'Get started',
-        links: [
-          { href: '/docs/slice/what-is-slice', name: 'What is Slice?' },
-          { href: '/docs/slice/faq', name: 'FAQ' }
-        ]
-      },
-      {
-        title: 'Core concepts',
-        links: [{ href: '/docs/slice/reece', name: 'Installation' }]
-      },
-      {
-        title: 'Integration guides',
-        links: []
-      },
-      {
-        title: 'Advanced concepts',
-        links: []
-      }
-    ]
-  }
-];
+  ],
+  // Data for "Slice" section
+  '/docs/slice':  [
+    {
+      title: 'Overview',
+      path: `${SLICE_BASE_URL}`,
+      kind: 'link'
+    },
+    {
+      title: 'Getting started',
+      kind: 'category',
+      links: [
+        { title: 'Overview', path: SLICE_BASE_URL + '/getting-started/', kind: 'link' },
+        { title: 'What is Slice?', path: SLICE_BASE_URL + '/getting-started/what-is-slice/',  kind: 'link'},
+        { title: 'FAQ', path: SLICE_BASE_URL + '/getting-started/faq/',  kind: 'link' }
+      ]
+    },
+    {
+      title: 'Core concepts',
+      kind: 'category',
+      links: [
+        { title: 'Installation', path: SLICE_BASE_URL + '/core-concepts/', kind: 'link' },
+      ]
+    },
+    {
+      title: 'Integration guides',
+      kind: 'category',
+      links: []
+    },
+    {
+      title: 'Advanced concepts',
+      kind: 'category',
+      links: []
+    }
+  ],
+  // Data for "RPC Core" section
+  '/docs/rpc': [
+    {
+      title: 'Get started',
+      kind: 'category',
+      links: [
+        { title: 'What is Slice?', path: '/docs/slice/what-is-slice/', kind: 'link' },
+        { title: 'FAQ', path: '/docs/slice/faq/', kind: 'link' }
+      ]
+    },
+    {
+      title: 'Core concepts',
+      kind: 'category',
+      links: [{ title: 'Installation', path: '/docs/slice/reece/', kind: 'link' }]
+    },
+    {
+      title: 'Integration guides',
+      kind: 'category',
+      links: []
+    },
+    {
+      title: 'Advanced concepts',
+      kind: 'category',
+      links: []
+    }
+  ]
+
+}
