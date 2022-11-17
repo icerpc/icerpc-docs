@@ -31,8 +31,8 @@ export function Title({
 
           .header h2 {
             margin-top: 10px;
-            padding-left: 2px;
             font-weight: normal;
+            color: var(--text-color-secondary);
           }
         `}
       </style>

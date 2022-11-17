@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useHeadsObserver } from '../../hooks/hooks';
+import { FiEdit, FiMessageSquare } from 'react-icons/fi';
 
 export function TableOfContents({ toc }) {
   const [headings, setHeadings] = useState([]);
@@ -67,6 +68,22 @@ export function TableOfContents({ toc }) {
               </li>
             );
           })}
+          <br />
+          <h2>More</h2>
+          <ul style={{ color: 'var(--primary-color)' }}>
+            <li>
+              <FiEdit />
+              <Link href="/docs/quick-start" passHref>
+                <a>Edit this page</a>
+              </Link>
+            </li>
+            <li>
+              <FiMessageSquare />
+              <Link href="/docs/learn-more" passHref>
+                <a>GitHub Discussions</a>
+              </Link>
+            </li>
+          </ul>
         </ul>
       ) : null}
       <style jsx>
@@ -75,29 +92,36 @@ export function TableOfContents({ toc }) {
             position: sticky;
             top: calc(2.5rem + var(--nav-height));
             max-height: calc(100vh - var(--nav-height));
-            flex: 0 0 10rem;
-            /* https://stackoverflow.com/questions/44446671/my-position-sticky-element-isnt-sticky-when-using-flexbox */
+            flex: 0 0 15rem;
             align-self: flex-start;
-            padding-top: 10px;
-            padding-left: 50px;
+            margin-bottom: 1rem;
+            padding: 0.25rem 0 0;
+            padding-left: 1rem;
+            border-left: 1px solid var(--border-color);
           }
 
           h2 {
             margin: 0 0 1rem 0rem;
             text-transform: uppercase;
             font-size: 12px;
-            font-weight: 800;
+            font-weight: 600;
+            letter-spacing: 0.05em;
           }
 
           ul {
             margin: 0;
             padding: 0;
           }
+
           li {
             list-style-type: none;
             margin: 0 0 1rem 0rem;
             font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
           }
+
           li a {
             text-decoration: none;
           }

@@ -11,7 +11,6 @@ export function Document({ children, config }) {
     [];
   const path = useRouter().asPath;
   const isDocs = path.startsWith('/docs');
-  const file = path.endsWith('/') ? path + 'index.md' : path;
 
   return (
     <div className="document">
@@ -25,15 +24,6 @@ export function Document({ children, config }) {
             </>
           )}
           <HorizontalDivider />
-          {isDocs && (
-            <div className="edit-container">
-              <a
-                href={`https://github.com/zeroc-ice/icerpc-docs/tree/main/pages${file}`}
-              >
-                Edit this page
-              </a>
-            </div>
-          )}
           <Footer {...{ children }} />
         </div>
         {isDocs && toc.some((header) => header.level > 1) ? (
@@ -50,27 +40,21 @@ export function Document({ children, config }) {
           article {
             background: var(--background);
             padding-top: 4rem;
-            width: 85%;
+            width: 90%;
             margin: auto;
             display: flex;
             flex-direction: row;
           }
 
-          .edit-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            font-size: 14px;
-          }
-
           .root {
             display: inline-block;
             width: 100%;
+            margin-right: 4rem;
           }
 
-          @media screen and (min-width: 1200px) {
+          @media screen and (min-width: 1400px) {
             article {
-              max-width: 1200px;
+              max-width: 1400px;
             }
           }
         `}

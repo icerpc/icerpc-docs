@@ -140,6 +140,7 @@ export function CodeBlock({
             padding-right: 1em;
             user-select: none;
             opacity: 0.5;
+            padding-top: 5px;
           }
 
           .line-content {

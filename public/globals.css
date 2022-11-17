@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
 
 :root {
   --nav-height: 65px;
@@ -12,6 +13,7 @@
   --link-color: rgba(75, 85, 99, 1);
   --highlighted-link-color: black;
   --text-color: rgba(75, 85, 99, 1);
+  --text-color-secondary: #3d4356;
 
 }
 
@@ -23,6 +25,7 @@
   --link-color: rgba(255, 255, 255, 0.8);
   --highlighted-link-color: white;
   --text-color: white;
+  --text-color-secondary: white;
 }
 
 *,
@@ -40,7 +43,7 @@ body {
 }
 
 p {
-  line-height: 1.5em;
+  line-height: 2em;
 }
 
 [data-theme='dark'] p {
@@ -60,10 +63,39 @@ h1 {
 
 h2 {
   margin: 1.5em 0;
-  color: #3d4356;
+  color: #000000;
 }
 
 [data-theme='dark'] h2 {
+  color: white;
+}
+
+code {
+  background: #f6f8fa;
+  border-radius: 5px;
+  border-bottom: 1px solid #e1e4e8;
+  padding: 0.2em 0.4em;
+  font-size: 0.9em;
+  font-family: 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+  line-height: 2em;
+}
+
+[data-theme='dark'] code {
+  background: #2d2d2d;
+  border-bottom: 1px solid #e1e4e8;
+  color: white;
+}
+
+[data-theme='dark'] ul, ol {
+  color: white;
+}
+
+h3 {
+  margin: 1.5em 0;
+  color: #000000;
+}
+
+[data-theme='dark'] h3 {
   color: white;
 }
 

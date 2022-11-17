@@ -50,7 +50,6 @@ export function Footer({ children }) {
           flex-direction: row;
           justify-content: space-between;
           padding-bottom: 4rem;
-          padding-top: 2rem;
         }
 
         form {

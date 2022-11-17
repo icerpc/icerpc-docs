@@ -37,7 +37,6 @@ export function Breadcrumbs({ breadcrumbs }) {
         {`
           .breadcrumbs {
             position: relative;
-            padding-left: 0.2rem;
           }
 
           .breadcrumbs ul {
