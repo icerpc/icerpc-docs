@@ -43,6 +43,7 @@ export function CodeBlock({
           {language}
         </div>
         <button
+          aria-label="Copy to clipboard"
           onClick={() => {
             copy(children);
             setCopied(true);

@@ -2,13 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-// import Image from 'next/image';
 import { FaTwitter, FaGithub } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import { SearchButton } from './SearchButton';
 import { ThemeToggle } from '../ThemeToggle';
-
-// import lightLogo from '../../public/images/icerpc-logo-light.svg';
 
 export function TopNav() {
   const router = useRouter();
@@ -17,12 +14,7 @@ export function TopNav() {
     <nav>
       <div className="nav-container">
         <div className="left-col">
-          <Link href="/">
-            IceRPC Docs
-            {/* <div className="image-container">
-              <Image src={lightLogo} alt="Logo" />
-            </div> */}
-          </Link>
+          <Link href="/">IceRPC Docs</Link>
           <SearchButton />
         </div>
         <div className="right-col">
@@ -62,10 +54,16 @@ export function TopNav() {
           <div className="icons">
             <ThemeToggle />
             <a href="https://github.com/zeroc-ice">
-              <FaGithub size={20} />
+              <FaGithub aria-hidden="true" size={20} />
+              <span className="sr-only" aria-hidden="true">
+                Twitter
+              </span>
             </a>
             <a href="https://twitter.com/zeroc">
-              <FaTwitter size={20} />
+              <FaTwitter aria-hidden="true" size={20} />
+              <span className="sr-only" aria-hidden="true">
+                Twitter
+              </span>
             </a>
           </div>
         </div>
@@ -97,8 +95,7 @@ export function TopNav() {
             opacity: 1;
             text-decoration: underline;
             text-decoration-thickness: 2px;
-            text-underline-offset: 1.3rem;
-            animation: fadeIn 0.4s;
+            text-underline-offset: 1.5rem;
           }
 
           .nav-container {
@@ -128,10 +125,6 @@ export function TopNav() {
             justify-content: flex-end;
             padding-right: 2rem;
             margin-right: 0px;
-          }
-
-          .right-col a {
-            transition: 0.3s;
           }
 
           .right-col a:hover {

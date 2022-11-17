@@ -32,8 +32,7 @@ export function CollapsibleCell({
   if (children && children.length > 0) {
     return (
       <div className="collapsible">
-        <div
-          className="header"
+        <button
           {...getToggleProps({ onClick: () => setExpanded(!isExpanded) })}
         >
           {children.some(function (link) {
@@ -46,7 +45,7 @@ export function CollapsibleCell({
           ) : (
             header
           )}
-        </div>
+        </button>
         <div {...getCollapseProps()}>
           <ul className="flex column">
             {children.map((link) => {
@@ -97,7 +96,7 @@ export function CollapsibleCell({
               font-weight: 400;
             }
 
-            .header {
+            button {
               font-size: 14px;
               display: flex;
               align-items: center;
@@ -106,6 +105,8 @@ export function CollapsibleCell({
               padding: 0.5rem;
               margin: 0;
               color: var(--link-color);
+              background: none;
+              border: none;
             }
 
             .header-highlighted {

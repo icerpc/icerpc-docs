@@ -8,10 +8,10 @@ export function Feedback() {
       <h4>Was this page helpful?</h4>
       <div className="feedback-buttons-container">
         {/* TODO: Add click functionality to the feedback buttons */}
-        <button>
+        <button aria-label="Thumbs down">
           <MdThumbDownOffAlt />
         </button>
-        <button>
+        <button aria-label="Thumbs up">
           <MdThumbUpOffAlt />
         </button>
       </div>
