@@ -117,7 +117,7 @@ export const sideBarData: { [base_url: string]: SideBarSourceType[] } = {
       title: 'Core concepts',
       kind: 'category',
       links: [
-        { title: 'Installation', path: '/docs/slice/reece/', kind: 'link' }
+        { title: 'Installation', path: '/docs/slice/install/', kind: 'link' }
       ]
     },
     {

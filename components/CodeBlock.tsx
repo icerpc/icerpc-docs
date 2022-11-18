@@ -8,7 +8,7 @@ import { BsTerminalFill } from 'react-icons/bs';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/dracula';
 
-const commandlineLanguages = [
+const commandLineLanguages = [
   'bash',
   'sh',
   'zsh',
@@ -29,7 +29,7 @@ export function CodeBlock({
 
   const lines =
     typeof children === 'string' ? children.split('\n').filter(Boolean) : [];
-  const languageIcon = commandlineLanguages.includes(language) ? (
+  const languageIcon = commandLineLanguages.includes(language) ? (
     <BsTerminalFill />
   ) : (
     <FaFile />

@@ -9,10 +9,6 @@ export default {
   transform(node, config) {
     const children = node.transformChildren(config);
 
-    return new Tag(
-      this.render,
-      { config: children},
-      children
-    );
+    return new Tag(this.render, { config: children }, children);
   }
 };

@@ -3,7 +3,7 @@
 import { DocSearch } from '@docsearch/react';
 import '@docsearch/css';
 
-// TODO: Update the DocSearch API keys, these are test keys that DocSearch makes publically available.
+// TODO: Update the DocSearch API keys, these are test keys that DocSearch makes publicly available.
 function Search() {
   return (
     <DocSearch
@@ -30,7 +30,7 @@ export function SearchButton() {
           font-size: 12px;
           padding: 0;
           margin: 0;
-          justify-content: cemter;
+          justify-content: center;
           padding-right: 1rem;
           width: 130px;
         }
