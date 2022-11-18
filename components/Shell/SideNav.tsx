@@ -29,7 +29,7 @@ function transformSideBarData(
     return (
       <div key={link.path} className="link">
         <Link href={link.path}>
-          {router.pathname === link.path ? (
+          {router.pathname === link.path.replace(/\/$/, '') ? (
             <a>
               <b style={{ color: 'var(--primary-color)' }}>{link.title}</b>
             </a>

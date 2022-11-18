@@ -8,33 +8,49 @@ export type SideBarLink = {
   kind: 'link';
   title: string;
   path: string;
-}
+};
 
 export type SideBarCategory = {
   kind: 'category';
   title: string;
   links: SideBarLink[];
-}
+};
 
 export type SideBarSourceType = SideBarCategory | SideBarLink;
 
-export const baseUrls = [SLICE_BASE_URL, RPC_CORE_BASE_URL, GETTING_STARTED_BASE_URL];
+export const baseUrls = [
+  SLICE_BASE_URL,
+  RPC_CORE_BASE_URL,
+  GETTING_STARTED_BASE_URL
+];
 
 // The order of the data is the order they appear in the sidebar.
 export const sideBarData: { [base_url: string]: SideBarSourceType[] } = {
   // Data for "Getting Started" section
   '/docs/getting-started': [
-      {
-        kind: 'category',
-        title: 'Quick Start',
-        links: [
-          { title: 'What is IceRPC?', path: GETTING_STARTED_BASE_URL + '/what-is-icerpc/', kind: 'link' },
-          { title: 'Installation', path: GETTING_STARTED_BASE_URL + 'installation/',  kind: 'link'}
-        ]
-      },
+    {
+      title: 'Overview',
+      kind: 'link',
+      path: `${GETTING_STARTED_BASE_URL}/`
+    },
+    {
+      title: 'What is IceRPC?',
+      path: GETTING_STARTED_BASE_URL + '/what-is-icerpc/',
+      kind: 'link'
+    },
+    {
+      title: 'Installation',
+      path: GETTING_STARTED_BASE_URL + '/installation/',
+      kind: 'link'
+    },
+    {
+      title: 'Creating an Application',
+      path: GETTING_STARTED_BASE_URL + '/writing-an-application/',
+      kind: 'link'
+    }
   ],
   // Data for "Slice" section
-  '/docs/slice':  [
+  '/docs/slice': [
     {
       title: 'Overview',
       path: `${SLICE_BASE_URL}`,
@@ -44,16 +60,32 @@ export const sideBarData: { [base_url: string]: SideBarSourceType[] } = {
       title: 'Getting started',
       kind: 'category',
       links: [
-        { title: 'Overview', path: SLICE_BASE_URL + '/getting-started/', kind: 'link' },
-        { title: 'What is Slice?', path: SLICE_BASE_URL + '/getting-started/what-is-slice/',  kind: 'link'},
-        { title: 'FAQ', path: SLICE_BASE_URL + '/getting-started/faq/',  kind: 'link' }
+        {
+          title: 'Overview',
+          path: SLICE_BASE_URL + '/getting-started/',
+          kind: 'link'
+        },
+        {
+          title: 'What is Slice?',
+          path: SLICE_BASE_URL + '/getting-started/what-is-slice/',
+          kind: 'link'
+        },
+        {
+          title: 'FAQ',
+          path: SLICE_BASE_URL + '/getting-started/faq/',
+          kind: 'link'
+        }
       ]
     },
     {
       title: 'Core concepts',
       kind: 'category',
       links: [
-        { title: 'Installation', path: SLICE_BASE_URL + '/core-concepts/', kind: 'link' },
+        {
+          title: 'Installation',
+          path: SLICE_BASE_URL + '/core-concepts/',
+          kind: 'link'
+        }
       ]
     },
     {
@@ -73,14 +105,20 @@ export const sideBarData: { [base_url: string]: SideBarSourceType[] } = {
       title: 'Get started',
       kind: 'category',
       links: [
-        { title: 'What is Slice?', path: '/docs/slice/what-is-slice/', kind: 'link' },
+        {
+          title: 'What is Slice?',
+          path: '/docs/slice/what-is-slice/',
+          kind: 'link'
+        },
         { title: 'FAQ', path: '/docs/slice/faq/', kind: 'link' }
       ]
     },
     {
       title: 'Core concepts',
       kind: 'category',
-      links: [{ title: 'Installation', path: '/docs/slice/reece/', kind: 'link' }]
+      links: [
+        { title: 'Installation', path: '/docs/slice/reece/', kind: 'link' }
+      ]
     },
     {
       title: 'Integration guides',
@@ -93,5 +131,4 @@ export const sideBarData: { [base_url: string]: SideBarSourceType[] } = {
       links: []
     }
   ]
-
-}
+};

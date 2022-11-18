@@ -52,7 +52,6 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
           {isDocs ? <SideNav path={router.pathname} /> : null}
           <main className="flex column" id="main">
             <div id="skip-nav" />
-
             <Component {...pageProps} />
           </main>
         </div>
