@@ -29,7 +29,7 @@ export function MiniCard({ title, link }) {
       <div className="content">
         <h4>{title}</h4>
       </div>
-      <div className="icon">
+      <div className="bottom-container">
         <IconContext.Provider value={{ size: '1em' }}>
           <BsGithub />
         </IconContext.Provider>

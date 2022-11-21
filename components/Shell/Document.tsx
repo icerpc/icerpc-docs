@@ -7,10 +7,17 @@ import { Feedback } from './Feedback';
 
 export function Document({ children, config }) {
   const toc =
-    config.filter((c) => c.type.name === 'Heading').map((node) => node.props) ||
-    [];
+    config
+      .filter((c) => typeof c.props.level !== 'undefined')
+      .map((node) => node.props) || [];
   const path = useRouter().asPath;
   const isDocs = path.startsWith('/docs');
+  console.log('isDocs', isDocs);
+  console.log(
+    'headerCondition',
+    toc.some((header) => header.level > 1)
+  );
+  console.log('config', config);
 
   return (
     <div className="document">
@@ -27,7 +34,9 @@ export function Document({ children, config }) {
           <Footer {...{ children }} />
         </div>
         {isDocs && toc.some((header) => header.level > 1) ? (
-          <TableOfContents toc={toc} />
+          <>
+            <TableOfContents toc={toc} />
+          </>
         ) : null}
       </article>
       <style jsx>
