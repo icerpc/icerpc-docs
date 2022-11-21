@@ -14,13 +14,16 @@ export const grid = {
     columns: {
       type: 'number',
       required: true
+    },
+    trailingLink: {
+      type: 'object',
+      required: false
     }
   },
   transform(node, config) {
     const attributes = node.transformAttributes(config);
     const children = node.transformChildren(config);
-    const rows = attributes.rows;
-    const columns = attributes.columns;
-    return new Tag(this.render, { children, rows, columns });
+    const { rows, columns, trailingLink } = attributes;
+    return new Tag(this.render, { children, rows, columns, trailingLink });
   }
 };

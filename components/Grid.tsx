@@ -1,11 +1,61 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-export default function Grid({ children, columns, rows }) {
+import { BsBoxArrowUpRight, BsArrowRight } from 'react-icons/bs';
+import { IconContext } from 'react-icons';
+
+// Helper function to determine if a link is external or not.
+
+export default function Grid({ children, columns, rows, trailingLink }) {
+  // TODO: Add support for detecting external links.
+  // eslint-disable-next-line no-unused-vars
+  const isExternalURL = (url) => {
+    return true;
+  };
+
   const gridStyle = {
     display: 'grid',
     gridTemplateColumns: `repeat(${columns}, 1fr)`,
     gridTemplateRows: `repeat(${rows}, 1fr)`,
-    gridGap: '1em'
+    gridGap: '1em',
+    paddingTop: '0.5em',
+    paddingBottom: '0.5em'
   };
-  return <div style={gridStyle}>{children}</div>;
+  const bottomStyle = {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    fontSize: '16px',
+    color: 'var(--primary-color)',
+    gap: '0.5em',
+    padding: '1.5em',
+    paddingRight: '0'
+  };
+  return (
+    <>
+      <div style={gridStyle}>{children}</div>
+      {trailingLink && (
+        <a
+          style={{
+            color: 'var(--primary-color)',
+            textAlign: 'center',
+            textDecoration: 'none'
+          }}
+          href={trailingLink.link}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div className="bottom-link" style={bottomStyle}>
+            {trailingLink.label}
+            <IconContext.Provider value={{ size: '1em' }}>
+              {isExternalURL(trailingLink.link) ? (
+                <BsBoxArrowUpRight />
+              ) : (
+                <BsArrowRight />
+              )}
+            </IconContext.Provider>
+          </div>
+        </a>
+      )}
+    </>
+  );
 }

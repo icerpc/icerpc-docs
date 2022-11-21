@@ -1,17 +1,17 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { Card } from '../../components/Card';
+import { LinkCard } from '../../components/Card';
 import { Tag, nodes } from '@markdoc/markdoc';
 
-export const card = {
+export const linkCard = {
   ...nodes.document,
-  render: Card,
+  render: LinkCard,
   attributes: {
     title: {
       type: 'string',
       required: true
     },
-    description: {
+    link: {
       type: 'string',
       required: true
     },
@@ -22,7 +22,7 @@ export const card = {
   },
   transform(node, config) {
     const attributes = node.transformAttributes(config);
-    const { title, description, icon } = attributes;
-    return new Tag(this.render, { ...attributes, title, description, icon });
+    const { title, link, icon } = attributes;
+    return new Tag(this.render, { ...attributes, title, link, icon });
   }
 };
