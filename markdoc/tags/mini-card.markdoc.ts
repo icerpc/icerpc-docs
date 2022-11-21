@@ -1,11 +1,11 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { LinkCard } from '../../components/Card';
+import { MiniCard } from '../../components/Card';
 import { Tag, nodes } from '@markdoc/markdoc';
 
 export const linkCard = {
   ...nodes.document,
-  render: LinkCard,
+  render: MiniCard,
   attributes: {
     title: {
       type: 'string',

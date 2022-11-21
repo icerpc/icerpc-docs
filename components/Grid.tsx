@@ -3,8 +3,6 @@
 import { BsBoxArrowUpRight, BsArrowRight } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
 
-// Helper function to determine if a link is external or not.
-
 export default function Grid({ children, columns, rows, trailingLink }) {
   // TODO: Add support for detecting external links.
   // eslint-disable-next-line no-unused-vars

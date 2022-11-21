@@ -18,6 +18,10 @@ export const card = {
     icon: {
       type: 'string',
       required: true
+    },
+    link: {
+      type: 'string',
+      required: true
     }
   },
   transform(node, config) {
