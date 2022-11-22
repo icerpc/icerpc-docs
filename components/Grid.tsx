@@ -1,5 +1,6 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
+import React from 'react';
 import { BsBoxArrowUpRight, BsArrowRight } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
 
@@ -30,7 +31,11 @@ export default function Grid({ children, columns, rows, trailingLink }) {
   };
   return (
     <>
-      <div style={gridStyle}>{children}</div>
+      <div key={children} style={gridStyle}>
+        {children.map((child, index) => {
+          return <React.Fragment key={index}>{child}</React.Fragment>;
+        })}
+      </div>
       {trailingLink && (
         <a
           style={{

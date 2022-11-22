@@ -12,12 +12,6 @@ export function Document({ children, config }) {
       .map((node) => node.props) || [];
   const path = useRouter().asPath;
   const isDocs = path.startsWith('/docs');
-  console.log('isDocs', isDocs);
-  console.log(
-    'headerCondition',
-    toc.some((header) => header.level > 1)
-  );
-  console.log('config', config);
 
   return (
     <div className="document">

@@ -22,6 +22,7 @@ export function MiniCard({ title, link }) {
   return (
     <a
       href={link ? link : '#'}
+      key={title}
       className="card"
       target="_blank"
       rel="noreferrer"
@@ -74,7 +75,7 @@ export function MiniCard({ title, link }) {
 
 export function Card({ title, description, icon, link }) {
   return (
-    <Link href={link} passHref>
+    <Link key={title} href={link} passHref>
       <a className="card">
         <IconContext.Provider
           value={{ color: 'var(--primary-color)', size: '1.5em' }}
