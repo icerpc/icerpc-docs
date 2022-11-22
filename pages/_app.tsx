@@ -58,16 +58,6 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       </ThemeProvider>
       <style jsx global>
         {`
-          .page {
-            display: flex;
-            flex-grow: 1;
-            padding-top: var(--nav-height);
-            min-height: 100vh;
-            max-width: 100vw;
-            max-width: 1500px;
-            margin: 0 auto;
-          }
-
           main {
             flex-grow: 1;
             max-width: 800%;
@@ -85,6 +75,22 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
 
           main article p {
             font-size: 16px;
+          }
+
+          .page {
+            display: flex;
+            flex-grow: 1;
+            padding-top: var(--nav-height);
+            min-height: 100vh;
+            max-width: 100vw;
+            max-width: 1500px;
+            margin: 0 auto;
+          }
+
+          /* Style hero section */
+
+          .page--landing .hero-section {
+            padding: 4rem;
           }
         `}
       </style>
