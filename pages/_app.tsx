@@ -9,6 +9,9 @@ import { SideNav, TopNav } from '../components';
 import '../public/globals.css';
 import 'reactflow/dist/style.css';
 
+import { Inter } from '@next/font/google';
+const inter = Inter({ subsets: ['latin'] });
+
 import type { AppProps } from 'next/app';
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js';
 
@@ -50,7 +53,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <TopNav />
         <div className="page">
           {isDocs ? <SideNav path={router.pathname} /> : null}
-          <main className="flex column" id="main">
+          <main className={inter.className} id="main">
             <div id="skip-nav" />
             <Component {...pageProps} />
           </main>

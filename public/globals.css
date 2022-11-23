@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
+/* Copyright (c) ZeroC, Inc. All rights reserved. */
 
 :root {
   --nav-height: 65px;
@@ -34,6 +33,11 @@
   box-sizing: border-box;
 }
 
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
   font-family: Inter, system-ui, -apple-system, Inter, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
@@ -53,7 +57,7 @@ p {
 h1 {
   font-size: 52px;
   color: black;
-  font-weight: 900;
+  font-style: bold;
   margin-top: 0;
 }
 
@@ -62,22 +66,12 @@ h1 {
 }
 
 h2 {
-  margin: 1.5em 0;
+  margin: 1em 0;
   color: #000000;
 }
 
 [data-theme='dark'] h2 {
   color: white;
-}
-
-code {
-  background: #f6f8fa;
-  border-radius: 5px;
-  border-bottom: 1px solid #e1e4e8;
-  padding: 0.2em 0.4em;
-  font-size: 0.9em;
-  font-family: 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-  line-height: 2em;
 }
 
 [data-theme='dark'] code {
