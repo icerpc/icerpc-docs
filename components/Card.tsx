@@ -2,6 +2,7 @@
 
 import { IconContext } from 'react-icons';
 import { BsBox, BsQuestionSquare, BsTerminal, BsGithub } from 'react-icons/bs';
+import { SiDotnet } from 'react-icons/si';
 
 import Link from 'next/link';
 
@@ -32,7 +33,18 @@ export function MiniCard({ title, link }) {
       </div>
       <div className="bottom-container">
         <IconContext.Provider value={{ size: '1em' }}>
-          <BsGithub />
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '0.5rem'
+            }}
+          >
+            <BsGithub />
+            <span style={{ fontSize: '25px' }}>&middot;</span>
+            <SiDotnet size={30} />
+          </div>
         </IconContext.Provider>
       </div>
       <style jsx>
@@ -46,6 +58,7 @@ export function MiniCard({ title, link }) {
             color: var(--primary-color);
             text-decoration: none;
             font-weight: default;
+            margin: 0;
           }
 
           .card {
