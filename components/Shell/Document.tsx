@@ -2,16 +2,24 @@
 
 import React from 'react';
 import { useRouter } from 'next/router';
-import { TableOfContents, Footer, HorizontalDivider } from '..';
+import dynamic from 'next/dynamic';
+import { Footer, HorizontalDivider } from '..';
 import { Feedback } from './Feedback';
 
 export function Document({ children, config }) {
+  const isDocs = useRouter().asPath.startsWith('/docs');
   const toc =
     config
       .filter((c) => typeof c.props.level !== 'undefined')
       .map((node) => node.props) || [];
-  const path = useRouter().asPath;
-  const isDocs = path.startsWith('/docs');
+  const showToc = isDocs && toc.some((header) => header.level > 1);
+
+  // Only load the TableOfContents component if we're on a docs page that has multiple headers
+  const TableOfContents = showToc
+    ? dynamic(() => import('./TableOfContents'), {
+        ssr: false
+      })
+    : null;
 
   return (
     <div className="document">
@@ -27,11 +35,7 @@ export function Document({ children, config }) {
           <HorizontalDivider />
           <Footer {...{ children }} />
         </div>
-        {isDocs && toc.some((header) => header.level > 1) ? (
-          <>
-            <TableOfContents toc={toc} />
-          </>
-        ) : null}
+        {showToc && <TableOfContents toc={toc} />}
       </article>
       <style jsx>
         {`

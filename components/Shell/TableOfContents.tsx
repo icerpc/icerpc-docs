@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useHeadsObserver } from '../../hooks/hooks';
 import { FiEdit, FiMessageSquare } from 'react-icons/fi';
 
-export function TableOfContents({ toc }) {
+export default function TableOfContents({ toc }) {
   const [headings, setHeadings] = useState([]);
   const { activeId } = useHeadsObserver(toc);
 
@@ -24,8 +24,8 @@ export function TableOfContents({ toc }) {
     <>
       {headings.length > 1 ? (
         <nav className="toc">
+          <h2>On this page</h2>
           <ul className="flex column">
-            <h2>On this page</h2>
             {headings.map((item) => {
               const href = `#${item.id}`;
               const active =

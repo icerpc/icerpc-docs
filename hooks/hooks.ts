@@ -3,21 +3,21 @@
 import { useEffect, useState, useRef } from 'react';
 
 export function useHeadsObserver(toc) {
-  const observer = useRef<IntersectionObserver>()
-  const [activeId, setActiveId] = useState('')
+  const observer = useRef<IntersectionObserver>();
+  const [activeId, setActiveId] = useState('');
 
   useEffect(() => {
     const handleObsever = (entries) => {
       entries.forEach((entry) => {
         if (entry?.isIntersecting) {
-          setActiveId(entry.target.id)
+          setActiveId(entry.target.id);
         }
-      })
-    }
+      });
+    };
 
     observer.current = new IntersectionObserver(handleObsever, {
-      rootMargin: "-15% 0% -35% 0px"}
-    )
+      rootMargin: '-20% 0% -45% 0px'
+    });
 
     toc
       .filter(
@@ -28,8 +28,8 @@ export function useHeadsObserver(toc) {
       )
       .map((item) => document.getElementById(item.id))
       .forEach((elem) => observer.current.observe(elem));
-    return () => observer.current.disconnect()
-  }, [toc])
+    return () => observer.current.disconnect();
+  }, [toc]);
 
-  return {activeId}
+  return { activeId };
 }
