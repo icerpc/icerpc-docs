@@ -88,7 +88,7 @@ export function MiniCard({ title, link }) {
 
 export function Card({ title, description, icon, link }) {
   return (
-    <Link key={title} href={link} passHref>
+    <Link key={title} href={link} passHref legacyBehavior>
       <a className="card">
         <IconContext.Provider
           value={{ color: 'var(--primary-color)', size: '1.5em' }}

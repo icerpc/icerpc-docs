@@ -28,7 +28,7 @@ function transformSideBarData(
     const link = data as SideBarLink;
     return (
       <div key={link.path} className="link">
-        <Link href={link.path}>
+        <Link href={link.path} legacyBehavior>
           {router.pathname === link.path.replace(/\/$/, '') ? (
             <a>
               <b style={{ color: 'var(--primary-color)' }}>{link.title}</b>

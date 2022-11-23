@@ -14,14 +14,14 @@ export function TopNav() {
     <nav>
       <div className="nav-container">
         <div className="left-col">
-          <Link href="/">IceRPC Docs</Link>
+          <Link href="/" legacyBehavior>IceRPC Docs</Link>
           <SearchButton />
         </div>
         <div className="right-col">
-          <Link href="/" className="flex">
+          <Link href="/" className="flex" legacyBehavior>
             <a className={router.pathname == '/' ? 'active' : ''}>Home</a>
           </Link>
-          <Link href="/docs/getting-started" className="flex">
+          <Link href="/docs/getting-started" className="flex" legacyBehavior>
             <a
               className={
                 router.pathname.startsWith('/docs/getting-started')
@@ -32,7 +32,7 @@ export function TopNav() {
               Getting Started
             </a>
           </Link>
-          <Link href="/docs/slice" className="flex">
+          <Link href="/docs/slice" className="flex" legacyBehavior>
             <a
               className={
                 router.pathname.startsWith('/docs/slice') ? 'active' : ''
@@ -41,7 +41,7 @@ export function TopNav() {
               Slice
             </a>
           </Link>
-          <Link href="/docs/rpc" className="flex">
+          <Link href="/docs/rpc" className="flex" legacyBehavior>
             <a
               className={
                 router.pathname.startsWith('/docs/rpc') ? 'active' : ''

@@ -16,7 +16,7 @@ export function Breadcrumbs({ breadcrumbs }) {
             // The last breadcrumb should not have a trailing slash
             return (
               <li key={name}>
-                <Link href={href} passHref>
+                <Link href={href} passHref legacyBehavior>
                   <a>{name}</a>
                 </Link>
               </li>
@@ -24,7 +24,7 @@ export function Breadcrumbs({ breadcrumbs }) {
           } else {
             return (
               <li key={name}>
-                <Link href={href} passHref>
+                <Link href={href} passHref legacyBehavior>
                   <a>{name}</a>
                 </Link>
                 /

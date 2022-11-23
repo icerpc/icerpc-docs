@@ -30,7 +30,7 @@ export function Footer({ children }) {
         </div>
         <span>
           You can unsubscribe at any time. Read our{' '}
-          <Link href="foo">
+          <Link href="foo" legacyBehavior>
             <a>privacy policy.</a>
           </Link>
         </span>

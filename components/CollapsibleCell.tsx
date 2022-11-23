@@ -52,7 +52,7 @@ export function CollapsibleCell({
               const active = link.path.replace(/\/$/, '') === router.pathname;
               return (
                 <li key={link.path} className={active ? 'active' : ''}>
-                  <Link href={link.path}>
+                  <Link href={link.path} legacyBehavior>
                     <a href={link.path}>{link.title}</a>
                   </Link>
                 </li>
