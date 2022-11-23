@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useHeadsObserver } from '../../hooks/hooks';
 import { FiEdit, FiMessageSquare } from 'react-icons/fi';
@@ -9,6 +10,14 @@ import { FiEdit, FiMessageSquare } from 'react-icons/fi';
 export default function TableOfContents({ toc }) {
   const [headings, setHeadings] = useState([]);
   const { activeId } = useHeadsObserver(toc);
+  const router = useRouter();
+  const currentPath = [
+    '/docs/getting-started',
+    '/docs/rpc',
+    '/docs/slice'
+  ].includes(router.pathname)
+    ? router.pathname + '/index.md'
+    : router.pathname + '.md';
 
   useEffect(() => {
     const elements = toc.filter(
@@ -73,16 +82,30 @@ export default function TableOfContents({ toc }) {
             <h2>More</h2>
             <ul style={{ color: 'var(--primary-color)' }}>
               <li>
-                <FiEdit />
-                <Link href="/docs/quick-start" passHref>
-                  <a>Edit this page</a>
-                </Link>
+                {/* TODO: Fix link */}
+                <a
+                  className="external-link"
+                  href={
+                    'https://github.com/zeroc-ice/icerpc-docs/tree/main/pages' +
+                    currentPath
+                  }
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FiEdit color="var(--primary-color)" /> Edit this page
+                </a>
               </li>
               <li>
-                <FiMessageSquare />
-                <Link href="/docs/learn-more" passHref>
-                  <a>GitHub Discussions</a>
-                </Link>
+                {/* TODO: Fix link */}
+                <a
+                  className="external-link"
+                  href="https://github.com/zeroc-ice/icerpc"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FiMessageSquare color="var(--primary-color)" /> GitHub
+                  Discussions
+                </a>
               </li>
             </ul>
           </ul>
@@ -133,6 +156,13 @@ export default function TableOfContents({ toc }) {
               li.padded {
                 padding-left: 0rem;
               }
+
+              .external-link {
+                display: flex;
+                align-items: center;
+                gap: 0.5em;
+              }
+
               @media screen and (max-width: 1200px) {
                 nav {
                   display: none;
