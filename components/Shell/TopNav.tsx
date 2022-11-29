@@ -14,7 +14,9 @@ export function TopNav() {
     <nav>
       <div className="nav-container">
         <div className="left-col">
-          <Link href="/" legacyBehavior>IceRPC Docs</Link>
+          <Link href="/" legacyBehavior>
+            IceRPC Docs
+          </Link>
           <SearchButton />
         </div>
         <div className="right-col">
@@ -53,17 +55,11 @@ export function TopNav() {
 
           <div className="icons">
             <ThemeToggle />
-            <a href="https://github.com/zeroc-ice">
-              <FaGithub aria-hidden="true" size={20} />
-              <span className="sr-only" aria-hidden="true">
-                Twitter
-              </span>
+            <a href="https://github.com/zeroc-ice" aria-label="Github">
+              <FaGithub size={20} />
             </a>
-            <a href="https://twitter.com/zeroc">
-              <FaTwitter aria-hidden="true" size={20} />
-              <span className="sr-only" aria-hidden="true">
-                Twitter
-              </span>
+            <a href="https://twitter.com/zeroc" aria-label="Twitter">
+              <FaTwitter size={20} />
             </a>
           </div>
         </div>

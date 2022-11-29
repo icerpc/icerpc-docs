@@ -1,12 +1,14 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import * as React from 'react';
-import copy from 'copy-to-clipboard';
+import { useState } from 'react';
 import { BiCopy } from 'react-icons/bi';
 import { FaFile } from 'react-icons/fa';
 import { BsTerminalFill } from 'react-icons/bs';
+import copy from 'copy-to-clipboard';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import theme from 'prism-react-renderer/themes/dracula';
+import themeLight from 'prism-react-renderer/themes/dracula';
+import themeDark from 'prism-react-renderer/themes/github';
+import { useTheme } from 'next-themes';
 
 const commandLineLanguages = [
   'bash',
@@ -25,7 +27,11 @@ export function CodeBlock({
   // eslint-disable-next-line no-unused-vars
   multiple = false
 }) {
-  const [copied, setCopied] = React.useState(false);
+  const [copied, setCopied] = useState(false);
+
+  // Switch to dark theme if the user has dark mode enabled
+  const { resolvedTheme } = useTheme();
+  const theme = resolvedTheme === 'dark' ? themeDark : themeLight;
 
   const lines =
     typeof children === 'string' ? children.split('\n').filter(Boolean) : [];

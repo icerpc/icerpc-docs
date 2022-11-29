@@ -12,13 +12,13 @@ export function Footer({ children }) {
         <li>
           <MdHelpCenter size={20} />
           <span>
-            Need help? <a>Contact us</a>
+            Need help? <a href="https://www.zeroc.com">Contact us</a>
           </span>
         </li>
         <li>
           <MdVideocam size={20} />
           <span>
-            Watch our <a>Developer tutorials</a>
+            Watch our <a href="https://www.zeroc.com">Developer tutorials</a>
           </span>
         </li>
       </ul>
@@ -30,7 +30,7 @@ export function Footer({ children }) {
         </div>
         <span>
           You can unsubscribe at any time. Read our{' '}
-          <Link href="foo" legacyBehavior>
+          <Link href="https://www.zeroc.com" legacyBehavior>
             <a>privacy policy.</a>
           </Link>
         </span>
