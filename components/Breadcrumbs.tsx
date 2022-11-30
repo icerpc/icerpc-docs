@@ -35,11 +35,18 @@ export function Breadcrumbs({ breadcrumbs }) {
       </ul>
       <style jsx>
         {`
-          .breadcrumbs {
-            position: relative;
+          a {
+            text-decoration: none;
           }
 
-          .breadcrumbs ul {
+          li {
+            display: flex;
+            flex-direction: row;
+            padding-right: 0.5rem;
+            gap: 0.5rem;
+          }
+
+          ul {
             display: flex;
             padding-left: 0pt;
             color: #6b7385;
@@ -47,15 +54,8 @@ export function Breadcrumbs({ breadcrumbs }) {
             margin: 0 0 0.5rem 0;
           }
 
-          .breadcrumbs li {
-            display: flex;
-            flex-direction: row;
-            padding-right: 0.5rem;
-            gap: 0.5rem;
-          }
-
-          .breadcrumbs a {
-            text-decoration: none;
+          .breadcrumbs {
+            position: relative;
           }
         `}
       </style>

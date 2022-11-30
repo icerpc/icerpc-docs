@@ -89,13 +89,6 @@ export function CodeBlock({
       </Highlight>
       <style jsx>
         {`
-          pre {
-            margin: 0;
-            text-align: left;
-            overflow: scroll;
-            border-radius: 5px;
-          }
-
           button {
             appearance: none;
             background: var(--code-background);
@@ -109,6 +102,13 @@ export function CodeBlock({
 
           button:hover {
             color: gray;
+          }
+
+          pre {
+            margin: 0;
+            text-align: left;
+            overflow: scroll;
+            border-radius: 5px;
           }
 
           .container {

@@ -5,9 +5,12 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { Footer, HorizontalDivider } from '..';
 import { Feedback } from './Feedback';
+import { PageHistory } from './PageHistory';
 
 export function Document({ children, config }) {
-  const isDocs = useRouter().asPath.startsWith('/docs');
+  // Get the data for the next and previous links
+  const path = useRouter().asPath;
+  const isDocs = path.startsWith('/docs');
   const toc =
     config
       .filter((c) => typeof c.props.level !== 'undefined')
@@ -28,6 +31,7 @@ export function Document({ children, config }) {
           {children}
           {isDocs && (
             <>
+              <PageHistory />
               <HorizontalDivider />
               <Feedback />
             </>
@@ -51,6 +55,40 @@ export function Document({ children, config }) {
             margin: auto;
             display: flex;
             flex-direction: row;
+          }
+
+          .page-history-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0;
+            margin: 0;
+            margin-top: 3rem;
+          }
+
+          .page-history {
+            height: 2.5rem;
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            align-items: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            color: var(--primary-color);
+          }
+
+          .page-history:hover {
+            background: rgb(233, 241, 254);
+          }
+
+          .page-history a {
+            color: var(--primary-color);
+            text-decoration: none;
+            text-align: center;
           }
 
           .root {
