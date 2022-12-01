@@ -8,6 +8,7 @@ import copy from 'copy-to-clipboard';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import themeLight from 'prism-react-renderer/themes/dracula';
 import themeDark from 'prism-react-renderer/themes/github';
+import Prism from 'prism-react-renderer/prism';
 import { useTheme } from 'next-themes';
 
 const commandLineLanguages = [
@@ -21,6 +22,29 @@ const commandLineLanguages = [
   'shell'
 ];
 
+Prism.languages.slice = {
+  keyword: /\b(interface|module|struct|class|exception|enum|throws)\b/,
+  punctuation: /[{}[\];(),.:]/,
+  number: /\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)[ful]*\b/i,
+  comment: [
+    {
+      pattern: /(^|[^\\])\/\*[\w\W]*?\*\//,
+      lookbehind: true
+    },
+    {
+      pattern: /(^|[^\\:])\/\/.*/,
+      lookbehind: true
+    }
+  ],
+  string: {
+    pattern: /(^|[^\\])"(?:\\[\s\S]|[^"\\])*"/,
+    lookbehind: true
+  },
+  operator: /[-+]{1,2}|!|<=?|>=?|={1,3}|&{1,2}|\|?\||\?|\*|\/|~|\^|%/,
+  builtin:
+    /\b(?:bool|int8|uint8|int16|uint16|int32|uint32|varint32|varuint32|int64|uint64|varint62|varuint62|float32|float64|string)\b/
+};
+
 export function CodeBlock({
   children,
   'data-language': language,
@@ -32,7 +56,6 @@ export function CodeBlock({
   // Switch to dark theme if the user has dark mode enabled
   const { resolvedTheme } = useTheme();
   const theme = resolvedTheme === 'dark' ? themeDark : themeLight;
-
   const lines =
     typeof children === 'string' ? children.split('\n').filter(Boolean) : [];
   const languageIcon = commandLineLanguages.includes(language) ? (
