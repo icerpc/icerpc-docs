@@ -7,7 +7,7 @@ export function useHeadsObserver(toc) {
   const [activeId, setActiveId] = useState('');
 
   useEffect(() => {
-    const handleObsever = (entries) => {
+    const handleObserver = (entries) => {
       entries.forEach((entry) => {
         if (entry?.isIntersecting) {
           setActiveId(entry.target.id);
@@ -15,7 +15,7 @@ export function useHeadsObserver(toc) {
       });
     };
 
-    observer.current = new IntersectionObserver(handleObsever, {
+    observer.current = new IntersectionObserver(handleObserver, {
       rootMargin: '-20% 0% -45% 0px'
     });
 

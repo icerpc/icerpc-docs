@@ -1,0 +1,34 @@
+{
+  // Version of the setting file.  Always 0.2
+  "version": "0.2",
+  // language - current active spelling language
+  "language": "en",
+  // words - list of words to be always considered correct
+  "words": [
+    "callout",
+    "frontmatter",
+    "icerpc",
+    "markdoc",
+    "QUIC",
+    "Slic",
+    "varint",
+    "varuint",
+    "reactflow",
+    "smoothstep",
+    "Videocam",
+    "docsearch",
+    "prismjs"
+  ],
+  "dictionaries": [
+    "csharp",
+    "html",
+    "typescript",
+    "css",
+    "bash",
+    "softwareTerms",
+    "en_US",
+    "companies",
+    "misc",
+    "lorem-ipsum"
+  ]
+}
