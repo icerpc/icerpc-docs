@@ -90,3 +90,55 @@ Lorem ipsum dolor sit amet.
 
 Lorem ipsum dolor sit amet.
 ```
+
+## Updating Navigation
+
+The hierarchy of the navigation is defined in `/data/sideBarData.ts`. `sideBarData.ts` is a TypeScript file that exports
+a dictionary where the keys are the paths of the top navigation items and the values are arrays containing either
+`SideBarLink` or `SideBarCategory` types.
+
+For example, the following values define two `SideBarLink` objects, one with the title Overview that links to
+the `/docs/slice/index.md` page, and another called `Getting Started` that links to the `/docs/slice/what-is-icerpc.md`
+page. This is used to generate the sidebar for the `Slice` top navigation item.
+
+```TypeScript
+  '/docs/slice': [
+    {
+      title: 'Overview',
+      path: `${SLICE_BASE_URL}`, // '/docs/slice'
+      kind: 'link'
+    },
+    {
+      title: 'Getting Started',
+      path: `${SLICE_BASE_URL} + '/what-is-icerpc/' `,
+      kind: 'link'
+    },
+    ...
+  ],
+
+```
+
+In addition to defining the pages in the sidebar you can also use `SideBarCategory` to define a category that can be
+expanded and collapsed which contains a list of `SideBarLink` or `SideBarCategory` objects.
+
+The below dictionary defines a `SideBarCategory` object with the title `Getting Started` that contains a link to the
+FAQ page. This will render as a category in the sidebar that can be expanded and collapsed to reveal the FAQ link.
+
+```TypeScript
+ '/docs/slice': [
+    ...
+    {
+    title: 'Getting started',
+    kind: 'category',
+    links: [
+      {
+        title: 'FAQ',
+        path: SLICE_BASE_URL + '/getting-started/faq/',
+        kind: 'link'
+      }
+    ]
+    },
+  ...
+
+ ]
+```
