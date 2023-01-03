@@ -8,14 +8,81 @@ breadcrumbs:
 
 {% title /%}
 
-IceRPC is a protocol for remote procedure calls. It is a binary protocol that uses a compact representation for data
-types and operations. It is designed to be efficient and to minimize the amount of data that needs to be transferred
-over the network.
+In this section, you'll get a brief introduction to the components of the IceRPC framework. Additional information
+about each component will be explored in greater detail in the respective documentation sections.
 
-The design philosophy of IceRPC is built ontop of the following vision:
+## The icerpc Protocol and Slic Transport
 
-- multi-transport, multi-language, multi-platform
-- easy to use generated typed API
-- elegant modern API
-- fast binary encoding
-- lean protocol on top of TCP, QUIC, Bluetooth and more, with support for streaming and firewall traversal
+The icerpc protocol is a lightweight application protocol that was designed from the ground up to act as a thin layer
+on top of an underlying [multiplexed](https://en.wikipedia.org/wiki/Multiplexing) transport, with the prototypical
+multiplexed transport being [QUIC](https://en.wikipedia.org/wiki/QUIC).
+
+As a result of this design, IceRPC is a straightforward protocol that is unobtrusive and easy to understand. No framing
+is required for sending requests and responses. A detailed description of the IceRPC protocol is available in the
+[IceRPC Protocol Specification](/docs/ice-rpc-protocol-specification).
+
+The Slic transport is a multiplexed transport designed to be used with the icerpc protocol. It is a simple
+transport that acts as a pseudo "QUIC over TCP" for environments where the QUIC transport is unavailable.
+A detailed description of the Slic transport is available in the
+[Slic Transport Specification](/docs/slic-transport-specification).
+
+## The Slice Language
+
+```slice
+
+module Foo;
+
+interface Bar
+{
+  // This is a comment
+  baz(a: int32?) -> string;
+};
+
+struct bar
+{
+  /* This is a comment */
+  baz: int32;
+};
+
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas
+congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero
+eget laoreet sit amet nec augue.
+
+## The IceRPC Core
+
+The IceRPC runtime is a flexible remote procedure call runtime built to leverage the IceRPC Protocol and the powerful
+code generation capabilities of the Slice language. The IceRPC runtime is designed to be used in a variety of
+environments, including embedded systems, mobile devices, and desktop applications.
+
+## The Slice Encoding
+
+## Combing the Pieces
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas
+congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero.
+
+{% flow
+   nodes=[
+    {
+      id: "1",
+      data: { label: "Node 1" },
+      position: { x: 250, y: 5 }
+    },
+    {
+      id: "2",
+      data: { label: "Node 2" },
+      position: { x: 100, y: 100 }
+    },
+    {
+      id: "3",
+      data: { label: "Node 3" },
+      position: { x: 400, y: 100 }
+    }
+  ]
+  edges=[
+    { id: "e1-2", source: "1", target: "2" },
+    { id: "e1-3", source: "1", target: "3" }
+  ]
+/%}
