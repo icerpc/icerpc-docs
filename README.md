@@ -2,6 +2,8 @@
 
 - [Build Requirements](#build-requirements)
 - [Building](#building)
+- [Writing Documentation](#writing-documentation)
+- [Updating Navigation](#updating-navigation)
 
 ## Build Requirements
 
@@ -35,9 +37,6 @@ be used in the documentation.
 - [Title](#title)
 - [Side-by-side](#side-by-side)
 - [Divider](#divider)
-- [Grid](#grid)
-- [Cards](#cards)
-- [Flow](#flow)
 
 ### Title
 
