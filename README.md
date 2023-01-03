@@ -127,17 +127,17 @@ FAQ page. This will render as a category in the sidebar that can be expanded and
  '/docs/slice': [
     ...
     {
-    title: 'Getting started',
-    kind: 'category',
-    links: [
-      {
-        title: 'FAQ',
-        path: SLICE_BASE_URL + '/getting-started/faq/',
-        kind: 'link'
-      }
-    ]
+      title: 'Getting started',
+      kind: 'category',
+      links: [
+        {
+          title: 'FAQ',
+          path: SLICE_BASE_URL + '/getting-started/faq/',
+          kind: 'link'
+        }
+      ]
     },
-  ...
+    ...
 
  ]
 ```
