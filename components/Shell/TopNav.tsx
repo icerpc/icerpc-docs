@@ -14,9 +14,6 @@ export function TopNav() {
     <nav>
       <div className="nav-container">
         <div className="left-col">
-          <Link href="/" legacyBehavior>
-            IceRPC Docs
-          </Link>
           <SearchButton />
         </div>
         <div className="right-col">
@@ -54,6 +51,7 @@ export function TopNav() {
           </Link>
 
           <div className="icons">
+            <div className="vl" />
             <ThemeToggle />
             <a href="https://github.com/zeroc-ice" aria-label="Github">
               <FaGithub size={20} />
@@ -77,7 +75,8 @@ export function TopNav() {
             border-bottom: 1px solid var(--border-color);
             width: 100%;
             font-size: 14px;
-            left: 0;
+            font-weight: 500;
+            padding-left: calc(var(--side-nav-width) + 2rem);
             border-radius: 5px;
             background: var(--nav-background);
           }
@@ -99,22 +98,16 @@ export function TopNav() {
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            max-width: 1500px;
-            margin: 0 auto;
-            padding: 0 1rem;
           }
 
           .left-col {
-            height: 50%;
-            width: 100%;
-            gap: 20px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            flex: 1;
           }
 
           .right-col {
             height: 50%;
-            width: 100%;
             gap: 40px;
             display: flex;
             align-items: center;
@@ -138,6 +131,12 @@ export function TopNav() {
             align-items: center;
             gap: 20px;
             padding-left: 1rem;
+          }
+
+          .vl {
+            border-left: 1px solid var(--border-color);
+            height: calc(var(--nav-height) - 40px);
+            left: 50%;
           }
 
           @keyframes fadeIn {

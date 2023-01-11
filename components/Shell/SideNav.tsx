@@ -3,7 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
-import { CollapsibleCell } from '../CollapsibleCell';
 
 import {
   sideBarData,
@@ -13,20 +12,14 @@ import {
   SideBarSourceType
 } from '../../data/sideBarData';
 
-function transformSideBarData(
+function createListItem(
   router: NextRouter,
-  data: SideBarSourceType
+  link: SideBarLink,
+  noLeftPad: Boolean = false
 ): React.ReactElement {
-  if (data.kind == 'category') {
-    const category = data as SideBarCategory;
-    return (
-      <CollapsibleCell key={category.title} title={category.title}>
-        {category.links}
-      </CollapsibleCell>
-    );
-  } else {
-    const link = data as SideBarLink;
-    return (
+  let paddingLeft = noLeftPad == true ? 'padding-left: 0px;' : '';
+  return (
+    <li key={link.path} className="link">
       <div key={link.path} className="link">
         <Link href={link.path} legacyBehavior>
           {router.pathname === link.path.replace(/\/$/, '') ? (
@@ -37,25 +30,65 @@ function transformSideBarData(
             <a>{link.title}</a>
           )}
         </Link>
+      </div>
+      <style jsx>
+        {`
+          li {
+            text-decoration: none;
+          }
+
+          a {
+            text-decoration: none;
+          }
+
+          .link {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0.3rem;
+            cursor: pointer;
+            ${paddingLeft}
+          }
+        `}
+      </style>
+    </li>
+  );
+}
+
+function transformSideBarData(
+  router: NextRouter,
+  data: SideBarSourceType
+): React.ReactElement[] {
+  if (data.kind == 'category') {
+    const category = data as SideBarCategory;
+    return [
+      <li key={category.title}>
+        <h5>{category.title}</h5>
         <style jsx>
           {`
-            a {
-              text-decoration: none;
-            }
-
-            .link {
-              font-size: 14px;
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              margin: 0;
-              padding: 0.5rem;
-              cursor: pointer;
+            li {
+              list-style-type: none;
             }
           `}
         </style>
-      </div>
-    );
+      </li>,
+      <ul key={category.title}>
+        {category.links.map((link) => createListItem(router, link))}
+        <style jsx>
+          {`
+            ul {
+              border-left: 1px solid rgba(24, 24, 27, 0.1);
+              padding-left: 0.1rem;
+            }
+          `}
+        </style>
+      </ul>
+    ];
+  } else {
+    const link = data as SideBarLink;
+    return [createListItem(router, link, true)];
   }
 }
 
@@ -69,43 +102,24 @@ export function SideNav({ path }) {
 
   return (
     <nav>
-      <div className={'content'}>
-        <div style={{ flex: 'none' }}>{sideBarCells}</div>
-      </div>
+      {sideBarCells}
       <style jsx>
         {`
-          a {
-            text-decoration: none;
-          }
-
-          button {
-            border: none;
-            background: none;
-            align-self: flex-start;
-            font-size: 14px;
-            padding: 0;
-            margin: 0;
-            color: gray;
-          }
-
           nav {
             /* https://stackoverflow.com/questions/66898327/how-to-keep-footer-from-pushing-up-sticky-sidebar */
             position: sticky;
-            top: var(--nav-height);
+            top: 0;
             height: calc(100vh - var(--nav-height));
-            width: 260px;
-            padding: 2rem 0 2rem 1rem;
+            width: var(--side-nav-width);
+            padding: 4rem 0 2rem 2rem;
             border-right: 1px solid var(--border-color);
             flex-shrink: 0;
+            margin-top: 0;
+            z-index: 101;
+            background-color: white;
           }
 
-          .content {
-            height: 100%;
-            width: 100%;
-            text-wrap: none;
-          }
-
-          @media screen and (max-width: 1000px) {
+          @media screen and (max-width: 1024px) {
             nav {
               display: none;
             }

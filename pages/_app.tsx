@@ -4,19 +4,18 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
-
+import { Inter } from '@next/font/google';
 import { SideNav, TopNav } from '../components';
+
 import '../public/globals.css';
 import 'reactflow/dist/style.css';
-
-import { Inter } from '@next/font/google';
-const inter = Inter({ subsets: ['latin'] });
 
 import type { AppProps } from 'next/app';
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js';
 
-const TITLE = 'Markdoc';
-const DESCRIPTION = 'A powerful, flexible, Markdown-based authoring framework';
+const inter = Inter({ subsets: ['latin'] });
+const TITLE = 'TODO';
+const DESCRIPTION = 'TODO';
 
 export type MyAppProps = MarkdocNextJsPageProps;
 
@@ -51,12 +50,15 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       </Head>
       <ThemeProvider>
         <TopNav />
-        <div className="page">
+
+        <div className="side-nav">
           {isDocs ? <SideNav path={router.pathname} /> : null}
-          <main className={inter.className} id="main">
-            <div id="skip-nav" />
-            <Component {...pageProps} />
-          </main>
+          <div className="page">
+            <main className={inter.className} id="main">
+              <div id="skip-nav" />
+              <Component {...pageProps} />
+            </main>
+          </div>
         </div>
       </ThemeProvider>
       <style jsx global>
@@ -82,12 +84,17 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
 
           .page {
             display: flex;
+            flex-direction: col;
             flex-grow: 1;
             padding-top: var(--nav-height);
             min-height: 100vh;
-            max-width: 100vw;
-            max-width: 1500px;
+            max-width: 1400px;
             margin: 0 auto;
+          }
+
+          .side-nav {
+            display: flex;
+            position: relative;
           }
 
           /* Style hero section */
