@@ -50,7 +50,6 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       </Head>
       <ThemeProvider>
         <TopNav />
-
         <div className="side-nav">
           {isDocs ? <SideNav path={router.pathname} /> : null}
           <div className="page">
