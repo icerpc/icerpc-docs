@@ -17,22 +17,26 @@ function Search() {
 export function SearchButton() {
   return (
     <>
-      <Search />
-      <style jsx>{`
-        // Search button styles
+      <div className="search-button">
+        <Search />
+      </div>
 
+      <style jsx>{`
+        // Container
+        .search-button {
+          position: relative;
+          flex: 1;
+          min-width: 200px;
+          max-width: 400px;
+        }
+
+        // Search button style
         :global(.DocSearch-Button) {
-          background: var(--background);
-          height: 30px;
-          border-radius: 5px;
-          width: 150px;
-          color: gray;
-          font-size: 12px;
-          padding: 0;
-          margin: 0;
-          justify-content: center;
-          padding-right: 1rem;
-          width: 130px;
+          display: flex;
+          width: 100%;
+          height: 36px;
+          background: var(--background-color);
+          border: 1px solid var(--border-color);
         }
 
         :global(.DocSearch-Button:hover) {
@@ -64,11 +68,10 @@ export function SearchButton() {
           transition: 0.3s;
           justify-content: center;
           align-items: center;
-          font-family: Inter;
+          font-family: inherit;
         }
 
         :global(.DocSearch-Button-Keys) {
-          border: 1px solid var(--border-color);
           border-radius: 5px;
           background: none;
           color: gray;
@@ -81,7 +84,10 @@ export function SearchButton() {
 
         :global(.DocSearch-Search-Icon) {
           margin-right: 5px;
+          margin-left: 10px;
           padding-right: 5px;
+          padding-top: 4px;
+          padding-bottom: 4px;
         }
 
         :global(.DocSearch-Button-Placeholder) {

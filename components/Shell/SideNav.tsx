@@ -2,9 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { NextRouter, useRouter } from 'next/router';
-import { CollapsibleCell } from '../CollapsibleCell';
+import { useTheme } from 'next-themes';
 
+// import components
 import {
   sideBarData,
   baseUrls,
@@ -13,49 +15,75 @@ import {
   SideBarSourceType
 } from '../../data/sideBarData';
 
+// import assets
+import lightIcon from '../../public/images/Light-Icon.svg';
+import darkIcon from '../../public/images/Dark-Icon.svg';
+
+function createListItem(
+  router: NextRouter,
+  link: SideBarLink,
+  noLeftPadding: Boolean = false
+): React.ReactElement {
+  const style: React.CSSProperties = {
+    textDecoration: 'none'
+  };
+  const activeStyle: React.CSSProperties = {
+    color: 'var(--primary-color)',
+    fontWeight: 'bold',
+    textDecoration: 'none'
+  };
+
+  const isCurrentPage = router.pathname === link.path.replace(/\/$/, '');
+
+  return (
+    <li key={link.path}>
+      <Link href={link.path} style={isCurrentPage ? activeStyle : style}>
+        {link.title}
+      </Link>
+      <style jsx>
+        {`
+          li {
+            font-size: 14px;
+            display: flex;
+            padding: 0.5rem 0.5rem 0.5rem;
+            margin: 0 1rem 0.5rem 0;
+            ${noLeftPadding == true ? 'padding-left: 0px;' : ''}
+            align-items: center;
+          }
+        `}
+      </style>
+    </li>
+  );
+}
+
 function transformSideBarData(
   router: NextRouter,
   data: SideBarSourceType
-): React.ReactElement {
+): React.ReactElement[] {
   if (data.kind == 'category') {
     const category = data as SideBarCategory;
-    return (
-      <CollapsibleCell key={category.title} title={category.title}>
-        {category.links}
-      </CollapsibleCell>
-    );
-  } else {
-    const link = data as SideBarLink;
-    return (
-      <div key={link.path} className="link">
-        <Link href={link.path} legacyBehavior>
-          {router.pathname === link.path.replace(/\/$/, '') ? (
-            <a>
-              <b style={{ color: 'var(--primary-color)' }}>{link.title}</b>
-            </a>
-          ) : (
-            <a>{link.title}</a>
-          )}
-        </Link>
+    return [
+      <li key={category.title} style={{ listStyleType: 'none' }}>
+        <h5 style={{ margin: '0.5rem 0 0.5rem 0', color: 'var(--text-color)' }}>
+          {category.title}
+        </h5>
+      </li>,
+      <ul key={category.title}>
+        {category.links.map((link) => createListItem(router, link))}
         <style jsx>
           {`
-            a {
-              text-decoration: none;
-            }
-
-            .link {
-              font-size: 14px;
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              margin: 0;
-              padding: 0.5rem;
-              cursor: pointer;
+            ul {
+              border-left: 1px solid var(--border-color);
+              padding-left: 0.1rem;
+              margin-left: 0.1rem;
             }
           `}
         </style>
-      </div>
-    );
+      </ul>
+    ];
+  } else {
+    const link = data as SideBarLink;
+    return [createListItem(router, link, true)];
   }
 }
 
@@ -66,46 +94,50 @@ export function SideNav({ path }) {
   const sideBarCells = data.map((item) => {
     return transformSideBarData(router, item);
   });
-
+  const { resolvedTheme } = useTheme();
   return (
     <nav>
-      <div className={'content'}>
-        <div style={{ flex: 'none' }}>{sideBarCells}</div>
+      <div className="logo">
+        <Image
+          src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
+          height={25}
+          alt="ZeroC Logo"
+        />
+        <div className="logo-text">Docs</div>
       </div>
+      {sideBarCells}
       <style jsx>
         {`
-          a {
-            text-decoration: none;
-          }
-
-          button {
-            border: none;
-            background: none;
-            align-self: flex-start;
-            font-size: 14px;
-            padding: 0;
-            margin: 0;
-            color: gray;
-          }
-
           nav {
             /* https://stackoverflow.com/questions/66898327/how-to-keep-footer-from-pushing-up-sticky-sidebar */
             position: sticky;
-            top: var(--nav-height);
-            height: calc(100vh - var(--nav-height));
-            width: 260px;
-            padding: 2rem 0 2rem 1rem;
+            width: var(--side-nav-width);
+            padding: 0 0 2rem 1.5rem;
             border-right: 1px solid var(--border-color);
-            flex-shrink: 0;
+            margin-top: 0;
+            z-index: 101;
+            background: var(--background);
           }
 
-          .content {
-            height: 100%;
-            width: 100%;
-            text-wrap: none;
+          .logo {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            margin-right: 2rem;
           }
 
-          @media screen and (max-width: 1000px) {
+          .logo .logo-text {
+            padding-top: 5px;
+            font-size: 16pt;
+            font-weight: 500;
+            color: var(--text-color);
+          }
+
+          @media screen and (max-width: 1024px) {
             nav {
               display: none;
             }

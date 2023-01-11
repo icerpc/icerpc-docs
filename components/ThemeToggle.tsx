@@ -1,10 +1,10 @@
-import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import React, { useEffect, useState } from 'react';
+import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { useTheme } from 'next-themes';
 
 export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -19,24 +19,22 @@ export function ThemeToggle() {
       className="container"
       onClick={() => setTheme(theme == 'light' ? 'dark' : 'light')}
       style={{
-        background: theme == 'light' ? 'rgb(235, 236, 240)' : 'rgb(65,71,85)'
+        background: 'transparent'
       }}
     >
       <DarkModeSwitch
         checked={theme === 'dark'}
         onChange={() => setTheme('light')}
         size={20}
+        sunColor="#4D5562"
       />
-      {resolvedTheme == 'dark' ? 'Dark mode' : 'Light mode'}
       <style jsx>
         {`
           .container {
-            width: 110px;
+            width: 40px;
             display: flex;
             flex-direction: row;
             gap: 0.5rem;
-            padding: 0.4rem;
-            margin: 0;
             border-radius: 5px;
             justify-content: center;
             align-items: center;

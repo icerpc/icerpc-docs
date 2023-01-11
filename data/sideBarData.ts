@@ -34,19 +34,25 @@ export const sideBarData: { [base_url: string]: SideBarSourceType[] } = {
       path: `${GETTING_STARTED_BASE_URL}/`
     },
     {
-      title: 'What is IceRPC?',
-      path: GETTING_STARTED_BASE_URL + '/what-is-icerpc/',
-      kind: 'link'
-    },
-    {
-      title: 'Installation',
-      path: GETTING_STARTED_BASE_URL + '/installation/',
-      kind: 'link'
-    },
-    {
-      title: 'Creating an Application',
-      path: GETTING_STARTED_BASE_URL + '/writing-an-application/',
-      kind: 'link'
+      title: 'Getting started',
+      kind: 'category',
+      links: [
+        {
+          title: 'What is IceRPC?',
+          path: GETTING_STARTED_BASE_URL + '/what-is-icerpc/',
+          kind: 'link'
+        },
+        {
+          title: 'Installation',
+          path: GETTING_STARTED_BASE_URL + '/installation/',
+          kind: 'link'
+        },
+        {
+          title: 'Creating an Application',
+          path: GETTING_STARTED_BASE_URL + '/writing-an-application/',
+          kind: 'link'
+        }
+      ]
     }
   ],
   // Data for "Slice" section

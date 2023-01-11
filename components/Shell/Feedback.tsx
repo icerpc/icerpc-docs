@@ -5,7 +5,7 @@ import { MdThumbDownOffAlt, MdThumbUpOffAlt } from 'react-icons/md';
 export function Feedback() {
   return (
     <div className="feedback-container">
-      <h4>Was this page helpful?</h4>
+      <h4 style={{ color: 'var(--text-color)' }}>Was this page helpful?</h4>
       <div className="feedback-buttons-container">
         {/* TODO: Add click functionality to the feedback buttons */}
         <button aria-label="Thumbs down">

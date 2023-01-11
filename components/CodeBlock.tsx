@@ -7,7 +7,7 @@ import { BsTerminalFill } from 'react-icons/bs';
 import copy from 'copy-to-clipboard';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import themeLight from 'prism-react-renderer/themes/dracula';
-import themeDark from 'prism-react-renderer/themes/github';
+import themeDark from 'prism-react-renderer/themes/dracula';
 import Prism from 'prism-react-renderer/prism';
 import { useTheme } from 'next-themes';
 
