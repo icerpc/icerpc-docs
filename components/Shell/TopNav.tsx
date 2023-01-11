@@ -72,13 +72,13 @@ export function TopNav() {
             display: flex;
             align-items: center;
             background: var(--background);
-            border-bottom: 1px solid var(--border-color);
             width: 100%;
             font-size: 14px;
             font-weight: 500;
             padding-left: calc(var(--side-nav-width) + 2rem);
             border-radius: 5px;
-            background: var(--nav-background);
+            background: var(--background);
+            border-bottom: 1px solid var(--border-color);
           }
 
           nav :global(a) {
