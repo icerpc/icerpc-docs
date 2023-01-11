@@ -1,3 +1,5 @@
+// Copyright (c) ZeroC, Inc. All rights reserved.
+
 export function List({ children, ordered }) {
   if (ordered) {
     return (
