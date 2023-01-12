@@ -51,9 +51,11 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       <ThemeProvider>
         <TopNav />
 
-        <div className="side-nav">
-          {isDocs ? <SideNav path={router.pathname} /> : null}
-          <div className="page">
+        <div className="page">
+          <div className="side-nav">
+            {isDocs ? <SideNav path={router.pathname} /> : null}
+          </div>
+          <div className="content">
             <main className={inter.className} id="main">
               <div id="skip-nav" />
               <Component {...pageProps} />
@@ -82,7 +84,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
             font-size: 16px;
           }
 
-          .page {
+          .content {
             display: flex;
             flex-direction: col;
             flex-grow: 1;
@@ -92,9 +94,13 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
             margin: 0 auto;
           }
 
-          .side-nav {
+          .page {
             display: flex;
             position: relative;
+          }
+
+          .side-nav {
+            flex: none;
           }
 
           /* Style hero section */
