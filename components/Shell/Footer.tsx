@@ -30,9 +30,7 @@ export function Footer({ children }) {
         </div>
         <span>
           You can unsubscribe at any time. Read our{' '}
-          <Link href="https://www.zeroc.com" legacyBehavior>
-            <a>privacy policy.</a>
-          </Link>
+          <Link href="https://www.zeroc.com">privacy policy.</Link>
         </span>
       </form>
       <style jsx>{`

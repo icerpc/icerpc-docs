@@ -10,6 +10,14 @@ import { ThemeToggle } from '../ThemeToggle';
 export function TopNav() {
   const router = useRouter();
 
+  const style = {
+    color: 'var(--primary-color)',
+    opacity: 1,
+    textDecoration: 'underline',
+    textDecorationThickness: 3,
+    textUnderlineOffset: '1.6rem'
+  };
+
   return (
     <nav>
       <div className="nav-container">
@@ -17,39 +25,29 @@ export function TopNav() {
           <SearchButton />
         </div>
         <div className="right-col">
-          <Link href="/" className="flex" legacyBehavior>
-            <a className={router.pathname == '/' ? 'active' : ''}>Home</a>
+          <Link href="/" className={router.pathname == '/' ? 'active' : ''}>
+            Home
           </Link>
-          <Link href="/docs/getting-started" className="flex" legacyBehavior>
-            <a
-              className={
-                router.pathname.startsWith('/docs/getting-started')
-                  ? 'active'
-                  : ''
-              }
-            >
-              Getting Started
-            </a>
+          <Link
+            href="/docs/getting-started"
+            style={
+              router.pathname.startsWith('/docs/getting-started') ? style : null
+            }
+          >
+            Getting Started
           </Link>
-          <Link href="/docs/slice" className="flex" legacyBehavior>
-            <a
-              className={
-                router.pathname.startsWith('/docs/slice') ? 'active' : ''
-              }
-            >
-              Slice
-            </a>
+          <Link
+            href="/docs/slice"
+            style={router.pathname.startsWith('/docs/slice') ? style : null}
+          >
+            Slice
           </Link>
-          <Link href="/docs/rpc" className="flex" legacyBehavior>
-            <a
-              className={
-                router.pathname.startsWith('/docs/rpc') ? 'active' : ''
-              }
-            >
-              RPC Core
-            </a>
+          <Link
+            href="/docs/rpc"
+            style={router.pathname.startsWith('/docs/rpc') ? style : null}
+          >
+            RPC Core
           </Link>
-
           <div className="icons">
             <div className="vl" />
             <ThemeToggle />

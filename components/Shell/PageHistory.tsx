@@ -26,21 +26,21 @@ export function PageHistory() {
     <>
       <div className="page-history-container">
         {previous ? (
-          <Link href={previous.path} legacyBehavior passHref>
-            <a>
+          <Link href={previous.path} style={{ textDecoration: 'none' }}>
+            <div className="history-content">
               <FaChevronLeft size={12} />
               {previous.title}
-            </a>
+            </div>
           </Link>
         ) : (
           <div></div>
         )}
         {next && (
-          <Link href={next.path} legacyBehavior passHref>
-            <a>
+          <Link href={next.path} style={{ textDecoration: 'none' }}>
+            <div className="history-content">
               {next.title}
               <FaChevronRight size={12} />
-            </a>
+            </div>
           </Link>
         )}
       </div>
@@ -54,11 +54,11 @@ export function PageHistory() {
             margin: 3rem -1rem 0 -1rem;
           }
 
-          a:hover {
+          .history-content:hover {
             background: rgb(233, 241, 254);
           }
 
-          a {
+          .history-content {
             height: 2.5rem;
             display: flex;
             flex-direction: row;
@@ -66,11 +66,9 @@ export function PageHistory() {
             padding: 1rem;
             border-radius: 5px;
             align-items: center;
-            text-decoration: none;
             font-size: 16px;
             cursor: pointer;
             transition: background 0.2s ease;
-            color: var(--primary-color);
             color: var(--primary-color);
             text-decoration: none;
             text-align: center;

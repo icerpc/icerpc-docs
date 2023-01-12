@@ -82,8 +82,8 @@ export function MiniCard({ title, link }) {
 
 export function Card({ title, description, icon, link }) {
   return (
-    <Link key={title} href={link} passHref legacyBehavior>
-      <a className="card">
+    <Link key={title} href={link} style={{ textDecoration: 'None' }}>
+      <div className="card">
         <IconContext.Provider
           value={{ color: 'var(--primary-color)', size: '1.5em' }}
         >
@@ -110,6 +110,7 @@ export function Card({ title, description, icon, link }) {
               border-radius: 5px;
               transition: box-shadow 0.2s ease-in-out;
               text-decoration: none;
+              height: 15rem;
             }
 
             .card:hover {
@@ -118,7 +119,7 @@ export function Card({ title, description, icon, link }) {
             }
           `}
         </style>
-      </a>
+      </div>
     </Link>
   );
 }

@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useHeadsObserver } from '../../hooks/hooks';
 import { FiEdit, FiMessageSquare } from 'react-icons/fi';
+import { AppLink } from '../AppLink';
 
 export default function TableOfContents({ toc }) {
   const [headings, setHeadings] = useState([]);
@@ -49,31 +50,30 @@ export default function TableOfContents({ toc }) {
                     .filter(Boolean)
                     .join(' ')}
                 >
-                  <Link href={href} passHref legacyBehavior>
-                    <a
-                      href={`#${item.id}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const y =
-                          document
-                            .querySelector(`#${item.id}`)
-                            .getBoundingClientRect().top +
-                          window.pageYOffset -
-                          100;
-                        window.scrollTo({
-                          top: y,
-                          behavior: 'smooth'
-                        });
-                      }}
-                      style={{
-                        color:
-                          activeId === item.id
-                            ? 'var(--primary-color)'
-                            : 'var(--link-color)'
-                      }}
-                    >
-                      {item.children}
-                    </a>
+                  <Link
+                    href={`#${item.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const y =
+                        document
+                          .querySelector(`#${item.id}`)
+                          .getBoundingClientRect().top +
+                        window.pageYOffset -
+                        100;
+                      window.scrollTo({
+                        top: y,
+                        behavior: 'smooth'
+                      });
+                    }}
+                    style={{
+                      color:
+                        activeId === item.id
+                          ? 'var(--primary-color)'
+                          : 'var(--link-color)',
+                      textDecoration: 'none'
+                    }}
+                  >
+                    {item.children}
                   </Link>
                 </li>
               );
@@ -83,30 +83,42 @@ export default function TableOfContents({ toc }) {
           <h2>More</h2>
           <ul style={{ color: 'var(--primary-color)' }}>
             <li>
-              {/* TODO: Fix link */}
-              <a
-                className="external-link"
+              <AppLink
                 href={
                   'https://github.com/zeroc-ice/icerpc-docs/tree/main/pages' +
                   currentPath
                 }
-                target="_blank"
-                rel="noreferrer"
+                style={{ textDecoration: 'none' }}
+                className="external-link"
               >
-                <FiEdit color="var(--primary-color)" /> Edit this page
-              </a>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5em'
+                  }}
+                >
+                  <FiEdit color="var(--primary-color)" /> Edit this page
+                </div>
+              </AppLink>
             </li>
             <li>
-              {/* TODO: Fix link */}
-              <a
-                className="external-link"
+              <AppLink
                 href="https://github.com/zeroc-ice/icerpc"
-                target="_blank"
-                rel="noreferrer"
+                style={{ textDecoration: 'none' }}
+                className="external-link"
               >
-                <FiMessageSquare color="var(--primary-color)" /> GitHub
-                Discussions
-              </a>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5em'
+                  }}
+                >
+                  <FiMessageSquare color="var(--primary-color)" /> GitHub
+                  Discussions
+                </div>
+              </AppLink>
             </li>
           </ul>
           <style jsx>
@@ -155,12 +167,6 @@ export default function TableOfContents({ toc }) {
               }
               li.padded {
                 padding-left: 0rem;
-              }
-
-              .external-link {
-                display: flex;
-                align-items: center;
-                gap: 0.5em;
               }
 
               @media screen and (max-width: 1200px) {
