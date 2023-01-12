@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { NextRouter, useRouter } from 'next/router';
@@ -68,7 +68,7 @@ function transformSideBarData(
           {category.title}
         </h5>
       </li>,
-      <ul key={category.title}>
+      <ul key={category.title + '-list'}>
         {category.links.map((link) => createListItem(router, link))}
         <style jsx>
           {`
@@ -88,13 +88,23 @@ function transformSideBarData(
 }
 
 export function SideNav({ path }) {
-  const baseUrl = baseUrls.find((item) => path.startsWith(item));
-  const data = sideBarData[baseUrl] ?? [];
+  const [data, setData] = useState([]);
+  const { resolvedTheme } = useTheme();
   const router = useRouter();
-  const sideBarCells = data.map((item) => {
+
+  useEffect(() => {
+    const links =
+      sideBarData[baseUrls.find((item) => path.startsWith(item))] ?? [];
+    setData(links);
+    return () => {
+      setData([]);
+    };
+  }, [setData, path]);
+
+  let cells = data.map((item) => {
     return transformSideBarData(router, item);
   });
-  const { resolvedTheme } = useTheme();
+
   return (
     <nav>
       <div className="logo">
@@ -105,7 +115,7 @@ export function SideNav({ path }) {
         />
         <div className="logo-text">Docs</div>
       </div>
-      {sideBarCells}
+      {cells}
       <style jsx>
         {`
           nav {
@@ -113,7 +123,7 @@ export function SideNav({ path }) {
             border-right: 1px solid var(--border-color);
             height: calc(100vh - var(--nav-height));
             overflow-y: auto;
-            padding: 0 0 2rem 1.5rem;
+            padding: 0 0 2rem 1.2rem;
             position: sticky;
             top: 0;
             width: var(--side-nav-width);
@@ -125,7 +135,7 @@ export function SideNav({ path }) {
             align-items: center;
             justify-content: flex-start;
             gap: 0.5rem;
-            margin-top: 0.5rem;
+            margin-top: 1rem;
             padding-bottom: 1rem;
             margin-bottom: 1rem;
             margin-right: 2rem;
