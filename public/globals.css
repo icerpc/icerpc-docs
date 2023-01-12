@@ -2,7 +2,7 @@
 
 :root {
   --nav-height: 65px;
-  --nav-background: #fff;
+  --nav-background: #FAFBFC;
   --border-color: #dce6e9;
   --primary-color: #4183D7;
   --off-white: #F8FAFC;
@@ -19,7 +19,7 @@
 
 [data-theme='dark'] {
   --background: rgb(33,35,39);
-  --nav-background: rgb(33,35,39);
+  --nav-background: rgb(38, 40, 44);
   --foreground: white;
   --border-color: rgb(49, 54, 60);
   --link-color: rgba(255, 255, 255, 0.8);

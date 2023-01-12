@@ -35,7 +35,7 @@ export function SearchButton() {
           display: flex;
           width: 100%;
           height: 36px;
-          background: var(--background-color);
+          background: var(--nav-background);
           border: 1px solid var(--border-color);
         }
 

@@ -119,9 +119,9 @@ export function SideNav({ path }) {
       <style jsx>
         {`
           nav {
-            background: var(--background);
+            background: var(--nav-background);
             border-right: 1px solid var(--border-color);
-            height: calc(100vh - var(--nav-height));
+            height: 100vh;
             overflow-y: auto;
             padding: 0 0 2rem 1.2rem;
             position: sticky;

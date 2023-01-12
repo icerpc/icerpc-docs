@@ -50,7 +50,6 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       </Head>
       <ThemeProvider>
         <TopNav />
-
         <div className="page">
           <div className="side-nav">
             {isDocs ? <SideNav path={router.pathname} /> : null}
@@ -92,6 +91,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
             min-height: 100vh;
             max-width: 1400px;
             margin: 0 auto;
+            margin-left: ${isLandingPage ? null : 'var(--side-nav-width)'};
           }
 
           .page {
@@ -101,6 +101,9 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
 
           .side-nav {
             flex: none;
+            top: 0;
+            position: fixed;
+            z-index: 101;
           }
 
           /* Style hero section */
