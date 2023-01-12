@@ -18,7 +18,7 @@ export function ThemeToggle() {
 
   return (
     <button
-      className="container"
+      className="w-10 flex justify-center cursor-pointer"
       onClick={() => setTheme(theme == 'light' ? 'dark' : 'light')}
       style={{
         background: 'transparent'
@@ -30,23 +30,6 @@ export function ThemeToggle() {
         size={20}
         sunColor="#4D5562"
       />
-      <style jsx>
-        {`
-          .container {
-            width: 40px;
-            display: flex;
-            flex-direction: row;
-            gap: 0.5rem;
-            border-radius: 5px;
-            justify-content: center;
-            align-items: center;
-            border: none;
-            font-size: 12px;
-            cursor: pointer;
-            transition: background 0.2s ease;
-          }
-        `}
-      </style>
     </button>
   );
 }

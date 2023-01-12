@@ -7,100 +7,65 @@ import { MdHelpCenter, MdVideocam } from 'react-icons/md';
 // eslint-disable-next-line no-unused-vars
 export function Footer({ children }) {
   return (
-    <footer>
-      <ul>
-        <li>
+    <footer className="flex flex-row justify-between items-center pb-16">
+      <ul className="p-0 flex flex-col gap-4 pt-0">
+        <li className="flex flex-row gap-2 items-center">
           <MdHelpCenter size={20} />
           <span>
-            Need help? <a href="https://www.zeroc.com">Contact us</a>
+            Need help?{' '}
+            <a
+              className="text-[var(--primary-color)]"
+              href="https://www.zeroc.com"
+            >
+              Contact us
+            </a>
           </span>
         </li>
-        <li>
+        <li className="flex flex-row gap-2 items-center">
           <MdVideocam size={20} />
           <span>
-            Watch our <a href="https://www.zeroc.com">Developer tutorials</a>
+            Watch our{' '}
+            <a
+              className="text-[var(--primary-color)]"
+              href="https://www.zeroc.com"
+            >
+              Developer tutorials
+            </a>
           </span>
         </li>
       </ul>
-      <form action="/send-data-here" method="post">
+      <form
+        className="flex flex-col ml-8 pt-4 gap-2"
+        action="/send-data-here"
+        method="post"
+      >
         <label htmlFor="email">Sign up for developer updates:</label>
-        <div className="email">
-          <input type="email" id="email" name="first" required />
-          <button type="submit">Subscribe</button>
+        <div className="flex flex-row">
+          <input
+            className="w-64 p-2 rounded border border-solid border-[var(--border-color)] mr-2"
+            type="email"
+            id="email"
+            name="first"
+            required
+          />
+          <button
+            className=" p-2 text-sm rounded font-medium bg-[var(--primary-color)] text-white"
+            type="submit"
+          >
+            Subscribe
+          </button>
         </div>
-        <span>
-          You can unsubscribe at any time. Read our{' '}
-          <Link href="https://www.zeroc.com">privacy policy.</Link>
+        <span className="text-sm">
+          You can unsubscribe at any time. Read our
+          <br />
+          <Link
+            className="text-[var(--primary-color)]"
+            href="https://www.zeroc.com"
+          >
+            privacy policy.
+          </Link>
         </span>
       </form>
-      <style jsx>{`
-        a {
-          color: var(--primary-color);
-          text-decoration: none;
-        }
-
-        a:hover {
-          color: black;
-        }
-
-        footer {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          padding-bottom: 4rem;
-        }
-
-        form {
-          display: flex;
-          flex-direction: column;
-          gap: 0.8rem;
-          margin-left: 2rem;
-          padding-top: 1rem;
-          color: var(--text-color);
-        }
-
-        form button {
-          padding: 0.5rem;
-          border: 1px solid var(--border-color);
-          border-radius: 0.25rem;
-          background: var(--primary-color);
-          color: var(--background);
-          font-weight: bold;
-        }
-
-        form input {
-          width: 20rem;
-          padding: 0.5rem;
-          border: 1px solid var(--border-color);
-          border-radius: 0.25rem;
-        }
-
-        form span {
-          font-size: 8pt;
-        }
-
-        li {
-          display: flex;
-          flex-direction: row;
-          gap: 0.5rem;
-          align-items: center;
-          color: var(--text-color);
-        }
-
-        ul {
-          list-style: none;
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-          padding-top: 0;
-        }
-
-        .email {
-          display: flex;
-          flex-direction: row;
-        }
-      `}</style>
     </footer>
   );
 }

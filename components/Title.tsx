@@ -13,29 +13,12 @@ export function Title({
   breadcrumbs: any;
 }) {
   return (
-    <div className="header">
+    <div className="p-0 m-0">
       <Breadcrumbs breadcrumbs={breadcrumbs} />
-      <h1>{title}</h1>
-      <h2>{description}</h2>
-      <style jsx>
-        {`
-          .header {
-            margin: 0;
-            padding: 0;
-          }
-
-          .header h1 {
-            margin: 0;
-            font-weight: bold;
-          }
-
-          .header h2 {
-            margin-top: 10px;
-            font-weight: normal;
-            color: var(--text-color-secondary);
-          }
-        `}
-      </style>
+      <h1 className="m-0 font-bold">{title}</h1>
+      <h2 className="text-2xl mt-2.5 text-[var(--text-color-secondary)]">
+        {description}
+      </h2>
     </div>
   );
 }

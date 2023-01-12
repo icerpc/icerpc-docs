@@ -1,5 +1,9 @@
 /* Copyright (c) ZeroC, Inc. All rights reserved. */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --nav-height: 65px;
   --nav-background: #FAFBFC;
