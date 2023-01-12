@@ -28,9 +28,15 @@ export function MiniCard({ title, link }) {
       target="_blank"
       rel="noreferrer"
     >
-      <div className="content">
-        <h4>{title}</h4>
-      </div>
+      <h4
+        style={{
+          padding: '0.5rem 0 0 0',
+          margin: 0,
+          color: 'var(--primary-color)'
+        }}
+      >
+        {title}
+      </h4>
       <div className="bottom-container">
         <IconContext.Provider value={{ size: '1em' }}>
           <div
@@ -49,24 +55,12 @@ export function MiniCard({ title, link }) {
       </div>
       <style jsx>
         {`
-          .content {
-            left: 0;
-            height: 50%;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: default;
-            margin: 0;
-          }
-
           .card {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            gap: 0.5rem;
+            gap: 1rem;
             border: 1px solid var(--border-color);
             border-radius: 4px;
             text-decoration: none;
