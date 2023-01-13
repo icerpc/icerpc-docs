@@ -12,9 +12,7 @@ export function Document({ children, config }) {
   const path = useRouter().asPath;
   const isDocs = path.startsWith('/docs');
   const toc =
-    config
-      .filter((c) => typeof c.props.level !== 'undefined')
-      .map((node) => node.props) || [];
+    config.filter((c) => typeof c.props.level !== 'undefined').map((node) => node.props) || [];
   const showToc = isDocs && toc.some((header) => header.level > 1);
 
   // Only load the TableOfContents component if we're on a docs page that has multiple headers
@@ -43,11 +41,6 @@ export function Document({ children, config }) {
       </article>
       <style jsx>
         {`
-          a {
-            color: var(--primary-color);
-            text-decoration: none;
-          }
-
           article {
             background: var(--background);
             padding-top: 4rem;

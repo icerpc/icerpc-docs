@@ -50,11 +50,7 @@ export default function Grid({ children, columns, rows, trailingLink }) {
           <div className="bottom-link" style={bottomStyle}>
             {trailingLink.label}
             <IconContext.Provider value={{ size: '1em' }}>
-              {isExternalURL(trailingLink.link) ? (
-                <BsBoxArrowUpRight />
-              ) : (
-                <BsArrowRight />
-              )}
+              {isExternalURL(trailingLink.link) ? <BsBoxArrowUpRight /> : <BsArrowRight />}
             </IconContext.Provider>
           </div>
         </a>

@@ -1,5 +1,9 @@
 /* Copyright (c) ZeroC, Inc. All rights reserved. */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --nav-height: 65px;
   --nav-background: #FAFBFC;
@@ -27,6 +31,14 @@
   --text-color: white;
   --text-color-secondary: white;
 }
+
+@layer base {
+
+  main article h1 {
+    @apply text-3xl;
+  }
+}
+
 
 *,
 *::before,
@@ -69,6 +81,7 @@ h1 {
 h2 {
   margin: 1em 0;
   color: #000000;
+
 }
 
 [data-theme='dark'] h2 {
@@ -88,6 +101,8 @@ h2 {
 h3 {
   margin: 1.5em 0;
   color: #000000;
+  font-weight: bold;
+  font-size: large;
 }
 
 [data-theme='dark'] h3 {

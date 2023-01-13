@@ -27,11 +27,7 @@ export function Hero() {
 
         .hero span {
           background: rgb(23, 53, 166);
-          background: linear-gradient(
-            33deg,
-            rgba(23, 53, 166, 1) 0%,
-            rgba(0, 212, 255, 1) 100%
-          );
+          background: linear-gradient(33deg, rgba(23, 53, 166, 1) 0%, rgba(0, 212, 255, 1) 100%);
           -webkit-background-clip: text;
           -moz-background-clip: text;
           -webkit-text-fill-color: transparent;

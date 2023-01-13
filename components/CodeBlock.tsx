@@ -11,16 +11,7 @@ import themeDark from 'prism-react-renderer/themes/dracula';
 import Prism from 'prism-react-renderer/prism';
 import { useTheme } from 'next-themes';
 
-const commandLineLanguages = [
-  'bash',
-  'sh',
-  'zsh',
-  'powershell',
-  'cmd',
-  'batch',
-  'dos',
-  'shell'
-];
+const commandLineLanguages = ['bash', 'sh', 'zsh', 'powershell', 'cmd', 'batch', 'dos', 'shell'];
 
 Prism.languages.slice = {
   keyword: /\b(interface|module|struct|class|exception|enum|throws)\b/,
@@ -56,13 +47,8 @@ export function CodeBlock({
   // Switch to dark theme if the user has dark mode enabled
   const { resolvedTheme } = useTheme();
   const theme = resolvedTheme === 'dark' ? themeDark : themeLight;
-  const lines =
-    typeof children === 'string' ? children.split('\n').filter(Boolean) : [];
-  const languageIcon = commandLineLanguages.includes(language) ? (
-    <BsTerminalFill />
-  ) : (
-    <FaFile />
-  );
+  const lines = typeof children === 'string' ? children.split('\n').filter(Boolean) : [];
+  const languageIcon = commandLineLanguages.includes(language) ? <BsTerminalFill /> : <FaFile />;
 
   return (
     <div className="container">
@@ -82,12 +68,7 @@ export function CodeBlock({
           {copied ? '🎉' : <BiCopy />}
         </button>
       </div>
-      <Highlight
-        {...defaultProps}
-        theme={theme}
-        code={children.trim()}
-        language={language}
-      >
+      <Highlight {...defaultProps} theme={theme} code={children.trim()} language={language}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre
             className={className}

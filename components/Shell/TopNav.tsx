@@ -30,22 +30,14 @@ export function TopNav() {
           </Link>
           <Link
             href="/docs/getting-started"
-            style={
-              router.pathname.startsWith('/docs/getting-started') ? style : null
-            }
+            style={router.pathname.startsWith('/docs/getting-started') ? style : null}
           >
             Getting Started
           </Link>
-          <Link
-            href="/docs/slice"
-            style={router.pathname.startsWith('/docs/slice') ? style : null}
-          >
+          <Link href="/docs/slice" style={router.pathname.startsWith('/docs/slice') ? style : null}>
             Slice
           </Link>
-          <Link
-            href="/docs/rpc"
-            style={router.pathname.startsWith('/docs/rpc') ? style : null}
-          >
+          <Link href="/docs/rpc" style={router.pathname.startsWith('/docs/rpc') ? style : null}>
             RPC Core
           </Link>
           <div className="icons">

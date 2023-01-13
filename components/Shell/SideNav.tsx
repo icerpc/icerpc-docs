@@ -32,26 +32,17 @@ function createListItem(
     fontWeight: 'bold',
     textDecoration: 'none'
   };
-
+  const leftPadding = noLeftPadding ? 'ml-0' : 'ml-3';
   const isCurrentPage = router.pathname === link.path.replace(/\/$/, '');
 
   return (
-    <li key={link.path}>
+    <li
+      key={link.path}
+      className={`ml-4 mr-2 flex p-2 pl-0 text-sm ${leftPadding}`}
+    >
       <Link href={link.path} style={isCurrentPage ? activeStyle : style}>
         {link.title}
       </Link>
-      <style jsx>
-        {`
-          li {
-            font-size: 14px;
-            display: flex;
-            padding: 0.5rem 0.5rem 0.5rem;
-            margin: 0 1rem 0.5rem 0;
-            ${noLeftPadding == true ? 'padding-left: 0px;' : ''}
-            align-items: center;
-          }
-        `}
-      </style>
     </li>
   );
 }
@@ -63,22 +54,16 @@ function transformSideBarData(
   if (data.kind == 'category') {
     const category = data as SideBarCategory;
     return [
-      <li key={category.title} style={{ listStyleType: 'none' }}>
-        <h5 style={{ margin: '0.5rem 0 0.5rem 0', color: 'var(--text-color)' }}>
+      <li key={category.title} className="list-none">
+        <h2 className="my-3 text-sm font-bold text-[var(--text-color)]">
           {category.title}
-        </h5>
+        </h2>
       </li>,
-      <ul key={category.title + '-list'}>
+      <ul
+        key={category.title + '-list'}
+        className="ml-[0.1rem] border-l-[1.5px]  pl-[0.1rem]"
+      >
         {category.links.map((link) => createListItem(router, link))}
-        <style jsx>
-          {`
-            ul {
-              border-left: 1px solid var(--border-color);
-              padding-left: 0.1rem;
-              margin-left: 0.1rem;
-            }
-          `}
-        </style>
       </ul>
     ];
   } else {
@@ -106,55 +91,16 @@ export function SideNav({ path }) {
   });
 
   return (
-    <nav>
-      <div className="logo">
+    <nav className="sticky top-0 hidden h-screen w-[var(--side-nav-width)] overflow-y-hidden border-r-[1.5px] bg-[var(--nav-background)] pl-8 pt-0 lg:block">
+      <div className="my-4 mr-8 flex items-center justify-start gap-2 pb-4">
         <Image
           src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
           height={25}
           alt="ZeroC Logo"
         />
-        <div className="logo-text">Docs</div>
+        <div className="pt-[5px] text-xl font-semibold">Docs</div>
       </div>
       {cells}
-      <style jsx>
-        {`
-          nav {
-            background: var(--nav-background);
-            border-right: 1px solid var(--border-color);
-            height: 100vh;
-            overflow-y: auto;
-            padding: 0 0 2rem 1.2rem;
-            position: sticky;
-            top: 0;
-            width: var(--side-nav-width);
-            z-index: 101;
-          }
-
-          .logo {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            padding-bottom: 1rem;
-            margin-bottom: 1rem;
-            margin-right: 2rem;
-          }
-
-          .logo .logo-text {
-            padding-top: 5px;
-            font-size: 16pt;
-            font-weight: 500;
-            color: var(--text-color);
-          }
-
-          @media screen and (max-width: 1024px) {
-            nav {
-              display: none;
-            }
-          }
-        `}
-      </style>
     </nav>
   );
 }

@@ -22,6 +22,8 @@ export type MyAppProps = MarkdocNextJsPageProps;
 export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
   const { markdoc } = pageProps;
   const router = useRouter();
+  const isDocs = router.asPath.startsWith('/docs');
+  const isLandingPage = router.pathname === '/';
 
   let title = TITLE;
   let description = DESCRIPTION;
@@ -34,11 +36,8 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
     }
   }
 
-  const isDocs = router.asPath.startsWith('/docs');
-  const isLandingPage = router.pathname === '/';
-
   return (
-    <div className={`${isLandingPage ? 'page--landing' : ''}`}>
+    <div className={`${isLandingPage ? 'p-16' : ''}`}>
       <Head>
         <title>{title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -50,69 +49,25 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       </Head>
       <ThemeProvider>
         <TopNav />
-        <div className="page">
-          <div className="side-nav">
+        <div className="relative flex justify-center ">
+          <div className="fixed top-0 left-0 z-[101] flex-none">
             {isDocs ? <SideNav path={router.pathname} /> : null}
           </div>
-          <div className="content">
-            <main className={inter.className} id="main">
+          <div
+            className={`ml-auto max-w-screen-xl pt-[var(--nav-height)] ${
+              isLandingPage ? '' : 'lg:ml-60'
+            }`}
+          >
+            <main
+              className={inter.className + 'min-w-0 max-w-screen-2xl flex-grow px-16'}
+              id="main"
+            >
               <div id="skip-nav" />
               <Component {...pageProps} />
             </main>
           </div>
         </div>
       </ThemeProvider>
-      <style jsx global>
-        {`
-          main {
-            flex-grow: 1;
-            max-width: 800%;
-            /* https://stackoverflow.com/questions/36230944/prevent-flex-items-from-overflowing-a-container */
-            min-width: 0;
-          }
-
-          main article {
-            ${isDocs ? 'padding: 0rem 4rem 0rem;' : ''}
-          }
-
-          main article h1 {
-            font-size: 24pt;
-          }
-
-          main article p {
-            font-size: 16px;
-          }
-
-          .content {
-            display: flex;
-            flex-direction: col;
-            flex-grow: 1;
-            padding-top: var(--nav-height);
-            min-height: 100vh;
-            max-width: 1400px;
-            margin: 0 auto;
-            margin-left: ${isLandingPage ? null : 'var(--side-nav-width)'};
-          }
-
-          .page {
-            display: flex;
-            position: relative;
-          }
-
-          .side-nav {
-            flex: none;
-            top: 0;
-            position: fixed;
-            z-index: 101;
-          }
-
-          /* Style hero section */
-
-          .page--landing .hero-section {
-            padding: 4rem;
-          }
-        `}
-      </style>
     </div>
   );
 }

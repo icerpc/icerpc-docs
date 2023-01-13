@@ -21,38 +21,16 @@ function Icon(icon: string) {
 
 export function MiniCard({ title, link }) {
   return (
-    <a
-      href={link ? link : '#'}
-      key={title}
-      className="card"
-      target="_blank"
-      rel="noreferrer"
-    >
-      <h4
-        style={{
-          padding: '0.5rem 0 0 0',
-          margin: 0,
-          color: 'var(--primary-color)'
-        }}
-      >
-        {title}
-      </h4>
-      <div className="bottom-container">
-        <IconContext.Provider value={{ size: '1em' }}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: '0.5rem'
-            }}
-          >
-            <BsGithub />
-            <span style={{ fontSize: '25px' }}>&middot;</span>
-            <SiDotnet size={30} />
-          </div>
-        </IconContext.Provider>
-      </div>
+    <a href={link ? link : '#'} key={title} className="card" target="_blank" rel="noreferrer">
+      <h4 className="m-0 pt-[0.5rem] font-semibold text-[var(--primary-color)]">{title}</h4>
+      <IconContext.Provider value={{ size: '1em' }}>
+        <div className="flex flex-row items-center gap-2">
+          <BsGithub />
+          <span style={{ fontSize: '25px' }}>&middot;</span>
+          <SiDotnet size={30} />
+        </div>
+      </IconContext.Provider>
+
       <style jsx>
         {`
           .card {
@@ -60,7 +38,7 @@ export function MiniCard({ title, link }) {
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            gap: 1rem;
+            gap: 0.5rem;
             border: 1px solid var(--border-color);
             border-radius: 4px;
             text-decoration: none;
@@ -84,9 +62,7 @@ export function Card({ title, description, icon, link }) {
   return (
     <Link key={title} href={link} style={{ textDecoration: 'None' }}>
       <div className="card">
-        <IconContext.Provider
-          value={{ color: 'var(--primary-color)', size: '1.5em' }}
-        >
+        <IconContext.Provider value={{ color: 'var(--primary-color)', size: '1.5em' }}>
           <div style={{ padding: '1rem 0' }}>{Icon(icon)}</div>
         </IconContext.Provider>
         <h3>{title}</h3>

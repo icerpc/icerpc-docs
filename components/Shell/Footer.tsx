@@ -7,100 +7,61 @@ import { MdHelpCenter, MdVideocam } from 'react-icons/md';
 // eslint-disable-next-line no-unused-vars
 export function Footer({ children }) {
   return (
-    <footer>
-      <ul>
-        <li>
+    <footer className="mb-10 flex flex-row items-center justify-between p-0 ">
+      <ul className="flex flex-col gap-2 p-0 pt-0">
+        <li className="flex flex-row items-center gap-2">
           <MdHelpCenter size={20} />
           <span>
-            Need help? <a href="https://www.zeroc.com">Contact us</a>
+            Need help?{' '}
+            <a
+              className="text-[var(--primary-color)]"
+              href="https://www.zeroc.com"
+            >
+              Contact us
+            </a>
           </span>
         </li>
-        <li>
+        <li className="flex flex-row items-center gap-2">
           <MdVideocam size={20} />
           <span>
-            Watch our <a href="https://www.zeroc.com">Developer tutorials</a>
+            Watch our{' '}
+            <a
+              className="text-[var(--primary-color)]"
+              href="https://www.zeroc.com"
+            >
+              Developer tutorials
+            </a>
           </span>
         </li>
       </ul>
-      <form action="/send-data-here" method="post">
+      <form
+        className="ml-8 flex flex-col gap-2 pt-4"
+        action="/send-data-here"
+        method="post"
+      >
         <label htmlFor="email">Sign up for developer updates:</label>
-        <div className="email">
-          <input type="email" id="email" name="first" required />
-          <button type="submit">Subscribe</button>
+        <div className="flex flex-row">
+          <input
+            className="mr-2 w-64 rounded border border-solid border-[var(--border-color)]"
+            type="email"
+            id="email"
+            name="first"
+            required
+          />
+          <button
+            className=" rounded bg-[var(--primary-color)] p-2 text-sm font-medium text-white"
+            type="submit"
+          >
+            Subscribe
+          </button>
         </div>
-        <span>
+        <span className="text-xs">
           You can unsubscribe at any time. Read our{' '}
-          <Link href="https://www.zeroc.com">privacy policy.</Link>
+          <Link className="underline" href="https://www.zeroc.com">
+            privacy policy.
+          </Link>
         </span>
       </form>
-      <style jsx>{`
-        a {
-          color: var(--primary-color);
-          text-decoration: none;
-        }
-
-        a:hover {
-          color: black;
-        }
-
-        footer {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          padding-bottom: 4rem;
-        }
-
-        form {
-          display: flex;
-          flex-direction: column;
-          gap: 0.8rem;
-          margin-left: 2rem;
-          padding-top: 1rem;
-          color: var(--text-color);
-        }
-
-        form button {
-          padding: 0.5rem;
-          border: 1px solid var(--border-color);
-          border-radius: 0.25rem;
-          background: var(--primary-color);
-          color: var(--background);
-          font-weight: bold;
-        }
-
-        form input {
-          width: 20rem;
-          padding: 0.5rem;
-          border: 1px solid var(--border-color);
-          border-radius: 0.25rem;
-        }
-
-        form span {
-          font-size: 8pt;
-        }
-
-        li {
-          display: flex;
-          flex-direction: row;
-          gap: 0.5rem;
-          align-items: center;
-          color: var(--text-color);
-        }
-
-        ul {
-          list-style: none;
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-          padding-top: 0;
-        }
-
-        .email {
-          display: flex;
-          flex-direction: row;
-        }
-      `}</style>
     </footer>
   );
 }
