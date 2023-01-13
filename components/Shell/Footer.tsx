@@ -7,9 +7,9 @@ import { MdHelpCenter, MdVideocam } from 'react-icons/md';
 // eslint-disable-next-line no-unused-vars
 export function Footer({ children }) {
   return (
-    <footer className="flex flex-row justify-between items-center pb-16">
-      <ul className="p-0 flex flex-col gap-4 pt-0">
-        <li className="flex flex-row gap-2 items-center">
+    <footer className="mb-10 flex flex-row items-center justify-between p-0 ">
+      <ul className="flex flex-col gap-2 p-0 pt-0">
+        <li className="flex flex-row items-center gap-2">
           <MdHelpCenter size={20} />
           <span>
             Need help?{' '}
@@ -21,7 +21,7 @@ export function Footer({ children }) {
             </a>
           </span>
         </li>
-        <li className="flex flex-row gap-2 items-center">
+        <li className="flex flex-row items-center gap-2">
           <MdVideocam size={20} />
           <span>
             Watch our{' '}
@@ -35,33 +35,29 @@ export function Footer({ children }) {
         </li>
       </ul>
       <form
-        className="flex flex-col ml-8 pt-4 gap-2"
+        className="ml-8 flex flex-col gap-2 pt-4"
         action="/send-data-here"
         method="post"
       >
         <label htmlFor="email">Sign up for developer updates:</label>
         <div className="flex flex-row">
           <input
-            className="w-64 p-2 rounded border border-solid border-[var(--border-color)] mr-2"
+            className="mr-2 w-64 rounded border border-solid border-[var(--border-color)]"
             type="email"
             id="email"
             name="first"
             required
           />
           <button
-            className=" p-2 text-sm rounded font-medium bg-[var(--primary-color)] text-white"
+            className=" rounded bg-[var(--primary-color)] p-2 text-sm font-medium text-white"
             type="submit"
           >
             Subscribe
           </button>
         </div>
-        <span className="text-sm">
-          You can unsubscribe at any time. Read our
-          <br />
-          <Link
-            className="text-[var(--primary-color)]"
-            href="https://www.zeroc.com"
-          >
+        <span className="text-xs">
+          You can unsubscribe at any time. Read our{' '}
+          <Link className="underline" href="https://www.zeroc.com">
             privacy policy.
           </Link>
         </span>

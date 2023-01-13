@@ -6,18 +6,19 @@
   // words - list of words to be always considered correct
   "words": [
     "callout",
+    "docsearch",
     "frontmatter",
     "icerpc",
     "markdoc",
+    "prismjs",
     "QUIC",
+    "reactflow",
     "Slic",
+    "smoothstep",
+    "tailwindcss",
     "varint",
     "varuint",
-    "reactflow",
-    "smoothstep",
-    "Videocam",
-    "docsearch",
-    "prismjs"
+    "Videocam"
   ],
   "dictionaries": [
     "csharp",

@@ -18,7 +18,7 @@ export function ThemeToggle() {
 
   return (
     <button
-      className="w-10 flex justify-center cursor-pointer"
+      className="flex w-10 cursor-pointer justify-center"
       onClick={() => setTheme(theme == 'light' ? 'dark' : 'light')}
       style={{
         background: 'transparent'

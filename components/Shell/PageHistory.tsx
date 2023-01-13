@@ -22,12 +22,13 @@ export function PageHistory() {
   const index = data.map((item) => item.path).indexOf(path);
   const previous: SideBarLink | null = data[index - 1];
   const next: SideBarLink | null = data[index + 1];
+
   return (
     <>
-      <div className="page-history-container">
+      <div className="mt-12 mb-0 ml-[-1rem] mr-[-1rem] flex flex-row justify-between p-0">
         {previous ? (
-          <Link href={previous.path} style={{ textDecoration: 'none' }}>
-            <div className="history-content">
+          <Link href={previous.path}>
+            <div className="text-md hover: flex h-10 flex-row items-center gap-2 rounded p-4 text-center text-primary hover:bg-[#E9F1FE]">
               <FaChevronLeft size={12} />
               {previous.title}
             </div>
@@ -36,45 +37,14 @@ export function PageHistory() {
           <div></div>
         )}
         {next && (
-          <Link href={next.path} style={{ textDecoration: 'none' }}>
-            <div className="history-content">
+          <Link href={next.path}>
+            <div className="text-md hover: flex h-10 flex-row items-center gap-2 rounded p-4 text-center text-primary hover:bg-[#E9F1FE]">
               {next.title}
               <FaChevronRight size={12} />
             </div>
           </Link>
         )}
       </div>
-      <style jsx>
-        {`
-          .page-history-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 0;
-            margin: 3rem -1rem 0 -1rem;
-          }
-
-          .history-content:hover {
-            background: rgb(233, 241, 254);
-          }
-
-          .history-content {
-            height: 2.5rem;
-            display: flex;
-            flex-direction: row;
-            gap: 0.5rem;
-            padding: 1rem;
-            border-radius: 5px;
-            align-items: center;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.2s ease;
-            color: var(--primary-color);
-            text-decoration: none;
-            text-align: center;
-          }
-        `}
-      </style>
     </>
   );
 }

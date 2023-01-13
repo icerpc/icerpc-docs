@@ -17,19 +17,11 @@ function Search() {
 export function SearchButton() {
   return (
     <>
-      <div className="search-button">
+      <div className="relative min-w-[200px] max-w-[400px] flex-1">
         <Search />
       </div>
 
       <style jsx>{`
-        // Container
-        .search-button {
-          position: relative;
-          flex: 1;
-          min-width: 200px;
-          max-width: 400px;
-        }
-
         // Search button style
         :global(.DocSearch-Button) {
           display: flex;

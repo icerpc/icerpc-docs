@@ -4,48 +4,19 @@ import { MdThumbDownOffAlt, MdThumbUpOffAlt } from 'react-icons/md';
 
 export function Feedback() {
   return (
-    <div className="feedback-container">
-      <h4 style={{ color: 'var(--text-color)' }}>Was this page helpful?</h4>
-      <div className="feedback-buttons-container">
+    <div className="mt-0 flex flex-col items-center pb-8">
+      <h3 className="text-md text-[var(--text-color)]">
+        Was this page helpful?
+      </h3>
+      <div className="flex gap-8 text-4xl">
         {/* TODO: Add click functionality to the feedback buttons */}
-        <button aria-label="Thumbs down">
+        <button aria-label="Thumbs down" className="hover:text-primary">
           <MdThumbDownOffAlt />
         </button>
-        <button aria-label="Thumbs up">
+        <button aria-label="Thumbs up" className="hover:text-primary">
           <MdThumbUpOffAlt />
         </button>
       </div>
-      <style jsx>
-        {`
-          button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 2rem;
-          }
-
-          button:hover {
-            color: var(--primary-color);
-          }
-
-          .feedback-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-bottom: 1rem;
-          }
-
-          .feedback-buttons-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            gap: 2rem;
-            align-items: center;
-            font-size: 32px;
-          }
-        `}
-      </style>
     </div>
   );
 }
