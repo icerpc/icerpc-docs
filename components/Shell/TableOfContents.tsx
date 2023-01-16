@@ -12,15 +12,20 @@ export default function TableOfContents({ toc }) {
   const [headings, setHeadings] = useState([]);
   const { activeId } = useHeadsObserver(toc);
   const router = useRouter();
-  const currentPath = ['/docs/getting-started', '/docs/rpc', '/docs/slice'].includes(
-    router.pathname
-  )
+  const currentPath = [
+    '/docs/getting-started',
+    '/docs/rpc',
+    '/docs/slice'
+  ].includes(router.pathname)
     ? router.pathname + '/index.md'
     : router.pathname + '.md';
 
   useEffect(() => {
     const elements = toc.filter(
-      (item) => item.id && (item.level === 2 || item.level === 3) && item.title !== 'Next steps'
+      (item) =>
+        item.id &&
+        (item.level === 2 || item.level === 3) &&
+        item.title !== 'Next steps'
     );
     setHeadings(elements);
   }, [setHeadings, toc]);
@@ -33,7 +38,8 @@ export default function TableOfContents({ toc }) {
           <ul>
             {headings.map((item) => {
               const href = `#${item.id}`;
-              const active = typeof window !== 'undefined' && window.location.hash === href;
+              const active =
+                typeof window !== 'undefined' && window.location.hash === href;
               return (
                 <li
                   key={item.id}
@@ -49,7 +55,9 @@ export default function TableOfContents({ toc }) {
                     onClick={(e) => {
                       e.preventDefault();
                       const y =
-                        document.querySelector(`#${item.id}`).getBoundingClientRect().top +
+                        document
+                          .querySelector(`#${item.id}`)
+                          .getBoundingClientRect().top +
                         window.pageYOffset -
                         100;
                       window.scrollTo({
@@ -58,7 +66,10 @@ export default function TableOfContents({ toc }) {
                       });
                     }}
                     style={{
-                      color: activeId === item.id ? 'var(--primary-color)' : 'var(--link-color)',
+                      color:
+                        activeId === item.id
+                          ? 'var(--primary-color)'
+                          : 'var(--link-color)',
                       textDecoration: 'none'
                     }}
                   >
@@ -73,7 +84,10 @@ export default function TableOfContents({ toc }) {
           <ul style={{ color: 'var(--primary-color)' }}>
             <li>
               <AppLink
-                href={'https://github.com/zeroc-ice/icerpc-docs/tree/main/pages' + currentPath}
+                href={
+                  'https://github.com/zeroc-ice/icerpc-docs/tree/main/pages' +
+                  currentPath
+                }
                 style={{ textDecoration: 'none' }}
                 className="external-link"
               >
@@ -101,7 +115,8 @@ export default function TableOfContents({ toc }) {
                     gap: '0.5em'
                   }}
                 >
-                  <FiMessageSquare color="var(--primary-color)" /> GitHub Discussions
+                  <FiMessageSquare color="var(--primary-color)" /> GitHub
+                  Discussions
                 </div>
               </AppLink>
             </li>

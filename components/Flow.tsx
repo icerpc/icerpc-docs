@@ -1,7 +1,13 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import { CSSProperties } from 'react';
-import ReactFlow, { Node, Edge, ConnectionLineType, Background, Controls } from 'reactflow';
+import ReactFlow, {
+  Node,
+  Edge,
+  ConnectionLineType,
+  Background,
+  Controls
+} from 'reactflow';
 
 const defaultEdgeOptions = {
   animated: true,
