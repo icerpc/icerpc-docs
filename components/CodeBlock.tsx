@@ -99,14 +99,8 @@ export function CodeBlock({
                 {...getLineProps({ line, key: i })}
                 className="table-row"
               >
-                <div className="table-cell select-none py-[1px] pr-4 text-right text-sm opacity-50">
-                  {i + 1}
-                </div>
-                <div className="table-cell text-sm">
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token, key })} />
-                  ))}
-                </div>
+                <LineNumber lineNumber={i + 1} />
+                <LineContent line={line} getTokenProps={getTokenProps} />
               </div>
             ))}
           </pre>
@@ -116,14 +110,32 @@ export function CodeBlock({
   );
 }
 
-function TopBar({
+const LineContent = ({ line, getTokenProps }) => {
+  return (
+    <div className="table-cell text-sm">
+      {line.map((token, key) => (
+        <span key={key} {...getTokenProps({ token, key })} />
+      ))}
+    </div>
+  );
+};
+
+const LineNumber = ({ lineNumber: number }) => {
+  return (
+    <div className="table-cell select-none py-[1px] pr-4 text-right text-sm opacity-50">
+      {number}
+    </div>
+  );
+};
+
+const TopBar = ({
   languageIcon,
   language,
   lines,
   setCopied,
   copied,
   children
-}) {
+}) => {
   return (
     <div className="relative flex h-8 flex-row flex-nowrap justify-between text-white">
       <div className="m-0 ml-4 flex flex-row items-center gap-2 p-0 text-sm">
@@ -145,4 +157,4 @@ function TopBar({
       </button>
     </div>
   );
-}
+};

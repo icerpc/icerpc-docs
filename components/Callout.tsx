@@ -10,24 +10,9 @@ export function Callout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="callout">
+    <div className="flex flex-col rounded border-2 bg-[#f6f9fc] py-3 px-4">
       <strong>{title}</strong>
       <span>{children}</span>
-      <style jsx>
-        {`
-          .callout {
-            display: flex;
-            flex-direction: column;
-            padding: 12px 16px;
-            background: #f6f9fc;
-            border: 1px solid #dce6e9;
-            border-radius: 4px;
-          }
-          .callout :global(p) {
-            margin: 0;
-          }
-        `}
-      </style>
     </div>
   );
 }
