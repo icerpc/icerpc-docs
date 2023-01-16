@@ -11,16 +11,7 @@ import themeDark from 'prism-react-renderer/themes/dracula';
 import Prism from 'prism-react-renderer/prism';
 import { useTheme } from 'next-themes';
 
-const commandLineLanguages = [
-  'bash',
-  'sh',
-  'zsh',
-  'powershell',
-  'cmd',
-  'batch',
-  'dos',
-  'shell'
-];
+const commandLineLanguages = ['bash', 'sh', 'zsh', 'powershell', 'cmd', 'batch', 'dos', 'shell'];
 
 Prism.languages.slice = {
   keyword: /\b(interface|module|struct|class|exception|enum|throws)\b/,
