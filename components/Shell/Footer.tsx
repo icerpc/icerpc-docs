@@ -8,7 +8,7 @@ import { MdHelpCenter, MdVideocam } from 'react-icons/md';
 export function Footer({ children }) {
   return (
     <footer className="mb-10 flex flex-row items-center justify-between p-0 ">
-      <ul className="flex flex-col gap-2 p-0 pt-0">
+      <ul className="flex flex-col gap-2 p-0">
         <li className="flex flex-row items-center gap-2">
           <MdHelpCenter size={20} />
           <span>

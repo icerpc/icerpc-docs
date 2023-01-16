@@ -5,57 +5,13 @@ import * as React from 'react';
 export function SideBySide({ children }) {
   const [first, ...rest] = React.Children.toArray(children);
   return (
-    <div className="side-by-side">
-      <div className="left">{first}</div>
-      <div className="right">{rest}</div>
-      <style jsx>
-        {`
-          .side-by-side {
-            width: 100%;
-            padding: 0;
-            margin-top: 1rem;
-            border-radius: 4px;
-            display: flex;
-            flex-direction: row;
-          }
-          .column {
-            overflow: auto;
-            padding-top: var(--default-vertical-spacing);
-          }
-          .left {
-            padding-right: 3rem;
-            border-right: 1px solid var(--toc-border);
-            display: flex;
-            flex-direction: column;
-            width: 50%;
-          }
-          .right {
-            padding-left: 3rem;
-            display: flex;
-            flex-direction: column;
-            width: 50%;
-          }
-          .side-by-side :global(.heading) {
-            margin: 0;
-          }
-          @media screen and (max-width: 1000px) {
-            .side-by-side {
-              flex-direction: column;
-            }
-            .column {
-              overflow: initial;
-            }
-            .left {
-              padding: 0;
-              border: none;
-            }
-            .right {
-              padding-top: 1rem;
-              padding-left: 0rem;
-            }
-          }
-        `}
-      </style>
+    <div className="mt-4 flex w-full flex-col items-center rounded p-0 lg:flex-row">
+      <div className="flex w-full flex-col border-r-0 border-b-2 px-10 pb-12 lg:w-1/2 lg:border-b-0 lg:border-r-2 lg:pb-0 lg:pr-10">
+        {first}
+      </div>
+      <div className="flex w-full flex-col pt-8 pb-2 pl-12 lg:py-0 lg:pr-10 ">
+        {rest}
+      </div>
     </div>
   );
 }

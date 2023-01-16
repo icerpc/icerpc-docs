@@ -21,8 +21,16 @@ function Icon(icon: string) {
 
 export function MiniCard({ title, link }) {
   return (
-    <a href={link ? link : '#'} key={title} className="card" target="_blank" rel="noreferrer">
-      <h4 className="m-0 pt-[0.5rem] font-semibold text-[var(--primary-color)]">{title}</h4>
+    <a
+      href={link ? link : '#'}
+      key={title}
+      className="card"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <h4 className="m-0 pt-[0.5rem] font-semibold text-[var(--primary-color)]">
+        {title}
+      </h4>
       <IconContext.Provider value={{ size: '1em' }}>
         <div className="flex flex-row items-center gap-2">
           <BsGithub />
@@ -62,12 +70,13 @@ export function Card({ title, description, icon, link }) {
   return (
     <Link key={title} href={link} style={{ textDecoration: 'None' }}>
       <div className="card">
-        <IconContext.Provider value={{ color: 'var(--primary-color)', size: '1.5em' }}>
+        <IconContext.Provider
+          value={{ color: 'var(--primary-color)', size: '1.5em' }}
+        >
           <div style={{ padding: '1rem 0' }}>{Icon(icon)}</div>
         </IconContext.Provider>
         <h3>{title}</h3>
         <p>{description}</p>
-        <div className="shine"></div>
         <style jsx>
           {`
             h3 {

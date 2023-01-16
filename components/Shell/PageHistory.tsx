@@ -25,10 +25,10 @@ export function PageHistory() {
 
   return (
     <>
-      <div className="mt-12 mb-0 ml-[-1rem] mr-[-1rem] flex flex-row justify-between p-0">
+      <div className="mx-[-1rem] mt-12 mb-0 flex flex-row justify-between p-0">
         {previous ? (
           <Link href={previous.path}>
-            <div className="text-md hover: flex h-10 flex-row items-center gap-2 rounded p-4 text-center text-primary hover:bg-[#E9F1FE]">
+            <div className="hover: flex h-10 flex-row items-center gap-2 rounded p-4 text-center text-primary hover:bg-[#E9F1FE]">
               <FaChevronLeft size={12} />
               {previous.title}
             </div>
@@ -38,7 +38,7 @@ export function PageHistory() {
         )}
         {next && (
           <Link href={next.path}>
-            <div className="text-md hover: flex h-10 flex-row items-center gap-2 rounded p-4 text-center text-primary hover:bg-[#E9F1FE]">
+            <div className="hover: flex h-10 flex-row items-center gap-2 rounded p-4 text-center text-primary hover:bg-[#E9F1FE]">
               {next.title}
               <FaChevronRight size={12} />
             </div>
