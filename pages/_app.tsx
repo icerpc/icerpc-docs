@@ -54,12 +54,12 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
             {isDocs ? <SideNav path={router.pathname} /> : null}
           </div>
           <div
-            className={`ml-auto max-w-screen-xl pt-[var(--nav-height)] ${
+            className={`ml-auto max-w-screen-xl grow pt-[var(--nav-height)] ${
               isLandingPage ? '' : 'lg:ml-60'
             }`}
           >
             <main
-              className={inter.className + 'min-w-0 max-w-screen-2xl flex-grow px-16'}
+              className={inter.className + 'min-w-0 max-w-screen-2xl px-16'}
               id="main"
             >
               <div id="skip-nav" />

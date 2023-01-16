@@ -13,7 +13,8 @@ export function Heading({ id = '', level = 1, children, className }) {
     `h${level}`,
     {
       id,
-      className: ['heading', className].filter(Boolean).join(' ') + ' ' + style[level]
+      className:
+        ['heading', className].filter(Boolean).join(' ') + ' ' + style[level]
     },
     children
   );
