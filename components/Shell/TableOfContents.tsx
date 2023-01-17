@@ -30,14 +30,12 @@ export default function TableOfContents({ toc }) {
     setHeadings(elements);
   }, [setHeadings, toc]);
 
-  console.log('headings:', headings);
-
   return (
     <>
       {headings.length > 1 ? (
         <nav className="toc">
           <h2>On this page</h2>
-          <ul>
+          <ul className="m-0 p-0">
             {headings.map((item) => {
               const href = `#${item.id}`;
               const active =
@@ -83,43 +81,19 @@ export default function TableOfContents({ toc }) {
           </ul>
           <br />
           <h2>More</h2>
-          <ul style={{ color: 'var(--primary-color)' }}>
-            <li>
-              <AppLink
-                href={
-                  'https://github.com/zeroc-ice/icerpc-docs/tree/main/pages' +
-                  currentPath
-                }
-                style={{ textDecoration: 'none' }}
-              >
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5em'
-                  }}
-                >
-                  <FiEdit color="var(--primary-color)" /> Edit this page
-                </div>
-              </AppLink>
-            </li>
-            <li>
-              <AppLink
-                href="https://github.com/zeroc-ice/icerpc"
-                style={{ textDecoration: 'none' }}
-              >
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5em'
-                  }}
-                >
-                  <FiMessageSquare color="var(--primary-color)" /> GitHub
-                  Discussions
-                </div>
-              </AppLink>
-            </li>
+          <ul className="m-0 p-0" style={{ color: 'var(--primary-color)' }}>
+            <MoreItem
+              href={
+                'https://github.com/zeroc-ice/icerpc-docs/tree/main/pages' +
+                currentPath
+              }
+            >
+              <FiEdit color="var(--primary-color)" /> Edit this page
+            </MoreItem>
+            <MoreItem href="https://github.com/zeroc-ice/icerpc">
+              <FiMessageSquare color="var(--primary-color)" /> GitHub
+              Discussions
+            </MoreItem>
           </ul>
           <style jsx>
             {`
@@ -132,7 +106,7 @@ export default function TableOfContents({ toc }) {
                 margin-bottom: 1rem;
                 margin-left: 2rem;
                 padding-left: 2rem;
-                padding-right: 2rem;
+                padding-right: 3rem;
                 border-left: 1px solid var(--border-color);
               }
 
@@ -142,11 +116,6 @@ export default function TableOfContents({ toc }) {
                 font-size: 12px;
                 font-weight: 600;
                 letter-spacing: 0.05em;
-              }
-
-              ul {
-                margin: 0;
-                padding: 0;
               }
 
               li {
@@ -182,3 +151,32 @@ export default function TableOfContents({ toc }) {
     </>
   );
 }
+const MoreItem = ({ href, children }) => {
+  return (
+    <li>
+      <AppLink href={href} style={{ textDecoration: 'none' }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5em'
+          }}
+        >
+          {children}
+        </div>
+      </AppLink>
+      <style jsx>
+        {`
+          li {
+            list-style-type: none;
+            margin: 0 0 1rem 0rem;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+          }
+        `}
+      </style>
+    </li>
+  );
+};

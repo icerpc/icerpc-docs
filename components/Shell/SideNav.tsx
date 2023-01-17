@@ -28,19 +28,29 @@ function createListItem(
     textDecoration: 'none'
   };
   const activeStyle: React.CSSProperties = {
+    textDecoration: 'none',
+    borderLeft: '1.5px solid var(--primary-color)',
+    paddingLeft: '13.5px',
+    marginLeft: '-3px'
+  };
+  const activeStyleAlt: React.CSSProperties = {
     color: 'var(--primary-color)',
     fontWeight: 'bold',
     textDecoration: 'none'
   };
+
   const leftPadding = noLeftPadding ? 'ml-0' : 'ml-3';
   const isCurrentPage = router.pathname === link.path.replace(/\/$/, '');
 
   return (
-    <li
-      key={link.path}
-      className={`ml-4 mr-2 flex p-2 pl-0 text-sm ${leftPadding}`}
-    >
-      <Link href={link.path} style={isCurrentPage ? activeStyle : style}>
+    <li key={link.path} className="flex">
+      <Link
+        href={link.path}
+        className={`p-2 pl-0 text-sm  ${leftPadding} text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white`}
+        style={
+          isCurrentPage ? (noLeftPadding ? activeStyleAlt : activeStyle) : style
+        }
+      >
         {link.title}
       </Link>
     </li>
