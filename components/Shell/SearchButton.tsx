@@ -2,6 +2,7 @@
 
 import { DocSearch } from '@docsearch/react';
 import '@docsearch/css';
+import { useTheme } from 'next-themes';
 
 // TODO: Update the DocSearch API keys, these are test keys that DocSearch makes publicly available.
 function Search() {
@@ -15,6 +16,7 @@ function Search() {
 }
 
 export function SearchButton() {
+  const { resolvedTheme } = useTheme();
   return (
     <>
       <div className="relative min-w-[200px] max-w-[400px] flex-1">
@@ -27,8 +29,8 @@ export function SearchButton() {
           display: flex;
           width: 100%;
           height: 36px;
-          background: var(--nav-background);
-          border: 1px solid var(--border-color);
+          background: ${resolvedTheme == 'dark' ? 'rgb(38, 40, 44)' : 'white'};
+          border: 1px solid ${resolvedTheme == 'dark' ? '#31363C' : '#dce6e9'};
         }
 
         :global(.DocSearch-Button:hover) {
@@ -38,15 +40,15 @@ export function SearchButton() {
 
         :global(.DocSearch-Button:hover)
           :global(.DocSearch-Button-Placeholder) {
-          color: var(--primary-color);
+          color: #4183d7;
         }
 
         :global(.DocSearch-Button:hover) :global(.DocSearch-Button-Keys) {
-          border: 1px solid var(--primary-color);
+          border: 1px solid #4183d7;
         }
 
         :global(.DocSearch-Button:hover) :global(.DocSearch-Button-Key) {
-          color: var(--primary-color);
+          color: #4183d7;
         }
 
         :global(.DocSearch-Button-Key) {
@@ -80,6 +82,8 @@ export function SearchButton() {
           padding-right: 5px;
           padding-top: 4px;
           padding-bottom: 4px;
+          color: var(--docsearch-muted-color);
+          fill: currentColor;
         }
 
         :global(.DocSearch-Button-Placeholder) {

@@ -6,25 +6,17 @@
 
 :root {
   --nav-height: 65px;
-  --nav-background: #FAFBFC;
   --border-color: #dce6e9;
-  --primary-color: #4183D7;
-  --off-white: #F8FAFC;
-  --toc-border: rgba(0, 0, 0, 0.14);
-  --background: white;
-  --foreground: black;
   --link-color: rgba(75, 85, 99, 1);
   --highlighted-link-color: black;
   --text-color: rgba(75, 85, 99, 1);
   --text-color-secondary: #3d4356;
   --side-nav-width: 240px;
+  --primary-color: theme('colors.primary');
 
 }
 
 [data-theme='dark'] {
-  --background: rgb(33,35,39);
-  --nav-background: rgb(38, 40, 44);
-  --foreground: white;
   --border-color: rgb(49, 54, 60);
   --link-color: rgba(255, 255, 255, 0.8);
   --highlighted-link-color: white;
@@ -35,11 +27,27 @@
 @layer base {
 
   main article h1 {
-    @apply text-3xl;
+    @apply text-3xl dark:text-white;
   }
 
   main article h2 {
-    @apply text-2xl;
+    @apply text-2xl dark:text-white;
+  }
+
+  main article h2 {
+    @apply dark:text-white;
+  }
+
+  main article h3 {
+    @apply dark:text-white;
+  }
+
+  body {
+    @apply bg-white dark:bg-[rgb(33,35,39)]
+  }
+
+  p {
+    @apply dark:text-[#a1a1aa];
   }
 }
 
@@ -59,7 +67,6 @@ body {
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   color: rgba(60, 66, 87, 1);
-  background-color: var(--background);
 }
 
 p {

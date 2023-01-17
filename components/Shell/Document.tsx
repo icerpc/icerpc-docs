@@ -13,7 +13,7 @@ export function Document({ children }) {
 
   return (
     <div>
-      <article>
+      <article className="m-auto flex w-11/12 flex-row bg-white pt-12 pl-16 dark:bg-[rgb(33,35,39)]">
         <div className="root">
           {children}
           {isDocs && (
@@ -30,16 +30,6 @@ export function Document({ children }) {
       {/* {showToc && <TableOfContents toc={toc} />} */}
       <style jsx>
         {`
-          article {
-            background: var(--background);
-            padding-top: 3rem;
-            padding-left: 4rem;
-            width: 90%;
-            margin: auto;
-            display: flex;
-            flex-direction: row;
-          }
-
           .page-history-container {
             display: flex;
             flex-direction: row;

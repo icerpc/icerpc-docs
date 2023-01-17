@@ -28,9 +28,7 @@ export function MiniCard({ title, link }) {
       target="_blank"
       rel="noreferrer"
     >
-      <h4 className="m-0 pt-[0.5rem] font-semibold text-[var(--primary-color)]">
-        {title}
-      </h4>
+      <h4 className="m-0 pt-[0.5rem] font-semibold text-primary">{title}</h4>
       <IconContext.Provider value={{ size: '1em' }}>
         <div className="flex flex-row items-center gap-2">
           <BsGithub />

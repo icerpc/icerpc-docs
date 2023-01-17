@@ -7,11 +7,13 @@ import { useEffect, useState } from 'react';
 import { useHeadsObserver } from '../../hooks/hooks';
 import { FiEdit, FiMessageSquare } from 'react-icons/fi';
 import { AppLink } from '../AppLink';
+import { useTheme } from 'next-themes';
 
 export default function TableOfContents({ toc }) {
   const [headings, setHeadings] = useState([]);
   const { activeId } = useHeadsObserver(toc);
   const router = useRouter();
+  const { resolvedTheme } = useTheme();
   const currentPath = [
     '/docs/getting-started',
     '/docs/rpc',
@@ -34,7 +36,7 @@ export default function TableOfContents({ toc }) {
     <>
       {headings.length > 1 ? (
         <nav className="toc">
-          <h2>On this page</h2>
+          <h2 className="dark:text-white">On this page</h2>
           <ul className="m-0 p-0">
             {headings.map((item) => {
               const href = `#${item.id}`;
@@ -80,7 +82,7 @@ export default function TableOfContents({ toc }) {
             })}
           </ul>
           <br />
-          <h2>More</h2>
+          <h2 className="dark:text-white">More</h2>
           <ul className="m-0 p-0" style={{ color: 'var(--primary-color)' }}>
             <MoreItem
               href={
@@ -107,7 +109,8 @@ export default function TableOfContents({ toc }) {
                 margin-left: 2rem;
                 padding-left: 2rem;
                 padding-right: 3rem;
-                border-left: 1px solid var(--border-color);
+                border-left: 1px solid
+                  ${resolvedTheme == 'dark' ? '#31363C' : '#dce6e9'};
               }
 
               h2 {

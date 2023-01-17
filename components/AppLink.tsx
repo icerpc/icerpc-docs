@@ -7,7 +7,6 @@ export function AppLink(props) {
   const target =
     props.target || (props.href.startsWith('http') ? '_blank' : undefined);
   const style = props.style || {
-    color: 'var(--primary-color)',
     textUnderlineOffset: '5px'
   };
 
@@ -16,7 +15,7 @@ export function AppLink(props) {
       {...props}
       target={target}
       rel={target === '_blank' ? 'noreferrer' : undefined}
-      className={props.className}
+      className={props.className + '' + 'text-primary'}
       style={style}
     >
       {props.children}

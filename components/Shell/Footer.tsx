@@ -13,10 +13,7 @@ export function Footer({ children }) {
           <MdHelpCenter size={20} />
           <span>
             Need help?{' '}
-            <a
-              className="text-[var(--primary-color)]"
-              href="https://www.zeroc.com"
-            >
+            <a className="text-primary" href="https://www.zeroc.com">
               Contact us
             </a>
           </span>
@@ -25,10 +22,7 @@ export function Footer({ children }) {
           <MdVideocam size={20} />
           <span>
             Watch our{' '}
-            <a
-              className="text-[var(--primary-color)]"
-              href="https://www.zeroc.com"
-            >
+            <a className="text-primary" href="https://www.zeroc.com">
               Developer tutorials
             </a>
           </span>
@@ -42,7 +36,7 @@ export function Footer({ children }) {
         <label htmlFor="email">Sign up for developer updates:</label>
         <div className="flex flex-row">
           <input
-            className="mr-2 w-64 rounded border border-solid border-[var(--border-color)]"
+            className="mr-2 w-64 rounded border border-solid border-lightBorder dark:border-darkBorder"
             type="email"
             id="email"
             name="first"

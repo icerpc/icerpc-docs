@@ -65,13 +65,13 @@ function transformSideBarData(
     const category = data as SideBarCategory;
     return [
       <li key={category.title} className="list-none">
-        <h2 className="my-3 text-sm font-bold text-[var(--text-color)]">
+        <h2 className="my-3 text-sm font-bold text-[var(--text-color)] dark:text-white">
           {category.title}
         </h2>
       </li>,
       <ul
         key={category.title + '-list'}
-        className="ml-[0.1rem] border-l-[1.5px]  pl-[0.1rem]"
+        className="ml-[0.1rem] border-l-[1.5px] border-lightBorder pl-[0.1rem] dark:border-darkBorder"
       >
         {category.links.map((link) => createListItem(router, link))}
       </ul>
@@ -101,14 +101,16 @@ export function SideNav({ path }) {
   });
 
   return (
-    <nav className="sticky top-0 hidden h-screen w-[var(--side-nav-width)] overflow-y-hidden border-r-[1.5px] border-[var(--border-color)] bg-[var(--nav-background)] pl-8 pt-0 lg:block">
-      <div className="my-4 mr-8 flex items-center justify-start gap-2 pb-4">
+    <nav className=" sticky top-0 hidden h-screen w-[var(--side-nav-width)] overflow-y-hidden border-r-[1.5px] border-lightBorder bg-[#FAFBFC] pl-8 pt-0 dark:border-darkBorder dark:bg-[#26282c] lg:block">
+      <div className="my-[15px] mr-8 flex items-center justify-start gap-1 pb-4">
         <Image
           src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
           height={25}
           alt="ZeroC Logo"
         />
-        <div className="pt-[5px] text-xl font-semibold">Docs</div>
+        <div className="pt-[6px] text-xl font-semibold text-black dark:text-white">
+          Docs
+        </div>
       </div>
       {cells}
     </nav>
