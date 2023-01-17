@@ -37,8 +37,11 @@
   main article h1 {
     @apply text-3xl;
   }
-}
 
+  main article h2 {
+    @apply text-2xl;
+  }
+}
 
 *,
 *::before,
@@ -60,7 +63,10 @@ body {
 }
 
 p {
-  line-height: 2em;
+  line-height: 27.0009px;
+  margin-bottom: 27.0009px;
+  letter-spacing: 0.228px;
+
 }
 
 [data-theme='dark'] p {
@@ -69,7 +75,7 @@ p {
 
 h1 {
   font-size: 52px;
-  color: black;
+  color: #333333;
   font-style: bold;
   margin-top: 0;
 }
@@ -79,7 +85,7 @@ h1 {
 }
 
 h2 {
-  margin: 1em 0;
+  margin: 0.75em 0;
   color: #000000;
 
 }

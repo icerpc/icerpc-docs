@@ -63,32 +63,63 @@ export const sideBarData: { [base_url: string]: SideBarSourceType[] } = {
       kind: 'link'
     },
     {
-      title: 'Getting started',
+      title: 'Core concepts',
       kind: 'category',
       links: [
         {
-          title: 'Overview',
-          path: SLICE_BASE_URL + '/getting-started/',
+          title: 'Syntax',
+          path: SLICE_BASE_URL + '/core-concepts/syntax/',
           kind: 'link'
         },
         {
-          title: 'What is Slice?',
-          path: SLICE_BASE_URL + '/getting-started/what-is-slice/',
+          title: 'Built in types',
+          path: SLICE_BASE_URL + '/core-concepts/types/',
           kind: 'link'
         },
         {
-          title: 'FAQ',
-          path: SLICE_BASE_URL + '/getting-started/faq/',
+          title: 'Attributes',
+          path: SLICE_BASE_URL + '/core-concepts/attributes/',
+          kind: 'link'
+        },
+        {
+          title: 'Doc comments',
+          path: SLICE_BASE_URL + '/core-concepts/comments/',
+          kind: 'link'
+        },
+        {
+          title: 'Preprocessor',
+          path: SLICE_BASE_URL + '/core-concepts/preprocessor/',
           kind: 'link'
         }
       ]
     },
     {
-      title: 'Core concepts',
+      title: 'Advanced concepts',
       kind: 'category',
       links: [
         {
-          title: 'Installation',
+          title: 'Custom types',
+          path: SLICE_BASE_URL + '/core-concepts/',
+          kind: 'link'
+        },
+        {
+          title: 'Slice1 vs. Slice2',
+          path: SLICE_BASE_URL + '/core-concepts/',
+          kind: 'link'
+        }
+      ]
+    },
+    {
+      title: 'Error code reference',
+      kind: 'category',
+      links: [
+        {
+          title: 'Errors',
+          path: SLICE_BASE_URL + '/core-concepts/',
+          kind: 'link'
+        },
+        {
+          title: 'Warnings',
           path: SLICE_BASE_URL + '/core-concepts/',
           kind: 'link'
         }
@@ -97,12 +128,18 @@ export const sideBarData: { [base_url: string]: SideBarSourceType[] } = {
     {
       title: 'Integration guides',
       kind: 'category',
-      links: []
-    },
-    {
-      title: 'Advanced concepts',
-      kind: 'category',
-      links: []
+      links: [
+        {
+          title: 'Common examples',
+          path: SLICE_BASE_URL + '/core-concepts/',
+          kind: 'link'
+        },
+        {
+          title: 'VSCode Syntax Highlighting',
+          path: SLICE_BASE_URL + '/core-concepts/',
+          kind: 'link'
+        }
+      ]
     }
   ],
   // Data for "RPC Core" section

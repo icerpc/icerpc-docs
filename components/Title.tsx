@@ -7,7 +7,7 @@ export function Title({ title, description, breadcrumbs }) {
   return (
     <div className="m-0 p-0">
       <Breadcrumbs breadcrumbs={breadcrumbs} />
-      <h1 className="m-0 font-bold">{title}</h1>
+      <h1 className="text-4xl font-bold text-[#333333]">{title}</h1>
       <h2 className="mt-2.5 text-2xl text-[var(--text-color-secondary)]">
         {description}
       </h2>
