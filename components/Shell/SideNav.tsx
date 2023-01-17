@@ -91,7 +91,7 @@ export function SideNav({ path }) {
   });
 
   return (
-    <nav className="sticky top-0 hidden h-screen w-[var(--side-nav-width)] overflow-y-hidden border-r-[1.5px] bg-[var(--nav-background)] pl-8 pt-0 lg:block">
+    <nav className="sticky top-0 hidden h-screen w-[var(--side-nav-width)] overflow-y-hidden border-r-[1.5px] border-[var(--border-color)] bg-[var(--nav-background)] pl-8 pt-0 lg:block">
       <div className="my-4 mr-8 flex items-center justify-start gap-2 pb-4">
         <Image
           src={resolvedTheme === 'dark' ? darkIcon : lightIcon}

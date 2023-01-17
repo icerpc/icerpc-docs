@@ -30,6 +30,8 @@ export default function TableOfContents({ toc }) {
     setHeadings(elements);
   }, [setHeadings, toc]);
 
+  console.log('headings:', headings);
+
   return (
     <>
       {headings.length > 1 ? (
@@ -73,7 +75,7 @@ export default function TableOfContents({ toc }) {
                       textDecoration: 'none'
                     }}
                   >
-                    {item.children}
+                    {item.title}
                   </Link>
                 </li>
               );
@@ -89,7 +91,6 @@ export default function TableOfContents({ toc }) {
                   currentPath
                 }
                 style={{ textDecoration: 'none' }}
-                className="external-link"
               >
                 <div
                   style={{
@@ -106,7 +107,6 @@ export default function TableOfContents({ toc }) {
               <AppLink
                 href="https://github.com/zeroc-ice/icerpc"
                 style={{ textDecoration: 'none' }}
-                className="external-link"
               >
                 <div
                   style={{
@@ -125,13 +125,14 @@ export default function TableOfContents({ toc }) {
             {`
               nav {
                 position: sticky;
-                top: calc(2.5rem + var(--nav-height));
+                top: calc(5rem + var(--nav-height));
                 max-height: calc(100vh - var(--nav-height));
-                flex: 0 0 15rem;
+                flex: 0 0 20rem;
                 align-self: flex-start;
                 margin-bottom: 1rem;
-                padding: 0.25rem 0 0;
-                padding-left: 1rem;
+                margin-left: 2rem;
+                padding-left: 2rem;
+                padding-right: 2rem;
                 border-left: 1px solid var(--border-color);
               }
 

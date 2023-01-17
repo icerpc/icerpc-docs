@@ -2,30 +2,17 @@
 
 import React from 'react';
 import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
 import { Footer, HorizontalDivider } from '..';
 import { Feedback } from './Feedback';
 import { PageHistory } from './PageHistory';
 
-export function Document({ children, config }) {
+export function Document({ children }) {
   // Get the data for the next and previous links
   const path = useRouter().asPath;
   const isDocs = path.startsWith('/docs');
-  const toc =
-    config
-      .filter((c) => typeof c.props.level !== 'undefined')
-      .map((node) => node.props) || [];
-  const showToc = isDocs && toc.some((header) => header.level > 1);
-
-  // Only load the TableOfContents component if we're on a docs page that has multiple headers
-  const TableOfContents = showToc
-    ? dynamic(() => import('./TableOfContents'), {
-        ssr: false
-      })
-    : null;
 
   return (
-    <div className="document">
+    <div>
       <article>
         <div className="root">
           {children}
@@ -39,13 +26,14 @@ export function Document({ children, config }) {
           <HorizontalDivider />
           <Footer {...{ children }} />
         </div>
-        {showToc && <TableOfContents toc={toc} />}
       </article>
+      {/* {showToc && <TableOfContents toc={toc} />} */}
       <style jsx>
         {`
           article {
             background: var(--background);
-            padding-top: 4rem;
+            padding-top: 3rem;
+            padding-left: 4rem;
             width: 90%;
             margin: auto;
             display: flex;
@@ -89,7 +77,7 @@ export function Document({ children, config }) {
           .root {
             display: inline-block;
             width: 100%;
-            margin-right: 4rem;
+            margin-right: 0rem;
           }
 
           @media screen and (min-width: 1400px) {

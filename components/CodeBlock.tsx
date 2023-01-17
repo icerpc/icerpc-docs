@@ -70,7 +70,7 @@ export function CodeBlock({
 
   return (
     // Container for the code block
-    <div className="my-3 rounded-md bg-[#20212a]">
+    <div className="my-5 rounded-md bg-[#20212a]">
       {/* Top bar with language and copy button */}
       <TopBar
         languageIcon={languageIcon}

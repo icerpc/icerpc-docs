@@ -3,7 +3,7 @@
 import * as React from 'react';
 
 const LeftColumn = ({ children }) => (
-  <div className="flex w-full flex-col border-r-0 border-b-2 px-10 pb-12 lg:w-1/2 lg:border-b-0 lg:border-r-2 lg:pb-0 lg:pr-10">
+  <div className="flex w-full flex-col border-r-0 border-b-2 pr-10 pl-0 pb-12 lg:w-1/2 lg:border-b-0 lg:border-r-2 lg:pb-0 lg:pr-10">
     {children}
   </div>
 );
