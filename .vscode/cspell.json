@@ -18,7 +18,8 @@
     "tailwindcss",
     "varint",
     "varuint",
-    "Videocam"
+    "Videocam",
+    "noteable"
   ],
   "dictionaries": [
     "csharp",

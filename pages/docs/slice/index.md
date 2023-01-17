@@ -9,7 +9,7 @@ The Slice is a Interface Description Language (IDL) used to describe the structu
 and the operations that can be performed on it. It is a language and platform agnostic way to describe the flow
 of data in your application.
 
-Below is a simple example of a showing the Slice langauge . It defines a module named
+Below is a simple example of a showing the Slice language . It defines a module named
 `Hello`, a struct named `Person`, and an interface named `Greeter`. The `Greeter` interface defines a single operation,
 `greet`, which takes a `Person` and returns a `string`.
 
