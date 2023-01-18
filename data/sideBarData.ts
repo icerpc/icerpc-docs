@@ -63,7 +63,7 @@ export const sideBarData: { [base_url: string]: SideBarSourceType[] } = {
       kind: 'link'
     },
     {
-      title: 'Core concepts',
+      title: 'Core Concepts',
       kind: 'category',
       links: [
         {
@@ -94,7 +94,7 @@ export const sideBarData: { [base_url: string]: SideBarSourceType[] } = {
       ]
     },
     {
-      title: 'Advanced concepts',
+      title: 'Advanced Concepts',
       kind: 'category',
       links: [
         {
@@ -110,7 +110,7 @@ export const sideBarData: { [base_url: string]: SideBarSourceType[] } = {
       ]
     },
     {
-      title: 'Error code reference',
+      title: 'Error Code Reference',
       kind: 'category',
       links: [
         {
@@ -126,7 +126,7 @@ export const sideBarData: { [base_url: string]: SideBarSourceType[] } = {
       ]
     },
     {
-      title: 'Integration guides',
+      title: 'Integration Guides',
       kind: 'category',
       links: [
         {
