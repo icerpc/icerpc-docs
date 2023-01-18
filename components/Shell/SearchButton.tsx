@@ -40,15 +40,15 @@ export function SearchButton() {
 
         :global(.DocSearch-Button:hover)
           :global(.DocSearch-Button-Placeholder) {
-          color: #4183d7;
+          color: #43a0f7;
         }
 
         :global(.DocSearch-Button:hover) :global(.DocSearch-Button-Keys) {
-          border: 1px solid #4183d7;
+          border: 1px solid #43a0f7;
         }
 
         :global(.DocSearch-Button:hover) :global(.DocSearch-Button-Key) {
-          color: #4183d7;
+          color: #43a0f7;
         }
 
         :global(.DocSearch-Button-Key) {

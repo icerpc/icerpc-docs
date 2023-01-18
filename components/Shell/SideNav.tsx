@@ -101,14 +101,14 @@ export function SideNav({ path }) {
   });
 
   return (
-    <nav className=" sticky top-0 hidden h-screen w-[var(--side-nav-width)] overflow-y-hidden border-r-[1.5px] border-lightBorder bg-[#FAFBFC] pl-8 pt-0 dark:border-darkBorder dark:bg-[#26282c] lg:block">
-      <div className="my-[15px] mr-8 flex items-center justify-start gap-1 pb-4">
+    <nav className=" sticky top-0 hidden h-screen w-[var(--side-nav-width)] overflow-y-hidden border-r-[1.5px] border-lightBorder bg-[#FAFBFC] pl-6 pt-0 dark:border-darkBorder dark:bg-[#26282c] lg:block">
+      <div className="mt-4 mb-2 mr-8 flex items-center justify-start gap-1 pb-4">
         <Image
           src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
-          height={25}
+          height={30}
           alt="ZeroC Logo"
         />
-        <div className="pt-[6px] text-xl font-semibold text-black dark:text-white">
+        <div className="pt-[8px] text-xl font-bold text-black dark:text-white">
           Docs
         </div>
       </div>

@@ -89,7 +89,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
           </div>
           <div
             className={`ml-auto max-w-screen-lg grow pt-[var(--nav-height)] ${
-              isLandingPage ? '' : 'lg:ml-60'
+              isLandingPage ? 'ml-0' : 'lg:ml-60'
             }`}
           >
             <main className={inter.className + 'px-5'} id="main">
