@@ -19,7 +19,7 @@ export function TopNav() {
   };
 
   return (
-    <nav className="fixed top-0 z-[100] flex h-[var(--nav-height)] w-full items-center border-b border-lightBorder bg-white pl-[17rem] text-sm font-medium dark:border-darkBorder dark:bg-[rgb(33,35,39)]">
+    <nav className="fixed top-0 left-0 z-[100] flex h-[var(--nav-height)] w-full items-center border-b border-lightBorder bg-white pl-[17rem] text-sm font-medium dark:border-darkBorder dark:bg-[rgb(33,35,39)]">
       <div className="nav-container">
         <div className="left-col">
           <SearchButton />
@@ -49,7 +49,7 @@ export function TopNav() {
             RPC Core
           </Link>
           <div className="icons">
-            <div className="left-1/2 h-[calc(65px-40px)] border-l-[1.5px] border-lightBorder dark:border-darkBorder" />
+            <div className="b-lightBorder left-1/2 h-[calc(65px-40px)] border-l-[1.5px] dark:border-darkBorder" />
             <ThemeToggle />
             <a href="https://github.com/zeroc-ice" aria-label="Github">
               <FaGithub size={20} />

@@ -156,30 +156,10 @@ export default function TableOfContents({ toc }) {
 }
 const MoreItem = ({ href, children }) => {
   return (
-    <li>
-      <AppLink href={href} style={{ textDecoration: 'none' }}>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5em'
-          }}
-        >
-          {children}
-        </div>
+    <li className="m-0 my-4 text-sm">
+      <AppLink href={href}>
+        <div className="flex items-center gap-[0.5em]">{children}</div>
       </AppLink>
-      <style jsx>
-        {`
-          li {
-            list-style-type: none;
-            margin: 0 0 1rem 0rem;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-          }
-        `}
-      </style>
     </li>
   );
 };

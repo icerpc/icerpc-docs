@@ -13,7 +13,7 @@ export function Document({ children }) {
 
   return (
     <div>
-      <article className="m-auto flex w-11/12 flex-row bg-white pt-12 pl-16 dark:bg-[rgb(33,35,39)]">
+      <article className="m-auto flex w-11/12 flex-row bg-white pt-12 pl-16  dark:bg-[rgb(33,35,39)]">
         <div className="root">
           {children}
           {isDocs && (
