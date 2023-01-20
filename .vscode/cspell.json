@@ -8,18 +8,21 @@
     "callout",
     "docsearch",
     "frontmatter",
+    "headlessui",
     "icerpc",
     "markdoc",
+    "noteable",
     "prismjs",
     "QUIC",
     "reactflow",
     "Slic",
     "smoothstep",
+    "Structs",
     "tailwindcss",
+    "unoptimized",
     "varint",
     "varuint",
-    "Videocam",
-    "noteable"
+    "Videocam"
   ],
   "dictionaries": [
     "csharp",
