@@ -5,15 +5,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { NextRouter, useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
+import SliceSelector from '../SliceSelector';
+import { useAppContext } from '../../context/state';
 
 // import components
+import { sideBarData, baseUrls } from '../../data/side-bar-data';
 import {
-  sideBarData,
-  baseUrls,
   SideBarLink,
-  SideBarCategory,
-  SideBarSourceType
-} from '../../data/sideBarData';
+  SideBarSourceType,
+  SideBarCategory
+} from '../../data/types';
 
 // import assets
 import lightIcon from '../../public/images/Light-Icon.svg';
@@ -84,35 +85,44 @@ function transformSideBarData(
 
 export function SideNav({ path }) {
   const [data, setData] = useState([]);
+  const [sliceVersion] = useAppContext();
   const { resolvedTheme } = useTheme();
   const router = useRouter();
 
+  let baseUrl = baseUrls.find((item) => path.startsWith(item));
+
   useEffect(() => {
-    const links =
-      sideBarData[baseUrls.find((item) => path.startsWith(item))] ?? [];
+    const links = sideBarData(baseUrl, sliceVersion) ?? [];
     setData(links);
     return () => {
       setData([]);
     };
-  }, [setData, path]);
+  }, [setData, path, sliceVersion, baseUrl]);
 
   let cells = data.map((item) => {
     return transformSideBarData(router, item);
   });
 
   return (
-    <nav className=" sticky top-0 hidden h-screen w-[var(--side-nav-width)] overflow-y-hidden border-r-[1.5px] border-lightBorder bg-[#FAFBFC] pl-6 pt-0 dark:border-darkBorder dark:bg-[#26282c] lg:block">
-      <div className="mt-4 mb-2 mr-8 flex items-center justify-start gap-1 pb-4">
-        <Image
-          src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
-          height={30}
-          alt="ZeroC Logo"
-        />
-        <div className="pt-[8px] text-xl font-bold text-black dark:text-white">
-          Docs
-        </div>
-      </div>
+    <nav className=" sticky top-0 hidden h-screen w-[var(--side-nav-width)] overflow-y-auto overflow-x-hidden border-r-[1.5px] border-lightBorder bg-[#FAFBFC] pb-10 pl-6 pt-0 dark:border-darkBorder dark:bg-[#26282c] lg:block">
+      <Logo resolvedTheme={resolvedTheme} />
+      {baseUrl == '/docs/slice' && <SliceSelector />}
       {cells}
     </nav>
   );
 }
+
+const Logo = ({ resolvedTheme }) => {
+  return (
+    <div className="mt-4 mb-2 mr-8 flex items-center justify-start gap-1 pb-4">
+      <Image
+        src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
+        height={30}
+        alt="ZeroC Logo"
+      />
+      <div className="pt-[8px] text-xl font-bold text-black dark:text-white">
+        Docs
+      </div>
+    </div>
+  );
+};

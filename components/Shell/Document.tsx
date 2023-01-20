@@ -27,7 +27,6 @@ export function Document({ children }) {
           <Footer {...{ children }} />
         </div>
       </article>
-      {/* {showToc && <TableOfContents toc={toc} />} */}
       <style jsx>
         {`
           .page-history-container {

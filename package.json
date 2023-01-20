@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "@docsearch/react": "^3.3.2",
+    "@headlessui/react": "^1.7.7",
+    "@heroicons/react": "^2.0.13",
     "@markdoc/markdoc": "^0.2.1",
     "@markdoc/next.js": "^0.2.1",
     "@next/font": "^13.1.2",

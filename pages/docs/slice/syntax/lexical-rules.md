@@ -1,5 +1,5 @@
 ---
-title: How Slice works
+title: Lexical Rules
 description: See how a the slice IDL works under the hood
 breadcrumbs:
   - name: Home

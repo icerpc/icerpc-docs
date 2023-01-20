@@ -1,0 +1,5 @@
+---
+title: Integer
+---
+
+{% title /%}

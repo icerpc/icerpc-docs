@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import {Callout} from '../../components';
+import { Callout } from '../../components';
 
 export const callout = {
   render: Callout,
@@ -9,7 +9,7 @@ export const callout = {
   attributes: {
     title: {
       type: String,
-      description: 'The title displayed at the top of the callout',
-    },
-  },
+      description: 'The title displayed at the top of the callout'
+    }
+  }
 };

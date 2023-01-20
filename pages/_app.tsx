@@ -7,6 +7,7 @@ import { ThemeProvider } from 'next-themes';
 import { Inter } from '@next/font/google';
 import { SideNav, TopNav } from '../components';
 import dynamic from 'next/dynamic';
+import { AppWrapper } from '../context/state';
 
 import '../public/globals.css';
 import 'reactflow/dist/style.css';
@@ -82,23 +83,25 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider attribute="class">
-        <TopNav />
-        <div className="relative flex justify-center ">
-          <div className="fixed top-0 left-0 z-[101] flex-none">
-            {isDocs ? <SideNav path={router.pathname} /> : null}
+        <AppWrapper>
+          <TopNav />
+          <div className="relative flex justify-center ">
+            <div className="fixed top-0 left-0 z-[101] flex-none">
+              {isDocs ? <SideNav path={router.pathname} /> : null}
+            </div>
+            <div
+              className={`ml-auto max-w-screen-lg grow pt-[var(--nav-height)] ${
+                isLandingPage ? 'ml-0' : 'lg:ml-60'
+              }`}
+            >
+              <main className={inter.className + 'px-5'} id="main">
+                <div id="skip-nav" />
+                <Component {...pageProps} />
+              </main>
+            </div>
+            {showToc && <TableOfContents toc={toc} />}
           </div>
-          <div
-            className={`ml-auto max-w-screen-lg grow pt-[var(--nav-height)] ${
-              isLandingPage ? 'ml-0' : 'lg:ml-60'
-            }`}
-          >
-            <main className={inter.className + 'px-5'} id="main">
-              <div id="skip-nav" />
-              <Component {...pageProps} />
-            </main>
-          </div>
-          {showToc && <TableOfContents toc={toc} />}
-        </div>
+        </AppWrapper>
       </ThemeProvider>
     </div>
   );
