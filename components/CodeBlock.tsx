@@ -11,6 +11,11 @@ import themeDark from 'prism-react-renderer/themes/dracula';
 import Prism from 'prism-react-renderer/prism';
 import { useTheme } from 'next-themes';
 
+(typeof global !== 'undefined' ? global : window).Prism = Prism;
+
+require('prismjs/components/prism-rust');
+require('prismjs/components/prism-csharp');
+
 const commandLineLanguages = [
   'bash',
   'sh',

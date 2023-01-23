@@ -10,21 +10,19 @@ function classNames(...classes) {
 }
 
 export default function SliceSelector() {
-  const [sliceVersion, setSliceVersion] = useAppContext();
+  const [version, setVersion] = useAppContext();
   const [selectedIndex, setSelectedIndex] = useState(
-    sliceVersions.indexOf(sliceVersion)
+    sliceVersions.indexOf(version)
   );
 
   function onChange(index) {
-    setSliceVersion(sliceVersions[index]);
+    setVersion(sliceVersions[index]);
     setSelectedIndex(index);
   }
 
   useEffect(() => {
-    setSelectedIndex(sliceVersions.indexOf(sliceVersion));
-  }, [sliceVersion]);
-
-  console.log('sliceVersion', sliceVersion);
+    setSelectedIndex(sliceVersions.indexOf(version));
+  }, [version]);
 
   return (
     <>
@@ -49,7 +47,6 @@ export default function SliceSelector() {
             ))}
           </Tab.List>
         </Tab.Group>
-        {/* Horizontal Divider */}
         <div className="my-4 border-t-[1.5px] border-lightBorder dark:border-darkBorder" />
       </div>
     </>

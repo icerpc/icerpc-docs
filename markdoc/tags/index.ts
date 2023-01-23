@@ -2,6 +2,7 @@
 
 import sideBySide from './side-by-side.markdoc';
 import { linkCard } from './mini-card.markdoc';
+import { languageSection, languageSelector } from './languages.markdoc';
 
 export * from './flow.markdoc';
 export * from './callout.markdoc';
@@ -15,3 +16,5 @@ export { default as section } from './section.markdoc';
 
 module.exports['side-by-side'] = sideBySide;
 module.exports['mini-card'] = linkCard;
+module.exports['language-section'] = languageSection;
+module.exports['language-selector'] = languageSelector;

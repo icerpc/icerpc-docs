@@ -1,26 +1,30 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import { createContext, useContext, useEffect, useState } from 'react';
-import { SliceVersion } from '../types/slice-version.d';
+import { SliceVersion, Platform } from '../types';
 
 const AppContext = createContext([]);
 
 export function AppWrapper({ children }) {
-  const [sliceVersion, setSliceVersion] = useState(SliceVersion.Slice2);
+  const [version, setVersion] = useState(SliceVersion.Slice2);
+  const [platform, setPlatform] = useState(Platform.csharp);
 
   useEffect(() => {
-    const sliceVersion = JSON.parse(localStorage.getItem('slice-version'));
-    if (sliceVersion) {
-      setSliceVersion(sliceVersion);
-    }
+    const platform: Platform = JSON.parse(localStorage.getItem('platform'));
+    const version: SliceVersion = JSON.parse(
+      localStorage.getItem('slice-version')
+    );
+    platform && setPlatform(platform);
+    version && setVersion(version);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('slice-version', JSON.stringify(sliceVersion));
-  }, [sliceVersion]);
+    localStorage.setItem('slice-version', JSON.stringify(version));
+    localStorage.setItem('platform', JSON.stringify(platform));
+  }, [version, platform]);
 
   return (
-    <AppContext.Provider value={[sliceVersion, setSliceVersion]}>
+    <AppContext.Provider value={[version, setVersion, platform, setPlatform]}>
       {children}
     </AppContext.Provider>
   );
