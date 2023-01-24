@@ -1,5 +1,0 @@
----
-title: Warnings
----
-
-{% title /%}

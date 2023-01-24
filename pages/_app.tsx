@@ -58,18 +58,13 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
   const toc = pageProps.markdoc?.content
     ? collectHeadings(pageProps.markdoc.content)
     : [];
-  const showToc = isDocs && toc.some((header) => header.level > 1);
+  const showToc =
+    isDocs &&
+    toc.some((header) => header.level > 1) &&
+    (markdoc.frontmatter.toc == true || markdoc.frontmatter.toc == undefined);
 
-  let title = TITLE;
-  let description = DESCRIPTION;
-  if (markdoc) {
-    if (markdoc.frontmatter.title) {
-      title = markdoc.frontmatter.title;
-    }
-    if (markdoc.frontmatter.description) {
-      description = markdoc.frontmatter.description;
-    }
-  }
+  let title = markdoc.frontmatter.title ?? TITLE;
+  let description = markdoc.frontmatter.description ?? DESCRIPTION;
 
   return (
     <div className={`${isLandingPage ? 'p-16' : ''}`}>
@@ -85,7 +80,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       <ThemeProvider attribute="class">
         <AppWrapper>
           <TopNav />
-          <div className="relative flex justify-center ">
+          <div className="relative flex justify-center gap-0">
             <div className="fixed top-0 left-0 z-[101] flex-none">
               {isDocs ? <SideNav path={router.pathname} /> : null}
             </div>
@@ -99,7 +94,11 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
                 <Component {...pageProps} />
               </main>
             </div>
-            {showToc && <TableOfContents toc={toc} />}
+            {showToc ? (
+              <TableOfContents toc={toc} />
+            ) : (
+              <div className="flex-[0_0_15rem]" />
+            )}
           </div>
         </AppWrapper>
       </ThemeProvider>
