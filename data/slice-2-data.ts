@@ -82,12 +82,12 @@ export const slice2Data: SideBarSourceType[] = [
     links: [
       {
         title: 'Errors',
-        path: `${SLICE_BASE_URL}/slice2/error-codes/errors/`,
+        path: `${SLICE_BASE_URL}/error-codes/errors/`,
         kind: 'link'
       },
       {
         title: 'Warnings',
-        path: `${SLICE_BASE_URL}/slice2/error-codes/warnings/`,
+        path: `${SLICE_BASE_URL}/error-codes/warnings/`,
         kind: 'link'
       }
     ]

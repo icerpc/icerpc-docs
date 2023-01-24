@@ -49,5 +49,21 @@ export const slice1Data: SideBarSourceType[] = [
         kind: 'link'
       }
     ]
+  },
+  {
+    title: 'Error Code Reference',
+    kind: 'category',
+    links: [
+      {
+        title: 'Errors',
+        path: `${SLICE_BASE_URL}/error-codes/errors/`,
+        kind: 'link'
+      },
+      {
+        title: 'Warnings',
+        path: `${SLICE_BASE_URL}/error-codes/warnings/`,
+        kind: 'link'
+      }
+    ]
   }
 ];
