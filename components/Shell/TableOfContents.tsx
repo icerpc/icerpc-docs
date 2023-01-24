@@ -37,7 +37,7 @@ export default function TableOfContents({ toc }) {
       {headings.length > 1 ? (
         <nav className="toc">
           <h2 className="dark:text-white">On this page</h2>
-          <ul className="m-0 p-0">
+          <ul className="m-0 max-h-[50vh] overflow-y-auto p-0">
             {headings.map((item) => {
               const href = `#${item.id}`;
               const active =
@@ -103,7 +103,7 @@ export default function TableOfContents({ toc }) {
                 position: sticky;
                 top: calc(5rem + var(--nav-height));
                 max-height: calc(100vh - var(--nav-height));
-                flex: 0 0 20rem;
+                flex: 0 0 15rem;
                 align-self: flex-start;
                 margin-bottom: 1rem;
                 margin-left: 2rem;
