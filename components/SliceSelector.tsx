@@ -28,17 +28,19 @@ export default function SliceSelector() {
     <>
       <div className="m-0 my-4 w-full pr-6">
         <Tab.Group selectedIndex={selectedIndex} onChange={onChange}>
-          <Tab.List className=" flex space-x-1 rounded-xl bg-slate-100 p-1">
+          <Tab.List className=" flex gap-0 space-x-1 rounded-xl bg-transparent">
             {sliceVersions.map((version) => (
               <Tab
                 key={version}
                 className={({ selected }) =>
                   classNames(
-                    'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-primary',
-                    'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
+                    'w-full rounded border-[1.5px] bg-white px-2 py-2 text-xs font-medium uppercase',
+                    'text-sm leading-tight focus:outline-none focus:ring-0',
+                    'transition-shadow  duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg',
+                    ' dark:bg-[#32363c] dark:text-white',
                     selected
-                      ? 'bg-white shadow'
-                      : 'text-slate-400 hover:bg-white/[0.12] hover:text-white'
+                      ? 'border-2 border-primary bg-slate-100 text-primary dark:text-primary'
+                      : 'bg-slate-100 text-slate-500 hover:bg-opacity-80 hover:text-primary dark:border-darkBorder'
                   )
                 }
               >

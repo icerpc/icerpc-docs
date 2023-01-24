@@ -1,13 +1,14 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import React, { useEffect } from 'react';
-import { LanguageContext } from './LanguageSection';
 import { Platform, Platforms } from '../types';
 import { useAppContext } from '../context/state';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
+
+export const LanguageContext = React.createContext([]);
 
 // eslint-disable-next-line no-unused-vars
 export function LanguageSelector({ languages }) {

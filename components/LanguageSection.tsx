@@ -1,10 +1,8 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import React, { useEffect } from 'react';
-import { Platform, Platforms } from '../types';
+import { Platform } from '../types';
 import { useAppContext } from '../context/state';
-
-export const LanguageContext = React.createContext([]);
 
 export function LanguageSection({ language, children }) {
   if (!Object.values(Platform).includes(language)) {
@@ -30,18 +28,5 @@ export function LanguageSection({ language, children }) {
     }
   }, [platform]);
 
-  if (language !== currentTab) {
-    return null;
-  }
-
-  return (
-    <LanguageContext.Provider value={currentTab as any}>
-      <ul role="tablist" className="flex flex-row items-center">
-        {Platforms.map((platform) => (
-          <li key={platform}></li>
-        ))}
-      </ul>
-      {children}
-    </LanguageContext.Provider>
-  );
+  return language == currentTab ? children : null;
 }
