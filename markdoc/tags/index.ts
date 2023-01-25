@@ -5,7 +5,6 @@ import { linkCard } from './mini-card.markdoc';
 import { languageSection, languageSelector } from './languages.markdoc';
 
 export * from './flow.markdoc';
-export * from './callout.markdoc';
 export * from './title.markdoc';
 export * from './grid.markdoc';
 export * from './card.markdoc';

@@ -1,8 +1,8 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { HorizontalDivider } from '../../components';
+import { Divider } from '../../components/Divider';
 
 export const divider = {
-  render: HorizontalDivider,
+  render: Divider,
   attributes: {}
 };

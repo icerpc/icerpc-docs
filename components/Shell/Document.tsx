@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Footer, HorizontalDivider } from '..';
+import { Footer, Divider } from '..';
 import { Feedback } from './Feedback';
 import { PageHistory } from './PageHistory';
 
@@ -19,11 +19,11 @@ export function Document({ children }) {
           {isDocs && (
             <>
               <PageHistory />
-              <HorizontalDivider />
+              <Divider />
               <Feedback />
             </>
           )}
-          <HorizontalDivider />
+          <Divider />
           <Footer {...{ children }} />
         </div>
       </article>

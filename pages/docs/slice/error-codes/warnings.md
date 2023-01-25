@@ -9,6 +9,8 @@ toc: false
 
 The user supplied either a reference or source file more than once.
 
+{% divider /%}
+
 ## W002
 
 The user-supplied doc comment indicated that the operation should contain a parameter that it does not have.
@@ -24,6 +26,8 @@ interface I {
 }
 
 ```
+
+{% divider /%}
 
 ## W003
 
@@ -41,14 +45,12 @@ interface I {
 
 ```
 
+{% divider /%}
+
 ## W004
 
 The user-supplied doc comment indicated that the entity should throw, but the entity does not support throwing.
 
-{% callout %}
-FOo
-Markdoc is open-source—check out its [source](http://github.com/markdoc/markdoc) to see how it works.
-{% /callout %}
 Erroneous code example:
 
 ```slice
@@ -57,6 +59,8 @@ module Foo;
 /// @throws When something goes wrong.
 struct S {};
 ```
+
+{% divider /%}
 
 ## W005
 
@@ -71,6 +75,8 @@ module Foo;
 interface I {};
 ```
 
+{% divider /%}
+
 ## W006
 
 The user-supplied doc comment tag is invalid.
@@ -83,6 +89,8 @@ module Foo;
 /// @invalid
 interface I {};
 ```
+
+{% divider /%}
 
 ## W007
 
@@ -100,6 +108,8 @@ interface I {
     op() -> S; // Usage of deprecated entity.
 }
 ```
+
+{% divider /%}
 
 ## W008
 
