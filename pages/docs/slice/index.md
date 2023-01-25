@@ -1,6 +1,7 @@
 ---
 title: Overview
 description: An introduction to Slice
+toc: false
 ---
 
 {% title /%}
@@ -8,6 +9,19 @@ description: An introduction to Slice
 The Slice is a Interface Description Language (IDL) used to describe the structure of data in your application
 and the operations that can be performed on it. It is a language and platform agnostic way to describe the flow
 of data in your application.
+
+### Quick Links
+
+{% grid rows=2 columns=3 %}
+
+{% mini-card title="Lexical Rules" description="foo" href="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Hello" /%}
+{% mini-card title="Source Files" description="foo" href="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Stream" /%}
+{% mini-card title="Compilation" description="foo" href="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Upload" /%}
+{% mini-card title="Error Code Reference" description="foo" href="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Upload" /%}
+
+{% /grid %}
+
+## What is slice
 
 Below is a simple example of a showing the Slice language . It defines a module named
 `Hello`, a struct named `Person`, and an interface named `Greeter`. The `Greeter` interface defines a single operation,

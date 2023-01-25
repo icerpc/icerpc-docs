@@ -6,7 +6,8 @@ show_toc: false
 
 {% title /%}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 ### Quick Links
 
@@ -37,11 +38,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
    columns=3
    trailingLink={label:"View all on GitHub",link:"https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples"} %}
 
-{% mini-card title="Hello" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Hello" /%}
-{% mini-card title="Stream" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Stream" /%}
-{% mini-card title="Upload" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Upload" /%}
-{% mini-card title="Compress" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Compress" /%}
-{% mini-card title="Secure" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Secure" /%}
-{% mini-card title="Retry" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Retry" /%}
+{% link-card title="Hello" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Hello" /%}
+{% link-card title="Stream" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Stream" /%}
+{% link-card title="Upload" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Upload" /%}
+{% link-card title="Compress" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Compress" /%}
+{% link-card title="Secure" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Secure" /%}
+{% link-card title="Retry" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Retry" /%}
 
 {% /grid %}

@@ -6,9 +6,7 @@ import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
 import { Inter } from '@next/font/google';
 import { SideNav, TopNav } from '../components';
-import dynamic from 'next/dynamic';
 import { AppWrapper } from '../context/state';
-
 import '../public/globals.css';
 import 'reactflow/dist/style.css';
 
@@ -18,53 +16,26 @@ import type { MarkdocNextJsPageProps } from '@markdoc/next.js';
 const inter = Inter({ subsets: ['latin'] });
 const TITLE = 'TODO';
 const DESCRIPTION = 'TODO';
-const TableOfContents = dynamic(
-  () => import('../components/Shell/TableOfContents'),
-  {
-    ssr: false
-  }
-);
 
 export type MyAppProps = MarkdocNextJsPageProps;
-
-function collectHeadings(node, sections = []) {
-  if (node) {
-    if (node.name === 'Heading') {
-      const title = node.children[0];
-
-      if (typeof title === 'string') {
-        sections.push({
-          ...node.attributes,
-          title
-        });
-      }
-    }
-
-    if (node.children) {
-      for (const child of node.children) {
-        collectHeadings(child, sections);
-      }
-    }
-  }
-
-  return sections;
-}
 
 export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
   const { markdoc } = pageProps;
   const router = useRouter();
   const isDocs = router.asPath.startsWith('/docs');
   const isLandingPage = router.pathname === '/';
-  const toc = pageProps.markdoc?.content
-    ? collectHeadings(pageProps.markdoc.content)
-    : [];
-  const showToc =
-    isDocs &&
-    toc.some((header) => header.level > 1) &&
-    (markdoc.frontmatter.toc == true || markdoc.frontmatter.toc == undefined);
 
-  let title = markdoc.frontmatter.title ?? TITLE;
-  let description = markdoc.frontmatter.description ?? DESCRIPTION;
+  let title = TITLE;
+  let description = DESCRIPTION;
+
+  if (markdoc) {
+    if (markdoc.frontmatter.title) {
+      title = markdoc.frontmatter.title;
+    }
+    if (markdoc.frontmatter.description) {
+      description = markdoc.frontmatter.description;
+    }
+  }
 
   return (
     <div className={`${isLandingPage ? 'p-16' : ''}`}>
@@ -85,7 +56,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
               {isDocs ? <SideNav path={router.pathname} /> : null}
             </div>
             <div
-              className={`ml-auto max-w-screen-lg grow pt-[var(--nav-height)] ${
+              className={`flex max-w-[1100px] justify-center pt-[var(--nav-height)] pr-0 ${
                 isLandingPage ? 'ml-0' : 'lg:ml-60'
               }`}
             >
@@ -94,11 +65,6 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
                 <Component {...pageProps} />
               </main>
             </div>
-            {showToc ? (
-              <TableOfContents toc={toc} />
-            ) : (
-              <div className="flex-[0_0_15rem]" />
-            )}
           </div>
         </AppWrapper>
       </ThemeProvider>

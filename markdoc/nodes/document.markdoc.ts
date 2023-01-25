@@ -6,9 +6,16 @@ import { Document } from '../../components/Shell/Document';
 export default {
   ...nodes.document,
   render: Document,
+  attributes: nodes.document.attributes,
   transform(node, config) {
-    const children = node.transformChildren(config);
-
-    return new Tag(this.render, { config: children }, children);
+    const frontmatter = node.attributes.frontmatter
+      .split('\n')
+      .reduce((acc, line) => {
+        const [key, value] = line.split(':');
+        acc[key] = value.trim();
+        return acc;
+      }, {});
+    const children = node.transformChildren(config) ?? [];
+    return new Tag(this.render, { frontmatter: frontmatter }, children);
   }
 };

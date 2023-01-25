@@ -5,15 +5,40 @@ import { useRouter } from 'next/router';
 import { Footer, Divider } from '..';
 import { Feedback } from './Feedback';
 import { PageHistory } from './PageHistory';
+import dynamic from 'next/dynamic';
 
-export function Document({ children }) {
+const TableOfContents = dynamic(
+  () => import('../../components/Shell/TableOfContents'),
+  {
+    ssr: false
+  }
+);
+
+export function Document({ frontmatter, children }) {
   // Get the data for the next and previous links
   const path = useRouter().asPath;
   const isDocs = path.startsWith('/docs');
+  let showToc = frontmatter?.toc ?? isDocs;
+
+  // The table of contents is a list of headings, note that the title is stored under the key children
+  const toc =
+    (showToc &&
+      children instanceof Array &&
+      children
+        .filter((c) => c.type.name === 'Heading')
+        .map((node) => node.props)
+        .map((node) => {
+          return {
+            title: node.children,
+            id: node.id,
+            level: node.level
+          };
+        })) ||
+    [];
 
   return (
-    <div>
-      <article className="m-auto flex w-11/12 flex-row bg-white pt-12 pl-16  dark:bg-[rgb(33,35,39)]">
+    <>
+      <article className="flex grow flex-row justify-between bg-white pr-8 pl-14 pt-12 dark:bg-[rgb(33,35,39)]">
         <div className="root">
           {children}
           {isDocs && (
@@ -26,6 +51,7 @@ export function Document({ children }) {
           <Divider />
           <Footer {...{ children }} />
         </div>
+        {showToc == true ? <TableOfContents toc={toc} /> : null}
       </article>
       <style jsx>
         {`
@@ -66,7 +92,7 @@ export function Document({ children }) {
           .root {
             display: inline-block;
             width: 100%;
-            margin-right: 0rem;
+            margin-right: 1rem;
           }
 
           @media screen and (min-width: 1400px) {
@@ -76,6 +102,6 @@ export function Document({ children }) {
           }
         `}
       </style>
-    </div>
+    </>
   );
 }

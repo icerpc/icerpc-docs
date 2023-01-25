@@ -7,6 +7,10 @@ import { useRouter } from 'next/router';
 import { SearchButton } from './SearchButton';
 import { ThemeToggle } from '../ThemeToggle';
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
+
 export function TopNav() {
   const router = useRouter();
 
@@ -19,7 +23,12 @@ export function TopNav() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 z-[100] flex h-[var(--nav-height)] w-full items-center border-b border-lightBorder bg-white pl-[17rem] text-sm font-medium dark:border-darkBorder dark:bg-[rgb(33,35,39)]">
+    <nav
+      className={classNames(
+        'fixed top-0 left-0 z-[100] flex h-[var(--nav-height)] w-full items-center border-b border-lightBorder',
+        'bg-white pl-[17rem] text-sm font-medium  dark:border-darkBorder dark:bg-[rgb(33,35,39)]'
+      )}
+    >
       <div className="nav-container">
         <div className="left-col">
           <SearchButton />

@@ -3,7 +3,6 @@
 import { IconContext } from 'react-icons';
 import { BsBox, BsQuestionSquare, BsTerminal, BsGithub } from 'react-icons/bs';
 import { SiDotnet } from 'react-icons/si';
-
 import Link from 'next/link';
 
 function Icon(icon: string) {
@@ -19,7 +18,19 @@ function Icon(icon: string) {
   }
 }
 
-export function MiniCard({ title, link }) {
+export function MiniCard({ title, description, href }) {
+  return (
+    <Link
+      href={href}
+      className="flex h-[100px] flex-col justify-center gap-2 rounded-md border-[1.5px] p-4 transition-shadow  duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg"
+    >
+      <h4 className="m-0 pt-[0.5rem] font-semibold text-primary">{title}</h4>
+      {description}
+    </Link>
+  );
+}
+
+export function MiniLink({ title, link }) {
   return (
     <a
       href={link ? link : '#'}

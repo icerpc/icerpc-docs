@@ -103,12 +103,11 @@ export default function TableOfContents({ toc }) {
                 position: sticky;
                 top: calc(5rem + var(--nav-height));
                 max-height: calc(100vh - var(--nav-height));
-                flex: 0 0 15rem;
                 align-self: flex-start;
                 margin-bottom: 1rem;
-                margin-left: 2rem;
+                margin-left: 1.5rem;
                 padding-left: 2rem;
-                padding-right: 3rem;
+                padding-right: 2rem;
                 border-left: 1px solid
                   ${resolvedTheme == 'dark' ? '#31363C' : '#dce6e9'};
               }
