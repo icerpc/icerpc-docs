@@ -48,7 +48,7 @@ export function Document({ frontmatter, children }) {
           <Divider />
           <Footer {...{ children }} />
         </div>
-        {showToc == true ? <TableOfContents toc={toc} /> : null}
+        {showToc && <TableOfContents toc={toc} />}
       </article>
       <style jsx>
         {`

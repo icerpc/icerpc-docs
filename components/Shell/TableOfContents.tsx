@@ -3,86 +3,44 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 import { useHeadsObserver } from '../../hooks/hooks';
 import { FiEdit, FiMessageSquare } from 'react-icons/fi';
 import { AppLink } from '../Nodes/AppLink';
-import { useTheme } from 'next-themes';
+
+const resolvePath = (pathName: string): string => {
+  return ['/docs/getting-started', '/docs/rpc', '/docs/slice'].includes(
+    pathName
+  )
+    ? pathName + '/index.md'
+    : pathName + '.md';
+};
 
 export default function TableOfContents({ toc }) {
-  const [headings, setHeadings] = useState([]);
   const { activeId } = useHeadsObserver(toc);
-  const router = useRouter();
-  const { resolvedTheme } = useTheme();
-  const currentPath = [
-    '/docs/getting-started',
-    '/docs/rpc',
-    '/docs/slice'
-  ].includes(router.pathname)
-    ? router.pathname + '/index.md'
-    : router.pathname + '.md';
-
-  useEffect(() => {
-    const elements = toc.filter(
-      (item) =>
-        item.id &&
-        (item.level === 2 || item.level === 3) &&
-        item.title !== 'Next steps'
-    );
-    setHeadings(elements);
-  }, [setHeadings, toc]);
+  const currentPath = resolvePath(useRouter().pathname);
+  const items = toc.filter(
+    (item) =>
+      item.id &&
+      (item.level === 2 || item.level === 3) &&
+      item.title !== 'Next steps'
+  );
 
   return (
     <>
-      {headings.length > 1 ? (
-        <nav className="toc">
-          <h2 className="dark:text-white">On this page</h2>
+      {items.length > 1 && (
+        <nav className="sticky top-[calc(5rem+var(--nav-height))] mb-4 ml-6 hidden max-h-[calc(100vh-var(--nav-height))] w-[300px] self-start border-l border-lightBorder px-8 lg:block">
+          <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider dark:text-white">
+            On this page
+          </h2>
           <ul className="m-0 max-h-[50vh] overflow-y-auto p-0">
-            {headings.map((item) => {
-              const href = `#${item.id}`;
-              const active =
-                typeof window !== 'undefined' && window.location.hash === href;
-              return (
-                <li
-                  key={item.id}
-                  className={[
-                    active ? 'active' : undefined,
-                    item.level === 3 ? 'padded' : undefined
-                  ]
-                    .filter(Boolean)
-                    .join(' ')}
-                >
-                  <Link
-                    href={`#${item.id}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const y =
-                        document
-                          .querySelector(`#${item.id}`)
-                          .getBoundingClientRect().top +
-                        window.pageYOffset -
-                        100;
-                      window.scrollTo({
-                        top: y,
-                        behavior: 'smooth'
-                      });
-                    }}
-                    style={{
-                      color:
-                        activeId === item.id
-                          ? 'var(--primary-color)'
-                          : 'var(--link-color)',
-                      textDecoration: 'none'
-                    }}
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              );
-            })}
+            {items.map((item) => (
+              <ListItem key={item.id} item={item} activeId={activeId} />
+            ))}
           </ul>
           <br />
-          <h2 className="dark:text-white">More</h2>
+          <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider dark:text-white">
+            More
+          </h2>
           <ul className="m-0 p-0" style={{ color: 'var(--primary-color)' }}>
             <MoreItem
               href={
@@ -97,68 +55,56 @@ export default function TableOfContents({ toc }) {
               Discussions
             </MoreItem>
           </ul>
-          <style jsx>
-            {`
-              nav {
-                position: sticky;
-                top: calc(5rem + var(--nav-height));
-                max-height: calc(100vh - var(--nav-height));
-                align-self: flex-start;
-                margin-bottom: 1rem;
-                margin-left: 1.5rem;
-                padding-left: 2rem;
-                padding-right: 2rem;
-                border-left: 1px solid
-                  ${resolvedTheme == 'dark' ? '#31363C' : '#dce6e9'};
-              }
-
-              h2 {
-                margin: 0 0 1rem 0rem;
-                text-transform: uppercase;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: 0.05em;
-              }
-
-              li {
-                list-style-type: none;
-                margin: 0 0 1rem 0rem;
-                font-size: 14px;
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-              }
-
-              li a {
-                text-decoration: none;
-              }
-
-              li a:hover,
-              li.active a {
-                text-decoration: none;
-              }
-              li.padded {
-                padding-left: 0rem;
-              }
-
-              @media screen and (max-width: 1200px) {
-                nav {
-                  display: none;
-                }
-              }
-            `}
-          </style>
         </nav>
-      ) : null}
+      )}
     </>
   );
 }
+
 const MoreItem = ({ href, children }) => {
   return (
     <li className="m-0 my-4 text-sm">
       <AppLink href={href}>
         <div className="flex items-center gap-[0.5em]">{children}</div>
       </AppLink>
+    </li>
+  );
+};
+const ListItem = ({ item, activeId }) => {
+  const href = `#${item.id}`;
+  const active = typeof window !== 'undefined' && window.location.hash === href;
+  return (
+    <li
+      key={item.id}
+      className={[
+        'mb-4 text-sm',
+        active ? 'active' : undefined,
+        item.level === 3 ? 'padded' : undefined
+      ]
+        .filter(Boolean)
+        .join(' ')}
+    >
+      <Link
+        href={href}
+        onClick={(e) => {
+          e.preventDefault();
+          const y =
+            document.querySelector(href).getBoundingClientRect().top +
+            window.pageYOffset -
+            100;
+          window.scrollTo({
+            top: y,
+            behavior: 'smooth'
+          });
+        }}
+        style={{
+          color:
+            activeId === item.id ? 'var(--primary-color)' : 'var(--link-color)',
+          textDecoration: 'none'
+        }}
+      >
+        {item.title}
+      </Link>
     </li>
   );
 };
