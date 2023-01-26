@@ -86,3 +86,20 @@ dictionary. The escape mechanism exists to permit keywords to be added to the Sl
 disruption to existing specifications: if a pre-existing specification happens to use a newly-introduced keyword, that
 specification can be fixed by simply prepending a backslash to the new keyword. Note that, as a matter of style, you
 should avoid using Slice keywords as identifiers (even though the backslash escapes allow you to do this).
+
+## Reserved Identifiers
+
+Slice reserves the identifier `Ice` and all identifiers beginning with `Ice` (in any capitalization) for the Ice
+implementation. For example, if you try to define a type named `Icecream`, the Slice compiler will issue an error
+message.
+
+{% callout %}
+
+You can suppress this behavior by using the `ice-prefix` Slice metadata directive, which enables definition of
+identifiers beginning with Ice. However, do not use this directive unless you are compiling the Slice definitions for
+the Ice run time itself.
+
+{% /callout %}
+
+Slice identifiers ending in any of the suffixes `Async`, `Disp`, `Helper`, `Holder`, `Prx`, and `Ptr` are also reserved.
+These endings are used by the various language mappings and are reserved to prevent name clashes in the generated code.
