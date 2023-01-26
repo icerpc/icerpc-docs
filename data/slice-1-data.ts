@@ -1,68 +1,56 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { SideBarSourceType, SLICE_BASE_URL } from './types';
+import { SideBarSourceType, SLICE_BASE_URL } from 'types';
 
 export const slice1Data: SideBarSourceType[] = [
   {
     title: 'Overview',
-    path: `${SLICE_BASE_URL}`,
-    kind: 'link'
+    path: `${SLICE_BASE_URL}`
   },
   {
     title: 'Syntax',
-    kind: 'category',
     links: [
       {
         title: 'Lexical Rules',
-        path: `${SLICE_BASE_URL}/syntax/lexical-rules/`,
-        kind: 'link'
+        path: `${SLICE_BASE_URL}/syntax/lexical-rules/`
       },
       {
         title: 'Slice Source Files',
-        path: `${SLICE_BASE_URL}/syntax/source-files/`,
-        kind: 'link'
+        path: `${SLICE_BASE_URL}/syntax/source-files/`
       },
       {
         title: 'Keywords',
-        path: `${SLICE_BASE_URL}/syntax/keywords/`,
-        kind: 'link'
+        path: `${SLICE_BASE_URL}/syntax/keywords/`
       }
     ]
   },
   {
     title: 'Slice1 Only',
-    kind: 'category',
     links: [
       {
         title: 'Lexical Rules',
-        path: `${SLICE_BASE_URL}/slice1/foo/`,
-        kind: 'link'
+        path: `${SLICE_BASE_URL}/slice1/foo/`
       },
       {
         title: 'Slice Source Files',
-        path: `${SLICE_BASE_URL}/slice1/foo/`,
-        kind: 'link'
+        path: `${SLICE_BASE_URL}/slice1/foo/`
       },
       {
         title: 'Keywords',
-        path: `${SLICE_BASE_URL}/slice1/foo/`,
-        kind: 'link'
+        path: `${SLICE_BASE_URL}/slice1/foo/`
       }
     ]
   },
   {
     title: 'Error Code Reference',
-    kind: 'category',
     links: [
       {
         title: 'Errors',
-        path: `${SLICE_BASE_URL}/error-codes/errors/`,
-        kind: 'link'
+        path: `${SLICE_BASE_URL}/error-codes/errors/`
       },
       {
         title: 'Warnings',
-        path: `${SLICE_BASE_URL}/error-codes/warnings/`,
-        kind: 'link'
+        path: `${SLICE_BASE_URL}/error-codes/warnings/`
       }
     ]
   }

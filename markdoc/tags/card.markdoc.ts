@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { Card } from '../../components/Card';
+import { Card } from 'components/Card';
 import { Tag, nodes } from '@markdoc/markdoc';
 
 export const card = {

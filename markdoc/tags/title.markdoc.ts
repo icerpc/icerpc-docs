@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import { Tag } from '@markdoc/markdoc';
-import { Title } from '../../components/Title';
+import { Title } from 'components/Title';
 
 export const title = {
   render: Title,

@@ -1,8 +1,8 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import { Tab } from '@headlessui/react';
-import { useAppContext } from '../context/state';
-import { sliceVersions } from '../types/slice-version.d';
+import { useAppContext } from 'context/state';
+import { sliceVersions } from 'types';
 import { useEffect, useState } from 'react';
 
 function classNames(...classes) {

@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { Hero } from '../../components/Hero';
+import { Hero } from 'components/Hero';
 
 export const hero = {
   render: Hero,

@@ -3,9 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useHeadsObserver } from '../../hooks/hooks';
+import { useHeadsObserver } from 'hooks/hooks';
 import { FiEdit, FiMessageSquare } from 'react-icons/fi';
-import { AppLink } from '../Nodes/AppLink';
+import { AppLink } from 'components/Nodes/AppLink';
 
 const resolvePath = (pathName: string): string => {
   return ['/docs/getting-started', '/docs/rpc', '/docs/slice'].includes(

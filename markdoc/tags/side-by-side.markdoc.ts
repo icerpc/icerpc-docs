@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { SideBySide } from '../../components/SideBySide';
+import { SideBySide } from 'components/SideBySide';
 
 export default {
   render: SideBySide,

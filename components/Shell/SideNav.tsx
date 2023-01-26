@@ -6,19 +6,15 @@ import Image from 'next/image';
 import { NextRouter, useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 import SliceSelector from '../SliceSelector';
-import { useAppContext } from '../../context/state';
+import { useAppContext } from 'context/state';
 
 // import components
-import { sideBarData, baseUrls } from '../../data/side-bar-data';
-import {
-  SideBarLink,
-  SideBarSourceType,
-  SideBarCategory
-} from '../../data/types';
+import { sideBarData, baseUrls } from 'data/side-bar-data';
+import { SideBarLink, SideBarSourceType, isCategory } from 'types';
 
 // import assets
-import lightIcon from '../../public/images/Light-Icon.svg';
-import darkIcon from '../../public/images/Dark-Icon.svg';
+import lightIcon from 'public/images/Light-Icon.svg';
+import darkIcon from 'public/images/Dark-Icon.svg';
 
 function createListItem(
   router: NextRouter,
@@ -62,8 +58,8 @@ function transformSideBarData(
   router: NextRouter,
   data: SideBarSourceType
 ): React.ReactElement[] {
-  if (data.kind == 'category') {
-    const category = data as SideBarCategory;
+  if (isCategory(data)) {
+    const category = data;
     return [
       <li key={category.title} className="list-none">
         <h2 className="my-3 text-sm font-bold text-[var(--text-color)] dark:text-white">

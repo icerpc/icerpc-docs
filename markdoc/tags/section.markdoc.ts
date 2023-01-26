@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { Section } from '../../components/Section';
+import { Section } from 'components/Section';
 
 export default {
   render: Section,

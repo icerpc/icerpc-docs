@@ -5,9 +5,9 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
 import { Inter } from '@next/font/google';
-import { SideNav, TopNav } from '../components';
-import { AppWrapper } from '../context/state';
-import '../public/globals.css';
+import { SideNav, TopNav } from 'components';
+import { AppWrapper } from 'context/state';
+import '/public/globals.css';
 import 'reactflow/dist/style.css';
 
 import type { AppProps } from 'next/app';

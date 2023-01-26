@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import { Tag } from '@markdoc/markdoc';
-import Grid from '../../components/Grid';
+import Grid from 'components/Grid';
 
 export const grid = {
   render: Grid,

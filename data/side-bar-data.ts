@@ -1,7 +1,6 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { SliceVersion } from '../types/slice-version';
-import { SideBarSourceType } from './types';
+import { SliceVersion, SideBarSourceType } from 'types';
 import {
   slice1Data,
   slice2Data,
@@ -34,5 +33,7 @@ export const sideBarData = (
       }
     case RPC_CORE_BASE_URL:
       return rpcCoreData;
+    default:
+      return [];
   }
 };

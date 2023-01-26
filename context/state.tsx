@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import { createContext, useContext, useEffect, useState } from 'react';
-import { SliceVersion, Platform } from '../types';
+import { SliceVersion, Platform } from 'types';
 
 const AppContext = createContext([]);
 

@@ -4,8 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import { FaTwitter, FaGithub } from 'react-icons/fa';
 import { useRouter } from 'next/router';
-import { SearchButton } from './SearchButton';
-import { ThemeToggle } from '../ThemeToggle';
+import { SearchButton } from 'components/Shell/SearchButton';
+import { ThemeToggle } from 'components/ThemeToggle';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');

@@ -4,9 +4,9 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
-import { sideBarData, baseUrls } from '../../data/side-bar-data';
-import { SideBarLink } from '../../data/types';
-import { useAppContext } from '../../context/state';
+import { sideBarData, baseUrls } from 'data/side-bar-data';
+import { SideBarLink, isCategory } from 'types';
+import { useAppContext } from 'context/state';
 
 export function PageHistory() {
   // Get the data for the next and previous links
@@ -15,10 +15,10 @@ export function PageHistory() {
   const baseUrl = baseUrls.find((item) => path.startsWith(item));
   const data: SideBarLink[] = sideBarData(baseUrl, sliceVersion).flatMap(
     (item) => {
-      if (item.kind === 'category') {
+      if (isCategory(item)) {
         return item.links;
       } else {
-        return item as SideBarLink;
+        return item;
       }
     }
   );

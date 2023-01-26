@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import { nodes } from '@markdoc/markdoc';
-import { CodeBlock } from '../../components';
+import { CodeBlock } from 'components';
 
 export default {
   render: CodeBlock,

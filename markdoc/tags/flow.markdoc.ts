@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import Flow from '../../components/Flow';
+import Flow from 'components/Flow';
 import { Tag } from '@markdoc/markdoc';
 
 export const flow = {

@@ -1,8 +1,8 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import React, { useEffect } from 'react';
-import { Platform, Platforms } from '../types';
-import { useAppContext } from '../context/state';
+import { Platform, Platforms } from 'types';
+import { useAppContext } from 'context/state';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');

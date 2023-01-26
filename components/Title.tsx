@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { Breadcrumbs } from './Breadcrumbs';
+import { Breadcrumbs } from 'components/Breadcrumbs';
 
 export function Title({ title, description, breadcrumbs }) {
   return (

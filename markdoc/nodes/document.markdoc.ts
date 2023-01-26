@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import { Tag, nodes } from '@markdoc/markdoc';
-import { Document } from '../../components/Nodes/Document';
+import { Document } from 'components/Nodes/Document';
 
 export default {
   ...nodes.document,

@@ -1,8 +1,8 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import React, { useEffect } from 'react';
-import { Platform } from '../types';
-import { useAppContext } from '../context/state';
+import { Platform } from 'types';
+import { useAppContext } from 'context/state';
 
 export function LanguageSection({ language, children }) {
   if (!Object.values(Platform).includes(language)) {
