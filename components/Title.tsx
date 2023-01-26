@@ -1,6 +1,5 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import * as React from 'react';
 import { Breadcrumbs } from './Breadcrumbs';
 
 export function Title({ title, description, breadcrumbs }) {

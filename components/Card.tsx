@@ -22,10 +22,10 @@ export function MiniCard({ title, description, href }) {
   return (
     <Link
       href={href}
-      className="flex h-[100px] flex-col justify-center gap-2 rounded-md border-[1.5px] p-4 transition-shadow  duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg"
+      className="h-[150px]  gap-2 rounded-md border-[1.5px] p-4 transition-shadow  duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg"
     >
       <h4 className="m-0 pt-[0.5rem] font-semibold text-primary">{title}</h4>
-      {description}
+      <div className="mt-2 ">{description}</div>
     </Link>
   );
 }

@@ -1,7 +1,6 @@
 ---
 title: Overview
 description: An introduction to Slice
-toc: false
 ---
 
 {% title /%}
@@ -14,10 +13,10 @@ of data in your application.
 
 {% grid rows=2 columns=3 %}
 
-{% mini-card title="Lexical Rules" description="foo" href="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Hello" /%}
-{% mini-card title="Source Files" description="foo" href="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Stream" /%}
-{% mini-card title="Compilation" description="foo" href="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Upload" /%}
-{% mini-card title="Error Code Reference" description="foo" href="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Upload" /%}
+{% mini-card title="Lexical Rules" description="An introduction to the Lexical Rules of Slice" href="/docs/slice/syntax/lexical-rules" /%}
+{% mini-card title="Source Files" description="How Slice files are structured" href="/docs/slice/syntax/source-files" /%}
+{% mini-card title="Compilation" description="From source files to generated code" href="/docs/slice/syntax/source-files" /%}
+{% mini-card title="Error Code Reference" description="A catalogue of all warnings and errors that can occur during compilation" href="/docs/slice/error-codes/errors" /%}
 
 {% /grid %}
 

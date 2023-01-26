@@ -1,7 +1,5 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import * as React from 'react';
-
 export function Hero() {
   return (
     <div className="flex flex-col text-center">

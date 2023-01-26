@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useHeadsObserver } from '../../hooks/hooks';
 import { FiEdit, FiMessageSquare } from 'react-icons/fi';
-import { AppLink } from '../AppLink';
+import { AppLink } from '../Nodes/AppLink';
 import { useTheme } from 'next-themes';
 
 export default function TableOfContents({ toc }) {

@@ -1,7 +1,5 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import * as React from 'react';
-
 export function Section({ children, className }) {
   return (
     <div className={['section', className].filter(Boolean).join(' ')}>

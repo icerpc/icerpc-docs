@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { AppLink } from '../../components/AppLink';
+import { AppLink } from '../../components/Nodes/AppLink';
 
 export default {
   render: AppLink,

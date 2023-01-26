@@ -3,16 +3,13 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { Footer, Divider } from '..';
-import { Feedback } from './Feedback';
-import { PageHistory } from './PageHistory';
+import { Feedback } from '../Shell/Feedback';
+import { PageHistory } from '../Shell/PageHistory';
 import dynamic from 'next/dynamic';
 
-const TableOfContents = dynamic(
-  () => import('../../components/Shell/TableOfContents'),
-  {
-    ssr: false
-  }
-);
+const TableOfContents = dynamic(() => import('../Shell/TableOfContents'), {
+  ssr: false
+});
 
 export function Document({ frontmatter, children }) {
   // Get the data for the next and previous links

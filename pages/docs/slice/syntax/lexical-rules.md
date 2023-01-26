@@ -6,85 +6,83 @@ breadcrumbs:
     href: /
   - name: Slice
     href: /docs/slice
-  - name: Getting started
-    href: /docs/slice/getting-started
 ---
 
 {% title /%}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+Slice's lexical rules are very similar to those of C++ and Java, except for some differences for identifiers.
 
-## Section code with code block
+## Comments
 
-First, clone this repo and install the dependencies required:
+Slice definitions permit both the C and the C++ style of writing comments:
 
-```bash
-npm install
-# or
-yarn install
+```slice
+/*
+ * C-style comment.
+ */
+
+// C++-style comment extending to the end of this line.
 ```
 
-Then, run the development server:
+## Identifiers
 
-```bash
-npm run dev
-# or
-yarn dev
+dentifiers begin with an alphabetic character followed by any number of alphabetic characters or digits. Underscores are
+also permitted in identifiers with the following limitations:
+
+- An identifier cannot begin or end with an underscore
+- An identifier cannot contain multiple consecutive Underscores
+
+Given these rules, the identifier `get_account_name` is legal but not `_account`, `account_`, or `get__account`.
+
+Slice identifiers are restricted to the ASCII range of alphabetic characters and cannot contain non-English letters,
+uch as Å. (Supporting non-ASCII identifiers would make it very difficult to map Slice to target languages that lack
+support for this feature.)
+
+## Case Sensitivity
+
+Identifiers are case-insensitive but must be capitalized consistently. For example, TimeOfDay and TIMEOFDAY are
+considered the same identifier within a naming scope. However, Slice enforces consistent capitalization. After you have
+introduced an identifier, you must capitalize it consistently throughout; otherwise, the compiler will reject it as
+illegal. This rule exists to permit mappings of Slice to languages that ignore case in identifiers as well as to
+languages that treat differently capitalized identifiers as distinct.
+
+## Identifiers That Are Keywords
+
+You can define Slice identifiers that are keywords in one or more implementation languages. For example, switch is a
+perfectly good Slice identifier but is a C++ and Java keyword. Each language mapping defines rules for dealing with
+such identifiers. The solution typically involves using a prefix to map away from the keyword. For example, the Slice
+identifier switch is mapped to \_cpp_switch in C++ and \_switch in Java.
+
+The rules for dealing with keywords can result in hard-to-read source code. Identifiers such as native, throw, or export
+will clash with C++ or Java keywords (or both). To make life easier for yourself and others, try to avoid Slice
+identifiers that are implementation language keywords. Keep in mind that mappings for new languages may be added to Ice
+in the future. While it is not reasonable to expect you to compile a list of all keywords in all popular programming
+languages, you should make an attempt to avoid at least common keywords. Slice identifiers such as self, import, and
+while are definitely not a good idea.
+
+## Escaped Identifiers
+
+It is possible to use a Slice keyword as an identifier by prefixing the keyword with a backslash, for example:
+
+```slice
+struct dictionary     // Error!
+{
+    // ...
+}
+
+struct \dictionary    // OK
+{
+    // ...
+}
+
+struct \foo           // Legal, same as "struct foo"
+{
+    // ...
+}
 ```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-
-## Section with flow
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-
-{% flow
-   nodes=[
-    {
-      id: "1",
-      data: { label: "Node 1" },
-      position: { x: 250, y: 5 }
-    },
-    {
-      id: "2",
-      data: { label: "Node 2" },
-      position: { x: 100, y: 100 }
-    },
-    {
-      id: "3",
-      data: { label: "Node 3" },
-      position: { x: 400, y: 100 }
-    }
-  ]
-  edges=[
-    { id: "e1-2", source: "1", target: "2" },
-    { id: "e1-3", source: "1", target: "3" }
-  ]
-/%}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-
-## Section with side by side content
-
-{% side-by-side %}
-
-```python
-
-def hello(name):
-  print("Hello " + name + "!")
-  x = 1
-  y = 2
-  print(x + y)
-
-```
-
-This section shows how using the side-by-side component will allow you so split the content into two columns with a
-vertical divider.
-
-{% /side-by-side %}
-
-## Section showing callout component
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+The backslash escapes the usual meaning of a keyword; in the preceding example, \dictionary is treated as the identifier
+dictionary. The escape mechanism exists to permit keywords to be added to the Slice language over time with minimal
+disruption to existing specifications: if a pre-existing specification happens to use a newly-introduced keyword, that
+specification can be fixed by simply prepending a backslash to the new keyword. Note that, as a matter of style, you
+should avoid using Slice keywords as identifiers (even though the backslash escapes allow you to do this).

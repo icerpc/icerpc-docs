@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import * as React from 'react';
+import React from 'react';
 
 export function Heading({ id = '', level = 1, children, className }) {
   const style = {

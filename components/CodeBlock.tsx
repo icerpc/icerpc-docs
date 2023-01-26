@@ -29,23 +29,25 @@ const commandLineLanguages = [
 
 Prism.languages.slice = {
   keyword: /\b(interface|module|struct|class|exception|enum|throws)\b/,
-  punctuation: /[{}[\];(),.:]/,
-  number: /\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)[ful]*\b/i,
   comment: [
     {
-      pattern: /(^|[^\\])\/\*[\w\W]*?\*\//,
-      lookbehind: true
+      pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
+      lookbehind: true,
+      greedy: true
     },
     {
       pattern: /(^|[^\\:])\/\/.*/,
-      lookbehind: true
+      lookbehind: true,
+      greedy: true
     }
   ],
   string: {
-    pattern: /(^|[^\\])"(?:\\[\s\S]|[^"\\])*"/,
-    lookbehind: true
+    pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+    greedy: true
   },
-  operator: /[-+]{1,2}|!|<=?|>=?|={1,3}|&{1,2}|\|?\||\?|\*|\/|~|\^|%/,
+  number: /\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?/i,
+  operator: /[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/,
+  punctuation: /[{}[\];(),.:]/,
   builtin:
     /\b(?:bool|int8|uint8|int16|uint16|int32|uint32|varint32|varuint32|int64|uint64|varint62|varuint62|float32|float64|string)\b/
 };
