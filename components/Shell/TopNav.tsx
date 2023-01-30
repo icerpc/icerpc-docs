@@ -29,12 +29,19 @@ export const TopNav = () => {
         'bg-white pl-[17rem] text-sm font-medium  dark:border-darkBorder dark:bg-[rgb(33,35,39)]'
       )}
     >
-      <div className="nav-container">
-        <div className="left-col">
+      <div className="flex w-screen items-center justify-between">
+        <div className="flex flex-1 items-start">
           <SearchButton />
         </div>
-        <div className="right-col">
-          <Link href="/" className={router.pathname == '/' ? 'active' : ''}>
+        <div className="mr-0 flex h-1/2 items-center justify-end gap-10 pr-8 hover:[&>a]:text-primary">
+          <Link
+            href="/"
+            className={
+              router.pathname == '/'
+                ? 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100'
+                : ''
+            }
+          >
             Home
           </Link>
           <Link
@@ -61,80 +68,26 @@ export const TopNav = () => {
           >
             RPC Core
           </Link>
-          <div className="icons">
-            <div className="b-lightBorder left-1/2 h-[calc(65px-40px)] border-l-[1.5px] dark:border-darkBorder" />
+          <div className="flex items-center gap-5 pl-4">
+            <div className="left-1/2 h-[calc(65px-40px)] border-l-[1.5px] border-lightBorder dark:border-darkBorder" />
             <ThemeToggle />
-            <a href="https://github.com/zeroc-ice" aria-label="Github">
+            <a
+              className="hover:text-primary"
+              href="https://github.com/zeroc-ice"
+              aria-label="Github"
+            >
               <FaGithub size={20} />
             </a>
-            <a href="https://twitter.com/zeroc" aria-label="Twitter">
+            <a
+              className="hover:text-primary"
+              href="https://twitter.com/zeroc"
+              aria-label="Twitter"
+            >
               <FaTwitter size={20} />
             </a>
           </div>
         </div>
       </div>
-      <style jsx>
-        {`
-          .active {
-            color: var(--primary-color);
-            opacity: 1;
-            text-decoration: underline;
-            text-decoration-thickness: 2px;
-            text-underline-offset: 1.5rem;
-          }
-
-          .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-          }
-
-          .left-col {
-            display: flex;
-            align-items: flex-start;
-            flex: 1;
-          }
-
-          .right-col {
-            height: 50%;
-            gap: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 2rem;
-            margin-right: 0px;
-          }
-
-          .right-col a:hover {
-            color: var(--primary-color);
-          }
-
-          .image-container {
-            display: flex;
-            align-items: center;
-            width: 100px;
-          }
-
-          .icons {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding-left: 1rem;
-          }
-
-          @keyframes fadeIn {
-            0% {
-              opacity: 0;
-              text-decoration-thickness: 0px;
-            }
-            100% {
-              opacity: 1;
-              text-decoration-thickness: 2px;
-            }
-          }
-        `}
-      </style>
     </nav>
   );
 };

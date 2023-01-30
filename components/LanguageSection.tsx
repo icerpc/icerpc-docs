@@ -9,7 +9,7 @@ type Props = {
   children: ReactNode;
 };
 
-const LanguageSection = ({ language, children }: Props) => {
+export const LanguageSection = ({ language, children }: Props) => {
   if (!Object.values(Platform).includes(language)) {
     throw new Error(
       `Invalid language '${language}'. The language must be one of the following options: ${Object.values(

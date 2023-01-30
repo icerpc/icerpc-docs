@@ -41,8 +41,8 @@ export const Document = ({ frontmatter, children }: Props) => {
 
   return (
     <>
-      <article className="flex grow flex-row justify-between bg-white pr-8 pl-14 pt-12 dark:bg-[rgb(33,35,39)]">
-        <div className="root">
+      <article className="flex max-w-4xl grow flex-row justify-between bg-white pr-8 pl-14 pt-12 dark:bg-[rgb(33,35,39)] lg:max-w-none">
+        <div className="mr-4 inline-block w-full">
           {children}
           {isDocs && (
             <>
@@ -52,59 +52,10 @@ export const Document = ({ frontmatter, children }: Props) => {
             </>
           )}
           <Divider />
-          <Footer {...{ children }} />
+          <Footer />
         </div>
         {showToc && TableOfContents(toc)}
       </article>
-      <style jsx>
-        {`
-          .page-history-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 0;
-            margin: 0;
-            margin-top: 3rem;
-          }
-
-          .page-history {
-            height: 2.5rem;
-            display: flex;
-            flex-direction: row;
-            gap: 1rem;
-            padding: 1rem;
-            border-radius: 5px;
-            align-items: center;
-            text-decoration: none;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.2s ease;
-            color: var(--primary-color);
-          }
-
-          .page-history:hover {
-            background: rgb(233, 241, 254);
-          }
-
-          .page-history a {
-            color: var(--primary-color);
-            text-decoration: none;
-            text-align: center;
-          }
-
-          .root {
-            display: inline-block;
-            width: 100%;
-            margin-right: 1rem;
-          }
-
-          @media screen and (min-width: 1400px) {
-            article {
-              max-width: 1400px;
-            }
-          }
-        `}
-      </style>
     </>
   );
 };
