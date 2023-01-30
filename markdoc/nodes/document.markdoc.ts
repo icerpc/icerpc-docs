@@ -16,6 +16,6 @@ export default {
         return acc;
       }, {});
     const children = node.transformChildren(config) ?? [];
-    return new Tag(this.render, { frontmatter: frontmatter }, children);
+    return new Tag(`${this.render}`, { frontmatter: frontmatter }, children);
   }
 };

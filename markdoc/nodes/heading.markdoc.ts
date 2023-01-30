@@ -29,6 +29,6 @@ export default {
     const children = node.transformChildren(config);
     const id = generateID(children, attributes);
 
-    return new Tag(this.render, { ...attributes, id }, children);
+    return new Tag(`${this.render}`, { ...attributes, id }, children);
   }
 };

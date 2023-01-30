@@ -6,22 +6,20 @@ import Link from 'next/link';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import { sideBarData, baseUrls } from 'data/side-bar-data';
 import { SideBarLink, isCategory } from 'types';
-import { useAppContext } from 'context/state';
+import { useVersionContext } from 'context/state';
 
 export function PageHistory() {
   // Get the data for the next and previous links
-  const [sliceVersion] = useAppContext();
+  const { version } = useVersionContext();
   const path = useRouter().asPath;
-  const baseUrl = baseUrls.find((item) => path.startsWith(item));
-  const data: SideBarLink[] = sideBarData(baseUrl, sliceVersion).flatMap(
-    (item) => {
-      if (isCategory(item)) {
-        return item.links;
-      } else {
-        return item;
-      }
+  const baseUrl = baseUrls.find((item) => path.startsWith(item))!;
+  const data: SideBarLink[] = sideBarData(baseUrl, version).flatMap((item) => {
+    if (isCategory(item)) {
+      return item.links;
+    } else {
+      return item;
     }
-  );
+  });
 
   // Find the next and previous pages in the sidebar if they exist
   const index = data.map((item) => item.path).indexOf(path);

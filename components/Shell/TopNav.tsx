@@ -7,11 +7,11 @@ import { useRouter } from 'next/router';
 import { SearchButton } from 'components/Shell/SearchButton';
 import { ThemeToggle } from 'components/ThemeToggle';
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function TopNav() {
+export const TopNav = () => {
   const router = useRouter();
 
   const style = {
@@ -40,20 +40,24 @@ export function TopNav() {
           <Link
             href="/docs/getting-started"
             style={
-              router.pathname.startsWith('/docs/getting-started') ? style : null
+              router.pathname.startsWith('/docs/getting-started')
+                ? style
+                : undefined
             }
           >
             Getting Started
           </Link>
           <Link
             href="/docs/slice"
-            style={router.pathname.startsWith('/docs/slice') ? style : null}
+            style={
+              router.pathname.startsWith('/docs/slice') ? style : undefined
+            }
           >
             Slice
           </Link>
           <Link
             href="/docs/rpc"
-            style={router.pathname.startsWith('/docs/rpc') ? style : null}
+            style={router.pathname.startsWith('/docs/rpc') ? style : undefined}
           >
             RPC Core
           </Link>
@@ -133,4 +137,4 @@ export function TopNav() {
       </style>
     </nav>
   );
-}
+};

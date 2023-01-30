@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-export function Hero() {
+export const Hero = () => {
   return (
     <div className="flex flex-col text-center">
       <h1 className="mb-2 text-8xl font-semibold leading-tight tracking-tighter">
@@ -13,4 +13,4 @@ export function Hero() {
       <p>TODO</p>
     </div>
   );
-}
+};

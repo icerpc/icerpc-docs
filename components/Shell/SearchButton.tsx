@@ -15,7 +15,7 @@ function Search() {
   );
 }
 
-export function SearchButton() {
+export const SearchButton = () => {
   const { resolvedTheme } = useTheme();
   return (
     <>
@@ -95,4 +95,4 @@ export function SearchButton() {
       `}</style>
     </>
   );
-}
+};

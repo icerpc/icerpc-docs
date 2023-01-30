@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import { Card } from 'components/Card';
-import { Tag, nodes } from '@markdoc/markdoc';
+import { Tag, nodes, Node, Config } from '@markdoc/markdoc';
 
 export const card = {
   ...nodes.document,
@@ -24,9 +24,14 @@ export const card = {
       required: true
     }
   },
-  transform(node, config) {
+  transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);
     const { title, description, icon } = attributes;
-    return new Tag(this.render, { ...attributes, title, description, icon });
+    return new Tag(`${this.render}`, {
+      ...attributes,
+      title,
+      description,
+      icon
+    });
   }
 };

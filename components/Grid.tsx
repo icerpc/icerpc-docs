@@ -1,13 +1,22 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { BsBoxArrowUpRight, BsArrowRight } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
 
-export default function Grid({ children, columns, rows, trailingLink }) {
+type Props = {
+  children: ReactNode;
+  columns: number;
+  rows: number;
+  trailinglink?: { label: string; link: string };
+};
+
+export const Grid = ({ children, columns, rows, trailinglink }: Props) => {
+  console.log('Grid', trailinglink);
+
   // TODO: Add support for detecting external links.
   // eslint-disable-next-line no-unused-vars
-  const isExternalURL = (url) => {
+  const isExternalURL = (_url: string) => {
     return true;
   };
 
@@ -29,28 +38,29 @@ export default function Grid({ children, columns, rows, trailingLink }) {
     padding: '1.5em',
     paddingRight: '0'
   };
+
   return (
     <>
-      <div key={children} style={gridStyle}>
-        {children.map((child, index) => {
+      <div key={children!.toString()} style={gridStyle}>
+        {React.Children.toArray(children).map((child, index) => {
           return <React.Fragment key={index}>{child}</React.Fragment>;
         })}
       </div>
-      {trailingLink && (
+      {trailinglink && (
         <a
           style={{
             color: 'var(--primary-color)',
             textAlign: 'center',
             textDecoration: 'none'
           }}
-          href={trailingLink.link}
+          href={trailinglink.link}
           target="_blank"
           rel="noreferrer"
         >
           <div style={bottomStyle}>
-            {trailingLink.label}
+            {trailinglink.label}
             <IconContext.Provider value={{ size: '1em' }}>
-              {isExternalURL(trailingLink.link) ? (
+              {isExternalURL(trailinglink.link) ? (
                 <BsBoxArrowUpRight />
               ) : (
                 <BsArrowRight />
@@ -61,4 +71,4 @@ export default function Grid({ children, columns, rows, trailingLink }) {
       )}
     </>
   );
-}
+};

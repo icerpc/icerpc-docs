@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import Flow from 'components/Flow';
-import { Tag } from '@markdoc/markdoc';
+import { Tag, Node, Config } from '@markdoc/markdoc';
 
 export const flow = {
   render: Flow,
@@ -15,9 +15,9 @@ export const flow = {
       required: true
     }
   },
-  transform(node, config) {
+  transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);
     const { nodes, edges } = attributes;
-    return new Tag(this.render, { ...attributes, nodes, edges });
+    return new Tag(`${`${this.render}`}`, { ...attributes, nodes, edges });
   }
 };

@@ -1,11 +1,15 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import Link from 'next/link';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { MdHelpCenter, MdVideocam } from 'react-icons/md';
 
 // eslint-disable-next-line no-unused-vars
-export function Footer({ children }) {
+type Props = {
+  children: ReactNode;
+};
+
+export const Footer = ({ children }: Props) => {
   return (
     <footer className="mb-10 flex flex-row items-center justify-between p-0 ">
       <ul className="flex flex-col gap-2 p-0">
@@ -58,4 +62,4 @@ export function Footer({ children }) {
       </form>
     </footer>
   );
-}
+};

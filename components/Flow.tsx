@@ -31,7 +31,7 @@ const darkReactFlowStyle: CSSProperties = {
   fontSize: 12
 };
 
-function Flow({ nodes, edges }: { nodes: Node[]; edges: Edge[] }) {
+export const Flow = ({ nodes, edges }: { nodes: Node[]; edges: Edge[] }) => {
   const { resolvedTheme } = useTheme();
   return (
     nodes && (
@@ -52,6 +52,6 @@ function Flow({ nodes, edges }: { nodes: Node[]; edges: Edge[] }) {
       </div>
     )
   );
-}
+};
 
 export default Flow;

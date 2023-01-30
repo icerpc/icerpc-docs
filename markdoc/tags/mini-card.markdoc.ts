@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import { MiniLink, MiniCard } from 'components/Card';
-import { Tag, nodes } from '@markdoc/markdoc';
+import { Tag, nodes, Node, Config } from '@markdoc/markdoc';
 
 export const miniCard = {
   ...nodes.document,
@@ -39,9 +39,9 @@ export const linkCard = {
       required: true
     }
   },
-  transform(node, config) {
+  transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);
     const { title, link, icon } = attributes;
-    return new Tag(this.render, { ...attributes, title, link, icon });
+    return new Tag(`${this.render}`, { ...attributes, title, link, icon });
   }
 };

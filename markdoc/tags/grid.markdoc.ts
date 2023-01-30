@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { Tag } from '@markdoc/markdoc';
-import Grid from 'components/Grid';
+import { Tag, Config, Node } from '@markdoc/markdoc';
+import { Grid } from 'components/Grid';
 
 export const grid = {
   render: Grid,
@@ -15,15 +15,20 @@ export const grid = {
       type: 'number',
       required: true
     },
-    trailingLink: {
+    trailinglink: {
       type: 'object',
       required: false
     }
   },
-  transform(node, config) {
+  transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);
     const children = node.transformChildren(config);
-    const { rows, columns, trailingLink } = attributes;
-    return new Tag(this.render, { children, rows, columns, trailingLink });
+    const { rows, columns, trailinglink } = attributes;
+    return new Tag(`${`${this.render}`}`, {
+      children,
+      rows,
+      columns,
+      trailinglink
+    });
   }
 };

@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 
-export function Section({ children, className }) {
+type Props = {
+  children: React.ReactNode;
+  className: string;
+};
+
+export const Section = ({ children, className }: Props) => {
   return (
     <div className={['section', className].filter(Boolean).join(' ')}>
       <section>{children}</section>
@@ -31,4 +36,4 @@ export function Section({ children, className }) {
       </style>
     </div>
   );
-}
+};

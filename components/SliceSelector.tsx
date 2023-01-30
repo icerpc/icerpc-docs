@@ -1,21 +1,21 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import { Tab } from '@headlessui/react';
-import { useAppContext } from 'context/state';
+import { useVersionContext } from 'context/state';
 import { sliceVersions } from 'types';
 import { useEffect, useState } from 'react';
 
-function classNames(...classes) {
+const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(' ');
-}
+};
 
-export default function SliceSelector() {
-  const [version, setVersion] = useAppContext();
+export const SliceSelector = () => {
+  const { version, setVersion } = useVersionContext();
   const [selectedIndex, setSelectedIndex] = useState(
     sliceVersions.indexOf(version)
   );
 
-  function onChange(index) {
+  function onChange(index: number) {
     setVersion(sliceVersions[index]);
     setSelectedIndex(index);
   }
@@ -53,4 +53,4 @@ export default function SliceSelector() {
       </div>
     </>
   );
-}
+};

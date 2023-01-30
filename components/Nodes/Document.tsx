@@ -1,35 +1,41 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import React from 'react';
+import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import { Footer, Divider } from '..';
 import { Feedback } from '../Shell/Feedback';
 import { PageHistory } from '../Shell/PageHistory';
-import dynamic from 'next/dynamic';
+import { TableOfContents, TOC, TOCItem } from '../Shell/TableOfContents';
 
-const TableOfContents = dynamic(() => import('../Shell/TableOfContents'), {
-  ssr: false
-});
+type Props = {
+  frontmatter: {
+    title: string;
+    description: string;
+    toc?: boolean;
+  };
+  children: ReactNode;
+};
 
-export function Document({ frontmatter, children }) {
+export const Document = ({ frontmatter, children }: Props) => {
   // Get the data for the next and previous links
   const path = useRouter().asPath;
   const isDocs = path.startsWith('/docs');
   let showToc = frontmatter?.toc ?? isDocs;
 
   // The table of contents is a list of headings, note that the title is stored under the key children
-  const toc =
+  const toc: TOC =
     (showToc &&
       children instanceof Array &&
       children
         .filter((c) => c.type.name === 'Heading')
         .map((node) => node.props)
         .map((node) => {
-          return {
+          const item: TOCItem = {
             title: node.children,
             id: node.id,
             level: node.level
           };
+          return item;
         })) ||
     [];
 
@@ -48,7 +54,7 @@ export function Document({ frontmatter, children }) {
           <Divider />
           <Footer {...{ children }} />
         </div>
-        {showToc && <TableOfContents toc={toc} />}
+        {showToc && TableOfContents(toc)}
       </article>
       <style jsx>
         {`
@@ -101,4 +107,4 @@ export function Document({ frontmatter, children }) {
       </style>
     </>
   );
-}
+};

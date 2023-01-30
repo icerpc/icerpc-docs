@@ -1,8 +1,14 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { Breadcrumbs } from 'components/Breadcrumbs';
+import { Breadcrumbs, Breadcrumb } from 'components/Breadcrumbs';
 
-export function Title({ title, description, breadcrumbs }) {
+type Props = {
+  title: string;
+  description: string;
+  breadcrumbs: Breadcrumb[];
+};
+
+export const Title = ({ title, description, breadcrumbs }: Props) => {
   return (
     <div className="m-0 p-0">
       <Breadcrumbs breadcrumbs={breadcrumbs} />
@@ -12,4 +18,4 @@ export function Title({ title, description, breadcrumbs }) {
       </h2>
     </div>
   );
-}
+};

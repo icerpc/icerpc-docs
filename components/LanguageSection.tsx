@@ -1,10 +1,15 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import React, { useEffect } from 'react';
+import React, { useEffect, ReactNode } from 'react';
 import { Platform } from 'types';
-import { useAppContext } from 'context/state';
+import { usePlatformContext } from 'context/state';
 
-export function LanguageSection({ language, children }) {
+type Props = {
+  language: Platform;
+  children: ReactNode;
+};
+
+const LanguageSection = ({ language, children }: Props) => {
   if (!Object.values(Platform).includes(language)) {
     throw new Error(
       `Invalid language '${language}'. The language must be one of the following options: ${Object.values(
@@ -12,7 +17,7 @@ export function LanguageSection({ language, children }) {
       )}`
     );
   }
-  const [, , platform] = useAppContext();
+  const { platform } = usePlatformContext();
   const [currentTab, setCurrentTab] = React.useState(platform);
   useEffect(() => {
     switch (platform) {
@@ -23,10 +28,10 @@ export function LanguageSection({ language, children }) {
         setCurrentTab(platform);
         break;
       default:
-        setCurrentTab(platform.csharp);
+        setCurrentTab(Platform.csharp);
         break;
     }
   }, [platform]);
 
   return language == currentTab ? children : null;
-}
+};

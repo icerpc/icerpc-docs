@@ -18,7 +18,13 @@ function Icon(icon: string) {
   }
 }
 
-export function MiniCard({ title, description, href }) {
+type MiniCardProps = {
+  title: string;
+  description: string;
+  href: string;
+};
+
+export const MiniCard = ({ title, description, href }: MiniCardProps) => {
   return (
     <Link
       href={href}
@@ -28,9 +34,14 @@ export function MiniCard({ title, description, href }) {
       <div className="mt-2 ">{description}</div>
     </Link>
   );
-}
+};
 
-export function MiniLink({ title, link }) {
+type MiniLinkProps = {
+  title: string;
+  link: string;
+};
+
+export const MiniLink = ({ title, link }: MiniLinkProps) => {
   return (
     <a
       href={link ? link : '#'}
@@ -49,9 +60,16 @@ export function MiniLink({ title, link }) {
       </IconContext.Provider>
     </a>
   );
-}
+};
 
-export function Card({ title, description, icon, link }) {
+type CardProps = {
+  title: string;
+  description: string;
+  icon: string;
+  link: string;
+};
+
+export const Card = ({ title, description, icon, link }: CardProps) => {
   return (
     <Link key={title} href={link} style={{ textDecoration: 'None' }}>
       <div className="flex h-[15rem] flex-col rounded-md border-[1.5px] p-4 transition-shadow  duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg">
@@ -65,4 +83,4 @@ export function Card({ title, description, icon, link }) {
       </div>
     </Link>
   );
-}
+};

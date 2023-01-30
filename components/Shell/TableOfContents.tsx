@@ -1,11 +1,19 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useHeadsObserver } from 'hooks/hooks';
 import { FiEdit, FiMessageSquare } from 'react-icons/fi';
 import { AppLink } from 'components/Nodes/AppLink';
+
+export type TOC = TOCItem[];
+
+export type TOCItem = {
+  id: string;
+  title: string;
+  level: number;
+};
 
 const resolvePath = (pathName: string): string => {
   return ['/docs/getting-started', '/docs/rpc', '/docs/slice'].includes(
@@ -15,7 +23,7 @@ const resolvePath = (pathName: string): string => {
     : pathName + '.md';
 };
 
-export default function TableOfContents({ toc }) {
+export const TableOfContents = (toc: TOC) => {
   const { activeId } = useHeadsObserver(toc);
   const currentPath = resolvePath(useRouter().pathname);
   const items = toc.filter(
@@ -59,9 +67,14 @@ export default function TableOfContents({ toc }) {
       )}
     </>
   );
-}
+};
 
-const MoreItem = ({ href, children }) => {
+type MoreItemProps = {
+  href: string;
+  children: ReactNode;
+};
+
+const MoreItem = ({ href, children }: MoreItemProps) => {
   return (
     <li className="m-0 my-4 text-sm">
       <AppLink href={href}>
@@ -70,7 +83,13 @@ const MoreItem = ({ href, children }) => {
     </li>
   );
 };
-const ListItem = ({ item, activeId }) => {
+
+type ListItemProps = {
+  item: TOCItem;
+  activeId: string;
+};
+
+const ListItem = ({ item, activeId }: ListItemProps) => {
   const href = `#${item.id}`;
   const active = typeof window !== 'undefined' && window.location.hash === href;
   return (
@@ -89,7 +108,7 @@ const ListItem = ({ item, activeId }) => {
         onClick={(e) => {
           e.preventDefault();
           const y =
-            document.querySelector(href).getBoundingClientRect().top +
+            document.querySelector(href)!.getBoundingClientRect().top +
             window.pageYOffset -
             100;
           window.scrollTo({

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { useTheme } from 'next-themes';
 
-export function ThemeToggle() {
+export const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -32,4 +32,4 @@ export function ThemeToggle() {
       />
     </button>
   );
-}
+};

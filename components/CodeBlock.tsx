@@ -1,16 +1,19 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { BiCopy } from 'react-icons/bi';
 import { FaFile } from 'react-icons/fa';
 import { BsTerminalFill } from 'react-icons/bs';
 import copy from 'copy-to-clipboard';
-import Highlight, { defaultProps } from 'prism-react-renderer';
+import Highlight, { Language, defaultProps } from 'prism-react-renderer';
 import themeLight from 'prism-react-renderer/themes/dracula';
 import themeDark from 'prism-react-renderer/themes/dracula';
-import Prism from 'prism-react-renderer/prism';
 import { useTheme } from 'next-themes';
 
+// ts-ignore is required for the following line because the package doesn't have types
+// @ts-ignore
+import Prism from 'prism-react-renderer/prism';
+// @ts-ignore
 (typeof global !== 'undefined' ? global : window).Prism = Prism;
 
 require('prismjs/components/prism-rust');
@@ -52,12 +55,12 @@ Prism.languages.slice = {
     /\b(?:bool|int8|uint8|int16|uint16|int32|uint32|varint32|varuint32|int64|uint64|varint62|varuint62|float32|float64|string)\b/
 };
 
-export function CodeBlock({
-  children,
-  'data-language': language,
-  // eslint-disable-next-line no-unused-vars
-  multiple = false
-}) {
+type Props = {
+  children: string;
+  'data-language': string;
+};
+
+export const CodeBlock = ({ children, 'data-language': language }: Props) => {
   const [copied, setCopied] = useState(false);
 
   // Switch to dark theme if the user has dark mode enabled
@@ -79,6 +82,7 @@ export function CodeBlock({
     // Container for the code block
     <div className="my-5 rounded-md bg-[#20212a]">
       {/* Top bar with language and copy button */}
+
       <TopBar
         languageIcon={languageIcon}
         language={language}
@@ -92,8 +96,8 @@ export function CodeBlock({
       <Highlight
         {...defaultProps}
         theme={theme}
-        code={children.trim()}
-        language={language}
+        code={children?.trim()}
+        language={language as Language}
       >
         {({ style, tokens, getLineProps, getTokenProps }) => (
           <pre
@@ -106,8 +110,12 @@ export function CodeBlock({
                 {...getLineProps({ line, key: i })}
                 className="table-row"
               >
-                <LineNumber lineNumber={i + 1} />
-                <LineContent line={line} getTokenProps={getTokenProps} />
+                <LineNumber number={i + 1} />
+                <LineContent>
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token, key })} />
+                  ))}
+                </LineContent>
               </div>
             ))}
           </pre>
@@ -115,19 +123,21 @@ export function CodeBlock({
       </Highlight>
     </div>
   );
-}
-
-const LineContent = ({ line, getTokenProps }) => {
-  return (
-    <div className="table-cell text-sm">
-      {line.map((token, key) => (
-        <span key={key} {...getTokenProps({ token, key })} />
-      ))}
-    </div>
-  );
 };
 
-const LineNumber = ({ lineNumber: number }) => {
+type LineContentProps = {
+  children: ReactNode;
+};
+
+const LineContent = ({ children }: LineContentProps) => {
+  return <div className="table-cell text-sm">{children}</div>;
+};
+
+type LineNumberProps = {
+  number: number;
+};
+
+const LineNumber = ({ number }: LineNumberProps) => {
   return (
     <div className="table-cell select-none py-[1px] pr-4 text-right text-sm opacity-50">
       {number}
@@ -135,14 +145,22 @@ const LineNumber = ({ lineNumber: number }) => {
   );
 };
 
+type TopBarProps = {
+  languageIcon: ReactNode;
+  language: string;
+  lines: string[];
+  setCopied: (copied: boolean) => void;
+  copied: boolean;
+  children: ReactNode;
+};
+
 const TopBar = ({
   languageIcon,
   language,
   lines,
   setCopied,
-  copied,
-  children
-}) => {
+  copied
+}: TopBarProps) => {
   return (
     <div className="relative flex h-8 flex-row flex-nowrap justify-between text-white">
       <div className="m-0 ml-4 flex flex-row items-center gap-2 p-0 text-sm">
@@ -155,7 +173,7 @@ const TopBar = ({
           lines.length === 1 ? 'top-[2px]' : 'top-[0.1rem]'
         } hover:text-gray-400 `}
         onClick={() => {
-          copy(children);
+          copy(lines.join('\n'));
           setCopied(true);
           setTimeout(() => setCopied(false), 3000);
         }}

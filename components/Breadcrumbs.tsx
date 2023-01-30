@@ -3,7 +3,16 @@
 import Link from 'next/link';
 import React from 'react';
 
-export function Breadcrumbs({ breadcrumbs }) {
+export type Breadcrumb = {
+  name: string;
+  href: string;
+};
+
+type Props = {
+  breadcrumbs: Breadcrumb[];
+};
+
+export const Breadcrumbs = ({ breadcrumbs }: Props) => {
   return (
     <div className="relative">
       <ul className="mb-2 flex pl-0 text-sm text-[#6b7385]">
@@ -25,4 +34,4 @@ export function Breadcrumbs({ breadcrumbs }) {
       </ul>
     </div>
   );
-}
+};

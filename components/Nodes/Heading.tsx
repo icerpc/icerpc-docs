@@ -1,8 +1,15 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-export function Heading({ id = '', level = 1, children, className }) {
+type Props = {
+  id?: string;
+  level: 1 | 2 | 3 | 4;
+  children: ReactNode;
+  className?: string;
+};
+
+export const Heading = ({ id = '', level = 1, children, className }: Props) => {
   const style = {
     1: 'text-3xl font-bold',
     2: 'text-2xl font-semibold',
@@ -18,4 +25,4 @@ export function Heading({ id = '', level = 1, children, className }) {
     },
     children
   );
-}
+};

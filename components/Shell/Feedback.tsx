@@ -2,7 +2,7 @@
 
 import { MdThumbDownOffAlt, MdThumbUpOffAlt } from 'react-icons/md';
 
-export function Feedback() {
+export const Feedback = () => {
   return (
     <div className="mt-0 flex flex-col items-center pb-8">
       <h3 className="text-base text-[var(--text-color)]">
@@ -19,4 +19,4 @@ export function Feedback() {
       </div>
     </div>
   );
-}
+};

@@ -1,6 +1,10 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-export function Section({ children, className }) {
+import { ReactNode } from 'react';
+
+type Props = { children: ReactNode; className?: string };
+
+const Section = ({ children, className }: Props) => {
   return (
     <div className={['section', className].filter(Boolean).join(' ')}>
       <section>{children}</section>
@@ -28,4 +32,4 @@ export function Section({ children, className }) {
       </style>
     </div>
   );
-}
+};

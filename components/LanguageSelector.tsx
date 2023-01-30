@@ -2,17 +2,17 @@
 
 import React, { useEffect } from 'react';
 import { Platform, Platforms } from 'types';
-import { useAppContext } from 'context/state';
+import { usePlatformContext } from 'context/state';
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
 export const LanguageContext = React.createContext([]);
 
 // eslint-disable-next-line no-unused-vars
-export function LanguageSelector({ languages }) {
-  const [, , platform, setPlatform] = useAppContext();
+export const LanguageSelector = () => {
+  const { platform, setPlatform } = usePlatformContext();
   const [currentTab, setCurrentTab] = React.useState(platform);
   useEffect(() => {
     switch (platform) {
@@ -23,7 +23,7 @@ export function LanguageSelector({ languages }) {
         setCurrentTab(platform);
         break;
       default:
-        setCurrentTab(platform.csharp);
+        setCurrentTab(Platform.csharp);
         break;
     }
   }, [platform]);
@@ -44,7 +44,7 @@ export function LanguageSelector({ languages }) {
               role="tab"
               aria-selected={label === currentTab}
               onClick={() => {
-                setPlatform(label.toLowerCase());
+                setPlatform(label);
               }}
             >
               {label}
@@ -54,4 +54,4 @@ export function LanguageSelector({ languages }) {
       </ul>
     </LanguageContext.Provider>
   );
-}
+};

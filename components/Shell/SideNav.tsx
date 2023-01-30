@@ -5,8 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { NextRouter, useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
-import SliceSelector from '../SliceSelector';
-import { useAppContext } from 'context/state';
+import { SliceSelector } from '../SliceSelector';
+import { useVersionContext } from 'context/state';
 
 // import components
 import { sideBarData, baseUrls } from 'data/side-bar-data';
@@ -79,21 +79,25 @@ function transformSideBarData(
   }
 }
 
-export function SideNav({ path }) {
-  const [data, setData] = useState([]);
-  const [sliceVersion] = useAppContext();
+type SideNavProps = {
+  path: string;
+};
+
+export const SideNav = ({ path }: SideNavProps) => {
+  const [data, setData] = useState<SideBarSourceType[]>([]);
+  const { version } = useVersionContext();
   const { resolvedTheme } = useTheme();
   const router = useRouter();
 
-  let baseUrl = baseUrls.find((item) => path.startsWith(item));
+  let baseUrl = baseUrls.find((item) => path.startsWith(item))!;
 
   useEffect(() => {
-    const links = sideBarData(baseUrl, sliceVersion) ?? [];
+    const links = sideBarData(baseUrl, version) ?? [];
     setData(links);
     return () => {
       setData([]);
     };
-  }, [setData, path, sliceVersion, baseUrl]);
+  }, [setData, path, version, baseUrl]);
 
   let cells = data.map((item) => {
     return transformSideBarData(router, item);
@@ -106,9 +110,13 @@ export function SideNav({ path }) {
       {cells}
     </nav>
   );
-}
+};
 
-const Logo = ({ resolvedTheme }) => {
+type LogoProps = {
+  resolvedTheme?: string;
+};
+
+const Logo = ({ resolvedTheme }: LogoProps) => {
   return (
     <div className="mt-4 mb-2 mr-8 flex items-center justify-start gap-1 pb-4">
       <Image
