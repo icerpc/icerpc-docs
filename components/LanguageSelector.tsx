@@ -35,11 +35,11 @@ export const LanguageSelector = () => {
           <li key={label}>
             <button
               className={classNames(
-                'nav-link my-0 block rounded border-[1.5px] bg-white px-2 py-1 text-xs font-medium uppercase',
+                'nav-link my-0 block rounded-xl border-[1.5px] bg-white px-2 py-1 text-xs font-medium uppercase',
                 'text-sm leading-tight focus:outline-none focus:ring-0 md:mr-2',
                 currentTab === label
-                  ? 'border-2 border-primary bg-slate-100 text-primary'
-                  : 'bg-slate-100 text-slate-500 hover:bg-opacity-80 hover:text-primary'
+                  ? 'border-1 border-primary bg-white text-primary'
+                  : 'bg-slate-50 text-slate-500 hover:bg-opacity-80 hover:text-primary'
               )}
               role="tab"
               aria-selected={label === currentTab}

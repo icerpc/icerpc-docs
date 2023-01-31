@@ -6,8 +6,8 @@ import { FaFile } from 'react-icons/fa';
 import { BsTerminalFill } from 'react-icons/bs';
 import copy from 'copy-to-clipboard';
 import Highlight, { Language, defaultProps } from 'prism-react-renderer';
-import themeLight from 'prism-react-renderer/themes/dracula';
-import themeDark from 'prism-react-renderer/themes/dracula';
+import themeLight from 'prism-react-renderer/themes/shadesOfPurple';
+import themeDark from 'prism-react-renderer/themes/palenight';
 import { useTheme } from 'next-themes';
 
 // ts-ignore is required for the following line because the package doesn't have types
@@ -31,7 +31,7 @@ const commandLineLanguages = [
 ];
 
 Prism.languages.slice = {
-  keyword: /\b(interface|module|struct|class|exception|enum|throws)\b/,
+  keyword: /\b(interface|module|struct|class|exception|enum|throws|compact)\b/,
   comment: [
     {
       pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
@@ -80,7 +80,7 @@ export const CodeBlock = ({ children, 'data-language': language }: Props) => {
 
   return (
     // Container for the code block
-    <div className="my-5 rounded-md bg-[#20212a]">
+    <div className="my-5 rounded-2xl bg-[#262547]">
       {/* Top bar with language and copy button */}
 
       <TopBar
@@ -101,7 +101,7 @@ export const CodeBlock = ({ children, 'data-language': language }: Props) => {
       >
         {({ style, tokens, getLineProps, getTokenProps }) => (
           <pre
-            className="relative m-0  overflow-scroll rounded-md p-4 text-left"
+            className="relative m-0 overflow-scroll rounded-2xl px-4 py-3 text-left"
             style={{ ...style }}
           >
             {tokens.map((line, i) => (
@@ -130,7 +130,7 @@ type LineContentProps = {
 };
 
 const LineContent = ({ children }: LineContentProps) => {
-  return <div className="table-cell text-sm">{children}</div>;
+  return <div className="table-cell py-[2px] text-xs">{children}</div>;
 };
 
 type LineNumberProps = {
@@ -139,7 +139,7 @@ type LineNumberProps = {
 
 const LineNumber = ({ number }: LineNumberProps) => {
   return (
-    <div className="table-cell select-none py-[1px] pr-4 text-right text-sm opacity-50">
+    <div className="table-cell select-none py-[1px] pr-4 text-right text-xs opacity-50">
       {number}
     </div>
   );
@@ -163,13 +163,13 @@ const TopBar = ({
 }: TopBarProps) => {
   return (
     <div className="relative flex h-8 flex-row flex-nowrap justify-between text-white">
-      <div className="m-0 ml-4 flex flex-row items-center gap-2 p-0 text-sm">
+      <div className="m-0 ml-4 flex flex-row items-center gap-2 p-0 text-xs">
         {languageIcon}
         {language}
       </div>
       <button
         aria-label="Copy to clipboard"
-        className={`mr-2 ${
+        className={`mr-4 ${
           lines.length === 1 ? 'top-[2px]' : 'top-[0.1rem]'
         } hover:text-gray-400 `}
         onClick={() => {

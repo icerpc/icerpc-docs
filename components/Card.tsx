@@ -28,7 +28,7 @@ export const MiniCard = ({ title, description, href }: MiniCardProps) => {
   return (
     <Link
       href={href}
-      className="h-[150px]  gap-2 rounded-md border-[1.5px] p-4 transition-shadow  duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg"
+      className="h-[170px]  gap-2 rounded-md border-[1.5px] p-4 transition-shadow  duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg"
     >
       <h4 className="m-0 pt-[0.5rem] font-semibold text-primary">{title}</h4>
       <div className="mt-2 ">{description}</div>

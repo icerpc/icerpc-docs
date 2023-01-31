@@ -34,13 +34,13 @@ export const SliceSelector = () => {
                 key={version}
                 className={({ selected }) =>
                   classNames(
-                    'w-full rounded border-[1.5px] bg-white px-2 py-2 text-xs font-medium uppercase',
+                    'w-full rounded-2xl border-[1.5px] bg-white px-2 py-2 text-xs font-medium uppercase',
                     'text-sm leading-tight focus:outline-none focus:ring-0',
                     'transition-shadow  duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg',
                     ' dark:bg-[#32363c] dark:text-white',
                     selected
-                      ? 'border-2 border-primary bg-slate-100 text-primary dark:text-primary'
-                      : 'bg-slate-100 text-slate-500 hover:bg-opacity-80 hover:text-primary dark:border-darkBorder'
+                      ? 'border-1 border-primary bg-white text-primary dark:text-primary'
+                      : 'bg-slate-50 text-slate-500 hover:bg-opacity-80 hover:text-primary dark:border-darkBorder'
                   )
                 }
               >

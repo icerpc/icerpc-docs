@@ -19,7 +19,7 @@ export const SearchButton = () => {
   const { resolvedTheme } = useTheme();
   return (
     <>
-      <div className="relative min-w-[200px] max-w-[400px] flex-1">
+      <div className="relative mr-12 min-w-[100px] max-w-[500px] flex-1">
         <Search />
       </div>
 

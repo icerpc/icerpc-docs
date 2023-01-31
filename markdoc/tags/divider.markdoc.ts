@@ -4,5 +4,10 @@ import { Divider } from 'components/Divider';
 
 export const divider = {
   render: Divider,
-  attributes: {}
+  attributes: {
+    margin: {
+      type: 'string',
+      required: false
+    }
+  }
 };

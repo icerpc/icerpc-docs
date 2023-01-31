@@ -5,23 +5,32 @@ import { ReactNode } from 'react';
 type Props = { children: ReactNode };
 
 const LeftColumn = ({ children }: Props) => (
-  <div className="flex w-full flex-col border-r-0 border-b-2 pr-10 pl-0 pb-12 lg:w-1/2 lg:border-b-0 lg:border-r-2 lg:pb-0 lg:pr-10">
+  <div className="my-0 flex w-full flex-col border-r border-lightBorder py-2 pr-12 dark:border-darkBorder [&>p]:mb-2">
     {children}
   </div>
 );
 
 const RightColumn = ({ children }: Props) => (
-  <div className="flex w-full flex-col pt-8 pb-2 pl-12 lg:py-0 lg:pr-10 ">
+  <div className="my-0 flex w-full flex-col py-2 pl-12 [&>p]:mb-2">
     {children}
   </div>
 );
 
-export function SideBySide(children: ReactNode[]) {
-  const [first, ...rest] = children;
+type SideBySideProps = {
+  children: ReactNode[];
+  // Can be "left" or "right"
+  weighted: string;
+};
+
+export function SideBySide({ children, weighted }: SideBySideProps) {
+  const spliceIndex = weighted === 'right' ? 1 : children.length - 1;
+  const leftContent = children.slice(0, spliceIndex);
+  const rightContent = children.slice(spliceIndex);
+
   return (
-    <div className="mt-4 flex w-full flex-col items-center rounded p-0 lg:flex-row">
-      <LeftColumn>{first}</LeftColumn>
-      <RightColumn>{rest}</RightColumn>
+    <div className="my-4 flex flex-row items-center overflow-auto p-0 py-2">
+      <LeftColumn>{leftContent}</LeftColumn>
+      <RightColumn>{rightContent}</RightColumn>
     </div>
   );
 }

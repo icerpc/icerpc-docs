@@ -118,7 +118,7 @@ type LogoProps = {
 
 const Logo = ({ resolvedTheme }: LogoProps) => {
   return (
-    <div className="mt-4 mb-2 mr-8 flex items-center justify-start gap-1 pb-4">
+    <div className="mt-4 mb-2 ml-1 mr-8 flex items-center justify-start gap-1 pb-4">
       <Image
         src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
         height={30}
