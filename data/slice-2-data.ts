@@ -53,6 +53,10 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/slice2/primitive-types/integer/`
       },
       {
+        title: 'Floating-point Types',
+        path: `${SLICE_BASE_URL}/slice2/primitive-types/float/`
+      },
+      {
         title: 'Strings',
         path: `${SLICE_BASE_URL}/slice2/primitive-types/strings/`
       },
