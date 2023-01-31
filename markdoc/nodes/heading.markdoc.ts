@@ -1,10 +1,13 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { Tag } from '@markdoc/markdoc';
+import { Tag, Node, Config, RenderableTreeNode } from '@markdoc/markdoc';
 
 import { Heading } from 'components';
 
-function generateID(children, attributes) {
+function generateID(
+  children: RenderableTreeNode[],
+  attributes: Record<string, any>
+) {
   if (attributes.id && typeof attributes.id === 'string') {
     return attributes.id;
   }
@@ -24,7 +27,7 @@ export default {
     level: { type: Number, required: true, default: 1 },
     className: { type: String }
   },
-  transform(node, config) {
+  transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);
     const children = node.transformChildren(config);
     const id = generateID(children, attributes);

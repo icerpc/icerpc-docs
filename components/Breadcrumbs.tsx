@@ -26,7 +26,6 @@ export const Breadcrumbs = ({ breadcrumbs }: Props) => {
               <Link href={href} style={{ textDecoration: 'none' }}>
                 {name}
               </Link>
-              {/* The last breadcrumb should not have a trailing slash */}
               {!isLast ? '/' : null}
             </li>
           );

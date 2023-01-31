@@ -16,28 +16,43 @@ type Props = {
   children: ReactNode;
 };
 
+type Heading = {
+  level: number;
+  id: string;
+  children: string;
+};
+
+const constructToc = (children: ReactNode) => {
+  const isHeading = (x: any): x is Heading => {
+    return (
+      (x as Heading).level !== undefined &&
+      (x as Heading).id !== undefined &&
+      (x as Heading).children !== undefined
+    );
+  };
+  return (
+    (children instanceof Array &&
+      children
+        .filter((c) => isHeading(c.props))
+        .map((c) => c.props as Heading)
+        .map((h) => {
+          const item: TOCItem = {
+            title: h.children,
+            id: h.id,
+            level: h.level
+          };
+          return item;
+        })) ||
+    []
+  );
+};
+
 export const Document = ({ frontmatter, children }: Props) => {
   // Get the data for the next and previous links
   const path = useRouter().asPath;
   const isDocs = path.startsWith('/docs');
   let showToc = frontmatter?.toc ?? isDocs;
-
-  // The table of contents is a list of headings, note that the title is stored under the key children
-  const toc: TOC =
-    (showToc &&
-      children instanceof Array &&
-      children
-        .filter((c) => c.type.name === 'Heading')
-        .map((node) => node.props)
-        .map((node) => {
-          const item: TOCItem = {
-            title: node.children,
-            id: node.id,
-            level: node.level
-          };
-          return item;
-        })) ||
-    [];
+  const toc = constructToc(children);
 
   return (
     <>

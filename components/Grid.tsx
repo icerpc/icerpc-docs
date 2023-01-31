@@ -12,8 +12,6 @@ type Props = {
 };
 
 export const Grid = ({ children, columns, rows, trailinglink }: Props) => {
-  console.log('Grid', trailinglink);
-
   // TODO: Add support for detecting external links.
   // eslint-disable-next-line no-unused-vars
   const isExternalURL = (_url: string) => {
