@@ -10,6 +10,12 @@ breadcrumbs:
 
 {% title /%}
 
+{% callout type="critical" %}
+
+TODO: This page contains placeholder content and needs to be replaced. Please remove this when you are done.
+
+{% /callout %}
+
 ## Enums
 
 Enums are a data type consisting of a set of named values called enumerators. The enumerators are defined in the enum

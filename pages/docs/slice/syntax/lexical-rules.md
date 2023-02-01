@@ -10,6 +10,12 @@ breadcrumbs:
 
 {% title /%}
 
+{% callout type="critical" %}
+
+TODO: This page contains placeholder content and needs to be replaced. Please remove this when you are done.
+
+{% /callout %}
+
 Slice's lexical rules are very similar to those of C++ and Java, except for some differences for identifiers.
 
 ## Comments

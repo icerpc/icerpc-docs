@@ -5,6 +5,12 @@ toc: false
 
 {% title /%}
 
+{% callout type="critical" %}
+
+TODO: This page contains placeholder content and needs to be replaced. Please remove this when you are done.
+
+{% /callout %}
+
 ## W001
 
 The user supplied either a reference or source file more than once.

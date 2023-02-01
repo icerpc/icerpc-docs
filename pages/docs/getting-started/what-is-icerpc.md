@@ -8,6 +8,12 @@ breadcrumbs:
 
 {% title /%}
 
+{% callout type="critical" %}
+
+TODO: This page contains placeholder content and needs to be replaced. Please remove this when you are done.
+
+{% /callout %}
+
 In this section, you'll get a brief introduction to the components of the IceRPC framework. Additional information
 about each component will be explored in greater detail in the respective documentation sections.
 

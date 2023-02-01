@@ -10,6 +10,12 @@ breadcrumbs:
 
 {% title /%}
 
+{% callout type="critical" %}
+
+TODO: This page contains placeholder content and needs to be replaced. Please remove this when you are done.
+
+{% /callout %}
+
 ## Overview
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna

@@ -5,6 +5,12 @@ toc: false
 
 {% title /%}
 
+{% callout type="critical" %}
+
+TODO: This page contains placeholder content and needs to be replaced. Please remove this when you are done.
+
+{% /callout %}
+
 ## Syntax
 
 A general syntax error. This error is used when the parser encounters a syntax error that is not covered by a more

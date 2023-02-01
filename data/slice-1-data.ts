@@ -28,15 +28,7 @@ export const slice1Data: SideBarSourceType[] = [
     title: 'Slice1 Only',
     links: [
       {
-        title: 'Lexical Rules',
-        path: `${SLICE_BASE_URL}/slice1/foo/`
-      },
-      {
-        title: 'Slice Source Files',
-        path: `${SLICE_BASE_URL}/slice1/foo/`
-      },
-      {
-        title: 'Keywords',
+        title: 'Foo',
         path: `${SLICE_BASE_URL}/slice1/foo/`
       }
     ]
