@@ -56,7 +56,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
               {isDocs ? <SideNav path={router.pathname} /> : null}
             </div>
             <div
-              className={`flex max-w-[1250px] justify-center pt-[var(--nav-height)] ${
+              className={`flex max-w-[1200px] justify-center pt-[var(--nav-height)] ${
                 isLandingPage ? 'ml-0' : 'lg:ml-60'
               }`}
             >

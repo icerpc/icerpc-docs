@@ -78,6 +78,26 @@ Lorem ipsum dolor sit amet.
 {% /side-by-side %}
 ````
 
+#### Weighted Side-by-side
+
+The `side-by-side` tag also supports a `weighted` attribute that can be used to specify the if the left or right column
+should have more content. The `weighted` attribute can be set to either `left` or `right`.
+
+By default the `weighted` attribute is set to `right` meaning the first "item" of markdown will go in the left column
+and the remaining content goes into right.
+
+```markdown
+{% side-by-side weighted="Left"%}
+
+First item (left column)
+
+Second item (left column)
+
+Last item (right column)
+
+{% /side-by-side %}
+```
+
 ### Divider
 
 The `divider` tag is used to create a horizontal divider. This is useful for breaking up content into sections.
@@ -92,52 +112,53 @@ Lorem ipsum dolor sit amet.
 
 ## Updating Navigation
 
-The hierarchy of the navigation is defined in `/data/sideBarData.ts`. `sideBarData.ts` is a TypeScript file that exports
-a dictionary where the keys are the paths of the top navigation items and the values are arrays containing either
-`SideBarLink` or `SideBarCategory` types.
+The hierarchy of the side navigation is defined in `/data/`. Each top navigation item has a corresponding file,
+`getting-started-data.ts`, `rpc-core-data.ts`, etc., with Slice having two files corresponding to which Slice version
+was selected. These files export an array that defines the pages and their order in the sidebar. The values in the
+arrays are either `SideBarLink` or `SideBarCategory` types.
 
 For example, the following values define two `SideBarLink` objects, one with the title Overview that links to
-the `/docs/slice/index.md` page, and another called `Getting Started` that links to the `/docs/slice/what-is-icerpc.md`
-page. This is used to generate the sidebar for the `Slice` top navigation item.
+the `/docs/getting-started/index.md` page, and another called `Foo` that links to the `/docs/getting-started/foo.md`
+page. This generates the sidebar for the `Getting Started` top navigation item.
 
 ```TypeScript
-  '/docs/slice': [
-    {
-      title: 'Overview',
-      path: `${SLICE_BASE_URL}`, // '/docs/slice'
-      kind: 'link'
-    },
-    {
-      title: 'Getting Started',
-      path: `${SLICE_BASE_URL} + '/what-is-icerpc/' `,
-      kind: 'link'
-    },
-    ...
-  ],
+
+export const gettingStartedData: SideBarSourceType[] = [
+  {
+    title: 'Overview',
+    path: `${GETTING_STARTED_BASE_URL}/`
+  },
+  {
+    title: 'Foo',
+    path: `${GETTING_STARTED_BASE_URL}/foo/`
+  },
+  ...
+]
 
 ```
 
-In addition to defining the pages in the sidebar you can also use `SideBarCategory` to define a category that can be
-expanded and collapsed which contains a list of `SideBarLink` or `SideBarCategory` objects.
+In addition to defining the pages in the sidebar, you can also use `SideBarCategory` to define a category that contains
+a list of `SideBarLink` objects.
 
-The below dictionary defines a `SideBarCategory` object with the title `Getting Started` that contains a link to the
-FAQ page. This will render as a category in the sidebar that can be expanded and collapsed to reveal the FAQ link.
+The below array defines a `SideBarCategory` object with the title `Getting Started` that contains a link to the
+"What is IceRPC?" page.
 
 ```TypeScript
- '/docs/slice': [
-    ...
-    {
-      title: 'Getting started',
-      kind: 'category',
-      links: [
-        {
-          title: 'FAQ',
-          path: SLICE_BASE_URL + '/getting-started/faq/',
-          kind: 'link'
-        }
-      ]
-    },
-    ...
-
- ]
+export const gettingStartedData: SideBarSourceType[] = [
+  {
+    title: 'Overview',
+    path: `${GETTING_STARTED_BASE_URL}/`
+  },
+  {
+    title: 'Getting started',
+    links: [
+      {
+        title: 'What is IceRPC?',
+        path: `${GETTING_STARTED_BASE_URL}/what-is-icerpc/`
+      },
+      ...
+    ]
+  }
+  ...
+]
 ```
