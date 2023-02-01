@@ -1,16 +1,16 @@
 ---
-title: Foo
-description: The foo page
+title: Bar
+description: The Bar page
 ---
 
 {% title /%}
 
-Foo Page
+Bar Page
 
 ## Heading 1
 
-Foo page content in heading 1
+Bar page content in heading 1
 
 ## Heading 2
 
-Foo page content in heading 2
+Bar page content in heading 2

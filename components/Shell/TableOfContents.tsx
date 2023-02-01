@@ -8,7 +8,6 @@ import { FiEdit, FiMessageSquare } from 'react-icons/fi';
 import { AppLink } from 'components/Nodes/AppLink';
 import { Divider } from 'components/Divider';
 import { Bars3BottomLeftIcon } from '@heroicons/react/20/solid';
-import { InformationCircleIcon } from '@heroicons/react/24/outline';
 
 export type TOC = TOCItem[];
 
