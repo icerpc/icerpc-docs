@@ -55,8 +55,8 @@ export const Document = ({ frontmatter, children }: Props) => {
   const toc = constructToc(children);
 
   return (
-    <>
-      <article className="flex max-w-4xl grow flex-row justify-between bg-white pr-8 pl-14 pt-12 dark:bg-[rgb(33,35,39)] lg:max-w-none">
+    <div className="flex flex-row">
+      <article className="flex max-w-4xl flex-row justify-between pr-8 pl-14 pt-12 lg:max-w-none">
         <div className="mr-4 inline-block w-full">
           {children}
           {isDocs && (
@@ -69,8 +69,8 @@ export const Document = ({ frontmatter, children }: Props) => {
           <Divider />
           <Footer />
         </div>
-        {showToc && TableOfContents(toc)}
       </article>
-    </>
+      {showToc && <div className="w-[400px] grow">{TableOfContents(toc)}</div>}
+    </div>
   );
 };

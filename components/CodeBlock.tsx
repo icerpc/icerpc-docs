@@ -6,8 +6,8 @@ import { FaFile } from 'react-icons/fa';
 import { BsTerminalFill } from 'react-icons/bs';
 import copy from 'copy-to-clipboard';
 import Highlight, { Language, defaultProps } from 'prism-react-renderer';
-import themeLight from 'prism-react-renderer/themes/shadesOfPurple';
-import themeDark from 'prism-react-renderer/themes/palenight';
+import themeLight from 'prism-react-renderer/themes/dracula';
+import themeDark from 'prism-react-renderer/themes/dracula';
 import { useTheme } from 'next-themes';
 
 // ts-ignore is required for the following line because the package doesn't have types
@@ -80,7 +80,7 @@ export const CodeBlock = ({ children, 'data-language': language }: Props) => {
 
   return (
     // Container for the code block
-    <div className="my-5 rounded-2xl bg-[#262547]">
+    <div className="my-5 rounded-2xl bg-[#20212a]">
       {/* Top bar with language and copy button */}
 
       <TopBar

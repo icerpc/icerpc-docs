@@ -104,7 +104,7 @@ export const SideNav = ({ path }: SideNavProps) => {
   });
 
   return (
-    <nav className=" sticky top-0 hidden h-screen w-[var(--side-nav-width)] overflow-y-auto overflow-x-hidden border-r-[1.5px] border-lightBorder bg-[#FAFBFC] pb-10 pl-6 pt-0 dark:border-darkBorder dark:bg-[#26282c] lg:block">
+    <nav className=" sticky top-0 hidden h-screen w-[var(--side-nav-width)] overflow-y-auto overflow-x-hidden border-lightBorder bg-[#ffffff] pb-10 pl-6 pt-0 shadow dark:border-darkBorder dark:bg-[#26282c] lg:block">
       <Logo resolvedTheme={resolvedTheme} />
       {baseUrl == '/docs/slice' && <SliceSelector />}
       {cells}

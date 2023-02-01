@@ -26,7 +26,7 @@ export const TopNav = () => {
     <nav
       className={classNames(
         'fixed top-0 left-0 z-[100] flex h-[var(--nav-height)] w-full items-center border-b border-lightBorder',
-        'bg-white pl-[17rem] text-sm font-medium  dark:border-darkBorder dark:bg-[rgb(33,35,39)]'
+        'bg-[#FCFCFC] pl-[17rem] text-sm font-medium  dark:border-darkBorder dark:bg-[rgb(33,35,39)]'
       )}
     >
       <div className="flex w-screen items-center justify-between">
@@ -63,7 +63,7 @@ export const TopNav = () => {
             Slice
           </Link>
           <Link
-            href="/docs/rpc"
+            href="/docs/rpc-core"
             style={router.pathname.startsWith('/docs/rpc') ? style : undefined}
           >
             RPC Core

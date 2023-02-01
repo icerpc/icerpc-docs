@@ -6,6 +6,9 @@ import { useRouter } from 'next/router';
 import { useHeadsObserver } from 'hooks/hooks';
 import { FiEdit, FiMessageSquare } from 'react-icons/fi';
 import { AppLink } from 'components/Nodes/AppLink';
+import { Divider } from 'components/Divider';
+import { Bars3BottomLeftIcon } from '@heroicons/react/20/solid';
+import { InformationCircleIcon } from '@heroicons/react/24/outline';
 
 export type TOC = TOCItem[];
 
@@ -36,33 +39,42 @@ export const TableOfContents = (toc: TOC) => {
   return (
     <>
       {items.length > 1 && (
-        <nav className="sticky top-[calc(5rem+var(--nav-height))] mb-4 ml-6 hidden max-h-[calc(100vh-var(--nav-height))] w-[300px] self-start border-l border-lightBorder px-8 lg:block">
-          <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider dark:text-white">
-            On this page
+        <nav className="sticky top-[var(--nav-height)] mb-4 ml-6 hidden h-screen w-[300px] self-start border-l border-lightBorder px-8 py-10 dark:border-darkBorder lg:block">
+          <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase tracking-wider  dark:text-white">
+            <Bars3BottomLeftIcon className="ml-0 mr-2 h-5 w-5 pl-0" /> On this
+            page
           </h2>
           <ul className="m-0 max-h-[50vh] overflow-y-auto p-0">
             {items.map((item) => (
               <ListItem key={item.id} item={item} activeId={activeId} />
             ))}
           </ul>
-          <br />
-          <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider dark:text-white">
+          <Divider />
+          <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase tracking-wider  dark:text-white">
             More
           </h2>
-          <ul className="m-0 p-0" style={{ color: 'var(--primary-color)' }}>
+          <ul
+            className="m-0 p-0 pl-[2px]"
+            style={{ color: 'var(--primary-color)' }}
+          >
             <MoreItem
               href={
                 'https://github.com/zeroc-ice/icerpc-docs/tree/main/pages' +
                 currentPath
               }
             >
-              <FiEdit color="var(--primary-color)" /> Edit this page
+              <FiEdit className="mr-[6px]" color="var(--primary-color)" /> Edit
+              this page
             </MoreItem>
             <MoreItem href="https://github.com/zeroc-ice/icerpc">
-              <FiMessageSquare color="var(--primary-color)" /> GitHub
-              Discussions
+              <FiMessageSquare
+                className="mr-[6px]"
+                color="var(--primary-color)"
+              />{' '}
+              GitHub Discussions
             </MoreItem>
           </ul>
+          <Divider />
         </nav>
       )}
     </>

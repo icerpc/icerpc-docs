@@ -1,33 +1,19 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
-import { SideBarSourceType } from 'types';
+import { SideBarSourceType, RPC_CORE_BASE_URL } from 'types';
 
 export const rpcCoreData: SideBarSourceType[] = [
   {
-    title: 'Get started',
-    links: [
-      {
-        title: 'What is Slice?',
-        path: '/docs/slice/what-is-slice/'
-      },
-      { title: 'FAQ', path: '/docs/slice/faq/' }
-    ]
+    title: 'Overview',
+    path: `${RPC_CORE_BASE_URL}`
   },
   {
-    title: 'Core concepts',
+    title: 'Foo',
     links: [
       {
-        title: 'Installation',
-        path: '/docs/slice/install/'
+        title: 'Bar ',
+        path: `${RPC_CORE_BASE_URL}/foo/bar/`
       }
     ]
-  },
-  {
-    title: 'Integration guides',
-    links: []
-  },
-  {
-    title: 'Advanced concepts',
-    links: []
   }
 ];

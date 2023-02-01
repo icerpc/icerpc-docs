@@ -28,13 +28,13 @@ export const SliceSelector = () => {
     <>
       <div className="m-0 my-4 w-full pr-6">
         <Tab.Group selectedIndex={selectedIndex} onChange={onChange}>
-          <Tab.List className=" flex gap-0 space-x-1 rounded-xl bg-transparent">
+          <Tab.List className=" flex gap-0 space-x-1 rounded-2xl bg-transparent">
             {sliceVersions.map((version) => (
               <Tab
                 key={version}
                 className={({ selected }) =>
                   classNames(
-                    'w-full rounded-2xl border-[1.5px] bg-white px-2 py-2 text-xs font-medium uppercase',
+                    'w-full rounded-lg border-[1.5px] bg-white px-2 py-2 text-xs font-medium uppercase',
                     'text-sm leading-tight focus:outline-none focus:ring-0',
                     'transition-shadow  duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg',
                     ' dark:bg-[#32363c] dark:text-white',
