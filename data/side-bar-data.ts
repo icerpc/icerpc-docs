@@ -9,7 +9,7 @@ import {
 } from './index';
 
 const SLICE_BASE_URL = '/docs/slice';
-const RPC_CORE_BASE_URL = '/docs/rpc';
+const RPC_CORE_BASE_URL = '/docs/icerpc-core';
 const GETTING_STARTED_BASE_URL = '/docs/getting-started';
 
 export const baseUrls = [

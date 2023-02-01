@@ -63,10 +63,14 @@ export const TopNav = () => {
             Slice
           </Link>
           <Link
-            href="/docs/rpc-core"
-            style={router.pathname.startsWith('/docs/rpc') ? style : undefined}
+            href="/docs/icerpc-core"
+            style={
+              router.pathname.startsWith('/docs/icerpc-core')
+                ? style
+                : undefined
+            }
           >
-            RPC Core
+            IceRPC Core
           </Link>
           <div className="flex items-center gap-5 pl-4">
             <div className="left-1/2 h-[calc(65px-40px)] border-l-[1.5px] border-lightBorder dark:border-darkBorder" />

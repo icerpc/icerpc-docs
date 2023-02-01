@@ -113,7 +113,7 @@ Lorem ipsum dolor sit amet.
 ## Updating Navigation
 
 The hierarchy of the side navigation is defined in `/data/`. Each top navigation item has a corresponding file,
-`getting-started-data.ts`, `rpc-core-data.ts`, etc., with Slice having two files corresponding to which Slice version
+`getting-started-data.ts`, `icerpc-core-data.ts`, etc., with Slice having two files corresponding to which Slice version
 was selected. These files export an array that defines the pages and their order in the sidebar. The values in the
 arrays are either `SideBarLink` or `SideBarCategory` types.
 
