@@ -39,5 +39,6 @@
     "companies",
     "misc",
     "lorem-ipsum"
-  ]
+  ],
+  "enableFiletypes": ["markdoc"]
 }

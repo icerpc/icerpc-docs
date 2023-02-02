@@ -49,14 +49,15 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <ThemeProvider attribute="class">
         <AppWrapper>
-          <div className="lg:ml-60 xl:ml-72">
-            <header className="z-10 contents lg:fixed lg:inset-0 lg:flex">
-              <SideNav path={router.pathname} />
+          <div className="flex flex-row ">
+            <SideNav path={router.pathname} />
+            <div className="flex flex-col">
               <TopNav />
-            </header>
-            <Body Component={Component} pageProps={pageProps} />
+              <Body Component={Component} pageProps={pageProps} />
+            </div>
           </div>
         </AppWrapper>
       </ThemeProvider>
@@ -71,10 +72,8 @@ type BodyProps = {
 
 const Body = ({ Component, pageProps }: BodyProps) => {
   return (
-    <div
-      className={`relative max-w-[1200px] px-6 pt-[var(--nav-height)] lg:px-0`}
-    >
-      <main className={inter.className + 'px-5'} id="main">
+    <div className={`max-w-[1200px] px-6 lg:px-0`}>
+      <main className={inter.className} id="main">
         <div id="skip-nav" />
         <Component {...pageProps} />
       </main>

@@ -5,7 +5,6 @@
 @tailwind utilities;
 
 :root {
-  --nav-height: 65px;
   --border-color: #dce6e9;
   --link-color: rgba(75, 85, 99, 1);
   --highlighted-link-color: black;

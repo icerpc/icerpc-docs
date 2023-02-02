@@ -25,11 +25,11 @@ export const TopNav = () => {
   return (
     <nav
       className={classNames(
-        'fixed top-0 left-0 flex h-[var(--nav-height)] w-full items-center border-b border-lightBorder',
-        'z-20 bg-[#FCFCFC] pl-[17rem] text-sm font-medium  dark:border-darkBorder dark:bg-[rgb(33,35,39)]'
+        'sticky top-0 flex h-16 w-full border-b border-l border-lightBorder',
+        'bg-[#FCFCFC] text-sm font-medium  dark:border-darkBorder dark:bg-[rgb(33,35,39)]'
       )}
     >
-      <div className="flex w-screen items-center justify-between">
+      <div className="flex w-full items-center justify-between">
         <div className="flex flex-1 items-start">
           <SearchButton />
         </div>
