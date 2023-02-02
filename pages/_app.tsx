@@ -12,6 +12,7 @@ import 'reactflow/dist/style.css';
 
 import type { AppProps } from 'next/app';
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js';
+import { NextComponentType, NextPageContext } from 'next/types';
 
 const inter = Inter({ subsets: ['latin'] });
 const TITLE = 'TODO';
@@ -50,24 +51,33 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       </Head>
       <ThemeProvider attribute="class">
         <AppWrapper>
-          <TopNav />
-          <div className="relative flex justify-center gap-0">
-            <div className="fixed top-0 left-0 z-[101] flex-none">
-              {isDocs ? <SideNav path={router.pathname} /> : null}
-            </div>
-            <div
-              className={`flex max-w-[1200px] justify-center pt-[var(--nav-height)] ${
-                isLandingPage ? 'ml-0' : 'lg:ml-60'
-              }`}
-            >
-              <main className={inter.className + 'px-5'} id="main">
-                <div id="skip-nav" />
-                <Component {...pageProps} />
-              </main>
-            </div>
+          <div className="lg:ml-60 xl:ml-72">
+            <header className="z-10 contents lg:fixed lg:inset-0 lg:flex">
+              <SideNav path={router.pathname} />
+              <TopNav />
+            </header>
+            <Body Component={Component} pageProps={pageProps} />
           </div>
         </AppWrapper>
       </ThemeProvider>
     </div>
   );
 }
+
+type BodyProps = {
+  Component: NextComponentType<NextPageContext, any, any>;
+  pageProps: MarkdocNextJsPageProps;
+};
+
+const Body = ({ Component, pageProps }: BodyProps) => {
+  return (
+    <div
+      className={`relative max-w-[1200px] px-6 pt-[var(--nav-height)] lg:px-0`}
+    >
+      <main className={inter.className + 'px-5'} id="main">
+        <div id="skip-nav" />
+        <Component {...pageProps} />
+      </main>
+    </div>
+  );
+};

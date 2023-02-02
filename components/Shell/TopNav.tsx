@@ -25,8 +25,8 @@ export const TopNav = () => {
   return (
     <nav
       className={classNames(
-        'fixed top-0 left-0 z-[100] flex h-[var(--nav-height)] w-full items-center border-b border-lightBorder',
-        'bg-[#FCFCFC] pl-[17rem] text-sm font-medium  dark:border-darkBorder dark:bg-[rgb(33,35,39)]'
+        'fixed top-0 left-0 flex h-[var(--nav-height)] w-full items-center border-b border-lightBorder',
+        'z-20 bg-[#FCFCFC] pl-[17rem] text-sm font-medium  dark:border-darkBorder dark:bg-[rgb(33,35,39)]'
       )}
     >
       <div className="flex w-screen items-center justify-between">

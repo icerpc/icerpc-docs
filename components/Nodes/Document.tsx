@@ -56,7 +56,7 @@ export const Document = ({ frontmatter, children }: Props) => {
 
   return (
     <div className="flex flex-row">
-      <article className="max-w-4xl flex-row justify-between pr-8 pl-14 pt-12 lg:max-w-none">
+      <article className="max-w-4xl flex-row justify-between overflow-auto pr-8 pl-14 pt-12 lg:max-w-none">
         <div className="mr-4 inline-block w-full">
           {children}
           {isDocs && (

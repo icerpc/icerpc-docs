@@ -38,7 +38,7 @@ export const TableOfContents = (toc: TOC) => {
   return (
     <>
       {items.length > 1 && (
-        <nav className="sticky top-[var(--nav-height)] mb-4 ml-6 hidden h-screen w-[300px] self-start border-l border-lightBorder px-8 py-10 dark:border-darkBorder lg:block">
+        <nav className="sticky top-[var(--nav-height)] mb-4 ml-6 hidden h-screen w-[250px] self-start border-l border-lightBorder px-8 py-10 dark:border-darkBorder lg:block">
           <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase tracking-wider  dark:text-white">
             <Bars3BottomLeftIcon className="ml-0 mr-2 h-5 w-5 pl-0" /> On this
             page
