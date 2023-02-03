@@ -12,6 +12,7 @@ import 'reactflow/dist/style.css';
 
 import type { AppProps } from 'next/app';
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js';
+import { NextComponentType, NextPageContext } from 'next/types';
 
 const inter = Inter({ subsets: ['latin'] });
 const TITLE = 'TODO';
@@ -38,7 +39,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
   }
 
   return (
-    <div className={`${isLandingPage ? 'p-16' : ''}`}>
+    <div>
       <Head>
         <title>{title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,22 +49,14 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <ThemeProvider attribute="class">
         <AppWrapper>
-          <TopNav />
-          <div className="relative flex justify-center gap-0">
-            <div className="fixed top-0 left-0 z-[101] flex-none">
-              {isDocs ? <SideNav path={router.pathname} /> : null}
-            </div>
-            <div
-              className={`flex max-w-[1200px] justify-center pt-[var(--nav-height)] ${
-                isLandingPage ? 'ml-0' : 'lg:ml-60'
-              }`}
-            >
-              <main className={inter.className + 'px-5'} id="main">
-                <div id="skip-nav" />
-                <Component {...pageProps} />
-              </main>
+          <div className="flex w-screen flex-row">
+            {isDocs && <SideNav path={router.pathname} />}
+            <div className="flex grow flex-col">
+              <TopNav />
+              <Body Component={Component} pageProps={pageProps} />
             </div>
           </div>
         </AppWrapper>
@@ -71,3 +64,19 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
     </div>
   );
 }
+
+type BodyProps = {
+  Component: NextComponentType<NextPageContext, any, any>;
+  pageProps: MarkdocNextJsPageProps;
+};
+
+const Body = ({ Component, pageProps }: BodyProps) => {
+  return (
+    <div className={`px-6 lg:px-0`}>
+      <main className={inter.className} id="main">
+        <div id="skip-nav" />
+        <Component {...pageProps} />
+      </main>
+    </div>
+  );
+};

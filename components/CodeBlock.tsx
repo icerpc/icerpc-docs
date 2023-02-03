@@ -58,9 +58,14 @@ Prism.languages.slice = {
 type Props = {
   children: string;
   'data-language': string;
+  isValid?: boolean;
 };
 
-export const CodeBlock = ({ children, 'data-language': language }: Props) => {
+export const CodeBlock = ({
+  children,
+  'data-language': language,
+  isValid
+}: Props) => {
   const [copied, setCopied] = useState(false);
 
   // Switch to dark theme if the user has dark mode enabled
@@ -101,7 +106,7 @@ export const CodeBlock = ({ children, 'data-language': language }: Props) => {
       >
         {({ style, tokens, getLineProps, getTokenProps }) => (
           <pre
-            className="relative m-0 overflow-scroll rounded-2xl px-4 py-3 text-left"
+            className="m-0 overflow-auto rounded-2xl px-4 py-3 text-left"
             style={{ ...style }}
           >
             {tokens.map((line, i) => (
@@ -162,7 +167,7 @@ const TopBar = ({
   copied
 }: TopBarProps) => {
   return (
-    <div className="relative flex h-8 flex-row flex-nowrap justify-between text-white">
+    <div className="flex h-8 flex-row justify-between text-white">
       <div className="m-0 ml-4 flex flex-row items-center gap-2 p-0 text-xs">
         {languageIcon}
         {language}

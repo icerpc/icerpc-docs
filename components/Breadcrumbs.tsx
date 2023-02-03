@@ -14,23 +14,21 @@ type Props = {
 
 export const Breadcrumbs = ({ breadcrumbs }: Props) => {
   return (
-    <div className="relative">
-      <ul className="mb-2 flex pl-0 text-sm text-[#6b7385]">
-        {breadcrumbs.map((crumb) => {
-          const name = crumb.name;
-          const href = crumb.href;
-          const isLast = crumb === breadcrumbs[breadcrumbs.length - 1];
+    <ul className="mb-2 flex pl-0 text-sm text-[#6b7385]">
+      {breadcrumbs.map((crumb) => {
+        const name = crumb.name;
+        const href = crumb.href;
+        const isLast = crumb === breadcrumbs[breadcrumbs.length - 1];
 
-          return (
-            <li key={name} className="flex flex-row gap-2 pr-2">
-              <Link href={href} style={{ textDecoration: 'none' }}>
-                {name}
-              </Link>
-              {!isLast ? '/' : null}
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+        return (
+          <li key={name} className="flex flex-row gap-2 pr-2">
+            <Link href={href} style={{ textDecoration: 'none' }}>
+              {name}
+            </Link>
+            {!isLast ? '/' : null}
+          </li>
+        );
+      })}
+    </ul>
   );
 };
