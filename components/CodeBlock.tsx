@@ -135,7 +135,7 @@ type LineContentProps = {
 };
 
 const LineContent = ({ children }: LineContentProps) => {
-  return <div className=" table-cell py-[2px] text-xs">{children}</div>;
+  return <div className="table-cell py-[2px] text-xs">{children}</div>;
 };
 
 type LineNumberProps = {
@@ -144,7 +144,7 @@ type LineNumberProps = {
 
 const LineNumber = ({ number }: LineNumberProps) => {
   return (
-    <div className="table-cell  select-none py-[1px] pr-4 text-right text-xs opacity-50">
+    <div className="table-cell select-none py-[1px] pr-4 text-right text-xs opacity-50">
       {number}
     </div>
   );
@@ -167,7 +167,7 @@ const TopBar = ({
   copied
 }: TopBarProps) => {
   return (
-    <div className="flex h-8 flex-row  justify-between text-white">
+    <div className="flex h-8 flex-row justify-between text-white">
       <div className="m-0 ml-4 flex flex-row items-center gap-2 p-0 text-xs">
         {languageIcon}
         {language}
