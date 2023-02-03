@@ -8,12 +8,21 @@ export const rpcCoreData: SideBarSourceType[] = [
     path: `${RPC_CORE_BASE_URL}`
   },
   {
-    title: 'Foo',
-    links: [
+    title: 'Connections',
+    links:
+    [
       {
-        title: 'Bar ',
-        path: `${RPC_CORE_BASE_URL}/foo/bar/`
-      }
-    ]
+        title: 'Client vs server connections',
+        path: `${RPC_CORE_BASE_URL}/connections/client-vs-server-connections`
+      },
+      {
+        title: 'Server address',
+        path: `${RPC_CORE_BASE_URL}/connections/server-address`
+      },
+      {
+        title: 'Security with TLS',
+        path: `${RPC_CORE_BASE_URL}/connections/security-with-tls`
+      },
+    ],
   }
 ];
