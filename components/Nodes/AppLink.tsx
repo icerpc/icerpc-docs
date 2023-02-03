@@ -17,13 +17,14 @@ export const AppLink = (props: Props) => {
   const style = props.style || {
     textUnderlineOffset: '5px'
   };
+  console.log(props.className);
 
   return (
     <Link
       {...props}
       target={target}
       rel={target === '_blank' ? 'noreferrer' : undefined}
-      className={props.className + '' + 'text-primary'}
+      className={props.className ?? 'text-primary underline decoration-1'}
       style={style}
     >
       {props.children}

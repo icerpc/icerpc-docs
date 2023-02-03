@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: This is the description of the page
+description: Everything except Slice
 ---
 
 {% title /%}
@@ -11,12 +11,10 @@ TODO: This page contains placeholder content and needs to be replaced. Please re
 
 {% /callout %}
 
-RPC Index page
+## Client vs server connections
 
-## Heading 1
+Blabla Link
 
-Index page content in heading 1
+## Server address
 
-## Heading 2
-
-Index page content in heading 2
+Blabla Link

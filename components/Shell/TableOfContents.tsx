@@ -88,7 +88,7 @@ type MoreItemProps = {
 const MoreItem = ({ href, children }: MoreItemProps) => {
   return (
     <li className="m-0 my-4 text-sm">
-      <AppLink href={href}>
+      <AppLink href={href} className="text-[var(--link-color)]">
         <div className="flex items-center gap-[0.5em]">{children}</div>
       </AppLink>
     </li>
