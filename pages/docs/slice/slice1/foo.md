@@ -10,20 +10,13 @@ TODO: This page contains placeholder content and needs to be replaced. Please re
 
 {% /callout %}
 
-[This is a link]("https://google.com")
-
-{% language-selector languages=["csharp", "rust"] /%}
-
-{% language-section language="csharp" %}
-
 {% language-selector languages=["csharp", "rust"] /%}
 
 ## A Simple Hello World Example
 
 {% language-section language="csharp" %}
 In this example, we will create a simple application that will send a greeting to a server and receive a response.
-This example will use the C# programming language but the same concepts apply to all programming languages.'
-ddewdewde
+This example will use the C# programming language but the same concepts apply to all programming languages.
 
 ```csharp
 using System;

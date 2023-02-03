@@ -23,7 +23,10 @@
     "unoptimized",
     "varint",
     "varuint",
-    "Videocam"
+    "Videocam",
+    "coloc",
+    "colochost",
+    "zeroc"
   ],
   "dictionaries": [
     "csharp",

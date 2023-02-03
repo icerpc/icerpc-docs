@@ -5,7 +5,6 @@
 @tailwind utilities;
 
 :root {
-  --border-color: #dce6e9;
   --link-color: rgba(75, 85, 99, 1);
   --highlighted-link-color: black;
   --text-color: rgba(75, 85, 99, 1);
@@ -14,7 +13,6 @@
 }
 
 [data-theme='dark'] {
-  --border-color: rgb(49, 54, 60);
   --link-color: rgba(255, 255, 255, 0.8);
   --highlighted-link-color: white;
   --text-color: white;
