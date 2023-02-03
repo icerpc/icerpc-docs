@@ -17,7 +17,6 @@ export const AppLink = (props: Props) => {
   const style = props.style || {
     textUnderlineOffset: '5px'
   };
-  console.log(props.className);
 
   return (
     <Link
