@@ -55,24 +55,20 @@ export const Document = ({ frontmatter, children }: Props) => {
   const toc = constructToc(children);
 
   return (
-    <div className="flex flex-row overflow-y-clip">
-      <article className="max-w-4xl flex-row justify-between overflow-auto pr-8 pl-14 pt-12 lg:max-w-none">
-        <div className="mr-4 inline-block w-full">
-          {children}
-          {isDocs && (
-            <>
-              <PageHistory />
-              <Divider />
-              <Feedback />
-            </>
-          )}
-          <Divider />
-          <Footer />
-        </div>
+    <div className="flex flex-row justify-center overflow-y-clip">
+      <article className="flex-row overflow-auto px-14 pt-12 lg:max-w-4xl">
+        {children}
+        {isDocs && (
+          <>
+            <PageHistory />
+            <Divider />
+            <Feedback />
+          </>
+        )}
+        <Divider />
+        <Footer />
       </article>
-      {showToc && (
-        <div className="top-0 lg:w-[400px] lg:grow">{TableOfContents(toc)}</div>
-      )}
+      {showToc && TableOfContents(toc)}
     </div>
   );
 };

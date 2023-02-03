@@ -39,7 +39,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
   }
 
   return (
-    <div className={`${isLandingPage ? 'p-16' : ''}`}>
+    <div>
       <Head>
         <title>{title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -52,9 +52,9 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
 
       <ThemeProvider attribute="class">
         <AppWrapper>
-          <div className="flex flex-row ">
-            <SideNav path={router.pathname} />
-            <div className="flex flex-col">
+          <div className="flex w-screen flex-row">
+            {isDocs && <SideNav path={router.pathname} />}
+            <div className="flex grow flex-col">
               <TopNav />
               <Body Component={Component} pageProps={pageProps} />
             </div>
@@ -72,7 +72,7 @@ type BodyProps = {
 
 const Body = ({ Component, pageProps }: BodyProps) => {
   return (
-    <div className={`max-w-[1200px] px-6 lg:px-0`}>
+    <div className={`px-6 lg:px-0`}>
       <main className={inter.className} id="main">
         <div id="skip-nav" />
         <Component {...pageProps} />

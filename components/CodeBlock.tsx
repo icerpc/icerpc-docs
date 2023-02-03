@@ -106,7 +106,7 @@ export const CodeBlock = ({
       >
         {({ style, tokens, getLineProps, getTokenProps }) => (
           <pre
-            className="relative m-0 overflow-auto rounded-2xl px-4 py-3 text-left"
+            className="m-0 overflow-auto rounded-2xl px-4 py-3 text-left"
             style={{ ...style }}
           >
             {tokens.map((line, i) => (
@@ -144,7 +144,7 @@ type LineNumberProps = {
 
 const LineNumber = ({ number }: LineNumberProps) => {
   return (
-    <div className=" table-cell  select-none py-[1px] pr-4 text-right text-xs opacity-50">
+    <div className="table-cell  select-none py-[1px] pr-4 text-right text-xs opacity-50">
       {number}
     </div>
   );
@@ -167,7 +167,7 @@ const TopBar = ({
   copied
 }: TopBarProps) => {
   return (
-    <div className="relative flex h-8 flex-row  justify-between text-white">
+    <div className="flex h-8 flex-row  justify-between text-white">
       <div className="m-0 ml-4 flex flex-row items-center gap-2 p-0 text-xs">
         {languageIcon}
         {language}
