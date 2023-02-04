@@ -5,41 +5,32 @@ description: Learn how a client connects to a server with icerpc.
 
 {% title /%}
 
-## Client side
+## Connection establishment steps
 
-A client follows these steps to establish a connection with icerpc:
+The icerpc connection establishment is the same for a client creating a connection and for a server accepting a
+connection, except for the very first step:
 
-1. Establish a multiplexed transport connection to the server.
-This transport-level connection establishment includes a TLS handshake when the transport connection uses TLS.
+1. (client only) Establish a multiplexed transport connection to the server.
+(server only) Accept a multiplexed transport connection from a client.
 
-2. Open a unidirectional stream to the server: the client control stream
+This transport-level connection establishment or "accept" includes a TLS handshake when the transport connection uses
+TLS.
 
-3. Accept a unidirectional stream from the server: the server control stream
+There is no difference between client and server after this first step. Both the client and server execute their own
+steps one after the other:
 
-4. Send a Settings frame to the server using the client control stream
+2. Open a unidirectional stream to the peer: the outbound control stream.
 
-5. Receive a Settings frame from the server over the server control stream
+3. Accept a unidirectional stream from the peer: the inbound control stream.
 
-Once the client receives the Settings frame from the server, it considers the connection to be established and the
-application start sending requests (creating streams) and dispatching requests (accepting streams) on this connection.
+4. Send the Settings frame to the peer over the outbound control stream.
+The client and server typically send this Settings frame to each other at about the same time.
 
-## Server side
+5. Receive the Settings frame from the peer over the inbound control stream.
 
-A server follows these steps to accept a connection with icerpc:
-
-1. Accept a multiplexed transport connection from a client.
-This transport-level connection "accept" includes a TLS handshake when the transport connection uses TLS.
-
-2. Open a unidirectional stream to the client: the server control stream
-
-3. Accept a unidirectional stream from the client: the client control stream
-
-4. Send a Settings frame to the client using the server control stream
-
-5. Receive a Settings frame from the client over the client control stream
-
-Once the server receives the Settings frame from the client, it considers the connection to be established and the
-application start sending requests (creating streams) and dispatching requests (accepting streams) on this connection.
+Once the client or server receives the Settings frame from the peer, it considers the connection to be established and
+the local application code can start sending requests (creating streams) and dispatching requests (accepting streams) on
+this connection.
 
 ## Settings frame
 
@@ -47,9 +38,13 @@ The Settings frame is used to configure an icerpc connection during connection e
 frame and expects to receive this frame from its peer; there is however no requirement to specify any setting.
 
 There is currently only one setting, `MaxHeaderSize`. It specifies the maximum size of the header of a request or
-response sent over this connection. If a client or server does not want to use the default value for `MaxHeaderSize`
-(16,383), it sends its desired value to the peer in Settings. Each side must then use the smallest `MaxHeaderSize`
-value. It is uncommon to change this setting.
+response sent over this connection.
+
+No `MaxHeaderSize` setting is equivalent to its default value, 16,383. This default value allows to encode the size of
+all headers on no more than 2 bytes.
+
+If a client or server does not want to use this default value, it sends its desired value to the peer in Settings. Each
+side then agrees to use the smallest `MaxHeaderSize` value. It is uncommon to change this setting.
 
 The Setting frame is specified in Slice (LINK) and encoded with Slice2:
 ```slice

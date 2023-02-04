@@ -12,18 +12,15 @@ complete successfully. During shutdown, each side tells the other side which req
 
 ## Shutdown steps
 
-When a client or server wants to shutdown a connection, it proceeds as follows:
+A client or server follows these steps when it wants to shutdown as connection:
 
 1. Stop sending new requests (creating new streams) to the peer, and stop accepting new requests (accepting new streams)
 from the peer.
 
-2. Send a GoAway frame to the peer over its control stream:
+2. Send a GoAway frame to the peer over its outbound control stream.
 
-The GoAway frame contains 2 stream IDs:
- - `bidirectionalStreamId`: any bidirectional stream ID greater than or equal to this ID will not be accepted by the
- sender
- - `unidirectionalStreamId`: any unidirectional stream ID greater than or equal to this ID will not be accepted by the
- sender
+The GoAway frame carries two stream IDs, the `bidirectionalStreamId` and the `unidirectionalStreamId`. Any stream ID
+greater than or equal to these IDs will not be accepted by the GoAway sender.
 
 This way, the peer can identify the outstanding requests it has sent (or is sending) and cancel these requests: they
 won't be accepted so it's pointless to let them continue. It's also safe to resend these requests over another
@@ -34,15 +31,14 @@ Outstanding requests with lower stream IDs were accepted and the connection shut
 The GoAway frame is all about the requests (streams) that the GoAway sender accepts. It says nothing about the requests
 sent or being sent by the GoAway sender.
 
-3. Wait to receive the peer's GoAway frame over the control stream created by the peer, and then cancel any outstanding
-requests that the peer won't accept.
+3. Wait to receive the peer's GoAway frame over the inbound control stream, and then cancel any outstanding requests
+that the peer won't accept.
 
 4. Wait for all local stream activity to complete (control streams aside).
 
-5. Close its control stream (the control stream created by the local application). This tells the peer: "all done on
-my side, you can close the connection".
+5. Close its outbound control stream. This tells the peer: "all done on my side, you can close the connection".
 
-6. Wait for the peer to close its control stream, which means it's done (see above).
+6. Wait for the peer to close the inbound control stream, which means it's done (see above).
 
 7. Close the transport connection with the 0 (success) error code.
 This step can fail because the peer closed the transport connection first with error code 0. This remains a successful
