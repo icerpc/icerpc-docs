@@ -11,7 +11,7 @@ The QUIC transport and its multiplexed transport abstraction are ideal for RPCs.
 response--simply maps to one bidirectional stream. And a oneway RPC--a request with no response--maps to one
 unidirectional stream.
 
-There is no need to identify requests and responses on these stream because:
+There is no need to identify requests and responses on these streams because:
  - the bytes sent by the side that created the stream to the side that accepted the stream represent the request
  - the bytes sent by the side that accepted the stream to the side that created the stream represent the response
 
