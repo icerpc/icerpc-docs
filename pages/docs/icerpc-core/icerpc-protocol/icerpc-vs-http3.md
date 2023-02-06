@@ -9,8 +9,8 @@ When you create a client connection to server address `icerpc://hello.zeroc.com`
 protocol. Let's have a closer look at what it means to use this protocol.
 
 {% callout type="information" %}
-We always spell icerpc in lowercase when we talk about the icerpc protocol, to avoid confusion with the IceRPC
-framework. icerpc is naturally IceRPC's preferred protocol.
+We always spell icerpc in lowercase when we talk about the icerpc protocol. This avoids confusion with the IceRPC
+framework.
 {% /callout %}
 
 ## An http3 sibling
@@ -38,3 +38,11 @@ not multiplexed: it's a classic duplex transport, without streams. The solution 
 multiplexed transport abstraction over any duplex transport. See LINK Slic.
 
 Diagram: icerpc + multiplexed transport abstraction + Slic + duplex transport abstraction + tcp
+
+## IceRPC's preferred protocol
+
+icerpc is naturally IceRPC's preferred protocol.
+
+icerpc provides the most direct realization of IceRPC's APIs. For example, an IceRPC response has a status code that
+indicates whether the response corresponds to a successful RPC (status code Success) or a failure (status code greater
+than Success). The very same status code is encoded in the header of icerpc responses.
