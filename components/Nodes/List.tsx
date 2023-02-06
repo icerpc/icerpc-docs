@@ -9,10 +9,16 @@ type Props = {
 
 export const List = ({ children, ordered }: Props) => {
   if (ordered) {
-    return <ol className="m-0 list-none p-0">{children}</ol>;
+    return (
+      <ol className="mx-10 list-decimal marker:mr-2 marker:text-gray-800 dark:marker:text-white [&>li]:mb-4 [&>li]:pl-2 ">
+        {children}
+      </ol>
+    );
   } else {
     return (
-      <ul className="my-6 ml-12 flex list-disc flex-col gap-4">{children}</ul>
+      <ul className="mx-10 list-disc marker:mr-2 marker:text-gray-500 dark:marker:text-white [&>li]:mb-4 [&>li]:pl-2">
+        {children}
+      </ul>
     );
   }
 };
