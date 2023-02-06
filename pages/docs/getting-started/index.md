@@ -12,18 +12,6 @@ TODO: This page contains placeholder content and needs to be replaced. Please re
 
 {% /callout %}
 
-This is a list:
-
-1. Item
-2. Item
-3. Item
-
-| Head cell  | Another      |
-| ---------- | ------------ |
-| Cell text  | Another cell |
-| More cells | below...     |
-| Inlines    | **allowed**  |
-
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
