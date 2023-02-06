@@ -1,9 +1,24 @@
 // Copyright (c) ZeroC, Inc. All rights reserved.
 
 import { nodes } from '@markdoc/markdoc';
-import { Table } from 'components/Nodes/Table';
+import { Table, TH, TR, TD } from 'components/Nodes/Table';
 
-export default {
+export const table = {
   render: Table,
   attributes: nodes.table.attributes
+};
+
+export const th = {
+  render: TH,
+  attributes: nodes.th.attributes
+};
+
+export const tr = {
+  render: TR,
+  attributes: nodes.tr.attributes
+};
+
+export const td = {
+  render: TD,
+  attributes: nodes.td.attributes
 };
