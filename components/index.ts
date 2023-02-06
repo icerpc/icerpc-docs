@@ -2,6 +2,7 @@
 
 export * from './Nodes/Heading';
 export * from './Nodes/AppLink';
+export * from './Nodes/Table';
 
 export * from './Shell/SideNav';
 export * from './Shell/TableOfContents';
