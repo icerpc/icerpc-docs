@@ -10,12 +10,9 @@ description: Learn how a client connects to a server with icerpc.
 The icerpc connection establishment is the same for a client creating a connection and for a server accepting a
 connection, except for the very first step:
 
-1. (client only) Establish a multiplexed transport connection to the server.
+1. (client only) Establish a QUIC connection to the server.
 
-    (server only) Accept a multiplexed transport connection from a client.
-
-    This transport-level connection establishment or "accept" includes a TLS handshake when the transport connection uses
-    TLS.
+    (server only) Accept a QUIC connection from a client.
 
 2. Open a unidirectional stream to the peer: the outbound control stream.
 
@@ -42,7 +39,7 @@ response sent over this connection.
 Not specifying the `MaxHeaderSize` setting is equivalent to specifying its default value, 16,383. This default value
 allows to encode the size of request and response headers on no more than 2 bytes.
 
-If a client or server does not want to use this default value, it sends its desired value to the peer in the Settings
+If a client or a server does not want to use this default value, it sends its desired value to the peer in the Settings
 frame. Each side then agrees to use the smallest `MaxHeaderSize` value. It is uncommon to change this setting.
 
 The Settings frame is specified in Slice (LINK) and encoded with Slice2:

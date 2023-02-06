@@ -8,11 +8,11 @@ description: Understand connection shutdown with icerpc.
 ## What's a connection shutdown?
 
 A shutdown is a graceful closure of a connection. Each side wants to maximize the chances that outstanding requests
-complete successfully. During shutdown, each side tells the other side which requests it guarantees to not accept.
+complete successfully.
 
 ## Shutdown steps
 
-A client or server follows these steps when it wants to shutdown as connection:
+A client or a server follows these steps when it wants to shutdown an icerpc connection:
 
 1. Stop sending new requests (creating new streams) to the peer, and stop accepting new requests (accepting new streams)
 from the peer.
@@ -40,8 +40,8 @@ that the peer won't accept.
 
 6. Wait for the peer to close the inbound control stream, which means it's done (see above).
 
-7. Close the transport connection with the 0 (success) error code.
-This step can fail because the peer closed the transport connection first with error code 0. This remains a successful
+7. Close the QUIC connection with the 0 (success) error code.
+This step can fail because the peer closed the QUIC connection first with error code 0. This remains a successful
 shutdown.
 
 ## GoAway frame
