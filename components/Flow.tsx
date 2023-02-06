@@ -35,7 +35,7 @@ export const Flow = ({ nodes, edges }: { nodes: Node[]; edges: Edge[] }) => {
   const { resolvedTheme } = useTheme();
   return (
     nodes && (
-      <div className="container" style={{ height: 400, width: '100%' }}>
+      <div className="h-[300px] w-full">
         <ReactFlow
           style={resolvedTheme === 'dark' ? darkReactFlowStyle : reactFlowStyle}
           nodes={nodes}

@@ -5,18 +5,14 @@
 @tailwind utilities;
 
 :root {
-  --nav-height: 65px;
-  --border-color: #dce6e9;
   --link-color: rgba(75, 85, 99, 1);
   --highlighted-link-color: black;
   --text-color: rgba(75, 85, 99, 1);
   --text-color-secondary: #3d4356;
-  --side-nav-width: 240px;
   --primary-color: theme('colors.primary');
 }
 
 [data-theme='dark'] {
-  --border-color: rgb(49, 54, 60);
   --link-color: rgba(255, 255, 255, 0.8);
   --highlighted-link-color: white;
   --text-color: white;
@@ -40,6 +36,10 @@
     @apply dark:text-white;
   }
 
+  main article li {
+    @apply dark:text-[#a1a1aa];
+  }
+
   body {
     @apply bg-[#FAFAFA] dark:bg-[rgb(33,35,39)];
   }
@@ -60,6 +60,7 @@
 }
 
 html {
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -104,11 +105,6 @@ h2 {
 [data-theme='dark'] code {
   background: #2d2d2d;
   border-bottom: 1px solid #e1e4e8;
-  color: white;
-}
-
-[data-theme='dark'] ul,
-ol {
   color: white;
 }
 

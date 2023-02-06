@@ -36,9 +36,9 @@ export const TableOfContents = (toc: TOC) => {
   );
 
   return (
-    <>
+    <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-[300px] shrink-0 border-l border-lightBorder dark:border-darkBorder lg:block">
       {items.length > 1 && (
-        <nav className="sticky top-[var(--nav-height)] mb-4 ml-6 hidden h-screen w-[300px] self-start border-l border-lightBorder px-8 py-10 dark:border-darkBorder lg:block">
+        <nav className="h-full px-8 py-10">
           <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase tracking-wider  dark:text-white">
             <Bars3BottomLeftIcon className="ml-0 mr-2 h-5 w-5 pl-0" /> On this
             page
@@ -76,7 +76,7 @@ export const TableOfContents = (toc: TOC) => {
           <Divider />
         </nav>
       )}
-    </>
+    </aside>
   );
 };
 
@@ -88,7 +88,7 @@ type MoreItemProps = {
 const MoreItem = ({ href, children }: MoreItemProps) => {
   return (
     <li className="m-0 my-4 text-sm">
-      <AppLink href={href} className="text-[var(--link-color)]">
+      <AppLink href={href} className="text-[#4B5563]">
         <div className="flex items-center gap-[0.5em]">{children}</div>
       </AppLink>
     </li>

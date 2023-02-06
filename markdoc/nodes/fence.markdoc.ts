@@ -5,5 +5,12 @@ import { CodeBlock } from 'components';
 
 export default {
   render: CodeBlock,
-  attributes: nodes.fence.attributes
+  attributes: {
+    ...nodes.fence.attributes,
+    isValid: {
+      type: Boolean,
+      required: false,
+      default: true
+    }
+  }
 };
