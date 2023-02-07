@@ -36,7 +36,7 @@ optional fragment are properties of the service address itself.
 
 For example:
 ```
-icerpc://hello.zeroc.com/path?transport=quic
+icerpc://hello.zeroc.com/chatbot?transport=quic
 ```
 
 Such a service address is typically used when making invocations with a connection cache. The connection cache uses the
@@ -47,7 +47,7 @@ server address to direct the request to the desired server.
 A service address URI can specify additional server addresses with the `alt-server` query parameter. The value of this
 parameter is a server address without the `protocol://` prefix. For example:
 ```
-icerpc://hello.zeroc.com/path?alt-server=bonjour.zeroc.com,hola.zeroc.com
+icerpc://hello.zeroc.com/chatbot?alt-server=bonjour.zeroc.com,hola.zeroc.com
 ```
 
 `alt-server` means the application can find the service in the first server or in any of these alternate servers.
@@ -55,13 +55,13 @@ icerpc://hello.zeroc.com/path?alt-server=bonjour.zeroc.com,hola.zeroc.com
 
 Each alt server address can have its own query parameters. For example:
 ```
-icerpc://hello.zeroc.com/path?transport=quic&alt-server=bonjour.zeroc.com?transport=tcp,hola.zeroc.com?transport=ssl
+icerpc://hello.zeroc.com/chatbot?transport=quic&alt-server=bonjour.zeroc.com?transport=tcp,hola.zeroc.com?transport=ssl
 ```
 
 If an alt server address has multiple query parameters, it must use '$' instead of '&' to separate these parameters.
 For example:
 ```
-icerpc://hello.zeroc.com/path?alt-server=bonjour.zeroc.com?transport=tcp$other=foo
+icerpc://hello.zeroc.com/chatbot?alt-server=bonjour.zeroc.com?transport=tcp$other=foo
 ```
 
 ### Service address with no server address
@@ -73,9 +73,9 @@ protocol:/path[?name=value][&more name value params...][#fragment]`
 
 Here, the query parameters are properties of the service address itself. For example:
 ```
-icerpc:/path
+icerpc:/chatbot
 
-ice:/path?adapter-id=adapter
+ice:/chatbot?adapter-id=bot-club
 ```
 
 A server address-less service address is often used with a client connection. Since a client connection is bound to a
@@ -87,7 +87,7 @@ For example:
 await using var clientConnection = new ClientConnection(new Uri("icerpc://hello.zeroc.com"));
 
 // no server address in service address
-using var request = new OutgoingRequest(new ServiceAddress(new Uri("icerpc:/path")));
+using var request = new OutgoingRequest(new ServiceAddress(new Uri("icerpc:/chatbot")));
 
 // ClientConnection accepts requests that don't specify a server address
 IncomingResponse response = await connection.InvokeAsync(request);
