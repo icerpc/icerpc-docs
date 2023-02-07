@@ -50,7 +50,7 @@ the other invokers are usually interceptors (LINK).
 
 Diagram: invoker --next--> invoker --next--> ...
 
-## Outgoing request
+## Payload and payload continuation
 
 An outgoing request carries all the data a client connection or connection cache needs to send a request:
  - the service address (LINK)
@@ -61,12 +61,6 @@ An outgoing request carries all the data a client connection or connection cache
 
 The payload of an outgoing request is actually split in two: a first part that the connection sends before awaiting the
 response, and a second part (the "continuation") that the connection sends in the background while it awaits, receives
-and returns the response. On the other side, the receiver of the request sees only one continuous payload.
+and returns the response.
 
-## Incoming response
-
-An incoming response holds:
- - a status code that indicates whether the processing of the request by the peer succeeded or failed
- - an error message, when the status code is not Success
- - response fields (LINK to icerpc protocol)
- - the payload of the response (a sequence of bytes)
+On the other side, the receiver of the request sees only one continuous payload.
