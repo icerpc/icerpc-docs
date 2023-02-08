@@ -13,6 +13,10 @@ import { useTheme } from 'next-themes';
 // ts-ignore is required for the following line because the package doesn't have types
 // @ts-ignore
 import Prism from 'prism-react-renderer/prism';
+import dynamic from 'next/dynamic';
+const MermaidDiagram = dynamic(() => import('components/Mermaid'), {
+  ssr: false
+});
 // @ts-ignore
 (typeof global !== 'undefined' ? global : window).Prism = Prism;
 
@@ -67,7 +71,7 @@ export const CodeBlock = ({
   isValid
 }: Props) => {
   const [copied, setCopied] = useState(false);
-
+  console.log('language', language);
   // Switch to dark theme if the user has dark mode enabled
   const { resolvedTheme } = useTheme();
   const theme = resolvedTheme === 'dark' ? themeDark : themeLight;
@@ -82,6 +86,15 @@ export const CodeBlock = ({
   ) : (
     <FaFile />
   );
+
+  // If the language is mermaid, render the mermaid diagram
+  if (language.toLowerCase() === 'mermaid') {
+    return (
+      <div className="mx-auto min-w-full">
+        <MermaidDiagram value={`${children.trim()}`} />
+      </div>
+    );
+  }
 
   return (
     // Container for the code block
