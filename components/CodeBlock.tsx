@@ -70,11 +70,11 @@ export const CodeBlock = ({
   'data-language': language,
   isValid
 }: Props) => {
-  const [copied, setCopied] = useState(false);
-  console.log('language', language);
   // Switch to dark theme if the user has dark mode enabled
   const { resolvedTheme } = useTheme();
   const theme = resolvedTheme === 'dark' ? themeDark : themeLight;
+
+  const [copied, setCopied] = useState(false);
 
   // Split the code into lines
   const lines =
