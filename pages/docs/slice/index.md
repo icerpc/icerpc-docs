@@ -75,30 +75,6 @@ to define your types. Information about the different types can be found in the 
 
 TODO: Describe the compilation process
 
-{% flow
-   nodes=[
-    {
-      id: "1",
-      data: { label: "Hello.slice" },
-      position: { x: 250, y: 5 }
-    },
-    {
-      id: "2",
-      data: { label: "Slice  C# Compiler" },
-      position: { x: 100, y: 100 }
-    },
-    {
-      id: "3",
-      data: { label: "Hello.cs" },
-      position: { x: 400, y: 100 },
-    }
-  ]
-  edges=[
-    { id: "e1-2", source: "1", target: "2", markerEnd: "MarkerType.ArrowClosed" },
-    { id: "e2-3", source: "2", target: "3" }
-  ]
-/%}
-
 ## Integrations
 
 TODO: Describe the various integration such as syntax highlighting, etc.

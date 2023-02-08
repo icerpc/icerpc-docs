@@ -69,26 +69,9 @@ environments, including embedded systems, mobile devices, and desktop applicatio
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas
 congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero.
 
-{% flow
-   nodes=[
-    {
-      id: "1",
-      data: { label: "Node 1" },
-      position: { x: 250, y: 5 }
-    },
-    {
-      id: "2",
-      data: { label: "Node 2" },
-      position: { x: 100, y: 100 }
-    },
-    {
-      id: "3",
-      data: { label: "Node 3" },
-      position: { x: 400, y: 100 }
-    }
-  ]
-  edges=[
-    { id: "e1-2", source: "1", target: "2" },
-    { id: "e1-3", source: "1", target: "3" }
-  ]
-/%}
+```mermaid
+stateDiagram-v2
+    [*] --> s1
+    s1 --> [*]
+
+```

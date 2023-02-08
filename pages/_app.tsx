@@ -37,7 +37,6 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       description = markdoc.frontmatter.description;
     }
   }
-
   return (
     <div>
       <Head>
@@ -49,7 +48,6 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <ThemeProvider attribute="class">
         <AppWrapper>
           <div className="flex w-screen flex-row">
