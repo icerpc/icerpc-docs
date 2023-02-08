@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 import { IconContext } from 'react-icons';
 import { BsBox, BsQuestionSquare, BsTerminal, BsGithub } from 'react-icons/bs';

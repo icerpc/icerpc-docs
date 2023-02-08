@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 import { Tag, Node, Config } from '@markdoc/markdoc';
 import { Title } from 'components/Title';

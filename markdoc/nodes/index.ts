@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 export { default as fence } from './fence.markdoc';
 export { default as document } from './document.markdoc';

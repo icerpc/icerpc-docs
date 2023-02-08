@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 import { SideBarSourceType, GETTING_STARTED_BASE_URL } from 'types';
 

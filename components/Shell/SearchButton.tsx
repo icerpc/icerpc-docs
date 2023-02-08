@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 import { DocSearch } from '@docsearch/react';
 import '@docsearch/css';

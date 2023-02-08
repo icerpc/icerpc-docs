@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 import { ReactNode, useState } from 'react';
 import { BiCopy } from 'react-icons/bi';

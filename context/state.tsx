@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 import { ReactNode } from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';

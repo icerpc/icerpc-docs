@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 export const SLICE_BASE_URL = '/docs/slice';
 export const GETTING_STARTED_BASE_URL = '/docs/getting-started';

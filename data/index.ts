@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 export { rpcCoreData } from './icerpc-core-data';
 export { slice1Data } from './slice-1-data';

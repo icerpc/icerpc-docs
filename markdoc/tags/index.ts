@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 import sideBySide from './side-by-side.markdoc';
 import { linkCard, miniCard } from './mini-card.markdoc';

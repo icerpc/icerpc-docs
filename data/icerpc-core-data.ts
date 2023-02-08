@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 import { SideBarSourceType, RPC_CORE_BASE_URL } from 'types';
 
@@ -9,8 +9,7 @@ export const rpcCoreData: SideBarSourceType[] = [
   },
   {
     title: 'Connection',
-    links:
-    [
+    links: [
       {
         title: 'Client vs server connections',
         path: `${RPC_CORE_BASE_URL}/connection/client-vs-server-connections`
@@ -22,13 +21,12 @@ export const rpcCoreData: SideBarSourceType[] = [
       {
         title: 'Security with TLS',
         path: `${RPC_CORE_BASE_URL}/connection/security-with-tls`
-      },
-    ],
+      }
+    ]
   },
   {
     title: 'The icerpc protocol',
-    links:
-    [
+    links: [
       {
         title: 'icerpc vs http3',
         path: `${RPC_CORE_BASE_URL}/icerpc-protocol/icerpc-vs-http3`
@@ -48,7 +46,7 @@ export const rpcCoreData: SideBarSourceType[] = [
       {
         title: 'Slic',
         path: `${RPC_CORE_BASE_URL}/icerpc-protocol/slic`
-      },
-    ],
+      }
+    ]
   }
 ];

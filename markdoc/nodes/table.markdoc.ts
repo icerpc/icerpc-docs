@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 import { nodes } from '@markdoc/markdoc';
 import { Table, TH, TR, TD } from 'components/Nodes/Table';

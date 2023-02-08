@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');

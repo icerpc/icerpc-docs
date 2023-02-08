@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 import { MiniLink, MiniCard } from 'components/Card';
 import { Tag, nodes, Node, Config } from '@markdoc/markdoc';

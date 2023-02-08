@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 import { Breadcrumbs, Breadcrumb } from 'components/Breadcrumbs';
 

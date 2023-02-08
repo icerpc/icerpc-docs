@@ -1,4 +1,4 @@
-// Copyright (c) ZeroC, Inc. All rights reserved.
+// Copyright (c) ZeroC, Inc.
 
 import React, { useEffect, ReactNode } from 'react';
 import { Platform } from 'types';
