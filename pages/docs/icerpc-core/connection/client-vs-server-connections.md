@@ -5,6 +5,8 @@ description: Learn how to create and accept connections in IceRPC.
 
 {% title /%}
 
+## What are connections for?
+
 Connections play a central role in IceRPC: you send a request to a service over a connection and later receive a
 response over the same connection. At the other end of this connection, IceRPC receives this request, hands it over to
 your service and later sends back the response returned by your service.
@@ -12,7 +14,10 @@ your service and later sends back the response returned by your service.
 When an application creates a connection to a server, this connection is a "client connection". When a server accepts a
 connection from a client, this connection is called a "server connection".
 
-DIAGRAM
+```mermaid
+flowchart LR
+    client["Client\n creates connection"] ---- server[Server\n accepts connection]
+```
 
 Once a connection is established, there is no difference between a client and a server connection. You can make an
 invocation (send a request and receive the corresponding response) on a client connection or on a server connection
@@ -29,8 +34,8 @@ using IceRpc;
 await using var clientConnection = new ClientConnection(new Uri("icerpc://hello.zeroc.com"));
 ```
 
-`ClientConnection`'s constructor specifies the address of the server (see XXX), but does not actually establish the
-connection. The connection is established later on by an asynchronous call such as `ConnectAsync`:
+`ClientConnection`'s constructor specifies the [address of the server](server-address), but does not actually establish
+the connection. The connection is established later on by an asynchronous call such as `ConnectAsync`:
 ```csharp
 // establishes the connection explicitly
 await clientConnection.ConnectAsync();
@@ -42,7 +47,7 @@ the IceRPC core.
 ## Creating a server
 
 On the server-side, you accept server connections with an instance of the Server class. This server listens for and
-accepts new connections on its configured server address (LINK).
+accepts new connections on its configured [server address](server-address).
 
 In C#, this is again a two-step process, where you first construct the server and later call `Listen`:
 ```csharp
@@ -60,7 +65,8 @@ server.Listen();
 `ClientConnection`, `ConnectionCache` and `Server` all create and manage instances of the protocol connection
 abstraction. A protocol connection:
  - holds a transport connection such as a QUIC connection or a tcp connection
- - implements a RPC protocol layer, such as icerpc (LINK) or ice (link), over this transport connection
+ - implements a RPC protocol layer, such as [icerpc](../icerpc-protocol/icerpc-vs-http3) or ice (link), over this
+ transport connection
 
 We often refer to a protocol connection as simply a "connection".
 
@@ -72,8 +78,6 @@ We often refer to a protocol connection as simply a "connection".
 
  A server accepts server protocol connections and remembers which connections it accepted. This allows the server to
  shut down these protocol connection when you shut down this server.
-
- DIAGRAM
 
 In C#, the protocol connection abstraction is represented by interface `IProtocolConnection`:
 ```csharp

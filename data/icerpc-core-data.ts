@@ -25,6 +25,23 @@ export const rpcCoreData: SideBarSourceType[] = [
     ]
   },
   {
+    title: 'Invocation',
+    links: [
+    {
+      title: 'Invocation pipeline',
+      path: `${RPC_CORE_BASE_URL}/invocation/invocation-pipeline`
+    },
+    {
+      title: 'Interceptor',
+      path: `${RPC_CORE_BASE_URL}/invocation/interceptor`
+    },
+    {
+      title: 'Service address',
+      path: `${RPC_CORE_BASE_URL}/invocation/service-address`
+    }
+    ]
+  },
+  {
     title: 'The icerpc protocol',
     links: [
       {
