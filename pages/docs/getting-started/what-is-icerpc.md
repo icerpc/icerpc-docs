@@ -12,6 +12,8 @@ breadcrumbs:
 
 TODO: This page contains placeholder content and needs to be replaced. Please remove this when you are done.
 
+Benoit: what you see below is total nonsense and needs to be totally rewritten.
+
 {% /callout %}
 
 In this section, you'll get a brief introduction to the components of the IceRPC framework. Additional information
