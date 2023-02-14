@@ -14,11 +14,6 @@ your service and later sends back the response returned by your service.
 When an application creates a connection to a server, this connection is a "client connection". When a server accepts a
 connection from a client, this connection is called a "server connection".
 
-```mermaid
-flowchart LR
-    client["Client\n creates connection"] ---- server[Server\n accepts connection]
-```
-
 Once a connection is established, there is no difference between a client and a server connection. You can make an
 invocation (send a request and receive the corresponding response) on a client connection or on a server connection
 with exactly the same API. Any connection, client or server, can also accept incoming requests and dispatch these
@@ -44,6 +39,11 @@ await clientConnection.ConnectAsync();
 This pattern where the constructor configures the new instance but does not actually run anything is common throughout
 the IceRPC core.
 
+A client connection maintains a single active connection: a (client) connection connected to a server.
+
+A connection cache maintains a map of server addresses to (client) connections. Each connection is connected to a
+different server. The connection cache helps locate and reuse these connections.
+
 ## Creating a server
 
 On the server-side, you accept server connections with an instance of the Server class. This server listens for and
@@ -60,6 +60,9 @@ await using var server = new Server(...);
 server.Listen();
 ```
 
+A server accepts connections and remembers which connections it accepted. This allows the server to shut down these
+connections when you shut down the server.
+
 ## The protocol connection abstraction
 
 `ClientConnection`, `ConnectionCache` and `Server` all create and manage instances of the protocol connection
@@ -69,15 +72,6 @@ abstraction. A protocol connection:
  transport connection
 
 We often refer to a protocol connection as simply a "connection".
-
- A client connection maintains a single active protocol connection - a (client) protocol connection connected to a
- server.
-
- A connection cache maintains a map of server address to (client) protocol connection. Each connection is connected to a
- different server. The connection cache helps locate and reuse these protocol connections.
-
- A server accepts server protocol connections and remembers which connections it accepted. This allows the server to
- shut down these protocol connection when you shut down this server.
 
 In C#, the protocol connection abstraction is represented by interface `IProtocolConnection`:
 ```csharp
