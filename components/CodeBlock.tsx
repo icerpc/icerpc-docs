@@ -61,7 +61,7 @@ Prism.languages.slice = {
 
 type Props = {
   children: string;
-  'data-language': string;
+  'data-language'?: string;
   isValid?: boolean;
 };
 
@@ -81,16 +81,21 @@ export const CodeBlock = ({
     typeof children === 'string' ? children.split('\n').filter(Boolean) : [];
 
   // If the code is a command line, add a prompt to the first line
-  const languageIcon = commandLineLanguages.includes(language) ? (
-    <BsTerminalFill />
-  ) : (
-    <FaFile />
-  );
+  // If language is undefined or if it is not included in commandLineLanguages, render a file icon
+  // Otherwise, render a terminal icon
+  const languageIcon =
+    language === undefined ? (
+      <FaFile />
+    ) : commandLineLanguages.includes(language) ? (
+      <BsTerminalFill />
+    ) : (
+      <FaFile />
+    );
 
   // If the language is mermaid, render the mermaid diagram
-  if (language.toLowerCase() === 'mermaid') {
+  if (language?.toLowerCase() === 'mermaid') {
     return (
-      <div className="mx-auto min-w-full">
+      <div className="mx-auto my-4 min-w-full">
         <MermaidDiagram value={`${children.trim()}`} />
       </div>
     );
@@ -119,7 +124,7 @@ export const CodeBlock = ({
       >
         {({ style, tokens, getLineProps, getTokenProps }) => (
           <pre
-            className="m-0 overflow-auto rounded-2xl px-4 py-3 text-left"
+            className="m-0 overflow-auto rounded-b-2xl px-4 py-3 text-left"
             style={{ ...style }}
           >
             {tokens.map((line, i) => (
@@ -165,7 +170,7 @@ const LineNumber = ({ number }: LineNumberProps) => {
 
 type TopBarProps = {
   languageIcon: ReactNode;
-  language: string;
+  language?: string;
   lines: string[];
   setCopied: (copied: boolean) => void;
   copied: boolean;
