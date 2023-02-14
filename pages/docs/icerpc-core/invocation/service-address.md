@@ -18,7 +18,7 @@ consists of:
 
 ## Syntax
 
-A service address is a URI (as per [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986.html)).
+A service address is a [URI](https://www.rfc-editor.org/rfc/rfc3986.html).
 
 In C#, record class `ServiceAddress` is simply a parsed and validated representation of a service address URI: it holds
 exactly the same information.

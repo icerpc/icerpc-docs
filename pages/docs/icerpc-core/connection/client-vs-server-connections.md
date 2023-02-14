@@ -29,8 +29,9 @@ using IceRpc;
 await using var clientConnection = new ClientConnection(new Uri("icerpc://hello.zeroc.com"));
 ```
 
-`ClientConnection`'s constructor specifies the [address of the server](server-address), but does not actually establish
-the connection. The connection is established later on by an asynchronous call such as `ConnectAsync`:
+`ClientConnection`'s constructor specifies the [address of the server](server-address#client-connection-configuration),
+but does not actually establish the connection. The connection is established later on by an asynchronous call such as
+`ConnectAsync`:
 ```csharp
 // establishes the connection explicitly
 await clientConnection.ConnectAsync();
@@ -47,7 +48,7 @@ different server. The connection cache helps locate and reuse these connections.
 ## Creating a server
 
 On the server-side, you accept server connections with an instance of the Server class. This server listens for and
-accepts new connections on its configured [server address](server-address).
+accepts new connections on its configured [server address](server-address#server-configuration).
 
 In C#, this is again a two-step process, where you first construct the server and later call `Listen`:
 ```csharp

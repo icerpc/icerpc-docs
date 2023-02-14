@@ -15,7 +15,14 @@ There is no need to identify requests and responses on these streams because:
  - the bytes sent by the side that created the stream to the side that accepted the stream represent the request
  - the bytes sent by the side that accepted the stream to the side that created the stream represent the response
 
-Request/response with stream diagram.
+```mermaid
+---
+title: RPC mapped to a stream
+---
+flowchart LR
+    outbound[create stream side] --request --> inbound[accept stream side]
+    inbound --response --> outbound
+```
 
 ## Request layout
 

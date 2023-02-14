@@ -7,7 +7,7 @@ description: Understand the server address concept and syntax.
 
 ## Syntax
 
-A server address is a URI (as per [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986.html)) with the following syntax:
+A server address is a [URI](https://www.rfc-editor.org/rfc/rfc3986.html)) with the following syntax:
 `protocol://host[:port][?name=value][&more name value params...]`
 
 - `protocol` (the URI scheme) is either `ice` or `icerpc`
