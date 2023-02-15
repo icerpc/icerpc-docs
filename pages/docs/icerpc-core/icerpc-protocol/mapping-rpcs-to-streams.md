@@ -20,8 +20,22 @@ There is no need to identify requests and responses on these streams because:
 title: RPC mapped to a stream
 ---
 flowchart LR
-    outbound[create stream side] --request --> inbound[accept stream side]
-    inbound --response --> outbound
+    subgraph Server
+    inbound0["accept stream #0"]
+    inbound4["accept stream #4"]
+    outbound3["create stream #3"]
+    end
+    subgraph Client
+    outbound0["create stream #0"]
+    outbound4["create stream #4"]
+    inbound3["accept stream #3"]
+    end
+    outbound0 --request --> inbound0
+    inbound0 --response --> outbound0
+    outbound4 --request --> inbound4
+    inbound4 --response --> outbound4
+    outbound3 --request --> inbound3
+     inbound3 --response --> outbound3
 ```
 
 ## Request layout
