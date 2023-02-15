@@ -9,6 +9,7 @@ import { SideNav, TopNav } from 'components';
 import { AppWrapper } from 'context/state';
 import '/public/globals.css';
 import 'reactflow/dist/style.css';
+require('components/prism-coldark.css');
 
 import type { AppProps } from 'next/app';
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js';

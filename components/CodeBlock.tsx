@@ -6,9 +6,6 @@ import { FaFile } from 'react-icons/fa';
 import { BsTerminalFill } from 'react-icons/bs';
 import copy from 'copy-to-clipboard';
 import Highlight, { Language, defaultProps } from 'prism-react-renderer';
-import themeLight from 'prism-react-renderer/themes/dracula';
-import themeDark from 'prism-react-renderer/themes/dracula';
-import { useTheme } from 'next-themes';
 
 // ts-ignore is required for the following line because the package doesn't have types
 // @ts-ignore
@@ -65,15 +62,15 @@ type Props = {
   isValid?: boolean;
 };
 
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(' ');
+}
+
 export const CodeBlock = ({
   children,
   'data-language': language,
   isValid
 }: Props) => {
-  // Switch to dark theme if the user has dark mode enabled
-  const { resolvedTheme } = useTheme();
-  const theme = resolvedTheme === 'dark' ? themeDark : themeLight;
-
   const [copied, setCopied] = useState(false);
 
   // Split the code into lines
@@ -103,7 +100,7 @@ export const CodeBlock = ({
 
   return (
     // Container for the code block
-    <div className="my-5 rounded-2xl bg-[#20212a]">
+    <div className="my-5 rounded-2xl bg-[#17232d]">
       {/* Top bar with language and copy button */}
 
       <TopBar
@@ -118,20 +115,23 @@ export const CodeBlock = ({
       {/* PrismJS styled code block*/}
       <Highlight
         {...defaultProps}
-        theme={theme}
         code={children?.trim()}
         language={language as Language}
+        theme={undefined}
       >
-        {({ style, tokens, getLineProps, getTokenProps }) => (
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre
-            className="m-0 overflow-auto rounded-b-2xl px-4 py-3 text-left"
+            className={classNames(
+              className,
+              'm-0 my-1 overflow-auto rounded-b-2xl px-4 py-3 text-left'
+            )}
             style={{ ...style }}
           >
             {tokens.map((line, i) => (
               <div
                 key={i}
                 {...getLineProps({ line, key: i })}
-                className="table-row"
+                className={classNames(className, 'table-row')}
               >
                 <LineNumber number={i + 1} />
                 <LineContent>
@@ -153,7 +153,7 @@ type LineContentProps = {
 };
 
 const LineContent = ({ children }: LineContentProps) => {
-  return <div className="table-cell py-[2px] text-xs">{children}</div>;
+  return <div className="table-cell py-[3px] text-xs">{children}</div>;
 };
 
 type LineNumberProps = {
@@ -184,6 +184,12 @@ const TopBar = ({
   setCopied,
   copied
 }: TopBarProps) => {
+  // If the language is csharp, change it to C#
+  // TODO: Add more languages
+  if (language?.toLowerCase() === 'csharp') {
+    language = 'C#';
+  }
+
   return (
     <div className="flex h-8 flex-row justify-between text-white">
       <div className="m-0 ml-4 flex flex-row items-center gap-2 p-0 text-xs">
