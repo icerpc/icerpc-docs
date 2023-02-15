@@ -5,20 +5,17 @@ description: Understand the service address concept and syntax.
 
 {% title /%}
 
-## Concept
+## Syntax
 
-A service address encapsulates the information an application needs to reach a service. This information or address
-consists of:
+A service address is a [URI](https://www.rfc-editor.org/rfc/rfc3986.html).
+
+It encapsulates the information an application needs to reach a service. This information or address consists of:
  - a protocol (ice or icerpc)
  - a path that allows the server to route requests to the desired service
  - optionally, one or more [server addresses](../connection/server-address), used to establish or locate a connection to
    a server that hosts the service
  - optional query parameters (only when the service address has no server address)
  - an optional fragment; this fragment is only valid with the ice protocol where it represents an Ice facet name
-
-## Syntax
-
-A service address is a [URI](https://www.rfc-editor.org/rfc/rfc3986.html).
 
 In C#, record class `ServiceAddress` is simply a parsed and validated representation of a service address URI: it holds
 exactly the same information.

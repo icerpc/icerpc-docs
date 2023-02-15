@@ -58,7 +58,7 @@ equivalent. The only difference between tcp and ssl is ssl requires TLS while it
 
 ## coloc
 
-The coloc transport, used for testing, do not support TLS at all. If you specify TLS configuration with coloc, you'll
+The coloc transport, used for testing, does not support TLS at all. If you specify TLS configuration with coloc, you'll
 get an error.
 
 ```csharp

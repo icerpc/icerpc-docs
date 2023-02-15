@@ -11,9 +11,8 @@ The QUIC transport and its multiplexed transport abstraction are ideal for RPCs.
 response--simply maps to one bidirectional stream. And a oneway RPC--a request with no response--maps to one
 unidirectional stream.
 
-There is no need to identify requests and responses on these streams because:
- - the bytes sent by the side that created the stream to the side that accepted the stream represent the request
- - the bytes sent by the side that accepted the stream to the side that created the stream represent the response
+A request flows from the endpoint that created the stream to the endpoint that accepted the stream, while a response
+flows the other way--from the endpoint that accepted the stream to the endpoint that created the stream.
 
 ```mermaid
 ---
@@ -49,7 +48,31 @@ flowchart LR
 An icerpc request consists of a header followed by a payload. As far as icerpc is concerned, the payload is just a
 sequence of bytes with an unknown size. The end of the stream marks the end of the payload.
 
-The request header is specified in Slice (LINK) and encoded using Slice2:
+The request header holds:
+ - the path of the service
+ - the operation name
+ - request header fields
+
+The request header fields corresponds to a dictionary of RequestFieldKey (an enum) to sequence of bytes. These fields
+are used to transmit out-of-brand information alongside the request. icerpc itself just transmits these fields and does
+not attach any meaning to their values or presence.
+
+```slice
+unchecked enum RequestFieldKey : varuint62
+{
+    Context = 0,
+    TraceContext = 1,
+    CompressionFormat = 2,
+    ...
+}
+```
+
+### Encoding
+
+(Advanced)
+
+The request header is specified using Slice and encoded using Slice2:
+
 ```slice
 compact struct Request
 {
@@ -64,18 +87,7 @@ compact struct RequestHeader
     operation: string,
     fields: dictionary<RequestFieldKey, sequence<uint8>>
 }
-
-unchecked enum RequestFieldKey : varuint62
-{
-    Context = 0,
-    TraceContext = 1,
-    CompressionFormat = 2,
-    ...
-}
 ```
-
-The fields are used to transmit out-of-brand information alongside the request. icerpc itself just transmits these
-fields and does not attach any meaning to their values or presence.
 
 For example, a request for operation "op" at path "/foo" with an empty payload and no field can be encoded as:
 ```
@@ -98,22 +110,16 @@ encoded on 2 bytes, the encoded value is `source * 4 + 1`.
 An icerpc response consists of a header followed by a payload. The payload of a response is just like the payload of a
 request: a sequence of bytes with an unknown size. The response payload ends when the stream ends.
 
-The response header is specified in Slice (LINK) and encoded using Slice2:
+The response header holds:
+ - the response's status code
+ - an error message when the status code is not Success
+ - response header fields
+
+The response header fields corresponds to a dictionary of ResponseFieldKey (an enum) to sequence of bytes. These fields
+are used to transmit out-of-brand information alongside the response. icerpc itself just transmits these fields and does
+not attach any meaning to their values or presence.
+
 ```slice
-compact struct Response
-{
-    headerSize: varuint62,
-    header: ResponseHeader,
-    payload: ...bytes...
-}
-
-compact struct ResponseHeader
-{
-    statusCode: StatusCode,
-    errorMessage: string, // only present when StatusCode > Success
-    fields: dictionary<ResponseFieldKey, sequence<uint8>>
-}
-
 unchecked enum StatusCode : varuint62
 {
     Success = 0,
@@ -127,6 +133,28 @@ unchecked enum ResponseFieldKey : varuint62
 {
     CompressionFormat = 2,
     ...
+}
+```
+
+### Encoding
+
+(Advanced)
+
+The response header is specified in Slice (LINK) and encoded using Slice2:
+
+```slice
+compact struct Response
+{
+    headerSize: varuint62,
+    header: ResponseHeader,
+    payload: ...bytes...
+}
+
+compact struct ResponseHeader
+{
+    statusCode: StatusCode,
+    errorMessage: string, // only present when StatusCode > Success
+    fields: dictionary<ResponseFieldKey, sequence<uint8>>
 }
 ```
 

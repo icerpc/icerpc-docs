@@ -82,4 +82,4 @@ sequenceDiagram
     end
 ```
 
-On the other side, the receiver of the request sees only one continuous payload.
+On the other side, the receiver of the request sees only one continuous request payload.
