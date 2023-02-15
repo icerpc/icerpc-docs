@@ -23,19 +23,25 @@ flowchart LR
     subgraph Server
     inbound0["accept stream #0"]
     inbound4["accept stream #4"]
-    outbound3["create stream #3"]
+    outbound1["create stream #1"]
+    inbound6["accept stream #6"]
     end
     subgraph Client
     outbound0["create stream #0"]
     outbound4["create stream #4"]
-    inbound3["accept stream #3"]
+    inbound1["accept stream #1"]
+    outbound6["create stream #6"]
     end
-    outbound0 --request --> inbound0
-    inbound0 --response --> outbound0
-    outbound4 --request --> inbound4
-    inbound4 --response --> outbound4
-    outbound3 --request --> inbound3
-     inbound3 --response --> outbound3
+    outbound0 -- request --> inbound0
+    inbound0 -- response --> outbound0
+
+    outbound4 -- request --> inbound4
+    inbound4 -- response --> outbound4
+
+    outbound1 -- request --> inbound1
+    inbound1 -- response --> outbound1
+
+    outbound6 -- oneway request --> inbound6
 ```
 
 ## Request layout
