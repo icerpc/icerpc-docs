@@ -90,8 +90,8 @@ Compress middleware, and then finally the Compress middleware calls `DispatchAsy
 `/hello`.
 
 {% callout type="information" %}
-The router executes middleware only when it can match the request's path with an entry in its map or mount dictionaries.
-If there is no match, it throws `DispatchException(IceRpcError.ServiceNotFound)` without dispatching to any middleware.
+The router always dispatches incoming requests to its registered middleware, even when it ends up throwing
+`DispatchException(IceRpcError.ServiceNotFound)` because it can't find a match for the incoming request's path.
 {% /callout %}
 
 ## Installing a middleware with Dependency Injection
