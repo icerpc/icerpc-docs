@@ -1,6 +1,6 @@
 ---
 title: Middleware
-description: Learn how to write a middleware and how to install a middleware in your dispatch pipeline.
+description: Learn how to write a middleware.
 ---
 
 {% title /%}

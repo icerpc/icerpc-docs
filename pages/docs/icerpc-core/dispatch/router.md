@@ -1,6 +1,6 @@
 ---
 title: Router
-description: Understand how to route incoming requests based on their path.
+description: Learn how to route incoming requests based on their path.
 ---
 
 {% title /%}
@@ -26,7 +26,7 @@ flowchart LR
     connection --> m1
 ```
 
-These other dispatchers are registered with the router via `map` and `mount` methods.
+These other dispatchers are registered with the router using `map` and `mount` methods.
 
 - `map` associates a dispatcher with a path in the router.
 
@@ -60,7 +60,7 @@ If a router does not find a mapped or mounted dispatcher for an incoming request
 
 ## Sub-router
 
-A sub-router is a router registered with another "parent" router. It has a prefix that corresponds to its mount-point;
+A sub-router is a router registered with another "parent" router. It has a prefix that corresponds to its mount point;
 it removes this prefix when it looks up a dispatcher registered via `map` or `mount`.
 
 In C#, you can create a sub-router and mount it in a single step with the `Route` extension method:
@@ -72,7 +72,7 @@ router.Route("/admin", subRouter => subRouter.UseDispatchInformation().Map("/des
 ```
 
 The full path to `designerService` with this example is `/admin/designer`. The admin sub-router removes `/admin` from
-the request's path before trying to match this path against entries in its map.
+the request's path before trying to match this path against entries in its map and mount dictionaries.
 
 ## Installing a middleware in a router
 

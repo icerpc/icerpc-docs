@@ -49,12 +49,12 @@ export const rpcCoreData: SideBarSourceType[] = [
       path: `${RPC_CORE_BASE_URL}/dispatch/dispatch-pipeline`
     },
     {
-      title: 'Router',
-      path: `${RPC_CORE_BASE_URL}/dispatch/router`
-    },
-    {
       title: 'Middleware',
       path: `${RPC_CORE_BASE_URL}/dispatch/middleware`
+    },
+    {
+      title: 'Router',
+      path: `${RPC_CORE_BASE_URL}/dispatch/router`
     }
     ]
   },
