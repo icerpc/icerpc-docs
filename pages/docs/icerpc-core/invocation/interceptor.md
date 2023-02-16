@@ -14,7 +14,7 @@ matter.
 
 An interceptor can include logic before calling `invoke` on the next invoker (before the request is sent) and after
 calling `invoke` on the next invoker (after it receives the response). An interceptor can also short-circuit the
-pipeline by throwing an exception or returning a cached response.
+invocation pipeline by throwing an exception or returning a cached response.
 
 For example, a simple C# interceptor could look like:
 
@@ -27,19 +27,17 @@ public class SimpleInterceptor : IInvoker
 
     public async Task<IncomingResponse> InvokeAsync(OutgoingRequest request, CancellationToken cancellationToken)
     {
-        Console.WriteLine("before next.InvokeAsync");
-        Task<IncomingResponse> task = next.InvokeAsync(request, cancellationToken);
-        Console.WriteLine("next.InvokeAsync is running");
-        IncomingResponse response = await task;
-        Console.WriteLine($"after next.InvokerAsync; the response status code is {response.StatusCode}");
+        Console.WriteLine("before _next.InvokeAsync");
+        IncomingResponse response = await _next.InvokeAsync(request, cancellationToken);
+        Console.WriteLine($"after _next.InvokerAsync; the response status code is {response.StatusCode}");
         return response;
     }
 }
 ```
 
-## Installing interceptors
+## Installing an interceptor
 
-In C#, you can create an invocation pipeline by creating an instance of class `Pipeline` and then calling `Use`
+In C#, you can create an invocation pipeline by creating an instance of class `Pipeline` and then calling `Use{Name}`
 extension methods to install interceptors on this pipeline.
 
 For example:
@@ -47,8 +45,8 @@ For example:
 Pipeline pipeline = new Pipeline().UseLogger(loggerFactory).UseCompress().Into(clientConnection);
 ```
 
-You need to specify the last invoker of the pipeline with `Into`. It's usually a client connection or connection cache,
-but it can also be another pipeline since `Pipeline` is itself an invoker.
+You need to specify the last invoker of the pipeline with `Into`. It's usually a client connection or a connection
+cache, but it can also be another pipeline since `Pipeline` is itself an invoker.
 
 When you make an invocation on a pipeline, the request goes through this chain of invokers. On the way back, the
 incoming response goes through the same chain in reverse order.
@@ -68,11 +66,11 @@ interceptor to execute. With the pipeline we created above, the Logger intercept
 `InvokeAsync` on the Compress interceptor, and then finally the Compress interceptor calls `InvokeAsync` on the client
 connection.
 
-## Installing interceptors with Dependency Injection
+## Installing an interceptor with Dependency Injection
 
 If you use Microsoft's Dependency Injection container, you'll want to use an invoker builder instead of `Pipeline` to
-create your invocation pipeline. The `Use` extension methods for invoker builder retrieve dependencies automatically
-from the DI container.
+create your invocation pipeline. The `Use{Name}` extension methods for `IInvokerBuilder` retrieve dependencies
+automatically from the DI container.
 
 For example:
 ```csharp
@@ -84,6 +82,6 @@ This is equivalent to our earlier example except `UseLogger` retrieves the logge
 {% callout type="information" %}
 There is only one `LoggerInterceptor` class, one `CompressInterceptor` class etc. These interceptors can be installed in
 several different pipeline implementations, such as `Pipeline`, the implementation inside the builder created by
-`AddIceRpcInvoker`, or even your own custom pipeline class. Each pipeline implementation just needs its own set of `Use`
-extension methods.
+`AddIceRpcInvoker`, or even your own custom pipeline class. Each pipeline implementation just needs its own set of
+`Use{Name}` extension methods.
 {% /callout %}

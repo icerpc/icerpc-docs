@@ -42,6 +42,23 @@ export const rpcCoreData: SideBarSourceType[] = [
     ]
   },
   {
+    title: 'Dispatch',
+    links: [
+    {
+      title: 'Dispatch pipeline',
+      path: `${RPC_CORE_BASE_URL}/dispatch/dispatch-pipeline`
+    },
+    {
+      title: 'Router',
+      path: `${RPC_CORE_BASE_URL}/dispatch/router`
+    },
+    {
+      title: 'Middleware',
+      path: `${RPC_CORE_BASE_URL}/dispatch/middleware`
+    }
+    ]
+  },
+  {
     title: 'The icerpc protocol',
     links: [
       {
