@@ -67,10 +67,6 @@ unchecked enum RequestFieldKey : varuint62
 }
 ```
 
-### Encoding
-
-(Advanced)
-
 The request header is specified using Slice and encoded using Slice2:
 
 ```slice
@@ -135,10 +131,6 @@ unchecked enum ResponseFieldKey : varuint62
     ...
 }
 ```
-
-### Encoding
-
-(Advanced)
 
 The response header is specified in Slice (LINK) and encoded using Slice2:
 

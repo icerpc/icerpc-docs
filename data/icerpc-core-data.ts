@@ -59,6 +59,19 @@ export const rpcCoreData: SideBarSourceType[] = [
     ]
   },
   {
+    title: 'Protocols and transports',
+    links: [
+    {
+      title: 'icerpc and multiplexed transports',
+      path: `${RPC_CORE_BASE_URL}/protocols-and-transports/icerpc-multiplexed-transports`
+    },
+    {
+      title: 'ice and duplex transports',
+      path: `${RPC_CORE_BASE_URL}/protocols-and-transports/ice-duplex-transports`
+    }
+  ]
+  },
+  {
     title: 'The icerpc protocol',
     links: [
       {
