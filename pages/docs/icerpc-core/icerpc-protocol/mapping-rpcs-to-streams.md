@@ -7,11 +7,13 @@ description: Understand how requests and responses are sent over icerpc.
 
 ## A stream per RPC
 
-The QUIC transport and its multiplexed transport abstraction are ideal for RPCs. A twoway RPC--a pair request and
-response--simply maps to one bidirectional stream. And a oneway RPC--a request with no response--maps to one
-unidirectional stream.
+The QUIC transport and its multiplexed transport abstraction are ideal for RPCs and the icerpc protocol takes full
+advantage of these transports.
 
-A request flows from the endpoint that created the stream to the endpoint that accepted the stream, while a response
+icerpc creates a dedicated stream for each RPC. A twoway RPC, with a request and a response, is carried by a
+bidirectional stream, while a oneway RPC, with a request and no response, is carried by an unidirectional stream.
+
+A request flows from the endpoint that created the stream to the endpoint that accepted the stream. A response
 flows the other way--from the endpoint that accepted the stream to the endpoint that created the stream.
 
 ```mermaid

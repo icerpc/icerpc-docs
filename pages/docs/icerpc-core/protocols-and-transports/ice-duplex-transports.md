@@ -11,11 +11,14 @@ When you create a client connection to server address `ice://hello.zeroc.com`, y
 connection that uses the ice protocol.
 
 ice is an [application layer](https://en.wikipedia.org/wiki/Application_layer) protocol that transmits RPCs (requests
-and responses) over a duplex connection (see below).
+and responses) over a duplex connection.
 
 {% callout type="information" %}
-The ice protocol is provided for interoperability with applications built with [Ice](https://github.com/zeroc-ice/ice).
-You should use [icerpc](ice-multiplexed-transports) if you don't need interop with Ice-based applications.
+We always spell ice in lowercase when discussing the ice protocol. This avoids confusion with the
+[Ice](https://github.com/zeroc-ice/ice) platform.
+
+The ice protocol is provided for interoperability with applications built with Ice. You should use
+[icerpc](ice-multiplexed-transports) if you don't need interop with Ice-based applications.
 {% /callout %}
 
 ## Duplex transport
@@ -25,13 +28,32 @@ A duplex transport is an abstraction for a traditional transport like TCP or
 duplex (transport) connections. A duplex connection provides two byte streams: one from the client to the server, and
 another from the server to the client.
 
-The ice protocol sends requests and responses over this duplex connection by writing requests and responses one after
+An ice connection runs over a duplex connection.
+
+```mermaid
+---
+title: ice over tcp
+---
+classDiagram
+    class IceConnection
+    class DuplexConnection {
+        <<abstraction>>
+    }
+    class TcpConnection
+    IceConnection o-- DuplexConnection
+    DuplexConnection <|-- TcpConnection
+```
+
+The ice protocol sends requests and responses over a duplex connection by writing requests and responses one after
 the other. Each request or response is always fully written: when you send a request or response with ice, the sending
 of another request or response in the same direction will wait until after this request or response is fully written.
 
 ```mermaid
+---
+title: ice requests and responses
+---
 flowchart LR
-    subgraph Duplex["ice over duplex connection"]
+    subgraph Duplex["duplex connection"]
     direction LR
         subgraph LR["byte stream"]
         direction LR
@@ -47,14 +69,13 @@ flowchart LR
 This serialization can result in [head-of-line blocking](https://en.wikipedia.org/wiki/Head-of-line_blocking).
 
 If you send requests and responses concurrently over the same ice connection, make sure that all these requests and
-responses are fairly small. And if you really need to send large requests or responses, you should consider creating a
+responses are fairly small. And if you can't avoid sending large requests or responses, you should consider creating a
 separate ice connection dedicated to these large requests or responses.
 
 ## Duplex transport and TLS
 
-The duplex transport abstraction in IceRPC includes TLS support. For example, the tcp duplex transport can create
-both plain TCP connections and TCP connections with TLS. See [Security with TLS](../connection/security-with-tls) for
-details.
+The duplex transport abstraction includes TLS support. For example, the TCP duplex transport can create both plain TCP
+connections and TCP connections with TLS. See [Security with TLS](../connection/security-with-tls) for details.
 
 ## Configuring an ice connection
 
@@ -64,10 +85,8 @@ an ice connection are purely local.
 An ice connection provides the following ice-specific settings:
 
 - Idle timeout
-  TBD
 
 - Max frame size
-  TBD
 
 ## Limitations of the ice protocol
 

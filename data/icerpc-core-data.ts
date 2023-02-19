@@ -68,16 +68,16 @@ export const rpcCoreData: SideBarSourceType[] = [
     {
       title: 'ice and duplex transports',
       path: `${RPC_CORE_BASE_URL}/protocols-and-transports/ice-duplex-transports`
+    },
+    {
+      title: 'Protocol compatibility',
+      path: `${RPC_CORE_BASE_URL}/protocols-and-transports/protocol-compatibility`
     }
   ]
   },
   {
     title: 'The icerpc protocol',
     links: [
-      {
-        title: 'icerpc vs http3',
-        path: `${RPC_CORE_BASE_URL}/icerpc-protocol/icerpc-vs-http3`
-      },
       {
         title: 'Mapping RPCs to streams',
         path: `${RPC_CORE_BASE_URL}/icerpc-protocol/mapping-rpcs-to-streams`
@@ -89,10 +89,6 @@ export const rpcCoreData: SideBarSourceType[] = [
       {
         title: 'Connection shutdown',
         path: `${RPC_CORE_BASE_URL}/icerpc-protocol/connection-shutdown`
-      },
-      {
-        title: 'Slic',
-        path: `${RPC_CORE_BASE_URL}/icerpc-protocol/slic`
       }
     ]
   }
