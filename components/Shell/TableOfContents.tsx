@@ -36,7 +36,7 @@ export const TableOfContents = (toc: TOC) => {
   );
 
   return (
-    <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-[300px] shrink-0 border-l border-lightBorder dark:border-darkBorder lg:block">
+    <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] min-w-[275px] shrink border-l border-lightBorder dark:border-darkBorder lg:block">
       {items.length > 1 && (
         <nav className="h-full px-8 py-10">
           <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase tracking-wider  dark:text-white">

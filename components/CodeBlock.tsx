@@ -92,7 +92,7 @@ export const CodeBlock = ({
   // If the language is mermaid, render the mermaid diagram
   if (language?.toLowerCase() === 'mermaid') {
     return (
-      <div className="mx-auto my-4 min-w-full">
+      <div className="mx-auto my-4 w-full">
         <MermaidDiagram value={`${children.trim()}`} />
       </div>
     );
@@ -100,50 +100,50 @@ export const CodeBlock = ({
 
   return (
     // Container for the code block
-    <div className="my-5 rounded-2xl bg-[#17232d]">
-      {/* Top bar with language and copy button */}
-
-      <TopBar
-        languageIcon={languageIcon}
-        language={language}
-        lines={lines}
-        setCopied={setCopied}
-        copied={copied}
-      >
-        {children}
-      </TopBar>
-      {/* PrismJS styled code block*/}
-      <Highlight
-        {...defaultProps}
-        code={children?.trim()}
-        language={language as Language}
-        theme={undefined}
-      >
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre
-            className={classNames(
-              className,
-              'm-0 my-1 overflow-auto rounded-b-2xl px-4 py-3 text-left'
-            )}
-            style={{ ...style }}
-          >
-            {tokens.map((line, i) => (
-              <div
-                key={i}
-                {...getLineProps({ line, key: i })}
-                className={classNames(className, 'table-row')}
-              >
-                <LineNumber number={i + 1} />
-                <LineContent>
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token, key })} />
-                  ))}
-                </LineContent>
-              </div>
-            ))}
-          </pre>
-        )}
-      </Highlight>
+    <div className="my-5 flex w-full flex-col items-center">
+      <div className="w-full rounded-2xl bg-[#17232d]">
+        <TopBar
+          languageIcon={languageIcon}
+          language={language}
+          lines={lines}
+          setCopied={setCopied}
+          copied={copied}
+        >
+          {children}
+        </TopBar>
+        {/* PrismJS styled code block*/}
+        <Highlight
+          {...defaultProps}
+          code={children?.trim()}
+          language={language as Language}
+          theme={undefined}
+        >
+          {({ className, style, tokens, getLineProps, getTokenProps }) => (
+            <pre
+              className={classNames(
+                className,
+                'm-0 my-1 overflow-auto rounded-b-2xl px-4 py-3 text-left'
+              )}
+              style={{ ...style }}
+            >
+              {tokens.map((line, i) => (
+                <div
+                  key={i}
+                  {...getLineProps({ line, key: i })}
+                  className={classNames(className, 'table-row')}
+                >
+                  <LineNumber number={i + 1} />
+                  <LineContent>
+                    {line.map((token, key) => (
+                      <span key={key} {...getTokenProps({ token, key })} />
+                    ))}
+                  </LineContent>
+                </div>
+              ))}
+            </pre>
+          )}
+        </Highlight>
+      </div>
     </div>
   );
 };

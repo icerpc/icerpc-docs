@@ -55,7 +55,7 @@ export const Document = ({ frontmatter, children }: Props) => {
   const toc = constructToc(children);
 
   return (
-    <div className="flex flex-row justify-center overflow-y-clip">
+    <div className="flex w-screen flex-row justify-center overflow-y-clip lg:w-[calc(100vw-15rem)]">
       <article className="flex-row overflow-auto px-14 pt-12 lg:max-w-4xl">
         {children}
         {isDocs && (
