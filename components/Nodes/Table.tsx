@@ -1,14 +1,11 @@
 // Copyright (c) ZeroC, Inc.
 
 import { ReactNode } from 'react';
+import { clsx } from 'clsx';
 
 type TableProps = {
   children: ReactNode[];
 };
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
 
 // Convert the align prop to a Tailwind CSS class
 // Align defaults to undefined, which is left aligned, and can be set to right or center
@@ -25,7 +22,7 @@ const textAlignment = (align?: string): string => {
 export const Table = ({ children }: TableProps) => {
   return (
     <div
-      className={classNames(
+      className={clsx(
         'mb-4 min-w-full rounded-xl border border-lightBorder bg-[#FAFAFA] shadow-sm',
         'dark:border-darkBorder dark:bg-[rgb(33,35,39)]'
       )}
@@ -42,9 +39,7 @@ type THProps = {
 
 export const TH = ({ align, children }: THProps) => {
   return (
-    <th className={classNames('py-3 px-5', textAlignment(align))}>
-      {children}
-    </th>
+    <th className={clsx('py-3 px-5', textAlignment(align))}>{children}</th>
   );
 };
 
@@ -63,7 +58,7 @@ type TDProps = {
 
 export const TD = ({ align, children }: TDProps) => {
   return (
-    <td className={classNames('rounded py-3 px-5', textAlignment(align))}>
+    <td className={clsx('rounded py-3 px-5', textAlignment(align))}>
       {children}
     </td>
   );

@@ -6,10 +6,7 @@ import { FaTwitter, FaGithub } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import { SearchButton } from 'components/Shell/SearchButton';
 import { ThemeToggle } from 'components/ThemeToggle';
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
+import { clsx } from 'clsx';
 
 export const TopNav = () => {
   const router = useRouter();
@@ -24,7 +21,7 @@ export const TopNav = () => {
 
   return (
     <nav
-      className={classNames(
+      className={clsx(
         'sticky top-0 flex h-16 w-full border-b border-l border-lightBorder',
         'bg-[#FCFCFC] text-sm font-medium  dark:border-darkBorder dark:bg-[rgb(33,35,39)]'
       )}

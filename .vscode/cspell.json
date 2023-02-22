@@ -3,7 +3,10 @@
   "language": "en",
   "words": [
     "callout",
+    "clsx",
     "coldark",
+    "coloc",
+    "colochost",
     "docsearch",
     "frontmatter",
     "headlessui",
@@ -25,8 +28,6 @@
     "varint",
     "varuint",
     "Videocam",
-    "coloc",
-    "colochost",
     "zeroc"
   ],
   "dictionaries": [
@@ -41,5 +42,7 @@
     "misc",
     "lorem-ipsum"
   ],
-  "enableFiletypes": ["markdoc"]
+  "enableFiletypes": [
+    "markdoc"
+  ]
 }

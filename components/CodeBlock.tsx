@@ -4,6 +4,7 @@ import { ReactNode, useState } from 'react';
 import { BiCopy } from 'react-icons/bi';
 import { FaFile } from 'react-icons/fa';
 import { BsTerminalFill } from 'react-icons/bs';
+import { clsx } from 'clsx';
 import copy from 'copy-to-clipboard';
 import Highlight, { Language, defaultProps } from 'prism-react-renderer';
 
@@ -62,10 +63,6 @@ type Props = {
   isValid?: boolean;
 };
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
-
 export const CodeBlock = ({
   children,
   'data-language': language,
@@ -120,7 +117,7 @@ export const CodeBlock = ({
         >
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
-              className={classNames(
+              className={clsx(
                 className,
                 'm-0 my-1 overflow-auto rounded-b-2xl px-4 py-3 text-left'
               )}
@@ -130,7 +127,7 @@ export const CodeBlock = ({
                 <div
                   key={i}
                   {...getLineProps({ line, key: i })}
-                  className={classNames(className, 'table-row')}
+                  className={clsx(className, 'table-row')}
                 >
                   <LineNumber number={i + 1} />
                   <LineContent>

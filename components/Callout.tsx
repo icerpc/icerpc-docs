@@ -2,10 +2,7 @@
 
 import { ReactNode } from 'react';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
+import { clsx } from 'clsx';
 
 type Props = {
   children: ReactNode;
@@ -15,7 +12,7 @@ type Props = {
 export const Callout = ({ children, type }: Props) => {
   return (
     <div
-      className={classNames(
+      className={clsx(
         'my-6 flex items-start justify-start gap-2.5 rounded-2xl border p-3 py-2 text-sm leading-6 ',
         type == 'critical'
           ? 'border-red-600/20 bg-red-600/20  text-red-600/90 dark:[&>*]:text-red-500/80'
@@ -24,7 +21,7 @@ export const Callout = ({ children, type }: Props) => {
     >
       <div className="mx-0 mt-[6px]">
         <InformationCircleIcon
-          className={classNames(
+          className={clsx(
             'h-5 w-5 pr-0',
             type == 'critical' ? 'text-red-600' : 'text-primary'
           )}
