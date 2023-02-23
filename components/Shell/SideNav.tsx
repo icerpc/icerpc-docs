@@ -43,7 +43,7 @@ function createListItem(
     <li key={link.path} className="flex">
       <Link
         href={link.path}
-        className={`p-2 pl-0 text-sm  ${leftPadding} text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white`}
+        className={`p-2 py-[6px] pl-0 text-sm  ${leftPadding} text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white`}
         style={
           isCurrentPage ? (noLeftPadding ? activeStyleAlt : activeStyle) : style
         }
@@ -62,7 +62,7 @@ function transformSideBarData(
     const category = data;
     return [
       <li key={category.title} className="list-none">
-        <h2 className="my-3 text-sm font-bold text-[var(--text-color)] dark:text-white">
+        <h2 className="my-2 text-sm font-bold text-[var(--text-color)] dark:text-white">
           {category.title}
         </h2>
       </li>,
