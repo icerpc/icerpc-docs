@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FiEdit, FiMessageSquare } from 'react-icons/fi';
@@ -24,6 +24,40 @@ const resolvePath = (pathName: string): string => {
     : pathName + '.md';
 };
 
+function useActiveId(itemIds: string[]) {
+  const [activeId, setActiveId] = useState(``);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -70%', threshold: [0, 1] }
+    );
+
+    itemIds.forEach((id) => {
+      let element = document.getElementById(id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      itemIds.forEach((id) => {
+        let element = document.getElementById(id);
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, [itemIds]);
+  return activeId !== `` ? activeId : itemIds[0];
+}
+
 export const TableOfContents = (toc: TOC) => {
   const currentPath = resolvePath(useRouter().pathname);
   const { push } = useRouter();
@@ -33,6 +67,8 @@ export const TableOfContents = (toc: TOC) => {
       (item.level === 2 || item.level === 3) &&
       item.title !== 'Next steps'
   );
+
+  const activeId = useActiveId(items.map((item) => item.id));
 
   return (
     <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] min-w-[275px] shrink border-l border-lightBorder dark:border-darkBorder lg:block">
@@ -44,7 +80,12 @@ export const TableOfContents = (toc: TOC) => {
           </h2>
           <ul className="m-0 max-h-[50vh] overflow-y-auto p-0">
             {items.map((item) => (
-              <ListItem key={item.id} item={item} push={push} />
+              <ListItem
+                key={item.id}
+                item={item}
+                push={push}
+                activeId={activeId}
+              />
             ))}
           </ul>
           <Divider />
@@ -97,16 +138,17 @@ const MoreItem = ({ href, children }: MoreItemProps) => {
 type ListItemProps = {
   item: TOCItem;
   push: any;
+  activeId: string;
 };
 
-const ListItem = ({ item, push }: ListItemProps) => {
+const ListItem = ({ item, push, activeId }: ListItemProps) => {
   const href = `#${item.id}`;
   let active = typeof window !== 'undefined' && window.location.hash === href;
   return (
     <li
       key={item.id}
       className={[
-        'mb-4 text-sm',
+        'mb-4 pr-4 text-sm',
         active ? 'active' : undefined,
         item.level === 3 ? 'padded' : undefined
       ]
@@ -120,7 +162,8 @@ const ListItem = ({ item, push }: ListItemProps) => {
           push(href);
         }}
         style={{
-          textDecoration: 'none'
+          textDecoration: 'none',
+          color: activeId === item.id ? 'var(--primary-color)' : 'inherit'
         }}
       >
         {item.title}
