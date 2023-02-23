@@ -1,11 +1,6 @@
 ---
 title: Lexical Rules
 description: See how a the slice IDL works under the hood
-breadcrumbs:
-  - name: Home
-    href: /
-  - name: Slice
-    href: /docs/slice
 ---
 
 {% title /%}

@@ -1,11 +1,6 @@
 ---
 title: Integer Types
 description: Learn about the integral types in Slice.
-breadcrumbs:
-  - name: Home
-    href: /
-  - name: Slice
-    href: /docs/slice
 ---
 
 {% title /%}

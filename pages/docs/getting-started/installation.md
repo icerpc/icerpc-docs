@@ -1,9 +1,6 @@
 ---
 title: Installation
 description: How to install IceRPC
-breadcrumbs:
-  - name: Overview
-    href: /docs/getting-started
 ---
 
 {% title /%}

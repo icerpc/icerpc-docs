@@ -23,7 +23,7 @@ export const Table = ({ children }: TableProps) => {
   return (
     <div
       className={clsx(
-        'mb-4 min-w-full rounded-xl border border-lightBorder bg-[#FAFAFA] shadow-sm',
+        'mb-4 min-w-full rounded-xl border border-lightBorder bg-[#FAFAFA]  shadow-sm',
         'dark:border-darkBorder dark:bg-[rgb(33,35,39)]'
       )}
     >

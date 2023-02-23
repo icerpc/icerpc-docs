@@ -3,18 +3,18 @@
 import Link from 'next/link';
 import React from 'react';
 
-export type Breadcrumb = {
-  name: string;
-  href: string;
-};
-
 type Props = {
   breadcrumbs: Breadcrumb[];
 };
 
+export interface Breadcrumb {
+  name: string;
+  href: string;
+}
+
 export const Breadcrumbs = ({ breadcrumbs }: Props) => {
   return (
-    <ul className="mb-2 flex pl-0 text-sm text-[#6b7385]">
+    <ul className="mt-0 mb-3 flex pt-0 pl-0 text-sm text-[#6b7385]">
       {breadcrumbs.map((crumb) => {
         const name = crumb.name;
         const href = crumb.href;

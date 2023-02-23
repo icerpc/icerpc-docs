@@ -35,6 +35,19 @@ export const flattenSideBarData = (
   });
 };
 
+export const currentNavItem = (baseUrl: string) => {
+  switch (baseUrl) {
+    case GETTING_STARTED_BASE_URL:
+      return 'Getting Started';
+    case SLICE_BASE_URL:
+      return 'Slice';
+    case RPC_CORE_BASE_URL:
+      return 'IceRPC Core';
+    default:
+      return '';
+  }
+};
+
 export const sideBarData = (
   baseUrl: string,
   sliceVersion: SliceVersion

@@ -1,9 +1,6 @@
 ---
 title: Writing your first IceRPC application
 description: TODO
-breadcrumbs:
-  - name: Overview
-    href: /docs/getting-started
 ---
 
 {% title /%}

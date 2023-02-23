@@ -1,9 +1,6 @@
 ---
 title: What is IceRPC?
 description: Learn about IceRPC, the RPC protocol.
-breadcrumbs:
-  - name: Overview
-    href: /docs/getting-started
 ---
 
 {% title /%}

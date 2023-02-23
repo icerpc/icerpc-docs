@@ -1,11 +1,6 @@
 ---
 title: Enums
 description: A data type consisting of a set of named values called enumerators
-breadcrumbs:
-  - name: Home
-    href: /
-  - name: Slice
-    href: /docs/slice
 ---
 
 {% title /%}

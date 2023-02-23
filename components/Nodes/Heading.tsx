@@ -4,6 +4,7 @@ import React, { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import copy from 'copy-to-clipboard';
 import { LinkIcon } from '@heroicons/react/24/solid';
+import { Divider } from 'components/Divider';
 
 type Props = {
   id?: string;
@@ -43,6 +44,7 @@ export function Heading({ id = '', level = 1, children, className }: Props) {
       >
         <LinkIcon className="h-4 w-4 font-bold text-slate-700" />
       </button>
+      {level >= 1 && level <= 3 && <Divider margin="my-4" />}
     </Component>
   );
 

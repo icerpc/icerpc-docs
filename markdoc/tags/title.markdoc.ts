@@ -11,12 +11,10 @@ export const title = {
     const attributes = node.transformAttributes(config);
     const frontmatter = config.variables?.markdoc.frontmatter;
     const { title, description } = frontmatter;
-    const breadcrumbs = frontmatter.breadcrumbs || [];
     return new Tag(`${this.render}`, {
       ...attributes,
       title,
-      description,
-      breadcrumbs
+      description
     });
   }
 };

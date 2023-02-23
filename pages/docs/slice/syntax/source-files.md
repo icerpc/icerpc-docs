@@ -1,11 +1,6 @@
 ---
 title: Source Files
 description: Learn about the structure of Slice source files.
-breadcrumbs:
-  - name: Home
-    href: /
-  - name: Slice
-    href: /docs/slice
 ---
 
 {% title /%}

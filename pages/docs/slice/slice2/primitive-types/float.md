@@ -1,11 +1,6 @@
 ---
 title: Floating-point Types
 description: Learn about the floating-point types in Slice.
-breadcrumbs:
-  - name: Home
-    href: /
-  - name: Slice
-    href: /docs/slice
 ---
 
 {% title /%}

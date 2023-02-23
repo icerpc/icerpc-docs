@@ -1,11 +1,6 @@
 ---
 title: Structs
 description: A method to group related data together.
-breadcrumbs:
-  - name: Home
-    href: /
-  - name: Slice
-    href: /docs/slice
 ---
 
 {% title /%}
