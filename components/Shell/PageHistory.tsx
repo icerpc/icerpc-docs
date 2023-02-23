@@ -1,34 +1,35 @@
 // Copyright (c) ZeroC, Inc.
 
-import React from 'react';
-import { useRouter } from 'next/router';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { sideBarData, baseUrls, flattenSideBarData } from 'data/side-bar-data';
+import { SideBarLink, SliceVersion } from 'types';
 import Link from 'next/link';
-import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
-import { sideBarData, baseUrls } from 'data/side-bar-data';
-import { SideBarLink, isCategory } from 'types';
-import { useVersionContext } from 'context/state';
+import React from 'react';
+
+interface Props {
+  path: string;
+  version: SliceVersion;
+}
 
 const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;
 };
 
-export function PageHistory() {
-  // Get the data for the next and previous links
-  const { version } = useVersionContext();
-  const path = stripTrailingSlash(useRouter().asPath);
+export const PageHistory = ({ path, version }: Props) => {
+  // Get the side bar links for the current page
   const baseUrl = baseUrls.find((item) => path.startsWith(item))!;
-  const data: SideBarLink[] = sideBarData(baseUrl, version).flatMap((item) => {
-    if (isCategory(item)) {
-      return item.links;
-    } else {
-      return item;
-    }
-  });
+  const links: SideBarLink[] = flattenSideBarData(
+    sideBarData(baseUrl, version)
+  );
 
-  // Find the next and previous pages in the sidebar if they exist
-  const index = data.map((item) => stripTrailingSlash(item.path)).indexOf(path);
-  const previous = index > 0 ? data[index - 1] : undefined;
-  const next = index < data.length - 1 ? data[index + 1] : undefined;
+  // Find the current page in the list of links
+  const index = links
+    .map((item) => stripTrailingSlash(item.path))
+    .indexOf(path);
+
+  // Get the previous and next links
+  const previous = index > 0 ? links[index - 1] : undefined;
+  const next = index < links.length - 1 ? links[index + 1] : undefined;
 
   return (
     <div className="mx-[-1rem] mt-12 mb-0 flex flex-row justify-between p-0">
@@ -52,4 +53,4 @@ export function PageHistory() {
       )}
     </div>
   );
-}
+};

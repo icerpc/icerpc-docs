@@ -97,8 +97,8 @@ export const CodeBlock = ({
 
   return (
     // Container for the code block
-    <div className="my-5 flex w-full flex-col items-center">
-      <div className="w-full rounded-2xl bg-[#17232d]">
+    <div className="my-6 flex w-full flex-col items-center">
+      <div className="w-full rounded-xl bg-[#17232d]">
         <TopBar
           languageIcon={languageIcon}
           language={language}
@@ -119,7 +119,7 @@ export const CodeBlock = ({
             <pre
               className={clsx(
                 className,
-                'm-0 my-1 overflow-auto rounded-b-2xl px-4 py-3 text-left'
+                'm-0 my-1 overflow-auto rounded-b-xl px-4 py-3 text-left'
               )}
               style={{ ...style }}
             >

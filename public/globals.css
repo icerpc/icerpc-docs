@@ -73,9 +73,10 @@ body {
 }
 
 p {
-  line-height: 27.0009px;
-  margin-bottom: 23.0009px;
+  line-height: 1.75rem;
+  margin-bottom: 24px;
   letter-spacing: 0.228px;
+  font-size: .875rem
 }
 
 [data-theme='dark'] p {
@@ -94,7 +95,7 @@ h1 {
 }
 
 h2 {
-  margin: 0.75em 0;
+  margin: 0.4em 0;
   color: #000000;
 }
 

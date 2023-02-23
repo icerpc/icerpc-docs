@@ -1,11 +1,10 @@
 // Copyright (c) ZeroC, Inc.
 
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { useRouter } from 'next/router';
+import { useVersionContext } from 'context/state';
+import { Feedback, PageHistory, TableOfContents, TOCItem } from '../Shell/';
 import { Footer, Divider } from '..';
-import { Feedback } from '../Shell/Feedback';
-import { PageHistory } from '../Shell/PageHistory';
-import { TableOfContents, TOC, TOCItem } from '../Shell/TableOfContents';
 
 type Props = {
   frontmatter: {
@@ -48,8 +47,11 @@ const constructToc = (children: ReactNode) => {
 };
 
 export const Document = ({ frontmatter, children }: Props) => {
-  // Get the data for the next and previous links
-  const path = useRouter().asPath;
+  // Get the version
+  const { version } = useVersionContext();
+
+  // Get the data for the toc
+  const path = useRouter().pathname;
   const isDocs = path.startsWith('/docs');
   let showToc = frontmatter?.toc ?? isDocs;
   const toc = constructToc(children);
@@ -60,7 +62,7 @@ export const Document = ({ frontmatter, children }: Props) => {
         {children}
         {isDocs && (
           <>
-            <PageHistory />
+            <PageHistory path={path} version={version} />
             <Divider />
             <Feedback />
           </>

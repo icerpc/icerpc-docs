@@ -3,7 +3,6 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useHeadsObserver } from 'hooks/hooks';
 import { FiEdit, FiMessageSquare } from 'react-icons/fi';
 import { AppLink } from 'components/Nodes/AppLink';
 import { Divider } from 'components/Divider';
@@ -26,8 +25,8 @@ const resolvePath = (pathName: string): string => {
 };
 
 export const TableOfContents = (toc: TOC) => {
-  const { activeId } = useHeadsObserver(toc);
   const currentPath = resolvePath(useRouter().pathname);
+  const { push } = useRouter();
   const items = toc.filter(
     (item) =>
       item.id &&
@@ -45,7 +44,7 @@ export const TableOfContents = (toc: TOC) => {
           </h2>
           <ul className="m-0 max-h-[50vh] overflow-y-auto p-0">
             {items.map((item) => (
-              <ListItem key={item.id} item={item} activeId={activeId} />
+              <ListItem key={item.id} item={item} push={push} />
             ))}
           </ul>
           <Divider />
@@ -97,12 +96,12 @@ const MoreItem = ({ href, children }: MoreItemProps) => {
 
 type ListItemProps = {
   item: TOCItem;
-  activeId: string;
+  push: any;
 };
 
-const ListItem = ({ item, activeId }: ListItemProps) => {
+const ListItem = ({ item, push }: ListItemProps) => {
   const href = `#${item.id}`;
-  const active = typeof window !== 'undefined' && window.location.hash === href;
+  let active = typeof window !== 'undefined' && window.location.hash === href;
   return (
     <li
       key={item.id}
@@ -118,18 +117,9 @@ const ListItem = ({ item, activeId }: ListItemProps) => {
         href={href}
         onClick={(e) => {
           e.preventDefault();
-          const y =
-            document.querySelector(href)!.getBoundingClientRect().top +
-            window.pageYOffset -
-            100;
-          window.scrollTo({
-            top: y,
-            behavior: 'smooth'
-          });
+          push(href);
         }}
         style={{
-          color:
-            activeId === item.id ? 'var(--primary-color)' : 'var(--link-color)',
           textDecoration: 'none'
         }}
       >

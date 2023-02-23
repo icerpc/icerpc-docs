@@ -1,6 +1,11 @@
 // Copyright (c) ZeroC, Inc.
 
-import { SliceVersion, SideBarSourceType } from 'types';
+import {
+  SliceVersion,
+  SideBarSourceType,
+  isCategory,
+  SideBarLink
+} from 'types';
 import {
   slice1Data,
   slice2Data,
@@ -17,6 +22,18 @@ export const baseUrls = [
   RPC_CORE_BASE_URL,
   GETTING_STARTED_BASE_URL
 ];
+
+export const flattenSideBarData = (
+  sideBarData: SideBarSourceType[]
+): SideBarLink[] => {
+  return sideBarData.flatMap((item) => {
+    if (isCategory(item)) {
+      return item.links;
+    } else {
+      return item;
+    }
+  });
+};
 
 export const sideBarData = (
   baseUrl: string,
