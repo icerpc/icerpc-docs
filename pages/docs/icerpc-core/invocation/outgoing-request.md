@@ -7,10 +7,10 @@ description: Learn how to create outgoing requests.
 
 ## Overview
 
-The only way to make a RPC with IceRPC is to construct an outgoing request and then pass this request as a parameter to
-the `invoke` method of an [invoker](invocation-pipeline#the-invoker-abstraction).
+In order to make a RPC, you construct an outgoing request and then pass this request as a parameter to the `invoke`
+method of an [invoker](invocation-pipeline#the-invoker-abstraction).
 
-An outgoing request carries all the data a connection needs to send a request:
+An outgoing request carries all the data an invoker needs to send a request:
  - the [service address](service-address) of the target service
  - the name of the operation on this service
  - request [fields](#request-fields)
@@ -44,11 +44,11 @@ with brotli"; the Compress middleware can then decompress this (incoming) reques
 ## Request payload and payload continuation
 
 The payload of a request is sequence of bytes that represents the argument(s) of an operation. An invoker does not know
-the size of this sequence. When a connection sends a request, it reads and logically copy these bytes to the network
+the size of this sequence. When a connection sends a request, it reads and logically copies these bytes to the network
 connection until there is no more byte to read.
 
 When a connection receives a request, it reads these bytes from the network and give them to a
-[dispatcher](../dispatch/dispatch-pipeline#the-dispatcher-abstraction) as the payload of an incoming request.
+[dispatcher](../dispatch/dispatch-pipeline#the-dispatcher-abstraction).
 
 The payload of an outgoing request is actually split in two: a first part that the connection sends before awaiting the
 response, and a second part (the "continuation") that the connection sends in the background while it awaits, receives
@@ -64,13 +64,13 @@ sequenceDiagram
     end
 ```
 
-On the other side, the dispatcher of the incoming request sees only one continuous request payload.
+On the other side, the dispatcher sees only one continuous incoming request payload.
 
 ## Request features
 
-It is common for invokers in an invocation pipeline to transmit information to each other during an invocation. For
+It is common for the invokers in an invocation pipeline to transmit information to each other during an invocation. For
 example, the Retry interceptor needs to communicate with the ConnectionCache to make sure the ConnectionCache does not
-keep retrying on the same server address. These invokers get and set request features (C# link) for these
+keep retrying with the same server address. These invokers get and set request features (C# link) for these
 communications.
 
 You can also use these features to communicate with the invocation pipeline. For example, you can set the feature

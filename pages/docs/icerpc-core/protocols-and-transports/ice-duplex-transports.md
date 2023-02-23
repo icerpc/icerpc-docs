@@ -77,22 +77,12 @@ separate ice connection dedicated to these large requests or responses.
 The duplex transport abstraction includes TLS support. For example, the TCP duplex transport can create both plain TCP
 connections and TCP connections with TLS. See [Security with TLS](../connection/security-with-tls) for details.
 
-## Configuring an ice connection
-
-When you establish an ice connection, there is no ice-level exchange with the peer, and as a result all the settings for
-an ice connection are purely local.
-
-An ice connection provides the following ice-specific settings:
-
-- Idle timeout
-
-- Max frame size
-
 ## Limitations of the ice protocol
 
 The following IceRPC features are not available with the ice protocol:
 
-- payload continuations (LINK)
-- request fields other than Context and Idempotent
-- response fields
-- status codes other than Success, ApplicationError, ServiceNotFound, OperationNotFound and UnhandledException
+- [payload continuations](../invocation/invocation-pipeline#payload-and-payload-continuation)
+- [request fields](../invocation/outgoing-request#request-fields) other than Context and Idempotent
+- [response fields](../invocation/incoming-response#response-fields)
+- [status codes](../invocation/incoming-response#status-code) other than Success, ApplicationError, ServiceNotFound,
+OperationNotFound and UnhandledException

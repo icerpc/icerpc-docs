@@ -87,9 +87,10 @@ requests and responses over the same connection: the large requests and response
 
 icerpc is naturally IceRPC's preferred protocol.
 
-icerpc provides the most direct realization of IceRPC's APIs and features. For example, an IceRPC response has a status
-code that indicates whether the response corresponds to a successful RPC (status code Success) or a failure (status code
-greater than Success). The very same status code is encoded in the header of icerpc responses.
+icerpc provides the most direct realization of IceRPC's APIs and features. In particular, IceRPC's
+[request fields](../invocation/outgoing-request#request-fields),
+[response fields](../invocation/incoming-response#response-fields) and
+[status codes](../invocation/incoming-response#status-code) are transmitted as-is by icerpc.
 
 ## icerpc over a duplex connection
 

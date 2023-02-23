@@ -53,21 +53,9 @@ sequence of bytes with an unknown size. The end of the stream marks the end of t
 The request header holds:
  - the path of the service
  - the operation name
- - request header fields
+ - [request fields](../invocation/outgoing-request#request-fields)
 
-The request header fields corresponds to a dictionary of RequestFieldKey (an enum) to sequence of bytes. These fields
-are used to transmit out-of-brand information alongside the request. icerpc itself just transmits these fields and does
-not attach any meaning to their values or presence.
-
-```slice
-unchecked enum RequestFieldKey : varuint62
-{
-    Context = 0,
-    TraceContext = 1,
-    CompressionFormat = 2,
-    ...
-}
-```
+icerpc transmits the request fields without attaching any meaning to their values or presence.
 
 The request header is specified using Slice and encoded using Slice2:
 
@@ -109,30 +97,11 @@ An icerpc response consists of a header followed by a payload. The payload of a 
 request: a sequence of bytes with an unknown size. The response payload ends when the stream ends.
 
 The response header holds:
- - the response's status code
+ - a [status code](../invocation/incoming-response#status-code)
  - an error message when the status code is not Success
- - response header fields
+ - [response fields](../invocation/incoming-response#response-fields)
 
-The response header fields corresponds to a dictionary of ResponseFieldKey (an enum) to sequence of bytes. These fields
-are used to transmit out-of-brand information alongside the response. icerpc itself just transmits these fields and does
-not attach any meaning to their values or presence.
-
-```slice
-unchecked enum StatusCode : varuint62
-{
-    Success = 0,
-    ApplicationError,
-    ServiceNotFound,
-    OperationNotFound,
-    ...
-}
-
-unchecked enum ResponseFieldKey : varuint62
-{
-    CompressionFormat = 2,
-    ...
-}
-```
+icerpc transmits the response fields without attaching any meaning to their values or presence.
 
 The response header is specified in Slice (LINK) and encoded using Slice2:
 
@@ -147,7 +116,7 @@ compact struct Response
 compact struct ResponseHeader
 {
     statusCode: StatusCode,
-    errorMessage: string, // only present when StatusCode > Success
+    errorMessage: string, // only present when statusCode is not Success
     fields: dictionary<ResponseFieldKey, sequence<uint8>>
 }
 ```

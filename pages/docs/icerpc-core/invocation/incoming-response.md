@@ -1,6 +1,6 @@
 ---
 title: Incoming response
-description: Learn how to read incoming responses.
+description: Understand how to interpret an incoming response.
 ---
 
 {% title /%}
@@ -8,7 +8,7 @@ description: Learn how to read incoming responses.
 ## Overview
 
 The `invoke` method of an [invoker](invocation-pipeline#the-invoker-abstraction) returns an incoming response
-asynchronously.
+asynchronously. This incoming response is created by the connection when it receives the response from the peer.
 
 An incoming response holds:
  - a [status code](#status-code)

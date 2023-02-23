@@ -21,7 +21,10 @@ When a connection receives a request, it dispatches this request using its confi
 abstraction with a single `dispatch` method that accepts an incoming request and returns an outgoing response. It's the
 server-side counterpart to the [Invoker](../invocation/invocation-pipeline#the-invoker-abstraction) abstraction.
 
-In C#, this abstraction is the `IDispatcher` interface:
+An important difference is you need to implement this Dispatcher abstraction to fulfill the requests and produce the
+responses. The Invoker abstraction is implemented by IceRPC's connections.
+
+In C#, this dispatcher abstraction is the `IDispatcher` interface:
 ```csharp
 namespace IceRpc;
 
@@ -57,7 +60,7 @@ await using var clientConnection = new ClientConnection(clientConnectionOptions)
 ## Dispatch processing
 
 The dispatcher abstraction offers a great deal of flexibility. A Slice service (LINK) is a dispatcher, so it's trivial
-to configure a server to dispatch all the requests it receives to the same service.
+to configure a server to dispatch all the requests it receives to the same Slice service.
 
 A dispatcher implementation often dispatches to another dispatcher, which itself dispatches to another dispatcher, etc.;
 the dispatcher you configure on a server can be the head of a dispatcher chain or tree, known as a
@@ -80,6 +83,6 @@ There are 3 common types of dispatchers:
 title: A simple dispatch pipeline without a router
 ---
 flowchart LR
-    connection -- request --> middleware --> service[Slice service]
+    connection -- request --> middleware -- request --> service[Slice service]
     service -- response --> middleware -- response --> connection
 ```

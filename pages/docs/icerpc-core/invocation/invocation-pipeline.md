@@ -16,7 +16,8 @@ server connections.
 ## The Invoker abstraction
 
 With IceRPC, you always make an invocation by calling an invoker. An invoker is a simple abstraction with a single
-`invoke` method that accepts an outgoing request and returns an incoming response.
+`invoke` method that accepts an [outgoing request](outgoing-request) and returns an
+[incoming response](incoming-response).
 
 In C#, this abstraction is the `IInvoker` interface:
 ```csharp
@@ -47,7 +48,7 @@ simply add logging.
 
 You can configure this processing by creating a chain of invokers--the invocation pipeline. Each node of this pipeline
 is an invoker that calls `invoke` on the next invoker in the pipeline. The last invoker in the pipeline is a connection
-managed by a ClientConnection or ConnectionCache. The other invokers are usually [interceptors](interceptor).
+managed by a ClientConnection or ConnectionCache. The other invokers are typically [interceptors](interceptor).
 
 ```mermaid
 ---
@@ -58,28 +59,3 @@ flowchart LR
     i2 -- request --> ti["ClientConnection\n or ConnectionCache"] -- request --> connection
     connection -- response --> ti -- response --> i2 -- response --> i1 -- response --> app
 ```
-
-## Payload and payload continuation
-
-An outgoing request carries all the data a connection needs to send a request:
- - the [service address](service-address)
- - the name of the operation
- - [request fields](../icerpc-protocol/mapping-rpcs-to-streams#request-layout)
- - the payload of the request (a sequence of bytes that the connection can read and logically copy to the network
- connection when sending)
-
-The payload of an outgoing request is split in two: a first part that the connection sends before awaiting the response,
-and a second part (the "continuation") that the connection sends in the background while it awaits, receives and returns
-the response.
-
-```mermaid
-sequenceDiagram
-    Local->>Remote: request header + payload
-    par Local to Remote
-        Local->>Remote: request payload continuation
-    and Remote to Local
-        Remote->>Local: response header + payload
-    end
-```
-
-On the other side, the receiver of the request sees only one continuous request payload.

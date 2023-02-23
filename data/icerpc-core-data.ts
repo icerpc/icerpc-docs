@@ -32,6 +32,14 @@ export const rpcCoreData: SideBarSourceType[] = [
       path: `${RPC_CORE_BASE_URL}/invocation/invocation-pipeline`
     },
     {
+      title: 'Outgoing request',
+      path: `${RPC_CORE_BASE_URL}/invocation/outgoing-request`
+    },
+    {
+      title: 'Incoming response',
+      path: `${RPC_CORE_BASE_URL}/invocation/incoming-response`
+    },
+    {
       title: 'Interceptor',
       path: `${RPC_CORE_BASE_URL}/invocation/interceptor`
     },
@@ -47,6 +55,14 @@ export const rpcCoreData: SideBarSourceType[] = [
     {
       title: 'Dispatch pipeline',
       path: `${RPC_CORE_BASE_URL}/dispatch/dispatch-pipeline`
+    },
+    {
+      title: 'Incoming request',
+      path: `${RPC_CORE_BASE_URL}/dispatch/incoming-request`
+    },
+    {
+      title: 'Outgoing response',
+      path: `${RPC_CORE_BASE_URL}/dispatch/outgoing-response`
     },
     {
       title: 'Middleware',
