@@ -92,6 +92,11 @@ export const rpcCoreData: SideBarSourceType[] = [
   ]
   },
   {
+    title: 'Advanced topics',
+    links: [
+    ]
+  },
+  {
     title: 'The icerpc protocol',
     links: [
       {
