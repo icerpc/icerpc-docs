@@ -62,17 +62,23 @@ function transformSideBarData(
   if (isCategory(data)) {
     const category = data;
     return [
-      <li key={category.title} className="list-none">
-        <h2 className="my-2 text-sm font-bold dark:text-white">
-          {category.title}
-        </h2>
-      </li>,
-      <ul
-        key={category.title + '-list'}
-        className="ml-[0.1rem] border-l-[1.5px] border-lightBorder pl-[0.1rem] dark:border-[#3D3D3D]"
-      >
-        {category.links.map((link) => createListItem(router, link))}
-      </ul>
+      <li key="category">
+        <ul>
+          <li key={category.title} className="list-none">
+            <h2 className="my-2 text-sm font-bold dark:text-white">
+              {category.title}
+            </h2>
+          </li>
+          <li key={`${category.title}-content`} className="list-none">
+            <ul
+              key={category.title + '-list'}
+              className="ml-[0.1rem] border-l-[1.5px] border-lightBorder pl-[0.1rem] dark:border-[#3D3D3D]"
+            >
+              {category.links.map((link) => createListItem(router, link))}
+            </ul>
+          </li>
+        </ul>
+      </li>
     ];
   } else {
     const link = data as SideBarLink;
@@ -114,7 +120,7 @@ export const SideNav = ({ path }: SideNavProps) => {
     >
       <Logo resolvedTheme={resolvedTheme} />
       {baseUrl == '/docs/slice' && <SliceSelector />}
-      {cells}
+      <ul role="list">{cells}</ul>
     </nav>
   );
 };

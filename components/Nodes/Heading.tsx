@@ -40,6 +40,7 @@ export function Heading({ id = '', level = 1, children, className }: Props) {
       </span>
       <button
         className="h-5 pl-2 opacity-0 duration-100 ease-in-out group-hover:opacity-100"
+        aria-label="Copy link to heading"
         onClick={() => copy(origin + router.pathname + `#${id}`)}
       >
         <LinkIcon className="h-4 w-4 font-bold text-slate-700 dark:text-slate-300" />

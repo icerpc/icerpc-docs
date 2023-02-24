@@ -19,6 +19,7 @@ export const ThemeToggle = () => {
   return (
     <button
       className="flex w-10 cursor-pointer justify-center"
+      aria-label="Toggle Dark Mode"
       onClick={() => setTheme(theme == 'light' ? 'dark' : 'light')}
       style={{
         background: 'transparent'
