@@ -97,6 +97,15 @@ export const rpcCoreData: SideBarSourceType[] = [
     ]
   },
   {
+    title: 'Building blocks',
+    links: [
+      {
+        title: 'Protocol connection',
+        path: `${RPC_CORE_BASE_URL}/building-blocks/protocol-connection`
+      }
+    ]
+  },
+  {
     title: 'The icerpc protocol',
     links: [
       {

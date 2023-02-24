@@ -10,9 +10,9 @@ description: Learn how a client connects to a server with icerpc.
 The icerpc connection establishment is the same for a client creating a connection and for a server accepting a
 connection, except for the very first step:
 
-1. (client only) Establish a QUIC connection to the server.
+1. (client only) Establish a multiplexed connection to the server.
 
-    (server only) Accept a QUIC connection from a client.
+    (server only) Accept a multiplexed connection from a client.
 
 2. Open a unidirectional stream to the peer: the outbound control stream.
 

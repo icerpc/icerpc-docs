@@ -40,8 +40,8 @@ that the peer won't accept.
 
 6. Wait for the peer to close the inbound control stream, which means it's done (see above).
 
-7. Close the QUIC connection with the 0 (success) error code.
-This step can fail because the peer closed the QUIC connection first with error code 0. This remains a successful
+7. Close the multiplexed connection with the 0 (success) error code.
+This step can fail because the peer closed the multiplexed connection first with error code 0. This remains a successful
 shutdown.
 
 ## GoAway frame

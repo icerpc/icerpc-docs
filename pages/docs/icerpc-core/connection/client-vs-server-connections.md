@@ -63,28 +63,3 @@ server.Listen();
 
 A server accepts connections and remembers which connections it accepted. This allows the server to shut down these
 connections when you shut down the server.
-
-## The protocol connection abstraction
-
-`ClientConnection`, `ConnectionCache` and `Server` all create and manage instances of the protocol connection
-abstraction. A protocol connection:
- - holds a transport connection such as a QUIC connection or a tcp connection
- - implements a RPC protocol layer, such as [icerpc](../icerpc-protocol/icerpc-vs-http3) or ice (link), over this
- transport connection
-
-We often refer to a protocol connection as simply a "connection".
-
-In C#, the protocol connection abstraction is represented by interface `IProtocolConnection`:
-```csharp
-namespace IceRpc;
-
-public interface IProtocolConnection : IInvoker, IAsyncDisposable
-{
-    Task<(TransportConnectionInformation ConnectionInformation, Task ShutdownRequested)> ConnectAsync(
-        CancellationToken cancellationToken = default);
-
-    Task ShutdownAsync(CancellationToken cancellationToken = default);
-}
-```
-
-You can use this interface directly to create your own custom version of `ClientConnection` or `ConnectionCache`.
