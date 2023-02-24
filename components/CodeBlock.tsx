@@ -12,6 +12,7 @@ import Highlight, { Language, defaultProps } from 'prism-react-renderer';
 // @ts-ignore
 import Prism from 'prism-react-renderer/prism';
 import dynamic from 'next/dynamic';
+import { IconContext } from 'react-icons';
 const MermaidDiagram = dynamic(() => import('components/Mermaid'), {
   ssr: false
 });
@@ -97,17 +98,19 @@ export const CodeBlock = ({
 
   return (
     // Container for the code block
-    <div className="my-6 flex w-full flex-col items-center">
-      <div className="w-full rounded-xl bg-[#17232d]">
-        <TopBar
-          languageIcon={languageIcon}
-          language={language}
-          lines={lines}
-          setCopied={setCopied}
-          copied={copied}
-        >
-          {children}
-        </TopBar>
+    <div className="group relative my-6 flex w-full flex-col items-center">
+      <div className="w-full rounded-lg bg-[#17232d]">
+        {language != undefined && (
+          <TopBar
+            languageIcon={languageIcon}
+            language={language}
+            lines={lines}
+            setCopied={setCopied}
+            copied={copied}
+          >
+            {children}
+          </TopBar>
+        )}
         {/* PrismJS styled code block*/}
         <Highlight
           {...defaultProps}
@@ -119,7 +122,7 @@ export const CodeBlock = ({
             <pre
               className={clsx(
                 className,
-                'm-0 my-1 overflow-auto rounded-b-xl px-4 py-3 text-left'
+                'm-0 my-1 overflow-auto rounded-lg px-4 py-3 text-left'
               )}
               style={{ ...style }}
             >
@@ -129,7 +132,7 @@ export const CodeBlock = ({
                   {...getLineProps({ line, key: i })}
                   className={clsx(className, 'table-row')}
                 >
-                  <LineNumber number={i + 1} />
+                  {tokens.length > 1 && <LineNumber number={i + 1} />}
                   <LineContent>
                     {line.map((token, key) => (
                       <span key={key} {...getTokenProps({ token, key })} />
@@ -204,7 +207,13 @@ const TopBar = ({
           setTimeout(() => setCopied(false), 3000);
         }}
       >
-        {copied ? '🎉' : <BiCopy />}
+        {copied ? (
+          '🎉'
+        ) : (
+          <IconContext.Provider value={{ size: '1em' }}>
+            <BiCopy />
+          </IconContext.Provider>
+        )}
       </button>
     </div>
   );

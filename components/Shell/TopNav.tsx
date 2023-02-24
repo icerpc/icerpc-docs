@@ -22,7 +22,7 @@ export const TopNav = () => {
   return (
     <nav
       className={clsx(
-        'sticky top-0 flex h-16 w-full border-b border-l border-lightBorder',
+        'sticky top-0 z-10 flex h-16 w-full border-b border-l border-lightBorder',
         'bg-[#FCFCFC] text-sm font-medium  dark:border-darkBorder dark:bg-[rgb(33,35,39)]'
       )}
     >
