@@ -32,7 +32,9 @@ export const Footer = () => {
         action="/send-data-here"
         method="post"
       >
-        <label htmlFor="email">Sign up for developer updates:</label>
+        <label htmlFor="email" className="dark:text-white">
+          Sign up for developer updates:
+        </label>
         <div className="flex flex-row">
           <input
             className="mr-2 w-64 rounded border border-solid border-lightBorder dark:border-darkBorder"
@@ -48,9 +50,12 @@ export const Footer = () => {
             Subscribe
           </button>
         </div>
-        <span className="text-xs">
+        <span className="text-xs text-white/80">
           You can unsubscribe at any time. Read our{' '}
-          <Link className="underline" href="https://www.zeroc.com">
+          <Link
+            className="underline dark:text-white/80"
+            href="https://www.zeroc.com"
+          >
             privacy policy.
           </Link>
         </span>

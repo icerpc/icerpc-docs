@@ -14,15 +14,15 @@ export interface Breadcrumb {
 
 export const Breadcrumbs = ({ breadcrumbs }: Props) => {
   return (
-    <ul className="mt-0 mb-3 flex pt-0 pl-0 text-sm text-[#6b7385]">
+    <ul className="mt-0 mb-3 flex pt-0 pl-0 text-sm">
       {breadcrumbs.map((crumb) => {
         const name = crumb.name;
         const href = crumb.href;
         const isLast = crumb === breadcrumbs[breadcrumbs.length - 1];
 
         return (
-          <li key={name} className="flex flex-row gap-2 pr-2">
-            <Link href={href} style={{ textDecoration: 'none' }}>
+          <li key={name} className="flex flex-row gap-2 pr-2 ">
+            <Link href={href} className="dark:text-slate-300">
               {name}
             </Link>
             {!isLast ? '/' : null}

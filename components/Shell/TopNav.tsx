@@ -9,21 +9,12 @@ import { ThemeToggle } from 'components/ThemeToggle';
 import { clsx } from 'clsx';
 
 export const TopNav = () => {
-  const router = useRouter();
-
-  const style = {
-    color: 'var(--primary-color)',
-    opacity: 1,
-    textDecoration: 'underline',
-    textDecorationThickness: 3,
-    textUnderlineOffset: '1.6rem'
-  };
-
+  const pathname = useRouter().pathname;
   return (
     <nav
       className={clsx(
-        'sticky top-0 z-10 flex h-16 w-full border-b border-l border-lightBorder',
-        'bg-[#FCFCFC] text-sm font-medium  dark:border-darkBorder dark:bg-[rgb(33,35,39)]'
+        'sticky top-0 z-10 flex h-16 w-full border-b border-l border-lightBorder dark:backdrop-blur',
+        'bg-[#FCFCFC] text-sm font-medium  dark:border-darkBorder dark:bg-transparent'
       )}
     >
       <div className="flex w-full items-center justify-between">
@@ -34,37 +25,39 @@ export const TopNav = () => {
           <Link
             href="/"
             className={
-              router.pathname == '/'
+              pathname == '/'
                 ? 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100'
-                : ''
+                : 'dark:text-[rgba(255,255,255,0.8)]'
             }
           >
             Home
           </Link>
           <Link
             href="/docs/getting-started"
-            style={
-              router.pathname.startsWith('/docs/getting-started')
-                ? style
-                : undefined
+            className={
+              pathname.startsWith('/docs/getting-started')
+                ? 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100'
+                : 'dark:text-[rgba(255,255,255,0.8)]'
             }
           >
             Getting Started
           </Link>
           <Link
             href="/docs/slice"
-            style={
-              router.pathname.startsWith('/docs/slice') ? style : undefined
+            className={
+              pathname.startsWith('/docs/slice')
+                ? 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100'
+                : 'dark:text-[rgba(255,255,255,0.8)]'
             }
           >
             Slice
           </Link>
           <Link
             href="/docs/icerpc-core"
-            style={
-              router.pathname.startsWith('/docs/icerpc-core')
-                ? style
-                : undefined
+            className={
+              pathname.startsWith('/docs/icerpc-core')
+                ? 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100'
+                : 'dark:text-[rgba(255,255,255,0.8)]'
             }
           >
             IceRPC Core
@@ -73,14 +66,14 @@ export const TopNav = () => {
             <div className="left-1/2 h-[calc(65px-40px)] border-l-[1.5px] border-lightBorder dark:border-darkBorder" />
             <ThemeToggle />
             <a
-              className="hover:text-primary"
+              className="hover:text-primary dark:text-[rgba(255,255,255,0.8)]"
               href="https://github.com/zeroc-ice"
               aria-label="Github"
             >
               <FaGithub size={20} />
             </a>
             <a
-              className="hover:text-primary"
+              className="hover:text-primary dark:text-[rgba(255,255,255,0.8)]"
               href="https://twitter.com/zeroc"
               aria-label="Twitter"
             >

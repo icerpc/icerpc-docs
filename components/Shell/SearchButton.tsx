@@ -25,7 +25,14 @@ export const SearchButton = () => {
 
       <style jsx>{`
         // Search button style
+
         :global(.DocSearch-Button) {
+          --docsearch-text-color: ${resolvedTheme == 'dark'
+            ? 'rgba(255, 255, 255, 1)'
+            : 'rgb(28, 30, 33)'};
+          --docsearch-muted-color: ${resolvedTheme == 'dark'
+            ? 'rgba(255, 255, 255, 0.6)'
+            : 'rgb(150, 159, 175)'};
           display: flex;
           width: 100%;
           height: 36px;
@@ -82,8 +89,9 @@ export const SearchButton = () => {
           padding-right: 5px;
           padding-top: 4px;
           padding-bottom: 4px;
-          color: var(--docsearch-muted-color);
-          fill: currentColor;
+          border-color: red;
+          color: red;
+          stroke: red;
         }
 
         :global(.DocSearch-Button-Placeholder) {

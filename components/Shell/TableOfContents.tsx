@@ -73,7 +73,7 @@ export const TableOfContents = (toc: TOC) => {
   return (
     <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] min-w-[275px] shrink border-l border-lightBorder dark:border-darkBorder lg:block">
       {items.length > 1 && (
-        <nav className="h-full px-8 py-10">
+        <nav className="h-full px-8 py-10 pt-12">
           <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase tracking-wider  dark:text-white">
             <Bars3BottomLeftIcon className="ml-0 mr-2 h-5 w-5 pl-0" /> On this
             page
@@ -128,7 +128,8 @@ type MoreItemProps = {
 const MoreItem = ({ href, children }: MoreItemProps) => {
   return (
     <li className="m-0 my-4 text-sm">
-      <AppLink href={href} className="text-[#4B5563]">
+      {/* Override the default styling of AppLink */}
+      <AppLink href={href} className=" dark:text-[rgba(255,255,255,0.8)]">
         <div className="flex items-center gap-[0.5em]">{children}</div>
       </AppLink>
     </li>

@@ -10,10 +10,16 @@ export const Feedback = () => {
       </h3>
       <div className="flex gap-8 text-4xl">
         {/* TODO: Add click functionality to the feedback buttons */}
-        <button aria-label="Thumbs down" className="hover:text-primary">
+        <button
+          aria-label="Thumbs down"
+          className="hover:text-primary dark:text-slate-200 hover:dark:text-primary"
+        >
           <MdThumbDownOffAlt />
         </button>
-        <button aria-label="Thumbs up" className="hover:text-primary">
+        <button
+          aria-label="Thumbs up"
+          className="hover:text-primary dark:text-slate-200 hover:dark:text-primary"
+        >
           <MdThumbUpOffAlt />
         </button>
       </div>

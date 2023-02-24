@@ -12,13 +12,6 @@
   --primary-color: theme('colors.primary');
 }
 
-[data-theme='dark'] {
-  --link-color: rgba(255, 255, 255, 0.8);
-  --highlighted-link-color: white;
-  --text-color: white;
-  --text-color-secondary: white;
-}
-
 @layer base {
   main article h1 {
     @apply text-3xl dark:text-white;
@@ -28,16 +21,12 @@
     @apply text-2xl dark:text-white;
   }
 
-  main article h2 {
-    @apply dark:text-white;
-  }
-
   main article h3 {
     @apply dark:text-white;
   }
 
-  main article li {
-    @apply dark:text-[#a1a1aa];
+  li {
+    @apply dark:text-[rgba(255,255,255,0.8)];
   }
 
   body {
@@ -45,7 +34,11 @@
   }
 
   p {
-    @apply dark:text-[#a1a1aa];
+    @apply mb-6 text-sm leading-[1.6rem] tracking-[0.228px] dark:text-[rgba(255,255,255,0.8)];
+  }
+
+  h2 {
+    @apply my-1 text-black dark:text-white;
   }
 
   code {
@@ -72,41 +65,11 @@ body {
   color: rgba(60, 66, 87, 1);
 }
 
-p {
-  line-height: 1.6rem;
-  margin-bottom: 24px;
-  letter-spacing: 0.228px;
-  font-size: .875rem
-}
-
-[data-theme='dark'] p {
-  color: white;
-}
-
 h1 {
   font-size: 52px;
   color: #333333;
   font-style: bold;
   margin-top: 0;
-}
-
-[data-theme='dark'] h1 {
-  color: white;
-}
-
-h2 {
-  margin: 0.4em 0;
-  color: #000000;
-}
-
-[data-theme='dark'] h2 {
-  color: white;
-}
-
-[data-theme='dark'] code {
-  background: #2d2d2d;
-  border-bottom: 1px solid #e1e4e8;
-  color: white;
 }
 
 h3 {
@@ -116,16 +79,8 @@ h3 {
   font-size: large;
 }
 
-[data-theme='dark'] h3 {
-  color: white;
-}
-
 a {
   color: rgba(75, 85, 99, 1);
-}
-
-[data-theme='dark'] a {
-  color: rgb(255, 255, 255);
 }
 
 .sr-only {

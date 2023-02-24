@@ -7,6 +7,7 @@ import { NextRouter, useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 import { SliceSelector } from '../SliceSelector';
 import { useVersionContext } from 'context/state';
+import clsx from 'clsx';
 
 // import components
 import { sideBarData, baseUrls } from 'data/side-bar-data';
@@ -43,7 +44,7 @@ function createListItem(
     <li key={link.path} className="flex">
       <Link
         href={link.path}
-        className={`p-2 py-[6px] pl-0 text-sm  ${leftPadding} text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white`}
+        className={`p-2 py-[7px] pl-0 text-sm  ${leftPadding} hover:text-zinc-900 dark:text-[#C4C7C5] dark:hover:text-white`}
         style={
           isCurrentPage ? (noLeftPadding ? activeStyleAlt : activeStyle) : style
         }
@@ -62,13 +63,13 @@ function transformSideBarData(
     const category = data;
     return [
       <li key={category.title} className="list-none">
-        <h2 className="my-2 text-sm font-bold text-[var(--text-color)] dark:text-white">
+        <h2 className="my-2 text-sm font-bold dark:text-white">
           {category.title}
         </h2>
       </li>,
       <ul
         key={category.title + '-list'}
-        className="ml-[0.1rem] border-l-[1.5px] border-lightBorder pl-[0.1rem] dark:border-darkBorder"
+        className="ml-[0.1rem] border-l-[1.5px] border-lightBorder pl-[0.1rem] dark:border-[#3D3D3D]"
       >
         {category.links.map((link) => createListItem(router, link))}
       </ul>
@@ -104,7 +105,13 @@ export const SideNav = ({ path }: SideNavProps) => {
   });
 
   return (
-    <nav className="sticky top-0 hidden h-screen w-60 shrink-0 overflow-x-hidden border-lightBorder bg-[#ffffff] pr-3 pb-10 pl-6 pt-0 shadow dark:border-darkBorder dark:bg-[#26282c] lg:block">
+    <nav
+      className={clsx(
+        'sticky top-0 hidden h-screen w-60 shrink-0 overflow-x-hidden lg:block',
+        ' border-lightBorder bg-[#ffffff] pr-3 pb-10 pl-6 pt-0 shadow',
+        'dark:border-darkBorder dark:bg-[#26282c]'
+      )}
+    >
       <Logo resolvedTheme={resolvedTheme} />
       {baseUrl == '/docs/slice' && <SliceSelector />}
       {cells}

@@ -42,7 +42,7 @@ export function Heading({ id = '', level = 1, children, className }: Props) {
         className="h-5 pl-2 opacity-0 duration-100 ease-in-out group-hover:opacity-100"
         onClick={() => copy(origin + router.pathname + `#${id}`)}
       >
-        <LinkIcon className="h-4 w-4 font-bold text-slate-700" />
+        <LinkIcon className="h-4 w-4 font-bold text-slate-700 dark:text-slate-300" />
       </button>
       {level >= 1 && level <= 3 && <Divider margin="my-4" />}
     </Component>
