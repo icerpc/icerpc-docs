@@ -83,7 +83,7 @@ Since each stream is independent, there is no
 [head-of-line blocking](https://en.wikipedia.org/wiki/Head-of-line_blocking). You can send a mix of large and small
 requests and responses over the same connection: the large requests and responses won't block or delay the small ones.
 
-## IceRPC preferred protocol
+## IceRPC's preferred protocol
 
 icerpc is naturally IceRPC's preferred protocol.
 

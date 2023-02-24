@@ -22,12 +22,11 @@ The status code represents the status of the [dispatch](../dispatch/dispatch-pip
 `Success` or a error. It's defined in Slice (LINK) as an enum:
 
 ```slice
-unchecked enum StatusCode : varuint62
-{
-    Success = 0,
-    ApplicationError,
-    ServiceNotFound,
-    OperationNotFound,
+unchecked enum StatusCode : varuint62 {
+    Success = 0
+    ApplicationError
+    ServiceNotFound
+    OperationNotFound
     ... more errors ...
 }
 ```
@@ -45,9 +44,8 @@ same response in the server and in the client.
 A field is an entry in a dictionary `ResponseFieldKey` to sequence of bytes, where `ResponseFieldKey` is enum defined in
 Slice (LINK):
 ```slice
-unchecked enum ResponseFieldKey : varuint62
-{
-    CompressionFormat = 2,
+unchecked enum ResponseFieldKey : varuint62 {
+    CompressionFormat = 2
     ...
 }
 ```

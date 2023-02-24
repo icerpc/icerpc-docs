@@ -60,17 +60,15 @@ icerpc transmits the request fields without attaching any meaning to their value
 The request header is specified using Slice and encoded using Slice2:
 
 ```slice
-compact struct Request
-{
-    headerSize: varuint62,
-    header: RequestHeader,
+compact struct Request {
+    headerSize: varuint62
+    header: RequestHeader
     payload: ...bytes...
 }
 
-compact struct RequestHeader
-{
-    path: string,
-    operation: string,
+compact struct RequestHeader {
+    path: string
+    operation: string
     fields: dictionary<RequestFieldKey, sequence<uint8>>
 }
 ```
@@ -106,17 +104,15 @@ icerpc transmits the response fields without attaching any meaning to their valu
 The response header is specified in Slice (LINK) and encoded using Slice2:
 
 ```slice
-compact struct Response
-{
-    headerSize: varuint62,
-    header: ResponseHeader,
+compact struct Response {
+    headerSize: varuint62
+    header: ResponseHeader
     payload: ...bytes...
 }
 
-compact struct ResponseHeader
-{
-    statusCode: StatusCode,
-    errorMessage: string, // only present when statusCode is not Success
+compact struct ResponseHeader {
+    statusCode: StatusCode
+    errorMessage: string // only present when statusCode is not Success
     fields: dictionary<ResponseFieldKey, sequence<uint8>>
 }
 ```

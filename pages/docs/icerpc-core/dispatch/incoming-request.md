@@ -17,7 +17,7 @@ An incoming request holds:
  - the [payload](#request-payload) of the request
 
 In C#, an incoming request also holds [features](#request-features). These features are used for local communications
-with and within the dispatch pipeline.
+with the dispatch pipeline, and within this pipeline.
 
 ## Request payload
 

@@ -28,11 +28,10 @@ processing of the same request in the client and in the server.
 A field is an entry in a dictionary `RequestFieldKey` to sequence of bytes, where `RequestFieldKey` is enum defined in
 Slice (LINK):
 ```slice
-unchecked enum RequestFieldKey : varuint62
-{
-    Context = 0,
-    TraceContext = 1,
-    CompressionFormat = 2,
+unchecked enum RequestFieldKey : varuint62 {
+    Context = 0
+    TraceContext = 1
+    CompressionFormat = 2
     ...
 }
 ```
