@@ -43,11 +43,10 @@ with brotli"; the Compress middleware can then decompress this (incoming) reques
 
 ## Request payload and payload continuation
 
-The payload of a request is sequence of bytes that represents the argument(s) of an operation. An invoker does not know
-the size of this sequence. When a connection sends a request, it reads and logically copies these bytes to the network
-connection until there is no more byte to read.
+The payload of a request is a stream of bytes that represents the argument(s) of an operation. When a connection sends a
+request, it reads and logically copies these bytes to the network connection until there is no more byte to read.
 
-When a connection receives a request, it reads these bytes from the network and give them to a
+On the other side, the connection reads these bytes from the network and give them to a
 [dispatcher](../dispatch/dispatch-pipeline#the-dispatcher-abstraction).
 
 The payload of an outgoing request is actually split in two: a first part that the connection sends before awaiting the

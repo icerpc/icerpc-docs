@@ -10,15 +10,15 @@ description: Understand how requests and responses are sent over icerpc.
 The QUIC transport and its multiplexed transport abstraction are ideal for RPCs and the icerpc protocol takes full
 advantage of these transports.
 
-icerpc creates a dedicated stream for each RPC. A twoway RPC, with a request and a response, is carried by a
+icerpc creates a dedicated QUIC stream for each RPC. A twoway RPC, with a request and a response, is carried by a
 bidirectional stream, while a oneway RPC, with a request and no response, is carried by an unidirectional stream.
 
-A request flows from the endpoint that created the stream to the endpoint that accepted the stream. A response
-flows the other way--from the endpoint that accepted the stream to the endpoint that created the stream.
+A request flows from the endpoint that created the stream to the endpoint that accepted the stream. A response flows the
+other way--from the endpoint that accepted the stream to the endpoint that created the stream.
 
 ```mermaid
 ---
-title: RPC mapped to a stream
+title: RPC mapped to a QUIC stream
 ---
 flowchart LR
     subgraph Server
@@ -48,7 +48,7 @@ flowchart LR
 ## Request layout
 
 An icerpc request consists of a header followed by a payload. As far as icerpc is concerned, the payload is just a
-sequence of bytes with an unknown size. The end of the stream marks the end of the payload.
+stream of bytes with an unknown size. The end of the QUIC stream marks the end of the payload.
 
 The request header holds:
  - the path of the service
@@ -94,7 +94,7 @@ encoded on 2 bytes, the encoded value is `source * 4 + 1`.
 ## Response layout
 
 An icerpc response consists of a header followed by a payload. The payload of a response is just like the payload of a
-request: a sequence of bytes with an unknown size. The response payload ends when the stream ends.
+request: a stream of bytes with an unknown size. The response payload ends when the QUIC stream ends.
 
 The response header holds:
  - a [status code](../invocation/incoming-response#status-code)

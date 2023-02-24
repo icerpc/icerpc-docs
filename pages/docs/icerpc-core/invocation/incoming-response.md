@@ -58,5 +58,5 @@ with brotli"; the Compress interceptor can then decompress this (incoming) respo
 
 ## Response payload
 
-The payload of a response is sequence of bytes that represents the return value of an operation. It's simply a
-continuous sequence of bytes. As far as the IceRPC core is concerned, the size of this sequence is unknown.
+The payload of an incoming response is a stream of bytes that represents the return value of an operation. As far as the
+IceRPC core is concerned, the number of bytes in this stream is unknown.
