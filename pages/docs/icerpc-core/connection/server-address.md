@@ -30,6 +30,7 @@ The main configuration for a client connection is the server's address. It tells
 server.
 
 For example:
+
 - `icerpc://hello.zeroc.com`
 connect to `hello.zeroc.com` on port 4062 using the icerpc protocol; the underlying transport is not specified
 
@@ -65,6 +66,7 @@ listen for ice connections on all interfaces with an IPv4 address on port 10,000
 
 In C#, when you specify port `0` in your server address, `Listen` returns a server address with the port number selected
 by the OS:
+
 ```csharp
 using IceRpc;
 

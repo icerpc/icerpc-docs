@@ -51,9 +51,10 @@ An icerpc request consists of a header followed by a payload. As far as icerpc i
 stream of bytes with an unknown size. The end of the multiplexed stream marks the end of the payload.
 
 The request header holds:
- - the path of the service
- - the operation name
- - [request fields](../invocation/outgoing-request#request-fields)
+
+- the path of the service
+- the operation name
+- [request fields](../invocation/outgoing-request#request-fields)
 
 icerpc transmits the request fields without attaching any meaning to their values or presence.
 
@@ -74,6 +75,7 @@ compact struct RequestHeader {
 ```
 
 For example, a request for operation "op" at path "/foo" with an empty payload and no field can be encoded as:
+
 ```
 0x25 0x00           : header size (9) on 2 bytes, little endian
 0x10                : path size (4) on 1 byte
@@ -95,9 +97,10 @@ An icerpc response consists of a header followed by a payload. The payload of a 
 request: a stream of bytes with an unknown size. The response payload ends when the multiplexed stream ends.
 
 The response header holds:
- - a [status code](../invocation/incoming-response#status-code)
- - an error message when the status code is not Success
- - [response fields](../invocation/incoming-response#response-fields)
+
+- a [status code](../invocation/incoming-response#status-code)
+- an error message when the status code is not Success
+- [response fields](../invocation/incoming-response#response-fields)
 
 icerpc transmits the response fields without attaching any meaning to their values or presence.
 
@@ -118,6 +121,7 @@ compact struct ResponseHeader {
 ```
 
 For example, a response with status code Success, no fields and an empty payload can be encoded as:
+
 ```
 0x09 0x00           : header size (2) on 2 bytes, little endian
 0x00                : status code (0) on 1 byte

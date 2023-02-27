@@ -10,10 +10,12 @@ description: Understand how to create and use protocol connections.
 A server, a client connection and a connection cache all manage
 [connections](../connection/client-vs-server-connections). These somewhat low-level connections are represented by
 the protocol connection abstraction. A protocol connection:
- - holds a transport connection such as a QUIC connection or a tcp connection
- - implements a RPC protocol layer over this transport connection
+
+- holds a transport connection such as a QUIC connection or a tcp connection
+- implements a RPC protocol layer over this transport connection
 
 In C#, the protocol connection abstraction is represented by interface `IProtocolConnection`:
+
 ```csharp
 namespace IceRpc;
 
@@ -35,6 +37,7 @@ IceRPC provides two implementations of the protocol connection abstraction:
 ## Creating a protocol connection
 
 In C#, you create a client protocol connection with a `ClientProtocolConnectionFactory` (LINK). For example:
+
 ```csharp
 var clientProtocolConnectionFactory = new ClientProtocolConnectionFactory(connectionOptions, logger: logger);
 await using var protocolConnection = clientProtocolConnectionFactory.CreateConnection(serverAddress);

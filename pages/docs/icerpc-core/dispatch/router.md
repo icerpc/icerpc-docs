@@ -34,6 +34,7 @@ These other dispatchers are registered with the router using `map` and `mount` m
     `/hello2` or `/hello/foo` is not a match.
 
     In C#, you would write:
+
     ```csharp
     var router = new Router();
     router.Map("/hello", chatbot);
@@ -45,6 +46,7 @@ These other dispatchers are registered with the router using `map` and `mount` m
     is a match. A request with path `/`, `/hello2` is not a match.
 
     In C#, you would write:
+
     ```csharp
     var router = new Router();
     router.Mount("/hello", chatbot);
@@ -64,6 +66,7 @@ A sub-router is a router registered with another "parent" router. It has a prefi
 it removes this prefix when it looks up a dispatcher registered via `map` or `mount`.
 
 In C#, you can create a sub-router and mount it in a single step with the `Route` extension method:
+
 ```csharp
 var router = new Router();
 
@@ -79,6 +82,7 @@ the request's path before trying to match this path against entries in its map a
 A router can execute one or more middleware before handing over the request to a mapped or mounted dispatcher.
 
 In C#, these middleware are registered with `Use{Name}` extension methods on class `Router`. For example:
+
 ```csharp
 Router router = new Router().UseLogger(loggerFactory).UseCompress();
 router.Map("/hello", new Chatbot());
@@ -101,6 +105,7 @@ create your dispatch pipeline. The `Use{Name}` extension methods for `IDispatche
 automatically from the DI container.
 
 For example:
+
 ```csharp
 services.AddIceRpcServer(builder => builder.UseLogger().UseCompress().Mount<IHelloService>("/"));
 ```

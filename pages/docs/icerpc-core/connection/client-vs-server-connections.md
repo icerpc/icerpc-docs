@@ -23,6 +23,7 @@ requests to your services.
 
 In C#, you create a client connection with the `ClientConnection` class or with the `ConnectionCache` class. For
 example:
+
 ```csharp
 using IceRpc;
 
@@ -32,6 +33,7 @@ await using var clientConnection = new ClientConnection(new Uri("icerpc://hello.
 `ClientConnection`'s constructor specifies the [address of the server](server-address#client-connection-configuration),
 but does not actually establish the connection. The connection is established later on by an asynchronous call such as
 `ConnectAsync`:
+
 ```csharp
 // establishes the connection explicitly
 await clientConnection.ConnectAsync();
@@ -51,6 +53,7 @@ On the server-side, you accept server connections with an instance of the Server
 accepts new connections on its configured [server address](server-address#server-configuration).
 
 In C#, this is again a two-step process, where you first construct the server and later call `Listen`:
+
 ```csharp
 using IceRpc;
 
