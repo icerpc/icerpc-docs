@@ -13,7 +13,7 @@ interface Props {
   className?: string;
 }
 
-export function Heading({ id = '', level = 1, children, className }: Props) {
+export function Heading({ id = '', level = 1, children }: Props) {
   const router = useRouter();
   const Component: any = `h${level}`;
   const isDocs = router.pathname.startsWith('/docs');

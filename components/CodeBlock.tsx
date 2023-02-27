@@ -61,14 +61,9 @@ Prism.languages.slice = {
 interface Props {
   children: string;
   'data-language'?: string;
-  isValid?: boolean;
 }
 
-export const CodeBlock = ({
-  children,
-  'data-language': language,
-  isValid
-}: Props) => {
+export const CodeBlock = ({ children, 'data-language': language }: Props) => {
   const [copied, setCopied] = useState(false);
 
   // Split the code into lines

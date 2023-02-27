@@ -49,5 +49,11 @@
   ],
   "enableFiletypes": [
     "markdoc"
+  ],
+  "ignorePaths": [
+    ".vscode",
+    "node_modules",
+    "package-lock.json",
+    "package.json"
   ]
 }
