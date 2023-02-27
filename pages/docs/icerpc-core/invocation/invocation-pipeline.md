@@ -20,6 +20,7 @@ With IceRPC, you always make an invocation by calling an invoker. An invoker is 
 [incoming response](incoming-response).
 
 In C#, this abstraction is the `IInvoker` interface:
+
 ```csharp
 namespace IceRpc;
 
@@ -32,6 +33,7 @@ public interface IInvoker
 Both `ClientConnection` (C# LINK) and `ConnectionCache`(C# LINK) implement this interface. This allows you to make an
 invocation by creating a client connection or a connection cache and then calling `InvokeAsync` on the resulting
 instance:
+
 ```csharp
 await using var clientConnection = new ClientConnection(new Uri("icerpc://hello.zeroc.com"));
 using var request = new OutgoingRequest(...);

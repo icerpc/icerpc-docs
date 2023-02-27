@@ -1,9 +1,14 @@
 # IceRPC Docs
 
-- [Build Requirements](#build-requirements)
-- [Building](#building)
-- [Writing Documentation](#writing-documentation)
-- [Updating Navigation](#updating-navigation)
+- [IceRPC Docs](#icerpc-docs)
+  - [Build Requirements](#build-requirements)
+  - [Building](#building)
+  - [Writing Documentation](#writing-documentation)
+    - [Title](#title)
+    - [Side-by-side](#side-by-side)
+    - [Weighted Side-by-side](#weighted-side-by-side)
+    - [Divider](#divider)
+  - [Updating Navigation](#updating-navigation)
 
 ## Build Requirements
 
@@ -78,7 +83,7 @@ Lorem ipsum dolor sit amet.
 {% /side-by-side %}
 ````
 
-#### Weighted Side-by-side
+### Weighted Side-by-side
 
 The `side-by-side` tag also supports a `weighted` attribute that can be used to specify the if the left or right column
 should have more content. The `weighted` attribute can be set to either `left` or `right`.
