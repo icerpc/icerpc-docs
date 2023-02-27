@@ -58,11 +58,11 @@ Prism.languages.slice = {
     /\b(?:bool|int8|uint8|int16|uint16|int32|uint32|varint32|varuint32|int64|uint64|varint62|varuint62|float32|float64|string)\b/
 };
 
-type Props = {
+interface Props {
   children: string;
   'data-language'?: string;
   isValid?: boolean;
-};
+}
 
 export const CodeBlock = ({
   children,
@@ -148,17 +148,17 @@ export const CodeBlock = ({
   );
 };
 
-type LineContentProps = {
+interface LineContentProps {
   children: ReactNode;
-};
+}
 
 const LineContent = ({ children }: LineContentProps) => {
   return <div className="table-cell py-[3px] text-xs">{children}</div>;
 };
 
-type LineNumberProps = {
+interface LineNumberProps {
   number: number;
-};
+}
 
 const LineNumber = ({ number }: LineNumberProps) => {
   return (
@@ -168,14 +168,14 @@ const LineNumber = ({ number }: LineNumberProps) => {
   );
 };
 
-type TopBarProps = {
+interface TopBarProps {
   languageIcon: ReactNode;
   language?: string;
   lines: string[];
   setCopied: (copied: boolean) => void;
   copied: boolean;
   children: ReactNode;
-};
+}
 
 const TopBar = ({
   languageIcon,

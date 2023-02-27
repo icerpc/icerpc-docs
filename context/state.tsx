@@ -22,9 +22,9 @@ const PlatformContext = createContext<PlatformContextType>({
   setPlatform: () => {}
 });
 
-type Props = {
+interface Props {
   children: ReactNode;
-};
+}
 
 export function AppWrapper({ children }: Props) {
   const [version, setVersion] = useState<SliceVersion>(SliceVersion.Slice2);

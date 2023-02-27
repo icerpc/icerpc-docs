@@ -6,20 +6,20 @@ import { useVersionContext } from 'context/state';
 import { Feedback, PageHistory, TableOfContents, TOCItem } from '../Shell/';
 import { Footer, Divider } from '..';
 
-type Props = {
+interface Props {
   frontmatter: {
     title: string;
     description: string;
     toc?: boolean;
   };
   children: ReactNode;
-};
+}
 
-type Heading = {
+interface Heading {
   level: number;
   id: string;
   children: string;
-};
+}
 
 const constructToc = (children: ReactNode) => {
   const isHeading = (x: any): x is Heading => {

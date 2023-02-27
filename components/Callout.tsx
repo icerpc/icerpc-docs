@@ -4,10 +4,10 @@ import { ReactNode } from 'react';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import { clsx } from 'clsx';
 
-type Props = {
+interface Props {
   children: ReactNode;
   type: 'critical' | 'info';
-};
+}
 
 export const Callout = ({ children, type }: Props) => {
   return (

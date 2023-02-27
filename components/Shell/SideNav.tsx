@@ -86,9 +86,9 @@ function transformSideBarData(
   }
 }
 
-type SideNavProps = {
+interface SideNavProps {
   path: string;
-};
+}
 
 export const SideNav = ({ path }: SideNavProps) => {
   const [data, setData] = useState<SideBarSourceType[]>([]);
@@ -125,9 +125,9 @@ export const SideNav = ({ path }: SideNavProps) => {
   );
 };
 
-type LogoProps = {
+interface LogoProps {
   resolvedTheme?: string;
-};
+}
 
 const Logo = ({ resolvedTheme }: LogoProps) => {
   return (

@@ -43,16 +43,6 @@ export const TopNav = () => {
             Getting Started
           </Link>
           <Link
-            href="/docs/slice"
-            className={
-              pathname.startsWith('/docs/slice')
-                ? 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100'
-                : 'dark:text-[rgba(255,255,255,0.8)]'
-            }
-          >
-            Slice
-          </Link>
-          <Link
             href="/docs/icerpc-core"
             className={
               pathname.startsWith('/docs/icerpc-core')
@@ -62,6 +52,17 @@ export const TopNav = () => {
           >
             IceRPC Core
           </Link>
+          <Link
+            href="/docs/slice"
+            className={
+              pathname.startsWith('/docs/slice')
+                ? 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100'
+                : 'dark:text-[rgba(255,255,255,0.8)]'
+            }
+          >
+            Slice
+          </Link>
+
           <div className="flex items-center gap-5 pl-4">
             <div className="left-1/2 h-[calc(65px-40px)] border-l-[1.5px] border-lightBorder dark:border-darkBorder" />
             <ThemeToggle />

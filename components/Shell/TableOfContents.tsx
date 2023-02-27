@@ -120,10 +120,10 @@ export const TableOfContents = (toc: TOC) => {
   );
 };
 
-type MoreItemProps = {
+interface MoreItemProps {
   href: string;
   children: ReactNode;
-};
+}
 
 const MoreItem = ({ href, children }: MoreItemProps) => {
   return (
@@ -136,11 +136,11 @@ const MoreItem = ({ href, children }: MoreItemProps) => {
   );
 };
 
-type ListItemProps = {
+interface ListItemProps {
   item: TOCItem;
   push: any;
   activeId: string;
-};
+}
 
 const ListItem = ({ item, push, activeId }: ListItemProps) => {
   const href = `#${item.id}`;

@@ -6,10 +6,10 @@ import { baseUrls, currentNavItem, sideBarData } from 'data/side-bar-data';
 import { useRouter } from 'next/router';
 import { SideBarCategory, SideBarSourceType, isCategory } from 'types';
 
-type Props = {
+interface Props {
   title: string;
   description: string;
-};
+}
 
 const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;

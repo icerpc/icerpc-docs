@@ -7,9 +7,9 @@ import { useTheme } from 'next-themes';
 let currentId = 0;
 const uuid = () => `mermaid-${(currentId++).toString()}`;
 
-type MermaidDiagramProps = {
+interface MermaidDiagramProps {
   value: string;
-};
+}
 
 const MermaidDiagram = (props: MermaidDiagramProps) => {
   const { resolvedTheme } = useTheme();

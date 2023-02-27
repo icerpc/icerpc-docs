@@ -3,9 +3,9 @@
 import { ReactNode } from 'react';
 import { clsx } from 'clsx';
 
-type TableProps = {
+interface TableProps {
   children: ReactNode[];
-};
+}
 
 // Convert the align prop to a Tailwind CSS class
 // Align defaults to undefined, which is left aligned, and can be set to right or center
@@ -32,10 +32,10 @@ export const Table = ({ children }: TableProps) => {
   );
 };
 
-type THProps = {
+interface THProps {
   align?: 'center' | 'right';
   children: ReactNode;
-};
+}
 
 export const TH = ({ align, children }: THProps) => {
   return (
@@ -51,10 +51,10 @@ export const TR = ({ children }: { children: ReactNode }) => {
   );
 };
 
-type TDProps = {
+interface TDProps {
   align?: 'center' | 'right';
   children: ReactNode;
-};
+}
 
 export const TD = ({ align, children }: TDProps) => {
   return (
