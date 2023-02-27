@@ -144,15 +144,10 @@ type ListItemProps = {
 
 const ListItem = ({ item, push, activeId }: ListItemProps) => {
   const href = `#${item.id}`;
-  let active = typeof window !== 'undefined' && window.location.hash === href;
   return (
     <li
       key={item.id}
-      className={[
-        'mb-4 pr-4 text-sm',
-        active ? 'active' : undefined,
-        item.level === 3 ? 'padded' : undefined
-      ]
+      className={['mb-4 pr-4 text-sm', item.level === 3 ? 'padded' : undefined]
         .filter(Boolean)
         .join(' ')}
     >
