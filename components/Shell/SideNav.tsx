@@ -9,11 +9,18 @@ import { useVersionContext } from 'context/state';
 import clsx from 'clsx';
 
 import { sideBarData, baseUrls } from 'data/side-bar-data';
-import { SideBarLink, SideBarSourceType, isCategory } from 'types';
+import {
+  SideBarDivider,
+  SideBarLink,
+  SideBarSourceType,
+  isCategory,
+  isLink
+} from 'types';
+import { Divider } from 'components/Divider';
 
 function createListItem(
   router: NextRouter,
-  link: SideBarLink,
+  link: SideBarLink | SideBarDivider,
   noLeftPadding: Boolean = false
 ): React.ReactElement {
   const style: React.CSSProperties = {
@@ -32,21 +39,35 @@ function createListItem(
   };
 
   const leftPadding = noLeftPadding ? 'ml-0' : 'ml-3';
-  const isCurrentPage = router.pathname === link.path.replace(/\/$/, '');
 
-  return (
-    <li key={link.path} className="flex">
-      <Link
-        href={link.path}
-        className={`p-2 py-[7px] pl-0 text-sm  ${leftPadding} hover:text-zinc-900 dark:text-[#C4C7C5] dark:hover:text-white`}
-        style={
-          isCurrentPage ? (noLeftPadding ? activeStyleAlt : activeStyle) : style
-        }
-      >
-        {link.title}
-      </Link>
-    </li>
-  );
+  if (isLink(link)) {
+    const isCurrentPage = router.pathname === link.path.replace(/\/$/, '');
+    return (
+      <li key={link.path} className="flex">
+        <Link
+          href={link.path}
+          className={`p-2 py-[7px] pl-0 text-sm  ${leftPadding} hover:text-zinc-900 dark:text-[#C4C7C5] dark:hover:text-white`}
+          style={
+            isCurrentPage
+              ? noLeftPadding
+                ? activeStyleAlt
+                : activeStyle
+              : style
+          }
+        >
+          {link.title}
+        </Link>
+      </li>
+    );
+  } else {
+    return (
+      <div className={`${leftPadding} mb-3 mt-2 pr-2 pl-0`}>
+        <h2 className="my-2 text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:bg-darkBorder dark:text-white dark:decoration-darkBorder">
+          {link.title}
+        </h2>
+      </div>
+    );
+  }
 }
 
 function transformSideBarData(
@@ -74,9 +95,16 @@ function transformSideBarData(
         </ul>
       </li>
     ];
+  } else if (isLink(data)) {
+    return [createListItem(router, data, true)];
   } else {
-    const link = data as SideBarLink;
-    return [createListItem(router, link, true)];
+    return [
+      <div key={data.title} className="mr-4 py-2 text-sm uppercase text-black">
+        <Divider margin="mb-4 mt-4 mr-[12px]" />
+        <h2 className="my-2 text-sm font-bold dark:text-white">{data.title}</h2>
+        <Divider margin="mt-4 mr-[12px]" />
+      </div>
+    ];
   }
 }
 
@@ -106,7 +134,7 @@ export const SideNav = ({ path }: SideNavProps) => {
   return (
     <nav
       className={clsx(
-        'sticky top-16 hidden h-screen w-[275px] shrink-0 overflow-x-hidden lg:block',
+        'sticky top-16 bottom-0 hidden h-screen w-[275px] shrink-0 overflow-x-hidden lg:block',
         'border-r border-lightBorder bg-[#ffffff] pr-3 pb-10 pl-6 pt-0',
         'dark:border-darkBorder dark:bg-[#26282c]'
       )}

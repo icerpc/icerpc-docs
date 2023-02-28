@@ -62,7 +62,7 @@ export const Document = ({ frontmatter, children }: Props) => {
         {children}
         {isDocs && (
           <>
-            <PageHistory path={path} version={version} />
+            {/* <PageHistory path={path} version={version} /> */}
             <Divider />
             <Feedback />
           </>

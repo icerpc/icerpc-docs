@@ -21,7 +21,7 @@ export const Title = ({ title, description }: Props) => {
   const baseUrl = baseUrls.find((item) => path.startsWith(item))!;
   const categories = sideBarData(baseUrl, version).filter((item) =>
     isCategory(item)
-  );
+  ) as SideBarCategory[];
 
   let breadcrumbs: Breadcrumb[] = [];
 
@@ -34,16 +34,16 @@ export const Title = ({ title, description }: Props) => {
 
   categories.forEach((data: SideBarSourceType) => {
     let category = data as SideBarCategory;
-    if (
-      category.links.find(
-        (link) => stripTrailingSlash(link.path) === stripTrailingSlash(path)
-      )
-    ) {
-      breadcrumbs.push({
-        name: category.title,
-        href: category.links[0].path
-      });
-    }
+    // if (
+    //   category.links.find(
+    //     (link) => stripTrailingSlash(link.path) === stripTrailingSlash(path)
+    //   )
+    // ) {
+    //   breadcrumbs.push({
+    //     name: category.title,
+    //     href: category.links[0].path
+    //   });
+    // }
   });
 
   return (

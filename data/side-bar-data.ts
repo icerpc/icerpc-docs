@@ -4,6 +4,7 @@ import {
   SliceVersion,
   SideBarSourceType,
   isCategory,
+  isLink,
   SideBarLink
 } from 'types';
 import {
@@ -25,12 +26,14 @@ export const baseUrls = [
 
 export const flattenSideBarData = (
   sideBarData: SideBarSourceType[]
-): SideBarLink[] => {
+): SideBarSourceType[] => {
   return sideBarData.flatMap((item) => {
     if (isCategory(item)) {
       return item.links;
-    } else {
+    } else if (isLink(item)) {
       return item;
+    } else {
+      return [];
     }
   });
 };
