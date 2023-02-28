@@ -71,7 +71,7 @@ type BodyProps = {
 
 const Body = ({ Component, pageProps }: BodyProps) => {
   return (
-    <div className={`px-6 lg:px-0`}>
+    <div className={`grow px-6 lg:px-0`}>
       <main className={inter.className} id="main">
         <div id="skip-nav" />
         <Component {...pageProps} />

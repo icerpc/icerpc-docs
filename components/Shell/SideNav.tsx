@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
-import { useTheme } from 'next-themes';
 import { SliceSelector } from '../SliceSelector';
 import { useVersionContext } from 'context/state';
 import clsx from 'clsx';
@@ -46,7 +45,7 @@ function createListItem(
       <li key={link.path} className="flex">
         <Link
           href={link.path}
-          className={`p-2 py-[7px] pl-0 text-sm  ${leftPadding} hover:text-zinc-900 dark:text-[#C4C7C5] dark:hover:text-white`}
+          className={`px-2 py-[7px] pl-0 text-sm  ${leftPadding} hover:text-zinc-900 dark:text-[#C4C7C5] dark:hover:text-white`}
           style={
             isCurrentPage
               ? noLeftPadding
@@ -80,7 +79,7 @@ function transformSideBarData(
       <li key="category">
         <ul>
           <li key={category.title} className="list-none">
-            <h2 className="my-2 text-sm font-bold dark:text-white">
+            <h2 className="my-[10px] text-sm font-bold dark:text-white">
               {category.title}
             </h2>
           </li>
@@ -134,11 +133,12 @@ export const SideNav = ({ path }: SideNavProps) => {
   return (
     <nav
       className={clsx(
-        'sticky top-16 bottom-0 hidden h-screen w-[275px] shrink-0 overflow-x-hidden lg:block',
+        'fixed top-16 hidden h-screen w-[275px] shrink-0 overflow-y-auto lg:block',
         'border-r border-lightBorder bg-[#ffffff] pr-3 pb-10 pl-6 pt-0',
         'dark:border-darkBorder dark:bg-[#26282c]'
       )}
     >
+      <div className="pointer-events-none sticky top-0 -ml-0.5" />
       {baseUrl == '/docs/slice' && <SliceSelector />}
       <ul role="list" className="mt-4">
         {cells}

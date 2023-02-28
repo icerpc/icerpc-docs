@@ -39,7 +39,7 @@ export const TopNav = () => {
   return (
     <nav
       className={clsx(
-        'sticky top-0 z-10 flex h-16 w-full border-b border-l border-lightBorder dark:backdrop-blur',
+        'fixed top-0 z-10 flex h-16 w-full border-b border-l border-lightBorder dark:backdrop-blur',
         'bg-[#FCFCFC] text-sm font-medium  dark:border-darkBorder dark:bg-transparent'
       )}
     >
