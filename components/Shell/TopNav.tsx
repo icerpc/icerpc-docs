@@ -7,9 +7,35 @@ import { useRouter } from 'next/router';
 import { SearchButton } from 'components/Shell/SearchButton';
 import { ThemeToggle } from 'components/ThemeToggle';
 import { clsx } from 'clsx';
+import Image from 'next/image';
+
+import lightIcon from 'public/images/Light-Icon.svg';
+import darkIcon from 'public/images/Dark-Icon.svg';
+import { useTheme } from 'next-themes';
+
+interface LogoProps {
+  resolvedTheme?: string;
+}
+
+const Logo = ({ resolvedTheme }: LogoProps) => {
+  return (
+    <div className="ml-6 mr-2 mt-4 mb-3 flex items-center justify-start gap-1 pb-4">
+      <Image
+        src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
+        height={30}
+        alt="ZeroC Logo"
+      />
+      <div className="pt-[8px] text-xl font-bold text-black dark:text-white">
+        Docs
+      </div>
+    </div>
+  );
+};
 
 export const TopNav = () => {
   const pathname = useRouter().pathname;
+  const { resolvedTheme } = useTheme();
+
   return (
     <nav
       className={clsx(
@@ -18,7 +44,8 @@ export const TopNav = () => {
       )}
     >
       <div className="flex w-full items-center justify-between">
-        <div className="flex flex-1 items-start">
+        <Logo resolvedTheme={resolvedTheme} />
+        <div className=" flex flex-1 items-start">
           <SearchButton />
         </div>
         <div className="mr-0 flex h-1/2 items-center justify-end gap-10 pr-8 hover:[&>a]:text-primary">
@@ -26,7 +53,7 @@ export const TopNav = () => {
             href="/"
             className={
               pathname == '/'
-                ? 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100'
+                ? 'text-primary underline decoration-2 underline-offset-[1.6rem] opacity-100'
                 : 'dark:text-[rgba(255,255,255,0.8)]'
             }
           >
@@ -36,7 +63,7 @@ export const TopNav = () => {
             href="/docs/getting-started"
             className={
               pathname.startsWith('/docs/getting-started')
-                ? 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100'
+                ? 'text-primary underline decoration-2 underline-offset-[1.6rem] opacity-100'
                 : 'dark:text-[rgba(255,255,255,0.8)]'
             }
           >
@@ -46,7 +73,7 @@ export const TopNav = () => {
             href="/docs/icerpc-core"
             className={
               pathname.startsWith('/docs/icerpc-core')
-                ? 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100'
+                ? 'text-primary underline decoration-2 underline-offset-[1.6rem] opacity-100'
                 : 'dark:text-[rgba(255,255,255,0.8)]'
             }
           >
@@ -56,7 +83,7 @@ export const TopNav = () => {
             href="/docs/slice"
             className={
               pathname.startsWith('/docs/slice')
-                ? 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100'
+                ? 'text-primary underline decoration-2 underline-offset-[1.6rem] opacity-100'
                 : 'dark:text-[rgba(255,255,255,0.8)]'
             }
           >

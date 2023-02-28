@@ -74,9 +74,9 @@ export const TableOfContents = (toc: TOC) => {
     <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] min-w-[275px] shrink border-l border-lightBorder dark:border-darkBorder lg:block">
       {items.length > 1 && (
         <nav className="h-full px-8 py-10 pt-12">
-          <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase tracking-wider  dark:text-white">
-            <Bars3BottomLeftIcon className="ml-0 mr-2 h-5 w-5 pl-0" /> On this
-            page
+          <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase  dark:text-white">
+            <Bars3BottomLeftIcon className="ml-0 mr-2 h-5 w-5 pl-0" />
+            On this page
           </h2>
           <ul className="m-0 max-h-[50vh] overflow-y-auto p-0">
             {items.map((item) => (
@@ -89,7 +89,7 @@ export const TableOfContents = (toc: TOC) => {
             ))}
           </ul>
           <Divider />
-          <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase tracking-wider  dark:text-white">
+          <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase   dark:text-white">
             More
           </h2>
           <ul

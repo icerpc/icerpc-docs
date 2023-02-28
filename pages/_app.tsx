@@ -51,10 +51,10 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       </Head>
       <ThemeProvider attribute="class">
         <AppWrapper>
-          <div className="flex w-screen flex-row">
-            {isDocs && <SideNav path={router.pathname} />}
-            <div className="flex grow flex-col">
-              <TopNav />
+          <div className="flex w-screen flex-col">
+            <TopNav />
+            <div className="flex grow flex-row">
+              {isDocs && <SideNav path={router.pathname} />}
               <Body Component={Component} pageProps={pageProps} />
             </div>
           </div>

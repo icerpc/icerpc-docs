@@ -2,20 +2,14 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { NextRouter, useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 import { SliceSelector } from '../SliceSelector';
 import { useVersionContext } from 'context/state';
 import clsx from 'clsx';
 
-// import components
 import { sideBarData, baseUrls } from 'data/side-bar-data';
 import { SideBarLink, SideBarSourceType, isCategory } from 'types';
-
-// import assets
-import lightIcon from 'public/images/Light-Icon.svg';
-import darkIcon from 'public/images/Dark-Icon.svg';
 
 function createListItem(
   router: NextRouter,
@@ -93,7 +87,6 @@ interface SideNavProps {
 export const SideNav = ({ path }: SideNavProps) => {
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { version } = useVersionContext();
-  const { resolvedTheme } = useTheme();
   const router = useRouter();
 
   let baseUrl = baseUrls.find((item) => path.startsWith(item))!;
@@ -113,33 +106,15 @@ export const SideNav = ({ path }: SideNavProps) => {
   return (
     <nav
       className={clsx(
-        'sticky top-0 hidden h-screen w-60 shrink-0 overflow-x-hidden lg:block',
-        ' border-lightBorder bg-[#ffffff] pr-3 pb-10 pl-6 pt-0 shadow',
+        'sticky top-16 hidden h-screen w-[275px] shrink-0 overflow-x-hidden lg:block',
+        'border-r border-lightBorder bg-[#ffffff] pr-3 pb-10 pl-6 pt-0',
         'dark:border-darkBorder dark:bg-[#26282c]'
       )}
     >
-      <Logo resolvedTheme={resolvedTheme} />
       {baseUrl == '/docs/slice' && <SliceSelector />}
-      <ul role="list">{cells}</ul>
+      <ul role="list" className="mt-4">
+        {cells}
+      </ul>
     </nav>
-  );
-};
-
-interface LogoProps {
-  resolvedTheme?: string;
-}
-
-const Logo = ({ resolvedTheme }: LogoProps) => {
-  return (
-    <div className="mt-4 mb-2 ml-1 mr-8 flex items-center justify-start gap-1 pb-4">
-      <Image
-        src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
-        height={30}
-        alt="ZeroC Logo"
-      />
-      <div className="pt-[8px] text-xl font-bold text-black dark:text-white">
-        Docs
-      </div>
-    </div>
   );
 };
