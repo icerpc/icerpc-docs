@@ -13,7 +13,7 @@
 ## Build Requirements
 
 You'll need Node.js and npm installed to build the documentation site. To install node, it is recommended to follow
-the guide provided by Node.js [here](https://nodejs.org/en/download/package-manager/#macos).
+the guide provided by Node.js [here](https://nodejs.org/en/download/package-manager).
 
 ## Building
 
