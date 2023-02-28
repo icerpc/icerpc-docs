@@ -1,29 +1,8 @@
 ---
-title: RPCs with typed payloads
-description: Understand what Slice is about.
+title: Slice components
 ---
 
 {% title /%}
-
-## Why use Slice?
-
-The IceRPC core provides all you need to make RPCs with a somewhat low-level API. With just the IceRPC core, the payload
-of your requests and responses are streams of bytes, and you need to manually encode and decode any typed data (strings,
-integers...) in these streams.
-
-Slice builds on the core's byte-oriented API to offer you a higher-level API, with types. With Slice, you can easily
-send a request with a string and an int32 parameter and get back a response with a double return value. Slice allows you
-to format the payloads of your requests and responses in a way that is meaningful for your application.
-
-For example, you can describe the RPC `op` in Slice as follows:
-```slice
-op(message: string, count: int32) -> double
-```
-
-The syntax is intuitive: it means the request's payload holds a string and an int32, and when this RPC succeeds, the
-response's payload holds a double.
-
-## Slice components
 
 Slice consists of several components:
 - the Slice language\
@@ -39,8 +18,8 @@ users don't need to know the details of this encoding.
 
 - Slice language mappings\
 Slice provides support for "real" programming languages such as C# or Python through language mappings (also known as
-language bindings). A language mapping specifies how Slice IDL constructs are represented (mapped) in that language. For
-example, a Slice IDL interface is mapped to two interfaces and one struct in C#.
+language bindings). A language mapping specifies how Slice IDL constructs are represented in that language. For example,
+a Slice IDL interface is mapped to two interfaces and one struct in C#.
 
 - Slice compiler\
 Each Slice language mapping is supported by a tool--a Slice compiler--that generates code from the Slice IDL definitions
