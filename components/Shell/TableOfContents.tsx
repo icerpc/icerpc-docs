@@ -71,7 +71,7 @@ export const TableOfContents = (toc: TOC) => {
   const activeId = useActiveId(items.map((item) => item.id));
 
   return (
-    <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] min-w-[275px] shrink border-l border-lightBorder dark:border-darkBorder lg:block">
+    <aside className="sticky top-[3.75rem]  hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 border-l border-lightBorder dark:border-darkBorder lg:block">
       {items.length > 1 && (
         <nav className="h-full px-8 py-10 pt-12">
           <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase  dark:text-white">

@@ -117,15 +117,18 @@ export const CodeBlock = ({ children, 'data-language': language }: Props) => {
             <pre
               className={clsx(
                 className,
-                'm-0 my-1 overflow-auto rounded-lg px-4 py-3 text-left'
+                'm-0 my-1 overflow-auto overflow-x-scroll rounded-lg px-4 py-3 text-left'
               )}
-              style={{ ...style }}
             >
               {tokens.map((line, i) => (
                 <div
                   key={i}
                   {...getLineProps({ line, key: i })}
                   className={clsx(className, 'table-row')}
+                  style={{
+                    wordWrap: 'break-word',
+                    whiteSpace: 'normal'
+                  }}
                 >
                   {tokens.length > 1 && <LineNumber number={i + 1} />}
                   <LineContent>

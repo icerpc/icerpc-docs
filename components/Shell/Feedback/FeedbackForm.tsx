@@ -132,7 +132,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
                         required
                         placeholder="Your feedback address ..."
                         className={clsx(
-                          'mx-2 mt-2 h-16 w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-sm',
+                          'mx-2 mt-2 h-14 w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-sm',
                           'dark:border-gray-500 dark:focus:border-primary dark:focus:ring-primary',
                           'focus:border-primary focus:ring-primary'
                         )}
