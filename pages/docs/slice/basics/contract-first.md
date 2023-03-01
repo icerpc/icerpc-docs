@@ -11,7 +11,7 @@ When you create an application with IceRPC and Slice, the very first step is to 
 definitions represent the contract between your client and server applications. It is critical for both applications to
 share the same Slice definitions.
 
-A minimal Slice contract defines an interface with an operation, for example:
+A minimal Slice contract defines an interface with an operation, for instance:
 ```slice
 module HelloExample
 
@@ -23,8 +23,7 @@ interface Hello {
 An interface must be defined in a module (`HelloExample` in the example above), and an operation must be defined in an
 interface.
 
-Slice definitions are stored in files with the `.slice` extension. The Slice compiler ignores files with a different
-extension. Here, we store interface `Hello` in file `Hello.slice`.
+We save these definitions in file `Hello.slice`.
 
 ## Step 2: Compile Slice definitions with the Slice compiler
 
@@ -32,12 +31,13 @@ Once you've written the initial version of your Slice definitions, we need to co
 In C#, you would typically use the [IceRpc Builder for MSBuild](https://github.com/zeroc-ice/icerpc-builder-msbuild);
 this builder calls the Slice for C# compiler, `slicec-cs`, to compile the .slice files of your project into .cs files.
 
-The Slice compiler for C# generates a .cs file for each .slice file. Here, we get a single file, `Hello.cs`.
+The Slice compiler for C# generates a .cs file for each .slice file. Since we have single Slice file, we get a single
+C# file, `Hello.cs`.
 
 ## Step 3: Implement server application
 
 The Slice to C# compiler generates a C# interface named `I{Name}Service` for each Slice interface. This C# interface
-includes a method per Slice operation. For example, the generated service interface for `Hello` is:
+includes a method per Slice operation. The generated service interface for the `Hello` interface presented earlier is:
 ```csharp
 // generated code
 namespace HelloExample;
@@ -72,7 +72,7 @@ internal class Chatbot : Service, IHelloService
 An instance of the `Chatbot` class is an IceRPC service that implements the Slice interface `Hello`.
 
 We then insert this service (dispatcher) into the server's
-[dispatch pipeline](../../icerpc-core/dispatch/dispatch-pipeline), but this is no longer a Slice topic.
+[dispatch pipeline](../../icerpc-core/dispatch/dispatch-pipeline) as usual; this is no longer a Slice topic.
 
 ## Step 4: Implement client application
 
@@ -80,7 +80,7 @@ The Slice to C# compiler also generates a C# interface named `I{Name}` and a str
 interface. `{Name}Proxy` implements `I{Name}`. The generated C# interface includes a method per operation in the Slice
 interface.
 
-For example, the generated interface for `Hello` is:
+The generated interface for our `Hello` Slice interface is:
 ```csharp
 // generated code
 namespace HelloExample;
@@ -130,12 +130,12 @@ using HelloExample;
 using IceRpc;
 
 // A ClientConnection is an invoker.
-await using var clientConnection = new ClientConnection(new Uri("icerpc://hello.zeroc.com"));
+await using var clientConnection = new ClientConnection(new Uri("icerpc://examples.zeroc.com"));
 
 // Here the service address specifies the protocol (icerpc) and the path (/hello).
 var hello = new HelloProxy(clientConnection, new Uri("icerpc:/hello"));
 
-// Make RPC and print return value.
+// Make an RPC and print the return value.
 string greeting = await hello.SayHelloAsync("Syd");
 Console.WriteLine(greeting);
 ```

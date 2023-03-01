@@ -8,6 +8,31 @@ export const slice2Data: SideBarSourceType[] = [
     path: `${SLICE_BASE_URL}`
   },
   {
+    title: 'Basics',
+    links: [
+      {
+        title: 'What use Slice?',
+        path: `${SLICE_BASE_URL}/basics/why-use-slice`
+      },
+      {
+        title: 'Slice components',
+        path: `${SLICE_BASE_URL}/basics/slice-components`
+      },
+      {
+        title: 'Contract first model',
+        path: `${SLICE_BASE_URL}/basics/contract-first`
+      },
+      {
+        title: 'Slice files',
+        path: `${SLICE_BASE_URL}/basics/slice-files`
+      },
+      {
+        title: 'Examples',
+        path: `${SLICE_BASE_URL}/basics/examples-slice2`
+      },
+    ]
+  },
+  {
     title: 'Syntax',
     links: [
       {
