@@ -95,17 +95,17 @@ export const CodeBlock = ({ children, 'data-language': language }: Props) => {
     // Container for the code block
     <div className="group relative my-6 items-center">
       <div className="w-full rounded-lg bg-[#17232d]">
-        {/* {language != undefined && (
-          // <TopBar
-          //   languageIcon={languageIcon}
-          //   language={language}
-          //   lines={lines}
-          //   setCopied={setCopied}
-          //   copied={copied}
-          // >
-          //   {children}
-          // </TopBar>
-        )} */}
+        {language != undefined && (
+          <TopBar
+            languageIcon={languageIcon}
+            language={language}
+            lines={lines}
+            setCopied={setCopied}
+            copied={copied}
+          >
+            {children}
+          </TopBar>
+        )}
         {/* PrismJS styled code block*/}
         <Highlight
           {...defaultProps}
@@ -125,7 +125,7 @@ export const CodeBlock = ({ children, 'data-language': language }: Props) => {
                 <div
                   key={i}
                   {...getLineProps({ line, key: i })}
-                  className={clsx(className, 'whitespace-nowrap')}
+                  className={clsx(className)}
                 >
                   {tokens.length > 1 && <LineNumber number={i + 1} />}
                   <LineContent>
@@ -148,7 +148,7 @@ interface LineContentProps {
 }
 
 const LineContent = ({ children }: LineContentProps) => {
-  return <div className="table-cell py-[3px] text-xs">{children}</div>;
+  return <div className="table-cell max-w-0 py-[3px] text-xs">{children}</div>;
 };
 
 interface LineNumberProps {
