@@ -30,7 +30,7 @@ export const Document = ({ children }: Props) => {
   const isDocs = path.startsWith('/docs');
 
   return (
-    <article className="mx-8 mt-14 flex grow flex-col justify-center px-4">
+    <article className="mx-10 mt-10 flex flex-col justify-center px-4">
       {children}
       {isDocs && (
         <>
@@ -40,7 +40,7 @@ export const Document = ({ children }: Props) => {
         </>
       )}
       <Divider />
-      {/* <Footer />  */}
+      <Footer />
     </article>
   );
 };

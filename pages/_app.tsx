@@ -1,20 +1,17 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { ReactNode } from 'react';
+import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { ThemeProvider } from 'next-themes';
-import { Inter } from '@next/font/google';
-import { SideNav, TOCItem, TableOfContents, TopNav } from 'components';
 import { AppWrapper } from 'context/state';
-import '/public/globals.css';
-import 'reactflow/dist/style.css';
-require('components/prism-coldark.css');
-
+import { Inter } from '@next/font/google';
+import { ThemeProvider } from 'next-themes';
+import { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js';
-import { NextComponentType, NextPageContext } from 'next/types';
-import { RenderableTreeNodes } from '@markdoc/markdoc';
+
+import { SideNav, TOCItem, TableOfContents, TopNav } from 'components';
+import 'components/prism-coldark.css';
+import '/public/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 const TITLE = 'TODO';

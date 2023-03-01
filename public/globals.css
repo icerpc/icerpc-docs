@@ -42,7 +42,7 @@
   }
 
   code {
-    @apply rounded-lg border-[1.5px] bg-slate-100 py-1 px-[0.375rem] font-mono text-xs font-medium shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] dark:border-darkBorder dark:bg-transparent dark:text-white;
+    @apply rounded border-[1.5px] bg-slate-100 py-1 px-[0.375rem] font-mono text-xs font-medium shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] dark:border-darkBorder dark:bg-transparent dark:text-white;
   }
 }
 

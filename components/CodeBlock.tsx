@@ -93,19 +93,19 @@ export const CodeBlock = ({ children, 'data-language': language }: Props) => {
 
   return (
     // Container for the code block
-    <div className="group relative my-6 flex w-full flex-col items-center">
+    <div className="group relative my-6 items-center">
       <div className="w-full rounded-lg bg-[#17232d]">
-        {language != undefined && (
-          <TopBar
-            languageIcon={languageIcon}
-            language={language}
-            lines={lines}
-            setCopied={setCopied}
-            copied={copied}
-          >
-            {children}
-          </TopBar>
-        )}
+        {/* {language != undefined && (
+          // <TopBar
+          //   languageIcon={languageIcon}
+          //   language={language}
+          //   lines={lines}
+          //   setCopied={setCopied}
+          //   copied={copied}
+          // >
+          //   {children}
+          // </TopBar>
+        )} */}
         {/* PrismJS styled code block*/}
         <Highlight
           {...defaultProps}
@@ -113,22 +113,19 @@ export const CodeBlock = ({ children, 'data-language': language }: Props) => {
           language={language as Language}
           theme={undefined}
         >
-          {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          {({ className, tokens, getLineProps, getTokenProps, style }) => (
             <pre
               className={clsx(
                 className,
-                'm-0 my-1 overflow-auto overflow-x-scroll rounded-lg px-4 py-3 text-left'
+                'm-0 my-1 overflow-scroll rounded-lg px-4 py-3 text-left'
               )}
+              style={style}
             >
               {tokens.map((line, i) => (
                 <div
                   key={i}
                   {...getLineProps({ line, key: i })}
-                  className={clsx(className, 'table-row')}
-                  style={{
-                    wordWrap: 'break-word',
-                    whiteSpace: 'normal'
-                  }}
+                  className={clsx(className, 'whitespace-nowrap')}
                 >
                   {tokens.length > 1 && <LineNumber number={i + 1} />}
                   <LineContent>

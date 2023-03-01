@@ -7,7 +7,7 @@ import { MdHelpCenter, MdVideocam } from 'react-icons/md';
 export const Footer = () => {
   return (
     <footer className="mb-10 flex flex-row items-center justify-between p-0 ">
-      <ul className="flex flex-col gap-2 p-0">
+      <ul className="hidden flex-col gap-2 p-0 md:flex">
         <li className="flex flex-row items-center gap-2">
           <MdHelpCenter size={20} />
           <span>
@@ -37,7 +37,7 @@ export const Footer = () => {
         </label>
         <div className="flex flex-row">
           <input
-            className="mr-2 w-64 rounded border border-solid border-lightBorder dark:border-darkBorder"
+            className="mr-2 rounded border border-solid border-lightBorder dark:border-darkBorder"
             type="email"
             id="email"
             name="first"
@@ -50,7 +50,7 @@ export const Footer = () => {
             Subscribe
           </button>
         </div>
-        <span className="text-xs text-white/80">
+        <span className="text-xs dark:text-white/80">
           You can unsubscribe at any time. Read our{' '}
           <Link
             className="underline dark:text-white/80"
