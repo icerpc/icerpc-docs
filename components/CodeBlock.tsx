@@ -127,7 +127,7 @@ export const CodeBlock = ({ children, 'data-language': language }: Props) => {
                   {...getLineProps({ line, key: i })}
                   className={clsx(className)}
                 >
-                  {tokens.length > 1 && <LineNumber number={i + 1} />}
+                  {/* {tokens.length > 1 && <LineNumber number={i + 1} />} */}
                   <LineContent>
                     {line.map((token, key) => (
                       <span key={key} {...getTokenProps({ token, key })} />

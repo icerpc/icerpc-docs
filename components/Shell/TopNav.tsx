@@ -19,7 +19,7 @@ interface LogoProps {
 
 const Logo = ({ resolvedTheme }: LogoProps) => {
   return (
-    <div className="ml-6 mr-2 mt-4 mb-3 flex items-center justify-start gap-1 pb-4">
+    <div className="ml-6 mr-0 mt-4 mb-3 flex items-center justify-start gap-1 pb-4">
       <Image
         src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
         height={30}
@@ -39,16 +39,16 @@ export const TopNav = () => {
   return (
     <nav
       className={clsx(
-        'fixed top-0 z-10 flex h-[3.75rem] w-full border-b border-l border-lightBorder dark:backdrop-blur',
+        'fixed top-0 z-10 flex h-[3.75rem] w-full justify-center border border-t-0 border-lightBorder dark:backdrop-blur',
         'bg-[#FCFCFC] text-sm font-medium  dark:border-darkBorder dark:bg-transparent'
       )}
     >
-      <div className="flex w-full items-center justify-between">
+      <div className="flex w-full max-w-[98rem] items-center justify-between">
         <Logo resolvedTheme={resolvedTheme} />
-        <div className=" flex flex-1 items-start">
+        <div className=" hidden flex-1 items-start sm:flex">
           <SearchButton />
         </div>
-        <div className="mr-0 flex h-1/2 items-center justify-end gap-2 space-x-8 hover:[&>a]:text-primary">
+        <div className="mr-0 hidden h-1/2 items-center justify-end gap-2 space-x-8 sm:flex hover:[&>a]:text-primary">
           <Link
             href="/"
             className={

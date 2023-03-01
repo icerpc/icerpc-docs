@@ -12,6 +12,7 @@ import type { MarkdocNextJsPageProps } from '@markdoc/next.js';
 import { SideNav, TOCItem, TableOfContents, TopNav } from 'components';
 import 'components/prism-coldark.css';
 import '/public/globals.css';
+import clsx from 'clsx';
 
 const inter = Inter({ subsets: ['latin'] });
 const TITLE = 'TODO';
@@ -76,17 +77,18 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       </Head>
       <ThemeProvider attribute="class">
         <AppWrapper>
-          <div className="flex w-screen flex-col">
-            <TopNav />
-            <div className="mt-16 flex flex-row">
+          <TopNav />
+          <div className="mt-[3.75rem] flex flex-row justify-center">
+            <div className="flex grow flex-row justify-center ">
               {isDocs && <SideNav path={router.pathname} />}
-              <div className="flex grow flex-row justify-center">
-                <main className={inter.className} id="main">
-                  <div id="skip-nav" />
-                  <Component {...pageProps} />
-                </main>
-                {isDocs && toc.length > 1 && TableOfContents(toc)}
-              </div>
+              <main
+                className={clsx(inter.className, 'max-w-5xl grow')}
+                id="main"
+              >
+                <div id="skip-nav" />
+                <Component {...pageProps} />
+              </main>
+              {isDocs && toc.length > 1 && TableOfContents(toc)}
             </div>
           </div>
         </AppWrapper>
