@@ -98,6 +98,10 @@ export const slice2Data: SideBarSourceType[] = [
       {
         title: 'Primitive types',
         path: `${SLICE_BASE_URL}/encoding/primitive-types`
+      },
+      {
+        title: 'Operation',
+        path: `${SLICE_BASE_URL}/encoding/operation-slice2`
       }
      ]
   },

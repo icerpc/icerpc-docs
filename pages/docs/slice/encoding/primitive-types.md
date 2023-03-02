@@ -1,4 +1,4 @@
---
+---
 title: Primitive types
 description: Learn how primitive types are encoded with Slice.
 ---
@@ -60,7 +60,7 @@ encoding in little endian order.
 
 ## String
 
-A `string` is encoded using UTF-8 as a `varuint62` size followed by _size_ UTF-8 bytes. These UTF-8 bytes do not include
+A `string` is encoded using UTF-8 as a `varuint62` size followed by size UTF-8 bytes. These UTF-8 bytes do not include
 a [BOM](https://en.wikipedia.org/wiki/Byte_order_mark). For example, the string "1 μs" can be encoded as:
 ```
 0x14      # size 5 encoded on 1 byte
