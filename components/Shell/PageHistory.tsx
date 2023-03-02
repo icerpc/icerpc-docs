@@ -2,7 +2,7 @@
 
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { sideBarData, baseUrls, flattenSideBarData } from 'data/side-bar-data';
-import { SideBarLink, SliceVersion } from 'types';
+import { SideBarLink, SliceVersion, SideBarDivider, isLink } from 'types';
 import Link from 'next/link';
 import React from 'react';
 
@@ -20,7 +20,7 @@ export const PageHistory = ({ path, version }: Props) => {
   const baseUrl = baseUrls.find((item) => path.startsWith(item))!;
   const links: SideBarLink[] = flattenSideBarData(
     sideBarData(baseUrl, version)
-  );
+  ).filter(isLink);
 
   // Find the current page in the list of links
   const index = links
