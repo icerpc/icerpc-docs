@@ -3,6 +3,7 @@
 import sideBySide from './side-by-side.markdoc';
 import { linkCard, miniCard } from './mini-card.markdoc';
 import { languageSection, languageSelector } from './languages.markdoc';
+import { sliceVersionSection } from './slice-version.markdoc';
 
 export * from './title.markdoc';
 export * from './grid.markdoc';
@@ -18,3 +19,4 @@ module.exports['link-card'] = linkCard;
 module.exports['mini-card'] = miniCard;
 module.exports['language-section'] = languageSection;
 module.exports['language-selector'] = languageSelector;
+module.exports['slice-section'] = sliceVersionSection;
