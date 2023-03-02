@@ -48,8 +48,8 @@ module Example
 // A checked enum (without "unchecked") is restricted to its enumerators.
 enum Fruit {
     Apple
-    Pear
-    Orange
+    Strawberry
+    Pineapple
 }
 
 // An unchecked enum can hold any value in its underlying type.
@@ -101,7 +101,7 @@ interface Census {
 ```slice
 module Example
 
-// You can define (and encode/decode) your own custom types:
+// You can define your own custom types:
 [cs::custom("System.Decimal")]
 custom Money
 
@@ -120,7 +120,7 @@ module Example
 
 // An exception is just like a struct.
 exception WidgetException {
-    errorCode: WidgetErrorCode
+    error: WidgetError
     tag(1) retryAfter: WellknownTypes::Duration?
 }
 
@@ -134,17 +134,18 @@ interface WidgetFactory {
 ```slice
 module Example
 
-interface Vehicle {
-    getWheelCount() -> int32
+interface Widget {
+    spin(count: int32)
 }
 
-interface EnginePowered {
-    getHorsePower() -> double
+interface WidgetFactory {
+    // Returns a Widget proxy.
+    createWidget(name: string) -> Widget
 }
 
 // an interface can extend one or more other interfaces
-interface MotorVehicle : Vehicle, EnginePowered {
-    getRegistration() -> string
+interface Gizmo : Widget {
+    walk(direction: Direction)
 }
 ```
 
@@ -178,14 +179,14 @@ interface WidgetFactory {
     /// Creates a new @link Widget.
     /// @param name: The name of the new widget.
     /// @param color: The color of the new widget.
-    /// @returns: The new widget.
+    /// @returns: A proxy to the new widget.
     /// @throws WidgetException: Thrown if the factory could not create the widget.
     createWidget(name: string) -> Widget throws WidgetException
 
     /// Retrieves the last @link Widget created by this factory.
-    /// @returns widget: The last widget.
+    /// @returns proxy: A proxy to the last widget.
     /// @returns timeStamp: The creation time stamp.
     /// @throws WidgetException: Thrown if the factory has not created any widget yet.
-    getLastWidget() -> (widget: Widget, timeStamp: TimeStamp) throws WidgetException
+    getLastWidget() -> (proxy: Widget, timeStamp: TimeStamp) throws WidgetException
 }
 ```

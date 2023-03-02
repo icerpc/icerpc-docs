@@ -10,18 +10,19 @@ responses are streams of bytes, and you need to manually encode and decode any t
 in these streams. This is doable but laborious.
 
 Slice builds on the core's byte-oriented API to offer you a higher-level API, with types. With Slice, you can easily
-send a request with a string and an int32 parameter and get back a response with a double return value. Slice allows you
-to format the payloads of your requests and responses in a way that is meaningful for your application.
+send a request with a string and an integer parameter and get back a response with a double return value. Slice allows
+you to format the payloads of your requests and responses in a way that is meaningful for your application.
 
-For example, you can describe the RPC `op` in Slice as follows:
+For example, you can describe the RPC `compute` in Slice as follows:
 
 ```slice
-op(message: string, count: int32) -> double
+compute(message: string, count: int32) -> double
 ```
 
-The syntax is intuitive: it means the request's payload holds a string and an int32, and when this RPC succeeds, the
-response's payload holds a double.
+The syntax is intuitive: it means the request's payload holds a string and a 32-bit integer, and when this RPC succeeds,
+the response's payload holds a double.
 
-While Slice's primary mission is to format the payloads of your requests and responses by generating code, a secondary
-mission is to offer you a more convenient API for making and implementing RPCs. As illustrated by the [Hello]() and
-[HelloCore]() examples, you need to write much less code with Slice.
+While Slice's primary mission is to encode and decode the payloads of your requests and responses by generating code, a
+secondary mission is to offer you a more convenient API for making and implementing RPCs. As illustrated by the
+[Hello]() and [HelloCore]() examples, you need to write much less code when you use Slice even after factoring out the
+encoding and decoding of the payloads.

@@ -27,17 +27,19 @@ We save these definitions in file `Hello.slice`.
 
 ## Step 2: Compile Slice definitions with the Slice compiler
 
-Once you've written the initial version of your Slice definitions, we need to compile them with the Slice compiler.
-In C#, you would typically use the [IceRpc Builder for MSBuild](https://github.com/zeroc-ice/icerpc-builder-msbuild);
-this builder calls the Slice for C# compiler, `slicec-cs`, to compile the .slice files of your project into .cs files.
+Once you've written the initial version of your Slice definitions, we need to compile them with the Slice compiler for
+your programming language.
 
-The Slice compiler for C# generates a .cs file for each .slice file. Since we have single Slice file, we get a single
+In C#, you would typically use the [IceRpc Builder for MSBuild](https://github.com/zeroc-ice/icerpc-builder-msbuild);
+this builder calls the Slice compiler for C#, `slicec-cs`, to compile the Slice files of your project into C# files.
+
+The Slice compiler for C# generates a C# file for each Slice file. Since we have single Slice file, we get a single
 C# file, `Hello.cs`.
 
 ## Step 3: Implement server application
 
-The Slice to C# compiler generates a C# interface named `I{Name}Service` for each Slice interface. This C# interface
-includes a method per Slice operation. The generated service interface for the `Hello` interface presented earlier is:
+The Slice compiler for C# generates a C# interface named `I{Name}Service` for each Slice interface. This C# interface
+includes a method per Slice operation. The generated service interface for the `Hello` interface defined earlier is:
 ```csharp
 // generated code
 namespace HelloExample;
@@ -51,7 +53,7 @@ public partial interface IHelloService
 }
 ```
 
-We create a class that derives from `IceRpc.Slice.Service` and implements this generated interface:
+We need to create a class that derives from `IceRpc.Slice.Service` and implements this generated interface:
 ```csharp
 using IceRpc;
 using IceRpc.Features;
@@ -76,7 +78,7 @@ We then insert this service (dispatcher) into the server's
 
 ## Step 4: Implement client application
 
-The Slice to C# compiler also generates a C# interface named `I{Name}` and a struct named `{Name}Proxy` for each Slice
+The Slice compiler for C# also generates a C# interface named `I{Name}` and a struct named `{Name}Proxy` for each Slice
 interface. `{Name}Proxy` implements `I{Name}`. The generated C# interface includes a method per operation in the Slice
 interface.
 
@@ -94,10 +96,11 @@ public partial interface IHello
 }
 ```
 
-It's a very simple interface without extra methods; this way, you can easily
+It's a very clean interface without additional methods; this way, you can easily
 [decorate](https://en.wikipedia.org/wiki/Decorator_pattern) this interface.
 
-The generated proxy struct provides two constructors:
+The proxy struct implements the methods of the generated interface by creating outgoing requests and calling
+`InvokeAsync` on its invoker with these requests. It also provides two constructors:
 ```csharp
 // generated code
 using IceRpc.Slice;
@@ -120,9 +123,6 @@ public readonly partial record struct HelloProxy : IHello, IProxy
     }
 }
 ```
-
-The proxy struct implements the methods of the generated interface by creating outgoing requests and calling
-`InvokeAsync` on its invoker with these requests.
 
 You can create an instance of this proxy struct to make remote calls, for example:
 ```csharp

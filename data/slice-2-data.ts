@@ -11,7 +11,7 @@ export const slice2Data: SideBarSourceType[] = [
     title: 'Basics',
     links: [
       {
-        title: 'What use Slice?',
+        title: 'Why use Slice?',
         path: `${SLICE_BASE_URL}/basics/why-use-slice`
       },
       {

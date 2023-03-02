@@ -5,7 +5,7 @@ description: Understand how Slice definitions are organized in Slice files.
 
 {% title /%}
 
-## .slice extension
+## File extension
 
 Slice definitions must be stored in files with the `.slice` extension--Slice files. If you choose a different extension,
 the Slice compiler will ignore your file.
@@ -21,15 +21,19 @@ ordering requirement. For instance, you can use a type before defining it:
 module Example
 
 interface WidgetFactory {
-    // We can use Widget and InvalidNameException before defining them.
-    createWidget(name: string) -> Widget throws InvalidNameException
+    // We can use Widget and WidgetException before defining them.
+    createWidget(name: string) -> Widget throws WidgetException
 }
 
 struct Widget {
     name: string
 }
 
-exception InvalidNameException {}
+exception WidgetException {
+    error: WidgetError
+}
+
+enum WidgetError { DuplicateName, FactoryClosed }
 ```
 
 Two files can also contain definitions with circular references, such as:
