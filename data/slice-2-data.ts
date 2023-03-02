@@ -33,25 +33,30 @@ export const slice2Data: SideBarSourceType[] = [
     ]
   },
   {
-    title: 'Syntax',
+    title: 'Language guide',
     links: [
       {
-        title: 'Lexical Rules',
-        path: `${SLICE_BASE_URL}/syntax/lexical-rules/`
+        title: 'Primitive types'
       },
       {
-        title: 'Slice Source Files',
-        path: `${SLICE_BASE_URL}/syntax/source-files/`
+        title: 'Integer Types',
+        path: `${SLICE_BASE_URL}/slice2/primitive-types/integer/`
       },
       {
-        title: 'Keywords',
-        path: `${SLICE_BASE_URL}/syntax/keywords/`
-      }
-    ]
-  },
-  {
-    title: 'Constructs',
-    links: [
+        title: 'Floating-point Types',
+        path: `${SLICE_BASE_URL}/slice2/primitive-types/float/`
+      },
+      {
+        title: 'Strings',
+        path: `${SLICE_BASE_URL}/slice2/primitive-types/strings/`
+      },
+      {
+        title: 'Boolean',
+        path: `${SLICE_BASE_URL}/slice2/primitive-types/boolean/`
+      },
+      {
+        title: 'Constructed types'
+      },
       {
         title: 'Structs',
         path: `${SLICE_BASE_URL}/slice2/constructs/structs/`
@@ -71,28 +76,30 @@ export const slice2Data: SideBarSourceType[] = [
     ]
   },
   {
-    title: 'Primitive Types',
+    title: 'Language reference',
     links: [
       {
-        title: 'Integer Types',
-        path: `${SLICE_BASE_URL}/slice2/primitive-types/integer/`
+        title: 'Lexical Rules',
+        path: `${SLICE_BASE_URL}/syntax/lexical-rules/`
       },
       {
-        title: 'Floating-point Types',
-        path: `${SLICE_BASE_URL}/slice2/primitive-types/float/`
+        title: 'Slice Source Files',
+        path: `${SLICE_BASE_URL}/syntax/source-files/`
       },
       {
-        title: 'Strings',
-        path: `${SLICE_BASE_URL}/slice2/primitive-types/strings/`
-      },
-      {
-        title: 'Boolean',
-        path: `${SLICE_BASE_URL}/slice2/primitive-types/boolean/`
+        title: 'Keywords',
+        path: `${SLICE_BASE_URL}/syntax/keywords/`
       }
     ]
   },
   {
-    title: 'Error Code Reference',
+     title: 'Encoding reference',
+     links: [
+
+     ]
+  },
+  {
+    title: 'Compiler diagnostics',
     links: [
       {
         title: 'Errors',

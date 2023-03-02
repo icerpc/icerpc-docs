@@ -14,7 +14,7 @@ kind of language is called an
 [Interface Definition Language](https://en.wikipedia.org/wiki/Interface_description_language) or IDL.
 
 - the Slice encoding\
-The Slice encoding specifies how Slice language constructs such as `string`, `int32`, `double`, `struct` and operation
+The Slice encoding specifies how Slice language constructs such as `string`, `int32`, `float64`, `struct` and operation
 parameters are encoded into streams of bytes. The Slice encoding is a simple, compact, binary encoding. For instance, it
 specifies that a Slice `int32` (a signed 32-bit integer) is encoded using two's complement into 4 bytes in little endian
 order. Most Slice users don't need to know the details of this encoding.

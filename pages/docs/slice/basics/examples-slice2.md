@@ -22,7 +22,7 @@ interface MyOperations {
     opParamReturn(message: string) -> int32?
 
     // two parameters and a return tuple
-    opParamsReturns(message: string, count: int32) -> (value: double, list: sequence<int32>)
+    opParamsReturns(message: string, count: int32) -> (value: float32, list: sequence<int32>)
 
     // a regular parameter and a stream parameter
     sendFile(name: string, contents: stream uint8)
