@@ -88,7 +88,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
                 <div id="skip-nav" />
                 <Component {...pageProps} />
               </main>
-              {isDocs && toc.length > 1 && TableOfContents(toc)}
+              {isDocs && TableOfContents(toc)}
             </div>
           </div>
         </AppWrapper>

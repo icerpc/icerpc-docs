@@ -7,6 +7,7 @@ import { FiEdit, FiMessageSquare } from 'react-icons/fi';
 import { AppLink } from 'components/Nodes/AppLink';
 import { Divider } from 'components/Divider';
 import { Bars3BottomLeftIcon } from '@heroicons/react/20/solid';
+import clsx from 'clsx';
 
 export type TOC = TOCItem[];
 
@@ -71,7 +72,13 @@ export const TableOfContents = (toc: TOC) => {
   const activeId = useActiveId(items.map((item) => item.id));
 
   return (
-    <aside className="sticky top-[3.75rem]  hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 border-l border-lightBorder dark:border-darkBorder xl:block">
+    <aside
+      className={clsx(
+        'sticky top-[3.75rem] hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 border-lightBorder',
+        'dark:border-darkBorder xl:block',
+        items.length > 1 ? 'border-l' : ''
+      )}
+    >
       {items.length > 1 && (
         <nav className="h-full px-8 py-6 pt-12">
           <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase  dark:text-white">
