@@ -61,7 +61,7 @@ function createListItem(
   } else {
     return (
       <div className={`${leftPadding} mb-3 mt-2 pr-2 pl-0`}>
-        <h2 className="my-2 text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:bg-darkBorder dark:text-white dark:decoration-darkBorder">
+        <h2 className="my-4 text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:text-white dark:decoration-darkBorder">
           {link.title}
         </h2>
       </div>
@@ -131,18 +131,20 @@ export const SideNav = ({ path }: SideNavProps) => {
   });
 
   return (
-    <nav
-      className={clsx(
-        'sticky top-[3.75rem] hidden h-screen w-[275px] shrink-0 overflow-y-auto lg:block',
-        'border-r border-lightBorder bg-none pr-3 pb-10 pl-6 pt-4',
-        'dark:border-darkBorder dark:bg-[#26282c]'
-      )}
-    >
-      <div className="pointer-events-none sticky top-0" />
-      {baseUrl == '/docs/slice' && <SliceSelector />}
-      <ul role="list" className="mx-2 mt-4">
-        {cells}
-      </ul>
-    </nav>
+    // Create a wrapper that grows to fill all available left space without moving the nav
+    <div className="overflow-y- sticky top-[59px] flex h-screen grow justify-end border-r border-lightBorder dark:border-darkBorder dark:bg-[#26282c]">
+      <nav
+        className={clsx(
+          'sticky top-0 hidden h-[calc(100vh-59px)] w-[275px] overflow-y-auto lg:block',
+          'bg-none pr-3 pb-10 pl-6 pt-4'
+        )}
+      >
+        <div className="pointer-events-none sticky top-0" />
+        {baseUrl == '/docs/slice' && <SliceSelector />}
+        <ul role="list" className="mx-2 mt-4">
+          {cells}
+        </ul>
+      </nav>
+    </div>
   );
 };

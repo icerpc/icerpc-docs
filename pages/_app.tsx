@@ -88,7 +88,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
                 <div id="skip-nav" />
                 <Component {...pageProps} />
               </main>
-              {isDocs && TableOfContents(toc)}
+              <div className="flex grow">{isDocs && TableOfContents(toc)}</div>
             </div>
           </div>
         </AppWrapper>
