@@ -2,24 +2,46 @@
 
 import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { ThemeProvider } from 'next-themes';
-import { Inter } from '@next/font/google';
-import { SideNav, TopNav } from 'components';
 import { AppWrapper } from 'context/state';
-import '/public/globals.css';
-import 'reactflow/dist/style.css';
-require('components/prism-coldark.css');
-
+import { Inter } from '@next/font/google';
+import { ThemeProvider } from 'next-themes';
+import { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js';
-import { NextComponentType, NextPageContext } from 'next/types';
+
+import { SideNav, TOCItem, TableOfContents, TopNav } from 'components';
+import 'components/prism-coldark.css';
+import '/public/globals.css';
+import clsx from 'clsx';
 
 const inter = Inter({ subsets: ['latin'] });
 const TITLE = 'TODO';
 const DESCRIPTION = 'TODO';
 
 export type MyAppProps = MarkdocNextJsPageProps;
+
+function collectHeadings(node: any, sections: TOCItem[] = []) {
+  if (node) {
+    if (node.name === 'Heading') {
+      const title = node.children[0];
+
+      if (typeof title === 'string') {
+        sections.push({
+          ...node.attributes,
+          title
+        });
+      }
+    }
+
+    if (node.children) {
+      for (const child of node.children) {
+        collectHeadings(child, sections);
+      }
+    }
+  }
+
+  return sections;
+}
 
 export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
   const { markdoc } = pageProps;
@@ -38,6 +60,10 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       description = markdoc.frontmatter.description;
     }
   }
+  const toc: TOCItem[] = pageProps.markdoc?.content
+    ? collectHeadings(pageProps.markdoc.content)
+    : [];
+
   return (
     <div>
       <Head>
@@ -51,11 +77,18 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       </Head>
       <ThemeProvider attribute="class">
         <AppWrapper>
-          <div className="flex w-screen flex-col">
-            <TopNav />
-            <div className="flex grow flex-row">
+          <TopNav />
+          <div className="mt-[3.75rem] flex flex-row justify-center">
+            <div className="flex grow flex-row justify-center ">
               {isDocs && <SideNav path={router.pathname} />}
-              <Body Component={Component} pageProps={pageProps} />
+              <main
+                className={clsx(inter.className, 'max-w-5xl grow')}
+                id="main"
+              >
+                <div id="skip-nav" />
+                <Component {...pageProps} />
+              </main>
+              {isDocs && toc.length > 1 && TableOfContents(toc)}
             </div>
           </div>
         </AppWrapper>
@@ -63,19 +96,3 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
     </div>
   );
 }
-
-type BodyProps = {
-  Component: NextComponentType<NextPageContext, any, any>;
-  pageProps: MarkdocNextJsPageProps;
-};
-
-const Body = ({ Component, pageProps }: BodyProps) => {
-  return (
-    <div className={`grow px-6 lg:px-0`}>
-      <main className={inter.className} id="main">
-        <div id="skip-nav" />
-        <Component {...pageProps} />
-      </main>
-    </div>
-  );
-};

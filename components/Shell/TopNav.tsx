@@ -19,7 +19,7 @@ interface LogoProps {
 
 const Logo = ({ resolvedTheme }: LogoProps) => {
   return (
-    <div className="ml-6 mr-2 mt-4 mb-3 flex items-center justify-start gap-1 pb-4">
+    <div className="ml-6 mr-0 mt-4 mb-3 flex items-center justify-start gap-1 pb-4">
       <Image
         src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
         height={30}
@@ -39,21 +39,21 @@ export const TopNav = () => {
   return (
     <nav
       className={clsx(
-        'fixed top-0 z-10 flex h-16 w-full border-b border-l border-lightBorder dark:backdrop-blur',
+        'fixed top-0 z-10 flex h-[3.75rem] w-full justify-center border border-t-0 border-lightBorder dark:backdrop-blur',
         'bg-[#FCFCFC] text-sm font-medium  dark:border-darkBorder dark:bg-transparent'
       )}
     >
-      <div className="flex w-full items-center justify-between">
+      <div className="flex w-full max-w-[98rem] items-center justify-between">
         <Logo resolvedTheme={resolvedTheme} />
-        <div className=" flex flex-1 items-start">
+        <div className=" hidden flex-1 items-start sm:flex">
           <SearchButton />
         </div>
-        <div className="mr-0 flex h-1/2 items-center justify-end gap-10 pr-8 hover:[&>a]:text-primary">
+        <div className="mr-0 hidden h-1/2 items-center justify-end gap-2 space-x-8 sm:flex hover:[&>a]:text-primary">
           <Link
             href="/"
             className={
               pathname == '/'
-                ? 'text-primary underline decoration-2 underline-offset-[1.6rem] opacity-100'
+                ? 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100'
                 : 'dark:text-[rgba(255,255,255,0.8)]'
             }
           >
@@ -63,7 +63,7 @@ export const TopNav = () => {
             href="/docs/getting-started"
             className={
               pathname.startsWith('/docs/getting-started')
-                ? 'text-primary underline decoration-2 underline-offset-[1.6rem] opacity-100'
+                ? 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100'
                 : 'dark:text-[rgba(255,255,255,0.8)]'
             }
           >
@@ -73,7 +73,7 @@ export const TopNav = () => {
             href="/docs/icerpc-core"
             className={
               pathname.startsWith('/docs/icerpc-core')
-                ? 'text-primary underline decoration-2 underline-offset-[1.6rem] opacity-100'
+                ? 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100'
                 : 'dark:text-[rgba(255,255,255,0.8)]'
             }
           >
@@ -83,14 +83,14 @@ export const TopNav = () => {
             href="/docs/slice"
             className={
               pathname.startsWith('/docs/slice')
-                ? 'text-primary underline decoration-2 underline-offset-[1.6rem] opacity-100'
+                ? 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100'
                 : 'dark:text-[rgba(255,255,255,0.8)]'
             }
           >
             Slice
           </Link>
 
-          <div className="flex items-center gap-5 pl-4">
+          <div className="flex items-center gap-5 pr-8 pl-0">
             <div className="left-1/2 h-[calc(65px-40px)] border-l-[1.5px] border-lightBorder dark:border-darkBorder" />
             <ThemeToggle />
             <a
@@ -99,13 +99,6 @@ export const TopNav = () => {
               aria-label="Github"
             >
               <FaGithub size={20} />
-            </a>
-            <a
-              className="hover:text-primary dark:text-[rgba(255,255,255,0.8)]"
-              href="https://twitter.com/zeroc"
-              aria-label="Twitter"
-            >
-              <FaTwitter size={20} />
             </a>
           </div>
         </div>

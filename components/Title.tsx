@@ -4,7 +4,13 @@ import { Breadcrumbs, Breadcrumb } from 'components/Breadcrumbs';
 import { useVersionContext } from 'context/state';
 import { baseUrls, currentNavItem, sideBarData } from 'data/side-bar-data';
 import { useRouter } from 'next/router';
-import { SideBarCategory, SideBarSourceType, isCategory } from 'types';
+import {
+  SideBarCategory,
+  SideBarLink,
+  SideBarSourceType,
+  isCategory,
+  isLink
+} from 'types';
 
 interface Props {
   title: string;
@@ -23,9 +29,7 @@ export const Title = ({ title, description }: Props) => {
     isCategory(item)
   ) as SideBarCategory[];
 
-  let breadcrumbs: Breadcrumb[] = [];
-
-  breadcrumbs = [
+  let breadcrumbs: Breadcrumb[] = [
     {
       name: currentNavItem(baseUrl),
       href: baseUrl
@@ -34,16 +38,18 @@ export const Title = ({ title, description }: Props) => {
 
   categories.forEach((data: SideBarSourceType) => {
     let category = data as SideBarCategory;
-    // if (
-    //   category.links.find(
-    //     (link) => stripTrailingSlash(link.path) === stripTrailingSlash(path)
-    //   )
-    // ) {
-    //   breadcrumbs.push({
-    //     name: category.title,
-    //     href: category.links[0].path
-    //   });
-    // }
+    let links = category.links.filter(isLink);
+    if (
+      links.find(
+        (link: SideBarLink) =>
+          stripTrailingSlash(link.path) === stripTrailingSlash(path)
+      )
+    ) {
+      breadcrumbs.push({
+        name: category.title,
+        href: links[0].path
+      });
+    }
   });
 
   return (

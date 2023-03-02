@@ -133,14 +133,14 @@ export const SideNav = ({ path }: SideNavProps) => {
   return (
     <nav
       className={clsx(
-        'fixed top-16 hidden h-screen w-[275px] shrink-0 overflow-y-auto lg:block',
-        'border-r border-lightBorder bg-[#ffffff] pr-3 pb-10 pl-6 pt-0',
+        'sticky top-[3.75rem] hidden h-screen w-[275px] shrink-0 overflow-y-auto lg:block',
+        'border-r border-lightBorder bg-none pr-3 pb-10 pl-6 pt-4',
         'dark:border-darkBorder dark:bg-[#26282c]'
       )}
     >
-      <div className="pointer-events-none sticky top-0 -ml-0.5" />
+      <div className="pointer-events-none sticky top-0" />
       {baseUrl == '/docs/slice' && <SliceSelector />}
-      <ul role="list" className="mt-4">
+      <ul role="list" className="mx-2 mt-4">
         {cells}
       </ul>
     </nav>
