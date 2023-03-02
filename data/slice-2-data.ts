@@ -95,7 +95,10 @@ export const slice2Data: SideBarSourceType[] = [
   {
      title: 'Encoding reference',
      links: [
-
+      {
+        title: 'Primitive types',
+        path: `${SLICE_BASE_URL}/encoding/primitive-types`
+      }
      ]
   },
   {
