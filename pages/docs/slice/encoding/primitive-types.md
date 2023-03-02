@@ -26,12 +26,12 @@ endian order.
 A `varint32`, `varuint32`, `varint62`, `varuint62` is encoded on 1, 2, 4 or 8 bytes. The least significant 2 bits of the
 first byte encode the number of bytes used for the encoded representation.
 
-| Value  | Number of bytes |
-|--------|-----------------|
-| 0      | 1               |
-| 1      | 2               |
-| 2      | 4               |
-| 3      | 8               |
+| Value | Number of bytes |
+|-------|-----------------|
+| 0     | 1               |
+| 1     | 2               |
+| 2     | 4               |
+| 3     | 8               |
 
 The encoding for `varuint32` and `varuint62` is identical. The value to encode is logically multiplied by 4, or'ed with
 the value of the first two bits and then stored in the selected number of bytes in little endian order.
@@ -42,12 +42,12 @@ order.
 
 The value of the first 2 bits indirectly determines the min and max encodable values:
 
-| Value  | Min varint    | Max varint | Min varuint | Max varuint |
-|--------|---------------|------------|-------------|-------------|
-| 0      | -2^5          | 2^5 - 1    | 0           | 2^6 - 1     |
-| 1      | -2^13         | 2^13 - 1   | 0           | 2^14 - 1    |
-| 2      | -2^29         | 2^29 - 1   | 0           | 2^30 - 1    |
-| 3      | -2^61         | 2^61 - 1   | 0           | 2^62 - 1    |
+| Value | Min varint | Max varint | Min varuint | Max varuint |
+|-------|------------|------------|-------------|-------------|
+| 0     | -2^5       | 2^5 - 1    | 0           | 2^6 - 1     |
+| 1     | -2^13      | 2^13 - 1   | 0           | 2^14 - 1    |
+| 2     | -2^29      | 2^29 - 1   | 0           | 2^30 - 1    |
+| 3     | -2^61      | 2^61 - 1   | 0           | 2^62 - 1    |
 
 In general, a Slice encoder should encode a variable-size integer value on as few bytes as possible. It's however ok for
 a Slice encoder to encode a value on more bytes than required, and a Slice decoder must always decode such a value
