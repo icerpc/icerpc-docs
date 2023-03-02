@@ -31,7 +31,7 @@ order, except:
 The encoding of the arguments does not use a tag end marker because the end of the segment marks the end of the
 argument list.
 
-A return value is encoded exactly like arguments.
+A return value is encoded exactly like an argument list.
 
 ## Stream argument/return value
 
@@ -58,7 +58,7 @@ A stream return value is encoded exactly like a stream argument, after the non-s
 As an optimization, when an operation has no argument at all, the empty argument list can be encoded as an empty byte
 buffer. The same optimization is available for responses of operations that don't return anything.
 
-## ApplicationError
+## ApplicationError response
 
 When an operation completes with status code `ApplicationError`, the response's payload is a Slice segment that holds
 the operation's exception, including this exception's tag end marker.
