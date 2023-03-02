@@ -75,7 +75,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ThemeProvider attribute="class">
+      <ThemeProvider attribute="class" enableSystem={true}>
         <AppWrapper>
           <TopNav />
           <div className="mt-[3.75rem] flex flex-row justify-center">

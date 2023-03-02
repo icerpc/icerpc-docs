@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import Link from 'next/link';
 import { FaTwitter, FaGithub } from 'react-icons/fa';
 import { useRouter } from 'next/router';
@@ -21,10 +21,6 @@ import { useTheme } from 'next-themes';
 import { Disclosure, Dialog, Transition } from '@headlessui/react';
 import { Divider } from 'components/Divider';
 
-interface LogoProps {
-  resolvedTheme?: string;
-}
-
 const navigationItems = [
   {
     name: 'Home',
@@ -44,7 +40,19 @@ const navigationItems = [
   }
 ];
 
-const Logo = ({ resolvedTheme }: LogoProps) => {
+const Logo = () => {
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
+
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <div className="ml-6 mr-0 mt-4 mb-3 flex items-center justify-start gap-1 pb-4">
       <Image
@@ -60,9 +68,8 @@ const Logo = ({ resolvedTheme }: LogoProps) => {
 };
 
 export const TopNav = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const pathname = useRouter().pathname;
-  const { resolvedTheme } = useTheme();
-  let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
     setIsOpen(false);
@@ -93,7 +100,7 @@ export const TopNav = () => {
         )}
       >
         <div className="flex w-full max-w-[98rem] items-center justify-between">
-          <Logo resolvedTheme={resolvedTheme} />
+          <Logo />
           <div className=" hidden flex-1 items-start lg:flex">
             <SearchButton />
           </div>
@@ -186,7 +193,7 @@ interface MobileMenuProps {
 const MobileMenu = ({ isOpen, setIsOpen }: MobileMenuProps) => {
   return (
     <div className="mr-4 flex h-4/6  items-center rounded-full px-4 lg:hidden">
-      <div className="max-w-10 mr-0 h-full pt-[1px]">
+      <div className="mr-0 h-full pt-[1px]">
         <SearchButton />
       </div>
       <button
