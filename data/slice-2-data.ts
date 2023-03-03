@@ -100,12 +100,28 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/encoding/primitive-types`
       },
       {
+        title: 'Enum',
+        path: `${SLICE_BASE_URL}/encoding/enum-slice2`
+      },
+      {
         title: 'Bit sequence',
         path: `${SLICE_BASE_URL}/encoding/bit-sequence`
       },
       {
         title: 'Struct',
         path: `${SLICE_BASE_URL}/encoding/struct-slice2`
+      },
+      {
+        title: 'Exception',
+        path: `${SLICE_BASE_URL}/encoding/exception-slice2`
+      },
+      {
+        title: 'Sequence',
+        path: `${SLICE_BASE_URL}/encoding/sequence-slice2`
+      },
+      {
+        title: 'Dictionary',
+        path: `${SLICE_BASE_URL}/encoding/dictionary-slice2`
       },
       {
         title: 'Operation',
