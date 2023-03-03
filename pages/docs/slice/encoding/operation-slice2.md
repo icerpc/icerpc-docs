@@ -1,6 +1,6 @@
 ---
 title: Operation
-description: Learn how request and response payloads are encoded with Slice2.
+description: Learn how request and response payloads are encoded with Slice.
 ---
 
 {% title /%}

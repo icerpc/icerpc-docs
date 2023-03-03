@@ -100,6 +100,14 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/encoding/primitive-types`
       },
       {
+        title: 'Bit sequence',
+        path: `${SLICE_BASE_URL}/encoding/bit-sequence`
+      },
+      {
+        title: 'Struct',
+        path: `${SLICE_BASE_URL}/encoding/struct-slice2`
+      },
+      {
         title: 'Operation',
         path: `${SLICE_BASE_URL}/encoding/operation-slice2`
       }
