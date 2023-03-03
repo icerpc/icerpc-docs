@@ -2,7 +2,7 @@
 
 import React, { useState, Fragment, useEffect } from 'react';
 import Link from 'next/link';
-import { FaTwitter, FaGithub } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import { SearchButton } from 'components/Shell/SearchButton';
 import { ThemeToggle } from 'components/ThemeToggle';
@@ -10,19 +10,16 @@ import { clsx } from 'clsx';
 import Image from 'next/image';
 import { getBreadcrumbs } from 'components/Title';
 import {
-  BellIcon,
-  XMarkIcon,
   EllipsisVerticalIcon,
   ChevronRightIcon
 } from '@heroicons/react/24/outline';
 
-import { Bars3Icon } from '@heroicons/react/20/solid';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
 
 import lightIcon from 'public/images/Light-Icon.svg';
 import darkIcon from 'public/images/Dark-Icon.svg';
 import { useTheme } from 'next-themes';
 import { Disclosure, Dialog, Transition } from '@headlessui/react';
-import { Divider } from 'components/Divider';
 import { useVersionContext } from 'context/state';
 import { Breadcrumb } from 'components/Breadcrumbs';
 
@@ -100,7 +97,12 @@ export const TopNav = () => {
 
   return (
     <>
-      <div className="fixed top-0 z-10 flex w-full flex-col justify-center border border-t-0 border-lightBorder bg-[#FCFCFC] dark:border-darkBorder dark:bg-transparent dark:backdrop-blur">
+      <div
+        className={clsx(
+          'fixed top-0 z-10 flex w-full flex-col justify-center border border-t-0 border-lightBorder bg-[#FCFCFC]',
+          'dark:border-darkBorder dark:bg-transparent dark:backdrop-blur'
+        )}
+      >
         <Disclosure
           as="nav"
           id="navbar"
@@ -143,55 +145,74 @@ export const TopNav = () => {
         </Disclosure>
         <MobileSideNav breadcrumbs={breadcrumbs} />
       </div>
-      {/* <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="ease-in duration-200"
+            leave="ease-in duration-200 delay-100"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 bg-black/40 " />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
-            <div className="dark:highlight-white/5 fixed top-4 right-4 w-full max-w-xs rounded-lg bg-white p-6 text-base font-semibold text-slate-900 shadow-lg dark:bg-slate-800 dark:text-slate-400">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <div
+                className={clsx(
+                  'fixed top-4 right-4 w-full max-w-[250px] rounded-xl bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
+                )}
               >
-                <Dialog.Panel className="h-full w-full transform overflow-hidden rounded-2xl bg-red-500 text-left align-middle shadow-xl transition-all">
-                  <div className="fixed right-0 mt-4 justify-end">
-                    <button
-                      type="button"
-                      className="right-0 inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      X
-                    </button>
-                  </div>
-                  <ul>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                    <li>Item 4</li>
+                <Dialog.Panel className="h-full w-full flex-col overflow-hidden rounded text-left align-middle text-sm font-bold shadow-xl transition-all">
+                  <button
+                    type="button"
+                    className={clsx(
+                      'group fixed right-5 mt-4 justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium',
+                      'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                    )}
+                    onClick={closeModal}
+                  >
+                    <XMarkIcon
+                      className="block h-5 w-5 group-hover:text-slate-500 dark:group-hover:text-slate-400"
+                      aria-hidden="true"
+                    />
+                  </button>
+                  <ul className="m-7 space-y-7 ">
+                    {navigationItems.map((item) => (
+                      <li key={item.name}>
+                        <Link
+                          href={item.href}
+                          className={clsx(
+                            'overflow-hidden whitespace-nowrap font-semibold hover:text-zinc-900 dark:text-slate-200 dark:hover:text-white'
+                          )}
+                          onClick={closeModal}
+                        >
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
-                  <Divider />
-                  <div className="flex justify-center">Reece</div>
+                  <div className="m-6 flex flex-row items-center justify-between border-t border-lightBorder pl-1 pt-7 dark:border-darkBorder dark:text-slate-100 dark:hover:text-white">
+                    Switch theme:
+                    <ThemeToggle />
+                  </div>
                 </Dialog.Panel>
-              </Transition.Child>
-            </div>
+              </div>
+            </Transition.Child>
           </div>
         </Dialog>
-      </Transition> */}
+      </Transition>
     </>
   );
 };
@@ -209,7 +230,8 @@ const MobileMenu = ({ isOpen, setIsOpen }: MobileMenuProps) => {
       </div>
       <button
         className={clsx(
-          'inline-flex h-4/6 items-center justify-center rounded-full text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
+          'inline-flex h-4/6 items-center justify-center rounded-full text-gray-400',
+          'hover:bg-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
         )}
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -227,13 +249,16 @@ interface MobileSideNavProps {
 function MobileSideNav({ breadcrumbs }: MobileSideNavProps) {
   return (
     <div className="flex items-center justify-start border-t border-lightBorder p-4 text-sm dark:border-darkBorder lg:hidden">
-      <Bars3Icon
-        className="ml-1 mr-4 block h-5 w-5 text-slate-500 dark:text-white/80"
-        aria-hidden="true"
-      />
+      <button>
+        <Bars3Icon
+          className="ml-1 mr-4 block h-5 w-5 text-slate-500 dark:text-white/80"
+          aria-hidden="true"
+        />
+      </button>
       {breadcrumbs.map((breadcrumb, index) => (
         <div key={breadcrumb.href} className="flex items-center">
-          <span
+          <Link
+            href={breadcrumb.href}
             className={clsx(
               index !== breadcrumbs.length - 1
                 ? 'text-slate-500 dark:text-white/80'
@@ -241,7 +266,7 @@ function MobileSideNav({ breadcrumbs }: MobileSideNavProps) {
             )}
           >
             {breadcrumb.name}
-          </span>
+          </Link>
           {index !== breadcrumbs.length - 1 && (
             <ChevronRightIcon
               className="mx-2 block h-4 w-4 text-slate-500 "

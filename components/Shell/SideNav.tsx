@@ -132,7 +132,7 @@ export const SideNav = ({ path }: SideNavProps) => {
 
   return (
     // Create a wrapper that grows to fill all available left space without moving the nav
-    <div className="overflow-y- sticky top-[59px] flex h-screen grow justify-end border-r border-lightBorder dark:border-darkBorder dark:bg-[#26282c]">
+    <div className="sticky top-[59px] flex h-screen grow justify-end border-r border-lightBorder dark:border-darkBorder dark:bg-[#26282c]">
       <nav
         className={clsx(
           'sticky top-0 hidden h-[calc(100vh-59px)] w-[275px] overflow-y-auto lg:block',

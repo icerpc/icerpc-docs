@@ -28,6 +28,15 @@ export const getBreadcrumbs = (path: string, version: SliceVersion) => {
     isCategory(item)
   ) as SideBarCategory[];
 
+  if (path == '/') {
+    return [
+      {
+        name: 'Home',
+        href: '/'
+      }
+    ];
+  }
+
   let breadcrumbs: Breadcrumb[] = [
     {
       name: currentNavItem(baseUrl),
