@@ -8,6 +8,7 @@ import {
   SideBarCategory,
   SideBarLink,
   SideBarSourceType,
+  SliceVersion,
   isCategory,
   isLink
 } from 'types';
@@ -21,9 +22,7 @@ const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;
 };
 
-export const Title = ({ title, description }: Props) => {
-  const { version } = useVersionContext();
-  const path = useRouter().pathname;
+export const getBreadcrumbs = (path: string, version: SliceVersion) => {
   const baseUrl = baseUrls.find((item) => path.startsWith(item))!;
   const categories = sideBarData(baseUrl, version).filter((item) =>
     isCategory(item)
@@ -51,6 +50,13 @@ export const Title = ({ title, description }: Props) => {
       });
     }
   });
+  return breadcrumbs;
+};
+
+export const Title = ({ title, description }: Props) => {
+  const { version } = useVersionContext();
+  const path = useRouter().pathname;
+  const breadcrumbs = getBreadcrumbs(path, version);
 
   return (
     <div className="m-0 p-0">

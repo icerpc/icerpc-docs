@@ -8,18 +8,23 @@ import { SearchButton } from 'components/Shell/SearchButton';
 import { ThemeToggle } from 'components/ThemeToggle';
 import { clsx } from 'clsx';
 import Image from 'next/image';
+import { getBreadcrumbs } from 'components/Title';
 import {
-  Bars3Icon,
   BellIcon,
   XMarkIcon,
-  EllipsisVerticalIcon
+  EllipsisVerticalIcon,
+  ChevronRightIcon
 } from '@heroicons/react/24/outline';
+
+import { Bars3Icon } from '@heroicons/react/20/solid';
 
 import lightIcon from 'public/images/Light-Icon.svg';
 import darkIcon from 'public/images/Dark-Icon.svg';
 import { useTheme } from 'next-themes';
 import { Disclosure, Dialog, Transition } from '@headlessui/react';
 import { Divider } from 'components/Divider';
+import { useVersionContext } from 'context/state';
+import { Breadcrumb } from 'components/Breadcrumbs';
 
 const navigationItems = [
   {
@@ -68,8 +73,11 @@ const Logo = () => {
 };
 
 export const TopNav = () => {
+  // State
   const [isOpen, setIsOpen] = useState(false);
+  const { version } = useVersionContext();
   const pathname = useRouter().pathname;
+  const breadcrumbs = getBreadcrumbs(pathname, version);
 
   function closeModal() {
     setIsOpen(false);
@@ -92,46 +100,49 @@ export const TopNav = () => {
 
   return (
     <>
-      <Disclosure
-        as="nav"
-        className={clsx(
-          'fixed top-0 z-10 flex h-[3.75rem] w-full justify-center border border-t-0 border-lightBorder dark:backdrop-blur',
-          'bg-[#FCFCFC] text-sm font-medium  dark:border-darkBorder dark:bg-transparent'
-        )}
-      >
-        <div className="flex w-full max-w-[98rem] items-center justify-between">
-          <Logo />
-          <div className=" hidden flex-1 items-start lg:flex">
-            <SearchButton />
-          </div>
-          <div className="mr-0 hidden h-1/2 items-center justify-end gap-2 space-x-8 lg:flex hover:[&>a]:text-primary">
-            {navigationItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={clsx(
-                  'overflow-hidden whitespace-nowrap',
-                  linkStyle(pathname, item.href)
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <div className="flex items-center gap-5 pr-8 pl-0">
-              <div className="left-1/2 h-[calc(65px-40px)] border-l-[1.5px] border-lightBorder dark:border-darkBorder" />
-              <ThemeToggle />
-              <a
-                className="hover:text-primary dark:text-[rgba(255,255,255,0.8)]"
-                href="https://github.com/zeroc-ice"
-                aria-label="Github"
-              >
-                <FaGithub size={20} />
-              </a>
+      <div className="fixed top-0 z-10 flex w-full flex-col justify-center border border-t-0 border-lightBorder bg-[#FCFCFC] dark:border-darkBorder dark:bg-transparent dark:backdrop-blur">
+        <Disclosure
+          as="nav"
+          id="navbar"
+          className={clsx(
+            'flex h-[3.75rem] w-full justify-center text-sm font-medium'
+          )}
+        >
+          <div className="flex w-full max-w-[98rem] items-center justify-between">
+            <Logo />
+            <div className=" hidden flex-1 items-start lg:flex">
+              <SearchButton />
             </div>
+            <div className="mr-0 hidden h-1/2 items-center justify-end gap-2 space-x-8 lg:flex hover:[&>a]:text-primary">
+              {navigationItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={clsx(
+                    'overflow-hidden whitespace-nowrap',
+                    linkStyle(pathname, item.href)
+                  )}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <div className="flex items-center gap-5 pr-8 pl-0">
+                <div className="left-1/2 h-[calc(65px-40px)] border-l-[1px] border-lightBorder dark:border-darkBorder" />
+                <ThemeToggle />
+                <a
+                  className="hover:text-primary dark:text-[rgba(255,255,255,0.8)]"
+                  href="https://github.com/zeroc-ice"
+                  aria-label="Github"
+                >
+                  <FaGithub size={20} />
+                </a>
+              </div>
+            </div>
+            <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} />
           </div>
-          <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} />
-        </div>
-      </Disclosure>
+        </Disclosure>
+        <MobileSideNav breadcrumbs={breadcrumbs} />
+      </div>
       {/* <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
@@ -208,3 +219,37 @@ const MobileMenu = ({ isOpen, setIsOpen }: MobileMenuProps) => {
     </div>
   );
 };
+
+interface MobileSideNavProps {
+  breadcrumbs: Breadcrumb[];
+}
+
+function MobileSideNav({ breadcrumbs }: MobileSideNavProps) {
+  return (
+    <div className="flex items-center justify-start border-t border-lightBorder p-4 text-sm dark:border-darkBorder lg:hidden">
+      <Bars3Icon
+        className="ml-1 mr-4 block h-5 w-5 text-slate-500 dark:text-white/80"
+        aria-hidden="true"
+      />
+      {breadcrumbs.map((breadcrumb, index) => (
+        <div key={breadcrumb.href} className="flex items-center">
+          <span
+            className={clsx(
+              index !== breadcrumbs.length - 1
+                ? 'text-slate-500 dark:text-white/80'
+                : 'font-semibold text-black dark:text-white'
+            )}
+          >
+            {breadcrumb.name}
+          </span>
+          {index !== breadcrumbs.length - 1 && (
+            <ChevronRightIcon
+              className="mx-2 block h-4 w-4 text-slate-500 "
+              aria-hidden="true"
+            />
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
