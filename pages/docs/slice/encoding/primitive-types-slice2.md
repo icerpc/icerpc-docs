@@ -7,7 +7,7 @@ description: Learn how primitive types are encoded with Slice.
 
 ## Bool
 
-A `bool` is encoded on a single byte, where 0 means `false` and 1 means `true`. Other byte values are invalid.
+A `bool` is encoded on a single byte, where 0 means `false` and 1 means `true`. Other values are invalid.
 
 ## Fixed-size integer
 

@@ -94,7 +94,7 @@ compact struct Contact {
 
 The contact id = 5, name = not set, age = 42 is encoded as:
 ```
-0xb00000010:         bit sequence with only the bit at position 1 set
+0b00000010:          bit sequence with only the bit at position 1 set
 0x05 0x00 0x00 0x00: id (5)
 -                    nothing for name since the bit at position 0 is not set
 0x2a               : age (42 encoded on a single byte)
@@ -139,8 +139,8 @@ The contact id = 5, name = not set, age = 42 is encoded as:
 -                    empty bit sequence since no non-tagged field has an optional type
 0x05 0x00 0x00 0x00: id (5 on 4 bytes, little endian)
 -                    nothing for the name since it's not set
-0x10               : age's tag (2 as a varint32 on 1 byte)
-0x04               : age's value size (1 as a varuint62 on 1 byte)
-0x2a               : age's encoded value on a single byte
-0xfc:              : tag end marker (-1 varint32, encoded on 1 byte)
+0x10:                age's tag (2 as a varint32 on 1 byte)
+0x04:                age's value size (1 as a varuint62 on 1 byte)
+0x2a:                age's encoded value on a single byte
+0xfc:                tag end marker (-1 varint32, encoded on 1 byte)
 ```

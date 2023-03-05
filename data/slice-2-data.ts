@@ -96,36 +96,32 @@ export const slice2Data: SideBarSourceType[] = [
      title: 'Encoding reference',
      links: [
       {
-        title: 'Primitive types',
-        path: `${SLICE_BASE_URL}/encoding/primitive-types`
+        title: 'Main features',
+        path: `${SLICE_BASE_URL}/encoding/main-features`
       },
       {
-        title: 'Enum',
-        path: `${SLICE_BASE_URL}/encoding/enum-slice2`
+        title: 'Primitive types',
+        path: `${SLICE_BASE_URL}/encoding/primitive-types-slice2`
+      },
+      {
+        title: 'Constructed types',
+        path: `${SLICE_BASE_URL}/encoding/constructed-types-slice2`
+      },
+      {
+        title: 'Collection types',
+        path: `${SLICE_BASE_URL}/encoding/collection-types-slice2`
       },
       {
         title: 'Bit sequence',
         path: `${SLICE_BASE_URL}/encoding/bit-sequence`
       },
       {
-        title: 'Struct',
-        path: `${SLICE_BASE_URL}/encoding/struct-slice2`
+        title: 'Operation arguments',
+        path: `${SLICE_BASE_URL}/encoding/operation-arguments-slice2`
       },
       {
-        title: 'Exception',
-        path: `${SLICE_BASE_URL}/encoding/exception-slice2`
-      },
-      {
-        title: 'Sequence',
-        path: `${SLICE_BASE_URL}/encoding/sequence-slice2`
-      },
-      {
-        title: 'Dictionary',
-        path: `${SLICE_BASE_URL}/encoding/dictionary-slice2`
-      },
-      {
-        title: 'Operation',
-        path: `${SLICE_BASE_URL}/encoding/operation-slice2`
+        title: 'Operation return value and exception',
+        path: `${SLICE_BASE_URL}/encoding/operation-return-value-exception-slice2`
       }
      ]
   },

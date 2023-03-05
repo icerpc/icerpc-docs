@@ -47,8 +47,8 @@ _Example: sequence of int32?_
 
 A sequence of `int32?` with value 5, no-value, 2, no-value is encoded as:
 ```
-0x10:              : 4 elements (varuint62 on 1 byte)
-00 00 01 01:       : bit sequence with positions 0 and 2 set
+0x10:                4 elements (varuint62 on 1 byte)
+0b00000101:          bit sequence with positions 0 and 2 set
 0x05 0x00 0x00 0x00: 5 over 4 bytes in little-endian order
 0x02 0x00 0x00 0x00: 2 over 4 bytes in little-endian order
 ```

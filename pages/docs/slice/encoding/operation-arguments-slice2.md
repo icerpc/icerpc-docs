@@ -1,6 +1,6 @@
 ---
-title: Arguments
-description: Understand how request arguments are encoded with Slice.
+title: Operation arguments
+description: Understand how operation arguments are encoded with Slice.
 ---
 
 {% title /%}

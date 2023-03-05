@@ -1,6 +1,6 @@
 ---
-title: Return value and exception
-description: Learn how return values and exceptions are encoded with Slice
+title: Operation return value and exception
+description: Learn how an operation's return value and exception is encoded with Slice.
 ---
 
 {% title /%}
