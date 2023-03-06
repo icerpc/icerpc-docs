@@ -29,7 +29,7 @@ export const slice2Data: SideBarSourceType[] = [
       {
         title: 'Examples',
         path: `${SLICE_BASE_URL}/basics/examples-slice2`
-      },
+      }
     ]
   },
   {
@@ -93,8 +93,8 @@ export const slice2Data: SideBarSourceType[] = [
     ]
   },
   {
-     title: 'Encoding reference',
-     links: [
+    title: 'Encoding reference',
+    links: [
       {
         title: 'Main features',
         path: `${SLICE_BASE_URL}/encoding/main-features`
@@ -123,7 +123,7 @@ export const slice2Data: SideBarSourceType[] = [
         title: 'Operation return value and exception',
         path: `${SLICE_BASE_URL}/encoding/operation-return-value-exception-slice2`
       }
-     ]
+    ]
   },
   {
     title: 'Compiler diagnostics',

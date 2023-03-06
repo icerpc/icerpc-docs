@@ -127,37 +127,37 @@ export const FeedbackForm = ({ title, options }: Props) => {
                         <div className="font-medium text-gray-900 dark:text-gray-300">
                           Feedback *
                         </div>
+                        <textarea
+                          required
+                          placeholder="Your feedback address ..."
+                          className={clsx(
+                            'mx-2 mt-2 h-14 w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-sm',
+                            'dark:border-gray-500 dark:focus:border-primary dark:focus:ring-primary',
+                            'focus:border-primary focus:ring-primary'
+                          )}
+                          onChange={(e) => {
+                            setComment(e.currentTarget.value);
+                          }}
+                        />
                       </label>
-                      <textarea
-                        required
-                        placeholder="Your feedback address ..."
-                        className={clsx(
-                          'mx-2 mt-2 h-14 w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-sm',
-                          'dark:border-gray-500 dark:focus:border-primary dark:focus:ring-primary',
-                          'focus:border-primary focus:ring-primary'
-                        )}
-                        onChange={(e) => {
-                          setComment(e.currentTarget.value);
-                        }}
-                      />
                       <label className="mt-1 ml-2 text-xs">
                         <div className="font-medium text-gray-900 dark:text-gray-300">
                           Email
                         </div>
+                        <input
+                          type="email"
+                          required={false}
+                          placeholder="Your email address ... "
+                          className={clsx(
+                            'm-2 h-[40px] w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-sm',
+                            'dark:border-gray-500 dark:focus:border-primary dark:focus:ring-primary',
+                            'focus:border-primary focus:ring-primary'
+                          )}
+                          onChange={(e) => {
+                            setEmail(e.currentTarget.value);
+                          }}
+                        />
                       </label>
-                      <input
-                        type="email"
-                        required={false}
-                        placeholder="Your email address ... "
-                        className={clsx(
-                          'm-2 h-[40px] w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-sm',
-                          'dark:border-gray-500 dark:focus:border-primary dark:focus:ring-primary',
-                          'focus:border-primary focus:ring-primary'
-                        )}
-                        onChange={(e) => {
-                          setEmail(e.currentTarget.value);
-                        }}
-                      />
                     </>
                   )}
                 </div>

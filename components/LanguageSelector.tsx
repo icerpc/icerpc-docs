@@ -27,7 +27,7 @@ export const LanguageSelector = () => {
 
   return (
     <LanguageContext.Provider value={currentTab as any}>
-      <ul role="tablist" className="flex flex-row items-center">
+      <ul className="flex flex-row items-center">
         {Platforms.map((label) => (
           <li key={label}>
             <button
