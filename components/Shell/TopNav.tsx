@@ -172,7 +172,7 @@ export const TopNav = () => {
                   <button
                     type="button"
                     className={clsx(
-                      'group fixed right-5 mt-4 justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium',
+                      'group fixed right-4 top-4 justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium',
                       'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
                     )}
                     onClick={closeModal}
@@ -182,13 +182,13 @@ export const TopNav = () => {
                       aria-hidden="true"
                     />
                   </button>
-                  <ul className="m-7 my-4">
+                  <ul className="mt-2 block">
                     {navigationItems.map((item) => (
-                      <li key={item.name} className="group py-4">
+                      <li key={item.name} className="group flex">
                         <Link
                           href={item.href}
                           className={clsx(
-                            'overflow-hidden whitespace-nowrap font-semibold group-hover:text-zinc-900 dark:text-slate-200 dark:hover:text-white'
+                            'grow overflow-hidden whitespace-nowrap px-7 py-4 font-semibold group-hover:text-zinc-900 dark:text-slate-200 dark:hover:text-white'
                           )}
                           onClick={closeModal}
                         >
@@ -197,7 +197,7 @@ export const TopNav = () => {
                       </li>
                     ))}
                   </ul>
-                  <div className="m-6 flex flex-row items-center justify-between border-t border-lightBorder pl-1 pt-7 dark:border-darkBorder dark:text-slate-100 dark:hover:text-white">
+                  <div className="mx-1 flex flex-row items-center justify-between border-t border-lightBorder p-6 dark:border-darkBorder dark:text-slate-100 dark:hover:text-white">
                     Switch theme:
                     <ThemeToggle />
                   </div>
