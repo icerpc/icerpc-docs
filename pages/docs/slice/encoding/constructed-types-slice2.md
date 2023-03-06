@@ -11,20 +11,10 @@ type.
 
 For example:
 ```slice
-enum Fruit : uint8 { Apple, Strawberry, Orange = 5 }
+enum Fruit : uint16 { Apple, Strawberry, Orange = 5 }
 ```
 
-A `Fruit::Strawberry` is encoded as 1 in an uint8 (a byte), while a `Fruit::Orange` is encoded as 5.
-
-An enum without an underlying type is treated like an enum with the varint32 underlying type.
-
-For example:
-```slice
-enum Cake { RedVelvet, Sponge, BlackForrest }
-
-// is 100% equivalent to:
-enum Cake : varint32 { RedVelvet, Sponge, BlackForrest }
-```
+A `Strawberry` is encoded as 1 in an uint16 (on 2 bytes), while a `Orange` is encoded as 5.
 
 The encoding is the same for checked and unchecked enums.
 
@@ -97,7 +87,7 @@ The contact id = 5, name = not set, age = 42 is encoded as:
 0b00000010:          bit sequence with only the bit at position 1 set
 0x05 0x00 0x00 0x00: id (5)
 -                    nothing for name since the bit at position 0 is not set
-0x2a               : age (42 encoded on a single byte)
+0x2a:                age (42 encoded on a single byte)
 ```
 
 _Example: simple non-compact struct_

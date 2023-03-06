@@ -20,6 +20,10 @@ An `uint16`, `uint32` or `uint64` is encoded on 2, 4, resp. 8 bytes.
 
 An `int16`, `int32`, or `int64` is encoded on 2, 4, resp. 8 bytes using two's complement representation.
 
+{% callout type="information" %}
+Two's complement is the native representation for signed integers in all modern programming languages and CPUs.
+{% /callout %}
+
 ## Floating-point number
 
 A `float32` or `float64` is encoded on 4 resp. 8 bytes using the binary32 resp. binary64 formats specified by
@@ -31,7 +35,7 @@ A service address is encoded as a URI [string](#String).
 
 ## String
 
-A `string` is encoded using UTF-8 as a `varuint62` size followed by size UTF-8 bytes. These UTF-8 bytes do not include
+A `string` is encoded using UTF-8 as a `varuint62` size followed by size UTF-8 bytes. These UTF-8 bytes don't include
 a [BOM](https://en.wikipedia.org/wiki/Byte_order_mark). For example, the string "1 μs" can be encoded as:
 ```
 0x14      # size 5 encoded on 1 byte
@@ -61,8 +65,8 @@ first byte encode the number of bytes used for the encoded representation.
 The encoding for `varuint32` and `varuint62` is identical. The value is logically multiplied by 4, or'ed with the value
 of the first two bits and then stored in the selected number of bytes.
 
-Likewise, the encoding for `varint32` and `varint62` is identical. The value in two's complement is logically multiplied
-by 4, or'ed with the value of the first two bits and then stored in the selected number of bytes.
+Likewise, the encoding for `varint32` and `varint62` is identical. The value is logically multiplied by 4, or'ed with
+the value of the first two bits and then stored in the selected number of bytes.
 
 The value of the first 2 bits indirectly determines the min and max encodable values:
 
@@ -79,5 +83,5 @@ properly. For example, the varint62 value `7` is usually encoded on a single byt
 
 {% callout type="information" %}
 The encoding of varuint62 is identical to the encoding of variable-size integers in QUIC, except for the byte order
-(QUIC is big-endian).
+(QUIC is big-endian, Slice is little-endian).
 {% /callout %}
