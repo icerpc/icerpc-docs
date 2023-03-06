@@ -3,7 +3,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { AppWrapper } from 'context/state';
-import { Inter } from '@next/font/google';
+import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
@@ -47,7 +47,6 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
   const { markdoc } = pageProps;
   const router = useRouter();
   const isDocs = router.asPath.startsWith('/docs');
-  const isLandingPage = router.pathname === '/';
 
   let title = TITLE;
   let description = DESCRIPTION;
