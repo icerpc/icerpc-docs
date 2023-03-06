@@ -15,10 +15,14 @@ function Search() {
   );
 }
 
-export const SearchButton = () => {
+interface Props {
+  className?: string;
+}
+
+export const SearchButton = ({ className }: Props) => {
   const { resolvedTheme } = useTheme();
   return (
-    <>
+    <div className={className}>
       <Search />
       <style jsx>{`
         // Search button style
@@ -93,6 +97,6 @@ export const SearchButton = () => {
           margin: 0;
         }
       `}</style>
-    </>
+    </div>
   );
 };
