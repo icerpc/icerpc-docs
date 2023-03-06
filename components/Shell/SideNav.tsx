@@ -22,6 +22,7 @@ import {
   EllipsisVerticalIcon,
   ChevronRightIcon
 } from '@heroicons/react/24/outline';
+import { getBreadcrumbs } from 'components/Title';
 
 function createListItem(
   router: NextRouter,
@@ -159,17 +160,17 @@ export const SideNav = ({ path }: SideNavProps) => {
 };
 
 interface MobileSideNavProps {
-  breadcrumbs: Breadcrumb[];
-  path: string;
+  pathname: string;
 }
 
-export function MobileSideNav({ breadcrumbs, path }: MobileSideNavProps) {
+export function MobileSideNav({ pathname }: MobileSideNavProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { version } = useVersionContext();
+  const breadcrumbs = getBreadcrumbs(pathname, version);
   const router = useRouter();
 
-  let baseUrl = baseUrls.find((item) => path.startsWith(item))!;
+  let baseUrl = baseUrls.find((item) => pathname.startsWith(item))!;
 
   useEffect(() => {
     const links = sideBarData(baseUrl, version) ?? [];
@@ -177,7 +178,7 @@ export function MobileSideNav({ breadcrumbs, path }: MobileSideNavProps) {
     return () => {
       setData([]);
     };
-  }, [setData, path, version, baseUrl]);
+  }, [setData, pathname, version, baseUrl]);
 
   let cells = data.map((item) => {
     return transformSideBarData(router, item, () => setIsOpen(false));
@@ -187,98 +188,102 @@ export function MobileSideNav({ breadcrumbs, path }: MobileSideNavProps) {
     setIsOpen(false);
   }
 
-  return (
-    <>
-      <div className="flex items-center justify-start border-t border-lightBorder p-4 text-sm dark:border-darkBorder lg:hidden">
-        <button>
-          <Bars3Icon
-            className="ml-1 mr-4 block h-5 w-5 text-slate-500 dark:text-white/80"
-            aria-hidden="true"
-            onClick={() => setIsOpen(!isOpen)}
-          />
-        </button>
-        {breadcrumbs.map((breadcrumb, index) => (
-          <div key={breadcrumb.href} className="flex items-center">
-            <Link
-              href={breadcrumb.href}
-              className={clsx(
-                index !== breadcrumbs.length - 1
-                  ? 'text-slate-500 dark:text-white/80'
-                  : 'font-semibold text-black dark:text-white'
+  if (breadcrumbs.length > 0) {
+    return (
+      <>
+        <div className="flex items-center justify-start border-t border-lightBorder p-4 text-sm dark:border-darkBorder lg:hidden">
+          <button>
+            <Bars3Icon
+              className="ml-1 mr-4 block h-5 w-5 text-slate-500 dark:text-white/80"
+              aria-hidden="true"
+              onClick={() => setIsOpen(!isOpen)}
+            />
+          </button>
+          {breadcrumbs.map((breadcrumb, index) => (
+            <div key={breadcrumb.href} className="flex items-center">
+              <Link
+                href={breadcrumb.href}
+                className={clsx(
+                  index !== breadcrumbs.length - 1
+                    ? 'text-slate-500 dark:text-white/80'
+                    : 'font-semibold text-black dark:text-white'
+                )}
+              >
+                {breadcrumb.name}
+              </Link>
+              {index !== breadcrumbs.length - 1 && (
+                <ChevronRightIcon
+                  className="mx-2 block h-4 w-4 text-slate-500 "
+                  aria-hidden="true"
+                />
               )}
-            >
-              {breadcrumb.name}
-            </Link>
-            {index !== breadcrumbs.length - 1 && (
-              <ChevronRightIcon
-                className="mx-2 block h-4 w-4 text-slate-500 "
-                aria-hidden="true"
-              />
-            )}
-          </div>
-        ))}
-      </div>
-      <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200 delay-100"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-black/40 " />
-          </Transition.Child>
-          <div className="fixed inset-0 overflow-y-auto">
+            </div>
+          ))}
+        </div>
+        <Transition appear show={isOpen} as={Fragment}>
+          <Dialog as="div" className="relative z-10" onClose={closeModal}>
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
-              enterFrom="-left-[300px]"
-              enterTo="left-0"
-              leave="ease-in duration-200"
-              leaveFrom="left-0"
-              leaveTo="-left-[300px]"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200 delay-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
             >
-              <div
-                className={clsx(
-                  'fixed top-0 left-0 h-screen w-full max-w-[300px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
-                )}
-              >
-                <Dialog.Panel className="h-full w-full overflow-hidden rounded-r text-left align-middle text-sm font-bold shadow-xl transition-all">
-                  <div className="flex h-full w-full flex-col items-start">
-                    <button
-                      type="button"
-                      className={clsx(
-                        'group absolute right-0 mr-8 mt-4 items-center justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium',
-                        'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-                      )}
-                      onClick={closeModal}
-                    >
-                      <XMarkIcon
-                        className="block h-5 w-5 group-hover:text-slate-500 dark:group-hover:text-slate-400"
-                        aria-hidden="true"
-                      />
-                    </button>
-                    <nav
-                      className={clsx(
-                        'block h-full w-full overflow-y-auto',
-                        'bg-none pr-3 pb-10 pl-6 pt-4',
-                        baseUrl == '/docs/slice' && 'mt-12'
-                      )}
-                    >
-                      <div className="pointer-events-none sticky top-0" />
-                      {baseUrl == '/docs/slice' && <SliceSelector />}
-                      <ul className="mx-2 mt-4">{cells}</ul>
-                    </nav>
-                  </div>
-                </Dialog.Panel>
-              </div>
+              <div className="fixed inset-0 bg-black/40 " />
             </Transition.Child>
-          </div>
-        </Dialog>
-      </Transition>
-    </>
-  );
+            <div className="fixed inset-0 overflow-y-auto">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="-left-[300px]"
+                enterTo="left-0"
+                leave="ease-in duration-200"
+                leaveFrom="left-0"
+                leaveTo="-left-[300px]"
+              >
+                <div
+                  className={clsx(
+                    'fixed top-0 left-0 h-screen w-full max-w-[300px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
+                  )}
+                >
+                  <Dialog.Panel className="h-full w-full overflow-hidden rounded-r text-left align-middle text-sm font-bold shadow-xl transition-all">
+                    <div className="flex h-full w-full flex-col items-start">
+                      <button
+                        type="button"
+                        className={clsx(
+                          'group absolute right-0 mr-8 mt-4 items-center justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium',
+                          'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                        )}
+                        onClick={closeModal}
+                      >
+                        <XMarkIcon
+                          className="block h-5 w-5 group-hover:text-slate-500 dark:group-hover:text-slate-400"
+                          aria-hidden="true"
+                        />
+                      </button>
+                      <nav
+                        className={clsx(
+                          'block h-full w-full overflow-y-auto',
+                          'bg-none pr-3 pb-10 pl-6 pt-4',
+                          baseUrl == '/docs/slice' && 'mt-12'
+                        )}
+                      >
+                        <div className="pointer-events-none sticky top-0" />
+                        {baseUrl == '/docs/slice' && <SliceSelector />}
+                        <ul className="mx-2 mt-4">{cells}</ul>
+                      </nav>
+                    </div>
+                  </Dialog.Panel>
+                </div>
+              </Transition.Child>
+            </div>
+          </Dialog>
+        </Transition>
+      </>
+    );
+  } else {
+    return null;
+  }
 }

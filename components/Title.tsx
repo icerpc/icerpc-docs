@@ -28,6 +28,11 @@ export const getBreadcrumbs = (path: string, version: SliceVersion) => {
     isCategory(item)
   ) as SideBarCategory[];
 
+  // If path or baseUrl is undefined, return an empty array
+  if (!path || !baseUrl) {
+    return [];
+  }
+
   if (path == '/') {
     return [
       {
