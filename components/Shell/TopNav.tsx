@@ -2,26 +2,22 @@
 
 import React, { useState, Fragment, useEffect } from 'react';
 import Link from 'next/link';
+import lightIcon from 'public/images/Light-Icon.svg';
+import darkIcon from 'public/images/Dark-Icon.svg';
+import Image from 'next/image';
+
 import { FaGithub } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import { SearchButton } from 'components/Shell/SearchButton';
 import { ThemeToggle } from 'components/ThemeToggle';
 import { clsx } from 'clsx';
-import Image from 'next/image';
 import { getBreadcrumbs } from 'components/Title';
-import {
-  EllipsisVerticalIcon,
-  ChevronRightIcon
-} from '@heroicons/react/24/outline';
-
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
-
-import lightIcon from 'public/images/Light-Icon.svg';
-import darkIcon from 'public/images/Dark-Icon.svg';
+import { EllipsisVerticalIcon } from '@heroicons/react/24/outline';
+import { XMarkIcon } from '@heroicons/react/20/solid';
 import { useTheme } from 'next-themes';
 import { Disclosure, Dialog, Transition } from '@headlessui/react';
 import { useVersionContext } from 'context/state';
-import { Breadcrumb } from 'components/Breadcrumbs';
+import { MobileSideNav } from './SideNav';
 
 const navigationItems = [
   {
@@ -56,16 +52,18 @@ const Logo = () => {
   }
 
   return (
-    <div className="ml-6 mr-0 mt-4 mb-3 flex items-center justify-start gap-1 pb-4">
-      <Image
-        src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
-        height={30}
-        alt="ZeroC Logo"
-      />
-      <div className="pt-[8px] text-xl font-bold text-black dark:text-white">
-        Docs
+    <Link href="/">
+      <div className="ml-6 mr-0 mt-4 mb-3 flex items-center justify-start gap-1 pb-4">
+        <Image
+          src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
+          height={30}
+          alt="ZeroC Logo"
+        />
+        <div className="pt-[8px] text-xl font-bold text-black dark:text-white">
+          Docs
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -78,10 +76,6 @@ export const TopNav = () => {
 
   function closeModal() {
     setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
   }
 
   function linkStyle(pathname: string, href: string) {
@@ -143,7 +137,7 @@ export const TopNav = () => {
             <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} />
           </div>
         </Disclosure>
-        <MobileSideNav breadcrumbs={breadcrumbs} />
+        <MobileSideNav breadcrumbs={breadcrumbs} path={pathname} />
       </div>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -188,13 +182,13 @@ export const TopNav = () => {
                       aria-hidden="true"
                     />
                   </button>
-                  <ul className="m-7 space-y-7 ">
+                  <ul className="m-7 my-4">
                     {navigationItems.map((item) => (
-                      <li key={item.name}>
+                      <li key={item.name} className="group py-4">
                         <Link
                           href={item.href}
                           className={clsx(
-                            'overflow-hidden whitespace-nowrap font-semibold hover:text-zinc-900 dark:text-slate-200 dark:hover:text-white'
+                            'overflow-hidden whitespace-nowrap font-semibold group-hover:text-zinc-900 dark:text-slate-200 dark:hover:text-white'
                           )}
                           onClick={closeModal}
                         >
@@ -241,40 +235,3 @@ const MobileMenu = ({ isOpen, setIsOpen }: MobileMenuProps) => {
     </div>
   );
 };
-
-interface MobileSideNavProps {
-  breadcrumbs: Breadcrumb[];
-}
-
-function MobileSideNav({ breadcrumbs }: MobileSideNavProps) {
-  return (
-    <div className="flex items-center justify-start border-t border-lightBorder p-4 text-sm dark:border-darkBorder lg:hidden">
-      <button>
-        <Bars3Icon
-          className="ml-1 mr-4 block h-5 w-5 text-slate-500 dark:text-white/80"
-          aria-hidden="true"
-        />
-      </button>
-      {breadcrumbs.map((breadcrumb, index) => (
-        <div key={breadcrumb.href} className="flex items-center">
-          <Link
-            href={breadcrumb.href}
-            className={clsx(
-              index !== breadcrumbs.length - 1
-                ? 'text-slate-500 dark:text-white/80'
-                : 'font-semibold text-black dark:text-white'
-            )}
-          >
-            {breadcrumb.name}
-          </Link>
-          {index !== breadcrumbs.length - 1 && (
-            <ChevronRightIcon
-              className="mx-2 block h-4 w-4 text-slate-500 "
-              aria-hidden="true"
-            />
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}

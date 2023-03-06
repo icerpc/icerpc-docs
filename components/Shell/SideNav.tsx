@@ -1,12 +1,13 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
 import { SliceSelector } from '../SliceSelector';
 import { useVersionContext } from 'context/state';
 import clsx from 'clsx';
-
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
+import { Disclosure, Dialog, Transition } from '@headlessui/react';
 import { sideBarData, baseUrls } from 'data/side-bar-data';
 import {
   SideBarDivider,
@@ -16,11 +17,17 @@ import {
   isLink
 } from 'types';
 import { Divider } from 'components/Divider';
+import { Breadcrumb } from 'components/Breadcrumbs';
+import {
+  EllipsisVerticalIcon,
+  ChevronRightIcon
+} from '@heroicons/react/24/outline';
 
 function createListItem(
   router: NextRouter,
   link: SideBarLink | SideBarDivider,
-  noLeftPadding: Boolean = false
+  noLeftPadding: Boolean = false,
+  onClick: () => void = () => {}
 ): React.ReactElement {
   const style: React.CSSProperties = {
     textDecoration: 'none'
@@ -46,6 +53,7 @@ function createListItem(
         <Link
           href={link.path}
           className={`px-2 py-[7px] pl-0 text-sm  ${leftPadding} hover:text-zinc-900 dark:text-[#C4C7C5] dark:hover:text-white`}
+          onClick={onClick}
           style={
             isCurrentPage
               ? noLeftPadding
@@ -71,7 +79,8 @@ function createListItem(
 
 function transformSideBarData(
   router: NextRouter,
-  data: SideBarSourceType
+  data: SideBarSourceType,
+  onClick: () => void = () => {}
 ): React.ReactElement[] {
   if (isCategory(data)) {
     const category = data;
@@ -88,14 +97,16 @@ function transformSideBarData(
               key={category.title + '-list'}
               className="ml-[0.1rem] border-l-[1.5px] border-lightBorder pl-[0.1rem] dark:border-[#3D3D3D]"
             >
-              {category.links.map((link) => createListItem(router, link))}
+              {category.links.map((link) =>
+                createListItem(router, link, false, onClick)
+              )}
             </ul>
           </li>
         </ul>
       </li>
     ];
   } else if (isLink(data)) {
-    return [createListItem(router, data, true)];
+    return [createListItem(router, data, true, onClick)];
   } else {
     return [
       <div key={data.title} className="mr-4 py-2 text-sm uppercase text-black">
@@ -148,3 +159,132 @@ export const SideNav = ({ path }: SideNavProps) => {
     </div>
   );
 };
+
+interface MobileSideNavProps {
+  breadcrumbs: Breadcrumb[];
+  path: string;
+}
+
+export function MobileSideNav({ breadcrumbs, path }: MobileSideNavProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [data, setData] = useState<SideBarSourceType[]>([]);
+  const { version } = useVersionContext();
+  const router = useRouter();
+
+  let baseUrl = baseUrls.find((item) => path.startsWith(item))!;
+
+  useEffect(() => {
+    const links = sideBarData(baseUrl, version) ?? [];
+    setData(links);
+    return () => {
+      setData([]);
+    };
+  }, [setData, path, version, baseUrl]);
+
+  let cells = data.map((item) => {
+    return transformSideBarData(router, item, () => setIsOpen(false));
+  });
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  return (
+    <>
+      <div className="flex items-center justify-start border-t border-lightBorder p-4 text-sm dark:border-darkBorder lg:hidden">
+        <button>
+          <Bars3Icon
+            className="ml-1 mr-4 block h-5 w-5 text-slate-500 dark:text-white/80"
+            aria-hidden="true"
+            onClick={() => setIsOpen(!isOpen)}
+          />
+        </button>
+        {breadcrumbs.map((breadcrumb, index) => (
+          <div key={breadcrumb.href} className="flex items-center">
+            <Link
+              href={breadcrumb.href}
+              className={clsx(
+                index !== breadcrumbs.length - 1
+                  ? 'text-slate-500 dark:text-white/80'
+                  : 'font-semibold text-black dark:text-white'
+              )}
+            >
+              {breadcrumb.name}
+            </Link>
+            {index !== breadcrumbs.length - 1 && (
+              <ChevronRightIcon
+                className="mx-2 block h-4 w-4 text-slate-500 "
+                aria-hidden="true"
+              />
+            )}
+          </div>
+        ))}
+      </div>
+      <Transition appear show={isOpen} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200 delay-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black/40 " />
+          </Transition.Child>
+          <div className="fixed inset-0 overflow-y-auto">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="-left-[300px]"
+              enterTo="left-0"
+              leave="ease-in duration-200"
+              leaveFrom="left-0"
+              leaveTo="-left-[300px]"
+            >
+              <div
+                className={clsx(
+                  'fixed top-0 left-0 h-screen w-full max-w-[300px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
+                )}
+              >
+                <Dialog.Panel className="h-full w-full overflow-hidden rounded-r text-left align-middle text-sm font-bold shadow-xl transition-all">
+                  <div className="flex h-full w-full flex-col items-start">
+                    <button
+                      type="button"
+                      className={clsx(
+                        'group absolute right-0 mr-8 mt-4 items-center justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium',
+                        'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                      )}
+                      onClick={closeModal}
+                    >
+                      <XMarkIcon
+                        className="block h-5 w-5 group-hover:text-slate-500 dark:group-hover:text-slate-400"
+                        aria-hidden="true"
+                      />
+                    </button>
+
+                    {/* Nav */}
+                    <nav
+                      className={clsx(
+                        'block h-full w-full overflow-y-auto',
+                        'bg-none pr-3 pb-10 pl-6 pt-4',
+                        baseUrl == '/docs/slice' && 'mt-12'
+                      )}
+                    >
+                      <div className="pointer-events-none sticky top-0" />
+                      {baseUrl == '/docs/slice' && <SliceSelector />}
+                      <ul role="list" className="mx-2 mt-4">
+                        {cells}
+                      </ul>
+                    </nav>
+                  </div>
+                </Dialog.Panel>
+              </div>
+            </Transition.Child>
+          </div>
+        </Dialog>
+      </Transition>
+    </>
+  );
+}
