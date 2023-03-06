@@ -152,9 +152,7 @@ export const SideNav = ({ path }: SideNavProps) => {
       >
         <div className="pointer-events-none sticky top-0" />
         {baseUrl == '/docs/slice' && <SliceSelector />}
-        <ul role="list" className="mx-2 mt-4">
-          {cells}
-        </ul>
+        <ul className="mx-2 mt-4">{cells}</ul>
       </nav>
     </div>
   );
@@ -263,8 +261,6 @@ export function MobileSideNav({ breadcrumbs, path }: MobileSideNavProps) {
                         aria-hidden="true"
                       />
                     </button>
-
-                    {/* Nav */}
                     <nav
                       className={clsx(
                         'block h-full w-full overflow-y-auto',
@@ -274,9 +270,7 @@ export function MobileSideNav({ breadcrumbs, path }: MobileSideNavProps) {
                     >
                       <div className="pointer-events-none sticky top-0" />
                       {baseUrl == '/docs/slice' && <SliceSelector />}
-                      <ul role="list" className="mx-2 mt-4">
-                        {cells}
-                      </ul>
+                      <ul className="mx-2 mt-4">{cells}</ul>
                     </nav>
                   </div>
                 </Dialog.Panel>

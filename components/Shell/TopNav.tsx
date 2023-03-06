@@ -109,24 +109,24 @@ export const TopNav = () => {
             <div className=" hidden flex-1 items-start lg:flex">
               <SearchButton />
             </div>
-            <div className="mr-0 hidden h-1/2 items-center justify-end gap-2 space-x-8 lg:flex hover:[&>a]:text-primary">
+            <div className="mr-8 hidden h-1/2 items-center justify-end space-x-8 lg:flex hover:[&>a]:text-primary">
               {navigationItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={clsx(
-                    'overflow-hidden whitespace-nowrap',
+                    'overflow-hidden whitespace-nowrap px-2',
                     linkStyle(pathname, item.href)
                   )}
                 >
                   {item.name}
                 </Link>
               ))}
-              <div className="flex items-center gap-5 pr-8 pl-0">
-                <div className="left-1/2 h-[calc(65px-40px)] border-l-[1px] border-lightBorder dark:border-darkBorder" />
+              <div className="h-[calc(65px-40px)] border-l-[1px] border-lightBorder dark:border-darkBorder" />
+              <div className="flex items-center justify-center gap-2 ">
                 <ThemeToggle />
                 <a
-                  className="hover:text-primary dark:text-[rgba(255,255,255,0.8)]"
+                  className="p-4 hover:text-primary dark:text-[rgba(255,255,255,0.8)]"
                   href="https://github.com/zeroc-ice"
                   aria-label="Github"
                 >
@@ -197,7 +197,12 @@ export const TopNav = () => {
                       </li>
                     ))}
                   </ul>
-                  <div className="mx-1 flex flex-row items-center justify-between border-t border-lightBorder p-6 dark:border-darkBorder dark:text-slate-100 dark:hover:text-white">
+                  <div
+                    className={clsx(
+                      'mx-1 flex flex-row items-center justify-between border-t border-lightBorder py-2 pl-6 pr-2',
+                      'dark:border-darkBorder dark:text-slate-100 dark:hover:text-white'
+                    )}
+                  >
                     Switch theme:
                     <ThemeToggle />
                   </div>
