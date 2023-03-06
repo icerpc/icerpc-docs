@@ -20,7 +20,7 @@ An incoming response holds:
 ## Status code
 
 The status code represents the status of the [dispatch](../dispatch/dispatch-pipeline#definition) by the peer. It can be
-`Success` or a error. It's defined in Slice (LINK) as an enum:
+`Success` or an error. It's defined as a Slice enum (LINK):
 
 ```slice
 unchecked enum StatusCode : varuint62 {

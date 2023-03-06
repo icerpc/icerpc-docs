@@ -1,6 +1,6 @@
 ---
 title: Main features
-description: Learn about the main features of the Slice encoding.
+description: Learn about the main characteristics of the Slice encoding.
 ---
 
 {% title /%}
@@ -30,13 +30,18 @@ The Slice encoding is ultimately about encoding and decoding the payloads of Ice
 encoding could consider the protocol of the request / response (ice or icerpc) to be part of the contract between the
 encoder and the decoder.
 
-However, this would not work well when an intermediary mediates between the ice and icerpc protocol, as in:
+However, this approach would not work when an intermediary forwards requests across protocols, as in:
 
-Mermaid diagram
+```mermaid
+---
+title: A request forwarded across protocols
+---
+flowchart LR
+    client[ice client\nencodes request payload] -- ice request --> forwarder[forwarder\nforwards request payload as-is]
+    forwarder -- icerpc request --> server[icerpc server\ndecodes request payload]
+```
 
-In this case, the payload is encoded for an outgoing ice request but decoded from an incoming icerpc request.
-
-As a result, the Slice encoding protocol-independent.
+As a result, the Slice encoding is protocol-independent.
 
 ## Little-endian
 
@@ -45,9 +50,9 @@ When encoding integers and floating point numbers into multiple bytes, we have t
 
 All modern CPUs are little-endian, while the standard endianness for network protocols is big-endian.
 
-Slice is used to encode/decode application data into/from request and response payloads. This application data typically
-transits from one little-endian system to another little-endian system, so little-endian is simpler and perhaps slightly
-faster for this use-case: it allows us to keep the native endianness on most systems.
+We use Slice to encode/decode application data into/from request and response payloads. This application data typically
+transits from one little-endian system to another little-endian system, so little-endian is simpler and slightly faster
+for this use-case: it allows us to keep the native endianness on most systems.
 
 On the other hand, the ice and icerpc protocols define their frame headers and control frames using Slice; this usage
 favors big-endian ordering.

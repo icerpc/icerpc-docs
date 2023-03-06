@@ -104,16 +104,16 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/encoding/primitive-types-slice2`
       },
       {
+        title: 'Encoding-only constructs',
+        path: `${SLICE_BASE_URL}/encoding/encoding-only-constructs-slice2`
+      },
+      {
         title: 'Constructed types',
         path: `${SLICE_BASE_URL}/encoding/constructed-types-slice2`
       },
       {
         title: 'Collection types',
         path: `${SLICE_BASE_URL}/encoding/collection-types-slice2`
-      },
-      {
-        title: 'Bit sequence',
-        path: `${SLICE_BASE_URL}/encoding/bit-sequence`
       },
       {
         title: 'Operation arguments',
