@@ -21,7 +21,7 @@ An `uint16`, `uint32` or `uint64` is encoded on 2, 4, resp. 8 bytes.
 An `int16`, `int32`, or `int64` is encoded on 2, 4, resp. 8 bytes using two's complement representation.
 
 {% callout type="information" %}
-Two's complement is the native representation for signed integers in all modern programming languages and CPUs.
+Two's complement is the native representation for signed integers with all modern CPUs.
 {% /callout %}
 
 ## Floating-point number
@@ -36,7 +36,7 @@ A service address is encoded as a URI [string](#String).
 ## String
 
 A `string` is encoded using UTF-8 as a `varuint62` size followed by size UTF-8 bytes. These UTF-8 bytes don't include
-a [BOM](https://en.wikipedia.org/wiki/Byte_order_mark). For example, the string "1 μs" can be encoded as:
+a [BOM](https://en.wikipedia.org/wiki/Byte_order_mark). For example, the string "1 μs" is usually encoded as:
 ```
 0x14      # size 5 encoded on 1 byte
 0x31      # '1'
@@ -49,6 +49,11 @@ a [BOM](https://en.wikipedia.org/wiki/Byte_order_mark). For example, the string 
 The size represents the number of UTF-8 bytes in the encoded representation of the string, not the number of characters
 in this string.
 {% /callout %}
+
+The `varuint62` size is not necessarily encoded on a single byte. It can be encoded on 1, 2, 4 or 8 bytes. For example:
+```
+0x15 0x00  # size 5 encoded on 2 bytes
+```
 
 ## Variable-size integer
 

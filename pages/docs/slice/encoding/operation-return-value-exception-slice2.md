@@ -7,10 +7,11 @@ description: Learn how an operation's return value and exception is encoded with
 
 ## Status code
 
-The status code of a response determines the contents of the response payload. When the status code is `Success`,
-the payload contains the encoded return value. When the status code is `ApplicationError`, the payload contains the
-encoded Slice exception thrown by the implementation of the operation. For all other status codes, the payload is
-usually empty and the Slice engine does not attempt to decode this payload.
+The [status code](../../icerpc-core/invocation/incoming-response#status-code) of a response determines the contents of
+the response payload. When the status code is `Success`, the payload contains the encoded return value. When the status
+code is `ApplicationError`, the payload contains the encoded Slice exception thrown by the implementation of the
+operation. For all other status codes, the payload is usually empty and the Slice engine does not attempt to decode this
+payload.
 
 ## Payload of outgoing response (Success)
 
@@ -59,3 +60,8 @@ is encoded as a segment into the payload of an outgoing response with status cod
 This [segment](encoding-only-constructs-slice2#segment) contains only the encoded exception.
 
 The payload continuation of the outgoing response is empty in this situation.
+
+## Void optimization
+
+As an optimization, when an operation has no return value, this "void" return value can be encoded as an empty payload
+plus an empty payload continuation.

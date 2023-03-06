@@ -6,22 +6,24 @@ description: Learn how to encode structs, enums, exceptions and proxies with Sli
 {% title /%}
 
 ## Enum
-An enumerator is encoded as its associated numeric value, using the encoding of the parent enumeration's underlying
-type.
+
+An enumerator is encoded as its associated numeric value, using the encoding of the enumeration's underlying type.
 
 For example:
 ```slice
 enum Fruit : uint16 { Apple, Strawberry, Orange = 5 }
 ```
 
-A `Strawberry` is encoded as 1 in an uint16 (on 2 bytes), while a `Orange` is encoded as 5.
+A `Strawberry` is encoded like a uint16 with value 1 (on 2 bytes), while a `Orange` is encoded as 5.
 
 The encoding is the same for checked and unchecked enums.
 
 ## Exception
+
 An exception is encoded exactly like a non-compact [struct](#struct) with the same fields.
 
 ## Proxy
+
 A proxy is encoded as a [string](#string) that holds the proxy's service address.
 
 {% callout type="information" %}
@@ -29,9 +31,10 @@ The name of the proxy's interface is not encoded at all. Only the untyped servic
 {% /callout %}
 
 ## Struct
+
 A struct is encoded as:
-- a [bit sequence](../bit-sequence) with N bits, where N is the number of non-tagged fields with optional types in the
-structs, followed by
+- a [bit sequence](encoding-only-constructs-slice2#bit-sequence) with N bits, where N is the number of non-tagged
+fields with optional types in the structs, followed by
 - the non-tagged fields encoded in definition order, followed by
 - the tagged fields
 
@@ -57,8 +60,12 @@ encoded field value and size is a `varuint62` with the number of bytes in value.
 
 Finally, we mark the end of the tagged fields (and of the struct) with the "tag end marker", -1 encoded as a `varint32`.
 
-If a struct is marked `compact`, it has no tagged field and its encoded representation does not include the tag end
-marker. The encoding of a non-compact struct always includes the tag end marker byte, even it has no tagged field. This
+**Compact struct**
+
+If a struct is marked `compact`, it can't have any tagged field and its encoded representation does not include the tag
+end marker.
+
+The encoding of a non-compact struct always includes the tag end marker byte, even it has no tagged field. This
 is why a compact struct is slightly more compact than a non-compact struct.
 
 _Example: simple compact struct_

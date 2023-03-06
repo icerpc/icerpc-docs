@@ -51,8 +51,8 @@ When encoding integers and floating point numbers into multiple bytes, we have t
 All modern CPUs are little-endian, while the standard endianness for network protocols is big-endian.
 
 We use Slice to encode/decode application data into/from request and response payloads. This application data typically
-transits from one little-endian system to another little-endian system, so little-endian is simpler and perhaps slightly
-faster for this use-case: it allows us to keep the native endianness on most systems.
+transits from one little-endian system to another little-endian system, so little-endian is simpler and slightly faster
+for this use-case: it allows us to keep the native endianness on most systems.
 
 On the other hand, the ice and icerpc protocols define their frame headers and control frames using Slice; this usage
 favors big-endian ordering.
