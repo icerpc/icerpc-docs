@@ -74,14 +74,10 @@ export const TopNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { version } = useVersionContext();
   const pathname = useRouter().pathname;
-  const breadcrumbs = getBreadcrumbs(pathname, version);
+  const breadcrumbs = getBreadcrumbs(pathname, version) || [];
 
   function closeModal() {
     setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
   }
 
   function linkStyle(pathname: string, href: string) {
