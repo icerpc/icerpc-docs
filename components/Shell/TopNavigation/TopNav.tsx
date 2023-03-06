@@ -34,34 +34,6 @@ export const navigationItems = [
   }
 ];
 
-const Logo = () => {
-  const [mounted, setMounted] = useState(false);
-  const { resolvedTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
-  return (
-    <Link href="/">
-      <div className="ml-6 mr-0 mt-4 mb-3 flex items-center justify-start gap-1 pb-4">
-        <Image
-          src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
-          height={30}
-          alt="ZeroC Logo"
-        />
-        <div className="pt-[8px] text-xl font-bold text-black dark:text-white">
-          Docs
-        </div>
-      </div>
-    </Link>
-  );
-};
-
 export const TopNav = () => {
   const pathname = useRouter().pathname;
 
@@ -105,6 +77,34 @@ export const TopNav = () => {
       </div>
       <MobileSideNav pathname={pathname} />
     </div>
+  );
+};
+
+const Logo = () => {
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  return (
+    <Link href="/">
+      <div className="ml-6 mr-0 mt-4 mb-3 flex items-center justify-start gap-1 pb-4">
+        <Image
+          src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
+          height={30}
+          alt="ZeroC Logo"
+        />
+        <div className="pt-[8px] text-xl font-bold text-black dark:text-white">
+          Docs
+        </div>
+      </div>
+    </Link>
   );
 };
 
