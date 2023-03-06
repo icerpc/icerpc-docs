@@ -1,25 +1,36 @@
 ---
-title: Sequence
-description: Learn how to encode a sequence with Slice.
+title: Collection types
+description: Learn how to encode sequences and dictionaries with Slice.
 ---
 
 {% title /%}
 
-## Non-optional element type
+## Dictionary
+
+A dictionary with N entries is encoded like a [sequence](#sequence) with N elements where the element type is a
+[compact struct](struct-slice2#compact-struct):
+```slice
+compact struct Pair { key: Key, value: Value }
+```
+
+`Key` represents the dictionary's key type and `Value` the dictionary's value type. `Value` may be an optional type
+such as a `string?`.
+
+## Sequence with a non-optional element type
 
 A sequence of N elements with a non-optional element type T is encoded as a varuint62-encoded N followed by each element
 encoded in order.
 
-_Example 1_
+_Example: empty sequence_
 
 An empty sequence is encoded as:
 ```
 0x00: size = 0
 ```
 
-_Example 2_
+_Example: sequence of int32_
 
-A sequence of int32 with value 5, 32, 2 is encoded as:
+A sequence of `int32` with value 5, 32, 2 is encoded as:
 ```
 0x0c:                3 elements (varuint62 on 1 byte)
 0x05 0x00 0x00 0x00: 5 over 4 bytes in little-endian order
@@ -27,17 +38,17 @@ A sequence of int32 with value 5, 32, 2 is encoded as:
 0x02 0x00 0x00 0x00: 2 over 4 bytes in little-endian order
 ```
 
-## Non-optional element type
+## Sequence with an optional element type
 
 A sequence of N elements with a optional element type T? is encoded as a varuint62-encoded N followed by a
 [bit sequence](bit-sequence) with N bits, followed by each element with a value encoded in order.
 
-_Example 3_
+_Example: sequence of int32?_
 
 A sequence of `int32?` with value 5, no-value, 2, no-value is encoded as:
 ```
-0x10:              : 4 elements (varuint62 on 1 byte)
-00 00 01 01:       : bit sequence with positions 0 and 2 set
+0x10:                4 elements (varuint62 on 1 byte)
+0b00000101:          bit sequence with positions 0 and 2 set
 0x05 0x00 0x00 0x00: 5 over 4 bytes in little-endian order
 0x02 0x00 0x00 0x00: 2 over 4 bytes in little-endian order
 ```
