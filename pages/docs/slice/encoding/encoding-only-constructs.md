@@ -5,6 +5,8 @@ description: Learn about helper constructs used for the encoding of other constr
 
 {% title /%}
 
+TODO: slice2-only
+
 ## Bit sequence
 
 A bit sequence represents N bits, where N is a known number.

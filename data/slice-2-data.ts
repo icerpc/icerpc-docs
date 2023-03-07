@@ -109,19 +109,19 @@ export const slice2Data: SideBarSourceType[] = [
       },
       {
         title: 'Constructed types',
-        path: `${SLICE_BASE_URL}/encoding/constructed-types-slice2`
+        path: `${SLICE_BASE_URL}/encoding/constructed-types`
       },
       {
         title: 'Collection types',
-        path: `${SLICE_BASE_URL}/encoding/collection-types-slice2`
+        path: `${SLICE_BASE_URL}/encoding/collection-types`
       },
       {
         title: 'Operation arguments',
-        path: `${SLICE_BASE_URL}/encoding/operation-arguments-slice2`
+        path: `${SLICE_BASE_URL}/encoding/operation-arguments`
       },
       {
         title: 'Operation return value and exception',
-        path: `${SLICE_BASE_URL}/encoding/operation-return-value-exception-slice2`
+        path: `${SLICE_BASE_URL}/encoding/operation-return-value-exception`
       }
     ]
   },
