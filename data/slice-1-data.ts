@@ -8,7 +8,7 @@ export const slice1Data: SideBarSourceType[] = [
     path: `${SLICE_BASE_URL}`
   },
   {
-    title: 'Syntax',
+    title: 'Language reference',
     links: [
       {
         title: 'Lexical Rules',
@@ -25,16 +25,40 @@ export const slice1Data: SideBarSourceType[] = [
     ]
   },
   {
-    title: 'Slice1 Only',
+    title: 'Encoding reference',
     links: [
       {
-        title: 'Foo',
-        path: `${SLICE_BASE_URL}/slice1/foo/`
+        title: 'Main features',
+        path: `${SLICE_BASE_URL}/encoding/main-features`
+      },
+      {
+        title: 'Primitive types',
+        path: `${SLICE_BASE_URL}/encoding/primitive-types`
+      },
+      {
+        title: 'Encoding-only constructs',
+        path: `${SLICE_BASE_URL}/encoding/encoding-only-constructs`
+      },
+      {
+        title: 'Constructed types',
+        path: `${SLICE_BASE_URL}/encoding/constructed-types-slice2`
+      },
+      {
+        title: 'Collection types',
+        path: `${SLICE_BASE_URL}/encoding/collection-types-slice2`
+      },
+      {
+        title: 'Operation arguments',
+        path: `${SLICE_BASE_URL}/encoding/operation-arguments-slice2`
+      },
+      {
+        title: 'Operation return value and exception',
+        path: `${SLICE_BASE_URL}/encoding/operation-return-value-exception-slice2`
       }
     ]
   },
   {
-    title: 'Error Code Reference',
+    title: 'Compiler diagnostics',
     links: [
       {
         title: 'Errors',
