@@ -15,19 +15,21 @@ The Slice is a Interface Description Language (IDL) used to describe the structu
 and the operations that can be performed on it. It is a language and platform agnostic way to describe the flow
 of data in your application.
 
-{% slice-section version="Slice2" %}
+{% slice2 %}
+
 ## Slice2 only section
 
 You will only see me when Slice2 is selected
 
-{% /slice-section %}
+{% /slice2 %}
 
-{% slice-section version="Slice1" %}
+{% slice1 %}
+
 ## Slice1 only section
 
 You will only see me when Slice1 is selected
 
-{% /slice-section %}
+{% /slice1 %}
 
 
 ### Quick Links
