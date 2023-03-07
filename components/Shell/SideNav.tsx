@@ -158,10 +158,9 @@ export const SideNav = ({ path }: SideNavProps) => {
 
 interface MobileSideNavProps {
   pathname: string;
-  callback?: (version: string) => void;
 }
 
-export function MobileSideNav({ pathname, callback }: MobileSideNavProps) {
+export function MobileSideNav({ pathname }: MobileSideNavProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { version } = useVersionContext();
