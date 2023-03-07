@@ -44,19 +44,24 @@ const collectHeadings = (
     );
   };
 
-  return children
-    .filter((c) => versionFilter(c, version)) // Filter out nodes that don't match the version
-    .flatMap((c) => flattenNodes(c)) // Flatten the nodes
-    .filter((c) => isHeading(c.props))
-    .map((c) => {
-      const heading = c.props as Heading;
-      return {
-        title: heading.children,
-        id: heading.id,
-        level: heading.level
-      };
-    });
+  return (
+    (children instanceof Array &&
+      (children
+        .filter((c) => versionFilter(c, version)) // Filter out nodes that don't match the version
+        .flatMap((c) => flattenNodes(c)) // Flatten the nodes
+        .filter((c) => isHeading(c.props))
+        .map((c) => {
+          const heading = c.props as Heading;
+          return {
+            title: heading.children,
+            id: heading.id,
+            level: heading.level
+          };
+        }) as TOCItem[])) ||
+    []
+  );
 };
+
 export const Document = ({ children }: { children: ReactElement[] }) => {
   // Get the version
   const { version } = useVersionContext();
