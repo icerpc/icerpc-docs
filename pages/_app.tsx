@@ -2,46 +2,24 @@
 
 import React from 'react';
 import Head from 'next/head';
-import { AppWrapper } from 'context/state';
+import { AppWrapper, useVersionContext } from 'context/state';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js';
 
-import { SideNav, TOCItem, TableOfContents, TopNav } from 'components';
+import { SideNav, TopNav } from 'components';
 import 'components/prism-coldark.css';
 import '/public/globals.css';
 import clsx from 'clsx';
+import { SliceVersion } from 'types';
 
 const inter = Inter({ subsets: ['latin'] });
 const TITLE = 'TODO';
 const DESCRIPTION = 'TODO';
 
 export type MyAppProps = MarkdocNextJsPageProps;
-
-function collectHeadings(node: any, sections: TOCItem[] = []) {
-  if (node) {
-    if (node.name === 'Heading') {
-      const title = node.children[0];
-
-      if (typeof title === 'string') {
-        sections.push({
-          ...node.attributes,
-          title
-        });
-      }
-    }
-
-    if (node.children) {
-      for (const child of node.children) {
-        collectHeadings(child, sections);
-      }
-    }
-  }
-
-  return sections;
-}
 
 export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
   const { markdoc } = pageProps;
@@ -59,9 +37,6 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       description = markdoc.frontmatter.description;
     }
   }
-  const toc: TOCItem[] = pageProps.markdoc?.content
-    ? collectHeadings(pageProps.markdoc.content)
-    : [];
 
   return (
     <div>
@@ -80,14 +55,10 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
           <div className="mt-[7.5rem] flex flex-row justify-center lg:mt-[3.75rem]">
             <div className="flex grow flex-row justify-center ">
               {isDocs && <SideNav path={router.pathname} />}
-              <main
-                className={clsx(inter.className, ' w-full max-w-5xl')}
-                id="main"
-              >
+              <main className={clsx(inter.className, 'grow')} id="main">
                 <div id="skip-nav" />
                 <Component {...pageProps} />
               </main>
-              {isDocs && TableOfContents(toc)}
             </div>
           </div>
         </AppWrapper>

@@ -61,7 +61,7 @@ export const TopNav = () => {
                 ))}
               </ul>
             </nav>
-            <div className="ml-6 flex h-[30px] items-center border-l border-slate-200 pl-6 dark:border-slate-800">
+            <div className="ml-6 flex h-[30px] items-center border-l border-lightBorder pl-6 dark:border-darkBorder">
               <ThemeToggle />
               <a
                 className="p-4 hover:text-primary dark:text-[rgba(255,255,255,0.8)]"

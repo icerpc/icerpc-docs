@@ -11,11 +11,11 @@ import clsx from 'clsx';
 
 export type TOC = TOCItem[];
 
-export type TOCItem = {
+export interface TOCItem {
   id: string;
   title: string;
   level: number;
-};
+}
 
 const resolvePath = (pathName: string): string => {
   return ['/docs/getting-started', '/docs/rpc', '/docs/slice'].includes(

@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { Tag, nodes, Node, Config } from '@markdoc/markdoc';
+import { nodes } from '@markdoc/markdoc';
 import { Document } from 'components/Nodes/Document';
 
 export default {

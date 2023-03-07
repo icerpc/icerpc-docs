@@ -7,7 +7,7 @@ import { SliceSelector } from '../SliceSelector';
 import { useVersionContext } from 'context/state';
 import clsx from 'clsx';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
-import { Disclosure, Dialog, Transition } from '@headlessui/react';
+import { Dialog, Transition } from '@headlessui/react';
 import { sideBarData, baseUrls } from 'data/side-bar-data';
 import {
   SideBarDivider,
@@ -18,10 +18,7 @@ import {
 } from 'types';
 import { Divider } from 'components/Divider';
 import { Breadcrumb } from 'components/Breadcrumbs';
-import {
-  EllipsisVerticalIcon,
-  ChevronRightIcon
-} from '@heroicons/react/24/outline';
+import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { getBreadcrumbs } from 'components/Title';
 
 function createListItem(
@@ -161,9 +158,10 @@ export const SideNav = ({ path }: SideNavProps) => {
 
 interface MobileSideNavProps {
   pathname: string;
+  callback?: (version: string) => void;
 }
 
-export function MobileSideNav({ pathname }: MobileSideNavProps) {
+export function MobileSideNav({ pathname, callback }: MobileSideNavProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { version } = useVersionContext();
