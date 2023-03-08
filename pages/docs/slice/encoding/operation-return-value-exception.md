@@ -67,20 +67,21 @@ If the stream element type is fixed-size (e.g., an `int32`), the stream is encod
 without any demarcation.
 
 If the stream element type is variable-size (e.g., a `string` or an `int32?`), the stream is encoded as a series of
-segments, where each segment holds a whole number of encoded elements--at least 1 per segment. The segment's size
-corresponds to the number of bytes in the segment, not the number of streamed elements encoded in this segment.
+[segments](encoding-only-constructs-slice2#segment), where each segment holds a whole number of encoded elements--at
+least 1 per segment. The segment's size corresponds to the number of bytes in the segment, not the number of streamed
+elements encoded in this segment.
 {% /slice2 %}
 
-## Payload of outgoing response (ApplicationError)
+## Payload of an outgoing response (ApplicationError)
 
 {% slice1 %}
-When an operation implementation throws an exception specified in the operation's exception specification, this
+When an operation implementation throws an exception whose type matches the operation's exception specification, this
 exception is encoded into the payload of an outgoing response with status code `ApplicationError`.
 {% /slice1 %}
 
 {% slice2 %}
-When an operation implementation throws the exception specified in the operation's exception specification, this
-exception is encoded as a segment into the payload of an outgoing response with status code `ApplicationError`.
+When an operation implementation throws an exception whose type matches the operation's exception specification, this
+exception is encoded inside a segment into the payload of an outgoing response with status code `ApplicationError`.
 
 This [segment](encoding-only-constructs-slice2#segment) contains only the encoded exception.
 
@@ -88,8 +89,8 @@ The payload continuation of the outgoing response is empty in this situation.
 
 ## Void optimization
 
-As an optimization, when an operation has no return value, this "void" return value can be encoded as an empty payload
-plus an empty payload continuation.
+As an optimization, when an operation has no return value, a "void" return value can be encoded as an empty payload and
+an empty payload continuation.
 {% /slice2 %}
 
 {% slice1 %}

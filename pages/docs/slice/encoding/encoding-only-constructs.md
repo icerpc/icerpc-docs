@@ -1,6 +1,6 @@
 ---
 title: Encoding-only constructs
-description: Learn about helper constructs used for the encoding of other constructs.
+description: Learn about helper constructs used to encode other constructs.
 ---
 
 {% title /%}
@@ -21,10 +21,10 @@ When the tag number is 30 or greater, a tag record is encoded as:
 - the tag number encoded as a [variable-length size](#variable-length-size)
 - the tagged value; its encoding depends on the tag type (see below)
 
-A leading byte with value 0xFF is reserved as the "tag end marker". The tag end marker is used when encoding fields (to
-mark the end of a slice); it's not used when encoding the arguments or return value of an operation.
+A leading byte with value 0xFF is reserved as the "tag end marker". The tag end marker is used when encoding fields, to
+mark the end of a slice; it's not used when encoding the arguments or return value of an operation.
 
-The tag type (encoded on 3 bits) depends on the type of the tagged element, and determines how the tagged value is
+The tag type is encoded on 3 bits and depends on the type of the tagged element, and determines how the tagged value is
 encoded.
 
 | Tag type name | Tag type value | Tagged value encoding                                            | Applies to       |
@@ -45,14 +45,13 @@ same purpose (know how many bytes to skip during decoding when we don't know the
 ## Variable-length size
 
 A variable-length size is a non-negative integer encoded on 1 or 5 bytes. Its range is 0 to 2^31 - 1 inclusive. As its
-name suggests, it is often used to represent a size. The Slice1 encoding often encodes sizes and other non-negative
-integers as a variable-length size.
+name suggests, it is often used to represent a size.
 
 A value between 0 and 254 can be encoded on 1 byte or 5 bytes. A value between 255 and 2^31 - 1 is always encoded using
 5 bytes.
 
-With the 1-byte encoding, the byte holds the value as-is. With the 5-byte encoding, the first byte is set to 255 and the
-remaining 4 bytes hold the value encoded as an int32.
+When encoding on a single byte, the byte holds the value as-is. With the 5-byte encoding, the first byte is set to 255
+and the remaining 4 bytes hold the value encoded as an int32.
 
 In general, a Slice encoder should encode a value on a single byte when this value is 254 or less. It's however ok for
 a Slice encoder to encode a small value on 5 bytes; a Slice decoder must decode such a value properly. For example, `7`
@@ -92,5 +91,4 @@ bit sequence associated with `Contact` are unused and must be unset.
 ## Segment
 
 A segment is a `varuint62` size followed by size bytes, just like a `sequence<uint8>`.
-
 {% /slice2 %}

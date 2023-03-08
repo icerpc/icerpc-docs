@@ -12,21 +12,21 @@ A `bool` is encoded on a single byte, where 0 means `false` and 1 means `true`. 
 ## Fixed-size integer
 
 {% slice1 %}
-| Type  | Encoded on N bytes (little-endian when N > 1) |
-|-------|----------------------------------------------|
-| uint8 | 1                                            |
-| int16 | 2                                            |
-| int32 | 4                                            |
-| int64 | 8                                            |
+| Type  | Encoded on N bytes |
+|-------|--------------------|
+| uint8 | 1                  |
+| int16 | 2                  |
+| int32 | 4                  |
+| int64 | 8                  |
 {% /slice1 %}
 
 {% slice2 %}
-| Type          | Encoded on N bytes (little-endian when N > 1) |
-|---------------|----------------------------------------------|
-| int8, uint8   | 1                                            |
-| int16, uint16 | 2                                            |
-| int32, uint32 | 4                                            |
-| int64, uint64 | 8                                            |
+| Type          | Encoded on N bytes |
+|---------------|--------------------|
+| int8, uint8   | 1                  |
+| int16, uint16 | 2                  |
+| int32, uint32 | 4                  |
+| int64, uint64 | 8                  |
 {% /slice2 %}
 
 The encoding of all signed integers uses [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement), the
