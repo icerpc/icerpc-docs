@@ -36,6 +36,10 @@ export const slice1Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/encoding/primitive-types`
       },
       {
+        title: 'Encoding-only constructs',
+        path: `${SLICE_BASE_URL}/encoding/encoding-only-constructs`
+      },
+      {
         title: 'Constructed types',
         path: `${SLICE_BASE_URL}/encoding/constructed-types`
       },

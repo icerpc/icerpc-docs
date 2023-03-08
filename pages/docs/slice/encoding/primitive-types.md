@@ -11,26 +11,26 @@ A `bool` is encoded on a single byte, where 0 means `false` and 1 means `true`. 
 
 ## Fixed-size integer
 
-{% slice-section version="Slice1" %}
-| Type  | Encode on N bytes (little-endian when N > 1) |
+{% slice1 %}
+| Type  | Encoded on N bytes (little-endian when N > 1) |
 |-------|----------------------------------------------|
 | uint8 | 1                                            |
 | int16 | 2                                            |
 | int32 | 4                                            |
 | int64 | 8                                            |
-{% /slice-section %}
+{% /slice1 %}
 
-{% slice-section version="Slice2" %}
-| Type          | Encode on N bytes (little-endian when N > 1) |
+{% slice2 %}
+| Type          | Encoded on N bytes (little-endian when N > 1) |
 |---------------|----------------------------------------------|
 | int8, uint8   | 1                                            |
 | int16, uint16 | 2                                            |
 | int32, uint32 | 4                                            |
 | int64, uint64 | 8                                            |
-{% /slice-section %}
+{% /slice2 %}
 
-All signed integers are encoded using [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement). Two's
-complement is the native representation on all modern CPUs.
+The encoding of all signed integers uses [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement), the
+standard representation for signed integers.
 
 ## Floating-point number
 
@@ -39,7 +39,7 @@ A `float32` or `float64` is encoded on 4 resp. 8 bytes using the binary32 resp. 
 
 ## ServiceAddress
 
-{% slice-section version="Slice1" %}
+{% slice1 %}
 The encoding of a service address with Slice1 is somewhat complex because Ice does not use URIs to represent service
 addresses (called proxies in Ice) or server addresses (called endpoints in Ice).
 
@@ -68,23 +68,23 @@ A transport using transport code Uri encodes its server addresses as URI strings
 
 TODO: it would make sense to move this information (and add much more to it) to the "IceRPC for Ice developers" section,
 and include a link to this section.
-{% /slice-section %}
+{% /slice1 %}
 
-{% slice-section version="Slice2" %}
+{% slice2 %}
 A service address is encoded as a URI [string](#String).
-{% /slice-section %}
+{% /slice2 %}
 
 ## String
 
-{% slice-section version="Slice1" %}
-A `string` is encoded using UTF-8 as a [variable-length size](#variable-length-size) followed by size UTF-8 bytes. These
-UTF-8 bytes don't include a [BOM](https://en.wikipedia.org/wiki/Byte_order_mark). For example, the string "1 μs" is
-usually encoded as:
+{% slice1 %}
+A `string` is encoded using UTF-8 as a [variable-length size](encoding-only-constructs#variable-length-size) followed
+by size UTF-8 bytes. These UTF-8 bytes don't include a [BOM](https://en.wikipedia.org/wiki/Byte_order_mark). For
+example, the string "1 μs" is usually encoded as:
 ```
 0x05      # size 5 encoded on 1 byte
 0x31      # '1'
 0x20      # ' '
-0xce 0xbc # 'μ'
+0xCE 0xBC # 'μ'
 0x73      # 's'
 ```
 
@@ -92,16 +92,16 @@ The size is not necessarily encoded on a single byte. It can be encoded on 5 byt
 ```
 0xFF 0x05 0x00 0x00 0x00 # size 5 encoded on 5 bytes
 ```
-{% /slice-section %}
+{% /slice1 %}
 
-{% slice-section version="Slice2" %}
+{% slice2 %}
 A `string` is encoded using UTF-8 as a `varuint62` size followed by size UTF-8 bytes. These UTF-8 bytes don't include
 a [BOM](https://en.wikipedia.org/wiki/Byte_order_mark). For example, the string "1 μs" is usually encoded as:
 ```
 0x14      # size 5 encoded on 1 byte
 0x31      # '1'
 0x20      # ' '
-0xce 0xbc # 'μ'
+0xCE 0xBC # 'μ'
 0x73      # 's'
 ```
 
@@ -109,33 +109,14 @@ The `varuint62` size is not necessarily encoded on a single byte. It can be enco
 ```
 0x15 0x00  # size 5 encoded on 2 bytes
 ```
-{% /slice-section %}
+{% /slice2 %}
 
 {% callout type="information" %}
 The size represents the number of UTF-8 bytes in the encoded representation of the string, not the number of characters
 in this string.
 {% /callout %}
 
-{% slice-section version="Slice1" %}
-## Variable-length size
-
-A variable-length size is a non-negative integer encoded on 1 or 5 bytes. Its range is 0 to 2^31 - 1 inclusive. As its
-name suggests, it is often used to represent a size. Strictly speaking, it's not a primitive type because there is no
-corresponding Slice language construct. The Slice1 encoding often encodes sizes and other non-negative integers using
-this variable-length size "primitive".
-
-A value between 0 and 254 can be encoded on 1 byte or 5 bytes. A value between 255 and 2^31 - 1 is always encoded using
-5 bytes.
-
-With the 1-byte encoding, the byte holds the value as-is. With the 5-byte encoding, the first byte is set to 255 and the
-remaining 4 bytes hold the value encoded as an int32.
-
-In general, a Slice encoder should encode a value on a single byte when this value is 254 or less. It's however ok for
-a Slice encoder to encode a small value on 5 bytes; a Slice decoder must decode such a value properly. For example, `7`
-is usually encoded on a single byte but can also be encoded on 5 bytes.
-{% /slice-section %}
-
-{% slice-section version="Slice2" %}
+{% slice2 %}
 ## Variable-size integer
 
 A `varint32`, `varuint32`, `varint62`, `varuint62` is encoded on 1, 2, 4 or 8 bytes. The least significant 2 bits of the
@@ -172,4 +153,4 @@ The encoding of varuint62 is identical to the encoding of variable-length intege
 (QUIC is big-endian, Slice is little-endian).
 {% /callout %}
 
-{% /slice-section %}
+{% /slice2 %}
