@@ -13,6 +13,7 @@ import {
 import { Divider } from 'components/Divider';
 import { SliceVersion } from 'types';
 import { VersionSection } from 'components/SliceVersionSection';
+import { Title } from 'components/Title';
 
 type Heading = {
   level: number;
@@ -62,23 +63,26 @@ const collectHeadings = (
   );
 };
 
-export const Document = ({
-  children,
-  encoding
-}: {
-  children: ReactElement[];
-  encoding?: SliceVersion;
-}) => {
-  // Get the version
-  const { version } = useVersionContext();
-  // Get the data for the next and previous links
+const getOtherSliceVersion = (sliceVersion: SliceVersion): SliceVersion => {
+  switch (sliceVersion) {
+    case SliceVersion.Slice1:
+      return SliceVersion.Slice2;
+    case SliceVersion.Slice2:
+      return SliceVersion.Slice1;
+  }
+};
 
+interface Props {
+  children: ReactElement[];
+  title: string;
+  description: string;
+  encoding?: SliceVersion;
+}
+
+export const Document = ({ children, title, description, encoding }: Props) => {
+  const { version } = useVersionContext();
   const router = useRouter();
   const path = router.asPath;
-
-  if (encoding && encoding !== version) {
-    router.push('/docs/slice');
-  }
 
   const isDocs = path.startsWith('/docs');
   const toc = collectHeadings(children, version);
@@ -86,15 +90,37 @@ export const Document = ({
   return (
     <div className="flex shrink flex-row justify-center overflow-y-clip">
       <article className="mx-6 mt-10 flex max-w-[52rem] flex-col justify-center md:mx-10 lg:mx-20">
-        {children}
-        {isDocs && (
+        {encoding ? (
           <>
-            <PageHistory path={path} version={version} />
-            <Divider />
-            <Feedback />
+            <VersionSection version={encoding}>{children}</VersionSection>
+            <VersionSection version={getOtherSliceVersion(encoding)}>
+              {/* A container div that fills the full width and height of parent */}
+              <div className="h-full w-full">
+                <Title
+                  title={title}
+                  description={description}
+                  encoding={encoding}
+                />
+
+                <h1 className="mt-20 text-2xl font-extrabold text-[#333333]">
+                  This page is not available in this version of the Slice
+                  documentation
+                </h1>
+                <Divider />
+                <h2 className="my-3 text-sm text-[var(--text-color-secondary)]">
+                  This page is only available in the{' '}
+                  {encoding == SliceVersion.Slice2 ? 'Slice 2' : 'Slice 1'}{' '}
+                  version of the documentation.
+                </h2>
+              </div>
+            </VersionSection>
           </>
+        ) : (
+          <>{children}</>
         )}
+        <PageHistory path={path} version={version} />
         <Divider />
+        <Feedback />
         {/* <Footer /> */}
       </article>
       {isDocs && TableOfContents(toc)}

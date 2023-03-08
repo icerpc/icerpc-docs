@@ -28,7 +28,7 @@ export const SliceSelector = ({ encoding }: Props) => {
     setSelectedIndex(index);
     if (encoding != sliceVersions[index]) {
       // If the encoding is different from the version, we need to update the URL
-      router.push('/docs/slice');
+      //router.push('/docs/slice');
     }
   }
 

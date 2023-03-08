@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Head from 'next/head';
-import { AppWrapper, useVersionContext } from 'context/state';
+import { AppWrapper } from 'context/state';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/router';

@@ -8,7 +8,13 @@
   ],
   "rules": {
     "import/no-anonymous-default-export": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   },
   "plugins": ["tailwindcss", "prettier", "jsx-a11y"]
 }

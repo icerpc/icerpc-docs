@@ -10,6 +10,7 @@ interface Props {
 }
 
 export const VersionSection = ({ version: sliceVersion, children }: Props) => {
+  console.log('Rendering VersionSection', sliceVersion);
   if (!Object.values(SliceVersion).includes(sliceVersion)) {
     throw new Error(
       `Invalid slice version '${sliceVersion}'. The version must be one of the following options: ${Object.values(
@@ -32,5 +33,5 @@ export const VersionSection = ({ version: sliceVersion, children }: Props) => {
     }
   }, [version]);
 
-  return sliceVersion == currentTab ? children : null;
+  return sliceVersion == currentTab ? <>{children}</> : null;
 };
