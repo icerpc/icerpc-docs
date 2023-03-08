@@ -31,6 +31,10 @@ export const navigationItems = [
   {
     name: 'Slice',
     href: '/docs/slice'
+  },
+  {
+    name: 'IceRPC for Ice users',
+    href: '/docs/icerpc-for-ice-users'
   }
 ];
 
