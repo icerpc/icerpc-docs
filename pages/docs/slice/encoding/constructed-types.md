@@ -8,11 +8,15 @@ description: Learn how to encode structs, enums, exceptions and proxies with Sli
 {% slice1 %}
 ## Class
 
-The class encoding is complex and described only in the
+The class encoding is complex and stateful. Since a class instance can point to another class instance (or even itself)
+and bring this instance into the encoded byte stream, the class encoding requires an indexing system and a scope, namely
+the payload of a request or a response.
+
+The class encoding is described in the
 [Ice manual](https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding/ice-encoding/data-encoding-for-classes). Slice1
 corresponds to encoding version 1.1 in the Ice manual.
 
-IceRPC encodes classes in compact format by default, just like Ice. You can change this format with the `format`
+IceRPC encodes classes in the compact format by default, just like Ice. You can change this format with the `format`
 attribute. IceRPC can decode classes in any format.
 
 During decoding, IceRPC considers all classes that use the sliced format to be fully
@@ -56,9 +60,8 @@ The encoding is the same for checked and unchecked enums.
 ## Exception
 
 {% slice1 %}
-An exception is encoded like a [class](#class) with the same fields.
-
-IceRPC always encodes exceptions in sliced format; it can decode exceptions in any format.
+An exception is encoded like a [class](#class) with the same fields. IceRPC always encodes exceptions in sliced format;
+it can decode exceptions in any format.
 
 Exceptions are not [preserved](https://doc.zeroc.com/ice/3.7/client-server-features/slicing-values-and-exceptions#id-.SlicingValuesandExceptionsv3.7-PreservingSlices)
 during decoding: if IceRPC encounters a slice it doesn't know while decoding a sliced-format exception, this slice
@@ -66,7 +69,7 @@ is dropped.
 {% /slice1 %}
 
 {% slice2 %}
-An exception is encoded exactly like a non-compact [struct](#struct) with the same fields.
+An exception is encoded exactly like a [struct](#struct) with the same fields.
 {% /slice2 %}
 
 ## Proxy
@@ -119,11 +122,6 @@ Each non-tagged field is encoded as follows:
     - otherwise, make sure the corresponding bit in the bit sequence is unset and don't encode anything else for this
       field.
 
-{% callout type="information" %}
-The name of the struct and the name of the struct's fields are not encoded at all. As a result, changing these names
-does not break the "on-the-wire" contract.
-{% /callout %}
-
 The tagged fields of a struct are encoded in tag order (not in definition order); the field with the lowest tag number
 is encoded first. For each tagged field:
 - if the field value is not set, don't encode anything
@@ -138,8 +136,13 @@ Finally, we mark the end of the tagged fields (and the end of the struct) with t
 If a struct is marked `compact`, it cannot have any tagged field and its encoded representation does not include the tag
 end marker.
 
-The encoding of a non-compact struct always includes the tag end marker byte, even it has no tagged field. This is why a
-compact struct is slightly more compact than a non-compact struct.
+The encoding of a regular (non-compact) struct always includes the tag end marker byte, even when it has no tagged
+field. This is why a compact struct is slightly more compact than a regular struct.
+
+{% callout type="information" %}
+The name of the struct and the name of the struct's fields are not encoded at all. As a result, changing these names
+does not break the "on-the-wire" contract.
+{% /callout %}
 
 _Example: simple compact struct_
 
@@ -153,7 +156,7 @@ A point x = 5, y = 32 is encoded as follows:
 0x20 0x00 0x00 0x00: y's value (32 on 4 bytes in little-endian order)
 ```
 
-_Example: compact struct with bit sequence_
+_Example: compact struct with a bit sequence_
 ```slice
 compact struct Contact {
   id: int32
@@ -170,7 +173,7 @@ The contact id = 5, name = not set, age = 42 is encoded as:
 0x2A:                age (42 encoded on a single byte)
 ```
 
-_Example: simple non-compact struct_
+_Example: simple struct_
 
 ```slice
 struct Point { x: int32, y: in32 }
