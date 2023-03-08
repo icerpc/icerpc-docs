@@ -95,11 +95,11 @@ export const rpcCoreData: SideBarSourceType[] = [
     title: 'Advanced topics'
   },
   {
-    title: 'Building blocks',
+    title: 'Customization',
     links: [
       {
         title: 'Protocol connection',
-        path: `${RPC_CORE_BASE_URL}/building-blocks/protocol-connection`
+        path: `${RPC_CORE_BASE_URL}/customization/protocol-connection`
       }
     ]
   },
