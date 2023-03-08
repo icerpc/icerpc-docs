@@ -7,17 +7,19 @@ description: Learn how to write an interceptor and how to install an interceptor
 
 ## Definition
 
-Interceptors are an extension mechanism that allow customizing the invocation pipeline, they are typically used to
-implement cross-cutting requirements like logging, authorization, tracing, etc.
+Interceptors allow applications to customize the invocation pipeline, they are typically used to implement cross-cutting
+requirements like logging, authorization, tracing, etc.
 
-Under the hood an interceptor is just an [invoker](../invocation-pipeline#the-invoker-abstraction) implementation that
-holds another invoker ("next") and calls `invoke` on this next invoker as part of the implementation of its own `invoke`
-method. This next invoker can be a `ClientConnection`, a connection, another interceptor, or some other kind of invoker,
-it doesn't matter.
+An interceptor is just an [invoker](../invocation-pipeline#the-invoker-abstraction) implementation that holds another
+invoker ("next") and calls `invoke` on this next invoker as part of the implementation of its own `invoke` method. This
+next invoker can be a `ClientConnection`, a connection, another interceptor, or some other kind of invoker, it doesn't
+matter.
 
-An interceptor can include logic before calling `invoke` on the next invoker (before the request is sent) and after
-calling `invoke` on the next invoker (after it receives the response). An interceptor can also short-circuit the
-invocation pipeline by throwing an exception or returning a cached response.
+An interceptor can:
+ - Include logic before calling `invoke` on the next invoker (before the request is sent).
+ - Include logic after calling `invoke` on the next invoker (after it receives the response).
+ - Short-circuit the invocation pipeline by throwing an exception.
+ - Return a cached response.
 
 For example, a simple C# interceptor could look like:
 
@@ -40,8 +42,7 @@ public class SimpleInterceptor : IInvoker
 
 ## Installing an interceptor
 
-In C#, you can create an invocation pipeline by creating an instance of class `Pipeline` and then install the
-interceptors calling `Use`.
+In C#, you install an interceptor by calling the `Pipeline.Use` method.
 
 For example:
 
@@ -49,8 +50,8 @@ For example:
 Pipeline pipeline = pipeline.Use(next => new SimpleInterceptor(next)).Into(clientConnection);
 ```
 
-To simplify the creation of the invocation pipeline it is common to provide and `Use{Name}` extension methods to install
-the interceptor on the pipeline.
+To simplify the installation of interceptors, it is common to provide an `Use{Name}` extension method that installs the
+interceptor.
 
 For example:
 
