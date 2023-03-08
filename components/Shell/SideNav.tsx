@@ -13,6 +13,7 @@ import {
   SideBarDivider,
   SideBarLink,
   SideBarSourceType,
+  SliceVersion,
   isCategory,
   isLink
 } from 'types';
@@ -66,7 +67,7 @@ function createListItem(
     );
   } else {
     return (
-      <div className={`${leftPadding} mb-3 mt-2 pr-2 pl-0`}>
+      <div className={`${leftPadding} mb-3 mt-2 pr-2 pl-0`} key={link.title}>
         <h2 className="my-4 text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:text-white dark:decoration-darkBorder">
           {link.title}
         </h2>
@@ -118,15 +119,15 @@ function transformSideBarData(
 
 interface SideNavProps {
   path: string;
+  encoding?: SliceVersion;
 }
 
-export const SideNav = ({ path }: SideNavProps) => {
+export const SideNav = ({ path, encoding }: SideNavProps) => {
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { version } = useVersionContext();
   const router = useRouter();
 
   let baseUrl = baseUrls.find((item) => path.startsWith(item))!;
-
   useEffect(() => {
     const links = sideBarData(baseUrl, version) ?? [];
     setData(links);
@@ -149,7 +150,7 @@ export const SideNav = ({ path }: SideNavProps) => {
         )}
       >
         <div className="pointer-events-none sticky top-0" />
-        {baseUrl == '/docs/slice' && <SliceSelector />}
+        {baseUrl == '/docs/slice' && <SliceSelector encoding={encoding} />}
         <ul className="mx-2 mt-4">{cells}</ul>
       </nav>
     </div>
@@ -158,9 +159,10 @@ export const SideNav = ({ path }: SideNavProps) => {
 
 interface MobileSideNavProps {
   pathname: string;
+  encoding?: SliceVersion;
 }
 
-export function MobileSideNav({ pathname }: MobileSideNavProps) {
+export function MobileSideNav({ pathname, encoding }: MobileSideNavProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { version } = useVersionContext();
@@ -268,7 +270,9 @@ export function MobileSideNav({ pathname }: MobileSideNavProps) {
                         )}
                       >
                         <div className="pointer-events-none sticky top-0" />
-                        {baseUrl == '/docs/slice' && <SliceSelector />}
+                        {baseUrl == '/docs/slice' && (
+                          <SliceSelector encoding={encoding} />
+                        )}
                         <ul className="mx-2 mt-4">{cells}</ul>
                       </nav>
                     </div>

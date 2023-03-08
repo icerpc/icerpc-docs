@@ -62,12 +62,24 @@ const collectHeadings = (
   );
 };
 
-export const Document = ({ children }: { children: ReactElement[] }) => {
+export const Document = ({
+  children,
+  encoding
+}: {
+  children: ReactElement[];
+  encoding?: SliceVersion;
+}) => {
   // Get the version
   const { version } = useVersionContext();
-
   // Get the data for the next and previous links
-  const path = useRouter().asPath;
+
+  const router = useRouter();
+  const path = router.asPath;
+
+  if (encoding && encoding !== version) {
+    router.push('/docs/slice');
+  }
+
   const isDocs = path.startsWith('/docs');
   const toc = collectHeadings(children, version);
 

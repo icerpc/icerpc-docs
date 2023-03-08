@@ -2,22 +2,34 @@
 
 import { Tab } from '@headlessui/react';
 import { useVersionContext } from 'context/state';
-import { sliceVersions } from 'types';
+import { SliceVersion, sliceVersions } from 'types';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(' ');
 };
 
-export const SliceSelector = () => {
+interface Props {
+  encoding?: SliceVersion;
+}
+
+export const SliceSelector = ({ encoding }: Props) => {
   const { version, setVersion } = useVersionContext();
+  const router = useRouter();
+
   const [selectedIndex, setSelectedIndex] = useState(
     sliceVersions.indexOf(version)
   );
 
   function onChange(index: number) {
+    console.log('onChange');
     setVersion(sliceVersions[index]);
     setSelectedIndex(index);
+    if (encoding != sliceVersions[index]) {
+      // If the encoding is different from the version, we need to update the URL
+      router.push('/docs/slice');
+    }
   }
 
   useEffect(() => {
