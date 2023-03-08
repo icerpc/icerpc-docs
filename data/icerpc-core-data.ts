@@ -27,74 +27,72 @@ export const rpcCoreData: SideBarSourceType[] = [
   {
     title: 'Invocation',
     links: [
-    {
-      title: 'Invocation pipeline',
-      path: `${RPC_CORE_BASE_URL}/invocation/invocation-pipeline`
-    },
-    {
-      title: 'Outgoing request',
-      path: `${RPC_CORE_BASE_URL}/invocation/outgoing-request`
-    },
-    {
-      title: 'Incoming response',
-      path: `${RPC_CORE_BASE_URL}/invocation/incoming-response`
-    },
-    {
-      title: 'Interceptor',
-      path: `${RPC_CORE_BASE_URL}/invocation/interceptor`
-    },
-    {
-      title: 'Service address',
-      path: `${RPC_CORE_BASE_URL}/invocation/service-address`
-    }
+      {
+        title: 'Invocation pipeline',
+        path: `${RPC_CORE_BASE_URL}/invocation/invocation-pipeline`
+      },
+      {
+        title: 'Outgoing request',
+        path: `${RPC_CORE_BASE_URL}/invocation/outgoing-request`
+      },
+      {
+        title: 'Incoming response',
+        path: `${RPC_CORE_BASE_URL}/invocation/incoming-response`
+      },
+      {
+        title: 'Interceptor',
+        path: `${RPC_CORE_BASE_URL}/invocation/interceptor`
+      },
+      {
+        title: 'Service address',
+        path: `${RPC_CORE_BASE_URL}/invocation/service-address`
+      }
     ]
   },
   {
     title: 'Dispatch',
     links: [
-    {
-      title: 'Dispatch pipeline',
-      path: `${RPC_CORE_BASE_URL}/dispatch/dispatch-pipeline`
-    },
-    {
-      title: 'Incoming request',
-      path: `${RPC_CORE_BASE_URL}/dispatch/incoming-request`
-    },
-    {
-      title: 'Outgoing response',
-      path: `${RPC_CORE_BASE_URL}/dispatch/outgoing-response`
-    },
-    {
-      title: 'Middleware',
-      path: `${RPC_CORE_BASE_URL}/dispatch/middleware`
-    },
-    {
-      title: 'Router',
-      path: `${RPC_CORE_BASE_URL}/dispatch/router`
-    }
+      {
+        title: 'Dispatch pipeline',
+        path: `${RPC_CORE_BASE_URL}/dispatch/dispatch-pipeline`
+      },
+      {
+        title: 'Incoming request',
+        path: `${RPC_CORE_BASE_URL}/dispatch/incoming-request`
+      },
+      {
+        title: 'Outgoing response',
+        path: `${RPC_CORE_BASE_URL}/dispatch/outgoing-response`
+      },
+      {
+        title: 'Middleware',
+        path: `${RPC_CORE_BASE_URL}/dispatch/middleware`
+      },
+      {
+        title: 'Router',
+        path: `${RPC_CORE_BASE_URL}/dispatch/router`
+      }
     ]
   },
   {
     title: 'Protocols and transports',
     links: [
-    {
-      title: 'icerpc and multiplexed transports',
-      path: `${RPC_CORE_BASE_URL}/protocols-and-transports/icerpc-multiplexed-transports`
-    },
-    {
-      title: 'ice and duplex transports',
-      path: `${RPC_CORE_BASE_URL}/protocols-and-transports/ice-duplex-transports`
-    },
-    {
-      title: 'Protocol compatibility',
-      path: `${RPC_CORE_BASE_URL}/protocols-and-transports/protocol-compatibility`
-    }
-  ]
+      {
+        title: 'icerpc and multiplexed transports',
+        path: `${RPC_CORE_BASE_URL}/protocols-and-transports/icerpc-multiplexed-transports`
+      },
+      {
+        title: 'ice and duplex transports',
+        path: `${RPC_CORE_BASE_URL}/protocols-and-transports/ice-duplex-transports`
+      },
+      {
+        title: 'Protocol compatibility',
+        path: `${RPC_CORE_BASE_URL}/protocols-and-transports/protocol-compatibility`
+      }
+    ]
   },
   {
-    title: 'Advanced topics',
-    links: [
-    ]
+    title: 'Advanced topics'
   },
   {
     title: 'Building blocks',

@@ -4,10 +4,10 @@ import React, { useEffect, ReactNode } from 'react';
 import { Platform } from 'types';
 import { usePlatformContext } from 'context/state';
 
-type Props = {
+interface Props {
   language: Platform;
   children: ReactNode;
-};
+}
 
 export const LanguageSection = ({ language, children }: Props) => {
   if (!Object.values(Platform).includes(language)) {

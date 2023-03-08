@@ -17,8 +17,9 @@ in the event the server application supports both ice and icerpc.
 ## Listening for both ice and icerpc connections
 
 A server application does not have to be ice-only or icerpc-only because it can easily create two servers:
- - one server for ice
- - another server for icerpc
+
+- one server for ice
+- another server for icerpc
 
 These two servers can share the same [dispatch pipeline](../dispatch/dispatch-pipeline). This way, the server
 application as a whole is reachable through ice and icerpc and provides the same services to all its clients.

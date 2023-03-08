@@ -6,14 +6,14 @@ import copy from 'copy-to-clipboard';
 import { LinkIcon } from '@heroicons/react/24/solid';
 import { Divider } from 'components/Divider';
 
-type Props = {
+interface Props {
   id?: string;
   level: 1 | 2 | 3 | 4;
   children: ReactNode;
   className?: string;
-};
+}
 
-export function Heading({ id = '', level = 1, children, className }: Props) {
+export function Heading({ id = '', level = 1, children }: Props) {
   const router = useRouter();
   const Component: any = `h${level}`;
   const isDocs = router.pathname.startsWith('/docs');

@@ -2,18 +2,18 @@
 
 import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { AppWrapper, useVersionContext } from 'context/state';
+import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
-import { Inter } from '@next/font/google';
-import { SideNav, TopNav } from 'components';
-import { AppWrapper } from 'context/state';
-import '/public/globals.css';
-import 'reactflow/dist/style.css';
-require('components/prism-coldark.css');
-
+import { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js';
-import { NextComponentType, NextPageContext } from 'next/types';
+
+import { SideNav, TopNav } from 'components';
+import 'components/prism-coldark.css';
+import '/public/globals.css';
+import clsx from 'clsx';
+import { SliceVersion } from 'types';
 
 const inter = Inter({ subsets: ['latin'] });
 const TITLE = 'TODO';
@@ -25,7 +25,6 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
   const { markdoc } = pageProps;
   const router = useRouter();
   const isDocs = router.asPath.startsWith('/docs');
-  const isLandingPage = router.pathname === '/';
 
   let title = TITLE;
   let description = DESCRIPTION;
@@ -38,6 +37,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
       description = markdoc.frontmatter.description;
     }
   }
+
   return (
     <div>
       <Head>
@@ -49,13 +49,16 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ThemeProvider attribute="class">
+      <ThemeProvider attribute="class" enableSystem={true}>
         <AppWrapper>
-          <div className="flex w-screen flex-row">
-            {isDocs && <SideNav path={router.pathname} />}
-            <div className="flex grow flex-col">
-              <TopNav />
-              <Body Component={Component} pageProps={pageProps} />
+          <TopNav />
+          <div className="mt-[7.5rem] flex flex-row justify-center lg:mt-[3.75rem]">
+            <div className="flex grow flex-row justify-center ">
+              {isDocs && <SideNav path={router.pathname} />}
+              <main className={clsx(inter.className, 'grow')} id="main">
+                <div id="skip-nav" />
+                <Component {...pageProps} />
+              </main>
             </div>
           </div>
         </AppWrapper>
@@ -63,19 +66,3 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
     </div>
   );
 }
-
-type BodyProps = {
-  Component: NextComponentType<NextPageContext, any, any>;
-  pageProps: MarkdocNextJsPageProps;
-};
-
-const Body = ({ Component, pageProps }: BodyProps) => {
-  return (
-    <div className={`px-6 lg:px-0`}>
-      <main className={inter.className} id="main">
-        <div id="skip-nav" />
-        <Component {...pageProps} />
-      </main>
-    </div>
-  );
-};

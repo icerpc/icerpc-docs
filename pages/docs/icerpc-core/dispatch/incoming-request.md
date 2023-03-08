@@ -11,10 +11,11 @@ The dispatch method of a [dispatch](dispatch-pipeline#the-dispatcher-abstraction
 incoming request is created by the connection when it receives a request from the peer.
 
 An incoming request holds:
- - the path of the target service
- - the name of the operation on this service
- - request [fields](#../invocation/outgoing-request#request-fields)
- - the [payload](#request-payload) of the request
+
+- the path of the target service
+- the name of the operation on this service
+- request [fields](../invocation/outgoing-request#request-fields)
+- the [payload](#request-payload) of the request
 
 In C#, an incoming request also holds [features](#request-features). These features are used for local communications
 with the dispatch pipeline, and within this pipeline.

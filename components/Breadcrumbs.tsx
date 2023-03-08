@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import React from 'react';
 
-type Props = {
+interface Props {
   breadcrumbs: Breadcrumb[];
-};
+}
 
 export interface Breadcrumb {
   name: string;

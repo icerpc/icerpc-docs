@@ -4,28 +4,45 @@ import { Breadcrumbs, Breadcrumb } from 'components/Breadcrumbs';
 import { useVersionContext } from 'context/state';
 import { baseUrls, currentNavItem, sideBarData } from 'data/side-bar-data';
 import { useRouter } from 'next/router';
-import { SideBarCategory, SideBarSourceType, isCategory } from 'types';
+import {
+  SideBarCategory,
+  SideBarLink,
+  SideBarSourceType,
+  SliceVersion,
+  isCategory,
+  isLink
+} from 'types';
 
-type Props = {
+interface Props {
   title: string;
   description: string;
-};
+}
 
 const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;
 };
 
-export const Title = ({ title, description }: Props) => {
-  const { version } = useVersionContext();
-  const path = useRouter().pathname;
+export const getBreadcrumbs = (path: string, version: SliceVersion) => {
   const baseUrl = baseUrls.find((item) => path.startsWith(item))!;
   const categories = sideBarData(baseUrl, version).filter((item) =>
     isCategory(item)
-  );
+  ) as SideBarCategory[];
 
-  let breadcrumbs: Breadcrumb[] = [];
+  // If path or baseUrl is undefined, return an empty array
+  if (!path || !baseUrl) {
+    return [];
+  }
 
-  breadcrumbs = [
+  if (path == '/') {
+    return [
+      {
+        name: 'Home',
+        href: '/'
+      }
+    ];
+  }
+
+  let breadcrumbs: Breadcrumb[] = [
     {
       name: currentNavItem(baseUrl),
       href: baseUrl
@@ -34,17 +51,26 @@ export const Title = ({ title, description }: Props) => {
 
   categories.forEach((data: SideBarSourceType) => {
     let category = data as SideBarCategory;
+    let links = category.links.filter(isLink);
     if (
-      category.links.find(
-        (link) => stripTrailingSlash(link.path) === stripTrailingSlash(path)
+      links.find(
+        (link: SideBarLink) =>
+          stripTrailingSlash(link.path) === stripTrailingSlash(path)
       )
     ) {
       breadcrumbs.push({
         name: category.title,
-        href: category.links[0].path
+        href: links[0].path
       });
     }
   });
+  return breadcrumbs;
+};
+
+export const Title = ({ title, description }: Props) => {
+  const { version } = useVersionContext();
+  const path = useRouter().pathname;
+  const breadcrumbs = getBreadcrumbs(path, version);
 
   return (
     <div className="m-0 p-0">

@@ -43,6 +43,7 @@ If a client or a server does not want to use this default value, it sends its de
 frame. Each side then agrees to use the smallest `MaxHeaderSize` value. It is uncommon to change this setting.
 
 The Settings frame is specified in Slice (LINK) and encoded with Slice2:
+
 ```slice
 enum ControlFrameType : uint8
 {

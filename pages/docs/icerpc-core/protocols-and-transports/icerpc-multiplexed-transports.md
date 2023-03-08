@@ -122,6 +122,7 @@ classDiagram
 
 In C#, the default multiplexed transport is Slic over TCP and is called `tcp`. The following statements all create
 equivalent icerpc connections.
+
 ```csharp
 // Create a client connection with the default multiplexed client transport, Slic over TCP.
 using await var clientConnection = new ClientConnection("icerpc://hello.zeroc.com");

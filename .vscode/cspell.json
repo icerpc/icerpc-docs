@@ -2,28 +2,34 @@
   "version": "0.2",
   "language": "en",
   "words": [
+    "brotli",
     "callout",
     "clsx",
     "coldark",
     "coloc",
     "colochost",
     "docsearch",
+    "endianness",
     "frontmatter",
     "headlessui",
     "heroicons",
+    "hola",
     "icerpc",
     "markdoc",
     "noteable",
+    "oneway",
     "palenight",
     "prismjs",
     "QUIC",
     "reactflow",
     "Renderable",
+    "RFCOMM",
     "Slic",
     "smoothstep",
     "Structs",
     "tailwindcss",
     "trailinglink",
+    "twoway",
     "unoptimized",
     "varint",
     "varuint",
@@ -44,5 +50,11 @@
   ],
   "enableFiletypes": [
     "markdoc"
+  ],
+  "ignorePaths": [
+    ".vscode",
+    "node_modules",
+    "package-lock.json",
+    "package.json"
   ]
 }

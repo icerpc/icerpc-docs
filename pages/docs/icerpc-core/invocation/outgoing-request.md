@@ -11,10 +11,11 @@ In order to make a RPC, you construct an outgoing request and then pass this req
 method of an [invoker](invocation-pipeline#the-invoker-abstraction).
 
 An outgoing request carries all the data an invoker needs to send a request:
- - the [service address](service-address) of the target service
- - the name of the operation on this service
- - request [fields](#request-fields)
- - the [payload](#payload-and-payload-continuation) of the request
+
+- the [service address](service-address) of the target service
+- the name of the operation on this service
+- request [fields](#request-fields)
+- the [payload](invocation-pipleine#payload-and-payload-continuation) of the request
 
 In C#, an outgoing request also holds [features](#request-features). These features are used for local communications
 with the invocation pipeline, and within this pipeline.
@@ -27,6 +28,7 @@ processing of the same request in the client and in the server.
 
 A field is an entry in a dictionary `RequestFieldKey` to sequence of bytes, where `RequestFieldKey` is enum defined in
 Slice (LINK):
+
 ```slice
 unchecked enum RequestFieldKey : varuint62 {
     Context = 0
@@ -73,6 +75,7 @@ each other.
 
 You can also use these features to communicate with the invocation pipeline. For example, you can set the feature
 `ICompressFeature` to ask the Compress interceptor (if installed) to compress the payload of your request:
+
 ```csharp
 using var request = new OutgoingRequest(serviceAddress)
 {

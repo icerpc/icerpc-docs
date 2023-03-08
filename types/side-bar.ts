@@ -11,14 +11,25 @@ export interface SideBarLink {
 
 export interface SideBarCategory {
   title: string;
-  links: SideBarLink[];
+  links: (SideBarLink | SideBarDivider)[];
+}
+
+export interface SideBarDivider {
+  title: string;
 }
 
 export function isCategory(
   source: SideBarSourceType
 ): source is SideBarCategory {
-  //magic happens here
   return (<SideBarCategory>source).links !== undefined;
 }
 
-export type SideBarSourceType = SideBarCategory | SideBarLink;
+export function isLink(source: SideBarSourceType): source is SideBarLink {
+  return (<SideBarLink>source).path !== undefined;
+}
+
+export function isDivider(source: SideBarSourceType): source is SideBarDivider {
+  return (<SideBarDivider>source).title !== undefined;
+}
+
+export type SideBarSourceType = SideBarCategory | SideBarLink | SideBarDivider;

@@ -11,15 +11,16 @@ The `invoke` method of an [invoker](invocation-pipeline#the-invoker-abstraction)
 asynchronously. This incoming response is created by the connection when it receives the response from the peer.
 
 An incoming response holds:
- - a [status code](#status-code)
- - an error message, set only when the status code is not Success
- - response [fields](#response-fields)
- - the [payload](#response-payload) of the response
+
+- a [status code](#status-code)
+- an error message, set only when the status code is not Success
+- response [fields](#response-fields)
+- the [payload](#response-payload) of the response
 
 ## Status code
 
 The status code represents the status of the [dispatch](../dispatch/dispatch-pipeline#definition) by the peer. It can be
-`Success` or a error. It's defined in Slice (LINK) as an enum:
+`Success` or an error. It's defined as a Slice enum (LINK):
 
 ```slice
 unchecked enum StatusCode : varuint62 {
@@ -43,6 +44,7 @@ same response in the server and in the client.
 
 A field is an entry in a dictionary `ResponseFieldKey` to sequence of bytes, where `ResponseFieldKey` is enum defined in
 Slice (LINK):
+
 ```slice
 unchecked enum ResponseFieldKey : varuint62 {
     CompressionFormat = 2

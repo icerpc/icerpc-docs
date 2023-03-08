@@ -20,6 +20,7 @@ The quic transport and the ssl transport are always secure. If you configure you
 transports, the connection will use TLS.
 
 For example:
+
 ```csharp
 // We specify the ssl transport: we get a TLS-secured connection even without any additional parameter.
 await using var sslConnection = new ClientConnection("icerpc://hello.zeroc.com?transport=ssl");

@@ -47,6 +47,7 @@ shutdown.
 ## GoAway frame
 
 The GoAway frame is specified in Slice (LINK) and encoded with Slice2:
+
 ```slice
 enum ControlFrameType : uint8
 {

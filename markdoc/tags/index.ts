@@ -10,6 +10,7 @@ export * from './card.markdoc';
 export * from './hero.markdoc';
 export * from './divider.markdoc';
 export * from './callout.markdoc';
+export * from './slice-version.markdoc';
 
 export { default as section } from './section.markdoc';
 

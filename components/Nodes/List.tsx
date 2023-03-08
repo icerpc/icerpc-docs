@@ -2,10 +2,10 @@
 
 import { ReactNode } from 'react';
 
-type Props = {
+interface Props {
   children: ReactNode;
   ordered?: boolean;
-};
+}
 
 export const List = ({ children, ordered }: Props) => {
   if (ordered) {

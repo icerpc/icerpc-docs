@@ -8,25 +8,55 @@ export const slice2Data: SideBarSourceType[] = [
     path: `${SLICE_BASE_URL}`
   },
   {
-    title: 'Syntax',
+    title: 'Basics',
     links: [
       {
-        title: 'Lexical Rules',
-        path: `${SLICE_BASE_URL}/syntax/lexical-rules/`
+        title: 'Why use Slice?',
+        path: `${SLICE_BASE_URL}/basics/why-use-slice`
       },
       {
-        title: 'Slice Source Files',
-        path: `${SLICE_BASE_URL}/syntax/source-files/`
+        title: 'Slice components',
+        path: `${SLICE_BASE_URL}/basics/slice-components`
       },
       {
-        title: 'Keywords',
-        path: `${SLICE_BASE_URL}/syntax/keywords/`
+        title: 'Contract first model',
+        path: `${SLICE_BASE_URL}/basics/contract-first`
+      },
+      {
+        title: 'Slice files',
+        path: `${SLICE_BASE_URL}/basics/slice-files`
+      },
+      {
+        title: 'Examples',
+        path: `${SLICE_BASE_URL}/basics/examples-slice2`
       }
     ]
   },
   {
-    title: 'Constructs',
+    title: 'Language guide',
     links: [
+      {
+        title: 'Primitive types'
+      },
+      {
+        title: 'Integer Types',
+        path: `${SLICE_BASE_URL}/slice2/primitive-types/integer/`
+      },
+      {
+        title: 'Floating-point Types',
+        path: `${SLICE_BASE_URL}/slice2/primitive-types/float/`
+      },
+      {
+        title: 'Strings',
+        path: `${SLICE_BASE_URL}/slice2/primitive-types/strings/`
+      },
+      {
+        title: 'Boolean',
+        path: `${SLICE_BASE_URL}/slice2/primitive-types/boolean/`
+      },
+      {
+        title: 'Constructed types'
+      },
       {
         title: 'Structs',
         path: `${SLICE_BASE_URL}/slice2/constructs/structs/`
@@ -46,28 +76,57 @@ export const slice2Data: SideBarSourceType[] = [
     ]
   },
   {
-    title: 'Primitive Types',
+    title: 'Language reference',
     links: [
       {
-        title: 'Integer Types',
-        path: `${SLICE_BASE_URL}/slice2/primitive-types/integer/`
+        title: 'Lexical Rules',
+        path: `${SLICE_BASE_URL}/syntax/lexical-rules/`
       },
       {
-        title: 'Floating-point Types',
-        path: `${SLICE_BASE_URL}/slice2/primitive-types/float/`
+        title: 'Slice Source Files',
+        path: `${SLICE_BASE_URL}/syntax/source-files/`
       },
       {
-        title: 'Strings',
-        path: `${SLICE_BASE_URL}/slice2/primitive-types/strings/`
-      },
-      {
-        title: 'Boolean',
-        path: `${SLICE_BASE_URL}/slice2/primitive-types/boolean/`
+        title: 'Keywords',
+        path: `${SLICE_BASE_URL}/syntax/keywords/`
       }
     ]
   },
   {
-    title: 'Error Code Reference',
+    title: 'Encoding reference',
+    links: [
+      {
+        title: 'Main features',
+        path: `${SLICE_BASE_URL}/encoding/main-features`
+      },
+      {
+        title: 'Primitive types',
+        path: `${SLICE_BASE_URL}/encoding/primitive-types`
+      },
+      {
+        title: 'Encoding-only constructs',
+        path: `${SLICE_BASE_URL}/encoding/encoding-only-constructs`
+      },
+      {
+        title: 'Constructed types',
+        path: `${SLICE_BASE_URL}/encoding/constructed-types`
+      },
+      {
+        title: 'Collection types',
+        path: `${SLICE_BASE_URL}/encoding/collection-types`
+      },
+      {
+        title: 'Operation arguments',
+        path: `${SLICE_BASE_URL}/encoding/operation-arguments`
+      },
+      {
+        title: 'Operation return value and exception',
+        path: `${SLICE_BASE_URL}/encoding/operation-return-value-exception`
+      }
+    ]
+  },
+  {
+    title: 'Compiler diagnostics',
     links: [
       {
         title: 'Errors',

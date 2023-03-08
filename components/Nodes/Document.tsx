@@ -1,19 +1,18 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { ReactNode } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import { useVersionContext } from 'context/state';
-import { Feedback, PageHistory, TableOfContents, TOCItem } from '../Shell/';
-import { Footer, Divider } from '..';
-
-type Props = {
-  frontmatter: {
-    title: string;
-    description: string;
-    toc?: boolean;
-  };
-  children: ReactNode;
-};
+import {
+  PageHistory,
+  Footer,
+  Feedback,
+  TOCItem,
+  TableOfContents
+} from 'components/Shell';
+import { Divider } from 'components/Divider';
+import { SliceVersion } from 'types';
+import { VersionSection } from 'components/SliceVersionSection';
 
 type Heading = {
   level: number;
@@ -21,7 +20,22 @@ type Heading = {
   children: string;
 };
 
-const constructToc = (children: ReactNode) => {
+const versionFilter = (node: ReactElement, version: SliceVersion) => {
+  if (node.type == VersionSection)
+    if (node.props.version === version) return true;
+    else return false;
+  return true;
+};
+
+const flattenNodes = (node: ReactElement) => {
+  if (node.props?.version) return node.props.children;
+  else return node;
+};
+
+const collectHeadings = (
+  children: ReactElement[],
+  version: SliceVersion
+): TOCItem[] => {
   const isHeading = (x: any): x is Heading => {
     return (
       (x as Heading).level !== undefined &&
@@ -29,36 +43,37 @@ const constructToc = (children: ReactNode) => {
       (x as Heading).children !== undefined
     );
   };
+
   return (
     (children instanceof Array &&
-      children
+      (children
+        .filter((c) => versionFilter(c, version)) // Filter out nodes that don't match the version
+        .flatMap((c) => flattenNodes(c)) // Flatten the nodes
         .filter((c) => isHeading(c.props))
-        .map((c) => c.props as Heading)
-        .map((h) => {
-          const item: TOCItem = {
-            title: h.children,
-            id: h.id,
-            level: h.level
+        .map((c) => {
+          const heading = c.props as Heading;
+          return {
+            title: heading.children,
+            id: heading.id,
+            level: heading.level
           };
-          return item;
-        })) ||
+        }) as TOCItem[])) ||
     []
   );
 };
 
-export const Document = ({ frontmatter, children }: Props) => {
+export const Document = ({ children }: { children: ReactElement[] }) => {
   // Get the version
   const { version } = useVersionContext();
 
-  // Get the data for the toc
-  const path = useRouter().pathname;
+  // Get the data for the next and previous links
+  const path = useRouter().asPath;
   const isDocs = path.startsWith('/docs');
-  let showToc = frontmatter?.toc ?? isDocs;
-  const toc = constructToc(children);
+  const toc = collectHeadings(children, version);
 
   return (
-    <div className="flex w-screen flex-row justify-center overflow-y-clip lg:w-[calc(100vw-15rem)]">
-      <article className="flex-row overflow-auto px-14 pt-12 lg:max-w-4xl">
+    <div className="flex shrink flex-row justify-center overflow-y-clip">
+      <article className="mx-6 mt-10 flex max-w-[52rem] flex-col justify-center md:mx-10 lg:mx-20">
         {children}
         {isDocs && (
           <>
@@ -68,9 +83,9 @@ export const Document = ({ frontmatter, children }: Props) => {
           </>
         )}
         <Divider />
-        <Footer />
+        {/* <Footer /> */}
       </article>
-      {showToc && TableOfContents(toc)}
+      {isDocs && TableOfContents(toc)}
     </div>
   );
 };

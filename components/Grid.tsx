@@ -4,12 +4,12 @@ import React, { ReactNode } from 'react';
 import { BsBoxArrowUpRight, BsArrowRight } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
 
-type Props = {
+interface Props {
   children: ReactNode;
   columns: number;
   rows: number;
   trailinglink?: { label: string; link: string };
-};
+}
 
 export const Grid = ({ children, columns, rows, trailinglink }: Props) => {
   // TODO: Add support for detecting external links.

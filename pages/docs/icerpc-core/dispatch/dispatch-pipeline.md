@@ -25,6 +25,7 @@ An important difference is you need to implement this Dispatcher abstraction to 
 responses. The Invoker abstraction is implemented by IceRPC's connections.
 
 In C#, this dispatcher abstraction is the `IDispatcher` interface:
+
 ```csharp
 namespace IceRpc;
 
@@ -36,6 +37,7 @@ public interface IDispatcher
 
 You configure the dispatcher of a server connection when you construct the server that accepts this connection. This
 dispatcher can't be null. A server shares its dispatcher with all the connections it accepts. For example:
+
 ```csharp
 // configures server to use a new Chatbot instance as its dispatcher
 await using var server = new Server(new Chatbot());
@@ -44,6 +46,7 @@ await using var server = new Server(new Chatbot());
 Configuring a dispatcher for a client connection is optional since a client connection does not have to accept requests.
 
 In C#, you configure the dispatcher of a client connection with the `ConnectionOptions` class. For example:
+
 ```csharp
 using IceRpc;
 
@@ -67,15 +70,16 @@ the dispatcher you configure on a server can be the head of a dispatcher chain o
 "dispatch pipeline".
 
 There are 3 common types of dispatchers:
- - Leaf dispatcher
-   It's a leaf in the dispatch pipeline that implements `dispatch` without the help of another dispatcher. For example,
-   a Slice service (LINK).
 
- - Middleware
+- **Leaf dispatcher**\
+  It's a leaf in the dispatch pipeline that implements `dispatch` without the help of another dispatcher. For example,
+  a Slice service (LINK).
+
+- **Middleware**\
    A [middleware](middleware) intercepts a dispatch and forwards it to the "next" dispatcher. IceRPC provides several
    built-it middleware for logging, compression and more.
 
- - Router
+- **Router**\
    A [router](router) routes a request to a dispatcher registered with this router based on the request's path.
 
 ```mermaid

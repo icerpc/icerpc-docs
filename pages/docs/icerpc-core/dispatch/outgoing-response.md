@@ -11,10 +11,11 @@ The `dispatch` method of a [dispatcher](dispatch-pipeline#the-dispatcher-abstrac
 asynchronously. Since you're implementing this `dispatch` method, you are responsible to create this outgoing response.
 
 An outgoing response carries:
- - a [status code](../invocation/incoming-response#status-code)
- - an error message, set only when the status code is not Success
- - response [fields](../invocation/incoming-response#response-fields)
- - the [payload](#response-payload) of the response
+
+- a [status code](../invocation/incoming-response#status-code)
+- an error message, set only when the status code is not Success
+- response [fields](../invocation/incoming-response#response-fields)
+- the [payload](#response-payload) of the response
 
 ## Response payload
 

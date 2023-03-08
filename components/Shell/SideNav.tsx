@@ -1,26 +1,31 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { NextRouter, useRouter } from 'next/router';
-import { useTheme } from 'next-themes';
 import { SliceSelector } from '../SliceSelector';
 import { useVersionContext } from 'context/state';
 import clsx from 'clsx';
-
-// import components
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
+import { Dialog, Transition } from '@headlessui/react';
 import { sideBarData, baseUrls } from 'data/side-bar-data';
-import { SideBarLink, SideBarSourceType, isCategory } from 'types';
-
-// import assets
-import lightIcon from 'public/images/Light-Icon.svg';
-import darkIcon from 'public/images/Dark-Icon.svg';
+import {
+  SideBarDivider,
+  SideBarLink,
+  SideBarSourceType,
+  isCategory,
+  isLink
+} from 'types';
+import { Divider } from 'components/Divider';
+import { Breadcrumb } from 'components/Breadcrumbs';
+import { ChevronRightIcon } from '@heroicons/react/24/outline';
+import { getBreadcrumbs } from 'components/Title';
 
 function createListItem(
   router: NextRouter,
-  link: SideBarLink,
-  noLeftPadding: Boolean = false
+  link: SideBarLink | SideBarDivider,
+  noLeftPadding: Boolean = false,
+  onClick: () => void = () => {}
 ): React.ReactElement {
   const style: React.CSSProperties = {
     textDecoration: 'none'
@@ -38,26 +43,42 @@ function createListItem(
   };
 
   const leftPadding = noLeftPadding ? 'ml-0' : 'ml-3';
-  const isCurrentPage = router.pathname === link.path.replace(/\/$/, '');
 
-  return (
-    <li key={link.path} className="flex">
-      <Link
-        href={link.path}
-        className={`p-2 py-[7px] pl-0 text-sm  ${leftPadding} hover:text-zinc-900 dark:text-[#C4C7C5] dark:hover:text-white`}
-        style={
-          isCurrentPage ? (noLeftPadding ? activeStyleAlt : activeStyle) : style
-        }
-      >
-        {link.title}
-      </Link>
-    </li>
-  );
+  if (isLink(link)) {
+    const isCurrentPage = router.pathname === link.path.replace(/\/$/, '');
+    return (
+      <li key={link.path} className="flex">
+        <Link
+          href={link.path}
+          className={`px-2 py-[7px] pl-0 text-sm  ${leftPadding} hover:text-zinc-900 dark:text-[#C4C7C5] dark:hover:text-white`}
+          onClick={onClick}
+          style={
+            isCurrentPage
+              ? noLeftPadding
+                ? activeStyleAlt
+                : activeStyle
+              : style
+          }
+        >
+          {link.title}
+        </Link>
+      </li>
+    );
+  } else {
+    return (
+      <div className={`${leftPadding} mb-3 mt-2 pr-2 pl-0`}>
+        <h2 className="my-4 text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:text-white dark:decoration-darkBorder">
+          {link.title}
+        </h2>
+      </div>
+    );
+  }
 }
 
 function transformSideBarData(
   router: NextRouter,
-  data: SideBarSourceType
+  data: SideBarSourceType,
+  onClick: () => void = () => {}
 ): React.ReactElement[] {
   if (isCategory(data)) {
     const category = data;
@@ -65,7 +86,7 @@ function transformSideBarData(
       <li key="category">
         <ul>
           <li key={category.title} className="list-none">
-            <h2 className="my-2 text-sm font-bold dark:text-white">
+            <h2 className="my-[10px] text-sm font-bold dark:text-white">
               {category.title}
             </h2>
           </li>
@@ -74,26 +95,34 @@ function transformSideBarData(
               key={category.title + '-list'}
               className="ml-[0.1rem] border-l-[1.5px] border-lightBorder pl-[0.1rem] dark:border-[#3D3D3D]"
             >
-              {category.links.map((link) => createListItem(router, link))}
+              {category.links.map((link) =>
+                createListItem(router, link, false, onClick)
+              )}
             </ul>
           </li>
         </ul>
       </li>
     ];
+  } else if (isLink(data)) {
+    return [createListItem(router, data, true, onClick)];
   } else {
-    const link = data as SideBarLink;
-    return [createListItem(router, link, true)];
+    return [
+      <div key={data.title} className="mr-4 py-2 text-sm uppercase text-black">
+        <Divider margin="mb-4 mt-4 mr-[12px]" />
+        <h2 className="my-2 text-sm font-bold dark:text-white">{data.title}</h2>
+        <Divider margin="mt-4 mr-[12px]" />
+      </div>
+    ];
   }
 }
 
-type SideNavProps = {
+interface SideNavProps {
   path: string;
-};
+}
 
 export const SideNav = ({ path }: SideNavProps) => {
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { version } = useVersionContext();
-  const { resolvedTheme } = useTheme();
   const router = useRouter();
 
   let baseUrl = baseUrls.find((item) => path.startsWith(item))!;
@@ -111,35 +140,148 @@ export const SideNav = ({ path }: SideNavProps) => {
   });
 
   return (
-    <nav
-      className={clsx(
-        'sticky top-0 hidden h-screen w-60 shrink-0 overflow-x-hidden lg:block',
-        ' border-lightBorder bg-[#ffffff] pr-3 pb-10 pl-6 pt-0 shadow',
-        'dark:border-darkBorder dark:bg-[#26282c]'
-      )}
-    >
-      <Logo resolvedTheme={resolvedTheme} />
-      {baseUrl == '/docs/slice' && <SliceSelector />}
-      <ul role="list">{cells}</ul>
-    </nav>
-  );
-};
-
-type LogoProps = {
-  resolvedTheme?: string;
-};
-
-const Logo = ({ resolvedTheme }: LogoProps) => {
-  return (
-    <div className="mt-4 mb-2 ml-1 mr-8 flex items-center justify-start gap-1 pb-4">
-      <Image
-        src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
-        height={30}
-        alt="ZeroC Logo"
-      />
-      <div className="pt-[8px] text-xl font-bold text-black dark:text-white">
-        Docs
-      </div>
+    // Create a wrapper that grows to fill all available left space without moving the nav
+    <div className="sticky top-[59px] flex h-screen grow justify-end border-r border-lightBorder dark:border-darkBorder dark:bg-[#26282c]">
+      <nav
+        className={clsx(
+          'sticky top-0 hidden h-[calc(100vh-59px)] w-[275px] overflow-y-auto lg:block',
+          'bg-none pr-3 pb-10 pl-6 pt-4'
+        )}
+      >
+        <div className="pointer-events-none sticky top-0" />
+        {baseUrl == '/docs/slice' && <SliceSelector />}
+        <ul className="mx-2 mt-4">{cells}</ul>
+      </nav>
     </div>
   );
 };
+
+interface MobileSideNavProps {
+  pathname: string;
+  callback?: (version: string) => void;
+}
+
+export function MobileSideNav({ pathname, callback }: MobileSideNavProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [data, setData] = useState<SideBarSourceType[]>([]);
+  const { version } = useVersionContext();
+  const breadcrumbs = getBreadcrumbs(pathname, version);
+  const router = useRouter();
+
+  let baseUrl = baseUrls.find((item) => pathname.startsWith(item))!;
+
+  useEffect(() => {
+    const links = sideBarData(baseUrl, version) ?? [];
+    setData(links);
+    return () => {
+      setData([]);
+    };
+  }, [setData, pathname, version, baseUrl]);
+
+  let cells = data.map((item) => {
+    return transformSideBarData(router, item, () => setIsOpen(false));
+  });
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  if (breadcrumbs.length > 0) {
+    return (
+      <>
+        <div className="flex items-center justify-start border-t border-lightBorder p-4 text-sm dark:border-darkBorder lg:hidden">
+          <button>
+            <Bars3Icon
+              className="ml-1 mr-4 block h-5 w-5 text-slate-500 dark:text-white/80"
+              aria-hidden="true"
+              onClick={() => setIsOpen(!isOpen)}
+            />
+          </button>
+          {breadcrumbs.map((breadcrumb, index) => (
+            <div key={breadcrumb.href} className="flex items-center">
+              <Link
+                href={breadcrumb.href}
+                className={clsx(
+                  index !== breadcrumbs.length - 1
+                    ? 'text-slate-500 dark:text-white/80'
+                    : 'font-semibold text-black dark:text-white'
+                )}
+              >
+                {breadcrumb.name}
+              </Link>
+              {index !== breadcrumbs.length - 1 && (
+                <ChevronRightIcon
+                  className="mx-2 block h-4 w-4 text-slate-500 "
+                  aria-hidden="true"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+        <Transition appear show={isOpen} as={Fragment}>
+          <Dialog as="div" className="relative z-10" onClose={closeModal}>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200 delay-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-black/40 " />
+            </Transition.Child>
+            <div className="fixed inset-0 overflow-y-auto">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="-left-[300px]"
+                enterTo="left-0"
+                leave="ease-in duration-200"
+                leaveFrom="left-0"
+                leaveTo="-left-[300px]"
+              >
+                <div
+                  className={clsx(
+                    'fixed top-0 left-0 h-screen w-full max-w-[300px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
+                  )}
+                >
+                  <Dialog.Panel className="h-full w-full overflow-hidden rounded-r text-left align-middle text-sm font-bold shadow-xl transition-all">
+                    <div className="flex h-full w-full flex-col items-start">
+                      <button
+                        type="button"
+                        className={clsx(
+                          'group absolute right-0 mr-8 mt-4 items-center justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium',
+                          'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                        )}
+                        onClick={closeModal}
+                      >
+                        <XMarkIcon
+                          className="block h-5 w-5 group-hover:text-slate-500 dark:group-hover:text-slate-400"
+                          aria-hidden="true"
+                        />
+                      </button>
+                      <nav
+                        className={clsx(
+                          'block h-full w-full overflow-y-auto',
+                          'bg-none pr-3 pb-10 pl-6 pt-4',
+                          baseUrl == '/docs/slice' && 'mt-12'
+                        )}
+                      >
+                        <div className="pointer-events-none sticky top-0" />
+                        {baseUrl == '/docs/slice' && <SliceSelector />}
+                        <ul className="mx-2 mt-4">{cells}</ul>
+                      </nav>
+                    </div>
+                  </Dialog.Panel>
+                </div>
+              </Transition.Child>
+            </div>
+          </Dialog>
+        </Transition>
+      </>
+    );
+  } else {
+    return null;
+  }
+}
