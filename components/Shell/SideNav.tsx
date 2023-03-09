@@ -159,9 +159,10 @@ export const SideNav = ({ path, encoding }: SideNavProps) => {
 
 interface MobileSideNavProps {
   pathname: string;
+  encoding?: SliceVersion;
 }
 
-export function MobileSideNav({ pathname }: MobileSideNavProps) {
+export function MobileSideNav({ pathname, encoding }: MobileSideNavProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { version } = useVersionContext();
