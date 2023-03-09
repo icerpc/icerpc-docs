@@ -119,5 +119,22 @@ export const rpcCoreData: SideBarSourceType[] = [
         path: `${RPC_CORE_BASE_URL}/icerpc-protocol/connection-shutdown`
       }
     ]
+  },
+  {
+    title: 'The ice protocol',
+    links: [
+      {
+        title: 'Protocol frames',
+        path: `${RPC_CORE_BASE_URL}/ice-protocol/protocol-frames`
+      },
+      {
+        title: 'Connection establishment',
+        path: `${RPC_CORE_BASE_URL}/ice-protocol/connection-establishment`
+      },
+      {
+        title: 'Connection shutdown',
+        path: `${RPC_CORE_BASE_URL}/ice-protocol/connection-shutdown`
+      }
+    ]
   }
 ];

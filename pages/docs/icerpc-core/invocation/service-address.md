@@ -26,7 +26,7 @@ A server address scheme is always ice or icerpc. No other scheme is currently su
 {% /callout %}
 
 An ice or icerpc service address without a server address can have query parameters. And lastly, an ice service address
-can have a fragment.
+can have a fragment; this fragment corresponds to an Ice facet.
 
 In C#, record class `ServiceAddress` is simply a parsed and validated representation of a service address URI: it holds
 exactly the same information.
