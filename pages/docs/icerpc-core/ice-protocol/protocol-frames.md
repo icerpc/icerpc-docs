@@ -12,7 +12,8 @@ described in the [Ice Manual](https://doc.zeroc.com/ice/3.7/ice-protocol-and-enc
 
 Both implementations are naturally compatible to allow Ice and IceRPC applications to communicate with each others.
 
-The ice protocol implementation in IceRPC does not support a few secondary features that Ice supports, namely:
+The ice protocol implementation provided by IceRPC does not support a few non-essential features that Ice supports,
+namely:
  - batch requests
  - protocol frame compression
  - datagram transports (i.e., UDP)
@@ -128,13 +129,13 @@ The requestId identifies the request associated with this response.
 
 The replyStatus encodes the response's [status code](../invocation/incoming-response#status-code):
 
-| Status code        | Encoded as reply status    |
-|--------------------|----------------------------|
-| Success            | Ok                         |
-| ApplicationError   | UserException              |
-| ServiceNotFound    | ObjectNotExistException    |
-| OperationNotFound  | OperationNotExistException |
-| UnhandledException | UnknownException           |
+| Status code           | Encoded as reply status    |
+|-----------------------|----------------------------|
+| Success               | Ok                         |
+| ApplicationError      | UserException              |
+| ServiceNotFound       | ObjectNotExistException    |
+| OperationNotFound     | OperationNotExistException |
+| Any other status code | UnknownException           |
 
 When IceRPC receives a response frame, it creates an incoming response with a status code decoded from the reply status:
 
@@ -145,7 +146,7 @@ When IceRPC receives a response frame, it creates an incoming response with a st
 | ObjectNotExistException    | ServiceNotFound        |
 | FacetNotExistException     | ServiceNotFound        |
 | OperationNotExistException | OperationNotFound      |
-| Unknown exceptions         | UnknownException       |
+| Unknown exceptions         | UnhandledException     |
 
 The format of the replyPayload depends on the reply status:
 
@@ -155,6 +156,8 @@ The format of the replyPayload depends on the reply status:
 | UserException       | An [encapsulation](#encapsulation) that holds the response's payload. |
 | NotExist exceptions | A RequestFailedData encoded with Slice1.                              |                                                  |
 | Unknown exceptions  | The response's error message encoded with Slice1.                     |
+
+_RequestFailedData_
 
 RequestFailedData is a struct that holds the request's path, fragment and operation. The path is encoded as an Identity
 and the fragment is encoded as a sequence<string>:
@@ -169,10 +172,22 @@ compact struct RequestFailedData {
 }
 ```
 
+IceRPC always encodes the path, fragment and operation of the _current_ incoming request in RequestFailedData when
+sending a response with status code ServiceNotFound or OperationNotFound in an ice response frame.
+
+When IceRPC receives an ice response with a NotExist reply status, it decodes the RequestFailedData to create the
+response's error message and then discards this RequestFailedData.
+
+_Error message_
+
+When the response's status code is ApplicationError, ServiceNotFound or OperationNotFound, the ice protocol does not
+provide a mechanism to transmit the response's error message. As a result, the error message is not sent to the peer
+or received from the peer with these status codes.
+
 ## Encapsulation
 
-An encapsulation is a holder for a request or response payload. In addition to the payload itself, it encodes the
-payload size (as the encapsulation size, equal to the payload size plus 6) and an encoding version:
+An encapsulation is a holder for a request or response payload. It holds the payload and encodes the payload size (as
+the encapsulation size, equal to the payload size plus 6) and an encoding version:
 
 ```slice
 encoding = Slice1
@@ -195,7 +210,7 @@ encoding used to encode their payloads.
 For compatibility with Ice, the IceRPC core always encodes 1.1 (on 2 bytes) as the Ice/Slice encoding version in
 encapsulations even though the IceRPC core doesn't know anything about payload encoding. That's because:
 - if this encapsulation is received by an Ice application, the only encoding supported by both Ice and IceRPC is Slice1
-aka Ice/Slice encoding version 1.1.
+aka the Ice/Slice encoding version 1.1.
 - if this encapsulation is received by an IceRPC application, this 1.1 version is ignored.
 
 For the same reason, when the IceRPC core receives an encapsulation, it makes sure the encoding version in this
