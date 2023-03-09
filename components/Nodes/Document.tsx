@@ -1,7 +1,9 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactElement } from 'react';
 import { useRouter } from 'next/router';
+import queryString from 'query-string';
+
 import { useVersionContext } from 'context/state';
 import {
   PageHistory,
@@ -80,7 +82,7 @@ interface Props {
 }
 
 export const Document = ({ children, title, description, encoding }: Props) => {
-  const { version } = useVersionContext();
+  const { version, setVersion } = useVersionContext();
   const router = useRouter();
   const path = router.asPath;
 
@@ -88,31 +90,17 @@ export const Document = ({ children, title, description, encoding }: Props) => {
   const toc = collectHeadings(children, version);
 
   return (
-    <div className="flex shrink flex-row justify-center overflow-y-clip">
-      <article className="mx-6 mt-10 flex max-w-[52rem] flex-col justify-center md:mx-10 lg:mx-20">
+    <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip">
+      <article className="mx-6 mt-10 flex h-full w-full max-w-[52rem] flex-col justify-center md:mx-10 lg:mx-20">
         {encoding ? (
           <>
             <VersionSection version={encoding}>{children}</VersionSection>
             <VersionSection version={getOtherSliceVersion(encoding)}>
-              {/* A container div that fills the full width and height of parent */}
-              <div className="h-full w-full">
-                <Title
-                  title={title}
-                  description={description}
-                  encoding={encoding}
-                />
-
-                <h1 className="mt-20 text-2xl font-extrabold text-[#333333]">
-                  This page is not available in this version of the Slice
-                  documentation
-                </h1>
-                <Divider />
-                <h2 className="my-3 text-sm text-[var(--text-color-secondary)]">
-                  This page is only available in the{' '}
-                  {encoding == SliceVersion.Slice2 ? 'Slice 2' : 'Slice 1'}{' '}
-                  version of the documentation.
-                </h2>
-              </div>
+              <UnsupportedEncoding
+                encoding={encoding}
+                title={title}
+                description={description}
+              />
             </VersionSection>
           </>
         ) : (
@@ -124,6 +112,34 @@ export const Document = ({ children, title, description, encoding }: Props) => {
         {/* <Footer /> */}
       </article>
       {isDocs && TableOfContents(toc)}
+    </div>
+  );
+};
+
+interface UnsupportedEncodingProps {
+  encoding: SliceVersion;
+  title: string;
+  description: string;
+}
+
+const UnsupportedEncoding = ({
+  encoding,
+  title,
+  description
+}: UnsupportedEncodingProps) => {
+  return (
+    <div className="h-full w-full">
+      <Title title={title} description={description} encoding={encoding} />
+
+      <h1 className="mt-20 text-2xl font-extrabold text-[#333333]">
+        This page is not available in this version of the Slice documentation
+      </h1>
+      <Divider />
+      <h2 className="my-3 text-sm text-[var(--text-color-secondary)]">
+        This page is only available in the{' '}
+        {encoding == SliceVersion.Slice2 ? 'Slice 2' : 'Slice 1'} version of the
+        documentation.
+      </h2>
     </div>
   );
 };

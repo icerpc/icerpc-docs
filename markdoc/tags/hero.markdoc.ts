@@ -2,7 +2,7 @@
 
 import { Hero } from 'components/Hero';
 
-export const hero = {
+export default {
   render: Hero,
   attributes: {}
 };

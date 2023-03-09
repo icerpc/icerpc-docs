@@ -1,6 +1,5 @@
 ---
 title: Foo
-encoding: Slice1
 ---
 
 {% title /%}

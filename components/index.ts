@@ -14,3 +14,5 @@ export * from './Nodes/List';
 export * from './Grid';
 export * from './Card';
 export * from './Divider';
+export * from './SupportedEncoding';
+export * from './Title';

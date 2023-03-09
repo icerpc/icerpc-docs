@@ -1,7 +1,6 @@
 ---
 title: Collection types
 description: Learn how to encode sequences and dictionaries with Slice.
-encoding: Slice2
 ---
 
 {% title /%}

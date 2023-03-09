@@ -23,13 +23,8 @@ export const SliceSelector = ({ encoding }: Props) => {
   );
 
   function onChange(index: number) {
-    console.log('onChange');
     setVersion(sliceVersions[index]);
     setSelectedIndex(index);
-    if (encoding != sliceVersions[index]) {
-      // If the encoding is different from the version, we need to update the URL
-      //router.push('/docs/slice');
-    }
   }
 
   useEffect(() => {

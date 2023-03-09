@@ -3,7 +3,7 @@
 import { Card } from 'components/Card';
 import { Tag, nodes, Node, Config } from '@markdoc/markdoc';
 
-export const card = {
+export default {
   ...nodes.document,
   render: Card,
   attributes: {
