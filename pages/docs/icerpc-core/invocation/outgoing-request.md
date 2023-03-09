@@ -34,7 +34,8 @@ unchecked enum RequestFieldKey : varuint62 {
     Context = 0
     TraceContext = 1
     CompressionFormat = 2
-    ...
+    Deadline = 3
+    Idempotent = 4
 }
 ```
 

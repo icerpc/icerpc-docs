@@ -95,11 +95,11 @@ export const rpcCoreData: SideBarSourceType[] = [
     title: 'Advanced topics'
   },
   {
-    title: 'Building blocks',
+    title: 'Customization',
     links: [
       {
         title: 'Protocol connection',
-        path: `${RPC_CORE_BASE_URL}/building-blocks/protocol-connection`
+        path: `${RPC_CORE_BASE_URL}/customization/protocol-connection`
       }
     ]
   },
@@ -117,6 +117,23 @@ export const rpcCoreData: SideBarSourceType[] = [
       {
         title: 'Connection shutdown',
         path: `${RPC_CORE_BASE_URL}/icerpc-protocol/connection-shutdown`
+      }
+    ]
+  },
+  {
+    title: 'The ice protocol',
+    links: [
+      {
+        title: 'Protocol frames',
+        path: `${RPC_CORE_BASE_URL}/ice-protocol/protocol-frames`
+      },
+      {
+        title: 'Connection establishment',
+        path: `${RPC_CORE_BASE_URL}/ice-protocol/connection-establishment`
+      },
+      {
+        title: 'Connection shutdown',
+        path: `${RPC_CORE_BASE_URL}/ice-protocol/connection-shutdown`
       }
     ]
   }
