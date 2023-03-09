@@ -2,14 +2,14 @@
 
 import React, { useEffect } from 'react';
 import { Platform, Platforms } from 'types';
-import { usePlatformContext } from 'context/state';
+import { usePlatform } from 'context/state';
 import { clsx } from 'clsx';
 
 export const LanguageContext = React.createContext([]);
 
 // eslint-disable-next-line no-unused-vars
 export const LanguageSelector = () => {
-  const { platform, setPlatform } = usePlatformContext();
+  const { platform, setPlatform } = usePlatform();
   const [currentTab, setCurrentTab] = React.useState(platform);
   useEffect(() => {
     switch (platform) {

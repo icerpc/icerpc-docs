@@ -2,7 +2,7 @@
 
 import React, { useEffect, ReactNode } from 'react';
 import { Platform } from 'types';
-import { usePlatformContext } from 'context/state';
+import { usePlatform } from 'context/state';
 
 interface Props {
   language: Platform;
@@ -17,7 +17,7 @@ export const LanguageSection = ({ language, children }: Props) => {
       )}`
     );
   }
-  const { platform } = usePlatformContext();
+  const { platform } = usePlatform();
   const [currentTab, setCurrentTab] = React.useState(platform);
   useEffect(() => {
     switch (platform) {

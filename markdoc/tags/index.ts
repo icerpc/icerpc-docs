@@ -12,7 +12,7 @@ export { default as card } from './card.markdoc';
 export { default as hero } from './hero.markdoc';
 export { default as divider } from './divider.markdoc';
 export { default as section } from './section.markdoc';
-export { slice1, slice2 } from './slice-version.markdoc';
+export { slice1, slice2 } from './encoding-section.markdoc';
 
 module.exports['side-by-side'] = sideBySide;
 module.exports['link-card'] = linkCard;

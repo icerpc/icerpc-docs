@@ -2,7 +2,7 @@
 
 import { Tag, Config, Node } from '@markdoc/markdoc';
 import { SupportedEncodings } from 'components/SupportedEncoding';
-import { SliceVersion } from 'types';
+import { Encoding } from 'types';
 
 export default {
   render: SupportedEncodings,
@@ -11,7 +11,7 @@ export default {
     const frontmatter = config.variables?.markdoc.frontmatter;
     const supported = frontmatter.encoding
       ? [frontmatter.encoding]
-      : [SliceVersion.Slice1, SliceVersion.Slice2];
+      : [Encoding.Slice1, Encoding.Slice2];
     return new Tag(`${this.render}`, {
       ...attributes,
       supported

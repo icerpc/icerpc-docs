@@ -4,7 +4,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
 import { SliceSelector } from '../SliceSelector';
-import { useVersionContext } from 'context/state';
+import { useEncoding } from 'context/state';
 import clsx from 'clsx';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
 import { Dialog, Transition } from '@headlessui/react';
@@ -13,7 +13,7 @@ import {
   SideBarDivider,
   SideBarLink,
   SideBarSourceType,
-  SliceVersion,
+  Encoding,
   isCategory,
   isLink
 } from 'types';
@@ -119,22 +119,22 @@ function transformSideBarData(
 
 interface SideNavProps {
   path: string;
-  encoding?: SliceVersion;
+  encoding?: Encoding;
 }
 
 export const SideNav = ({ path, encoding }: SideNavProps) => {
   const [data, setData] = useState<SideBarSourceType[]>([]);
-  const { version } = useVersionContext();
+  const { encoding: currentEncoding } = useEncoding();
   const router = useRouter();
 
   let baseUrl = baseUrls.find((item) => path.startsWith(item))!;
   useEffect(() => {
-    const links = sideBarData(baseUrl, version) ?? [];
+    const links = sideBarData(baseUrl, currentEncoding) ?? [];
     setData(links);
     return () => {
       setData([]);
     };
-  }, [setData, path, version, baseUrl]);
+  }, [setData, path, currentEncoding, baseUrl]);
 
   let cells = data.map((item) => {
     return transformSideBarData(router, item);
@@ -159,25 +159,25 @@ export const SideNav = ({ path, encoding }: SideNavProps) => {
 
 interface MobileSideNavProps {
   pathname: string;
-  encoding?: SliceVersion;
+  encoding?: Encoding;
 }
 
 export function MobileSideNav({ pathname, encoding }: MobileSideNavProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState<SideBarSourceType[]>([]);
-  const { version } = useVersionContext();
-  const breadcrumbs = getBreadcrumbs(pathname, version);
+  const { encoding: currentEncoding } = useEncoding();
+  const breadcrumbs = getBreadcrumbs(pathname, currentEncoding);
   const router = useRouter();
 
   let baseUrl = baseUrls.find((item) => pathname.startsWith(item))!;
 
   useEffect(() => {
-    const links = sideBarData(baseUrl, version) ?? [];
+    const links = sideBarData(baseUrl, currentEncoding) ?? [];
     setData(links);
     return () => {
       setData([]);
     };
-  }, [setData, pathname, version, baseUrl]);
+  }, [setData, pathname, currentEncoding, baseUrl]);
 
   let cells = data.map((item) => {
     return transformSideBarData(router, item, () => setIsOpen(false));

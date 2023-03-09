@@ -1,8 +1,8 @@
 // Copyright (c) ZeroC, Inc.
 
 import { Tab } from '@headlessui/react';
-import { useVersionContext } from 'context/state';
-import { SliceVersion, sliceVersions } from 'types';
+import { useEncoding } from 'context/state';
+import { Encoding, encodings } from 'types';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -11,34 +11,34 @@ const classNames = (...classes: string[]) => {
 };
 
 interface Props {
-  encoding?: SliceVersion;
+  encoding?: Encoding;
 }
 
 export const SliceSelector = ({ encoding }: Props) => {
-  const { version, setVersion } = useVersionContext();
+  const { encoding: currentEncoding, setEncoding } = useEncoding();
   const router = useRouter();
 
   const [selectedIndex, setSelectedIndex] = useState(
-    sliceVersions.indexOf(version)
+    encodings.indexOf(currentEncoding)
   );
 
   function onChange(index: number) {
-    setVersion(sliceVersions[index]);
+    setEncoding(encodings[index]);
     setSelectedIndex(index);
   }
 
   useEffect(() => {
-    setSelectedIndex(sliceVersions.indexOf(version));
-  }, [version]);
+    setSelectedIndex(encodings.indexOf(currentEncoding));
+  }, [currentEncoding]);
 
   return (
     <>
       <div className="m-0 my-2 w-full pr-6">
         <Tab.Group selectedIndex={selectedIndex} onChange={onChange}>
           <Tab.List className=" flex gap-0 space-x-1 rounded-2xl bg-transparent">
-            {sliceVersions.map((version) => (
+            {encodings.map((encoding) => (
               <Tab
-                key={version}
+                key={encoding}
                 className={({ selected }) =>
                   classNames(
                     'w-full rounded-lg border-[1.5px] bg-white px-2 py-2 text-xs font-medium uppercase',
@@ -51,7 +51,7 @@ export const SliceSelector = ({ encoding }: Props) => {
                   )
                 }
               >
-                {version}
+                {encoding}
               </Tab>
             ))}
           </Tab.List>

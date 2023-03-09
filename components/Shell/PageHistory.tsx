@@ -2,24 +2,24 @@
 
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { sideBarData, baseUrls, flattenSideBarData } from 'data/side-bar-data';
-import { SideBarLink, SliceVersion, SideBarDivider, isLink } from 'types';
+import { SideBarLink, Encoding, SideBarDivider, isLink } from 'types';
 import Link from 'next/link';
 import React from 'react';
 
 interface Props {
   path: string;
-  version: SliceVersion;
+  encoding: Encoding;
 }
 
 const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;
 };
 
-export const PageHistory = ({ path, version }: Props) => {
+export const PageHistory = ({ path, encoding }: Props) => {
   // Get the side bar links for the current page
   const baseUrl = baseUrls.find((item) => path.startsWith(item))!;
   const links: SideBarLink[] = flattenSideBarData(
-    sideBarData(baseUrl, version)
+    sideBarData(baseUrl, encoding)
   ).filter(isLink);
 
   // Find the current page in the list of links

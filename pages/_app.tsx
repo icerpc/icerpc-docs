@@ -13,7 +13,7 @@ import { SideNav, TopNav } from 'components';
 import 'components/prism-coldark.css';
 import '/public/globals.css';
 import clsx from 'clsx';
-import { SliceVersion } from 'types';
+import { Encoding } from 'types';
 
 const inter = Inter({ subsets: ['latin'] });
 const TITLE = 'TODO';
@@ -28,7 +28,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
 
   let title = TITLE;
   let description = DESCRIPTION;
-  let encoding: SliceVersion;
+  let encoding: Encoding;
 
   if (markdoc) {
     if (markdoc.frontmatter.title) {

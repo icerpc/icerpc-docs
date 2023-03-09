@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { SliceVersion, SideBarSourceType, isCategory, isLink } from 'types';
+import { Encoding, SideBarSourceType, isCategory, isLink } from 'types';
 import {
   slice1Data,
   slice2Data,
@@ -52,16 +52,19 @@ export const currentNavItem = (baseUrl: string) => {
 
 export const sideBarData = (
   baseUrl: string,
-  sliceVersion: SliceVersion
+  encoding: Encoding
 ): SideBarSourceType[] => {
   switch (baseUrl) {
     case GETTING_STARTED_BASE_URL:
       return gettingStartedData;
     case SLICE_BASE_URL:
-      if (sliceVersion === 'Slice1') {
-        return slice1Data;
-      } else {
-        return slice2Data;
+      switch (encoding) {
+        case Encoding.Slice1:
+          return slice1Data;
+        case Encoding.Slice2:
+          return slice2Data;
+        default:
+          return [];
       }
     case RPC_CORE_BASE_URL:
       return rpcCoreData;

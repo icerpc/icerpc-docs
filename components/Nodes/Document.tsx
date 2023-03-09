@@ -4,7 +4,7 @@ import React, { ReactElement } from 'react';
 import { useRouter } from 'next/router';
 import queryString from 'query-string';
 
-import { useVersionContext } from 'context/state';
+import { useEncoding } from 'context/state';
 import {
   PageHistory,
   Footer,
@@ -13,8 +13,8 @@ import {
   TableOfContents
 } from 'components/Shell';
 import { Divider } from 'components/Divider';
-import { SliceVersion } from 'types';
-import { VersionSection } from 'components/SliceVersionSection';
+import { Encoding } from 'types';
+import { EncodingSection } from 'components/EncodingSection';
 import { Title } from 'components/Title';
 
 type Heading = {
@@ -23,21 +23,21 @@ type Heading = {
   children: string;
 };
 
-const versionFilter = (node: ReactElement, version: SliceVersion) => {
-  if (node.type == VersionSection)
-    if (node.props.version === version) return true;
+const encodingFilter = (node: ReactElement, encoding: Encoding) => {
+  if (node.type == EncodingSection)
+    if (node.props.encoding === encoding) return true;
     else return false;
   return true;
 };
 
 const flattenNodes = (node: ReactElement) => {
-  if (node.props?.version) return node.props.children;
+  if (node.props?.encoding) return node.props.children;
   else return node;
 };
 
 const collectHeadings = (
   children: ReactElement[],
-  version: SliceVersion
+  encoding: Encoding
 ): TOCItem[] => {
   const isHeading = (x: any): x is Heading => {
     return (
@@ -50,7 +50,7 @@ const collectHeadings = (
   return (
     (children instanceof Array &&
       (children
-        .filter((c) => versionFilter(c, version)) // Filter out nodes that don't match the version
+        .filter((c) => encodingFilter(c, encoding)) // Filter out nodes that don't match the encoding
         .flatMap((c) => flattenNodes(c)) // Flatten the nodes
         .filter((c) => isHeading(c.props))
         .map((c) => {
@@ -65,12 +65,12 @@ const collectHeadings = (
   );
 };
 
-const getOtherSliceVersion = (sliceVersion: SliceVersion): SliceVersion => {
-  switch (sliceVersion) {
-    case SliceVersion.Slice1:
-      return SliceVersion.Slice2;
-    case SliceVersion.Slice2:
-      return SliceVersion.Slice1;
+const getAltEncoding = (encoding: Encoding): Encoding => {
+  switch (encoding) {
+    case Encoding.Slice1:
+      return Encoding.Slice2;
+    case Encoding.Slice2:
+      return Encoding.Slice1;
   }
 };
 
@@ -78,35 +78,35 @@ interface Props {
   children: ReactElement[];
   title: string;
   description: string;
-  encoding?: SliceVersion;
+  encoding?: Encoding;
 }
 
 export const Document = ({ children, title, description, encoding }: Props) => {
-  const { version, setVersion } = useVersionContext();
+  const { encoding: currentEncoding } = useEncoding();
   const router = useRouter();
   const path = router.asPath;
 
   const isDocs = path.startsWith('/docs');
-  const toc = collectHeadings(children, version);
+  const toc = collectHeadings(children, currentEncoding);
 
   return (
     <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip">
       <article className="mx-6 mt-10 flex h-full w-full max-w-[52rem] flex-col justify-center md:mx-10 lg:mx-20">
         {encoding ? (
           <>
-            <VersionSection version={encoding}>{children}</VersionSection>
-            <VersionSection version={getOtherSliceVersion(encoding)}>
+            <EncodingSection encoding={encoding}>{children}</EncodingSection>
+            <EncodingSection encoding={getAltEncoding(encoding)}>
               <UnsupportedEncoding
                 encoding={encoding}
                 title={title}
                 description={description}
               />
-            </VersionSection>
+            </EncodingSection>
           </>
         ) : (
           <>{children}</>
         )}
-        <PageHistory path={path} version={version} />
+        <PageHistory path={path} encoding={currentEncoding} />
         <Divider />
         <Feedback />
         {/* <Footer /> */}
@@ -117,7 +117,7 @@ export const Document = ({ children, title, description, encoding }: Props) => {
 };
 
 interface UnsupportedEncodingProps {
-  encoding: SliceVersion;
+  encoding: Encoding;
   title: string;
   description: string;
 }
@@ -129,8 +129,7 @@ const UnsupportedEncoding = ({
 }: UnsupportedEncodingProps) => {
   return (
     <div className="h-full w-full">
-      <Title title={title} description={description} encoding={encoding} />
-
+      <Title title={title} description={description} />
       <h1 className="mt-20 text-2xl font-extrabold text-[#333333]">
         This page does not have any content available for the specified
         encoding.

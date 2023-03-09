@@ -2,20 +2,20 @@
 
 import { ReactNode } from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { SliceVersion, Platform } from 'types';
+import { Encoding, Platform } from 'types';
 
-type VersionContextType = {
-  version: SliceVersion;
-  setVersion: (version: SliceVersion) => void;
+type EncodingContextType = {
+  encoding: Encoding;
+  setEncoding: (encoding: Encoding) => void;
 };
 type PlatformContextType = {
   platform: Platform;
   setPlatform: (platform: Platform) => void;
 };
 
-const VersionContext = createContext<VersionContextType>({
-  version: SliceVersion.Slice2,
-  setVersion: () => {}
+const EncodingContext = createContext<EncodingContextType>({
+  encoding: Encoding.Slice2,
+  setEncoding: () => {}
 });
 const PlatformContext = createContext<PlatformContextType>({
   platform: Platform.csharp,
@@ -27,45 +27,47 @@ interface Props {
 }
 
 export function AppWrapper({ children }: Props) {
-  const [version, setVersion] = useState<SliceVersion>(SliceVersion.Slice2);
+  const [encoding, setEncoding] = useState<Encoding>(Encoding.Slice2);
   const [platform, setPlatform] = useState<Platform>(Platform.csharp);
 
   useEffect(() => {
-    // Get the platform and version from local storage if it exists
+    // Get the platform and encoding from local storage if it exists
     const localPlatform = localStorage.getItem('platform');
-    const localVersion = localStorage.getItem('slice-version');
+    const localEncoding = localStorage.getItem('encoding');
 
-    // If the platform and version exist in local storage, parse them and set them as the current platform and version
+    // If the platform and encoding exist in local storage, parse them and set them as the current platform and encoding
     const platform: Platform | null = localPlatform
       ? JSON.parse(localPlatform)
       : null;
-    const version: SliceVersion | null = localVersion
-      ? JSON.parse(localVersion)
+    const encoding: Encoding | null = localEncoding
+      ? JSON.parse(localEncoding)
       : null;
 
     platform && setPlatform(platform);
-    version && setVersion(version);
+    encoding && setEncoding(encoding);
   }, []);
 
   useEffect(() => {
-    // Set the platform and version in local storage when they change
-    localStorage.setItem('slice-version', JSON.stringify(version));
+    // Set the platform and encoding in local storage when they change
+    localStorage.setItem('encoding', JSON.stringify(encoding));
     localStorage.setItem('platform', JSON.stringify(platform));
-  }, [version, platform]);
+  }, [encoding, platform]);
 
   return (
-    <VersionContext.Provider value={{ version, setVersion }}>
+    <EncodingContext.Provider
+      value={{ encoding: encoding, setEncoding: setEncoding }}
+    >
       <PlatformContext.Provider value={{ platform, setPlatform }}>
         {children}
       </PlatformContext.Provider>
-    </VersionContext.Provider>
+    </EncodingContext.Provider>
   );
 }
 
-export const useVersionContext = (): VersionContextType => {
-  return useContext(VersionContext);
+export const useEncoding = (): EncodingContextType => {
+  return useContext(EncodingContext);
 };
 
-export const usePlatformContext = (): PlatformContextType => {
+export const usePlatform = (): PlatformContextType => {
   return useContext(PlatformContext);
 };

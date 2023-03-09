@@ -1,26 +1,25 @@
 // Copyright (c) ZeroC, Inc.
 
 import { Breadcrumbs, Breadcrumb } from 'components/Breadcrumbs';
-import { useVersionContext } from 'context/state';
+import { useEncoding } from 'context/state';
 import { baseUrls, currentNavItem, sideBarData } from 'data/side-bar-data';
 import { useRouter } from 'next/router';
 import {
   SideBarCategory,
   SideBarLink,
   SideBarSourceType,
-  SliceVersion,
+  Encoding,
   isCategory,
   isLink
 } from 'types';
-import { SupportedEncodings } from './SupportedEncoding';
 
 const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;
 };
 
-export const getBreadcrumbs = (path: string, version: SliceVersion) => {
+export const getBreadcrumbs = (path: string, encoding: Encoding) => {
   const baseUrl = baseUrls.find((item) => path.startsWith(item))!;
-  const categories = sideBarData(baseUrl, version).filter((item) =>
+  const categories = sideBarData(baseUrl, encoding).filter((item) =>
     isCategory(item)
   ) as SideBarCategory[];
 
@@ -66,17 +65,12 @@ export const getBreadcrumbs = (path: string, version: SliceVersion) => {
 interface Props {
   title: string;
   description: string;
-  encoding?: SliceVersion;
 }
 
-export const Title = ({ title, description, encoding }: Props) => {
-  const { version, setVersion } = useVersionContext();
+export const Title = ({ title, description }: Props) => {
+  const { encoding } = useEncoding();
   const path = useRouter().pathname;
-  const baseUrl = baseUrls.find((item) => path.startsWith(item))!;
-  const breadcrumbs = getBreadcrumbs(path, version);
-  const supportedEncodings = encoding
-    ? [encoding]
-    : [SliceVersion.Slice1, SliceVersion.Slice2];
+  const breadcrumbs = getBreadcrumbs(path, encoding);
 
   return (
     <div className="m-0 p-0">
