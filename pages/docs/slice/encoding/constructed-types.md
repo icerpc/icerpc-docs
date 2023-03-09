@@ -3,7 +3,7 @@ title: Constructed types
 description: Learn how to encode structs, enums, exceptions and proxies with Slice.
 ---
 
-{% title /%}
+
 
 {% slice1 %}
 ## Class

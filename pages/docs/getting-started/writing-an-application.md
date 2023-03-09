@@ -3,7 +3,7 @@ title: Writing your first IceRPC application
 description: TODO
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

@@ -3,7 +3,7 @@ title: Structs
 description: A method to group related data together.
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

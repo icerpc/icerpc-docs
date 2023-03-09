@@ -3,7 +3,7 @@ title: Overview
 description: Some description
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

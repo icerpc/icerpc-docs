@@ -3,7 +3,7 @@ title: icerpc and multiplexed transports
 description: Lean about the icerpc protocol and multiplexed transports
 ---
 
-{% title /%}
+
 
 ## The icerpc protocol
 

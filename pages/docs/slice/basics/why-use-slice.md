@@ -3,7 +3,7 @@ title: Why use Slice?
 description: Understand the problem that Slice solves.
 ---
 
-{% title /%}
+
 
 The IceRPC core provides all you need to make RPCs. When you use just the core, the payload of your requests and
 responses are streams of bytes, and you need to manually encode and decode any typed data (such as strings and integers)

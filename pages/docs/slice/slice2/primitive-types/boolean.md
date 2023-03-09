@@ -2,7 +2,7 @@
 title: Boolean
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

@@ -3,7 +3,7 @@ title: Contract first model
 description: Learn how to create an application using IceRPC and Slice.
 ---
 
-{% title /%}
+
 
 ## Step 1: Create Slice definitions (the contract)
 

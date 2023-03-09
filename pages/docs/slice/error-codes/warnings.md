@@ -3,7 +3,7 @@ title: Warnings
 toc: false
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

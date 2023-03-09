@@ -3,7 +3,7 @@ title: Protocol frames
 description: Understand how requests and responses are sent over ice.
 ---
 
-{% title /%}
+
 
 ## Ice interop
 
@@ -130,7 +130,7 @@ The requestId identifies the request associated with this response.
 The replyStatus encodes the response's [status code](../invocation/incoming-response#status-code):
 
 | Status code           | Encoded as reply status    |
-|-----------------------|----------------------------|
+| --------------------- | -------------------------- |
 | Success               | Ok                         |
 | ApplicationError      | UserException              |
 | ServiceNotFound       | ObjectNotExistException    |
@@ -140,7 +140,7 @@ The replyStatus encodes the response's [status code](../invocation/incoming-resp
 When IceRPC receives a response frame, it creates an incoming response with a status code decoded from the reply status:
 
 | Reply status               | Decoded as status code |
-|----------------------------|------------------------|
+| -------------------------- | ---------------------- |
 | Ok                         | Success                |
 | UserException              | ApplicationError       |
 | ObjectNotExistException    | ServiceNotFound        |
@@ -151,10 +151,10 @@ When IceRPC receives a response frame, it creates an incoming response with a st
 The format of the replyPayload depends on the reply status:
 
 | Reply status        | Format of the reply payload                                           |
-|---------------------|-----------------------------------------------------------------------|
+| ------------------- | --------------------------------------------------------------------- |
 | Ok                  | An [encapsulation](#encapsulation) that holds the response's payload. |
 | UserException       | An [encapsulation](#encapsulation) that holds the response's payload. |
-| NotExist exceptions | A RequestFailedData encoded with Slice1.                              |                                                  |
+| NotExist exceptions | A RequestFailedData encoded with Slice1.                              |  |
 | Unknown exceptions  | The response's error message encoded with Slice1.                     |
 
 _RequestFailedData_

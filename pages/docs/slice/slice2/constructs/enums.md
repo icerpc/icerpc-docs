@@ -3,7 +3,7 @@ title: Enums
 description: A data type consisting of a set of named values called enumerators
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

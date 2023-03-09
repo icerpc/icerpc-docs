@@ -3,7 +3,7 @@ title: Server address
 description: Understand the server address concept and syntax.
 ---
 
-{% title /%}
+
 
 ## Syntax
 

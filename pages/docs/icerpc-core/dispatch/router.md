@@ -3,7 +3,7 @@ title: Router
 description: Learn how to route incoming requests based on their path.
 ---
 
-{% title /%}
+
 
 ## Path-based routing
 

@@ -3,7 +3,7 @@ title: Main features
 description: Learn about the main characteristics of the Slice encoding.
 ---
 
-{% title /%}
+
 
 ## Compact binary encoding
 

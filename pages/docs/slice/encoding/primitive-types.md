@@ -3,7 +3,7 @@ title: Primitive types
 description: Learn how primitive types are encoded with Slice.
 ---
 
-{% title /%}
+
 
 ## Bool
 
@@ -13,7 +13,7 @@ A `bool` is encoded on a single byte, where 0 means `false` and 1 means `true`. 
 
 {% slice1 %}
 | Type  | Encoded on N bytes |
-|-------|--------------------|
+| ----- | ------------------ |
 | uint8 | 1                  |
 | int16 | 2                  |
 | int32 | 4                  |
@@ -22,7 +22,7 @@ A `bool` is encoded on a single byte, where 0 means `false` and 1 means `true`. 
 
 {% slice2 %}
 | Type          | Encoded on N bytes |
-|---------------|--------------------|
+| ------------- | ------------------ |
 | int8, uint8   | 1                  |
 | int16, uint16 | 2                  |
 | int32, uint32 | 4                  |
@@ -123,7 +123,7 @@ A `varint32`, `varuint32`, `varint62`, `varuint62` is encoded on 1, 2, 4 or 8 by
 first byte encode the number of bytes used to encode the full value.
 
 | First 2 bits | Number of bytes |
-|--------------|-----------------|
+| ------------ | --------------- |
 | 0            | 1               |
 | 1            | 2               |
 | 2            | 4               |
@@ -138,7 +138,7 @@ the value of the first two bits and then stored in the selected number of bytes.
 The value of the first 2 bits indirectly determines the min and max encodable values:
 
 | First 2 bits | Min varint | Max varint | Min varuint | Max varuint |
-|--------------|------------|------------|-------------|-------------|
+| ------------ | ---------- | ---------- | ----------- | ----------- |
 | 0            | -2^5       | 2^5 - 1    | 0           | 2^6 - 1     |
 | 1            | -2^13      | 2^13 - 1   | 0           | 2^14 - 1    |
 | 2            | -2^29      | 2^29 - 1   | 0           | 2^30 - 1    |

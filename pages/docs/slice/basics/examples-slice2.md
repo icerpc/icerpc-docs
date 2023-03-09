@@ -3,7 +3,7 @@ title: Examples
 description: Discover the Slice syntax through a few examples.
 ---
 
-{% title /%}
+
 
 This page offers a quick overview of the Slice syntax through examples.
 

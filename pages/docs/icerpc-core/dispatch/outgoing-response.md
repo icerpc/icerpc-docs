@@ -3,7 +3,7 @@ title: Outgoing response
 description: Learn how to create outgoing responses.
 ---
 
-{% title /%}
+
 
 ## Overview
 

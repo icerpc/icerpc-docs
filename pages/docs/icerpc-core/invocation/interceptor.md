@@ -3,7 +3,7 @@ title: Interceptor
 description: Learn how to write an interceptor and how to install an interceptor in your invocation pipeline.
 ---
 
-{% title /%}
+
 
 ## Definition
 

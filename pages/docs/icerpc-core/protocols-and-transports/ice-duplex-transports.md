@@ -3,7 +3,7 @@ title: ice and duplex transports
 description: Learn about the ice protocol and duplex transports
 ---
 
-{% title /%}
+
 
 ## The ice protocol
 

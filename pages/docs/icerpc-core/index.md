@@ -3,7 +3,7 @@ title: Overview
 description: Everything except Slice
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

@@ -3,7 +3,7 @@ title: Connection shutdown
 description: Understand connection shutdown with icerpc.
 ---
 
-{% title /%}
+
 
 ## What's a connection shutdown?
 

@@ -2,7 +2,7 @@
 title: Interfaces
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

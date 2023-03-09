@@ -92,15 +92,12 @@ export const Document = ({ children, title, description, encoding }: Props) => {
   return (
     <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip">
       <article className="mx-6 mt-10 flex h-full w-full max-w-[52rem] flex-col justify-center md:mx-10 lg:mx-20">
+        <Title title={title} description={description} />
         {encoding ? (
           <>
             <EncodingSection encoding={encoding}>{children}</EncodingSection>
             <EncodingSection encoding={getAltEncoding(encoding)}>
-              <UnsupportedEncoding
-                encoding={encoding}
-                title={title}
-                description={description}
-              />
+              <UnsupportedEncoding encoding={encoding} />
             </EncodingSection>
           </>
         ) : (
@@ -118,18 +115,11 @@ export const Document = ({ children, title, description, encoding }: Props) => {
 
 interface UnsupportedEncodingProps {
   encoding: Encoding;
-  title: string;
-  description: string;
 }
 
-const UnsupportedEncoding = ({
-  encoding,
-  title,
-  description
-}: UnsupportedEncodingProps) => {
+const UnsupportedEncoding = ({ encoding }: UnsupportedEncodingProps) => {
   return (
     <div className="h-full w-full">
-      <Title title={title} description={description} />
       <h1 className="mt-20 text-2xl font-extrabold text-[#333333]">
         This page does not have any content available for the specified
         encoding.

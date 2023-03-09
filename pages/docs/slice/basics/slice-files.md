@@ -3,7 +3,7 @@ title: Slice files
 description: Understand how Slice definitions are organized in Slice files.
 ---
 
-{% title /%}
+
 
 ## File extension
 

@@ -2,7 +2,7 @@
 title: Slice components
 ---
 
-{% title /%}
+
 
 Slice is a collection of several related components:
 

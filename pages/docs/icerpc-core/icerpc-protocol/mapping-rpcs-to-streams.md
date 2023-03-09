@@ -3,7 +3,7 @@ title: Mapping RPCs to streams
 description: Understand how requests and responses are sent over icerpc.
 ---
 
-{% title /%}
+
 
 ## A stream per RPC
 

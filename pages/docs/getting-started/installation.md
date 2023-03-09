@@ -3,7 +3,7 @@ title: Installation
 description: How to install IceRPC
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

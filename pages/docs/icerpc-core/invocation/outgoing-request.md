@@ -3,7 +3,7 @@ title: Outgoing request
 description: Learn how to create outgoing requests.
 ---
 
-{% title /%}
+
 
 ## Overview
 

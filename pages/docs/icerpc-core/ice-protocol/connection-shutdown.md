@@ -3,7 +3,7 @@ title: Connection shutdown
 description: Understand connection shutdown with ice.
 ---
 
-{% title /%}
+
 
 ## What's a connection shutdown?
 

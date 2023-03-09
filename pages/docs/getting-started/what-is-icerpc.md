@@ -3,7 +3,7 @@ title: What is IceRPC?
 description: Learn about IceRPC, the RPC protocol.
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

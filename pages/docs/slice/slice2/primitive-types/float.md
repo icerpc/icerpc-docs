@@ -3,7 +3,7 @@ title: Floating-point Types
 description: Learn about the floating-point types in Slice.
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

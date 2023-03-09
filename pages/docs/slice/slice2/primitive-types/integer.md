@@ -3,7 +3,7 @@ title: Integer Types
 description: Learn about the integral types in Slice.
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

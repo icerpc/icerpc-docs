@@ -3,7 +3,7 @@ title: Invocation pipeline
 description: Understand how to send requests and receive responses.
 ---
 
-{% title /%}
+
 
 ## Definition
 

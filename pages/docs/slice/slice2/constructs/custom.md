@@ -2,7 +2,7 @@
 title: Custom
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

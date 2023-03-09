@@ -3,7 +3,7 @@ title: Protocol compatibility
 description: How to mix and match ice and icerpc?
 ---
 
-{% title /%}
+
 
 ## Incompatible protocols
 

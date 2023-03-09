@@ -3,7 +3,7 @@ title: Client vs server connections
 description: Learn how to create and accept connections in IceRPC.
 ---
 
-{% title /%}
+
 
 ## What are connections for?
 

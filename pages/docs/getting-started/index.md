@@ -4,7 +4,7 @@ description: Everything you need to get started with IceRPC
 show_toc: false
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

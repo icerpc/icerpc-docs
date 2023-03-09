@@ -3,7 +3,7 @@ title: Protocol connection
 description: Understand how to create and use protocol connections.
 ---
 
-{% title /%}
+
 
 ## The protocol connection abstraction
 

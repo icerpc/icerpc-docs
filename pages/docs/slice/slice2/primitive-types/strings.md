@@ -2,7 +2,7 @@
 title: Strings
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

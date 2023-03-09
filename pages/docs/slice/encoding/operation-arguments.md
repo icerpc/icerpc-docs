@@ -3,7 +3,7 @@ title: Operation arguments
 description: Understand how operation arguments are encoded with Slice.
 ---
 
-{% title /%}
+
 
 ## Payload of an outgoing request
 

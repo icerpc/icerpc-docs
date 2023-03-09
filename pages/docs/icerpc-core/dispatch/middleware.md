@@ -3,7 +3,7 @@ title: Middleware
 description: Learn how to write a middleware.
 ---
 
-{% title /%}
+
 
 ## Definition
 

@@ -3,7 +3,7 @@ title: Source Files
 description: Learn about the structure of Slice source files.
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

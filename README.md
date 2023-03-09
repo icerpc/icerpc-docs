@@ -4,7 +4,6 @@
   - [Build Requirements](#build-requirements)
   - [Building](#building)
   - [Writing Documentation](#writing-documentation)
-    - [Title](#title)
     - [Side-by-side](#side-by-side)
     - [Weighted Side-by-side](#weighted-side-by-side)
     - [Divider](#divider)
@@ -39,29 +38,8 @@ of custom components, such as code tabs, notes, and flow diagrams, all from with
 and includes the tag name, attributes, and content body. Tags allow for creating custom components that can
 be used in the documentation.
 
-- [Title](#title)
 - [Side-by-side](#side-by-side)
 - [Divider](#divider)
-
-### Title
-
-The `title` tag dynamically sets the page's title. This is useful for pages that have descriptions or breadcrumbs.
-Generally, each page should begin with a title tag.
-
-Notably, the title tag pulls the data automatically from the page's frontmatter. For example, this means it will only
-show the description if the page's frontmatter specifies the description. Since the title tag pulls the data from the
-frontmatter and does not have any "children", you can use the self-closing syntax for tags.
-
-```markdown
----
-title: Lorem ipsum dolor sit amet.
-description: Lorem ipsum dolor sit amet.
----
-
-{% title /%}
-
-...
-```
 
 ### Side-by-side
 

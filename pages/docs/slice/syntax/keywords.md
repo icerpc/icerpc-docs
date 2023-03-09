@@ -2,7 +2,7 @@
 title: Keywords
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

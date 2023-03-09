@@ -3,7 +3,7 @@ title: Overview
 description: An introduction to Slice
 ---
 
-{% title /%}
+
 
 {% encodings /%}
 

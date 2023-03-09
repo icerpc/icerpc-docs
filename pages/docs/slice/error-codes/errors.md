@@ -3,7 +3,7 @@ title: Errors
 toc: false
 ---
 
-{% title /%}
+
 
 {% callout type="critical" %}
 

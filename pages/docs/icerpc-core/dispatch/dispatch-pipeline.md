@@ -3,7 +3,7 @@ title: Dispatch pipeline
 description: Understand how to accept requests and return responses.
 ---
 
-{% title /%}
+
 
 ## Definition
 

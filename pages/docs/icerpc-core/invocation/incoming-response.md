@@ -3,7 +3,7 @@ title: Incoming response
 description: Understand how to interpret an incoming response.
 ---
 
-{% title /%}
+
 
 ## Overview
 

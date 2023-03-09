@@ -3,7 +3,7 @@ title: Connection establishment
 description: Learn how a client connects to a server with ice.
 ---
 
-{% title /%}
+
 
 ## Connection establishment steps
 
