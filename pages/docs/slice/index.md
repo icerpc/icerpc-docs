@@ -31,7 +31,6 @@ You will only see me when Slice1 is selected
 
 {% /slice1 %}
 
-
 ### Quick Links
 
 {% grid rows=2 columns=3 %}

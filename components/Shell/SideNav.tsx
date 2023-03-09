@@ -13,6 +13,7 @@ import {
   SideBarDivider,
   SideBarLink,
   SideBarSourceType,
+  SliceVersion,
   isCategory,
   isLink
 } from 'types';
@@ -66,7 +67,7 @@ function createListItem(
     );
   } else {
     return (
-      <div className={`${leftPadding} mb-3 mt-2 pr-2 pl-0`}>
+      <div className={`${leftPadding} mb-3 mt-2 pr-2 pl-0`} key={link.title}>
         <h2 className="my-4 text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:text-white dark:decoration-darkBorder">
           {link.title}
         </h2>
@@ -118,15 +119,15 @@ function transformSideBarData(
 
 interface SideNavProps {
   path: string;
+  encoding?: SliceVersion;
 }
 
-export const SideNav = ({ path }: SideNavProps) => {
+export const SideNav = ({ path, encoding }: SideNavProps) => {
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { version } = useVersionContext();
   const router = useRouter();
 
   let baseUrl = baseUrls.find((item) => path.startsWith(item))!;
-
   useEffect(() => {
     const links = sideBarData(baseUrl, version) ?? [];
     setData(links);
@@ -141,15 +142,15 @@ export const SideNav = ({ path }: SideNavProps) => {
 
   return (
     // Create a wrapper that grows to fill all available left space without moving the nav
-    <div className="sticky top-[59px] flex h-screen grow justify-end border-r border-lightBorder dark:border-darkBorder dark:bg-[#26282c]">
+    <div className="sticky top-[59px] hidden h-screen grow justify-end border-r border-lightBorder dark:border-darkBorder dark:bg-[#26282c] lg:flex">
       <nav
         className={clsx(
-          'sticky top-0 hidden h-[calc(100vh-59px)] w-[275px] overflow-y-auto lg:block',
+          'sticky top-0 block h-[calc(100vh-59px)] w-[275px] overflow-y-auto',
           'bg-none pr-3 pb-10 pl-6 pt-4'
         )}
       >
         <div className="pointer-events-none sticky top-0" />
-        {baseUrl == '/docs/slice' && <SliceSelector />}
+        {baseUrl == '/docs/slice' && <SliceSelector encoding={encoding} />}
         <ul className="mx-2 mt-4">{cells}</ul>
       </nav>
     </div>
@@ -268,7 +269,9 @@ export function MobileSideNav({ pathname }: MobileSideNavProps) {
                         )}
                       >
                         <div className="pointer-events-none sticky top-0" />
-                        {baseUrl == '/docs/slice' && <SliceSelector />}
+                        {baseUrl == '/docs/slice' && (
+                          <SliceSelector encoding={encoding} />
+                        )}
                         <ul className="mx-2 mt-4">{cells}</ul>
                       </nav>
                     </div>

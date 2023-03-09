@@ -1,7 +1,9 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactElement } from 'react';
 import { useRouter } from 'next/router';
+import queryString from 'query-string';
+
 import { useVersionContext } from 'context/state';
 import {
   PageHistory,
@@ -13,6 +15,7 @@ import {
 import { Divider } from 'components/Divider';
 import { SliceVersion } from 'types';
 import { VersionSection } from 'components/SliceVersionSection';
+import { Title } from 'components/Title';
 
 type Heading = {
   level: number;
@@ -62,30 +65,80 @@ const collectHeadings = (
   );
 };
 
-export const Document = ({ children }: { children: ReactElement[] }) => {
-  // Get the version
-  const { version } = useVersionContext();
+const getOtherSliceVersion = (sliceVersion: SliceVersion): SliceVersion => {
+  switch (sliceVersion) {
+    case SliceVersion.Slice1:
+      return SliceVersion.Slice2;
+    case SliceVersion.Slice2:
+      return SliceVersion.Slice1;
+  }
+};
 
-  // Get the data for the next and previous links
-  const path = useRouter().asPath;
+interface Props {
+  children: ReactElement[];
+  title: string;
+  description: string;
+  encoding?: SliceVersion;
+}
+
+export const Document = ({ children, title, description, encoding }: Props) => {
+  const { version, setVersion } = useVersionContext();
+  const router = useRouter();
+  const path = router.asPath;
+
   const isDocs = path.startsWith('/docs');
   const toc = collectHeadings(children, version);
 
   return (
-    <div className="flex shrink flex-row justify-center overflow-y-clip">
-      <article className="mx-6 mt-10 flex max-w-[52rem] flex-col justify-center md:mx-10 lg:mx-20">
-        {children}
-        {isDocs && (
+    <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip">
+      <article className="mx-6 mt-10 flex h-full w-full max-w-[52rem] flex-col justify-center md:mx-10 lg:mx-20">
+        {encoding ? (
           <>
-            <PageHistory path={path} version={version} />
-            <Divider />
-            <Feedback />
+            <VersionSection version={encoding}>{children}</VersionSection>
+            <VersionSection version={getOtherSliceVersion(encoding)}>
+              <UnsupportedEncoding
+                encoding={encoding}
+                title={title}
+                description={description}
+              />
+            </VersionSection>
           </>
+        ) : (
+          <>{children}</>
         )}
+        <PageHistory path={path} version={version} />
         <Divider />
+        <Feedback />
         {/* <Footer /> */}
       </article>
       {isDocs && TableOfContents(toc)}
+    </div>
+  );
+};
+
+interface UnsupportedEncodingProps {
+  encoding: SliceVersion;
+  title: string;
+  description: string;
+}
+
+const UnsupportedEncoding = ({
+  encoding,
+  title,
+  description
+}: UnsupportedEncodingProps) => {
+  return (
+    <div className="h-full w-full">
+      <Title title={title} description={description} encoding={encoding} />
+
+      <h1 className="mt-20 text-2xl font-extrabold text-[#333333]">
+        This page does not have any content available for the specified
+        encoding.
+      </h1>
+      <Divider />
+      <h2 className="my-3 text-sm text-[var(--text-color-secondary)]">
+        This page is only available for the {encoding} encoding.
+      </h2>
     </div>
   );
 };

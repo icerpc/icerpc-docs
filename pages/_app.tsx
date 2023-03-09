@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Head from 'next/head';
-import { AppWrapper, useVersionContext } from 'context/state';
+import { AppWrapper } from 'context/state';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/router';
@@ -28,6 +28,7 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
 
   let title = TITLE;
   let description = DESCRIPTION;
+  let encoding: SliceVersion;
 
   if (markdoc) {
     if (markdoc.frontmatter.title) {
@@ -35,6 +36,9 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
     }
     if (markdoc.frontmatter.description) {
       description = markdoc.frontmatter.description;
+    }
+    if (markdoc.frontmatter.encoding) {
+      encoding = markdoc.frontmatter.encoding;
     }
   }
 

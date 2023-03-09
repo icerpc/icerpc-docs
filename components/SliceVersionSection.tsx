@@ -32,5 +32,5 @@ export const VersionSection = ({ version: sliceVersion, children }: Props) => {
     }
   }, [version]);
 
-  return sliceVersion == currentTab ? children : null;
+  return sliceVersion == currentTab ? <>{children}</> : null;
 };
