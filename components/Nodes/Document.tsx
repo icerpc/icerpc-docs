@@ -132,13 +132,12 @@ const UnsupportedEncoding = ({
       <Title title={title} description={description} encoding={encoding} />
 
       <h1 className="mt-20 text-2xl font-extrabold text-[#333333]">
-        This page is not available in this version of the Slice documentation
+        This page does not have any content available for the specified
+        encoding.
       </h1>
       <Divider />
       <h2 className="my-3 text-sm text-[var(--text-color-secondary)]">
-        This page is only available in the{' '}
-        {encoding == SliceVersion.Slice2 ? 'Slice 2' : 'Slice 1'} version of the
-        documentation.
+        This page is only available for the {encoding} encoding.
       </h2>
     </div>
   );
