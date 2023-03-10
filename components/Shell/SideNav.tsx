@@ -150,7 +150,7 @@ export const SideNav = ({ path, encoding }: SideNavProps) => {
         )}
       >
         <div className="pointer-events-none sticky top-0" />
-        {baseUrl == '/docs/slice' && <SliceSelector encoding={encoding} />}
+        {baseUrl == '/docs/slice' && <SliceSelector />}
         <ul className="mx-2 mt-4">{cells}</ul>
       </nav>
     </div>
@@ -270,9 +270,7 @@ export function MobileSideNav({ pathname, encoding }: MobileSideNavProps) {
                         )}
                       >
                         <div className="pointer-events-none sticky top-0" />
-                        {baseUrl == '/docs/slice' && (
-                          <SliceSelector encoding={encoding} />
-                        )}
+                        {baseUrl == '/docs/slice' && <SliceSelector />}
                         <ul className="mx-2 mt-4">{cells}</ul>
                       </nav>
                     </div>

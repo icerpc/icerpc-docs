@@ -10,11 +10,7 @@ const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(' ');
 };
 
-interface Props {
-  encoding?: Encoding;
-}
-
-export const SliceSelector = ({ encoding }: Props) => {
+export const SliceSelector = () => {
   const { encoding: currentEncoding, setEncoding } = useEncoding();
   const router = useRouter();
 
@@ -24,7 +20,10 @@ export const SliceSelector = ({ encoding }: Props) => {
 
   function onChange(index: number) {
     setEncoding(encodings[index]);
-    setSelectedIndex(index);
+    router.push({
+      pathname: router.pathname,
+      query: { ...router.query, encoding: encodings[index] }
+    });
   }
 
   useEffect(() => {

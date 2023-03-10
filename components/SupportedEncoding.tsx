@@ -1,5 +1,8 @@
+// Copyright (c) ZeroC, Inc.
+
 import clsx from 'clsx';
 import { useEncoding } from 'context/state';
+import { useRouter } from 'next/router';
 import { Encoding } from 'types';
 
 interface Props {
@@ -8,6 +11,16 @@ interface Props {
 
 export const SupportedEncodings = ({ supported }: Props) => {
   const { encoding: currentEncoding, setEncoding } = useEncoding();
+  const router = useRouter();
+
+  const updateEncoding = (encoding: Encoding) => {
+    setEncoding(encoding);
+    // Update the URL to include the encoding as a query parameter using next router
+    router.push({
+      pathname: router.pathname,
+      query: { ...router.query, encoding: encoding }
+    });
+  };
 
   return (
     <div className="flex flex-row items-center justify-start pt-1 pb-4">
@@ -17,7 +30,7 @@ export const SupportedEncodings = ({ supported }: Props) => {
           supported.map((encoding) => (
             <button
               key={encoding}
-              onClick={() => setEncoding(encoding)}
+              onClick={() => updateEncoding(encoding)}
               className={clsx(
                 'flex flex-row items-center justify-center rounded-full border px-3 py-1 text-sm font-medium leading-5',
                 'border-lightBorder dark:border-darkBorder',
