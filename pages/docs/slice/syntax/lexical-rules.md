@@ -3,8 +3,6 @@ title: Lexical Rules
 description: See how a the slice IDL works under the hood
 ---
 
-
-
 {% callout type="critical" %}
 
 TODO: This page contains placeholder content and needs to be replaced. Please remove this when you are done.

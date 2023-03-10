@@ -3,8 +3,6 @@ title: Source Files
 description: Learn about the structure of Slice source files.
 ---
 
-
-
 {% callout type="critical" %}
 
 TODO: This page contains placeholder content and needs to be replaced. Please remove this when you are done.

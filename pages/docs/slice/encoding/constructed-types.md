@@ -3,9 +3,8 @@ title: Constructed types
 description: Learn how to encode structs, enums, exceptions and proxies with Slice.
 ---
 
-
-
 {% slice1 %}
+
 ## Class
 
 The class encoding is complex and stateful. Since a class instance can point to another class instance (or even itself)
@@ -34,6 +33,7 @@ An enumerator is encoded as its associated numeric value using the
 [variable-length size](encoding-only-constructs#variable-length-size) encoding.
 
 For example:
+
 ```slice
 enum Fruit { Apple, Strawberry, Orange = 300 }
 ```
@@ -48,6 +48,7 @@ The encoding is the same for checked and unchecked enums.
 An enumerator is encoded as its associated numeric value, using the encoding of the enumeration's underlying type.
 
 For example:
+
 ```slice
 enum Fruit : uint16 { Apple, Strawberry, Orange = 300 }
 ```
@@ -99,14 +100,17 @@ compact struct Point { x: int32, y: int32 }
 ```
 
 A point x = 5, y = 32 is encoded as follows:
+
 ```
 0x05 0x00 0x00 0x00: x's value (5 on 4 bytes in little-endian order)
 0x20 0x00 0x00 0x00: y's value (32 on 4 bytes in little-endian order)
 ```
+
 {% /slice1 %}
 
 {% slice2 %}
 A struct is encoded as:
+
 - a [bit sequence](encoding-only-constructs#bit-sequence) with N bits, where N is the number of non-tagged fields with
   optional types in the struct, followed by
 - the non-tagged fields encoded in definition order, followed by
@@ -116,14 +120,16 @@ The bit sequence is empty (and occupies no byte) when none of the struct's field
 fields).
 
 Each non-tagged field is encoded as follows:
+
 - if the field has a non-optional type, encode the field value as usual.
 - otherwise:
-    - if the field value is set, set the corresponding bit in the bit sequence and encode the field value as usual.
-    - otherwise, make sure the corresponding bit in the bit sequence is unset and don't encode anything else for this
+  - if the field value is set, set the corresponding bit in the bit sequence and encode the field value as usual.
+  - otherwise, make sure the corresponding bit in the bit sequence is unset and don't encode anything else for this
       field.
 
 The tagged fields of a struct are encoded in tag order (not in definition order); the field with the lowest tag number
 is encoded first. For each tagged field:
+
 - if the field value is not set, don't encode anything
 - otherwise encode this field as `[number][size][value]` where number is the tag number encoded as a varint32, value is
 the encoded field value and size is a varuint62 with the number of bytes in value.
@@ -131,7 +137,7 @@ the encoded field value and size is a varuint62 with the number of bytes in valu
 Finally, we mark the end of the tagged fields (and the end of the struct) with the "tag end marker", -1 encoded as a
 `varint32`.
 
-**Compact struct**
+### Compact struct
 
 If a struct is marked `compact`, it cannot have any tagged field and its encoded representation does not include the tag
 end marker.
@@ -151,12 +157,14 @@ compact struct Point { x: int32, y: int32 }
 ```
 
 A point x = 5, y = 32 is encoded as follows:
+
 ```
 0x05 0x00 0x00 0x00: x's value (5 on 4 bytes in little-endian order)
 0x20 0x00 0x00 0x00: y's value (32 on 4 bytes in little-endian order)
 ```
 
 _Example: compact struct with a bit sequence_
+
 ```slice
 compact struct Contact {
   id: int32
@@ -166,6 +174,7 @@ compact struct Contact {
 ```
 
 The contact id = 5, name = not set, age = 42 is encoded as:
+
 ```
 0b00000010:          bit sequence with only the bit at position 1 set
 0x05 0x00 0x00 0x00: id (5)
@@ -180,6 +189,7 @@ struct Point { x: int32, y: in32 }
 ```
 
 A (non-compact) point x = 5, y = 32 is encoded as follows:
+
 ```
 0x05 0x00 0x00 0x00: x's value (5 on 4 bytes in little-endian order)
 0x20 0x00 0x00 0x00: y's value (32 on 4 bytes in little-endian order)
@@ -193,6 +203,7 @@ struct Empty {}
 ```
 
 An instance of Empty is encoded as:
+
 ```
 0xFC: tag end marker
 ```
@@ -208,6 +219,7 @@ struct Contact {
 ```
 
 The contact id = 5, name = not set, age = 42 is encoded as:
+
 ```
 -                    empty bit sequence since no non-tagged field has an optional type
 0x05 0x00 0x00 0x00: id (5 on 4 bytes, little-endian)

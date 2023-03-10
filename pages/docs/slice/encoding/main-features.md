@@ -3,8 +3,6 @@ title: Main features
 description: Learn about the main characteristics of the Slice encoding.
 ---
 
-
-
 ## Compact binary encoding
 
 The Slice encoding defines how each Slice language construct is encoded into a stream of bytes. It's a non-self
@@ -12,6 +10,7 @@ describing binary encoding: the Slice encoding relies on the encoder and decoder
 definitions) to achieve compactness.
 
 For example:
+
 ```slice
 compact struct Item {
     name: string

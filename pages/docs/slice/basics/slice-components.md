@@ -2,8 +2,6 @@
 title: Slice components
 ---
 
-
-
 Slice is a collection of several related components:
 
 - the Slice language\

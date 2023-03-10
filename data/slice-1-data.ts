@@ -8,6 +8,74 @@ export const slice1Data: SideBarSourceType[] = [
     path: `${SLICE_BASE_URL}`
   },
   {
+    title: 'Basics',
+    links: [
+      {
+        title: 'Why use Slice?',
+        path: `${SLICE_BASE_URL}/basics/why-use-slice`
+      },
+      {
+        title: 'Slice components',
+        path: `${SLICE_BASE_URL}/basics/slice-components`
+      },
+      {
+        title: 'Contract first model',
+        path: `${SLICE_BASE_URL}/basics/contract-first`
+      },
+      {
+        title: 'Slice files',
+        path: `${SLICE_BASE_URL}/basics/slice-files`
+      },
+      {
+        title: 'Examples',
+        path: `${SLICE_BASE_URL}/basics/examples`
+      }
+    ]
+  },
+  {
+    title: 'Language guide',
+    links: [
+      {
+        title: 'Primitive types'
+      },
+      {
+        title: 'Integer Types',
+        path: `${SLICE_BASE_URL}/foo`
+      },
+      {
+        title: 'Floating-point Types',
+        path: `${SLICE_BASE_URL}/foo`
+      },
+      {
+        title: 'Strings',
+        path: `${SLICE_BASE_URL}/foo`
+      },
+      {
+        title: 'Boolean',
+        path: `${SLICE_BASE_URL}/foo`
+      },
+      {
+        title: 'Constructed types'
+      },
+      {
+        title: 'Structs',
+        path: `${SLICE_BASE_URL}/foo`
+      },
+      {
+        title: 'Enums',
+        path: `${SLICE_BASE_URL}/foo`
+      },
+      {
+        title: 'Custom',
+        path: `${SLICE_BASE_URL}/foo`
+      },
+      {
+        title: 'Interfaces',
+        path: `${SLICE_BASE_URL}/foo`
+      }
+    ]
+  },
+  {
     title: 'Language reference',
     links: [
       {

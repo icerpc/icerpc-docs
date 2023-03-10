@@ -3,11 +3,10 @@ title: Examples
 description: Discover the Slice syntax through a few examples.
 ---
 
-
-
 This page offers a quick overview of the Slice syntax through examples.
 
 ## Operations
+
 ```slice
 module Example
 
@@ -42,6 +41,7 @@ interface MyOperations {
 ```
 
 ## Enums
+
 ```slice
 module Example
 
@@ -62,6 +62,7 @@ unchecked enum Permissions : uint8 {
 ```
 
 ## Structs
+
 ```slice
 module Example
 
@@ -85,6 +86,7 @@ compact struct Point { x: int32, y: int32 }
 ```
 
 ## Collections
+
 ```slice
 module Example
 
@@ -98,6 +100,7 @@ interface Census {
 ```
 
 ## Custom
+
 ```slice
 module Example
 
@@ -115,6 +118,7 @@ struct CustomBag {
 ```
 
 ## Exceptions
+
 ```slice
 module Example
 
@@ -131,6 +135,7 @@ interface WidgetFactory {
 ```
 
 ## Interfaces
+
 ```slice
 module Example
 
@@ -150,6 +155,7 @@ interface Gizmo : Widget {
 ```
 
 ## Attributes
+
 ```slice
 [cs::namespace("AttributeExample")]
 module Example
@@ -171,6 +177,7 @@ interface Atlas {
 ```
 
 ## Doc comments
+
 ```slice
 module Example
 

@@ -3,9 +3,8 @@ title: Encoding-only constructs
 description: Learn about helper constructs used to encode other constructs.
 ---
 
-
-
 {% slice1 %}
+
 ## Tag record
 
 A tag record represents the encoding of a single tagged field (in a class or exception), tagged argument or tagged
@@ -13,10 +12,12 @@ return value element. The goal of the tag record encoding is to allow a Slice de
 skip the encoded bytes and keep decoding.
 
 The encoding of a tag record depends on its tag number. When the tag number is less than 30, a tag record is encoded as:
+
 - a byte, with the tag type in the lowest 3 bits of this byte, and the tag number in the remaining 5 bits
 - the tagged value; its encoding depends on the tag type (see below)
 
 When the tag number is 30 or greater, a tag record is encoded as:
+
 - a byte, with the tag type in the lowest 3 bits of this byte, and 30 (0x1E) encoded in the remaining 5 bits
 - the tag number encoded as a [variable-length size](#variable-length-size)
 - the tagged value; its encoding depends on the tag type (see below)
@@ -59,6 +60,7 @@ is usually encoded on a single byte but can also be encoded on 5 bytes.
 {% /slice1 %}
 
 {% slice2 %}
+
 ## Bit sequence
 
 A bit sequence represents N bits, where N is a known number.
@@ -75,6 +77,7 @@ at position P is set in the bit sequence, the element at position P has a value;
 position P has no value.
 
 When we use a bit sequences to encode a struct, we ignore fields with a non-optional types. For example:
+
 ```slice
 compact struct Contact {
     id: string

@@ -28,7 +28,7 @@ export const slice2Data: SideBarSourceType[] = [
       },
       {
         title: 'Examples',
-        path: `${SLICE_BASE_URL}/basics/examples-slice2`
+        path: `${SLICE_BASE_URL}/basics/examples`
       }
     ]
   },
@@ -40,38 +40,38 @@ export const slice2Data: SideBarSourceType[] = [
       },
       {
         title: 'Integer Types',
-        path: `${SLICE_BASE_URL}/slice2/primitive-types/integer/`
+        path: `${SLICE_BASE_URL}/foo`
       },
       {
         title: 'Floating-point Types',
-        path: `${SLICE_BASE_URL}/slice2/primitive-types/float/`
+        path: `${SLICE_BASE_URL}/foo`
       },
       {
         title: 'Strings',
-        path: `${SLICE_BASE_URL}/slice2/primitive-types/strings/`
+        path: `${SLICE_BASE_URL}/foo`
       },
       {
         title: 'Boolean',
-        path: `${SLICE_BASE_URL}/slice2/primitive-types/boolean/`
+        path: `${SLICE_BASE_URL}/foo`
       },
       {
         title: 'Constructed types'
       },
       {
         title: 'Structs',
-        path: `${SLICE_BASE_URL}/slice2/constructs/structs/`
+        path: `${SLICE_BASE_URL}/foo`
       },
       {
         title: 'Enums',
-        path: `${SLICE_BASE_URL}/slice2/constructs/enums/`
+        path: `${SLICE_BASE_URL}/foo`
       },
       {
         title: 'Custom',
-        path: `${SLICE_BASE_URL}/slice2/constructs/custom/`
+        path: `${SLICE_BASE_URL}/foo`
       },
       {
         title: 'Interfaces',
-        path: `${SLICE_BASE_URL}/slice2/constructs/interfaces/`
+        path: `${SLICE_BASE_URL}/foo`
       }
     ]
   },

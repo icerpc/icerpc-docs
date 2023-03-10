@@ -3,8 +3,6 @@ title: Contract first model
 description: Learn how to create an application using IceRPC and Slice.
 ---
 
-
-
 ## Step 1: Create Slice definitions (the contract)
 
 When you create an application with IceRPC and Slice, the very first step is to model your RPCs with Slice. These Slice
@@ -12,6 +10,7 @@ definitions represent the contract between your client and server applications. 
 share the same Slice definitions.
 
 A minimal Slice contract defines an interface with an operation, for instance:
+
 ```slice
 module HelloExample
 
@@ -40,6 +39,7 @@ C# file, `Hello.cs`.
 
 The Slice compiler for C# generates a C# interface named `I{Name}Service` for each Slice interface. This C# interface
 includes a method per Slice operation. The generated service interface for the `Hello` interface defined earlier is:
+
 ```csharp
 // generated code
 namespace HelloExample;
@@ -54,6 +54,7 @@ public partial interface IHelloService
 ```
 
 We need to create a class that derives from `IceRpc.Slice.Service` and implements this generated interface:
+
 ```csharp
 using IceRpc;
 using IceRpc.Features;
@@ -83,6 +84,7 @@ interface. `{Name}Proxy` implements `I{Name}`. The generated C# interface includ
 interface.
 
 The generated interface for our `Hello` Slice interface is:
+
 ```csharp
 // generated code
 namespace HelloExample;
@@ -101,6 +103,7 @@ It's a very clean interface without additional methods; this way, you can easily
 
 The proxy struct implements the methods of the generated interface by creating outgoing requests and calling
 `InvokeAsync` on its invoker with these requests. It also provides two constructors:
+
 ```csharp
 // generated code
 using IceRpc.Slice;
@@ -125,6 +128,7 @@ public readonly partial record struct HelloProxy : IHello, IProxy
 ```
 
 You can create an instance of this proxy struct to make remote calls, for example:
+
 ```csharp
 using HelloExample;
 using IceRpc;

@@ -3,8 +3,6 @@ title: Operation return value and exception
 description: Learn how an operation's return value and exception is encoded with Slice.
 ---
 
-
-
 ## Status code
 
 The [status code](../../icerpc-core/invocation/incoming-response#status-code) of a response determines the contents of
@@ -20,12 +18,14 @@ The return value of an operation is encoded into the payload of a `Success` outg
 framing.
 
 This payload contains:
+
 - a [compact struct](constructed-types#struct) holding all the non-tagged return value elements, in definition order,
     followed by
 - the tagged return value elements
 
 The tagged elements are encoded in tag order (not in definition order); the element with the lowest tag number is
 encoded first. For each tagged element:
+
 - if the element value is not set, don't encode anything.
 - otherwise, encode this element as a [tag record](encoding-only-constructs#tag-record).
 {% /slice1 %}
@@ -35,18 +35,21 @@ The elements of a return value--stream element aside--are encoded as a segment i
 with status code `Success`.
 
 This [segment](encoding-only-constructs#segment) contains:
+
 - a [compact struct](constructed-types#struct) holding all the non-tagged elements, in definition order,
     followed by
 - the tagged elements
 
 The tagged elements are encoded in tag order (not in definition order); the element with the lowest tag number is
 encoded first. For each tagged element:
+
 - if the element value is not set, don't encode anything.
 - otherwise, encode `[number][size][value]` where number is the tag number encoded as a varint32, value is the encoded
 element value and size is a varuint62 with the number of bytes in value.
 {% /slice2 %}
 
 {% slice2 %}
+
 ## Payload continuation of an outgoing response (Success)
 
 The stream element of a return value (if present) is encoded into the payload continuation of an outgoing response. If
@@ -58,9 +61,11 @@ case, the stream element is encoded at the end of the payload.
 {% /callout %}
 
 If the stream element type is an optional type (for example, an `int32?`), the stream is encoded like a stream of:
+
 ```slice
 compact struct Element { value: T? }
 ```
+
 where `T?` represents the stream element type.
 
 If the stream element type is fixed-size (e.g., an `int32`), the stream is encoded as successive streamed elements
@@ -94,6 +99,7 @@ an empty payload continuation.
 {% /slice2 %}
 
 {% slice1 %}
+
 ## Payload continuation of an outgoing response
 
 The payload continuation of an outgoing response is always empty.

@@ -3,8 +3,6 @@ title: Slice files
 description: Understand how Slice definitions are organized in Slice files.
 ---
 
-
-
 ## File extension
 
 Slice definitions must be stored in files with the `.slice` extension--Slice files. If you choose a different extension,
@@ -17,6 +15,7 @@ these files but only generates code for the source files.
 
 Like C# and unlike C/C++, the Slice compiler considers the definitions in all its input files and does not impose any
 ordering requirement. For instance, you can use a type before defining it:
+
 ```slice
 module Example
 
@@ -62,6 +61,7 @@ files for a project or assembly in one shot.
 ## Preprocessing
 
 The Slice language provides a few basic preprocessing directives for conditional compilation. For example:
+
 ```slice
 module HelloExample
 
