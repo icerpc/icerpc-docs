@@ -4,8 +4,6 @@ description: Everything you need to get started with IceRPC
 show_toc: false
 ---
 
-
-
 {% callout type="critical" %}
 
 TODO: This page contains placeholder content and needs to be replaced. Please remove this when you are done.

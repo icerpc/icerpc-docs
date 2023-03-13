@@ -3,8 +3,6 @@ title: Router
 description: Learn how to route incoming requests based on their path.
 ---
 
-
-
 ## Path-based routing
 
 A router is a dispatcher than routes requests to other dispatchers based on the request's path. It can also execute

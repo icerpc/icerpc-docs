@@ -3,8 +3,6 @@ title: Incoming response
 description: Understand how to interpret an incoming response.
 ---
 
-
-
 ## Overview
 
 The `invoke` method of an [invoker](invocation-pipeline#the-invoker-abstraction) returns an incoming response

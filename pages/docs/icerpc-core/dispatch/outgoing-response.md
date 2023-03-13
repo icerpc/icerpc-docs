@@ -3,8 +3,6 @@ title: Outgoing response
 description: Learn how to create outgoing responses.
 ---
 
-
-
 ## Overview
 
 The `dispatch` method of a [dispatcher](dispatch-pipeline#the-dispatcher-abstraction) returns an outgoing response

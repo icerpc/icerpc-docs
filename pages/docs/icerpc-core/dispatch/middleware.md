@@ -3,8 +3,6 @@ title: Middleware
 description: Learn how to write a middleware.
 ---
 
-
-
 ## Definition
 
 A middleware is nothing more than a [dispatcher](../dispatch-pipeline#the-dispatcher-abstraction) that holds another

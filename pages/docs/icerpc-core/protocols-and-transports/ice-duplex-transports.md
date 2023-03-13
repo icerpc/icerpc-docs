@@ -3,8 +3,6 @@ title: ice and duplex transports
 description: Learn about the ice protocol and duplex transports
 ---
 
-
-
 ## The ice protocol
 
 When you create a client connection to server address `ice://hello.zeroc.com`, you instruct IceRPC to establish a

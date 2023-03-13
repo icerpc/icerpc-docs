@@ -3,8 +3,6 @@ title: Dispatch pipeline
 description: Understand how to accept requests and return responses.
 ---
 
-
-
 ## Definition
 
 The process of accepting/fulfilling a request and returning a response is called a dispatch.

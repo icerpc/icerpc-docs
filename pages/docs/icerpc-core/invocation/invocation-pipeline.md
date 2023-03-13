@@ -3,8 +3,6 @@ title: Invocation pipeline
 description: Understand how to send requests and receive responses.
 ---
 
-
-
 ## Definition
 
 The process of sending a request and receiving the corresponding response is called an invocation.

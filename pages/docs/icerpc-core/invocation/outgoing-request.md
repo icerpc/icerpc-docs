@@ -3,8 +3,6 @@ title: Outgoing request
 description: Learn how to create outgoing requests.
 ---
 
-
-
 ## Overview
 
 In order to make a RPC, you construct an outgoing request and then pass this request as a parameter to the `invoke`

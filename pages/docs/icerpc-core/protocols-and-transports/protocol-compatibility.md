@@ -3,8 +3,6 @@ title: Protocol compatibility
 description: How to mix and match ice and icerpc?
 ---
 
-
-
 ## Incompatible protocols
 
 Even though their names are similar, the ice and icerpc protocols are completely incompatible. A server listening for

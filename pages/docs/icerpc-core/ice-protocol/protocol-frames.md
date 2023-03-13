@@ -3,8 +3,6 @@ title: Protocol frames
 description: Understand how requests and responses are sent over ice.
 ---
 
-
-
 ## Ice interop
 
 This section describes the ice protocol _as implemented_ by the IceRPC core. The ice protocol as implemented by Ice is
@@ -14,9 +12,10 @@ Both implementations are naturally compatible to allow Ice and IceRPC applicatio
 
 The ice protocol implementation provided by IceRPC does not support a few non-essential features that Ice supports,
 namely:
- - batch requests
- - protocol frame compression
- - datagram transports (i.e., UDP)
+
+- batch requests
+- protocol frame compression
+- datagram transports (i.e., UDP)
 
 ## Frame layout
 

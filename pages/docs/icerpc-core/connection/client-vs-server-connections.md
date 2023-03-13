@@ -3,8 +3,6 @@ title: Client vs server connections
 description: Learn how to create and accept connections in IceRPC.
 ---
 
-
-
 ## What are connections for?
 
 Connections play a central role in IceRPC: you send a request to a service over a connection and later receive a

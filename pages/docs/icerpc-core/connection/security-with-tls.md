@@ -3,8 +3,6 @@ title: Security with TLS
 description: Learn how to secure your connections with TLS.
 ---
 
-
-
 ## TLS - a transport feature
 
 The ice and icerpc protocol are neither secure nor non-secure because securing communications using TLS is the

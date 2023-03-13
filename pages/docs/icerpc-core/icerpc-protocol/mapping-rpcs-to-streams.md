@@ -3,8 +3,6 @@ title: Mapping RPCs to streams
 description: Understand how requests and responses are sent over icerpc.
 ---
 
-
-
 ## A stream per RPC
 
 The QUIC transport and its multiplexed transport abstraction are ideal for RPCs and the icerpc protocol takes full

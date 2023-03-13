@@ -3,8 +3,6 @@ title: Server address
 description: Understand the server address concept and syntax.
 ---
 
-
-
 ## Syntax
 
 A server address is a [URI](https://www.rfc-editor.org/rfc/rfc3986.html) with the following syntax:

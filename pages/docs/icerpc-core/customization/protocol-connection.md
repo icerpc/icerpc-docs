@@ -3,8 +3,6 @@ title: Protocol connection
 description: Understand how to create and use protocol connections.
 ---
 
-
-
 ## The protocol connection abstraction
 
 A server, a client connection and a connection cache all manage

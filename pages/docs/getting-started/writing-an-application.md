@@ -3,8 +3,6 @@ title: Writing your first IceRPC application
 description: TODO
 ---
 
-
-
 {% callout type="critical" %}
 
 The content on this page was written for development and testing purposes. Feel free to change/delete any content on

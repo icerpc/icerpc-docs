@@ -3,8 +3,6 @@ title: icerpc and multiplexed transports
 description: Lean about the icerpc protocol and multiplexed transports
 ---
 
-
-
 ## The icerpc protocol
 
 When you create a client connection to server address `icerpc://hello.zeroc.com`, you instruct IceRPC to establish a

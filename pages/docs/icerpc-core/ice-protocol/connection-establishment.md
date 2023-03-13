@@ -3,8 +3,6 @@ title: Connection establishment
 description: Learn how a client connects to a server with ice.
 ---
 
-
-
 ## Connection establishment steps
 
 An ice client connects to an ice server as follows:

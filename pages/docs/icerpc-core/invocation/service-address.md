@@ -3,8 +3,6 @@ title: Service address
 description: Understand the service address concept and syntax.
 ---
 
-
-
 ## Syntax
 
 A service address is a [URI](https://www.rfc-editor.org/rfc/rfc3986.html).

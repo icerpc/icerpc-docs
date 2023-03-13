@@ -3,8 +3,6 @@ title: Connection establishment
 description: Learn how a client connects to a server with icerpc.
 ---
 
-
-
 ## Connection establishment steps
 
 The icerpc connection establishment is the same for a client creating a connection and for a server accepting a

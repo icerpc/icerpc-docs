@@ -3,8 +3,6 @@ title: Incoming request
 description: Understand how to interpret an incoming request.
 ---
 
-
-
 ## Overview
 
 The dispatch method of a [dispatch](dispatch-pipeline#the-dispatcher-abstraction) accepts an incoming request. This

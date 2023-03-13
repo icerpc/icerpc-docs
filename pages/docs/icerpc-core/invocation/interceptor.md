@@ -3,8 +3,6 @@ title: Interceptor
 description: Learn how to write an interceptor and how to install an interceptor in your invocation pipeline.
 ---
 
-
-
 ## Definition
 
 An interceptor is nothing more than an [invoker](../invocation-pipeline#the-invoker-abstraction) that holds another
