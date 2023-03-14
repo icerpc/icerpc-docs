@@ -32,9 +32,12 @@ export const SliceSelector = () => {
 
   return (
     <>
-      <div className="top-0 m-0 my-2 w-full pr-6">
+      <div className="m-0 mt-6 w-full pr-6 pl-1">
+        <h2 className="py-2 text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:text-white dark:decoration-darkBorder">
+          Slice encoding:
+        </h2>
         <Tab.Group selectedIndex={selectedIndex} onChange={onChange}>
-          <Tab.List className=" flex gap-0 space-x-1 rounded-2xl bg-transparent">
+          <Tab.List className="my-4 flex gap-0 space-x-1 rounded-2xl bg-transparent">
             {encodings.map((encoding) => (
               <Tab
                 key={encoding}
@@ -55,8 +58,8 @@ export const SliceSelector = () => {
             ))}
           </Tab.List>
         </Tab.Group>
-        <div className="my-4 border-t-[1.5px] border-lightBorder dark:border-darkBorder" />
       </div>
+      <div className="mt-4 w-full border-t-[1px] border-lightBorder dark:border-darkBorder" />
     </>
   );
 };
