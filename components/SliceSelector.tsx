@@ -32,7 +32,7 @@ export const SliceSelector = () => {
 
   return (
     <>
-      <div className="m-0 my-2 w-full pr-6">
+      <div className="top-0 m-0 my-2 w-full pr-6">
         <Tab.Group selectedIndex={selectedIndex} onChange={onChange}>
           <Tab.List className=" flex gap-0 space-x-1 rounded-2xl bg-transparent">
             {encodings.map((encoding) => (

@@ -98,7 +98,7 @@ const Logo = () => {
 
   return (
     <Link href="/">
-      <div className="ml-6 mr-0 mt-4 mb-3 flex items-center justify-start gap-1 pb-4">
+      <div className="ml-[1.8rem] mr-0 mt-4 mb-3 flex items-center justify-start gap-1 pb-4">
         <Image
           src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
           height={30}

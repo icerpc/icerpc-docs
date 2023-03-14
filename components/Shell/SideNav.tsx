@@ -142,16 +142,22 @@ export const SideNav = ({ path, encoding }: SideNavProps) => {
 
   return (
     // Create a wrapper that grows to fill all available left space without moving the nav
-    <div className="sticky top-[59px] hidden h-screen grow justify-end border-r border-lightBorder dark:border-darkBorder dark:bg-[#26282c] lg:flex">
+    <div className="sticky top-[59px] hidden h-screen grow flex-col justify-start border-r border-lightBorder dark:border-darkBorder dark:bg-[#26282c] lg:flex">
+      {baseUrl == '/docs/slice' && (
+        <div className="sticky top-0 mt-6 bg-none pr-3 pl-6">
+          <SliceSelector />
+        </div>
+      )}
       <nav
         className={clsx(
-          'sticky top-0 block h-[calc(100vh-59px)] w-[275px] overflow-y-auto',
-          'bg-none pr-3 pb-10 pl-6 pt-4'
+          'sticky top-0 block w-[275px] overflow-y-auto',
+          'bg-none pr-3 pb-10 pl-6',
+          baseUrl == '/docs/slice'
+            ? 'h-[calc(100vh-59px-75px)]'
+            : 'h-[calc(100vh-59px)]'
         )}
       >
-        <div className="pointer-events-none sticky top-0" />
-        {baseUrl == '/docs/slice' && <SliceSelector />}
-        <ul className="mx-2 mt-4">{cells}</ul>
+        <ul className="top-0 mx-2 mt-4">{cells}</ul>
       </nav>
     </div>
   );
