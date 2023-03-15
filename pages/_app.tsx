@@ -6,25 +6,43 @@ import { AppWrapper } from 'context/state';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/router';
-import type { AppProps } from 'next/app';
-import type { MarkdocNextJsPageProps } from '@markdoc/next.js';
+import ErrorPage from 'next/error';
 
 import { SideNav, TopNav } from 'components';
 import 'components/prism-coldark.css';
 import '/public/globals.css';
 import clsx from 'clsx';
 import { Encoding } from 'types';
+import App from 'next/app';
 
 const inter = Inter({ subsets: ['latin'] });
 const TITLE = 'TODO';
 const DESCRIPTION = 'TODO';
 
-export type MyAppProps = MarkdocNextJsPageProps;
+async function getInitialProps(appContext) {
+  const { res } = appContext.ctx;
+  const appProps = await App.getInitialProps(appContext);
+  if (appProps.pageProps?.errorStatus && res) {
+    res.statusCode = appProps.pageProps.errorStatus;
+  }
+  return {
+    ...appProps
+  };
+}
 
-export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
+export default function MyApp(props) {
+  const { Component, pageProps } = props;
   const { markdoc } = pageProps;
   const router = useRouter();
   const isDocs = router.asPath.startsWith('/docs');
+
+  if (pageProps.statusCode == 404) {
+    return (
+      <div className="h-screen w-screen">
+        <ErrorPage statusCode={404} withDarkMode={false} />;
+      </div>
+    );
+  }
 
   let title = TITLE;
   let description = DESCRIPTION;
@@ -40,6 +58,10 @@ export default function MyApp({ Component, pageProps }: AppProps<MyAppProps>) {
     if (markdoc.frontmatter.encoding) {
       encoding = markdoc.frontmatter.encoding;
     }
+  }
+
+  if (pageProps?.errorStatus) {
+    return <ErrorPage statusCode={pageProps.errorStatus} />;
   }
 
   return (
