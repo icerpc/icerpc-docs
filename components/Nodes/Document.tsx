@@ -45,7 +45,7 @@ export const Document = ({ children, title, description, encoding }: Props) => {
 
   return (
     <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip">
-      <article className="mx-6 mt-10 flex h-full w-full max-w-[52rem] flex-col justify-center md:mx-10 lg:mx-20">
+      <article className="mx-6 mt-10 flex h-full w-full max-w-[52rem]  flex-col justify-center md:mx-10 lg:mx-20">
         {isDocs && <Title title={title} description={description} />}
         {encoding ? (
           <>

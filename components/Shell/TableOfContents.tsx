@@ -74,7 +74,7 @@ export const TableOfContents = (toc: TOC) => {
   return (
     <aside
       className={clsx(
-        'sticky top-[3.75rem] hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 grow border-lightBorder',
+        'sticky top-[3.75rem] hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 border-lightBorder',
         'dark:border-darkBorder xl:flex',
         items.length > 1 ? 'border-l' : ''
       )}
