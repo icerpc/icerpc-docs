@@ -144,8 +144,7 @@ export const SideNav = ({ path, encoding }: SideNavProps) => {
   return (
     // Create a wrapper that grows to fill all available left space without moving the nav
     <div className="sticky top-[59px] hidden h-screen grow flex-col justify-start border-r border-lightBorder dark:border-darkBorder dark:bg-[#26282c] lg:flex">
-      <SearchButton className="mt-6 mb-0 flex flex-1 items-start pr-6 pl-3" />
-      <div className="flex-1 bg-gradient-to-b from-white to-transparent dark:from-[#26282c]" />
+      <SearchButton className="mt-6 mb-0 flex items-start pr-6 pl-3" />
       {baseUrl == '/docs/slice' && (
         <div className="sticky top-0 mt-4 mb-2 bg-none pr-3 pl-6">
           <SliceSelector />
@@ -156,8 +155,8 @@ export const SideNav = ({ path, encoding }: SideNavProps) => {
           'sticky top-0 block w-[275px] overflow-y-auto',
           'bg-none pr-3 pb-10 pl-6',
           baseUrl == '/docs/slice'
-            ? 'h-[calc(100vh-59px-100px)]'
-            : 'h-[calc(100vh-59px)]'
+            ? 'h-[calc(100vh-59px-180px)]'
+            : 'h-[calc(100vh-59px-40px)]'
         )}
       >
         <ul className="top-0 mx-2 mt-4">{cells}</ul>
