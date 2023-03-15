@@ -1,65 +1,54 @@
 // Copyright (c) ZeroC, Inc.
 
-import Link from 'next/link';
-import React, { ReactNode } from 'react';
-import { MdHelpCenter, MdVideocam } from 'react-icons/md';
+import React from 'react';
+import lightIcon from 'public/images/Light-Icon.svg';
+import Image from 'next/image';
 
 export const Footer = () => {
   return (
-    <footer className="mb-10 flex flex-row items-center justify-between p-0 ">
-      <ul className="hidden flex-col gap-2 p-0 md:flex">
-        <li className="flex flex-row items-center gap-2">
-          <MdHelpCenter size={20} />
-          <span>
-            Need help?{' '}
-            <a className="text-primary" href="https://www.zeroc.com">
-              Contact us
-            </a>
-          </span>
-        </li>
-        <li className="flex flex-row items-center gap-2">
-          <MdVideocam size={20} />
-          <span>
-            Watch our{' '}
-            <a className="text-primary" href="https://www.zeroc.com">
-              Developer tutorials
-            </a>
-          </span>
-        </li>
-      </ul>
-      <form
-        className="ml-8 flex flex-col gap-2 pt-4"
-        action="/send-data-here"
-        method="post"
-      >
-        <label htmlFor="email" className="dark:text-white">
-          Sign up for developer updates:
-        </label>
-        <div className="flex flex-row">
-          <input
-            className="mr-2 rounded border border-solid border-lightBorder dark:border-darkBorder"
-            type="email"
-            id="email"
-            name="first"
-            required
-          />
-          <button
-            className=" rounded bg-[var(--primary-color)] p-2 text-sm font-medium text-white"
-            type="submit"
+    <footer className="my-4">
+      <div className="container mx-auto w-full py-4 px-0 md:py-8">
+        <div className="sm:flex sm:items-center sm:justify-between">
+          <a
+            href="https://zeroc.com/"
+            className="mb-4 flex items-center sm:mb-0"
           >
-            Subscribe
-          </button>
+            <Image src={lightIcon} className="mr-3 h-8" alt="IceRPC Logo" />
+            <span className="-ml-2 self-center whitespace-nowrap pt-3 text-2xl font-semibold text-black dark:text-white">
+              IceRPC
+            </span>
+          </a>
+          <ul className="mb-6 flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 sm:mb-0">
+            <li>
+              <a href="#" className="mr-4 hover:underline md:mr-6 ">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#" className="mr-4 hover:underline md:mr-6">
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a href="#" className="mr-4 hover:underline md:mr-6 ">
+                Licensing
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:underline">
+                Contact
+              </a>
+            </li>
+          </ul>
         </div>
-        <span className="text-xs dark:text-white/80">
-          You can unsubscribe at any time. Read our{' '}
-          <Link
-            className="underline dark:text-white/80"
-            href="https://www.zeroc.com"
-          >
-            privacy policy.
-          </Link>
+        <span className="ml-1 mt-6 block text-start text-sm text-gray-500 dark:text-gray-400">
+          ©{' '}
+          <a href="https://zeroc.com/" className="text-primary hover:underline">
+            ZeroC Inc
+          </a>
+          . All Rights Reserved.
         </span>
-      </form>
+      </div>
     </footer>
   );
 };

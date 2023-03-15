@@ -64,25 +64,24 @@ export const SearchButton = ({ className }: Props) => {
           color: #43a0f7;
         }
 
-        :global(.DocSearch-Button:hover) :global(.DocSearch-Button-Keys) {
-          border: 1px solid #43a0f7;
-        }
-
         :global(.DocSearch-Button:hover) :global(.DocSearch-Button-Key) {
           color: #43a0f7;
+        }
+
+        :global(.DocSearch-Button-Keys) {
+          margin: -20px;
         }
 
         :global(.DocSearch-Button-Key) {
           background: none;
           box-shadow: none;
-          border: 1px solid var(--docsearch-muted-color);
           color: var(--docsearch-muted-color);
           padding: 0;
-          margin: 2px;
+          margin: -2px;
           height: 20px;
           font-size: 12px;
           transition: 0.3s;
-          justify-content: center;
+          justify-content: between;
           align-items: center;
           font-family: inherit;
         }

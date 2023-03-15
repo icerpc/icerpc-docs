@@ -12,6 +12,7 @@ import { Title } from 'components/Title';
 import { useEncoding } from 'context/state';
 
 import { collectHeadings } from 'utils/collectHeadings';
+import { Footer } from 'components/Shell';
 
 interface Props {
   children: ReactElement[];
@@ -68,6 +69,8 @@ export const Document = ({ children, title, description, encoding }: Props) => {
         <PageHistory path={path} encoding={currentEncoding} />
         <Divider />
         <Feedback />
+        <Divider />
+        <Footer />
       </article>
       {isDocs && TableOfContents(toc)}
     </div>

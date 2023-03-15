@@ -8,7 +8,6 @@ import Image from 'next/image';
 
 import { FaGithub } from 'react-icons/fa';
 import { useRouter } from 'next/router';
-import { SearchButton } from 'components/Shell/SearchButton';
 import { ThemeToggle } from 'components/ThemeToggle';
 import { clsx } from 'clsx';
 import { useTheme } from 'next-themes';
@@ -40,7 +39,6 @@ export const navigationItems = [
 
 export const TopNav = () => {
   const pathname = useRouter().pathname;
-
   return (
     <div
       className={clsx(
@@ -51,7 +49,6 @@ export const TopNav = () => {
       <div id="main-nav" className="flex w-full justify-center">
         <div className="flex h-[3.75rem] w-full max-w-[98rem] items-center justify-between text-sm font-medium">
           <Logo />
-
           <div className="hidden items-center lg:flex">
             <nav>
               <ul className="flex gap-x-8">
