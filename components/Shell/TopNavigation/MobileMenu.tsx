@@ -20,7 +20,7 @@ export const MobileMenu = () => {
 
   return (
     <div className="mr-4 flex h-4/6  items-center rounded-full lg:hidden">
-      <SearchButton className="mr-0 h-full pt-[1px]" />
+      <SearchButton className="h-full w-full pt-[1px] md:mr-6" />
       <button
         className={clsx(
           'inline-flex items-center justify-center rounded-full p-1 text-gray-400',

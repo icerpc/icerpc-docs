@@ -37,7 +37,21 @@ export const SearchButton = ({ className }: Props) => {
         }
 
         :global(.DocSearch-Button) {
-          border-radius: 8px;
+          border-radius: 4px;
+          // grayish white background
+          background: ${resolvedTheme == 'dark' ? '#1f1f1f' : '#f7f7f7'};
+          width: 100%;
+          height: 35px;
+          box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+        }
+
+        // Breakpoint for the search button to remove background and box shadow when the screen is small
+        @media (max-width: 768px) {
+          :global(.DocSearch-Button) {
+            background: none;
+            box-shadow: none;
+            width: 35px;
+          }
         }
 
         :global(.DocSearch-Button:hover) {
@@ -61,10 +75,10 @@ export const SearchButton = ({ className }: Props) => {
         :global(.DocSearch-Button-Key) {
           background: none;
           box-shadow: none;
+          border: 1px solid var(--docsearch-muted-color);
           color: var(--docsearch-muted-color);
           padding: 0;
-          margin: 0;
-          width: 12px;
+          margin: 2px;
           height: 20px;
           font-size: 12px;
           transition: 0.3s;
@@ -73,28 +87,23 @@ export const SearchButton = ({ className }: Props) => {
           font-family: inherit;
         }
 
-        :global(.DocSearch-Button-Keys) {
-          border-radius: 5px;
-          color: gray;
-          margin-left: 10px;
-          justify-content: center;
-          padding-top: 0px;
-          transition: 0.3s;
+        :global(.DocSearch-Search-Icon) {
           margin-right: 10px;
-          border: 1px solid var(--docsearch-muted-color);
+          margin-left: 0px;
+          padding: 3px;
         }
 
-        :global(.DocSearch-Search-Icon) {
-          margin-right: 5px;
-          margin-left: 0px;
-          padding: 2px;
+        @media (max-width: 768px) {
+          :global(.DocSearch-Search-Icon) {
+            padding: 1px;
+            margin-top: 2px;
+          }
         }
 
         :global(.DocSearch-Button-Placeholder) {
           font-size: 10pt;
           color: var(--docsearch-muted-color);
           padding: 2px;
-          margin: 0;
         }
       `}</style>
     </div>

@@ -21,6 +21,7 @@ import { Divider } from 'components/Divider';
 import { Breadcrumb } from 'components/Breadcrumbs';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { getBreadcrumbs } from 'components/Title';
+import { SearchButton } from './SearchButton';
 
 function createListItem(
   router: NextRouter,
@@ -143,8 +144,10 @@ export const SideNav = ({ path, encoding }: SideNavProps) => {
   return (
     // Create a wrapper that grows to fill all available left space without moving the nav
     <div className="sticky top-[59px] hidden h-screen grow flex-col justify-start border-r border-lightBorder dark:border-darkBorder dark:bg-[#26282c] lg:flex">
+      <SearchButton className="mt-6 mb-0 flex flex-1 items-start pr-6 pl-3" />
+      <div className="flex-1 bg-gradient-to-b from-white to-transparent dark:from-[#26282c]" />
       {baseUrl == '/docs/slice' && (
-        <div className="sticky top-0 bg-none pr-3 pl-6">
+        <div className="sticky top-0 mt-4 mb-2 bg-none pr-3 pl-6">
           <SliceSelector />
         </div>
       )}

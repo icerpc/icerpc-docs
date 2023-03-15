@@ -51,7 +51,7 @@ export const TopNav = () => {
       <div id="main-nav" className="flex w-full justify-center">
         <div className="flex h-[3.75rem] w-full max-w-[98rem] items-center justify-between text-sm font-medium">
           <Logo />
-          <SearchButton className="hidden flex-1 items-start lg:flex" />
+
           <div className="hidden items-center lg:flex">
             <nav>
               <ul className="flex gap-x-8">
@@ -98,7 +98,7 @@ const Logo = () => {
 
   return (
     <Link href="/">
-      <div className="ml-[1.8rem] mr-0 mt-4 mb-3 flex items-center justify-start gap-1 pb-4">
+      <div className="mr-0 mt-4 mb-3 ml-[1.4rem] flex items-center justify-start gap-1 pb-4 lg:ml-[1.8rem]">
         <Image
           src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
           height={30}
