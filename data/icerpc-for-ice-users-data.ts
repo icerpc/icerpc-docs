@@ -17,6 +17,10 @@ export const iceRpcForIceUsersData: SideBarSourceType[] = [
       {
         title: 'Using IceRPC with Ice',
         path: `${ICERPC_FOR_ICE}/get-started/using-icerpc-with-ice`
+      },
+      {
+        title: 'Cheat sheets',
+        path: `${ICERPC_FOR_ICE}/get-started/cheat-sheets`
       }
     ]
   },
