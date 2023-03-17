@@ -16,4 +16,7 @@ jobs:
       with:
         node-version: 18.x
         cache: 'npm'
-    - run: npm run build --production
+    - name: Install dependencies
+      run: npm install
+    - name: Build
+      run: npm run build --omit=dev
