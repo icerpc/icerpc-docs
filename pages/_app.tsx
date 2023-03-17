@@ -13,13 +13,13 @@ import 'components/prism-coldark.css';
 import '/public/globals.css';
 import clsx from 'clsx';
 import { Encoding } from 'types';
-import App from 'next/app';
+import App, { AppContext } from 'next/app';
 
 const inter = Inter({ subsets: ['latin'] });
 const TITLE = 'TODO';
 const DESCRIPTION = 'TODO';
 
-async function getInitialProps(appContext) {
+export async function getInitialProps(appContext: AppContext) {
   const { res } = appContext.ctx;
   const appProps = await App.getInitialProps(appContext);
   if (appProps.pageProps?.errorStatus && res) {
@@ -30,7 +30,7 @@ async function getInitialProps(appContext) {
   };
 }
 
-export default function MyApp(props) {
+export default function MyApp(props: { Component: any; pageProps: any }) {
   const { Component, pageProps } = props;
   const { markdoc } = pageProps;
   const router = useRouter();

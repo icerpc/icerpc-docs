@@ -20,22 +20,31 @@ export const Footer = () => {
           </a>
           <ul className="mb-6 flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 sm:mb-0">
             <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6 ">
+              <a
+                href="https://zeroc.com"
+                className="mr-4 hover:underline md:mr-6 "
+              >
                 About
               </a>
             </li>
             <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6">
+              <a
+                href="https://zeroc.com"
+                className="mr-4 hover:underline md:mr-6"
+              >
                 Privacy Policy
               </a>
             </li>
             <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6 ">
+              <a
+                href="https://zeroc.com"
+                className="mr-4 hover:underline md:mr-6 "
+              >
                 Licensing
               </a>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <a href="https://zeroc.com" className="hover:underline">
                 Contact
               </a>
             </li>

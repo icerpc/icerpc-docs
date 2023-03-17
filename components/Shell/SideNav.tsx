@@ -120,10 +120,9 @@ function transformSideBarData(
 
 interface SideNavProps {
   path: string;
-  encoding?: Encoding;
 }
 
-export const SideNav = ({ path, encoding }: SideNavProps) => {
+export const SideNav = ({ path }: SideNavProps) => {
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { encoding: currentEncoding } = useEncoding();
   const router = useRouter();
@@ -169,10 +168,9 @@ export const SideNav = ({ path, encoding }: SideNavProps) => {
 
 interface MobileSideNavProps {
   pathname: string;
-  encoding?: Encoding;
 }
 
-export function MobileSideNav({ pathname, encoding }: MobileSideNavProps) {
+export function MobileSideNav({ pathname }: MobileSideNavProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { encoding: currentEncoding } = useEncoding();
