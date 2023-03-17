@@ -3,7 +3,7 @@
 import React, { ReactNode, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { FiEdit, FiMessageSquare } from 'react-icons/fi';
+import { FiEdit, FiMessageSquare, FiChevronUp } from 'react-icons/fi';
 import { AppLink } from 'components/Nodes/AppLink';
 import { Divider } from 'components/Divider';
 import { Bars3BottomLeftIcon } from '@heroicons/react/20/solid';
@@ -74,55 +74,57 @@ export const TableOfContents = (toc: TOC) => {
   return (
     <aside
       className={clsx(
-        'sticky top-[3.75rem] hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 border-lightBorder',
+        'sticky top-[3.75rem] mr-10 hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 border-lightBorder',
         'dark:border-darkBorder xl:flex',
-        items.length > 1 ? 'border-l' : ''
+        items.length > 1 ? '' : ''
       )}
     >
-      {items.length > 1 && (
-        <nav className="h-full px-8 py-6 pt-12">
-          <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase  dark:text-white">
-            <Bars3BottomLeftIcon className="ml-0 mr-2 h-5 w-5 pl-0" />
-            On this page
-          </h2>
-          <ul className="m-0 max-h-[50vh] overflow-y-auto p-0">
-            {items.map((item) => (
-              <ListItem
-                key={item.id}
-                item={item}
-                push={push}
-                activeId={activeId}
-              />
-            ))}
-          </ul>
-          <Divider />
-          <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase   dark:text-white">
-            More
-          </h2>
-          <ul
-            className="m-0 p-0 pl-[2px]"
-            style={{ color: 'var(--primary-color)' }}
+      <nav className="h-full px-8 py-6 pt-12">
+        {items.length > 1 && (
+          <>
+            <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase  dark:text-white">
+              <Bars3BottomLeftIcon className="ml-0 mr-2 h-5 w-5 pl-0" />
+              On this page
+            </h2>
+            <ul className="m-0 max-h-[50vh] overflow-y-auto p-0">
+              {items.map((item) => (
+                <ListItem
+                  key={item.id}
+                  item={item}
+                  push={push}
+                  activeId={activeId}
+                />
+              ))}
+            </ul>
+            <Divider />
+          </>
+        )}
+        <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase   dark:text-white">
+          Actions
+        </h2>
+        <ul
+          className="m-0 p-0 pl-[2px]"
+          style={{ color: 'var(--primary-color)' }}
+        >
+          <MoreItem
+            href={
+              'https://github.com/zeroc-ice/icerpc-docs/tree/main/pages' +
+              currentPath
+            }
           >
-            <MoreItem
-              href={
-                'https://github.com/zeroc-ice/icerpc-docs/tree/main/pages' +
-                currentPath
-              }
-            >
-              <FiEdit className="mr-[6px]" color="var(--primary-color)" /> Edit
-              this page
-            </MoreItem>
-            <MoreItem href="https://github.com/zeroc-ice/icerpc">
-              <FiMessageSquare
-                className="mr-[6px]"
-                color="var(--primary-color)"
-              />{' '}
-              GitHub Discussions
-            </MoreItem>
-          </ul>
-          <Divider />
-        </nav>
-      )}
+            <FiEdit className="mr-[6px]" color="var(--primary-color)" /> Edit
+            this page
+          </MoreItem>
+          <MoreItem href="https://github.com/zeroc-ice/icerpc">
+            <FiMessageSquare
+              className="mr-[6px]"
+              color="var(--primary-color)"
+            />{' '}
+            GitHub Discussions
+          </MoreItem>
+        </ul>
+        <Divider />
+      </nav>
     </aside>
   );
 };

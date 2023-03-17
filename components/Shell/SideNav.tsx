@@ -168,6 +168,7 @@ export const SideNav = ({ path }: SideNavProps) => {
 
 interface MobileSideNavProps {
   pathname: string;
+  encoding?: Encoding;
 }
 
 export function MobileSideNav({ pathname }: MobileSideNavProps) {
