@@ -35,7 +35,7 @@ adapter.add(new HelloI(), Ice.Util.stringToIdentity("hello"));
 
 adapter.activate();
 
-CancelKeyPressed.Wait(); // wait for a ManualResetEventSlim
+cancelKeyPressed.Wait(); // wait for a ManualResetEventSlim
 ```
 
 ```csharp
