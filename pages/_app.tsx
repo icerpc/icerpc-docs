@@ -1,23 +1,23 @@
 // Copyright (c) ZeroC, Inc.
 
 import React from 'react';
-import Head from 'next/head';
-import { AppWrapper } from 'context/state';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/router';
-import ErrorPage from 'next/error';
-
-import { SideNav, TopNav } from 'components';
-import 'components/prism-coldark.css';
-import '/public/globals.css';
-import clsx from 'clsx';
-import { Encoding } from 'types';
 import App, { AppContext } from 'next/app';
+import clsx from 'clsx';
+import ErrorPage from 'next/error';
+import Head from 'next/head';
+
+import '/public/globals.css';
+import 'components/prism-coldark.css';
+
+import { AppWrapper } from 'context/state';
+import { SideNav, TopNav } from 'components';
 
 const inter = Inter({ subsets: ['latin'] });
-const TITLE = 'TODO';
-const DESCRIPTION = 'TODO';
+const TITLE = 'IceRPC Docs';
+const DESCRIPTION = 'Explore our guides and examples to integrate IceRPC.';
 
 export async function getInitialProps(appContext: AppContext) {
   const { res } = appContext.ctx;
@@ -46,7 +46,6 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
 
   let title = TITLE;
   let description = DESCRIPTION;
-  let encoding: Encoding;
 
   if (markdoc) {
     if (markdoc.frontmatter.title) {
@@ -54,9 +53,6 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
     }
     if (markdoc.frontmatter.description) {
       description = markdoc.frontmatter.description;
-    }
-    if (markdoc.frontmatter.encoding) {
-      encoding = markdoc.frontmatter.encoding;
     }
   }
 

@@ -1,9 +1,10 @@
 // Copyright (c) ZeroC, Inc.
 
 import React, { ReactNode } from 'react';
+import { LinkIcon } from '@heroicons/react/24/solid';
 import { useRouter } from 'next/router';
 import copy from 'copy-to-clipboard';
-import { LinkIcon } from '@heroicons/react/24/solid';
+
 import { Divider } from 'components/Divider';
 
 interface Props {

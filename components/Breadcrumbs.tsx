@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
-import Link from 'next/link';
 import React from 'react';
+import Link from 'next/link';
 
 interface Props {
   breadcrumbs: Breadcrumb[];

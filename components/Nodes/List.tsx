@@ -1,9 +1,9 @@
 // Copyright (c) ZeroC, Inc.
 
-import { ReactNode } from 'react';
+import React from 'react';
 
 interface Props {
-  children: ReactNode;
+  children: React.ReactNode;
   ordered?: boolean;
 }
 

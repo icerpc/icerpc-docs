@@ -4,15 +4,17 @@ import React, { ReactElement } from 'react';
 import { useRouter } from 'next/router';
 import queryString from 'query-string';
 
-import { Divider } from 'components/Divider';
+import { Divider, EncodingSection, Title } from 'components';
 import { Encoding } from 'types';
-import { EncodingSection } from 'components/EncodingSection';
-import { PageHistory, Feedback, TableOfContents } from 'components/Shell';
-import { Title } from 'components/Title';
 import { useEncoding } from 'context/state';
+import {
+  PageHistory,
+  Feedback,
+  TableOfContents,
+  Footer
+} from 'components/Shell';
 
 import { collectHeadings } from 'utils/collectHeadings';
-import { Footer } from 'components/Shell';
 
 interface Props {
   children: ReactElement[];
