@@ -25,15 +25,17 @@ each with its own server address, and all these servers can share the same dispa
 
 ```csharp
 // Simple server code with Ice in C#.
-using var communicator = Ice.Util.initialize(ref args);
+using Communicator communicator = Ice.Util.initialize(ref args);
 
-var adapter = communicator.createObjectAdapterWithEndpoints(
-    "Hello", "default -h localhost -p 10000");
+ObjectAdapter adapter = communicator.createObjectAdapterWithEndpoints(
+    "Hello",
+    "default -h localhost -p 10000");
+
 adapter.add(new HelloI(), Ice.Util.stringToIdentity("hello"));
+
 adapter.activate();
 
-await CancelKeyPressed;
-communicator.shutdown();
+CancelKeyPressed.Wait(); // wait for a ManualResetEventSlim
 ```
 
 ```csharp
@@ -42,11 +44,9 @@ await using var server = new Server(
     new Chatbot(),
     new Uri("ice://localhost:10000"));
 
-server.Listen();
+server.Listen(); // similar to "activate"
 
-// CancelKeyPressed is a small helper provided with the
-// IceRPC examples.
-await CancelKeyPressed;
+await CancelKeyPressed; // await a Task
 await server.ShutdownAsync();
 ```
 {% /side-by-side %}

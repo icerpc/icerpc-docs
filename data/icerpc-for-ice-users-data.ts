@@ -15,12 +15,12 @@ export const iceRpcForIceUsersData: SideBarSourceType[] = [
         path: `${ICERPC_FOR_ICE}/get-started/high-level-comparison`
       },
       {
-        title: 'Using IceRPC with Ice',
-        path: `${ICERPC_FOR_ICE}/get-started/using-icerpc-with-ice`
+        title: 'New features',
+        path: `${ICERPC_FOR_ICE}/get-started/new-features`
       },
       {
-        title: 'Cheat sheets',
-        path: `${ICERPC_FOR_ICE}/get-started/cheat-sheets`
+        title: 'Using IceRPC with Ice',
+        path: `${ICERPC_FOR_ICE}/get-started/using-icerpc-with-ice`
       }
     ]
   },

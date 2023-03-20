@@ -11,12 +11,12 @@ variety of components to help you build portable, multi-language distributed app
 - logging (Ice logger)
 - metrics/telemetry (Ice metrics)
 - executor (Ice thread pools)
-- deployment automation, application monitoring (IceGrid)
+- server deployment and monitoring (IceGrid)
 - pub/sub (IceStorm, DataStorm)
 
 On the other hand, IceRPC has a very narrow focus: RPCs (the name gave it away!). When building an application with
-IceRPC, you use IceRPC for your RPCs, and you need to find other solutions for configuration, logging, deployment
-automation etc.
+IceRPC, you use IceRPC for your RPCs, and you need to find other solutions for configuration, logging, server
+deployment, pub/sub etc.
 
 ## Different philosophies
 
