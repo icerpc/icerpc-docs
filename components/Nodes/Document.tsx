@@ -7,12 +7,7 @@ import queryString from 'query-string';
 import { Divider, EncodingSection, Title } from 'components';
 import { Encoding } from 'types';
 import { useEncoding } from 'context/state';
-import {
-  PageHistory,
-  Feedback,
-  TableOfContents,
-  Footer
-} from 'components/Shell';
+import { PageHistory, Feedback, TableOfContents } from 'components/Shell';
 
 import { collectHeadings } from 'utils/collectHeadings';
 
@@ -71,8 +66,6 @@ export const Document = ({ children, title, description, encoding }: Props) => {
         <PageHistory path={path} encoding={currentEncoding} />
         <Divider />
         <Feedback />
-        <Divider />
-        <Footer />
       </article>
       {isDocs && TableOfContents(toc)}
     </div>

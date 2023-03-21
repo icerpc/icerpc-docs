@@ -14,6 +14,7 @@ import 'components/prism-coldark.css';
 
 import { AppWrapper } from 'context/state';
 import { SideNav, TopNav } from 'components';
+import { Footer } from 'components/Shell';
 
 const inter = Inter({ subsets: ['latin'] });
 const TITLE = 'IceRPC Docs';
@@ -83,6 +84,7 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
               </main>
             </div>
           </div>
+          <Footer />
         </AppWrapper>
       </ThemeProvider>
     </div>

@@ -166,10 +166,12 @@ const ListItem = ({ item, push, activeId }: ListItemProps) => {
           e.preventDefault();
           push(href);
         }}
-        style={{
-          textDecoration: 'none',
-          color: activeId === item.id ? 'var(--primary-color)' : 'inherit'
-        }}
+        className={clsx(
+          'text-inherit',
+          activeId === item.id
+            ? 'text-primary dark:font-semibold dark:text-white'
+            : ''
+        )}
       >
         {item.title}
       </Link>
