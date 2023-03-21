@@ -8,6 +8,10 @@ export default {
     weighted: {
       type: 'string',
       default: 'left'
+    },
+    alignment: {
+      type: 'string',
+      default: 'center'
     }
   }
 };

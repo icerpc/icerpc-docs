@@ -35,7 +35,7 @@ more appropriate than a ConnectionCache for your application.
 
 For example:
 
-{% side-by-side %}
+{% side-by-side alignment="top" %}
 ```csharp
 // Simple client application with Ice in C#.
 using var communicator = Ice.Util.initialize(ref args);
