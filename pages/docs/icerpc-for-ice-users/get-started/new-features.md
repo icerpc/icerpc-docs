@@ -58,26 +58,45 @@ with the definitions it depends on. On the other hand, the new Slice (.slice) co
 Java: the compilation uses a set of reference files specified as argument to the compiler, and there is no #include
 preprocessing directive.
 
-The Slice syntax is also brand new. Ice-Slice (.ice) uses a C-like syntax for parameters and fields, such as:
-```ice
-struct Person {
-    string name;
-    TimeStamp dob;
-}
+The Slice syntax is also brand new. Ice-Slice (.ice) uses a C-like syntax for parameters and fields, while IceRPC's
+Slice (.slice) uses a Rust/Swift-like syntax:
 
-interface Finder {
-    Person findByName(string name);
-}
-```
-
-IceRPC's Slice (.slice) uses instead a Rust/Swift-like syntax for parameters and fields:
+{% side-by-side %}
 ```slice
-struct Person {
-    name: string
-    dob: TimeStamp
+enum File { A, B, C, D, E, F, G, H }
+enum Rank { R1, R2, R3, R4, R5, R6, R7, R8 }
+
+struct Position {
+    File file;
+    Rank rank;
 }
 
-interface Finder {
-    findByName(name: string) -> Person
+exception ChessException {}
+
+interface ChessPiece {
+    Position currentPosition();
+
+    void move(ChessCoordinate newPosition)
+        throws ChessException;
 }
 ```
+
+```slice
+interface ChessPiece {
+    // It's ok to use a type before defining it.
+    currentPosition() -> Position
+
+    move(newPosition: ChessCoordinate)
+        throws ChessException
+}
+
+compact struct Position {
+    file: File
+    rank: Rank
+}
+
+exception ChessException {}
+enum File : uint8 { A, B, C, D, E, F, G, H }
+enum Rank : uint8 { R1, R2, R3, R4, R5, R6, R7, R8 }
+```
+{% /side-by-side %}
