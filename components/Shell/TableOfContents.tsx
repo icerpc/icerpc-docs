@@ -169,7 +169,7 @@ const ListItem = ({ item, push, activeId }: ListItemProps) => {
         className={clsx(
           'text-inherit',
           activeId === item.id
-            ? 'text-primary dark:font-semibold dark:text-white'
+            ? 'text-[var(--primary-color)] dark:font-semibold dark:text-white'
             : ''
         )}
       >
