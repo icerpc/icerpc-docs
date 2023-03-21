@@ -7,13 +7,13 @@ interface Props {
 }
 
 const LeftColumn = ({ children }: Props) => (
-  <div className="my-0 flex w-full flex-col border-r border-lightBorder py-2 pr-12 dark:border-darkBorder [&>p]:mb-2">
+  <div className="my-0 flex w-full flex-col border-r border-lightBorder py-2 pr-6 dark:border-darkBorder [&>p]:mb-2">
     {children}
   </div>
 );
 
 const RightColumn = ({ children }: Props) => (
-  <div className="my-0 flex w-full flex-col py-2 pl-12 [&>p]:mb-2">
+  <div className="my-0 flex w-full flex-col py-2 pl-6 [&>p]:mb-2">
     {children}
   </div>
 );

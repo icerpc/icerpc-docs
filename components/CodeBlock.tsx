@@ -61,9 +61,14 @@ Prism.languages.slice = {
 interface Props {
   children: string;
   'data-language'?: string;
+  title?: string;
 }
 
-export const CodeBlock = ({ children, 'data-language': language }: Props) => {
+export const CodeBlock = ({
+  children,
+  'data-language': language,
+  title
+}: Props) => {
   const [copied, setCopied] = useState(false);
 
   // Split the code into lines
@@ -102,6 +107,7 @@ export const CodeBlock = ({ children, 'data-language': language }: Props) => {
             lines={lines}
             setCopied={setCopied}
             copied={copied}
+            title={title}
           >
             {children}
           </TopBar>
@@ -166,6 +172,7 @@ const LineNumber = ({ number }: LineNumberProps) => {
 interface TopBarProps {
   languageIcon: ReactNode;
   language?: string;
+  title?: string;
   lines: string[];
   setCopied: (copied: boolean) => void;
   copied: boolean;
@@ -176,6 +183,7 @@ const TopBar = ({
   languageIcon,
   language,
   lines,
+  title,
   setCopied,
   copied
 }: TopBarProps) => {
@@ -189,7 +197,7 @@ const TopBar = ({
     <div className="flex h-8 flex-row justify-between text-white">
       <div className="m-0 ml-4 flex flex-row items-center gap-2 p-0 text-xs">
         {languageIcon}
-        {language}
+        {title ?? language}
       </div>
       <button
         aria-label="Copy to clipboard"

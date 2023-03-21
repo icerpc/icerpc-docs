@@ -142,7 +142,7 @@ export const SideNav = ({ path }: SideNavProps) => {
 
   return (
     // Create a wrapper that grows to fill all available left space without moving the nav
-    <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-darkBorder dark:bg-[#26282c] lg:flex">
+    <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-darkBorder dark:bg-[rgb(33,35,39)] lg:flex">
       <div className="flex h-full w-full max-w-[295px] flex-col justify-start">
         <SearchButton className="mt-8 mb-0 flex items-start pr-6 pl-3" />
         {baseUrl == '/docs/slice' && (

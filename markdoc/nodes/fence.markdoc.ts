@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { nodes } from '@markdoc/markdoc';
+import { Config, nodes, Node, Tag } from '@markdoc/markdoc';
 import { CodeBlock } from 'components';
 
 export default {
@@ -11,6 +11,10 @@ export default {
       type: Boolean,
       required: false,
       default: true
+    },
+    title: {
+      type: String,
+      required: false
     }
   }
 };

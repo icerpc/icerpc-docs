@@ -39,7 +39,9 @@ export const SearchButton = ({ className }: Props) => {
         :global(.DocSearch-Button) {
           border-radius: 4px;
           // grayish white background
-          background: ${resolvedTheme == 'dark' ? '#1f1f1f' : '#f7f7f7'};
+          background: ${resolvedTheme == 'dark'
+            ? 'rgba(0, 0, 0, 0.25)'
+            : '#f7f7f7'};
           width: 100%;
           height: 35px;
           box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
