@@ -142,8 +142,8 @@ export const SideNav = ({ path }: SideNavProps) => {
 
   return (
     // Create a wrapper that grows to fill all available left space without moving the nav
-    <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-darkBorder dark:bg-[rgb(33,35,39)] lg:flex">
-      <div className="flex h-full w-full max-w-[295px] flex-col justify-start">
+    <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-none dark:bg-black lg:flex">
+      <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-4 pr-2">
         <SearchButton className="mt-8 mb-0 flex items-start pr-6 pl-3" />
         {baseUrl == '/docs/slice' && (
           <div className="sticky top-0 mt-4 mb-2 bg-none pr-3 pl-6">
@@ -239,7 +239,7 @@ export function MobileSideNav({ pathname }: MobileSideNavProps) {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="fixed inset-0 bg-black/40 " />
+              <div className="fixed inset-0 bg-black/60" />
             </Transition.Child>
             <div className="fixed inset-0 overflow-y-auto">
               <Transition.Child

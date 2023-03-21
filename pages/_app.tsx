@@ -74,7 +74,7 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
       <ThemeProvider attribute="class" enableSystem={true}>
         <AppWrapper>
           <TopNav />
-          <div className="mt-[7.5rem] flex flex-row justify-center lg:mt-[3.75rem]">
+          <div className="mt-[6.5rem] flex flex-row justify-center lg:mt-[3.75rem] ">
             <div className="flex max-w-[98rem] grow flex-row justify-center">
               {isDocs && <SideNav path={router.pathname} />}
               <main className={clsx(inter.className, 'grow')} id="main">

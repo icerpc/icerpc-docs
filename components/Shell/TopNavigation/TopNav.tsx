@@ -43,7 +43,7 @@ export const TopNav = () => {
     <div
       className={clsx(
         'fixed top-0 z-10 flex w-full flex-col justify-center border border-t-0 border-lightBorder bg-[#FCFCFC]',
-        'dark:border-darkBorder dark:bg-transparent dark:backdrop-blur'
+        'dark:border-darkBorder dark:bg-black'
       )}
     >
       <div id="main-nav" className="flex w-full justify-center">
@@ -51,7 +51,7 @@ export const TopNav = () => {
           <Logo />
           <div className="hidden items-center lg:flex">
             <nav>
-              <ul className="flex gap-x-8">
+              <ul className="flex gap-x-6">
                 {navigationItems.map((item) => (
                   <TopNavigationItem
                     key={item.href}
@@ -95,7 +95,7 @@ const Logo = () => {
 
   return (
     <Link href="/">
-      <div className="mr-0 mt-4 mb-3 ml-[1.4rem] flex items-center justify-start gap-1 pb-4 lg:ml-[1.8rem]">
+      <div className="mr-0 mt-5 mb-3 ml-[1.4rem] flex items-center justify-start gap-1 pb-4 lg:ml-[3rem]">
         <Image
           src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
           height={30}
@@ -126,9 +126,9 @@ const TopNavigationItem = ({
       (href === '/' && pathname === '/') ||
       (href !== '/' && pathname.startsWith(href))
     ) {
-      return 'text-primary underline decoration-2 underline-offset-[1.5rem] opacity-100';
+      return 'text-primary dark:text-white underline decoration-2 underline-offset-[1.5rem] opacity-100 ';
     } else {
-      return 'dark:text-[rgba(255,255,255,0.8)]';
+      return 'dark:text-[rgba(255,255,255,0.6)]';
     }
   }
 

@@ -30,7 +30,7 @@
   }
 
   body {
-    @apply bg-[#FAFAFA] dark:bg-[rgb(33,35,39)];
+    @apply bg-[#FAFAFA] dark:bg-dark-pattern;
   }
 
   p {
