@@ -23,8 +23,7 @@ each with its own server address, and all these servers can share the same dispa
 
 {% side-by-side %}
 
-```csharp
-// Simple server code with Ice in C#.
+```csharp {% title="Simple server with Ice for C#" %}
 using Communicator communicator = Ice.Util.initialize(ref args);
 
 ObjectAdapter adapter = communicator.createObjectAdapterWithEndpoints(
@@ -38,8 +37,7 @@ adapter.activate();
 cancelKeyPressed.Wait(); // wait for a ManualResetEventSlim
 ```
 
-```csharp
-// Similar server code with IceRPC.
+```csharp {% title="Similar server with IceRPC for C#" %}
 await using var server = new Server(
     new Chatbot(),
     new Uri("ice://localhost:10000"));

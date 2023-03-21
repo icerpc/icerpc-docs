@@ -44,5 +44,14 @@ export const iceRpcForIceUsersData: SideBarSourceType[] = [
         path: `${ICERPC_FOR_ICE}/rpc-core/proxy`
       }
     ]
+  },
+  {
+    title: 'Slice',
+    links: [
+      {
+        title: 'Types',
+        path: `${ICERPC_FOR_ICE}/slice/types`
+      }
+    ]
   }
 ];

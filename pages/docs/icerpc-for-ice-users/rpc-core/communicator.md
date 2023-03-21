@@ -46,8 +46,7 @@ var hello = HelloPrxHelper.checkedCast(
 hello.sayHello();
 ```
 
-```csharp
-// Similar client application with IceRPC.
+```csharp {% title="Similar client with IceRPC for C#" %}
 await using var clientConnection = new ClientConnection(
     new Uri("ice://localhost:10000"));
 
