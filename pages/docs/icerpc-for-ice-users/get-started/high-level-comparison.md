@@ -42,7 +42,7 @@ For Ice, we selected GPLv2, a widely used and well understood reciprocal license
 projects licensed under GPLv2, for evaluation, and for some internal use. For most other use-cases, you need to purchase
 a commercial license in order to use Ice in your applications.
 This [dual-licensing](https://en.wikipedia.org/wiki/Multi-licensing) model is a fair model that helped fund Ice's
-development, but it's now a rarity for software frameworks.
+development; however, GPL has become an uncommon license for software frameworks.
 
 For IceRPC, we selected the Apache License version 2.0, a well-known permissive open-source license. This license allows
 you to use IceRPC for any application, open-source or closed-source, free of charge.

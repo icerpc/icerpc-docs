@@ -28,7 +28,7 @@ using Communicator communicator = Ice.Util.initialize(ref args);
 
 ObjectAdapter adapter = communicator.createObjectAdapterWithEndpoints(
     "Hello",
-    "default -h localhost -p 10000");
+    "default -h * -p 10000");
 
 adapter.add(new HelloI(), Ice.Util.stringToIdentity("hello"));
 
@@ -40,7 +40,7 @@ cancelKeyPressed.Wait(); // wait for a ManualResetEventSlim
 ```csharp {% title="Similar server with IceRPC for C#" %}
 await using var server = new Server(
     new Chatbot(),
-    new Uri("ice://localhost:10000"));
+    new Uri("ice://[::0]:10000"));
 
 server.Listen(); // similar to "activate"
 

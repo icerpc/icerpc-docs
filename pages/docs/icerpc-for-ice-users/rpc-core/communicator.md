@@ -12,7 +12,7 @@ An Ice communicator has numerous responsibilities:
 and more.
 
 IceRPC replaces multi-purpose objects such as Communicator with smaller, more focused objects and abstractions that
-you can compose to get the behavior you want.
+you compose to get the behavior you want.
 
 IceRPC has no equivalent for Ice configuration properties, and does not rely on any particular configuration file
 format. In C#, IceRPC follows C#'s [Options Pattern](https://learn.microsoft.com/en-us/dotnet/core/extensions/options),

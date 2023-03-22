@@ -49,8 +49,12 @@ export const iceRpcForIceUsersData: SideBarSourceType[] = [
     title: 'Slice',
     links: [
       {
-        title: 'Types',
-        path: `${ICERPC_FOR_ICE}/slice/types`
+        title: 'One syntax, two encodings',
+        path: `${ICERPC_FOR_ICE}/slice/one-syntax-two-encodings`
+      },
+      {
+        title: 'Ice to Slice',
+        path: `${ICERPC_FOR_ICE}/slice/ice-to-slice`
       }
     ]
   }
