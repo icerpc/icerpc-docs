@@ -54,14 +54,15 @@ and doesn't know how these byte streams are encoded. This allows you to use IceR
 
 ## New Slice
 
-IceRPC introduces a new Slice compilation model, a new Slice syntax and also a new file extension for Slice files.
+IceRPC introduces a brand new Slice, with a new syntax, a new encoding, a new compilation model and a new file
+extension.
 
 The Ice's compilation model for Slice files is very much like C++: each Slice file needs to #include the Slice files
 with the definitions it depends on. Slice files use the .ice extension with Ice.
 
 On the other hand, the compilation model with IceRPC's Slice compilers is more like C# and Java: the compilation uses a
-set of reference files specified as argument to the compiler, and there is no #include preprocessing directive. Slice
-files use the .slice extension with IceRPC.
+set of reference files specified as argument to the compiler, and there is no #include preprocessing directive. These
+new Slice files use the .slice extension.
 
 The Slice syntax also changed significantly. Ice's .ice syntax uses a C-like syntax for parameters and fields, while
 IceRPC's .slice syntax is more like Rust and Swift:

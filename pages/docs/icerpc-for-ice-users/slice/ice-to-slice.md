@@ -30,7 +30,7 @@ A few definitions in .ice files has no equivalent with the .slice syntax and as 
 
 ## Class
 
-{% side-by-side %}
+{% side-by-side alignment="top" %}
 ```slice {% title=".ice syntax" %}
 class Vehicle
 {
@@ -58,7 +58,7 @@ class Bicycle : Vehicle {
 
 ## Dictionary
 
-{% side-by-side %}
+{% side-by-side alignment="top" %}
 ```slice {% title=".ice syntax" %}
 dictionary<string, int> StringIntDict;
 ```
@@ -70,7 +70,7 @@ typealias StringIntDict = dictionary<string, int32>
 
 ## Enum
 
-{% side-by-side %}
+{% side-by-side alignment="top" %}
 ```slice {% title=".ice syntax" %}
 enum Fruit
 {
@@ -97,7 +97,7 @@ no enumerator with this numeric value, the decoding fails with a checked enum an
 
 ## Exception
 
-{% side-by-side %}
+{% side-by-side alignment="top" %}
 ```slice {% title=".ice syntax" %}
 exception SyntaxException
 {
@@ -148,7 +148,7 @@ Another difference between Ice and IceRPC is where the exception specifications 
 
 ## Interface
 
-{% side-by-side %}
+{% side-by-side alignment="top" %}
 ```slice {% title=".ice syntax" %}
 interface ChessPiece
 {
@@ -179,6 +179,27 @@ interface Pawn : ChessPiece {
 ```
 {% /side-by-side %}
 
+## Module
+
+{% side-by-side alignment="top" %}
+```slice {% title=".ice syntax" %}
+module BoardGame
+{
+    module Checkers {}
+
+    module Chess {}
+}
+```
+
+```slice {% title="Same modules with the .slice syntax" %}
+// Each .slice file must have exactly one module.
+module BoardGame::Checkers
+
+// Must be in a different file.
+module BoardGame::Chess
+```
+{% /side-by-side %}
+
 ## Out parameters
 
 With the .ice syntax, the return type of an operation can be split between a return type and out parameters, whereas
@@ -187,7 +208,7 @@ with the .slice syntax, an operation has only "in" parameters but can return a t
 When converting .ice definitions into .slice definitions, keep in mind that Ice encodes out parameters _before_ the
 return type.
 
-{% side-by-side %}
+{% side-by-side alignment="top" %}
 ```slice {% title=".ice syntax" %}
 interface Sample
 {
@@ -236,7 +257,7 @@ the corresponding AnyClass or ServiceAddress can be optional (with a ? suffix) o
 
 ## Sequence
 
-{% side-by-side %}
+{% side-by-side alignment="top" %}
 ```slice {% title=".ice syntax" %}
 sequence<string> StringSeq;
 ```
@@ -248,9 +269,9 @@ typealias StringSeq = sequence<string>
 
 ## Struct
 
-{% side-by-side %}
+{% side-by-side alignment="top" %}
 ```slice {% title=".ice syntax" %}
-struct Coordinate
+struct Position
 {
     int x;
     int y;
@@ -258,7 +279,7 @@ struct Coordinate
 ```
 
 ```slice {% title="Same struct with the .slice syntax" %}
-compact struct Coordinate {
+compact struct Position {
     x: int32
     y: int32
 }
