@@ -1,6 +1,5 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
-import 'unfetch/polyfill';
 
 export const config = {
   runtime: 'edge'
