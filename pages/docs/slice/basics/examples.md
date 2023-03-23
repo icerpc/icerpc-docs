@@ -46,7 +46,7 @@ interface MyOperations {
 module Example
 
 // A checked enum (without "unchecked") is restricted to its enumerators.
-enum Fruit {
+enum Fruit : uint8 {
     Apple
     Strawberry
     Pineapple

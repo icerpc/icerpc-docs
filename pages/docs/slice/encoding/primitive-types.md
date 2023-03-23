@@ -3,13 +3,40 @@ title: Primitive types
 description: Learn how primitive types are encoded with Slice.
 ---
 
+{% slice1 %}
+## AnyClass
+
+`AnyClass` is an abstract type. When you encode or decode a parameter or field with type `AnyClass`, you are encoding
+or decoding a concrete class instance using the [class encoding/decoding rules](../constructed-types#class).
+s
+{% /slice1 %}
+
 ## Bool
 
 A `bool` is encoded on a single byte, where 0 means `false` and 1 means `true`. Other values are invalid.
 
-## Fixed-size integer
+{% slice2 %}
+## Fixed-size integral types
+
+| Type          | Encoded on N bytes |
+| ------------- | ------------------ |
+| int8, uint8   | 1                  |
+| int16, uint16 | 2                  |
+| int32, uint32 | 4                  |
+| int64, uint64 | 8                  |
+
+The encoding of all signed integers uses [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement), the
+standard representation for signed integers.
+{% /slice2 %}
+
+## Floating-point types
+
+A `float32` or `float64` is encoded on 4 resp. 8 bytes using the binary32 resp. binary64 formats specified by
+[IEEE 754](https://en.wikipedia.org/wiki/IEEE_754).
 
 {% slice1 %}
+## Integral types
+
 | Type  | Encoded on N bytes |
 | ----- | ------------------ |
 | uint8 | 1                  |
@@ -17,23 +44,6 @@ A `bool` is encoded on a single byte, where 0 means `false` and 1 means `true`. 
 | int32 | 4                  |
 | int64 | 8                  |
 {% /slice1 %}
-
-{% slice2 %}
-| Type          | Encoded on N bytes |
-| ------------- | ------------------ |
-| int8, uint8   | 1                  |
-| int16, uint16 | 2                  |
-| int32, uint32 | 4                  |
-| int64, uint64 | 8                  |
-{% /slice2 %}
-
-The encoding of all signed integers uses [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement), the
-standard representation for signed integers.
-
-## Floating-point number
-
-A `float32` or `float64` is encoded on 4 resp. 8 bytes using the binary32 resp. binary64 formats specified by
-[IEEE 754](https://en.wikipedia.org/wiki/IEEE_754).
 
 ## ServiceAddress
 
@@ -115,7 +125,7 @@ in this string.
 {% /callout %}
 
 {% slice2 %}
-## Variable-size integer
+## Variable-size integral types
 
 A `varint32`, `varuint32`, `varint62`, `varuint62` is encoded on 1, 2, 4 or 8 bytes. The least significant 2 bits of the
 first byte encode the number of bytes used to encode the full value.

@@ -36,42 +36,8 @@ export const slice1Data: SideBarSourceType[] = [
     title: 'Language guide',
     links: [
       {
-        title: 'Primitive types'
-      },
-      {
-        title: 'Integer Types',
-        path: `${SLICE_BASE_URL}/foo`
-      },
-      {
-        title: 'Floating-point Types',
-        path: `${SLICE_BASE_URL}/foo`
-      },
-      {
-        title: 'Strings',
-        path: `${SLICE_BASE_URL}/foo`
-      },
-      {
-        title: 'Boolean',
-        path: `${SLICE_BASE_URL}/foo`
-      },
-      {
-        title: 'Constructed types'
-      },
-      {
-        title: 'Structs',
-        path: `${SLICE_BASE_URL}/foo`
-      },
-      {
-        title: 'Enums',
-        path: `${SLICE_BASE_URL}/foo`
-      },
-      {
-        title: 'Custom',
-        path: `${SLICE_BASE_URL}/foo`
-      },
-      {
-        title: 'Interfaces',
-        path: `${SLICE_BASE_URL}/foo`
+        title: 'Primitive types',
+        path: `${SLICE_BASE_URL}/language-guide/primitive-types`
       }
     ]
   },
