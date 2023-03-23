@@ -8,6 +8,7 @@ import App, { AppContext } from 'next/app';
 import clsx from 'clsx';
 import ErrorPage from 'next/error';
 import Head from 'next/head';
+import type { Metadata } from 'next';
 
 import '/public/globals.css';
 import 'components/prism-coldark.css';
@@ -36,6 +37,9 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
   const { markdoc } = pageProps;
   const router = useRouter();
   const isDocs = router.asPath.startsWith('/docs');
+
+  // Get current hostname and port for og:image
+  const hostname = typeof window !== 'undefined' ? window.location.origin : '';
 
   if (pageProps.statusCode == 404) {
     return (
@@ -69,6 +73,24 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
         <meta name="referrer" content="strict-origin" />
         <meta name="title" content={title} />
         <meta name="description" content={description} />
+        <meta
+          name="keywords"
+          content="IceRPC, RPC, Ice, ZeroC, networking, documentation, docs, guide"
+        />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@zeroc" />
+        <meta name="twitter:creator" content="@zeroc" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://docs.icerpc.com/" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:locale" content="en_US" />
+        <meta
+          property="og:image"
+          content={`${hostname}/api/og?title=${title}&description=${description}`}
+        />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
