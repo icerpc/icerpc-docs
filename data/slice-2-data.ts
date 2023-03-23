@@ -130,11 +130,11 @@ export const slice2Data: SideBarSourceType[] = [
     links: [
       {
         title: 'Errors',
-        path: `${SLICE_BASE_URL}/error-codes/errors/`
+        path: `${SLICE_BASE_URL}/compiler-diagnostics/errors`
       },
       {
         title: 'Warnings',
-        path: `${SLICE_BASE_URL}/error-codes/warnings/`
+        path: `${SLICE_BASE_URL}/compiler-diagnostics/warnings`
       }
     ]
   }

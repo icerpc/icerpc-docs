@@ -20,7 +20,7 @@ The Slice language and the Slice encoding are programming language independent: 
 name and encoding regardless of the programming language (or languages) you use to make RPC calls and to implement the
 business logic of these RPCs.
 
-Then, for each programming language that IceRPC supports (currently C#, but soon Rust, Python and more), Slice provides:
+Then, for each programming language that IceRPC supports (currently C#, and soon Rust, Python and more), Slice provides:
 
 - a Slice language mapping\
 A language mapping (or binding) is a set of rules that specifies how Slice language constructs are represented in that
