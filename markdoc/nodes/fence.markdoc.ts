@@ -15,6 +15,11 @@ export default {
     title: {
       type: String,
       required: false
+    },
+    addEncoding: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   }
 };

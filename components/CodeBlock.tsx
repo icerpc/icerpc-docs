@@ -13,6 +13,8 @@ import Highlight, { Language, defaultProps } from 'prism-react-renderer';
 import Prism from 'prism-react-renderer/prism';
 import dynamic from 'next/dynamic';
 import { IconContext } from 'react-icons';
+import { useEncoding } from 'context/state';
+import { Encoding } from 'types';
 const MermaidDiagram = dynamic(() => import('components/Mermaid'), {
   ssr: false
 });
@@ -55,25 +57,38 @@ Prism.languages.slice = {
   operator: /[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/,
   punctuation: /[{}[\];(),.:]/,
   builtin:
-    /\b(?:bool|int8|uint8|int16|uint16|int32|uint32|varint32|varuint32|int64|uint64|varint62|varuint62|float32|float64|string)\b/
+    /\b(?:bool|int8|uint8|int16|uint16|int32|uint32|varint32|varuint32|int64|uint64|varint62|varuint62|float32|float64|string|Slice1|Slice2)\b/
 };
 
 interface Props {
   children: string;
   'data-language'?: string;
   title?: string;
+  addEncoding?: boolean;
 }
 
 export const CodeBlock = ({
   children,
   'data-language': language,
-  title
+  title,
+  addEncoding
 }: Props) => {
   const [copied, setCopied] = useState(false);
-
+  const { encoding } = useEncoding();
   // Split the code into lines
   const lines =
     typeof children === 'string' ? children.split('\n').filter(Boolean) : [];
+
+  // If the code is a slice file, add the encoding to the first line if the current
+  if (
+    language?.toLowerCase() === 'slice' &&
+    addEncoding &&
+    encoding == Encoding.Slice1
+  ) {
+    const encodingLines = [`encoding = ${encoding}`, ''].concat(lines);
+    children = encodingLines.join('\n');
+    lines.unshift('// -*- encoding: utf-8 -*-');
+  }
 
   // If the code is a command line, add a prompt to the first line
   // If language is undefined or if it is not included in commandLineLanguages, render a file icon
