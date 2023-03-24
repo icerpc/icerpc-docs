@@ -75,11 +75,35 @@ An exception is encoded exactly like a [struct](#struct) with the same fields.
 
 ## Proxy
 
-A proxy is encoded as its [service address](#primitive-types#ServiceAddress).
+A proxy is encoded as its [service address](../../icerpc-core/invocation/service-address). The name of the proxy's
+interface is not encoded: it's only the proxy's untyped service address that gets encoded.
 
-{% callout type="information" %}
-The name of the proxy's interface is not encoded at all. Only the proxy's untyped service address is encoded.
-{% /callout %}
+{% slice1 %}
+The encoding of a service address with Slice1 is fairly complex. Please refer to the
+[Ice manual](https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding/ice-encoding/data-encoding-for-proxies) for a
+description of this encoding. Slice1 corresponds to encoding version 1.1 in the Ice manual.
+
+IceRPC represents an Ice identity as a URI-compatible path. An identity-path can have 1 or 2 path segments. For example:
+
+| Path           | Corresponding Ice identity                                         |
+|----------------|--------------------------------------------------------------------|
+| `/foo`         | `{ Name = "foo", Category = "" }`                                  |
+| `/foo/bar`     | `{ Name = "bar", Category = "foo" }`                               |
+| `/foo%20`      | `{ Name = "foo ", Category = "" }`                                 |
+| `/`            | `{ Name = "", Category = "" }` (the null identity, often invalid)  |
+| `/foo/bar/baz` | Can't be converted into an Ice identity (too many slashes)         |
+
+See also [Endpoint](../../icerpc-for-ice-users/rpc-core/endpoint) and
+[Proxy](../../icerpc-for-ice-users/rpc-core/proxy).
+
+IceRPC also introduces a new transport code, `Uri`, with value 0. Transport codes are called endpoint types in Ice and
+are used only for the Slice1 encoding. A transport that uses transport code Uri encodes its server addresses as URI
+strings. When encoding/decoding a proxy with a protocol other than ice, the only valid transport code is `Uri`.
+{% /slice1 %}
+
+{% slice2 %}
+A service address is encoded as a URI [string](../primitive-types#String).
+{% /slice2 %}
 
 ## Struct
 

@@ -8,7 +8,6 @@ description: Learn how primitive types are encoded with Slice.
 
 `AnyClass` is an abstract type. When you encode or decode a parameter or field with type `AnyClass`, you are encoding
 or decoding a concrete class instance using the [class encoding/decoding rules](../constructed-types#class).
-s
 {% /slice1 %}
 
 ## Bool
@@ -44,43 +43,6 @@ A `float32` or `float64` is encoded on 4 resp. 8 bytes using the binary32 resp. 
 | int32 | 4                  |
 | int64 | 8                  |
 {% /slice1 %}
-
-## ServiceAddress
-
-{% slice1 %}
-The encoding of a service address with Slice1 is somewhat complex because Ice does not use URIs to represent service
-addresses (called proxies in Ice) or server addresses (called endpoints in Ice).
-
-Please refer to the
-[Ice manual](https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding/ice-encoding/data-encoding-for-proxies) for a
-description of this encoding. Slice1 corresponds to encoding version 1.1 in the Ice manual.
-
-IceRPC represents an Ice identity as a URI-compatible percent-escaped path. An identity-path can have 1 or 2 path
-segments. For example:
-```
-/foo         # Ice identity with name = foo, category = empty
-/foo/bar     # Ice identity with name = bar, category = foo
-/foo%20      # Ice identity with name = "foo ", category = empty
-/            # null Ice identity (often invalid)
-/foo/bar/baz # path can't be converted into an Ice identity (too many slashes)
-```
-
-Furthermore:
-- the Ice object adapter identifier corresponds to the value of the `adapter-id` parameter.
-- the icerpc protocol is encoded as protocol version 2.0.
-- IceRPC introduces a new transport code (called endpoint type in Ice), `Uri`, with value 0.
-- when the protocol version is not 1.0 (i.e. the service address protocol is not `ice`), the only valid transport code
-is `Uri`.
-
-A transport using transport code Uri encodes its server addresses as URI strings--IceRPC's native format.
-
-TODO: it would make sense to move this information (and add much more to it) to the "IceRPC for Ice developers" section,
-and include a link to this section.
-{% /slice1 %}
-
-{% slice2 %}
-A service address is encoded as a URI [string](#String).
-{% /slice2 %}
 
 ## String
 

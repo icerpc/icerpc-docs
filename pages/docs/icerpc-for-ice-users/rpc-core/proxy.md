@@ -32,8 +32,8 @@ In Ice, a proxy without an endpoint is called an "indirect proxy". When you send
 Locator to locate the actual endpoints of this proxy.
 
 In IceRPC, a service address without a server address has no special name: it's just a service address without a server
-address. When IceRPC's Slice engine decodes a Slice1-encoded proxy with an adapter ID, it creates a service address with
-an adapter-id parameter. For example:
+address. When the Slice engine decodes a Slice1-encoded proxy with an adapter ID, it creates a service address with an
+adapter-id parameter. For example:
 
 | Slice1-encoded proxy                              | Decoded as                                        |
 |---------------------------------------------------|---------------------------------------------------|
@@ -45,7 +45,7 @@ an adapter-id parameter. For example:
 Ice proxy strings support a number of options: `-f facet`, `-e encoding` `-p protocol`, `-t` (for two-way), `-s` (for
 secure) and more.
 
-When IceRPC's Slice engine decodes a Slice1-encoded proxy, it processes these options as follows:
+When the Slice engine decodes a Slice1-encoded proxy, it processes these options as follows:
  - convert protocol "1.0" into ice and protocol "2.0" into icerpc (any other value is invalid)
  - convert the facet into the service address fragment when the protocol is ice (else decode failure)
  - all other options are ignored
