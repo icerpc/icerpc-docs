@@ -93,7 +93,7 @@ compact struct ServiceAddressData {
   protocolMinor: uint8           // Always 0.
   encodingMajor: uint8           // IceRPC always encodes 1 and ignores this value during decoding.
   encodingMinor: uint8           // IceRPC always encodes 1 and ignores this value during decoding.
-  serverAddressList: sequence<ServerAddressData>
+  serverAddressList: sequence<EndpointData>
   adapterId: string              // Encoded only when serverAddressList is empty.
 }
 
@@ -109,9 +109,9 @@ The adapterId field corresponds to the value of the `adapter-id` parameter. This
 
 See [Proxy](../../icerpc-for-ice-users/rpc-core/proxy) for additional information.
 
-ServerAddressData is a compact struct that represents a server address as follows:
+EndpointData is a compact struct that represents (encodes) a server address:
 ```slice {% addEncoding=true %}
-compact struct ServerAddressData {
+compact struct EndpointData {
     transportCode: TransportCode
     encapsulation: Encapsulation
 }
@@ -129,7 +129,8 @@ typealias TransportCode = int16
 The format of the encapsulation payload depends on the transport code.
 
 For transport code 0, it's a URI string--the server address converted into a URI string, including the protocol/scheme.
-This transport code value was introduced by IceRPC and is the only valid transport code with the icerpc protocol.
+This transport code value is the only valid transport code with the icerpc protocol. It was introduced in IceRPC and as
+a result is not used by any transport provided by Ice.
 
 For transport codes 1 and 2 (Tcp resp. Ssl), the server address is written into the payload as a Slice-encoded
 TcpEndpointBody:
