@@ -132,10 +132,10 @@ For transport code 0, it's a URI string--the server address converted into a URI
 This transport code value was introduced by IceRPC and is the only valid transport code with the icerpc protocol.
 
 For transport codes 1 and 2 (Tcp resp. Ssl), the server address is written into the payload as a Slice-encoded
-TcpServerAddressPayload:
+TcpEndpointBody:
 
 ```slice {% addEncoding=true %}
-compact struct TcpServerAddressPayload {
+compact struct TcpEndpointBody {
     host: string
     port: int32      // limited in practice to uint16
     timeout: int32   // timeout parameter
