@@ -89,12 +89,12 @@ compact struct ServiceAddressData {
   facet: sequence<string>        // The fragment encoded as an empty sequence or a 1-element sequence.
   invocationMode: InvocationMode // IceRPC always encodes Twoway and ignores this value during decoding.
   secure: bool                   // IceRPC always encodes false and ignores this value during decoding.
-  protocolMajor: uint8           // 1 for ice and 2 for icerpc
-  protocolMinor: uint8           // always 0
-  encodingMajor: uint8           // always 1
-  encodingMinor: uint8           // always 0
+  protocolMajor: uint8           // 1 for ice and 2 for icerpc.
+  protocolMinor: uint8           // Always 0.
+  encodingMajor: uint8           // IceRPC always encodes 1 and ignores this value during decoding.
+  encodingMinor: uint8           // IceRPC always encodes 1 and ignores this value during decoding.
   serverAddressList: sequence<ServerAddressData>
-  adapterId: string              // encoded only when serverAddressList is empty
+  adapterId: string              // Encoded only when serverAddressList is empty.
 }
 
 compact struct Identity {
@@ -109,7 +109,7 @@ The adapterId field corresponds to the value of the `adapter-id` parameter. This
 
 See [Proxy](../../icerpc-for-ice-users/rpc-core/proxy) for additional information.
 
-ServerAddressData is a compact struct that encodes a server address:
+ServerAddressData is a compact struct that represents a server address as follows:
 ```slice {% addEncoding=true %}
 compact struct ServerAddressData {
     transportCode: TransportCode
@@ -128,8 +128,8 @@ typealias TransportCode = int16
 
 The format of the encapsulation payload depends on the transport code.
 
-For transport code 0 (Uri), it's a URI string--the server address converted into a URI string. This value was introduced
-by IceRPC and is the only valid transport code with the icerpc protocol.
+For transport code 0, it's a URI string--the server address converted into a URI string, including the protocol/scheme.
+This transport code value was introduced by IceRPC and is the only valid transport code with the icerpc protocol.
 
 For transport codes 1 and 2 (Tcp resp. Ssl), the server address is written into the payload as a Slice-encoded
 TcpServerAddressPayload:
@@ -144,8 +144,8 @@ compact struct TcpServerAddressPayload {
 ```
 See [Endpoint](../../icerpc-for-ice-users/rpc-core/endpoint) for additional details.
 
-Finally, if a server address in an ice service address does not specify a transport name, IceRPC uses transport code 1
-(Tcp) to encode this server address with Slice1.
+If a server address in an ice service address does not specify a transport name, IceRPC uses transport code 1 (Tcp) to
+encode this server address.
 {% /slice1 %}
 
 {% slice2 %}
