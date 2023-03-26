@@ -18,7 +18,10 @@ In IceRPC, this address is called a "service address". Service addresses, unlike
 
 ## String syntax
 
-Ice uses its own syntax for proxy strings, while IceRPC uses URIs for service addresses. Here are a few examples:
+Ice uses its own syntax for proxy strings, while IceRPC uses URIs for service addresses. The identities in proxy strings
+are mapped to absolute path as described in [Ice identity](ice-identity).
+
+Here are a few examples:
 
 | Ice proxy string                                  | Corresponding IceRPC service address URI          |
 |---------------------------------------------------|---------------------------------------------------|

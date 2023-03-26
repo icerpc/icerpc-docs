@@ -238,19 +238,19 @@ breaking on-the-wire compatibility.
 
 ## Primitive types
 
-| .ice syntax | .slice syntax   |
-|-------------|-----------------|
-| bool        | bool            |
-| byte        | uint8           |
-| double      | float64         |
-| float       | float32         |
-| int         | int32           |
-| long        | int64           |
-| short       | int16           |
-| string      | string          |
-| Object      | AnyClass?       |
-| Object*     | ServiceAddress? |
-| Value       | AnyClass?       |
+| .ice syntax | .slice syntax                   |
+|-------------|---------------------------------|
+| bool        | bool                            |
+| byte        | uint8                           |
+| double      | float64                         |
+| float       | float32                         |
+| int         | int32                           |
+| long        | int64                           |
+| short       | int16                           |
+| string      | string                          |
+| Object      | AnyClass?                       |
+| Object*     | WellKnownTypes::ServiceAddress? |
+| Value       | AnyClass?                       |
 
 With the .ice syntax, Object, Object* and Value always represent nullable parameters or fields. With the .slice syntax,
 the corresponding AnyClass or ServiceAddress can be optional (with a ? suffix) or non-optional (without a ? suffix).

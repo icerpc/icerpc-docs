@@ -34,7 +34,7 @@ An enumerator is encoded as its associated numeric value using the
 
 For example:
 
-```slice
+```slice {% addEncoding=true %}
 enum Fruit { Apple, Strawberry, Orange = 300 }
 ```
 
@@ -79,26 +79,73 @@ A proxy is encoded as its [service address](../../icerpc-core/invocation/service
 interface is not encoded: it's only the proxy's untyped service address that gets encoded.
 
 {% slice1 %}
-The encoding of a service address with Slice1 is fairly complex. Please refer to the
-[Ice manual](https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding/ice-encoding/data-encoding-for-proxies) for a
-description of this encoding. Slice1 corresponds to encoding version 1.1 in the Ice manual.
+If the proxy is null, we encode this proxy as the [null Ice identity](../../icerpc-for-ice-users/rpc-core/ice-identity)
+(two empty strings).
 
-IceRPC represents an Ice identity as a URI-compatible path. An identity-path can have 1 or 2 path segments. For example:
+Otherwise, we encode the service address like the following ServiceAddressData struct:
+```slice {% addEncoding=true %}
+compact struct ServiceAddressData {
+  identity: Identity             // The service address path converted to an Ice identity (two strings).
+  facet: sequence<string>        // The fragment encoded as an empty sequence or a 1-element sequence.
+  invocationMode: InvocationMode // IceRPC always encodes Twoway and ignores this value during decoding.
+  secure: bool                   // IceRPC always encodes false and ignores this value during decoding.
+  protocolMajor: uint8           // 1 for ice and 2 for icerpc
+  protocolMinor: uint8           // always 0
+  encodingMajor: uint8           // always 1
+  encodingMinor: uint8           // always 0
+  serverAddressList: sequence<ServerAddressData>
+  adapterId: string              // encoded only when serverAddressList is empty
+}
 
-| Path           | Corresponding Ice identity                                         |
-|----------------|--------------------------------------------------------------------|
-| `/foo`         | `{ Name = "foo", Category = "" }`                                  |
-| `/foo/bar`     | `{ Name = "bar", Category = "foo" }`                               |
-| `/foo%20`      | `{ Name = "foo ", Category = "" }`                                 |
-| `/`            | `{ Name = "", Category = "" }` (the null identity, often invalid)  |
-| `/foo/bar/baz` | Can't be converted into an Ice identity (too many slashes)         |
+compact struct Identity {
+  name: string
+  category: string
+}
 
-See also [Endpoint](../../icerpc-for-ice-users/rpc-core/endpoint) and
-[Proxy](../../icerpc-for-ice-users/rpc-core/proxy).
+enum InvocationMode { Twoway, Oneway, BatchOneway, Datagram, BatchDatagram }
+```
 
-IceRPC also introduces a new transport code, `Uri`, with value 0. Transport codes are called endpoint types in Ice and
-are used only for the Slice1 encoding. A transport that uses transport code Uri encodes its server addresses as URI
-strings. When encoding/decoding a proxy with a protocol other than ice, the only valid transport code is `Uri`.
+The adapterId field corresponds to the value of the `adapter-id` parameter. This value can be empty.
+
+See [Proxy](../../icerpc-for-ice-users/rpc-core/proxy) for additional information.
+
+ServerAddressData is a compact struct that encodes a server address:
+```slice {% addEncoding=true %}
+compact struct ServerAddressData {
+    transportCode: TransportCode
+    encapsulation: Encapsulation
+}
+
+compact struct Encapsulation {
+    size: int32              // payload size + 6
+    encodingMajor: uint8     // always 1
+    encodingMinor: uint8     // always 1
+    payload: uint8[...]      // pseudo-Slice
+}
+
+typealias TransportCode = int16
+```
+
+The format of the encapsulation payload depends on the transport code.
+
+For transport code 0 (Uri), it's a URI string--the server address converted into a URI string. This value was introduced
+by IceRPC and is the only valid transport code with the icerpc protocol.
+
+For transport codes 1 and 2 (Tcp resp. Ssl), the server address is written into the payload as a Slice-encoded
+TcpServerAddressPayload:
+
+```slice {% addEncoding=true %}
+compact struct TcpServerAddressPayload {
+    host: string
+    port: int32      // limited in practice to uint16
+    timeout: int32   // timeout parameter
+    compress: bool   // z parameter
+}
+```
+See [Endpoint](../../icerpc-for-ice-users/rpc-core/endpoint) for additional details.
+
+Finally, if a server address in an ice service address does not specify a transport name, IceRPC uses transport code 1
+(Tcp) to encode this server address with Slice1.
 {% /slice1 %}
 
 {% slice2 %}
@@ -117,9 +164,7 @@ does not break the "on-the-wire" contract.
 
 _Example: simple compact struct_
 
-```slice
-encoding = 1
-
+```slice {% addEncoding=true %}
 compact struct Point { x: int32, y: int32 }
 ```
 
