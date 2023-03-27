@@ -1,0 +1,2650 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/jose/source/repos/icerpc-csharp/doc",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.AdapterAlreadyActiveException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.AdapterAlreadyActiveException.html",
+          "hash": "MHkG+DgRNsEmCj7negxpIvQLsSrqYX+eCAoyo5ITZcU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.AdapterNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.AdapterNotFoundException.html",
+          "hash": "xYSj0WP2wV3MxN/PA2UtD75kCFCdiHJ8nljaR9mzPbQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.DeadlineDispatcherBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.DeadlineDispatcherBuilderExtensions.html",
+          "hash": "uH1TXqZV8DOLbxZFEPlEPv6gDLhb+5Ik0hS43sJzLI8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.DeadlineInvokerBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.DeadlineInvokerBuilderExtensions.html",
+          "hash": "M4ytiwHeX7jiIrXeYdP8wl0zLBA80eW3Dq0mJpU5o8E="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.DispatcherBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.DispatcherBuilderExtensions.html",
+          "hash": "hck3PZ4a/C1b0izaKkThSSUpnBr061AFSKUgsOey01E="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.IDispatcherBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.IDispatcherBuilder.html",
+          "hash": "ex+Cw5oNw9Fw6495yzOwAA1TJNjjP0kyJMndUc8vkxQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.IInvokerBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.IInvokerBuilder.html",
+          "hash": "++1GSOqqjhQc+wTTfATCFmIIc7cjzW09Pq3F4Zar3LI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.InvokerBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.InvokerBuilderExtensions.html",
+          "hash": "OlKH48o98MzsiM3+S/KNngCR1c8RZpYKfERh+Sx6fys="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.LocatorInvokerBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.LocatorInvokerBuilderExtensions.html",
+          "hash": "eMk1kr+iMI8+vOo9PbXxsvSygmcosGkUYxEANXxB9Mo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.LoggerDispatcherBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.LoggerDispatcherBuilderExtensions.html",
+          "hash": "pFvluZbcjLHyJFRjmAAyoSsy+gmiMtLZjub8m8BQOW8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.LoggerInvokerBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.LoggerInvokerBuilderExtensions.html",
+          "hash": "jzseD2deyDRNkKH1+oG9c4b4Eiqjcq0jyTy2fNXh44E="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.MetricsDispatcherBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.MetricsDispatcherBuilderExtensions.html",
+          "hash": "matYz3zlAFmG2HMTpc2Zn9YOilLoBHqjOJA1NCA05RY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.MetricsInvokerBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.MetricsInvokerBuilderExtensions.html",
+          "hash": "CQ8Q/toV63fyRC84Y/Qb+f6Fw2ZDbO+L+AcVAK69qDY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.MiddlewareDispatcherBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.MiddlewareDispatcherBuilderExtensions.html",
+          "hash": "u+dTAnDq+PM/KyJimCDguIwA5PV7mDJHR18jOg92tKU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.RequestContextDispatcherBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.RequestContextDispatcherBuilderExtensions.html",
+          "hash": "UmnydiDkxJyE8w02gTTgUclHcQqmvmXLIqvaa5gqe+M="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.RequestContextInvokerBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.RequestContextInvokerBuilderExtensions.html",
+          "hash": "Dvg460UiKrTDLpPRyMctA4DZS4KaRO+XbSimquR+1ys="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.RetryInvokerBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.RetryInvokerBuilderExtensions.html",
+          "hash": "JxkUroR31+OcoUI5l8+QXX+UOUb4BGIKu64tBCeEgWE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.TelemetryDispatcherBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.TelemetryDispatcherBuilderExtensions.html",
+          "hash": "4OQt4CtAs7ysC+a0hyu0T8OjAR9G+KPXXc/UQKl5Ilc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.TelemetryInvokerBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.TelemetryInvokerBuilderExtensions.html",
+          "hash": "/JXLNJPAfJP8rcig+Eygb8yMPwNkMUV+TQWtaCz0iIs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Builder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Builder.html",
+          "hash": "pUFwok3iY0ygI2AKf0pU0uzuyUl2MxGpeSE214gtQEU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ClientConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ClientConnection.html",
+          "hash": "mc+iHdrqVfz6TgOL/ybbMP1CsPGQRW11RwGeG9Ifu84="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ClientConnectionOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ClientConnectionOptions.html",
+          "hash": "CFx44sMfz5zPB+x8KYElPXhq56DXwkbXm4bz8PtfQuI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ClientProtocolConnectionFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ClientProtocolConnectionFactory.html",
+          "hash": "lyF8sTQXz7x90uyec83Lgt5UFvogaLlY8hMKM5zi8Sc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.CompressionFormat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.CompressionFormat.html",
+          "hash": "Ovm+djcZWHeWxZZlNc4bGewXgJ/kIPvafOceh3J7Iqw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.CompressionFormatByteExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.CompressionFormatByteExtensions.html",
+          "hash": "RlUgVG7+YpvJgS+jKiedUL8Dt9Kob1WkfRB8Qj2f99I="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.CompressionFormatSliceDecoderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.CompressionFormatSliceDecoderExtensions.html",
+          "hash": "7IlwmNEelDc95iwpldq4KfOQ4Q35IWdYF833p9fmJhk="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.CompressionFormatSliceEncoderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.CompressionFormatSliceEncoderExtensions.html",
+          "hash": "jzufaQs7bhwIJ7pS8aizPCQgmXbULqbeUSJJp6ZvC+I="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ConnectionCache.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ConnectionCache.html",
+          "hash": "Amg8GfbKG/xXsi7kKcSxLej3jRTAXnKkCZEetXBd76M="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ConnectionCacheOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ConnectionCacheOptions.html",
+          "hash": "Sp7wQJFAsESu/y5olBrWm8ZF99FMQVc539AIJ3eFnjA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ConnectionOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ConnectionOptions.html",
+          "hash": "OHrCOJZzl2nmvQLOnpvGc5UMJm+a96G54+tguI83Lq8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Deadline.DeadlineFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Deadline.DeadlineFeature.html",
+          "hash": "/Mn22zmKuSjB+bEWPZszLwcFDY0Qv64Mgfofg2u7Ov0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Deadline.DeadlineInterceptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Deadline.DeadlineInterceptor.html",
+          "hash": "ZcpH6DpzxvNZWxVRjXYnTfy8AQTQ65y+hLGB+k82Zbo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Deadline.DeadlineMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Deadline.DeadlineMiddleware.html",
+          "hash": "l0G1MBQ09onU70GAWbpDoxCBHeF0ihE9j+0cTN3/1A0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Deadline.IDeadlineFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Deadline.IDeadlineFeature.html",
+          "hash": "4cFSEyGzoOjDGpgYQjNAIz2GygagWJKAkdFxwtErmWY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Deadline.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Deadline.html",
+          "hash": "516AaoYJAvNYQ4qrFz67sDJYBc8NMRebNMXtM5YqqsY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.DeadlinePipelineExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.DeadlinePipelineExtensions.html",
+          "hash": "lscfDmcsdPIYQAKfXnQIrbV1H0hH9uE0O4l4wogkTKw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.DeadlineRouterExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.DeadlineRouterExtensions.html",
+          "hash": "5TZdKv0Ucl/OqCL/vgiHzlELBwAHm4ScA5vSYih60eo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.DispatchException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.DispatchException.html",
+          "hash": "l397ls5P7KgLlBnUX7SePYPrNjuyPYrdscEaBc6yqC4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Features.CompressFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Features.CompressFeature.html",
+          "hash": "6ZlfVZWSkIwL5gLcq3uMHNqLHPQicFjDvF8zPg8bmu0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Features.DispatchInformationFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Features.DispatchInformationFeature.html",
+          "hash": "p+CFgohHGsgB0TkOIvnWPuxjOkaqbRs8B1VLAZstoPU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Features.FeatureCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Features.FeatureCollection.html",
+          "hash": "mMVm6lXmBzXZlKAYZJfW8Y6Lx8l+GzkjsM8+Vk83/28="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Features.FeatureCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Features.FeatureCollectionExtensions.html",
+          "hash": "uA2RcEGSWvoJ/0i9qFJiDQ9nXQH6+i4WXJicG9EZaAs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Features.ICompressFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Features.ICompressFeature.html",
+          "hash": "TOfmuAzXs3Q1w+35+HQYjuTi8wPUqJ/NrXBEMqJuGvA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Features.IDispatchInformationFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Features.IDispatchInformationFeature.html",
+          "hash": "weX/JweJxCsoOFmxVk67XZEW2sFoSwH8M02+G40s4xM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Features.IFeatureCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Features.IFeatureCollection.html",
+          "hash": "5o2m45ZNOvjr/w+qnmI1GI6cq3q26Q6AkAsxOyUHpts="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Features.IServerAddressFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Features.IServerAddressFeature.html",
+          "hash": "FPJJ3b0Sk554YYGaMB5e/bMtMw5/bAhuFzid2rS3P9Y="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Features.IServiceProviderFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Features.IServiceProviderFeature.html",
+          "hash": "9i793Bybh5GoKA6118rz54MQnXjbYPeDNQ+C90cmWl4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Features.ServerAddressFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Features.ServerAddressFeature.html",
+          "hash": "v3VUOouhu4diEwfYbEZpmhJ2pXN2th1B+zBeLBuJK3E="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Features.ServerAddressFeatureExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Features.ServerAddressFeatureExtensions.html",
+          "hash": "cz932nNjvWDBQnrRWk8INbu+jBpRM7bzVw8Xl9ENGiE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Features.ServiceProviderFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Features.ServiceProviderFeature.html",
+          "hash": "OEc31j2oHqv2zYnMRrNKHniKSJtjwUscrtGr5bL9BYI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Features.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Features.html",
+          "hash": "QvOkJMZunjWgSzgiNgoUJycFgNmgUXzQmJaRHbZqudo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.FieldsExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.FieldsExtensions.html",
+          "hash": "uIgedPmbA1HJ2bpYU36j26HaeZ8JfA5VhEbzYkzw9yE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IClientProtocolConnectionFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IClientProtocolConnectionFactory.html",
+          "hash": "6NtyncEmXW8Wy75EoL70OZGo8rUoV33M9HZ7Lga4jfM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IConnectionContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IConnectionContext.html",
+          "hash": "0a12nHor9OtugH6KIL5ASaI+IEr25nnQ8GZtG0wAQUI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IDispatcher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IDispatcher.html",
+          "hash": "zRr6r0yVHuWfRxE2lyHhcyc2ylQqAMh7BerH1gKreGQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IIceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IIceObject.html",
+          "hash": "rFviw2kOij9FCbAQOr/c3Nm6+iKLXuwtClvCcX07iWs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IIceObjectService.Request.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IIceObjectService.Request.html",
+          "hash": "9dfKjuRH+8P8X0GO53Zv0PAZAtMrDzeedeazsCedlxM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IIceObjectService.Response.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IIceObjectService.Response.html",
+          "hash": "Ia0L5UgYgRFQj3hJUsYVjKA7k0/xoM/gtzz2RYBLMkQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IIceObjectService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IIceObjectService.html",
+          "hash": "mizzfGvWCAcSW6kro6dqoxVVx2qI6By93ljKzmLjc4c="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IInvoker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IInvoker.html",
+          "hash": "FWcEUew3TrFH9bzdGN/lAbjks7+OTMxT2/u5RWlIT/E="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ILocator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ILocator.html",
+          "hash": "AcSUo2QYm6AzsavhwZMszXr8MQX9m9VTCIhWNOaj6zg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ILocatorRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ILocatorRegistry.html",
+          "hash": "1ylPUEX5KRAY9z4p9hgJOuquaK503f5CkBnJcRX1CjI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ILocatorRegistryService.Request.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ILocatorRegistryService.Request.html",
+          "hash": "2vD1NdpZscXKWWVzQxJuuKST7uARLSfIeSthj7/svlE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ILocatorRegistryService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ILocatorRegistryService.html",
+          "hash": "kpHGwsT4hBvMU+gV+iZmOrtQWAs+lOXRWOqDxIQp9So="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ILocatorService.Request.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ILocatorService.Request.html",
+          "hash": "ac5I8oxKmK6ojltG1QEKuJnQint7AHICBbonHh/G+b4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ILocatorService.Response.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ILocatorService.Response.html",
+          "hash": "rTZr2MSSU8VYN9JNBap0aaao7+YKO2tNSEdF5F4NRBo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ILocatorService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ILocatorService.html",
+          "hash": "UjQFDMvX5+GzVG5bfCNDJLtt6PkLKkyIJ3p8Y5Dplz4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IMiddleware-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IMiddleware-1.html",
+          "hash": "tHkIbiyVWdHI4PalW6hQzPquZ/qekSQ4Bzb40UGiSjg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IMiddleware-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IMiddleware-2.html",
+          "hash": "DaM88nT7qNkye6kzAsZdOsYxWisY/BzA4BqnAc26bZg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IMiddleware-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IMiddleware-3.html",
+          "hash": "T4ha3xsxD/KcPSGhvGboRKssGkizTb/bvA5wn/6+fGM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IProcess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IProcess.html",
+          "hash": "6J5r8xr2yZi1ziPhqfJLfb6W3p74ur3B72sJLQpA8/Y="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IProcessService.Request.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IProcessService.Request.html",
+          "hash": "q7OFmb/ZcEvpA9No9v4MKGgPY589oKDUKY7WUxaNfbQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IProcessService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IProcessService.html",
+          "hash": "22f9GgqZamKIOjbrPdRRAvOCx270Iu9BtWV9hrqpGng="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IProtocolConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IProtocolConnection.html",
+          "hash": "G5+IysmDuQ6+FA2CyYEOnmwAkTWSwNw7Ad6XyHsxwKA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IceObjectProxy.Request.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IceObjectProxy.Request.html",
+          "hash": "8oLcKiBNReGysqpGAXu+I1wNLzPhNARnaCEDOF+ZlQE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IceObjectProxy.Response.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IceObjectProxy.Response.html",
+          "hash": "QBuqixtBcM8JDt1gygJHsZ574B/ZqtB63SS83QZA3hs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IceObjectProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IceObjectProxy.html",
+          "hash": "w/PQVIntHV4H/jZKrTxaWDOpb/6PAMTZbBHloWVGudg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IceRpcError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IceRpcError.html",
+          "hash": "Ub6egii5vFFRwxby/v6iJkUMZ1CSJi9Wm1mbA7xCHpw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IceRpcException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IceRpcException.html",
+          "hash": "9rAIn52ss27qotLw58rs1KJFi4jxONJJMP1SUCJzYac="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IncomingFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IncomingFrame.html",
+          "hash": "lIPSRrJQc5/QczI2sumKc40cotWEa60iBflRk4VboJ0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IncomingRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IncomingRequest.html",
+          "hash": "jwERBlszEyDosr8kS19ZrM6vds8P0hzz6Aw5vlnxHHE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.IncomingResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.IncomingResponse.html",
+          "hash": "jI35FGwCe/bCzFud5Gtj6CWbSXI6IZdHZgqlZlwda0Q="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.InlineDispatcher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.InlineDispatcher.html",
+          "hash": "OuM7J3bC1Eyy00VZdaGFH1kAcDYsQGu4KrDfZWonFx4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.InlineInvoker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.InlineInvoker.html",
+          "hash": "GW0UZbcKTdgF0Toz8JfFeboCqoab+zHxtAh38koDbU0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.InvalidReplicaGroupIdException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.InvalidReplicaGroupIdException.html",
+          "hash": "q5Ibyg1ufggNLpnBpzRyO5EgkKUzldWWP2GE/8ch4ok="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Locator.ILocationResolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Locator.ILocationResolver.html",
+          "hash": "v+9tK8i6xkBRi+f3aC8SbYS6Dhdd498OR+Twam+EfNY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Locator.Location.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Locator.Location.html",
+          "hash": "/BA0qQlUFt6sT23bsXEZMZ9p9KFfv8OtHihyTi+WDUc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Locator.LocationEventId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Locator.LocationEventId.html",
+          "hash": "t9tYFZyqJoM4tZzMZ8ajti/Sx3QO6aqItqm+X7Vq/J0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Locator.LocatorInterceptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Locator.LocatorInterceptor.html",
+          "hash": "lo+LeDqIy/EelVX417WVus3R2Z95gRjaI/UvsjRWJr0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Locator.LocatorLocationResolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Locator.LocatorLocationResolver.html",
+          "hash": "tOnjvZgq1M+hJUhCILQf+BLoDKPj6fhbvPuINP21A+0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Locator.LocatorOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Locator.LocatorOptions.html",
+          "hash": "DhYOIqUwLktvt+597Fjlkg4rMtGUeJMQ+WdUdAikiYE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Locator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Locator.html",
+          "hash": "wpedccIIzn/qSrJTnza0+jawlEqzvLtYMTiO7EAePPg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.LocatorPipelineExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.LocatorPipelineExtensions.html",
+          "hash": "xsota6nHlumHfYcVLqGPBbONpf3fDPITzUIkTOGbQ4k="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.LocatorProxy.Request.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.LocatorProxy.Request.html",
+          "hash": "zi/roSmeRuoUk/old1qRfMW1mxfKs0r2+HL9iVL/PAQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.LocatorProxy.Response.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.LocatorProxy.Response.html",
+          "hash": "VOUV/m3/jZ3SsD/k3ns2X30qwBY/YPMOxk1Xtc5ie5Q="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.LocatorProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.LocatorProxy.html",
+          "hash": "D4dAe9OTiNKHQsQIPsAdv9o7BEyMESjJSXz6TQXkOts="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.LocatorRegistryProxy.Request.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.LocatorRegistryProxy.Request.html",
+          "hash": "vO7QMGYJCMChuLyD2H8fyefhmFulTsWe6yB7eHRpGNY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.LocatorRegistryProxy.Response.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.LocatorRegistryProxy.Response.html",
+          "hash": "RJuL4vxud+hj3ei23faThQb0vnrrO87yOqhgPZb7nd8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.LocatorRegistryProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.LocatorRegistryProxy.html",
+          "hash": "lWV4zywXl1hsSrbe/nuhlluCagTzIphywSRuQEGXUDk="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Logger.LoggerInterceptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Logger.LoggerInterceptor.html",
+          "hash": "48uJNHS7Q8iKQ4ity4ydcSe1hX2TRSTVLb2AAtnp3tc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Logger.LoggerInterceptorEventId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Logger.LoggerInterceptorEventId.html",
+          "hash": "v3SIIXj92B5h2oim6b0yM/cLuSXq8KrJC6FpoMdl+YY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Logger.LoggerMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Logger.LoggerMiddleware.html",
+          "hash": "ELy40QlP7t0yvXaKd+qw3sJCpvhYPxgNz6KEeXhPoPc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Logger.LoggerMiddlewareEventId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Logger.LoggerMiddlewareEventId.html",
+          "hash": "GqEOp+6Yd4dp71w2h8JYSBLQBQ2H8+2FhaJSRnubyh0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Logger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Logger.html",
+          "hash": "xtuKz9bqLLlCz0RHWlsOyKRsMwgDBR4CUlVLqOT3YiM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.LoggerPipelineExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.LoggerPipelineExtensions.html",
+          "hash": "OHbpjNCq81KzJOUF85U+R7qXuecz9CwAMCI8eyuiAmU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.LoggerRouterExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.LoggerRouterExtensions.html",
+          "hash": "3I6k4+p6ZfkwzerfvBap0OkAZwA3TWxi87T74tZLISQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Metrics.MetricsInterceptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Metrics.MetricsInterceptor.html",
+          "hash": "crdDRYkfu2EEo0yUESTQuOAJu1zGW2im3xFNAZfO6Qk="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Metrics.MetricsMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Metrics.MetricsMiddleware.html",
+          "hash": "HebAb1BaNn6LARN85mXWsgKDSeN6MWc8bbfCu04p2o0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Metrics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Metrics.html",
+          "hash": "Y9VvAyTRcNI44dQZkEEMwQZbuP6QOwc3qbILRG2SeDs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.MetricsPipelineExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.MetricsPipelineExtensions.html",
+          "hash": "CBwp9ySX3oxJqtpQG/xAVLME3sUgxe06bXy1YfBuKVQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.MetricsRouterExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.MetricsRouterExtensions.html",
+          "hash": "znJg+sKSZwHoRDl4i8wC20sco4PomdAQWUa6eO6+2kI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ObjectNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ObjectNotFoundException.html",
+          "hash": "2vD3FwI5lQeeZ19I2BzuGQmXSKuWHTEL7NV/58sCxOk="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.OutgoingFieldValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.OutgoingFieldValue.html",
+          "hash": "XPLXOr2J7sRpl+1Ayk8tEKOkdF1rHtg88eA/g1H0mFY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.OutgoingFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.OutgoingFrame.html",
+          "hash": "7p6xbfex5227PamumA64Tf8UT0iUbyuDP7qubHTRG/U="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.OutgoingRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.OutgoingRequest.html",
+          "hash": "SinnIvHQrMg4pa7rjqOEdUZNsq+5Nv+mRIZMGoR9PlA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.OutgoingResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.OutgoingResponse.html",
+          "hash": "uE6qPe2wObV/40/gBToAH4yHAbcS5EcGFuZsNP0A3ws="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Pipeline.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Pipeline.html",
+          "hash": "bEFOrQVw6s3dA4xmA3e4yFwPD5ZLUmPZ0x/bp/VuTZQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.PipelineExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.PipelineExtensions.html",
+          "hash": "bFKJyU7yxqxZ9rMNBf90okGD2F9GvpO97DoP9MU9I3w="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ProcessProxy.Request.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ProcessProxy.Request.html",
+          "hash": "qx2wj0OX1Q5s+A8UEystZuLuNvlJH+rQxM5MxCNYgAQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ProcessProxy.Response.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ProcessProxy.Response.html",
+          "hash": "+FM0w7xpRiRUmW15nmyd1X/rPVCAb8U8mqdZpPhgW3A="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ProcessProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ProcessProxy.html",
+          "hash": "0ANrRKktGp6/AaKm1WoxoOVAMTACmjWDi0xkxE6Mj3s="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Protocol.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Protocol.html",
+          "hash": "WSrjJ2/voi+m/GTQNlgd/4wzKhQ+CpfA9yFRGxt7msc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ProtocolEventIds.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ProtocolEventIds.html",
+          "hash": "z4nTP56WPbbvbOjOrYnqpiyGcRuxSXNK6Vdjp0o7Wqc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.RequestContext.IRequestContextFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.RequestContext.IRequestContextFeature.html",
+          "hash": "isGuV/wYg67W0tfVB6vdmZ7kYWiqF4YBZlq2BVt9T0s="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.RequestContext.RequestContextFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.RequestContext.RequestContextFeature.html",
+          "hash": "pYA2WjrLTg59Vem5N6F0LFTN22VPlnLQoLU28ymfMRE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.RequestContext.RequestContextInterceptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.RequestContext.RequestContextInterceptor.html",
+          "hash": "Y6Z3qpW/OymJASZMgoBmSF67zVgh+jTz3j9s9/Wrr+Y="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.RequestContext.RequestContextMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.RequestContext.RequestContextMiddleware.html",
+          "hash": "3GP4h4X8jJI524LP7EkBVGqWW0kQW2XrWKq+wXdzX3w="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.RequestContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.RequestContext.html",
+          "hash": "Ia/f7GSFzdc05TzTs2IWpqngv9lWa5yOT73W3DfeOXI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.RequestContextPipelineExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.RequestContextPipelineExtensions.html",
+          "hash": "iSX9FxE3Bw5FWIOp/uBhczUMJUAUiCdjCb15EDPJyJM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.RequestContextRouterExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.RequestContextRouterExtensions.html",
+          "hash": "4HgtWTbzjwKXzqE0zi91BSifnN25x8WYBINr4Q8IkkM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.RequestFieldKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.RequestFieldKey.html",
+          "hash": "lJxYluo8cySSEwwV1rxmMPT0kw3F+B47XApVhdJn4dk="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.RequestFieldKeySliceDecoderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.RequestFieldKeySliceDecoderExtensions.html",
+          "hash": "iGCJZUsxHX4bhl3akqBEM2XzDPdE6UpKs5zNIEnNPKM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.RequestFieldKeySliceEncoderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.RequestFieldKeySliceEncoderExtensions.html",
+          "hash": "QD6KE8qUlyrINj26fmeEpw1DDBTLqNQivzpYKWluouQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.RequestFieldKeyUlongExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.RequestFieldKeyUlongExtensions.html",
+          "hash": "9aQmARA+jpVC6sZB0EtieBRwBtBm04aHSnMFXDpyNX0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ResettablePipeReaderDecorator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ResettablePipeReaderDecorator.html",
+          "hash": "dGr/xiBe9J2HSlsFGvzLSecwNG6xW8GEOXg8Cn9JsNU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ResponseFieldKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ResponseFieldKey.html",
+          "hash": "vG4sp5vnAwhRqmTskfUmWY7HdxgVd5LNerrhEE/7nmU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ResponseFieldKeySliceDecoderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ResponseFieldKeySliceDecoderExtensions.html",
+          "hash": "sk4X4E5VL7tDFmGHRy2E5NT0bN30oaa9A/Z4Rfq2u3A="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ResponseFieldKeySliceEncoderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ResponseFieldKeySliceEncoderExtensions.html",
+          "hash": "xgMKuL7KagTH2plKEOdGoH7BxyAV84S+S7Dbi3V9Aqk="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ResponseFieldKeyUlongExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ResponseFieldKeyUlongExtensions.html",
+          "hash": "lHcHVmuuyiDGOxM+2FYOM5qriRchwmY6VbM5FhsW+Fc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Retry.RetryInterceptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Retry.RetryInterceptor.html",
+          "hash": "vIiU9jxeoBa2Au4SDFaYC5NH3pyrRm2WT0LNKntllgg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Retry.RetryOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Retry.RetryOptions.html",
+          "hash": "j6s3evC1c0UsNid1S/HUtI13ck26sxXPimvNx4euP0w="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Retry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Retry.html",
+          "hash": "EMMfQgwZ8UNBg1q0GgprCsQa817ZmxQwQOjjI4I5lX4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.RetryPipelineExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.RetryPipelineExtensions.html",
+          "hash": "rzaKZOkF/VM7T9CiM4T2AuFCJ/dcftpVYSO61kvYj8U="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Router.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Router.html",
+          "hash": "aIkXmOeLOLeQyiOxKZpqTail5coLayMlFxUFHB3VKvU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.RouterExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.RouterExtensions.html",
+          "hash": "HiilzPXSDd5gXOzfOJSBZqzlr2SxTRpOMWZozae5S24="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Server.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Server.html",
+          "hash": "U0UJIE0XiirsDVWe+kI//9o2Tq/dK9Y9S0iZsddQzTI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ServerAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ServerAddress.html",
+          "hash": "bifxFFpm649uQ4hJ7Nu9l/GrK0R0ZLNRsZPUvosfW3k="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ServerAddressComparer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ServerAddressComparer.html",
+          "hash": "+O78wpvPG5ZeZ8Rb3xZT6FSB3JqhofC9p4wvYx4/4nw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ServerAddressTypeConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ServerAddressTypeConverter.html",
+          "hash": "Ebz72TDW5NCyvCW3PPTBjR1v5mij62AIOSzff/jByOw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ServerNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ServerNotFoundException.html",
+          "hash": "05YcE6ViUcqTCFXrHWzaGGxCISvCrs8prDAZJ30tEKo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ServerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ServerOptions.html",
+          "hash": "0Pvo1PHf0aNCp3ZYMrsbt6x6KW0FSKnWr88EdIIOXGU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ServiceAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ServiceAddress.html",
+          "hash": "DozEuUODEP4yaU5ca2R5IiCjnmMmxAYneX47CBI9Yd4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.ServiceAddressTypeConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.ServiceAddressTypeConverter.html",
+          "hash": "Rt97WX7snCDVPrYvS583EWL4r9GRYxFqqcTGYDyYKwc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.AsyncEnumerableExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.AsyncEnumerableExtensions.html",
+          "hash": "MfgFoN1dSErq53AgCJDHQaqna56RNnw27p9rgXenHa4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.BitSequenceReader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.BitSequenceReader.html",
+          "hash": "gKwxHHVX5QA+rkGJYHLZvXZuwPnxBAt2+3C2ZKPI+fY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.BitSequenceWriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.BitSequenceWriter.html",
+          "hash": "l7KfTkTMqcRYn+BD9zSMm3PKLxZ4WFxE/8qMvGawqfY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.ClassFormat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.ClassFormat.html",
+          "hash": "JjPuvu1Y94MEjaXUXb+djs0dnypy/iZ8SU0PpOiFEt0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.CompactTypeIdAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.CompactTypeIdAttribute.html",
+          "hash": "uW/VWbMU+mXihr4r1UlSzCm5+eDyiSS/SX64H+xqUfI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.DecodeExceptionFunc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.DecodeExceptionFunc.html",
+          "hash": "u9SGbhsp5UmYZyPgyNDVnJs7J5y/YovxKJxm+pct/5c="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.DecodeFunc-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.DecodeFunc-1.html",
+          "hash": "dpKfLyaoGqZuOoqFGcAEjVYIxuJHJpAu+bPeEjvbF6w="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.EncodeAction-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.EncodeAction-1.html",
+          "hash": "vcAh7d6lsCr1c4lLf775b3kMmByXpRwdAt8jsieRLGI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.EncodeAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.EncodeAction.html",
+          "hash": "Al9zCYDpNHZAl+Gl6I1PFItBlnvQV8/8b09sczkDUUA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.FieldsExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.FieldsExtensions.html",
+          "hash": "qf+6MdK6l+3pkBDixllKGRUttvRduD9t43X2dGDOiPY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.GenericProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.GenericProxy.html",
+          "hash": "2unsRVtPrbZLX2f71zLXVPrBdSPYME1zX8g6EN0iWDA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.IActivator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.IActivator.html",
+          "hash": "K297RkQiux/poK01v1qG9xTYyjV9BKorx2rrwNrFG2c="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.IProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.IProxy.html",
+          "hash": "MUWJBK3ArVMrgmK1VocK/TZSUuFMOM+kWrAyl2QiWnA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.ISliceFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.ISliceFeature.html",
+          "hash": "qZ2pTbHXvaq/XCI2D9Vzq3/TgO+6CLJgcVt/Ode6/0g="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.IdentityPathSliceDecoderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.IdentityPathSliceDecoderExtensions.html",
+          "hash": "crxU9xCDxC1foTklumSOeaHEB1zEoxJGzLejQWDlwSM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.IdentityPathSliceEncoderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.IdentityPathSliceEncoderExtensions.html",
+          "hash": "KC7F2O1euW8zQuXIfOxe77Z0MsaiZTLUb7WDSO2t4mY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.IncomingFrameExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.IncomingFrameExtensions.html",
+          "hash": "XfYV+vYXviHDblL4G48++2ly9/rzT8ji5X4tp91p7gs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.IncomingRequestExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.IncomingRequestExtensions.html",
+          "hash": "hKsRcL/BDd2KjTpb5yKdLsQ/DpU1z2Z49QMq5FJ7fs8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.IncomingResponseExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.IncomingResponseExtensions.html",
+          "hash": "ttGO3syoa0Ca2M4OZWt1+tYX5rw/FdwcO6F2YkblKrY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.OperationAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.OperationAttribute.html",
+          "hash": "nkyvYBEDVtNJD2/obUBksU/fFiUdmXA8jWo8w+F/oeA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.PipeReaderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.PipeReaderExtensions.html",
+          "hash": "plx0vrsKuJYKXjIZAJ4ra7EWKOwMDnvpZorVsBy4Aog="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.ProxyExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.ProxyExtensions.html",
+          "hash": "mmNM061pGgS2+/vF7tH2tyrlop2svfNFyLy57X3GRxw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.ResponseDecodeFunc-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.ResponseDecodeFunc-1.html",
+          "hash": "aobCku7keIcBPG5VQbVypagNzEWExPUKEKX6w2ztDZY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.ResponseDecodeFunc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.ResponseDecodeFunc.html",
+          "hash": "eeC1Vp0vEa5PSjOvUfNJ9faKvHK+PB4HHkICSFOHR+Q="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.Service.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.Service.html",
+          "hash": "wEFKLPI3lTQYXlXqj82NTMryZj5fOuhHH84V2hM13Rs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.Slice2Definitions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.Slice2Definitions.html",
+          "hash": "2qiacMWcEVkjR+h/7p5IK3ldFjHyXSRoFnQvEYoe/R8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.SliceAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.SliceAttribute.html",
+          "hash": "SwPtgBxXkssarLiRGbIlCk048AHIa/pMdBkn8/A1TLA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.SliceClass.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.SliceClass.html",
+          "hash": "1JI+NLxEYlC0gcRKPZKGNa7buu1FCq9mFROi0OS9sJ0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.SliceDecoder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.SliceDecoder.html",
+          "hash": "0/wmiw2WBe5e5Tbdz6bNO7eOvrfjPhGvlekxOzDRgyo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.SliceDecoderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.SliceDecoderExtensions.html",
+          "hash": "gLG8i1ePTtZk4gT8XfHT84N6CUCVJ6NNdVfHW+8tQF8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.SliceEncodeOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.SliceEncodeOptions.html",
+          "hash": "ojGqY0YM/97KEBpZE5HePReV8vVm9TEpELEyqWIz/Es="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.SliceEncoder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.SliceEncoder.html",
+          "hash": "FbPV7INHMoJ+ChrlhR2DQsEwV+3aRqwt6SNlITcdUXw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.SliceEncoderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.SliceEncoderExtensions.html",
+          "hash": "8dX5t6yvKgLEfDbQQJJmbaAqwAD0CD1XPjZ78Wnr+ls="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.SliceEncoding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.SliceEncoding.html",
+          "hash": "ihjsc1a+jvIns6fCOTozgHkrRyYgY6O5VuntYHKvw0c="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.SliceEncodingExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.SliceEncodingExtensions.html",
+          "hash": "znsbiX9egjHOrLHbkPruCAOXj4HRVokgut8mAs21r7I="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.SliceException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.SliceException.html",
+          "hash": "wdpJd6g82RmZd/kbWqa/HXS5RzXQuYpwVSb0S7zvFoI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.SliceFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.SliceFeature.html",
+          "hash": "7tyOCUeM/ncePqn+RzqTE1n4psICj7j72vanGlg6b0A="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.SliceInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.SliceInfo.html",
+          "hash": "0RffSJkSAPpoezgTUlpKDBu80o/RByJR7SIkwWg/0uw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.TagFormat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.TagFormat.html",
+          "hash": "jcIlSbhrmW37Jml3YBGQ7axNPSMp9HG94YxPm61Fo08="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.TypeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.TypeExtensions.html",
+          "hash": "arQQJTKqz5Dzooo/x4ZJKQqzp24oV+iZVjDmUVYMnGA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.TypeIdAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.TypeIdAttribute.html",
+          "hash": "A9CmE98nmMs7IpHxKj4v/+42Vv0gGZCB8DxdxZuO+1c="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.UnknownSlicedClass.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.UnknownSlicedClass.html",
+          "hash": "Z8DmPHjwEHdzQwwrMtlMwh4lcCsNJn479hokMjmZl38="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Slice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Slice.html",
+          "hash": "LdUvFaeD2ClAON+Ne+jXlJ+w8YaLcZeiINb70iZrj6k="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.StatusCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.StatusCode.html",
+          "hash": "5D40D8XuSjZ2466h3rjXlAn9rRkhybMy3R52bjtRgkA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.StatusCodeSliceDecoderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.StatusCodeSliceDecoderExtensions.html",
+          "hash": "PZXCKOajGwpz8Id6ACMthOpqUOgzY+b4BvCzmNLg/BM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.StatusCodeSliceEncoderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.StatusCodeSliceEncoderExtensions.html",
+          "hash": "/eiqFpH6/P6Sj4rZ7+vxNUqVjoeqMsfkQYTXb1uTsTs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.StatusCodeUlongExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.StatusCodeUlongExtensions.html",
+          "hash": "qy/XYrlHcfwyWAzXkbQgRq9Y3Lr8W2j1zmllFo965gU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Telemetry.TelemetryInterceptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Telemetry.TelemetryInterceptor.html",
+          "hash": "VABuuTy6gCUkfy3cD9hQ32T1nuHN3hlTz6yXoQS7qg4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Telemetry.TelemetryMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Telemetry.TelemetryMiddleware.html",
+          "hash": "MXOJkbrZ+56Fz4beysqyMjleSkwlRiJZNPzitGzDOpA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Telemetry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Telemetry.html",
+          "hash": "0dknWfmuKsnAR88At94sP7lWhO1NGGm2SW2ifVM8veA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.TelemetryPipelineExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.TelemetryPipelineExtensions.html",
+          "hash": "q/pfFZUstS5zZnT2P2zm9qRzMe7c0fY6KwQ28XHBNK8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.TelemetryRouterExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.TelemetryRouterExtensions.html",
+          "hash": "sWr6cx30+MKbrm83mC75jxzxFo5r1nzmFU+Kid8H/Qc="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.ColocTransport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.ColocTransport.html",
+          "hash": "uJ7wfYyqWBsRx8bMmtgnJiNCm964GLCAuThalad3msE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.ColocTransportOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.ColocTransportOptions.html",
+          "hash": "pZ+3pckl4yLmq+t1NZTHHNaj0xPDPaLX5i6B2qsEo2A="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.DuplexConnectionOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.DuplexConnectionOptions.html",
+          "hash": "A+VOHgVG0OxqVjrz+W4e2aFrKNpr+Ln/9+A/fa/TzKk="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.IDuplexClientTransport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.IDuplexClientTransport.html",
+          "hash": "GOubtML3fgWzoqbBHDHphGwfKohHn/kODdl5DDngo+s="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.IDuplexConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.IDuplexConnection.html",
+          "hash": "ufOjO8mKKyqZ1XsNrLRqCUxRQL8/I3Ks3MnTKarqDPs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.IDuplexServerTransport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.IDuplexServerTransport.html",
+          "hash": "mQPf/Tou/II8CObGOS4ZlrnqkcLXF198SO29HzQz/TA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.IListener-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.IListener-1.html",
+          "hash": "UwdEXIqcW4w8GLI3bDRaXbUlyfAcBJMeh9YhESxZ31c="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.IListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.IListener.html",
+          "hash": "OS8NTC6CRUqf+VWT8g2uVIaZwEGeSwgKwhAUn2b9BsI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.IMultiplexedClientTransport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.IMultiplexedClientTransport.html",
+          "hash": "etOdA4fPfcHX3ai+hMzxEaJY/doegvm1LRvzP6TdFtQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.IMultiplexedConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.IMultiplexedConnection.html",
+          "hash": "5Bhy71Last6mh/aDe8MOLMCOudLrWLk6v6U1sjW6iq0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.IMultiplexedServerTransport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.IMultiplexedServerTransport.html",
+          "hash": "ZtrRnAV0MqEqlgHjuFePe85TDo17d54hf79O1hP4j1A="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.IMultiplexedStream.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.IMultiplexedStream.html",
+          "hash": "yHTDEQ9KYfSsgHb4UAionyc7aznpkGP/747+lKIxBNM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.MultiplexedConnectionCloseError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.MultiplexedConnectionCloseError.html",
+          "hash": "ADCyK32k6h24zgUJKNZiZWjR+FZap+D7AYiPA30dVhE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.MultiplexedConnectionOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.MultiplexedConnectionOptions.html",
+          "hash": "E92umZCbcb/WNVzOes+yMqcEZEZNIwoMUDfh9cFU0QY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.ReadOnlySequencePipeWriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.ReadOnlySequencePipeWriter.html",
+          "hash": "2EwdOgEybuGCOtsDofGuXOKK0Uodcrtm4Fh5cK6Iiao="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.SlicClientTransport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.SlicClientTransport.html",
+          "hash": "mJaMQtWrG1WnakQPayo6T4YAitP9W5xIDDLk3275LYo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.SlicServerTransport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.SlicServerTransport.html",
+          "hash": "dHQC6+qxA3/aTjehZjiA/pSCZBX+Z+SSHtWFhPBH4Zs="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.SlicTransportOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.SlicTransportOptions.html",
+          "hash": "S8FE0C5xo6OOjCxAWiEhXhcAhsSnkRSHMTic/c63GiA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.SslAuthenticationOptionsExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.SslAuthenticationOptionsExtensions.html",
+          "hash": "vRoZMx77LsfJMJ3TkC9g2QjtMzKPOGPMYBaAUeFLnKY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.TcpClientTransport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.TcpClientTransport.html",
+          "hash": "RBbbcgwWHDAsWNdGHgfdvN35X/hZsH4dP5dPZmQ0aZ8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.TcpClientTransportOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.TcpClientTransportOptions.html",
+          "hash": "Nvo7hmUNrS9Bvp1yRrmqdribO3dB1tHMhH6WHv5vhD4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.TcpServerTransport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.TcpServerTransport.html",
+          "hash": "/VEiWsGKEz8kUKDQqyPeZ1lJACeNnfAsuF9wOPVFR4c="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.TcpServerTransportOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.TcpServerTransportOptions.html",
+          "hash": "qpCzh+G8lVAzWOkQcQP/uqgAdk1pXQmdS6BWuCLGW5U="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.TcpTransportOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.TcpTransportOptions.html",
+          "hash": "8nNEuI9JB/4Bu4V9ve3U2fiLFj9R0lHIDRS3FzxrKa0="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.TransportConnectionInformation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.TransportConnectionInformation.html",
+          "hash": "HyCxSG/HGAv5eh9olz6hku1iVFrCGLMV73IvznKzxBY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.Transports.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.Transports.html",
+          "hash": "9vVVHPvRmHqnGhSwGcq7D1eF43ozNT3qY+qPEAAL9ws="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IceRpc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IceRpc.html",
+          "hash": "EGE7cQ+iFAclubD736KwT31RtOskmDP7771Q+SwzhDA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Microsoft.Extensions.DependencyInjection.IceRpcServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.Extensions.DependencyInjection.IceRpcServiceCollectionExtensions.html",
+          "hash": "odEu5Dwn5pNf3jJlzGl/mj+tITWJXwB/1b5RqCYkGAg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Microsoft.Extensions.DependencyInjection.IceRpcSliceServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.Extensions.DependencyInjection.IceRpcSliceServiceCollectionExtensions.html",
+          "hash": "1q6vHUGeRrvGro6BvCIdw3u9WVox8qno2ClKqDl8yQg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Microsoft.Extensions.DependencyInjection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.Extensions.DependencyInjection.html",
+          "hash": "elHKKpsbUkJDxEtSjmyPcQi83DxBMOhFodrbY8z8Azo="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "ut7f9hnSvZf/u2PvuHJv1edKL3J2/MMz8Ec+20unCOw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "3OlkfmjRGNj2HNsR7hg/lvrnfj+G3Ws6GHeS3hmyy3A="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "b5yBk6WDp+HAUtu3dS30VPa59X8O1ClEoxwWT7gq964="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "b2TxRURDLuotc6luHn4IBE3BmwhQnmH40hf96w4tZvw="
+        }
+      },
+      "version": ""
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

@@ -1,0 +1,528 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class ResettablePipeReaderDecorator
+ | IceRPC </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class ResettablePipeReaderDecorator
+ | IceRPC ">
+      <meta name="generator" content="docfx ">
+  
+      <link rel="shortcut icon" href="../favicon.png">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/discord.css">
+      <link rel="stylesheet" href="../styles/singulink.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../">
+  <meta property="docfx:newtab" content="true">
+    </head>
+    <body>
+        <div class="top-navbar">
+            <a class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+
+            <a class="brand" href="../index.html">
+              <img src="../logo.svg" alt="IceRPC" class="logomark">
+              <span class="brand-title">IceRPC</span>
+            </a>        </div>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+
+                    <div>
+                      <div class="mobile-hide">
+
+                        <a class="brand" href="../index.html">
+                          <img src="../logo.svg" alt="IceRPC" class="logomark">
+                          <span class="brand-title">IceRPC</span>
+                        </a>                      </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+  <strong>IceRPC</strong>
+  
+                </div>            </nav>
+
+            <main class="main-panel">
+
+                <div id="search-results" style="display: none;">
+                  <h1 class="search-list">Search Results for <span></span></h1>
+                  <div class="sr-items">
+                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+                <div role="main" class="hide-when-search">
+
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    <article class="content wrap" id="_content" data-uid="IceRpc.ResettablePipeReaderDecorator">
+
+
+  <h1 id="IceRpc_ResettablePipeReaderDecorator" data-uid="IceRpc.ResettablePipeReaderDecorator" class="text-break">Class ResettablePipeReaderDecorator
+</h1>
+  <div class="markdown level0 summary"><p>A PipeReader decorator that allows to reset its decoratee to its initial state (from the caller's
+perspective).</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">PipeReader</span></div>
+    <div class="level2"><span class="xref">ResettablePipeReaderDecorator</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">PipeReader.ReadAtLeastAsync(int, CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">PipeReader.AsStream(bool)</span>
+    </div>
+    <div>
+      <span class="xref">PipeReader.CompleteAsync(Exception)</span>
+    </div>
+    <div>
+      <span class="xref">PipeReader.OnWriterCompleted(Action&lt;Exception, object&gt;, object)</span>
+    </div>
+    <div>
+      <span class="xref">PipeReader.Create(Stream, StreamPipeReaderOptions)</span>
+    </div>
+    <div>
+      <span class="xref">PipeReader.Create(ReadOnlySequence&lt;byte&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">PipeReader.CopyToAsync(PipeWriter, CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">PipeReader.CopyToAsync(Stream, CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">object.Equals(object)</span>
+    </div>
+    <div>
+      <span class="xref">object.Equals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.ReferenceEquals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.GetHashCode()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IceRpc.html">IceRpc</a></h6>
+  <h6><strong>Assembly</strong>: IceRpc.dll</h6>
+  <h5 id="IceRpc_ResettablePipeReaderDecorator_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class ResettablePipeReaderDecorator : PipeReader</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+
+
+  <a id="IceRpc_ResettablePipeReaderDecorator__ctor_" data-uid="IceRpc.ResettablePipeReaderDecorator.#ctor*"></a>
+  <h4 id="IceRpc_ResettablePipeReaderDecorator__ctor_System_IO_Pipelines_PipeReader_System_Int32_" data-uid="IceRpc.ResettablePipeReaderDecorator.#ctor(System.IO.Pipelines.PipeReader,System.Int32)">ResettablePipeReaderDecorator(PipeReader, int)</h4>
+  <div class="markdown level1 summary"><p>Constructs a resettable pipe reader decorator. This decorator avoids consuming the read data to allow
+restart reading from the beginning. The decorator becomes non-resettable and <a class="xref" href="IceRpc.ResettablePipeReaderDecorator.html#IceRpc_ResettablePipeReaderDecorator_IsResettable">IsResettable</a> returns
+<span class="xref">false</span> if the buffered data exceeds the <code data-dev-comment-type="paramref" class="paramref">maxBufferSize</code>, if the reading fails
+or if it's canceled with <a class="xref" href="IceRpc.ResettablePipeReaderDecorator.html#IceRpc_ResettablePipeReaderDecorator_CancelPendingRead">CancelPendingRead()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ResettablePipeReaderDecorator(PipeReader decoratee, int maxBufferSize)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">PipeReader</span></td>
+        <td><span class="parametername">decoratee</span></td>
+        <td><p>The pipe reader being decorated.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">maxBufferSize</span></td>
+        <td><p>The maximum size of buffered data in bytes.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="IceRpc_ResettablePipeReaderDecorator_IsResettable_" data-uid="IceRpc.ResettablePipeReaderDecorator.IsResettable*"></a>
+  <h4 id="IceRpc_ResettablePipeReaderDecorator_IsResettable" data-uid="IceRpc.ResettablePipeReaderDecorator.IsResettable">IsResettable</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether this decorator can be reset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsResettable { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><span class="xref">true</span> if this decorator can be reset; <span class="xref">false</span> otherwise. Defaults to
+<span class="xref">true</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="IceRpc_ResettablePipeReaderDecorator_AdvanceTo_" data-uid="IceRpc.ResettablePipeReaderDecorator.AdvanceTo*"></a>
+  <h4 id="IceRpc_ResettablePipeReaderDecorator_AdvanceTo_System_SequencePosition_System_SequencePosition_" data-uid="IceRpc.ResettablePipeReaderDecorator.AdvanceTo(System.SequencePosition,System.SequencePosition)">AdvanceTo(SequencePosition, SequencePosition)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void AdvanceTo(SequencePosition consumed, SequencePosition examined)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SequencePosition</span></td>
+        <td><span class="parametername">consumed</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">SequencePosition</span></td>
+        <td><span class="parametername">examined</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Pipelines.PipeReader.AdvanceTo(System.SequencePosition, System.SequencePosition)</span></div>
+
+
+  <a id="IceRpc_ResettablePipeReaderDecorator_AdvanceTo_" data-uid="IceRpc.ResettablePipeReaderDecorator.AdvanceTo*"></a>
+  <h4 id="IceRpc_ResettablePipeReaderDecorator_AdvanceTo_System_SequencePosition_" data-uid="IceRpc.ResettablePipeReaderDecorator.AdvanceTo(System.SequencePosition)">AdvanceTo(SequencePosition)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void AdvanceTo(SequencePosition consumed)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SequencePosition</span></td>
+        <td><span class="parametername">consumed</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Pipelines.PipeReader.AdvanceTo(System.SequencePosition)</span></div>
+
+
+  <a id="IceRpc_ResettablePipeReaderDecorator_CancelPendingRead_" data-uid="IceRpc.ResettablePipeReaderDecorator.CancelPendingRead*"></a>
+  <h4 id="IceRpc_ResettablePipeReaderDecorator_CancelPendingRead" data-uid="IceRpc.ResettablePipeReaderDecorator.CancelPendingRead">CancelPendingRead()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void CancelPendingRead()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Pipelines.PipeReader.CancelPendingRead()</span></div>
+
+
+  <a id="IceRpc_ResettablePipeReaderDecorator_Complete_" data-uid="IceRpc.ResettablePipeReaderDecorator.Complete*"></a>
+  <h4 id="IceRpc_ResettablePipeReaderDecorator_Complete_System_Exception_" data-uid="IceRpc.ResettablePipeReaderDecorator.Complete(System.Exception)">Complete(Exception?)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Complete(Exception? exception = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Pipelines.PipeReader.Complete(System.Exception)</span></div>
+
+
+  <a id="IceRpc_ResettablePipeReaderDecorator_ReadAsync_" data-uid="IceRpc.ResettablePipeReaderDecorator.ReadAsync*"></a>
+  <h4 id="IceRpc_ResettablePipeReaderDecorator_ReadAsync_System_Threading_CancellationToken_" data-uid="IceRpc.ResettablePipeReaderDecorator.ReadAsync(System.Threading.CancellationToken)">ReadAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override ValueTask&lt;ReadResult&gt; ReadAsync(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span>&lt;<span class="xref">ReadResult</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Pipelines.PipeReader.ReadAsync(System.Threading.CancellationToken)</span></div>
+
+
+  <a id="IceRpc_ResettablePipeReaderDecorator_ReadAtLeastAsyncCore_" data-uid="IceRpc.ResettablePipeReaderDecorator.ReadAtLeastAsyncCore*"></a>
+  <h4 id="IceRpc_ResettablePipeReaderDecorator_ReadAtLeastAsyncCore_System_Int32_System_Threading_CancellationToken_" data-uid="IceRpc.ResettablePipeReaderDecorator.ReadAtLeastAsyncCore(System.Int32,System.Threading.CancellationToken)">ReadAtLeastAsyncCore(int, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override ValueTask&lt;ReadResult&gt; ReadAtLeastAsyncCore(int minimumSize, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">minimumSize</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span>&lt;<span class="xref">ReadResult</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Pipelines.PipeReader.ReadAtLeastAsyncCore(int, System.Threading.CancellationToken)</span></div>
+
+
+  <a id="IceRpc_ResettablePipeReaderDecorator_Reset_" data-uid="IceRpc.ResettablePipeReaderDecorator.Reset*"></a>
+  <h4 id="IceRpc_ResettablePipeReaderDecorator_Reset" data-uid="IceRpc.ResettablePipeReaderDecorator.Reset">Reset()</h4>
+  <div class="markdown level1 summary"><p>Resets this pipe reader.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Reset()</code></pre>
+  </div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>Thrown if <a class="xref" href="IceRpc.ResettablePipeReaderDecorator.html#IceRpc_ResettablePipeReaderDecorator_IsResettable">IsResettable</a> is <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_ResettablePipeReaderDecorator_TryRead_" data-uid="IceRpc.ResettablePipeReaderDecorator.TryRead*"></a>
+  <h4 id="IceRpc_ResettablePipeReaderDecorator_TryRead_System_IO_Pipelines_ReadResult__" data-uid="IceRpc.ResettablePipeReaderDecorator.TryRead(System.IO.Pipelines.ReadResult@)">TryRead(out ReadResult)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool TryRead(out ReadResult result)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ReadResult</span></td>
+        <td><span class="parametername">result</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Pipelines.PipeReader.TryRead(out System.IO.Pipelines.ReadResult)</span></div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="IceRpc.Slice.PipeReaderExtensions.html#IceRpc_Slice_PipeReaderExtensions_ToAsyncEnumerable__1_System_IO_Pipelines_PipeReader_IceRpc_Slice_SliceEncoding_IceRpc_Slice_DecodeFunc___0__System_Int32_IceRpc_Slice_ISliceFeature_">PipeReaderExtensions.ToAsyncEnumerable&lt;T&gt;(PipeReader, SliceEncoding, DecodeFunc&lt;T&gt;, int, ISliceFeature?)</a>
+  </div>
+  <div>
+      <a class="xref" href="IceRpc.Slice.PipeReaderExtensions.html#IceRpc_Slice_PipeReaderExtensions_ToAsyncEnumerable__1_System_IO_Pipelines_PipeReader_IceRpc_Slice_SliceEncoding_IceRpc_Slice_DecodeFunc___0__System_Nullable_IceRpc_Slice_GenericProxy__IceRpc_Slice_ISliceFeature_">PipeReaderExtensions.ToAsyncEnumerable&lt;T&gt;(PipeReader, SliceEncoding, DecodeFunc&lt;T&gt;, GenericProxy?, ISliceFeature?)</a>
+  </div>
+</article>
+                </div>
+
+                <div class="copyright-footer">
+                    <span>Copyright &#169; ZeroC, Inc.</span>
+                </div>
+            </main>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script type="text/javascript" src="../styles/jquery.twbsPagination.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
+        <script type="text/javascript" src="../styles/url.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/singulink.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>    </body>
+</html>

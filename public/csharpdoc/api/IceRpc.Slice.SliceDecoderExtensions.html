@@ -1,0 +1,699 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class SliceDecoderExtensions
+ | IceRPC </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class SliceDecoderExtensions
+ | IceRPC ">
+      <meta name="generator" content="docfx ">
+  
+      <link rel="shortcut icon" href="../favicon.png">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/discord.css">
+      <link rel="stylesheet" href="../styles/singulink.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../">
+  <meta property="docfx:newtab" content="true">
+    </head>
+    <body>
+        <div class="top-navbar">
+            <a class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+
+            <a class="brand" href="../index.html">
+              <img src="../logo.svg" alt="IceRPC" class="logomark">
+              <span class="brand-title">IceRPC</span>
+            </a>        </div>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+
+                    <div>
+                      <div class="mobile-hide">
+
+                        <a class="brand" href="../index.html">
+                          <img src="../logo.svg" alt="IceRPC" class="logomark">
+                          <span class="brand-title">IceRPC</span>
+                        </a>                      </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+  <strong>IceRPC</strong>
+  
+                </div>            </nav>
+
+            <main class="main-panel">
+
+                <div id="search-results" style="display: none;">
+                  <h1 class="search-list">Search Results for <span></span></h1>
+                  <div class="sr-items">
+                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+                <div role="main" class="hide-when-search">
+
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    <article class="content wrap" id="_content" data-uid="IceRpc.Slice.SliceDecoderExtensions">
+
+
+  <h1 id="IceRpc_Slice_SliceDecoderExtensions" data-uid="IceRpc.Slice.SliceDecoderExtensions" class="text-break">Class SliceDecoderExtensions
+</h1>
+  <div class="markdown level0 summary"><p>Provides extension methods for <a class="xref" href="IceRpc.Slice.SliceDecoder.html">SliceDecoder</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">SliceDecoderExtensions</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">object.Equals(object)</span>
+    </div>
+    <div>
+      <span class="xref">object.Equals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.ReferenceEquals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.GetHashCode()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IceRpc.html">IceRpc</a>.<a class="xref" href="IceRpc.Slice.html">Slice</a></h6>
+  <h6><strong>Assembly</strong>: IceRpc.dll</h6>
+  <h5 id="IceRpc_Slice_SliceDecoderExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class SliceDecoderExtensions</code></pre>
+  </div>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="IceRpc_Slice_SliceDecoderExtensions_DecodeDictionary_" data-uid="IceRpc.Slice.SliceDecoderExtensions.DecodeDictionary*"></a>
+  <h4 id="IceRpc_Slice_SliceDecoderExtensions_DecodeDictionary__3_IceRpc_Slice_SliceDecoder__System_Func_System_Int32___0__IceRpc_Slice_DecodeFunc___1__IceRpc_Slice_DecodeFunc___2__" data-uid="IceRpc.Slice.SliceDecoderExtensions.DecodeDictionary``3(IceRpc.Slice.SliceDecoder@,System.Func{System.Int32,``0},IceRpc.Slice.DecodeFunc{``1},IceRpc.Slice.DecodeFunc{``2})">DecodeDictionary&lt;TDictionary, TKey, TValue&gt;(ref SliceDecoder, Func&lt;int, TDictionary&gt;, DecodeFunc&lt;TKey&gt;, DecodeFunc&lt;TValue&gt;)</h4>
+  <div class="markdown level1 summary"><p>Decodes a dictionary.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TDictionary DecodeDictionary&lt;TDictionary, TKey, TValue&gt;(this ref SliceDecoder decoder, Func&lt;int, TDictionary&gt; dictionaryFactory, DecodeFunc&lt;TKey&gt; keyDecodeFunc, DecodeFunc&lt;TValue&gt; valueDecodeFunc) where TDictionary : IDictionary&lt;TKey, TValue&gt; where TKey : notnull</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.SliceDecoder.html">SliceDecoder</a></td>
+        <td><span class="parametername">decoder</span></td>
+        <td><p>The Slice decoder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">int</span>, TDictionary&gt;</td>
+        <td><span class="parametername">dictionaryFactory</span></td>
+        <td><p>The factory for creating the dictionary instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.DecodeFunc-1.html">DecodeFunc</a>&lt;TKey&gt;</td>
+        <td><span class="parametername">keyDecodeFunc</span></td>
+        <td><p>The decode function for each key of the dictionary.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.DecodeFunc-1.html">DecodeFunc</a>&lt;TValue&gt;</td>
+        <td><span class="parametername">valueDecodeFunc</span></td>
+        <td><p>The decode function for each value of the dictionary.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TDictionary</span></td>
+        <td><p>The dictionary decoded by this decoder.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TDictionary</span></td>
+        <td><p>The type of the returned dictionary.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TKey</span></td>
+        <td><p>The type of the keys in the dictionary.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TValue</span></td>
+        <td><p>The type of the values in the dictionary.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceDecoderExtensions_DecodeDictionaryWithOptionalValueType_" data-uid="IceRpc.Slice.SliceDecoderExtensions.DecodeDictionaryWithOptionalValueType*"></a>
+  <h4 id="IceRpc_Slice_SliceDecoderExtensions_DecodeDictionaryWithOptionalValueType__3_IceRpc_Slice_SliceDecoder__System_Func_System_Int32___0__IceRpc_Slice_DecodeFunc___1__IceRpc_Slice_DecodeFunc___2__" data-uid="IceRpc.Slice.SliceDecoderExtensions.DecodeDictionaryWithOptionalValueType``3(IceRpc.Slice.SliceDecoder@,System.Func{System.Int32,``0},IceRpc.Slice.DecodeFunc{``1},IceRpc.Slice.DecodeFunc{``2})">DecodeDictionaryWithOptionalValueType&lt;TDictionary, TKey, TValue&gt;(ref SliceDecoder, Func&lt;int, TDictionary&gt;, DecodeFunc&lt;TKey&gt;, DecodeFunc&lt;TValue?&gt;)</h4>
+  <div class="markdown level1 summary"><p>Decodes a dictionary with an optional value type (T? in Slice).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TDictionary DecodeDictionaryWithOptionalValueType&lt;TDictionary, TKey, TValue&gt;(this ref SliceDecoder decoder, Func&lt;int, TDictionary&gt; dictionaryFactory, DecodeFunc&lt;TKey&gt; keyDecodeFunc, DecodeFunc&lt;TValue?&gt; valueDecodeFunc) where TDictionary : IDictionary&lt;TKey, TValue?&gt; where TKey : notnull</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.SliceDecoder.html">SliceDecoder</a></td>
+        <td><span class="parametername">decoder</span></td>
+        <td><p>The Slice decoder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">int</span>, TDictionary&gt;</td>
+        <td><span class="parametername">dictionaryFactory</span></td>
+        <td><p>The factory for creating the dictionary instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.DecodeFunc-1.html">DecodeFunc</a>&lt;TKey&gt;</td>
+        <td><span class="parametername">keyDecodeFunc</span></td>
+        <td><p>The decode function for each key of the dictionary.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.DecodeFunc-1.html">DecodeFunc</a>&lt;TValue&gt;</td>
+        <td><span class="parametername">valueDecodeFunc</span></td>
+        <td><p>The decode function for each non-null value of the dictionary.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TDictionary</span></td>
+        <td><p>The dictionary decoded by this decoder.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TDictionary</span></td>
+        <td><p>The type of the returned dictionary.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TKey</span></td>
+        <td><p>The type of the keys in the dictionary.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TValue</span></td>
+        <td><p>The type of the values in the dictionary.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceDecoderExtensions_DecodeSequence_" data-uid="IceRpc.Slice.SliceDecoderExtensions.DecodeSequence*"></a>
+  <h4 id="IceRpc_Slice_SliceDecoderExtensions_DecodeSequence__1_IceRpc_Slice_SliceDecoder__IceRpc_Slice_DecodeFunc___0__" data-uid="IceRpc.Slice.SliceDecoderExtensions.DecodeSequence``1(IceRpc.Slice.SliceDecoder@,IceRpc.Slice.DecodeFunc{``0})">DecodeSequence&lt;T&gt;(ref SliceDecoder, DecodeFunc&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Decodes a sequence.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T[] DecodeSequence&lt;T&gt;(this ref SliceDecoder decoder, DecodeFunc&lt;T&gt; decodeFunc)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.SliceDecoder.html">SliceDecoder</a></td>
+        <td><span class="parametername">decoder</span></td>
+        <td><p>The Slice decoder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.DecodeFunc-1.html">DecodeFunc</a>&lt;T&gt;</td>
+        <td><span class="parametername">decodeFunc</span></td>
+        <td><p>The decode function for each element of the sequence.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>T[]</td>
+        <td><p>An array of T.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of the elements in the array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceDecoderExtensions_DecodeSequence_" data-uid="IceRpc.Slice.SliceDecoderExtensions.DecodeSequence*"></a>
+  <h4 id="IceRpc_Slice_SliceDecoderExtensions_DecodeSequence__1_IceRpc_Slice_SliceDecoder__System_Action___0__" data-uid="IceRpc.Slice.SliceDecoderExtensions.DecodeSequence``1(IceRpc.Slice.SliceDecoder@,System.Action{``0})">DecodeSequence&lt;T&gt;(ref SliceDecoder, Action&lt;T&gt;?)</h4>
+  <div class="markdown level1 summary"><p>Decodes a sequence of fixed-size numeric values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T[] DecodeSequence&lt;T&gt;(this ref SliceDecoder decoder, Action&lt;T&gt;? checkElement = null) where T : struct</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.SliceDecoder.html">SliceDecoder</a></td>
+        <td><span class="parametername">decoder</span></td>
+        <td><p>The Slice decoder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;T&gt;</td>
+        <td><span class="parametername">checkElement</span></td>
+        <td><p>A delegate used to check each element of the array (optional).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>T[]</td>
+        <td><p>An array of T.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The sequence element type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceDecoderExtensions_DecodeSequence_" data-uid="IceRpc.Slice.SliceDecoderExtensions.DecodeSequence*"></a>
+  <h4 id="IceRpc_Slice_SliceDecoderExtensions_DecodeSequence__2_IceRpc_Slice_SliceDecoder__System_Func_System_Int32___0__IceRpc_Slice_DecodeFunc___1__" data-uid="IceRpc.Slice.SliceDecoderExtensions.DecodeSequence``2(IceRpc.Slice.SliceDecoder@,System.Func{System.Int32,``0},IceRpc.Slice.DecodeFunc{``1})">DecodeSequence&lt;TSequence, TElement&gt;(ref SliceDecoder, Func&lt;int, TSequence&gt;, DecodeFunc&lt;TElement&gt;)</h4>
+  <div class="markdown level1 summary"><p>Decodes a sequence.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TSequence DecodeSequence&lt;TSequence, TElement&gt;(this ref SliceDecoder decoder, Func&lt;int, TSequence&gt; sequenceFactory, DecodeFunc&lt;TElement&gt; decodeFunc) where TSequence : IList&lt;TElement&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.SliceDecoder.html">SliceDecoder</a></td>
+        <td><span class="parametername">decoder</span></td>
+        <td><p>The Slice decoder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">int</span>, TSequence&gt;</td>
+        <td><span class="parametername">sequenceFactory</span></td>
+        <td><p>The factory for creating the sequence instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.DecodeFunc-1.html">DecodeFunc</a>&lt;TElement&gt;</td>
+        <td><span class="parametername">decodeFunc</span></td>
+        <td><p>The decode function for each element of the sequence.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TSequence</span></td>
+        <td><p>A TSequence.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TSequence</span></td>
+        <td><p>The type of the returned sequence.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TElement</span></td>
+        <td><p>The type of the elements in the sequence.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceDecoderExtensions_DecodeSequenceOfOptionals_" data-uid="IceRpc.Slice.SliceDecoderExtensions.DecodeSequenceOfOptionals*"></a>
+  <h4 id="IceRpc_Slice_SliceDecoderExtensions_DecodeSequenceOfOptionals__1_IceRpc_Slice_SliceDecoder__IceRpc_Slice_DecodeFunc___0__" data-uid="IceRpc.Slice.SliceDecoderExtensions.DecodeSequenceOfOptionals``1(IceRpc.Slice.SliceDecoder@,IceRpc.Slice.DecodeFunc{``0})">DecodeSequenceOfOptionals&lt;T&gt;(ref SliceDecoder, DecodeFunc&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Decodes a sequence where the element type is an optional Slice type (T?).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T?[] DecodeSequenceOfOptionals&lt;T&gt;(this ref SliceDecoder decoder, DecodeFunc&lt;T&gt; decodeFunc)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.SliceDecoder.html">SliceDecoder</a></td>
+        <td><span class="parametername">decoder</span></td>
+        <td><p>The Slice decoder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.DecodeFunc-1.html">DecodeFunc</a>&lt;T&gt;</td>
+        <td><span class="parametername">decodeFunc</span></td>
+        <td><p>The decode function for each non-null element of the sequence.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>T[]</td>
+        <td><p>An array of T.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of the elements in the array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IceRpc_Slice_SliceDecoderExtensions_DecodeSequenceOfOptionals__1_IceRpc_Slice_SliceDecoder__IceRpc_Slice_DecodeFunc___0___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>We return a T? and not a T to avoid ambiguities in the generated code with nullable reference
+types such as string?.</p>
+</div>
+
+
+  <a id="IceRpc_Slice_SliceDecoderExtensions_DecodeSequenceOfOptionals_" data-uid="IceRpc.Slice.SliceDecoderExtensions.DecodeSequenceOfOptionals*"></a>
+  <h4 id="IceRpc_Slice_SliceDecoderExtensions_DecodeSequenceOfOptionals__2_IceRpc_Slice_SliceDecoder__System_Func_System_Int32___0__IceRpc_Slice_DecodeFunc___1__" data-uid="IceRpc.Slice.SliceDecoderExtensions.DecodeSequenceOfOptionals``2(IceRpc.Slice.SliceDecoder@,System.Func{System.Int32,``0},IceRpc.Slice.DecodeFunc{``1})">DecodeSequenceOfOptionals&lt;TSequence, TElement&gt;(ref SliceDecoder, Func&lt;int, TSequence&gt;, DecodeFunc&lt;TElement&gt;)</h4>
+  <div class="markdown level1 summary"><p>Decodes a sequence where the element type is an optional Slice type (T?).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TSequence DecodeSequenceOfOptionals&lt;TSequence, TElement&gt;(this ref SliceDecoder decoder, Func&lt;int, TSequence&gt; sequenceFactory, DecodeFunc&lt;TElement&gt; decodeFunc) where TSequence : IList&lt;TElement&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.SliceDecoder.html">SliceDecoder</a></td>
+        <td><span class="parametername">decoder</span></td>
+        <td><p>The Slice decoder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">int</span>, TSequence&gt;</td>
+        <td><span class="parametername">sequenceFactory</span></td>
+        <td><p>The factory for creating the sequence instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.DecodeFunc-1.html">DecodeFunc</a>&lt;TElement&gt;</td>
+        <td><span class="parametername">decodeFunc</span></td>
+        <td><p>The decode function for each non-null element of the sequence.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TSequence</span></td>
+        <td><p>A TSequence.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TSequence</span></td>
+        <td><p>The type of the returned sequence.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TElement</span></td>
+        <td><p>The type of the elements in the sequence.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+                </div>
+
+                <div class="copyright-footer">
+                    <span>Copyright &#169; ZeroC, Inc.</span>
+                </div>
+            </main>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script type="text/javascript" src="../styles/jquery.twbsPagination.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
+        <script type="text/javascript" src="../styles/url.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/singulink.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>    </body>
+</html>

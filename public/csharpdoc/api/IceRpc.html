@@ -1,0 +1,468 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Namespace IceRpc
+ | IceRPC </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Namespace IceRpc
+ | IceRPC ">
+      <meta name="generator" content="docfx ">
+  
+      <link rel="shortcut icon" href="../favicon.png">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/discord.css">
+      <link rel="stylesheet" href="../styles/singulink.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../">
+  <meta property="docfx:newtab" content="true">
+    </head>
+    <body>
+        <div class="top-navbar">
+            <a class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+
+            <a class="brand" href="../index.html">
+              <img src="../logo.svg" alt="IceRPC" class="logomark">
+              <span class="brand-title">IceRPC</span>
+            </a>        </div>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+
+                    <div>
+                      <div class="mobile-hide">
+
+                        <a class="brand" href="../index.html">
+                          <img src="../logo.svg" alt="IceRPC" class="logomark">
+                          <span class="brand-title">IceRPC</span>
+                        </a>                      </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+  <strong>IceRPC</strong>
+  
+                </div>            </nav>
+
+            <main class="main-panel">
+
+                <div id="search-results" style="display: none;">
+                  <h1 class="search-list">Search Results for <span></span></h1>
+                  <div class="sr-items">
+                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+                <div role="main" class="hide-when-search">
+
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    <article class="content wrap" id="_content" data-uid="IceRpc">
+
+  <h1 id="IceRpc" data-uid="IceRpc" class="text-break">Namespace IceRpc
+</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+</h3>
+      <h5><a class="xref" href="IceRpc.AdapterAlreadyActiveException.html">AdapterAlreadyActiveException</a></h5>
+      <section><p>This exception is thrown when a server application tries to register server addresses for an object adapter that is
+already active.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.AdapterNotFoundException.html">AdapterNotFoundException</a></h5>
+      <section><p>This exception is thrown when an object adapter was not found.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ClientConnection.html">ClientConnection</a></h5>
+      <section><p>Represents a client connection used to send requests to a server and receive the corresponding responses.
+This client connection can also dispatch requests (&quot;callbacks&quot;) received from the server. The client connection's
+underlying connection is recreated and reconnected automatically when it's closed by any event other than a call to
+<a class="xref" href="IceRpc.ClientConnection.html#IceRpc_ClientConnection_ShutdownAsync_System_Threading_CancellationToken_">ShutdownAsync(CancellationToken)</a> or <a class="xref" href="IceRpc.ClientConnection.html#IceRpc_ClientConnection_DisposeAsync">DisposeAsync()</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ClientConnectionOptions.html">ClientConnectionOptions</a></h5>
+      <section><p>A property bag used to configure a <a class="xref" href="IceRpc.ClientConnection.html">ClientConnection</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ClientProtocolConnectionFactory.html">ClientProtocolConnectionFactory</a></h5>
+      <section><p>The default implementation of <a class="xref" href="IceRpc.IClientProtocolConnectionFactory.html">IClientProtocolConnectionFactory</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.CompressionFormatByteExtensions.html">CompressionFormatByteExtensions</a></h5>
+      <section><p>Provides an extension method for creating a <a class="xref" href="IceRpc.CompressionFormat.html">CompressionFormat</a> from a <span class="xref">byte</span>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.CompressionFormatSliceDecoderExtensions.html">CompressionFormatSliceDecoderExtensions</a></h5>
+      <section><p>Provide extension methods for encoding <a class="xref" href="IceRpc.CompressionFormat.html">CompressionFormat</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.CompressionFormatSliceEncoderExtensions.html">CompressionFormatSliceEncoderExtensions</a></h5>
+      <section><p>Provide extension methods for encoding <a class="xref" href="IceRpc.CompressionFormat.html">CompressionFormat</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ConnectionCache.html">ConnectionCache</a></h5>
+      <section><p>A connection cache is an invoker that routes outgoing requests to connections it manages. This routing is
+based on the <a class="xref" href="IceRpc.Features.IServerAddressFeature.html">IServerAddressFeature</a> and the server addresses of the service address carried by each
+outgoing request. The connection cache keeps at most one active connection per server address.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ConnectionCacheOptions.html">ConnectionCacheOptions</a></h5>
+      <section><p>A property bag used to configure a <a class="xref" href="IceRpc.ConnectionCache.html">ConnectionCache</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ConnectionOptions.html">ConnectionOptions</a></h5>
+      <section><p>A property bag used to configure client and server connections.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.DeadlinePipelineExtensions.html">DeadlinePipelineExtensions</a></h5>
+      <section><p>This class provides extension methods to add the deadline interceptor to a <a class="xref" href="IceRpc.Pipeline.html">Pipeline</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.DeadlineRouterExtensions.html">DeadlineRouterExtensions</a></h5>
+      <section><p>This class provides extension methods to add the deadline middleware to a <a class="xref" href="IceRpc.Router.html">Router</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.DispatchException.html">DispatchException</a></h5>
+      <section><p>Represents an exception thrown by the peer while dispatching a request. It's decoded from a response with a
+status code greater than <a class="xref" href="IceRpc.StatusCode.html#IceRpc_StatusCode_Success">Success</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.FieldsExtensions.html">FieldsExtensions</a></h5>
+      <section><p>Provides extension method for field dictionaries.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IceObjectProxy.Request.html">IceObjectProxy.Request</a></h5>
+      <section><p>Converts the arguments of each operation that takes arguments into a request payload.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IceObjectProxy.Response.html">IceObjectProxy.Response</a></h5>
+      <section><p>Holds a <a class="xref" href="IceRpc.Slice.ResponseDecodeFunc-1.html">ResponseDecodeFunc&lt;T&gt;</a> for each remote operation defined in <a class="xref" href="IceRpc.IIceObject.html">IIceObject</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IceRpcException.html">IceRpcException</a></h5>
+      <section><p>The IceRpc core and built-in invokers, dispatchers (including built-in middleware and interceptors) report
+errors by throwing this exception. Slice invocations throw <a class="xref" href="IceRpc.DispatchException.html">DispatchException</a> in addition to
+<a class="xref" href="IceRpc.IceRpcException.html">IceRpcException</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IIceObjectService.Request.html">IIceObjectService.Request</a></h5>
+      <section><p>Provides static methods that read the arguments of requests.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IIceObjectService.Response.html">IIceObjectService.Response</a></h5>
+      <section><p>Provides static methods that write the return values of responses.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ILocatorRegistryService.Request.html">ILocatorRegistryService.Request</a></h5>
+      <section><p>Provides static methods that read the arguments of requests.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ILocatorService.Request.html">ILocatorService.Request</a></h5>
+      <section><p>Provides static methods that read the arguments of requests.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ILocatorService.Response.html">ILocatorService.Response</a></h5>
+      <section><p>Provides static methods that write the return values of responses.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IncomingFrame.html">IncomingFrame</a></h5>
+      <section><p>Base class for incoming frames.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IncomingRequest.html">IncomingRequest</a></h5>
+      <section><p>Represents a request frame received by the application.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IncomingResponse.html">IncomingResponse</a></h5>
+      <section><p>Represents a response protocol frame received by the application.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.InlineDispatcher.html">InlineDispatcher</a></h5>
+      <section><p>Adapts a dispatcher delegate to the <a class="xref" href="IceRpc.IDispatcher.html">IDispatcher</a> interface.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.InlineInvoker.html">InlineInvoker</a></h5>
+      <section><p>Adapts a function to the <a class="xref" href="IceRpc.IInvoker.html">IInvoker</a> interface.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.InvalidReplicaGroupIdException.html">InvalidReplicaGroupIdException</a></h5>
+      <section><p>This exception is thrown when the provided replica group is invalid.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IProcessService.Request.html">IProcessService.Request</a></h5>
+      <section><p>Provides static methods that read the arguments of requests.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.LocatorPipelineExtensions.html">LocatorPipelineExtensions</a></h5>
+      <section><p>This class provides extension methods to install the locator interceptor in a <a class="xref" href="IceRpc.Pipeline.html">Pipeline</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.LocatorProxy.Request.html">LocatorProxy.Request</a></h5>
+      <section><p>Converts the arguments of each operation that takes arguments into a request payload.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.LocatorProxy.Response.html">LocatorProxy.Response</a></h5>
+      <section><p>Holds a <a class="xref" href="IceRpc.Slice.ResponseDecodeFunc-1.html">ResponseDecodeFunc&lt;T&gt;</a> for each remote operation defined in <a class="xref" href="IceRpc.ILocator.html">ILocator</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.LocatorRegistryProxy.Request.html">LocatorRegistryProxy.Request</a></h5>
+      <section><p>Converts the arguments of each operation that takes arguments into a request payload.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.LocatorRegistryProxy.Response.html">LocatorRegistryProxy.Response</a></h5>
+      <section><p>Holds a <a class="xref" href="IceRpc.Slice.ResponseDecodeFunc-1.html">ResponseDecodeFunc&lt;T&gt;</a> for each remote operation defined in <a class="xref" href="IceRpc.ILocatorRegistry.html">ILocatorRegistry</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.LoggerPipelineExtensions.html">LoggerPipelineExtensions</a></h5>
+      <section><p>This class provides extension methods to add the logger interceptor to a <a class="xref" href="IceRpc.Pipeline.html">Pipeline</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.LoggerRouterExtensions.html">LoggerRouterExtensions</a></h5>
+      <section><p>This class provides extension methods to add the logger middleware to a <a class="xref" href="IceRpc.Router.html">Router</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.MetricsPipelineExtensions.html">MetricsPipelineExtensions</a></h5>
+      <section><p>This class provides extension methods to add the metrics interceptor to a <a class="xref" href="IceRpc.Pipeline.html">Pipeline</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.MetricsRouterExtensions.html">MetricsRouterExtensions</a></h5>
+      <section><p>This class provides extension methods to add the metrics middleware to a <a class="xref" href="IceRpc.Router.html">Router</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ObjectNotFoundException.html">ObjectNotFoundException</a></h5>
+      <section><p>This exception is thrown when a service with the specified identity (path) was not found.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.OutgoingFrame.html">OutgoingFrame</a></h5>
+      <section><p>Base class for outgoing frames.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.OutgoingRequest.html">OutgoingRequest</a></h5>
+      <section><p>Represents an ice or icerpc request frame sent by the application.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.OutgoingResponse.html">OutgoingResponse</a></h5>
+      <section><p>Represents a response protocol frame sent by the application.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.Pipeline.html">Pipeline</a></h5>
+      <section><p>A pipeline is an invoker created from zero or more interceptors installed by calling <a class="xref" href="IceRpc.Pipeline.html#IceRpc_Pipeline_Use_System_Func_IceRpc_IInvoker_IceRpc_IInvoker__">Use(Func&lt;IInvoker, IInvoker&gt;)</a>,
+and a final invoker installed by calling <a class="xref" href="IceRpc.Pipeline.html#IceRpc_Pipeline_Into_IceRpc_IInvoker_">Into(IInvoker)</a>. Requests using this pipeline flow through the
+interceptors into the last invoker. The last invoker then sends the request over a connection.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.PipelineExtensions.html">PipelineExtensions</a></h5>
+      <section><p>This class provide extension methods to add built-in interceptors to a <a class="xref" href="IceRpc.Pipeline.html">Pipeline</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ProcessProxy.Request.html">ProcessProxy.Request</a></h5>
+      <section><p>Converts the arguments of each operation that takes arguments into a request payload.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ProcessProxy.Response.html">ProcessProxy.Response</a></h5>
+      <section><p>Holds a <a class="xref" href="IceRpc.Slice.ResponseDecodeFunc-1.html">ResponseDecodeFunc&lt;T&gt;</a> for each remote operation defined in <a class="xref" href="IceRpc.IProcess.html">IProcess</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.Protocol.html">Protocol</a></h5>
+      <section><p>Protocol identifies a RPC protocol supported by IceRPC.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.RequestContextPipelineExtensions.html">RequestContextPipelineExtensions</a></h5>
+      <section><p>This class provides extension methods to add the request context interceptor to a <a class="xref" href="IceRpc.Pipeline.html">Pipeline</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.RequestContextRouterExtensions.html">RequestContextRouterExtensions</a></h5>
+      <section><p>This class provides extension methods to add the request context middleware to a <a class="xref" href="IceRpc.Router.html">Router</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.RequestFieldKeySliceDecoderExtensions.html">RequestFieldKeySliceDecoderExtensions</a></h5>
+      <section><p>Provide extension methods for encoding <a class="xref" href="IceRpc.RequestFieldKey.html">RequestFieldKey</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.RequestFieldKeySliceEncoderExtensions.html">RequestFieldKeySliceEncoderExtensions</a></h5>
+      <section><p>Provide extension methods for encoding <a class="xref" href="IceRpc.RequestFieldKey.html">RequestFieldKey</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.RequestFieldKeyUlongExtensions.html">RequestFieldKeyUlongExtensions</a></h5>
+      <section><p>Provides an extension method for creating a <a class="xref" href="IceRpc.RequestFieldKey.html">RequestFieldKey</a> from an <span class="xref">ulong</span>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ResettablePipeReaderDecorator.html">ResettablePipeReaderDecorator</a></h5>
+      <section><p>A PipeReader decorator that allows to reset its decoratee to its initial state (from the caller's
+perspective).</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ResponseFieldKeySliceDecoderExtensions.html">ResponseFieldKeySliceDecoderExtensions</a></h5>
+      <section><p>Provide extension methods for encoding <a class="xref" href="IceRpc.ResponseFieldKey.html">ResponseFieldKey</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ResponseFieldKeySliceEncoderExtensions.html">ResponseFieldKeySliceEncoderExtensions</a></h5>
+      <section><p>Provide extension methods for encoding <a class="xref" href="IceRpc.ResponseFieldKey.html">ResponseFieldKey</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ResponseFieldKeyUlongExtensions.html">ResponseFieldKeyUlongExtensions</a></h5>
+      <section><p>Provides an extension method for creating a <a class="xref" href="IceRpc.ResponseFieldKey.html">ResponseFieldKey</a> from an <span class="xref">ulong</span>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.RetryPipelineExtensions.html">RetryPipelineExtensions</a></h5>
+      <section><p>This class provides extension methods to add the retry interceptor to a <a class="xref" href="IceRpc.Pipeline.html">Pipeline</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.Router.html">Router</a></h5>
+      <section><p>A router routes incoming requests to dispatchers.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.RouterExtensions.html">RouterExtensions</a></h5>
+      <section><p>This class provide extension methods to add built-in middleware to a <a class="xref" href="IceRpc.Router.html">Router</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.Server.html">Server</a></h5>
+      <section><p>A server accepts connections from clients and dispatches the requests it receives over these connections.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ServerAddressComparer.html">ServerAddressComparer</a></h5>
+      <section><p>Equality comparer for <a class="xref" href="IceRpc.ServerAddress.html">ServerAddress</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ServerAddressTypeConverter.html">ServerAddressTypeConverter</a></h5>
+      <section><p>The server address type converter specifies how to convert a string to a serverAddress. It's used by
+sub-systems such as the Microsoft ConfigurationBinder to bind string values to ServerAddress properties.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ServerNotFoundException.html">ServerNotFoundException</a></h5>
+      <section><p>This exception is thrown when a server was not found.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ServerOptions.html">ServerOptions</a></h5>
+      <section><p>A property bag used to configure a <a class="xref" href="IceRpc.Server.html">Server</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ServiceAddress.html">ServiceAddress</a></h5>
+      <section><p>A service address corresponds to the URI of a service, parsed and processed for easier consumption by
+interceptors, <a class="xref" href="IceRpc.ConnectionCache.html">ConnectionCache</a> and other elements of the invocation pipeline. It's used to construct
+an <a class="xref" href="IceRpc.OutgoingRequest.html">OutgoingRequest</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ServiceAddressTypeConverter.html">ServiceAddressTypeConverter</a></h5>
+      <section><p>The service address type converter specifies how to convert a string to a service address. It's used by
+sub-systems such as the Microsoft ConfigurationBinder to bind string values to ServiceAddress properties.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.StatusCodeSliceDecoderExtensions.html">StatusCodeSliceDecoderExtensions</a></h5>
+      <section><p>Provide extension methods for encoding <a class="xref" href="IceRpc.StatusCode.html">StatusCode</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.StatusCodeSliceEncoderExtensions.html">StatusCodeSliceEncoderExtensions</a></h5>
+      <section><p>Provide extension methods for encoding <a class="xref" href="IceRpc.StatusCode.html">StatusCode</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.StatusCodeUlongExtensions.html">StatusCodeUlongExtensions</a></h5>
+      <section><p>Provides an extension method for creating a <a class="xref" href="IceRpc.StatusCode.html">StatusCode</a> from an <span class="xref">ulong</span>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.TelemetryPipelineExtensions.html">TelemetryPipelineExtensions</a></h5>
+      <section><p>This class provide extension methods to add the telemetry interceptor to a <a class="xref" href="IceRpc.Pipeline.html">Pipeline</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.TelemetryRouterExtensions.html">TelemetryRouterExtensions</a></h5>
+      <section><p>This class provide extension methods to add the telemetry middleware to a <a class="xref" href="IceRpc.Router.html">Router</a>.</p>
+</section>
+    <h3 id="structs">Structs
+</h3>
+      <h5><a class="xref" href="IceRpc.IceObjectProxy.html">IceObjectProxy</a></h5>
+      <section><p>Proxy record struct. It implements <a class="xref" href="IceRpc.IIceObject.html">IIceObject</a> by sending requests to a remote IceRPC service.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.LocatorProxy.html">LocatorProxy</a></h5>
+      <section><p>Proxy record struct. It implements <a class="xref" href="IceRpc.ILocator.html">ILocator</a> by sending requests to a remote IceRPC service.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.LocatorRegistryProxy.html">LocatorRegistryProxy</a></h5>
+      <section><p>Proxy record struct. It implements <a class="xref" href="IceRpc.ILocatorRegistry.html">ILocatorRegistry</a> by sending requests to a remote IceRPC service.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.OutgoingFieldValue.html">OutgoingFieldValue</a></h5>
+      <section><p>Represents the value of a field that is about to be sent. It's a kind of discriminated union: only one
+of the struct's properties can be set.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ProcessProxy.html">ProcessProxy</a></h5>
+      <section><p>Proxy record struct. It implements <a class="xref" href="IceRpc.IProcess.html">IProcess</a> by sending requests to a remote IceRPC service.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ServerAddress.html">ServerAddress</a></h5>
+      <section><p>A server address specifies the address of the server-end of an ice or icerpc connection: a server listens
+on a server address and a client establishes a connection to a server address.</p>
+</section>
+    <h3 id="interfaces">Interfaces
+</h3>
+      <h5><a class="xref" href="IceRpc.IClientProtocolConnectionFactory.html">IClientProtocolConnectionFactory</a></h5>
+      <section><p>Represents a factory for client protocol connections.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IConnectionContext.html">IConnectionContext</a></h5>
+      <section><p>Provides access to properties of the connection that received a request or response.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IDispatcher.html">IDispatcher</a></h5>
+      <section><p>A dispatcher handles (dispatches) incoming requests and returns outgoing responses.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IIceObject.html">IIceObject</a></h5>
+      <section><p>The client-side interface for Slice interface IceObject. <a class="xref" href="IceRpc.IIceObjectService.html">IIceObjectService</a>.
+Provides 3 ice_ operations. Services implemented with Ice or that offer compatibility with Ice implement this
+interface.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IIceObjectService.html">IIceObjectService</a></h5>
+      <section><p>Interface used to implement services for Slice interface IceObject. <a class="xref" href="IceRpc.IIceObject.html">IIceObject</a>.
+Provides 3 ice_ operations. Services implemented with Ice or that offer compatibility with Ice implement this
+interface.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IInvoker.html">IInvoker</a></h5>
+      <section><p>An invoker sends outgoing requests and returns incoming responses.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ILocator.html">ILocator</a></h5>
+      <section><p>The client-side interface for Slice interface Locator. <a class="xref" href="IceRpc.ILocatorService.html">ILocatorService</a>.
+Client applications use the <a class="xref" href="IceRpc.ILocator.html">ILocator</a> service to resolve Ice indirect proxies. This service also allows
+server applications to retrieve a proxy to the associated <a class="xref" href="IceRpc.ILocatorRegistry.html">ILocatorRegistry</a> service where they can register
+their object adapters.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ILocatorRegistry.html">ILocatorRegistry</a></h5>
+      <section><p>The client-side interface for Slice interface LocatorRegistry. <a class="xref" href="IceRpc.ILocatorRegistryService.html">ILocatorRegistryService</a>.
+A server application registers the server addresses of its indirect object adapters with the LocatorRegistry
+service.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ILocatorRegistryService.html">ILocatorRegistryService</a></h5>
+      <section><p>Interface used to implement services for Slice interface LocatorRegistry. <a class="xref" href="IceRpc.ILocatorRegistry.html">ILocatorRegistry</a>.
+A server application registers the server addresses of its indirect object adapters with the LocatorRegistry
+service.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ILocatorService.html">ILocatorService</a></h5>
+      <section><p>Interface used to implement services for Slice interface Locator. <a class="xref" href="IceRpc.ILocator.html">ILocator</a>.
+Client applications use the <a class="xref" href="IceRpc.ILocator.html">ILocator</a> service to resolve Ice indirect proxies. This service also allows
+server applications to retrieve a proxy to the associated <a class="xref" href="IceRpc.ILocatorRegistry.html">ILocatorRegistry</a> service where they can register
+their object adapters.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IMiddleware-1.html">IMiddleware&lt;TDep&gt;</a></h5>
+      <section><p>Represents a middleware with a single injected service dependency in its DispatchAsync method.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IMiddleware-2.html">IMiddleware&lt;TDep1, TDep2&gt;</a></h5>
+      <section><p>Represents a middleware with 2 injected service dependencies in its DispatchAsync method.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IMiddleware-3.html">IMiddleware&lt;TDep1, TDep2, TDep3&gt;</a></h5>
+      <section><p>Represents a middleware with 3 injected service dependencies in its DispatchAsync method.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IProcess.html">IProcess</a></h5>
+      <section><p>The client-side interface for Slice interface Process. <a class="xref" href="IceRpc.IProcessService.html">IProcessService</a>.
+A server application managed by a locator implementation such as IceGrid hosts a Process service and registers a
+proxy to this service with the locator registry. See <a class="xref" href="IceRpc.ILocatorRegistry.html#IceRpc_ILocatorRegistry_SetServerProcessProxyAsync_System_String_IceRpc_ProcessProxy_IceRpc_Features_IFeatureCollection_System_Threading_CancellationToken_">SetServerProcessProxyAsync(string, ProcessProxy, IFeatureCollection?, CancellationToken)</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IProcessService.html">IProcessService</a></h5>
+      <section><p>Interface used to implement services for Slice interface Process. <a class="xref" href="IceRpc.IProcess.html">IProcess</a>.
+A server application managed by a locator implementation such as IceGrid hosts a Process service and registers a
+proxy to this service with the locator registry. See <a class="xref" href="IceRpc.ILocatorRegistry.html#IceRpc_ILocatorRegistry_SetServerProcessProxyAsync_System_String_IceRpc_ProcessProxy_IceRpc_Features_IFeatureCollection_System_Threading_CancellationToken_">SetServerProcessProxyAsync(string, ProcessProxy, IFeatureCollection?, CancellationToken)</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IProtocolConnection.html">IProtocolConnection</a></h5>
+      <section><p>Represents a connection for a <a class="xref" href="IceRpc.Protocol.html">Protocol</a>. It is the building block for <a class="xref" href="IceRpc.ClientConnection.html">ClientConnection</a>, <a class="xref" href="IceRpc.ConnectionCache.html">ConnectionCache</a> and the connections created by <a class="xref" href="IceRpc.Server.html">Server</a>.
+Applications can use this interface to build their own custom client connection and connection cache classes.</p>
+</section>
+    <h3 id="enums">Enums
+</h3>
+      <h5><a class="xref" href="IceRpc.CompressionFormat.html">CompressionFormat</a></h5>
+      <section><p>The compression format of a payload.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.IceRpcError.html">IceRpcError</a></h5>
+      <section><p>The errors carried by an <a class="xref" href="IceRpc.IceRpcException.html">IceRpcException</a>.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ProtocolEventIds.html">ProtocolEventIds</a></h5>
+      <section><p>This enum contains event ID constants used for protocol connection related logging.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.RequestFieldKey.html">RequestFieldKey</a></h5>
+      <section><p>The keys of fields carried by icerpc request headers.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.ResponseFieldKey.html">ResponseFieldKey</a></h5>
+      <section><p>The keys of fields carried by icerpc response headers.</p>
+</section>
+      <h5><a class="xref" href="IceRpc.StatusCode.html">StatusCode</a></h5>
+      <section><p>The status code indicates whether the dispatch of a request has completed successfully, and, if not, which error
+occurred. It's carried by responses.</p>
+</section>
+</article>
+                </div>
+
+                <div class="copyright-footer">
+                    <span>Copyright &#169; ZeroC, Inc.</span>
+                </div>
+            </main>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script type="text/javascript" src="../styles/jquery.twbsPagination.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
+        <script type="text/javascript" src="../styles/url.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/singulink.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>    </body>
+</html>

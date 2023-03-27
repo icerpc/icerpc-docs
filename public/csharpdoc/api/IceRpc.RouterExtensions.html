@@ -1,0 +1,436 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class RouterExtensions
+ | IceRPC </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class RouterExtensions
+ | IceRPC ">
+      <meta name="generator" content="docfx ">
+  
+      <link rel="shortcut icon" href="../favicon.png">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/discord.css">
+      <link rel="stylesheet" href="../styles/singulink.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../">
+  <meta property="docfx:newtab" content="true">
+    </head>
+    <body>
+        <div class="top-navbar">
+            <a class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+
+            <a class="brand" href="../index.html">
+              <img src="../logo.svg" alt="IceRPC" class="logomark">
+              <span class="brand-title">IceRPC</span>
+            </a>        </div>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+
+                    <div>
+                      <div class="mobile-hide">
+
+                        <a class="brand" href="../index.html">
+                          <img src="../logo.svg" alt="IceRPC" class="logomark">
+                          <span class="brand-title">IceRPC</span>
+                        </a>                      </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+  <strong>IceRPC</strong>
+  
+                </div>            </nav>
+
+            <main class="main-panel">
+
+                <div id="search-results" style="display: none;">
+                  <h1 class="search-list">Search Results for <span></span></h1>
+                  <div class="sr-items">
+                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+                <div role="main" class="hide-when-search">
+
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    <article class="content wrap" id="_content" data-uid="IceRpc.RouterExtensions">
+
+
+  <h1 id="IceRpc_RouterExtensions" data-uid="IceRpc.RouterExtensions" class="text-break">Class RouterExtensions
+</h1>
+  <div class="markdown level0 summary"><p>This class provide extension methods to add built-in middleware to a <a class="xref" href="IceRpc.Router.html">Router</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">RouterExtensions</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">object.Equals(object)</span>
+    </div>
+    <div>
+      <span class="xref">object.Equals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.ReferenceEquals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.GetHashCode()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IceRpc.html">IceRpc</a></h6>
+  <h6><strong>Assembly</strong>: IceRpc.dll</h6>
+  <h5 id="IceRpc_RouterExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class RouterExtensions</code></pre>
+  </div>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="IceRpc_RouterExtensions_Map_" data-uid="IceRpc.RouterExtensions.Map*"></a>
+  <h4 id="IceRpc_RouterExtensions_Map__1_IceRpc_Router_IceRpc_IDispatcher_" data-uid="IceRpc.RouterExtensions.Map``1(IceRpc.Router,IceRpc.IDispatcher)">Map&lt;TService&gt;(Router, IDispatcher)</h4>
+  <div class="markdown level1 summary"><p>Registers a route to a service that uses the service default path as the route path. If there is
+an existing route at the same path, it is replaced.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Router Map&lt;TService&gt;(this Router router, IDispatcher service) where TService : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Router.html">Router</a></td>
+        <td><span class="parametername">router</span></td>
+        <td><p>The router being configured.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.IDispatcher.html">IDispatcher</a></td>
+        <td><span class="parametername">service</span></td>
+        <td><p>The target service of this route.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Router.html">Router</a></td>
+        <td><p>The router being configured.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TService</span></td>
+        <td><p>The service type used to get the default path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>Thrown if <a class="xref" href="IceRpc.IDispatcher.html#IceRpc_IDispatcher_DispatchAsync_IceRpc_IncomingRequest_System_Threading_CancellationToken_">DispatchAsync(IncomingRequest, CancellationToken)</a> was already
+called on this router.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IceRpc_RouterExtensions_Map__1_IceRpc_Router_IceRpc_IDispatcher__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IceRpc.Router.html#IceRpc_Router_Mount_System_String_IceRpc_IDispatcher_">Mount(string, IDispatcher)</a></div>
+  </div>
+
+
+  <a id="IceRpc_RouterExtensions_Route_" data-uid="IceRpc.RouterExtensions.Route*"></a>
+  <h4 id="IceRpc_RouterExtensions_Route_IceRpc_Router_System_String_System_Action_IceRpc_Router__" data-uid="IceRpc.RouterExtensions.Route(IceRpc.Router,System.String,System.Action{IceRpc.Router})">Route(Router, string, Action&lt;Router&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates a sub-router, configures this sub-router and mounts it (with
+<a class="xref" href="IceRpc.Router.html#IceRpc_Router_Mount_System_String_IceRpc_IDispatcher_">Mount(string, IDispatcher)</a>) at the given <code>prefix</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Router Route(this Router router, string prefix, Action&lt;Router&gt; configure)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Router.html">Router</a></td>
+        <td><span class="parametername">router</span></td>
+        <td><p>The router being configured.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">prefix</span></td>
+        <td><p>The prefix of the route to the sub-router.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="IceRpc.Router.html">Router</a>&gt;</td>
+        <td><span class="parametername">configure</span></td>
+        <td><p>A delegate that configures the new sub-router.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Router.html">Router</a></td>
+        <td><p>The new sub-router.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p>Thrown if <code data-dev-comment-type="paramref" class="paramref">prefix</code> is not a valid path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_RouterExtensions_UseDispatchInformation_" data-uid="IceRpc.RouterExtensions.UseDispatchInformation*"></a>
+  <h4 id="IceRpc_RouterExtensions_UseDispatchInformation_IceRpc_Router_" data-uid="IceRpc.RouterExtensions.UseDispatchInformation(IceRpc.Router)">UseDispatchInformation(Router)</h4>
+  <div class="markdown level1 summary"><p>Adds a middleware that creates and inserts the <a class="xref" href="IceRpc.Features.IDispatchInformationFeature.html">IDispatchInformationFeature</a> feature
+in all requests.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Router UseDispatchInformation(this Router router)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Router.html">Router</a></td>
+        <td><span class="parametername">router</span></td>
+        <td><p>The router being configured.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Router.html">Router</a></td>
+        <td><p>The router being configured.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_RouterExtensions_UseFeature_" data-uid="IceRpc.RouterExtensions.UseFeature*"></a>
+  <h4 id="IceRpc_RouterExtensions_UseFeature__1_IceRpc_Router___0_" data-uid="IceRpc.RouterExtensions.UseFeature``1(IceRpc.Router,``0)">UseFeature&lt;TFeature&gt;(Router, TFeature)</h4>
+  <div class="markdown level1 summary"><p>Adds a middleware that sets a feature in all requests.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Router UseFeature&lt;TFeature&gt;(this Router router, TFeature feature)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Router.html">Router</a></td>
+        <td><span class="parametername">router</span></td>
+        <td><p>The router being configured.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TFeature</span></td>
+        <td><span class="parametername">feature</span></td>
+        <td><p>The value of the feature to set in all requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Router.html">Router</a></td>
+        <td><p>The router being configured.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TFeature</span></td>
+        <td><p>The type of the feature.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+                </div>
+
+                <div class="copyright-footer">
+                    <span>Copyright &#169; ZeroC, Inc.</span>
+                </div>
+            </main>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script type="text/javascript" src="../styles/jquery.twbsPagination.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
+        <script type="text/javascript" src="../styles/url.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/singulink.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>    </body>
+</html>

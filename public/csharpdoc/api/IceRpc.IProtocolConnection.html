@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Interface IProtocolConnection
+ | IceRPC </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Interface IProtocolConnection
+ | IceRPC ">
+      <meta name="generator" content="docfx ">
+  
+      <link rel="shortcut icon" href="../favicon.png">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/discord.css">
+      <link rel="stylesheet" href="../styles/singulink.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../">
+  <meta property="docfx:newtab" content="true">
+    </head>
+    <body>
+        <div class="top-navbar">
+            <a class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+
+            <a class="brand" href="../index.html">
+              <img src="../logo.svg" alt="IceRPC" class="logomark">
+              <span class="brand-title">IceRPC</span>
+            </a>        </div>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+
+                    <div>
+                      <div class="mobile-hide">
+
+                        <a class="brand" href="../index.html">
+                          <img src="../logo.svg" alt="IceRPC" class="logomark">
+                          <span class="brand-title">IceRPC</span>
+                        </a>                      </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+  <strong>IceRPC</strong>
+  
+                </div>            </nav>
+
+            <main class="main-panel">
+
+                <div id="search-results" style="display: none;">
+                  <h1 class="search-list">Search Results for <span></span></h1>
+                  <div class="sr-items">
+                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+                <div role="main" class="hide-when-search">
+
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    <article class="content wrap" id="_content" data-uid="IceRpc.IProtocolConnection">
+
+
+  <h1 id="IceRpc_IProtocolConnection" data-uid="IceRpc.IProtocolConnection" class="text-break">Interface IProtocolConnection
+</h1>
+  <div class="markdown level0 summary"><p>Represents a connection for a <a class="xref" href="IceRpc.Protocol.html">Protocol</a>. It is the building block for <a class="xref" href="IceRpc.ClientConnection.html">ClientConnection</a>, <a class="xref" href="IceRpc.ConnectionCache.html">ConnectionCache</a> and the connections created by <a class="xref" href="IceRpc.Server.html">Server</a>.
+Applications can use this interface to build their own custom client connection and connection cache classes.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="IceRpc.IInvoker.html#IceRpc_IInvoker_InvokeAsync_IceRpc_OutgoingRequest_System_Threading_CancellationToken_">IInvoker.InvokeAsync(OutgoingRequest, CancellationToken)</a>
+    </div>
+    <div>
+      <span class="xref">IAsyncDisposable.DisposeAsync()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IceRpc.html">IceRpc</a></h6>
+  <h6><strong>Assembly</strong>: IceRpc.dll</h6>
+  <h5 id="IceRpc_IProtocolConnection_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IProtocolConnection : IInvoker, IAsyncDisposable</code></pre>
+  </div>
+  <h5 id="IceRpc_IProtocolConnection_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>The disposal of the protocol connection aborts invocations, cancels dispatches and disposes the underlying
+transport connection without waiting for the peer. To wait for invocations and dispatches to complete, call <a class="xref" href="IceRpc.IProtocolConnection.html#IceRpc_IProtocolConnection_ShutdownAsync_System_Threading_CancellationToken_">ShutdownAsync(CancellationToken)</a> first. If the configured dispatcher does not complete promptly when its cancellation token
+is canceled, the disposal can hang.</p>
+</div>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="IceRpc_IProtocolConnection_ConnectAsync_" data-uid="IceRpc.IProtocolConnection.ConnectAsync*"></a>
+  <h4 id="IceRpc_IProtocolConnection_ConnectAsync_System_Threading_CancellationToken_" data-uid="IceRpc.IProtocolConnection.ConnectAsync(System.Threading.CancellationToken)">ConnectAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Establishes the connection to the peer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;(TransportConnectionInformation ConnectionInformation, Task ShutdownRequested)&gt; ConnectAsync(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that receives the cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;(<a class="xref" href="IceRpc.Transports.TransportConnectionInformation.html">TransportConnectionInformation</a> <span class="xref">ConnectionInformation</span>, <span class="xref">Task</span> <span class="xref">ShutdownRequested</span>)&gt;</td>
+        <td><p>A task that provides the <a class="xref" href="IceRpc.Transports.TransportConnectionInformation.html">TransportConnectionInformation</a> of the transport connection
+and a task that completes when the connection itself wants to be shut down then disposed by the caller. This can
+happen when the peer initiates a shutdown, when the connection is inactive for too long (see
+<a class="xref" href="IceRpc.ConnectionOptions.html#IceRpc_ConnectionOptions_InactivityTimeout">InactivityTimeout</a>), when the connection detects a protocol violation, or when
+the connection gets an error from its transport connection. This task can also complete with one of the
+following exceptions:</p>
+<ul><li><span class="xref">System.Security.Authentication.AuthenticationException</span>if authentication failed.</li><li><a class="xref" href="IceRpc.IceRpcException.html">IceRpcException</a>if the connection establishment failed.</li><li><span class="xref">System.OperationCanceledException</span>if cancellation was requested through the
+cancellation token.</li></ul>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>Thrown if this method is called more than once.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ObjectDisposedException</span></td>
+        <td><p>Thrown if this connection is disposed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IceRpc_IProtocolConnection_ConnectAsync_System_Threading_CancellationToken__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IceRpc.ClientProtocolConnectionFactory.html">ClientProtocolConnectionFactory</a></div>
+  </div>
+
+
+  <a id="IceRpc_IProtocolConnection_ShutdownAsync_" data-uid="IceRpc.IProtocolConnection.ShutdownAsync*"></a>
+  <h4 id="IceRpc_IProtocolConnection_ShutdownAsync_System_Threading_CancellationToken_" data-uid="IceRpc.IProtocolConnection.ShutdownAsync(System.Threading.CancellationToken)">ShutdownAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gracefully shuts down the connection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task ShutdownAsync(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that receives the cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A task that completes once the shutdown is complete. This task can also complete with one of the
+following exceptions:</p>
+<ul><li><a class="xref" href="IceRpc.IceRpcException.html">IceRpcException</a>if the connection shutdown failed.</li><li><span class="xref">System.OperationCanceledException</span>if cancellation was requested through the
+cancellation token.</li></ul>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>Thrown if <a class="xref" href="IceRpc.IProtocolConnection.html#IceRpc_IProtocolConnection_ConnectAsync_System_Threading_CancellationToken_">ConnectAsync(CancellationToken)</a> did not complete successfully
+prior to this call, or if this method is called more than once.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ObjectDisposedException</span></td>
+        <td><p>Thrown if this connection is disposed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IceRpc_IProtocolConnection_ShutdownAsync_System_Threading_CancellationToken__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="IceRpc.ClientProtocolConnectionFactory.html">ClientProtocolConnectionFactory</a></div>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="IceRpc.ClientProtocolConnectionFactory.html">ClientProtocolConnectionFactory</a></div>
+  </div>
+</article>
+                </div>
+
+                <div class="copyright-footer">
+                    <span>Copyright &#169; ZeroC, Inc.</span>
+                </div>
+            </main>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script type="text/javascript" src="../styles/jquery.twbsPagination.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
+        <script type="text/javascript" src="../styles/url.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/singulink.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>    </body>
+</html>

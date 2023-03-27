@@ -1,0 +1,577 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class Server
+ | IceRPC </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class Server
+ | IceRPC ">
+      <meta name="generator" content="docfx ">
+  
+      <link rel="shortcut icon" href="../favicon.png">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/discord.css">
+      <link rel="stylesheet" href="../styles/singulink.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../">
+  <meta property="docfx:newtab" content="true">
+    </head>
+    <body>
+        <div class="top-navbar">
+            <a class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+
+            <a class="brand" href="../index.html">
+              <img src="../logo.svg" alt="IceRPC" class="logomark">
+              <span class="brand-title">IceRPC</span>
+            </a>        </div>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+
+                    <div>
+                      <div class="mobile-hide">
+
+                        <a class="brand" href="../index.html">
+                          <img src="../logo.svg" alt="IceRPC" class="logomark">
+                          <span class="brand-title">IceRPC</span>
+                        </a>                      </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+  <strong>IceRPC</strong>
+  
+                </div>            </nav>
+
+            <main class="main-panel">
+
+                <div id="search-results" style="display: none;">
+                  <h1 class="search-list">Search Results for <span></span></h1>
+                  <div class="sr-items">
+                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+                <div role="main" class="hide-when-search">
+
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    <article class="content wrap" id="_content" data-uid="IceRpc.Server">
+
+
+  <h1 id="IceRpc_Server" data-uid="IceRpc.Server" class="text-break">Class Server
+</h1>
+  <div class="markdown level0 summary"><p>A server accepts connections from clients and dispatches the requests it receives over these connections.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">Server</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">IAsyncDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">object.Equals(object)</span>
+    </div>
+    <div>
+      <span class="xref">object.Equals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.ReferenceEquals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.GetHashCode()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IceRpc.html">IceRpc</a></h6>
+  <h6><strong>Assembly</strong>: IceRpc.dll</h6>
+  <h5 id="IceRpc_Server_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class Server : IAsyncDisposable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+
+
+  <a id="IceRpc_Server__ctor_" data-uid="IceRpc.Server.#ctor*"></a>
+  <h4 id="IceRpc_Server__ctor_IceRpc_IDispatcher_IceRpc_ServerAddress_System_Net_Security_SslServerAuthenticationOptions_IceRpc_Transports_IDuplexServerTransport_IceRpc_Transports_IMultiplexedServerTransport_Microsoft_Extensions_Logging_ILogger_" data-uid="IceRpc.Server.#ctor(IceRpc.IDispatcher,IceRpc.ServerAddress,System.Net.Security.SslServerAuthenticationOptions,IceRpc.Transports.IDuplexServerTransport,IceRpc.Transports.IMultiplexedServerTransport,Microsoft.Extensions.Logging.ILogger)">Server(IDispatcher, ServerAddress, SslServerAuthenticationOptions?, IDuplexServerTransport?, IMultiplexedServerTransport?, ILogger?)</h4>
+  <div class="markdown level1 summary"><p>Constructs a server with the specified dispatcher, server address and authentication options. All
+other properties use the <a class="xref" href="IceRpc.ServerOptions.html">ServerOptions</a> defaults.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Server(IDispatcher dispatcher, ServerAddress serverAddress, SslServerAuthenticationOptions? serverAuthenticationOptions = null, IDuplexServerTransport? duplexServerTransport = null, IMultiplexedServerTransport? multiplexedServerTransport = null, ILogger? logger = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.IDispatcher.html">IDispatcher</a></td>
+        <td><span class="parametername">dispatcher</span></td>
+        <td><p>The dispatcher of the server.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.ServerAddress.html">ServerAddress</a></td>
+        <td><span class="parametername">serverAddress</span></td>
+        <td><p>The server address of the server.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">SslServerAuthenticationOptions</span></td>
+        <td><span class="parametername">serverAuthenticationOptions</span></td>
+        <td><p>The SSL server authentication options. When not <span class="xref">null</span>, the server will accept only secure connections.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Transports.IDuplexServerTransport.html">IDuplexServerTransport</a></td>
+        <td><span class="parametername">duplexServerTransport</span></td>
+        <td><p>The transport used to create ice protocol connections. <span class="xref">null</span> is equivalent to <a class="xref" href="IceRpc.Transports.IDuplexServerTransport.html#IceRpc_Transports_IDuplexServerTransport_Default">Default</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Transports.IMultiplexedServerTransport.html">IMultiplexedServerTransport</a></td>
+        <td><span class="parametername">multiplexedServerTransport</span></td>
+        <td><p>The transport used to create icerpc protocol connections. <span class="xref">null</span> is equivalent to <a class="xref" href="IceRpc.Transports.IMultiplexedServerTransport.html#IceRpc_Transports_IMultiplexedServerTransport_Default">Default</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ILogger</span></td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>The logger. <span class="xref">null</span> is equivalent to <span class="xref">Microsoft.Extensions.Logging.Abstractions.NullLogger.Instance</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Server__ctor_" data-uid="IceRpc.Server.#ctor*"></a>
+  <h4 id="IceRpc_Server__ctor_IceRpc_IDispatcher_System_Net_Security_SslServerAuthenticationOptions_IceRpc_Transports_IDuplexServerTransport_IceRpc_Transports_IMultiplexedServerTransport_Microsoft_Extensions_Logging_ILogger_" data-uid="IceRpc.Server.#ctor(IceRpc.IDispatcher,System.Net.Security.SslServerAuthenticationOptions,IceRpc.Transports.IDuplexServerTransport,IceRpc.Transports.IMultiplexedServerTransport,Microsoft.Extensions.Logging.ILogger)">Server(IDispatcher, SslServerAuthenticationOptions?, IDuplexServerTransport?, IMultiplexedServerTransport?, ILogger?)</h4>
+  <div class="markdown level1 summary"><p>Constructs a server with the specified dispatcher and authentication options. All other properties
+use the <a class="xref" href="IceRpc.ServerOptions.html">ServerOptions</a> defaults.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Server(IDispatcher dispatcher, SslServerAuthenticationOptions? serverAuthenticationOptions = null, IDuplexServerTransport? duplexServerTransport = null, IMultiplexedServerTransport? multiplexedServerTransport = null, ILogger? logger = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.IDispatcher.html">IDispatcher</a></td>
+        <td><span class="parametername">dispatcher</span></td>
+        <td><p>The dispatcher of the server.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">SslServerAuthenticationOptions</span></td>
+        <td><span class="parametername">serverAuthenticationOptions</span></td>
+        <td><p>The SSL server authentication options. When not <span class="xref">null</span>, the server will accept only secure connections.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Transports.IDuplexServerTransport.html">IDuplexServerTransport</a></td>
+        <td><span class="parametername">duplexServerTransport</span></td>
+        <td><p>The transport used to create ice protocol connections. <span class="xref">null</span> is equivalent to <a class="xref" href="IceRpc.Transports.IDuplexServerTransport.html#IceRpc_Transports_IDuplexServerTransport_Default">Default</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Transports.IMultiplexedServerTransport.html">IMultiplexedServerTransport</a></td>
+        <td><span class="parametername">multiplexedServerTransport</span></td>
+        <td><p>The transport used to create icerpc protocol connections. <span class="xref">null</span> is equivalent to <a class="xref" href="IceRpc.Transports.IMultiplexedServerTransport.html#IceRpc_Transports_IMultiplexedServerTransport_Default">Default</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ILogger</span></td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>The logger. <span class="xref">null</span> is equivalent to <span class="xref">Microsoft.Extensions.Logging.Abstractions.NullLogger.Instance</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Server__ctor_" data-uid="IceRpc.Server.#ctor*"></a>
+  <h4 id="IceRpc_Server__ctor_IceRpc_IDispatcher_System_Uri_System_Net_Security_SslServerAuthenticationOptions_IceRpc_Transports_IDuplexServerTransport_IceRpc_Transports_IMultiplexedServerTransport_Microsoft_Extensions_Logging_ILogger_" data-uid="IceRpc.Server.#ctor(IceRpc.IDispatcher,System.Uri,System.Net.Security.SslServerAuthenticationOptions,IceRpc.Transports.IDuplexServerTransport,IceRpc.Transports.IMultiplexedServerTransport,Microsoft.Extensions.Logging.ILogger)">Server(IDispatcher, Uri, SslServerAuthenticationOptions?, IDuplexServerTransport?, IMultiplexedServerTransport?, ILogger?)</h4>
+  <div class="markdown level1 summary"><p>Constructs a server with the specified dispatcher, server address URI and authentication options. All
+other properties use the <a class="xref" href="IceRpc.ServerOptions.html">ServerOptions</a> defaults.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Server(IDispatcher dispatcher, Uri serverAddressUri, SslServerAuthenticationOptions? serverAuthenticationOptions = null, IDuplexServerTransport? duplexServerTransport = null, IMultiplexedServerTransport? multiplexedServerTransport = null, ILogger? logger = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.IDispatcher.html">IDispatcher</a></td>
+        <td><span class="parametername">dispatcher</span></td>
+        <td><p>The dispatcher of the server.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Uri</span></td>
+        <td><span class="parametername">serverAddressUri</span></td>
+        <td><p>A URI that represents the server address of the server.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">SslServerAuthenticationOptions</span></td>
+        <td><span class="parametername">serverAuthenticationOptions</span></td>
+        <td><p>The SSL server authentication options. When not <span class="xref">null</span>, the server will accept only secure connections.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Transports.IDuplexServerTransport.html">IDuplexServerTransport</a></td>
+        <td><span class="parametername">duplexServerTransport</span></td>
+        <td><p>The transport used to create ice protocol connections. <span class="xref">null</span> is equivalent to <a class="xref" href="IceRpc.Transports.IDuplexServerTransport.html#IceRpc_Transports_IDuplexServerTransport_Default">Default</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Transports.IMultiplexedServerTransport.html">IMultiplexedServerTransport</a></td>
+        <td><span class="parametername">multiplexedServerTransport</span></td>
+        <td><p>The transport used to create icerpc protocol connections. <span class="xref">null</span> is equivalent to <a class="xref" href="IceRpc.Transports.IMultiplexedServerTransport.html#IceRpc_Transports_IMultiplexedServerTransport_Default">Default</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ILogger</span></td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>The logger. <span class="xref">null</span> is equivalent to <span class="xref">Microsoft.Extensions.Logging.Abstractions.NullLogger.Instance</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Server__ctor_" data-uid="IceRpc.Server.#ctor*"></a>
+  <h4 id="IceRpc_Server__ctor_IceRpc_ServerOptions_IceRpc_Transports_IDuplexServerTransport_IceRpc_Transports_IMultiplexedServerTransport_Microsoft_Extensions_Logging_ILogger_" data-uid="IceRpc.Server.#ctor(IceRpc.ServerOptions,IceRpc.Transports.IDuplexServerTransport,IceRpc.Transports.IMultiplexedServerTransport,Microsoft.Extensions.Logging.ILogger)">Server(ServerOptions, IDuplexServerTransport?, IMultiplexedServerTransport?, ILogger?)</h4>
+  <div class="markdown level1 summary"><p>Constructs a server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Server(ServerOptions options, IDuplexServerTransport? duplexServerTransport = null, IMultiplexedServerTransport? multiplexedServerTransport = null, ILogger? logger = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.ServerOptions.html">ServerOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>The server options.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Transports.IDuplexServerTransport.html">IDuplexServerTransport</a></td>
+        <td><span class="parametername">duplexServerTransport</span></td>
+        <td><p>The transport used to create ice protocol connections. The <span class="xref">null</span> value is equivalent to <a class="xref" href="IceRpc.Transports.IDuplexServerTransport.html#IceRpc_Transports_IDuplexServerTransport_Default">Default</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Transports.IMultiplexedServerTransport.html">IMultiplexedServerTransport</a></td>
+        <td><span class="parametername">multiplexedServerTransport</span></td>
+        <td><p>The transport used to create icerpc protocol connections. The <span class="xref">null</span> value is equivalent to <a class="xref" href="IceRpc.Transports.IMultiplexedServerTransport.html#IceRpc_Transports_IMultiplexedServerTransport_Default">Default</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ILogger</span></td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>The logger. <span class="xref">null</span> is equivalent to <span class="xref">Microsoft.Extensions.Logging.Abstractions.NullLogger.Instance</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="IceRpc_Server_DisposeAsync_" data-uid="IceRpc.Server.DisposeAsync*"></a>
+  <h4 id="IceRpc_Server_DisposeAsync" data-uid="IceRpc.Server.DisposeAsync">DisposeAsync()</h4>
+  <div class="markdown level1 summary"><p>Releases all resources allocated by this server. The server stops listening for new connections and
+disposes the connections it accepted from clients.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ValueTask DisposeAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span></td>
+        <td><p>A value task that completes when the disposal of all connections accepted by the server has completed.
+This includes connections that were active when this method is called and connections whose disposal was
+initiated prior to this call.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IceRpc_Server_DisposeAsync_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The disposal of an underlying connection of the server aborts invocations, cancels dispatches and
+disposes the underlying transport connection without waiting for the peer. To wait for invocations and
+dispatches to complete, call <a class="xref" href="IceRpc.Server.html#IceRpc_Server_ShutdownAsync_System_Threading_CancellationToken_">ShutdownAsync(CancellationToken)</a> first. If the configured dispatcher does not complete
+promptly when its cancellation token is canceled, the disposal can hang.</p>
+</div>
+
+
+  <a id="IceRpc_Server_Listen_" data-uid="IceRpc.Server.Listen*"></a>
+  <h4 id="IceRpc_Server_Listen" data-uid="IceRpc.Server.Listen">Listen()</h4>
+  <div class="markdown level1 summary"><p>Starts accepting connections on the configured server address. Requests received over these connections
+are then dispatched by the configured dispatcher.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ServerAddress Listen()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.ServerAddress.html">ServerAddress</a></td>
+        <td><p>The server address this server is listening on and that a client would connect to. This address is the
+same as <a class="xref" href="IceRpc.ServerOptions.html#IceRpc_ServerOptions_ServerAddress">ServerAddress</a> except its <a class="xref" href="IceRpc.ServerAddress.html#IceRpc_ServerAddress_Transport">Transport</a> property is
+always non-null and its port number is never 0 when the host is an IP address.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.IceRpcException.html">IceRpcException</a></td>
+        <td><p>Thrown when the server transport fails to listen on the configured <a class="xref" href="IceRpc.ServerOptions.html#IceRpc_ServerOptions_ServerAddress">ServerAddress</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>Thrown when the server is already listening, shut down or shutting
+down.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ObjectDisposedException</span></td>
+        <td><p>Throw when the server is disposed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Server_ShutdownAsync_" data-uid="IceRpc.Server.ShutdownAsync*"></a>
+  <h4 id="IceRpc_Server_ShutdownAsync_System_Threading_CancellationToken_" data-uid="IceRpc.Server.ShutdownAsync(System.Threading.CancellationToken)">ShutdownAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gracefully shuts down this server: the server stops accepting new connections and shuts down gracefully
+all its connections.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ShutdownAsync(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that receives the cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A task that completes successfully once the shutdown of all connections accepted by the server has
+completed. This includes connections that were active when this method is called and connections whose shutdown
+was initiated prior to this call. This task can also complete with one of the following exceptions:</p>
+<ul><li><a class="xref" href="IceRpc.IceRpcException.html">IceRpcException</a> with error <a class="xref" href="IceRpc.IceRpcError.html#IceRpc_IceRpcError_OperationAborted">OperationAborted</a> if the
+server is disposed while being shut down.</li><li><span class="xref">System.OperationCanceledException</span>if cancellation was requested through the
+cancellation token.</li><li><span class="xref">System.TimeoutException</span>if the shutdown timed out.</li></ul>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>Thrown if this method is called more than once.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ObjectDisposedException</span></td>
+        <td><p>Thrown if the server is disposed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Server_ToString_" data-uid="IceRpc.Server.ToString*"></a>
+  <h4 id="IceRpc_Server_ToString" data-uid="IceRpc.Server.ToString">ToString()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">object.ToString()</span></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IAsyncDisposable</span>
+  </div>
+</article>
+                </div>
+
+                <div class="copyright-footer">
+                    <span>Copyright &#169; ZeroC, Inc.</span>
+                </div>
+            </main>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script type="text/javascript" src="../styles/jquery.twbsPagination.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
+        <script type="text/javascript" src="../styles/url.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/singulink.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>    </body>
+</html>

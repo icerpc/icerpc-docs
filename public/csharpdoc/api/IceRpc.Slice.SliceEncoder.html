@@ -1,0 +1,1395 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Struct SliceEncoder
+ | IceRPC </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Struct SliceEncoder
+ | IceRPC ">
+      <meta name="generator" content="docfx ">
+  
+      <link rel="shortcut icon" href="../favicon.png">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/discord.css">
+      <link rel="stylesheet" href="../styles/singulink.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../">
+  <meta property="docfx:newtab" content="true">
+    </head>
+    <body>
+        <div class="top-navbar">
+            <a class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+
+            <a class="brand" href="../index.html">
+              <img src="../logo.svg" alt="IceRPC" class="logomark">
+              <span class="brand-title">IceRPC</span>
+            </a>        </div>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+
+                    <div>
+                      <div class="mobile-hide">
+
+                        <a class="brand" href="../index.html">
+                          <img src="../logo.svg" alt="IceRPC" class="logomark">
+                          <span class="brand-title">IceRPC</span>
+                        </a>                      </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+  <strong>IceRPC</strong>
+  
+                </div>            </nav>
+
+            <main class="main-panel">
+
+                <div id="search-results" style="display: none;">
+                  <h1 class="search-list">Search Results for <span></span></h1>
+                  <div class="sr-items">
+                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+                <div role="main" class="hide-when-search">
+
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    <article class="content wrap" id="_content" data-uid="IceRpc.Slice.SliceEncoder">
+
+
+  <h1 id="IceRpc_Slice_SliceEncoder" data-uid="IceRpc.Slice.SliceEncoder" class="text-break">Struct SliceEncoder
+</h1>
+  <div class="markdown level0 summary"><p>SliceEncoder class encoding methods.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">ValueType.Equals(object)</span>
+    </div>
+    <div>
+      <span class="xref">ValueType.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">ValueType.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">object.Equals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.ReferenceEquals(object, object)</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IceRpc.html">IceRpc</a>.<a class="xref" href="IceRpc.Slice.html">Slice</a></h6>
+  <h6><strong>Assembly</strong>: IceRpc.dll</h6>
+  <h5 id="IceRpc_Slice_SliceEncoder_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ref struct SliceEncoder</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+
+
+  <a id="IceRpc_Slice_SliceEncoder__ctor_" data-uid="IceRpc.Slice.SliceEncoder.#ctor*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder__ctor_System_IO_Pipelines_PipeWriter_IceRpc_Slice_SliceEncoding_IceRpc_Slice_ClassFormat_" data-uid="IceRpc.Slice.SliceEncoder.#ctor(System.IO.Pipelines.PipeWriter,IceRpc.Slice.SliceEncoding,IceRpc.Slice.ClassFormat)">SliceEncoder(PipeWriter, SliceEncoding, ClassFormat)</h4>
+  <div class="markdown level1 summary"><p>Constructs an Slice encoder.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SliceEncoder(PipeWriter pipeWriter, SliceEncoding encoding, ClassFormat classFormat = ClassFormat.Compact)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">PipeWriter</span></td>
+        <td><span class="parametername">pipeWriter</span></td>
+        <td><p>The pipe writer that provides the buffers to write into.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.SliceEncoding.html">SliceEncoding</a></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>The Slice encoding.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.ClassFormat.html">ClassFormat</a></td>
+        <td><span class="parametername">classFormat</span></td>
+        <td><p>The class format (Slice1 only).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodedByteCount_" data-uid="IceRpc.Slice.SliceEncoder.EncodedByteCount*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodedByteCount" data-uid="IceRpc.Slice.SliceEncoder.EncodedByteCount">EncodedByteCount</h4>
+  <div class="markdown level1 summary"><p>Gets the number of bytes encoded by this encoder into the underlying buffer writer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly int EncodedByteCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_Encoding_" data-uid="IceRpc.Slice.SliceEncoder.Encoding*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_Encoding" data-uid="IceRpc.Slice.SliceEncoder.Encoding">Encoding</h4>
+  <div class="markdown level1 summary"><p>Gets the Slice encoding of this encoder.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly SliceEncoding Encoding { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.SliceEncoding.html">SliceEncoding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeBool_" data-uid="IceRpc.Slice.SliceEncoder.EncodeBool*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeBool_System_Boolean_" data-uid="IceRpc.Slice.SliceEncoder.EncodeBool(System.Boolean)">EncodeBool(bool)</h4>
+  <div class="markdown level1 summary"><p>Encodes a bool into a Slice bool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeBool(bool v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The boolean to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeClass_" data-uid="IceRpc.Slice.SliceEncoder.EncodeClass*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeClass_IceRpc_Slice_SliceClass_" data-uid="IceRpc.Slice.SliceEncoder.EncodeClass(IceRpc.Slice.SliceClass)">EncodeClass(SliceClass)</h4>
+  <div class="markdown level1 summary"><p>Encodes a class instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeClass(SliceClass v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.SliceClass.html">SliceClass</a></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The class instance to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeFloat32_" data-uid="IceRpc.Slice.SliceEncoder.EncodeFloat32*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeFloat32_System_Single_" data-uid="IceRpc.Slice.SliceEncoder.EncodeFloat32(System.Single)">EncodeFloat32(float)</h4>
+  <div class="markdown level1 summary"><p>Encodes a float into a Slice float32.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeFloat32(float v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">float</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The float to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeFloat64_" data-uid="IceRpc.Slice.SliceEncoder.EncodeFloat64*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeFloat64_System_Double_" data-uid="IceRpc.Slice.SliceEncoder.EncodeFloat64(System.Double)">EncodeFloat64(double)</h4>
+  <div class="markdown level1 summary"><p>Encodes a double into a Slice float64.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeFloat64(double v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">double</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The double to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeInt16_" data-uid="IceRpc.Slice.SliceEncoder.EncodeInt16*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeInt16_System_Int16_" data-uid="IceRpc.Slice.SliceEncoder.EncodeInt16(System.Int16)">EncodeInt16(short)</h4>
+  <div class="markdown level1 summary"><p>Encodes a short into a Slice int16.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeInt16(short v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">short</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The short to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeInt32_" data-uid="IceRpc.Slice.SliceEncoder.EncodeInt32*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeInt32_System_Int32_" data-uid="IceRpc.Slice.SliceEncoder.EncodeInt32(System.Int32)">EncodeInt32(int)</h4>
+  <div class="markdown level1 summary"><p>Encodes an int into a Slice int32.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeInt32(int v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The int to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeInt64_" data-uid="IceRpc.Slice.SliceEncoder.EncodeInt64*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeInt64_System_Int64_" data-uid="IceRpc.Slice.SliceEncoder.EncodeInt64(System.Int64)">EncodeInt64(long)</h4>
+  <div class="markdown level1 summary"><p>Encodes a long into a Slice int64.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeInt64(long v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">long</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The long to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeInt8_" data-uid="IceRpc.Slice.SliceEncoder.EncodeInt8*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeInt8_System_SByte_" data-uid="IceRpc.Slice.SliceEncoder.EncodeInt8(System.SByte)">EncodeInt8(sbyte)</h4>
+  <div class="markdown level1 summary"><p>Encodes an sbyte into a Slice int8.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeInt8(sbyte v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">sbyte</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The sbyte to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeNullableClass_" data-uid="IceRpc.Slice.SliceEncoder.EncodeNullableClass*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeNullableClass_IceRpc_Slice_SliceClass_" data-uid="IceRpc.Slice.SliceEncoder.EncodeNullableClass(IceRpc.Slice.SliceClass)">EncodeNullableClass(SliceClass?)</h4>
+  <div class="markdown level1 summary"><p>Encodes a class instance, or <span class="xref">null</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeNullableClass(SliceClass? v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.SliceClass.html">SliceClass</a></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The class instance to encode, or <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeNullableServiceAddress_" data-uid="IceRpc.Slice.SliceEncoder.EncodeNullableServiceAddress*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeNullableServiceAddress_IceRpc_ServiceAddress_" data-uid="IceRpc.Slice.SliceEncoder.EncodeNullableServiceAddress(IceRpc.ServiceAddress)">EncodeNullableServiceAddress(ServiceAddress?)</h4>
+  <div class="markdown level1 summary"><p>Encodes a nullable service address (Slice1 only).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeNullableServiceAddress(ServiceAddress? serviceAddress)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.ServiceAddress.html">ServiceAddress</a></td>
+        <td><span class="parametername">serviceAddress</span></td>
+        <td><p>The service address to encode, or <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeServiceAddress_" data-uid="IceRpc.Slice.SliceEncoder.EncodeServiceAddress*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeServiceAddress_IceRpc_ServiceAddress_" data-uid="IceRpc.Slice.SliceEncoder.EncodeServiceAddress(IceRpc.ServiceAddress)">EncodeServiceAddress(ServiceAddress)</h4>
+  <div class="markdown level1 summary"><p>Encodes a non-null service address.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeServiceAddress(ServiceAddress serviceAddress)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.ServiceAddress.html">ServiceAddress</a></td>
+        <td><span class="parametername">serviceAddress</span></td>
+        <td><p>The service address to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeSize_" data-uid="IceRpc.Slice.SliceEncoder.EncodeSize*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeSize_System_Int32_" data-uid="IceRpc.Slice.SliceEncoder.EncodeSize(System.Int32)">EncodeSize(int)</h4>
+  <div class="markdown level1 summary"><p>Encodes a size on variable number of bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeSize(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The size to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeString_" data-uid="IceRpc.Slice.SliceEncoder.EncodeString*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeString_System_String_" data-uid="IceRpc.Slice.SliceEncoder.EncodeString(System.String)">EncodeString(string)</h4>
+  <div class="markdown level1 summary"><p>Encodes a string into a Slice string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeString(string v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The string to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeTagged_" data-uid="IceRpc.Slice.SliceEncoder.EncodeTagged*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeTagged__1_System_Int32___0_IceRpc_Slice_EncodeAction___0__" data-uid="IceRpc.Slice.SliceEncoder.EncodeTagged``1(System.Int32,``0,IceRpc.Slice.EncodeAction{``0})">EncodeTagged&lt;T&gt;(int, T, EncodeAction&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Encodes a non-null Slice2 encoded tagged value. The number of bytes needed to encode the value is
+not known before encoding this value (Slice2 only).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeTagged&lt;T&gt;(int tag, T v, EncodeAction&lt;T&gt; encodeAction) where T : notnull</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">tag</span></td>
+        <td><p>The tag.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The value to encode.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.EncodeAction-1.html">EncodeAction</a>&lt;T&gt;</td>
+        <td><span class="parametername">encodeAction</span></td>
+        <td><p>The delegate that encodes the value after the tag header.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of the value being encoded.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeTagged_" data-uid="IceRpc.Slice.SliceEncoder.EncodeTagged*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeTagged__1_System_Int32_IceRpc_Slice_TagFormat___0_IceRpc_Slice_EncodeAction___0__" data-uid="IceRpc.Slice.SliceEncoder.EncodeTagged``1(System.Int32,IceRpc.Slice.TagFormat,``0,IceRpc.Slice.EncodeAction{``0})">EncodeTagged&lt;T&gt;(int, TagFormat, T, EncodeAction&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Encodes a non-null Slice1 encoded tagged value. The number of bytes needed to encode the value is
+not known before encoding this value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeTagged&lt;T&gt;(int tag, TagFormat tagFormat, T v, EncodeAction&lt;T&gt; encodeAction) where T : notnull</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">tag</span></td>
+        <td><p>The tag. Must be either FSize or OptimizedVSize.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.TagFormat.html">TagFormat</a></td>
+        <td><span class="parametername">tagFormat</span></td>
+        <td><p>The tag format.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The value to encode.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.EncodeAction-1.html">EncodeAction</a>&lt;T&gt;</td>
+        <td><span class="parametername">encodeAction</span></td>
+        <td><p>The delegate that encodes the value after the tag header.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of the value being encoded.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>Thrown if <code data-dev-comment-type="paramref" class="paramref">tagFormat</code> is VSize.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeTagged_" data-uid="IceRpc.Slice.SliceEncoder.EncodeTagged*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeTagged__1_System_Int32_System_Int32___0_IceRpc_Slice_EncodeAction___0__" data-uid="IceRpc.Slice.SliceEncoder.EncodeTagged``1(System.Int32,System.Int32,``0,IceRpc.Slice.EncodeAction{``0})">EncodeTagged&lt;T&gt;(int, int, T, EncodeAction&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Encodes a non-null encoded tagged value. The number of bytes needed to encode the value is
+known before encoding the value. With Slice1 encoding this method always use the VSize tag format.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeTagged&lt;T&gt;(int tag, int size, T v, EncodeAction&lt;T&gt; encodeAction) where T : notnull</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">tag</span></td>
+        <td><p>The tag.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The number of bytes needed to encode the value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The value to encode.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.EncodeAction-1.html">EncodeAction</a>&lt;T&gt;</td>
+        <td><span class="parametername">encodeAction</span></td>
+        <td><p>The delegate that encodes the value after the tag header.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of the value being encoded.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeUInt16_" data-uid="IceRpc.Slice.SliceEncoder.EncodeUInt16*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeUInt16_System_UInt16_" data-uid="IceRpc.Slice.SliceEncoder.EncodeUInt16(System.UInt16)">EncodeUInt16(ushort)</h4>
+  <div class="markdown level1 summary"><p>Encodes a ushort into a Slice uint16.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeUInt16(ushort v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ushort</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The ushort to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeUInt32_" data-uid="IceRpc.Slice.SliceEncoder.EncodeUInt32*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeUInt32_System_UInt32_" data-uid="IceRpc.Slice.SliceEncoder.EncodeUInt32(System.UInt32)">EncodeUInt32(uint)</h4>
+  <div class="markdown level1 summary"><p>Encodes a uint into a Slice uint32.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeUInt32(uint v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">uint</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The uint to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeUInt64_" data-uid="IceRpc.Slice.SliceEncoder.EncodeUInt64*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeUInt64_System_UInt64_" data-uid="IceRpc.Slice.SliceEncoder.EncodeUInt64(System.UInt64)">EncodeUInt64(ulong)</h4>
+  <div class="markdown level1 summary"><p>Encodes a ulong into a Slice uint64.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeUInt64(ulong v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ulong</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The ulong to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeUInt8_" data-uid="IceRpc.Slice.SliceEncoder.EncodeUInt8*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeUInt8_System_Byte_" data-uid="IceRpc.Slice.SliceEncoder.EncodeUInt8(System.Byte)">EncodeUInt8(byte)</h4>
+  <div class="markdown level1 summary"><p>Encodes a byte into a Slice uint8.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeUInt8(byte v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">byte</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The byte to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeVarInt32_" data-uid="IceRpc.Slice.SliceEncoder.EncodeVarInt32*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeVarInt32_System_Int32_" data-uid="IceRpc.Slice.SliceEncoder.EncodeVarInt32(System.Int32)">EncodeVarInt32(int)</h4>
+  <div class="markdown level1 summary"><p>Encodes an int into a Slice varint32.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeVarInt32(int v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The int to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeVarInt62_" data-uid="IceRpc.Slice.SliceEncoder.EncodeVarInt62*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeVarInt62_System_Int64_" data-uid="IceRpc.Slice.SliceEncoder.EncodeVarInt62(System.Int64)">EncodeVarInt62(long)</h4>
+  <div class="markdown level1 summary"><p>Encodes a long into a Slice varint62, with the minimum number of bytes required
+by the encoding.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeVarInt62(long v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">long</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The long to encode. It must be in the range [-2^61..2^61 - 1].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeVarUInt32_" data-uid="IceRpc.Slice.SliceEncoder.EncodeVarUInt32*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeVarUInt32_System_UInt32_" data-uid="IceRpc.Slice.SliceEncoder.EncodeVarUInt32(System.UInt32)">EncodeVarUInt32(uint)</h4>
+  <div class="markdown level1 summary"><p>Encodes a uint into a Slice varuint32.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeVarUInt32(uint v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">uint</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The uint to encode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeVarUInt62_" data-uid="IceRpc.Slice.SliceEncoder.EncodeVarUInt62*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeVarUInt62_System_UInt64_System_Span_System_Byte__" data-uid="IceRpc.Slice.SliceEncoder.EncodeVarUInt62(System.UInt64,System.Span{System.Byte})">EncodeVarUInt62(ulong, Span&lt;byte&gt;)</h4>
+  <div class="markdown level1 summary"><p>Encodes a ulong as a Slice varuint62 into a span of bytes using a fixed number of bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void EncodeVarUInt62(ulong value, Span&lt;byte&gt; into)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ulong</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to encode.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Span</span>&lt;<span class="xref">byte</span>&gt;</td>
+        <td><span class="parametername">into</span></td>
+        <td><p>The destination byte buffer, which must be 1, 2, 4 or 8 bytes long.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_EncodeVarUInt62_" data-uid="IceRpc.Slice.SliceEncoder.EncodeVarUInt62*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_EncodeVarUInt62_System_UInt64_" data-uid="IceRpc.Slice.SliceEncoder.EncodeVarUInt62(System.UInt64)">EncodeVarUInt62(ulong)</h4>
+  <div class="markdown level1 summary"><p>Encodes a ulong into a Slice varuint62, with the minimum number of bytes
+required by the encoding.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EncodeVarUInt62(ulong v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ulong</span></td>
+        <td><span class="parametername">v</span></td>
+        <td><p>The ulong to encode. It must be in the range [0..2^62 - 1].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_GetBitSequenceWriter_" data-uid="IceRpc.Slice.SliceEncoder.GetBitSequenceWriter*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_GetBitSequenceWriter_System_Int32_" data-uid="IceRpc.Slice.SliceEncoder.GetBitSequenceWriter(System.Int32)">GetBitSequenceWriter(int)</h4>
+  <div class="markdown level1 summary"><p>Allocates a new bit sequence in the underlying buffer(s) and returns a writer for this bit
+sequence.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BitSequenceWriter GetBitSequenceWriter(int bitSequenceSize)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">bitSequenceSize</span></td>
+        <td><p>The minimum number of bits in the bit sequence.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.BitSequenceWriter.html">BitSequenceWriter</a></td>
+        <td><p>The bit sequence writer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_GetPlaceholderSpan_" data-uid="IceRpc.Slice.SliceEncoder.GetPlaceholderSpan*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_GetPlaceholderSpan_System_Int32_" data-uid="IceRpc.Slice.SliceEncoder.GetPlaceholderSpan(System.Int32)">GetPlaceholderSpan(int)</h4>
+  <div class="markdown level1 summary"><p>Gets a placeholder to be filled-in later.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Span&lt;byte&gt; GetPlaceholderSpan(int size)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The size of the placeholder, typically a small number like 4.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Span</span>&lt;<span class="xref">byte</span>&gt;</td>
+        <td><p>A buffer of length <code data-dev-comment-type="paramref" class="paramref">size</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="IceRpc_Slice_SliceEncoder_GetPlaceholderSpan_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>We make the assumption the underlying buffer writer allows rewriting memory it provided even after
+successive calls to GetMemory/GetSpan and Advance.</p>
+</div>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_GetSizeLength_" data-uid="IceRpc.Slice.SliceEncoder.GetSizeLength*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_GetSizeLength_System_Int32_" data-uid="IceRpc.Slice.SliceEncoder.GetSizeLength(System.Int32)">GetSizeLength(int)</h4>
+  <div class="markdown level1 summary"><p>Computes the minimum number of bytes needed to encode a variable-length size.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetSizeLength(int size)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The size.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><p>The minimum number of bytes.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_GetVarInt62EncodedSize_" data-uid="IceRpc.Slice.SliceEncoder.GetVarInt62EncodedSize*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_GetVarInt62EncodedSize_System_Int64_" data-uid="IceRpc.Slice.SliceEncoder.GetVarInt62EncodedSize(System.Int64)">GetVarInt62EncodedSize(long)</h4>
+  <div class="markdown level1 summary"><p>Computes the minimum number of bytes required to encode a long value using the Slice encoding's
+variable-size encoded representation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetVarInt62EncodedSize(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">long</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The long value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><p>The minimum number of bytes required to encode <code data-dev-comment-type="paramref" class="paramref">value</code>. Can be 1, 2, 4 or 8.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_GetVarUInt62EncodedSize_" data-uid="IceRpc.Slice.SliceEncoder.GetVarUInt62EncodedSize*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_GetVarUInt62EncodedSize_System_UInt64_" data-uid="IceRpc.Slice.SliceEncoder.GetVarUInt62EncodedSize(System.UInt64)">GetVarUInt62EncodedSize(ulong)</h4>
+  <div class="markdown level1 summary"><p>Computes the minimum number of bytes required to encode a ulong value using the Slice encoding's
+variable-size encoded representation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetVarUInt62EncodedSize(ulong value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ulong</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The ulong value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><p>The minimum number of bytes required to encode <code data-dev-comment-type="paramref" class="paramref">value</code>. Can be 1, 2, 4 or 8.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_Slice_SliceEncoder_WriteByteSpan_" data-uid="IceRpc.Slice.SliceEncoder.WriteByteSpan*"></a>
+  <h4 id="IceRpc_Slice_SliceEncoder_WriteByteSpan_System_ReadOnlySpan_System_Byte__" data-uid="IceRpc.Slice.SliceEncoder.WriteByteSpan(System.ReadOnlySpan{System.Byte})">WriteByteSpan(ReadOnlySpan&lt;byte&gt;)</h4>
+  <div class="markdown level1 summary"><p>Copies a span of bytes to the underlying buffer writer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteByteSpan(ReadOnlySpan&lt;byte&gt; span)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ReadOnlySpan</span>&lt;<span class="xref">byte</span>&gt;</td>
+        <td><span class="parametername">span</span></td>
+        <td><p>The span to copy.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="IceRpc.CompressionFormatSliceEncoderExtensions.html#IceRpc_CompressionFormatSliceEncoderExtensions_EncodeCompressionFormat_IceRpc_Slice_SliceEncoder__IceRpc_CompressionFormat_">CompressionFormatSliceEncoderExtensions.EncodeCompressionFormat(ref SliceEncoder, CompressionFormat)</a>
+  </div>
+  <div>
+      <a class="xref" href="IceRpc.RequestFieldKeySliceEncoderExtensions.html#IceRpc_RequestFieldKeySliceEncoderExtensions_EncodeRequestFieldKey_IceRpc_Slice_SliceEncoder__IceRpc_RequestFieldKey_">RequestFieldKeySliceEncoderExtensions.EncodeRequestFieldKey(ref SliceEncoder, RequestFieldKey)</a>
+  </div>
+  <div>
+      <a class="xref" href="IceRpc.ResponseFieldKeySliceEncoderExtensions.html#IceRpc_ResponseFieldKeySliceEncoderExtensions_EncodeResponseFieldKey_IceRpc_Slice_SliceEncoder__IceRpc_ResponseFieldKey_">ResponseFieldKeySliceEncoderExtensions.EncodeResponseFieldKey(ref SliceEncoder, ResponseFieldKey)</a>
+  </div>
+  <div>
+      <a class="xref" href="IceRpc.Slice.IdentityPathSliceEncoderExtensions.html#IceRpc_Slice_IdentityPathSliceEncoderExtensions_EncodeIdentityPath_IceRpc_Slice_SliceEncoder__System_String_">IdentityPathSliceEncoderExtensions.EncodeIdentityPath(ref SliceEncoder, string)</a>
+  </div>
+  <div>
+      <a class="xref" href="IceRpc.Slice.SliceEncoderExtensions.html#IceRpc_Slice_SliceEncoderExtensions_EncodeDictionary__2_IceRpc_Slice_SliceEncoder__System_Collections_Generic_IEnumerable_System_Collections_Generic_KeyValuePair___0___1___IceRpc_Slice_EncodeAction___0__IceRpc_Slice_EncodeAction___1__">SliceEncoderExtensions.EncodeDictionary&lt;TKey, TValue&gt;(ref SliceEncoder, IEnumerable&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;, EncodeAction&lt;TKey&gt;, EncodeAction&lt;TValue&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="IceRpc.Slice.SliceEncoderExtensions.html#IceRpc_Slice_SliceEncoderExtensions_EncodeDictionaryWithOptionalValueType__2_IceRpc_Slice_SliceEncoder__System_Collections_Generic_IEnumerable_System_Collections_Generic_KeyValuePair___0___1___IceRpc_Slice_EncodeAction___0__IceRpc_Slice_EncodeAction___1__">SliceEncoderExtensions.EncodeDictionaryWithOptionalValueType&lt;TKey, TValue&gt;(ref SliceEncoder, IEnumerable&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;, EncodeAction&lt;TKey&gt;, EncodeAction&lt;TValue&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="IceRpc.Slice.SliceEncoderExtensions.html#IceRpc_Slice_SliceEncoderExtensions_EncodeSequence__1_IceRpc_Slice_SliceEncoder__System_Collections_Generic_IEnumerable___0__IceRpc_Slice_EncodeAction___0__">SliceEncoderExtensions.EncodeSequence&lt;T&gt;(ref SliceEncoder, IEnumerable&lt;T&gt;, EncodeAction&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="IceRpc.Slice.SliceEncoderExtensions.html#IceRpc_Slice_SliceEncoderExtensions_EncodeSequence__1_IceRpc_Slice_SliceEncoder__System_Collections_Generic_IEnumerable___0__">SliceEncoderExtensions.EncodeSequence&lt;T&gt;(ref SliceEncoder, IEnumerable&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="IceRpc.Slice.SliceEncoderExtensions.html#IceRpc_Slice_SliceEncoderExtensions_EncodeSequenceOfOptionals__1_IceRpc_Slice_SliceEncoder__System_Collections_Generic_IEnumerable___0__IceRpc_Slice_EncodeAction___0__">SliceEncoderExtensions.EncodeSequenceOfOptionals&lt;T&gt;(ref SliceEncoder, IEnumerable&lt;T&gt;, EncodeAction&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="IceRpc.Slice.SliceEncoderExtensions.html#IceRpc_Slice_SliceEncoderExtensions_EncodeSpan__1_IceRpc_Slice_SliceEncoder__System_ReadOnlySpan___0__">SliceEncoderExtensions.EncodeSpan&lt;T&gt;(ref SliceEncoder, ReadOnlySpan&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="IceRpc.Slice.SliceEncoderExtensions.html#IceRpc_Slice_SliceEncoderExtensions_WriteByteSequence_IceRpc_Slice_SliceEncoder__System_Buffers_ReadOnlySequence_System_Byte__">SliceEncoderExtensions.WriteByteSequence(ref SliceEncoder, ReadOnlySequence&lt;byte&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="IceRpc.StatusCodeSliceEncoderExtensions.html#IceRpc_StatusCodeSliceEncoderExtensions_EncodeStatusCode_IceRpc_Slice_SliceEncoder__IceRpc_StatusCode_">StatusCodeSliceEncoderExtensions.EncodeStatusCode(ref SliceEncoder, StatusCode)</a>
+  </div>
+</article>
+                </div>
+
+                <div class="copyright-footer">
+                    <span>Copyright &#169; ZeroC, Inc.</span>
+                </div>
+            </main>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script type="text/javascript" src="../styles/jquery.twbsPagination.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
+        <script type="text/javascript" src="../styles/url.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/singulink.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>    </body>
+</html>

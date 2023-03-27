@@ -1,0 +1,847 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Struct LocatorProxy
+ | IceRPC </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Struct LocatorProxy
+ | IceRPC ">
+      <meta name="generator" content="docfx ">
+  
+      <link rel="shortcut icon" href="../favicon.png">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/discord.css">
+      <link rel="stylesheet" href="../styles/singulink.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../">
+  <meta property="docfx:newtab" content="true">
+    </head>
+    <body>
+        <div class="top-navbar">
+            <a class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+
+            <a class="brand" href="../index.html">
+              <img src="../logo.svg" alt="IceRPC" class="logomark">
+              <span class="brand-title">IceRPC</span>
+            </a>        </div>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+
+                    <div>
+                      <div class="mobile-hide">
+
+                        <a class="brand" href="../index.html">
+                          <img src="../logo.svg" alt="IceRPC" class="logomark">
+                          <span class="brand-title">IceRPC</span>
+                        </a>                      </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+  <strong>IceRPC</strong>
+  
+                </div>            </nav>
+
+            <main class="main-panel">
+
+                <div id="search-results" style="display: none;">
+                  <h1 class="search-list">Search Results for <span></span></h1>
+                  <div class="sr-items">
+                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+                <div role="main" class="hide-when-search">
+
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    <article class="content wrap" id="_content" data-uid="IceRpc.LocatorProxy">
+
+
+  <h1 id="IceRpc_LocatorProxy" data-uid="IceRpc.LocatorProxy" class="text-break">Struct LocatorProxy
+</h1>
+  <div class="markdown level0 summary"><p>Proxy record struct. It implements <a class="xref" href="IceRpc.ILocator.html">ILocator</a> by sending requests to a remote IceRPC service.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="IceRpc.ILocator.html">ILocator</a></div>
+    <div><a class="xref" href="IceRpc.Slice.IProxy.html">IProxy</a></div>
+    <div><span class="xref">IEquatable</span>&lt;<a class="xref" href="IceRpc.LocatorProxy.html">LocatorProxy</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">object.Equals(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">object.ReferenceEquals(object, object)</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IceRpc.html">IceRpc</a></h6>
+  <h6><strong>Assembly</strong>: IceRpc.Locator.dll</h6>
+  <h5 id="IceRpc_LocatorProxy_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TypeId(&quot;::Ice::Locator&quot;)]
+public readonly struct LocatorProxy : ILocator, IProxy, IEquatable&lt;LocatorProxy&gt;</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+
+
+  <a id="IceRpc_LocatorProxy__ctor_" data-uid="IceRpc.LocatorProxy.#ctor*"></a>
+  <h4 id="IceRpc_LocatorProxy__ctor" data-uid="IceRpc.LocatorProxy.#ctor">LocatorProxy()</h4>
+  <div class="markdown level1 summary"><p>Constructs a proxy with the default service address and a null invoker.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LocatorProxy()</code></pre>
+  </div>
+
+
+  <a id="IceRpc_LocatorProxy__ctor_" data-uid="IceRpc.LocatorProxy.#ctor*"></a>
+  <h4 id="IceRpc_LocatorProxy__ctor_IceRpc_IInvoker_IceRpc_ServiceAddress_IceRpc_Slice_SliceEncodeOptions_" data-uid="IceRpc.LocatorProxy.#ctor(IceRpc.IInvoker,IceRpc.ServiceAddress,IceRpc.Slice.SliceEncodeOptions)">LocatorProxy(IInvoker, ServiceAddress?, SliceEncodeOptions?)</h4>
+  <div class="markdown level1 summary"><p>Constructs a proxy from an invoker, a service address and encode options.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LocatorProxy(IInvoker invoker, ServiceAddress? serviceAddress = null, SliceEncodeOptions? encodeOptions = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.IInvoker.html">IInvoker</a></td>
+        <td><span class="parametername">invoker</span></td>
+        <td><p>The invocation pipeline of the proxy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.ServiceAddress.html">ServiceAddress</a></td>
+        <td><span class="parametername">serviceAddress</span></td>
+        <td><p>The service address. Null is equivalent to <a class="xref" href="IceRpc.LocatorProxy.html#IceRpc_LocatorProxy_DefaultServiceAddress">DefaultServiceAddress</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.SliceEncodeOptions.html">SliceEncodeOptions</a></td>
+        <td><span class="parametername">encodeOptions</span></td>
+        <td><p>The encode options, used to customize the encoding of request payloads.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_LocatorProxy__ctor_" data-uid="IceRpc.LocatorProxy.#ctor*"></a>
+  <h4 id="IceRpc_LocatorProxy__ctor_IceRpc_IInvoker_System_Uri_IceRpc_Slice_SliceEncodeOptions_" data-uid="IceRpc.LocatorProxy.#ctor(IceRpc.IInvoker,System.Uri,IceRpc.Slice.SliceEncodeOptions)">LocatorProxy(IInvoker, Uri, SliceEncodeOptions?)</h4>
+  <div class="markdown level1 summary"><p>Constructs a proxy from an invoker, a service address URI and encode options.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LocatorProxy(IInvoker invoker, Uri serviceAddressUri, SliceEncodeOptions? encodeOptions = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.IInvoker.html">IInvoker</a></td>
+        <td><span class="parametername">invoker</span></td>
+        <td><p>The invocation pipeline of the proxy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Uri</span></td>
+        <td><span class="parametername">serviceAddressUri</span></td>
+        <td><p>A URI that represents a service address.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.SliceEncodeOptions.html">SliceEncodeOptions</a></td>
+        <td><span class="parametername">encodeOptions</span></td>
+        <td><p>The encode options, used to customize the encoding of request payloads.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="IceRpc_LocatorProxy_DefaultServiceAddress_" data-uid="IceRpc.LocatorProxy.DefaultServiceAddress*"></a>
+  <h4 id="IceRpc_LocatorProxy_DefaultServiceAddress" data-uid="IceRpc.LocatorProxy.DefaultServiceAddress">DefaultServiceAddress</h4>
+  <div class="markdown level1 summary"><p>Gets the default service address for services that implement Slice interface <code>Locator</code>.
+Its protocol is icerpc and its path is computed from the Slice interface name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ServiceAddress DefaultServiceAddress { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.ServiceAddress.html">ServiceAddress</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_LocatorProxy_EncodeOptions_" data-uid="IceRpc.LocatorProxy.EncodeOptions*"></a>
+  <h4 id="IceRpc_LocatorProxy_EncodeOptions" data-uid="IceRpc.LocatorProxy.EncodeOptions">EncodeOptions</h4>
+  <div class="markdown level1 summary"><p>Gets or initializes the encode options, used to customize the encoding of payloads created from this
+proxy.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SliceEncodeOptions? EncodeOptions { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Slice.SliceEncodeOptions.html">SliceEncodeOptions</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_LocatorProxy_Invoker_" data-uid="IceRpc.LocatorProxy.Invoker*"></a>
+  <h4 id="IceRpc_LocatorProxy_Invoker" data-uid="IceRpc.LocatorProxy.Invoker">Invoker</h4>
+  <div class="markdown level1 summary"><p>Gets or initializes the invocation pipeline of this proxy.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IInvoker? Invoker { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.IInvoker.html">IInvoker</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_LocatorProxy_ServiceAddress_" data-uid="IceRpc.LocatorProxy.ServiceAddress*"></a>
+  <h4 id="IceRpc_LocatorProxy_ServiceAddress" data-uid="IceRpc.LocatorProxy.ServiceAddress">ServiceAddress</h4>
+  <div class="markdown level1 summary"><p>Gets or initializes the address of the remote service.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ServiceAddress ServiceAddress { get; init; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.ServiceAddress.html">ServiceAddress</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="IceRpc_LocatorProxy_Equals_" data-uid="IceRpc.LocatorProxy.Equals*"></a>
+  <h4 id="IceRpc_LocatorProxy_Equals_IceRpc_LocatorProxy_" data-uid="IceRpc.LocatorProxy.Equals(IceRpc.LocatorProxy)">Equals(LocatorProxy)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(LocatorProxy other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.LocatorProxy.html">LocatorProxy</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_LocatorProxy_Equals_" data-uid="IceRpc.LocatorProxy.Equals*"></a>
+  <h4 id="IceRpc_LocatorProxy_Equals_System_Object_" data-uid="IceRpc.LocatorProxy.Equals(System.Object)">Equals(object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">object</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.ValueType.Equals(object)</span></div>
+
+
+  <a id="IceRpc_LocatorProxy_FindAdapterByIdAsync_" data-uid="IceRpc.LocatorProxy.FindAdapterByIdAsync*"></a>
+  <h4 id="IceRpc_LocatorProxy_FindAdapterByIdAsync_System_String_IceRpc_Features_IFeatureCollection_System_Threading_CancellationToken_" data-uid="IceRpc.LocatorProxy.FindAdapterByIdAsync(System.String,IceRpc.Features.IFeatureCollection,System.Threading.CancellationToken)">FindAdapterByIdAsync(string, IFeatureCollection?, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Finds an object adapter by adapter ID and returns a dummy service address with the object adapter's server
+address(es).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ServiceAddress?&gt; FindAdapterByIdAsync(string id, IFeatureCollection? features = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The adapter ID.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Features.IFeatureCollection.html">IFeatureCollection</a></td>
+        <td><span class="parametername">features</span></td>
+        <td><p>The invocation features.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that receives the cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="IceRpc.ServiceAddress.html">ServiceAddress</a>&gt;</td>
+        <td><p>A dummy service address with the adapter's server address(es), or null if an object adapter with
+adapter ID <code data-dev-comment-type="paramref" class="paramref">id</code> was not found.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.AdapterNotFoundException.html">AdapterNotFoundException</a></td>
+        <td><p>Thrown if an object adapter with this adapter ID was not found. The caller
+should treat this exception like a null return value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_LocatorProxy_FindObjectByIdAsync_" data-uid="IceRpc.LocatorProxy.FindObjectByIdAsync*"></a>
+  <h4 id="IceRpc_LocatorProxy_FindObjectByIdAsync_System_String_IceRpc_Features_IFeatureCollection_System_Threading_CancellationToken_" data-uid="IceRpc.LocatorProxy.FindObjectByIdAsync(System.String,IceRpc.Features.IFeatureCollection,System.Threading.CancellationToken)">FindObjectByIdAsync(string, IFeatureCollection?, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Finds a service by identity (path) and returns a dummy service address with the server address(es) that can be
+used to reach this service. This dummy service address can also carry no server address and require further
+resolution using <a class="xref" href="IceRpc.ILocator.html#IceRpc_ILocator_FindAdapterByIdAsync_System_String_IceRpc_Features_IFeatureCollection_System_Threading_CancellationToken_">FindAdapterByIdAsync(string, IFeatureCollection?, CancellationToken)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ServiceAddress?&gt; FindObjectByIdAsync(string id, IFeatureCollection? features = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The identity represented as a path.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.Features.IFeatureCollection.html">IFeatureCollection</a></td>
+        <td><span class="parametername">features</span></td>
+        <td><p>The invocation features.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that receives the cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="IceRpc.ServiceAddress.html">ServiceAddress</a>&gt;</td>
+        <td><p>A dummy service address, or null if a service with the requested identity (path) was not found.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.ObjectNotFoundException.html">ObjectNotFoundException</a></td>
+        <td><p>Thrown if a service with the requested identity (path) was not found. The
+caller should treat this exception like a null return value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_LocatorProxy_FromPath_" data-uid="IceRpc.LocatorProxy.FromPath*"></a>
+  <h4 id="IceRpc_LocatorProxy_FromPath_System_String_" data-uid="IceRpc.LocatorProxy.FromPath(System.String)">FromPath(string)</h4>
+  <div class="markdown level1 summary"><p>Creates a relative proxy from a path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static LocatorProxy FromPath(string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>The path.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.LocatorProxy.html">LocatorProxy</a></td>
+        <td><p>The new relative proxy.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_LocatorProxy_GetHashCode_" data-uid="IceRpc.LocatorProxy.GetHashCode*"></a>
+  <h4 id="IceRpc_LocatorProxy_GetHashCode" data-uid="IceRpc.LocatorProxy.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.ValueType.GetHashCode()</span></div>
+
+
+  <a id="IceRpc_LocatorProxy_GetRegistryAsync_" data-uid="IceRpc.LocatorProxy.GetRegistryAsync*"></a>
+  <h4 id="IceRpc_LocatorProxy_GetRegistryAsync_IceRpc_Features_IFeatureCollection_System_Threading_CancellationToken_" data-uid="IceRpc.LocatorProxy.GetRegistryAsync(IceRpc.Features.IFeatureCollection,System.Threading.CancellationToken)">GetRegistryAsync(IFeatureCollection?, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the locator registry.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;LocatorRegistryProxy?&gt; GetRegistryAsync(IFeatureCollection? features = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.Features.IFeatureCollection.html">IFeatureCollection</a></td>
+        <td><span class="parametername">features</span></td>
+        <td><p>The invocation features.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that receives the cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="IceRpc.LocatorRegistryProxy.html">LocatorRegistryProxy</a>?&gt;</td>
+        <td><p>The locator registry, or null if this locator has no associated registry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_LocatorProxy_ToString_" data-uid="IceRpc.LocatorProxy.ToString*"></a>
+  <h4 id="IceRpc_LocatorProxy_ToString" data-uid="IceRpc.LocatorProxy.ToString">ToString()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.ValueType.ToString()</span></div>
+  <h3 id="operators">Operators
+</h3>
+
+
+  <a id="IceRpc_LocatorProxy_op_Equality_" data-uid="IceRpc.LocatorProxy.op_Equality*"></a>
+  <h4 id="IceRpc_LocatorProxy_op_Equality_IceRpc_LocatorProxy_IceRpc_LocatorProxy_" data-uid="IceRpc.LocatorProxy.op_Equality(IceRpc.LocatorProxy,IceRpc.LocatorProxy)">operator ==(LocatorProxy, LocatorProxy)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(LocatorProxy left, LocatorProxy right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.LocatorProxy.html">LocatorProxy</a></td>
+        <td><span class="parametername">left</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.LocatorProxy.html">LocatorProxy</a></td>
+        <td><span class="parametername">right</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="IceRpc_LocatorProxy_op_Inequality_" data-uid="IceRpc.LocatorProxy.op_Inequality*"></a>
+  <h4 id="IceRpc_LocatorProxy_op_Inequality_IceRpc_LocatorProxy_IceRpc_LocatorProxy_" data-uid="IceRpc.LocatorProxy.op_Inequality(IceRpc.LocatorProxy,IceRpc.LocatorProxy)">operator !=(LocatorProxy, LocatorProxy)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(LocatorProxy left, LocatorProxy right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IceRpc.LocatorProxy.html">LocatorProxy</a></td>
+        <td><span class="parametername">left</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="IceRpc.LocatorProxy.html">LocatorProxy</a></td>
+        <td><span class="parametername">right</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="IceRpc.ILocator.html">ILocator</a>
+  </div>
+  <div>
+      <a class="xref" href="IceRpc.Slice.IProxy.html">IProxy</a>
+  </div>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
+</article>
+                </div>
+
+                <div class="copyright-footer">
+                    <span>Copyright &#169; ZeroC, Inc.</span>
+                </div>
+            </main>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script type="text/javascript" src="../styles/jquery.twbsPagination.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
+        <script type="text/javascript" src="../styles/url.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/singulink.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>    </body>
+</html>
