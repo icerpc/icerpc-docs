@@ -84,10 +84,10 @@ export const FeedbackForm = ({ title, options }: Props) => {
   }, []);
 
   return feedbackSubmitted ? (
-    <h3 className="my-8">Thanks for the feedback!</h3>
+    <h3 className="mt-5 mb-10">Thanks for the feedback!</h3>
   ) : (
     <div
-      className={`flex flex-col gap-0 ${opacity} transition duration-700 ease-in-out`}
+      className={`mt-4 mb-9 flex flex-col gap-0 ${opacity} transition duration-700 ease-in-out`}
     >
       <h3 className="my-0">{title}</h3>
       <form className="w-full p-3 pl-0 text-sm text-gray-700 dark:text-gray-200">
@@ -169,7 +169,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
           className={clsx(
             'mt-4 flex h-[28px] w-[60px] items-center justify-center rounded border-lightBorder bg-primary py-2',
             'text-center text-sm font-semibold text-white shadow-sm',
-            'disabled:cursor-not-allowed disabled:bg-gray-400 disabled:opacity-50'
+            'disabled:cursor-not-allowed disabled:bg-gray-400/80 disabled:opacity-50'
           )}
           type="submit"
           disabled={comment.length == 0}

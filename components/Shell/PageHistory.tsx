@@ -37,7 +37,7 @@ export const PageHistory = ({ path, encoding }: Props) => {
     <div className="mx-[-1rem] mt-12 mb-0 flex flex-row justify-between p-0">
       {previous ? (
         <Link href={previous.path}>
-          <div className="flex h-10 flex-row items-center gap-2 rounded p-4 text-center text-primary hover:bg-[#E9F1FE]">
+          <div className="flex h-10 flex-row items-center gap-2 rounded p-4 text-center text-primary hover:bg-[#E9F1FE] dark:hover:bg-[#E9F1FE]/20">
             <FaChevronLeft size={12} />
             {previous.title}
           </div>
@@ -47,7 +47,7 @@ export const PageHistory = ({ path, encoding }: Props) => {
       )}
       {next && (
         <Link href={next.path}>
-          <div className="flex h-10 flex-row items-center gap-2 rounded p-4 text-center text-primary hover:bg-[#E9F1FE]">
+          <div className="flex h-10 flex-row items-center gap-2 rounded p-4 text-center text-primary hover:bg-[#E9F1FE] dark:hover:bg-[#E9F1FE]/20">
             {next.title}
             <FaChevronRight size={12} />
           </div>

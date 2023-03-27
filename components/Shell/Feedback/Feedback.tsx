@@ -35,7 +35,7 @@ export const Feedback = () => {
       );
     default:
       return (
-        <div className={clsx('my-16 flex flex-col items-center')}>
+        <div className={clsx('mb-16 flex flex-col items-center')}>
           <h3 className="text-base text-[var(--text-color)]">
             Was this page helpful?
           </h3>
