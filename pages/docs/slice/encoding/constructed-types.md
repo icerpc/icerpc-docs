@@ -93,7 +93,7 @@ compact struct ServiceAddressData {
   protocolMinor: uint8           // Always 0.
   encodingMajor: uint8           // IceRPC always encodes 1 and ignores this value during decoding.
   encodingMinor: uint8           // IceRPC always encodes 1 and ignores this value during decoding.
-  serverAddressList: sequence<EndpointData>
+  serverAddressList: sequence<ServerAddressData>
   adapterId: string              // Encoded only when serverAddressList is empty.
 }
 
@@ -103,15 +103,8 @@ compact struct Identity {
 }
 
 enum InvocationMode { Twoway, Oneway, BatchOneway, Datagram, BatchDatagram }
-```
 
-The adapterId field corresponds to the value of the `adapter-id` parameter. This value can be empty.
-
-See [Proxy](../../icerpc-for-ice-users/rpc-core/proxy) for additional information.
-
-EndpointData is a compact struct that represents (encodes) a server address:
-```slice {% addEncoding=true %}
-compact struct EndpointData {
+compact struct ServerAddressData {
     transportCode: TransportCode
     encapsulation: Encapsulation
 }
@@ -126,26 +119,38 @@ compact struct Encapsulation {
 typealias TransportCode = int16
 ```
 
-The format of the encapsulation payload depends on the transport code.
+The adapterId field corresponds to the value of the `adapter-id` parameter. This value can be empty. See
+[Proxy](../../icerpc-for-ice-users/rpc-core/proxy) for additional details.
 
-For transport code 0, it's a URI string--the server address converted into a URI string, including the protocol/scheme.
-This transport code value is the only valid transport code with the icerpc protocol. It was introduced in IceRPC and as
-a result is not used by any transport provided by Ice.
+The format of the encapsulation payload in a ServerAddressData depends on its transport code.
 
-For transport codes 1 and 2 (Tcp resp. Ssl), the server address is written into the payload as a Slice-encoded
-TcpEndpointBody:
+With transport code 0, this payload is a URI string--the server address converted into a URI string, including the
+protocol/scheme. It's a wildcard transport code since the actual transport is specified in the URI string, or is left
+unspecified when the server address has no transport parameter. This transport code value is the only valid transport
+code with the icerpc protocol.
+
+{% callout type="information" %}
+Encoding an icerpc proxy with Slice1 is possible but uncommon. Usually, you'll encode ice proxies with Slice1 and icerpc
+proxies with Slice2.
+{% /callout %}
+
+Other transport codes identify a specific transport, such as tcp, ssl, ws (for WebSocket), wss (WebSocket with TLS) etc.
+
+Transport code 1 corresponds to tcp, while transport 2 corresponds to ssl. They share the same encapsulation payload
+format:
 
 ```slice {% addEncoding=true %}
-compact struct TcpEndpointBody {
+compact struct TcpServerAddressBody {
     host: string
     port: int32      // limited in practice to uint16
     timeout: int32   // timeout parameter
     compress: bool   // z parameter
 }
 ```
-See [Endpoint](../../icerpc-for-ice-users/rpc-core/endpoint) for additional details.
 
-If a server address in an ice service address does not specify a transport name, IceRPC uses transport code 1 (Tcp) to
+See [Endpoint](../../icerpc-for-ice-users/rpc-core/endpoint) for additional information.
+
+If a server address in an ice service address does not specify a transport name, IceRPC uses transport code 1 (tcp) to
 encode this server address.
 {% /slice1 %}
 
