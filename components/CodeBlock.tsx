@@ -82,7 +82,7 @@ export const CodeBlock = ({
     addEncoding &&
     encoding == Encoding.Slice1
   ) {
-    const encodingLines = [`encoding = ${encoding}`, ''];
+    const encodingLines = [`encoding = ${encoding}`, '\n'];
     children = encodingLines.join('\n').concat(children);
   }
 
