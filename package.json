@@ -7,13 +7,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-ses": "^3.299.0",
     "@docsearch/react": "^3.3.3",
     "@headlessui/react": "^1.7.12",
     "@heroicons/react": "^2.0.16",
     "@markdoc/markdoc": "^0.2.2",
     "@markdoc/next.js": "^0.2.2",
     "@vercel/og": "^0.4.1",
-    "aws-sdk": "^2.1343.0",
+    "aws-sdk": "^2.1344.0",
     "clsx": "^1.2.1",
     "copy-to-clipboard": "^3.3.3",
     "mermaid": "^9.3.0",
