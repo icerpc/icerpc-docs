@@ -7,12 +7,12 @@ description: Understand the service address concept and syntax.
 
 A service address is a [URI](https://www.rfc-editor.org/rfc/rfc3986.html).
 
-If it's a relative URI, we call this service address a relative service address. A relative service address has an
+If it's a relative URI, we call this service address a relative service address. A relative service address must have an
 absolute path and nothing else--no query parameter, no fragment.
 
-The URI scheme of an absolute service address denotes the protocol to use to reach the target service. IceRPC
-supports two protocols: ice and icerpc. A service address with another protocol/scheme is supported: it represents the
-address of a service that this version of IceRPC cannot call. A newer version of IceRPC may understand this protocol.
+The URI scheme of an absolute service address denotes the protocol to use to reach the target service. IceRPC supports
+two protocols: ice and icerpc. A service address with another protocol/scheme is accepted even though IceRPC can't use
+this address to send an invocation to the service; a newer version of IceRPC may understand this protocol.
 
 The path of a service address allows the server to route requests to the desired service.
 
@@ -20,14 +20,14 @@ An ice or icerpc service address may include one or more [server addresses](../c
 addresses are used to establish or locate a connection to a server that hosts the service.
 
 {% callout type="information" %}
-A server address scheme is always ice or icerpc. No other scheme is currently supported.
+The scheme of a server address is always ice or icerpc. No other scheme is currently accepted.
 {% /callout %}
 
 An ice or icerpc service address without a server address can have query parameters. And lastly, an ice service address
 can have a fragment; this fragment corresponds to an Ice facet.
 
-In C#, record class `ServiceAddress` is simply a parsed and validated representation of a service address URI: it holds
-exactly the same information.
+In C#, record class `ServiceAddress` is a parsed and validated representation of a service address URI: it holds exactly
+the same information.
 
 ice and icerpc service addresses can be divided in 3 categories:
 
