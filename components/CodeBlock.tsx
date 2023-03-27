@@ -75,9 +75,6 @@ export const CodeBlock = ({
 }: Props) => {
   const [copied, setCopied] = useState(false);
   const { encoding } = useEncoding();
-  // Split the code into lines
-  const lines =
-    typeof children === 'string' ? children.split('\n').filter(Boolean) : [];
 
   // If the code is a slice file, add the encoding to the first line if the current
   if (
@@ -85,10 +82,13 @@ export const CodeBlock = ({
     addEncoding &&
     encoding == Encoding.Slice1
   ) {
-    const encodingLines = [`encoding = ${encoding}`, ''].concat(lines);
-    children = encodingLines.join('\n');
-    lines.unshift('// -*- encoding: utf-8 -*-');
+    const encodingLines = [`encoding = ${encoding}`, ''];
+    children = encodingLines.join('\n').concat(children);
   }
+
+  // Split the code into lines
+  const lines =
+    typeof children === 'string' ? children.split('\n').filter(Boolean) : [];
 
   // If the code is a command line, add a prompt to the first line
   // If language is undefined or if it is not included in commandLineLanguages, render a file icon
@@ -148,7 +148,6 @@ export const CodeBlock = ({
                   {...getLineProps({ line, key: i })}
                   className={clsx(className)}
                 >
-                  {/* {tokens.length > 1 && <LineNumber number={i + 1} />} */}
                   <LineContent>
                     {line.map((token, key) => (
                       <span key={key} {...getTokenProps({ token, key })} />
