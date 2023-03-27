@@ -4,11 +4,10 @@ import React, { ReactElement } from 'react';
 import { useRouter } from 'next/router';
 import queryString from 'query-string';
 
-import { Divider, EncodingSection, Title } from 'components';
+import { Divider, EncodingSection, TOCItem, Title } from 'components';
 import { Encoding } from 'types';
 import { useEncoding } from 'context/state';
 import { PageHistory, Feedback, TableOfContents } from 'components/Shell';
-
 import { collectHeadings } from 'utils/collectHeadings';
 
 interface Props {
@@ -20,25 +19,34 @@ interface Props {
 
 export const Document = ({ children, title, description, encoding }: Props) => {
   const { encoding: currentEncoding, setEncoding } = useEncoding();
+  const [toc, setToc] = React.useState<TOCItem[]>([]);
   const router = useRouter();
   const path = router.asPath;
 
   const isDocs = path.startsWith('/docs');
-  const toc = collectHeadings(children, currentEncoding);
 
   // If the encoding is specified in the url, try to set the version to the specified encoding.
-  const query = queryString.parse(router.asPath.split(/\?/)[1]);
-  if (query.encoding) {
-    let encodingFromQuery = query.encoding.toString();
-    encodingFromQuery =
-      encodingFromQuery.charAt(0).toUpperCase() + encodingFromQuery.slice(1);
-
-    if (Object.values(Encoding).includes(encodingFromQuery as Encoding)) {
-      setEncoding(encodingFromQuery as Encoding);
-    } else {
-      setEncoding(Encoding.Slice2);
-    }
+  const { query } = queryString.parseUrl(path, {
+    parseFragmentIdentifier: true
+  });
+  const encodingFromQuery: string | null = (() => {
+    const capitalize = (str?: string) => {
+      if (!str) return null;
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    };
+    return capitalize(query.encoding?.toString());
+  })();
+  if (
+    Object.keys(Encoding).includes(encodingFromQuery as keyof typeof Encoding)
+  ) {
+    setEncoding(encodingFromQuery as Encoding);
+  } else {
+    setEncoding(Encoding.Slice2);
   }
+
+  React.useEffect(() => {
+    setToc(collectHeadings(children, currentEncoding));
+  }, [children, currentEncoding]);
 
   return (
     <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip dark:bg-[rgb(21,21,22)]">

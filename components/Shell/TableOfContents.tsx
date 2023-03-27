@@ -3,13 +3,11 @@
 import React, { ReactNode, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { FiEdit, FiMessageSquare, FiChevronUp } from 'react-icons/fi';
+import { FiEdit, FiMessageSquare } from 'react-icons/fi';
 import { AppLink } from 'components/Nodes/AppLink';
 import { Divider } from 'components/Divider';
 import { Bars3BottomLeftIcon } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
-
-export type TOC = TOCItem[];
 
 export interface TOCItem {
   id: string;
@@ -59,9 +57,8 @@ function useActiveId(itemIds: string[]) {
   return activeId !== `` ? activeId : itemIds[0];
 }
 
-export const TableOfContents = (toc: TOC) => {
+export const TableOfContents = (toc: TOCItem[]) => {
   const currentPath = resolvePath(useRouter().pathname);
-  const { push } = useRouter();
   const items = toc.filter(
     (item) =>
       item.id &&
@@ -88,12 +85,7 @@ export const TableOfContents = (toc: TOC) => {
             </h2>
             <ul className="m-0 max-h-[50vh] overflow-y-auto p-0">
               {items.map((item) => (
-                <ListItem
-                  key={item.id}
-                  item={item}
-                  push={push}
-                  activeId={activeId}
-                />
+                <ListItem key={item.id} item={item} activeId={activeId} />
               ))}
             </ul>
             <Divider />
@@ -119,7 +111,7 @@ export const TableOfContents = (toc: TOC) => {
             <FiMessageSquare
               className="mr-[6px]"
               color="var(--primary-color)"
-            />{' '}
+            />
             GitHub Discussions
           </MoreItem>
         </ul>
@@ -137,7 +129,6 @@ interface MoreItemProps {
 const MoreItem = ({ href, children }: MoreItemProps) => {
   return (
     <li className="m-0 my-4 text-sm">
-      {/* Override the default styling of AppLink */}
       <AppLink href={href} className=" dark:text-[rgba(255,255,255,0.8)]">
         <div className="flex items-center gap-[0.5em]">{children}</div>
       </AppLink>
@@ -147,11 +138,10 @@ const MoreItem = ({ href, children }: MoreItemProps) => {
 
 interface ListItemProps {
   item: TOCItem;
-  push: any;
   activeId: string;
 }
 
-const ListItem = ({ item, push, activeId }: ListItemProps) => {
+const ListItem = ({ item, activeId }: ListItemProps) => {
   const href = `#${item.id}`;
   return (
     <li
@@ -162,10 +152,6 @@ const ListItem = ({ item, push, activeId }: ListItemProps) => {
     >
       <Link
         href={href}
-        onClick={(e) => {
-          e.preventDefault();
-          push(href);
-        }}
         className={clsx(
           'text-inherit',
           activeId === item.id
