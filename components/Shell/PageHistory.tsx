@@ -5,6 +5,7 @@ import { sideBarData, baseUrls, flattenSideBarData } from 'data/side-bar-data';
 import { SideBarLink, Encoding, SideBarDivider, isLink } from 'types';
 import Link from 'next/link';
 import React from 'react';
+import queryString from 'query-string';
 
 interface Props {
   path: string;
@@ -23,9 +24,10 @@ export const PageHistory = ({ path, encoding }: Props) => {
   ).filter(isLink);
 
   // Find the current page in the list of links
-  const index = links
-    .map((item) => stripTrailingSlash(item.path))
-    .indexOf(path);
+  const { url } = queryString.parseUrl(path, {
+    parseFragmentIdentifier: true
+  });
+  const index = links.map((item) => stripTrailingSlash(item.path)).indexOf(url);
 
   // Get the previous and next links
   const previous = index > 0 ? links[index - 1] : undefined;

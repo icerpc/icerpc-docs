@@ -40,8 +40,6 @@ export const Document = ({ children, title, description, encoding }: Props) => {
     Object.keys(Encoding).includes(encodingFromQuery as keyof typeof Encoding)
   ) {
     setEncoding(encodingFromQuery as Encoding);
-  } else {
-    setEncoding(Encoding.Slice2);
   }
 
   React.useEffect(() => {
