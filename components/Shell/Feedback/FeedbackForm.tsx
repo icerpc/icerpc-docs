@@ -1,7 +1,20 @@
 // Copyright (c) ZeroC, Inc.
 
 import clsx from 'clsx';
+import { useEncoding, usePlatform } from 'context/state';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { Encoding, Platform } from 'types';
+
+export interface FeedbackData {
+  option: string; // The title of the selected option
+  path: string; // The path of the page the feedback was submitted from
+  title: string; // The title of the page the feedback was submitted from
+  encoding: Encoding; // The user's currently selected encoding
+  platform: Platform; // The user's currently selected platform
+  additionalFeedback?: string; // Additional feedback from the user
+  email?: string; // The user's email address
+}
 
 interface FeedbackOption {
   title: string;
@@ -70,10 +83,32 @@ export const positiveFeedbackOptions: FeedbackOption[] = [
   }
 ];
 
+// Send feedback to the server
+const sendFeedback = async (feedback: FeedbackData) => {
+  try {
+    const response = await fetch('/api/feedback', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(feedback)
+    });
+    return response.status === 200;
+  } catch (e) {
+    console.error(e);
+    return false;
+  }
+};
+
 export const FeedbackForm = ({ title, options }: Props) => {
-  let [selected, setSelected] = useState(0);
-  let [email, setEmail] = useState('');
-  let [comment, setComment] = useState('');
+  const { pathname } = useRouter();
+  const { encoding } = useEncoding();
+  const { platform } = usePlatform();
+  const pageTitle = window.document.title;
+
+  let [selected, setSelected] = useState<number>();
+  let [email, setEmail] = useState<string>();
+  let [comment, setComment] = useState<string>();
   let [opacity, setOpacity] = useState('opacity-0');
   let [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
 
@@ -125,10 +160,9 @@ export const FeedbackForm = ({ title, options }: Props) => {
                     <>
                       <label className="mt-2 ml-2 text-xs">
                         <div className="font-medium text-gray-900 dark:text-gray-300">
-                          Feedback *
+                          Feedback
                         </div>
                         <textarea
-                          required
                           placeholder="Your feedback address ..."
                           className={clsx(
                             'mx-2 mt-2 h-14 w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-sm',
@@ -146,7 +180,6 @@ export const FeedbackForm = ({ title, options }: Props) => {
                         </div>
                         <input
                           type="email"
-                          required={false}
                           placeholder="Your email address ... "
                           className={clsx(
                             'm-2 h-[40px] w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-sm',
@@ -172,10 +205,26 @@ export const FeedbackForm = ({ title, options }: Props) => {
             'disabled:cursor-not-allowed disabled:bg-gray-400/80 disabled:opacity-50'
           )}
           type="submit"
-          disabled={comment.length == 0}
+          disabled={selected === undefined}
           onClick={(e) => {
             e.preventDefault();
             setFeedbackSubmitted(true);
+
+            // Get the option that was selected
+            const selectedOption = options.find(
+              (option) => option.id == selected
+            )!;
+
+            // Send the feedback to the server
+            sendFeedback({
+              additionalFeedback: comment,
+              email,
+              encoding,
+              option: selectedOption.title,
+              path: pathname,
+              platform,
+              title: pageTitle
+            });
           }}
         >
           Submit
