@@ -1,4 +1,4 @@
-import { Feedback } from 'components/Shell/Feedback/FeedbackForm';
+import { FeedbackData } from 'components/Shell/Feedback/FeedbackForm';
 import { NextApiRequest } from 'next';
 import { createTransport } from 'nodemailer';
 
@@ -14,7 +14,7 @@ const transporter = createTransport({
 
 export const sendFeedbackMail = async (
   req: NextApiRequest,
-  feedback: Feedback
+  feedback: FeedbackData
 ) => {
   const { email, option, path, additionalFeedback, title, encoding, platform } =
     feedback;

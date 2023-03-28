@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Encoding, Platform } from 'types';
 
-export interface Feedback {
+export interface FeedbackData {
   option: string; // The title of the selected option
   path: string; // The path of the page the feedback was submitted from
   title: string; // The title of the page the feedback was submitted from
@@ -84,7 +84,7 @@ export const positiveFeedbackOptions: FeedbackOption[] = [
 ];
 
 // Send feedback to the server
-const sendFeedback = async (feedback: Feedback) => {
+const sendFeedback = async (feedback: FeedbackData) => {
   const { option, path, additionalFeedback, email, title, encoding, platform } =
     feedback;
   try {

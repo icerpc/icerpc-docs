@@ -1,6 +1,6 @@
 import { sendFeedbackMail } from 'lib/send-mail';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import type { Feedback } from 'components/Shell/Feedback/FeedbackForm';
+import type { FeedbackData } from 'components/Shell/Feedback/FeedbackForm';
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,7 +11,7 @@ export default async function handler(
       return new Response('Method not allowed', { status: 405 });
     }
 
-    const feedback = req.body as Feedback;
+    const feedback = req.body as FeedbackData;
     const response = await sendFeedbackMail(req, feedback);
     return response?.ok
       ? res.status(200).json({ message: 'Feedback sent successfully' })

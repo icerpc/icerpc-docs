@@ -7,7 +7,7 @@ import queryString from 'query-string';
 import { Divider, EncodingSection, TOCItem, Title } from 'components';
 import { Encoding } from 'types';
 import { useEncoding } from 'context/state';
-import { PageHistory, Feedback, TableOfContents } from 'components/Shell';
+import { PageHistory, FeedbackData, TableOfContents } from 'components/Shell';
 import { collectHeadings } from 'utils/collectHeadings';
 
 interface Props {
