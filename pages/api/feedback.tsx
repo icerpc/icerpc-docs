@@ -12,7 +12,7 @@ export default async function handler(
     }
 
     const feedback = req.body as Feedback;
-    const response = await sendFeedbackMail(feedback);
+    const response = await sendFeedbackMail(req, feedback);
     return response?.ok
       ? res.status(200).json({ message: 'Feedback sent successfully' })
       : res.status(500).json({ message: 'Failed to send feedback' });

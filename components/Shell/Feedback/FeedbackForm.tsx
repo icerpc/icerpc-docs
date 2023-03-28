@@ -1,12 +1,17 @@
 // Copyright (c) ZeroC, Inc.
 
 import clsx from 'clsx';
+import { useEncoding, usePlatform } from 'context/state';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { Encoding, Platform } from 'types';
 
 export interface Feedback {
   option: string; // The title of the selected option
   path: string; // The path of the page the feedback was submitted from
+  title: string; // The title of the page the feedback was submitted from
+  encoding: Encoding; // The user's currently selected encoding
+  platform: Platform; // The user's currently selected platform
   additionalFeedback?: string; // Additional feedback from the user
   email?: string; // The user's email address
 }
@@ -80,7 +85,8 @@ export const positiveFeedbackOptions: FeedbackOption[] = [
 
 // Send feedback to the server
 const sendFeedback = async (feedback: Feedback) => {
-  const { option, path, additionalFeedback, email } = feedback;
+  const { option, path, additionalFeedback, email, title, encoding, platform } =
+    feedback;
   try {
     const response = await fetch('/api/feedback', {
       method: 'POST',
@@ -88,10 +94,13 @@ const sendFeedback = async (feedback: Feedback) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        additionalFeedback,
+        email,
+        encoding,
         option,
         path,
-        additionalFeedback,
-        email
+        platform,
+        title
       })
     });
     if (response.status === 200) return true;
@@ -104,6 +113,10 @@ const sendFeedback = async (feedback: Feedback) => {
 
 export const FeedbackForm = ({ title, options }: Props) => {
   const { pathname } = useRouter();
+  const { encoding } = useEncoding();
+  const { platform } = usePlatform();
+  const pageTitle = window.document.title;
+
   let [selected, setSelected] = useState<number>();
   let [email, setEmail] = useState<string>();
   let [comment, setComment] = useState<string>();
@@ -215,10 +228,13 @@ export const FeedbackForm = ({ title, options }: Props) => {
 
             // Send the feedback to the server
             sendFeedback({
+              additionalFeedback: comment,
+              email,
+              encoding,
               option: selectedOption.title,
               path: pathname,
-              additionalFeedback: comment,
-              email
+              platform,
+              title: pageTitle
             });
           }}
         >
