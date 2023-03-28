@@ -19,7 +19,7 @@ export const sendFeedbackMail = async (
   const { email, option, path, additionalFeedback, title, encoding, platform } =
     feedback;
   const from = 'docs@zeroc.com';
-  const to = 'feedback@zeroc.com';
+  const to = 'info@zeroc.com';
 
   // The URL of the page where the feedback was submitted
   const pageUrl = req.headers.host + path;
