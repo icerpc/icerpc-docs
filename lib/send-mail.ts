@@ -24,13 +24,12 @@ export const sendFeedbackMail = async (
   // The URL of the page where the feedback was submitted
   const pageUrl = req.headers.host + path;
 
-  try {
-    const response = await transporter.sendMail({
-      from,
-      to,
-      replyTo: email,
-      subject: 'Feedback from IceRPC Docs',
-      html: `
+  const response = await transporter.sendMail({
+    from,
+    to,
+    replyTo: email,
+    subject: 'Feedback from IceRPC Docs',
+    html: `
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
         <html lang="en">
@@ -72,11 +71,6 @@ export const sendFeedbackMail = async (
           </body>
         </html>
     `
-    });
-    return response?.messageId
-      ? { ok: true }
-      : { ok: false, msg: 'Failed to send email' };
-  } catch (e) {
-    console.log(e);
-  }
+  });
+  return response;
 };

@@ -85,26 +85,15 @@ export const positiveFeedbackOptions: FeedbackOption[] = [
 
 // Send feedback to the server
 const sendFeedback = async (feedback: FeedbackData) => {
-  const { option, path, additionalFeedback, email, title, encoding, platform } =
-    feedback;
   try {
     const response = await fetch('/api/feedback', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        additionalFeedback,
-        email,
-        encoding,
-        option,
-        path,
-        platform,
-        title
-      })
+      body: JSON.stringify(feedback)
     });
-    if (response.status === 200) return true;
-    return false;
+    return response.status === 200;
   } catch (e) {
     console.error(e);
     return false;
