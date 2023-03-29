@@ -20,8 +20,8 @@ with the dispatch pipeline, and within this pipeline.
 
 ## Request payload
 
-The payload of an incoming request is a stream of bytes that represents the argument(s) of an operation. As far as the
-IceRPC core is concerned, the number of bytes in this stream is unknown.
+The payload of an incoming request is a stream of bytes. It typically represents the argument(s) of an operation. As far
+as the IceRPC core is concerned, the number of bytes in this stream is unknown.
 
 ## Request features
 
@@ -29,7 +29,7 @@ It is common for the dispatchers in a dispatch pipeline to transmit information 
 dispatchers get and set request features (C# link) for these communications.
 
 You can also use these features to communicate with your service code. For example, if you install the
-DispatchInformation middleware, it sets the `IDispatchInformationFeature` and you can retrieve this feature in your
+`DispatchInformation` middleware, it sets the `IDispatchInformationFeature` and you can retrieve this feature in your
 code:
 
 ```csharp

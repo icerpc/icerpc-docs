@@ -7,8 +7,7 @@ description: Learn how to write an interceptor and how to install an interceptor
 
 An interceptor is nothing more than an [invoker](../invocation-pipeline#the-invoker-abstraction) that holds another
 invoker ("next") and calls `invoke` on this next invoker as part of the implementation of its own `invoke` method. This
-next invoker can be a `ClientConnection`, a connection, another interceptor, or some other kind of invoker, it doesn't
-matter.
+next invoker can be a connection, another interceptor, or some other kind of invoker, it doesn't matter.
 
 An interceptor can include logic before calling `invoke` on the next invoker (before the request is sent) and after
 calling `invoke` on the next invoker (after it receives the response). An interceptor can also short-circuit the
@@ -61,9 +60,9 @@ flowchart LR
 ```
 
 The order in which you install these interceptors is often important. The first interceptor you install is the first
-interceptor to execute. With the pipeline we created above, the Logger interceptor executes first, then calls
-`InvokeAsync` on the Compress interceptor, and then finally the Compress interceptor calls `InvokeAsync` on the client
-connection.
+interceptor to execute. With the pipeline we created above, the `Logger` interceptor executes first, then calls
+`InvokeAsync` on the `Compress` interceptor, and then finally the `Compress` interceptor calls `InvokeAsync` on the
+client connection.
 
 ## Installing an interceptor with Dependency Injection
 
@@ -77,11 +76,9 @@ For example:
 services.AddIceRpcInvoker(builder => builder.UseLogger().UseCompress().Into<ClientConnection>())
 ```
 
-This is equivalent to our earlier example except `UseLogger` retrieves the logger factory from the DI container.
+This is equivalent to our earlier example except `UseLogger` and `Into` retrieve the logger factory and client
+connection from the DI container.
 
 {% callout type="information" %}
-There is only one `LoggerInterceptor` class, one `CompressInterceptor` class etc. These interceptors can be installed in
-several different pipeline implementations, such as `Pipeline`, the implementation inside the builder created by
-`AddIceRpcInvoker`, or even your own custom pipeline class. Each pipeline implementation just needs its own set of
-`Use{Name}` extension methods.
+There is only one `LoggerInterceptor` class, one `CompressInterceptor` class etc. The `Use{Name}` extension methods of `Pipeline` or `IInvokerBuilder` instantiate the same interceptor classes.
 {% /callout %}

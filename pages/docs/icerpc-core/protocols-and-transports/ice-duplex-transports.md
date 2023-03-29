@@ -8,6 +8,7 @@ description: Learn about the ice protocol and duplex transports
 When you create a client connection to server address `ice://hello.zeroc.com`, you instruct IceRPC to establish a
 connection that uses the ice protocol.
 
+BENOIT: the application layer from the internet protocol suite or OSI model? I wouldn't mention this detail, it doesn't bring very useful information to the reader.
 ice is an [application layer](https://en.wikipedia.org/wiki/Application_layer) protocol that transmits RPCs (requests
 and responses) over a duplex connection.
 
@@ -84,3 +85,6 @@ The following IceRPC features are not available with the ice protocol:
 - [response fields](../invocation/incoming-response#response-fields)
 - [status codes](../invocation/incoming-response#status-code) other than Success, ApplicationError, ServiceNotFound,
 OperationNotFound and UnhandledException
+
+BENOIT: Should we list the duplex transports that IceRPC supports and show how to setup a non-default transport on
+`Server`, `ClientConnection` and `ConnectionCache`?

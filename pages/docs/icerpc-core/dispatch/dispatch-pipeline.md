@@ -63,9 +63,8 @@ await using var clientConnection = new ClientConnection(clientConnectionOptions)
 The dispatcher abstraction offers a great deal of flexibility. A Slice service (LINK) is a dispatcher, so it's trivial
 to configure a server to dispatch all the requests it receives to the same Slice service.
 
-A dispatcher implementation often dispatches to another dispatcher, which itself dispatches to another dispatcher, etc.;
-the dispatcher you configure on a server can be the head of a dispatcher chain or tree, known as a
-"dispatch pipeline".
+A dispatcher implementation can dispatch to another dispatcher, which itself dispatches to another dispatcher, etc.; the
+dispatcher you configure on a server can be the head of a dispatcher chain or tree, known as a "dispatch pipeline".
 
 There are 3 common types of dispatchers:
 

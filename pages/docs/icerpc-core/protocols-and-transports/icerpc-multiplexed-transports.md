@@ -95,6 +95,7 @@ icerpc provides the most direct realization of IceRPC's APIs and features. In pa
 There is currently only one standard multiplexed transport: QUIC. Since QUIC is new and not universally available, you
 may want to use icerpc with a traditional duplex transport such as TCP.
 
+BENOIT: why Slic component and not just Slic transport?
 The solution is IceRPC's Slic component. Slic implements the multiplexed transport abstraction over the
 [duplex transport](ice-duplex-transports) abstraction.
 
@@ -134,3 +135,5 @@ using await var clientConnection = new ClientConnection(
     "icerpc://hello.zeroc.com",
     multiplexedClientTransport: clientTransport);
 ```
+
+BENOIT: Should we list the multiplex transports that IceRPC supports and show how to setup a non-default transport on `Server`, `ClientConnection` and `ConnectionCache`?

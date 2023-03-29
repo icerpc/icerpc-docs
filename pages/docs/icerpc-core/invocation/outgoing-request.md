@@ -24,8 +24,8 @@ The request fields represent out-of-band information carried by a request "over 
 and written by [interceptors](interceptor) and [middleware](../dispatch/middleware) in an effort to coordinate the
 processing of the same request in the client and in the server.
 
-A field is an entry in a dictionary `RequestFieldKey` to sequence of bytes, where `RequestFieldKey` is enum defined in
-Slice (LINK):
+A field is an entry in a dictionary `RequestFieldKey` to sequence of bytes, where `RequestFieldKey` is an enumeration
+defined in Slice (LINK):
 
 ```slice
 unchecked enum RequestFieldKey : varuint62 {
@@ -37,18 +37,20 @@ unchecked enum RequestFieldKey : varuint62 {
 }
 ```
 
-For example, when the Compress interceptor compresses the payload of an outgoing request, it sets the request field
-CompressionFormat. This tells the Compress middleware on the other side of the connection "this payload is compressed
-with brotli"; the Compress middleware can then decompress this (incoming) request payload.
+For example, when the `Compress` interceptor compresses the payload of an outgoing request, it sets the request field
+`CompressionFormat`. This tells the `Compress` middleware on the other side of the connection "this payload is
+compressed with brotli"; the `Compress` middleware can then decompress this (incoming) request payload.
 
 ## Request payload and payload continuation
 
-The payload of a request is a stream of bytes that represents the argument(s) of an operation. When a connection sends a
-request, it reads and logically copies these bytes to the network connection until there is no more byte to read.
+The payload of a request is a stream of bytes. It typically represents the argument(s) of an operation. When a
+connection sends a request, it reads and logically copies these bytes to the network connection until there is no more
+byte to read.
 
 On the other side, the connection reads these bytes from the network and give them to a
 [dispatcher](../dispatch/dispatch-pipeline#the-dispatcher-abstraction).
 
+BENOIT: the continuation sending can continue after the response so this paragraph isn't really correct?
 The payload of an outgoing request is actually split in two: a first part that the connection sends before awaiting the
 response, and a second part (the "continuation") that the connection sends in the background while it awaits, receives
 and returns the response.
@@ -68,12 +70,12 @@ On the other side, the dispatcher sees only one continuous incoming request payl
 ## Request features
 
 It is common for the invokers in an invocation pipeline to transmit information to each other during an invocation. For
-example, the Retry interceptor needs to communicate with the ConnectionCache to make sure the ConnectionCache does not
-keep retrying with the same server address. These invokers get and set request features (C# link) to communicate with
-each other.
+example, the `Retry` interceptor needs to communicate with the `ConnectionCache` to make sure the `ConnectionCache` does
+not keep retrying with the same server address. These invokers get and set request features (C# link) to communicate
+with each other.
 
 You can also use these features to communicate with the invocation pipeline. For example, you can set the feature
-`ICompressFeature` to ask the Compress interceptor (if installed) to compress the payload of your request:
+`ICompressFeature` to ask the `Compress` interceptor (if installed) to compress the payload of your request:
 
 ```csharp
 using var request = new OutgoingRequest(serviceAddress)

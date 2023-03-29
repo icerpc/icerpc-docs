@@ -32,10 +32,10 @@ server will use TLS.
 The tcp transport may or may not use TLS. If you specify TLS configuration when you create your client connection for
 tcp, the connection will use TLS. If you don't specify TLS configuration, the connection won't use TLS.
 
-In C#, this TLS configuration is a `SslClientAuthenticationOptions` parameter. For example:
+In C#, this TLS configuration is provided with a `SslClientAuthenticationOptions` parameter. For example:
 
 ```csharp
-// The default multiplexed transport for icerpc is tcp. The connection does not use TLS since we don't pass a
+// The default transport for icerpc is tcp. The connection does not use TLS since we don't pass a
 // SslClientAuthenticationOptions parameter.
 await using var plainTcpConnection = new ClientConnection("icerpc://hello.zeroc.com");
 
@@ -48,6 +48,8 @@ await using var secureTcpConnection = new ClientConnection(
 It's the same for servers using tcp. If you specify TLS configuration when you create this server, the server will only
 accept connections secured by TLS. If you don't specify TLS configuration when you create this server, the server will
 only listen for and accept plain tcp connections.
+
+BENOIT: I would remove this information. To me, the fact that tcp and ssl are the same transport is an implementation detail. It also gives the impression that a client can either connect with tcp or with ssl if a server specifies SSL configuration. I find that the explanation above is sufficient and clearer.
 
 {% callout type="information" %}
 tcp and ssl are actually the same transport. If a server listens on a tcp server address and specifies TLS

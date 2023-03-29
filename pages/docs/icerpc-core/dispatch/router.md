@@ -50,6 +50,8 @@ These other dispatchers are registered with the router using `map` and `mount` m
     router.Mount("/hello", chatbot);
     ```
 
+BENOIT: I find it's a bit confusing to talk about mounting sub-routers below when we later explain what are sub-routers and show that sub-routers are setup with `Route`.
+
 It is common to map leaf dispatchers such as services and mount sub-routers, but it's not a hard and fast rule.
 
 You can map and mount the exact same path (for example, `/hello`). The router will direct a request with path `/hello`
@@ -87,9 +89,9 @@ router.Map("/hello", new Chatbot());
 ```
 
 The order in which you install these middleware is often important. The first middleware you install is the first
-middleware to execute. With the example above, the Logger middleware executes first, then calls `DispatchAsync` on the
-Compress middleware, and then finally the Compress middleware calls `DispatchAsync` on the Chatbot service mapped at
-`/hello`.
+middleware to execute. With the example above, the `Logger` middleware executes first, then calls `DispatchAsync` on the
+`Compress` middleware, and then finally the `Compress` middleware calls `DispatchAsync` on the `Chatbot` service mapped
+at `/hello`.
 
 {% callout type="information" %}
 The router always dispatches incoming requests to its registered middleware, even when it ends up throwing
@@ -112,8 +114,5 @@ This is equivalent to our earlier example except `UseLogger` retrieves the logge
 `Mount<IHelloService>("/")` retrieves an `IHelloService` instance from the DI container for each dispatch.
 
 {% callout type="information" %}
-There is only one `LoggerMiddleware` class, one `CompressMiddleware` class etc. These middleware can be installed in
-several different pipeline implementations, such as `Router`, the implementation inside the builder created by
-`AddIceRpcServer`, or even your own custom pipeline class. Each pipeline implementation just needs its own set of
-`Use{Name}` extension methods.
+There is only one `LoggerMiddleware` class, one `CompressMiddleware` class etc. The `Use{Name}` extension methods of `Router` or `IDispatcherBuilder` instantiate the same middleware classes.
 {% /callout %}
