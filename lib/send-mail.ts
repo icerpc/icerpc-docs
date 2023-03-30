@@ -21,8 +21,8 @@ export const sendFeedbackMail = async (
   const from = 'IceRPC Docs Feedback <no-reply-contact-us@zeroc.com>';
   const to = 'info@zeroc.com';
 
-  // The URL of the page where the feedback was submitted
-  const pageUrl = req.headers.host + path;
+  // Construct the URL of the page using the req and path
+  const pageUrl = req.headers.origin + path;
 
   const response = await transporter.sendMail({
     from,
