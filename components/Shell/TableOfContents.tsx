@@ -6,7 +6,10 @@ import { useRouter } from 'next/router';
 import { FiEdit, FiMessageSquare } from 'react-icons/fi';
 import { AppLink } from 'components/Nodes/AppLink';
 import { Divider } from 'components/Divider';
-import { Bars3BottomLeftIcon } from '@heroicons/react/20/solid';
+import {
+  Bars3BottomLeftIcon,
+  ArrowUpCircleIcon
+} from '@heroicons/react/20/solid';
 import clsx from 'clsx';
 
 export interface TOCItem {
@@ -58,6 +61,7 @@ function useActiveId(itemIds: string[]) {
 }
 
 export const TableOfContents = (toc: TOCItem[]) => {
+  const [scrollPosition, setScrollPosition] = useState(0);
   const currentPath = resolvePath(useRouter().pathname);
   const items = toc.filter(
     (item) =>
@@ -67,6 +71,18 @@ export const TableOfContents = (toc: TOCItem[]) => {
   );
 
   const activeId = useActiveId(items.map((item) => item.id));
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const position = window.pageYOffset;
+      setScrollPosition(position);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <aside
@@ -116,6 +132,15 @@ export const TableOfContents = (toc: TOCItem[]) => {
           </MoreItem>
         </ul>
         <Divider />
+        {scrollPosition > 100 && (
+          <button
+            className="my-4 flex animate-fade-in-up flex-row items-center text-xs font-semibold uppercase  dark:text-white"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <ArrowUpCircleIcon className="ml-0 mr-2 h-5 w-5 pl-0 text-primary" />
+            <h2> Back to top </h2>
+          </button>
+        )}
       </nav>
     </aside>
   );

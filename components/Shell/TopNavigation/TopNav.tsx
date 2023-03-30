@@ -62,11 +62,13 @@ export const TopNav = () => {
                 ))}
               </ul>
             </nav>
-            <div className="ml-6 flex h-[30px] items-center border-l border-lightBorder pl-6 dark:border-darkBorder">
+            <div className="mx-6 flex h-[30px] items-center border-l border-lightBorder pl-6 dark:border-darkBorder">
               <ThemeToggle />
               <a
                 className="p-4 hover:text-primary dark:text-[rgba(255,255,255,0.8)]"
                 href="https://github.com/zeroc-ice"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Github"
               >
                 <FaGithub size={20} />

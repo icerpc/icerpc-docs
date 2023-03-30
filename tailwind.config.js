@@ -18,6 +18,21 @@ module.exports = {
         'dark-pattern':
           'linear-gradient(to right,#000 0%,#000 50%,rgb(21, 21, 22) 75%,rgb(21, 21, 22) 100%)',
         'og-image': 'url("/images/og.png")'
+      },
+      keyframes: {
+        'fade-in-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(10px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          }
+        }
+      },
+      animation: {
+        'fade-in-up': 'fade-in-up 0.5s ease-out'
       }
     }
   },
