@@ -23,7 +23,7 @@ export const AppLink = (props: Props) => {
       {...props}
       target={target}
       rel={target === '_blank' ? 'noreferrer' : undefined}
-      className={props.className ?? 'text-primary underline decoration-1'}
+      className={props.className ?? 'font-medium text-primary'}
       style={style}
     >
       {props.children}
