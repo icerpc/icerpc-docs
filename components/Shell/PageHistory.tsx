@@ -34,7 +34,7 @@ export const PageHistory = ({ path, encoding }: Props) => {
   const next = index < links.length - 1 ? links[index + 1] : undefined;
 
   return (
-    <div className="mx-[-1rem] mt-12 mb-0 flex flex-row justify-between p-0">
+    <div className="mx-[-1rem] mb-0 mt-12 flex flex-row justify-between p-0">
       {previous ? (
         <Link href={previous.path}>
           <div className="flex h-10 flex-row items-center gap-2 rounded p-4 text-center text-primary hover:bg-[#E9F1FE] dark:hover:bg-[#E9F1FE]/20">

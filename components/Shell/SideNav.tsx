@@ -68,7 +68,7 @@ function createListItem(
     );
   } else {
     return (
-      <div className={`${leftPadding} mb-3 mt-2 pr-2 pl-0`} key={link.title}>
+      <div className={`${leftPadding} mb-3 mt-2 pl-0 pr-2`} key={link.title}>
         <h2 className="my-4 text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:text-white dark:decoration-darkBorder">
           {link.title}
         </h2>
@@ -143,16 +143,16 @@ export const SideNav = ({ path }: SideNavProps) => {
   return (
     <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-none dark:bg-black lg:flex">
       <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-4 pr-2">
-        <SearchButton className="mt-8 mb-0 flex items-start pr-6 pl-3" />
+        <SearchButton className="mb-0 mt-8 flex items-start pl-3 pr-6" />
         {baseUrl == '/docs/slice' && (
-          <div className="top-0 mt-4 mb-2 bg-none pr-3 pl-6">
+          <div className="top-0 mb-2 mt-4 bg-none pl-6 pr-3">
             <SliceSelector />
           </div>
         )}
         <nav
           className={clsx(
             'sticky top-0 block w-[275px] overflow-y-auto',
-            'bg-none pr-3 pb-10 pl-6',
+            'bg-none pb-10 pl-6 pr-3',
             baseUrl == '/docs/slice'
               ? 'h-[calc(100vh-59px-180px)]'
               : 'h-[calc(100vh-59px-40px)]'
@@ -252,7 +252,7 @@ export function MobileSideNav({ pathname }: MobileSideNavProps) {
               >
                 <div
                   className={clsx(
-                    'fixed top-0 left-0 h-screen w-full max-w-[300px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
+                    'fixed left-0 top-0 h-screen w-full max-w-[300px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
                   )}
                 >
                   <Dialog.Panel className="h-full w-full overflow-hidden rounded-r text-left align-middle text-sm font-bold shadow-xl transition-all">
@@ -273,7 +273,7 @@ export function MobileSideNav({ pathname }: MobileSideNavProps) {
                       <nav
                         className={clsx(
                           'block h-full w-full overflow-y-auto',
-                          'bg-none pr-3 pb-10 pl-6 pt-4',
+                          'bg-none pb-10 pl-6 pr-3 pt-4',
                           baseUrl == '/docs/slice' && 'mt-12'
                         )}
                       >

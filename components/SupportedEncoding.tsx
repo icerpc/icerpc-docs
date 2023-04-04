@@ -23,7 +23,7 @@ export const SupportedEncodings = ({ supported }: Props) => {
   };
 
   return (
-    <div className="flex flex-row items-center justify-start pt-1 pb-4">
+    <div className="flex flex-row items-center justify-start pb-4 pt-1">
       <h3 className="my-0 mr-2 text-sm font-semibold">Supports:</h3>
       <div className="flex flex-row items-center justify-start gap-2">
         {supported &&

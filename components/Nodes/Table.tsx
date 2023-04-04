@@ -39,7 +39,7 @@ interface THProps {
 
 export const TH = ({ align, children }: THProps) => {
   return (
-    <th className={clsx('py-3 px-5', textAlignment(align))}>{children}</th>
+    <th className={clsx('px-5 py-3', textAlignment(align))}>{children}</th>
   );
 };
 
@@ -58,7 +58,7 @@ interface TDProps {
 
 export const TD = ({ align, children }: TDProps) => {
   return (
-    <td className={clsx('rounded py-3 px-5', textAlignment(align))}>
+    <td className={clsx('rounded px-5 py-3', textAlignment(align))}>
       {children}
     </td>
   );
