@@ -48,7 +48,7 @@ export const SliceSelector = () => {
                     'transition-shadow  duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg',
                     'dark:bg-[#32363c] dark:text-white',
                     selected
-                      ? 'border-1 border-primary bg-white text-primary dark:text-primary'
+                      ? 'border-1 border-primary bg-white text-primary dark:border-white dark:text-primary'
                       : 'bg-slate-50 text-slate-500 hover:bg-opacity-80 hover:text-primary dark:border-darkBorder'
                   )
                 }

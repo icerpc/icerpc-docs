@@ -38,7 +38,10 @@ function useActiveId(itemIds: string[]) {
           }
         });
       },
-      { rootMargin: '0px 0px -70%', threshold: [0, 1] }
+      {
+        rootMargin: '-50px 0px -70% 0px',
+        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1]
+      }
     );
 
     itemIds.forEach((id) => {
@@ -88,7 +91,7 @@ export const TableOfContents = (toc: TOCItem[]) => {
     <aside
       className={clsx(
         'sticky top-[3.75rem] mr-10 hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 border-lightBorder',
-        'dark:border-darkBorder xl:flex',
+        'border-l dark:border-darkBorder xl:flex',
         items.length > 1 ? '' : ''
       )}
     >
@@ -180,7 +183,7 @@ const ListItem = ({ item, activeId }: ListItemProps) => {
         className={clsx(
           'text-inherit',
           activeId === item.id
-            ? 'text-[var(--primary-color)] dark:font-semibold dark:text-white'
+            ? 'text-primary dark:font-semibold dark:text-white'
             : ''
         )}
       >

@@ -42,7 +42,7 @@ export const TopNav = () => {
   return (
     <div
       className={clsx(
-        'fixed top-0 z-10 flex w-full flex-col justify-center border border-t-0 border-lightBorder bg-[#FCFCFC]',
+        'fixed top-0 z-10 flex w-full flex-col justify-center border-b border-lightBorder bg-[#FCFCFC]',
         'dark:border-darkBorder dark:bg-black'
       )}
     >
@@ -128,7 +128,7 @@ const TopNavigationItem = ({
       (href === '/' && pathname === '/') ||
       (href !== '/' && pathname.startsWith(href))
     ) {
-      return 'text-primary dark:text-white underline decoration-2 underline-offset-[1.5rem] opacity-100 ';
+      return 'text-primary dark:text-white underline dark:no-underline decoration-2 underline-offset-[1.5rem] opacity-100 ';
     } else {
       return 'dark:text-[rgba(255,255,255,0.6)]';
     }

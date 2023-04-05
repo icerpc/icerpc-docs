@@ -29,21 +29,6 @@ function createListItem(
   noLeftPadding: Boolean = false,
   onClick: () => void = () => {}
 ): React.ReactElement {
-  const style: React.CSSProperties = {
-    textDecoration: 'none'
-  };
-  const activeStyle: React.CSSProperties = {
-    textDecoration: 'none',
-    borderLeft: '1.5px solid var(--primary-color)',
-    paddingLeft: '13.5px',
-    marginLeft: '-3px'
-  };
-  const activeStyleAlt: React.CSSProperties = {
-    color: 'var(--primary-color)',
-    fontWeight: 'bold',
-    textDecoration: 'none'
-  };
-
   const leftPadding = noLeftPadding ? 'ml-0' : 'ml-3';
 
   if (isLink(link)) {
@@ -52,15 +37,15 @@ function createListItem(
       <li key={link.path} className="flex">
         <Link
           href={link.path}
-          className={`px-2 py-[7px] pl-0 text-sm  ${leftPadding} hover:text-zinc-900 dark:text-[#C4C7C5] dark:hover:text-white`}
-          onClick={onClick}
-          style={
+          className={clsx(
+            `px-2 py-[7px] pl-0 text-sm no-underline  ${leftPadding} dark:text-[#C4C7C5]`,
             isCurrentPage
               ? noLeftPadding
-                ? activeStyleAlt
-                : activeStyle
-              : style
-          }
+                ? 'font-bold text-primary dark:text-white'
+                : 'ml-[-3px] border-l-[1.5px] border-primary pl-[13.5px] font-bold text-primary dark:border-white/80 dark:text-white'
+              : 'hover:text-zinc-900 dark:hover:text-white'
+          )}
+          onClick={onClick}
         >
           {link.title}
         </Link>
@@ -88,7 +73,7 @@ function transformSideBarData(
       <li key="category">
         <ul>
           <li key={category.title} className="list-none">
-            <h2 className="my-[10px] text-sm font-bold dark:text-white">
+            <h2 className="my-[10px] text-sm font-semibold dark:text-white">
               {category.title}
             </h2>
           </li>

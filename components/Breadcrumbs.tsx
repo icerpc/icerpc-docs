@@ -22,7 +22,7 @@ export const Breadcrumbs = ({ breadcrumbs }: Props) => {
 
         return (
           <li key={name} className="flex flex-row gap-2 pr-2 ">
-            <Link href={href} className="dark:text-slate-300">
+            <Link href={href} className="dark:text-white/80">
               {name}
             </Link>
             {!isLast ? '/' : null}
