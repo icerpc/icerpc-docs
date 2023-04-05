@@ -69,7 +69,7 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
           >
             <div
               className={clsx(
-                'fixed top-4 right-4 w-full max-w-[250px] rounded-xl bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
+                'fixed right-4 top-4 w-full max-w-[250px] rounded-xl bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
               )}
             >
               <Dialog.Panel className="h-full w-full flex-col overflow-hidden rounded text-left align-middle text-sm font-bold shadow-xl transition-all">

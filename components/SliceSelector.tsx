@@ -32,7 +32,7 @@ export const SliceSelector = () => {
 
   return (
     <>
-      <div className="mb-6 w-full pr-6 pl-1">
+      <div className="mb-6 w-full pl-1 pr-6">
         <h2 className="py-2 text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:text-white dark:decoration-darkBorder">
           Slice encoding:
         </h2>

@@ -14,7 +14,7 @@ export interface Breadcrumb {
 
 export const Breadcrumbs = ({ breadcrumbs }: Props) => {
   return (
-    <ul className="mt-0 mb-3 flex pt-0 pl-0 text-sm">
+    <ul className="mb-3 mt-0 flex pl-0 pt-0 text-sm">
       {breadcrumbs.map((crumb) => {
         const name = crumb.name;
         const href = crumb.href;

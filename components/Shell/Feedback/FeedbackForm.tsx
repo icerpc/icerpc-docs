@@ -119,10 +119,10 @@ export const FeedbackForm = ({ title, options }: Props) => {
   }, []);
 
   return feedbackSubmitted ? (
-    <h3 className="mt-5 mb-10">Thanks for the feedback!</h3>
+    <h3 className="mb-10 mt-5">Thanks for the feedback!</h3>
   ) : (
     <div
-      className={`mt-4 mb-9 flex flex-col gap-0 ${opacity} transition duration-700 ease-in-out`}
+      className={`mb-9 mt-4 flex flex-col gap-0 ${opacity} transition duration-700 ease-in-out`}
     >
       <h3 className="my-0">{title}</h3>
       <form className="w-full p-3 pl-0 text-sm text-gray-700 dark:text-gray-200">
@@ -158,7 +158,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
                   </div>
                   {option.id == selected && (
                     <>
-                      <label className="mt-2 ml-2 text-xs">
+                      <label className="ml-2 mt-2 text-xs">
                         <div className="font-medium text-gray-900 dark:text-gray-300">
                           Feedback
                         </div>
@@ -174,7 +174,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
                           }}
                         />
                       </label>
-                      <label className="mt-1 ml-2 text-xs">
+                      <label className="ml-2 mt-1 text-xs">
                         <div className="font-medium text-gray-900 dark:text-gray-300">
                           Email
                         </div>
