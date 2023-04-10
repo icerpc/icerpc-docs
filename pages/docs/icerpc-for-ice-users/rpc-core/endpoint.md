@@ -54,7 +54,7 @@ address with the opaque transport. The opaque transport supports the following o
 |-----------------------------|------------------------------------------------------------|
 | `-e 1.1`                    | `e=1.1`                                                    |
 | `-t transportCode`          | `t=transportCode`                                          |
-| `-v uuencodedValue`         | `v=uuencodedValue`                                         |
+| `-v base64Value`            | `v=base64Value`                                            |
 
 An opaque server address URI always starts with `ice://opaque/`; the host ("opaque") and port (4061) are meaningless
 since the actual host and port are encoded in the v parameter value.

@@ -11,8 +11,8 @@ or compile .ice files.
 
 ## Two encodings
 
-With Ice, the Ice/Slice encoding version to use when sending a request is a runtime decision. You can reconfigure your
-proxy to use encoding version 1.0, for example:
+With Ice, the Ice/Slice encoding version to use when sending a request is a runtime decision. You can reconfigure a
+proxy to use the encoding version of your choice. For example:
 ```csharp {% title="Setting the encoding version with Ice for C#" %}
 helloPrx = helloPrx.ice_encodingVersion(Ice.Util.Encoding_1_0);
 ```
@@ -57,13 +57,14 @@ This encoding allows you to mark any type as optional with the `?` suffix. For e
 ```slice
 // with encoding = Slice2
 
-interface Hello {
-    // Both the "name" argument and the return value can be "not set".
-    sayHello(name: string?) -> string?
+interface Translator {
+    // Both the "message" argument and the return value can be "not set".
+    translate(message: string?) -> string?
 }
 ```
 
 Slice2 also provides:
+ - stream parameters and return values
  - unsigned integer types such as uint32
  - variable-size integer types such as varint64
  - underlying types for enums

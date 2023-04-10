@@ -18,11 +18,8 @@ encoding = Slice1 // required for interop with Ice
 ...
 
 ```
-Make sure to use the `.slice` extension for these new files.
 
-{% callout type="information" %}
-Ice will soon provide an `ice2slice` tool to help you convert .ice files into .slice files.
-{% /callout %}
+Make sure to use the `.slice` extension for these new files.
 
 If you use IceRPC to create new services for your Ice client, you should start by defining your Slice interfaces with
 the new .slice syntax (and `encoding = Slice1`), before converting these definitions to the .ice syntax. The new syntax

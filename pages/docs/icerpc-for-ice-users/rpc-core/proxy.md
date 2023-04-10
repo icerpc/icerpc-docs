@@ -18,8 +18,8 @@ In IceRPC, this address is called a "service address". Service addresses, unlike
 
 ## String syntax
 
-Ice uses its own syntax for proxy strings, while IceRPC uses URIs for service addresses. The identities in proxy strings
-are mapped to absolute path as described in [Ice identity](ice-identity).
+Ice uses its own syntax for proxy strings, while IceRPC uses URIs for service addresses. The object identity in a proxy
+string is mapped to an absolute path in the service address URI as described in [Ice identity](ice-identity).
 
 Here are a few examples:
 
@@ -35,10 +35,12 @@ In Ice, a proxy without an endpoint is called an "indirect proxy". When you send
 Locator to locate the actual endpoints of this proxy.
 
 In IceRPC, a service address without a server address has no special name: it's just a service address without a server
-address. When the Slice engine decodes a Slice1-encoded proxy with an adapter ID, it creates a service address with an
-adapter-id parameter. For example:
+address.
 
-| Slice1-encoded proxy                              | Decoded as                                        |
+When the Slice engine decodes a Slice1-encoded proxy with no server address but with an adapter ID, it creates a service
+address with an adapter-id parameter. For example:
+
+| Proxy to decode (with Ice proxy string syntax)    | Decoded as                                        |
 |---------------------------------------------------|---------------------------------------------------|
 | `hello`                                           | `ice:/hello`                                      |
 | `hello@GreetersUnited`                            | `ice:/hello?adapter-id=GreetersUnited`            |
@@ -58,7 +60,7 @@ As a result, the Slice engine's proxy-to-service-address decoding is lossy, unli
 
 For example:
 
-| Slice1-encoded proxy                              | Decoded as                                        |
+| Proxy to decode (with Ice proxy string syntax)    | Decoded as                                        |
 |---------------------------------------------------|---------------------------------------------------|
 | `hello -f facet:tcp -h localhost -p 10000`        | `ice://localhost:10000/hello?transport=tcp#facet` |
 | `hello -p 2.0:ssl -h localhost -p 10000`          | `icerpc://localhost:10000/hello?transport=ssl`    |

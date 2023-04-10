@@ -57,8 +57,9 @@ and doesn't know how these byte streams are encoded. This allows you to use IceR
 IceRPC introduces a brand new Slice, with a new syntax, a new encoding, a new compilation model and a new file
 extension.
 
-The Ice's compilation model for Slice files is very much like C++: each Slice file needs to #include the Slice files
-with the definitions it depends on. Slice files use the .ice extension with Ice.
+The Ice compilation model for Slice files is very much like C++: each Slice file needs to #include the Slice files with
+the definitions it depends on. You can use a forward declaration to introduce a type without fully definition it. And
+Slice files use the .ice file extension.
 
 On the other hand, the compilation model with IceRPC's Slice compilers is more like C# and Java: the compilation uses a
 set of reference files specified as argument to the compiler, and there is no #include preprocessing directive. These

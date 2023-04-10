@@ -1,5 +1,5 @@
 ---
-title: Ice to Slice
+title: Converting .ice into .slice
 description: Learn how to convert .ice definitions into .slice definitions.
 ---
 
@@ -15,6 +15,10 @@ All the .slice files used for interop with Ice must start with:
 ```slice
 encoding = Slice1
 ```
+
+{% callout type="information" %}
+Ice will soon provide an `ice2slice` tool to automate this conversion.
+{% /callout %}
 
 ## Limitations
 
@@ -200,6 +204,37 @@ module BoardGame::Chess
 ```
 {% /side-by-side %}
 
+## Optional
+
+The `optional` keyword in .ice files is replaced by the `tag` keyword in .slice files and the type of a tagged parameter
+or field must be marked optional (with a `?` suffix) in .slice files.
+
+{% side-by-side alignment="top" %}
+```slice {% title=".ice syntax" %}
+interface Widget
+{
+    void spin(optional(1) int speed);
+}
+
+class Person
+{
+    string name;
+    optional(1) string email;
+}
+```
+
+```slice {% title="Same definitions with the .slice syntax" %}
+interface Widget {
+    spin(tag(1) speed: int32?)
+}
+
+class Person {
+    name: string
+    tag(1) email: string?
+}
+```
+{% /side-by-side %}
+
 ## Out parameters
 
 With the .ice syntax, the return type of an operation can be split between a return type and out parameters, whereas
@@ -238,22 +273,23 @@ breaking on-the-wire compatibility.
 
 ## Primitive types
 
-| .ice syntax | .slice syntax                   |
-|-------------|---------------------------------|
-| bool        | bool                            |
-| byte        | uint8                           |
-| double      | float64                         |
-| float       | float32                         |
-| int         | int32                           |
-| long        | int64                           |
-| short       | int16                           |
-| string      | string                          |
-| Object      | AnyClass?                       |
-| Object*     | WellKnownTypes::ServiceAddress? |
-| Value       | AnyClass?                       |
+| .ice syntax | .slice syntax                                   |
+|-------------|-------------------------------------------------|
+| bool        | bool                                            |
+| byte        | uint8                                           |
+| double      | float64                                         |
+| float       | float32                                         |
+| int         | int32                                           |
+| long        | int64                                           |
+| short       | int16                                           |
+| string      | string                                          |
+| Object      | AnyClass?                                       |
+| Object*     | Ice::Object? or WellKnownTypes::ServiceAddress? |
+| Value       | AnyClass?                                       |
 
 With the .ice syntax, Object, Object* and Value always represent nullable parameters or fields. With the .slice syntax,
-the corresponding AnyClass or ServiceAddress can be optional (with a ? suffix) or non-optional (without a ? suffix).
+the corresponding AnyClass, Ice::Object or ServiceAddress can be optional (with a ? suffix) or non-optional (without a ?
+suffix).
 
 ## Sequence
 
