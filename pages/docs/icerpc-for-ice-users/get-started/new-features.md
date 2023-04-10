@@ -62,8 +62,8 @@ the definitions it depends on. You can use a forward declaration to introduce a 
 Slice files use the .ice file extension.
 
 On the other hand, the compilation model with IceRPC's Slice compilers is more like C# and Java: the compilation uses a
-set of reference files specified as argument to the compiler, and there is no #include preprocessing directive. These
-new Slice files use the .slice extension.
+set of reference files specified as argument to the compiler, and there is no #include preprocessing directive or
+forward declarations. These new Slice files use the .slice extension.
 
 The Slice syntax also changed significantly. Ice's .ice syntax uses a C-like syntax for parameters and fields, while
 IceRPC's .slice syntax is more like Rust and Swift:

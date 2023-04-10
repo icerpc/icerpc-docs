@@ -36,6 +36,10 @@ export const slice1Data: SideBarSourceType[] = [
     title: 'Language guide',
     links: [
       {
+        title: 'Slice1 or Slice2',
+        path: `${SLICE_BASE_URL}/language-guide/slice1-or-slice2`
+      },
+      {
         title: 'Primitive types',
         path: `${SLICE_BASE_URL}/language-guide/primitive-types`
       }
