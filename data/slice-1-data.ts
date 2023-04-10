@@ -40,6 +40,18 @@ export const slice1Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/language-guide/slice1-or-slice2`
       },
       {
+        title: 'Module',
+        path: `${SLICE_BASE_URL}/language-guide/module`
+      },
+      {
+        title: 'Interface',
+        path: `${SLICE_BASE_URL}/language-guide/interface`
+      },
+      {
+        title: 'Operation',
+        path: `${SLICE_BASE_URL}/language-guide/operation`
+      },
+      {
         title: 'Primitive types',
         path: `${SLICE_BASE_URL}/language-guide/primitive-types`
       }

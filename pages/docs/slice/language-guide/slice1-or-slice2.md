@@ -76,6 +76,6 @@ compat struct VehicleCarrier {
 }
 ```
 
-## C# Language mapping
+## C# mapping
 
 The encoding statement is not mapped to any C# code.
