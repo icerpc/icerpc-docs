@@ -32,7 +32,7 @@ server will use TLS.
 The tcp transport may or may not use TLS. If you specify TLS configuration when you create your client connection for
 tcp, the connection will use TLS. If you don't specify TLS configuration, the connection won't use TLS.
 
-In C#, this TLS configuration is a `SslClientAuthenticationOptions` parameter. For example:
+In C#, this TLS configuration is provided by a `SslClientAuthenticationOptions` parameter. For example:
 
 ```csharp
 // The default multiplexed transport for icerpc is tcp. The connection does not use TLS since we don't pass a

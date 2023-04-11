@@ -11,7 +11,7 @@ asynchronously. Since you're implementing this `dispatch` method, you are respon
 An outgoing response carries:
 
 - a [status code](../invocation/incoming-response#status-code)
-- an error message, set only when the status code is not Success
+- an error message, set only when the status code is not `Success`
 - response [fields](../invocation/incoming-response#response-fields)
 - the [payload](#response-payload) of the response
 

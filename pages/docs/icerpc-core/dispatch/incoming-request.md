@@ -28,9 +28,8 @@ IceRPC core is concerned, the number of bytes in this stream is unknown.
 It is common for the dispatchers in a dispatch pipeline to transmit information to each other during a dispatch. These
 dispatchers get and set request features (C# link) for these communications.
 
-You can also use these features to communicate with your service code. For example, if you install the
-DispatchInformation middleware, it sets the `IDispatchInformationFeature` and you can retrieve this feature in your
-code:
+You can also use these features to communicate with your service code. For example, if you install the dispatch
+information middleware, it sets the `IDispatchInformationFeature` and you can retrieve this feature in your code:
 
 ```csharp
 // In Slice service implementation

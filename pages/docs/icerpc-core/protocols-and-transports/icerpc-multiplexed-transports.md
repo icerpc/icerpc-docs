@@ -95,7 +95,7 @@ icerpc provides the most direct realization of IceRPC's APIs and features. In pa
 There is currently only one standard multiplexed transport: QUIC. Since QUIC is new and not universally available, you
 may want to use icerpc with a traditional duplex transport such as TCP.
 
-The solution is IceRPC's Slic component. Slic implements the multiplexed transport abstraction over the
+The solution is IceRPC's Slic transport layer. Slic implements the multiplexed transport abstraction over the
 [duplex transport](ice-duplex-transports) abstraction.
 
 ```mermaid
