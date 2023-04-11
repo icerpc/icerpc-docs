@@ -53,14 +53,14 @@ There are 3 common types of invokers:
 
  - **Leaf invoker**\
    It's a leaf in the invocation pipeline that implements `invoke` without the help of another invoker. This leaf
-   invoker is typically a connection or connection cache.
+   invoker is typically a client connection or connection cache.
 
  - **Interceptor**\
     An [interceptor](interceptor) intercepts an invocation and forwards it to the "next" interceptor. IceRPC provides
     several built-it interceptors for logging, compression and more.
 
  - **Pipeline**\
-    A [pipeline](pipeline) forwards a request through interceptors and a final invoker registered with this pipeline.
+    A [pipeline](pipeline) forwards a request through interceptors and a leaf invoker registered with this pipeline.
 
 ```mermaid
 ---
