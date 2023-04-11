@@ -87,8 +87,8 @@ router.Map("/hello", new Chatbot());
 ```
 
 The order in which you install these middleware is often important. The first middleware you install is the first
-middleware to execute. With the example above, the Logger middleware executes first, then calls `DispatchAsync` on the
-Compress middleware, and then finally the Compress middleware calls `DispatchAsync` on the Chatbot service mapped at
+middleware to execute. With the example above, the logger middleware executes first, then calls `DispatchAsync` on the
+compress middleware, and then finally the compress middleware calls `DispatchAsync` on the `Chatbot` service mapped at
 `/hello`.
 
 {% callout type="information" %}

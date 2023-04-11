@@ -11,7 +11,7 @@ asynchronously. This incoming response is created by the connection when it rece
 An incoming response holds:
 
 - a [status code](#status-code)
-- an error message, set only when the status code is not Success
+- an error message, set only when the status code is not `Success`
 - response [fields](#response-fields)
 - the [payload](#response-payload) of the response
 
@@ -31,7 +31,7 @@ unchecked enum StatusCode : varuint62 {
 ```
 
 The caller that consumes the response uses this status code to figure out the format of the response payload. For
-example when the caller is Slice generated code (LINK), it interprets Success as meaning the response payload holds a
+example when the caller is Slice generated code (LINK), it interprets `Success` as meaning the response payload holds a
 Slice-encoded return value.
 
 ## Response fields
@@ -40,8 +40,8 @@ The response fields represent out-of-band information carried by a response. The
 by [middleware](../dispatch/middleware) and [interceptors](interceptor) in an effort to coordinate the processing of the
 same response in the server and in the client.
 
-A field is an entry in a dictionary `ResponseFieldKey` to sequence of bytes, where `ResponseFieldKey` is enum defined in
-Slice (LINK):
+A field is an entry in a dictionary `ResponseFieldKey` to sequence of bytes, where `ResponseFieldKey` is an enumeration
+defined in Slice (LINK):
 
 ```slice
 unchecked enum ResponseFieldKey : varuint62 {
@@ -50,9 +50,9 @@ unchecked enum ResponseFieldKey : varuint62 {
 }
 ```
 
-For example, when the Compress middleware compresses the payload of an outgoing response, it sets the response field
-CompressionFormat. This tells the Compress interceptor on the other side of the connection "this payload is compressed
-with brotli"; the Compress interceptor can then decompress this (incoming) response payload.
+For example, when the compress middleware compresses the payload of an outgoing response, it sets the response field
+`CompressionFormat`. This tells the compress interceptor on the other side of the connection "this payload is compressed
+with brotli"; the compress interceptor can then decompress this (incoming) response payload.
 
 ## Response payload
 

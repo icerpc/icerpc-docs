@@ -46,9 +46,21 @@ It is common to perform additional processing on an invocation before giving it 
 want to compress the payloads of your requests, add a telemetry field to each request, add a timeout or deadline, or
 simply add logging.
 
-You can configure this processing by creating a chain of invokers--the invocation pipeline. Each node of this pipeline
-is an invoker that calls `invoke` on the next invoker in the pipeline. The last invoker in the pipeline is a connection
-managed by a ClientConnection or ConnectionCache. The other invokers are typically [interceptors](interceptor).
+A invoker implementation can call `invoke` on another invoker, which itself calls `invoke` on another invoker, etc.; the
+invoker used to make an invocation can be the head of a invoker chain or tree, known as a "invocation pipeline".
+
+There are 3 common types of invokers:
+
+ - **Leaf invoker**\
+   It's a leaf in the invocation pipeline that implements `invoke` without the help of another invoker. This leaf
+   invoker is typically a connection or connection cache.
+
+ - **Interceptor**\
+    An [interceptor](interceptor) intercepts an invocation and forwards it to the "next" interceptor. IceRPC provides
+    several built-it interceptors for logging, compression and more.
+
+ - **Pipeline**\
+    A [pipeline](pipeline) forwards a request through interceptors and a final invoker registered with this pipeline.
 
 ```mermaid
 ---

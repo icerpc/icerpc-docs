@@ -33,7 +33,7 @@ For example:
 connect to `hello.zeroc.com` on port 4062 using the icerpc protocol; the underlying transport is not specified
 
 - `icerpc://192.168.100.10:10000?transport=quic`
-connect to `192.168.100.10` on port 10,000 using the icerpc protocol over quic
+connect to `192.168.100.10` on port 10000 using the icerpc protocol over quic
 
 - `ice://hello.zeroc.com`
 connect to `hello.zeroc.com` on port 4061 using the ice protocol
@@ -48,7 +48,7 @@ all interfaces on the default icerpc port.
 When constructing a server, the host of the server address must be a wildcard IP address such as `[::0]`, or the IP
 address of a specific interface on the current system.
 
-If you specify `0` for the port number, the OS will automatically assign a port number in its ephemeral range. The
+If you specify 0 for the port number, the OS will automatically assign a port number in its ephemeral range. The
 server won't listen on tcp or udp port 0.
 
 Here are some examples:
@@ -62,7 +62,7 @@ listen for icerpc connections on all interfaces; the OS selects the port number 
 - `ice://0.0.0.0:10000`
 listen for ice connections on all interfaces with an IPv4 address on port 10,000
 
-In C#, when you specify port `0` in your server address, `Listen` returns a server address with the port number selected
+In C#, when you specify port 0 in your server address, `Listen` returns a server address with the port number selected
 by the OS:
 
 ```csharp

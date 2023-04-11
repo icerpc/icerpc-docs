@@ -61,8 +61,8 @@ flowchart LR
 ```
 
 The order in which you install these interceptors is often important. The first interceptor you install is the first
-interceptor to execute. With the pipeline we created above, the Logger interceptor executes first, then calls
-`InvokeAsync` on the Compress interceptor, and then finally the Compress interceptor calls `InvokeAsync` on the client
+interceptor to execute. With the pipeline we created above, the logger interceptor executes first, then calls
+`InvokeAsync` on the compress interceptor, and then finally the compress interceptor calls `InvokeAsync` on the client
 connection.
 
 ## Installing an interceptor with Dependency Injection
