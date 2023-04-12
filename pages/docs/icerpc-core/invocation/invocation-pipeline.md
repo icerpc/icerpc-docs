@@ -46,8 +46,8 @@ It is common to perform additional processing on an invocation before giving it 
 want to compress the payloads of your requests, add a telemetry field to each request, add a timeout or deadline, or
 simply add logging.
 
-A invoker implementation can call `invoke` on another invoker, which itself calls `invoke` on another invoker, etc.; the
-invoker used to make an invocation can be the head of a invoker chain or tree, known as a "invocation pipeline".
+An invoker implementation can call `invoke` on another invoker, which itself calls `invoke` on another invoker, etc.;
+the invoker used to make an invocation can be the head of an invoker chain or tree, known as a "invocation pipeline".
 
 There are 3 common types of invokers:
 
