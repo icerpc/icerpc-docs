@@ -37,6 +37,10 @@
     @apply my-1 text-black dark:text-white;
   }
 
+  h3 {
+    @apply my-1 text-black dark:text-white;
+  }
+
   code {
     @apply rounded border-[1.5px] bg-slate-100 px-[0.375rem] py-1 font-mono text-xs font-medium shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] dark:border-darkBorder dark:bg-transparent dark:text-white;
   }

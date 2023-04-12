@@ -70,8 +70,12 @@ export const Document = ({ children, title, description, encoding }: Props) => {
           <>{children}</>
         )}
         <PageHistory path={path} encoding={currentEncoding} />
-        <Divider />
-        <Feedback />
+        {isDocs && (
+          <>
+            <Divider />
+            <Feedback />
+          </>
+        )}
       </article>
       {isDocs && TableOfContents(toc)}
     </div>

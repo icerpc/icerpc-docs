@@ -3,10 +3,9 @@
 export const Hero = () => {
   return (
     <div className="flex flex-col text-center">
-      <h1 className="mb-2 text-8xl font-semibold leading-tight tracking-tighter">
-        The best way to{' '}
+      <h1 className="mb-2	 text-8xl font-extrabold leading-tight tracking-tighter dark:text-white">
         <span className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
-          network
+          Network
         </span>{' '}
         your software
       </h1>

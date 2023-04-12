@@ -32,9 +32,11 @@ export const SupportedEncodings = ({ supported }: Props) => {
               key={encoding}
               onClick={() => updateEncoding(encoding)}
               className={clsx(
-                'flex flex-row items-center justify-center rounded-full border px-3 py-1 text-sm font-medium leading-5',
-                'border-lightBorder dark:border-darkBorder',
-                encoding == currentEncoding ? 'border-primary text-primary' : ''
+                'flex flex-row items-center justify-center rounded-xl border px-3 py-1 text-sm font-medium leading-5',
+                'border-lightBorder dark:border-darkBorder dark:bg-black ',
+                encoding == currentEncoding
+                  ? 'border-primary text-primary'
+                  : 'dark:text-white/40'
               )}
             >
               {encoding}

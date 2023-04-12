@@ -2,7 +2,7 @@
 
 import { Tab } from '@headlessui/react';
 import { useEncoding } from 'context/state';
-import { Encoding, encodings } from 'types';
+import { encodings } from 'types';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -43,13 +43,13 @@ export const SliceSelector = () => {
                 key={encoding}
                 className={({ selected }) =>
                   classNames(
-                    'w-full rounded-lg border-[1.5px] bg-white px-2 py-2 text-xs font-medium uppercase',
+                    'w-full rounded-xl border-[1.5px] bg-white px-2 py-2 text-xs font-medium uppercase',
                     'text-sm leading-tight focus:outline-none focus:ring-0',
                     'transition-shadow  duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg',
                     'dark:bg-[#32363c] dark:text-white',
                     selected
                       ? 'border-1 border-primary bg-white text-primary dark:border-white dark:text-primary'
-                      : 'bg-slate-50 text-slate-500 hover:bg-opacity-80 hover:text-primary dark:border-darkBorder'
+                      : 'bg-slate-50 text-slate-500 hover:bg-opacity-80 hover:text-primary dark:border-darkBorder dark:text-white/40'
                   )
                 }
               >
