@@ -8,7 +8,6 @@ import App, { AppContext } from 'next/app';
 import clsx from 'clsx';
 import ErrorPage from 'next/error';
 import Head from 'next/head';
-import type { Metadata } from 'next';
 
 import '/public/globals.css';
 import 'components/prism-coldark.css';
@@ -37,7 +36,6 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
   const { markdoc } = pageProps;
   const router = useRouter();
   const isDocs = router.asPath.startsWith('/docs');
-
   // Get current hostname and port for og:image
   const hostname = typeof window !== 'undefined' ? window.location.origin : '';
 

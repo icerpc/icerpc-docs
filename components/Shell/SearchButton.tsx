@@ -52,7 +52,22 @@ export const SearchButton = ({ className }: Props) => {
           :global(.DocSearch-Button) {
             background: none;
             box-shadow: none;
-            width: 35px;
+            width: 50px;
+          }
+        }
+
+        // Breakpoint for the search button to remove background and box shadow when the screen is medium
+        @media (min-width: 768px) and (max-width: 1024px) {
+          :global(.DocSearch-Button-Keys) {
+            padding-top: 2px;
+          }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+          :global(.DocSearch-Button) {
+            background: none;
+            box-shadow: none;
+            width: 150px;
           }
         }
 
@@ -98,6 +113,8 @@ export const SearchButton = ({ className }: Props) => {
           :global(.DocSearch-Search-Icon) {
             padding: 1px;
             margin-top: 2px;
+            margin-bottom: 2px;
+            margin-left: 4px;
           }
         }
 
