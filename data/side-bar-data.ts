@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { Encoding, SideBarSourceType, isCategory, isLink } from 'types';
+import { SideBarSourceType, Encoding, isCategory, isLink } from 'types';
 import {
   slice1Data,
   slice2Data,

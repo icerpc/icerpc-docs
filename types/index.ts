@@ -1,5 +1,5 @@
 // Copyright (c) ZeroC, Inc.
 
-export * from './platform.d';
-export * from './encoding.d';
+export * from './platform';
+export * from './encoding';
 export * from './side-bar';
