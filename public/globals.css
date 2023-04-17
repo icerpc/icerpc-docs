@@ -13,10 +13,6 @@
 }
 
 @layer base {
-  html {
-    @apply bg-[#FAFAFA];
-  }
-
   main article h1 {
     @apply text-3xl;
   }
