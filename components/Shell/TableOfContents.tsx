@@ -192,7 +192,9 @@ const ListItem = ({ item, activeId }: ListItemProps) => {
             : ''
         )}
       >
-        {item.level > 2 && <ChevronRightIcon className="w-4 h-4 mt-[2px] mx-2 shrink-0" />}
+        {item.level > 2 && (
+          <ChevronRightIcon className="mx-2 mt-[2px] h-4 w-4 shrink-0" />
+        )}
         {item.title}
       </Link>
     </li>
