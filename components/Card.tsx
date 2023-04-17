@@ -28,7 +28,7 @@ export const MiniCard = ({ title, description, href }: MiniCardProps) => {
   return (
     <Link
       href={href}
-      className="h-[170px] gap-2 rounded-md border-[1px] bg-white p-4 transition-shadow duration-300  ease-in-out hover:scale-[1.01] hover:shadow-lg dark:border-darkBorder dark:bg-black"
+      className="h-fit min-h-[100px] gap-2 rounded-md border-[1px] bg-white p-4 transition-shadow duration-300 ease-in-out  hover:scale-[1.01] hover:shadow-lg dark:border-darkBorder dark:bg-black md:min-h-[150px]"
     >
       <h4 className="m-0 pt-[0.5rem] font-semibold text-primary dark:text-white">
         {title}
@@ -76,7 +76,7 @@ interface CardProps {
 export const Card = ({ title, description, icon, link }: CardProps) => {
   return (
     <Link key={title} href={link} style={{ textDecoration: 'None' }}>
-      <div className="flex h-[15rem] flex-col rounded-md border-[1px] bg-white p-4 transition-shadow duration-300  ease-in-out hover:scale-[1.01] hover:shadow-lg dark:border-darkBorder dark:bg-black">
+      <div className="flex h-fit flex-col rounded-md border-[1px] bg-white p-4 transition-shadow duration-300 ease-in-out  hover:scale-[1.01] hover:shadow-lg dark:border-darkBorder dark:bg-black md:h-[15rem]">
         <IconContext.Provider value={{ size: '1.5em' }}>
           <div style={{ padding: '1rem 0' }}>{Icon(icon)}</div>
         </IconContext.Provider>

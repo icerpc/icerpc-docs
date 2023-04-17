@@ -3,6 +3,7 @@
 import React, { ReactNode } from 'react';
 import { BsBoxArrowUpRight, BsArrowRight } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
+import clsx from 'clsx';
 
 interface Props {
   children: ReactNode;
@@ -11,21 +12,13 @@ interface Props {
   trailinglink?: { label: string; link: string };
 }
 
-export const Grid = ({ children, columns, rows, trailinglink }: Props) => {
+export const Grid = ({ children, trailinglink }: Props) => {
   // TODO: Add support for detecting external links.
   // eslint-disable-next-line no-unused-vars
   const isExternalURL = (_url: string) => {
     return true;
   };
 
-  const gridStyle = {
-    display: 'grid',
-    gridTemplateColumns: `repeat(${columns}, 1fr)`,
-    gridTemplateRows: `repeat(${rows}, 1fr)`,
-    gridGap: '1em',
-    paddingTop: '0.5em',
-    paddingBottom: '0.5em'
-  };
   const bottomStyle = {
     display: 'flex',
     justifyContent: 'flex-end',
@@ -39,7 +32,11 @@ export const Grid = ({ children, columns, rows, trailinglink }: Props) => {
 
   return (
     <>
-      <div key={children!.toString()} style={gridStyle}>
+      <div
+        key={children!.toString()}
+        // eslint-disable-next-line tailwindcss/no-custom-classname, tailwindcss/classnames-order
+        className={clsx('grid gap-4', `grid-cols-1 md:grid-cols-3`)}
+      >
         {React.Children.toArray(children).map((child, index) => {
           return <React.Fragment key={index}>{child}</React.Fragment>;
         })}

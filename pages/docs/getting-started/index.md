@@ -17,7 +17,7 @@ sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 ### Quick Links
 
-{% grid rows=1 columns=3 %}
+{% grid %}
 
 {% card
    title="What is IceRPC"

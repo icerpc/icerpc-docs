@@ -33,7 +33,7 @@ You will only see me when Slice1 is selected
 
 ### Quick Links
 
-{% grid rows=2 columns=3 %}
+{% grid %}
 
 {% mini-card title="Lexical Rules" description="An introduction to the Lexical Rules of Slice" href="/docs/slice/syntax/lexical-rules" /%}
 {% mini-card title="Source Files" description="How Slice files are structured" href="/docs/slice/syntax/source-files" /%}
