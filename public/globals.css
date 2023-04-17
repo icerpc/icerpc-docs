@@ -21,6 +21,10 @@
     @apply text-2xl;
   }
 
+  main article p {
+    @apply prose-sm;
+  }
+
   li {
     @apply leading-[1.7rem] dark:text-[rgba(255,255,255,0.8)];
   }
