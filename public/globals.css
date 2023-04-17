@@ -21,6 +21,10 @@
     @apply text-2xl;
   }
 
+  main article h2 {
+    @apply text-lg;
+  }
+
   main article p {
     @apply prose-sm;
   }

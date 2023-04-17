@@ -157,10 +157,10 @@ The format of the replyPayload depends on the reply status:
 | NotExist exceptions | A RequestFailedData encoded with Slice1.                              |  |
 | Unknown exceptions  | The response's error message encoded with Slice1.                     |
 
-_RequestFailedData_
+### RequestFailedData
 
 RequestFailedData is a struct that holds the request's path, fragment and operation. The path is encoded as an Identity
-and the fragment is encoded as a sequence<string>:
+and the fragment is encoded as a `sequence<string>`:
 
 ```slice
 encoding = 1
@@ -178,7 +178,7 @@ sending a response with status code ServiceNotFound or OperationNotFound in an i
 When IceRPC receives an ice response with a NotExist reply status, it decodes the RequestFailedData to create the
 response's error message and then discards this RequestFailedData.
 
-_Error message_
+### Error message
 
 When the response's status code is ApplicationError, ServiceNotFound or OperationNotFound, the ice protocol does not
 provide a mechanism to transmit the response's error message. As a result, the error message is not sent to the peer
@@ -209,6 +209,7 @@ encoding used to encode their payloads.
 
 For compatibility with Ice, the IceRPC core always encodes 1.1 (on 2 bytes) as the Ice/Slice encoding version in
 encapsulations even though the IceRPC core doesn't know anything about payload encoding. That's because:
+
 - if this encapsulation is received by an Ice application, the only encoding supported by both Ice and IceRPC is Slice1
 aka the Ice/Slice encoding version 1.1.
 - if this encapsulation is received by an IceRPC application, this 1.1 version is ignored.

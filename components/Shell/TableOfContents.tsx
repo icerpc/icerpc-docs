@@ -8,7 +8,8 @@ import { AppLink } from 'components/Nodes/AppLink';
 import { Divider } from 'components/Divider';
 import {
   Bars3BottomLeftIcon,
-  ArrowUpCircleIcon
+  ArrowUpCircleIcon,
+  ChevronRightIcon
 } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
 
@@ -171,22 +172,27 @@ interface ListItemProps {
 
 const ListItem = ({ item, activeId }: ListItemProps) => {
   const href = `#${item.id}`;
+  const leftPadding = (() => {
+    switch (item.level) {
+      case 3:
+        return '-ml-1';
+      default:
+        return '';
+    }
+  })();
   return (
-    <li
-      key={item.id}
-      className={['mb-4 pr-4 text-sm', item.level === 3 ? 'padded' : undefined]
-        .filter(Boolean)
-        .join(' ')}
-    >
+    <li key={item.id} className={clsx('mb-4 pr-4 text-sm', leftPadding)}>
       <Link
         href={href}
+        // eslint-disable-next-line tailwindcss/no-custom-classname
         className={clsx(
-          'text-inherit',
+          'flex items-start text-inherit',
           activeId === item.id
             ? 'text-primary dark:font-semibold dark:text-white'
             : ''
         )}
       >
+        {item.level > 2 && <ChevronRightIcon className="w-4 h-4 mt-[2px] mx-2 shrink-0" />}
         {item.title}
       </Link>
     </li>
