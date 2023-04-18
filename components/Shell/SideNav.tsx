@@ -102,7 +102,7 @@ function transformSideBarData(
   }
 }
 
-interface SideNavProps {
+type SideNavProps = {
   path: string;
 }
 
@@ -149,10 +149,10 @@ export const SideNav = ({ path }: SideNavProps) => {
   );
 };
 
-interface MobileSideNavProps {
+type MobileSideNavProps = {
   pathname: string;
   encoding?: Encoding;
-}
+};
 
 export function MobileSideNav({ pathname }: MobileSideNavProps) {
   const [isOpen, setIsOpen] = useState(false);
