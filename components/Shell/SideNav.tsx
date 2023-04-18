@@ -104,7 +104,7 @@ function transformSideBarData(
 
 type SideNavProps = {
   path: string;
-}
+};
 
 export const SideNav = ({ path }: SideNavProps) => {
   const [data, setData] = useState<SideBarSourceType[]>([]);

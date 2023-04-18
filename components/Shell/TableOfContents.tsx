@@ -184,7 +184,6 @@ const ListItem = ({ item, activeId }: ListItemProps) => {
     <li key={item.id} className={clsx('mb-4 pr-4 text-sm', leftPadding)}>
       <Link
         href={href}
-        // eslint-disable-next-line tailwindcss/no-custom-classname
         className={clsx(
           'flex items-start text-inherit',
           activeId === item.id

@@ -1,18 +1,18 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import lightIcon from 'public/images/Light-Icon.svg';
-import darkIcon from 'public/images/Dark-Icon.svg';
-import Image from 'next/image';
-
+import { clsx } from 'clsx';
 import { FaGithub } from 'react-icons/fa';
 import { useRouter } from 'next/router';
-import { ThemeToggle } from 'components/ThemeToggle';
-import { clsx } from 'clsx';
 import { useTheme } from 'next-themes';
-import { MobileSideNav } from '../SideNav';
+import darkIcon from 'public/images/Dark-Icon.svg';
+import Image from 'next/image';
+import lightIcon from 'public/images/Light-Icon.svg';
+import Link from 'next/link';
+
 import { MobileMenu } from './MobileMenu';
+import { MobileSideNav } from '../SideNav';
+import { ThemeToggle } from 'components/ThemeToggle';
+import { useMounted } from 'context/state';
 
 export const navigationItems = [
   {
@@ -84,12 +84,8 @@ export const TopNav = () => {
 };
 
 const Logo = () => {
-  const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   if (!mounted) {
     return null;

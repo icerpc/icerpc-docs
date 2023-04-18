@@ -1,14 +1,12 @@
 // Copyright (c) ZeroC, Inc.
 
-import { Tab } from '@headlessui/react';
-import { useEncoding } from 'context/state';
-import { encodings } from 'types';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { Tab } from '@headlessui/react';
+import clsx from 'clsx';
 
-const classNames = (...classes: string[]) => {
-  return classes.filter(Boolean).join(' ');
-};
+import { useEncoding } from 'context/state';
+import { Encoding, encodings } from 'types';
 
 export const SliceSelector = () => {
   const { encoding: currentEncoding, setEncoding } = useEncoding();
@@ -19,10 +17,11 @@ export const SliceSelector = () => {
   );
 
   function onChange(index: number) {
-    setEncoding(encodings[index]);
+    const encoding = encodings[index];
+    setEncoding(encoding);
     router.push({
       pathname: router.pathname,
-      query: { ...router.query, encoding: encodings[index] }
+      query: { ...router.query, encoding }
     });
   }
 
@@ -38,23 +37,12 @@ export const SliceSelector = () => {
         </h2>
         <Tab.Group selectedIndex={selectedIndex} onChange={onChange}>
           <Tab.List className="my-4 flex gap-0 space-x-1 rounded-2xl bg-transparent">
-            {encodings.map((encoding) => (
-              <Tab
+            {encodings.map((encoding, index) => (
+              <EncodingTab
                 key={encoding}
-                className={({ selected }) =>
-                  classNames(
-                    'w-full rounded-xl border-[1.5px] bg-white px-2 py-2 text-xs font-medium uppercase',
-                    'text-sm leading-tight focus:outline-none focus:ring-0',
-                    'transition-shadow  duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg',
-                    'dark:bg-[#32363c] dark:text-white',
-                    selected
-                      ? 'border-1 border-primary bg-white text-primary dark:border-white dark:text-primary'
-                      : 'bg-slate-50 text-slate-500 hover:bg-opacity-80 hover:text-primary dark:border-darkBorder dark:text-white/40'
-                  )
-                }
-              >
-                {encoding}
-              </Tab>
+                encoding={encoding}
+                selected={index === selectedIndex}
+              />
             ))}
           </Tab.List>
         </Tab.Group>
@@ -62,4 +50,23 @@ export const SliceSelector = () => {
       <div className="mt-4 w-full border-t-[1px] border-lightBorder dark:border-darkBorder" />
     </>
   );
+};
+
+type EncodingTabProps = {
+  encoding: Encoding;
+  selected: boolean;
+};
+
+const EncodingTab = ({ encoding, selected }: EncodingTabProps) => {
+  const className = clsx(
+    'w-full rounded-xl border-[1.5px] bg-white p-2 text-xs font-medium uppercase leading-tight',
+    'focus:outline-none focus:ring-0',
+    'transition-shadow duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg',
+    'dark:bg-[#32363c] dark:text-white',
+    selected
+      ? 'border border-primary bg-white text-primary dark:border-white dark:text-primary'
+      : 'bg-slate-50 text-slate-500 hover:bg-white/80 hover:text-primary dark:border-darkBorder dark:text-white/40'
+  );
+
+  return <Tab className={className}>{encoding}</Tab>;
 };
