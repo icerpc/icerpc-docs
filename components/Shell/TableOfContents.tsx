@@ -46,7 +46,7 @@ function useActiveId(itemIds: string[]) {
     );
 
     itemIds.forEach((id) => {
-      let element = document.getElementById(id);
+      const element = document.getElementById(id);
       if (element) {
         observer.observe(element);
       }
@@ -54,7 +54,7 @@ function useActiveId(itemIds: string[]) {
 
     return () => {
       itemIds.forEach((id) => {
-        let element = document.getElementById(id);
+        const element = document.getElementById(id);
         if (element) {
           observer.unobserve(element);
         }

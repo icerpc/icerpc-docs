@@ -106,11 +106,11 @@ export const FeedbackForm = ({ title, options }: Props) => {
   const { platform } = usePlatform();
   const pageTitle = window.document.title;
 
-  let [selected, setSelected] = useState<number>();
-  let [email, setEmail] = useState<string>();
-  let [comment, setComment] = useState<string>();
-  let [opacity, setOpacity] = useState('opacity-0');
-  let [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+  const [selected, setSelected] = useState<number>();
+  const [email, setEmail] = useState<string>();
+  const [comment, setComment] = useState<string>();
+  const [opacity, setOpacity] = useState('opacity-0');
+  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -211,9 +211,8 @@ export const FeedbackForm = ({ title, options }: Props) => {
             setFeedbackSubmitted(true);
 
             // Get the option that was selected
-            const selectedOption = options.find(
-              (option) => option.id == selected
-            )!;
+            const selectedOption =
+              options.find((option) => option.id == selected) ?? options[0];
 
             // Send the feedback to the server
             sendFeedback({

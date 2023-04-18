@@ -18,7 +18,6 @@ import {
   isLink
 } from 'types';
 import { Divider } from 'components/Divider';
-import { Breadcrumb } from 'components/Breadcrumbs';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { getBreadcrumbs } from 'components/Title';
 import { SearchButton } from './SearchButton';
@@ -26,8 +25,8 @@ import { SearchButton } from './SearchButton';
 function createListItem(
   router: NextRouter,
   link: SideBarLink | SideBarDivider,
-  noLeftPadding: Boolean = false,
-  onClick: () => void = () => {}
+  noLeftPadding = false,
+  onClick: React.MouseEventHandler<HTMLAnchorElement> | undefined
 ): React.ReactElement {
   const leftPadding = noLeftPadding ? 'ml-0' : 'ml-3';
 
@@ -65,7 +64,7 @@ function createListItem(
 function transformSideBarData(
   router: NextRouter,
   data: SideBarSourceType,
-  onClick: () => void = () => {}
+  onClick: React.MouseEventHandler<HTMLAnchorElement> | undefined = undefined
 ): React.ReactElement[] {
   if (isCategory(data)) {
     const category = data;
@@ -112,7 +111,7 @@ export const SideNav = ({ path }: SideNavProps) => {
   const { encoding: currentEncoding } = useEncoding();
   const router = useRouter();
 
-  let baseUrl = baseUrls.find((item) => path.startsWith(item))!;
+  const baseUrl = baseUrls.find((item) => path.startsWith(item)) ?? '';
   useEffect(() => {
     const links = sideBarData(baseUrl, currentEncoding) ?? [];
     setData(links);
@@ -121,7 +120,7 @@ export const SideNav = ({ path }: SideNavProps) => {
     };
   }, [setData, path, currentEncoding, baseUrl]);
 
-  let cells = data.map((item) => {
+  const cells = data.map((item) => {
     return transformSideBarData(router, item);
   });
 
@@ -162,7 +161,7 @@ export function MobileSideNav({ pathname }: MobileSideNavProps) {
   const breadcrumbs = getBreadcrumbs(pathname, currentEncoding);
   const router = useRouter();
 
-  let baseUrl = baseUrls.find((item) => pathname.startsWith(item))!;
+  const baseUrl = baseUrls.find((item) => pathname.startsWith(item)) ?? '';
 
   useEffect(() => {
     const links = sideBarData(baseUrl, currentEncoding) ?? [];
@@ -172,7 +171,7 @@ export function MobileSideNav({ pathname }: MobileSideNavProps) {
     };
   }, [setData, pathname, currentEncoding, baseUrl]);
 
-  let cells = data.map((item) => {
+  const cells = data.map((item) => {
     return transformSideBarData(router, item, () => setIsOpen(false));
   });
 

@@ -16,7 +16,7 @@ enum FeedbackType {
 
 export const Feedback = () => {
   // Undefined means the user has not yet clicked a feedback button
-  let [feedbackType, setFeedbackType] = useState<FeedbackType>();
+  const [feedbackType, setFeedbackType] = useState<FeedbackType>();
 
   switch (feedbackType) {
     case FeedbackType.Negative:

@@ -13,12 +13,6 @@ interface Props {
 }
 
 export const Grid = ({ children, trailinglink }: Props) => {
-  // TODO: Add support for detecting external links.
-  // eslint-disable-next-line no-unused-vars
-  const isExternalURL = (_url: string) => {
-    return true;
-  };
-
   const bottomStyle = {
     display: 'flex',
     justifyContent: 'flex-end',
@@ -29,12 +23,14 @@ export const Grid = ({ children, trailinglink }: Props) => {
     padding: '1.5em',
     paddingRight: '0'
   };
+  const isExternalURL = (url: string) => {
+    return url.startsWith('http');
+  };
 
   return (
     <>
       <div
-        key={children!.toString()}
-        // eslint-disable-next-line tailwindcss/no-custom-classname, tailwindcss/classnames-order
+        key={children?.toString() ?? 'grid'}
         className={clsx('grid gap-4', `grid-cols-1 md:grid-cols-3`)}
       >
         {React.Children.toArray(children).map((child, index) => {

@@ -5,9 +5,8 @@ import { Platform, Platforms } from 'types';
 import { usePlatform } from 'context/state';
 import { clsx } from 'clsx';
 
-export const LanguageContext = React.createContext([]);
+export const LanguageContext = React.createContext<Platform | null>(null);
 
-// eslint-disable-next-line no-unused-vars
 export const LanguageSelector = () => {
   const { platform, setPlatform } = usePlatform();
   const [currentTab, setCurrentTab] = React.useState(platform);
@@ -26,7 +25,7 @@ export const LanguageSelector = () => {
   }, [platform]);
 
   return (
-    <LanguageContext.Provider value={currentTab as any}>
+    <LanguageContext.Provider value={currentTab}>
       <ul className="flex flex-row items-center">
         {Platforms.map((label) => (
           <li key={label}>

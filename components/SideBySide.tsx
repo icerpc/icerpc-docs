@@ -37,7 +37,6 @@ export function SideBySide({ children, weighted, alignment }: SideBySideProps) {
       className={`relative my-4 flex flex-row overflow-auto p-0 py-2 ${itemAlignment}`}
     >
       <LeftColumn>{leftContent}</LeftColumn>
-      {/* A verticle divider that fill height */}
       <div className="absolute left-[50%] my-auto mb-4 h-[90%] w-px bg-lightBorder dark:bg-darkBorder" />
       <RightColumn>{rightContent}</RightColumn>
     </div>

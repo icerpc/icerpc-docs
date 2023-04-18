@@ -7,18 +7,16 @@ import { BsTerminalFill } from 'react-icons/bs';
 import { clsx } from 'clsx';
 import copy from 'copy-to-clipboard';
 import Highlight, { Language, defaultProps } from 'prism-react-renderer';
-
-// ts-ignore is required for the following line because the package doesn't have types
-// @ts-ignore
-import Prism from 'prism-react-renderer/prism';
 import dynamic from 'next/dynamic';
 import { IconContext } from 'react-icons';
 import { useEncoding } from 'context/state';
 import { Encoding } from 'types';
+// @ts-ignore
+import Prism from 'prism-react-renderer/prism';
 const MermaidDiagram = dynamic(() => import('components/Mermaid'), {
   ssr: false
 });
-// @ts-ignore
+
 (typeof global !== 'undefined' ? global : window).Prism = Prism;
 
 require('prismjs/components/prism-rust');
@@ -169,18 +167,6 @@ interface LineContentProps {
 
 const LineContent = ({ children }: LineContentProps) => {
   return <div className="table-cell max-w-0 py-[3px] text-xs">{children}</div>;
-};
-
-interface LineNumberProps {
-  number: number;
-}
-
-const LineNumber = ({ number }: LineNumberProps) => {
-  return (
-    <div className="table-cell select-none py-[1px] pr-4 text-right text-xs opacity-50">
-      {number}
-    </div>
-  );
 };
 
 interface TopBarProps {
