@@ -5,14 +5,11 @@ description: Understand the service address concept and syntax.
 
 ## Syntax
 
-A service address is a [URI](https://www.rfc-editor.org/rfc/rfc3986.html).
+A service address is a [URI](https://www.rfc-editor.org/rfc/rfc3986.html). When it's an absolute URI, its scheme is
+either ice or icerpc. When it's a relative URI, we call this service address a "relative service address". A relative
+service address has an absolute path and nothing else--no query parameter, no fragment.
 
-If it's a relative URI, we call this service address a relative service address. A relative service address must have an
-absolute path and nothing else--no query parameter, no fragment.
-
-The URI scheme of an absolute service address denotes the protocol to use to reach the target service. IceRPC supports
-two protocols: ice and icerpc. A service address with another protocol/scheme is accepted even though IceRPC can't use
-this address to send an invocation to the service; a newer version of IceRPC may understand this protocol.
+The URI scheme of an absolute service address identifies the protocol to use to reach the target service.
 
 The path of a service address allows the server to route requests to the desired service.
 
@@ -20,11 +17,12 @@ An ice or icerpc service address may include one or more [server addresses](../c
 addresses are used to establish or locate a connection to a server that hosts the service.
 
 {% callout type="information" %}
-The scheme of a server address is always ice or icerpc. No other scheme is currently accepted.
+The protocol of a server address is always the same as the protocol of the enclosing service address.
 {% /callout %}
 
-An ice or icerpc service address without a server address can have query parameters. And lastly, an ice service address
-can have a fragment; this fragment corresponds to an Ice facet.
+An ice or icerpc service address without a server address can have query parameters.
+
+And finally, an ice service address can have a fragment; this fragment corresponds to an Ice facet.
 
 In C#, record class `ServiceAddress` is a parsed and validated representation of a service address URI: it holds exactly
 the same information.
@@ -90,7 +88,6 @@ Here, the query parameters are properties of the service address itself. For exa
 
 ```
 icerpc:/hello
-
 ice:/hello?adapter-id=greeter-union
 ```
 
