@@ -10,12 +10,12 @@ import { useEncoding } from 'context/state';
 import { PageHistory, TableOfContents, Feedback } from 'components/Shell';
 import { collectHeadings } from 'utils/collectHeadings';
 
-interface Props {
+type Props = {
   children: ReactElement[];
   title: string;
   description: string;
   encoding?: Encoding;
-}
+};
 
 export const Document = ({ children, title, description, encoding }: Props) => {
   const { encoding: currentEncoding, setEncoding } = useEncoding();

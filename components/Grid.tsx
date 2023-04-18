@@ -5,12 +5,12 @@ import { BsBoxArrowUpRight, BsArrowRight } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
 import clsx from 'clsx';
 
-interface Props {
+type Props = {
   children: ReactNode;
   columns: number;
   rows: number;
   trailinglink?: { label: string; link: string };
-}
+};
 
 export const Grid = ({ children, trailinglink }: Props) => {
   const bottomStyle = {

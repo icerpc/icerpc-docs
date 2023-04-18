@@ -22,7 +22,7 @@ const PlatformContext = createContext<PlatformContextType>({
   setPlatform: () => {}
 });
 
-interface Props {
+type Props = {
   children: ReactNode;
 }
 

@@ -36,10 +36,10 @@ export const MobileMenu = () => {
   );
 };
 
-interface TopMenuModalProps {
+type TopMenuModalProps = {
   isOpen: boolean;
   closeModal: () => void;
-}
+};
 
 export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
   return (

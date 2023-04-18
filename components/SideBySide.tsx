@@ -2,9 +2,9 @@
 
 import { ReactNode } from 'react';
 
-interface Props {
+type Props = {
   children: ReactNode;
-}
+};
 
 const LeftColumn = ({ children }: Props) => (
   <div className="my-0 flex w-full flex-col py-2 pr-5 [&>p]:mb-2">
@@ -18,13 +18,13 @@ const RightColumn = ({ children }: Props) => (
   </div>
 );
 
-interface SideBySideProps {
+type SideBySideProps = {
   children: ReactNode[];
   // Can be "left" or "right"
   weighted: string;
   // Can be "top" or "center"
   alignment?: string;
-}
+};
 
 export function SideBySide({ children, weighted, alignment }: SideBySideProps) {
   const spliceIndex = weighted === 'right' ? 1 : children.length - 1;

@@ -13,11 +13,11 @@ import {
 } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
 
-export interface TOCItem {
+export type TOCItem = {
   id: string;
   title: string;
   level: number;
-}
+};
 
 const resolvePath = (pathName: string): string => {
   return ['/docs/getting-started', '/docs/rpc', '/docs/slice'].includes(
@@ -150,10 +150,10 @@ export const TableOfContents = (toc: TOCItem[]) => {
   );
 };
 
-interface MoreItemProps {
+type MoreItemProps = {
   href: string;
   children: ReactNode;
-}
+};
 
 const MoreItem = ({ href, children }: MoreItemProps) => {
   return (
@@ -165,10 +165,10 @@ const MoreItem = ({ href, children }: MoreItemProps) => {
   );
 };
 
-interface ListItemProps {
+type ListItemProps = {
   item: TOCItem;
   activeId: string;
-}
+};
 
 const ListItem = ({ item, activeId }: ListItemProps) => {
   const href = `#${item.id}`;

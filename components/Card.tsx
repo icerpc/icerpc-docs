@@ -18,11 +18,11 @@ function Icon(icon: string) {
   }
 }
 
-interface MiniCardProps {
+type MiniCardProps = {
   title: string;
   description: string;
   href: string;
-}
+};
 
 export const MiniCard = ({ title, description, href }: MiniCardProps) => {
   return (
@@ -38,10 +38,10 @@ export const MiniCard = ({ title, description, href }: MiniCardProps) => {
   );
 };
 
-interface MiniLinkProps {
+type MiniLinkProps = {
   title: string;
   link: string;
-}
+};
 
 export const MiniLink = ({ title, link }: MiniLinkProps) => {
   return (
@@ -66,12 +66,12 @@ export const MiniLink = ({ title, link }: MiniLinkProps) => {
   );
 };
 
-interface CardProps {
+type CardProps = {
   title: string;
   description: string;
   icon: string;
   link: string;
-}
+};
 
 export const Card = ({ title, description, icon, link }: CardProps) => {
   return (

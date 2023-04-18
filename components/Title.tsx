@@ -7,10 +7,10 @@ import { Breadcrumbs, Breadcrumb } from 'components/Breadcrumbs';
 import { SideBarLink, Encoding, isCategory, isLink } from 'types';
 import { useEncoding } from 'context/state';
 
-interface Props {
+type Props = {
   title: string;
   description: string;
-}
+};
 
 export const Title = ({ title, description }: Props) => {
   const { encoding } = useEncoding();

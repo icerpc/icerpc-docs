@@ -4,10 +4,10 @@ import { useEncoding } from 'context/state';
 import React, { useEffect, ReactNode } from 'react';
 import { Encoding } from 'types';
 
-interface Props {
+type Props = {
   encoding: Encoding;
   children: ReactNode;
-}
+};
 
 export const EncodingSection = ({ encoding, children }: Props) => {
   if (!Object.values(Encoding).includes(encoding)) {

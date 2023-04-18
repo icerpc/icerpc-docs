@@ -7,10 +7,10 @@ import Link from 'next/link';
 import React from 'react';
 import queryString from 'query-string';
 
-interface Props {
+type Props = {
   path: string;
   encoding: Encoding;
-}
+};
 
 const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;

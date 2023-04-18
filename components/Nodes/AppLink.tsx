@@ -4,13 +4,13 @@ import { ReactNode, CSSProperties } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 
-interface Props {
+type Props = {
   href: string;
   target?: string;
   className?: string;
   style?: CSSProperties;
   children: ReactNode;
-}
+};
 
 export const AppLink = (props: Props) => {
   const target =

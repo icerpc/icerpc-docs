@@ -3,14 +3,12 @@
 import React from 'react';
 import Link from 'next/link';
 
-interface Props {
-  breadcrumbs: Breadcrumb[];
-}
-
-export interface Breadcrumb {
+export type Breadcrumb = {
   name: string;
   href: string;
-}
+};
+
+type Props = { breadcrumbs: Breadcrumb[] };
 
 export const Breadcrumbs = ({ breadcrumbs }: Props) => {
   return (

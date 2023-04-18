@@ -7,12 +7,12 @@ import copy from 'copy-to-clipboard';
 
 import { Divider } from 'components/Divider';
 
-interface Props {
+type Props = {
   id?: string;
   level: 1 | 2 | 3 | 4;
   children: ReactNode;
   className?: string;
-}
+};
 
 export const Heading = ({ id = '', level = 1, children }: Props) => {
   const router = useRouter();

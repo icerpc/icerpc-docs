@@ -5,9 +5,9 @@ import { useEncoding } from 'context/state';
 import { useRouter } from 'next/router';
 import { Encoding } from 'types';
 
-interface Props {
+type Props = {
   supported: Encoding[];
-}
+};
 
 export const SupportedEncodings = ({ supported }: Props) => {
   const { encoding: currentEncoding, setEncoding } = useEncoding();

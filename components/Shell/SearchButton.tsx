@@ -15,9 +15,9 @@ function Search() {
   );
 }
 
-interface Props {
+type Props = {
   className?: string;
-}
+};
 
 export const SearchButton = ({ className }: Props) => {
   const { resolvedTheme } = useTheme();

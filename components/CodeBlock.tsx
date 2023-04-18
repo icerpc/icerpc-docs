@@ -7,12 +7,12 @@ import { BsTerminalFill } from 'react-icons/bs';
 import { clsx } from 'clsx';
 import copy from 'copy-to-clipboard';
 import Highlight, { Language, defaultProps } from 'prism-react-renderer';
+// @ts-ignore
+import Prism from 'prism-react-renderer/prism';
 import dynamic from 'next/dynamic';
 import { IconContext } from 'react-icons';
 import { useEncoding } from 'context/state';
 import { Encoding } from 'types';
-// @ts-ignore
-import Prism from 'prism-react-renderer/prism';
 const MermaidDiagram = dynamic(() => import('components/Mermaid'), {
   ssr: false
 });
@@ -58,12 +58,12 @@ Prism.languages.slice = {
     /\b(?:bool|int8|uint8|int16|uint16|int32|uint32|varint32|varuint32|int64|uint64|varint62|varuint62|float32|float64|string|Slice1|Slice2)\b/
 };
 
-interface Props {
+type Props = {
   children: string;
   'data-language'?: string;
   title?: string;
   addEncoding?: boolean;
-}
+};
 
 export const CodeBlock = ({
   children,
@@ -161,15 +161,15 @@ export const CodeBlock = ({
   );
 };
 
-interface LineContentProps {
+type LineContentProps = {
   children: ReactNode;
-}
+};
 
 const LineContent = ({ children }: LineContentProps) => {
   return <div className="table-cell max-w-0 py-[3px] text-xs">{children}</div>;
 };
 
-interface TopBarProps {
+type TopBarProps = {
   languageIcon: ReactNode;
   language?: string;
   title?: string;
@@ -177,7 +177,7 @@ interface TopBarProps {
   setCopied: (copied: boolean) => void;
   copied: boolean;
   children: ReactNode;
-}
+};
 
 const TopBar = ({
   languageIcon,

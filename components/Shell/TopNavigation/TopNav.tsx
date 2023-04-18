@@ -111,11 +111,11 @@ const Logo = () => {
   );
 };
 
-interface TopNavigationItemProps {
+type TopNavigationItemProps = {
   name: string;
   href: string;
   pathname: string;
-}
+};
 
 const TopNavigationItem = ({
   name,

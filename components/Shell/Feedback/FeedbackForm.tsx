@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Encoding, Platform } from 'types';
 
-export interface FeedbackData {
+export type FeedbackData = {
   option: string; // The title of the selected option
   path: string; // The path of the page the feedback was submitted from
   title: string; // The title of the page the feedback was submitted from
@@ -14,18 +14,18 @@ export interface FeedbackData {
   platform: Platform; // The user's currently selected platform
   additionalFeedback?: string; // Additional feedback from the user
   email?: string; // The user's email address
-}
+};
 
-interface FeedbackOption {
+type FeedbackOption = {
   title: string;
   description: string;
   id: number;
-}
+};
 
-interface Props {
+type Props = {
   title: string;
   options: FeedbackOption[];
-}
+};
 
 export const negativeFeedbackOptions: FeedbackOption[] = [
   {

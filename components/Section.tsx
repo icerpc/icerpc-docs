@@ -2,10 +2,10 @@
 
 import { ReactNode } from 'react';
 
-interface Props {
+type Props = {
   children: ReactNode;
   className?: string;
-}
+};
 
 export const Section = ({ children, className }: Props) => {
   return (
