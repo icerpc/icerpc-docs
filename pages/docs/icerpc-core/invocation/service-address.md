@@ -20,9 +20,7 @@ addresses are used to establish or locate a connection to a server that hosts th
 The protocol of a server address is always the same as the protocol of the enclosing service address.
 {% /callout %}
 
-An ice or icerpc service address without a server address can have query parameters.
-
-And finally, an ice service address can have a fragment; this fragment corresponds to an Ice facet.
+An absolute service address without a server address can have query parameters.
 
 And finally, an ice service address can have a fragment; this fragment corresponds to an Ice facet.
 
