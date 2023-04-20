@@ -5,31 +5,29 @@ description: Understand the service address concept and syntax.
 
 ## Syntax
 
-A service address is a [URI](https://www.rfc-editor.org/rfc/rfc3986.html).
+A service address is a [URI](https://www.rfc-editor.org/rfc/rfc3986.html). When it's an absolute URI, its scheme is
+either ice or icerpc. When it's a relative URI, we call this service address a "relative service address". A relative
+service address has an absolute path and nothing else--no query parameter, no fragment.
 
-If it's a relative URI, we call this service address a relative service address. A relative service address must have an
-absolute path and nothing else--no query parameter, no fragment.
-
-The URI scheme of an absolute service address denotes the protocol to use to reach the target service. IceRPC supports
-two protocols: ice and icerpc. A service address with another protocol/scheme is accepted even though IceRPC can't use
-this address to send an invocation to the service; a newer version of IceRPC may understand this protocol.
+The URI scheme of an absolute service address identifies the protocol to use to reach the target service.
 
 The path of a service address allows the server to route requests to the desired service.
 
-An ice or icerpc service address may include one or more [server addresses](../connection/server-address). These server
+An absolute service address may include one or more [server addresses](../connection/server-address). These server
 addresses are used to establish or locate a connection to a server that hosts the service.
 
 {% callout type="information" %}
-The scheme of a server address is always ice or icerpc. No other scheme is currently accepted.
+The protocol of a server address is always the same as the protocol of the enclosing service address.
 {% /callout %}
 
-An ice or icerpc service address without a server address can have query parameters. And lastly, an ice service address
-can have a fragment; this fragment corresponds to an Ice facet.
+An absolute service address without a server address can have query parameters.
 
-In C#, record class `ServiceAddress` is a parsed and validated representation of a service address URI: it holds exactly
-the same information.
+And finally, an ice service address can have a fragment; this fragment corresponds to an Ice facet.
 
-ice and icerpc service addresses can be divided in 3 categories:
+In C#, record class [`ServiceAddress`](https://api.testing.zeroc.com/csharp/api/IceRpc.ServiceAddress.html) is a parsed
+and validated representation of a service address URI: it holds exactly the same information.
+
+Service addresses can be divided in 4 categories:
 
 ## Service address with a single server address
 
@@ -77,9 +75,9 @@ For example:
 icerpc://hello.zeroc.com/hello?alt-server=bonjour.zeroc.com?transport=tcp$other=foo
 ```
 
-## Service address with no server address
+## Absolute service address with no server address
 
-A service address URI with no host does not specify a server address. Its syntax is:
+An absolute service address URI with no host does not specify a server address. Its syntax is:
 
 ```
 icerpc:/<path>[?<name>=<value>][&<name2>=<value2>][...]
@@ -90,11 +88,10 @@ Here, the query parameters are properties of the service address itself. For exa
 
 ```
 icerpc:/hello
-
 ice:/hello?adapter-id=greeter-union
 ```
 
-A server address-less service address is often used with a ClientConnection. Since a client connection is bound to a
+A server address-less service address is often used with a `ClientConnection`. Since a client connection is bound to a
 single server address, there is no need to repeat the server address when making an invocation with such a connection.
 
 For example:
@@ -109,3 +106,10 @@ using var request = new OutgoingRequest(new ServiceAddress(new Uri("icerpc:/hell
 // ClientConnection accepts requests that don't specify a server address
 IncomingResponse response = await connection.InvokeAsync(request);
 ```
+
+## Relative service address
+
+A relative service address consists of an absolute path. The IceRPC core does not consume relative service addresses;
+in particular, it's an error to create an outgoing request to a relative service address.
+
+Relative service addresses underpin [relative proxies]() in Slice.
