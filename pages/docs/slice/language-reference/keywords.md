@@ -3,6 +3,7 @@ title: Keywords
 ---
 
 [comment]: <> (TODO: add a link to 'identifiers::escaping' to the first paragraph)
+[comment]: <> (TODO: add links for each keyword to the page where it's talked about)
 [comment]: <> (TODO: Change the formatting of the keyword table so it has vertical bars)
 [comment]: <> (TODO: Can we allow header-less tables?)
 
