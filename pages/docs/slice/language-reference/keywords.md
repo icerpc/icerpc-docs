@@ -26,5 +26,5 @@ The following table lists all the keywords of the Slice language:
 | enum         | int64      | uint8     |           |
 
 {% callout type="information" %}
-Note that keywords are allowed as identifiers within preprocessor directives and attributes, since they have no special meaning within those contexts.
+Note that keywords are allowed as identifiers within preprocessor directives and attributes since they have no special meaning within those contexts.
 {% /callout %}
