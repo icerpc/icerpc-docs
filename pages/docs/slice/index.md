@@ -11,6 +11,8 @@ TODO: This page contains placeholder content and needs to be replaced. Please re
 
 {% /callout %}
 
+[ClientConnection](csharp:IceRpc.ClientConnection)
+
 The Slice is a Interface Description Language (IDL) used to describe the structure of data in your application
 and the operations that can be performed on it. It is a language and platform agnostic way to describe the flow
 of data in your application.
