@@ -11,6 +11,75 @@ TODO: This page contains placeholder content and needs to be replaced. Please re
 
 {% /callout %}
 
+{% table dividers=true %}
+
+-
+-
+-
+-
+
+---
+
+- [AnyClass](#todo)
+- [exception](#todo)
+- [module](#todo)
+- [uint16](#todo)
+
+---
+
+- [AnyException](#todo)
+- [float32](#todo)
+- [sequence](#todo)
+- [uint32](#todo)
+
+---
+
+- [bool](#todo)
+- [float64](#todo)
+- [stream](#todo)
+- [uint64](#todo)
+
+---
+
+- [class](#todo)
+- [idempotent](#todo)
+- [string](#todo)
+- [unchecked](#todo)
+
+---
+
+- [compact](#todo)
+- [interface](#todo)
+- [struct](#todo)
+- [varint32](#todo)
+---
+- [custom](#todo)
+- [int8](#todo)
+- [tag](#todo)
+- [varint62](#todo)
+
+---
+
+- [dictionary](#todo)
+- [int16](#todo)
+- [throws](#todo)
+- [throws](#todo)
+
+---
+
+- [encoding](#todo)
+- [int32](#todo)
+- [typealias](#todo)
+- [varuint62](#todo)
+
+---
+
+- [enum](#todo)
+- [int64](#todo)
+- [uint8](#todo)
+
+{% /table %}
+
 [ClientConnection](csharp:IceRpc.ClientConnection)
 
 The Slice is a Interface Description Language (IDL) used to describe the structure of data in your application
