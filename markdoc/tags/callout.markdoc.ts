@@ -8,7 +8,6 @@ export default {
   attributes: {
     type: String,
     default: 'note',
-    matches: ['caution', 'check', 'note', 'warning'],
-    errorLevel: 'critical'
+    matches: ['critical', 'info']
   }
 };
