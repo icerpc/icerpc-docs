@@ -97,6 +97,8 @@ module Foo;
 interface Bar {};
 ````
 
+---
+
 ### Links
 
 Links are a way to reference other pages or external resources. Links can be to
@@ -118,6 +120,8 @@ syntax for these links is `<language>:<class-name>`
 [ClientConnection](csharp:IceRpc.ClientConnection) will link to the page
 <https://api.testing.zeroc.com/csharp/api/IceRpc.ClientConnection.html>
 ```
+
+---
 
 ## Available Tags
 
