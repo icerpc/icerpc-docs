@@ -121,8 +121,6 @@ syntax for these links is `<language>:<class-name>`
 <https://api.testing.zeroc.com/csharp/api/IceRpc.ClientConnection.html>
 ```
 
----
-
 ## Available Tags
 
 ### Callout
@@ -254,9 +252,7 @@ Lorem ipsum dolor sit amet.
 Lorem ipsum dolor sit amet.
 ```
 
----
-
-### Updating Navigation
+## Updating Navigation
 
 The hierarchy of the side navigation is defined in `/data/`. Each top navigation
 item has a corresponding file, `getting-started-data.ts`, `icerpc-core-data.ts`,
