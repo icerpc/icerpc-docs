@@ -82,6 +82,8 @@ This is a critical callout
 {% callout /%}
 ```
 
+---
+
 #### Side-by-side
 
 The `side-by-side` tag is used to create columns of content that are side-by-side. The content is split by a vertical
@@ -155,6 +157,8 @@ I will be on the right
 {% /side-by-side %}
 
 ````
+
+---
 
 #### Divider
 
