@@ -46,19 +46,19 @@ be used in the documentation.
 
 ### Tags
 
-#### Callout
+### Callout
 
 The `callout` tag is used to create a callout box. The `callout` tag supports a `type` attribute that can be set to
 either `info` or `critical`. The `type` attribute is used to set the color of the callout box and icon used. Any content
 within the `callout` tag will be placed inside the callout box.
 
-#### Attributes {#callout-attributes}
+#### Attributes
 
 | Attribute | Description                                                                 |
 | --------- | --------------------------------------------------------------------------- |
 | type      | The type of callout. Can be either `info` or `critical`. Default is `info`. |
 
-#### Examples {#callout-examples}
+#### Examples
 
 ##### Info callout
 
@@ -84,21 +84,21 @@ This is a critical callout
 
 ---
 
-#### Side-by-side
+### Side-by-side
 
 The `side-by-side` tag is used to create columns of content that are side-by-side. The content is split by a vertical
 divider. The first item in the content is placed in the left column, and the second item is placed in the right column.
 In the below example, the python codeblock would be placed in the left column while the text would be placed in the
 right column.
 
-#### Attributes {#side-by-side-attributes}
+#### Attributes
 
 | Attribute | Description                                                                 |
 | --------- | --------------------------------------------------------------------------- |
 | weighted  | The column that should have more content. Can be either `left` or `right`. Default is `left`. |
 | alignment | The alignment of the content in the columns. Can be either `top` or `center`. Default is `center`. |
 
-#### Examples {#side-by-side-examples}
+#### Examples
 
 ##### Left weighted side-by-side
 
@@ -160,7 +160,7 @@ I will be on the right
 
 ---
 
-#### Divider
+### Divider
 
 The `divider` tag is used to create a horizontal divider. This is useful for breaking up content into sections.
 
@@ -171,6 +171,8 @@ Lorem ipsum dolor sit amet.
 
 Lorem ipsum dolor sit amet.
 ```
+
+---
 
 ### Updating Navigation
 
