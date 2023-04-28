@@ -44,7 +44,7 @@ be used in the documentation.
 
 ---
 
-### Tags
+## Available Tags
 
 ### Callout
 
