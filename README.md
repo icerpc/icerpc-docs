@@ -42,8 +42,6 @@ be used in the documentation.
 
 [**Updating Navigation**](#updating-navigation) is done by editing the `/data/*.ts` files.
 
----
-
 ## Available Tags
 
 ### Callout
