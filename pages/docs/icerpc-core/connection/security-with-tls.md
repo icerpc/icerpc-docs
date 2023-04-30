@@ -9,23 +9,24 @@ The ice and icerpc protocol are neither secure nor non-secure because securing c
 responsibility of the underlying transport.
 
 There is no "s" variation of the icerpc protocol or a distinct secure port for secure icerpc connections. When you see
-the server address `icerpc://hello.zeroc.com`, you can tell the server is listening on the default icerpc port but you
-don't have enough information to tell if a connection to this server uses TLS or not.
+the server address `icerpc://greeter.zeroc.com`, you can tell the server is listening on the default icerpc port but you
+can't tell which transport a connection to this server would use and whether or not this transport uses TLS.
 
-## quic and ssl
+## quic
 
-The quic transport and the ssl transport are always secure. If you configure your client connection to use one of these
-transports, the connection will use TLS.
+The quic transport is always secure. If you configure your client connection to use quic, the connection will use TLS.
 
 For example:
 
 ```csharp
-// We specify the ssl transport: we get a TLS-secured connection even without any additional parameter.
-await using var sslConnection = new ClientConnection("icerpc://hello.zeroc.com?transport=ssl");
+// Always uses TLS.
+await using var quicConnection = new ClientConnection(
+    "icerpc://greeter.zeroc.com",
+    multiplexedClientTransport: new QuicClientTransport());
 ```
 
-The same logic applies to servers: if you configure your server to use quic or ssl, any connection accepted by this
-server will use TLS.
+The same logic applies to servers: if you configure your server to use quic, any connection accepted by this server will
+use TLS.
 
 ## tcp
 
@@ -35,13 +36,13 @@ tcp, the connection will use TLS. If you don't specify TLS configuration, the co
 In C#, this TLS configuration is provided by a `SslClientAuthenticationOptions` parameter. For example:
 
 ```csharp
-// The default multiplexed transport for icerpc is tcp. The connection does not use TLS since we don't pass a
-// SslClientAuthenticationOptions parameter.
-await using var plainTcpConnection = new ClientConnection("icerpc://hello.zeroc.com");
+// The default multiplexed transport for icerpc is tcp (implemented by TcpClientTransport). This connection
+// does not use TLS since we don't pass a SslClientAuthenticationOptions parameter.
+await using var plainTcpConnection = new ClientConnection("icerpc://greeter.zeroc.com");
 
 // We pass a non-null SslClientAuthenticationOptions so the connection uses TLS.
 await using var secureTcpConnection = new ClientConnection(
-    "icerpc://hello.zeroc.com",
+    "icerpc://hello.greeter.com",
     new SslClientAuthenticationOptions());
 ```
 
@@ -50,9 +51,24 @@ accept connections secured by TLS. If you don't specify TLS configuration when y
 only listen for and accept plain tcp connections.
 
 {% callout type="information" %}
-tcp and ssl are actually the same transport. If a server listens on a tcp server address and specifies TLS
-configuration, a client can connect to this server with tcp (and TLS configuration) or with ssl. It's completely
-equivalent. The only difference between tcp and ssl is ssl requires TLS while it's optional for tcp.
+An ice server address can specify the ssl transport, e.g. `ice://greeter.zeroc.com?transport=ssl`. This ice-specific ssl
+transport is identical to the tcp transport except the connections are always secure. In this respect, ssl is like quic.
+
+In C#, tcp and ssl are implemented by the same transport classes, TcpClientTransport and TcpServerTransport. For
+example:
+
+```csharp
+// Uses the default client transport, TcpClientTransport.
+await using var connection = new ClientConnection("ice://greeter.zeroc.com?transport=ssl");
+```
+
+is equivalent to:
+
+```csharp
+await using var connection = new ClientConnection(
+    "ice://greeter.zeroc.com?transport=tcp",
+    new SslClientAuthenticationOptions());
+```
 {% /callout %}
 
 ## coloc
@@ -65,5 +81,5 @@ get an error.
 await using var secureColocConnection = new ClientConnection(
     "icerpc://colochost",
     new SslClientAuthenticationOptions()
-    multiplexedClientTransport: ...);
+    multiplexedClientTransport: new SlicClientTransport(colocClientTransport)
 ```
