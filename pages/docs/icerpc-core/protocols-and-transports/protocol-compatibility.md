@@ -9,9 +9,6 @@ Even though their names are similar, the ice and icerpc protocols are completely
 ice connections accepts only ice connections. The same is true for icerpc: a server listening for icerpc connections
 accepts only icerpc connections.
 
-IceRPC does not provide an upgrade mechanism to upgrade an ice connection to a newer and more capable icerpc connection
-in the event the server application supports both ice and icerpc.
-
 ## Listening for both ice and icerpc connections
 
 A server application does not have to be ice-only or icerpc-only because it can easily create two servers:
