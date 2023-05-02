@@ -18,7 +18,7 @@ export const Title = ({ title, description }: Props) => {
   const breadcrumbs = getBreadcrumbs(path, encoding);
 
   return (
-    <div className="not-prose m-0 p-0">
+    <div className="not-prose mb-10">
       <Breadcrumbs breadcrumbs={breadcrumbs} />
       <h1 className="text-4xl font-extrabold text-[#333333] dark:text-white">
         {title}
