@@ -25,8 +25,3 @@ is used to construct an invocation pipeline with the help of a DI container.
 These abstractions don't depend on a specific DI container. As long as your preferred DI container implements
 [IServiceProvider](https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider?view=net-7.0), you can use
 IceRPC and the IceRPC interceptors and middleware with this DI container.
-
-## Want to learn about DI?
-
-If you are new to DI and want to learn the basics (and more), we highly recommend reading
-[Dependency Injection Principles, Practices and Patterns](https://www.manning.com/books/dependency-injection-principles-practices-patterns).

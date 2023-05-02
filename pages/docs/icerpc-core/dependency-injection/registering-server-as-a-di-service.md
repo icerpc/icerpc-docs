@@ -5,7 +5,8 @@ description: Understand how to register Server as a DI service in Microsoft's DI
 
 ## Basics
 
-You can easily register Server as a singleton in Microsoft's DI container with the `AddIceRpcServer` extension method:
+You can register `Server`(https://api.testing.zeroc.com/csharp/api/IceRpc.Server.html) as a singleton in Microsoft's DI
+container with the `AddIceRpcServer`(https://api.testing.zeroc.com/csharp/api/Microsoft.Extensions.DependencyInjection.IceRpcServiceCollectionExtensions.html#Microsoft_Extensions_DependencyInjection_IceRpcServiceCollectionExtensions_AddIceRpcServer_Microsoft_Extensions_DependencyInjection_IServiceCollection_IceRpc_IDispatcher_) extension method:
 
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
@@ -25,7 +26,7 @@ IHost host = Host.CreateDefaultBuilder(args)
 This server singleton is a default server: it uses the default server address ("icerpc://[::0]"), the default
 multiplexed transport (tcp) and `null` for its authentication options (so no TLS).
 
-If you want a more custom server, you can inject an `IOption<ServerOptions>`. For example:
+If you want to add a more custom server, you can inject an `IOption<ServerOptions>`. For example:
 
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
@@ -52,7 +53,7 @@ IHost host = Host.CreateDefaultBuilder(args)
 
 ## Injecting dependencies into Server
 
-The main constructor of Server used by the `AddIceRpcServer` extension methods accepts three injectable services:
+The main constructor of `Server` used by the `AddIceRpcServer` extension methods accepts three injectable services:
 
 ```csharp
 public Server(
@@ -67,7 +68,7 @@ defaults (tcp) if you don't register your own transport singleton.
 
 The logger is injected as an instance of the `ILogger<Server>` service (if available).
 
-For example, if you want to use QUIC for your server, you would register a `QuicServerTransport` singleton:
+For example, if you want to use QUIC for your server, you just need to register a `QuicServerTransport` singleton:
 
 ```csharp
 using IceRpc.Transports.Quic;
