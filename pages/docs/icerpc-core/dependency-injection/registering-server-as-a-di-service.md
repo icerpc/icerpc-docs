@@ -5,8 +5,8 @@ description: Understand how to register Server as a DI service in Microsoft's DI
 
 ## Basics
 
-You can register `Server`(https://api.testing.zeroc.com/csharp/api/IceRpc.Server.html) as a singleton in Microsoft's DI
-container with the `AddIceRpcServer`(https://api.testing.zeroc.com/csharp/api/Microsoft.Extensions.DependencyInjection.IceRpcServiceCollectionExtensions.html#Microsoft_Extensions_DependencyInjection_IceRpcServiceCollectionExtensions_AddIceRpcServer_Microsoft_Extensions_DependencyInjection_IServiceCollection_IceRpc_IDispatcher_) extension method:
+You can register [`Server`](csharp:IceRpc.Server) as a singleton in Microsoft's DI
+container with the [`AddIceRpcServer`](csharp:Microsoft.Extensions.DependencyInjection.IceRpcServiceCollectionExtensions#Microsoft_Extensions_DependencyInjection_IceRpcServiceCollectionExtensions_AddIceRpcServer_Microsoft_Extensions_DependencyInjection_IServiceCollection_IceRpc_IDispatcher_) extension method:
 
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
@@ -78,9 +78,9 @@ IHost host = Host.CreateDefaultBuilder(args)
     .UseContentRoot(AppContext.BaseDirectory)
     .ConfigureServices((hostContext, services) =>
     {
-        // The IMultiplexedTransport singleton is implemented by QUIC.
+        // The IMultiplexedServerTransport singleton is implemented by QUIC.
         services
-            .AddSingleton<IMultiplexedTransport>(provider => new QuicServerTransport());
+            .AddSingleton<IMultiplexedServerTransport>(provider => new QuicServerTransport());
 
         // TODO: provide ServerOptions with a certificate (in ServerAuthenticationOptions).
 

@@ -22,7 +22,7 @@ This works well for many applications. However, this is not the typical model wh
 
 With DI, a dispatch pipeline is typically more dynamic: some infrastructure code creates a unique DI scope for each
 dispatch and the leaf dispatcher is a service managed by your DI container. This leaf dispatcher is created
-"on-demand" (per dispatch) when its lifetime is transient or scoped.
+on-demand (per dispatch) when its lifetime is transient or scoped.
 
 A middleware in your DI dispatch pipeline can use features as usual to communicate with other middleware and the leaf
 dispatcher. However, a more idiomatic approach is to communicate using injected services. For example:
@@ -40,7 +40,7 @@ themselves are typically singletons managed by the DI container.
 IceRPC's extensions for Microsoft's DI container, [IceRpc.Extensions.DependencyInjection](https://github.com/icerpc/icerpc-csharp/tree/main/src/IceRpc.Extensions.DependencyInjection),
 include a number of  `IServiceCollection` extension methods that accept an `Action<IDispatcherBuilder>` parameter.
 
-All these methods allow you to configure a dispatch pipeline for Microsoft's DI container. For example:
+All these methods allow you to build and configure a dispatch pipeline for Microsoft's DI container. For example:
 
 ```csharp
 // Construct a dispatch pipeline using Microsoft's DI container.
@@ -56,22 +56,19 @@ The resulting dispatcher (dispatch pipeline) creates a new DI scope for each inc
 to downstream dispatchers using the
 `IServiceProviderFeature`(https://api.testing.zeroc.com/csharp/api/IceRpc.Features.IServiceProviderFeature.html).
 
-## Dual-use middleware
+## Middleware for IDispatcherBuilder
 
-A dual-use middleware is a middleware that can be used with or without a DI container. It does not rely on a DI
-container injecting services to operate. In other words, it's a regular middleware, and like any regular middleware, it
-implements `IDispatcher`.
+A standard middleware can be used with or without a DI container: it does not rely on a DI container injecting services
+to operate, and it implements interface `IDispatcher`.
 
-If this middleware wants to communicate with another middleware or with the leaf dispatcher, it uses features.
+All the middleware bundled with IceRPC are standard middleware: you can use them with or without DI, and they use
+features for communications with a dispatch.
 
-All middleware bundled with IceRPC are dual-use middleware: you can use them with or without DI, and they communicate
-via features.
-
-Nevertheless, these middleware are DI-enabled and provide extension methods for
-[IDispatchBuilder](https://api.testing.zeroc.com/csharp/api/IceRpc.Builder.IDispatcherBuilder.html) and
-[IInvokerBuilder](https://api.testing.zeroc.com/csharp/api/IceRpc.Builder.IInvokerBuilder.html).
+These middleware can be installed into a [Router](https://api.testing.zeroc.com/csharp/api/IceRpc.Router.html) or an
+[IDispatcherBuilder](https://api.testing.zeroc.com/csharp/api/IceRpc.Builder.IDispatcherBuilder.html).
 
 For example:
+
 ```csharp
 // Construct a dispatch pipeline using Microsoft's DI container.
 
@@ -104,7 +101,7 @@ public static IDispatcherBuilder UseLogger(this IDispatcherBuilder builder) =>
             $"Could not find service of type '{nameof(ILogger<LoggerMiddleware>)}' in the service container.");
 ```
 
-We recommend you follow the same pattern when you create your own dual-use middleware.
+We recommend you follow the same pattern when you create your own standard middleware.
 
 {% callout type="information" %}
 Calling the DI container at runtime is typically discouraged--it's the Locator anti-pattern. Here, you should see the
@@ -113,13 +110,13 @@ Calling the DI container at runtime is typically discouraged--it's the Locator a
 
 ## Middleware with injected services
 
-Instead of providing a dual-use middleware, you can create a middleware that communicates with other middleware and the
+Instead of providing a standard middleware, you can create a middleware that communicates with other middleware and the
 leaf dispatcher via services injected by a DI container.
 
 Such a DI-friendly middleware needs to implement one of the following IMiddleware interfaces:
-- [IMiddleware<TDep>](https://api.testing.zeroc.com/csharp/api/IceRpc.IMiddleware-1.html)
-- [IMiddleware<TDep1, TDep2>](https://api.testing.zeroc.com/csharp/api/IceRpc.IMiddleware-2.html)
-- [IMiddleware<TDep1, TDep2, TDep3>](https://api.testing.zeroc.com/csharp/api/IceRpc.IMiddleware-3.html)
+- [IMiddleware<TDep>](csharp:IceRpc.IMiddleware-1)
+- [IMiddleware<TDep1, TDep2>](csharp:IceRpc.IMiddleware-2)
+- [IMiddleware<TDep1, TDep2, TDep3>](csharp:IceRpc.IMiddleware-3)
 
 For example, say we want to reimplement the deadline middleware in a more DI-friendly fashion. The standard deadline
 middleware reads the deadline field and creates a deadline feature to communicate this deadline to downstream middleware
@@ -134,7 +131,7 @@ public class DeadlineInformation
 }
 ...
 
-// New DI-friendly deadline middleware. It does _not_ implement IDispatcher.
+// New DI-friendly deadline middleware. It does not implement IDispatcher.
 public class DIDeadlineMiddleware : IMiddleware<DeadlineInformation>
 {
     private readonly IDispatcher _next;
@@ -169,7 +166,7 @@ public class DIDeadlineMiddleware : IMiddleware<DeadlineInformation>
 }
 ```
 
-If you use Microsoft's DI container, you can install this middleware with the `UseMiddleware` extension method:
+If you use Microsoft's DI container, you can install this middleware with a `UseMiddleware` extension method:
 
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
