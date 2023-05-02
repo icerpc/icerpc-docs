@@ -111,7 +111,7 @@ export const CodeBlock = ({
 
   return (
     // Container for the code block
-    <div className="group relative my-2 items-center">
+    <div className="group relative my-6 items-center">
       <div className="w-full rounded-lg bg-[#17232d]">
         {language != undefined && (
           <TopBar
