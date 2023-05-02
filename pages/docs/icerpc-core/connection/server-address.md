@@ -29,14 +29,12 @@ server.
 
 For example:
 
-- `icerpc://hello.zeroc.com`
-connect to `hello.zeroc.com` on port 4062 using the icerpc protocol; the underlying transport is not specified
-
-- `icerpc://192.168.100.10:10000?transport=quic`
-connect to `192.168.100.10` on port 10000 using the icerpc protocol over quic
-
-- `ice://hello.zeroc.com`
-connect to `hello.zeroc.com` on port 4061 using the ice protocol
+- `icerpc://hello.zeroc.com` connect to `hello.zeroc.com` on port 4062 using the
+   icerpc protocol; the underlying transport is not specified
+- `icerpc://192.168.100.10:10000?transport=quic` connect to `192.168.100.10` on
+   port 10000 using the icerpc protocol over quic
+- `ice://hello.zeroc.com` connect to `hello.zeroc.com` on port 4061 using the
+   ice protocol
 
 ## Server configuration
 
@@ -55,10 +53,8 @@ Here are some examples:
 
 - `icerpc://192.168.100.10`
 listen for icerpc connections on the interface associated with `192.168.100.10`, using the default icerpc port
-
 - `icerpc://[::0]:0`
 listen for icerpc connections on all interfaces; the OS selects the port number to use
-
 - `ice://0.0.0.0:10000`
 listen for ice connections on all interfaces with an IPv4 address on port 10,000
 
