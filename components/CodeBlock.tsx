@@ -224,7 +224,7 @@ const TopBar = ({ language, code, title }: TopBarProps) =>
     <div className="flex h-12 flex-row items-center justify-between border-b border-b-[hsl(0,0%,18%)] text-white dark:bg-black/20">
       <div className="m-0 ml-4 flex flex-row items-center gap-3 p-0 text-sm">
         {LanguageIcon(language ?? '')}
-        {title ?? language ?? ''}
+        {title ?? fixLanguage(language) ?? ''}
       </div>
       <div className="mr-4 flex flex-row items-center gap-4">
         <CopyButton text={code} />
@@ -241,4 +241,13 @@ function LanguageIcon(language: string) {
   ) : (
     <FaFile />
   );
+}
+
+// A function to fix the spelling of the language
+function fixLanguage(language: string) {
+  if (language === 'csharp') {
+    return 'C#';
+  } else {
+    return language;
+  }
 }
