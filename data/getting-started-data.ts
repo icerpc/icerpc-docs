@@ -19,8 +19,8 @@ export const gettingStartedData: SideBarSourceType[] = [
         path: GETTING_STARTED_BASE_URL + '/installation/'
       },
       {
-        title: 'Creating an Application',
-        path: GETTING_STARTED_BASE_URL + '/writing-an-application/'
+        title: 'Writing your first IceRPC application in C#',
+        path: GETTING_STARTED_BASE_URL + '/writing-your-first-icerpc-application-in-csharp/'
       }
     ]
   }
