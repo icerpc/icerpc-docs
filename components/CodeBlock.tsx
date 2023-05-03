@@ -120,7 +120,7 @@ export const CodeBlock = ({
           </pre>
         )}
       </Highlight>
-      {title == undefined && (
+      {language == undefined && (
         <div
           className={clsx(
             'absolute right-0 top-2 mr-4 rounded border border-[rgb(46,46,46)] bg-[rgb(6,22,38)] opacity-0',
