@@ -13,6 +13,11 @@ type Props = {
 };
 
 export const AppLink = (props: Props) => {
+  // If props.href is an API link, then resolve it to the API documentation
+  // on api.testing.zeroc.com.
+  const href = isApiLink(props.href) ? resolveApiLink(props.href) : props.href;
+
+  // If the link is external, then open it in a new tab.
   const target =
     props.target || (props.href.startsWith('http') ? '_blank' : undefined);
   const style = props.style || {
@@ -22,12 +27,13 @@ export const AppLink = (props: Props) => {
   return (
     <Link
       {...props}
+      href={href}
       target={target}
       rel={target === '_blank' ? 'noreferrer' : undefined}
       className={clsx(
         props.className ??
           'font-medium text-primary hover:text-[rgb(64,131,193)]',
-        props.href.includes('api.testing.zeroc.com') && [
+        href.includes('api.testing.zeroc.com') && [
           'after:ml-[3px] after:mr-[1px] after:rounded-sm after:bg-primary after:px-[2px] after:py-[1px]',
           "after:align-middle after:text-[8px] after:font-semibold after:text-white after:content-['API']",
           'dark:after:bg-primary/80'
@@ -38,4 +44,21 @@ export const AppLink = (props: Props) => {
       {props.children}
     </Link>
   );
+};
+
+const isApiLink = (href: string) => {
+  const languages = ['csharp', 'rust'];
+  return (
+    languages.some((lang) => href.startsWith(`${lang}:`)) &&
+    href.split(':').length > 1
+  );
+};
+
+const resolveApiLink = (href: string) => {
+  // Ex.) Convert csharp:IceRpc.ClientConnection to https://api.testing.zeroc.com/csharp/api/IceRpc.ClientConnection.html
+  const [lang, ...rest] = href.split(':');
+  const apiHref = `https://api.testing.zeroc.com/${lang}/api/${rest.join(
+    '.'
+  )}.html`;
+  return apiHref;
 };

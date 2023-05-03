@@ -92,6 +92,35 @@ export const rpcCoreData: SideBarSourceType[] = [
     ]
   },
   {
+    title: 'Dependency Injection',
+    links: [
+      {
+        title: 'Dependency Injection and IceRPC for C#',
+        path: `${RPC_CORE_BASE_URL}/dependency-injection/di-and-icerpc-for-csharp`
+      },
+      {
+        title: 'Registering Server as a DI service',
+        path: `${RPC_CORE_BASE_URL}/dependency-injection/registering-server-as-a-di-service`
+      },
+      {
+        title: 'Dispatch pipeline with DI',
+        path: `${RPC_CORE_BASE_URL}/dependency-injection/dispatch-pipeline-with-di`
+      },
+      {
+        title: 'Registering ClientConnection as a DI service',
+        path: `${RPC_CORE_BASE_URL}/dependency-injection/registering-client-connection-as-a-di-service`
+      },
+      {
+        title: 'Registering ConnectionCache as a DI service',
+        path: `${RPC_CORE_BASE_URL}/dependency-injection/registering-connection-cache-as-a-di-service`
+      },
+      {
+        title: 'Invocation pipeline with DI',
+        path: `${RPC_CORE_BASE_URL}/dependency-injection/invocation-pipeline-with-di`
+      }
+    ]
+  },
+  {
     title: 'Advanced topics'
   },
   {

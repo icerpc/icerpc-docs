@@ -13,20 +13,13 @@
 }
 
 @layer base {
-  main article h1 {
-    @apply text-3xl;
+  main article {
+    @apply prose max-w-none dark:prose-invert prose-a:no-underline prose-code:font-light
+    prose-code:text-[var(--tw-prose-body)] prose-code:before:hidden prose-code:after:hidden;
   }
 
-  main article h2 {
-    @apply text-2xl;
-  }
-
-  main article h2 {
-    @apply text-lg;
-  }
-
-  main article p {
-    @apply prose-sm;
+  main article li {
+    @apply mb-4 pl-2 dark:text-[rgba(255,255,255,0.8)];
   }
 
   li {
@@ -35,10 +28,6 @@
 
   body {
     @apply bg-[#FAFAFA] dark:bg-dark-pattern;
-  }
-
-  p {
-    @apply mb-6 text-sm leading-[1.6rem] tracking-[0.228px] dark:text-[rgba(255,255,255,0.8)];
   }
 
   h2 {
@@ -50,7 +39,7 @@
   }
 
   code {
-    @apply rounded border-[1px] bg-slate-100 px-[4px] py-[2px] font-mono text-xs font-medium shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] dark:border-darkBorder dark:bg-transparent dark:text-white;
+    @apply rounded border-[1px] bg-slate-100 px-[4px] py-[2px] font-mono shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] dark:border-darkBorder dark:bg-transparent dark:text-white;
   }
 }
 

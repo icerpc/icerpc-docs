@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import clsx from 'clsx';
 
 export type Breadcrumb = {
   name: string;
@@ -12,14 +13,17 @@ type Props = { breadcrumbs: Breadcrumb[] };
 
 export const Breadcrumbs = ({ breadcrumbs }: Props) => {
   return (
-    <ul className="mb-3 mt-0 flex pl-0 pt-0 text-sm">
-      {breadcrumbs.map((crumb) => {
+    <ul className="mb-2 mt-0 flex justify-start p-0 text-sm">
+      {breadcrumbs.map((crumb, index) => {
         const name = crumb.name;
         const href = crumb.href;
         const isLast = crumb === breadcrumbs[breadcrumbs.length - 1];
 
         return (
-          <li key={name} className="flex flex-row gap-2 pr-2 ">
+          <li
+            key={name}
+            className={clsx('mb-0 flex flex-row gap-2', index == 0 && 'pl-0')}
+          >
             <Link href={href} className="dark:text-white/80">
               {name}
             </Link>

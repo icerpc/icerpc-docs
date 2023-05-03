@@ -12,6 +12,7 @@ This page shows how to convert each construct in your .ice file into the equival
 file. This equivalent construct is naturally encoded the same way--otherwise, there is no interop.
 
 All the .slice files used for interop with Ice must start with:
+
 ```slice
 encoding = Slice1
 ```
@@ -23,6 +24,7 @@ Ice will soon provide an `ice2slice` tool to automate this conversion.
 ## Limitations
 
 A few definitions in .ice files has no equivalent with the .slice syntax and as a result cannot be converted:
+
 - local Slice\
   The .slice syntax does not support local definitions.
 - constants\
@@ -35,6 +37,7 @@ A few definitions in .ice files has no equivalent with the .slice syntax and as 
 ## Class
 
 {% side-by-side alignment="top" %}
+
 ```slice {% title=".ice syntax" %}
 class Vehicle
 {
@@ -58,11 +61,13 @@ class Bicycle : Vehicle {
     tag(1) rented: bool?
 }
 ```
+
 {% /side-by-side %}
 
 ## Dictionary
 
 {% side-by-side alignment="top" %}
+
 ```slice {% title=".ice syntax" %}
 dictionary<string, int> StringIntDict;
 ```
@@ -70,11 +75,13 @@ dictionary<string, int> StringIntDict;
 ```slice {% title="Same dictionary with the .slice syntax" %}
 typealias StringIntDict = dictionary<string, int32>
 ```
+
 {% /side-by-side %}
 
 ## Enum
 
 {% side-by-side alignment="top" %}
+
 ```slice {% title=".ice syntax" %}
 enum Fruit
 {
@@ -93,6 +100,7 @@ enum Fruit {
     Pineapple
 }
 ```
+
 {% /side-by-side %}
 
 A .slice enum can be checked (the default) or unchecked (with the unchecked keyword), while the "check-ness" of a .ice
@@ -102,6 +110,7 @@ no enumerator with this numeric value, the decoding fails with a checked enum an
 ## Exception
 
 {% side-by-side alignment="top" %}
+
 ```slice {% title=".ice syntax" %}
 exception SyntaxException
 {
@@ -123,12 +132,14 @@ exception InvalidIdentifierException : SyntaxException {
     badIdentifier: string
 }
 ```
+
 {% /side-by-side %}
 
 ## Exception specification
 
 With the .ice syntax, an operation lists the Slice-defined exceptions it's allowed to throw in its exception
 specification. For example:
+
 ```slice {% title=".ice syntax" %}
 void op(string s) throws ArgumentException, InvalidStateException, NotAvailableException;
 ```
@@ -147,12 +158,14 @@ op(s: string) throws AnyException
 The converted definition is more permissive since op can now throw any exception.
 
 Another difference between Ice and IceRPC is where the exception specifications are checked:
- - with Ice, the generated code enforces exception specifications only when decoding responses
- - with IceRPC, the generated code enforces exception specifications only when encoding responses
+
+- with Ice, the generated code enforces exception specifications only when decoding responses
+- with IceRPC, the generated code enforces exception specifications only when encoding responses
 
 ## Interface
 
 {% side-by-side alignment="top" %}
+
 ```slice {% title=".ice syntax" %}
 interface ChessPiece
 {
@@ -181,11 +194,13 @@ interface Pawn : ChessPiece {
         throws ChessException
 }
 ```
+
 {% /side-by-side %}
 
 ## Module
 
 {% side-by-side alignment="top" %}
+
 ```slice {% title=".ice syntax" %}
 module BoardGame
 {
@@ -202,6 +217,7 @@ module BoardGame::Checkers
 // Must be in a different file.
 module BoardGame::Chess
 ```
+
 {% /side-by-side %}
 
 ## Optional
@@ -210,6 +226,7 @@ The `optional` keyword in .ice files is replaced by the `tag` keyword in .slice 
 or field must be marked optional (with a `?` suffix) in .slice files.
 
 {% side-by-side alignment="top" %}
+
 ```slice {% title=".ice syntax" %}
 interface Widget
 {
@@ -233,6 +250,7 @@ class Person {
     tag(1) email: string?
 }
 ```
+
 {% /side-by-side %}
 
 ## Out parameters
@@ -244,6 +262,7 @@ When converting .ice definitions into .slice definitions, keep in mind that Ice 
 return type.
 
 {% side-by-side alignment="top" %}
+
 ```slice {% title=".ice syntax" %}
 interface Sample
 {
@@ -264,6 +283,7 @@ interface Sample {
          return: bool)
 }
 ```
+
 {% /side-by-side %}
 
 {% callout type="information" %}
@@ -294,6 +314,7 @@ suffix).
 ## Sequence
 
 {% side-by-side alignment="top" %}
+
 ```slice {% title=".ice syntax" %}
 sequence<string> StringSeq;
 ```
@@ -301,11 +322,13 @@ sequence<string> StringSeq;
 ```slice {% title="Same sequence with the .slice syntax" %}
 typealias StringSeq = sequence<string>
 ```
+
 {% /side-by-side %}
 
 ## Struct
 
 {% side-by-side alignment="top" %}
+
 ```slice {% title=".ice syntax" %}
 struct Position
 {
@@ -320,6 +343,7 @@ compact struct Position {
     y: int32
 }
 ```
+
 {% /side-by-side %}
 
 With the .slice syntax, all Slice1-encoded structs must be compact.

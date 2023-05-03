@@ -37,7 +37,7 @@ function createListItem(
         <Link
           href={link.path}
           className={clsx(
-            `px-2 py-[7px] pl-0 text-sm no-underline  ${leftPadding} dark:text-[#C4C7C5]`,
+            `py-[6px] pl-0 pr-3 text-sm no-underline  ${leftPadding} dark:text-[#C4C7C5]`,
             isCurrentPage
               ? noLeftPadding
                 ? 'font-bold text-primary dark:text-white'
@@ -52,11 +52,11 @@ function createListItem(
     );
   } else {
     return (
-      <div className={`${leftPadding} mb-3 mt-2 pl-0 pr-2`} key={link.title}>
-        <h2 className="my-4 text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:text-white dark:decoration-darkBorder">
+      <li key={link.title} className={clsx('my-2 pl-0 pr-2', leftPadding)}>
+        <h2 className="text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:text-white dark:decoration-darkBorder">
           {link.title}
         </h2>
-      </div>
+      </li>
     );
   }
 }
