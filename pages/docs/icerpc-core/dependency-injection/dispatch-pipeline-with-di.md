@@ -14,7 +14,7 @@ The leaf dispatchers (typically Slice services) are mapped or mounted at fixed p
 the server.
 
 The middleware in your dispatch pipeline communicate with each others using
-[features](csharp:IceRpc.IncomingRequest.html#IceRpc_IncomingRequest_Features): an upstream middleware sets a feature
+[features](csharp:IceRpc.IncomingRequest#IceRpc_IncomingRequest_Features): an upstream middleware sets a feature
 that a downstream middleware can retrieve. The leaf dispatcher can also communicate with these middleware using the same
 features.
 
