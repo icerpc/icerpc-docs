@@ -4,6 +4,7 @@ description: Learn about Slice primitive types.
 ---
 
 {% slice1 %}
+
 ## AnyClass
 
 A field or parameter with Slice type `AnyClass` can hold an instance of any Slice class. `AnyClass` is the implicit
@@ -24,6 +25,7 @@ Slice provides a boolean type, `bool`. It can have two values: true (1) or false
 | bool  | bool       |
 
 {% slice2 %}
+
 ## Fixed-size integral types
 
 Slice provides 8 fixed-size integral types. Types that start with a `u` are unsigned.
@@ -50,6 +52,7 @@ Slice provides 2 floating-point types: a single precision type, `float32`, and a
 | float64  | double     |
 
 {% slice1 %}
+
 ## Integral types
 
 Slice provides 4 integral types.
@@ -72,6 +75,7 @@ Slice provides a string type, `string`. A string is a sequence of characters tha
 | string   | string     |
 
 {% slice2 %}
+
 ## Variable-size integral types
 
 Slice provides 4 variable-size integral types. Types that start with a `varu` are unsigned.

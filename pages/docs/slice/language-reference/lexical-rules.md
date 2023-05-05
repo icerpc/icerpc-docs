@@ -25,7 +25,7 @@ Slice definitions permit both the C and the C++ style of writing comments:
 
 ## Identifiers
 
-dentifiers begin with an alphabetic character followed by any number of alphabetic characters or digits. Underscores are
+Identifiers begin with an alphabetic character followed by any number of alphabetic characters or digits. Underscores are
 also permitted in identifiers with the following limitations:
 
 - An identifier cannot begin or end with an underscore

@@ -11,8 +11,8 @@ TODO: This page contains placeholder content and needs to be replaced. Please re
 
 ## Heading 1
 
-Blabla Link
+Lorem ipsum link
 
 ## Heading 2
 
-Blabla Link
+Lorem ipsum link

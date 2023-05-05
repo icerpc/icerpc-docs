@@ -18,7 +18,7 @@ specific error.
 
 ## E001
 
-The compresss attribute could not be applied. The only valid targets are interfaces and operations.
+The compress attribute could not be applied. The only valid targets are interfaces and operations.
 
 {% divider /%}
 

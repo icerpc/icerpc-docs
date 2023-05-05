@@ -11,8 +11,8 @@ TODO: This page contains placeholder content and needs to be replaced. Please re
 
 ## Client vs server connections
 
-Blabla Link
+Lorem ipsum link
 
 ## Server address
 
-Blabla Link
+Lorem ipsum link
