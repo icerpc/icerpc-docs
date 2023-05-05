@@ -10,7 +10,6 @@ import ErrorPage from 'next/error';
 import Head from 'next/head';
 
 import '/public/globals.css';
-import 'components/prism-coldark.css';
 
 import { AppWrapper } from 'context/state';
 import { SideNav, TopNav } from 'components';

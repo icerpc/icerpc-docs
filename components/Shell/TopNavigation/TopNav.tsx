@@ -51,7 +51,7 @@ export const TopNav = () => {
           <Logo />
           <div className="hidden items-center lg:flex">
             <nav>
-              <ul className="flex gap-x-6">
+              <ul className="flex gap-x-4">
                 {navigationItems.map((item) => (
                   <TopNavigationItem
                     key={item.href}

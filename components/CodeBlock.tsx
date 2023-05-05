@@ -1,9 +1,9 @@
 // Copyright (c) ZeroC, Inc.
 
-import { ReactNode, useState, useEffect } from 'react';
+import { useState, useEffect, Key } from 'react';
 import { FaFile } from 'react-icons/fa';
 import { BsTerminalFill } from 'react-icons/bs';
-import { clsx } from 'clsx';
+import clsx from 'clsx';
 import { Highlight, themes, Prism } from 'prism-react-renderer';
 
 import dynamic from 'next/dynamic';
@@ -11,70 +11,6 @@ import { useEncoding } from 'context/state';
 import { Encoding } from 'types';
 import { CopyButton } from './CopyButton';
 import { useTheme } from 'next-themes';
-
-const darkTheme = {
-  plain: {
-    color: '#F7F7F7',
-    backgroundColor: '#1A1A1D'
-  },
-  styles: [
-    {
-      types: ['keyword', 'selector'],
-      style: {
-        color: '#FF0078'
-      }
-    },
-    {
-      types: ['operator'],
-      style: {
-        color: '#39ADB5'
-      }
-    },
-    {
-      types: ['comment'],
-      style: {
-        color: '#6C7284',
-        fontStyle: 'italic'
-      }
-    },
-    {
-      types: ['constant', 'number'],
-      style: {
-        color: '#D18616'
-      }
-    },
-    {
-      types: ['builtin', 'function'],
-      style: {
-        color: '#61AFEF'
-      }
-    },
-    {
-      types: ['string', 'char', 'tag'],
-      style: {
-        color: '#4EC9B0'
-      }
-    },
-    {
-      types: ['variable'],
-      style: {
-        color: '#9CDCFE'
-      }
-    },
-    {
-      types: ['attr-name'],
-      style: {
-        color: '#C586C0'
-      }
-    },
-    {
-      types: ['class', 'type'],
-      style: {
-        color: '#9CDCFE'
-      }
-    }
-  ]
-};
 
 const MermaidDiagram = dynamic(() => import('components/Mermaid'), {
   ssr: false
@@ -127,13 +63,15 @@ type Props = {
   'data-language'?: string;
   title?: string;
   addEncoding?: boolean;
+  lineNumbers?: boolean;
 };
 
 export const CodeBlock = ({
   children,
   'data-language': language,
   title,
-  addEncoding
+  addEncoding,
+  lineNumbers = false
 }: Props) => {
   const { encoding } = useEncoding();
   const { resolvedTheme } = useTheme();
@@ -142,7 +80,7 @@ export const CodeBlock = ({
 
   useEffect(() => {
     if (resolvedTheme === 'dark') {
-      setTheme(darkTheme);
+      setTheme(themes.vsDark);
     } else {
       setTheme(themes.jettwaveDark);
     }
@@ -168,11 +106,8 @@ export const CodeBlock = ({
   }
 
   return (
-    // Container for the code block
-    <div className="group relative my-4 w-full items-center overflow-hidden rounded-lg border border-[rgb(46,46,46)] bg-[rgb(6,22,38)] dark:bg-[#1A1A1D]">
-      <TopBar language={language} code={children} title={title}>
-        {children}
-      </TopBar>
+    <div className="group relative my-4 w-full items-center overflow-hidden rounded-lg border border-[rgb(46,46,46)] bg-[rgb(6,22,38)] dark:bg-[rgb(30,30,30)]">
+      <TopBar language={language} code={children} title={title} />
       <Highlight
         theme={theme}
         language={language ?? ''}
@@ -180,21 +115,28 @@ export const CodeBlock = ({
       >
         {({ className, tokens, getLineProps, getTokenProps, style }) => (
           <pre className={clsx(className, 'my-3')} style={style}>
-            {tokens.map((line, i) => (
-              <div
-                key={i}
-                {...getLineProps({ line })}
-                className={clsx(className, 'max-w-0 px-2 py-[3px] text-xs')}
-              >
-                {line.map((token, key) => (
-                  <span
-                    key={key}
-                    {...getTokenProps({ token, key })}
-                    className={clsx(className, 'table-cell')}
-                  />
-                ))}
-              </div>
-            ))}
+            {tokens.map((line, i) => {
+              const { key, ...rest } = getLineProps({
+                line,
+                key: i,
+                className: 'ml-1 pr-5 max-w-0 py-[3px] text-xs'
+              });
+              const lineKey = key as Key;
+              return (
+                <div key={lineKey} {...rest}>
+                  {lineNumbers && (
+                    <span className="mr-4 text-white/40">{i + 1}</span>
+                  )}
+                  {line.map((token, key) => {
+                    const { key: tokenKey, ...rest } = getTokenProps({
+                      token,
+                      key
+                    });
+                    return <span key={tokenKey as Key} {...rest} />;
+                  })}
+                </div>
+              );
+            })}
           </pre>
         )}
       </Highlight>
@@ -216,12 +158,11 @@ type TopBarProps = {
   language?: string;
   title?: string;
   code: string;
-  children: ReactNode;
 };
 
 const TopBar = ({ language, code, title }: TopBarProps) =>
   language ? (
-    <div className="flex h-12 flex-row items-center justify-between border-b border-b-[hsl(0,0%,18%)] text-white dark:bg-black/20">
+    <div className="flex h-12 flex-row items-center justify-between border-b border-b-[hsl(0,0%,18%)] bg-black/20 text-white dark:bg-black/20">
       <div className="m-0 ml-4 flex flex-row items-center gap-3 p-0 text-sm">
         {LanguageIcon(language ?? '')}
         {title ?? fixLanguage(language) ?? ''}
