@@ -19,7 +19,10 @@ export const AppLink = (props: Props) => {
 
   // If the link is external, then open it in a new tab.
   const target =
-    props.target || (props.href.startsWith('http') ? '_blank' : undefined);
+    props.target ||
+    (props.href.startsWith('http') || isApiLink(props.href)
+      ? '_blank'
+      : undefined);
   const style = props.style || {
     textUnderlineOffset: '5px'
   };
@@ -55,10 +58,10 @@ const isApiLink = (href: string) => {
 };
 
 const resolveApiLink = (href: string) => {
-  // Ex.) Convert csharp:IceRpc.ClientConnection to https://api.testing.zeroc.com/csharp/api/IceRpc.ClientConnection.html
   const [lang, ...rest] = href.split(':');
-  const apiHref = `https://api.testing.zeroc.com/${lang}/api/${rest.join(
-    '.'
-  )}.html`;
+  const [module, method] = rest.join('.').split('#'); // split module and method names
+  const apiHref = `https://api.testing.zeroc.com/${lang}/api/${module}.html${
+    method ? `#${method}` : ''
+  }`; // include "#" and method name if it exists
   return apiHref;
 };
