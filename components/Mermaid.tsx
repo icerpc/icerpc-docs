@@ -1,11 +1,8 @@
 // Copyright (c) ZeroC, Inc.
 
 import mermaidAPI from 'mermaid';
-import { useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
-
-let currentId = 0;
-const uuid = () => `mermaid-${(currentId++).toString()}`;
 
 type Props = {
   value: string;
@@ -16,14 +13,32 @@ const MermaidDiagram = (props: Props) => {
   const theme = resolvedTheme === 'dark' ? 'dark' : 'default';
   const { value } = props;
 
-  const svg = useMemo(() => {
-    const mermaidId = `${uuid()}`;
-    mermaidAPI.mermaidAPI.initialize({
-      startOnLoad: false,
-      theme: theme
-    });
-    return mermaidAPI.render(mermaidId, value);
+  const [svg, setSvg] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const renderDiagram = async () => {
+      try {
+        await mermaidAPI.initialize({
+          startOnLoad: false,
+          theme: theme
+        });
+        const renderResult = await mermaidAPI.render('mermaid', value);
+        setSvg(renderResult.svg);
+        setIsLoading(false);
+      } catch (error) {
+        console.error(error);
+        setSvg('');
+        setIsLoading(false);
+      }
+    };
+    renderDiagram();
   }, [value, theme]);
+
+  if (isLoading) {
+    // TODO: Add a loading spinner
+    return <div>Loading diagram...</div>;
+  }
 
   return (
     <div
