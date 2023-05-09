@@ -34,8 +34,8 @@ dispatcher. However, a more idiomatic approach is to communicate using injected 
  - the constructor of the leaf dispatcher (a scoped or transient service) is auto-wired with this previously filled
 scoped service
 
-The chain of middleware is itself static: each dispatch does not create new middleware instances. The middleware
-themselves are typically singletons managed by the DI container.
+The chain of middleware is itself static: each dispatch does not create new middleware instances. The middleware are
+typically singletons managed by the DI container.
 
 ## Building a dispatch pipeline with Microsoft's DI container
 
@@ -101,7 +101,8 @@ public static IDispatcherBuilder UseLogger(this IDispatcherBuilder builder) =>
             $"Could not find service of type '{nameof(ILogger<LoggerMiddleware>)}' in the service container.");
 ```
 
-We recommend you follow the same pattern when you create your own standard middleware.
+We recommend you follow the same pattern when you create your own standard middleware and provide Use extension methods
+for both `Router` and `IDispatcherBuilder`.
 
 {% callout type="information" %}
 Calling the DI container at runtime is typically discouraged--it's the service locator anti-pattern. Here, you should

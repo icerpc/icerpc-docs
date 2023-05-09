@@ -3,9 +3,21 @@ title: Invocation pipeline with DI
 description: Understand how to build your invocation pipeline with a DI container.
 ---
 
+## Invocation pipeline with a DI container
+
+Unlike the [dispatch pipeline](dispatch-pipeline-with-di), the invocation pipeline is pretty much the same with or
+without a DI container. That's because there is no natural DI scope for an invocation: if an invocation executes within
+a DI scope, this scope comes from another enclosing activity, such as a dispatch that makes this invocation.
+
+{% callout type="information" %}
+IceRPC for C# does not provide any special support for invocations within a DI scope. In particular
+[IMiddleware](dispatch-pipeline-with-di#middleware-with-injected-services) has no interceptor counterpart.
+{% /callout %}
+
 ## Building an invocation pipeline with Microsoft's DI container
 
-You can call [AddIceRpcInvoker](csharp:IceRpc.Extensions.DependencyInjections.InvokerServiceCollectionExceptions.AddIceRpcInvoker) to add a new invoker (invocation pipeline) singleton to your DI container.
+You can call [AddIceRpcInvoker](csharp:IceRpc.Extensions.DependencyInjections.InvokerServiceCollectionExceptions.AddIceRpcInvoker)
+to add a new invoker (invocation pipeline) singleton to your DI container.
 
 For example:
 
@@ -25,9 +37,6 @@ services
 You must specify a final invoker with the `Into` method. With this example, the new invoker flows into the
 `ClientConnection` singleton we configured earlier.
 
-{% callout type="information" %}
-The resulting invoker does not create a new DI scope when sending requests.
-{% /callout %}
 ## Installing an interceptor in an IInvokerBuilder
 
 All the interceptors bundled with IceRPC can be used with or without DI, and use features for communications within
@@ -71,7 +80,8 @@ public static IInvokerBuilder UseLogger(this IInvokerBuilder builder) =>
             $"Could not find service of type '{nameof(ILogger<LoggerInterceptor>)}' in the service container.");
 ```
 
-We recommend you follow the same pattern when you create your own interceptor.
+We recommend you follow the same pattern when you create your own interceptor and provide Use extension methods
+for both `Pipeline` and `IInvokerBuilder`.
 
 {% callout type="information" %}
 Calling the DI container at runtime is typically discouraged--it's the service locator anti-pattern. Here, you should
