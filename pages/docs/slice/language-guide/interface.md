@@ -3,36 +3,26 @@ title: Interface
 description: Learn how to define interfaces in Slice.
 ---
 
-## Interface basics
+## The i in IDL
 
-The ultimate goal of the Slice language is to define interfaces. All other Slice constructs and statements merely
-support the definition of interfaces.
+The ultimate goal of the Slice language is to define operations and their enclosing scopes, interfaces. All other Slice
+constructs and statements merely support the definition of interfaces and operations.
 
 An interface specifies an abstraction. This abstraction is implemented by an IceRPC service, and is called by the
 clients of this service.
 
-An interface holds [operations](operation). For example:
+An interface holds [operations](operation) and nothing else. For example:
 
 ```slice {% addEncoding=true %}
-module GreeterExample
+module VisitorCenter
 
-// An interface with a single operation; it does not extend any other interface.
+// An interface with a single operation.
 interface Greeter {
     greet(name: string) -> string
 }
 ```
 
 This interface represents the contract between the clients (callers) and the service that implements this interface.
-
-## Empty interface
-
-An empty "marker" interface with no operation is valid, but rarely useful.
-
-```slice {% addEncoding=true %}
-module Example
-
-interface Empty {} // syntactically correct but probably not necessary
-```
 
 ## Interface inheritance
 
@@ -41,7 +31,7 @@ An interface can inherit from one or more interfaces, provided the operation nam
 For example:
 
 ```slice {% addEncoding=true %}
-module Example
+module Draw
 
 interface Shape {
     rotate(degrees: int16)
@@ -56,6 +46,234 @@ interface Rectangle : Shape, Fillable {
 }
 ```
 
+## Empty interface
+
+You can define an empty "marker" interface, with no operation.
+
+```slice {% addEncoding=true %}
+module ToyStore
+
+interface Toy {} // the empty base interface for all toys
+```
+
+There is no clear use-case for such an empty interface. If you want to transmit an untyped proxy as an operation
+parameter or return value, you should consider using a
+[`WellKnownTypes::ServiceAddress`](https://github.com/icerpc/icerpc-slice/blob/main/WellKnownTypes/ServiceAddress.slice).
+
 ## C# mapping
 
-TBD
+The Slice compiler for C# compiles Slice interface *Name* into two C# interfaces (I*Name* and I*Name*Service) and one
+C# struct (*Name*Proxy). The identifiers of the generated interfaces and struct are always in Pascal case, per the usual
+C# naming conventions, even when *Name* is not in Pascal case.
+
+The attribute `cs::identifier` allows you to remap *Name* to an identifier of your choice. See [C# attributes]() for
+more information.
+
+### I*Name*
+
+Interface I*Name* provides the client-side API that allows you to call the remote service that implements the associated
+Slice interface. It's a minimal interface with an abstract method for each operation defined in this interface.
+
+For example:
+{% side-by-side alignment="top" %}
+```slice {% addEncoding=true %}
+module Example
+
+interface Widget {
+    spin(speed: int32)
+}
+```
+
+```csharp
+namespace Example;
+
+public partial interface IWidget
+{
+    // One method per operation
+    Task SpinAsync(
+        int speed,
+        IFeatureCollection? features = null,
+        CancellationToken cancellationToken = default);
+}
+```
+{% /side-by-side %}
+
+Slice interface inheritance naturally maps to interface inheritance in C#. For example:
+
+```slice {% addEncoding=true %}
+module Draw
+
+interface Rectangle : Shape, Fillable {
+    idempotent resize(x: int32, y: int32)
+}
+```
+
+maps to:
+
+```csharp
+namespace Draw;
+
+public partial interface IRectangle : IShape, IFillable
+{
+    Task ResizeAsync(
+        int x,
+        int y,
+        IFeatureCollection? features = null,
+        CancellationToken cancellationToken = default);
+}
+```
+
+### *Name*Proxy
+
+The generated record struct *Name*Proxy implements I*Name* by sending requests to a remote service with IceRPC.
+
+An instance of this struct is a local surrogate for the remote service that implements *Name*--in other words, a proxy
+for this service.
+
+In order to call a remote service, you need to construct a proxy struct using one of its "invoker" constructors:
+
+```csharp
+public readonly partial record struct WidgetProxy : IWidget, IProxy
+{
+    public WidgetProxy(
+        IInvoker invoker,
+        ServiceAddress? serviceAddress = null,
+        SliceEncodeOptions? encodeOptions = null)
+    {
+        ...
+    }
+
+    public WidgetProxy(
+        IInvoker invoker,
+        System.Uri serviceAddressUri,
+        SliceEncodeOptions? encodeOptions = null)
+        : this(invoker, new ServiceAddress(serviceAddressUri), encodeOptions)
+    {
+    }
+}
+```
+
+The `invoker` parameter represents your [invocation pipeline](../../icerpc-core/invocation/invocaiton-pipeline), the
+`serviceAddress` or `serviceAddressUri` parameter corresponds to the
+[address](../../icerpc-core/invocation/service-address) of the remote service, and the `encodeOptions` parameter allows
+you to customize the Slice encoding of operation parameters. See
+[SliceEncodeOptions](csharp:IceRpc.Slice.SliceEncodeOptions) for details.
+
+A `null` service address is equivalent to an icerpc service address with the default path of the associated Slice
+interface.
+
+{% callout type="information" %}
+The default path of a Slice interface is `/` followed by its fully qualified name with `::` replaced by `.`.
+
+For example, the default path of Slice interface `VisitorCenter::Greeter` is `/VisitorCenter.Greeter`.
+{% /callout %}
+
+If you want to create a [relative proxy](), call the `FromPath` static method:
+
+```csharp
+public readonly partial record struct WidgetProxy : IWidget, IProxy
+{
+    public static WidgetProxy FromPath(string path) { ... }
+}
+```
+
+The proxy struct also provides a parameterless constructor that creates a relative proxy with the default path.
+
+When a Slice interface derives from another interface, its proxy struct provides an implicit conversion operator to be
+base interface. For example:
+
+```slice {% addEncoding=true %}
+module Draw
+
+interface Rectangle : Shape, Fillable {
+    idempotent resize(x: int32, y: int32)
+}
+```
+
+maps to:
+
+```csharp
+namespace Draw;
+
+public readonly partial record struct RectangleProxy : IRectangle, IProxy
+{
+    public static implicit operator ShapeProxy(RectangleProxy proxy)
+    {
+        ...
+    }
+
+    public static implicit operator FillableProxy(RectangleProxy proxy)
+    {
+        ...
+    }
+}
+```
+
+This way, you can pass a "derived" proxy to a method that expects a "base" proxy, even though there is naturally no
+inheritance relationship between these proxy structs.
+
+### I*Name*Service
+
+Interface I*Name*Service is a server-side helper: it helps you create a service (a C# class) that implements Slice
+interface *Name*.
+
+The principle is straightforward: your service class must derive from class [`Service`](csharp:IceRpc.Slice.Service) and
+must implement interface I*Name*Service. This generated Service interface defines an abstract method for each operation
+on the Slice interface and you need to implement all these abstract methods.
+
+For example:
+
+{% side-by-side alignment="top" %}
+```slice {% addEncoding=true %}
+module Example
+
+interface Widget {
+    spin(speed: int32)
+}
+```
+
+```csharp
+namespace Example;
+
+public partial interface IWidgetService
+{
+    // One method per operation
+    ValueTask SpinAsync(
+        int speed,
+        IFeatureCollection features,
+        CancellationToken cancellationToken);
+}
+```
+{% /side-by-side %}
+
+{% callout type="information" %}
+Even though I*Name*Service is an interface, it's not used as an abstraction: you shouldn't make calls to this interface
+or create decorators for this interface. It's just a model that your class must implement.
+{% /callout %}
+
+Note that the same service class can implement any number of Slice interfaces provided their operations have unique
+names. For example:
+
+{% side-by-side alignment="top" %}
+```slice {% addEncoding=true %}
+module Example
+
+interface Widget {
+    spin(speed: int32)
+}
+
+interface Counter {
+    getCount() -> int32
+}
+```
+
+```csharp
+// A service class that implements 2 Slice interfaces
+internal class MyWidget : Service,
+                          IWidgetService,
+                          ICounterService
+{
+    // implements SpinAsync and GetCountAsync.
+}
+```
+{% /side-by-side %}

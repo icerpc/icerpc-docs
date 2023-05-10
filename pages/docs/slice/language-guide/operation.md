@@ -5,8 +5,16 @@ description: Learn how to define operations in Slice.
 
 ## Operation basics
 
-You can only define an operation within an [interface](interface). An operation describes the payload of a request for
-this operation and the payload of the corresponding response.
+WIP
+
+An operation describes a RPC, with:
+ - a name (the operation name). This name is critical since it communicates to the remote service the agreed-upon format
+ for the request and response payloads. With Slice, this agreed-upon format uses a Slice encoding (Slice1 or Slice2).
+ - the parameters to encode into the request payload
+ - the return type to encode into the response payload
+ - optionally, the exception(s) that can be encoded into the response payload
+
+You can only define an operation within an [interface](interface).
 
 For example:
 
