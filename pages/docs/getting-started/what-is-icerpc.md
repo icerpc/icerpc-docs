@@ -17,9 +17,9 @@ characteristics include:
 
 ## The client server contract
 
-The Slice language simplifies the definition of the contract agreed upon by IceRPC clients and servers. IceRPC is a
-contract first RPC, meaning that the messages exchanged between clients and servers are strongly typed and defined
-beforehand. Slice is the IDL language used by IceRPC.
+The [Slice language][slice-language] simplifies the definition of the contract agreed upon by IceRPC clients and
+servers. IceRPC is a [contract first][contract-first] RPC, meaning that the messages exchanged between clients and
+servers are strongly typed and defined beforehand. Slice is the IDL language used by IceRPC.
 
 This contract allows for optimizations that would otherwise not be possible. Since the message format is known by both
 clients and servers, there is no need to exchange additional metadata to describe the messages. This results in a more
@@ -30,16 +30,17 @@ the creation of client and server applications.
 
 ## Extensibility
 
-IceRPC allows customization of the invocation and dispatch pipelines using interceptors and middleware. IceRPC provides
-a set of common interceptors and middleware, but you can also add your own to tailor your invocation and dispatch
-pipelines.
+IceRPC allows customization of the [invocation][invocation-pipeline] and [dispatch][dispatch-pipeline] pipelines using
+[interceptors][interceptor] and [middleware][middleware]. IceRPC provides a set of common interceptors and middleware,
+but you can also add your own to tailor your invocation and dispatch pipelines.
 
 In addition, new transports can be added to handle special cases where standard transports like TCP or QUIC are not
 available.
 
 ## Networking
 
-IceRPC supports a multiplexed transport abstraction that fully leverages modern network protocols like QUIC.
+IceRPC supports a [multiplexed transport][multiplexed-transports] abstraction that fully leverages modern network
+protocols like QUIC.
 
 ## Language mappings
 
@@ -50,3 +51,11 @@ reducing the learning curve for developers already familiar with a particular la
 
 - [C# Examples](https://github.com:icerpc/icerpc-csharp/examples)
 - [C# API Documentation](https://api.testing.zeroc.com/csharp)
+
+[slice-language]: /docs/slice
+[contract-first]: /docs/slice/basics/contract-first
+[invocation-pipeline]: /docs/icerpc-core/invocation/invocation-pipeline
+[interceptor]: /docs/icerpc-core/invocation/interceptor
+[dispatch-pipeline]: /docs/icerpc-core/dispatch/dispatch-pipeline
+[middleware]: /docs/icerpc-core/dispatch/middleware
+[multiplexed-transports]: /docs/icerpc-core/protocols-and-transports/icerpc-multiplexed-transports
