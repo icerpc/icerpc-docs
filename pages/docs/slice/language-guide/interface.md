@@ -75,6 +75,7 @@ Interface I*Name* provides the client-side API that allows you to call the remot
 Slice interface. It's a minimal interface with an abstract method for each operation defined in this interface.
 
 For example:
+
 {% side-by-side alignment="top" %}
 ```slice {% addEncoding=true %}
 module Example
