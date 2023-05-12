@@ -1,5 +1,10 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const withMarkdoc = require('@markdoc/next.js');
 
 module.exports = withMarkdoc()({
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdoc']
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdoc'],
+  i18n: {
+    locales: ['en-US'],
+    defaultLocale: 'en-US'
+  }
 });
