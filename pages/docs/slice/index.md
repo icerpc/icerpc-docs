@@ -3,45 +3,14 @@ title: Overview
 description: An introduction to Slice
 ---
 
-{% encodings /%}
+Slice is the IDL (Interface Definition Language) used by IceRPC. The Slice language allows you to define the contract
+to which clients and servers agree. You use Slice to define this contract in a platform agnostic way.
 
-{% callout type="critical" %}
+The Slice language has been specifically designed for defining RPC-based services. You define your service's
+operations using Slice. Slice is also used to define the parameters and return values of these operations.
 
-TODO: This page contains placeholder content and needs to be replaced. Please remove this when you are done.
+The Slice compiler takes Slice definitions as inputs and generates code in the target programming language. Your client and
+server applications use the generated code to communicatte using the operations and types defined in the Slice definitions.
 
-{% /callout %}
-
-[ClientConnection](csharp:IceRpc.ClientConnection)
-
-[features](csharp:IceRpc.IncomingRequest#IceRpc_IncomingRequest_Features)
-
-The Slice is a Interface Description Language (IDL) used to describe the structure of data in your application
-and the operations that can be performed on it. It is a language and platform agnostic way to describe the flow
-of data in your application.
-
-{% slice2 %}
-
-## Slice2 only section
-
-You will only see me when Slice2 is selected
-
-{% /slice2 %}
-
-{% slice1 %}
-
-## Slice1 only section
-
-You will only see me when Slice1 is selected
-
-{% /slice1 %}
-
-### Quick Links
-
-{% grid %}
-
-{% mini-card title="Lexical Rules" description="An introduction to the Lexical Rules of Slice" href="/docs/slice/syntax/lexical-rules" /%}
-{% mini-card title="Source Files" description="How Slice files are structured" href="/docs/slice/syntax/source-files" /%}
-{% mini-card title="Compilation" description="From source files to generated code" href="/docs/slice/syntax/source-files" /%}
-{% mini-card title="Error Code Reference" description="A catalogue of all warnings and errors that can occur during compilation" href="/docs/slice/error-codes/errors" /%}
-
-{% /grid %}
+The Slice language mapping, define how the different Slice language constructions are represented in a programming language.
+The Slice encoding defines how this constructions are encoded into a stream of bytes that can be send over the network.
