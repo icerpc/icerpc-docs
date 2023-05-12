@@ -10,7 +10,7 @@ The Slice language has been specifically designed for defining RPC-based service
 operations using Slice. Slice is also used to define the parameters and return values of these operations.
 
 The Slice compiler takes Slice definitions as inputs and generates code in the target programming language. Your client and
-server applications use the generated code to communicatte using the operations and types defined in the Slice definitions.
+server applications use the generated code to communicate using the operations and types defined in the Slice definitions.
 
 The Slice language mapping, define how the different Slice language constructions are represented in a programming language.
 The Slice encoding defines how this constructions are encoded into a stream of bytes that can be send over the network.
