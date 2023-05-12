@@ -154,7 +154,7 @@ public readonly partial record struct WidgetProxy : IWidget, IProxy
 }
 ```
 
-The `invoker` parameter represents your [invocation pipeline](../../icerpc-core/invocation/invocaiton-pipeline), the
+The `invoker` parameter represents your [invocation pipeline](../../icerpc-core/invocation/invocation-pipeline), the
 `serviceAddress` or `serviceAddressUri` parameter corresponds to the
 [address](../../icerpc-core/invocation/service-address) of the remote service, and the `encodeOptions` parameter allows
 you to customize the Slice encoding of operation parameters. See

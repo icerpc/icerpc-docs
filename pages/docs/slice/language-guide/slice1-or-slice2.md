@@ -21,7 +21,7 @@ encoding = Slice1
 
 If your Slice file has no encoding statement, it uses the default encoding, Slice2.
 
-You should Slice1 if you need interoperability with Ice applications; otherwise, keep the default, Slice2.
+You should use Slice1 if you need interoperability with Ice applications; otherwise, keep the default, Slice2.
 
 ## Encoding compatibility
 
@@ -54,10 +54,10 @@ interface Widget {
 
 ## Using Slice1 types from Slice2
 
-It is always an error to reference a type defined in an encoding = Slice2 file from an encoding = Slice1 file.
+It is always an error to reference a type defined in a file using Slice2 encoding from a file using Slice1 encoding.
 
-On the other hand, you can reference a type defined in an encoding = Slice1 file from an encoding = Slice2 file provided
-this type can be encoded with Slice2. For example:
+On the other hand, you can reference a type defined in a file using Slice1 encoding from a file using Slice2 encoding
+provided this type can be encoded with Slice2. For example:
 
 ```slice
 encoding = Slice1
