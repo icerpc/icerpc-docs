@@ -87,8 +87,9 @@ const Logo = () => {
   const { resolvedTheme } = useTheme();
   const mounted = useMounted();
 
+  // Default to light icon if theme is not yet resolved because of SSR
   if (!mounted) {
-    return null;
+    return <Image src={lightIcon} height={30} alt="ZeroC Logo" />;
   }
 
   return (
