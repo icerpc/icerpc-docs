@@ -17,7 +17,7 @@ import { useMounted } from 'context/state';
 export const navigationItems = [
   {
     name: 'Home',
-    href: '/'
+    href: 'https://web.testing.zeroc.com'
   },
   {
     name: 'Getting Started',
