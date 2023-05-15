@@ -22,5 +22,9 @@ the response's payload holds a double-precision floating point number.
 
 While Slice's primary mission is to encode and decode the payloads of your requests and responses by generating code, a
 secondary mission is to offer you a more convenient API for making and implementing RPCs. As illustrated by the
-[Hello]() and [HelloCore]() examples, you need to write much less code when you use Slice even after factoring out the
+[Greeter][greeter] and [GreeterCore][greeter-core] examples, you need to write much less code when you use Slice even after factoring out the
 encoding and decoding of the payloads.
+
+
+[greeter]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/Greeter
+[greeter-core]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterCore
