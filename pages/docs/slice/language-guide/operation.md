@@ -109,7 +109,7 @@ op() -> (
 
 The tag numbers and tag semantics are described above in [tagged parameter](#tagged-parameter).
 
-When an operation returns a single value, this return value can be tagged. For example:
+When an operation returns a single type, this return type can be tagged. For example:
 
 ```slice
 // returns a tagged string

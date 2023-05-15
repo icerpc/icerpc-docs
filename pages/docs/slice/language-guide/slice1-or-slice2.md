@@ -54,10 +54,11 @@ interface Widget {
 
 ## Using Slice1 types from Slice2
 
-It is always an error to reference a type defined in a file using Slice2 encoding from a file using Slice1 encoding.
+It is always an error to reference a type defined in a file using the Slice2 encoding from a file using the Slice1
+encoding.
 
-On the other hand, you can reference a type defined in a file using Slice1 encoding from a file using Slice2 encoding
-provided this type can be encoded with Slice2. For example:
+On the other hand, you can reference a type defined in a file using the Slice1 encoding from a file using the Slice2
+encoding provided this type can be encoded with Slice2. For example:
 
 ```slice
 encoding = Slice1
