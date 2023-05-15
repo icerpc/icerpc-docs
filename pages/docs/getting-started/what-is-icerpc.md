@@ -10,7 +10,7 @@ learning how to start using IceRPC.
 IceRPC is a modern RPC (remote procedure call) framework, with a focus on performance and ease of use. Its main
 characteristics include:
 
-- Powerful IDL language (Slice) for defining the client server contracts.
+- Powerful IDL language (Slice) for defining client server contracts.
 - Modular API design, which allows easily adding new functionality to the framework.
 - Supports modern network protocols, including QUIC.
 - Familiar language mappings.
