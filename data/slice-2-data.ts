@@ -54,6 +54,10 @@ export const slice2Data: SideBarSourceType[] = [
       {
         title: 'Primitive types',
         path: `${SLICE_BASE_URL}/language-guide/primitive-types`
+      },
+      {
+        title: 'Proxy',
+        path: `${SLICE_BASE_URL}/language-guide/proxy`
       }
     ]
   },

@@ -6,12 +6,12 @@ description: Learn how to define interfaces in Slice.
 ## The i in IDL
 
 The ultimate goal of the Slice language is to define operations and their enclosing scopes, interfaces. All other Slice
-constructs and statements merely support the definition of interfaces and operations.
+constructs and statements merely support the definition of interfaces.
 
-An interface specifies an abstraction. This abstraction is implemented by an IceRPC service, and is called by the
-clients of this service.
+An interface specifies an abstraction--a group of abstract operations. A client application calls these operations while
+a server application hosts a service that implements this interface.
 
-An interface holds [operations](operation) and nothing else. For example:
+For example:
 
 ```slice {% addEncoding=true %}
 module VisitorCenter
@@ -22,7 +22,7 @@ interface Greeter {
 }
 ```
 
-This interface represents the contract between the clients (callers) and the service that implements this interface.
+All operations are abstract: you can't implement an operation in Slice.
 
 ## Interface inheritance
 
@@ -56,9 +56,25 @@ module ToyStore
 interface Toy {} // the empty base interface for all toys
 ```
 
-There is no clear use-case for such an empty interface. If you want to transmit an untyped proxy as an operation
-parameter or return value, you should consider using a
-[`WellKnownTypes::ServiceAddress`](https://github.com/icerpc/icerpc-slice/blob/main/WellKnownTypes/ServiceAddress.slice).
+While the syntax is valid, there is no clear use-case for such an empty interface.
+
+## Interface as a type
+
+An interface identifier can be used as a field type, parameter type, return type etc., just like `string` or the
+identifier of a struct. For example:
+
+```slice {% addEncoding=true %}
+interface Widget {
+    spin(speed: int32)
+}
+
+interface WidgetFactory {
+    createWidget(name: string) -> Widget
+}
+```
+
+Such a field or parameter (etc.) represents the address of a remote service that implements this interface, and is
+called a proxy. Please refer to [Proxy](proxy) for details.
 
 ## C# mapping
 
@@ -249,7 +265,7 @@ public partial interface IWidgetService
 
 {% callout type="information" %}
 Even though I*Name*Service is an interface, it's not used as an abstraction: you shouldn't make calls to this interface
-or create decorators for this interface. It's just a model that your class must implement.
+or create decorators for this interface. It's just a model that your service class must implement.
 {% /callout %}
 
 Note that the same service class can implement any number of Slice interfaces provided their operations have unique

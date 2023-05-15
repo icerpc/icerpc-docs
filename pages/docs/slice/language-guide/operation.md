@@ -44,7 +44,7 @@ op(
 ### Tagged parameter
 
 An operation parameter can have a tag, which makes this parameter a "tagged parameter". A tag consists of the `tag`
-keyword plus a tag number. For example:
+keyword plus a tag number in parenthesis. For example:
 
 ```slice
 op(tag(1) x: int32?)
@@ -72,10 +72,10 @@ parameter--their Slice definitions are not the same--the decoding of the request
 
 On the other hand, a tagged parameter tolerates mismatches. The sender can send a tagged parameter that the recipient
 doesn't know about (it will be ignored), and the recipient can expect a tagged parameter that the sender doesn't know
-(the recipient will get a null value).
+(the recipient will get a "not set" value).
 
 {% callout type="information" %}
-You can add and remove tagged parameters over time while maintaining "on-the-wire" compatibility. The only constraint
+You can add and remove tagged parameters over time while maintaining on-the-wire compatibility. The only constraint
 is you can never change the type associated with a tag number. If the type associated with tag 7 is a string, it must
 always remain a string; if you were to reuse tag 7 with another type, you would break on-the-wire compatibility with
 applications that expect tag 7 values to be encoded as strings.
@@ -107,7 +107,7 @@ op() -> (
 )
 ```
 
-The tag numbers and tag semantics are described above in [tagged parameter](#tagged-parameter).
+The tag numbers and tag semantics are the same as for [tagged parameters](#tagged-parameter).
 
 When an operation returns a single type, this return type can be tagged. For example:
 
@@ -135,9 +135,9 @@ translate(input: string) -> string throws TranslationException
 ```
 
 This exception specification allows the operation to return (throw) a custom error when the implementation of the
-operation fails. When the operation succeeds, it returns its return type and this exception specification is not used.
+operation fails. When the operation succeeds, it returns the return type and this exception specification is not used.
 
-## Idempotent keyword
+## Idempotent operation
 
 An operation can be marked as idempotent, which means calling this operation several times with the same arguments is
 semantically equivalent to calling this operation once.
@@ -152,18 +152,7 @@ Setting the temperature over-and-over to the same value is like setting it once.
 
 The `idempotent` keyword ensures that both the caller and the implementation of the service have compatible
 understandings of the idempotent-ness of this operation. If the caller believes an operation is idempotent, the service
-implementation must see and treat this operation as idempotent.
-
-## Oneway attribute
-
-An operation with no return type or exception specification can be marked as one-way with the `oneway` attribute. For
-example:
-
-```slice
-[oneway] logError(errorCode: int32, errorMessage: string)
-```
-
-A one-way operation succeeds as soon as the request is sent successfully, and the recipient does not return a response.
+implementation must see and treat this operation as idempotent too.
 
 ## C# mapping
 
@@ -329,4 +318,68 @@ This mapping also applies to Slice enums whose underlying type is fixed-size.
 
 ### Request and Response helper classes
 
-TBD
+The Slice compiler generates helper nested static classes named Request and Response in *Name*Proxy and I*Name*Service.
+These nested classes provide helper methods to encode and decode the payloads of requests and responses associated with
+the interface operations, with up to 4 helper methods per operation.
+
+For example:
+```slice
+module VisitorCenter
+
+interface Greeter {
+    greet(name: string) -> string
+}
+```
+
+produces 4 helper methods:
+
+```csharp
+public readonly partial record struct GreeterProxy : IGreeter, IProxy
+{
+    public static class Request
+    {
+        // Encodes the name argument into a request payload (a PipeReader).
+        public static PipeReader Greet(string name, SliceEncodeOptions? encodeOptions = null)
+        {
+            ...
+        }
+    }
+
+    public static class Response
+    {
+        // Decodes the response payload into a string (the greeting).
+        public static ValueTask<string> GreetAsync(
+            IncomingResponse response,
+            OutgoingRequest request,
+            GenericProxy sender,
+            CancellationToken cancellationToken)
+        {
+            ...
+        }
+    }
+}
+
+public partial interface IGreeterService
+{
+    public static class Request
+    {
+        // Decodes the name argument from the request payload.
+        public static ValueTask<string> GreetAsync(IncomingRequest request, CancellationToken cancellationToken)
+        {
+            ...
+        }
+    }
+
+    public static class Response
+    {
+        // Encodes the greeting return value into a response payload.
+        public static PipeReader Greet(string returnValue, SliceEncodeOptions? encodeOptions = null)
+        {
+            ...
+        }
+    }
+}
+```
+
+These helper methods allow you to create/consume plain IceRPC requests and responses while still using the generated
+code for their payloads.
