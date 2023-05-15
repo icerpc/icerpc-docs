@@ -4,7 +4,7 @@ description: An introduction to Slice
 ---
 
 Slice is the IDL (Interface Definition Language) used by IceRPC. The Slice language allows you to define the contract
-to which clients and servers agree. You use Slice to define this contract in a platform agnostic way.
+to which clients and servers agree. You use Slice to define this contract in a platform-agnostic way.
 
 The Slice language has been specifically designed for defining RPC-based services. You define your service's
 operations using Slice. Slice is also used to define the parameters and return values of these operations.
