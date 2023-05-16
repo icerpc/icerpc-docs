@@ -322,16 +322,6 @@ The Slice compiler generates helper nested static classes named Request and Resp
 These nested classes provide helper methods to encode and decode the payloads of requests and responses associated with
 the interface operations, with up to 4 helper methods per operation.
 
-{% slice2 %}
-{% callout type="information" %}
-If your operation has a stream parameter, the encode helper (in *NameProxy*.Request) does not encode the stream
-argument; however, the decode helper (in I*Name*Service.Request) decodes all arguments, including the stream.
-
-Likewise, if your operation returns a stream, the encode helper (in I*Name*Service.Response) does not encode the stream
-return value, while the decode helper (in *Name*Proxy.Response) decodes everything.
-{% /callout %}
-{% /slice2 %}
-
 For example:
 ```slice
 module VisitorCenter
@@ -390,6 +380,16 @@ public partial interface IGreeterService
     }
 }
 ```
+
+{% slice2 %}
+{% callout type="information" %}
+If your operation has a stream parameter, the encode helper (in *NameProxy*.Request) does not encode the stream
+argument; however, the decode helper (in I*Name*Service.Request) decodes all arguments, including the stream.
+
+Likewise, if your operation returns a stream, the encode helper (in I*Name*Service.Response) does not encode the stream
+return value, while the decode helper (in *Name*Proxy.Response) decodes everything.
+{% /callout %}
+{% /slice2 %}
 
 These helper methods allow you to create/consume plain IceRPC requests and responses while still using the generated
 code for their payloads.

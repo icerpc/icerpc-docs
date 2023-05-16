@@ -185,7 +185,8 @@ The default path of a Slice interface is `/` followed by its fully qualified nam
 For example, the default path of Slice interface `VisitorCenter::Greeter` is `/VisitorCenter.Greeter`.
 {% /callout %}
 
-If you want to create a [relative proxy](), call the `FromPath` static method:
+{% slice2 %}
+If you want to create a [relative proxy](proxy#relative-proxy), call the `FromPath` static method:
 
 ```csharp
 public readonly partial record struct WidgetProxy : IWidget, IProxy
@@ -195,6 +196,7 @@ public readonly partial record struct WidgetProxy : IWidget, IProxy
 ```
 
 The proxy struct also provides a parameterless constructor that creates a relative proxy with the default path.
+{% /slice2 %}
 
 When a Slice interface derives from another interface, its proxy struct provides an implicit conversion operator to be
 base interface. For example:
