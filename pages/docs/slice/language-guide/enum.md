@@ -63,11 +63,10 @@ enum Fruit {
 If you don't assign a value to an enumerator, the Slice compiler will assign a value by incrementing the previous
 enumerator's value by one. In the previous Slice definition, the `Orange` enumerator will have a value of `6`.
 
+## Enumeration underlying type
+
 {% slice2 %}
-
-## Enumerations underlying type
-
-With Slice2 you can define an underlying type for your enumerations. The underlying type specifies the valid range of
+With Slice2 you have to define an underlying type for your enumerations. The underlying type specifies the valid range of
 values for the enumerators. The underlying type must be a [fixed size integral type](./primitive-types#fixed-size-integral-types)
 or a [variable size integral type](./primitive-types#variable-size-integral-types).
 
@@ -82,5 +81,4 @@ enum Fruit : uint8 {
 ```
 
 The choice of underlying type should align with the expected range of values for the enumerators.
-
 {% /slice2 %}
