@@ -32,7 +32,7 @@ enum Fruit {
 {% /slice1 %}
 
 {% slice2 %}
-With Slice2 you have to define an underlying type for your enumerations, in the preivous example the `Fruit` enumeration
+With Slice2 you have to define an underlying type for your enumerations, in the previous example the `Fruit` enumeration
 uses `int32` as its underlying type. The underlying type specifies the valid range of values for the enumerators. The
 underlying type must be a [fixed size integral type](./primitive-types#fixed-size-integral-types) or a
 [variable size integral type](./primitive-types#variable-size-integral-types).
