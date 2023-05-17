@@ -34,7 +34,9 @@ enum Fruit {
 The default behavior of the Slice compiler is to assign values to the enumerators automatically. The first enumerator,
 `Apple`, is assigned a value of `0`, and subsequent enumerators are assigned increasing values.
 
-The following code example illustrates how you can explicitly specify values for the enumerators in your enumeration
+## Enumerator explicit values
+
+The following code example illustrates how you can explicitly assign values for the enumerators in your enumeration
 type. In this example, the `Apple` enumerator is assigned a value of `1`, the `Pear` enumerator is assigned a value
 of `5`, and the `Orange` enumerator is left without an explicitly assigned value.
 
@@ -66,7 +68,8 @@ enumerator's value by one. In the previous Slice definition, the `Orange` enumer
 ## Enumerations underlying type
 
 With Slice2 you can define an underlying type for your enumerations. The underlying type specifies the valid range of
-values for the enumerators.
+values for the enumerators. The underliying type must be a [fixed size integral type](./primitive-types#fixed-size-integral-types)
+or a [variable size integral type](./primitive-types#variable-size-integral-types).
 
 For example, the next code shows how you can define an enumneration with an underlying type of `uint8`:
 
