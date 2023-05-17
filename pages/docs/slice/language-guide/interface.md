@@ -6,12 +6,12 @@ description: Learn how to define interfaces in Slice.
 ## The i in IDL
 
 The ultimate goal of the Slice language is to define operations and their enclosing scopes, interfaces. All other Slice
-constructs and statements merely support the definition of interfaces and operations.
+constructs and statements merely support the definition of interfaces.
 
-An interface specifies an abstraction. This abstraction is implemented by an IceRPC service, and is called by the
-clients of this service.
+An interface specifies an abstraction--a group of abstract operations. A client application calls these operations while
+a server application hosts a service that implements this interface.
 
-An interface holds [operations](operation) and nothing else. For example:
+For example:
 
 ```slice {% addEncoding=true %}
 module VisitorCenter
@@ -22,7 +22,7 @@ interface Greeter {
 }
 ```
 
-This interface represents the contract between the clients (callers) and the service that implements this interface.
+All operations are abstract: you can't implement an operation in Slice.
 
 ## Interface inheritance
 
@@ -56,9 +56,25 @@ module ToyStore
 interface Toy {} // the empty base interface for all toys
 ```
 
-There is no clear use-case for such an empty interface. If you want to transmit an untyped proxy as an operation
-parameter or return value, you should consider using a
-[`WellKnownTypes::ServiceAddress`](https://github.com/icerpc/icerpc-slice/blob/main/WellKnownTypes/ServiceAddress.slice).
+While the syntax is valid, there is no clear use-case for such an empty interface.
+
+## Interface as a type
+
+An interface identifier can be used as a field type, parameter type, return type etc., just like `string` or the
+identifier of a struct. For example:
+
+```slice {% addEncoding=true %}
+interface Widget {
+    spin(speed: int32)
+}
+
+interface WidgetFactory {
+    createWidget(name: string) -> Widget
+}
+```
+
+Such a field or parameter (etc.) represents the address of a remote service that implements this interface, and is
+called a proxy. Please refer to [Proxy](proxy) for details.
 
 ## C# mapping
 
@@ -154,7 +170,7 @@ public readonly partial record struct WidgetProxy : IWidget, IProxy
 }
 ```
 
-The `invoker` parameter represents your [invocation pipeline](../../icerpc-core/invocation/invocaiton-pipeline), the
+The `invoker` parameter represents your [invocation pipeline](../../icerpc-core/invocation/invocation-pipeline), the
 `serviceAddress` or `serviceAddressUri` parameter corresponds to the
 [address](../../icerpc-core/invocation/service-address) of the remote service, and the `encodeOptions` parameter allows
 you to customize the Slice encoding of operation parameters. See
@@ -169,7 +185,8 @@ The default path of a Slice interface is `/` followed by its fully qualified nam
 For example, the default path of Slice interface `VisitorCenter::Greeter` is `/VisitorCenter.Greeter`.
 {% /callout %}
 
-If you want to create a [relative proxy](), call the `FromPath` static method:
+{% slice2 %}
+If you want to create a [relative proxy](proxy#relative-proxy), call the `FromPath` static method:
 
 ```csharp
 public readonly partial record struct WidgetProxy : IWidget, IProxy
@@ -179,6 +196,7 @@ public readonly partial record struct WidgetProxy : IWidget, IProxy
 ```
 
 The proxy struct also provides a parameterless constructor that creates a relative proxy with the default path.
+{% /slice2 %}
 
 When a Slice interface derives from another interface, its proxy struct provides an implicit conversion operator to be
 base interface. For example:
@@ -249,7 +267,7 @@ public partial interface IWidgetService
 
 {% callout type="information" %}
 Even though I*Name*Service is an interface, it's not used as an abstraction: you shouldn't make calls to this interface
-or create decorators for this interface. It's just a model that your class must implement.
+or create decorators for this interface. It's just a model that your service class must implement.
 {% /callout %}
 
 Note that the same service class can implement any number of Slice interfaces provided their operations have unique

@@ -106,7 +106,7 @@ The `GreeterProxy` struct implements the methods of the generated interface by c
 You then create an instance of this proxy struct to make remote calls, for example:
 
 ```csharp
-using HelloExample;
+using VisitorCenter;
 using IceRpc;
 
 // A ClientConnection is an invoker.

@@ -58,6 +58,10 @@ export const slice2Data: SideBarSourceType[] = [
       {
         title: 'Enumeration types',
         path: `${SLICE_BASE_URL}/language-guide/enum`
+      },
+      {
+        title: 'Proxy',
+        path: `${SLICE_BASE_URL}/language-guide/proxy`
       }
     ]
   },

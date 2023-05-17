@@ -17,7 +17,7 @@ import { useMounted } from 'context/state';
 export const navigationItems = [
   {
     name: 'Home',
-    href: '/'
+    href: 'https://web.testing.zeroc.com'
   },
   {
     name: 'Getting Started',
@@ -87,8 +87,9 @@ const Logo = () => {
   const { resolvedTheme } = useTheme();
   const mounted = useMounted();
 
+  // Default to light icon if theme is not yet resolved because of SSR
   if (!mounted) {
-    return null;
+    return <Image src={lightIcon} height={30} alt="ZeroC Logo" />;
   }
 
   return (
