@@ -8,7 +8,7 @@ description: Learn how to define enumerations in Slice.
 A Slice enumeration type is a set of named constants, each with an associated value. It resembles the enumeration types
 found in languages like C# and C++.
 
-The following example shows how you will define an enumeration type named `Fruit` with three enumerators: `Apple`,
+The following example shows how to define an enumeration type named `Fruit` with three enumerators: `Apple`,
 `Pear`, and `Orange`.
 
 {% slice2 %}
