@@ -339,7 +339,7 @@ public readonly partial record struct GreeterProxy : IGreeter, IProxy
     public static class Request
     {
         // Encodes the name argument into a request payload (a PipeReader).
-        public static PipeReader Greet(string name, SliceEncodeOptions? encodeOptions = null)
+        public static PipeReader EncodeGreet(string name, SliceEncodeOptions? encodeOptions = null)
         {
             ...
         }
@@ -348,7 +348,7 @@ public readonly partial record struct GreeterProxy : IGreeter, IProxy
     public static class Response
     {
         // Decodes the response payload into a string (the greeting).
-        public static ValueTask<string> GreetAsync(
+        public static ValueTask<string> DecodeGreetAsync(
             IncomingResponse response,
             OutgoingRequest request,
             GenericProxy sender,
@@ -364,7 +364,7 @@ public partial interface IGreeterService
     public static class Request
     {
         // Decodes the name argument from the request payload.
-        public static ValueTask<string> GreetAsync(IncomingRequest request, CancellationToken cancellationToken)
+        public static ValueTask<string> DecodeGreetAsync(IncomingRequest request, CancellationToken cancellationToken)
         {
             ...
         }
@@ -373,7 +373,7 @@ public partial interface IGreeterService
     public static class Response
     {
         // Encodes the greeting return value into a response payload.
-        public static PipeReader Greet(string returnValue, SliceEncodeOptions? encodeOptions = null)
+        public static PipeReader EncodeGreet(string returnValue, SliceEncodeOptions? encodeOptions = null)
         {
             ...
         }
