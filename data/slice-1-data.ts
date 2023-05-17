@@ -56,8 +56,24 @@ export const slice1Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/language-guide/primitive-types`
       },
       {
-        title: 'Proxy',
-        path: `${SLICE_BASE_URL}/language-guide/proxy`
+        title: 'Optional types',
+        path: `${SLICE_BASE_URL}/language-guide/optional-types`
+      },
+      {
+        title: 'Proxy types',
+        path: `${SLICE_BASE_URL}/language-guide/proxy-types`
+      },
+      {
+        title: 'Custom types',
+        path: `${SLICE_BASE_URL}/language-guide/custom-types`
+      },
+      {
+        title: 'Well-known types',
+        path: `${SLICE_BASE_URL}/language-guide/well-known-types`
+      },
+      {
+        title: 'Type alias',
+        path: `${SLICE_BASE_URL}/language-guide/type-alias`
       }
     ]
   },
