@@ -3,7 +3,7 @@ title: Enumeration
 description: Learn how to define enumerations in Slice.
 ---
 
-## Slice enumeration types
+## Enumeration types
 
 A Slice enumeration type is a set of named constants, each with an associated value. It resembles the enumeration types
 found in languages like C# and C++.
@@ -31,10 +31,19 @@ enum Fruit {
 ```
 {% /slice1 %}
 
-The default behavior of the Slice compiler is to assign values to the enumerators automatically. The first enumerator,
-`Apple`, is assigned a value of `0`, and subsequent enumerators are assigned increasing values.
+{% slice2 %}
+With Slice2 you have to define an underlying type for your enumerations, in the preivous example the `Fruit` enumeration
+uses `int32` as its underlying type. The underlying type specifies the valid range of values for the enumerators. The
+underlying type must be a [fixed size integral type](./primitive-types#fixed-size-integral-types) or a
+[variable size integral type](./primitive-types#variable-size-integral-types).
+
+The choice of underlying type should align with the expected range of values for the enumerators.
+{% /slice2 %}
 
 ## Enumerator explicit values
+
+The default behavior of the Slice compiler is to assign values to the enumerators automatically. The first enumerator,
+is assigned a value of `0`, and subsequent enumerators are assigned increasing values.
 
 The following code example illustrates how you can explicitly assign values for the enumerators in your enumeration
 type. In this example, the `Apple` enumerator is assigned a value of `1`, the `Pear` enumerator is assigned a value
@@ -62,23 +71,3 @@ enum Fruit {
 
 If you don't assign a value to an enumerator, the Slice compiler will assign a value by incrementing the previous
 enumerator's value by one. In the previous Slice definition, the `Orange` enumerator will have a value of `6`.
-
-## Enumeration underlying type
-
-{% slice2 %}
-With Slice2 you have to define an underlying type for your enumerations. The underlying type specifies the valid range of
-values for the enumerators. The underlying type must be a [fixed size integral type](./primitive-types#fixed-size-integral-types)
-or a [variable size integral type](./primitive-types#variable-size-integral-types).
-
-For example, the next code shows how you can define an enumeration with an underlying type of `uint8`:
-
-```slice {% addEncoding=true %}
-enum Fruit : uint8 {
-    Apple,
-    Pear,
-    Orange
-}
-```
-
-The choice of underlying type should align with the expected range of values for the enumerators.
-{% /slice2 %}
