@@ -13,7 +13,6 @@ characteristics include:
 - Powerful IDL language (Slice) for defining client server contracts.
 - Modular API design, which allows easily adding new functionality to the framework.
 - Supports modern network protocols, including QUIC.
-- Familiar language mappings.
 
 ## The client server contract
 
@@ -25,7 +24,7 @@ This contract allows for optimizations that would otherwise not be possible. Sin
 clients and servers, there is no need to exchange additional metadata to describe the messages. This results in a more
 compact encoding of the messages.
 
-The contract-first approach enables Slice compilers to generate skeletons in the target language mapping, simplifying
+The contract-first approach enables Slice compilers to generate code in the target language mapping, simplifying
 the creation of client and server applications.
 
 ## Extensibility
@@ -42,20 +41,15 @@ available.
 IceRPC supports a [multiplexed transport][multiplexed-transports] abstraction that fully leverages modern network
 protocols like QUIC.
 
-## Language mappings
-
-IceRPC's language mappings are carefully designed to utilize the features and conventions of the target language,
-reducing the learning curve for developers already familiar with a particular language.
-
 ## Additional Resources
 
 - [C# Examples](https://github.com:icerpc/icerpc-csharp/examples)
 - [C# API Documentation](https://api.testing.zeroc.com/csharp)
 
-[slice-language]: /docs/slice
-[contract-first]: /docs/slice/basics/contract-first
-[invocation-pipeline]: /docs/icerpc-core/invocation/invocation-pipeline
-[interceptor]: /docs/icerpc-core/invocation/interceptor
-[dispatch-pipeline]: /docs/icerpc-core/dispatch/dispatch-pipeline
-[middleware]: /docs/icerpc-core/dispatch/middleware
-[multiplexed-transports]: /docs/icerpc-core/protocols-and-transports/icerpc-multiplexed-transports
+[slice-language]: ../slice
+[contract-first]: ../slice/basics/contract-first
+[invocation-pipeline]: ../icerpc-core/invocation/invocation-pipeline
+[interceptor]: ../icerpc-core/invocation/interceptor
+[dispatch-pipeline]: ../icerpc-core/dispatch/dispatch-pipeline
+[middleware]: ../icerpc-core/dispatch/middleware
+[multiplexed-transports]: ../icerpc-core/protocols-and-transports/icerpc-multiplexed-transports
