@@ -22,12 +22,15 @@ where you use this type.
 
 ## C# mapping
 
-When you define a custom type in C#, you must specify the mapped C# type with the `cs::custom` attribute. For example:
+When you compile a custom type with the Slice compiler for C#, you must specify the mapped C# type with the
+`cs::custom` attribute--otherwise, the Slice compilation fails.
+
+For example:
 
 ```slice {% addEncoding=true %}
 module Compute
 
-[cs::custom("Int128")] // maps WellKnownTypes::BigInt to System.Int128
+[cs::custom("Int128")] // maps Compute::BigInt to System.Int128
 custom BigInt
 ```
 
@@ -79,5 +82,5 @@ public static class BigIntSliceEncoderExtensions
 
 {% callout type="information" %}
 A more logical name for this custom type would be `Int128`. We picked `BigInt` to make it clear where the Slice
-identifier is used in the classes and methods that encode/decode this custom type in C#.
+identifier is used in the classes and methods that encode/decode this custom type.
 {% /callout %}
