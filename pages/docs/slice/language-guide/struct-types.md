@@ -12,7 +12,7 @@ consists of a name (the field's name) followed by a colon and the field's type. 
 ```slice
 enum StateAbbreviation { AL, AK, AZ, AR, AS ... WY }
 
-compact struct USPostalAddress {
+compact struct PostalAddress {
     recipientFullName: string
     streetAddress1: string
     streetAddress2: string
@@ -31,7 +31,7 @@ All structs must be marked "compact" with Slice1.
 ```slice
 enum StateAbbreviation : uint8 { AL, AK, AZ, AR, AS ... WY }
 
-struct USPostalAddress {
+struct PostalAddress {
     recipientFullName: string
     streetAddress1: string
     streetAddress2: string?
@@ -62,7 +62,7 @@ The fields of a struct can be regular fields (like the fields shown earlier) or 
 number and an optional type, for example:
 
 ```slice
-struct USPostalAddress {
+struct PostalAddress {
     recipientFullName: string
     streetAddress1: string
     streetAddress2: string?
@@ -101,3 +101,58 @@ breaking on the wire compatibility.
 The encoding of a compact struct is slightly more compact than the encoding of a regular struct: `compact` saves one
 byte per instance.
 {% /slice2 %}
+
+## C# mapping
+
+A Slice struct maps to a public C# record struct with the same name, and each Slice field maps to a public C# field with
+the same name (converted to Pascal case) and with the mapped C# type.
+
+For example:
+{% side-by-side alignment="top" %}
+```slice
+struct PostalAddress {
+    recipientFullName: string
+    streetAddress1: string
+    streetAddress2: string?
+    city: string
+    state: StateAbbreviation
+    zip: string
+}
+```
+```csharp
+public partial record struct PostalAddress
+{
+    public string RecipientFullName;
+    public string StreetAddress1;
+    public string? StreetAddress2;
+    public string City;
+    public StateAbbreviation State;
+    public string Zip;
+
+    // Primary constructor.
+    public PostalAddress(
+        string recipientFullName,
+        string streetAddress1,
+        string? streetAddress2,
+        string city,
+        StateAbbreviation state,
+        string zip)
+    {
+        ...
+    }
+
+    // Decoding constructor.
+    public PostalAddress(ref SliceDecoder decoder)
+    {
+        ...
+    }
+
+    // Encodes this struct.
+    public readonly void Encode(
+        ref SliceEncoder encoder)
+    {
+        ...
+    }
+}
+```
+{% /side-by-side %}
