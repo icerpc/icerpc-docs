@@ -77,8 +77,8 @@ doesn't know about (it will be ignored), and the recipient can expect a tagged p
 {% callout type="information" %}
 You can add and remove tagged parameters over time while maintaining on-the-wire compatibility. The only constraint
 is you can never change the type associated with a tag number. If the type associated with tag 7 is a string, it must
-always remain a string; if you were to reuse tag 7 with another type, you would break on-the-wire compatibility with
-applications that expect tag 7 values to be encoded as strings.
+always remain a string; if you were to reuse tag 7 with another type, you would break on the wire compatibility with
+applications that expect tag 7 parameters to be encoded as strings.
 {% /callout %}
 
 ## Operation return type
