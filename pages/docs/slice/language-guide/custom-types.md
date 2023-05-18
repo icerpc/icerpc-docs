@@ -25,7 +25,7 @@ where you use this type.
 When you define a custom type in C#, you must specify the mapped C# type with the `cs::custom` attribute. For example:
 
 ```slice {% addEncoding=true %}
-module WellKnownTypes
+module Compute
 
 [cs::custom("Int128")] // maps WellKnownTypes::BigInt to System.Int128
 custom BigInt
@@ -53,7 +53,7 @@ public static class BigIntSliceEncoderExtensions
 
 {% slice1 %}
 If you use this custom type as an optional (with a `?` suffix) outside of a tag context, you also need to supply methods
-to encode/code a nullable value of this type. With our example:
+to encode/decode a nullable value of this type. With our example:
 
 ```csharp
 namespace Compute; // like above
