@@ -60,8 +60,28 @@ export const slice1Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/language-guide/optional-types`
       },
       {
+        title: 'Struct types',
+        path: `${SLICE_BASE_URL}/language-guide/struct-types`
+      },
+      {
+        title: 'Class types',
+        path: `${SLICE_BASE_URL}/language-guide/class-types`
+      },
+      {
+        title: 'Exception types',
+        path: `${SLICE_BASE_URL}/language-guide/exception-types`
+      },
+      {
         title: 'Proxy types',
         path: `${SLICE_BASE_URL}/language-guide/proxy-types`
+      },
+      {
+        title: 'Sequence types',
+        path: `${SLICE_BASE_URL}/language-guide/sequence-types`
+      },
+      {
+        title: 'Dictionary types',
+        path: `${SLICE_BASE_URL}/language-guide/dictionary-types`
       },
       {
         title: 'Custom types',
