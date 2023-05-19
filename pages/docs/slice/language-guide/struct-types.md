@@ -105,26 +105,34 @@ byte per instance.
 ## C# mapping
 
 A Slice struct maps to a public C# record struct with the same name, and each Slice field maps to a public C# field with
-the same name (converted to Pascal case) and with the mapped C# type.
+the same name (converted to Pascal case).
+
+{% slice2 %}
+Regular fields and tagged fields are mapped the same way: you can't tell if a field is tagged or not by looking at the
+API of the generated record struct.
+{% /slice2 %}
 
 For example:
+
+{% slice1 %}
 {% side-by-side alignment="top" %}
 ```slice
-struct PostalAddress {
+compact struct PostalAddress {
     recipientFullName: string
     streetAddress1: string
-    streetAddress2: string?
+    streetAddress2: string
     city: string
     state: StateAbbreviation
     zip: string
 }
 ```
+
 ```csharp
 public partial record struct PostalAddress
 {
     public string RecipientFullName;
     public string StreetAddress1;
-    public string? StreetAddress2;
+    public string StreetAddress2;
     public string City;
     public StateAbbreviation State;
     public string Zip;
@@ -133,7 +141,7 @@ public partial record struct PostalAddress
     public PostalAddress(
         string recipientFullName,
         string streetAddress1,
-        string? streetAddress2,
+        string streetAddress2,
         string city,
         StateAbbreviation state,
         string zip)
@@ -156,3 +164,64 @@ public partial record struct PostalAddress
 }
 ```
 {% /side-by-side %}
+{% /slice1 %}
+
+{% slice2 %}
+{% side-by-side alignment="top" %}
+```slice
+compact struct PostalAddress {
+    recipientFullName: string
+    streetAddress1: string
+    streetAddress2: string?
+    tag(1) streetAddress3: string?
+    city: string
+    state: StateAbbreviation
+    zip: string
+}
+```
+
+```csharp
+public partial record struct PostalAddress
+{
+    public string RecipientFullName;
+    public string StreetAddress1;
+    public string? StreetAddress2;
+    public string? StreetAddress3; // tagged
+    public string City;
+    public StateAbbreviation State;
+    public string Zip;
+
+    // Primary constructor.
+    public PostalAddress(
+        string recipientFullName,
+        string streetAddress1,
+        string? streetAddress2,
+        string? streetAddress3,
+        string city,
+        StateAbbreviation state,
+        string zip)
+    {
+        ...
+    }
+
+    // Decoding constructor.
+    public PostalAddress(ref SliceDecoder decoder)
+    {
+        ...
+    }
+
+    // Encodes this struct.
+    public readonly void Encode(
+        ref SliceEncoder encoder)
+    {
+        ...
+    }
+}
+```
+{% /side-by-side %}
+{% /slice2 %}
+
+The mapped C# record struct provides a primary constructor with parameters for all its fields, and also a decoding
+constructor that  constructs a new instance by decoding its fields from a
+[`SliceDecoder`](csharp:IceRpc.Slice.SliceDecoder). The generated `Encode` method encodes the struct fields with a
+[`SliceEncoder`](csharp:IceRpc.Slice.SliceEncoder).
