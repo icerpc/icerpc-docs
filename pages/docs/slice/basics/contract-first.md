@@ -29,13 +29,12 @@ We save these definitions in file `Greeter.slice`.
 Once you've written the initial version of your Slice definitions, we need to compile them with the Slice compiler for
 your programming language.
 
-In C#, you would use the [Slice tools](https://github.com/icerpc/icerpc-csharp/tree/main/tools/IceRpc.Slice.Tools/README.md)
-package to compile your Slice files. The Slice compiler for C# generates a C# file for each Slice file. Since we have
-single Slice file, we get a single C# file, `Greeter.cs`.
+In C#, you would use the [Slice tools][slice-tools] to add Slice file compilation to your project. The Slice compiler
+for C# generates a C# file for each Slice file. Since we have single Slice file, we get a single C# file, `Greeter.cs`.
 
 ## Step 3: Implement server application
 
-The Slice compiler for C# generates a C# interface named `I{Name}Service` for each Slice interface. This C# interface
+The Slice compiler for C# generates a C# interface named I*Name*Service for each Slice interface. This C# interface
 includes a method per Slice operation. The generated service interface for the `Greeter` interface defined earlier is:
 
 ```csharp
@@ -46,7 +45,7 @@ public partial interface IGreeterService
 {
     ValueTask<string> GreetAsync(
         string name,
-        IceRpc.Features.IFeatureCollection features,
+        IFeatureCollection features,
         CancellationToken cancellationToken);
 }
 ```
@@ -67,21 +66,20 @@ internal class Chatbot : Service, IGreeterService
 {
     public ValueTask<string> GreetAsync(
         string name,
-        IceRpc.Features.IFeatureCollection features,
+        IFeatureCollection features,
         CancellationToken cancellationToken) => new($"Hello, {name}!");
 }
 ```
 
 An instance of the `Chatbot` class is an IceRPC service that implements the Slice interface `Greeter`.
 
-We then insert this service (dispatcher) into the server's
-[dispatch pipeline](../../icerpc-core/dispatch/dispatch-pipeline) as usual; this is no longer a Slice topic.
+We then insert this service (dispatcher) into the server's [dispatch pipeline][dispatch-pipeline] as usual; this is no
+longer a Slice topic.
 
 ## Step 4: Implement client application
 
-The Slice compiler for C# also generates a C# interface named `I{Name}` and a struct named `{Name}Proxy` for each Slice
-interface. `{Name}Proxy` implements `I{Name}`. The generated C# interface includes a method per operation in the Slice
-interface.
+The Slice compiler for C# also generates a C# interface I*Name* and a struct *Name*Proxy for each Slice interface.
+*Name*Proxy implements I*Name*. The generated C# interface includes a method per operation in the Slice interface.
 
 The generated interface for our `Greeter` Slice interface is:
 
@@ -93,12 +91,12 @@ public partial interface IGreeter
 {
     Task<string> GreetAsync(
         string name,
-        IceRpc.Features.IFeatureCollection? features = null,
+        IFeatureCollection? features = null,
         CancellationToken cancellationToken = default);
 }
 ```
 
-`IGreeter` is a minimal interface that you can easily [decorate](https://en.wikipedia.org/wiki/Decorator_pattern).
+`IGreeter` is a minimal interface that you can easily [decorate][decorator-pattern].
 
 The `GreeterProxy` struct implements the methods of the generated interface by creating outgoing requests and calling
 `InvokeAsync` on its invoker with these requests.
@@ -119,3 +117,7 @@ var greeterProxy = new GreeterProxy(clientConnection, new Uri("icerpc:/greeter")
 string greeting = await greeter.GreetAsync("Syd");
 Console.WriteLine(greeting);
 ```
+
+[decorator-pattern]: https://en.wikipedia.org/wiki/Decorator_pattern
+[dispatch-pipeline]: ../../icerpc-core/dispatch/dispatch-pipeline
+[slice-tools]: https://github.com/icerpc/icerpc-csharp/tree/main/tools/IceRpc.Slice.Tools/README.md

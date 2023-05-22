@@ -13,8 +13,8 @@ the Slice compiler will ignore your file.
 The Slice compiler accepts two categories of Slice files: source files and reference files. The compiler parses all
 these files but only generates code for the source files.
 
-Like C# and unlike C/C++, the Slice compiler considers the definitions in all its input files and does not impose any
-ordering requirement. For instance, you can use a type before defining it:
+Like C# and unlike C and C++, the Slice compiler considers the definitions in all its input files and does not impose
+any ordering requirement. For instance, you can use a type before defining it:
 
 ```slice {% addEncoding=true %}
 module Example
@@ -56,20 +56,20 @@ interface Egg {
 ```
 
 For C#, the Slice compiler generates a C# file (.cs) for each source Slice file. You typically compile all the Slice
-files for a project or assembly in one shot.
+source files for a project in one shot.
 
 ## Preprocessing
 
 The Slice language provides a few basic preprocessing directives for conditional compilation. For example:
 
 ```slice {% addEncoding=true %}
-module HelloExample
+module VisitorCenter
 
-interface Hello {
-    sayHello(name: string) -> string
+interface Greeter {
+    greet(name: string) -> string
 
 #if NextGen // only available in the NextGen version
-    sayGoodbye(name: string) -> string
+    sing(songName: string) -> sequence<uint8>
 #endif
 }
 ```

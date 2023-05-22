@@ -3,6 +3,8 @@ title: Examples
 description: Discover the Slice syntax through a few examples.
 ---
 
+TODO: need slice1/slice2
+
 This page offers a quick overview of the Slice syntax through examples.
 
 ## Operations
@@ -45,7 +47,7 @@ interface MyOperations {
 ```slice
 module Example
 
-// A checked enum (without "unchecked") is restricted to its enumerators.
+// A checked enum is restricted to its enumerators.
 enum Fruit : uint8 {
     Apple
     Strawberry
@@ -148,7 +150,7 @@ interface WidgetFactory {
     createWidget(name: string) -> Widget
 }
 
-// an interface can extend one or more other interfaces
+// An interface can extend one or more other interfaces
 interface Gizmo : Widget {
     walk(direction: Direction)
 }
