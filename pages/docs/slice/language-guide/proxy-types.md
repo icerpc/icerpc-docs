@@ -1,6 +1,6 @@
 ---
-title: Proxy
-description: Understand proxies in Slice.
+title: Proxy types
+description: Understand what proxy parameters and fields represent.
 ---
 
 ## Typed service address
@@ -39,14 +39,13 @@ Task<WidgetProxy> CreateWidgetAsync(
 ```
 
 When you call `CreateWidgetAsync`, you get back a `WidgetProxy` instead of a plain
-[ServiceAddress](csharp:IceRpc.ServiceAddress), even though the only information transmitted over the wire is this
+[ServiceAddress](csharp:IceRpc.ServiceAddress), even though the only information transmitted over the wire is the
 service address.
 
 {% slice2 %}
-
 ## Relative proxy
 
-A relative proxy is a proxy that encapsulates a [relative service address](../../icerpc-core/invocation/service-address#relative-service-address). You cannot send requests using a relative proxy.
+A relative proxy is a proxy that encapsulates a [relative service address](../../icerpc-core/invocation/service-address#relative-service-address). You cannot use a relative proxy to send requests.
 
 When the Slice engine decodes a relative proxy from an incoming request payload, it produces a relative proxy by
 default. You need to transform this proxy before you can use it to make requests.

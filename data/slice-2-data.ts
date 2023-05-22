@@ -60,8 +60,41 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/language-guide/enum`
       },
       {
-        title: 'Proxy',
-        path: `${SLICE_BASE_URL}/language-guide/proxy`
+        title: 'Optional types',
+        path: `${SLICE_BASE_URL}/language-guide/optional-types`
+      },
+      {
+        title: 'Struct types',
+        path: `${SLICE_BASE_URL}/language-guide/struct-types`
+      },
+      {
+        title: 'Exception types',
+        path: `${SLICE_BASE_URL}/language-guide/exception-types`
+      },
+      {
+        title: 'Proxy types',
+        path: `${SLICE_BASE_URL}/language-guide/proxy-types`
+      },
+      {
+        title: 'Sequence types',
+        path: `${SLICE_BASE_URL}/language-guide/sequence-types`
+      },
+      {
+        title: 'Dictionary types',
+        path: `${SLICE_BASE_URL}/language-guide/dictionary-types`
+      },
+      {
+        title: 'Custom types',
+        path: `${SLICE_BASE_URL}/language-guide/custom-types`
+      },
+      {
+        title: 'Well-known types',
+        path: `${SLICE_BASE_URL}/language-guide/well-known-types`
+      },
+      {
+        title: 'Type alias',
+        path: `${SLICE_BASE_URL}/language-guide/type-alias`
+>>>>>>> origin/main
       }
     ]
   },
