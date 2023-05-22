@@ -104,7 +104,7 @@ enum Fruit {
 {% /side-by-side %}
 
 A .slice enum can be checked (the default) or unchecked (with the unchecked keyword), while the "check-ness" of a .ice
-enum is language-mapping dependent. When the Slice engine decodes a numeric value into an enumerator, and the enum has
+enum is language-mapping dependent. When the generated code decodes a numeric value into an enumerator, and the enum has
 no enumerator with this numeric value, the decoding fails with a checked enum and succeeds with an unchecked enum.
 
 ## Exception

@@ -28,7 +28,7 @@ compact struct Point { x: int32, y: int32 }
 ```
 
 The type of a parameter or field can be either a [primitive types](primitive-types) (such an int32 or a string) or a
-constructed type (a new type defined in Slice such an [enum](enum-types) or a [struct](struct-types)).
+constructed type (a new type defined in Slice such an [enum](enumeration-types) or a [struct](struct-types)).
 
 ## Optionals
 

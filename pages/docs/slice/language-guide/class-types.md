@@ -116,8 +116,8 @@ library always recreates an exact copy of the original class graph during decodi
 This is an opt-in feature. It's not enabled by default.
 {% /callout %}
 
-When the Slice engine decodes a class instance received as part of a request or response payload, it tries to recreate a
-class with the type used by the sender. This usually works because the application that encoded this class into a
+When the generated code decodes a class instance received as part of a request or response payload, it tries to recreate
+a class with the type used by the sender. This usually works because the application that encoded this class into a
 payload and the application that decodes the payload share the same Slice definitions. With our earlier example, they
 both know `CarPart` and `RearBumper`.
 
@@ -142,7 +142,7 @@ interface CarPartShop {
 }
 ```
 
-The `slicedFormat` attribute instructs the Slice library on the sending side to encode the payload in such a way the
+The `slicedFormat` attribute instructs the generated code on the sending side to encode the payload in such a way the
 recipient can slice-off any derived classes it does not know and construct instead a base class it knows. These
 sliced-off portions are called class slices.
 
@@ -164,9 +164,9 @@ The corresponding Slice attribute (metadata) in Ice is [`format:sliced`][format-
 
 ### Slice preservation
 
-When the Slice library decodes a class in sliced format and slices off derived slices, it does not discard these slices:
-it keeps them in the decoded instance. If you later send this class instance to another application that knows the
-derived class type, this application will decode successfully the full type.
+When the generated code decodes a class in sliced format and slices off derived slices, it does not discard these
+slices: it keeps them in the decoded instance. If you later send this class instance to another application that knows
+the derived class type, this application will decode successfully the full type.
 
 ## C# mapping
 
