@@ -7,9 +7,9 @@ description: Learn how to define operations in Slice.
 
 An operation consists of:
  - a name (the name of operation)
- - a list of parameters (the operation parameters)
- - an arrow followed by one or more return parameters (optional)
- - an exception specification (optional)
+ - a list of [parameters][parameters] (the operation parameters)
+ - an arrow followed by one or more return [parameters][parameters] (optional)
+ - an [exception specification](#exception-specification) (optional)
 
 For example:
 
@@ -20,12 +20,7 @@ greet(name: string) -> string throws GreeterException
 Operation `greet` has all four components: a name (`greet`), an operation parameter (`name`), a nameless return
 parameter and an exception specification (it can throw a `GreeterException`).
 
-## Operation parameters
-
-Each operation parameter has a name and a type (specified as `name: Type`). Two parameters are separated by whitespace
-or a single comma.
-
-For example:
+Here are a few additional examples:
 
 ```slice
 op() // no operation parameter
@@ -39,76 +34,29 @@ op(
     x: int32
     y: int32
 ) -> int32
-```
 
-### Tagged parameter
-
-An operation parameter can have a tag, which makes this parameter a "tagged parameter". A tag consists of the `tag`
-keyword plus a tag number in parenthesis. For example:
-
-```slice
-op(
-    tag(1) x: int32?
-)
-```
-
-{% callout type="information" %}
-A tag number is a positive integer, such as 0, 1, 77. The scope of a tag number is the operation parameters of a
-specific operation. For example, `tag(1)` in `opA`'s parameters is independent of `tag(1)` in `opB`'s parameters.
-{% /callout %}
-
-A tagged parameter must have an optional type (the `?` after `int32` in the example above). Such a parameter can appear
-anywhere in the parameter list. For instance, the operation below has a valid though unusual parameter list:
-
-```slice
-op(
-    tag(5) x: int32?
-    y: int32
-    tag(1) s: string?
-)
-```
-
-A regular (non-tagged) parameter is a mandatory parameter: it's always encoded into the request payload by the sender
-and decoded from the request payload by the recipient. If the sender and recipient don't agree on this operation
-parameter--their Slice definitions are not the same--the decoding of the request arguments will fail.
-
-On the other hand, a tagged parameter tolerates mismatches. The sender can send a tagged parameter that the recipient
-doesn't know about (it will be ignored), and the recipient can expect a tagged parameter that the sender doesn't know
-(the recipient will get a "not set" value).
-
-{% callout type="information" %}
-You can add and remove tagged parameters over time while maintaining on-the-wire compatibility. The only constraint
-is you can never change the type associated with a tag number. If the type associated with tag 7 is a string, it must
-always remain a string; if you were to reuse tag 7 with another type, you would break on the wire compatibility with
-applications that expect tag 7 parameters to be encoded as strings.
-{% /callout %}
-
-## Return parameters
-
-An operation can return nothing, a single nameless return parameter, or a list return parameters in parenthesis. For
-example:
-
-```slice
-opNoReturn() // returns nothing (no arrow)
+opNoReturn() // returns nothing (no ->)
 
 opReturnString() -> string // returns a string
 
-opReturnTuple() -> (x: int32, y: int32) // returns two return parameters
+opReturnPair() -> (x: int32, y: int32) // returns two return parameters
 ```
 
-### Tagged return parameter
+## Tagged parameters
 
-A return type can include tagged return parameters. For example:
+The operation parameters and return parameters can include [tagged parameters][tagged-parameters]. For example:
 
 ```slice
-op() -> (
+// An operation with many tagged parameters.
+op(
+    tag(5) x: int64?
+    is: string
+) -> (
     tag(5) x: int32?
     y: int32?
     tag(1) s: string?
 )
 ```
-
-The tag numbers and tag semantics are the same as for [tagged parameters](#tagged-parameter).
 
 A single nameless return parameter can also get tagged. For example:
 
@@ -135,8 +83,15 @@ For example:
 translate(input: string) -> string throws TranslationException
 ```
 
-This exception specification allows the operation to return (throw) a custom error when the implementation of the
-operation fails. When the operation succeeds, it returns the return type and this exception specification is not used.
+This exception specification allows the operation to return a custom error when the implementation of the operation
+fails. When the operation succeeds, it returns the return parameters and this exception specification is not used.
+
+{% callout type="information" %}
+Don't read too much in the terms "exception" and "throws". An exception specification is about sending a custom error
+in a response as an alternative to the return value. This custom error maps to an exception thats gets thrown in
+programming languages with exceptions (such as C#). In programming languages without exceptions (such as Rust), there is
+no exception or throwing: the exception is just a custom error.
+{% /callout %}
 
 ## Idempotent operation
 
@@ -315,3 +270,6 @@ return value, while the decode helper (in *Name*Proxy.Response) decodes everythi
 
 These helper methods allow you to create/consume plain IceRPC requests and responses while still using the generated
 code for their payloads.
+
+[parameters]: parameters-and-fields
+[tagged-parameters]: parameters-and-fields#tagged-parameters-and-fields
