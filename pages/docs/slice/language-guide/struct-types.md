@@ -39,7 +39,6 @@ struct PostalAddress {
     zip: string
 }
 ```
-{% /slice2 %}
 
 ## Tagged fields
 
@@ -49,6 +48,12 @@ The fields of a struct can be regular fields (like the fields shown earlier) or 
 
 A compact struct is a struct that cannot have tagged fields--unlike a regular struct, it cannot be augmented without
 breaking on the wire compatibility.
+
+For example:
+
+```slice
+compact struct BytePair { first: uint8, second: uint8 }
+```
 
 The encoding of a compact struct is slightly more compact than the encoding of a regular struct: `compact` saves one
 byte per instance.
@@ -113,7 +118,7 @@ public partial record struct PostalAddress
 {% slice2 %}
 {% side-by-side alignment="top" %}
 ```slice
-compact struct PostalAddress {
+struct PostalAddress {
     recipientFullName: string
     streetAddress1: string
     streetAddress2: string?

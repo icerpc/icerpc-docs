@@ -76,8 +76,8 @@ export const slice1Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/language-guide/class-types`
       },
       {
-        title: 'Exception types',
-        path: `${SLICE_BASE_URL}/language-guide/exception-types`
+        title: 'Exception',
+        path: `${SLICE_BASE_URL}/language-guide/exception`
       },
       {
         title: 'Proxy types',

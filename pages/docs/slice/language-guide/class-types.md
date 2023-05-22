@@ -170,14 +170,8 @@ the derived class type, this application will decode successfully the full type.
 
 ## C# mapping
 
-A Slice class maps to a public C# class with the same name, and each Slice field maps to a public C# field with the same
-name (converted to Pascal case).
-
-Regular fields and tagged fields are mapped the same way: you can't tell if a field is tagged or not by looking at the
-API of the generated record class.
-
-If the Slice class has no base class, the mapped class derives from [`SliceClass`](csharp:IceRpc.Slice.SliceClass).
-The Slice `AnyClass` keyword maps to `SliceClass` as well.
+A Slice class maps to a public C# class with the same name. If the Slice class has no base class, the mapped class
+derives from [`SliceClass`](csharp:IceRpc.Slice.SliceClass), the base class for all C# Slice classes.
 
 For example:
 

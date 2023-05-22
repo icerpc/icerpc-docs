@@ -86,6 +86,11 @@ translate(input: string) -> string throws TranslationException
 This exception specification allows the operation to return a custom error when the implementation of the operation
 fails. When the operation succeeds, it returns the return parameters and this exception specification is not used.
 
+{% slice1 %}
+This custom error can be the exception after the `throws` or any Slice exception derived from this exception.
+`AnyException` means the operation can return (throw) any Slice exception as a custom error.
+{% /slice1 %}
+
 {% callout type="information" %}
 Don't read too much in the terms "exception" and "throws". An exception specification is about sending a custom error
 in a response as an alternative to the return value. This custom error maps to an exception thats gets thrown in
