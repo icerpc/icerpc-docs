@@ -60,6 +60,10 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/language-guide/primitive-types`
       },
       {
+        title: 'Enumeration types',
+        path: `${SLICE_BASE_URL}/language-guide/enumeration-types`
+      },
+      {
         title: 'Struct types',
         path: `${SLICE_BASE_URL}/language-guide/struct-types`
       },
