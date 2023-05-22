@@ -94,7 +94,6 @@ export const slice2Data: SideBarSourceType[] = [
       {
         title: 'Type alias',
         path: `${SLICE_BASE_URL}/language-guide/type-alias`
->>>>>>> origin/main
       }
     ]
   },
