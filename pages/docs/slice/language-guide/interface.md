@@ -22,11 +22,15 @@ interface Greeter {
 }
 ```
 
-All operations are abstract: you can't implement an operation in Slice.
+All operations are abstract at the Slice level: you can't implement an operation in Slice.
+
+When you create an application with Slice, these interfaces correspond to your entry point into Slice: you call and
+implement the C# (or Rust, Python...) abstractions and concrete implementations that the Slice compiler generates from
+your Slice interfaces.
 
 ## Interface inheritance
 
-An interface can inherit from one or more interfaces, provided the operation names of all interfaces are unique.
+An interface can inherit from one or more interfaces, provided the operation names of all these interfaces are unique.
 
 For example:
 
@@ -46,35 +50,9 @@ interface Rectangle : Shape, Fillable {
 }
 ```
 
-## Empty interface
+## Interface as a constructed type
 
-You can define an empty "marker" interface, with no operation.
-
-```slice {% addEncoding=true %}
-module ToyStore
-
-interface Toy {} // the empty base interface for all toys
-```
-
-While the syntax is valid, there is no clear use-case for such an empty interface.
-
-## Interface as a type
-
-An interface identifier can be used as a field type, parameter type, return type etc., just like `string` or the
-identifier of a struct. For example:
-
-```slice {% addEncoding=true %}
-interface Widget {
-    spin(speed: int32)
-}
-
-interface WidgetFactory {
-    createWidget(name: string) -> Widget
-}
-```
-
-Such a field or parameter (etc.) represents the address of a remote service that implements this interface, and is
-called a proxy. Please refer to [Proxy](proxy) for details.
+An interface definition produces a new type: a [proxy type](proxy-types).
 
 ## C# mapping
 

@@ -10,8 +10,8 @@ Classes are not supported with Slice2.
 {% slice1 %}
 ## Super structs
 
-A class is a constructed data type that holds a list of fields, just like a [struct](struct-types). Unlike a struct, a
-class may have no field at all. Classes also offer capabilities not offered by structs:
+A class is a constructed type that holds a list of fields, just like a [struct](struct-types). Classes also offer
+capabilities not offered by structs:
  - extensibility\
    you can extend a class through inheritance and tagged fields
  - graph preservation\
@@ -59,41 +59,11 @@ interface CarPartShop {
 }
 ```
 
-`findPart` can return an instance of the base class (`CarPart`) or any of its derived classes.
+`findPart` can return an instance of the base class (`CarPart`) or any of its derived classes, such as `RearBumper`.
 
 ### Tagged fields
 
-The fields of a class can be regular fields (like the fields shown earlier) or tagged fields. A tagged field has a tag
-number and an optional type, for example:
-
-```slice
-class CarPart {
-    id: string
-    tag(1) shippingWeight: float64?
- }
-```
-
-Tagged fields allow you to change (usually augment) a class while maintaining on the wire compatibility.
-
-{% callout type="information" %}
-A tag number is a positive integer, such as 0, 1, 77. The scope of a tag number is the enclosing class; its base class
-(if any) is in a different scope for tag numbers.
-{% /callout %}
-
-A regular field is a mandatory field: it's always encoded by the sender and decoded by the recipient. If the sender and
-recipient don't agree on the class definition--their Slice definitions are not the same--the decoding of the enclosing
-payload will fail.
-
-On the other hand, a tagged field tolerates mismatches. The sender can send a tagged field that the recipient doesn't
-know about (it will be ignored), and the recipient can expect a tagged field that the sender doesn't know (the recipient
-will get a "not set" value).
-
-{% callout type="information" %}
-You can add and remove tagged fields over time while maintaining on the wire compatibility for your class. The only
-constraint is you can never change the type associated with a tag number. If the type associated with tag 7 is a string,
-it must always remain a string; if you were to reuse tag 7 with another type, you would break on the wire compatibility
-with applications that expect tag 7 fields to be encoded as strings.
-{% /callout %}
+The fields of a class can be regular fields (like the fields shown earlier) or [tagged fields].
 
 ## Graph preservation
 
@@ -137,8 +107,8 @@ interface NodePrinter {
 }
 ```
 
-This linked list can include a cycle, with the `next` field on some node pointing to an earlier node. The Slice engine
-always recreates an exact copy of the original class graph during decoding.
+This linked list can even include a cycle, with the `next` field on some node pointing to an earlier node. The Slice
+library always recreates an exact copy of the original class graph during decoding.
 
 ## Slicing
 
@@ -163,7 +133,7 @@ class FrontBumper : CarPart {
 
 But the client application that calls `findPart` doesn't know `FrontBumper` so it can't decode it.
 
-In this situation, the Slice engine will fail to decode the class instance _unless_ you tell the sender to encode this
+In this situation, the recipient will fail to decode this class instance _unless_ you tell the sender to encode this
 class in "sliced" format with the `slicedFormat` operation attribute:
 
 ```slice
@@ -172,24 +142,29 @@ interface CarPartShop {
 }
 ```
 
-The `slicedFormat` attribute instructs the Slice engine on the sending side to encode the payload in such a way the
+The `slicedFormat` attribute instructs the Slice library on the sending side to encode the payload in such a way the
 recipient can slice-off any derived classes it does not know and construct instead a base class it knows. These
 sliced-off portions are called class slices.
 
-`slicedFormat` has an effect only on the side that encodes the payload, and you can specify whether to encode the
-arguments, the return value or both in this format. For example:
+`slicedFormat` has an effect only on the side that encodes the payload. You can specify whether to encode the arguments,
+the return value or both in this format. For example:
 
 ```slice
 interface CarPartShop {
     [slicedFormat(Return)] findPart(string: id) -> CarPart?
     [slicedFormat(Args)] storePart(part: CarPart);
-    [slicedFormat(Args, Return)] exchangePart(oldPart: CarPart) -> CarPart?
+    [slicedFormat(Args, Return)] exchangePart(oldPart: CarPart) -> CarPart throws OutOfStockException
 }
 ```
 
+{% callout type="information" %}
+The corresponding Slice attribute (metadata) in Ice is [`format:sliced`][format-metadata]. Unlike `slicedFormat`,
+`format:sliced` always applies to both arguments and return value.
+{% /callout %}
+
 ### Slice preservation
 
-When the Slice engine decodes a class in sliced format and slices off derived slices, it does not discard these slices:
+When the Slice library decodes a class in sliced format and slices off derived slices, it does not discard these slices:
 it keeps them in the decoded instance. If you later send this class instance to another application that knows the
 derived class type, this application will decode successfully the full type.
 
@@ -271,3 +246,6 @@ public partial class RearBumper : CarPart
 ```
 {% /side-by-side %}
 {% /slice1 %}
+
+[format-metadata]: https://doc.zeroc.com/ice/3.7/the-slice-language/slice-metadata-directives#id-.SliceMetadataDirectivesv3.7-format
+[tagged-fields]: parameters-and-fields#tagged-parameters-and-fields

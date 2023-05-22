@@ -52,12 +52,12 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/language-guide/operation`
       },
       {
-        title: 'Primitive types',
-        path: `${SLICE_BASE_URL}/language-guide/primitive-types`
+        title: 'Parameters and fields',
+        path: `${SLICE_BASE_URL}/language-guide/parameters-and-fields`
       },
       {
-        title: 'Optional types',
-        path: `${SLICE_BASE_URL}/language-guide/optional-types`
+        title: 'Primitive types',
+        path: `${SLICE_BASE_URL}/language-guide/primitive-types`
       },
       {
         title: 'Struct types',

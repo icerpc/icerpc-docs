@@ -5,8 +5,10 @@ description: Understand how to extend the Slice type system with custom types.
 
 ## Extending Slice
 
-You can easily add new types to Slice with the `custom` keyword. For example, you could define a new 128-bit integer
-type as follows:
+A custom type is a constructed type that it totally custom because you decide how it's mapped in each programming
+language and you provide helper methods that encode/decode this type.
+
+For example, you could define a new 128-bit integer type as follows:
 
 ```slice {% addEncoding=true %}
 module Compute
@@ -15,10 +17,6 @@ custom BigInt // a signed 128-bit int
 ```
 
 Later on, you can use `BigInt` as a parameter type or field type just like any other type.
-
-Naturally, Slice cannot guess how to map `BigInt` to a type in your favorite programming language, or how to
-encode/decode a `BigInt` to/from a byte representation. You have to provide this information for every language mappings
-where you use this type.
 
 ## C# mapping
 
