@@ -6,17 +6,35 @@ description: Learn how to define and use exceptions in Slice.
 ## Custom error
 
 The implementation of a Slice [operation](operation) can:
-- succeed and return its normal return value
-- fail and return a generic error
-- fail and return a custom error
+- succeed and return its normal return value,
+- fail and return a generic error,
+- or fail and return a custom error
 
 In this last case, the custom error must be defined as a Slice exception and referenced in the
 [exception specification][exception-specification] of the operation.
 
 {% slice1 %}
-Other than the `exception` keyword, an exception is syntactically identical to a [class](class-types). For example:
+Other than the `exception` keyword, the definition of an exception is syntactically identical to the definition of
+a [class](class-types). For example:
+{% side-by-side alignment="top" %}
 ```slice
-exception BaseException {
+class BaseError {
+    errorCode: int32
+}
+
+class DerivedError : BaseError {
+    measurement: float64
+}
+
+class TranslationError{
+    errorCode: TranslationErrorCode
+}
+
+enum TranslationErrorCode { UnknownWord, IOFailure }
+```
+
+```slice
+class BaseException {
     errorCode: int32
 }
 
@@ -30,23 +48,55 @@ exception TranslationException {
 
 enum TranslationErrorCode { UnknownWord, IOFailure }
 ```
+{% /side-by-side %}
 
-However, an exception is not a constructed type. You cannot use an exception as the type for a field or a parameter.
-{% /slice %}
+{% callout type="information" %}
+The recommended naming convention is to give an `Exception` suffix to all Slice exceptions.
+{% /callout %}
+{% /slice1 %}
+
 {% slice2 %}
-Other than the `exception` keyword, an exception is syntactically identical to a [struct](struct-types). For example:
+Other than the `exception` keyword, the definition of an exception is syntactically identical to the definition of a
+[struct](struct-types). For example:
+
+{% side-by-side alignment="top" %}
+```slice
+struct EmptyError {}
+
+struct TranslationError {
+    errorCode: TranslationErrorCode
+    tag(1) detectedLanguage: string?
+}
+
+enum TranslationErrorCode : uint8
+{
+    UnknownWord
+    IOFailure
+}
+```
 
 ```slice
 exception EmptyException {}
 
 exception TranslationException {
     errorCode: TranslationErrorCode
+    tag(1) detectedLanguage: string?
 }
 
-enum TranslationErrorCode : uint8 { UnknownWord, IOFailure }
+enum TranslationErrorCode : uint8
+{
+    UnknownWord
+    IOFailure
+}
 ```
+{% /side-by-side %}
 
-An exception is a constructed type; you can use it just like a struct with the same name. For example:
+{% callout type="information" %}
+The recommended naming convention is to give an `Exception` suffix to all Slice exceptions.
+{% /callout %}
+
+An exception is a constructed type; you can use it just like a struct with the same name. It carries fields just like
+a struct does. For example:
 
 ```slice
 interface TranslationLogger {
@@ -58,10 +108,13 @@ interface TranslationLogger {
 {% slice1 %}
 ## Difference with classes
 
-An exception is always encoded in the [sliced format][sliced-format]; the `slicedFormat` attribute has no effect on the
-encoding of exceptions. This way, when an application receives a derived exception it does not know, it can always
-slice off the exception slices it doesn't understand and construct a base exception. This base exception does not
-preserve the sliced-off slices unlike a base class in the same scenario.
+A class is a constructed type, while an exception is not: you cannot use an exception as the type for a field or a
+parameter.
+
+An exception is always encoded in the [sliced format][sliced-format] (the `slicedFormat` attribute has no effect on
+the encoding of an exception). This way, when an application receives a derived exception it does not know, it can
+always slice off the exception slices it doesn't understand and construct a base exception. This base exception does not
+preserve the sliced-off slices unlike a base class constructed after slicing.
 {% /slice1 %}
 
 ## C# mapping
