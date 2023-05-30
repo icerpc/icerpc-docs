@@ -15,8 +15,8 @@ The class encoding is described in the
 [Ice manual](https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding/ice-encoding/data-encoding-for-classes). Slice1
 corresponds to encoding version 1.1 in the Ice manual.
 
-IceRPC encodes classes in the compact format by default, just like Ice. You can change this format with the `format`
-attribute. IceRPC can decode classes in any format.
+IceRPC encodes classes in the compact format by default, just like Ice. You can switch to the sliced format with the
+`slicedFormat` attribute. IceRPC can decode classes in any format.
 
 During decoding, IceRPC considers all classes that use the sliced format to be fully
 [preserved](https://doc.zeroc.com/ice/3.7/client-server-features/slicing-values-and-exceptions#id-.SlicingValuesandExceptionsv3.7-PreservingSlices).

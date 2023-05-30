@@ -26,7 +26,7 @@ We save these definitions in file `Greeter.slice`.
 
 ## Step 2: Compile Slice definitions with the Slice compiler
 
-Once you've written the initial version of your Slice definitions, we need to compile them with the Slice compiler for
+Once you've written the initial version of your Slice definitions, you need to compile them with the Slice compiler for
 your programming language.
 
 In C#, you would use the [Slice tools][slice-tools] to add Slice file compilation to your project. The Slice compiler
