@@ -160,21 +160,21 @@ with applications that expect tag 7 parameters/fields (in this tag number scope)
 {% slice2 %}
 ## Stream parameters
 
-The last parameter of an operation or return may be a stream parameter, such as:
+The last parameter of an operation or return type may be a stream parameter, such as:
 
 ```slice
 downloadFile(name: string) -> stream uint8
 
-uploadReadings(reading: stream Reading)
+uploadMeasurements(measurement: stream Measurement)
 ```
 
 It means the operation sends or returns a stream of elements of this type, not just one element. This stream can be
 empty or include numerous elements. Unlike a [sequence](sequence-types), the number of elements in a stream is unknown.
 
-Note that a stream parameter cannot be tagged. Tagging is unnecessary for tag parameters because you can add or remove a
-tag parameter to/from an operation or return without breaking on the wire compatibility. When the generated code decodes
-a payload with an unexpected stream, it ignores this stream and tells the sender "don't send me more". In the reverse
-situation--the decoding code expects a stream at the end of the payload but the encoding code doesn't encode
+A stream parameter cannot be tagged. Tagging is unnecessary for tag parameters because you can add or remove tag
+parameter to/from an operation or a return type without breaking on the wire compatibility. When the generated code
+decodes a payload with an unexpected stream, it ignores this stream and tells the sender "don't send me more". In the
+reverse situation--the decoding code expects a stream at the end of the payload but the sender doesn't encode
 anything--the decoding code simply returns an empty stream.
 {% /slice2 %}
 
@@ -202,27 +202,7 @@ in the mapped C# API.
 {% slice2 %}
 ### Stream parameters in C#
 
-A stream parameter is usually mapped to an `IAsyncEnumerable<T>` in C#. For example:
-
-{% side-by-side alignment="top" %}
-```slice
-interface TemperatureProbe {
-    read() -> stream float32
-}
-```
-
-```csharp
-public partial interface ITemperatureProbe
-{
-    Task<IAsyncEnumerable<float>> ReadAsync(
-        IFeatureCollection? features = null,
-        CancellationToken cancellationToken = default);
-}
-```
-{% /side-by-side %}
-
-There is one exception to this rule: when the stream type is `uint8`, the stream parameter is mapped to a
-[`PipeReader`][pipe-reader]. For example:
+A stream parameter of type `uint8` is mapped to a [`PipeReader`][pipe-reader]. For example:
 
 {% side-by-side alignment="top" %}
 ```slice
@@ -243,8 +223,47 @@ public partial interface IImageStore
 ```
 {% /side-by-side %}
 
-TODO: memory management and cancellation.
+When you give such a stream to the Slice generated code, the Slice library will complete this stream when it's done
+reading it. This can occur when there is nothing left to read or when the peer stops reading.
 
+When you receive such a stream, you must call [`Complete`][pipe-reader-complete] or
+[`CompleteAsync`][pipe-reader-complete-async] on the stream when you're done reading it.
+
+For all other stream element types, a stream parameter is mapped to an `IAsyncEnumerable<T>` in C#. For example:
+
+{% side-by-side alignment="top" %}
+```slice
+interface TemperatureProbe {
+    read() -> stream float32
+}
+```
+
+```csharp
+public partial interface ITemperatureProbe
+{
+    Task<IAsyncEnumerable<float>> ReadAsync(
+        IFeatureCollection? features = null,
+        CancellationToken cancellationToken = default);
+}
+```
+{% /side-by-side %}
+
+When you give such a stream to the Slice generated code, the Slice library will either iterate over all the elements
+(until your async enumerable yields `break`) or cancel the iteration early, typically because the peer doesn't want more
+elements. This early cancellation is communicated to your async enumerable using the
+[`EnumeratorCancellation` attribute][enumerator-cancellation], as demonstrated by the server-side of the
+[Stream example application][stream-example].
+
+When you receive such a stream, you can read all or only some of the elements, as demonstrated by the client-side of the
+[Stream example application][stream-example]. You don't need to do anything special if you don't want more elements:
+just exit the iteration. You can also inject your own cancellation token into the async enumerable stream provided by
+the generated code, with the [`WithCancellation`][with-cancellation] extension method. This injected cancellation token
+is used to cancel a blocked or slow read operation on the underlying byte stream.
 {% /slice2 %}
 
+[enumerator-cancellation]: https://learn.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.enumeratorcancellationattribute
 [pipe-reader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
+[pipe-reader-complete]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader.complete
+[pipe-reader-complete-async]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader.completeasync
+[stream-example]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/Stream
+[with-cancellation]: https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskasyncenumerableextensions.withcancellation
