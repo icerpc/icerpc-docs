@@ -254,11 +254,6 @@ elements. This early cancellation is communicated to your async enumerable using
 [`EnumeratorCancellation` attribute][enumerator-cancellation], as demonstrated by the server-side of the
 [Stream example application][stream-example].
 
-{% callout type="information" %}
-When your async enumerable returns an infinite number of elements, it is critical to use the `EnumeratorCancellation`
-attribute to allow Slice to cancel the iteration.
-{% /callout %}
-
 When you receive such a stream, you can read all or only some of the elements, as demonstrated by the client-side of the
 [Stream example application][stream-example]. You don't need to do anything special if you don't want more elements:
 just exit the iteration. You can also inject your own cancellation token into the async enumerable stream provided by
