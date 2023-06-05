@@ -41,6 +41,10 @@
   code {
     @apply rounded border-[1px] bg-slate-100 px-[4px] py-[2px] font-mono shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] dark:border-darkBorder dark:bg-transparent dark:text-white;
   }
+
+  a code {
+    @apply rounded border-[1px] bg-slate-100 px-[4px] py-[2px] font-mono font-medium text-primary shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] hover:text-[rgb(64,131,193)] dark:border-darkBorder dark:bg-transparent dark:text-primary dark:hover:text-[rgb(64,131,193)];
+  }
 }
 
 *,
