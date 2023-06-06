@@ -224,10 +224,12 @@ public partial interface IImageStore
 {% /side-by-side %}
 
 When you give such a stream to the Slice generated code, the Slice library will complete this stream when it's done
-reading it. This can occur when there is nothing left to read or when the peer stops reading.
+reading it. This can occur when there is nothing left to read or when the peer stops reading. The Slice library always
+pass a null exception to [`Complete`][pipe-reader-complete].
 
 When you receive such a stream, you must call [`Complete`][pipe-reader-complete] or
-[`CompleteAsync`][pipe-reader-complete-async] on the stream when you're done reading it.
+[`CompleteAsync`][pipe-reader-complete-async] on the stream when you're done reading it. The exception argument is
+ignored: the peer doesn't see a difference between a null and non-null exception.
 
 For all other stream element types, a stream parameter is mapped to an `IAsyncEnumerable<T>` in C#. For example:
 

@@ -64,8 +64,8 @@ export const slice1Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/language-guide/primitive-types`
       },
       {
-        title: 'Enumeration types',
-        path: `${SLICE_BASE_URL}/language-guide/enumeration-types`
+        title: 'Enum types',
+        path: `${SLICE_BASE_URL}/language-guide/enum-types`
       },
       {
         title: 'Struct types',
