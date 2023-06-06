@@ -231,7 +231,8 @@ When you receive such a stream, you must call [`Complete`][pipe-reader-complete]
 [`CompleteAsync`][pipe-reader-complete-async] on the stream when you're done reading it. The exception argument is
 ignored: the peer doesn't see a difference between a null and non-null exception.
 
-For all other stream element types, a stream parameter is mapped to an `IAsyncEnumerable<T>` in C#. For example:
+For all other stream element types, a stream parameter is mapped to an `IAsyncEnumerable<T>` in C#, where the async
+enumerable is the mapped C# type for the Slice stream element type. For example:
 
 {% side-by-side alignment="top" %}
 ```slice

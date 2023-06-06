@@ -162,42 +162,6 @@ While the two methods are similar, please note they are not the same:
  - the `features` parameter is nullable and defaults to null only in the client-side method
  - the cancellation token parameter has a default value only in the client-side method
 
-### Collection parameters
-
-TODO: move to sequence/dictionary pages
-
-In general, a Slice parameter has exactly the same mapping when you send this parameter through a Slice operation and
-when you receive this parameter. For example, a Slice int32 is always mapped to an C# int, a Slice string is always
-mapped to a C# string, etc.
-
-Collection types are the exception: a sequence or dictionary parameter has one mapping when it's sent and a different
-mapping when it's received. This special mapping for outgoing values makes sending sequences and dictionaries more
-convenient and occasionally faster.
-
-#### Sequence of bool or fixed-size numeric type
-
-| Mapping for outgoing values | Default mapping for incoming values |
-|-----------------------------|-------------------------------------|
-| `ReadOnlyMemory<T>`         | `T[]`                               |
-
-{% slice2 %}
-{% callout type="information" %}
-This mapping also applies to Slice enums whose underlying type is fixed-size.
-{% /callout %}
-{% /slice2 %}
-
-#### Other sequences
-
-| Mapping for outgoing values | Default mapping for incoming values |
-|-----------------------------|-------------------------------------|
-| `IEnumerable<T>`            | `T[]`                               |
-
-#### Dictionary
-
-| Mapping for outgoing values              | Default mapping for incoming values |
-|------------------------------------------|-------------------------------------|
-| `IEnumerable<KeyValuePair<TKey, TValue>>`| `Dictionary<TKey, Value>`           |
-
 ### Request and Response helper classes
 
 The Slice compiler generates helper nested static classes named Request and Response in *Name*Proxy and I*Name*Service.
