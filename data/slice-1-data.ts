@@ -102,6 +102,10 @@ export const slice1Data: SideBarSourceType[] = [
       {
         title: 'Type alias',
         path: `${SLICE_BASE_URL}/language-guide/type-alias`
+      },
+      {
+        title: 'Attributes',
+        path: `${SLICE_BASE_URL}/language-guide/attributes`
       }
     ]
   },
