@@ -175,4 +175,28 @@ constructor that constructs a new instance by decoding its fields from a
 [`SliceDecoder`](csharp:IceRpc.Slice.SliceDecoder). The generated `Encode` method encodes the struct fields with a
 [`SliceEncoder`](csharp:IceRpc.Slice.SliceEncoder).
 
+### cs::readonly attribute
+
+You can map a Slice struct to a readonly C# struct with the `cs::readonly` [attribute](attributes). This attribute does
+not accept any argument. For example:
+
+{% side-by-side alignment="top" %}
+```slice
+[cs::readonly]
+compact struct Point { x: int32, y: int32 }
+```
+```csharp
+public readonly partial record struct Point
+{
+    public readonly int X;
+
+    public readonly int Y;
+
+    ...
+}
+```
+{% /side-by-side %}
+
+You can also apply `cs::readonly` to a struct field to map this field to a read-only C# field.
+
 [tagged-fields]: parameters-and-fields#tagged-parameters-and-fields

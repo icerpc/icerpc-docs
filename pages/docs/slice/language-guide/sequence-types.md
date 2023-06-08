@@ -91,6 +91,10 @@ public partial record struct SequenceExample
 By default, when the generated code decodes a sequence, it creates an array that is transmitted to you (the
 application) as an `IList<T>`. So if you need an array, you can safely cast this `IList<T>` to an array after decoding.
 
+You can override this default with the [`cs::generic` attribute](#cs::generic-attribute). This attribute only changes
+the type that the generated code uses during decoding to fill-in the field: the C# field type itself remains an
+`IList<T>`.
+
 ### Sequence parameters
 
 A sequence parameter has one mapping when it's sent and a different mapping when it's received. This distinction between
@@ -108,8 +112,58 @@ This mapping also applies to Slice enums whose underlying type is fixed-size.
 {% /callout %}
 {% /slice2 %}
 
+You can override the default mapping with the [`cs::generic` attribute](#cs::generic-attribute); this gives you the C#
+generic type you specified for incoming values, and `IEnumerable<T>` for outgoing values.
+
 #### All other sequences
 
 | Mapping for outgoing values | Default mapping for incoming values |
 |-----------------------------|-------------------------------------|
 | `IEnumerable<T>`            | `T[]`                               |
+
+You can override the default mapping for incoming values with the [`cs::generic` attribute](#cs::generic-attribute);
+this gives you the C# generic type you specified for incoming values. `cs::generic` doesn't change the mapping for
+outgoing values here.
+
+### cs::generic attribute
+
+You can use the `cs::generic` [attribute](attributes) to customize the mapping of your sequence. This attribute accepts
+a single string argument: the name of a generic type similar to `List<T>`.
+
+More specifically, this generic type must have a single type parameter and:
+ - provide a constructor that accepts an `IEnumerable<T>` or a `T[]` when T is a bool or a fixed-size integral type
+ - provide a capacity constructor (with an `int` parameter) otherwise
+
+This generic type must implement `IList<T>` when `cs::generic` is applied to a field; it must implement `ICollection<T>`
+when `cs::generic` is applied to a parameter.
+
+For example:
+
+{% side-by-side alignment="top" %}
+```slice
+interface ShapeCatalog {
+    // HashSet<T> implements ICollection<T> and has
+    // a capacity constructor.
+    getShapes(prefix: string) ->
+        [cs::generic("HashSet")] sequence<Shape>
+}
+```
+
+```csharp
+public partial interface IShapeCatalog
+{
+    Task<HashSet<ShapeProxy>> GetShapesAsync(
+        string prefix,
+        IFeatureCollection? features = null,
+        CancellationToken cancellationToken = default);
+}
+
+public partial interface IShapeCatalogService
+{
+    ValueTask<IEnumerable<ShapeProxy>> GetShapesAsync(
+        string prefix,
+        IFeatureCollection features,
+        CancellationToken cancellationToken);
+}
+```
+{% /side-by-side %}
