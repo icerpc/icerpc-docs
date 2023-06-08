@@ -134,8 +134,7 @@ More specifically, this generic type must have a single type parameter and:
  - provide a constructor that accepts an `IEnumerable<T>` or a `T[]` when T is a bool or a fixed-size integral type
  - provide a capacity constructor (with an `int` parameter) otherwise
 
-This generic type must implement `IList<T>` when `cs::generic` is applied to a field; it must implement `ICollection<T>`
-when `cs::generic` is applied to a parameter.
+This generic type must implement `IList<T>` when `cs::generic` is applied to a field; it must implement `ICollection<T>` when `cs::generic` is applied to a parameter.
 
 For example:
 
