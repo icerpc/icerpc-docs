@@ -202,11 +202,11 @@ public partial interface IRemoteEnumeratorService
 The `cs::internal` attribute maps a Slice type to one or more internal C# types. It does not accept any argument.
 
 [cs-custom]: custom-types#c#-mapping
-[cs-encoded-return]: operation
+[cs-encoded-return]: operation#cs::encodedreturn-attribute
 [cs-namespace]: module#c#-mapping
 [cs-readonly]: struct-types#cs::readonly-attribute
-[compress]: operation
+[compress]: operation#compress-attribute
 [dictionary-generic]: dictionary-types#cs::generic-attribute
-[oneway]: operation
+[oneway]: operation#oneway-attribute
 [sequence-generic]: sequence-types#cs::generic-attribute
-[sliced-format]: operation
+[sliced-format]: class-types?encoding=Slice1#slicing

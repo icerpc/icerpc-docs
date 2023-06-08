@@ -6,6 +6,7 @@ description: Learn how to define operations in Slice.
 ## Anatomy of an operation
 
 An operation consists of:
+ - an optional operation [attribute](attributes)
  - a name (the name of operation)
  - a list of [parameters][parameters] (the operation parameters)
  - an arrow followed by one or more return [parameters][parameters] (optional)
@@ -17,15 +18,15 @@ For example:
 greet(name: string) -> string throws GreeterException
 ```
 
-Operation `greet` has all four components: a name (`greet`), an operation parameter (`name`), a nameless return
-parameter and an exception specification (it can throw a `GreeterException`).
+Operation `greet` has a name (`greet`), an operation parameter (`name`), a nameless return parameter and an exception
+specification (it can throw a `GreeterException`).
 
 Here are a few additional examples:
 
 ```slice
 op() // no operation parameter
 
-op(x: int32) // a single operation parameter
+[oneway] op(x: int32) // an attribute and a single operation parameter
 
 op(x: int32, y: int32) -> int32 // two operation parameters and a return parameter
 
@@ -115,6 +116,66 @@ The `idempotent` keyword ensures that both the caller and the implementation of 
 understandings of the idempotent-ness of this operation. If the caller believes an operation is idempotent, the service
 implementation must see and treat this operation as idempotent too.
 
+## Operation-specific attributes
+
+### compress attribute
+
+The `compress` [attribute](attributes) instructs the generated code to request compression when sending the arguments or
+return value of the operation. Its argument can be `Args`, `Return`, or both.
+
+For example:
+
+```slice
+interface Greeter {
+    // Request compression in both directions.
+    [compress(Args, Return)] greet(name: string) -> string
+}
+```
+
+{% slice2 %}
+```slice
+interface FileServer {
+    // Request compression when sending the return value.
+    [compress(Return)] getTextFile(name: string) -> stream string
+}
+```
+{% /slice2 %}
+
+In C#, the generated code sets the [`ICompressFeature`][compress-feature] in the outgoing request features.
+
+This compression request is typically fulfilled by the Compress interceptor or middleware, which needs to be installed
+in your invocation resp. dispatch pipeline. If you neglect to install this interceptor or middleware, the corresponding
+payloads are not compressed.
+
+Keep in mind the Compress interceptor and middleware require the icerpc protocol. They do nothing for ice invocations
+and dispatches.
+
+### oneway attribute
+
+The `oneway` [attribute](attributes) instructs the generated code to create one-way outgoing requests for this
+operation. It has no effect on the server-side generated code (the I*Name*Service interface).
+
+A one-way request is a "fire and forget" request: the request is considered successful as soon as it's sent
+successfully.
+
+This attribute can only be applied to operations with no return type and no exception specification. It does not accept
+any argument. For example:
+
+```slice
+interface Logger {
+    [oneway] logMessage(message: string)
+}
+```
+
+{% slice1 %}
+### slicedFormat attribute
+
+The `slicedFormat` [attribute](attributes) instructs the generated code to encode the arguments or return value of the
+operation in sliced format, instead of the default compact format. Its argument can be `Args`, `Return`, or both.
+
+See [Class slicing][class-slicing] for details.
+{% /slice1 %}
+
 ## C# mapping
 
 A Slice operation named *opName* in interface `Greeter` is mapped to abstract method *OpName*Async in the interface
@@ -157,8 +218,7 @@ public partial interface IGreeterService
 {% /side-by-side %}
 
 While the two methods are similar, please note they are not the same:
- - the client-side method returns a `Task` or `Task<T>` while the service method returns a `ValueTask` or
-   `ValueTask<T>`
+ - the client-side method returns a `Task` or `Task<T>` while the service method returns a `ValueTask` or `ValueTask<T>`
  - the `features` parameter is nullable and defaults to null only in the client-side method
  - the cancellation token parameter has a default value only in the client-side method
 
@@ -240,5 +300,22 @@ return value, while the decode helper (in *Name*Proxy.Response) decodes everythi
 These helper methods allow you to create/consume plain IceRPC requests and responses while still using the generated
 code for their payloads.
 
+### cs::encodedReturn attribute
+
+The `cs::encodeReturn` attribute allows you to change the return type of the mapped method on the generated Service
+interface: this attribute makes this method returns a `ValueTask<PipeReader>` instead of the usual `ValueTask<T>`.
+
+The returned [PipeReader][pipe-reader] represents the encoded return value. You would typically produce this value using
+the Encode*OpName* method provided by the helper [`Response` class](#request-and-response-helper-classes).
+
+There are two somewhat common use-cases for this attribute:
+ 1. You want to encode a mutable collection field of your class (such as `List<T>`) while holding a mutex lock; this
+lock prevents other operations from modifying this field while it's being encoded.
+ 2. You want to return over and over the same return value that is costly to encode; this attribute allows you to encode
+the return value once, cache the encoded bytes and then return over and over these bytes.
+
+[class-slicing]: class-types#slicing
+[compress-feature]: csharp:IceRpc.Features.ICompressFeature
 [parameters]: parameters-and-fields
+[pipe-reader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
 [tagged-parameters]: parameters-and-fields#tagged-parameters-and-fields

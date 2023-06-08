@@ -133,8 +133,8 @@ class FrontBumper : CarPart {
 
 But the client application that calls `findPart` doesn't know `FrontBumper` so it can't decode it.
 
-In this situation, the recipient will fail to decode this class instance _unless_ you tell the sender to encode this
-class in "sliced" format with the `slicedFormat` operation attribute:
+In this situation, the recipient will fail to decode this class instance unless you tell the sender to encode this
+class in "sliced" format with the `slicedFormat` operation [attribute](attributes):
 
 ```slice
 interface CarPartShop {
