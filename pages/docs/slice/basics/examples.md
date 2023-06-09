@@ -3,35 +3,79 @@ title: Examples
 description: Discover the Slice syntax through a few examples.
 ---
 
-TODO: need slice1/slice2
-
 This page offers a quick overview of the Slice syntax through examples.
+
+## Interfaces
+
+```slice {% addEncoding=true %}
+module Example
+
+interface Widget {
+    spin(count: int32)
+}
+
+interface WidgetFactory {
+    // Returns a Widget proxy.
+    createWidget(name: string) -> Widget
+}
+
+// An interface can extend one or more other interfaces
+interface Gizmo : Widget {
+    walk(direction: Direction)
+}
+```
 
 ## Operations
 
+{% slice1 %}
+```slice {% addEncoding=true %}
+module Example
+
+interface MyOperations {
+    // no operation parameter, no return parameter
+    opVoid()
+
+    // a single operation parameter, no return parameter
+    opParam(message: string)
+
+    // a single operation parameter and single return parameter with an optional type
+    opParamReturn(message: string) -> int32?
+
+    // two operation parameters and two return parameters
+    opParamsReturns(message: string, count: int32) -> (value: float32, list: sequence<int32>)
+
+    // a oneway operation
+    [oneway] opOneway(message: string)
+
+    // an idempotent operation
+    idempotent opIdempotent(message: string) -> int32
+}
+```
+{% /slice1 %}
+{% slice2 %}
 ```slice
 module Example
 
 interface MyOperations {
-    // no parameter, no return value
+    // no operation parameter, no return parameter
     opVoid()
 
-    // a single parameter, no return value
+    // a single operation parameter, no return parameter
     opParam(message: string)
 
-    // a single parameter and single return value with an optional type
+    // a single operation parameter and single return parameter with an optional type
     opParamReturn(message: string) -> int32?
 
-    // two parameters and a return tuple
+    // two operation parameters and two return parameters
     opParamsReturns(message: string, count: int32) -> (value: float32, list: sequence<int32>)
 
-    // a regular parameter and a stream parameter
+    // a regular operation parameter and a stream operation parameter
     sendFile(name: string, contents: stream uint8)
 
-    // a stream return value
+    // a stream return parameter
     receiveTextFile(name: string) -> stream string
 
-    // a return tuple with a stream
+    // two return parameters; the last return parameter is a stream
     receiveNextFile() -> (name: string, contents: stream uint8)
 
     // a oneway operation
@@ -41,9 +85,32 @@ interface MyOperations {
     idempotent opIdempotent(message: string) -> int32
 }
 ```
+{% /slice2 %}
 
 ## Enums
 
+{% slice1 %}
+```slice {% addEncoding=true %}
+module Example
+
+// A checked enum is restricted to its enumerators.
+enum Fruit {
+    Apple
+    Strawberry
+    Pineapple
+}
+
+// An unchecked enum can hold any positive int32 value .
+unchecked enum Permissions {
+    Execute = 0
+    Read = 1
+    Write = 2
+    Delete = 4
+}
+```
+{% /slice1 %}
+
+{% slice2 %}
 ```slice
 module Example
 
@@ -62,9 +129,20 @@ unchecked enum Permissions : uint8 {
     Delete = 4
 }
 ```
+{% /slice2 %}
 
 ## Structs
 
+{% slice1 %}
+```slice {% addEncoding=true %}
+module Example
+
+// A compact struct cannot have tagged fields.
+compact struct Point { x: int32, y: int32 }
+```
+{% /slice1 %}
+
+{% slice2 %}
 ```slice
 module Example
 
@@ -80,47 +158,61 @@ struct Contact {
     name: string
     phoneNumber: string
     email: string?
-    tag(1) lastSeen: WellknownTypes::TimeStamp? // the type of a tagged field must be optional
+    tag(1) lastSeen: string? // the type of a tagged field must be optional
 }
 
 // A compact struct has only required fields.
 compact struct Point { x: int32, y: int32 }
 ```
+{% /slice2 %}
 
-## Collections
+{% slice1 %}
+## Classes
 
-```slice
+```slice {% addEncoding=true %}
 module Example
 
-interface DNS {
-    resolveName(name: string) -> sequence<IpAddress>
+// A class have both required and tagged fields.
+class Contact {
+    name: string
+    phoneNumber: string
 }
 
-interface Census {
-    getCityPopulation(state: string) -> dictionary<string, uint32>
+// Tagged fields can be added later on without breaking on-the-wire compatibility.
+class Contact {
+    name: string
+    phoneNumber: string
+    tag(1) lastSeen: WellknownTypes::TimeStamp? // the type of a tagged field must be optional
 }
-```
 
-## Custom
-
-```slice
-module Example
-
-// You can define your own custom types:
-[cs::custom("System.Decimal")]
-custom Money
-
-// And you can use built-in custom types from module WellKnownTypes:
-struct CustomBag {
-    amount: Money
-    uri: WellKnownTypes::Uri
-    duration: WellKnownTypes::Duration
-    timeStamp: WellKnownTypes::TimeStamp
+// Classes support single inheritance
+class BusinessContact : Contact {
+    company: Company
+    tag(1) sendNewsletter: bool? // the scope of a tag is a class slice.
 }
 ```
+{% /slice1 %}
 
 ## Exceptions
 
+{% slice1 %}
+```slice {% addEncoding=true %}
+module Example
+
+// An exception is just like a class.
+exception WidgetException {
+    error: WidgetError
+    tag(1) retryAfter: WellknownTypes::Duration?
+}
+
+interface WidgetFactory {
+    // Unlike a class, an exception can be thrown.
+    createWidget(name: string) -> Widget throws WidgetException
+}
+```
+{% /slice1 %}
+
+{% slice2 %}
 ```slice
 module Example
 
@@ -135,42 +227,66 @@ interface WidgetFactory {
     createWidget(name: string) -> Widget throws WidgetException
 }
 ```
+{% /slice2 %}
 
-## Interfaces
+## Sequences and dictionaries
 
-```slice
+```slice {% addEncoding=true %}
 module Example
 
-interface Widget {
-    spin(count: int32)
+interface Dns {
+    resolveName(name: string) -> sequence<IPAddress>
 }
 
-interface WidgetFactory {
-    // Returns a Widget proxy.
-    createWidget(name: string) -> Widget
-}
-
-// An interface can extend one or more other interfaces
-interface Gizmo : Widget {
-    walk(direction: Direction)
+interface Census {
+    getCityPopulation(state: string) -> dictionary<string, int32>
 }
 ```
 
+## Custom and well-known types
+
+{% slice1 %}
+```slice {% addEncoding=true %}
+module Example
+
+// You can define your own custom types:
+[cs::custom("System.Decimal")]
+custom Money
+
+// And you can use the built-in custom type ServiceAddress defined in module WellKnownTypes:
+compact struct CustomBag {
+    amount: Money
+    serviceAddress: WellKnownTypes::ServiceAddress
+}
+```
+{% /slice1 %}
+
+{% slice2 %}
+```slice
+module Example
+
+// You can define your own custom types:
+[cs::custom("System.Decimal")]
+custom Money
+
+// And you can use built-in custom types defined in module WellKnownTypes:
+struct CustomBag {
+    amount: Money
+    uri: WellKnownTypes::Uri
+    duration: WellKnownTypes::Duration
+    timeStamp: WellKnownTypes::TimeStamp
+    serviceAddress: WellKnownTypes::ServiceAddress
+}
+```
+{% /slice2 %}
+
 ## Attributes
 
-```slice
+```slice {% addEncoding=true %}
 [cs::namespace("AttributeExample")]
 module Example
 
-enum Transport {
-    // Use the preferred C# spelling
-    [cs::identifier("Tcp")]
-    TCP
-
-    [cs::identifier("Udp")]
-    UDP
-}
-
+[cs::identifier("WorldAtlas")]
 interface Atlas {
     getMainCities(country: string) -> [cs::generic("HashSet")] sequence<string>
 }
@@ -180,7 +296,7 @@ interface Atlas {
 
 ## Doc comments
 
-```slice
+```slice {% addEncoding=true %}
 module Example
 
 /// Represents a factory for widgets.

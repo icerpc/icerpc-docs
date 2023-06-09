@@ -5,8 +5,8 @@ description: Understand how Slice definitions are organized in Slice files.
 
 ## File extension
 
-Slice definitions must be stored in files with the `.slice` extension--Slice files. If you choose a different extension,
-the Slice compiler will ignore your file.
+Slice definitions must be stored in files with the `.slice` extension, known as Slice files. The Slice compiler ignores
+files with other extensions.
 
 ## Source files and reference files
 
@@ -68,7 +68,7 @@ module VisitorCenter
 interface Greeter {
     greet(name: string) -> string
 
-#if NextGen // only available in the NextGen version
+#if NextGen // only available in the NextGen version of Greeter
     sing(songName: string) -> sequence<uint8>
 #endif
 }
