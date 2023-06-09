@@ -30,7 +30,7 @@ await using var clientConnection = new ClientConnection(new Uri("icerpc://hello.
 
 `ClientConnection`'s constructor specifies the [address of the server](server-address#client-connection-configuration),
 but does not actually establish the connection. The connection is established later on by an asynchronous call such as
-`ConnectAsync`:
+`ConnectAsync` or `InvokeAsync`:
 
 ```csharp
 // establishes the connection explicitly

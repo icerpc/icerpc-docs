@@ -185,14 +185,14 @@ module Example
 
 /// Represents a factory for widgets.
 interface WidgetFactory {
-    /// Creates a new @link Widget.
+    /// Creates a new {@link Widget}.
     /// @param name: The name of the new widget.
     /// @param color: The color of the new widget.
     /// @returns: A proxy to the new widget.
     /// @throws WidgetException: Thrown if the factory could not create the widget.
     createWidget(name: string) -> Widget throws WidgetException
 
-    /// Retrieves the last @link Widget created by this factory.
+    /// Retrieves the last {@link Widget} created by this factory.
     /// @returns proxy: A proxy to the last widget.
     /// @returns timeStamp: The creation time stamp.
     /// @throws WidgetException: Thrown if the factory has not created any widget yet.
