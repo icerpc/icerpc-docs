@@ -4,23 +4,19 @@ description: Everything you need to get started with IceRPC
 show_toc: false
 ---
 
-{% callout type="critical" %}
+## Get stared with IceRPC
 
-TODO: This page contains placeholder content and needs to be replaced. Please remove this when you are done.
+Getting started with IceRPC is easy. This page will help you get up and running with IceRPC in no time.
 
-{% /callout %}
+If you're new to IceRPC, we recommend you start with the [What is IceRPC](/docs/getting-started/what-is-icerpc) page.
+If you're already familiar with IceRPC, you can jump right in with the [Installation](/docs/getting-started/installation) page.
 
-## This is a test's title {% #live-examples %}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-### Quick Links
+### Quick links
 
 {% grid %}
 
 {% card
-   title="What is IceRPC"
+   title="What is IceRPC?"
    description="Learn the basics of what IceRPC and Slice are."
    icon="question"
    link="/docs/getting-started/what-is-icerpc" /%}
@@ -30,14 +26,20 @@ sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
    icon="box"
    link="/docs/getting-started/installation" /%}
 {% card
-   title="Creating an App."
+   title="Creating your first app"
    description="Get started creating your first application using IceRPC."
    icon="terminal"
-   link="/docs/getting-started/writing-an-application" /%}
+   link="/docs/getting-started/writing-your-first-icerpc-application-in-csharp" /%}
 
 {% /grid %}
 
-### Checkout an example project
+### Check out an example project
+
+Example projects are a great way to learn about IceRPC. They are fully functional applications that demonstrate
+common concepts and usage patterns.
+
+Learn how to secure a server with TLS, stream data, retry requests, and more. Each example project includes a
+README.md file that explains how to build and run the project.
 
 {% grid
    rows=2
@@ -52,3 +54,5 @@ sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 {% link-card title="Retry" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Retry" /%}
 
 {% /grid %}
+
+More example projects can be found in the [icerpc/icerpc-csharp](https://github.com/icerpc/icerpc-csharp/tree/main/examples) GitHub repository.
