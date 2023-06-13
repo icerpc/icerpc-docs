@@ -44,7 +44,7 @@ sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
    columns=3
    trailingLink={label:"View all on GitHub",link:"https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples"} %}
 
-{% link-card title="Hello" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Hello" /%}
+{% link-card title="Greeter" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Greeter" /%}
 {% link-card title="Stream" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Stream" /%}
 {% link-card title="Upload" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Upload" /%}
 {% link-card title="Compress" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Compress" /%}
