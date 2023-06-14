@@ -94,7 +94,7 @@ By default, when the generated code decodes a dictionary, it creates a C# `Dicti
 to you (the application) as an `IDictionary<TKey, TValue>`. You can safely cast this `IDictionary<TKey, TValue>` to a
 `Dictionary<TKey, TValue>` after decoding.
 
-You can override this default with the [`cs::generic` attribute](#cs::generic-attribute). This attribute only changes
+You can override this default with the [`cs::type` attribute](#cs::type-attribute). This attribute only changes
 the type that the generated code uses during decoding to fill-in the field: the C# field type itself remains an
 `IDictionary<TKey, TValue>`.
 
@@ -107,35 +107,34 @@ between incoming and outgoing values makes sending dictionaries more convenient 
 |-------------------------------------------|-------------------------------------|
 | `IEnumerable<KeyValuePair<TKey, TValue>>` | `Dictionary<TKey, TValue>`          |
 
-You can override the default mapping for incoming values with the [`cs::generic` attribute](#cs::generic-attribute);
-this gives you the C# generic type you specified for incoming values. `cs::generic` doesn't change the mapping for
+You can override the default mapping for incoming values with the [`cs::type` attribute](#cs::type-attribute);
+this gives you the C# type you specified for incoming values. `cs::type` doesn't change the mapping for
 outgoing values.
 
-### cs::generic attribute
+### cs::type attribute
 
-You can use the `cs::generic` [attribute](attributes) to customize the mapping of your dictionary. This attribute
-accepts a single string argument: the name of a generic type similar to `Dictionary<TKey, TValue>`.
+You can use the `cs::type` [attribute](attributes#c#-attributes) to customize the mapping of your dictionary. This attribute
+accepts a single string argument: the name of a type similar to `Dictionary<TKey, TValue>`.
 
-More specifically, this generic type must have two type parameters and provide a capacity constructor (with an `int`
-parameter). It must also implement `IDictionary<TKey, TValue>` when `cs::generic` is applied to a field; it must
-implement `ICollection<KeyValuePair<TKey, TValue>>` when `cs::generic` is applied to a parameter. For example:
+More specifically, this type must provide a capacity constructor (with an `int` parameter). It must also implement
+`IDictionary<TKey, TValue>` when `cs::type` is applied to a field; it must implement
+`ICollection<KeyValuePair<TKey, TValue>>` when `cs::type` is applied to a parameter. For example:
 
 {% side-by-side alignment="top" %}
 ```slice
 interface Greeter {
-    // SortedList<TKey, TValue> implements
-    // IDictionary<TKey, TValue> and indirectly
+    // List<KeyValuePair<TKey, TValue>> implements
     // ICollection<KeyValuePair<TKey, TValue>>;
     // it also provides a capacity constructor.
     allPreviousGreetings() ->
-        [cs::generic("SortedList")] dictionary<string, string>
+        [cs::type("List<KeyValuePair<string, string>>")] dictionary<string, string>
 }
 ```
 
 ```csharp
 public partial interface IGreeter
 {
-    Task<SortedList<string, string>> AllPreviousGreetingsAsync(
+    Task<List<KeyValuePair<string, string>>> AllPreviousGreetingsAsync(
         IFeatureCollection? features = null,
         CancellationToken cancellationToken = default);
 }

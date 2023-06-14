@@ -250,7 +250,7 @@ interface Census {
 module Example
 
 // You can define your own custom types:
-[cs::custom("System.Decimal")]
+[cs::type("System.Decimal")]
 custom Money
 
 // And you can use the built-in custom type ServiceAddress defined in module WellKnownTypes:
@@ -288,7 +288,7 @@ module Example
 
 [cs::identifier("WorldAtlas")]
 interface Atlas {
-    getMainCities(country: string) -> [cs::generic("HashSet")] sequence<string>
+    getMainCities(country: string) -> [cs::type("HashSet<string>")] sequence<string>
 }
 
 [cs::readonly] compact struct Point { x: int32, y: in32 }
