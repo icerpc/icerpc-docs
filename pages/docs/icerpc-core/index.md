@@ -9,7 +9,7 @@ At its core, IceRPC is a framework of modular components that can be used to des
 
 The key components required to perform an RPC are:
 
-- __Connection__ — The medium over which RPCs are transmitted, e.g. QUIC, TCP, etc.
+- __Connection__ — The medium over which RPCs are transmitted, e.g. [QUIC](https://en.wikipedia.org/wiki/QUIC), TCP, etc.
 - __Protocol__ — An [application layer protocol](https://en.wikipedia.org/wiki/Application_layer) that transmits RPCs over a connection.
 - __Invocation__ — The process of sending a request and receiving the corresponding response.
 - __Dispatch__ — The process of accepting a request and returning a response.
