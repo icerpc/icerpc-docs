@@ -21,7 +21,7 @@ Later on, you can use `BigInt` as a parameter type or field type just like any o
 ## C# mapping
 
 When you compile a custom type with the Slice compiler for C#, you must specify the mapped C# type with the
-`cs::custom` [attribute](attributes); otherwise, the Slice compilation fails. The attribute accepts a single string
+`cs::type` [attribute](attributes#c#-attributes); otherwise, the Slice compilation fails. The attribute accepts a single string
 argument: the name of the mapped C# type.
 
 For example:
@@ -29,7 +29,7 @@ For example:
 ```slice {% addEncoding=true %}
 module Compute
 
-[cs::custom("Int128")] // maps Compute::BigInt to System.Int128
+[cs::type("Int128")] // maps Compute::BigInt to System.Int128
 custom BigInt
 ```
 
