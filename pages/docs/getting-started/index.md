@@ -11,6 +11,9 @@ Getting started with IceRPC is easy. This page will help you get up and running 
 If you're new to IceRPC, we recommend you start with the [What is IceRPC](/docs/getting-started/what-is-icerpc) page.
 If you're already familiar with IceRPC, you can jump right in with the [Installation](/docs/getting-started/installation) page.
 
+Once you're up and running, you can learn more about IceRPC by reading the [IceRPC Core](/docs/icerpc-core) documentation
+and by checking the [IceRPC C# API Reference](https://api.testing.zeroc.com/csharp).
+
 ### Quick links
 
 {% grid %}
@@ -31,6 +34,12 @@ If you're already familiar with IceRPC, you can jump right in with the [Installa
    icon="terminal"
    link="/docs/getting-started/writing-your-first-icerpc-application-in-csharp" /%}
 
+{% card
+   title="IceRPC C# API Reference"
+   description="A full reference for the IceRPC C# API."
+   icon="terminal"
+   link="https://api.testing.zeroc.com/csharp" /%}
+
 {% /grid %}
 
 ### Check out an example project
@@ -38,7 +47,7 @@ If you're already familiar with IceRPC, you can jump right in with the [Installa
 Example projects are a great way to learn about IceRPC. They are fully functional applications that demonstrate
 common concepts and usage patterns.
 
-Learn how to secure a server with TLS, stream data, retry requests, and more. Each example project includes a
+Learn how to use the QUIC transport, stream data, retry requests, and more. Each example project includes a
 README.md file that explains how to build and run the project.
 
 {% grid
@@ -46,7 +55,7 @@ README.md file that explains how to build and run the project.
    columns=3
    trailingLink={label:"View all on GitHub",link:"https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples"} %}
 
-{% link-card title="Greeter" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Greeter" /%}
+{% link-card title="GreeterQuic" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/GreeterQuic" /%}
 {% link-card title="Stream" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Stream" /%}
 {% link-card title="Upload" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Upload" /%}
 {% link-card title="Compress" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Compress" /%}
