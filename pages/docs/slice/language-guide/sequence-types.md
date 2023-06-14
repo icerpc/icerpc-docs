@@ -127,7 +127,7 @@ this gives you the C# type you specified for incoming values. `cs::type` doesn't
 ### cs::type attribute
 
 You can use the `cs::type` [attribute](attributes#c#-attributes) to customize the mapping of your sequence. This attribute accepts
-a single string argument: the name of a type similar to `List<int>` or `MyCustomList`.
+a single string argument: the name of a type similar to `List<int>`.
 
 More specifically, this type must:
  - provide a constructor that accepts an `IEnumerable<T>` or a `T[]` when T is a bool or a fixed-size integral type

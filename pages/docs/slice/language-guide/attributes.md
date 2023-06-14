@@ -103,7 +103,7 @@ The following attributes are specific to the C# mapping. They all start with the
 | [`cs::internal`](#cs::internal-attribute)     | Interfaces, constructed types      | Map to an internal C# type instead of a public C# type. |
 | [`cs::namespace`][cs-namespace]               | Modules                            | Change the name of the mapped C# namespace. |
 | [`cs::readonly`][cs-readonly]                 | Structs and struct fields          | Adds `readonly` to the mapped C# struct or field. |
-| `cs::type`                    | [Custom types][cs-custom], [Sequences][sequence-type] and [dictionaries][dictionary-type] | Specify the mapped C# type.                                      |
+| `cs::type`                    | [Custom types][custom-type], [Sequences][sequence-type] and [dictionaries][dictionary-type] | Specify the mapped C# type.                                      |
 ### cs::attribute attribute
 
 The `cs::attribute` accepts a string, the attribute you want to generate. For example:
@@ -199,7 +199,7 @@ public partial interface IRemoteEnumeratorService
 
 The `cs::internal` attribute maps a Slice type to one or more internal C# types. It does not accept any argument.
 
-[cs-custom]: custom-types#c#-mapping
+[custom-type]: custom-types#c#-mapping
 [cs-encoded-return]: operation#cs::encodedreturn-attribute
 [cs-namespace]: module#c#-mapping
 [cs-readonly]: struct-types#cs::readonly-attribute
