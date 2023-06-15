@@ -3,20 +3,6 @@ title: Overview
 description: Everything except Slice
 ---
 
-## Introduction
-
-At its core, IceRPC is a framework of modular components that can be used to design networked applications. It does not prescribe a specific architecture or design pattern, but rather provides the building blocks to create your own.
-
-The key components required to perform an RPC are:
-
-- __Connection__ — The medium over which RPCs are transmitted, e.g. [QUIC](https://en.wikipedia.org/wiki/QUIC), TCP, etc.
-- __Protocol__ — An [application layer protocol](https://en.wikipedia.org/wiki/Application_layer) that transmits RPCs over a connection.
-- __Invocation__ — The process of sending a request and receiving the corresponding response.
-- __Dispatch__ — The process of accepting a request and returning a response.
-- __Payload__ — The data that is transmitted as part of an RPC request or response.
-
-The specific encoding of the RPC payload is not specified by the protocol, but rather is left to the application. IceRPC does provide an IDL, [Slice](/docs/slice), that can be used describe the structure of data in your application and the operations that can be performed on it.
-
 ## Learn the basics
 
 Each section of documentation covers a different component of the IceRPC core and how to use it.
@@ -61,7 +47,7 @@ Each section of documentation covers a different component of the IceRPC core an
 
 {% /grid %}
 
-## Advanced Topics
+## Advanced topics
 
 The advanced topics section describes several topics that may be of interest to some users.
 
