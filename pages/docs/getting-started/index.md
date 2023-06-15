@@ -4,7 +4,7 @@ description: Everything you need to get started with IceRPC
 show_toc: false
 ---
 
-## Get stared with IceRPC
+## Get started with IceRPC
 
 Getting started with IceRPC is easy. This page will help you get up and running with IceRPC in no time.
 
