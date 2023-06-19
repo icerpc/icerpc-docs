@@ -9,41 +9,35 @@ Each section of documentation covers a different component of the IceRPC core an
 
 {% grid %}
 
-{% card
+{% mini-card
    title="Connection"
    description="Learn how to create and accept connections in IceRPC."
-   icon="question"
-   link="/docs/icerpc-core/connection/client-vs-server-connections" /%}
+   href="/docs/icerpc-core/connection/client-vs-server-connections" /%}
 
-{% card
+{% mini-card
    title="Protocol"
    description="Learn about the icerpc protocol and multiplexing."
-   icon="question"
-   link="/docs/icerpc-core/protocols-and-transports/icerpc-multiplexed-transports" /%}
+   href="/docs/icerpc-core/protocols-and-transports/icerpc-multiplexed-transports" /%}
 
-{% card
+{% mini-card
    title="Service Address"
    description="Understand the service address concept and syntax."
-   icon="question"
-   link="/docs/icerpc-core/invocation/service-address" /%}
+   href="/docs/icerpc-core/invocation/service-address" /%}
 
-{% card
+{% mini-card
    title="Invocation"
    description="Understand how to send requests and receive responses."
-   icon="question"
-   link="/docs/icerpc-core/invocation/invocation-pipeline" /%}
+   href="/docs/icerpc-core/invocation/invocation-pipeline" /%}
 
-{% card
+{% mini-card
    title="Dispatch"
    description="Understand how to accept requests and return responses."
-   icon="question"
-   link="/docs/icerpc-core/dispatch/dispatch-pipeline" /%}
+   href="/docs/icerpc-core/dispatch/dispatch-pipeline" /%}
 
-{% card
+{% mini-card
    title="Routing"
    description="Learn how to route incoming requests based on their path."
-   icon="question"
-   link="/docs/icerpc-core/dispatch/router" /%}
+   href="/docs/icerpc-core/dispatch/router" /%}
 
 {% /grid %}
 
