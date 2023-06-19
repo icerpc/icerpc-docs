@@ -3,8 +3,6 @@ title: Overview
 description: An introduction to Slice
 ---
 
-Slice is a collection of several related components that help you define and use RPCs.
-
 If you're new to Slice your first step should be to [understand the problem that Slice solves](/docs/slice/basics/why-use-slice). If you're already familiar with Slice and are looking for a specific topic, you can use the navigation on the left to find what you need.
 
 ### Quick Links
