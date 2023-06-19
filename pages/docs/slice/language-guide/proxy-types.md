@@ -51,7 +51,7 @@ Task<WidgetProxy> CreateWidgetAsync(
 ```
 
 When you call `CreateWidgetAsync`, you get back a `WidgetProxy` instead of a plain
-[ServiceAddress][csharp-service-adddress], even though the only information transmitted over the wire is the service
+[ServiceAddress][csharp-service-address], even though the only information transmitted over the wire is the service
 address.
 
 {% slice2 %}
