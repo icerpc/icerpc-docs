@@ -11,9 +11,8 @@ If you're new to Slice your first step should be to [understand the problem that
 
 {% grid %}
 
-{% mini-card title="Lexical Rules" description="An introduction to the Lexical Rules of Slice" href="/docs/slice/language-reference/lexical-rules" /%}
+{% mini-card title="Why use Slice?" description="Understand the problem that Slice solves" href="/docs/slice/basics/why-use-slice" /%}
 {% mini-card title="Source Files" description="Learn how Slice files are structured" href="/docs/slice/language-reference/source-files" /%}
-{% mini-card title="Examples" description="Discover the Slice syntax through a few examples." href="/docs/slice/basics/examples" /%}
-{% mini-card title="Error Code Reference" description="A catalogue of all warnings and errors that can occur during compilation" href="/docs/slice/compiler-diagnostics/errors" /%}
+{% mini-card title="Examples" description="Discover the Slice syntax through a few examples" href="/docs/slice/basics/examples" /%}
 
 {% /grid %}
