@@ -10,8 +10,6 @@ If you're new to Slice your first step should be to [understand the problem that
 
 ### Quick Links
 
-Each section of documentation covers a different component of Slice.
-
 {% grid %}
 
 {% mini-card title="Lexical Rules" description="An introduction to the Lexical Rules of Slice" href="/docs/slice/language-reference/lexical-rules" /%}
