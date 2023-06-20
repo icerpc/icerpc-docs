@@ -5,13 +5,8 @@ description: Learn how to write doc comments in Slice.
 
 ## Purpose of doc comments
 
-Slice comments that start with `///` are doc comments. The Slice compiler uses these Slice doc comments as input for the
+Slice comments that start with `///` are doc comments. The Slice compiler uses these special comments as input for the
 doc comments it generates in the mapped language.
-
-Future tools may use these doc comments for additional purposes, for example to show tool tips when editing Slice files
-with Visual Studio code.
-
-## Documentable definitions
 
 Slice doc comments can be attached to all Slice definitions except encoding, modules, parameters and typealias.
 
@@ -21,13 +16,20 @@ Slice doc comments support the following tags:
 
 | Tag                           | Applies to       | Description                                                    |
 |-------------------------------|----------------- |----------------------------------------------------------------|
-| `{@link ... }`                | All doc comments | Provide a link to another Slice definition.                    |
-| `@param name:`                | Operations       | Describe the operation parameter `name`.                       |
-| `@return name:`               | Operations       | Describe the return parameter `name`.                          |
-| `@see`                        | All doc comments | Suggest to see another Slice definition.                       |
-| `@throws:`                    | Operations       | Describe when the operation throws the listed Slice exception. |
+| `{@link type}`                | All doc comments | Provide a link to Slice definition `type`.                     |
+| `@param name: ...`            | Operations       | Describe the operation parameter `name`.                       |
+| `@returns name: ...`          | Operations       | Describe the return parameter `name`.                          |
+| `@see type`                   | All doc comments | Suggest to see Slice definition `type`.                        |
+| `@throws type: ... `          | Operations       | Describe when the operation throws Slice exception `type`.     |
 
-For example:
+{% slice1 %}
+{% callout %}
+An operation can have multiple `@throws` doc comments even though the operation itself can only throw one exception or
+`AnyException`.
+{% /callout %}
+{% /slice1 %}
+
+## Example
 
 ```slice
 module Example
