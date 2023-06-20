@@ -7,12 +7,15 @@ description: Understand the differences between Slice1 and Slice2.
 
 A Slice file has always an associated encoding, which can be either Slice1 or Slice2.
 
-This encoding determines the on the wire binary representation of your data. It also determines which syntax you can use
-in this file. For example, a `class` can only appear in a Slice1 file, while a `varint32` can only appear in a Slice2
-file.
+The encoding determines how the arguments and return values of operations defined in that file are encoded into streams
+of bytes. Slice supports two distinct and incompatible encoding formats: Slice1 and Slice2. The encoding process is
+described in the [Encoding](../encoding/main-features) section.
 
-The encoding of a Slice file can be specified with an encoding statement. This statement (if present) must be the first
-statement in the file. For example:
+The encoding of a Slice file also determines the syntax you can use in that file. For example, a `class` can only appear
+in a Slice1 file, while a `varint32` can only appear in a Slice2 file.
+
+You specify which encoding to use with the encoding statement. This statement (if present) must be the first statement
+in the file. For example:
 
 ```slice
 // Copyright (c) ACME Corp.
@@ -22,7 +25,8 @@ encoding = Slice1
 
 If your Slice file has no encoding statement, it uses the default encoding, Slice2.
 
-You should use Slice1 if you need interoperability with Ice applications; otherwise, keep the default, Slice2.
+You should use Slice1 if you need interoperability with Ice applications; otherwise, you should keep the default,
+Slice2.
 
 ## Encoding compatibility
 
@@ -53,13 +57,10 @@ interface Widget {
 ```
 {% /side-by-side %}
 
-## Using Slice1 types from Slice2
+## Using Slice1 types in a Slice2 file
 
-It is always an error to reference a type defined in a file using the Slice2 encoding from a file using the Slice1
-encoding.
-
-On the other hand, you can reference a type defined in a file using the Slice1 encoding from a file using the Slice2
-encoding provided this type can be encoded with Slice2. For example:
+You can reference a type defined in a file using the Slice1 encoding (Slice1 file) from a file using the Slice2 encoding
+(Slice2 file) provided this type can be encoded with Slice2. For example:
 
 ```slice
 encoding = Slice1
@@ -79,6 +80,8 @@ compat struct VehicleCarrier {
     vehicle: Vehicle?
 }
 ```
+
+On the other hand, it is always an error to reference a type defined in a Slice2 file in a Slice1 file.
 
 ## C# mapping
 
