@@ -57,7 +57,7 @@ interface Widget {
 ```
 {% /side-by-side %}
 
-## Using Slice1 types in a Slice2 file
+## Slice types compatible with Slice1 and Slice2
 
 You can reference a type defined in a file using the Slice1 encoding (Slice1 file) from a file using the Slice2 encoding
 (Slice2 file) provided this type can be encoded with Slice2. For example:
@@ -75,13 +75,14 @@ class Vehicle {
     hasEngine: bool
 }
 
-// Can be encoded with Slice1 but not Slice2.
+// Can be encoded with Slice1 but not Slice2
+// because it references a class.
 compat struct VehicleCarrier {
     vehicle: Vehicle?
 }
 ```
 
-On the other hand, it is always an error to reference a type defined in a Slice2 file in a Slice1 file.
+On the other hand, it is always an error to reference a type defined in a Slice2 file from a Slice1 file.
 
 ## C# mapping
 
