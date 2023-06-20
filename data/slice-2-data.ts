@@ -158,18 +158,5 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/encoding/operation-return-value-exception`
       }
     ]
-  },
-  {
-    title: 'Compiler diagnostics',
-    links: [
-      {
-        title: 'Errors',
-        path: `${SLICE_BASE_URL}/compiler-diagnostics/errors`
-      },
-      {
-        title: 'Warnings',
-        path: `${SLICE_BASE_URL}/compiler-diagnostics/warnings`
-      }
-    ]
   }
 ];
