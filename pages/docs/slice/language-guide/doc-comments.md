@@ -14,13 +14,13 @@ Slice doc comments can be attached to all Slice definitions except encoding, mod
 
 Slice doc comments support the following tags:
 
-| Tag                           | Applies to       | Description                                                    |
-|-------------------------------|----------------- |----------------------------------------------------------------|
-| `{@link type}`                | All doc comments | Provide a link to Slice definition `type`.                     |
-| `@param name: ...`            | Operations       | Describe the operation parameter `name`.                       |
-| `@returns name: ...`          | Operations       | Describe the return parameter `name`.                          |
-| `@see type`                   | All doc comments | Suggest to see Slice definition `type`.                        |
-| `@throws type: ... `          | Operations       | Describe when the operation throws Slice exception `type`.     |
+| Tag                       | Applies to | Description                                                        |
+|---------------------------|------------|--------------------------------------------------------------------|
+| `{@link identifier}`      | All        | Provide a link to the Slice type, operation or field `identifier`. |
+| `@param name: ...`        | Operations | Describe the operation parameter `name`.                           |
+| `@returns name: ...`      | Operations | Describe the return parameter `name`.                              |
+| `@see identifier`         | All        | Suggest to see Slice type, operation or field `identifier`.        |
+| `@throws exception: ... ` | Operations | Describe when the operation throws Slice exception `exception`.    |
 
 {% slice1 %}
 {% callout %}
