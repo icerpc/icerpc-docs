@@ -1,18 +1,27 @@
 ---
 title: Overview
-description: Some description
+description: IceRPC for Ice users
 ---
 
-{% callout type="critical" %}
+## Learn the basics
 
-TODO: This page contains placeholder content and needs to be replaced. Please remove this when you are done.
+Learn how IceRPC compares to Ice and how to use IceRPC with an existing Ice application.
 
-{% /callout %}
+{% grid %}
 
-## Heading 1
+{% mini-card
+   title="High-level comparison"
+   description="Understand why IceRPC is not a new version of Ice."
+   href="/docs/icerpc-for-ice-users/get-started/high-level-comparison" /%}
 
-Lorem ipsum link
+{% mini-card
+   title="What's new"
+   description="A quick overview of new features in IceRPC compared to Ice."
+   href="/docs/icerpc-for-ice-users/get-started/new-features" /%}
 
-## Heading 2
+{% mini-card
+   title="Using IceRPC with Ice"
+   description="Learn how to use IceRPC together with an existing Ice application."
+   href="/docs/icerpc-for-ice-users/get-started/using-icerpc-with-ice" /%}
 
-Lorem ipsum link
+{% /grid %}
