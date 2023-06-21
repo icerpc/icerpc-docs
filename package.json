@@ -18,6 +18,8 @@
     "@vercel/og": "^0.5.4",
     "clsx": "^1.2.1",
     "copy-to-clipboard": "^3.3.3",
+    "flowbite": "^1.6.6",
+    "flowbite-react": "^0.4.7",
     "mermaid": "^10.1.0",
     "next": "^13.4.1",
     "next-themes": "^0.2.1",
