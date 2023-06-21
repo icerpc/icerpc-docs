@@ -41,8 +41,9 @@ to provide a redundant synchronous API. The async/await syntax also makes it cle
 while, throw exceptions, and should not be confused with a local call that completes very quickly.
 
 With IceRPC:
- - methods that may take a while because their implementations can wait for IOs are async (e.g. proxy methods)
- - methods that never wait for IOs are synchronous (e.g. string-parsing methods)
+
+- methods that may take a while because their implementations can wait for IOs are async (e.g. proxy methods)
+- methods that never wait for IOs are synchronous (e.g. string-parsing methods)
 
 ## Slice-free core API
 
@@ -69,6 +70,7 @@ The Slice syntax also changed significantly. Ice's .ice syntax uses a C-like syn
 IceRPC's .slice syntax is more like Rust and Swift:
 
 {% side-by-side %}
+
 ```slice {% title="Slice definitions (.ice syntax)" %}
 enum File { A, B, C, D, E, F, G, H }
 enum Rank { R1, R2, R3, R4, R5, R6, R7, R8 }
