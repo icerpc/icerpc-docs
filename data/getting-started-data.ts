@@ -15,8 +15,8 @@ export const gettingStartedData: SideBarSourceType[] = [
         path: GETTING_STARTED_BASE_URL + '/what-is-icerpc/'
       },
       {
-        title: 'Installation',
-        path: GETTING_STARTED_BASE_URL + '/installation/'
+        title: 'NuGet Packages',
+        path: GETTING_STARTED_BASE_URL + '/nuget-packages/'
       },
       {
         title: 'Writing your first IceRPC application in C#',

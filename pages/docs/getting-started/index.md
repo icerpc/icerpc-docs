@@ -18,27 +18,22 @@ and by checking the [IceRPC C# API Reference](https://api.testing.zeroc.com/csha
 
 {% grid %}
 
-{% card
+{% mini-card
    title="What is IceRPC?"
    description="Learn the basics of what IceRPC and Slice are."
-   icon="question"
-   link="/docs/getting-started/what-is-icerpc" /%}
-{% card
-   title="Installation"
-   description="Quickly get up and running with IceRPC."
-   icon="box"
-   link="/docs/getting-started/installation" /%}
-{% card
+   href="/docs/getting-started/what-is-icerpc" /%}
+{% mini-card
+   title="Packages"
+   description="IceRPC NuGet packages."
+   href="/docs/getting-started/installation" /%}
+{% mini-card
    title="Creating your first app"
    description="Get started creating your first application using IceRPC."
-   icon="terminal"
-   link="/docs/getting-started/writing-your-first-icerpc-application-in-csharp" /%}
-
-{% card
+   href="/docs/getting-started/writing-your-first-icerpc-application-in-csharp" /%}
+{% mini-card
    title="IceRPC C# API Reference"
    description="A full reference for the IceRPC C# API."
-   icon="terminal"
-   link="<https://api.testing.zeroc.com/csharp>" /%}
+   href="<https://api.testing.zeroc.com/csharp>" /%}
 
 {% /grid %}
 
@@ -53,14 +48,14 @@ README.md file that explains how to build and run the project.
 {% grid
    rows=2
    columns=3
-   trailingLink={label:"View all on GitHub",link:"<https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples"}> %}
+   trailingLink={label:"View all on GitHub",link:"https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples"} %}
 
-{% link-card title="GreeterQuic" link="<https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/GreeterQuic>" /%}
-{% link-card title="Stream" link="<https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Stream>" /%}
-{% link-card title="Upload" link="<https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Upload>" /%}
-{% link-card title="Compress" link="<https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Compress>" /%}
-{% link-card title="Secure" link="<https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Secure>" /%}
-{% link-card title="Retry" link="<https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Retry>" /%}
+{% link-card title="GreeterQuic" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/GreeterQuic" /%}
+{% link-card title="Stream" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Stream" /%}
+{% link-card title="Upload" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Upload" /%}
+{% link-card title="Compress" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Compress" /%}
+{% link-card title="Secure" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Secure" /%}
+{% link-card title="Retry" link="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Retry" /%}
 
 {% /grid %}
 
