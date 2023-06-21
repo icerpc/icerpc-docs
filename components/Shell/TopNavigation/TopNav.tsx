@@ -16,10 +16,6 @@ import { useMounted } from 'context/state';
 
 export const navigationItems = [
   {
-    name: 'Home',
-    href: 'https://web.testing.zeroc.com'
-  },
-  {
     name: 'Getting Started',
     href: '/docs/getting-started'
   },
@@ -34,6 +30,10 @@ export const navigationItems = [
   {
     name: 'IceRPC for Ice users',
     href: '/docs/icerpc-for-ice-users'
+  },
+  {
+    name: 'API Reference',
+    href: 'https://api.testing.zeroc.com/csharp/'
   }
 ];
 
@@ -93,7 +93,7 @@ const Logo = () => {
   }
 
   return (
-    <Link href="/">
+    <Link href="https://web.testing.zeroc.com/icerpc">
       <div className="mb-3 ml-[1.4rem] mr-0 mt-5 flex items-center justify-start gap-1 pb-4 lg:ml-[3rem]">
         <Image
           src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
