@@ -68,17 +68,17 @@ const EncodingTab = ({ encoding, selected }: EncodingTabProps) => {
   const tooltipContent =
     encoding === Encoding.Slice1 ? (
       <p>
-        Slice1 should only be used when doing interop with ZeroC Ice, to read
-        learn more visit{' '}
-        <AppLink href="/docs/icerpc-for-ice-users/slice/one-syntax-two-encodings">
-          here
+        Use Slice1 for interop with Ice applications.{' '}
+        <AppLink href="/docs/slice/language-guide/slice1-or-slice2">
+          Learn more
         </AppLink>
-        .
       </p>
     ) : (
       <p>
-        Slice2 is the default encoding for IceRPC and recommended for new
-        projects.
+        Use Slice2 for new projects.{' '}
+        <AppLink href="/docs/slice/language-guide/slice1-or-slice2">
+          Learn more
+        </AppLink>
       </p>
     );
 
