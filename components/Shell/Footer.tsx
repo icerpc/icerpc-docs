@@ -7,14 +7,7 @@ export const Footer = () => {
     <footer className="-mb-2 mt-0 border-t border-lightBorder py-6 dark:border-darkBorder dark:bg-black">
       <div className="mx-auto w-full max-w-[100rem] px-4 md:flex md:items-center md:justify-between md:px-10">
         <span className="text-sm text-gray-500 dark:text-gray-400 sm:text-center">
-          © {new Date().getFullYear()}{' '}
-          <Link
-            href="https://zeroc.com/"
-            className="text-primary hover:underline"
-          >
-            ZeroC, Inc
-          </Link>
-          . All Rights Reserved.
+          © ZeroC {new Date().getFullYear()}
         </span>
         <ul className="mr-10 mt-3 flex flex-wrap items-center text-sm font-medium sm:mt-0">
           <li>
