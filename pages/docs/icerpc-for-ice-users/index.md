@@ -1,6 +1,6 @@
 ---
-title: Overview
-description: IceRPC for Ice users
+title: IceRPC for Ice users
+description: Learn about how to IceRPC compares to Ice
 ---
 
 ## Learn the basics

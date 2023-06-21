@@ -20,7 +20,9 @@ export const gettingStartedData: SideBarSourceType[] = [
       },
       {
         title: 'Writing your first IceRPC application in C#',
-        path: GETTING_STARTED_BASE_URL + '/writing-your-first-icerpc-application-in-csharp/'
+        path:
+          GETTING_STARTED_BASE_URL +
+          '/writing-your-first-icerpc-application-in-csharp/'
       }
     ]
   }

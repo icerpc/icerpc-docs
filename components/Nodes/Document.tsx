@@ -9,6 +9,7 @@ import { Encoding } from 'types';
 import { useEncoding } from 'context/state';
 import { PageHistory, TableOfContents, Feedback } from 'components/Shell';
 import { collectHeadings } from 'utils/collectHeadings';
+import { baseUrls } from 'data/side-bar-data';
 
 type Props = {
   children: ReactElement[];
@@ -24,6 +25,7 @@ export const Document = ({ children, title, description, encoding }: Props) => {
   const path = router.asPath;
 
   const isDocs = path.startsWith('/docs');
+  const isBaseUrl = baseUrls.some((baseUrl) => path == baseUrl);
 
   // If the encoding is specified in the url, try to set the version to the specified encoding.
   const { query } = queryString.parseUrl(path, {
@@ -53,7 +55,11 @@ export const Document = ({ children, title, description, encoding }: Props) => {
     <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip dark:bg-[rgb(21,21,22)]">
       <article className="mx-6 mt-10 h-full w-full max-w-[52rem] md:mx-10 lg:mx-16">
         {isDocs && isCurrentEncoding && (
-          <Title title={title} description={description} />
+          <Title
+            title={title}
+            description={description}
+            showBreadcrumbs={!isBaseUrl}
+          />
         )}
         {encoding ? (
           <>

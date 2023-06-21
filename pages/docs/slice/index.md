@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Slice
 description: An introduction to Slice
 ---
 

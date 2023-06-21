@@ -10,16 +10,21 @@ import { useEncoding } from 'context/state';
 type Props = {
   title: string;
   description: string;
+  showBreadcrumbs?: boolean;
 };
 
-export const Title = ({ title, description }: Props) => {
+export const Title = ({
+  title,
+  description,
+  showBreadcrumbs = true
+}: Props) => {
   const { encoding } = useEncoding();
   const path = useRouter().pathname;
   const breadcrumbs = getBreadcrumbs(path, encoding);
 
   return (
     <div className="not-prose mb-10">
-      <Breadcrumbs breadcrumbs={breadcrumbs} />
+      {showBreadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
       <h1 className="text-4xl font-extrabold text-[#333333] dark:text-white">
         {title}
       </h1>
