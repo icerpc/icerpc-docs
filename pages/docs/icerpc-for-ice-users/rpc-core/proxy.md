@@ -14,7 +14,7 @@ proxy through a Slice operation. You can get a string representation of this add
 proxy, and you can convert this string representation into an Ice proxy when you call `stringToProxy` on your
 communicator.
 
-In IceRPC, this address is called a "service address". Service addresses, unlike proxies, are used by the IceRPC core.
+In IceRPC, this address is called a "service address". [Service addresses][service-address], unlike proxies, are used by the IceRPC core.
 
 ## String syntax
 
@@ -51,9 +51,10 @@ Ice proxy strings support a number of options: `-f facet`, `-e encoding` `-p pro
 secure) and more.
 
 When the Slice engine decodes a Slice1-encoded proxy, it processes these options as follows:
- - convert protocol "1.0" into ice and protocol "2.0" into icerpc (any other value is invalid)
- - convert the facet into the service address fragment when the protocol is ice (else decode failure)
- - all other options are ignored
+
+- convert protocol "1.0" into ice and protocol "2.0" into icerpc (any other value is invalid)
+- convert the facet into the service address fragment when the protocol is ice (else decode failure)
+- all other options are ignored
 
 As a result, the Slice engine's proxy-to-service-address decoding is lossy, unlike its
 [endpoint-to-server-address](../endpoint#endpoint-options) decoding.
@@ -66,3 +67,5 @@ For example:
 | `hello -p 2.0:ssl -h localhost -p 10000`          | `icerpc://localhost:10000/hello?transport=ssl`    |
 | `hello -o -s:ssl -h localhost -p 10000`           | `ice://localhost:10000/hello?transport=ssl`       |
 | `hello -t`                                        | `ice:/hello`                                      |
+
+[service-address]: ../../icerpc-core/invocation/service-address
