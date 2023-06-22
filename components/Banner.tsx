@@ -103,10 +103,10 @@ export function CookiesBanner() {
                 <p className="text-sm">
                   This website uses cookies to analyze traffic and improve your
                   experience. By clicking &quot;Accept,&quot; you consent to the
-                  use of these cookies. You can manage your preferences and
-                  learn more about our cookies policy in our{' '}
+                  use of these cookies. You can learn more about our cookies
+                  policy in our{' '}
                   <Link
-                    href="/privacy"
+                    href="https://web.testing.zeroc.com/privacy"
                     target="_blank"
                     className="text-blue-500 underline"
                   >
