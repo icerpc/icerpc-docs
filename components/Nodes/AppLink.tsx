@@ -14,7 +14,7 @@ type Props = {
 
 export const AppLink = (props: Props) => {
   // If props.href is an API link, then resolve it to the API documentation
-  // on docs.testing.zeroc.com/api
+  // on docs.testing.zeroc.com/api.
   const href = isApiLink(props.href) ? resolveApiLink(props.href) : props.href;
 
   // If the link is external, then open it in a new tab.
