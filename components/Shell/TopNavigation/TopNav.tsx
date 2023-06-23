@@ -33,7 +33,7 @@ export const navigationItems = [
   },
   {
     name: 'API Reference',
-    href: 'https://api.testing.zeroc.com/csharp/api/IceRpc.html'
+    href: 'https://docs.testing.zeroc.com/api/csharp/api/IceRpc.html'
   }
 ];
 

@@ -12,7 +12,7 @@ If you're new to IceRPC, we recommend you start with the [What is IceRPC](/getti
 If you're already familiar with IceRPC, you can jump right in with the [Installation](/getting-started/installation) page.
 
 Once you're up and running, you can learn more about IceRPC by reading the [IceRPC Core](/icerpc-core) documentation
-and by checking the [IceRPC C# API Reference](https://api.testing.zeroc.com/csharp).
+and by checking the [IceRPC C# API Reference](https://docs.testing.zeroc.com/api/csharp).
 
 ### Quick links
 
@@ -38,7 +38,7 @@ and by checking the [IceRPC C# API Reference](https://api.testing.zeroc.com/csha
    title="IceRPC C# API Reference"
    description="A full reference for the IceRPC C# API."
    icon="terminal"
-   link="<https://api.testing.zeroc.com/csharp>" /%}
+   link="<https://docs.testing.zeroc.com/api/csharp>" /%}
 
 {% /grid %}
 
