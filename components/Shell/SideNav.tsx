@@ -124,6 +124,8 @@ export const SideNav = ({ path }: SideNavProps) => {
     return transformSideBarData(router, item);
   });
 
+  if (cells.length === 0) return null;
+
   return (
     <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-none dark:bg-black lg:flex">
       <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-4 pr-2">
