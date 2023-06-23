@@ -6,6 +6,7 @@ import { setCookie, getCookie } from 'cookies-next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCookie, faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
+import { OptionsType } from 'cookies-next/lib/types';
 
 // A key to store the cookie value.
 const ALLOW_COOKIES = 'allow_cookies';
@@ -14,6 +15,12 @@ export function CookiesBanner() {
   const [showBanner, setShowBanner] = useState(false);
   const [showButtons, setShowButtons] = useState(false);
 
+  const cookieOptions: OptionsType = {
+    secure: process.env.NODE_ENV === 'production',
+    expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
+    sameSite: 'strict'
+  };
+
   useEffect(() => {
     const cookieValue = getCookie(ALLOW_COOKIES);
     setShowBanner(cookieValue === undefined);
@@ -21,13 +28,13 @@ export function CookiesBanner() {
   }, []);
 
   const handleAccept = () => {
-    setCookie(ALLOW_COOKIES, true);
+    setCookie(ALLOW_COOKIES, true, cookieOptions);
     setShowButtons(false);
     setShowBanner(false);
   };
 
   const handleReject = () => {
-    setCookie(ALLOW_COOKIES, false);
+    setCookie(ALLOW_COOKIES, false, cookieOptions);
     setShowButtons(false);
     setShowBanner(false);
   };
