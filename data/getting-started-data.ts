@@ -15,8 +15,8 @@ export const gettingStartedData: SideBarSourceType[] = [
         path: GETTING_STARTED_BASE_URL + '/raising-the-bar/modular-rpc-for-quic/'
       },
       {
-        title: 'Next-gen IDL: The power of simplicity',
-        path: GETTING_STARTED_BASE_URL + '/raising-the-bar/next-gen-idl/'
+        title: 'Slice - a better IDL',
+        path: GETTING_STARTED_BASE_URL + '/raising-the-bar/slice-better-idl/'
       }
     ]
   },
