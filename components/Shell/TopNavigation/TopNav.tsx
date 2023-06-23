@@ -17,19 +17,19 @@ import { useMounted } from 'context/state';
 export const navigationItems = [
   {
     name: 'Getting Started',
-    href: '/docs/getting-started'
+    href: '/getting-started'
   },
   {
     name: 'IceRPC Core',
-    href: '/docs/icerpc-core'
+    href: '/icerpc-core'
   },
   {
     name: 'Slice',
-    href: '/docs/slice'
+    href: '/slice'
   },
   {
     name: 'IceRPC for Ice users',
-    href: '/docs/icerpc-for-ice-users'
+    href: '/icerpc-for-ice-users'
   },
   {
     name: 'API Reference',

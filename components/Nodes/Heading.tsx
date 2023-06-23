@@ -18,7 +18,7 @@ type Props = {
 export const Heading = ({ id = '', level = 1, children }: Props) => {
   const router = useRouter();
   const Component: any = `h${level}`;
-  const isDocs = router.pathname.startsWith('/docs');
+  const isDocs = router.pathname.startsWith('');
   const origin =
     typeof window !== 'undefined' && window.location.origin
       ? window.location.origin

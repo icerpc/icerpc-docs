@@ -9,10 +9,10 @@ import {
   iceRpcForIceUsersData
 } from './index';
 
-const SLICE_BASE_URL = '/docs/slice';
-const RPC_CORE_BASE_URL = '/docs/icerpc-core';
-const GETTING_STARTED_BASE_URL = '/docs/getting-started';
-const RPC_FOR_ICE_BASE_URL = '/docs/icerpc-for-ice-users';
+const SLICE_BASE_URL = '/slice';
+const RPC_CORE_BASE_URL = '/icerpc-core';
+const GETTING_STARTED_BASE_URL = '/getting-started';
+const RPC_FOR_ICE_BASE_URL = '/icerpc-for-ice-users';
 
 export const baseUrls = [
   SLICE_BASE_URL,

@@ -35,7 +35,7 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
   const { Component, pageProps } = props;
   const { markdoc } = pageProps;
   const router = useRouter();
-  const isDocs = router.asPath.startsWith('/docs');
+  const isDocs = router.asPath.startsWith('');
   // Get current hostname and port for og:image
   const hostname = typeof window !== 'undefined' ? window.location.origin : '';
 
@@ -81,7 +81,7 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://docs.icerpc.com/" />
+        <meta property="og:url" content="https:/.icerpc.com/" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:locale" content="en_US" />

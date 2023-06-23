@@ -1,9 +1,9 @@
 // Copyright (c) ZeroC, Inc.
 
-export const SLICE_BASE_URL = '/docs/slice';
-export const GETTING_STARTED_BASE_URL = '/docs/getting-started';
-export const RPC_CORE_BASE_URL = '/docs/icerpc-core';
-export const ICERPC_FOR_ICE = '/docs/icerpc-for-ice-users';
+export const SLICE_BASE_URL = '/slice';
+export const GETTING_STARTED_BASE_URL = '/getting-started';
+export const RPC_CORE_BASE_URL = '/icerpc-core';
+export const ICERPC_FOR_ICE = '/icerpc-for-ice-users';
 
 export interface SideBarLink {
   title: string;
