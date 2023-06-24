@@ -30,7 +30,11 @@ export const gettingStartedData: SideBarSourceType[] = [
       {
         title: 'How-to add IceRPC to an existing C# project',
         path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/how-to/'
+      },
+      {
+        title: 'NuGet Packages',
+        path: GETTING_STARTED_BASE_URL + '/nuget-packages/'
       }
     ]
-  }
+  },
 ];
