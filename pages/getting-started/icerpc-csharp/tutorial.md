@@ -1,5 +1,5 @@
 ---
-title: Writing your first IceRPC application in C#
+title: "Tutorial: Writing your first IceRPC application in C#"
 ---
 
 This document explains how to create IceRPC client and server applications in C#, which communicate with each other using

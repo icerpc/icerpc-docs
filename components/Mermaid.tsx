@@ -8,22 +8,28 @@ type Props = {
   value: string;
 };
 
-const MermaidDiagram = (props: Props) => {
+const MermaidDiagram = ({ value }: Props) => {
   const { resolvedTheme } = useTheme();
   const theme = resolvedTheme === 'dark' ? 'dark' : 'default';
-  const { value } = props;
 
   const [svg, setSvg] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    const generateDiagramId = () => {
+      const timestamp = Date.now();
+      const randomNum = Math.floor(Math.random() * 10000);
+      return `mermaid-${timestamp}-${randomNum}`;
+    };
+
     const renderDiagram = async () => {
       try {
+        const diagramId = generateDiagramId();
         await mermaidAPI.initialize({
           startOnLoad: false,
           theme: theme
         });
-        const renderResult = await mermaidAPI.render('mermaid', value);
+        const renderResult = await mermaidAPI.render(diagramId, value);
         setSvg(renderResult.svg);
         setIsLoading(false);
       } catch (error) {
@@ -32,13 +38,12 @@ const MermaidDiagram = (props: Props) => {
         setIsLoading(false);
       }
     };
+
     renderDiagram();
   }, [value, theme]);
 
-  if (isLoading) {
-    // TODO: Add a loading spinner
-    return <div>Loading diagram...</div>;
-  }
+  // TODO: Add loading indicator
+  if (isLoading) return <div>Loading diagram...</div>;
 
   return (
     <div

@@ -12,32 +12,32 @@ Each section of documentation covers a different component of the IceRPC core an
 {% mini-card
    title="Connection"
    description="Learn how to create and accept connections in IceRPC."
-   href="/docs/icerpc-core/connection/client-vs-server-connections" /%}
+   href="/icerpc-core/connection/client-vs-server-connections" /%}
 
 {% mini-card
    title="Protocol"
    description="Learn about the icerpc protocol and multiplexing."
-   href="/docs/icerpc-core/protocols-and-transports/icerpc-multiplexed-transports" /%}
+   href="/icerpc-core/protocols-and-transports/icerpc-multiplexed-transports" /%}
 
 {% mini-card
    title="Service Address"
    description="Understand the service address concept and syntax."
-   href="/docs/icerpc-core/invocation/service-address" /%}
+   href="/icerpc-core/invocation/service-address" /%}
 
 {% mini-card
    title="Invocation"
    description="Understand how to send requests and receive responses."
-   href="/docs/icerpc-core/invocation/invocation-pipeline" /%}
+   href="/icerpc-core/invocation/invocation-pipeline" /%}
 
 {% mini-card
    title="Dispatch"
    description="Understand how to accept requests and return responses."
-   href="/docs/icerpc-core/dispatch/dispatch-pipeline" /%}
+   href="/icerpc-core/dispatch/dispatch-pipeline" /%}
 
 {% mini-card
    title="Routing"
    description="Learn how to route incoming requests based on their path."
-   href="/docs/icerpc-core/dispatch/router" /%}
+   href="/icerpc-core/dispatch/router" /%}
 
 {% /grid %}
 
@@ -49,6 +49,6 @@ These topics are not required to use IceRPC, but may be useful for debugging or 
 
 Some questions you may have that are answered in this section are:
 
-- [How does the `icerpc` protocol multiplex requests and responses over a single connection?](/docs/icerpc-core/icerpc-protocol/mapping-rpcs-to-streams)
-- What is the [connection establishment](/docs/icerpc-core/icerpc-protocol/connection-establishment) and [connection shutdown](/docs/icerpc-core/icerpc-protocol/connection-shutdown) process for the `icerpc` protocol?
-- What is the [connection establishment](/docs/icerpc-core/ice-protocol/connection-establishment) and [connection shutdown](docs/icerpc-core/ice-protocol/connection-shutdown) process for the `ice` protocol?
+- [How does the `icerpc` protocol multiplex requests and responses over a single connection?](/icerpc-core/icerpc-protocol/mapping-rpcs-to-streams)
+- What is the [connection establishment](/icerpc-core/icerpc-protocol/connection-establishment) and [connection shutdown](/icerpc-core/icerpc-protocol/connection-shutdown) process for the `icerpc` protocol?
+- What is the [connection establishment](/icerpc-core/ice-protocol/connection-establishment) and [connection shutdown](icerpc-core/ice-protocol/connection-shutdown) process for the `ice` protocol?

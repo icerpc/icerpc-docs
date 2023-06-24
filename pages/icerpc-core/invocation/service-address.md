@@ -24,7 +24,7 @@ An absolute service address without a server address can have query parameters.
 
 And finally, an ice service address can have a fragment; this fragment corresponds to an Ice facet.
 
-In C#, record class [`ServiceAddress`](https://api.testing.zeroc.com/csharp/api/IceRpc.ServiceAddress.html) is a parsed
+In C#, record class [`ServiceAddress`](https://docs.testing.zeroc.com/api/csharp/api/IceRpc.ServiceAddress.html) is a parsed
 and validated representation of a service address URI: it holds exactly the same information.
 
 Service addresses can be divided in 4 categories:
