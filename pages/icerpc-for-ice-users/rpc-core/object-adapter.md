@@ -18,8 +18,8 @@ configure your server to use this dispatcher.
 
 An Ice object adapter can be configured with multiple endpoints. It's so common that the corresponding configuration
 property is named Endpoints. On the other hand, an IceRPC server has only one server address. It's because Server is a
-more granular building block: if you want listen on multiple server addresses with IceRPC, you create multiple servers,
-each with its own server address, and all these servers can share the same dispatcher.
+more granular building block: if you want to listen on multiple server addresses with IceRPC, you create multiple
+servers, each with its own server address, and all these servers can share the same dispatcher.
 
 {% side-by-side %}
 
@@ -47,4 +47,5 @@ server.Listen(); // similar to "activate"
 await CancelKeyPressed; // await a Task
 await server.ShutdownAsync();
 ```
+
 {% /side-by-side %}
