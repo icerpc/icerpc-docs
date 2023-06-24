@@ -24,10 +24,10 @@ and by checking the [IceRPC C# API Reference](https://docs.testing.zeroc.com/api
    icon="question"
    link="/getting-started/what-is-icerpc" /%}
 {% card
-   title="Installation"
-   description="Quickly get up and running with IceRPC."
+   title="Packages"
+   description="IceRPC NuGet packages."
    icon="box"
-   link="/getting-started/installation" /%}
+   link="/getting-started/nuget-packages" /%}
 {% card
    title="Creating your first app"
    description="Get started creating your first application using IceRPC."
