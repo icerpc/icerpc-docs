@@ -14,7 +14,7 @@ type Props = {
 
 export const AppLink = (props: Props) => {
   // If props.href is an API link, then resolve it to the API documentation
-  // on api.testing.zeroc.com.
+  // on docs.testing.zeroc.com/api.
   const href = isApiLink(props.href) ? resolveApiLink(props.href) : props.href;
 
   // If the link is external, then open it in a new tab.
@@ -36,7 +36,7 @@ export const AppLink = (props: Props) => {
       className={clsx(
         props.className ??
           'font-medium text-primary hover:text-[rgb(64,131,193)]',
-        href.includes('api.testing.zeroc.com') && [
+        href.includes('docs.testing.zeroc.com/api') && [
           'after:ml-[3px] after:mr-[1px] after:rounded-sm after:bg-primary after:px-[2px] after:py-[1px]',
           "after:align-middle after:text-[8px] after:font-semibold after:text-white after:content-['API']",
           'dark:after:bg-primary/80'
@@ -60,7 +60,7 @@ const isApiLink = (href: string) => {
 const resolveApiLink = (href: string) => {
   const [lang, ...rest] = href.split(':');
   const [module, method] = rest.join('.').split('#'); // split module and method names
-  const apiHref = `https://api.testing.zeroc.com/${lang}/api/${module}.html${
+  const apiHref = `https://docs.testing.zeroc.com/api/${lang}/api/${module}.html${
     method ? `#${method}` : ''
   }`; // include "#" and method name if it exists
   return apiHref;

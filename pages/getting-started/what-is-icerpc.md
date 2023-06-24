@@ -44,7 +44,7 @@ protocols like QUIC.
 ## Additional Resources
 
 - [C# Examples](https://github.com:icerpc/icerpc-csharp/examples)
-- [C# API Documentation](https://api.testing.zeroc.com/csharp)
+- [C# API Documentation](https://docs.testing.zeroc.com/api/csharp)
 
 [slice-language]: ../slice
 [contract-first]: ../slice/basics/contract-first

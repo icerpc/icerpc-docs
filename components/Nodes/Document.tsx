@@ -24,7 +24,7 @@ export const Document = ({ children, title, description, encoding }: Props) => {
   const router = useRouter();
   const path = router.asPath;
 
-  const isDocs = path.startsWith('/docs');
+  const isDocs = path.startsWith('');
   const isBaseUrl = baseUrls.some((baseUrl) => path == baseUrl);
 
   // If the encoding is specified in the url, try to set the version to the specified encoding.

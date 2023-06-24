@@ -29,9 +29,9 @@ npm run dev
 
 ## Writing Documentation
 
-Documentation is written in Markdown and is located in the `pages/docs`
+Documentation is written in Markdown and is located in the `pages`
 directory. Additionally this Markdown uses syntax extensions provided by
-[MarkDoc](https://markdoc.dev/docs/getting-started). These extensions allow the
+[MarkDoc](https://markdoc.dev/getting-started). These extensions allow the
 creation of custom components, such as code tabs, notes, and flow diagrams, all
 from within the Markdown file.
 
@@ -118,7 +118,7 @@ syntax for these links is `<language>:<class-name>`
 
 ```markdown
 [ClientConnection](csharp:IceRpc.ClientConnection) will link to the page
-<https://api.testing.zeroc.com/csharp/api/IceRpc.ClientConnection.html>
+<https://docs.testing.zeroc.com/api/csharp/api/IceRpc.ClientConnection.html>
 ```
 
 ## Available Tags
@@ -262,8 +262,8 @@ their order in the sidebar. The values in the arrays are either `SideBarLink` or
 `SideBarCategory` types.
 
 For example, the following values define two `SideBarLink` objects, one with the
-title Overview that links to the `/docs/getting-started/index.md` page, and
-another called `Foo` that links to the `/docs/getting-started/foo.md` page.
+title Overview that links to the `/getting-started/index.md` page, and
+another called `Foo` that links to the `/getting-started/foo.md` page.
 This generates the sidebar for the `Getting Started` top navigation item.
 
 ```TypeScript

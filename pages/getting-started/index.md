@@ -8,11 +8,11 @@ show_toc: false
 
 Getting started with IceRPC is easy. This page will help you get up and running with IceRPC in no time.
 
-If you're new to IceRPC, we recommend you start with the [What is IceRPC](/docs/getting-started/what-is-icerpc) page.
-If you're already familiar with IceRPC, you can jump right in with the [Installation](/docs/getting-started/installation) page.
+If you're new to IceRPC, we recommend you start with the [What is IceRPC](/getting-started/what-is-icerpc) page.
+If you're already familiar with IceRPC, you can jump right in with the [Installation](/getting-started/installation) page.
 
-Once you're up and running, you can learn more about IceRPC by reading the [IceRPC Core](/docs/icerpc-core) documentation
-and by checking the [IceRPC C# API Reference](https://api.testing.zeroc.com/csharp).
+Once you're up and running, you can learn more about IceRPC by reading the [IceRPC Core](/icerpc-core) documentation
+and by checking the [IceRPC C# API Reference](https://docs.testing.zeroc.com/api/csharp).
 
 ### Quick links
 
@@ -22,23 +22,23 @@ and by checking the [IceRPC C# API Reference](https://api.testing.zeroc.com/csha
    title="What is IceRPC?"
    description="Learn the basics of what IceRPC and Slice are."
    icon="question"
-   link="/docs/getting-started/what-is-icerpc" /%}
+   link="/getting-started/what-is-icerpc" /%}
 {% card
    title="Installation"
    description="Quickly get up and running with IceRPC."
    icon="box"
-   link="/docs/getting-started/installation" /%}
+   link="/getting-started/installation" /%}
 {% card
    title="Creating your first app"
    description="Get started creating your first application using IceRPC."
    icon="terminal"
-   link="/docs/getting-started/writing-your-first-icerpc-application-in-csharp" /%}
+   link="/getting-started/writing-your-first-icerpc-application-in-csharp" /%}
 
 {% card
    title="IceRPC C# API Reference"
    description="A full reference for the IceRPC C# API."
    icon="terminal"
-   link="<https://api.testing.zeroc.com/csharp>" /%}
+   link="<https://docs.testing.zeroc.com/api/csharp>" /%}
 
 {% /grid %}
 

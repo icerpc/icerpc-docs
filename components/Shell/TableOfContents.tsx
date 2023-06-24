@@ -12,6 +12,7 @@ import {
   ChevronRightIcon
 } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
+import { baseUrls } from 'data/side-bar-data';
 
 export type TOCItem = {
   id: string;
@@ -20,9 +21,7 @@ export type TOCItem = {
 };
 
 const resolvePath = (pathName: string): string => {
-  return ['/docs/getting-started', '/docs/rpc', '/docs/slice'].includes(
-    pathName
-  )
+  return baseUrls.some((baseUrl) => pathName == baseUrl)
     ? pathName + '/index.md'
     : pathName + '.md';
 };

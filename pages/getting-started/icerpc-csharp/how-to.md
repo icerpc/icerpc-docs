@@ -1,6 +1,5 @@
 ---
-title: Installation
-description: How to install IceRPC
+title: How-to add IceRPC to an existing C# project
 ---
 
 {% callout type="critical" %}

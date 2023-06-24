@@ -8,21 +8,28 @@ export const gettingStartedData: SideBarSourceType[] = [
     path: `${GETTING_STARTED_BASE_URL}/`
   },
   {
-    title: 'Getting started',
+    title: 'Raising the bar',
     links: [
       {
-        title: 'What is IceRPC?',
-        path: GETTING_STARTED_BASE_URL + '/what-is-icerpc/'
+        title: 'A modular RPC framework for the QUIC era',
+        path: GETTING_STARTED_BASE_URL + '/raising-the-bar/modular-rpc-for-quic/'
       },
       {
-        title: 'Installation',
-        path: GETTING_STARTED_BASE_URL + '/installation/'
+        title: 'Slice - a better IDL',
+        path: GETTING_STARTED_BASE_URL + '/raising-the-bar/slice-better-idl/'
+      }
+    ]
+  },
+  {
+    title: 'Getting started with IceRPC for C#',
+    links: [
+      {
+        title: 'Tutorial: Writing your first IceRPC application in C#',
+        path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/tutorial/'
       },
       {
-        title: 'Writing your first IceRPC application in C#',
-        path:
-          GETTING_STARTED_BASE_URL +
-          '/writing-your-first-icerpc-application-in-csharp/'
+        title: 'How-to add IceRPC to an existing C# project',
+        path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/how-to/'
       }
     ]
   }
