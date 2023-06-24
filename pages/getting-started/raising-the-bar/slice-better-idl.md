@@ -5,7 +5,8 @@ title: Slice - a better IDL
 ## New RPC framework => new IDL?
 
 Most RPC frameworks provide an [Interface Definition Language][idl] (IDL) and a compiler for this IDL. This language
-allows you to define a "contract" in a programming language neutral way, and then compile this contract into your target programming language(s). The typical and sometimes only way to use a RPC framework is with this bundled IDL.
+allows you to define a "contract" in a programming language neutral way, and then compile this contract into your target
+programming language(s). The typical and sometimes only way to use a RPC framework is with this bundled IDL.
 
 For example, [gRPC][grpc]'s IDL is Protobuf and you'd be hard pressed to find examples of gRPC applications that don't
 use Protobuf.
