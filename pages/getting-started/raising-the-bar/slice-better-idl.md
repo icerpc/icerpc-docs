@@ -87,7 +87,7 @@ few constructed types—the building blocks for more advanced applications:
  - [dictionary][dictionary]
  - [custom][custom]
 
-Last but not least, Slice's [tagged][tagged] parameters and fields allow you update your operations and structs over
+Last but not least, Slice's [tagged][tagged] parameters and fields allow you to update your operations and structs over
 time without breaking on-the-wire compatibility.
 
 ## Flexible and extensible
