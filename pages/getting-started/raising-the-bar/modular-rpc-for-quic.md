@@ -53,18 +53,19 @@ versus a local synchronous call since all RPC calls have "async" APIs that are u
 {% side-by-side %}
 ```csharp {% title="C# - Synchronous RPC (old style)" %}
 // It's unclear if this is a remote call that takes
-// milliseconds or a local call that takes at most a
-// few microseconds.
-// In any case, this call is holding onto its thread
-// until it completes.
+// milliseconds or a local call that takes at most
+// a few microseconds.
+// In any case, this call is holding onto its
+// thread until it completes.
 string greeting = greeterProxy.Greet(name);
 ```
 
 ```csharp {% title="C# - Asynchronous RPC (modern style)" %}
-// We see it's a special call thanks to await and the
-// Async suffix. GreetAsync releases the thread while
-// waiting for the response from the peer and it's just
-// as easy to write as the synchronous version.
+// We see it's a special call thanks to await and
+// the Async suffix. GreetAsync releases the thread
+// while waiting for the response from the peer and
+// it's just as easy to write as the synchronous
+// version.
 string greeting = await greeterProxy.GreetAsync(name);
 ```
 {% /side-by-side %}

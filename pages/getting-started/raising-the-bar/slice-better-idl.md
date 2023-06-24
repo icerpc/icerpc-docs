@@ -2,7 +2,7 @@
 title: Slice - a better IDL
 ---
 
-## Your choice
+## New RPC framework => new IDL?
 
 Most RPC frameworks provide an [Interface Definition Language][idl] (IDL) and a compiler for this IDL. This language
 allows you to define a "contract" in a programming language neutral way, and then compile this contract into your target programming language(s). The typical and sometimes only way to use a RPC framework is with this bundled IDL.
@@ -16,12 +16,14 @@ you to use IceRPC with the IDL of your choice, or no IDL at all. The [GreeterPro
 and no IDL.
 
 IceRPC also provides its own IDL, [Slice][slice]. We believe you'll want to use Slice with IceRPC because Slice is a
-better IDL, not because that's your only option.
+better IDL, not because that's your only choice.
 
 ## Better IDL for RPCs
 
-Slice is a completely revised IDL designed for RPCs and is fully integrated with IceRPC. With IceRPC + Slice, a service
-implements one or more Slice interfaces, and each Slice interface holds one or more operations. For example:
+Slice is a completely revised IDL designed for RPCs. And naturally, Slice is fully integrated with IceRPC.
+
+With IceRPC + Slice, a service implements one or more Slice interfaces, and each Slice interface holds one or more
+operations. For example:
 
 ```slice
 /// Represents a simple greeter.

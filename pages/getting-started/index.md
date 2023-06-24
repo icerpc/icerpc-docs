@@ -1,67 +1,39 @@
 ---
 title: Getting started
-description: Everything you need to get started with IceRPC
 show_toc: false
 ---
 
-## Get started with IceRPC
+Remote procedure call (RPC) is a fundamental paradigm for networked applications:
 
-Getting started with IceRPC is easy. This page will help you get up and running with IceRPC in no time.
+![RPC diagram](diagrams/rpc.svg)
 
-If you're new to IceRPC, we recommend you start with the [What is IceRPC](/getting-started/what-is-icerpc) page.
-If you're already familiar with IceRPC, you can jump right in with the [Installation](/getting-started/installation) page.
+HTTP methods (GET, POST, PUT...) are RPCs. NFS is based on RPCs. A DNS resolution is a RPC. RPCs are literally everywhere!
 
-Once you're up and running, you can learn more about IceRPC by reading the [IceRPC Core](/icerpc-core) documentation
-and by checking the [IceRPC C# API Reference](https://docs.testing.zeroc.com/api/csharp).
-
-### Quick links
+A RPC framework like IceRPC helps you apply this paradigm to your own networked applications without reinventing the
+wheel.
 
 {% grid %}
 
-{% card
-   title="What is IceRPC?"
-   description="Learn the basics of what IceRPC and Slice are."
-   icon="question"
-   link="/getting-started/what-is-icerpc" /%}
-{% card
-   title="Packages"
-   description="IceRPC NuGet packages."
-   icon="box"
-   link="/getting-started/nuget-packages" /%}
-{% card
-   title="Creating your first app"
-   description="Get started creating your first application using IceRPC."
+{% mini-card
+   title="RPC framework for the QUIC era"
+   description="See what sets IceRPC apart"
+   href="/getting-started/raising-the-bar/modular-rpc-for-quic" /%}
+{% mini-card
+   title="A better IDL"
+   description="Learn how to describe your RPCs with Slice"
+   href="/getting-started/raising-the-bar/slice-better-idl" /%}
+{% mini-card
+   title="Tutorial"
+   description="Write your first IceRPC application in C#"
+   href="/getting-started/icerpc-csharp/tutorial" /%}
+{% mini-card
+   title="How-to"
+   description="Add IceRPC to an existing C# project"
    icon="terminal"
-   link="/getting-started/writing-your-first-icerpc-application-in-csharp" /%}
-
-{% card
-   title="IceRPC C# API Reference"
-   description="A full reference for the IceRPC C# API."
+   href="/getting-started/icerpc-csharp/how-to" /%}
+{% mini-card
+   title="Examples"
+   description="See IceRPC for C# in action"
    icon="terminal"
-   link="<https://docs.testing.zeroc.com/api/csharp>" /%}
-
+   href="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/README.md" /%}
 {% /grid %}
-
-### Check out an example project
-
-Example projects are a great way to learn about IceRPC. They are fully functional applications that demonstrate
-common concepts and usage patterns.
-
-Learn how to use the QUIC transport, stream data, retry requests, and more. Each example project includes a
-README.md file that explains how to build and run the project.
-
-{% grid
-   rows=2
-   columns=3
-   trailingLink={label:"View all on GitHub",link:"<https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples"}> %}
-
-{% link-card title="GreeterQuic" link="<https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/GreeterQuic>" /%}
-{% link-card title="Stream" link="<https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Stream>" /%}
-{% link-card title="Upload" link="<https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Upload>" /%}
-{% link-card title="Compress" link="<https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Compress>" /%}
-{% link-card title="Secure" link="<https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Secure>" /%}
-{% link-card title="Retry" link="<https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/Retry>" /%}
-
-{% /grid %}
-
-More example projects can be found in the [icerpc/icerpc-csharp](https://github.com/icerpc/icerpc-csharp/tree/main/examples) GitHub repository.
