@@ -101,7 +101,7 @@ interface Translator {
 }
 ```
 
-The `cs::type` attribute changes the mapping for values decoded by the C# generated code and returned to you. For values
+The `cs::type` attribute changes the mapping for values decoded by the generated code and returned to you. For values
 you give to the generated code, the mapping for a `sequence<string>` parameter is always `IEnumerable<string>`.
 
 Slice's custom types allow you to send any type you wish through Slice. You just need to provide methods to encode and
