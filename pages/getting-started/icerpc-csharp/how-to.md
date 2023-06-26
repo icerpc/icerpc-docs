@@ -2,8 +2,8 @@
 title: How to add IceRPC to an existing C# project?
 ---
 
-IceRPC for C# is distributed as [NuGet packages][packages]. To add IceRPC to an existing C# project, jut add one or more
-NuGet packages to this project.
+IceRPC for C# is distributed as [NuGet packages][packages]. To add IceRPC to an existing C# project, just add one or
+more NuGet packages to this project.
 
 You always need the base package, `IceRpc`:
 
