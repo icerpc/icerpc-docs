@@ -3,7 +3,6 @@
 import React, { ReactNode } from 'react';
 import { BsBoxArrowUpRight, BsArrowRight } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
-import clsx from 'clsx';
 
 type Props = {
   children: ReactNode;
@@ -31,7 +30,7 @@ export const Grid = ({ children, trailinglink, columns = 3 }: Props) => {
       <div
         key={children?.toString() ?? 'grid'}
         // eslint-disable-next-line tailwindcss/no-custom-classname
-        className="dynamic-grid-columns mt-5 grid gap-4"
+        className="dynamic-grid-columns my-5 grid gap-4"
       >
         {React.Children.toArray(children).map((child, index) => {
           return <React.Fragment key={index}>{child}</React.Fragment>;

@@ -5,7 +5,7 @@ show_toc: false
 
 Remote procedure call (RPC) is a fundamental paradigm for networked applications:
 
-![RPC diagram](diagrams/rpc.svg)
+![RPC-diagram](diagrams/rpc.svg)
 
 HTTP methods (GET, POST, PUT...) are RPCs. NFS is based on RPCs. A DNS resolution is a RPC. RPCs are literally everywhere!
 
