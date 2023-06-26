@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
 import { Tag, Config, Node } from '@markdoc/markdoc';
-import { SupportedEncodings } from 'components/SupportedEncoding';
+import { SupportedEncodings } from 'components/Tags/SupportedEncoding';
 import { Encoding } from 'types';
 
 const encodings = {

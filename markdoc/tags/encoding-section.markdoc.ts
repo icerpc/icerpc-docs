@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
 import { Node, Config, Tag } from '@markdoc/markdoc';
-import { EncodingSection } from 'components/EncodingSection';
+import { EncodingSection } from 'components/Tags/EncodingSection';
 import { Encoding } from 'types';
 
 export const slice1 = {

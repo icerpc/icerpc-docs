@@ -14,7 +14,7 @@ import '/public/globals.css';
 import { AppWrapper } from 'context/state';
 import { SideNav, TopNav } from 'components';
 import { Footer } from 'components/Shell';
-import { CookiesBanner } from 'components/Banner';
+import { CookiesBanner } from 'components/Cookies';
 
 const inter = Inter({ subsets: ['latin'] });
 const TITLE = 'IceRPC Docs';
@@ -35,7 +35,7 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
   const { Component, pageProps } = props;
   const { markdoc } = pageProps;
   const router = useRouter();
-  const isDocs = router.asPath.startsWith('');
+
   // Get current hostname and port for og:image
   const hostname = typeof window !== 'undefined' ? window.location.origin : '';
 
@@ -97,7 +97,7 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
           <TopNav />
           <div className="mt-[6.5rem] flex flex-row justify-center lg:mt-[3.75rem] ">
             <div className="flex max-w-[100rem] grow flex-row justify-center">
-              {isDocs && <SideNav path={router.pathname} />}
+              <SideNav path={router.pathname} />
               <main className={clsx(inter.className, 'grow')} id="main">
                 <div id="skip-nav" />
                 <Component {...pageProps} />

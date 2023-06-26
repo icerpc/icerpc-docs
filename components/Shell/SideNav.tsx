@@ -19,7 +19,7 @@ import {
 } from 'types';
 import { Divider } from 'components/Divider';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
-import { getBreadcrumbs } from 'components/Title';
+import { getBreadcrumbs } from 'components/Tags/Title';
 import { SearchButton } from './SearchButton';
 
 function createListItem(

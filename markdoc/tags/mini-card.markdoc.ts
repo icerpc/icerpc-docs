@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { MiniLink, MiniCard } from 'components/Card';
+import { MiniLink, MiniCard } from 'components/Tags/Card';
 import { Tag, nodes, Node, Config } from '@markdoc/markdoc';
 
 export const miniCard = {

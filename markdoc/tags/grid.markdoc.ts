@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
 import { Tag, Config, Node } from '@markdoc/markdoc';
-import { Grid } from 'components/Grid';
+import { Grid } from 'components/Tags/Grid';
 
 const grid = {
   render: Grid,

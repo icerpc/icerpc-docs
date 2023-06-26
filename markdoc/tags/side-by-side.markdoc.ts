@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { SideBySide } from 'components/SideBySide';
+import { SideBySide } from 'components/Tags/SideBySide';
 
 const sideBySide = {
   render: SideBySide,

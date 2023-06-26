@@ -30,8 +30,6 @@ export const Document = ({
   const [toc, setToc] = React.useState<TOCItem[]>([]);
   const router = useRouter();
   const path = router.asPath;
-
-  const isDocs = path.startsWith('');
   const isBaseUrl = baseUrls.some((baseUrl) => path == baseUrl);
 
   // If the encoding is specified in the url, try to set the version to the specified encoding.
@@ -61,7 +59,7 @@ export const Document = ({
   return (
     <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip dark:bg-[rgb(21,21,22)] lg:justify-start">
       <article className="mx-6 mt-10 h-full w-full max-w-[52rem] md:mx-10 lg:mx-16">
-        {isDocs && isCurrentEncoding && (
+        {isCurrentEncoding && (
           <Title
             title={title}
             description={description}
@@ -87,14 +85,10 @@ export const Document = ({
           <>{children}</>
         )}
         <PageHistory path={path} encoding={currentEncoding} />
-        {isDocs && (
-          <>
-            <Divider />
-            <Feedback />
-          </>
-        )}
+        <Divider />
+        <Feedback />
       </article>
-      {isDocs && showToc && TableOfContents(toc)}
+      {showToc && TableOfContents(toc)}
     </div>
   );
 };

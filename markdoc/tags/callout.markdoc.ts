@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { Callout } from 'components/Callout';
+import { Callout } from 'components/Tags/Callout';
 
 const callout = {
   render: Callout,
