@@ -2,7 +2,7 @@
 
 import { Callout } from 'components/Callout';
 
-export default {
+const callout = {
   render: Callout,
   children: ['paragraph', 'tag', 'list'],
   attributes: {
@@ -11,3 +11,5 @@ export default {
     matches: ['critical', 'info']
   }
 };
+
+export default callout;

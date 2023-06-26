@@ -3,7 +3,7 @@
 import { Tag, Config, Node } from '@markdoc/markdoc';
 import { Grid } from 'components/Grid';
 
-export default {
+const grid = {
   render: Grid,
   children: ['card'],
   attributes: {
@@ -26,3 +26,5 @@ export default {
     });
   }
 };
+
+export default grid;

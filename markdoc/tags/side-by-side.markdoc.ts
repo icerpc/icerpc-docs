@@ -2,7 +2,7 @@
 
 import { SideBySide } from 'components/SideBySide';
 
-export default {
+const sideBySide = {
   render: SideBySide,
   attributes: {
     weighted: {
@@ -15,3 +15,5 @@ export default {
     }
   }
 };
+
+export default sideBySide;

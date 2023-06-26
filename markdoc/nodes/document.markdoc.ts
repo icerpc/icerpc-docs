@@ -3,7 +3,7 @@
 import { nodes, Node, Config, Tag } from '@markdoc/markdoc';
 import { Document } from 'components/Nodes/Document';
 
-export default {
+const document = {
   ...nodes.document,
   render: Document,
   attributes: nodes.document.attributes,
@@ -21,3 +21,5 @@ export default {
     );
   }
 };
+
+export default document;

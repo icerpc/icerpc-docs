@@ -4,7 +4,7 @@ import { Tag, Config, Node } from '@markdoc/markdoc';
 import { SupportedEncodings } from 'components/SupportedEncoding';
 import { Encoding } from 'types';
 
-export default {
+const encodings = {
   render: SupportedEncodings,
   transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);
@@ -18,3 +18,5 @@ export default {
     });
   }
 };
+
+export default encodings;

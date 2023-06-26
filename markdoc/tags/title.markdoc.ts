@@ -3,7 +3,7 @@
 import { Tag, Node, Config } from '@markdoc/markdoc';
 import { Title } from 'components/Title';
 
-export default {
+const title = {
   render: Title,
   children: [],
   attributes: {},
@@ -19,3 +19,5 @@ export default {
     });
   }
 };
+
+export default title;
