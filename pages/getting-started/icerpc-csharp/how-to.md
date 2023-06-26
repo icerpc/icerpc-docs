@@ -1,49 +1,34 @@
 ---
-title: How-to add IceRPC to an existing C# project
+title: How to add IceRPC to an existing C# project?
 ---
 
-{% callout type="critical" %}
+IceRPC for C# is distributed as [NuGet packages][packages]. To add IceRPC to an existing C# project, jut add one or more
+NuGet packages to this project.
 
-TODO: This page contains placeholder content and needs to be replaced. Please remove this when you are done.
-
-{% /callout %}
-
-Follow the instructions below to install IceRPC in your application.
-
-### System Requirements
-
-- MacOS, Linux, or Windows
-- [.NET 7.0](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) or later
-
-## Automatic Setup
-
-The easiest way to install IceRPC is to use the [IceRPC NuGet package](https://www.nuget.org/packages/IceRPC/):
+You always need the base package, `IceRpc`:
 
 ```shell
-# Install the IceRPC NuGet package
-dotnet add package icerpc
-
+dotnet add package IceRpc
 ```
 
-Notably, the NuGet package includes two dotnet templates, `icerpc-client` and `icerpc-server`.
-To create a new project using these dotnet templates, run the following commands:
+If you plan to use [Slice][slice], add the `IceRpc.Slice.Tools` package:
 
 ```shell
-# Create a client project
-dotnet new icerpc-client
-# Create a server project
-dotnet new icerpc-server
+dotnet add package IceRpc.Slice.Tools
 ```
 
-After the installation is complete:
+All the other packages are optional but it's likely you will want to install one or more of them. For example, add
+`IceRpc.Transports.Quic` to use the QUIC transport:
 
-- Run `dotnet run --project Client.csproj` within the `Client` directory to start the client.
-- Run `dotnet run --project Server.csproj` within the `Server` directory to start the server.
+```shell
+dotnet add package IceRpc.Transport.Quic
+```
 
-## Manual Setup
+And add `IceRpc.Logger` to use the Logger interceptor or middleware:
 
-If you prefer to install IceRPC manually, you can do so by following the steps below.
+```shell
+dotnet add package IceRpc.Logger
+```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+[packages]: nuget-packages
+[slice]: ../../slice
