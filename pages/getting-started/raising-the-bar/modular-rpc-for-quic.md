@@ -100,8 +100,8 @@ example, you don't need the Compress interceptor if you're not compressing anyth
 interceptor, there is no compression code at all. Less code means simpler logic, fewer dependencies, faster execution
 and fewer bugs.
 
-This modularity and extensibility is everywhere in IceRPC. You can easily implement a new duplex or multiplexed
-transport and then plug it in IceRPC. All the transport interfaces are public and fully documented.
+This modularity and extensibility is everywhere in IceRPC. For instance, you can easily implement a new duplex or
+multiplexed transport and then plug it in IceRPC. All the transport interfaces are public and fully documented.
 
 [async-await]: https://en.wikipedia.org/wiki/Async/await
 [hol]: https://en.wikipedia.org/wiki/Head-of-line_blocking
