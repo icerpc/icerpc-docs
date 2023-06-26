@@ -31,7 +31,7 @@ export const Grid = ({ children, trailinglink }: Props) => {
     <>
       <div
         key={children?.toString() ?? 'grid'}
-        className={clsx('grid gap-4', `grid-cols-1 md:grid-cols-3`)}
+        className={clsx('mt-5 grid gap-4', `grid-cols-1 md:grid-cols-3`)}
       >
         {React.Children.toArray(children).map((child, index) => {
           return <React.Fragment key={index}>{child}</React.Fragment>;
