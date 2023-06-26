@@ -6,7 +6,7 @@ description: Understand the server address concept and syntax.
 ## Syntax
 
 A server address is a [URI](https://www.rfc-editor.org/rfc/rfc3986.html) with the following syntax:
-`protocol://host[:port][?name=value][&more name value params...]`
+`protocol://host[:port][?name=value][&name=value...]`
 
 - `protocol` (the URI scheme) is either `ice` or `icerpc`
 - `host` is a DNS name or an IP address
