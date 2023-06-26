@@ -1,6 +1,7 @@
 ---
 title: IceRPC Core
 description: Sending and receiving requests and responses without an IDL
+showToc: false
 ---
 
 ## Learn the basics

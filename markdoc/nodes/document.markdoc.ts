@@ -15,7 +15,8 @@ const document = {
       {
         title: frontmatter.title,
         description: frontmatter.description,
-        encoding: frontmatter.encoding
+        encoding: frontmatter.encoding,
+        showToc: frontmatter.showToc
       },
       children
     );

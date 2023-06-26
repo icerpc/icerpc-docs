@@ -16,9 +16,16 @@ type Props = {
   title: string;
   description: string;
   encoding?: Encoding;
+  showToc?: boolean;
 };
 
-export const Document = ({ children, title, description, encoding }: Props) => {
+export const Document = ({
+  children,
+  title,
+  description,
+  encoding,
+  showToc = true
+}: Props) => {
   const { encoding: currentEncoding, setEncoding } = useEncoding();
   const [toc, setToc] = React.useState<TOCItem[]>([]);
   const router = useRouter();
@@ -52,7 +59,7 @@ export const Document = ({ children, title, description, encoding }: Props) => {
   const isCurrentEncoding = encoding ? encoding === currentEncoding : true;
 
   return (
-    <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip dark:bg-[rgb(21,21,22)]">
+    <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip dark:bg-[rgb(21,21,22)] lg:justify-start">
       <article className="mx-6 mt-10 h-full w-full max-w-[52rem] md:mx-10 lg:mx-16">
         {isDocs && isCurrentEncoding && (
           <Title
@@ -87,7 +94,7 @@ export const Document = ({ children, title, description, encoding }: Props) => {
           </>
         )}
       </article>
-      {isDocs && TableOfContents(toc)}
+      {isDocs && showToc && TableOfContents(toc)}
     </div>
   );
 };

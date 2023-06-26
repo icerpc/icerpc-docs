@@ -1,5 +1,6 @@
 ---
 title: IceRPC for Ice users
+showToc: false
 ---
 
 ## Learn the basics
