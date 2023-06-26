@@ -1,6 +1,6 @@
 ---
 title: IceRPC Core
-description: Everything except Slice
+description: Sending and receiving requests and responses without an IDL
 ---
 
 ## Learn the basics
