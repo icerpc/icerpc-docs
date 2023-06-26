@@ -7,12 +7,11 @@ import clsx from 'clsx';
 
 type Props = {
   children: ReactNode;
-  columns: number;
-  rows: number;
+  columns?: number;
   trailinglink?: { label: string; link: string };
 };
 
-export const Grid = ({ children, trailinglink }: Props) => {
+export const Grid = ({ children, trailinglink, columns = 3 }: Props) => {
   const bottomStyle = {
     display: 'flex',
     justifyContent: 'flex-end',
@@ -31,7 +30,8 @@ export const Grid = ({ children, trailinglink }: Props) => {
     <>
       <div
         key={children?.toString() ?? 'grid'}
-        className={clsx('mt-5 grid gap-4', `grid-cols-1 md:grid-cols-3`)}
+        // eslint-disable-next-line tailwindcss/no-custom-classname
+        className="dynamic-grid-columns mt-5 grid gap-4"
       >
         {React.Children.toArray(children).map((child, index) => {
           return <React.Fragment key={index}>{child}</React.Fragment>;
@@ -60,6 +60,19 @@ export const Grid = ({ children, trailinglink }: Props) => {
           </div>
         </a>
       )}
+      <style jsx>
+        {`
+          .dynamic-grid-columns {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+          }
+
+          @media (min-width: 768px) {
+            .dynamic-grid-columns {
+              grid-template-columns: repeat(${columns}, minmax(0, 1fr));
+            }
+          }
+        `}
+      </style>
     </>
   );
 };

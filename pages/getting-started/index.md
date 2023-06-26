@@ -12,7 +12,7 @@ HTTP methods (GET, POST, PUT...) are RPCs. NFS is based on RPCs. A DNS resolutio
 A RPC framework like IceRPC helps you apply this paradigm to your own networked applications without reinventing the
 wheel.
 
-{% grid %}
+{% grid columns=4 %}
 
 {% mini-card
    title="RPC framework for the QUIC era"

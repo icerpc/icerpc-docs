@@ -52,6 +52,8 @@ that can be used in the documentation.
 - [Callout](#callout)
 - [Side-by-side](#side-by-side)
 - [Divider](#divider)
+- [Grid](#grid)
+- [Mini-Card](#minicard)
 
 [**Updating Navigation**](#updating-navigation) is done by editing the
 `/data/*.ts` files.
@@ -251,6 +253,54 @@ Lorem ipsum dolor sit amet.
 
 Lorem ipsum dolor sit amet.
 ```
+
+---
+
+### Grid
+
+The `grid` tag is used to create a grid of content. It is primarily intended to be used with the `mini-card` tag.
+
+#### Attributes
+
+| Attribute | Description                                                                 |
+| --------- | --------------------------------------------------------------------------- |
+| columns  | The number of columns the grid could have, defaults to `3`. (On mobile will always be 1) |
+
+#### Examples
+
+````markdown
+
+{% grid columns=2 %}
+
+{% mini-card title="Foo" description="..." href="/foo" /%}
+{% mini-card title="Bar" description="..." href="/bar" /%}
+{% mini-card title="Fizz" description="..." href="/fizz" /%}
+{% mini-card title="Buzz" description="..." href="/buzz" /%}
+
+{% grid %}
+
+````
+
+---
+
+### Mini-Card
+
+The `mini-card` tag is used to create a mini card. Mini cards are used in the grid tag. They are small cards with
+a title, description, and link.
+
+#### Attributes
+
+| Attribute | Description                                                                 |
+| --------- | --------------------------------------------------------------------------- |
+| title  | The title of the mini card. |
+| description  | The description of the mini card. |
+| href  | The href used when clicking the mini card |
+
+#### Examples
+
+See the [`grid`](#Grid) tag for an example of how to use the `mini-card` tag.
+
+---
 
 ## Updating Navigation
 
