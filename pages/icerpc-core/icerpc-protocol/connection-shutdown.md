@@ -5,8 +5,8 @@ description: Understand connection shutdown with icerpc.
 
 ## What's a connection shutdown?
 
-A shutdown is a graceful closure of a connection. Each side wants to maximize the chances that outstanding requests
-complete successfully.
+A shutdown is a graceful closure of a connection. Each side wants to ensure that outstanding requests complete
+successfully.
 
 ## Shutdown steps
 
@@ -44,17 +44,15 @@ shutdown.
 
 ## GoAway frame
 
-The GoAway frame is specified in Slice (LINK) and encoded with Slice2:
+The GoAway frame is specified in [Slice](../../slice) and encoded with Slice2:
 
 ```slice
-enum ControlFrameType : uint8
-{
+enum ControlFrameType : uint8 {
     Settings = 0,
     GoAway = 1,
 }
 
-compact struct GoAwayFrame
-{
+compact struct GoAwayFrame {
     type: ControlFrameType,            // value is ControlFrameType::GoAway
     bodySize: varuint62,               // the number of bytes in the remainder of the frame (between 2 and 16)
     bidirectionalStreamId: varuint62,

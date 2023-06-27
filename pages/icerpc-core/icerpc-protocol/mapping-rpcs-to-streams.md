@@ -102,7 +102,7 @@ The response header holds:
 
 icerpc transmits the response fields without attaching any meaning to their values or presence.
 
-The response header is specified in Slice (LINK) and encoded using Slice2:
+The response header is specified in Slice [Slice](../../slice) and encoded using Slice2:
 
 ```slice
 compact struct Response {

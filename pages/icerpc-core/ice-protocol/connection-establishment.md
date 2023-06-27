@@ -11,12 +11,10 @@ An ice client connects to an ice server as follows:
 
 2. The server accepts this duplex connection.
 
-3. The client and server perform a TLS handshake if the connection uses TLS.
-
-4. The server sends a ValidateConnection frame to the client. As soon as the server sends this frame, it considers the
+3. The server sends a ValidateConnection frame to the client. As soon as the server sends this frame, it considers the
 connection established and can start accepting incoming requests and sending outgoing requests on this connection.
 
-5. The client waits until it receives a ValidateConnection frame from the server. When the client receives this frame,
+4. The client waits until it receives a ValidateConnection frame from the server. When the client receives this frame,
 it considers the connection established and can start sending outgoing requests and accepting incoming requests on
 this connection.
 
