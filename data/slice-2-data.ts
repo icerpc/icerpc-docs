@@ -52,8 +52,56 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/language-guide/operation`
       },
       {
+        title: 'Parameters and fields',
+        path: `${SLICE_BASE_URL}/language-guide/parameters-and-fields`
+      },
+      {
         title: 'Primitive types',
         path: `${SLICE_BASE_URL}/language-guide/primitive-types`
+      },
+      {
+        title: 'Enum types',
+        path: `${SLICE_BASE_URL}/language-guide/enum-types`
+      },
+      {
+        title: 'Struct types',
+        path: `${SLICE_BASE_URL}/language-guide/struct-types`
+      },
+      {
+        title: 'Exception',
+        path: `${SLICE_BASE_URL}/language-guide/exception`
+      },
+      {
+        title: 'Proxy types',
+        path: `${SLICE_BASE_URL}/language-guide/proxy-types`
+      },
+      {
+        title: 'Sequence types',
+        path: `${SLICE_BASE_URL}/language-guide/sequence-types`
+      },
+      {
+        title: 'Dictionary types',
+        path: `${SLICE_BASE_URL}/language-guide/dictionary-types`
+      },
+      {
+        title: 'Custom types',
+        path: `${SLICE_BASE_URL}/language-guide/custom-types`
+      },
+      {
+        title: 'Well-known types',
+        path: `${SLICE_BASE_URL}/language-guide/well-known-types`
+      },
+      {
+        title: 'Type alias',
+        path: `${SLICE_BASE_URL}/language-guide/type-alias`
+      },
+      {
+        title: 'Attributes',
+        path: `${SLICE_BASE_URL}/language-guide/attributes`
+      },
+      {
+        title: 'Doc comments',
+        path: `${SLICE_BASE_URL}/language-guide/doc-comments`
       }
     ]
   },
@@ -104,19 +152,6 @@ export const slice2Data: SideBarSourceType[] = [
       {
         title: 'Operation return value and exception',
         path: `${SLICE_BASE_URL}/encoding/operation-return-value-exception`
-      }
-    ]
-  },
-  {
-    title: 'Compiler diagnostics',
-    links: [
-      {
-        title: 'Errors',
-        path: `${SLICE_BASE_URL}/compiler-diagnostics/errors`
-      },
-      {
-        title: 'Warnings',
-        path: `${SLICE_BASE_URL}/compiler-diagnostics/warnings`
       }
     ]
   }

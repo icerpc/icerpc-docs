@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Encoding, Platform } from 'types';
 
-export interface FeedbackData {
+export type FeedbackData = {
   option: string; // The title of the selected option
   path: string; // The path of the page the feedback was submitted from
   title: string; // The title of the page the feedback was submitted from
@@ -14,18 +14,18 @@ export interface FeedbackData {
   platform: Platform; // The user's currently selected platform
   additionalFeedback?: string; // Additional feedback from the user
   email?: string; // The user's email address
-}
+};
 
-interface FeedbackOption {
+type FeedbackOption = {
   title: string;
   description: string;
   id: number;
-}
+};
 
-interface Props {
+type Props = {
   title: string;
   options: FeedbackOption[];
-}
+};
 
 export const negativeFeedbackOptions: FeedbackOption[] = [
   {
@@ -106,11 +106,11 @@ export const FeedbackForm = ({ title, options }: Props) => {
   const { platform } = usePlatform();
   const pageTitle = window.document.title;
 
-  let [selected, setSelected] = useState<number>();
-  let [email, setEmail] = useState<string>();
-  let [comment, setComment] = useState<string>();
-  let [opacity, setOpacity] = useState('opacity-0');
-  let [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+  const [selected, setSelected] = useState<number>();
+  const [email, setEmail] = useState<string>();
+  const [comment, setComment] = useState<string>();
+  const [opacity, setOpacity] = useState('opacity-0');
+  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -211,9 +211,8 @@ export const FeedbackForm = ({ title, options }: Props) => {
             setFeedbackSubmitted(true);
 
             // Get the option that was selected
-            const selectedOption = options.find(
-              (option) => option.id == selected
-            )!;
+            const selectedOption =
+              options.find((option) => option.id == selected) ?? options[0];
 
             // Send the feedback to the server
             sendFeedback({

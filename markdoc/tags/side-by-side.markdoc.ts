@@ -1,8 +1,8 @@
 // Copyright (c) ZeroC, Inc.
 
-import { SideBySide } from 'components/SideBySide';
+import { SideBySide } from 'components/Tags/SideBySide';
 
-export default {
+const sideBySide = {
   render: SideBySide,
   attributes: {
     weighted: {
@@ -15,3 +15,5 @@ export default {
     }
   }
 };
+
+export default sideBySide;

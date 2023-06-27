@@ -1,9 +1,9 @@
 // Copyright (c) ZeroC, Inc.
 
 import { Tag, Node, Config } from '@markdoc/markdoc';
-import { Title } from 'components/Title';
+import { Title } from 'components/Tags/Title';
 
-export default {
+const title = {
   render: Title,
   children: [],
   attributes: {},
@@ -19,3 +19,5 @@ export default {
     });
   }
 };
+
+export default title;

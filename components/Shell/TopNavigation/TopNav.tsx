@@ -1,39 +1,39 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import lightIcon from 'public/images/Light-Icon.svg';
-import darkIcon from 'public/images/Dark-Icon.svg';
-import Image from 'next/image';
-
+import { clsx } from 'clsx';
 import { FaGithub } from 'react-icons/fa';
 import { useRouter } from 'next/router';
-import { ThemeToggle } from 'components/ThemeToggle';
-import { clsx } from 'clsx';
 import { useTheme } from 'next-themes';
-import { MobileSideNav } from '../SideNav';
+import darkIcon from 'public/images/Dark-Icon.svg';
+import Image from 'next/image';
+import lightIcon from 'public/images/Light-Icon.svg';
+import Link from 'next/link';
+
 import { MobileMenu } from './MobileMenu';
+import { MobileSideNav } from '../SideNav';
+import { ThemeToggle } from 'components/ThemeToggle';
+import { useMounted } from 'context/state';
 
 export const navigationItems = [
   {
-    name: 'Home',
-    href: '/'
-  },
-  {
     name: 'Getting Started',
-    href: '/docs/getting-started'
+    href: '/getting-started'
   },
   {
     name: 'IceRPC Core',
-    href: '/docs/icerpc-core'
+    href: '/icerpc-core'
   },
   {
     name: 'Slice',
-    href: '/docs/slice'
+    href: '/slice'
   },
   {
     name: 'IceRPC for Ice users',
-    href: '/docs/icerpc-for-ice-users'
+    href: '/icerpc-for-ice-users'
+  },
+  {
+    name: 'API Reference',
+    href: 'https://docs.testing.zeroc.com/api/csharp/api/IceRpc.html'
   }
 ];
 
@@ -47,11 +47,11 @@ export const TopNav = () => {
       )}
     >
       <div id="main-nav" className="flex w-full justify-center">
-        <div className="flex h-[3.75rem] w-full max-w-[98rem] items-center justify-between text-sm font-medium">
+        <div className="flex h-[3.75rem] w-full max-w-[100rem] items-center justify-between text-sm font-medium">
           <Logo />
           <div className="hidden items-center lg:flex">
             <nav>
-              <ul className="flex gap-x-6">
+              <ul className="flex gap-x-4">
                 {navigationItems.map((item) => (
                   <TopNavigationItem
                     key={item.href}
@@ -84,19 +84,16 @@ export const TopNav = () => {
 };
 
 const Logo = () => {
-  const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
+  const mounted = useMounted();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+  // Default to light icon if theme is not yet resolved because of SSR
   if (!mounted) {
-    return null;
+    return <Image src={lightIcon} height={30} alt="ZeroC Logo" />;
   }
 
   return (
-    <Link href="/">
+    <Link href="https://web.testing.zeroc.com/icerpc">
       <div className="mb-3 ml-[1.4rem] mr-0 mt-5 flex items-center justify-start gap-1 pb-4 lg:ml-[3rem]">
         <Image
           src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
@@ -111,11 +108,11 @@ const Logo = () => {
   );
 };
 
-interface TopNavigationItemProps {
+type TopNavigationItemProps = {
   name: string;
   href: string;
   pathname: string;
-}
+};
 
 const TopNavigationItem = ({
   name,

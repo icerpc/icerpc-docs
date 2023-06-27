@@ -19,7 +19,7 @@ function generateID(
     .toLowerCase();
 }
 
-export default {
+const heading = {
   render: Heading,
   children: ['inline'],
   attributes: {
@@ -35,3 +35,5 @@ export default {
     return new Tag(`${this.render}`, { ...attributes, id }, children);
   }
 };
+
+export default heading;

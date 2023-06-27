@@ -8,20 +8,20 @@ import { AppLink } from 'components/Nodes/AppLink';
 import { Divider } from 'components/Divider';
 import {
   Bars3BottomLeftIcon,
-  ArrowUpCircleIcon
+  ArrowUpCircleIcon,
+  ChevronRightIcon
 } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
+import { baseUrls } from 'data/side-bar-data';
 
-export interface TOCItem {
+export type TOCItem = {
   id: string;
   title: string;
   level: number;
-}
+};
 
 const resolvePath = (pathName: string): string => {
-  return ['/docs/getting-started', '/docs/rpc', '/docs/slice'].includes(
-    pathName
-  )
+  return baseUrls.some((baseUrl) => pathName == baseUrl)
     ? pathName + '/index.md'
     : pathName + '.md';
 };
@@ -45,7 +45,7 @@ function useActiveId(itemIds: string[]) {
     );
 
     itemIds.forEach((id) => {
-      let element = document.getElementById(id);
+      const element = document.getElementById(id);
       if (element) {
         observer.observe(element);
       }
@@ -53,7 +53,7 @@ function useActiveId(itemIds: string[]) {
 
     return () => {
       itemIds.forEach((id) => {
-        let element = document.getElementById(id);
+        const element = document.getElementById(id);
         if (element) {
           observer.unobserve(element);
         }
@@ -149,10 +149,10 @@ export const TableOfContents = (toc: TOCItem[]) => {
   );
 };
 
-interface MoreItemProps {
+type MoreItemProps = {
   href: string;
   children: ReactNode;
-}
+};
 
 const MoreItem = ({ href, children }: MoreItemProps) => {
   return (
@@ -164,29 +164,35 @@ const MoreItem = ({ href, children }: MoreItemProps) => {
   );
 };
 
-interface ListItemProps {
+type ListItemProps = {
   item: TOCItem;
   activeId: string;
-}
+};
 
 const ListItem = ({ item, activeId }: ListItemProps) => {
   const href = `#${item.id}`;
+  const leftPadding = (() => {
+    switch (item.level) {
+      case 3:
+        return '-ml-1';
+      default:
+        return '';
+    }
+  })();
   return (
-    <li
-      key={item.id}
-      className={['mb-4 pr-4 text-sm', item.level === 3 ? 'padded' : undefined]
-        .filter(Boolean)
-        .join(' ')}
-    >
+    <li key={item.id} className={clsx('mb-4 pr-4 text-sm', leftPadding)}>
       <Link
         href={href}
         className={clsx(
-          'text-inherit',
+          'flex items-start text-inherit',
           activeId === item.id
             ? 'text-primary dark:font-semibold dark:text-white'
             : ''
         )}
       >
+        {item.level > 2 && (
+          <ChevronRightIcon className="mx-2 mt-[2px] h-4 w-4 shrink-0" />
+        )}
         {item.title}
       </Link>
     </li>

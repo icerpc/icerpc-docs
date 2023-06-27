@@ -3,7 +3,7 @@
 import { nodes, Node, Config, Tag } from '@markdoc/markdoc';
 import { Document } from 'components/Nodes/Document';
 
-export default {
+const document = {
   ...nodes.document,
   render: Document,
   attributes: nodes.document.attributes,
@@ -15,9 +15,12 @@ export default {
       {
         title: frontmatter.title,
         description: frontmatter.description,
-        encoding: frontmatter.encoding
+        encoding: frontmatter.encoding,
+        showToc: frontmatter.showToc
       },
       children
     );
   }
 };
+
+export default document;

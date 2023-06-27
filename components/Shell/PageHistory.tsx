@@ -2,15 +2,15 @@
 
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { sideBarData, baseUrls, flattenSideBarData } from 'data/side-bar-data';
-import { SideBarLink, Encoding, SideBarDivider, isLink } from 'types';
+import { SideBarLink, Encoding, isLink } from 'types';
 import Link from 'next/link';
 import React from 'react';
 import queryString from 'query-string';
 
-interface Props {
+type Props = {
   path: string;
   encoding: Encoding;
-}
+};
 
 const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;
@@ -18,7 +18,7 @@ const stripTrailingSlash = (str: string) => {
 
 export const PageHistory = ({ path, encoding }: Props) => {
   // Get the side bar links for the current page
-  const baseUrl = baseUrls.find((item) => path.startsWith(item))!;
+  const baseUrl = baseUrls.find((item) => path.startsWith(item)) ?? '';
   const links: SideBarLink[] = flattenSideBarData(
     sideBarData(baseUrl, encoding)
   ).filter(isLink);

@@ -1,20 +1,27 @@
 {
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
   "extends": [
+    "plugin:@typescript-eslint/recommended",
     "next",
-    "eslint:recommended",
-    "plugin:tailwindcss/recommended",
+    "next/core-web-vitals",
     "plugin:prettier/recommended",
+    "plugin:tailwindcss/recommended",
     "plugin:jsx-a11y/strict"
   ],
-  "rules": {
-    "import/no-anonymous-default-export": "off",
-    "no-unused-vars": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ]
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
   },
-  "plugins": ["tailwindcss", "prettier", "jsx-a11y"]
+  "plugins": ["prettier", "@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+  }
 }

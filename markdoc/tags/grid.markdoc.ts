@@ -1,19 +1,15 @@
 // Copyright (c) ZeroC, Inc.
 
 import { Tag, Config, Node } from '@markdoc/markdoc';
-import { Grid } from 'components/Grid';
+import { Grid } from 'components/Tags/Grid';
 
-export default {
+const grid = {
   render: Grid,
   children: ['card'],
   attributes: {
-    rows: {
-      type: 'number',
-      required: true
-    },
     columns: {
       type: 'number',
-      required: true
+      required: false
     },
     trailinglink: {
       type: 'object',
@@ -23,12 +19,13 @@ export default {
   transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);
     const children = node.transformChildren(config);
-    const { rows, columns, trailinglink } = attributes;
+    const { trailinglink, columns } = attributes;
     return new Tag(`${`${this.render}`}`, {
       children,
-      rows,
       columns,
       trailinglink
     });
   }
 };
+
+export default grid;

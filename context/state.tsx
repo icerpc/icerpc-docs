@@ -15,16 +15,18 @@ type PlatformContextType = {
 
 const EncodingContext = createContext<EncodingContextType>({
   encoding: Encoding.Slice2,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setEncoding: () => {}
 });
 const PlatformContext = createContext<PlatformContextType>({
   platform: Platform.csharp,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setPlatform: () => {}
 });
 
-interface Props {
+type Props = {
   children: ReactNode;
-}
+};
 
 export function AppWrapper({ children }: Props) {
   const [encoding, setEncoding] = useState<Encoding>(Encoding.Slice2);
@@ -64,10 +66,23 @@ export function AppWrapper({ children }: Props) {
   );
 }
 
+// Custom hook to handle setting and observing the encoding
 export const useEncoding = (): EncodingContextType => {
   return useContext(EncodingContext);
 };
 
+// Custom hook to handle setting and observing the platform
 export const usePlatform = (): PlatformContextType => {
   return useContext(PlatformContext);
+};
+
+// Custom hook to handle component mounting
+export const useMounted = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return mounted;
 };

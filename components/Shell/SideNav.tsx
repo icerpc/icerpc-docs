@@ -18,16 +18,15 @@ import {
   isLink
 } from 'types';
 import { Divider } from 'components/Divider';
-import { Breadcrumb } from 'components/Breadcrumbs';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
-import { getBreadcrumbs } from 'components/Title';
+import { getBreadcrumbs } from 'components/Tags/Title';
 import { SearchButton } from './SearchButton';
 
 function createListItem(
   router: NextRouter,
   link: SideBarLink | SideBarDivider,
-  noLeftPadding: Boolean = false,
-  onClick: () => void = () => {}
+  noLeftPadding = false,
+  onClick: React.MouseEventHandler<HTMLAnchorElement> | undefined
 ): React.ReactElement {
   const leftPadding = noLeftPadding ? 'ml-0' : 'ml-3';
 
@@ -38,7 +37,7 @@ function createListItem(
         <Link
           href={link.path}
           className={clsx(
-            `px-2 py-[7px] pl-0 text-sm no-underline  ${leftPadding} dark:text-[#C4C7C5]`,
+            `py-[6px] pl-0 pr-3 text-sm no-underline  ${leftPadding} dark:text-[#C4C7C5]`,
             isCurrentPage
               ? noLeftPadding
                 ? 'font-bold text-primary dark:text-white'
@@ -53,11 +52,11 @@ function createListItem(
     );
   } else {
     return (
-      <div className={`${leftPadding} mb-3 mt-2 pl-0 pr-2`} key={link.title}>
-        <h2 className="my-4 text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:text-white dark:decoration-darkBorder">
+      <li key={link.title} className={clsx('my-2 pl-0 pr-2', leftPadding)}>
+        <h2 className="text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:text-white dark:decoration-darkBorder">
           {link.title}
         </h2>
-      </div>
+      </li>
     );
   }
 }
@@ -65,7 +64,7 @@ function createListItem(
 function transformSideBarData(
   router: NextRouter,
   data: SideBarSourceType,
-  onClick: () => void = () => {}
+  onClick: React.MouseEventHandler<HTMLAnchorElement> | undefined = undefined
 ): React.ReactElement[] {
   if (isCategory(data)) {
     const category = data;
@@ -103,16 +102,16 @@ function transformSideBarData(
   }
 }
 
-interface SideNavProps {
+type SideNavProps = {
   path: string;
-}
+};
 
 export const SideNav = ({ path }: SideNavProps) => {
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { encoding: currentEncoding } = useEncoding();
   const router = useRouter();
 
-  let baseUrl = baseUrls.find((item) => path.startsWith(item))!;
+  const baseUrl = baseUrls.find((item) => path.startsWith(item)) ?? '';
   useEffect(() => {
     const links = sideBarData(baseUrl, currentEncoding) ?? [];
     setData(links);
@@ -121,15 +120,17 @@ export const SideNav = ({ path }: SideNavProps) => {
     };
   }, [setData, path, currentEncoding, baseUrl]);
 
-  let cells = data.map((item) => {
+  const cells = data.map((item) => {
     return transformSideBarData(router, item);
   });
+
+  if (cells.length === 0) return null;
 
   return (
     <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-none dark:bg-black lg:flex">
       <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-4 pr-2">
         <SearchButton className="mb-0 mt-8 flex items-start pl-3 pr-6" />
-        {baseUrl == '/docs/slice' && (
+        {baseUrl == '/slice' && (
           <div className="top-0 mb-2 mt-4 bg-none pl-6 pr-3">
             <SliceSelector />
           </div>
@@ -138,7 +139,7 @@ export const SideNav = ({ path }: SideNavProps) => {
           className={clsx(
             'sticky top-0 block w-[275px] overflow-y-auto',
             'bg-none pb-10 pl-6 pr-3',
-            baseUrl == '/docs/slice'
+            baseUrl == '/slice'
               ? 'h-[calc(100vh-59px-180px)]'
               : 'h-[calc(100vh-59px-40px)]'
           )}
@@ -150,10 +151,10 @@ export const SideNav = ({ path }: SideNavProps) => {
   );
 };
 
-interface MobileSideNavProps {
+type MobileSideNavProps = {
   pathname: string;
   encoding?: Encoding;
-}
+};
 
 export function MobileSideNav({ pathname }: MobileSideNavProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -162,7 +163,7 @@ export function MobileSideNav({ pathname }: MobileSideNavProps) {
   const breadcrumbs = getBreadcrumbs(pathname, currentEncoding);
   const router = useRouter();
 
-  let baseUrl = baseUrls.find((item) => pathname.startsWith(item))!;
+  const baseUrl = baseUrls.find((item) => pathname.startsWith(item)) ?? '';
 
   useEffect(() => {
     const links = sideBarData(baseUrl, currentEncoding) ?? [];
@@ -172,7 +173,7 @@ export function MobileSideNav({ pathname }: MobileSideNavProps) {
     };
   }, [setData, pathname, currentEncoding, baseUrl]);
 
-  let cells = data.map((item) => {
+  const cells = data.map((item) => {
     return transformSideBarData(router, item, () => setIsOpen(false));
   });
 
@@ -259,11 +260,11 @@ export function MobileSideNav({ pathname }: MobileSideNavProps) {
                         className={clsx(
                           'block h-full w-full overflow-y-auto',
                           'bg-none pb-10 pl-6 pr-3 pt-4',
-                          baseUrl == '/docs/slice' && 'mt-12'
+                          baseUrl == '/slice' && 'mt-12'
                         )}
                       >
                         <div className="pointer-events-none sticky top-0" />
-                        {baseUrl == '/docs/slice' && <SliceSelector />}
+                        {baseUrl == '/slice' && <SliceSelector />}
                         <ul className="mx-2 mt-4">{cells}</ul>
                       </nav>
                     </div>

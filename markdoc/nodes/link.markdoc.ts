@@ -2,7 +2,7 @@
 
 import { AppLink } from 'components/Nodes/AppLink';
 
-export default {
+const link = {
   render: AppLink,
   attributes: {
     href: {
@@ -10,3 +10,5 @@ export default {
     }
   }
 };
+
+export default link;
