@@ -29,7 +29,7 @@ dotnet new icerpc-server -o MyServer
 
 This command creates a new IceRPC server application in directory `MyServer`.
 
-TODO: VS code screenshot
+![MyServer in Visual Studio Code](../../images/MyServer.png)
 
 Let's examine each file:
 
@@ -38,12 +38,15 @@ Let's examine each file:
 This file holds the contract between our client and server applications, specified with the [Slice][slice] language.
 It's a simple greeter:
 
-TODO: update once template is fixed
 ```slice
 [cs::namespace("MyServer")]
-module Hello
+module VisitorCenter
 
+/// Represents a simple greeter.
 interface Greeter {
+    /// Creates a personalized greeting.
+    /// @param name: The name of the person to greet.
+    /// @returns: The greeting.
     greet(name: string) -> string
 }
 ```
@@ -168,7 +171,7 @@ dotnet new icerpc-client -o MyClient
 
 This command creates a new IceRPC client application in directory `MyClient`.
 
-TODO: VS code screenshot
+![MyClient in Visual Studio Code](../../images/MyClient.png)
 
 Let's examine each file:
 
@@ -178,9 +181,13 @@ This file is (and must be) identical or almost identical to the `Greeter.slice` 
 
 ```slice
 [cs::namespace("MyClient")]
-module Hello
+module VisitorCenter
 
+/// Represents a simple greeter.
 interface Greeter {
+    /// Creates a personalized greeting.
+    /// @param name: The name of the person to greet.
+    /// @returns: The greeting.
     greet(name: string) -> string
 }
 ```
@@ -315,7 +322,10 @@ dbug: IceRpc.ClientConnection[5]
 
 Press Ctrl+C on the server console to shut it down.
 
-TODO: log messages
+```shell
+dbug: IceRpc.Server[12]
+      Listener 'icerpc://[::0]?transport=tcp' has stopped accepting connections
+```
 
 [deadline]: https://github.com/icerpc/icerpc-csharp/tree/main/src/IceRpc.Deadline
 [deadline-package]: https://www.nuget.org/packages/IceRpc.Deadline

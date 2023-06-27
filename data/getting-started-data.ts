@@ -11,7 +11,7 @@ export const gettingStartedData: SideBarSourceType[] = [
     title: 'Raising the bar',
     links: [
       {
-        title: 'A modular RPC framework for the QUIC era',
+        title: 'A modular RPC framework built for QUIC',
         path: GETTING_STARTED_BASE_URL + '/raising-the-bar/modular-rpc-for-quic/'
       },
       {
