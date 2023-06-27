@@ -291,7 +291,7 @@ dotnet run
 
 The server is now listening for new connections from clients:
 
-```shell
+```
 dbug: IceRpc.Server[11]
       Listener 'icerpc://[::0]?transport=tcp' has started accepting connections
 ```
@@ -305,7 +305,7 @@ dotnet run
 
 The client sends a single `greet` request to the service hosted by our server:
 
-```shell
+```
 dbug: IceRpc.ClientConnection[3]
       Client connection from '[::1]:61582' to '[::1]:4062' connected
 info: IceRpc.Logger.LoggerInterceptor[0]
@@ -322,7 +322,7 @@ dbug: IceRpc.ClientConnection[5]
 
 Press Ctrl+C on the server console to shut it down.
 
-```shell
+```
 dbug: IceRpc.Server[12]
       Listener 'icerpc://[::0]?transport=tcp' has stopped accepting connections
 ```

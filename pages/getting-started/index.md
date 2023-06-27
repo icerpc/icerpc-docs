@@ -4,7 +4,7 @@ show_toc: false
 ---
 
 Remote procedure call (RPC) is a fundamental paradigm for networked applications: a client sends a request to a server
-over a network connection, the server processes this request and sends back a response to the client over the same
+over a network connection, the server processes this request and then sends back a response to the client over the same
 connection.
 
 ![RPC-diagram](diagrams/rpc.svg)
@@ -14,7 +14,7 @@ HTTP methods (GET, POST, PUT...) are all RPCs. A DNS resolution is a RPC. RPCs a
 An RPC framework like IceRPC helps you apply this paradigm to your own networked applications without reinventing the
 wheel.
 
-{% grid columns=4 %}
+{% grid columns=3 %}
 
 {% mini-card
    title="A modular RPC framework built for QUIC"

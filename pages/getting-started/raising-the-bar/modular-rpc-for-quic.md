@@ -2,7 +2,7 @@
 title: A modular RPC framework built for QUIC
 ---
 
-## Built for QUIC
+## RPCs over QUIC
 
 Ever since the first RPC framework was created by Sun Microsystems in the 1980s, the primary transport protocol for RPCs
 has been TCP.
