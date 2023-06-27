@@ -15,8 +15,8 @@ An outgoing request carries all the data an invoker needs to send a request:
 - request [fields](#request-fields)
 - the [payload](invocation-pipleine#payload-and-payload-continuation) of the request
 
-An outgoing request also holds [features](#request-features). These features are used for local communications with the
-invocation pipeline, and within this pipeline.
+In C#, an outgoing request also holds [features](#request-features). These features are used for local communications
+with the invocation pipeline, and within this pipeline.
 
 ## Request fields
 
@@ -69,10 +69,11 @@ On the other side, the dispatcher sees only one continuous incoming request payl
 
 It is common for the invokers in an invocation pipeline to transmit information to each other during an invocation. For
 example, the retry interceptor needs to communicate with the connection cache to make sure the connection cache does not
-keep retrying with the same server address. These invokers get and set request features to communicate with each other. You can also use these features to communicate with the invocation pipeline.
+keep retrying with the same server address. These invokers get and set request features (C# link) to communicate with
+each other.
 
-In C#, you can set the feature `ICompressFeature` to ask the compress interceptor (if installed) to compress the payload
-of your request:
+You can also use these features to communicate with the invocation pipeline. For example, you can set the feature
+`ICompressFeature` to ask the Compress interceptor (if installed) to compress the payload of your request:
 
 ```csharp
 using var request = new OutgoingRequest(serviceAddress)

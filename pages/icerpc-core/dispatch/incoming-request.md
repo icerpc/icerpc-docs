@@ -15,8 +15,8 @@ An incoming request holds:
 - request [fields](../invocation/outgoing-request#request-fields)
 - the [payload](#request-payload) of the request
 
-An incoming request also holds [features](#request-features). These features are used for local communications with the
-dispatch pipeline, and within this pipeline.
+In C#, an incoming request also holds [features](#request-features). These features are used for local communications
+with the dispatch pipeline, and within this pipeline.
 
 ## Request payload
 
@@ -26,11 +26,10 @@ IceRPC core is concerned, the number of bytes in this stream is unknown.
 ## Request features
 
 It is common for the dispatchers in a dispatch pipeline to transmit information to each other during a dispatch. These
-dispatchers get and set request features for these communications. You can also use these features to communicate with
-your service code.
+dispatchers get and set request features (C# link) for these communications.
 
-In C#, if you install the dispatch information middleware, it sets the `IDispatchInformationFeature` and you can
-retrieve this feature in your code:
+You can also use these features to communicate with your service code. For example, if you install the dispatch
+information middleware, it sets the `IDispatchInformationFeature` and you can retrieve this feature in your code:
 
 ```csharp
 // In Slice service implementation
