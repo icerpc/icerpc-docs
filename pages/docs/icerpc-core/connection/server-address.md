@@ -56,7 +56,7 @@ listen for icerpc connections on the interface associated with `192.168.100.10`,
 - `icerpc://[::0]:0`
 listen for icerpc connections on all interfaces; the OS selects the port number to use
 - `ice://0.0.0.0:10000`
-listen for ice connections on all interfaces with an IPv4 address on port 10,000
+listen for ice connections on all interfaces with an IPv4 address on port 10000
 
 In C#, when you specify port 0 in your server address, `Listen` returns a server address with the port number selected
 by the OS:
