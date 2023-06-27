@@ -170,12 +170,16 @@ export const rpcCoreData: SideBarSourceType[] = [
         path: `${RPC_CORE_BASE_URL}/slic-protocol/connection-closure`
       },
       {
-        title: 'Connection idle timeout',
-        path: `${RPC_CORE_BASE_URL}/slic-protocol/connection-closure`
+        title: 'Connection keep alive',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/connection-keepalive`
       },
       {
         title: 'Streams',
         path: `${RPC_CORE_BASE_URL}/slic-protocol/streams`
+      },
+      {
+        title: 'Flow control',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/flow-control`
       },
       {
         title: 'Protocol frames',

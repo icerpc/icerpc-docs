@@ -1,6 +1,6 @@
 ---
 title: Connection closure
-description: Understand connection closure with Slic.
+description: Understand how a connection is closed
 ---
 
 ## What's connection closure?
