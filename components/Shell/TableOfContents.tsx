@@ -9,7 +9,7 @@ import { Divider } from 'components/Divider';
 import {
   Bars3BottomLeftIcon,
   ArrowUpCircleIcon,
-  ChevronRightIcon
+  MinusSmallIcon
 } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
 import { baseUrls } from 'data/side-bar-data';
@@ -191,7 +191,7 @@ const ListItem = ({ item, activeId }: ListItemProps) => {
         )}
       >
         {item.level > 2 && (
-          <ChevronRightIcon className="mx-2 mt-[2px] h-4 w-4 shrink-0" />
+          <MinusSmallIcon className="mx-2 mt-[2px] h-4 w-4 shrink-0" />
         )}
         {item.title}
       </Link>
