@@ -136,5 +136,33 @@ export const rpcCoreData: SideBarSourceType[] = [
         path: `${RPC_CORE_BASE_URL}/ice-protocol/connection-shutdown`
       }
     ]
-  }
-];
+  },
+  {
+    title: 'The Slic protocol',
+    links: [
+      {
+        title: 'Overview',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/overview`
+      },
+      {
+        title: 'Connection establishment',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/connection-establishment`
+      },
+      {
+        title: 'Connection closure',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/connection-closure`
+      },
+      {
+        title: 'Connection idle timeout',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/connection-closure`
+      },
+      {
+        title: 'Streams',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/streams`
+      },
+      {
+        title: 'Protocol frames',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/protocol-frames`
+      }
+    ]
+  }];
