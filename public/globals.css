@@ -22,6 +22,10 @@
     @apply mb-4 pl-2 dark:text-[rgba(255,255,255,0.8)];
   }
 
+ main article img {
+    @apply w-full object-contain my-8 mr-2;
+  }
+
   li {
     @apply leading-[1.7rem] dark:text-[rgba(255,255,255,0.8)];
   }

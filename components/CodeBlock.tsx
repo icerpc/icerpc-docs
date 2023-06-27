@@ -12,7 +12,7 @@ import { Encoding } from 'types';
 import { CopyButton } from './CopyButton';
 import { useTheme } from 'next-themes';
 
-const MermaidDiagram = dynamic(() => import('components/Mermaid'), {
+const MermaidDiagram = dynamic(() => import('components/Tags/Mermaid'), {
   ssr: false
 });
 

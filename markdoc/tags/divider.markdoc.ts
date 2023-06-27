@@ -2,7 +2,7 @@
 
 import { Divider } from 'components/Divider';
 
-export default {
+const divider = {
   render: Divider,
   attributes: {
     margin: {
@@ -11,3 +11,5 @@ export default {
     }
   }
 };
+
+export default divider;

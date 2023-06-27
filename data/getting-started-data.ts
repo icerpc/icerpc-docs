@@ -15,8 +15,8 @@ export const gettingStartedData: SideBarSourceType[] = [
         path: GETTING_STARTED_BASE_URL + '/raising-the-bar/modular-rpc-for-quic/'
       },
       {
-        title: 'Next-gen IDL: The power of simplicity',
-        path: GETTING_STARTED_BASE_URL + '/raising-the-bar/next-gen-idl/'
+        title: 'Slice - a better IDL',
+        path: GETTING_STARTED_BASE_URL + '/raising-the-bar/slice-better-idl/'
       }
     ]
   },
@@ -28,9 +28,13 @@ export const gettingStartedData: SideBarSourceType[] = [
         path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/tutorial/'
       },
       {
-        title: 'How-to add IceRPC to an existing C# project',
+        title: 'How to add IceRPC to an existing C# project?',
         path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/how-to/'
+      },
+      {
+        title: 'NuGet packages',
+        path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/nuget-packages/'
       }
     ]
-  }
+  },
 ];

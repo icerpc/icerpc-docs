@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
-import { LanguageSection } from 'components/LanguageSection';
-import { LanguageSelector } from 'components/LanguageSelector';
+import { LanguageSection } from 'components/Tags/LanguageSection';
+import { LanguageSelector } from 'components/Tags/LanguageSelector';
 import { Platform } from 'types';
 
 export const languageSelector = {

@@ -16,15 +16,20 @@ type Props = {
   title: string;
   description: string;
   encoding?: Encoding;
+  showToc?: boolean;
 };
 
-export const Document = ({ children, title, description, encoding }: Props) => {
+export const Document = ({
+  children,
+  title,
+  description,
+  encoding,
+  showToc = true
+}: Props) => {
   const { encoding: currentEncoding, setEncoding } = useEncoding();
   const [toc, setToc] = React.useState<TOCItem[]>([]);
   const router = useRouter();
   const path = router.asPath;
-
-  const isDocs = path.startsWith('/docs');
   const isBaseUrl = baseUrls.some((baseUrl) => path == baseUrl);
 
   // If the encoding is specified in the url, try to set the version to the specified encoding.
@@ -52,9 +57,9 @@ export const Document = ({ children, title, description, encoding }: Props) => {
   const isCurrentEncoding = encoding ? encoding === currentEncoding : true;
 
   return (
-    <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip dark:bg-[rgb(21,21,22)]">
+    <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip dark:bg-[rgb(21,21,22)] lg:justify-start">
       <article className="mx-6 mt-10 h-full w-full max-w-[52rem] md:mx-10 lg:mx-16">
-        {isDocs && isCurrentEncoding && (
+        {isCurrentEncoding && (
           <Title
             title={title}
             description={description}
@@ -80,14 +85,10 @@ export const Document = ({ children, title, description, encoding }: Props) => {
           <>{children}</>
         )}
         <PageHistory path={path} encoding={currentEncoding} />
-        {isDocs && (
-          <>
-            <Divider />
-            <Feedback />
-          </>
-        )}
+        <Divider />
+        <Feedback />
       </article>
-      {isDocs && TableOfContents(toc)}
+      {showToc && TableOfContents(toc)}
     </div>
   );
 };

@@ -3,7 +3,7 @@
 import { nodes } from '@markdoc/markdoc';
 import { CodeBlock } from 'components';
 
-export default {
+const fence = {
   render: CodeBlock,
   attributes: {
     ...nodes.fence.attributes,
@@ -18,3 +18,5 @@ export default {
     }
   }
 };
+
+export default fence;

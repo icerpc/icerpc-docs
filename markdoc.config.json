@@ -1,0 +1,11 @@
+[
+  {
+    "id": "icerpc-docs",
+    "path": "pages/",
+    "schema": {
+      "path": "markdoc/",
+      "type": "esm",
+      "watch": true
+    }
+  }
+]

@@ -9,11 +9,11 @@ export * from './Shell/SideNav';
 export * from './Shell/TableOfContents';
 export * from './Shell/TopNavigation/TopNav';
 
-export * from './Card';
+export * from './Tags/Card';
 export * from './CodeBlock';
 export * from './Divider';
-export * from './EncodingSection';
-export * from './Grid';
+export * from './Tags/EncodingSection';
+export * from './Tags/Grid';
 export * from './Nodes/List';
-export * from './SupportedEncoding';
-export * from './Title';
+export * from './Tags/SupportedEncoding';
+export * from './Tags/Title';

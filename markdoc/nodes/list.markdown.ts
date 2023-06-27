@@ -2,9 +2,11 @@
 
 import { List } from 'components';
 
-export default {
+const list = {
   render: List,
   attributes: {
     ordered: { type: Boolean }
   }
 };
+
+export default list;

@@ -29,9 +29,9 @@ npm run dev
 
 ## Writing Documentation
 
-Documentation is written in Markdown and is located in the `pages/docs`
+Documentation is written in Markdown and is located in the `pages`
 directory. Additionally this Markdown uses syntax extensions provided by
-[MarkDoc](https://markdoc.dev/docs/getting-started). These extensions allow the
+[MarkDoc](https://markdoc.dev/getting-started). These extensions allow the
 creation of custom components, such as code tabs, notes, and flow diagrams, all
 from within the Markdown file.
 
@@ -52,6 +52,8 @@ that can be used in the documentation.
 - [Callout](#callout)
 - [Side-by-side](#side-by-side)
 - [Divider](#divider)
+- [Grid](#grid)
+- [Mini-Card](#minicard)
 
 [**Updating Navigation**](#updating-navigation) is done by editing the
 `/data/*.ts` files.
@@ -118,7 +120,7 @@ syntax for these links is `<language>:<class-name>`
 
 ```markdown
 [ClientConnection](csharp:IceRpc.ClientConnection) will link to the page
-<https://api.testing.zeroc.com/csharp/api/IceRpc.ClientConnection.html>
+<https://docs.testing.zeroc.com/api/csharp/api/IceRpc.ClientConnection.html>
 ```
 
 ## Available Tags
@@ -252,6 +254,54 @@ Lorem ipsum dolor sit amet.
 Lorem ipsum dolor sit amet.
 ```
 
+---
+
+### Grid
+
+The `grid` tag is used to create a grid of content. It is primarily intended to be used with the `mini-card` tag.
+
+#### Attributes
+
+| Attribute | Description                                                                 |
+| --------- | --------------------------------------------------------------------------- |
+| columns  | The number of columns the grid could have, defaults to `3`. (On mobile will always be 1) |
+
+#### Examples
+
+````markdown
+
+{% grid columns=2 %}
+
+{% mini-card title="Foo" description="..." href="/foo" /%}
+{% mini-card title="Bar" description="..." href="/bar" /%}
+{% mini-card title="Fizz" description="..." href="/fizz" /%}
+{% mini-card title="Buzz" description="..." href="/buzz" /%}
+
+{% grid %}
+
+````
+
+---
+
+### Mini-Card
+
+The `mini-card` tag is used to create a mini card. Mini cards are used in the grid tag. They are small cards with
+a title, description, and link.
+
+#### Attributes
+
+| Attribute | Description                                                                 |
+| --------- | --------------------------------------------------------------------------- |
+| title  | The title of the mini card. |
+| description  | The description of the mini card. |
+| href  | The href used when clicking the mini card |
+
+#### Examples
+
+See the [`grid`](#Grid) tag for an example of how to use the `mini-card` tag.
+
+---
+
 ## Updating Navigation
 
 The hierarchy of the side navigation is defined in `/data/`. Each top navigation
@@ -262,8 +312,8 @@ their order in the sidebar. The values in the arrays are either `SideBarLink` or
 `SideBarCategory` types.
 
 For example, the following values define two `SideBarLink` objects, one with the
-title Overview that links to the `/docs/getting-started/index.md` page, and
-another called `Foo` that links to the `/docs/getting-started/foo.md` page.
+title Overview that links to the `/getting-started/index.md` page, and
+another called `Foo` that links to the `/getting-started/foo.md` page.
 This generates the sidebar for the `Getting Started` top navigation item.
 
 ```TypeScript
