@@ -43,10 +43,7 @@ namespace VisitorCenter;
 
 public partial interface IGreeterService
 {
-    ValueTask<string> GreetAsync(
-        string name,
-        IFeatureCollection features,
-        CancellationToken cancellationToken);
+    ValueTask<string> GreetAsync(string name, IFeatureCollection features, CancellationToken cancellationToken);
 }
 ```
 
@@ -64,10 +61,11 @@ namespace GreeterServer;
 // Our own implementation for Slice interface Greeter.
 internal class Chatbot : Service, IGreeterService
 {
-    public ValueTask<string> GreetAsync(
-        string name,
-        IFeatureCollection features,
-        CancellationToken cancellationToken) => new($"Hello, {name}!");
+    public ValueTask<string> GreetAsync(string name, IFeatureCollection features, CancellationToken cancellationToken)
+    {
+        Console.WriteLine($"Dispatching greet request {{ name = '{name}' }}");
+        return new($"Hello, {name}!");
+    }
 }
 ```
 
@@ -104,14 +102,14 @@ The `GreeterProxy` struct implements the methods of the generated interface by c
 You then create an instance of this proxy struct to make remote calls, for example:
 
 ```csharp
-using VisitorCenter;
 using IceRpc;
+using VisitorCenter;
 
 // A ClientConnection is an invoker.
-await using var clientConnection = new ClientConnection(new Uri("icerpc://examples.zeroc.com"));
+await using var connection = new ClientConnection(new Uri("icerpc://examples.zeroc.com"));
 
-// Here the service address specifies the protocol (icerpc) and the path (/greeter).
-var greeterProxy = new GreeterProxy(clientConnection, new Uri("icerpc:/greeter"));
+// The service address URI specifies the protocol (icerpc) and the path (/greeter).
+var greeterProxy = new GreeterProxy(connection, new Uri("icerpc:/greeter"));
 
 // Make an RPC and print the return value.
 string greeting = await greeter.GreetAsync("Syd");

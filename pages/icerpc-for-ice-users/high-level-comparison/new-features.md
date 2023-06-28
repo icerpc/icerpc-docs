@@ -1,6 +1,6 @@
 ---
 title: New features
-description: A quick overview of new features in IceRPC compared to Ice.
+description: An overview of the new features in IceRPC.
 ---
 
 ## New protocol with streaming support
@@ -8,14 +8,14 @@ description: A quick overview of new features in IceRPC compared to Ice.
 IceRPC adds a new protocol named `icerpc` that supports streaming. Streaming allows you to send a stream of bytes or
 Slice-defined types with your request or response with no or very little overhead.
 
-The new icerpc protocol runs over multiplexed transports such as QUIC.
+This new `icerpc` protocol runs over multiplexed transports such as QUIC.
 
 ## Modular API
 
 IceRPC offers a much more modular API than Ice.
 
-For example, with Ice, most of the invocation logic is implemented by the Communicator, and you can customize
-Communicator's behavior through configuration.
+For example, with Ice, most of the invocation logic is implemented by the `Communicator`, and you can customize
+`Communicator`'s behavior through configuration.
 
 With IceRPC, the invocation logic consists of multiple objects that you compose to form an invocation pipeline: you
 include only what you need in this invocation pipeline, and you can easily insert your own custom logic in this
@@ -23,7 +23,7 @@ pipeline.
 
 ## Async-only API
 
-Ice's APIs are based on the assumption that async APIs are well-suited for RPCs but hard to use and occasionally slower;
+Ice's API is based on the assumption that async APIs are well-suited for RPCs but hard to use and occasionally slower;
 as a result, Ice offers synchronous/blocking APIs in addition to async APIs, for ease of use and sometimes slightly
 better performance.
 
@@ -34,41 +34,40 @@ compiler:
 - `sayHelloAsync`, which does not block the caller but returns the response through a task, future or callback
  depending on the language mapping
 
-You can then choose to call `sayHello` (easy to code but you block the calling thread) or `sayHelloAsync` (you don't
-block the calling thread but it's harder to obtain the response).
+When you make an invocation, you can choose to call `sayHello` (easy to code but you block the calling thread) or
+`sayHelloAsync` (you don't block the calling thread but it's harder to obtain the response).
 
 IceRPC takes a different, more modern approach: the async/await syntax makes async programming so easy there is no need
-to provide a redundant synchronous API. The async/await syntax also makes it clear that a RPC is call that can take a
+to provide a redundant synchronous API. The async/await syntax also makes it clear that a RPC is a call that can take a
 while, throw exceptions, and should not be confused with a local call that completes very quickly.
 
 With IceRPC:
-
-- methods that may take a while because their implementations can wait for IOs are async (e.g. proxy methods)
-- methods that never wait for IOs are synchronous (e.g. string-parsing methods)
+- methods that may take a while because their implementations can wait for I/O are async (e.g. proxy methods)
+- methods that never wait for I/O are synchronous (e.g. string-parsing methods)
 
 ## Slice-free core API
 
 With Ice, you have to use Slice to encode your request and response payloads, even if you're just sending bytes.
 
 With IceRPC, Slice is optional: the IceRPC core sends and receives requests and responses with byte stream payloads,
-and doesn't know how these byte streams are encoded. This allows you to use IceRPC with Slice, or with another
-[IDL](https://en.wikipedia.org/wiki/Interface_description_language), or with no IDL at all.
+and doesn't know how these byte streams are encoded. This allows you to use IceRPC with Slice, or with another IDL, or
+with no IDL at all.
 
 ## New Slice
 
 IceRPC introduces a brand new Slice, with a new syntax, a new encoding, a new compilation model and a new file
 extension.
 
-The Ice compilation model for Slice files is very much like C++: each Slice file needs to #include the Slice files with
-the definitions it depends on. You can use a forward declaration to introduce a type without fully defining it. And
-Slice files use the .ice file extension.
+The Ice compilation model for Slice files is very much like C++: each Slice file needs to `#include` the Slice files
+with the definitions it depends on. You can use a forward declaration to introduce a type without fully defining it. And
+Slice files use the `.ice` file extension.
 
 On the other hand, the compilation model with IceRPC's Slice compilers is more like C# and Java: the compilation uses a
-set of reference files specified as argument to the compiler, and there is no #include preprocessing directive or
-forward declarations. These new Slice files use the .slice extension.
+set of reference files specified as argument to the compiler, and there is no `#include` preprocessing directive or
+forward declarations. These new Slice files use the `.slice` extension.
 
-The Slice syntax also changed significantly. Ice's .ice syntax uses a C-like syntax for parameters and fields, while
-IceRPC's .slice syntax is more like Rust and Swift:
+The Slice syntax also changed significantly. Ice's `.ice` syntax uses a C-like syntax for parameters and fields, while
+IceRPC's `.slice` syntax is more like Rust and Swift:
 
 {% side-by-side %}
 

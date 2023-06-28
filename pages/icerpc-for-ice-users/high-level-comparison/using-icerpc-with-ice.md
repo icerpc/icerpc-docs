@@ -1,6 +1,6 @@
 ---
 title: Using IceRPC with an Ice application
-description: Learn how to use IceRPC together with an existing Ice application.
+description: Learn how to use IceRPC with an existing Ice application.
 ---
 
 ## Interop basics
@@ -11,19 +11,19 @@ limitations), and by supporting the Ice encoding version 1.1 (called Slice1 in I
 In practice, this means you can write a new IceRPC client for an existing Ice server, reimplement an existing Ice server
 using IceRPC, or use IceRPC to create new services for your Ice clients.
 
-If you start from an existing Ice client or server, the first step is convert your Slice definitions to the new Slice
-syntax. The converted Slice files must specify the Slice1 encoding:
+If you start from an existing Ice client or server, the first step is to convert your Slice definitions to the new Slice
+syntax. The converted Slice files must specify the `Slice1` encoding:
 ```slice
 encoding = Slice1 // required for interop with Ice
 ...
 
 ```
 
-Make sure to use the `.slice` extension for these new files.
+Make sure to use the `.slice` extension for these new Slice files.
 
 If you use IceRPC to create new services for your Ice client, you should start by defining your Slice interfaces with
-the new .slice syntax (and `encoding = Slice1`), before converting these definitions to the .ice syntax. The new syntax
-allows you to mark a proxy or class parameter/field as nullable or non-nullable; with the .ice syntax, you can't make
+the new .slice syntax (and `encoding = Slice1`) before converting these definitions to the .ice syntax. The new syntax
+allows you to mark a proxy or class parameter/field as optional or non-optional; with the .ice syntax, you can't make
 this distinction.
 
 ## Limitations
