@@ -29,7 +29,7 @@ dotnet new icerpc-server -o MyServer
 
 This command creates a new IceRPC server application in directory `MyServer`.
 
-![MyServer in Visual Studio Code](../../images/MyServer.png)
+![MyServer in Visual Studio Code](/images/MyServer.png)
 
 Let's examine each file:
 
@@ -171,7 +171,7 @@ dotnet new icerpc-client -o MyClient
 
 This command creates a new IceRPC client application in directory `MyClient`.
 
-![MyClient in Visual Studio Code](../../images/MyClient.png)
+![MyClient in Visual Studio Code](/images/MyClient.png)
 
 Let's examine each file:
 
