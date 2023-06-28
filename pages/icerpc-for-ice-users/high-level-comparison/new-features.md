@@ -87,7 +87,7 @@ interface ChessPiece
 {
     Position currentPosition();
 
-    void move(ChessCoordinate newPosition)
+    void move(Position newPosition)
         throws ChessException;
 }
 ```
@@ -97,7 +97,7 @@ interface ChessPiece {
     // It's ok to use a type before defining it.
     currentPosition() -> Position
 
-    move(newPosition: ChessCoordinate)
+    move(newPosition: Position)
         throws ChessException
 }
 
