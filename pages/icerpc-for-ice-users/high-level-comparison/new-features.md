@@ -69,7 +69,7 @@ forward declarations. These new Slice files use the `.slice` extension.
 The Slice syntax also changed significantly. Ice's `.ice` syntax uses a C-like syntax for parameters and fields, while
 IceRPC's `.slice` syntax is more like Rust and Swift:
 
-{% side-by-side %}
+{% side-by-side alignment="top" %}
 
 ```slice {% title="Slice definitions (.ice syntax)" %}
 enum File { A, B, C, D, E, F, G, H }
