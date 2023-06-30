@@ -148,7 +148,7 @@ within the `callout` tag will be placed inside the callout box.
 
 This is an info callout
 
-{% callout /%}
+{% /callout %}
 ```
 
 ##### Critical callout
@@ -159,7 +159,7 @@ This is an info callout
 
 This is a critical callout
 
-{% callout /%}
+{% /callout %}
 ```
 
 ---
