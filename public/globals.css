@@ -23,7 +23,7 @@
   }
 
  main article img {
-    @apply w-full mx-auto object-contain my-6 rounded-xl;
+    @apply w-full mx-auto object-contain my-6;
   }
 
   li {
