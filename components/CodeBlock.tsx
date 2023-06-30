@@ -11,6 +11,7 @@ import { useEncoding } from 'context/state';
 import { Encoding } from 'types';
 import { CopyButton } from './CopyButton';
 import { useTheme } from 'next-themes';
+import { Theme } from 'types';
 
 const MermaidDiagram = dynamic(() => import('components/Tags/Mermaid'), {
   ssr: false
@@ -79,7 +80,7 @@ export const CodeBlock = ({
   const [theme, setTheme] = useState<any>(themes.jettwaveDark);
 
   useEffect(() => {
-    if (resolvedTheme === 'dark') {
+    if (resolvedTheme === Theme.Dark) {
       setTheme(themes.vsDark);
     } else {
       setTheme(themes.jettwaveDark);

@@ -96,7 +96,7 @@ const Logo = () => {
     <Link href="https://web.testing.zeroc.com/icerpc">
       <div className="mb-3 ml-[1.4rem] mr-0 mt-5 flex items-center justify-start gap-1 pb-4 lg:ml-[3rem]">
         <Image
-          src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
+          src={resolvedTheme === Theme.Dark ? darkIcon : lightIcon}
           height={25}
           alt="ZeroC Logo"
           className="mt-2"
