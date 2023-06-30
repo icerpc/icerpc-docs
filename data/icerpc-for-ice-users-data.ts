@@ -8,19 +8,19 @@ export const iceRpcForIceUsersData: SideBarSourceType[] = [
     path: `${ICERPC_FOR_ICE}`
   },
   {
-    title: 'Get started',
+    title: 'High-level comparison',
     links: [
       {
-        title: 'High-level comparison',
-        path: `${ICERPC_FOR_ICE}/get-started/high-level-comparison`
+        title: 'Ice reinvented?',
+        path: `${ICERPC_FOR_ICE}/high-level-comparison/ice-reinvented`
       },
       {
         title: 'New features',
-        path: `${ICERPC_FOR_ICE}/get-started/new-features`
+        path: `${ICERPC_FOR_ICE}/high-level-comparison/new-features`
       },
       {
         title: 'Using IceRPC with Ice',
-        path: `${ICERPC_FOR_ICE}/get-started/using-icerpc-with-ice`
+        path: `${ICERPC_FOR_ICE}/high-level-comparison/using-icerpc-with-ice`
       }
     ]
   },

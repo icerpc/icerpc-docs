@@ -1,8 +1,8 @@
 ---
-title: A modular RPC framework for the QUIC era
+title: A modular RPC framework built for QUIC
 ---
 
-## Built for QUIC
+## RPCs over QUIC
 
 Ever since the first RPC framework was created by Sun Microsystems in the 1980s, the primary transport protocol for RPCs
 has been TCP.
@@ -20,7 +20,7 @@ a RPC maps to a QUIC stream, with the request flowing in one direction and the r
 over time QUIC will become the dominant transport protocol for RPC frameworks.
 
 IceRPC is a new RPC framework built from the ground-up to take full advantage of QUIC, with support for bidirectional
-streaming. It is the very first RPC framework of the QUIC era:
+streaming. It is the first RPC framework of the QUIC era:
 
 ```mermaid
 timeline

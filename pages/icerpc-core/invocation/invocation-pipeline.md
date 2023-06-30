@@ -28,9 +28,9 @@ public interface IInvoker
 }
 ```
 
-Both `ClientConnection` (C# LINK) and `ConnectionCache`(C# LINK) implement this interface. This allows you to make an
-invocation by creating a client connection or a connection cache and then calling `InvokeAsync` on the resulting
-instance:
+Both [ClientConnection][client-connection] and [ConnectionCache][connection-cache] implement this interface. This
+allows you to make an invocation by creating a client connection or a connection cache and then calling
+[InvokeAsync][invoke-async] on the resulting instance:
 
 ```csharp
 await using var clientConnection = new ClientConnection(new Uri("icerpc://hello.zeroc.com"));
@@ -51,15 +51,15 @@ invoker used to make an invocation can be the head of a invoker chain or tree, k
 
 There are 3 common types of invokers:
 
- - **Leaf invoker**\
+- **Leaf invoker**\
    It's a leaf in the invocation pipeline that implements `invoke` without the help of another invoker. This leaf
    invoker is typically a client connection or connection cache.
 
- - **Interceptor**\
+- **Interceptor**\
     An [interceptor](interceptor) intercepts an invocation and forwards it to the "next" interceptor. IceRPC provides
     several built-it interceptors for logging, compression and more.
 
- - **Pipeline**\
+- **Pipeline**\
     A [pipeline](pipeline) forwards a request through interceptors and a leaf invoker registered with this pipeline.
 
 ```mermaid
@@ -71,3 +71,7 @@ flowchart LR
     i2 -- request --> ti["ClientConnection\n or ConnectionCache"] -- request --> connection
     connection -- response --> ti -- response --> i2 -- response --> i1 -- response --> app
 ```
+
+[client-connection]: csharp:IceRpc.ClientConnection
+[connection-cache]: csharp:IceRpc.ConnectionCache
+[invoke-async]: csharp:IceRpc.IInvoker#IceRpc_IInvoker_InvokeAsync_IceRpc_OutgoingRequest_System_Threading_CancellationToken_

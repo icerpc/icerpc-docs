@@ -21,20 +21,26 @@ property is named Endpoints. On the other hand, an IceRPC server has only one se
 more granular building block: if you want to listen on multiple server addresses with IceRPC, you create multiple
 servers, each with its own server address, and all these servers can share the same dispatcher.
 
-{% side-by-side %}
+{% side-by-side alignment="top" %}
 
 ```csharp {% title="Simple server with Ice for C#" %}
-using Communicator communicator = Ice.Util.initialize(ref args);
+using Communicator communicator =
+    Ice.Util.initialize(ref args);
 
-ObjectAdapter adapter = communicator.createObjectAdapterWithEndpoints(
-    "Hello",
-    "default -h * -p 10000");
+Console.CancelKeyPress +=
+    (sender, eventArgs) => communicator.shutdown();
 
-adapter.add(new HelloI(), Ice.Util.stringToIdentity("hello"));
+ObjectAdapter adapter =
+    communicator.createObjectAdapterWithEndpoints(
+        "Hello",
+        "default -h * -p 10000");
+
+adapter.add(
+    new HelloI(),
+    Ice.Util.stringToIdentity("hello"));
 
 adapter.activate();
-
-cancelKeyPressed.Wait(); // wait for a ManualResetEventSlim
+communicator.waitForShutdown();
 ```
 
 ```csharp {% title="Similar server with IceRPC for C#" %}
@@ -44,7 +50,7 @@ await using var server = new Server(
 
 server.Listen(); // similar to "activate"
 
-await CancelKeyPressed; // await a Task
+await CancelKeyPressed;
 await server.ShutdownAsync();
 ```
 

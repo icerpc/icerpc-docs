@@ -97,70 +97,13 @@ The following attributes are specific to the C# mapping. They all start with the
 
 | Attribute                                     | Applies to                         | Description                                                      |
 |-----------------------------------------------|------------------------------------|------------------------------------------------------------------|
-| [`cs::attribute`](#cs::attribute-attribute)   | Enum types, enumerators and fields | Add the specified C# attribute to the mapped C# enum, enum member or field. |
+| [`cs::attribute`][cs-attribute-attribute]     | Enum types, enumerators and fields | Add the specified C# attribute to the mapped C# enum, enum member or field. |
 | [`cs::encodeReturn`][cs-encoded-return]       | Operations                         | Return an already encoded return value (server-side only).       |
 | [`cs::identifier`](#cs::identifier-attribute) | Interfaces, operations, parameters, constructed types, fields, enumerators | Change the name of the mapped C# identifier. |
 | [`cs::internal`](#cs::internal-attribute)     | Interfaces, constructed types      | Map to an internal C# type instead of a public C# type. |
 | [`cs::namespace`][cs-namespace]               | Modules                            | Change the name of the mapped C# namespace. |
 | [`cs::readonly`][cs-readonly]                 | Structs and struct fields          | Adds `readonly` to the mapped C# struct or field. |
 | `cs::type`                    | [Custom types][custom-type], [Sequences][sequence-type] and [dictionaries][dictionary-type] | Specify the mapped C# type.                                      |
-### cs::attribute attribute
-
-The `cs::attribute` accepts a string, the attribute you want to generate. For example:
-
-{% slice1 %}
-{% side-by-side alignment="top" %}
-```slice
-[cs::attribute("Flags")]
-enum MultiHue {
-    None = 0,
-    Black = 1,
-    Red = 2,
-    Green = 4,
-    Blue = 8
-}
-```
-
-```csharp
-[Flags]
-public enum MultiHue : int
-{
-    None = 0,
-    Black = 1,
-    Red = 2,
-    Green = 4,
-    Blue = 8,
-}
-```
-{% /side-by-side %}
-{% /slice1 %}
-
-{% slice2 %}
-{% side-by-side alignment="top" %}
-```slice
-[cs::attribute("Flags")]
-enum MultiHue : uint8 {
-    None = 0,
-    Black = 1,
-    Red = 2,
-    Green = 4,
-    Blue = 8
-}
-```
-
-```csharp
-[Flags]
-public enum MultiHue : byte
-{
-    None = 0,
-    Black = 1,
-    Red = 2,
-    Green = 4,
-    Blue = 8,
-}
-```
-{% /side-by-side %}
-{% /slice2 %}
 
 ### cs::identifier attribute
 
@@ -199,11 +142,12 @@ public partial interface IRemoteEnumeratorService
 
 The `cs::internal` attribute maps a Slice type to one or more internal C# types. It does not accept any argument.
 
-[custom-type]: custom-types#c#-mapping
+[compress]: operation#compress-attribute
+[cs-attribute-attribute]: enum-types#cs::attribute-attribute
 [cs-encoded-return]: operation#cs::encodedreturn-attribute
 [cs-namespace]: module#c#-mapping
 [cs-readonly]: struct-types#cs::readonly-attribute
-[compress]: operation#compress-attribute
+[custom-type]: custom-types#c#-mapping
 [dictionary-type]: dictionary-types#cs::type-attribute
 [oneway]: operation#oneway-attribute
 [sequence-type]: sequence-types#cs::type-attribute

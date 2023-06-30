@@ -4,14 +4,40 @@ description: A better IDL
 showToc: false
 ---
 
-If you're new to Slice your first step should be to [understand the problem that Slice solves](/slice/basics/why-use-slice). If you're already familiar with Slice and are looking for a specific topic, you can use the navigation on the left to find what you need.
-
-### Quick Links
+Slice is IceRPC's preferred [Interface Definition Language][idl] (IDL).
 
 {% grid %}
 
-{% mini-card title="Why use Slice?" description="Understand the problem that Slice solves" href="/slice/basics/why-use-slice" /%}
-{% mini-card title="Source Files" description="Learn how Slice files are structured" href="/slice/language-reference/source-files" /%}
-{% mini-card title="Examples" description="Discover the Slice syntax through a few examples" href="/slice/basics/examples" /%}
+{% mini-card
+   title="Why use Slice?"
+   description="Understand the problem that Slice solves."
+   href="/slice/basics/why-use-slice" /%}
+
+{% mini-card
+   title="Contract-first model"
+   description="Learn how to create an application using IceRPC and Slice."
+   href="/slice/basics/contract-filter-model" /%}
+
+{% mini-card
+   title="Interface"
+   description="Learn how to define interfaces in Slice."
+   href="/slice/language-guide/interface" /%}
+
+{% mini-card
+   title="Struct"
+   description="Learn how to define and use structs in Slice."
+   href="/slice/language-guide/struct-types" /%}
+
+{% mini-card
+   title="Slice encoding"
+   description="Learn how Slice encodes types into byte streams."
+   href="/slice/encoding-reference/main-features" /%}
+
+{% mini-card
+   title="Examples"
+   description="Discover the Slice syntax through a few examples"
+   href="/slice/basics/examples" /%}
 
 {% /grid %}
+
+[idl]: https://en.wikipedia.org/wiki/Interface_description_language
