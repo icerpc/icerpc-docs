@@ -3,6 +3,7 @@
 import mermaidAPI from 'mermaid';
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
+import { Theme } from 'types';
 
 type Props = {
   value: string;
@@ -10,7 +11,7 @@ type Props = {
 
 const MermaidDiagram = ({ value }: Props) => {
   const { resolvedTheme } = useTheme();
-  const theme = resolvedTheme === 'dark' ? 'dark' : 'default';
+  const mermaidTheme = resolvedTheme === Theme.Dark ? 'dark' : 'default';
 
   const [svg, setSvg] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -27,7 +28,7 @@ const MermaidDiagram = ({ value }: Props) => {
         const diagramId = generateDiagramId();
         await mermaidAPI.initialize({
           startOnLoad: false,
-          theme: theme
+          theme: mermaidTheme
         });
         const renderResult = await mermaidAPI.render(diagramId, value);
         setSvg(renderResult.svg);
@@ -40,7 +41,7 @@ const MermaidDiagram = ({ value }: Props) => {
     };
 
     renderDiagram();
-  }, [value, theme]);
+  }, [value, mermaidTheme]);
 
   // TODO: Add loading indicator
   if (isLoading) return <div>Loading diagram...</div>;

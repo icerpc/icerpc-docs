@@ -13,6 +13,7 @@ import { MobileMenu } from './MobileMenu';
 import { MobileSideNav } from '../SideNav';
 import { ThemeToggle } from 'components/ThemeToggle';
 import { useMounted } from 'context/state';
+import { Theme } from 'types';
 
 export const navigationItems = [
   {
