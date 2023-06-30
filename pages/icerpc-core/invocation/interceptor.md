@@ -3,12 +3,11 @@ title: Interceptor
 description: Learn how to write an interceptor and how to install an interceptor in your invocation pipeline.
 ---
 
-## Definition
+## Intercepting outgoing requests
 
-An interceptor is nothing more than an [invoker](../invocation-pipeline#the-invoker-abstraction) that holds another
-invoker ("next") and calls `invoke` on this next invoker as part of the implementation of its own `invoke` method. This
-next invoker can be a `ClientConnection`, a `ConnectionCache`, another interceptor, or some other kind of invoker, it doesn't
-matter.
+An interceptor is an [invoker](../invocation-pipeline#the-invoker-abstraction) that holds another invoker ("next") and
+calls `invoke` on this next invoker as part of the implementation of its own `invoke` method. This next invoker can be
+ a `ClientConnection`, a `ConnectionCache`, another interceptor, or some other kind of invoker, it doesn't matter.
 
 An interceptor can include logic before calling `invoke` on the next invoker (before the request is sent) and after
 calling `invoke` on the next invoker (after it receives the response). An interceptor can also short-circuit the
@@ -48,7 +47,7 @@ You need to specify the last invoker of the pipeline with `Into`. It's usually a
 cache, but it can also be another pipeline since `Pipeline` is itself an invoker.
 
 When you make an invocation on a pipeline, the request goes through this chain of invokers. On the way back, the
-incoming response goes through the same chain in reverse order.
+incoming response goes through the same chain of invokers in reverse order.
 
 ```mermaid
 ---
@@ -67,9 +66,9 @@ connection.
 
 ## Installing an interceptor with Dependency Injection
 
-If you use Microsoft's Dependency Injection container, you'll want to use an invoker builder instead of `Pipeline` to
-create your invocation pipeline. The `Use{Name}` extension methods for `IInvokerBuilder` retrieve dependencies
-automatically from the DI container.
+If you use Microsoft's Dependency Injection container, you should use an invoker builder instead of `Pipeline` to
+create your invocation pipeline. The `Use{Name}` extension methods for [`IInvokerBuilder`][invoker-builder-interface]
+retrieve dependencies automatically from the DI container.
 
 For example:
 
@@ -85,3 +84,5 @@ several different pipeline implementations, such as `Pipeline`, the implementati
 `AddIceRpcInvoker`, or even your own custom pipeline class. Each pipeline implementation just needs its own set of
 `Use{Name}` extension methods.
 {% /callout %}
+
+[invoker-builder-interface]: csharp:IceRpc.Extensions.DependencyInjection.IInvokerBuilder

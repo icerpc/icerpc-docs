@@ -21,7 +21,7 @@ For example:
 ```csharp
 // Always uses TLS.
 await using var quicConnection = new ClientConnection(
-    "icerpc://greeter.zeroc.com",
+    "icerpc://hello.zeroc.com",
     multiplexedClientTransport: new QuicClientTransport());
 ```
 
