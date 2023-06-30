@@ -5,8 +5,7 @@ description: Learn how a client connects to a server with icerpc.
 
 ## Connection establishment steps
 
-The icerpc connection establishment is the same for a client creating a connection and for a server accepting a
-connection, except for the very first steps:
+An icerpc client connects to an icerpc server as follows:
 
 1. The client opens a multiplexed connection to the server.
 

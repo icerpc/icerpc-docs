@@ -47,7 +47,7 @@ want to compress the payloads of your requests, add a telemetry field to each re
 simply add logging.
 
 An invoker implementation can call `invoke` on another invoker, which itself calls `invoke` on another invoker, etc.;
-the invoker used to make an invocation can be the head of an invoker chain or tree, known as a "invocation pipeline".
+the invoker used to make an invocation can be the head of an invoker chain or tree, known as an "invocation pipeline".
 
 There are 3 common types of invokers:
 
