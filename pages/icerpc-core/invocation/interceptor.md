@@ -40,7 +40,7 @@ then calling `Use{Name}` extension methods to install interceptors on this pipel
 For example:
 
 ```csharp
-Pipeline pipeline = new Pipeline().UseLogger(loggerFactory).UseCompress().Into(clientConnection);
+Pipeline pipeline = new Pipeline().UseLogger(loggerFactory).UseCompressor().Into(clientConnection);
 ```
 
 You need to specify the last invoker of the pipeline with `Into`. It's usually a client connection or a connection
@@ -51,18 +51,18 @@ incoming response goes through the same chain of invokers in reverse order.
 
 ```mermaid
 ---
-title: An invocation pipeline with Logger, Compress and ClientConnection
+title: An invocation pipeline with Logger, Compressor and ClientConnection
 ---
 flowchart LR
-    app([application code]) -- request --> i1[Logger] -- request --> i2[Compress]
+    app([application code]) -- request --> i1[Logger] -- request --> i2[Compressor]
     i2 -- request --> ti["client connection"] -- request --> connection
     connection -- response --> ti -- response --> i2 -- response --> i1 -- response --> app
 ```
 
 The order in which you install these interceptors is often important. The first interceptor you install is the first
 interceptor to execute. With the pipeline we created above, the logger interceptor executes first, then calls
-`InvokeAsync` on the compress interceptor, and then finally the compress interceptor calls `InvokeAsync` on the client
-connection.
+`InvokeAsync` on the compressor interceptor, and then finally the compressor interceptor calls `InvokeAsync` on the
+client connection.
 
 ## Installing an interceptor with Dependency Injection
 
@@ -73,7 +73,7 @@ retrieve dependencies automatically from the DI container.
 For example:
 
 ```csharp
-services.AddIceRpcInvoker(builder => builder.UseLogger().UseCompress().Into<ClientConnection>())
+services.AddIceRpcInvoker(builder => builder.UseLogger().UseCompressor().Into<ClientConnection>())
 ```
 
 This is equivalent to our earlier example except `UseLogger` retrieves the logger factory from the DI container.

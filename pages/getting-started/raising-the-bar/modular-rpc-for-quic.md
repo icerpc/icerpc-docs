@@ -96,7 +96,7 @@ metrics, OpenTelemetry integration, and more. You can also easily create and ins
 to customize these pipelines.
 
 Since all this functionality is optional and not hard-coded in IceRPC, you can choose exactly the behavior you want. For
-example, you don't need the Compress interceptor if you're not compressing anything: if you don't install this
+example, you don't need the Compressor interceptor if you're not compressing anything: if you don't install this
 interceptor, there is no compression code at all. Less code means simpler logic, fewer dependencies, faster execution
 and fewer bugs.
 

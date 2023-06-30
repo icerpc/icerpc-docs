@@ -36,9 +36,9 @@ unchecked enum RequestFieldKey : varuint62 {
 }
 ```
 
-For example, when the compress interceptor compresses the payload of an outgoing request, it sets the request field
-[CompressionFormat][compression-format]. This tells the compress middleware on the other side of the connection "this
-payload is compressed with brotli"; the compress middleware can then decompress this (incoming) request payload.
+For example, when the compressor interceptor compresses the payload of an outgoing request, it sets the request field
+[CompressionFormat][compression-format]. This tells the compressor middleware on the other side of the connection "this
+payload is compressed with brotli"; the compressor middleware can then decompress this (incoming) request payload.
 
 ## Request payload and payload continuation
 
@@ -72,7 +72,7 @@ keep retrying with the same server address. These invokers get and set [request 
 communicate with each other.
 
 You can also use these features to communicate with the invocation pipeline. For example, you can set the feature
-[ICompressFeature][compress-feature] to ask the Compress interceptor (if installed) to compress the payload of your
+[ICompressFeature][compress-feature] to ask the compressor interceptor (if installed) to compress the payload of your
 request:
 
 ```csharp
@@ -82,7 +82,7 @@ using var request = new OutgoingRequest(serviceAddress)
     Features = new FeatureCollection().With<ICompressFeature>(CompressFeature.Compress)
 };
 
-// Hopefully invoker is an invocation pipeline with a Compress interceptor.
+// Hopefully invoker is an invocation pipeline with a compressor interceptor.
 IncomingResponse response = await invoker.InvokeAsync(request);
 ```
 

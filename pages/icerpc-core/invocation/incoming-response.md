@@ -50,9 +50,9 @@ unchecked enum ResponseFieldKey : varuint62 {
 }
 ```
 
-For example, when the compress middleware compresses the payload of an outgoing response, it sets the response field
-`CompressionFormat`. This tells the compress interceptor on the other side of the connection "this payload is compressed
-with brotli"; the compress interceptor can then decompress this (incoming) response payload.
+For example, when the compressor middleware compresses the payload of an outgoing response, it sets the response field
+`CompressionFormat`. This tells the compressor interceptor on the other side of the connection "this payload is
+compressed with brotli"; the compressor interceptor can then decompress this (incoming) response payload.
 
 ## Response payload
 

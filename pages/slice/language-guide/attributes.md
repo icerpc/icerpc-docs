@@ -46,7 +46,7 @@ The following attributes are available in all language mappings:
 | Attribute                             | Applies to               | Description                                                                             |
 |---------------------------------------|--------------------------|-----------------------------------------------------------------------------------------|
 | [`allow`](#allow-attribute)           | Interfaces, operations, parameters, constructed types, fields, enumerators | Suppress warnings during compilation. |
-| [`compress`][compress]                | Operations               | Request compression from the local compress interceptor or middleware.                  |
+| [`compress`][compress]                | Operations               | Request compression from the local compressor interceptor or middleware.                |
 | [`deprecated`](#deprecated-attribute) | Interfaces, operations, constructed types, fields, enumerators | Mark as deprecated.                               |
 | [`oneway`][oneway]                    | Operations               | Create one-way requests for this operation (client-side only).                          |
 | [`slicedFormat`][sliced-format]       | Operations (Slice1 only) | Encode the operation arguments or return value in Sliced format.                        |

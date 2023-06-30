@@ -7,8 +7,8 @@ description: Understand how to accept requests and return responses.
 
 The process of accepting/fulfilling a request and returning a response is called a dispatch.
 
-Dispatches are typically spawned from server connections: a server connection receives a request, dispatches this
-request and then sends back the response provided by the dispatch.
+Dispatches are typically created by server connections: a server connection receives a request, dispatches this request
+and then sends back the response provided by the dispatch.
 
 Nevertheless, since client and server [connections][connections] have the same capabilities, client connections can also
 dispatch requests.
@@ -19,10 +19,10 @@ When a connection receives a request, it dispatches this request using its confi
 abstraction with a single `dispatch` method that accepts an incoming request and returns an outgoing response. It's the
 server-side counterpart to the [Invoker](../invocation/invocation-pipeline#the-invoker-abstraction) abstraction.
 
-An important difference is you need to implement this Dispatcher abstraction to fulfill the requests and produce the
-responses. The Invoker abstraction is implemented by IceRPC's connections.
+An important difference between Invoker and Dispatcher is you need to implement this Dispatcher abstraction to fulfill
+the requests and produce the responses. The Invoker abstraction is implemented by IceRPC's connections.
 
-In C#, this dispatcher abstraction is the `IDispatcher` interface:
+In C#, this dispatcher abstraction is the [`IDispatcher`][dispatcher-interface] interface:
 
 ```csharp
 namespace IceRpc;
@@ -55,29 +55,31 @@ var clientConnectionOptions = new ClientConnectionOptions
     ServerAddress = new Uri("icerpc://hello.zeroc.com")
 };
 
-await using var clientConnection = new ClientConnection(clientConnectionOptions);
+await using var connection = new ClientConnection(clientConnectionOptions);
 ```
 
 ## Dispatch processing
 
-The dispatcher abstraction offers a great deal of flexibility. A Slice service (LINK) is a dispatcher, so it's trivial
-to configure a server to dispatch all the requests it receives to the same Slice service.
+The dispatcher abstraction offers a great deal of flexibility. A [Slice service][slice-service] is a dispatcher, so it's
+trivial to configure a server to dispatch all the requests it receives to the same Slice service.
 
-A dispatcher implementation can dispatch to another dispatcher, which itself dispatches to another dispatcher, etc.; the
-dispatcher you configure on a server can be the head of a dispatcher chain or tree, known as a "dispatch pipeline".
+A dispatcher implementation can dispatch to another dispatcher, which itself dispatches to another dispatcher, and so
+on; the dispatcher you configure on a server can be the head of a dispatcher chain or tree, known as a
+"dispatch pipeline".
 
 There are 3 common types of dispatchers:
 
 - **Leaf dispatcher**\
   It's a leaf in the dispatch pipeline that implements `dispatch` without the help of another dispatcher. For example,
-  a Slice service (LINK).
+  a Slice service.
 
 - **Middleware**\
    A [middleware](middleware) intercepts a dispatch and forwards it to the "next" dispatcher. IceRPC provides several
    built-it middleware for logging, compression and more.
 
 - **Router**\
-   A [router](router) routes a request to a dispatcher registered with this router based on the request's path.
+   A [router](router) routes a request to a dispatcher registered with this router based on the request's path. It can
+   also host middleware.
 
 ```mermaid
 ---
@@ -89,3 +91,4 @@ flowchart LR
 ```
 
 [connections]: ../connection/how-to-create-a-connection
+[slice-service]: ../../slice/language-guide/interface
