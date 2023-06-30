@@ -11,8 +11,8 @@ export const rpcCoreData: SideBarSourceType[] = [
     title: 'Connection',
     links: [
       {
-        title: 'Client vs server connections',
-        path: `${RPC_CORE_BASE_URL}/connection/client-vs-server-connections`
+        title: 'How to create a connection',
+        path: `${RPC_CORE_BASE_URL}/connection/how-to-create-a-connection`
       },
       {
         title: 'Server address',

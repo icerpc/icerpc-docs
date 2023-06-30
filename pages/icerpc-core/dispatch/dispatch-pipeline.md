@@ -10,8 +10,8 @@ The process of accepting/fulfilling a request and returning a response is called
 Dispatches are typically spawned from server connections: a server connection receives a request, dispatches this
 request and then sends back the response provided by the dispatch.
 
-Nevertheless, since client and server [connections](../connection/client-vs-server-connections) have the same
-capabilities, client connections can also dispatch requests.
+Nevertheless, since client and server [connections][connections] have the same capabilities, client connections can also
+dispatch requests.
 
 ## The Dispatcher abstraction
 
@@ -87,3 +87,5 @@ flowchart LR
     connection -- request --> middleware -- request --> service[Slice service]
     service -- response --> middleware -- response --> connection
 ```
+
+[connections]: ../connection/how-to-create-a-connection

@@ -5,9 +5,8 @@ description: Understand how to create and use protocol connections.
 
 ## The protocol connection abstraction
 
-A server, a client connection and a connection cache all manage
-[connections](../connection/client-vs-server-connections). These somewhat low-level connections are represented by
-the protocol connection abstraction. A protocol connection:
+A server, a client connection and a connection cache all manage [connections][connections]. These somewhat low-level
+connections are represented by the protocol connection abstraction. A protocol connection:
 
 - holds a transport connection such as a QUIC connection or a tcp connection
 - implements a RPC protocol layer over this transport connection
@@ -45,3 +44,5 @@ This allows you to implement your own custom version of `ClientConnection` or `C
 
 There is currently no public API to create server protocol connections; as a result, you can't create your own custom
 version of Server.
+
+[connections]: ../connection/how-to-create-a-connection

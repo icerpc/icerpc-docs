@@ -1,6 +1,6 @@
 ---
-title: Client vs server connections
-description: Learn how to create and accept connections in IceRPC.
+title: How to create a connection
+description: Learn how to create and accept connections with IceRPC.
 ---
 
 ## What are connections for?
@@ -19,8 +19,8 @@ requests to your services.
 
 ## Creating a client connection
 
-In C#, you create a client connection with the `ClientConnection` class or with the `ConnectionCache` class. For
-example:
+In C#, you create a client connection with the [`ClientConnection`][client-connection] class or with the
+[`ConnectionCache`][connection-cache] class. For example:
 
 ```csharp
 using IceRpc;
@@ -47,10 +47,10 @@ different server. The connection cache helps locate and reuse these connections.
 
 ## Creating a server
 
-On the server-side, you accept server connections with an instance of the Server class. This server listens for and
+On the server-side, you accept server connections with an instance of the `Server` class. This server listens for and
 accepts new connections on its configured [server address](server-address#server-configuration).
 
-In C#, this is again a two-step process, where you first construct the server and later call `Listen`:
+In C#, this is again a two-step process, where you first construct the [`Server`][server] and later call `Listen`:
 
 ```csharp
 using IceRpc;
@@ -64,3 +64,7 @@ server.Listen();
 
 A server accepts connections and remembers which connections it accepted. This allows the server to shut down these
 connections when you shut down the server.
+
+[client-connection]: csharp:IceRpc.ClientConnection
+[connection-cache]: csharp:IceRpc.ConnectionCache
+[server]: csharp:IceRpc.Server

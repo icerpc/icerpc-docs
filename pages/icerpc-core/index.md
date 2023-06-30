@@ -10,9 +10,9 @@ requests and responses carry byte streams—the encoding of these byte streams i
 {% grid %}
 
 {% mini-card
-   title="Connection"
+   title="How to create a connection"
    description="Learn how to create and accept connections with IceRPC."
-   href="/icerpc-core/connection/client-vs-server-connections" /%}
+   href="/icerpc-core/connection/how-to-create-a-connection" /%}
 
 {% mini-card
    title="Invocation"
