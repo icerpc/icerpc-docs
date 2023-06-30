@@ -22,8 +22,8 @@
     @apply mb-4 pl-2 dark:text-[rgba(255,255,255,0.8)];
   }
 
- main article img {
-    @apply w-full mx-auto object-contain my-6;
+  main article img {
+    @apply mx-auto my-6 w-full object-contain;
   }
 
   li {
