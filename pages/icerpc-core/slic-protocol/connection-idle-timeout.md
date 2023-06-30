@@ -25,7 +25,7 @@ frames with the same opaque payload is a protocol error.
 The [PING][ping] frame can be used for different purposes. It can also be used to measure the round-trip time (RTT)
 instead. The opaque payload allows to identify the different [PING][ping] frames.
 
-{% callout /%}
+{% /callout %}
 
 [connection-parameters]: connection-establishment#connection-establishment-parameters
 [ping]: protocol-frames#ping-frame

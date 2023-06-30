@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Introduction
 description: The Slic multiplexed stream protocol
 show_toc: false
 ---

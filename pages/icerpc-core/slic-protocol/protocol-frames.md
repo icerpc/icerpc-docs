@@ -79,7 +79,7 @@ The parameters are used to configure the connection.
 The Slic version is not part of the Initialize frame body because an upcoming Slic version might update the definition
 of the Initialize frame body.
 
-{% callout /%}
+{% /callout %}
 
 ## InitializeAck frame
 

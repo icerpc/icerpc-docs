@@ -3,7 +3,7 @@ title: Connection establishment
 description: Understand how a connection is established
 ---
 
-## Features provided by connection establishment
+## Introduction
 
 Connection establishment serves several purposes:
 
