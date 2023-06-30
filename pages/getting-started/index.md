@@ -7,7 +7,9 @@ Remote procedure call (RPC) is a fundamental paradigm for networked applications
 over a network connection, the server processes this request and then sends back a response to the client over the same
 connection.
 
+{% dark-mode %}
 ![RPC-diagram](diagrams/rpc.svg)
+{% /dark-mode %}
 
 HTTP methods (GET, POST, PUT...) are all RPCs. A DNS resolution is a RPC. RPCs are literally everywhere!
 
