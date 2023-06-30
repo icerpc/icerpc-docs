@@ -9,8 +9,8 @@ together.
 {% grid %}
 
 {% mini-card
-   title="Ice reinvented?"
-   description="Understand why IceRPC is not a new version of Ice."
+   title="Ice reinvented"
+   description="Is IceRPC is a new version of Ice?"
    href="/icerpc-for-ice-users/high-level-comparison/ice-reinvented" /%}
 
 {% mini-card
