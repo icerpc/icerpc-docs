@@ -87,5 +87,5 @@ await using var secureColocConnection = new ClientConnection(
 ```
 
 [ssl-client-authentication-options]: https://learn.microsoft.com/en-us/dotnet/api/system.net.security.sslclientauthenticationoptions
-[tcp-client-transport]: csharp:IceRpc.Transports.TcpClientTransport
-[tcp-server-transport]: csharp:IceRpc.Transports.TcpServerTransport
+[tcp-client-transport]: csharp:IceRpc.Transports.Tcp.TcpClientTransport
+[tcp-server-transport]: csharp:IceRpc.Transports.Tcp.TcpServerTransport
