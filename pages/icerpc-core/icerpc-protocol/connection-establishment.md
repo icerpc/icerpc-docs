@@ -8,11 +8,13 @@ description: Learn how a client connects to a server with icerpc.
 The icerpc connection establishment is the same for a client creating a connection and for a server accepting a
 connection, except for the very first step:
 
-1. (client only) Establish a multiplexed connection to the server.
+1. (client only) Create a multiplexed connection to the server.
 
     (server only) Accept a multiplexed connection from a client.
 
-2. Open a unidirectional stream to the peer: the outbound control stream.
+2. Connect the multiplexed connection. This connect operation is transport-dependent and can be no-op.
+
+2. Open a unidirectional stream to the peer in the connected multiplexed connection: the outbound control stream.
 
 3. Accept a unidirectional stream from the peer: the inbound control stream.
 
@@ -24,6 +26,21 @@ The client and server typically send this Settings frame to each other at about 
 Once the client or the server receives the Settings frame from the peer, it considers the connection to be established
 and the local application code can start sending requests (creating streams) and dispatching requests (accepting
 streams) on this connection.
+
+```mermaid
+sequenceDiagram
+    Client->>Server: Create multiplexed connection
+    par
+        Client->>Server: Connect multiplexed connection
+    and
+        Server->>Client: Connect multiplexed connection
+    end
+    par
+        Client->>Server: Send Settings frame over control stream
+    and
+        Server->>Client: Send Settings frame over control stream
+    end
+```
 
 ## Settings frame
 
