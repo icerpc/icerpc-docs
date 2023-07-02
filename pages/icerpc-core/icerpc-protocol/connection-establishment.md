@@ -30,11 +30,12 @@ streams) on this connection.
 ```mermaid
 sequenceDiagram
     Client->>Server: Open multiplexed connection
+    activate Server
     Note over Client,Server: Connect multiplexed connection
     par
-        Client->>Server: Settings frame
+        Client-)Server: Settings frame
     and
-        Server->>Client: Settings frame
+        Server-)Client: Settings frame
     end
 ```
 
