@@ -11,7 +11,7 @@ export const iceRpcForIceUsersData: SideBarSourceType[] = [
     title: 'High-level comparison',
     links: [
       {
-        title: 'Ice reinvented?',
+        title: 'Ice reinvented',
         path: `${ICERPC_FOR_ICE}/high-level-comparison/ice-reinvented`
       },
       {

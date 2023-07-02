@@ -10,7 +10,6 @@ together.
 
 {% mini-card
    title="Ice reinvented"
-   description="Is IceRPC is a new version of Ice?"
    href="/icerpc-for-ice-users/high-level-comparison/ice-reinvented" /%}
 
 {% mini-card
@@ -34,8 +33,8 @@ together.
    href="/icerpc-for-ice-users/rpc-core/objected-adapter" /%}
 
 {% mini-card
-   title="Converting .ice into .slice"
-   description="Learn how to convert .ice definitions into .slice definitions."
+   title="Converting Slice definitions to the new Slice syntax"
+   description="Learn how to convert Slice in the .ice syntax to the .slice syntax."
    href="/icerpc-for-ice-users/slice/converting-ice-into-slice" /%}
 
 {% /grid %}

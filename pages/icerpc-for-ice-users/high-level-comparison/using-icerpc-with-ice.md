@@ -23,15 +23,31 @@ Make sure to use the `.slice` extension for these new Slice files.
 
 If you use IceRPC to create new services for your Ice client, you should start by defining your Slice interfaces with
 the new .slice syntax (and `encoding = Slice1`) before converting these definitions to the .ice syntax. The new syntax
-allows you to mark a proxy or class parameter/field as optional or non-optional; with the .ice syntax, you can't make
-this distinction.
+allows you to mark a proxy or class parameter/field as optional or non-optional, for example:
+
+```slice {% title="Slice with the .slice syntax" %}
+interface ContactRegistry {
+    // The new contact can't be null / not-set.
+    addContact(contact: Contact)
+
+    // Returns null/not-set when not found.
+    findContact(name: string) -> Contact?
+}
+
+class Contact {
+    name: string
+    ...
+}
+```
+
+Whereas with the .ice syntax, a proxy or class parameter/field is always optional.
 
 ## Limitations
 
 The main interop limitation for clients is IceRPC does not support Ice routers. As a result, an IceRPC client cannot
 call an Ice server through a Glacier2 router.
 
-The main interop limitations for servers is batch requests and IceGrid support.
+The main interop limitations for servers is [batch requests][batch-request] and [IceGrid][icegrid] support.
 
 If your clients send batches requests, you can't reimplement the corresponding Ice server with IceRPC since IceRPC does
 not accept batch requests.
@@ -39,3 +55,6 @@ not accept batch requests.
 If your Ice server is managed (especially started) by IceGrid, you can't reimplement this server with IceRPC. IceGrid
 generates Ice configuration files for the Ice servers it starts and IceRPC provides no support for Ice configuration
 files.
+
+[batch-request]: https://doc.zeroc.com/ice/3.7/client-side-features/batched-invocations
+[icegrid]: https://doc.zeroc.com/ice/3.7/ice-services/icegrid
