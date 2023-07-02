@@ -11,7 +11,8 @@ An ice client connects to an ice server as follows:
 
 2. The server accepts this duplex connection.
 
-3. The client and server perform a TLS handshake if the connection uses TLS.
+3. Both the client and the server "connect" the duplex connection. This connect operation is transport-dependent: it's
+no-op for a plain TCP connection and it corresponds to the TLS handshake for a TCP+TLS connection.
 
 4. The server sends a ValidateConnection frame to the client. As soon as the server sends this frame, it considers the
 connection established and can start accepting incoming requests and sending outgoing requests on this connection.
