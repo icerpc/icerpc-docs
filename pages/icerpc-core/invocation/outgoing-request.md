@@ -45,8 +45,8 @@ payload is compressed with brotli"; the compressor middleware can then decompres
 The payload of a request is a stream of bytes that represents the argument(s) of an operation. When a connection sends a
 request, it reads and logically copies these bytes to the network connection until there is no more byte to read.
 
-On the other side, the connection reads these bytes from the network and give them to a
-[dispatcher](../dispatch/dispatch-pipeline#the-dispatcher-abstraction).
+On the other side, the connection reads these bytes from the network, creates an incoming request and gives this request
+to a [dispatcher](../dispatch/dispatch-pipeline#the-dispatcher-abstraction).
 
 The payload of an outgoing request is actually split in two: a first part that the connection sends before awaiting the
 response, and a second part (the "continuation") that the connection sends in the background while it awaits, receives
@@ -54,11 +54,11 @@ and returns the response.
 
 ```mermaid
 sequenceDiagram
-    Local->>Remote: request header + payload
-    par Local to Remote
-        Local->>Remote: request payload continuation
-    and Remote to Local
-        Remote->>Local: response header + payload
+    Local-)Remote: request header + payload
+    par
+        Remote--)Local: response header + payload
+    and
+        Local-)Remote: request payload continuation
     end
 ```
 
