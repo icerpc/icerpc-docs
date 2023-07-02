@@ -1,8 +1,8 @@
 ---
-title: A modular RPC framework for the QUIC era
+title: A modular RPC framework built for QUIC
 ---
 
-## Built for QUIC
+## RPCs over QUIC
 
 Ever since the first RPC framework was created by Sun Microsystems in the 1980s, the primary transport protocol for RPCs
 has been TCP.
@@ -20,7 +20,7 @@ a RPC maps to a QUIC stream, with the request flowing in one direction and the r
 over time QUIC will become the dominant transport protocol for RPC frameworks.
 
 IceRPC is a new RPC framework built from the ground-up to take full advantage of QUIC, with support for bidirectional
-streaming. It is the very first RPC framework of the QUIC era:
+streaming. It is the first RPC framework of the QUIC era:
 
 ```mermaid
 timeline
@@ -96,7 +96,7 @@ metrics, OpenTelemetry integration, and more. You can also easily create and ins
 to customize these pipelines.
 
 Since all this functionality is optional and not hard-coded in IceRPC, you can choose exactly the behavior you want. For
-example, you don't need the Compress interceptor if you're not compressing anything: if you don't install this
+example, you don't need the Compressor interceptor if you're not compressing anything: if you don't install this
 interceptor, there is no compression code at all. Less code means simpler logic, fewer dependencies, faster execution
 and fewer bugs.
 
@@ -108,4 +108,4 @@ multiplexed transport and then plug it in IceRPC. All the transport interfaces a
 [http3]: https://en.wikipedia.org/wiki/HTTP/3
 [iap]: https://en.wikipedia.org/wiki/List_of_Bluetooth_profiles#iPod_Accessory_Protocol_(iAP)
 [quic]: https://en.wikipedia.org/wiki/QUIC
-[slic]: TODO
+[slic]: ../../icerpc-core/slic-protocol/overview

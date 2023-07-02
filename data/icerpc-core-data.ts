@@ -11,8 +11,8 @@ export const rpcCoreData: SideBarSourceType[] = [
     title: 'Connection',
     links: [
       {
-        title: 'Client vs server connections',
-        path: `${RPC_CORE_BASE_URL}/connection/client-vs-server-connections`
+        title: 'How to create a connection',
+        path: `${RPC_CORE_BASE_URL}/connection/how-to-create-a-connection`
       },
       {
         title: 'Server address',
@@ -153,5 +153,37 @@ export const rpcCoreData: SideBarSourceType[] = [
         path: `${RPC_CORE_BASE_URL}/ice-protocol/connection-shutdown`
       }
     ]
-  }
-];
+  },
+  {
+    title: 'The Slic protocol',
+    links: [
+      {
+        title: 'Introduction',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/introduction`
+      },
+      {
+        title: 'Connection establishment',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/connection-establishment`
+      },
+      {
+        title: 'Connection closure',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/connection-closure`
+      },
+      {
+        title: 'Connection idle timeout',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/connection-idle-timeout`
+      },
+      {
+        title: 'Streams',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/streams`
+      },
+      {
+        title: 'Flow control',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/flow-control`
+      },
+      {
+        title: 'Protocol frames',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/protocol-frames`
+      }
+    ]
+  }];

@@ -4,15 +4,16 @@ import { clsx } from 'clsx';
 import { FaGithub } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
-import darkIcon from 'public/images/Dark-Icon.svg';
+import darkIcon from 'public/Icerpc-dark-logo.svg';
 import Image from 'next/image';
-import lightIcon from 'public/images/Light-Icon.svg';
+import lightIcon from 'public/Icerpc-logo.svg';
 import Link from 'next/link';
 
 import { MobileMenu } from './MobileMenu';
 import { MobileSideNav } from '../SideNav';
 import { ThemeToggle } from 'components/ThemeToggle';
 import { useMounted } from 'context/state';
+import { Theme } from 'types';
 
 export const navigationItems = [
   {
@@ -89,18 +90,19 @@ const Logo = () => {
 
   // Default to light icon if theme is not yet resolved because of SSR
   if (!mounted) {
-    return <Image src={lightIcon} height={30} alt="ZeroC Logo" />;
+    return <Image src={lightIcon} height={25} alt="ZeroC Logo" />;
   }
 
   return (
     <Link href="https://web.testing.zeroc.com/icerpc">
       <div className="mb-3 ml-[1.4rem] mr-0 mt-5 flex items-center justify-start gap-1 pb-4 lg:ml-[3rem]">
         <Image
-          src={resolvedTheme === 'dark' ? darkIcon : lightIcon}
-          height={30}
+          src={resolvedTheme === Theme.Dark ? darkIcon : lightIcon}
+          height={25}
           alt="ZeroC Logo"
+          className="mt-2"
         />
-        <div className="pt-[8px] text-xl font-bold text-black dark:text-white">
+        <div className="ml-1 pt-[8px] text-xl font-bold text-black dark:text-white">
           Docs
         </div>
       </div>

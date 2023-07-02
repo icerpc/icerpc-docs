@@ -9,7 +9,7 @@ import { Divider } from 'components/Divider';
 import {
   Bars3BottomLeftIcon,
   ArrowUpCircleIcon,
-  ChevronRightIcon
+  MinusSmallIcon
 } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
 import { baseUrls } from 'data/side-bar-data';
@@ -32,15 +32,22 @@ function useActiveId(itemIds: string[]) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        let maxRatio = 0;
+        let maxId = '';
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
+          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            maxId = entry.target.id;
           }
         });
+        // Only update activeId if maxId is not an empty string
+        if (maxId) {
+          setActiveId(maxId);
+        }
       },
       {
-        rootMargin: '-50px 0px -70% 0px',
-        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1]
+        rootMargin: '50px 0px -70% 0px',
+        threshold: Array.from({ length: 101 }, (_, i) => i / 100) // Fire the callback for every 1% change in visibility.
       }
     );
 
@@ -60,7 +67,8 @@ function useActiveId(itemIds: string[]) {
       });
     };
   }, [itemIds]);
-  return activeId !== `` ? activeId : itemIds[0];
+
+  return activeId;
 }
 
 export const TableOfContents = (toc: TOCItem[]) => {
@@ -104,7 +112,7 @@ export const TableOfContents = (toc: TOCItem[]) => {
             </h2>
             <ul className="m-0 max-h-[50vh] overflow-y-auto p-0">
               {items.map((item) => (
-                <ListItem key={item.id} item={item} activeId={activeId} />
+                <ListItem key={item.id} item={item} activeId={activeId ?? ''} />
               ))}
             </ul>
             <Divider />
@@ -191,7 +199,7 @@ const ListItem = ({ item, activeId }: ListItemProps) => {
         )}
       >
         {item.level > 2 && (
-          <ChevronRightIcon className="mx-2 mt-[2px] h-4 w-4 shrink-0" />
+          <MinusSmallIcon className="mx-2 mt-[2px] h-4 w-4 shrink-0" />
         )}
         {item.title}
       </Link>

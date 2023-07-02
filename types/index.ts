@@ -3,3 +3,4 @@
 export * from './platform';
 export * from './encoding';
 export * from './side-bar';
+export * from './theme';

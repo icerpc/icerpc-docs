@@ -16,6 +16,7 @@
     "Disp",
     "docsearch",
     "endianness",
+    "flowbite",
     "fontawesome",
     "fortawesome",
     "frontmatter",
@@ -23,6 +24,7 @@
     "heroicons",
     "hola",
     "Icecream",
+    "icegrid",
     "icerpc",
     "ifndef",
     "jettwave",
@@ -57,6 +59,7 @@
     "varu",
     "varuint",
     "Videocam",
+    "Xmark",
     "zeroc"
   ],
   "dictionaries": [
@@ -78,6 +81,7 @@
     ".vscode",
     "node_modules",
     "package-lock.json",
-    "package.json"
+    "package.json",
+    "public"
   ]
 }

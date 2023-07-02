@@ -54,6 +54,8 @@ that can be used in the documentation.
 - [Divider](#divider)
 - [Grid](#grid)
 - [Mini-Card](#minicard)
+- [Light-Mode](#light-mode)
+- [Dark-Mode](#dark-mode)
 
 [**Updating Navigation**](#updating-navigation) is done by editing the
 `/data/*.ts` files.
@@ -148,7 +150,7 @@ within the `callout` tag will be placed inside the callout box.
 
 This is an info callout
 
-{% callout /%}
+{% /callout %}
 ```
 
 ##### Critical callout
@@ -159,7 +161,7 @@ This is an info callout
 
 This is a critical callout
 
-{% callout /%}
+{% /callout %}
 ```
 
 ---
@@ -358,3 +360,36 @@ export const gettingStartedData: SideBarSourceType[] = [
   ...
 ]
 ```
+
+---
+
+### Light-Mode
+
+The `light-mode` tag is used to render content that should only be visible in light mode.
+
+#### Examples
+
+````markdown
+
+{% light-mode %}
+This content will only be visible in light mode
+{% /light-mode %}
+
+````
+
+---
+
+### Dark-Mode
+
+The `dark-mode` tag is used to render content that should only be visible in dark mode.
+
+#### Examples
+
+````markdown
+
+{% dark-mode %}
+This content will only be visible in dark mode
+{% /dark-mode %}
+
+````
+---

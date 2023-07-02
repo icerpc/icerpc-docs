@@ -143,11 +143,11 @@ interface FileServer {
 
 In C#, the generated code sets the [`ICompressFeature`][compress-feature] in the outgoing request features.
 
-This compression request is typically fulfilled by the Compress interceptor or middleware, which needs to be installed
+This compression request is typically fulfilled by the compressor interceptor or middleware, which needs to be installed
 in your invocation resp. dispatch pipeline. If you neglect to install this interceptor or middleware, the corresponding
 payloads are not compressed.
 
-Keep in mind the Compress interceptor and middleware require the icerpc protocol. They do nothing for ice invocations
+Keep in mind the compressor interceptor and middleware require the icerpc protocol. They do nothing for ice invocations
 and dispatches.
 
 ### oneway attribute

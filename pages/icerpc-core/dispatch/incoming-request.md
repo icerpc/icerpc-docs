@@ -3,9 +3,9 @@ title: Incoming request
 description: Understand how to interpret an incoming request.
 ---
 
-## Overview
+## Receiving an incoming request
 
-The dispatch method of a [dispatch](dispatch-pipeline#the-dispatcher-abstraction) accepts an incoming request. This
+The dispatch method of a [dispatcher](dispatch-pipeline#the-dispatcher-abstraction) accepts an incoming request. This
 incoming request is created by the connection when it receives a request from the peer.
 
 An incoming request holds:
@@ -16,7 +16,8 @@ An incoming request holds:
 - the [payload](#request-payload) of the request
 
 In C#, an incoming request also holds [features](#request-features). These features are used for local communications
-with the dispatch pipeline, and within this pipeline.
+within this dispatch pipeline; they are also used for communications between dispatchers in the pipeline and your
+application code.
 
 ## Request payload
 
@@ -26,10 +27,11 @@ IceRPC core is concerned, the number of bytes in this stream is unknown.
 ## Request features
 
 It is common for the dispatchers in a dispatch pipeline to transmit information to each other during a dispatch. These
-dispatchers get and set request features (C# link) for these communications.
+dispatchers get and set request [features][csharp-feature-collection] for these communications.
 
 You can also use these features to communicate with your service code. For example, if you install the dispatch
-information middleware, it sets the `IDispatchInformationFeature` and you can retrieve this feature in your code:
+information middleware, it sets the [`IDispatchInformationFeature`][dispatch-information-feature] and you can retrieve
+this feature in your code:
 
 ```csharp
 // In Slice service implementation
@@ -52,3 +54,6 @@ Fields are used for communications "over the wire" while features are used for l
 pipeline. IceRPC provides both request fields (carried by requests) and response fields (carried by responses), but
 only request features: since it's all local, there is no need for response features.
 {% /callout %}
+
+[csharp-feature-collection]: csharp:IceRpc.Features.FeatureCollection
+[dispatch-information-feature]: csharp:IceRpc.Features.IDispatchInformationFeature

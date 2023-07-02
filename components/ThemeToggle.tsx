@@ -3,6 +3,7 @@
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { useTheme } from 'next-themes';
 import { useMounted } from 'context/state';
+import { Theme } from 'types';
 
 export const ThemeToggle = () => {
   const mounted = useMounted();
@@ -13,7 +14,7 @@ export const ThemeToggle = () => {
   }
 
   const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+    setTheme(theme === Theme.Light ? Theme.Dark : Theme.Light);
   };
 
   return (
@@ -24,7 +25,7 @@ export const ThemeToggle = () => {
       style={{ background: 'transparent' }}
     >
       <DarkModeSwitch
-        checked={theme === 'dark'}
+        checked={theme === Theme.Dark}
         onChange={toggleTheme}
         size={20}
         sunColor="#4D5562"
