@@ -23,9 +23,9 @@ this connection.
 
 ```mermaid
 sequenceDiagram
-    Client->>Server: Open duplex connection
+    Client-)Server: Open duplex connection
     Note over Client,Server: Connect duplex connection
-    Server->>Client: ValidateConnection frame
+    Server--)Client: ValidateConnection frame
 ```
 
 ## ValidateConnection frame
