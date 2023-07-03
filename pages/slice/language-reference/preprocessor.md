@@ -23,7 +23,7 @@ identifiers, preprocessor symbols are case sensitive.
 
 The preprocessor is not a full-blown programming language, but it supports a number of directives that can be used
 to control the preprocessor's behavior. Preprocessor directives must be the first non-whitespace characters on a line
-and may be be nested.
+and may be nested.
 
 Preprocessor directives are:
 
