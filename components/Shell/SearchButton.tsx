@@ -3,6 +3,7 @@
 import { DocSearch } from '@docsearch/react';
 import '@docsearch/css';
 import { useTheme } from 'next-themes';
+import { Theme } from 'types';
 
 // TODO: Update the DocSearch API keys, these are test keys that DocSearch makes publicly available.
 function Search() {
@@ -28,10 +29,10 @@ export const SearchButton = ({ className }: Props) => {
         // Search button style
 
         :global(.DocSearch-Button) {
-          --docsearch-text-color: ${resolvedTheme == 'dark'
+          --docsearch-text-color: ${resolvedTheme == Theme.Dark
             ? 'rgba(255, 255, 255, 1)'
             : 'rgb(28, 30, 33)'};
-          --docsearch-muted-color: ${resolvedTheme == 'dark'
+          --docsearch-muted-color: ${resolvedTheme == Theme.Dark
             ? 'rgba(255, 255, 255, 0.6)'
             : 'rgb(150, 159, 175)'};
         }
@@ -39,10 +40,11 @@ export const SearchButton = ({ className }: Props) => {
         :global(.DocSearch-Button) {
           border-radius: 4px;
           // grayish white background
-          background: ${resolvedTheme == 'dark'
+          background: ${resolvedTheme == Theme.Dark
             ? 'rgba(0, 0, 0, 0.45)'
             : '#f7f7f7'};
-          border: 1px solid ${resolvedTheme == 'dark' ? '#1f1f1f' : '#eaeaea'};
+          border: 1px solid
+            ${resolvedTheme == Theme.Dark ? '#1f1f1f' : '#eaeaea'};
           width: 100%;
           height: 35px;
         }

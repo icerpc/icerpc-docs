@@ -20,7 +20,7 @@ export const Card = ({ title, description, href }: CardProps) => {
       <h4 className="m-0 font-semibold text-primary dark:text-white">
         {title}
       </h4>
-      <div className="mt-1 text-sm text-[var(--text-color-secondary)] dark:text-white/80">
+      <div className="mt-2 text-sm text-[var(--text-color-secondary)] dark:text-white/80">
         {description}
       </div>
     </Link>
@@ -41,9 +41,7 @@ export const MiniLink = ({ title, link }: MiniLinkProps) => {
       target="_blank"
       rel="noreferrer"
     >
-      <h4 className="m-0 pt-[0.5rem] font-semibold text-primary dark:text-white">
-        {title}
-      </h4>
+      <h4 className="m-0 pt-[0.5rem] font-semibold dark:text-white">{title}</h4>
       <IconContext.Provider value={{ size: '1em' }}>
         <div className="flex flex-row items-center gap-2">
           <BsGithub className="dark:text-white/80" />

@@ -3,12 +3,11 @@ title: Middleware
 description: Learn how to write a middleware.
 ---
 
-## Definition
+## Intercepting incoming requests
 
-A middleware is nothing more than a [dispatcher](../dispatch-pipeline#the-dispatcher-abstraction) that holds another
-dispatcher ("next") and calls `dispatch` on this next dispatcher as part of the implementation of its own `dispatch`
-method. The next dispatcher can be another middleware, a service, a router, or some other kind of dispatcher, it doesn't
-matter.
+A middleware is a [dispatcher](../dispatch-pipeline#the-dispatcher-abstraction) that holds another dispatcher ("next")
+and calls `dispatch` on this next dispatcher as part of the implementation of its own `dispatch` method. The next
+dispatcher can be another middleware, a service, a router, or some other kind of dispatcher, it doesn't matter.
 
 A middleware can include logic before calling `dispatch` on the next dispatcher (before the request is processed) and
 after calling `dispatch` on the next dispatcher (after it receives the response). A middleware can also short-circuit

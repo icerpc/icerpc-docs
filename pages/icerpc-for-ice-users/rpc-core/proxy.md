@@ -14,7 +14,9 @@ proxy through a Slice operation. You can get a string representation of this add
 proxy, and you can convert this string representation into an Ice proxy when you call `stringToProxy` on your
 communicator.
 
-In IceRPC, this address is called a "service address". [Service addresses][service-address], unlike proxies, are used by the IceRPC core.
+In IceRPC, this address is called a "service address".
+
+[Service addresses][service-address], unlike proxies, are used by the IceRPC core.
 
 ## String syntax
 

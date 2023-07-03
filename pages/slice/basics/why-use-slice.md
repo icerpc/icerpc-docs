@@ -3,9 +3,9 @@ title: Why use Slice?
 description: Understand the problem that Slice solves.
 ---
 
-The IceRPC core provides all you need to make RPCs. When you use just the core, the payload of your requests and
-responses are streams of bytes, and you need to manually encode and decode any typed data (such as strings and integers)
-in these streams. This is doable but laborious.
+The [IceRPC core][icerpc-core] provides all you need to make RPCs. When you use just the core, the payload of your
+requests and responses are streams of bytes, and you need to manually encode and decode any typed data (such as strings
+and integers) in these streams. This is doable but laborious.
 
 Slice builds on the core's byte-oriented API to offer you a higher-level API, with types. With Slice, you can easily
 send a request with a string and an integer parameter and get back a response with a floating-point value. Slice allows
@@ -21,9 +21,7 @@ The syntax is intuitive: it means the request's payload holds a string and a 32-
 the response's payload holds a 64-bit (or double-precision) floating point number.
 
 While Slice's primary mission is to encode and decode the payloads of your requests and responses by generating code, a
-secondary mission is to offer you a convenient API for making and implementing RPCs. As illustrated by the
-[Greeter][greeter] and [GreeterCore][greeter-core] examples, you need to write much less code when you use Slice even
-after factoring out the encoding and decoding helper functions.
+secondary mission is to offer you a convenient API for making and implementing RPCs. The Slice compiler generates this
+convenient API in the programming language of your choice from your Slice definitions.
 
-[greeter]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/Greeter
-[greeter-core]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterCore
+[icerpc-core]: ../../icerpc-core

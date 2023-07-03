@@ -3,20 +3,19 @@ title: Outgoing request
 description: Learn how to create outgoing requests.
 ---
 
-## Overview
+## Creating an outgoing request
 
 In order to make a RPC, you construct an outgoing request and then pass this request as a parameter to the `invoke`
 method of an [invoker](invocation-pipeline#the-invoker-abstraction).
 
-An outgoing request carries all the data an invoker needs to send a request:
-
+An outgoing request carries all the information an invoker needs to send a request:
 - the [service address](service-address) of the target service
-- the name of the operation on this service
+- the name of the operation to call on this service
 - request [fields](#request-fields)
-- the [payload](invocation-pipleine#payload-and-payload-continuation) of the request
+- the [payload](#request-payload-and-payload-continuation) of the request
 
 In C#, an outgoing request also holds [features](#request-features). These features are used for local communications
-with the invocation pipeline, and within this pipeline.
+within this pipeline; they are also used for communications between invokers in the pipeline and your application code.
 
 ## Request fields
 
@@ -24,8 +23,8 @@ The request fields represent out-of-band information carried by a request "over 
 and written by [interceptors](interceptor) and [middleware](../dispatch/middleware) in an effort to coordinate the
 processing of the same request in the client and in the server.
 
-A field is an entry in a dictionary `RequestFieldKey` to sequence of bytes, where `RequestFieldKey` is an enumeration
-defined in Slice (LINK):
+A field is an entry in a dictionary `RequestFieldKey` to sequence of bytes, where [RequestFieldKey][request-field-key]
+is an enumeration defined in Slice:
 
 ```slice
 unchecked enum RequestFieldKey : varuint62 {
@@ -37,17 +36,17 @@ unchecked enum RequestFieldKey : varuint62 {
 }
 ```
 
-For example, when the compress interceptor compresses the payload of an outgoing request, it sets the request field
-`CompressionFormat`. This tells the compress middleware on the other side of the connection "this payload is compressed
-with brotli"; the compress middleware can then decompress this (incoming) request payload.
+For example, when the compressor interceptor compresses the payload of an outgoing request, it sets the request field
+[CompressionFormat][compression-format]. This tells the compressor middleware on the other side of the connection "this
+payload is compressed with brotli"; the compressor middleware can then decompress this (incoming) request payload.
 
 ## Request payload and payload continuation
 
 The payload of a request is a stream of bytes that represents the argument(s) of an operation. When a connection sends a
 request, it reads and logically copies these bytes to the network connection until there is no more byte to read.
 
-On the other side, the connection reads these bytes from the network and give them to a
-[dispatcher](../dispatch/dispatch-pipeline#the-dispatcher-abstraction).
+On the other side, the connection reads these bytes from the network, creates an incoming request and gives this request
+to a [dispatcher](../dispatch/dispatch-pipeline#the-dispatcher-abstraction).
 
 The payload of an outgoing request is actually split in two: a first part that the connection sends before awaiting the
 response, and a second part (the "continuation") that the connection sends in the background while it awaits, receives
@@ -55,25 +54,26 @@ and returns the response.
 
 ```mermaid
 sequenceDiagram
-    Local->>Remote: request header + payload
-    par Local to Remote
-        Local->>Remote: request payload continuation
-    and Remote to Local
-        Remote->>Local: response header + payload
+    Local-)Remote: request header + payload
+    par
+        Remote--)Local: response header + payload
+    and
+        Local-)Remote: request payload continuation
     end
 ```
 
-On the other side, the dispatcher sees only one continuous incoming request payload.
+On the other side, the dispatcher sees only a single continuous incoming request payload.
 
 ## Request features
 
 It is common for the invokers in an invocation pipeline to transmit information to each other during an invocation. For
 example, the retry interceptor needs to communicate with the connection cache to make sure the connection cache does not
-keep retrying with the same server address. These invokers get and set request features (C# link) to communicate with
-each other.
+keep retrying with the same server address. These invokers get and set [request features][csharp-feature-collection] to
+communicate with each other.
 
 You can also use these features to communicate with the invocation pipeline. For example, you can set the feature
-`ICompressFeature` to ask the Compress interceptor (if installed) to compress the payload of your request:
+[ICompressFeature][compress-feature] to ask the compressor interceptor (if installed) to compress the payload of your
+request:
 
 ```csharp
 using var request = new OutgoingRequest(serviceAddress)
@@ -82,7 +82,7 @@ using var request = new OutgoingRequest(serviceAddress)
     Features = new FeatureCollection().With<ICompressFeature>(CompressFeature.Compress)
 };
 
-// Hopefully invoker is an invocation pipeline with a Compress interceptor.
+// Hopefully invoker is an invocation pipeline with a compressor interceptor.
 IncomingResponse response = await invoker.InvokeAsync(request);
 ```
 
@@ -93,3 +93,8 @@ Fields are used for communications "over the wire" while features are used for l
 pipeline. IceRPC provides both request fields (carried by requests) and response fields (carried by responses), but
 only request features: since it's all local, there is no need for response features.
 {% /callout %}
+
+[csharp-feature-collection]: csharp:IceRpc.Features.FeatureCollection
+[request-field-key]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/RequestFieldKey.slice
+[compression-format]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/CompressionFormat.slice
+[compress-feature]: csharp:IceRpc.Features.ICompressFeature

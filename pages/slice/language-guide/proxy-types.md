@@ -60,17 +60,18 @@ address.
 A relative proxy is a proxy that encapsulates a [relative service address][relative-service-address]. You cannot use a
 relative proxy to send requests.
 
-When the generated code decodes a relative proxy from an incoming request payload, it produces a relative proxy by
-default. You need convert this proxy into a regular proxy before you can use it to make invocations. A regular proxy
-has:
- - a service address with a protocol
+On the client side, when the generated code decodes a relative proxy from an incoming response payload, it produces a
+regular proxy with:
+ - an absolute service address
  - an invocation pipeline
 
-On the client side, when the generated code decodes a relative proxy from an incoming response payload, it produces a
-regular proxy. This decoded proxy is a clone of the proxy you used to send the request, except for its path and type.
-The decoded proxy's path is the path carried by the relative proxy.
+This decoded proxy is a clone of the proxy you used to send the request, except for its path and type. The decoded
+proxy's path is the path carried by the relative proxy.
 
-This decoded proxy is ready to go: you can use it immediately make invocations on the remote service.
+This decoded proxy is ready to go: you can use it immediately to make invocations on the remote service.
+
+On the server side, when the generated code decodes a relative proxy from an incoming request payload, it produces a
+relative proxy by default. You need convert this proxy into a regular proxy before you can use it to make invocations.
 {% /slice2 %}
 
 ## C# mapping

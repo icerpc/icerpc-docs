@@ -1,6 +1,5 @@
 ---
-title: NuGet Packages
-description: The IceRPC NuGet packages
+title: NuGet packages
 ---
 
 | Name                                                                            | Description                                           |

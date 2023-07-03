@@ -11,7 +11,7 @@ export const gettingStartedData: SideBarSourceType[] = [
     title: 'Raising the bar',
     links: [
       {
-        title: 'A modular RPC framework for the QUIC era',
+        title: 'A modular RPC framework built for QUIC',
         path: GETTING_STARTED_BASE_URL + '/raising-the-bar/modular-rpc-for-quic/'
       },
       {
@@ -28,12 +28,12 @@ export const gettingStartedData: SideBarSourceType[] = [
         path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/tutorial/'
       },
       {
-        title: 'How-to add IceRPC to an existing C# project',
+        title: 'How to add IceRPC to an existing C# project?',
         path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/how-to/'
       },
       {
-        title: 'NuGet Packages',
-        path: GETTING_STARTED_BASE_URL + '/nuget-packages/'
+        title: 'NuGet packages',
+        path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/nuget-packages/'
       }
     ]
   },
