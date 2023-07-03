@@ -9,7 +9,7 @@ You need to convert existing .ice definitions into .slice definitions when you w
 server application that interoperates with your existing Ice applications.
 
 This page shows how to convert each construct in your .ice file into the equivalent construct in the your new .slice
-file. This equivalent construct is naturally encoded the same way--otherwise, there is no interop.
+file. This equivalent construct is naturally encoded the same way—otherwise, there would be no interop.
 
 All the .slice files used for interop with Ice must start with:
 
@@ -145,7 +145,8 @@ void op(string s) throws ArgumentException, InvalidStateException, NotAvailableE
 ```
 
 The allowable exceptions include any exception derived from ArgumentException, InvalidStateException and
-NotAvailableException. If this list is empty (no throws), the operation is not allowed to throw any exception.
+NotAvailableException. If this list is empty (no throws), the operation is not allowed to throw any Slice-defined
+exception.
 
 With the .slice syntax, an operation can only specify one exception in its exception specification. With Slice1, this
 unique exception can be AnyException (a keyword): it allows the operation to throw any Slice-defined exception. As a

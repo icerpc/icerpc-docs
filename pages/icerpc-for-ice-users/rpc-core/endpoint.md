@@ -5,8 +5,8 @@ description: Understand the new IceRPC syntax for endpoint strings.
 
 ## Server address
 
-An endpoint is called a server address in IceRPC. An endpoint is the address of an object adapter (server with IceRPC)
-that accepts connections.
+An endpoint is called a [server address][server-address] in IceRPC. An endpoint is the address of an object adapter
+(server with IceRPC) that accepts connections.
 
 ## String syntax
 
@@ -42,13 +42,12 @@ re-encode this server address without losing information.
 Ice's local endpoint options (such as `--sourceAddress`) have no equivalent in IceRPC. All server address parameters are
 "non-local".
 
-With IceRPC for C#, you would set [TcpClientTransportOptions.LocalNetworkAddress][local-network-address] to configure the tcp/ssl source
-address.
+With IceRPC for C#, you would set [TcpClientTransportOptions.LocalNetworkAddress][local-network-address] to configure
+the tcp/ssl source address.
 {% /callout %}
 
-When the Slice engine decodes a Slice1-encoded server address with a
-[transport code](../../slice/encoding/constructed-types?encoding=Slice1#proxy) it doesn't know, it creates a server
-address with the opaque transport. The opaque transport supports the following options:
+When the Slice engine decodes a Slice1-encoded server address with a [transport code][transport-code] it doesn't know,
+it creates a server address with the opaque transport. The opaque transport supports the following options:
 
 | Ice opaque endpoint option  | Corresponding query parameter in IceRPC server address URI |
 |-----------------------------|------------------------------------------------------------|
@@ -57,9 +56,11 @@ address with the opaque transport. The opaque transport supports the following o
 | `-v base64Value`            | `v=base64Value`                                            |
 
 An opaque server address URI always starts with `ice://opaque/`; the host ("opaque") and port (4061) are meaningless
-since the actual host and port are encoded in the v parameter value.
+since the actual host and port are encoded in the value of the `v` parameter.
 
 The opaque transport allows you to decode any proxy received from an Ice application and later re-encode this proxy
 without losing any server address information.
 
 [local-network-address]: csharp:IceRpc.Transports.Tcp.TcpClientTransportOptions#IceRpc_Transports_Tcp_TcpClientTransportOptions_LocalNetworkAddress
+[server-address]: ../../icerpc-core/connection/server-address
+[transport-code]: ../../slice/encoding/constructed-types?encoding=Slice1#proxy

@@ -6,7 +6,7 @@ description: An overview of the new features in IceRPC.
 ## New protocol with streaming support
 
 IceRPC adds a new protocol named `icerpc` that supports streaming. Streaming allows you to send a stream of bytes or
-Slice-defined types with your request or response with no or very little overhead.
+a stream of Slice-defined types with your request or response with no or very little overhead.
 
 This new `icerpc` protocol runs over multiplexed transports such as QUIC.
 
@@ -14,7 +14,7 @@ This new `icerpc` protocol runs over multiplexed transports such as QUIC.
 
 IceRPC offers a much more modular API than Ice.
 
-For example, with Ice, most of the invocation logic is implemented by the `Communicator`, and you can customize
+For example, with Ice, most of the invocation logic is implemented by `Communicator`, and you can customize
 `Communicator`'s behavior through configuration.
 
 With IceRPC, the invocation logic consists of multiple objects that you compose to form an invocation pipeline: you
@@ -58,11 +58,11 @@ with no IDL at all.
 IceRPC introduces a brand new Slice, with a new syntax, a new encoding, a new compilation model and a new file
 extension.
 
-The Ice compilation model for Slice files is very much like C++: each Slice file needs to `#include` the Slice files
+The Ice compilation model for its Slice files is very much like C++: each Slice file needs to `#include` the Slice files
 with the definitions it depends on. You can use a forward declaration to introduce a type without fully defining it. And
 Slice files use the `.ice` file extension.
 
-On the other hand, the compilation model with IceRPC's Slice compilers is more like C# and Java: the compilation uses a
+On the other hand, the compilation model for IceRPC's Slice files is more like C# and Java: the compilation uses a
 set of reference files specified as argument to the compiler, and there is no `#include` preprocessing directive or
 forward declarations. These new Slice files use the `.slice` extension.
 
