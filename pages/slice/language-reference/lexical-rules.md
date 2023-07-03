@@ -28,12 +28,12 @@ interface Customer  {
 Identifiers consist of a sequence of one or more ASCII alphanumeric characters (`a-zA-Z0-9`) and underscores (`_`) .
 The first character can not be a number. Identifiers are used to name Slice types such as structs, fields, enums, etc.
 
-## Case Sensitivity
+## Case sensitivity
 
 Slice keywords and identifiers are case-sensitive. For example, `TimeOfDay` and `TIMEOFDAY` are
 considered different identifiers within a naming scope.
 
-## Identifiers That Are Programming Language Keywords
+## Identifiers that are programming language keywords
 
 You can define Slice identifiers that are keywords in C#. For example, `switch` is a
 perfectly good Slice identifier but is a C# keyword. The `slicec-cs` compiler performs keyword escaping by
@@ -42,7 +42,7 @@ prefixing the keyword with an `@` character. Thus `switch` is mapped to `@switch
 The rules for dealing with keywords can result in hard-to-read source code. To make life easier for yourself and others,
 try to avoid Slice identifiers that are implementation language keywords.
 
-## Escaping Slice Identifiers
+## Using a keyword as an identifier
 
 It is possible to use a Slice keyword as an identifier by prefixing the keyword with a backslash, for example:
 
