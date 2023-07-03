@@ -2,7 +2,7 @@
 title: Compilation stages
 ---
 
-The Slice compiler is a multi-stage compiler. It consists of a number of stages that are executed in order.
+The Slice compiler consists of a number of stages that are executed in order.
 Each stage takes the output of the previous stage as input and produces its own output.
 
 At any stage of compilation, the compiler may report lints. Lints are non-fatal warnings that indicate potential
