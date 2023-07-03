@@ -13,7 +13,7 @@ preprocessor. Unlike C/C++, preprocessor symbols can not be assigned a value. In
 defined or undefined.
 
 If a symbol has not been defined, then it is considered undefined. There is no difference between a symbol that has not
-been defined and a symbol that has been undefined. It is safe to define an already defined symbol or undefine an an
+been defined and a symbol that has been explicitly undefined. It is safe to define an already defined symbol or undefine an
 undefined symbol. Likewise, it is safe to define, undefine, then define a symbol again.
 
 It is recommended to use upper-case letters for preprocessor symbols, e.g. `#define DEBUG`. Like other Slice
