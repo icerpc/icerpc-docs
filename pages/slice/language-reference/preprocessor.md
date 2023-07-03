@@ -30,8 +30,8 @@ Preprocessor directives are:
 - `#define <SYMBOL>` - Define a symbol
 - `#undef <SYMBOL>` - Undefine a symbol
 - `#if <SYMBOL>` - Open a conditional compilation if the given symbol is defined.
-- `#else` - Close the previous conditional compilation and open a new one.
 - `#elif <SYMBOL>` - Close the previous conditional compilation and open a new one if the given symbol is defined.
+- `#else` - Close the previous conditional compilation and open a new one.
 - `#endif` - Close the previous conditional compilation.
 
 The `#if` and `#elif` statements support several logical operators and parentheses:
@@ -43,9 +43,9 @@ The `#if` and `#elif` statements support several logical operators and parenthes
 
 ## Defining symbols
 
-Symbols can be defined two ways:
+Symbols can be defined in two ways:
 
-- By using the `#define` directive in a Slice file. This symbol will be defined for the remainder of the Slice file.
+- By using the `#define` directive in a Slice file, you can define a symbol will be defined for the remainder of the Slice file.
 
     ```slice
     #define ABC

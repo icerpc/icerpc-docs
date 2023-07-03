@@ -5,7 +5,7 @@ description: Learn about the lexical rules of Slice
 
 ## Comments
 
-Slice definitions can contain two types comments:
+Slice definitions can contain two types of comments:
 
 - [Doc comments](/docs/slice/language-guide/doc-comments): begin with `///` and extend to the end of the line. They are used by the compiler to
   generate documentation in the mapped language.
@@ -31,12 +31,12 @@ The first character can not be a number. Identifiers are used to name Slice type
 ## Case sensitivity
 
 Slice keywords and identifiers are case-sensitive. For example, `TimeOfDay` and `TIMEOFDAY` are
-considered different identifiers within a naming scope.
+considered different identifiers.
 
 ## Identifiers that are programming language keywords
 
 You can define Slice identifiers that are keywords in C#. For example, `switch` is a
-perfectly good Slice identifier but is a C# keyword. The `slicec-cs` compiler performs keyword escaping by
+perfectly good Slice identifier but is also a C# keyword. The `slicec-cs` compiler performs keyword escaping by
 prefixing the keyword with an `@` character. Thus `switch` is mapped to `@switch` in C#.
 
 The rules for dealing with keywords can result in hard-to-read source code. To make life easier for yourself and others,

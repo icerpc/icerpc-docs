@@ -20,7 +20,7 @@ The compilation stages are:
 ## Input validation
 
 The input validation stage performs validation of the user specified source and reference files. This includes checking
-if duplicate files are specified and reading both source and reference files into memory.
+if duplicate files were specified and reading both source and reference files into memory.
 
 ## Preprocessing
 
@@ -34,7 +34,7 @@ The parsing stage is responsible for parsing the input files into an
 [abstract syntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree) (AST). The AST is a representation of the
 Slice code in memory that is easier to work with than the raw input files.
 
-Here user defined types such as [structs](../language-guide/struct-types),
+Here, user defined types such as [structs](../language-guide/struct-types),
 [interfaces](../language-guide/interface-types), and [enums](../language-guide/enum-types) are parsed and stored for
 later stages in the AST.
 
