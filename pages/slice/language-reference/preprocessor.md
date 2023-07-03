@@ -4,7 +4,7 @@ title: Preprocessor
 
 The Slice compiler contains a [preprocessor](https://en.wikipedia.org/wiki/Preprocessor) that operates on a Slice file
 before the compiler's parsing phase. The preprocessor is line-based, which means that it operates on the source
-code line by line.
+code one line at a time.
 
 ## Symbols
 
