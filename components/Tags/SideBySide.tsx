@@ -34,7 +34,7 @@ export function SideBySide({ children, weighted, alignment }: SideBySideProps) {
 
   return (
     <div
-      className={`relative my-4 flex flex-row overflow-auto p-0 py-2 ${itemAlignment}`}
+      className={`relative my-2 flex flex-row overflow-auto p-0 py-2 ${itemAlignment}`}
     >
       <LeftColumn>{leftContent}</LeftColumn>
       <div className="absolute left-[50%] my-auto mb-4 h-[90%] w-px bg-lightBorder dark:bg-darkBorder" />

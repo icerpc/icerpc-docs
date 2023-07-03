@@ -5,6 +5,7 @@ import { FaFile } from 'react-icons/fa';
 import { BsTerminalFill } from 'react-icons/bs';
 import clsx from 'clsx';
 import { Highlight, themes, Prism } from 'prism-react-renderer';
+import { Inter, Roboto_Mono } from 'next/font/google';
 
 import dynamic from 'next/dynamic';
 import { useEncoding } from 'context/state';
@@ -12,6 +13,9 @@ import { Encoding } from 'types';
 import { CopyButton } from './CopyButton';
 import { useTheme } from 'next-themes';
 import { Theme } from 'types';
+
+const inter = Inter({ subsets: ['latin'] });
+const robotoMono = Roboto_Mono({ subsets: ['latin'] });
 
 const MermaidDiagram = dynamic(() => import('components/Tags/Mermaid'), {
   ssr: false
@@ -107,7 +111,12 @@ export const CodeBlock = ({
   }
 
   return (
-    <div className="group relative my-4 w-full items-center overflow-hidden rounded-lg border border-[rgb(46,46,46)] bg-[rgb(6,22,38)] dark:bg-[rgb(30,30,30)]">
+    <div
+      className={clsx(
+        robotoMono.className,
+        'group relative my-4 w-full items-center overflow-hidden rounded-lg border border-[rgb(46,46,46)] bg-[rgb(6,22,38)] dark:bg-[rgb(30,30,30)]'
+      )}
+    >
       <TopBar language={language} code={children} title={title} />
       <Highlight
         theme={theme}
@@ -116,31 +125,34 @@ export const CodeBlock = ({
       >
         {({ className, tokens, getLineProps, getTokenProps, style }) => (
           <pre className={clsx(className, 'my-3')} style={style}>
-            {tokens.map((line, i) => {
-              const { key, ...rest } = getLineProps({
-                line,
-                key: i,
-                className: 'ml-1 pr-5 max-w-0 py-[3px] text-xs'
-              });
-              const lineKey = key as Key;
-              return (
-                <div key={lineKey} {...rest}>
-                  {lineNumbers && (
-                    <span className="mr-4 text-white/40">{i + 1}</span>
-                  )}
-                  {line.map((token, key) => {
-                    const { key: tokenKey, ...rest } = getTokenProps({
-                      token,
-                      key
-                    });
-                    return <span key={tokenKey as Key} {...rest} />;
-                  })}
-                </div>
-              );
-            })}
+            <code>
+              {tokens.map((line, i) => {
+                const { key, ...rest } = getLineProps({
+                  line,
+                  key: i,
+                  className: 'ml-0 max-w-0 py-[3px] pr-5 text-xs'
+                });
+                const lineKey = key as Key;
+                return (
+                  <div key={lineKey} {...rest}>
+                    {lineNumbers && (
+                      <span className="mr-4 text-white/40">{i + 1}</span>
+                    )}
+                    {line.map((token, key) => {
+                      const { key: tokenKey, ...rest } = getTokenProps({
+                        token,
+                        key
+                      });
+                      return <span key={tokenKey as Key} {...rest} />;
+                    })}
+                  </div>
+                );
+              })}
+            </code>
           </pre>
         )}
       </Highlight>
+
       {language == undefined && (
         <div
           className={clsx(
@@ -163,7 +175,12 @@ type TopBarProps = {
 
 const TopBar = ({ language, code, title }: TopBarProps) =>
   language ? (
-    <div className="flex h-12 flex-row items-center justify-between border-b border-b-[hsl(0,0%,18%)] bg-black/20 text-white dark:bg-black/20">
+    <div
+      className={clsx(
+        inter.className,
+        'flex h-12 flex-row items-center justify-between border-b border-b-[hsl(0,0%,18%)] bg-black/20 text-white dark:bg-black/20'
+      )}
+    >
       <div className="m-0 ml-4 flex flex-row items-center gap-3 p-0 text-sm">
         {LanguageIcon(language ?? '')}
         {title ?? fixLanguage(language) ?? ''}
