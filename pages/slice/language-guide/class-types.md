@@ -16,6 +16,8 @@ capabilities not offered by structs:
    you can extend a class through inheritance and tagged fields
  - graph preservation\
    you can transmit a graph of class instances through a Slice operation
+ - null/not-set value\
+   a class parameter or field can be null or not-set, whereas in general a struct parameter or field must have a value
  - slicing\
    a recipient can decode a class instance into a base class by slicing off derived "slices" it does not know
 
@@ -63,7 +65,7 @@ interface CarPartShop {
 
 ### Tagged fields
 
-The fields of a class can be regular fields (like the fields shown earlier) or [tagged fields].
+The fields of a class can be regular fields (like the fields shown earlier) or [tagged fields][tagged-fields].
 
 ## Graph preservation
 
@@ -109,6 +111,14 @@ interface NodePrinter {
 
 This linked list can even include a cycle, with the `next` field on some node pointing to an earlier node. The Slice
 library always recreates an exact copy of the original class graph during decoding.
+
+## Null/not-set value
+
+A class parameter or field can be marked optional with the usual `?` syntax. For example:
+
+```slice
+class Node { string: name, next: Node? }
+```
 
 ## Slicing
 

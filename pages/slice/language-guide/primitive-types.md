@@ -8,7 +8,7 @@ description: Learn about Slice primitive types.
 ## AnyClass
 
 A field or parameter with Slice type `AnyClass` can hold an instance of any Slice class. `AnyClass` is the implicit
-abstract base of all Slice [classes]().
+abstract base of all Slice [classes](class-types).
 
 | Slice    | C# mapping              |
 | ---------|-------------------------|

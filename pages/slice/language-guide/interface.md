@@ -60,8 +60,7 @@ The Slice compiler for C# compiles Slice interface *Name* into two C# interfaces
 C# struct (*Name*Proxy). The identifiers of the generated interfaces and struct are always in Pascal case, per the usual
 C# naming conventions, even when *Name* is not in Pascal case.
 
-The attribute `cs::identifier` allows you to remap *Name* to an identifier of your choice. See [C# attributes]() for
-more information.
+The attribute [`cs::identifier`][cs-identifier] allows you to remap *Name* to an identifier of your choice.
 
 ### I*Name*
 
@@ -274,3 +273,5 @@ internal class MyWidget : Service,
 }
 ```
 {% /side-by-side %}
+
+[cs-identifier]: attributes#cs::identifier-attribute
