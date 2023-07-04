@@ -5,7 +5,10 @@ description: Understand the frames sent over a Slic connection.
 
 ## Frame layout
 
-The Slic protocol sends data and other information over a duplex connection in protocol frames. All the frames have the same layout: a header followed by a body.
+The Slic protocol sends data over a duplex connection in protocol frames. The reading and writing of these frames are
+serialized on the duplex connection.
+
+All the frames have the same layout: a header followed by a body.
 
 The format of the header differs depending on the frame type. The header can be a connection frame header or a stream frame header. Both headers are compact structs defined as follows:
 
@@ -61,18 +64,17 @@ unchecked enum ParameterKey : varuint62 {
     MaxBidirectionalStreams = 0
     MaxUnidirectionalStreams = 1
     IdleTimeout = 2
-    PacketMaxSize = 3
-    InitialStreamWindowSize = 4
+    InitialStreamWindowSize = 3
+    MaxStreamFrameSize = 4
 }
 
 typealias ParameterFields = dictionary<ParameterKey, sequence<uint8>>
 ```
 
-When the server receives the Initialize frame, it reads the Slic
-version. If supported, it reads the InitializeBody frame and sends back an InitializeAck frame. If not supported,
-it skips the frame body and sends back a Version frame.
-
 The parameters are used to configure the connection.
+
+When the server receives the Initialize frame, it reads the Slic version. If supported, it reads the Initialize frame
+body. Otherwise, it skips its reading.
 
 {% callout %}
 
@@ -83,7 +85,8 @@ of the Initialize frame body.
 
 ## InitializeAck frame
 
-An InitializeAck frame carries parameters. It is sent by a server to a client in response of an Initialize frame. It consists of a header with the InitializeAck type followed by an InitializeAck body:
+An InitializeAck frame carries parameters. It consists of a header with the InitializeAck type followed by an
+InitializeAck body:
 
 ```slice
 compact struct InitializeAckBody {
@@ -91,7 +94,7 @@ compact struct InitializeAckBody {
 }
 ```
 
-The parameters are used to configure the connection. This frame is sent back to the client if the Slic version specified in the Initialize frame is supported.
+The parameters are used to configure the connection.
 
 ## Version frame
 
@@ -103,9 +106,6 @@ compact struct VersionBody {
     versions: sequence<varuint62>
 }
 ```
-
-When the client receives this frame, it should select a supported Slic version and send again an Initialize frame. If it
-doesn't support any of the versions specified by the Version frame, it should shutdown the duplex connection.
 
 ## Close frame
 
@@ -131,7 +131,7 @@ compact struct PingBody {
 custom OpaqueData // 64-bits opaque data
 ```
 
-A Pong frame with the same opaque payload should be sent after receiving a Ping frame.
+A Pong frame with the same opaque payload must be sent after receiving a Ping frame.
 
 ## Pong frame
 
@@ -143,7 +143,7 @@ compact struct PongBody {
 }
 ```
 
-A Pong frame is sent in response of a Ping frame. It should include the same payload as the Ping frame.
+A Pong frame is sent in response of a Ping frame. It must include the same payload as the Ping frame.
 
 ## Stream and StreamLast frames
 

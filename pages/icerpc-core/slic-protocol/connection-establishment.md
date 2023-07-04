@@ -1,15 +1,15 @@
 ---
 title: Connection establishment
-description: Understand how a connection is established
+description: Understand how a connection is established.
 ---
 
 ## Introduction
 
-Connection establishment serves several purposes:
+Connection establishment serves two purposes:
 
-- It implements Slic version negotiation.
+- The Slic version negotiation.
 
-- It communicates unilaterally transport parameters on both sides of the connection.
+- The transmission of transport parameters on both sides of the connection.
 
 Connection establishment relies on the [Initialize][initialize-frame], [Version][version-frame] and [InitializeAck][initialize-ack-frame] frames.
 
@@ -21,41 +21,38 @@ A Slic connection is established as follows:
 
 2. The server accepts this duplex connection.
 
-3. The client sends the [Initialize][initialize-frame] frame to the server.
+3. The client sends the Initialize frame to the server.
 
-4. The server receives this frame and either sends back:
+4. The server receives this frame and sends back either:
 
-    - The [InitializeAck][initialize-ack-frame] frame if it supports the Slic protocol version specified in the
-      [Initialize][initialize-frame] frame.
+    - The InitializeAck frame if it supports the Slic protocol version specified in the Initialize frame. Once it sent
+      this frame, the server considers the connection established.
 
-    - The [Version][version-frame] frame with the Slic protocol versions supported by the server.
+    - Or the Version frame with the Slic protocol versions it supports.
 
-5. If the client receives the [InitializeAck][initialize-ack-frame] frame, the connection is considered established.
-   Otherwise if it receives the [Version][version-frame] frame, it checks the versions advertised by the server:
+5. If the client receives the InitializeAck frame, it considers the connection  established. Otherwise if it receives
+   the Version frame, it checks the versions supported by the server:
 
     - If it doesn't support any, it shuts down the duplex connection.
 
-    - Otherwise, it sends again the [Initialize][initialize-frame] frame with a supported version and waits for the
-      server to send back the [InitializeAck][initialize-ack-frame] frame.
+    - Otherwise, it sends again the Initialize frame with a supported version and waits for the server to send back the
+      InitializeAck frame.
 
-Once the server sent the [InitializeAck][initialize-ack-frame] frame and the client received it, the connection is
-established and streams can be created or accepted.
+A Version frame containing the version carried by the Initialize frame is considered a protocol error.
+
+Streams can be created or accepted once the connection is considered established.
 
 ## Connection establishment parameters
 
-A number of parameters are exchanged with the [Initialize][initialize-frame] frame:
+A number of parameters are exchanged with the Initialize and InitializeAck frames. The following table describes each parameter:
 
-- The `MaxBidirectionalStreams` parameter specifies the maximum number of concurrent bidirectional streams the peer is
-  allowed to open.
-
-- The `MaxUnidirectionalStreams` parameter specifies the maximum number of concurrent unidirectional streams the peer is
-  allowed to open.
-
-- The `IdleTimeout` parameter specifies how long a connection can be inactive before it's aborted.
-
-- The `PacketMaxSize` parameter specifies the maximum amount of data carried by a Stream or StreamLast frame.
-
-- The `InitialStreamWindowSize` specifies the initial stream window size used for stream flow control.
+| Name | Description |
+| ---- | ----------- |
+| `IdleTimeout` | Specifies how long a connection can be inactive before it's considered lost. |
+| `MaxBidirectionalStreams` | Specifies the maximum number of concurrent bidirectional streams the peer is allowed to open. |
+| `MaxUnidirectionalStreams` | Specifies the maximum number of concurrent unidirectional streams the peer is allowed to open. |
+| `InitialStreamWindowSize` | Specifies the initial stream window size used for stream flow control. |
+| `MaxStreamFrameSize` | Specifies the maximum amount of data carried by a Stream or StreamLast frame. |
 
 [initialize-frame]: protocol-frames#initialize-frame
 [initialize-ack-frame]: protocol-frames#initializeack-frame
