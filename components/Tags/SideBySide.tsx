@@ -7,13 +7,13 @@ type Props = {
 };
 
 const LeftColumn = ({ children }: Props) => (
-  <div className="my-0 flex w-full flex-col py-2 pr-5 [&>p]:mb-2">
+  <div className="my-0 flex w-full flex-col py-2 lg:pr-5 [&>p]:mb-2">
     {children}
   </div>
 );
 
 const RightColumn = ({ children }: Props) => (
-  <div className="my-0 flex w-full flex-col py-2 pl-5 [&>p]:mb-2">
+  <div className="my-0 flex w-full flex-col py-2 lg:pl-5 [&>p]:mb-2">
     {children}
   </div>
 );
@@ -34,10 +34,10 @@ export function SideBySide({ children, weighted, alignment }: SideBySideProps) {
 
   return (
     <div
-      className={`relative my-4 flex flex-row overflow-auto p-0 py-2 ${itemAlignment}`}
+      className={`relative my-2 flex flex-col overflow-auto p-0 py-2 lg:flex-row ${itemAlignment}`}
     >
       <LeftColumn>{leftContent}</LeftColumn>
-      <div className="absolute left-[50%] my-auto mb-4 h-[90%] w-px bg-lightBorder dark:bg-darkBorder" />
+      <div className="mx-auto my-4 h-px w-[90%] bg-lightBorder dark:bg-darkBorder lg:absolute lg:left-[50%] lg:my-auto lg:h-[90%] lg:w-px" />
       <RightColumn>{rightContent}</RightColumn>
     </div>
   );

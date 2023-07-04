@@ -22,7 +22,7 @@ programmatically or in a JSON file.
 The bulk of Communicator's client-side functionality corresponds to an IceRPC [invocation pipeline][invocation-pipeline]
 that flows into a [ConnectionCache][connection-cache].
 
-A Communicator-like invocation pipeline includes many interceptors:
+A Communicator-like invocation pipeline would include the following interceptors:
 
 - the Deadline interceptor (for invocation timeouts)
 - the Locator interceptor (to resolve "indirect proxies" using an Ice Locator)
