@@ -77,11 +77,10 @@ stateDiagram
     WritesClosed : Writes closed
     [*] --> Ready: Create stream
     [*] --> Ready: Accept stream
-    Ready --> Send: Send Stream
-    Ready --> WritesClosed: Send StreamLast
-    Send --> WritesClosed: Send StreamLast
-    Send --> WritesClosed: Send StreamWritesClosed
-    Send --> WritesClosed: Received StreamReadsClosed
+    Ready --> Send: Send Stream frame
+    Send --> WritesClosed: Received StreamReadsClosed frame
+    Ready --> WritesClosed: Send StreamLast frame
+    Send --> WritesClosed: Send StreamLast or StreamWritesClosed frame
     WritesClosed --> [*]
 ```
 
@@ -91,11 +90,11 @@ And the following state diagram shows the states of the stream read side.
 stateDiagram
     ReadsClosed : Reads closed
     DataReceived: Data received
-    [*] --> Receive: Received Stream or StreamLast
+    [*] --> Receive: Received Stream or StreamLast frame
     [*] --> Receive: Create bidirectional stream
-    Receive --> ReadsClosed: Received StreamWritesClosed
-    Receive --> ReadsClosed: Send StreamReadsClosed
-    Receive --> DataReceived: Received StreamLast
+    Receive --> ReadsClosed: Received StreamWritesClosed frame
+    Receive --> ReadsClosed: Send StreamReadsClosed frame
+    Receive --> DataReceived: Received StreamLast frame
     DataReceived --> ReadsClosed: Data consumed
     ReadsClosed --> [*]
 ```
