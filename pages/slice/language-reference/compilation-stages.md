@@ -29,7 +29,7 @@ input files based on preprocessor directives. More information about the Slice p
 
 ## Parsing
 
-The parsing stage is responsible for parsing the input files into an
+The parsing stage is responsible for parsing the preprocessed input files into an
 [abstract syntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree) (AST). The AST is a representation of the
 Slice code in memory that is easier to work with than the raw input files.
 
