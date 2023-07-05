@@ -11,7 +11,7 @@ Slice definitions can contain two types of comments:
   They are used by the compiler to generate documentation in the mapped language.
 - Non-doc comments: Begins with `//` and extends to the end of the line. They are ignored by the compiler.
 
-A comment with more than three slashes is treated as a non-doc comment.
+A comment that begins with more than three slashes is treated as a non-doc comment.
 
 ```slice
 
