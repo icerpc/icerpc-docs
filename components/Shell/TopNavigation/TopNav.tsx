@@ -44,7 +44,7 @@ export const TopNav = () => {
     <div
       className={clsx(
         'fixed top-0 z-10 flex w-full flex-col justify-center border-b border-lightBorder bg-[#FCFCFC]',
-        'dark:border-darkBorder dark:bg-black'
+        'dark:border-darkBorder/60 dark:bg-black'
       )}
     >
       <div id="main-nav" className="flex w-full justify-center">

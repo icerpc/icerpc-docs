@@ -127,24 +127,23 @@ export const SideNav = ({ path }: SideNavProps) => {
   if (cells.length === 0) return null;
 
   return (
-    <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-none dark:bg-black lg:flex">
-      <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-4 pr-2">
-        <SearchButton className="mb-0 mt-8 flex items-start pl-3 pr-6" />
+    <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-darkBorder dark:bg-black lg:flex">
+      <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-10">
+        <SearchButton className="mb-0 mt-8 flex items-start pr-6" />
         {baseUrl == '/slice' && (
-          <div className="top-0 mb-2 mt-4 bg-none pl-6 pr-3">
+          <div className="top-0 mb-2 mt-4 bg-none pr-6">
             <SliceSelector />
           </div>
         )}
         <nav
           className={clsx(
-            'sticky top-0 block w-[275px] overflow-y-auto',
-            'bg-none pb-10 pl-6 pr-3',
+            'sticky top-0 ml-[2px] block overflow-y-auto bg-none pb-10 pr-3',
             baseUrl == '/slice'
               ? 'h-[calc(100vh-59px-180px)]'
               : 'h-[calc(100vh-59px-40px)]'
           )}
         >
-          <ul className="top-0 mx-2 mt-4">{cells}</ul>
+          <ul className="top-0 mr-2 mt-4">{cells}</ul>
         </nav>
       </div>
     </div>

@@ -25,7 +25,7 @@ export const Title = ({
   return (
     <div className="not-prose mb-10">
       {showBreadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
-      <h1 className="text-4xl font-extrabold text-[#333333] dark:text-white">
+      <h1 className="text-4xl font-bold text-[#333333] dark:text-white">
         {title}
       </h1>
       <h2 className="my-3 text-xl text-[var(--text-color-secondary)] dark:text-white/60">

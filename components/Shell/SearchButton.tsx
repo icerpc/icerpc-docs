@@ -47,6 +47,7 @@ export const SearchButton = ({ className }: Props) => {
             ${resolvedTheme == Theme.Dark ? '#1f1f1f' : '#eaeaea'};
           width: 100%;
           height: 35px;
+          margin: 0;
         }
 
         // Breakpoint for the search button to remove background and box shadow when the screen is small

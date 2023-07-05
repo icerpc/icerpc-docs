@@ -32,9 +32,9 @@ export const SliceSelector = () => {
 
   return (
     <>
-      <div className="mb-6 w-full pr-6">
+      <div className="mb-6 mt-3 w-full pr-4">
         <Tab.Group selectedIndex={selectedIndex} onChange={onChange}>
-          <Tab.List className="my-4 flex rounded-xl bg-transparent">
+          <Tab.List className="flex space-x-2 rounded-xl bg-transparent">
             {encodings.map((encoding, index) => (
               <EncodingTab
                 key={encoding}
@@ -57,7 +57,7 @@ type EncodingTabProps = {
 
 const EncodingTab = ({ encoding, selected }: EncodingTabProps) => {
   const className = clsx(
-    'mx-1 w-[108px] rounded-lg border-[1.5px] bg-white p-2 text-center text-xs font-medium uppercase leading-tight',
+    'w-[114px] rounded border-[1.5px] bg-white p-2 text-center text-xs font-medium uppercase leading-tight',
     'focus:outline-none focus:ring-0',
     'transition-shadow duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg',
     'dark:bg-[#32363c] dark:text-white',
@@ -83,7 +83,11 @@ const EncodingTab = ({ encoding, selected }: EncodingTabProps) => {
     );
 
   return (
-    <Tooltip content={tooltipContent} placement="bottom" className="w-56">
+    <Tooltip
+      content={tooltipContent}
+      placement="bottom"
+      className="w-56 dark:!bg-[#32363c] [&>*]:dark:!bg-[#32363c]"
+    >
       <Tab as="div" className={className}>
         {encoding}
       </Tab>
