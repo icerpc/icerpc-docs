@@ -46,7 +46,7 @@ try to avoid Slice identifiers that are implementation language keywords.
 
 ## Using a keyword as an identifier
 
-It is possible to use a Slice keyword as an identifier by prefixing the keyword with a backslash, for example:
+It is possible to use a Slice keyword as an identifier by prefixing the keyword with a backslash; for example:
 
 ```slice
 struct dictionary {     // Error!
