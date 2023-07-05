@@ -17,7 +17,7 @@ module.exports = {
       },
       backgroundImage: {
         'dark-pattern':
-          'linear-gradient(to right,#000 0%,#000 50%,rgb(17, 17, 17) 75%,rgb(17, 17, 17) 100%)',
+          'linear-gradient(to right,#010409 0%,#010409 50%,rgb(14, 17, 22) 75%,rgb(14, 17, 22) 100%)',
         'og-image': 'url("/images/og.png")'
       },
       keyframes: {

@@ -60,7 +60,7 @@ const EncodingTab = ({ encoding, selected }: EncodingTabProps) => {
     'w-[114px] rounded border-[1.5px] bg-white p-2 text-center text-xs font-medium uppercase leading-tight',
     'focus:outline-none focus:ring-0',
     'transition-shadow duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg',
-    'dark:bg-[#32363c] dark:text-white',
+    'dark:bg-transparent dark:text-white',
     selected
       ? 'border border-primary bg-white text-primary dark:border-white dark:text-primary'
       : 'bg-slate-50 text-slate-500 hover:bg-white/80 hover:text-primary dark:border-darkBorder dark:text-white/40'
@@ -68,7 +68,8 @@ const EncodingTab = ({ encoding, selected }: EncodingTabProps) => {
   const tooltipContent =
     encoding === Encoding.Slice1 ? (
       <p>
-        Use Slice1 for interop with Ice applications.{' '}
+        Use Slice1 for Ice interop.
+        <br />
         <AppLink href="/slice/language-guide/slice1-or-slice2">
           Learn more
         </AppLink>

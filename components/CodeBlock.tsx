@@ -85,7 +85,9 @@ export const CodeBlock = ({
 
   useEffect(() => {
     if (resolvedTheme === Theme.Dark) {
-      setTheme(themes.vsDark);
+      const darkTheme = { ...themes.vsDark }; // Create a new theme object
+      darkTheme.plain = { ...darkTheme.plain, backgroundColor: '#0e1116' };
+      setTheme(darkTheme);
     } else {
       setTheme(themes.jettwaveDark);
     }
@@ -114,7 +116,7 @@ export const CodeBlock = ({
     <div
       className={clsx(
         robotoMono.className,
-        'group relative my-4 w-full items-center overflow-hidden rounded-lg border border-[rgb(46,46,46)] bg-[rgb(6,22,38)] dark:bg-[rgb(30,30,30)]'
+        'group relative my-4 w-full items-center overflow-hidden rounded-lg border border-[rgb(46,46,46)] bg-[rgb(6,22,38)] dark:bg-[#0e1116]'
       )}
     >
       <TopBar language={language} code={children} title={title} />
@@ -152,7 +154,6 @@ export const CodeBlock = ({
           </pre>
         )}
       </Highlight>
-
       {language == undefined && (
         <div
           className={clsx(
