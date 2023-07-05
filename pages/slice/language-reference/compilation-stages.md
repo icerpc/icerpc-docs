@@ -41,8 +41,8 @@ Syntax errors occur when the parser encounters a construct that does not conform
 The parser will attempt to recover from any syntax errors and continue parsing the Slice file.
 This allows the compiler to report multiple syntax errors in a single run.
 
-At this stage, the AST contains all the elements of the Slice code, but it is not yet complete. While we know that the
-input file is syntactically valid, we do not yet know if it is semantically valid.
+At the end of this stage, the AST contains all the elements of the Slice code, but it is not yet complete. While we 
+know that the input file is syntactically valid, we do not yet know if it is semantically valid.
 
 ## Patching
 
