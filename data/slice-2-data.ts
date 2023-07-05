@@ -116,11 +116,6 @@ export const slice2Data: SideBarSourceType[] = [
         title: 'Preprocessor',
         path: `${SLICE_BASE_URL}/language-reference/preprocessor`
       },
-
-      {
-        title: 'Compilation stages',
-        path: `${SLICE_BASE_URL}/language-reference/compilation-stages`
-      },
       {
         title: 'Keywords',
         path: `${SLICE_BASE_URL}/language-reference/keywords`
