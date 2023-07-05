@@ -5,8 +5,8 @@ description: Understand the frames sent over a Slic connection.
 
 ## Frame layout
 
-The Slic protocol sends data over a duplex connection in protocol frames. The reading and writing of these frames are
-serialized on the duplex connection.
+The Slic transport protocol sends data over a duplex connection in protocol frames. The reading and writing of these
+frames are serialized on the duplex connection.
 
 All the frames have the same layout: a header followed by a body.
 
@@ -41,7 +41,8 @@ enum FrameType : uint8 {
 }
 ```
 
-The `frameSize` represents the total number of bytes in the frame. The size of the header is not included.
+The `frameSize` represents the total number of bytes in the frame. The size of the header `frameSize` and `frameType`
+fields is not included.
 
 The format of the body depends on the frame type and the Slic version. This page describes the frames from the first
 Slic version (V1) which is at present the only version.

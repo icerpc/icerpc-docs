@@ -6,7 +6,7 @@ description: Understand how streams are created, closed, and used to transmit da
 ## What is a stream?
 
 Data is transmitted through independent bidirectional or unidirectional streams. Unidirectional streams carry data from
-the initiator of the stream to the peer. Data can be transmitted in both directions on a bidirectional stream. Multiple
+the initiator of the stream to the peer. Data can be transmitted in both directions of a bidirectional stream. Multiple
 streams can be opened at the same time on a multiplexed connection. Streams are identified by an ever increasing 62-bit
 integer.
 
@@ -21,15 +21,15 @@ stream is bidirectional or unidirectional. The following table summarizes the fo
 | 0x02 | Client-Initiated, Unidirectional |
 | 0x04 | Server-Initiated, Unidirectional |
 
-The following table describes the stream frames defined by the Slic protocol:
+The following table describes the stream frames defined by the Slic transport protocol:
 
-| Frame Type         | Description                                                                              |
-| ------------------ | ---------------------------------------------------------------------------------------- |
-| Stream             | This frame carries application data.                                                     |
-| StreamLast         | This frame carries application data and informs the peer that no more data will be sent. |
-| StreamReadsClosed  | This frame informs the peer of the stream reads closure.                                 |
-| StreamWritesClosed | This frame informs the peer of the stream writes closure.                                |
-| StreamWindowUpdate | This frame informs the peer of a stream window update.                                   |
+| Frame Type         | Description                                                                   |
+| ------------------ | ----------------------------------------------------------------------------- |
+| Stream             | Carries application data.                                                     |
+| StreamLast         | Carries application data and informs the peer that no more data will be sent. |
+| StreamReadsClosed  | Informs the peer of the stream reads closure.                                 |
+| StreamWritesClosed | Informs the peer of the stream writes closure.                                |
+| StreamWindowUpdate | Informs the peer of a stream window update.                                   |
 
 Stream frames are sent over the Slic's underlying duplex connection. The sending of a stream frame can therefore block the sending of other stream frames or connection frames.
 
@@ -40,7 +40,7 @@ Stream creation is initiated by the sending of the first [Stream][stream-frame] 
 The peer accepts a new stream when it receives a Stream or StreamLast frame with a stream identifier larger than the
 last accepted stream identifier.
 
-The stream identifier must be the next expected stream identifier. For example, if the last accepted client-side bidirectional stream identifier is 0, the next stream identifier must be 4.
+The stream identifier must be the next expected stream identifier. For example, if the last stream accepted by the server is the bidirectional stream with the identifier 0, the next stream identifier must be 4.
 
 ## Stream closure
 

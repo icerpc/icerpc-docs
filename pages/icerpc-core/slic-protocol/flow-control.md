@@ -6,20 +6,20 @@ description: Understand how flow control works with Slic.
 ## Connection data flow control
 
 Slic doesn't implement connection level flow control. Instead, it solely relies on the duplex transport for applying
-back pressure on the sender if the receiver can't process the incoming data fast enough. It's therefore important that
-the underlying duplex transport supports flow control.
+back pressure on the sender if the receiver can't process the incoming data fast enough. Therefore, the underlying
+duplex transport must support flow control.
 
 ## Stream data flow control
 
-Slic does however provide stream level flow control.  The sending of data on a stream must block if the peer can't read
-fast enough this data. Slic stream flow control is similar to [HTTP/2 stream flow control][http-stream-flow-control].
+Slic does provide stream level flow control.  The sending of data on a stream must block if the peer can't read fast
+enough this data. Slic stream flow control is similar to [HTTP/2 stream flow control][http-stream-flow-control].
 
-The flow control window defines the amount of data the receiver is willing to accept. A sender must stop sending data
-over the stream once the window is full. Sending more data is a protocol error. The sender should resume sending data
-only after receiving a [StreamWindowUpdate][stream-window-update].
+A flow control window defines the amount of data the receiver is willing to accept. A sender must stop sending data over
+the stream once the window is full. Sending more data is a protocol error. The sender can resume sending data only after
+receiving a [StreamWindowUpdate][stream-window-update] frame.
 
 The StreamWindowUpdate frame carries the amount of additional data the receiver is willing to accept. It can be sent
-anytime.
+anytime to increase the stream window size.
 
 The initial window size is specified by the [InitialStreamWindowSize][connection-parameters] parameter exchanged on connection establishment.
 

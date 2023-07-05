@@ -12,18 +12,18 @@ the connection advertises its idle timeout and the minimum value is used for the
 ## Keeping a connection alive
 
 To prevent the idle timeout to be triggered, the client or server can send a [PING][ping] frame. When the peer receives
-this [PING][ping] frame, it must reset its idle timeout timer and send back a [PONG][pong] frame. The reception of the
-[PONG][pong] frame must in turn reset the idle timeout timer of the receiver.
+this PING frame, it must reset its idle timeout timer and send back a [PONG][pong] frame. The reception of the
+PONG frame must in turn reset the idle timeout timer of the receiver.
 
-It's up to the Slic transport implementation to decide if and when [PING][ping] frames are sent.
+It's up to the transport implementation to decide if and when PING frames are sent.
 
-A [PING][ping] frame carries an opaque payload. This payload is sent back with the [PONG][pong] frame. Multiple
-[PING][ping] frames can be sent concurrently.
+A PING frame carries an opaque payload. This payload is sent back with the PONG frame. Multiple PING frames can be sent
+concurrently.
 
 {% callout %}
 
-The [PING][ping] frame can be used for different purposes. For example, it can be used to keep alive a connection or to
-measure the round-trip time (RTT). The opaque payload allows to identify the different [PING][ping] frames.
+The PING frame can be used for different purposes. For example, it can be used to keep alive a connection or to measure
+the round-trip time (RTT). The opaque payload allows to identify the different PING frames.
 
 {% /callout %}
 
