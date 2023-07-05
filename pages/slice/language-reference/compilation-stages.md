@@ -34,8 +34,8 @@ The parsing stage is responsible for parsing the preprocessed input files into a
 Slice code in memory that is easier to work with than the raw input files.
 
 Here, user defined types such as [structs](../language-guide/struct-types),
-[interfaces](../language-guide/interface-types), and [enums](../language-guide/enum-types) are parsed and stored for
-later stages in the AST.
+[interfaces](../language-guide/interface-types), and [enums](../language-guide/enum-types) are parsed and stored in 
+the AST for later stages.
 
 Syntax errors occur when the parser encounters a construct that does not conform to the Slice [grammar](./grammar).
 The parser will attempt to recover from any syntax errors and continue parsing the Slice file.
