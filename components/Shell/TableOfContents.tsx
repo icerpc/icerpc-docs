@@ -99,7 +99,7 @@ export const TableOfContents = (toc: TOCItem[]) => {
     <aside
       className={clsx(
         'sticky top-[3.75rem] mr-10 hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 border-lightBorder',
-        'border-l dark:border-darkBorder xl:flex',
+        'border-l dark:border-darkBorder dark:bg-[#0e1116] xl:flex',
         items.length > 1 ? '' : ''
       )}
     >

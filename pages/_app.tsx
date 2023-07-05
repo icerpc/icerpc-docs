@@ -1,8 +1,8 @@
 // Copyright (c) ZeroC, Inc.
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Inter } from 'next/font/google';
-import { ThemeProvider } from 'next-themes';
+import { ThemeProvider, useTheme } from 'next-themes';
 import { useRouter } from 'next/router';
 import App, { AppContext } from 'next/app';
 import clsx from 'clsx';

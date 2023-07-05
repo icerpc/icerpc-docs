@@ -43,7 +43,7 @@ export const SideNav = ({ path }: SideNavProps) => {
   if (cells.length === 0) return null;
 
   return (
-    <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-darkBorder dark:bg-black lg:flex">
+    <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-darkBorder/60 dark:bg-black lg:flex">
       <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-10">
         <SearchButton className="mb-0 mt-8 flex items-start pr-6" />
         {baseUrl == '/slice' && (
