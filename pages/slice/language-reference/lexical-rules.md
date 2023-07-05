@@ -7,9 +7,11 @@ description: Learn about the lexical rules of Slice
 
 Slice definitions can contain two types of comments:
 
-- [Doc comments](/docs/slice/language-guide/doc-comments): begin with `///` and extend to the end of the line. They are used by the compiler to
-  generate documentation in the mapped language.
-- Non-doc comments: begin with `//` and extend to the end of the line. They are ignored by the compiler.
+- [Doc comments](/docs/slice/language-guide/doc-comments): Begins with exactly `///` and extends to the end of the line.
+  They are used by the compiler to generate documentation in the mapped language.
+- Non-doc comments: Begins with `//` and extend to the end of the line. They are ignored by the compiler.
+
+A comment with more than three slashes is treated as a non-doc comment.
 
 ```slice
 

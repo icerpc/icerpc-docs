@@ -5,8 +5,7 @@ title: Compilation stages
 The Slice compiler consists of a number of stages that are executed in order.
 Each stage takes the output of the previous stage as input and produces its own output.
 
-At any stage of compilation, the compiler may report lints. Lints are non-fatal warnings that indicate potential
-problems in the Slice code. An error at any stage will cause the compilation to be aborted.
+An error at any stage will cause the compilation to be aborted.
 
 The compilation stages are:
 
@@ -101,6 +100,9 @@ The validation stage is responsible for validating the AST. Like patching, this 
     ```
 
     This is an error because `A` references itself in field `a`.
+
+    Classes are exempt from this rule and can reference themselves. While this is technically allowed, it is recommended
+    to avoid doing this.
 
 2. __Redefinition validation__
 

@@ -1,5 +1,6 @@
 ---
-title: Preprocessor
+title: Preprocessor directives
+description: Learn about the Slice preprocessor.
 ---
 
 The Slice compiler contains a [preprocessor](https://en.wikipedia.org/wiki/Preprocessor) that processes Slice files
@@ -16,23 +17,24 @@ If a symbol has not been defined, then it is considered undefined. There is no d
 been defined and a symbol that has been explicitly undefined. It is safe to define an already defined symbol or undefine an
 undefined symbol. Likewise, it is safe to define, undefine, then define a symbol again.
 
-It is recommended to use upper-case letters for preprocessor symbols, e.g. `#define DEBUG`. Like other Slice
+It is recommended to use (SCREAMING_SNAKE_CASE)[https://en.wikipedia.org/wiki/Snake_case] for preprocessor symbols,
+e.g. `#define DEBUG`. Like other Slice
 identifiers, preprocessor symbols are case sensitive.
 
 ## Syntax
 
 The preprocessor is not a full-blown programming language, but it supports a number of directives that can be used
-to control the preprocessor's behavior. Preprocessor directives must be the first non-whitespace characters on a line
-and may be nested.
+to control the preprocessor's behavior. Preprocessor directives must be the first non-whitespace characters on a line,
+can not span multiple lines, and may be nested inside other preprocessor directives.
 
 Preprocessor directives are:
 
-- `#define <SYMBOL>` - Define a symbol
-- `#undef <SYMBOL>` - Undefine a symbol
-- `#if <SYMBOL>` - Open a conditional compilation if the given symbol is defined.
-- `#elif <SYMBOL>` - Close the previous conditional compilation and open a new one if the given symbol is defined.
-- `#else` - Close the previous conditional compilation and open a new one.
-- `#endif` - Close the previous conditional compilation.
+- `#define <SYMBOL>` - Define a symbol.
+- `#undef <SYMBOL>` - Undefine a symbol.
+- `#if <SYMBOL>` - Open a conditional block if the given symbol is defined.
+- `#elif <SYMBOL>` - Close the previous conditional block and open a new one if the given symbol is defined.
+- `#else` - Close the previous conditional block and open a new one.
+- `#endif` - Close the previous conditional block.
 
 The `#if` and `#elif` statements support several logical operators and parentheses:
 
@@ -45,13 +47,15 @@ The `#if` and `#elif` statements support several logical operators and parenthes
 
 Symbols can be defined in two ways:
 
-- By using the `#define` directive in a Slice file, you can define a symbol will be defined for the remainder of the Slice file.
+- A symbol can be defined by using the `#define` directive in a Slice file. The symbol will be defined
+    for the remainder of the Slice file.
 
     ```slice
     #define ABC
     ```
 
-- By using the `-D` command-line option of the Slice compiler. The symbol will be defined for all Slice files.
+- A symbol can be defined by using the `-D` command-line option of the Slice compiler. The symbol will be defined
+    for all Slice files.
 
     ```shell
     slicec-cs -D FOO -D BAR  ...
