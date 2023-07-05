@@ -61,9 +61,9 @@ Symbols can be defined in two ways:
     slicec-cs -D FOO -D BAR  ...
     ```
 
-### Pre-defined symbols
+### Predefined symbols
 
-The only pre-defined symbol is `SLICEC_CS`. It is defined by the Slice compiler for C# and is used to indicate that
+The only predefined symbol is `SLICEC_CS`. It is defined by the Slice compiler for C# and is used to indicate that
 the Slice compiler for C# is being used.
 
 ## Examples

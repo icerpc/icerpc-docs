@@ -5,11 +5,12 @@ description: Learn about the lexical rules of Slice
 
 ## Comments
 
-Slice definitions can contain two types of comments:
+Slice definitions can contain several types of comments:
 
 - [Doc comments](/docs/slice/language-guide/doc-comments): Begins with exactly `///` and extends to the end of the line.
   They are used by the compiler to generate documentation in the mapped language.
-- Non-doc comments: Begins with `//` and extends to the end of the line. They are ignored by the compiler.
+- Non-doc line comments: Begins with `//` and extends to the end of the line. They are ignored by the compiler.
+- Non-doc block comments: Begins with `/*`, ends with `*/`, and can span multiple lines. They are ignored by the compiler.
 
 A comment that begins with more than three slashes is treated as a non-doc comment.
 
@@ -23,6 +24,12 @@ interface Customer  {
     // ...
 }
 
+/*
+ * This is a non-doc block comment
+ */
+struct Order {
+    // ...
+}
 ```
 
 ## Identifiers
