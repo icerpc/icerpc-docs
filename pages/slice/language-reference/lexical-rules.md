@@ -28,7 +28,7 @@ interface Customer  {
 ## Identifiers
 
 Identifiers consist of a sequence of one or more ASCII alphanumeric characters (`a-zA-Z0-9`) and underscores (`_`).
-The first character can not be a number. Identifiers are used to name Slice types such as structs, fields, enums, etc.
+The first character can not be a number. Identifiers are used to name Slice definitions such as structs, fields, enums, etc.
 
 ## Case sensitivity
 
