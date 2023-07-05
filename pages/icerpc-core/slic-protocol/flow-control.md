@@ -11,8 +11,7 @@ duplex transport must support flow control.
 
 ## Stream data flow control
 
-Slic does provide stream level flow control.  The sending of data on a stream must block if the peer can't read fast
-enough this data. Slic stream flow control is similar to [HTTP/2 stream flow control][http-stream-flow-control].
+Slic provides stream level flow control.  The sending of data on a stream must block if the peer can't read from it fast enough. Slic stream flow control is similar to [HTTP/2 stream flow control][http-stream-flow-control].
 
 A flow control window defines the amount of data the receiver is willing to accept. A sender must stop sending data over
 the stream once the window is full. Sending more data is a protocol error. The sender can resume sending data only after

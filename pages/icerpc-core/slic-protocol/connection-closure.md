@@ -19,7 +19,7 @@ duplex connection is lost or because of a protocol error, the application must a
 ## Graceful connection closure
 
 Graceful connection closure shouldn't wait for streams to be closed. If the application wants communications on the
-streams to cease first, it's responsible for closing the streams and wait for their closure before closing the
+streams to cease first, it's responsible for closing the streams then wait for their closure before closing the
 connection.
 
 The closure of the connection on the client follows these steps:
@@ -48,8 +48,7 @@ The closure of the connection on the server is different. It follows these steps
 The difference between the client and the server connection closure is the timing of the duplex connection writes shutdown. The duplex connection writes shutdown is always first initiated by the client. When using the TCP transport, this ensures sockets won't be left in the TIME_WAIT state on the server.
 {% /callout %}
 
-The [Close][close-frame] frame carries an application error code. This error code provides the reason for the connection
-closure.
+The Close frame carries an application error code. This error code provides the reason for the connection closure.
 
 ## Abortive connection closure
 
