@@ -22,7 +22,7 @@ server-side counterpart to the [Invoker](../invocation/invocation-pipeline#the-i
 An important difference between Invoker and Dispatcher is you need to implement this Dispatcher abstraction to fulfill
 the requests and produce the responses. The Invoker abstraction is implemented by IceRPC's connections.
 
-In C#, this dispatcher abstraction is the [`IDispatcher`][dispatcher-interface] interface:
+In C#, this dispatcher abstraction is the [IDispatcher][dispatcher-interface] interface:
 
 ```csharp
 namespace IceRpc;
@@ -92,3 +92,4 @@ flowchart LR
 
 [connections]: ../connection/how-to-create-a-connection
 [slice-service]: ../../slice/language-guide/interface
+[dispatcher-interface]: csharp:IceRpc.IDispatcher

@@ -38,7 +38,7 @@ When you make an invocation, you can choose to call `sayHello` (easy to code but
 `sayHelloAsync` (you don't block the calling thread but it's harder to obtain the response).
 
 IceRPC takes a different, more modern approach: the async/await syntax makes async programming so easy there is no need
-to provide a redundant synchronous API. The async/await syntax also makes it clear that a RPC is a call that can take a
+to provide a redundant synchronous API. The async/await syntax also makes it clear that an RPC is a call that can take a
 while, throw exceptions, and should not be confused with a local call that completes very quickly.
 
 With IceRPC:

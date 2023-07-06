@@ -10,7 +10,7 @@ Ice and IceRPC are both RPC frameworks with similar names, but they are quite di
 
 ## Different scopes
 
-Ice is a one-stop solution for building network applications. With Ice, you get a RPC framework and much more.
+Ice is a one-stop solution for building network applications. With Ice, you get an RPC framework and much more.
 
 Ice provides a suite of components to help you build portable, multi-language networked applications, including:
 - RPC

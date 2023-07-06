@@ -5,7 +5,7 @@ description: Learn how to create outgoing requests.
 
 ## Creating an outgoing request
 
-In order to make a RPC, you construct an outgoing request and then pass this request as a parameter to the `invoke`
+In order to make an RPC, you construct an outgoing request and then pass this request as a parameter to the `invoke`
 method of an [invoker](invocation-pipeline#the-invoker-abstraction).
 
 An outgoing request carries all the information an invoker needs to send a request:
