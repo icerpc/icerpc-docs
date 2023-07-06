@@ -15,6 +15,7 @@ type Props = {
   children: ReactElement[];
   title: string;
   description: string;
+  readingTime: string;
   encoding?: Encoding;
   showToc?: boolean;
 };
@@ -23,6 +24,7 @@ export const Document = ({
   children,
   title,
   description,
+  readingTime,
   encoding,
   showToc = true
 }: Props) => {
@@ -63,6 +65,7 @@ export const Document = ({
           <Title
             title={title}
             description={description}
+            readingTime={readingTime}
             showBreadcrumbs={!isBaseUrl}
           />
         )}

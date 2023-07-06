@@ -6,16 +6,19 @@ import { baseUrls, currentNavItem, sideBarData } from 'data/side-bar-data';
 import { Breadcrumbs, Breadcrumb } from 'components/Breadcrumbs';
 import { SideBarLink, Encoding, isCategory, isLink } from 'types';
 import { useEncoding } from 'context/state';
+import readingTime from 'reading-time';
 
 type Props = {
   title: string;
   description: string;
   showBreadcrumbs?: boolean;
+  readingTime?: string;
 };
 
 export const Title = ({
   title,
   description,
+  readingTime,
   showBreadcrumbs = true
 }: Props) => {
   const { encoding } = useEncoding();
@@ -24,8 +27,13 @@ export const Title = ({
 
   return (
     <div className="not-prose mb-10">
-      {showBreadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
-      <h1 className="text-4xl font-bold text-[#333333] dark:text-white">
+      <div className="mb-2 flex flex-row items-center justify-between">
+        {showBreadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
+        {readingTime && showBreadcrumbs && (
+          <p className="text-xs">{readingTime}</p>
+        )}
+      </div>
+      <h1 className="bg-gradient-to-b from-slate-800 to-black bg-clip-text pr-10 text-4xl font-bold text-transparent dark:text-white">
         {title}
       </h1>
       <h2 className="my-3 text-xl text-[var(--text-color-secondary)] dark:text-white/60">

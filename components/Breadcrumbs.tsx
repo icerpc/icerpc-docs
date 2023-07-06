@@ -13,7 +13,7 @@ type Props = { breadcrumbs: Breadcrumb[] };
 
 export const Breadcrumbs = ({ breadcrumbs }: Props) => {
   return (
-    <ul className="mb-2 mt-0 flex justify-start p-0 text-sm">
+    <ul className="flex justify-start p-0 text-sm">
       {breadcrumbs.map((crumb, index) => {
         const name = crumb.name;
         const href = crumb.href;

@@ -103,7 +103,7 @@ export const TableOfContents = (toc: TOCItem[]) => {
         items.length > 1 ? '' : ''
       )}
     >
-      <nav className="h-full px-8 py-6 pt-12">
+      <nav className="h-full px-8 pb-6 pt-11">
         {items.length > 1 && (
           <>
             <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase  dark:text-white">
