@@ -71,7 +71,6 @@ await using var connection = new ClientConnection(
     "ice://hello.zeroc.com?transport=tcp",
     new SslClientAuthenticationOptions());
 ```
-{% /callout %}
 
 ## coloc
 

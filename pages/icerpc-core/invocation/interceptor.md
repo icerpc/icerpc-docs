@@ -34,8 +34,8 @@ public class SimpleInterceptor : IInvoker
 
 ## Installing an interceptor
 
-In C#, you can create an invocation pipeline by creating an instance of class [Pipeline](csharp:IceRpc.Pipeline) and
-then calling `Use{Name}` extension methods to install interceptors on this pipeline.
+In C#, you can create an invocation pipeline by creating an instance of class [Pipeline][csharp-pipeline] and then
+calling `Use{Name}` extension methods to install interceptors on this pipeline.
 
 For example:
 
@@ -67,7 +67,7 @@ client connection.
 ## Installing an interceptor with Dependency Injection
 
 If you use Microsoft's Dependency Injection container, you should use an invoker builder instead of `Pipeline` to
-create your invocation pipeline. The `Use{Name}` extension methods for [`IInvokerBuilder`][invoker-builder-interface]
+create your invocation pipeline. The `Use{Name}` extension methods for [`IInvokerBuilder`][invoker-builder]
 retrieve dependencies automatically from the DI container.
 
 For example:
@@ -79,10 +79,14 @@ services.AddIceRpcInvoker(builder => builder.UseLogger().UseCompressor().Into<Cl
 This is equivalent to our earlier example except `UseLogger` retrieves the logger factory from the DI container.
 
 {% callout type="information" %}
-There is only one `LoggerInterceptor` class, one `CompressInterceptor` class etc. These interceptors can be installed in
-several different pipeline implementations, such as `Pipeline`, the implementation inside the builder created by
-`AddIceRpcInvoker`, or even your own custom pipeline class. Each pipeline implementation just needs its own set of
-`Use{Name}` extension methods.
+There is only one [`LoggerInterceptor`][logger-interceptor] class, one [`CompressorInterceptor`][compressor-interceptor]
+class etc. These interceptors can be installed in several different pipeline implementations, such as `Pipeline`, the
+implementation inside the builder created by [`AddIceRpcInvoker`][add-icerpc-invoker], or even your own custom pipeline
+class. Each pipeline implementation just needs its own set of `Use{Name}` extension methods.
 {% /callout %}
 
-[invoker-builder-interface]: csharp:IceRpc.Extensions.DependencyInjection.IInvokerBuilder
+[add-icerpc-invoker]: csharp:IceRpc.Extensions.DependencyInjection.ServerServiceCollectionExtensions
+[compressor-interceptor]: csharp:IceRpc.Compressor.CompressorInterceptor
+[csharp-pipeline]: csharp:IceRpc.Pipeline
+[invoker-builder]: csharp:IceRpc.Extensions.DependencyInjection.IInvokerBuilder
+[logger-interceptor]: csharp:IceRpc.Logger.LoggerInterceptor
