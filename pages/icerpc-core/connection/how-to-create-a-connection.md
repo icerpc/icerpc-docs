@@ -50,7 +50,7 @@ different server. The connection cache helps locate and reuse these connections.
 On the server-side, you accept server connections with an instance of the `Server` class. This server listens for and
 accepts new connections on its configured [server address](server-address#server-configuration).
 
-In C#, this is again a two-step process, where you first construct a [`Server`][server] and later call `Listen`:
+In C#, this is again a two-step process, where you first construct a [Server][server] and later call [Listen][listen]:
 
 ```csharp
 using IceRpc;
@@ -68,3 +68,4 @@ connections when you shut down the server.
 [client-connection]: csharp:IceRpc.ClientConnection
 [connection-cache]: csharp:IceRpc.ConnectionCache
 [server]: csharp:IceRpc.Server
+[listen]: csharp:IceRpc.Server#IceRpc_Server_Listen

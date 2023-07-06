@@ -9,9 +9,9 @@ A server, a client connection and a connection cache all manage [connections][co
 connections are represented by the protocol connection abstraction. A protocol connection:
 
 - holds a transport connection such as a QUIC connection or a tcp connection
-- implements a RPC protocol layer over this transport connection
+- implements an RPC protocol layer over this transport connection
 
-In C#, the protocol connection abstraction is represented by interface `IProtocolConnection`:
+In C#, the protocol connection abstraction is represented by interface [IProtocolConnection][csharp-protocol-connection]:
 
 ```csharp
 namespace IceRpc;
@@ -33,16 +33,22 @@ IceRPC provides two implementations of the protocol connection abstraction:
 
 ## Creating a protocol connection
 
-In C#, you create a client protocol connection with a `ClientProtocolConnectionFactory` (LINK). For example:
+In C#, you create a client protocol connection with a [ClientProtocolConnectionFactory][csharp-client-protocol-connection-factory].
+For example:
 
 ```csharp
 var clientProtocolConnectionFactory = new ClientProtocolConnectionFactory(connectionOptions, logger: logger);
 await using var protocolConnection = clientProtocolConnectionFactory.CreateConnection(serverAddress);
 ```
 
-This allows you to implement your own custom version of `ClientConnection` or `ConnectionCache`.
+This allows you to implement your own custom version of [ClientConnection][csharp-client-connection] or
+[ConnectionCache][csharp-connection-cache].
 
 There is currently no public API to create server protocol connections; as a result, you can't create your own custom
 version of Server.
 
 [connections]: ../connection/how-to-create-a-connection
+[csharp-protocol-connection]: csharp:IceRpc.IProtocolConnection
+[csharp-client-protocol-connection-factory]: csharp:IceRpc.ClientProtocolConnectionFactory
+[csharp-client-connection]: csharp:IceRpc.ClientConnection
+[csharp-connection-cache]: csharp:IceRpc.ConnectionCache

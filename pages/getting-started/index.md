@@ -15,7 +15,7 @@ connection.
 ![RPC diagram (dark mode)](diagrams/rpc-dark.svg)
 {% /dark-mode %}
 
-HTTP methods (GET, POST, PUT...) are all RPCs. A DNS resolution is a RPC. RPCs are literally everywhere!
+HTTP methods (GET, POST, PUT...) are all RPCs. A DNS resolution is an RPC. RPCs are literally everywhere!
 
 An RPC framework like IceRPC helps you apply this paradigm to your own networked applications without reinventing the
 wheel.
