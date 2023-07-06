@@ -7,13 +7,16 @@ description: Understand the service address concept and syntax.
 
 A service address is a [URI][uri] that specifies the address of a service. It can be either absolute or relative.
 
-- **Absolute Service Address:** Contains the protocol, `ice` or `icerpc`, required to reach the target service.
-  - The URI scheme identifies the protocol required to access the target service.
-  - An absolute service address may include one or more [server addresses](../connection/server-address), which can be
+- **Absolute Service Address:** Specifies a full path, including the protocol (`ice` or `icerpc`) to access the target
+  service.
+  - The protocol, identified by the URI scheme, is required to reach the target service.
+  - Absolute service addresses can contain one or more [server addresses](../connection/server-address), which can be
     used to establish or locate a connection to a server hosting the service. The protocol of the server address matches
     that of the enclosing service address.
-  - An absolute service address without a server address can have query parameters.
-- **Relative Service Address:** An absolute path that does not query parameters or fragments.
+  - An absolute service address without a server address may include query parameters.
+- **Relative Service Address:** An absolute path.
+  - Query parameters are disallowed.
+  - Fragments are disallowed.
 
 {% callout %}
 
