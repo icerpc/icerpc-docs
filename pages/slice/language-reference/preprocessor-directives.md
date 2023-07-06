@@ -15,7 +15,7 @@ defined or undefined.
 
 If a symbol has not been defined, then it is considered undefined. There is no difference between a symbol that has not
 been defined and a symbol that has been explicitly undefined. It is safe to define an already defined symbol or undefine an
-undefined symbol. Likewise, it is safe to define, undefine, then define a symbol again.
+undefined symbol.
 
 It is recommended to use [SCREAMING_SNAKE_CASE](https://en.wikipedia.org/wiki/Snake_case) for preprocessor symbols,
 e.g. `#define DEBUG`. Like other Slice
@@ -45,26 +45,17 @@ The `#if` and `#elif` statements support several logical operators and parenthes
 
 ## Defining symbols
 
-Symbols can be defined in two ways:
+A symbol can be defined by using the `#define` directive in a Slice file. The symbol will be defined for the
+remainder of the Slice file.
 
-- A symbol can be defined by using the `#define` directive in a Slice file. The symbol will be defined
-    for the remainder of the Slice file.
-
-    ```slice
-    #define ABC
-    ```
-
-- A symbol can be defined by using the `-D` command-line option of the Slice compiler. The symbol will be defined
-    for all Slice files.
-
-    ```shell
-    slicec-cs -D FOO -D BAR  ...
-    ```
+```slice
+#define ABC
+```
 
 ### Predefined symbols
 
-The only predefined symbol is `SLICEC_CS`. It is defined by the Slice compiler for C# and is used to indicate that
-the Slice compiler for C# is being used.
+Slice does not define any symbols by default. However, an individual Slice language compiler may wish to define
+symbols to indicate the target language.
 
 ## Examples
 
@@ -106,8 +97,6 @@ Nested conditional compilation:
         // Everything here will be ignored.
         // ...
     #endif
-
-    // Everything here will be ignored.
     // ...
 #endif
 

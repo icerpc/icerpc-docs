@@ -60,4 +60,4 @@ struct \foo {           // Legal, same as "struct foo"
 }
 ```
 
-As mentioned in the previous section, it's best to avoid using Slice keywords as identifiers.
+It's best to avoid using Slice keywords as identifiers.
