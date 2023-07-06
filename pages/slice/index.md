@@ -4,14 +4,30 @@ description: A better IDL
 showToc: false
 ---
 
-Slice is IceRPC's preferred [Interface Definition Language][idl] (IDL).
+The [IceRPC core][icerpc-core] provides all you need to create RPCs. When you use only the core, the payload of your
+requests and responses are streams of bytes, and you need to manually encode and decode any typed data (such as strings
+and integers) in these streams. This is doable but laborious.
+
+Slice builds on the core's byte-oriented API to provide a higher-level API, with types. For example, the Thermostat
+interface below defines 3 operations, or RPCs, in Slice:
+
+```slice
+interface Thermostat {
+   getCurrentTemperature() -> float64
+   getHistoricalTemperature(timeStamp: WellKnownTypes::TimeStamp) -> float64
+   streamTemperature() -> stream float64
+}
+```
+
+The Slice compiler parses this Slice interface and generates code in your favorite programming language. The resulting
+generated code offers you a convenient typed RPC API implemented using IceRPC requests and responses.
 
 {% grid %}
 
 {% mini-card
-   title="Why use Slice?"
-   description="Understand the problem that Slice solves."
-   href="/slice/basics/why-use-slice" /%}
+   title="Slice components"
+   description="A short description of each Slice component."
+   href="/slice/basics/slice-components" /%}
 
 {% mini-card
    title="Contract-first model"
@@ -40,4 +56,4 @@ Slice is IceRPC's preferred [Interface Definition Language][idl] (IDL).
 
 {% /grid %}
 
-[idl]: https://en.wikipedia.org/wiki/Interface_description_language
+[icerpc-core]: ../icerpc-core

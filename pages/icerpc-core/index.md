@@ -4,8 +4,9 @@ description: RPCs without an IDL
 showToc: false
 ---
 
-The IceRPC Core provides everything you need to send and receive requests and responses over network connections. These
-requests and responses carry byte streams—the encoding of these byte streams is outside the scope of the IceRPC Core.
+The IceRPC core provides everything you need to send and receive requests and responses over network connections. These
+requests and responses carry byte streams—if you want a typed API, use [Slice][slice] or another [IDL] together with the
+IceRPC core.
 
 {% grid %}
 
@@ -60,3 +61,6 @@ requests and responses carry byte streams—the encoding of these byte streams i
    href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterProtobuf" /%}
 
 {% /grid %}
+
+[idl]: https://en.wikipedia.org/wiki/Interface_description_language
+[slice]: ../slice
