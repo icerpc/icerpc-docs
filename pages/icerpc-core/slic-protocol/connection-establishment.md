@@ -44,7 +44,7 @@ The following sequence diagram shows the interactions between the client and ser
 sequenceDiagram
     Client-)Server: Open duplex connection
     Note over Client,Server: Connect duplex connection
-    Client->>Server: Initialize frame
+    Client-)Server: Initialize frame
     Server--)Client: InitializeAck frame
 ```
 
@@ -53,10 +53,10 @@ And the following sequence diagram shows the interactions when the client versio
 sequenceDiagram
     Client-)Server: Open duplex connection
     Note over Client,Server: Connect duplex connection
-    Client->>Server: Initialize frame
-    Server-->>Client: Version frame
+    Client-)Server: Initialize frame
+    Server--)Client: Version frame
     alt a server version is supported
-        Client->>Server: Initialize frame
+        Client-)Server: Initialize frame
         Server--)Client: InitializeAck frame
     else no server version is supported
         Client-)Server: Duplex connection shutdown
