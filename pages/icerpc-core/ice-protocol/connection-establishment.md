@@ -21,6 +21,15 @@ connection established and can start accepting incoming requests and sending out
 it considers the connection established and can start sending outgoing requests and accepting incoming requests on
 this connection.
 
+The following sequence diagram shows the interactions between the client and server on connection establishment:
+
+```mermaid
+sequenceDiagram
+    Client->>Server: Connect duplex connection
+    Server--)Client: Duplex connection accepted
+    Server--)Client: ValidateConnection frame
+```
+
 ## ValidateConnection frame
 
 The ValidateConnection frame is an ice protocol frame with type ValidateConnection. Its body is empty. The server-side

@@ -42,21 +42,21 @@ The following sequence diagram shows the interactions between the client and ser
 
 ```mermaid
 sequenceDiagram
-    Client-)Server: Open duplex connection
-    Note over Client,Server: Connect duplex connection
-    Client-)Server: Initialize frame
+    Client->>Server: Connect duplex connection
+    Server--)Client: Duplex connection accepted
+    Client->>Server: Initialize frame
     Server--)Client: InitializeAck frame
 ```
 
 And the following sequence diagram shows the interactions when the client version is not supported by the server:
 ```mermaid
 sequenceDiagram
-    Client-)Server: Open duplex connection
-    Note over Client,Server: Connect duplex connection
-    Client-)Server: Initialize frame
-    Server--)Client: Version frame
+    Client->>Server: Connect duplex connection
+    Server--)Client: Duplex connection accepted
+    Client->>Server: Initialize frame
+    Server-->>Client: Version frame
     alt a server version is supported
-        Client-)Server: Initialize frame
+        Client->>Server: Initialize frame
         Server--)Client: InitializeAck frame
     else no server version is supported
         Client-)Server: Duplex connection shutdown

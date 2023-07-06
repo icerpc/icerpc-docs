@@ -42,6 +42,18 @@ that the peer won't accept.
 This step can fail because the peer closed the multiplexed connection first with error code 0. This remains a successful
 shutdown.
 
+The following sequence diagram shows the interactions between the client and server on connection shutdown:
+
+```mermaid
+sequenceDiagram
+    Client->>Server: GoAway frame
+    Server-->>Client: GoAway frame
+    Client->>Server: Close control stream
+    Server-->>Client: Close control stream
+    Client->>Server: Close multiplexed connection
+    Server-->>Client: Multiplexed connection closed
+```
+
 ## GoAway frame
 
 The GoAway frame is specified in Slice (LINK) and encoded with Slice2:

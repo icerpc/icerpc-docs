@@ -27,14 +27,16 @@ Once the client or the server receives the Settings frame from the peer, it cons
 and the local application code can start sending requests (creating streams) and dispatching requests (accepting
 streams) on this connection.
 
+The following sequence diagram shows the interactions between the client and server on connection establishment:
+
 ```mermaid
 sequenceDiagram
-    Client-)Server: Open multiplexed connection
-    Note over Client,Server: Connect multiplexed connection
+    Client->>Server: Connect multiplexed connection
+    Server--)Client: Multiplexed connection accepted
     par
-        Server--)Client: Settings frame
+        Client->>Server: Settings frame
     and
-        Client-)Server: Settings frame
+        Server->>Client: Settings frame
     end
 ```
 
