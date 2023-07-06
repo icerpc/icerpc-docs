@@ -44,7 +44,7 @@ export const TopNav = () => {
     <div
       className={clsx(
         'fixed top-0 z-10 flex w-full flex-col justify-center border-b border-lightBorder bg-[#FCFCFC]',
-        'dark:border-darkBorder dark:bg-black'
+        'dark:border-darkBorder/60 dark:bg-black'
       )}
     >
       <div id="main-nav" className="flex w-full justify-center">
@@ -95,10 +95,10 @@ const Logo = () => {
 
   return (
     <Link href="https://web.testing.zeroc.com/icerpc">
-      <div className="mb-3 ml-[1.4rem] mr-0 mt-5 flex items-center justify-start gap-1 pb-4 lg:ml-[3rem]">
+      <div className="mb-3 ml-[1.3rem] mr-0 mt-5 flex items-center justify-start gap-1 pb-4 lg:ml-[2.6rem]">
         <Image
           src={resolvedTheme === Theme.Dark ? darkIcon : lightIcon}
-          height={25}
+          height={20}
           alt="ZeroC Logo"
           className="mt-2"
         />
@@ -127,7 +127,7 @@ const TopNavigationItem = ({
       (href === '/' && pathname === '/') ||
       (href !== '/' && pathname.startsWith(href))
     ) {
-      return 'text-primary dark:text-white underline dark:no-underline decoration-2 underline-offset-[1.5rem] opacity-100 ';
+      return 'text-primary dark:text-white no-underline decoration-2 underline-offset-[1.5rem] opacity-100 ';
     } else {
       return 'dark:text-[rgba(255,255,255,0.6)]';
     }

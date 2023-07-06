@@ -22,90 +22,6 @@ import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { getBreadcrumbs } from 'components/Tags/Title';
 import { SearchButton } from './SearchButton';
 
-function createListItem(
-  router: NextRouter,
-  link: SideBarLink | SideBarDivider,
-  noLeftPadding = false,
-  onClick: React.MouseEventHandler<HTMLAnchorElement> | undefined
-): React.ReactElement {
-  const leftPadding = noLeftPadding ? 'ml-0' : 'ml-3';
-
-  if (isLink(link)) {
-    const isCurrentPage = router.pathname === link.path.replace(/\/$/, '');
-    return (
-      <li key={link.path} className="flex">
-        <Link
-          href={link.path}
-          className={clsx(
-            `py-[6px] pl-0 pr-3 text-sm no-underline  ${leftPadding} dark:text-[#C4C7C5]`,
-            isCurrentPage
-              ? noLeftPadding
-                ? 'font-bold text-primary dark:text-white'
-                : 'ml-[-3px] border-l-[1.5px] border-primary pl-[13.5px] font-bold text-primary dark:border-white/80 dark:text-white'
-              : 'hover:text-zinc-900 dark:hover:text-white'
-          )}
-          onClick={onClick}
-        >
-          {link.title}
-        </Link>
-      </li>
-    );
-  } else {
-    return (
-      <li key={link.title} className={clsx('my-2 pl-0 pr-2', leftPadding)}>
-        <h2 className="text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:text-white dark:decoration-darkBorder">
-          {link.title}
-        </h2>
-      </li>
-    );
-  }
-}
-
-function transformSideBarData(
-  router: NextRouter,
-  data: SideBarSourceType,
-  onClick: React.MouseEventHandler<HTMLAnchorElement> | undefined = undefined
-): React.ReactElement[] {
-  if (isCategory(data)) {
-    const category = data;
-    return [
-      <li key="category">
-        <ul>
-          <li key={category.title} className="list-none">
-            <h2 className="my-[10px] text-sm font-semibold dark:text-white">
-              {category.title}
-            </h2>
-          </li>
-          <li key={`${category.title}-content`} className="list-none">
-            <ul
-              key={category.title + '-list'}
-              className="ml-[0.1rem] border-l-[1.5px] border-lightBorder pl-[0.1rem] dark:border-[#3D3D3D]"
-            >
-              {category.links.map((link) =>
-                createListItem(router, link, false, onClick)
-              )}
-            </ul>
-          </li>
-        </ul>
-      </li>
-    ];
-  } else if (isLink(data)) {
-    return [createListItem(router, data, true, onClick)];
-  } else {
-    return [
-      <div key={data.title} className="mr-4 py-2 text-sm uppercase text-black">
-        <Divider margin="mb-4 mt-4 mr-[12px]" />
-        <h2 className="my-2 text-sm font-bold dark:text-white">{data.title}</h2>
-        <Divider margin="mt-4 mr-[12px]" />
-      </div>
-    ];
-  }
-}
-
-type SideNavProps = {
-  path: string;
-};
-
 export const SideNav = ({ path }: SideNavProps) => {
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { encoding: currentEncoding } = useEncoding();
@@ -127,24 +43,23 @@ export const SideNav = ({ path }: SideNavProps) => {
   if (cells.length === 0) return null;
 
   return (
-    <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-none dark:bg-black lg:flex">
-      <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-4 pr-2">
-        <SearchButton className="mb-0 mt-8 flex items-start pl-3 pr-6" />
+    <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-darkBorder/60 dark:bg-black lg:flex">
+      <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-10">
+        <SearchButton className="mb-0 mt-8 flex items-start pr-6" />
         {baseUrl == '/slice' && (
-          <div className="top-0 mb-2 mt-4 bg-none pl-6 pr-3">
+          <div className="top-0 mb-2 mt-4 bg-none pr-6">
             <SliceSelector />
           </div>
         )}
         <nav
           className={clsx(
-            'sticky top-0 block w-[275px] overflow-y-auto',
-            'bg-none pb-10 pl-6 pr-3',
+            'sticky top-0 ml-[2px] block overflow-y-auto bg-none pb-10 pr-3',
             baseUrl == '/slice'
               ? 'h-[calc(100vh-59px-180px)]'
               : 'h-[calc(100vh-59px-40px)]'
           )}
         >
-          <ul className="top-0 mx-2 mt-4">{cells}</ul>
+          <ul className="top-0 mr-2 mt-4">{cells}</ul>
         </nav>
       </div>
     </div>
@@ -280,3 +195,87 @@ export function MobileSideNav({ pathname }: MobileSideNavProps) {
     return null;
   }
 }
+
+function createListItem(
+  router: NextRouter,
+  link: SideBarLink | SideBarDivider,
+  noLeftPadding = false,
+  onClick: React.MouseEventHandler<HTMLAnchorElement> | undefined
+): React.ReactElement {
+  const leftPadding = noLeftPadding ? 'ml-0' : 'ml-3';
+
+  if (isLink(link)) {
+    const isCurrentPage = router.pathname === link.path.replace(/\/$/, '');
+    return (
+      <li key={link.path} className="flex">
+        <Link
+          href={link.path}
+          className={clsx(
+            `py-[6px] pl-0 pr-3 text-sm no-underline  ${leftPadding} dark:text-[#C4C7C5]`,
+            isCurrentPage
+              ? noLeftPadding
+                ? 'font-bold text-primary dark:text-white'
+                : 'ml-[-3px] border-l-[1.5px] border-primary pl-[13.5px] font-bold text-primary dark:border-white/80 dark:text-white'
+              : 'hover:text-zinc-900 dark:hover:text-white'
+          )}
+          onClick={onClick}
+        >
+          {link.title}
+        </Link>
+      </li>
+    );
+  } else {
+    return (
+      <li key={link.title} className={clsx('my-2 pl-0 pr-2', leftPadding)}>
+        <h2 className="text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:text-white dark:decoration-darkBorder">
+          {link.title}
+        </h2>
+      </li>
+    );
+  }
+}
+
+function transformSideBarData(
+  router: NextRouter,
+  data: SideBarSourceType,
+  onClick: React.MouseEventHandler<HTMLAnchorElement> | undefined = undefined
+): React.ReactElement[] {
+  if (isCategory(data)) {
+    const category = data;
+    return [
+      <li key="category">
+        <ul>
+          <li key={category.title} className="list-none">
+            <h2 className="my-[10px] text-sm font-semibold dark:text-white">
+              {category.title}
+            </h2>
+          </li>
+          <li key={`${category.title}-content`} className="list-none">
+            <ul
+              key={category.title + '-list'}
+              className="ml-[0.1rem] border-l-[1.5px] border-lightBorder pl-[0.1rem] dark:border-[#3D3D3D]"
+            >
+              {category.links.map((link) =>
+                createListItem(router, link, false, onClick)
+              )}
+            </ul>
+          </li>
+        </ul>
+      </li>
+    ];
+  } else if (isLink(data)) {
+    return [createListItem(router, data, true, onClick)];
+  } else {
+    return [
+      <div key={data.title} className="mr-4 py-2 text-sm uppercase text-black">
+        <Divider margin="mb-4 mt-4 mr-[12px]" />
+        <h2 className="my-2 text-sm font-bold dark:text-white">{data.title}</h2>
+        <Divider margin="mt-4 mr-[12px]" />
+      </div>
+    ];
+  }
+}
+
+type SideNavProps = {
+  path: string;
+};

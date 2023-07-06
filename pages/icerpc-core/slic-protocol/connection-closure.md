@@ -19,7 +19,7 @@ duplex connection is lost or because of a protocol error, the application must a
 ## Graceful connection closure
 
 Graceful connection closure shouldn't wait for streams to be closed. If the application wants communications on the
-streams to cease first, it's responsible for closing the streams and wait for their closure before closing the
+streams to cease first, it's responsible for closing the streams then wait for their closure before closing the
 connection.
 
 The closure of the connection on the client follows these steps:

@@ -57,7 +57,7 @@ export const Document = ({
   const isCurrentEncoding = encoding ? encoding === currentEncoding : true;
 
   return (
-    <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip dark:bg-[rgb(21,21,22)] lg:justify-start">
+    <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip lg:justify-start">
       <article className="mx-6 mt-10 h-full w-full max-w-[52rem] md:mx-10 lg:mx-16">
         {isCurrentEncoding && (
           <Title
