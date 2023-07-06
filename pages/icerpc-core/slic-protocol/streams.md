@@ -70,6 +70,35 @@ cause more head-of-line blocking that smaller stream frames. The [MaxStreamFrame
 exchanged on connection establishment limits the maximum size of a Stream or StreamLast frame. If the application data
 is larger than this parameter value, the data will be sent in chunks with multiple Stream frames.
 
+## Stream states
+
+The following state diagram shows the states of the stream write side.
+
+```mermaid
+stateDiagram
+    WritesClosed : Writes closed
+    [*] --> Ready: Create stream
+    [*] --> Ready: Accept stream
+    Ready --> WritesClosed: Send <i>StreamLast</i>
+    Ready --> Send: Send <i>Stream</i>
+    Send --> WritesClosed: <center>Send <i>StreamLast</i> or <i>StreamWritesClosed</i><br />Received <i>StreamReadsClosed</i></center>
+    WritesClosed --> [*]
+```
+
+And the following state diagram shows the states of the stream read side.
+
+```mermaid
+stateDiagram
+    ReadsClosed : Reads closed
+    DataReceived: Data received
+    [*] --> Receive: <center>Received <i>Stream</i><br />or <i>StreamLast</i></center>
+    [*] --> Receive: Create bidirectional stream
+    Receive --> ReadsClosed: <center>Send <i>StreamReadsClosed</i><br />Received <i>StreamWritesClosed</i></center>
+    Receive --> DataReceived: Received <i>StreamLast</i>
+    DataReceived --> ReadsClosed: Data consumed
+    ReadsClosed --> [*]
+```
+
 [rfc9000]: https://www.rfc-editor.org/rfc/rfc9000.html#name-stream-types-and-identifier
 [hol]: https://en.wikipedia.org/wiki/Head-of-line_blocking
 [connection-parameters]: connection-establishment#connection-establishment-parameters
