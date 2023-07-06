@@ -128,4 +128,3 @@ For example, a response with status code Success, no fields and an empty payload
 
 [slice]: ../../slice
 [slice2]: ../../slice/language-guide/slice1-or-slice2
-
