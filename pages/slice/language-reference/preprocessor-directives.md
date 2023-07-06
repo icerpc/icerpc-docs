@@ -17,7 +17,7 @@ If a symbol has not been defined, then it is considered undefined. There is no d
 been defined and a symbol that has been explicitly undefined. It is safe to define an already defined symbol or undefine an
 undefined symbol. Likewise, it is safe to define, undefine, then define a symbol again.
 
-It is recommended to use (SCREAMING_SNAKE_CASE)[https://en.wikipedia.org/wiki/Snake_case] for preprocessor symbols,
+It is recommended to use [SCREAMING_SNAKE_CASE](https://en.wikipedia.org/wiki/Snake_case) for preprocessor symbols,
 e.g. `#define DEBUG`. Like other Slice
 identifiers, preprocessor symbols are case sensitive.
 
