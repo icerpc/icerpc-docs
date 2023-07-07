@@ -15,9 +15,9 @@ title: Path-based request routing
 flowchart LR
     subgraph Router
     direction LR
-    m1["middleware #1"] --> m2["middleware #2"] -- /greeter --> s1["mapped service #1"]
-    m1 --> m2 -- /greeter/joe --> s2["mounted service #2"]
-    m1 --> m2 -- /greeter/bob --> s2
+    m1["middleware #1"] --> m2["middleware #2"] -- /greeter --> s1["mapped greeter service #1"]
+    m2 -- /user/joe --> s2["mounted account service #2"]
+    m2 -- /user/bob --> s2
     end
     connection --> m1
 ```
@@ -26,7 +26,7 @@ These other dispatchers are registered with the router using `map` and `mount` m
 
 - `map` associates a dispatcher with a path in the router.
 
-    For example, you can map path `/greeter` to the chatbot service. It's an exact match. A request with path `/`,
+    For example, you can map path `/greeter` to a chatbot service. It's an exact match. A request with path `/`,
     `/greeter2` or `/greeter/foo` is not a match.
 
     In C#, you would write:
@@ -38,14 +38,14 @@ These other dispatchers are registered with the router using `map` and `mount` m
 
 - `mount` associates a dispatcher with a path prefix in the router.
 
-    For example, you can mount path-prefix `/greeter` to the chatbot service. A request with path `/greeter` or
-    `/greeter/foo` is a match. A request with path `/`, `/greeter2` is not a match.
+    For example, you can mount path-prefix `/user` to an account service. A request with path `/user` or
+    `/user/foo` is a match. A request with path `/`, `/user2` is not a match.
 
     In C#, you would write:
 
     ```csharp
     var router = new Router();
-    router.Mount("/greeter", chatbot);
+    router.Mount("/user", account);
     ```
 
 It is common to map leaf dispatchers such as services and mount sub-routers, but it's not a hard and fast rule.
