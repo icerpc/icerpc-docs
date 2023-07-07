@@ -26,7 +26,7 @@ The following sequence diagram shows the interactions between the client and ser
 ```mermaid
 sequenceDiagram
     Client->>Server: Connect duplex connection
-    Server--)Client: ValidateConnection frame
+    Server-)Client: ValidateConnection frame
 ```
 
 ## ValidateConnection frame
