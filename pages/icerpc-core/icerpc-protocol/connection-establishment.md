@@ -32,11 +32,10 @@ The following sequence diagram shows the interactions between the client and ser
 ```mermaid
 sequenceDiagram
     Client->>Server: Connect multiplexed connection
-    Server--)Client: Multiplexed connection accepted
     par
-        Client->>Server: Settings frame
+        Client-)Server: Settings frame
     and
-        Server->>Client: Settings frame
+        Server-)Client: Settings frame
     end
 ```
 

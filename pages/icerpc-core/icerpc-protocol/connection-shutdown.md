@@ -51,7 +51,6 @@ sequenceDiagram
     Client->>Server: Close control stream
     Server-->>Client: Close control stream
     Client->>Server: Close multiplexed connection
-    Server-->>Client: Multiplexed connection closed
 ```
 
 ## GoAway frame

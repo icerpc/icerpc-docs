@@ -38,8 +38,8 @@ The following sequence diagram shows the interactions between the client and ser
 ```mermaid
 sequenceDiagram
     Client-)Server: Close frame
-    Client->>Server: Duplex connection writes shutdown
-    Server--)Client: Duplex connection writes shutdown
+    Client->>Server: Duplex connection shutdown
+    Server-->>Client: Duplex connection shutdown
 ```
 
 The closure of the connection on the server is different. It follows these steps:
@@ -58,8 +58,8 @@ The following sequence diagram shows the interactions between the client and ser
 ```mermaid
 sequenceDiagram
     Server->>Client: Close frame
-    Client-->>Server: Duplex connection writes shutdown
-    Server-)Client: Duplex connection writes shutdown
+    Client-->>Server: Duplex connection shutdown
+    Server->>Client: Duplex connection shutdown
 ```
 
 {% callout type="information" %}
