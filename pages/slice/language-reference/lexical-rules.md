@@ -1,5 +1,5 @@
 ---
-title: Lexical Rules
+title: Lexical rules
 description: Learn about the lexical rules of Slice
 ---
 
