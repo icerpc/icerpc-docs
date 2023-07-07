@@ -54,7 +54,7 @@ and returns the response.
 
 ```mermaid
 sequenceDiagram
-    Local->>Remote: request header + payload
+    Local-)Remote: request header + payload
     par
         Remote--)Local: response header + payload
     and
