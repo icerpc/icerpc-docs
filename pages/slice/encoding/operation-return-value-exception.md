@@ -72,7 +72,7 @@ If the stream element type is fixed-size (e.g., an `int32`), the stream is encod
 without any demarcation.
 
 If the stream element type is variable-size (e.g., a `string` or an `int32?`), the stream is encoded as a series of
-[segments](encoding-only-constructs-slice2#segment), where each segment holds a whole number of encoded elements--at
+[segments](encoding-only-constructs#segment), where each segment holds a whole number of encoded elements--at
 least 1 per segment. The segment's size corresponds to the number of bytes in the segment, not the number of streamed
 elements encoded in this segment.
 {% /slice2 %}
@@ -88,7 +88,7 @@ exception is encoded into the payload of an outgoing response with status code `
 When an operation implementation throws an exception whose type matches the operation's exception specification, this
 exception is encoded inside a segment into the payload of an outgoing response with status code `ApplicationError`.
 
-This [segment](encoding-only-constructs-slice2#segment) contains only the encoded exception.
+This [segment](encoding-only-constructs#segment) contains only the encoded exception.
 
 The payload continuation of the outgoing response is empty in this situation.
 

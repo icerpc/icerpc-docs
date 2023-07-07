@@ -16,7 +16,7 @@ Slice is IceRPC's preferred [Interface Definition Language][idl] (IDL).
 {% mini-card
    title="Contract-first model"
    description="Learn how to create an application using IceRPC and Slice."
-   href="/slice/basics/contract-filter-model" /%}
+   href="/slice/basics/contract-first" /%}
 
 {% mini-card
    title="Interface"
