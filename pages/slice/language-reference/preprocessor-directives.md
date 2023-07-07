@@ -3,8 +3,8 @@ title: Preprocessor directives
 description: Learn about the Slice preprocessor.
 ---
 
-The Slice compiler contains a [preprocessor](https://en.wikipedia.org/wiki/Preprocessor) that processes Slice files
-before they're parsed. The preprocessor is line-based, which means that it operates on the source
+The Slice compiler contains a [preprocessor](https://en.wikipedia.org/wiki/Preprocessor) that can be used to
+conditionally compile parts of a Slice file. The preprocessor is line-based, which means that it operates on the source
 code one line at a time.
 
 ## Symbols
@@ -17,15 +17,15 @@ If a symbol has not been defined, then it is considered undefined. There is no d
 been defined and a symbol that has been explicitly undefined. It is safe to define an already defined symbol or undefine an
 undefined symbol.
 
-It is recommended to use [SCREAMING_SNAKE_CASE](https://en.wikipedia.org/wiki/Snake_case) for preprocessor symbols,
-e.g. `#define DEBUG`. Like other Slice
-identifiers, preprocessor symbols are case sensitive.
+The convention is to use [SCREAMING_SNAKE_CASE](https://en.wikipedia.org/wiki/Snake_case) to distinguish preprocessor
+symbols from other identifiers, and we recommend that you follow the same convention in your own code.
+
+Like other Slice identifiers, preprocessor symbols are case sensitive.
 
 ## Syntax
-
-The preprocessor is not a full-blown programming language, but it supports a number of directives that can be used
-to control the preprocessor's behavior. Preprocessor directives must be the first non-whitespace characters on a line,
-can not span multiple lines, and may be nested inside other preprocessor directives.
+The preprocessor supports a number of directives that can be used to control the conditional compilation of Slice
+definitions. Preprocessor directives must be the first non-whitespace characters on a line, can not span multiple lines,
+and may be nested inside other preprocessor directives.
 
 Preprocessor directives are:
 
@@ -60,6 +60,7 @@ symbols to indicate the target language.
 ## Examples
 
 Conditional compilation:
+
 ```slice
 // Define symbol FOO
 #define FOO
