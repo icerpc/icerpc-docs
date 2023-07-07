@@ -11,7 +11,7 @@ See also the [service address encoding][service-address-encoding].
 {% /slice1 %}
 
 {% slice2 %}
-IceRPC provides a number [custom types](custom-types) in module `WellKnownTypes`:
+IceRPC provides a number of [custom types](custom-types) in module `WellKnownTypes`:
  - [Duration][duration]\
    A length of time, encoded as a varint62 (precision = 100 nanoseconds).
  - [ServiceAddress][service-address]\

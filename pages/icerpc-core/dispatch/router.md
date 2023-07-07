@@ -10,17 +10,15 @@ execute middleware along this route.
 
 ```mermaid
 ---
-title: Request routing with a router
+title: Path-based request routing
 ---
 flowchart LR
     subgraph Router
     direction LR
-    m1["middleware #1"] --> m2["middleware #2"] -- /greeter --> s1["service #1"]
+    m1["middleware #1"] --> m2["middleware #2"] -- /greeter --> s1["mapped service #1"]
+    m1 --> m2 -- /greeter/joe --> s2["mounted service #2"]
+    m1 --> m2 -- /greeter/bob --> s2
     end
-    subgraph Sub-router
-    m3["middleware #3"] -- /superAdmin --> s2["service #2"]
-    end
-    m2 -- /admin --> m3
     connection --> m1
 ```
 
@@ -63,6 +61,22 @@ If a router does not find a mapped or mounted dispatcher for an incoming request
 A sub-router is a router registered with another "parent" router. It has a prefix that corresponds to its mount point;
 it removes this prefix when it looks up a dispatcher registered via `map` or `mount`.
 
+```mermaid
+---
+title: Path-based request routing with a sub-router
+---
+flowchart LR
+    subgraph Router
+    direction LR
+    m1["middleware #1"] --> m2["middleware #2"] -- /greeter --> s1["service #1"]
+    end
+    subgraph Sub-router
+    m3["middleware #3"] -- /superAdmin --> s2["service #2"]
+    end
+    m2 -- /admin/superAdmin --> m3
+    connection --> m1
+```
+
 In C#, you can create a sub-router and mount it in a single step with the `Route` extension method:
 
 ```csharp
@@ -97,5 +111,4 @@ The router always dispatches incoming requests to its registered middleware, eve
 `DispatchException(IceRpcError.ServiceNotFound)` because it can't find a match for the incoming request's path.
 {% /callout %}
 
-[compressor-middleware]: csharp:IceRpc.Compress.CompressMiddleware
 [csharp-router]: csharp:IceRpc.Router

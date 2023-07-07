@@ -34,8 +34,8 @@ public class SimpleInterceptor : IInvoker
 
 ## Installing an interceptor
 
-In C#, you can create an invocation pipeline by constructing an instance of class [Pipeline](csharp:IceRpc.Pipeline) and
-then calling `Use{Name}` extension methods to install interceptors in this pipeline.
+In C#, you can create an invocation pipeline by creating an instance of class [Pipeline][csharp-pipeline] and then
+calling `Use{Name}` extension methods to install interceptors on this pipeline.
 
 For example:
 
@@ -66,3 +66,5 @@ The order in which you install these interceptors is often important. The first 
 interceptor to execute. With the pipeline we created above, the logger interceptor executes first, then calls
 `InvokeAsync` on the compressor interceptor, and then finally the compressor interceptor calls `InvokeAsync` on the
 client connection.
+
+[csharp-pipeline]: csharp:IceRpc.Pipeline
