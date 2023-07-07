@@ -1,8 +1,5 @@
 // Copyright (c) ZeroC, Inc.
 
-import { IconContext } from 'react-icons';
-import { BsGithub } from 'react-icons/bs';
-import { SiDotnet } from 'react-icons/si';
 import Link from 'next/link';
 
 type CardProps = {

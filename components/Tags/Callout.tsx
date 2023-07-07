@@ -1,7 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
 import { ReactNode } from 'react';
-import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import { clsx } from 'clsx';
 
 type Props = {

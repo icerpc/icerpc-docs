@@ -6,7 +6,6 @@ import { baseUrls, currentNavItem, sideBarData } from 'data/side-bar-data';
 import { Breadcrumbs, Breadcrumb } from 'components/Breadcrumbs';
 import { SideBarLink, Encoding, isCategory, isLink } from 'types';
 import { useEncoding } from 'context/state';
-import readingTime from 'reading-time';
 
 type Props = {
   title: string;
