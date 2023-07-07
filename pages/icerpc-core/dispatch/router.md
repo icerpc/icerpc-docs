@@ -97,30 +97,5 @@ The router always dispatches incoming requests to its registered middleware, eve
 `DispatchException(IceRpcError.ServiceNotFound)` because it can't find a match for the incoming request's path.
 {% /callout %}
 
-## Installing a middleware with Dependency Injection
-
-If you use Microsoft's Dependency Injection container, you should use a dispatcher builder instead of `Router` to
-create your dispatch pipeline. The `Use{Name}` extension methods for [`IDispatcherBuilder`][dispatcher-builder] retrieve
-dependencies automatically from the DI container.
-
-For example:
-
-```csharp
-services.AddIceRpcServer(builder => builder.UseLogger().UseCompressor().Mount<IGreeterService>("/"));
-```
-
-This is equivalent to our earlier example except `UseLogger` retrieves the logger factory from the DI container.
-`Mount<IGreeterService>("/")` retrieves an `IGreeterService` instance from the DI container for each dispatch.
-
-{% callout type="information" %}
-There is only one [`LoggerMiddleware`][logger-middleware] class, one [`CompressorMiddleware`][compressor-middleware]
-class etc. These middleware can be installed in several different dispatch pipeline implementations, such as `Router`,
-the implementation inside the builder created by [`AddIceRpcServer`][add-icerpc-server], or even your own custom
-dispatch pipeline class. Each dispatch pipeline implementation just needs its own set of `Use{Name}` extension methods.
-{% /callout %}
-
-[add-icerpc-server]: csharp:IceRpc.Extensions.DependencyInjection.ServerServiceCollectionExtensions
 [compressor-middleware]: csharp:IceRpc.Compress.CompressMiddleware
 [csharp-router]: csharp:IceRpc.Router
-[dispatcher-builder]: csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder
-[logger-middleware]: csharp:IceRpc.Logger.LoggerMiddleware

@@ -5,7 +5,7 @@ description: Learn how to write a middleware.
 
 ## Intercepting incoming requests
 
-A middleware is a [dispatcher](../dispatch-pipeline#the-dispatcher-abstraction) that holds another dispatcher ("next")
+A middleware is a [dispatcher](dispatch-pipeline#the-dispatcher-abstraction) that holds another dispatcher ("next")
 and calls `dispatch` on this next dispatcher as part of the implementation of its own `dispatch` method. The next
 dispatcher can be another middleware, a service, a router, or some other kind of dispatcher, it doesn't matter.
 
@@ -34,4 +34,5 @@ public class SimpleMiddleware : IDispatcher
 
 ## Installing a middleware
 
-You can use a [router](router) to create a dispatch pipeline and install one or more middleware in this pipeline.
+You can use a [Router](router) to create a dispatch pipeline and install one or more middleware in this dispatch
+pipeline.
