@@ -5,18 +5,16 @@ description: Understand how to build your dispatch pipeline with a DI container.
 
 ## Traditional dispatch pipeline
 
-A traditional dispatch pipeline is fairly static: you create a [Router](csharp:IceRpc.Router), add a few middleware, map
-or mount a small number leaf dispatchers in this router and then let your server dispatch incoming requests to this
-router.
+A traditional dispatch pipeline is fairly static: you create a [Router][router], add a few middleware, map or mount a
+small number of leaf dispatchers in this router and then let your server dispatch incoming requests to this router.
 
 The leaf dispatchers (typically Slice services) are mapped or mounted at fixed path (such as `/greeter` or
 `/admin/greeter-manager`). These dispatchers are singletons (or singleton-like) with the same lifetime as the router and
 the server.
 
-The middleware in your dispatch pipeline communicate with each others using
-[features](csharp:IceRpc.IncomingRequest#IceRpc_IncomingRequest_Features): an upstream middleware sets a feature
-that a downstream middleware can retrieve. The leaf dispatcher can also communicate with these middleware using the same
-features.
+The middleware in your dispatch pipeline communicate with each others using [features][incoming-request-features]: an
+upstream middleware sets a feature that a downstream middleware can retrieve. The leaf dispatcher can also communicate
+with these middleware using the same features.
 
 This works well for many applications. However, this is not the typical model when using DI.
 
@@ -39,9 +37,8 @@ typically singletons managed by the DI container.
 
 ## Building a dispatch pipeline with Microsoft's DI container
 
-The [IceRpc.Extensions.DependencyInjection](https://github.com/icerpc/icerpc-csharp/tree/main/src/IceRpc.Extensions.DependencyInjection)
-assembly, provides a number of extensions methods for `IServiceCollection` that accept an `Action<IDispatcherBuilder>`
-parameter.
+The [IceRpc.Extensions.DependencyInjection][di-assembly] assembly, provides a number of extension methods for
+[`IServiceCollection`][service-collection] that accept an `Action<IDispatcherBuilder>` parameter.
 
 All these methods allow you to build and configure a dispatch pipeline for Microsoft's DI container. For example:
 
@@ -57,7 +54,7 @@ services.AddIceRpcDispatcher(builder => builder.Map<IGreeterService>());
 ```
 
 The resulting dispatcher (dispatch pipeline) creates a new DI scope for each incoming request, and transmits this scope
-to downstream dispatchers using an [IServiceProviderFeature](csharp:IceRpc.Features.IServiceProviderFeature).
+to downstream dispatchers using an [IServiceProviderFeature][service-provider-feature].
 
 ## Installing a standard middleware in an IDispatcherBuilder
 
@@ -67,10 +64,8 @@ container injecting services to operate, and it implements interface `IDispatche
 All the middleware bundled with IceRPC are standard middleware: you can use them with or without DI, and they use
 features for communications within a dispatch.
 
-These middleware can be installed into a [Router](csharp:IceRpc.Router) or an
-[IDispatcherBuilder](csharp:IceRpc.Builder.IDispatcherBuilder).
-
-For example:
+These middleware can be installed in a [Router][csharp-router] or an [IDispatcherBuilder][dispatcher-builder]. For
+example:
 
 ```csharp
 // Construct a dispatch pipeline using Microsoft's DI container.
@@ -86,9 +81,8 @@ services.AddIceRpcDispatcher(
 ```
 
 Here, `UseLogger` is an extension method provided by the `IceRpc.Logger` assembly. This extension method works with any
-DI container that implements
-[IServiceProvider](https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider), such as
-Microsoft's DI container and [Simple Injector](https://simpleinjector.org/)'s container.
+DI container that implements [IServiceProvider][service-provider], such as Microsoft's DI container and
+[Simple Injector][simple-injector]'s container.
 
 The implementation of `UseLogger` simply retrieves a logger instance from the DI container and then creates a new
 middleware with this instance:
@@ -101,11 +95,11 @@ public static IDispatcherBuilder UseLogger(this IDispatcherBuilder builder) =>
             $"Could not find service of type '{nameof(ILogger<LoggerMiddleware>)}' in the service container.");
 ```
 
-We recommend you follow the same pattern when you create your own standard middleware and provide Use extension methods
-for both `Router` and `IDispatcherBuilder`.
+We recommend you follow the same pattern when you create your own standard middleware and provide `Use` extension
+methods for both `Router` and `IDispatcherBuilder`.
 
 {% callout type="information" %}
-Calling the DI container at runtime is typically discouraged--it's the service locator anti-pattern. Here, you should
+Calling the DI container at runtime is typically discouraged—it's the service locator anti-pattern. Here, you should
 see the `UseLogger` extension method as infrastructure code exempt from this rule.
 {% /callout %}
 
@@ -193,3 +187,13 @@ internal class Chatbot : Service, IGreeterService
     ...
 }
 ```
+
+[csharp-router]: csharp:IceRpc.Router
+[di-assembly]: https://github.com/icerpc/icerpc-csharp/tree/main/src/IceRpc.Extensions.DependencyInjection
+[dispatcher-builder]: csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder
+[incoming-request-features]: ../dispatch/incoming-request#request-features
+[router]: ../dispatch/router
+[service-collection]: https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+[service-provider]: https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider
+[service-provider-feature]: csharp:IceRpc.Extensions.DependencyInjection.IServiceProviderFeature
+[simple-injector]: https://simpleinjector.org/

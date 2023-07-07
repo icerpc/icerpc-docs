@@ -5,7 +5,7 @@ description: Learn how to write an interceptor and how to install an interceptor
 
 ## Intercepting outgoing requests
 
-An interceptor is an [invoker](../invocation-pipeline#the-invoker-abstraction) that holds another invoker ("next") and
+An interceptor is an [invoker](invocation-pipeline#the-invoker-abstraction) that holds another invoker ("next") and
 calls `invoke` on this next invoker as part of the implementation of its own `invoke` method. This next invoker can be
  a `ClientConnection`, a `ConnectionCache`, another interceptor, or some other kind of invoker, it doesn't matter.
 
@@ -40,7 +40,10 @@ calling `Use{Name}` extension methods to install interceptors on this pipeline.
 For example:
 
 ```csharp
-Pipeline pipeline = new Pipeline().UseLogger(loggerFactory).UseCompressor().Into(clientConnection);
+Pipeline pipeline = new Pipeline()
+    .UseLogger(loggerFactory)
+    .UseCompressor()
+    .Into(clientConnection);
 ```
 
 You need to specify the last invoker of the pipeline with `Into`. It's usually a client connection or a connection
@@ -64,29 +67,4 @@ interceptor to execute. With the pipeline we created above, the logger intercept
 `InvokeAsync` on the compressor interceptor, and then finally the compressor interceptor calls `InvokeAsync` on the
 client connection.
 
-## Installing an interceptor with Dependency Injection
-
-If you use Microsoft's Dependency Injection container, you should use an invoker builder instead of `Pipeline` to
-create your invocation pipeline. The `Use{Name}` extension methods for [`IInvokerBuilder`][invoker-builder]
-retrieve dependencies automatically from the DI container.
-
-For example:
-
-```csharp
-services.AddIceRpcInvoker(builder => builder.UseLogger().UseCompressor().Into<ClientConnection>())
-```
-
-This is equivalent to our earlier example except `UseLogger` retrieves the logger factory from the DI container.
-
-{% callout type="information" %}
-There is only one [`LoggerInterceptor`][logger-interceptor] class, one [`CompressorInterceptor`][compressor-interceptor]
-class etc. These interceptors can be installed in several different pipeline implementations, such as `Pipeline`, the
-implementation inside the builder created by [`AddIceRpcInvoker`][add-icerpc-invoker], or even your own custom pipeline
-class. Each pipeline implementation just needs its own set of `Use{Name}` extension methods.
-{% /callout %}
-
-[add-icerpc-invoker]: csharp:IceRpc.Extensions.DependencyInjection.ServerServiceCollectionExtensions
-[compressor-interceptor]: csharp:IceRpc.Compressor.CompressorInterceptor
 [csharp-pipeline]: csharp:IceRpc.Pipeline
-[invoker-builder]: csharp:IceRpc.Extensions.DependencyInjection.IInvokerBuilder
-[logger-interceptor]: csharp:IceRpc.Logger.LoggerInterceptor
