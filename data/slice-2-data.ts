@@ -109,8 +109,8 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE_BASE_URL}/language-reference/lexical-rules`
       },
       {
-        title: 'Slice source files',
-        path: `${SLICE_BASE_URL}/language-reference/source-files`
+        title: 'Preprocessor directives',
+        path: `${SLICE_BASE_URL}/language-reference/preprocessor-directives`
       },
       {
         title: 'Keywords',
