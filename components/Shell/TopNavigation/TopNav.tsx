@@ -1,19 +1,21 @@
 // Copyright (c) ZeroC, Inc.
 
-import { clsx } from 'clsx';
-import { FaGithub } from 'react-icons/fa';
 import { useRouter } from 'next/router';
-import { useTheme } from 'next-themes';
-import darkIcon from 'public/Icerpc-dark-logo.svg';
 import Image from 'next/image';
-import lightIcon from 'public/Icerpc-logo.svg';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
+import { clsx } from 'clsx';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { MobileMenu } from './MobileMenu';
 import { MobileSideNav } from '../SideNav';
 import { ThemeToggle } from 'components/ThemeToggle';
 import { useMounted } from 'context/state';
 import { Theme } from 'types';
+
+import darkIcon from 'public/Icerpc-dark-logo.svg';
+import lightIcon from 'public/Icerpc-logo.svg';
 
 export const navigationItems = [
   {
@@ -72,7 +74,7 @@ export const TopNav = () => {
                 rel="noopener noreferrer"
                 aria-label="Github"
               >
-                <FaGithub size={20} />
+                <FontAwesomeIcon icon={faGithub} className="h-5 w-5" />
               </a>
             </div>
           </div>

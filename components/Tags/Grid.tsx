@@ -1,29 +1,27 @@
 // Copyright (c) ZeroC, Inc.
 
 import React, { ReactNode } from 'react';
-import { BsBoxArrowUpRight, BsArrowRight } from 'react-icons/bs';
-import { IconContext } from 'react-icons';
 
 type Props = {
   children: ReactNode;
   columns?: number;
-  trailinglink?: { label: string; link: string };
+  // trailinglink?: { label: string; link: string };
 };
 
-export const Grid = ({ children, trailinglink, columns = 3 }: Props) => {
-  const bottomStyle = {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    fontSize: '16px',
-    color: 'var(--primary-color)',
-    gap: '0.5em',
-    padding: '1.5em',
-    paddingRight: '0'
-  };
-  const isExternalURL = (url: string) => {
-    return url.startsWith('http');
-  };
+export const Grid = ({ children, columns = 3 }: Props) => {
+  // const bottomStyle = {
+  //   display: 'flex',
+  //   justifyContent: 'flex-end',
+  //   alignItems: 'center',
+  //   fontSize: '16px',
+  //   color: 'var(--primary-color)',
+  //   gap: '0.5em',
+  //   padding: '1.5em',
+  //   paddingRight: '0'
+  // };
+  // const isExternalURL = (url: string) => {
+  //   return url.startsWith('http');
+  // };
 
   return (
     <>
@@ -36,7 +34,7 @@ export const Grid = ({ children, trailinglink, columns = 3 }: Props) => {
           return <React.Fragment key={index}>{child}</React.Fragment>;
         })}
       </div>
-      {trailinglink && (
+      {/* {trailinglink && (
         <a
           style={{
             color: 'var(--primary-color)',
@@ -58,7 +56,7 @@ export const Grid = ({ children, trailinglink, columns = 3 }: Props) => {
             </IconContext.Provider>
           </div>
         </a>
-      )}
+      )} */}
       <style jsx>
         {`
           .dynamic-grid-columns {

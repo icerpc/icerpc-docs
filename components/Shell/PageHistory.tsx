@@ -1,11 +1,16 @@
 // Copyright (c) ZeroC, Inc.
 
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import React from 'react';
+import Link from 'next/link';
+import queryString from 'query-string';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faChevronLeft,
+  faChevronRight
+} from '@fortawesome/free-solid-svg-icons';
+
 import { sideBarData, baseUrls, flattenSideBarData } from 'data/side-bar-data';
 import { SideBarLink, Encoding, isLink } from 'types';
-import Link from 'next/link';
-import React from 'react';
-import queryString from 'query-string';
 
 type Props = {
   path: string;
@@ -38,7 +43,7 @@ export const PageHistory = ({ path, encoding }: Props) => {
       {previous ? (
         <Link href={previous.path}>
           <div className="flex h-10 flex-row items-center gap-2 rounded p-4 text-center text-primary hover:bg-[#E9F1FE] dark:hover:bg-[#E9F1FE]/20">
-            <FaChevronLeft size={12} />
+            <FontAwesomeIcon icon={faChevronLeft} className="h-3 w-3" />
             {previous.title}
           </div>
         </Link>
@@ -49,7 +54,7 @@ export const PageHistory = ({ path, encoding }: Props) => {
         <Link href={next.path}>
           <div className="flex h-10 flex-row items-center gap-2 rounded p-4 text-center text-primary hover:bg-[#E9F1FE] dark:hover:bg-[#E9F1FE]/20">
             {next.title}
-            <FaChevronRight size={12} />
+            <FontAwesomeIcon icon={faChevronRight} className="h-3 w-3" />
           </div>
         </Link>
       )}

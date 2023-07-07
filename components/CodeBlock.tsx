@@ -1,8 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
 import { useState, useEffect, Key } from 'react';
-import { FaFile } from 'react-icons/fa';
-import { BsTerminalFill } from 'react-icons/bs';
+import { faFileLines, faTerminal } from '@fortawesome/free-solid-svg-icons';
 import clsx from 'clsx';
 import { Highlight, themes, Prism } from 'prism-react-renderer';
 import { Inter, Roboto_Mono } from 'next/font/google';
@@ -13,6 +12,7 @@ import { Encoding } from 'types';
 import { CopyButton } from './CopyButton';
 import { useTheme } from 'next-themes';
 import { Theme } from 'types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const inter = Inter({ subsets: ['latin'] });
 const robotoMono = Roboto_Mono({ subsets: ['latin'] });
@@ -195,11 +195,11 @@ const TopBar = ({ language, code, title }: TopBarProps) =>
 // Provides an icon given the language of the code block
 function LanguageIcon(language: string) {
   return language === undefined ? (
-    <FaFile />
+    <FontAwesomeIcon icon={faFileLines} className="h-4 w-4" />
   ) : commandLineLanguages.includes(language) ? (
-    <BsTerminalFill />
+    <FontAwesomeIcon icon={faTerminal} className="h-4 w-4" />
   ) : (
-    <FaFile />
+    <FontAwesomeIcon icon={faFileLines} className="h-4 w-4" />
   );
 }
 

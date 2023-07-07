@@ -10,20 +10,20 @@ const grid = {
     columns: {
       type: 'number',
       required: false
-    },
-    trailinglink: {
-      type: 'object',
-      required: false
     }
+    // trailinglink: {
+    //   type: 'object',
+    //   required: false
+    // }
   },
   transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);
     const children = node.transformChildren(config);
-    const { trailinglink, columns } = attributes;
+    const { columns } = attributes;
     return new Tag(`${`${this.render}`}`, {
       children,
-      columns,
-      trailinglink
+      columns
+      // trailinglink
     });
   }
 };

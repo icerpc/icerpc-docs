@@ -2,7 +2,9 @@
 
 import { languageSection, languageSelector } from './languages.markdoc';
 import { lightMode, darkMode } from './conditional-theme.markdoc';
-import { linkCard, miniCard } from './mini-card.markdoc';
+import { miniCard } from './mini-card.markdoc';
+// import { linkCard } from './link-card.markdoc';
+
 import sideBySide from './side-by-side.markdoc';
 
 export { default as callout } from './callout.markdoc';
@@ -16,6 +18,6 @@ module.exports['dark-mode'] = darkMode;
 module.exports['language-section'] = languageSection;
 module.exports['language-selector'] = languageSelector;
 module.exports['light-mode'] = lightMode;
-module.exports['link-card'] = linkCard;
+// module.exports['link-card'] = linkCard;
 module.exports['mini-card'] = miniCard;
 module.exports['side-by-side'] = sideBySide;
