@@ -6,7 +6,7 @@ description: Understand how to build your dispatch pipeline with a DI container.
 ## Traditional dispatch pipeline
 
 A traditional dispatch pipeline is fairly static: you create a [Router][router], add a few middleware, map or mount a
-small number leaf dispatchers in this router and then let your server dispatch incoming requests to this router.
+small number of leaf dispatchers in this router and then let your server dispatch incoming requests to this router.
 
 The leaf dispatchers (typically Slice services) are mapped or mounted at fixed path (such as `/greeter` or
 `/admin/greeter-manager`). These dispatchers are singletons (or singleton-like) with the same lifetime as the router and
@@ -95,8 +95,8 @@ public static IDispatcherBuilder UseLogger(this IDispatcherBuilder builder) =>
             $"Could not find service of type '{nameof(ILogger<LoggerMiddleware>)}' in the service container.");
 ```
 
-We recommend you follow the same pattern when you create your own standard middleware and provide Use extension methods
-for both `Router` and `IDispatcherBuilder`.
+We recommend you follow the same pattern when you create your own standard middleware and provide `Use` extension
+methods for both `Router` and `IDispatcherBuilder`.
 
 {% callout type="information" %}
 Calling the DI container at runtime is typically discouraged—it's the service locator anti-pattern. Here, you should
@@ -190,10 +190,10 @@ internal class Chatbot : Service, IGreeterService
 
 [csharp-router]: csharp:IceRpc.Router
 [di-assembly]: https://github.com/icerpc/icerpc-csharp/tree/main/src/IceRpc.Extensions.DependencyInjection
-[dispatcher-builder]: csharp:IceRpc.Builder.IDispatcherBuilder
+[dispatcher-builder]: csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder
 [incoming-request-features]: ../dispatch/incoming-request#request-features
 [router]: ../dispatch/router
 [service-collection]: https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
 [service-provider]: https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider
-[service-provider-feature]: csharp:IceRpc.Features.IServiceProviderFeature
+[service-provider-feature]: csharp:IceRpc.Extensions.DependencyInjection.IServiceProviderFeature
 [simple-injector]: https://simpleinjector.org/
