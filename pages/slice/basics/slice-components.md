@@ -1,8 +1,9 @@
 ---
 title: Slice components
+description: A short description of each Slice component.
 ---
 
-Slice is a collection of several related components:
+Slice is made of several related components:
 
 - the Slice language\
 The Slice language is a computer language specifically designed for RPCs. You use Slice to specify RPCs and types used
