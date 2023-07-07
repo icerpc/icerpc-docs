@@ -52,11 +52,6 @@ remainder of the Slice file.
 #define ABC
 ```
 
-### Predefined symbols
-
-Slice does not define any symbols by default. However, an individual Slice language compiler may wish to define
-symbols to indicate the target language.
-
 ## Examples
 
 Conditional compilation:
