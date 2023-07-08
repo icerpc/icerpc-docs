@@ -35,7 +35,7 @@ file:
 | Slice2           | Slice2                                              |
 
 As you would expect, all types defined in a Slice1 file can be encoded with the Slice1 encoding, and all types defined
-in a Slice2 file can be encoded the Slice2 encoding.
+in a Slice2 file can be encoded with the Slice2 encoding.
 
 Furthermore, a [Slice2-compatible][slice2-compatible] type defined in a Slice1 file can be encoded with the Slice2
 encoding.
