@@ -62,7 +62,7 @@ The following table lists all the keywords of the Slice language:
 
 ---
 
-- [encoding](/slice/language-guide/slice1-or-slice2#encoding-statement)
+- [mode](/slice/language-guide/compilation-mode)
 - [int32](/slice/language-guide/primitive-types#fixed-size-integral-types)
 - [typealias](/slice/language-guide/type-alias)
 - [varuint62](/slice/language-guide/primitive-types#variable-size-integral-types)

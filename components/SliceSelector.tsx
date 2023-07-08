@@ -70,14 +70,14 @@ const EncodingTab = ({ encoding, selected }: EncodingTabProps) => {
       <p>
         Use Slice1 for Ice interop.
         <br />
-        <AppLink href="/slice/language-guide/slice1-or-slice2">
+        <AppLink href="/slice/language-guide/compilation-mode">
           Learn more
         </AppLink>
       </p>
     ) : (
       <p>
         Use Slice2 for new projects.{' '}
-        <AppLink href="/slice/language-guide/slice1-or-slice2">
+        <AppLink href="/slice/language-guide/compilation-mode">
           Learn more
         </AppLink>
       </p>

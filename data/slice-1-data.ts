@@ -32,8 +32,8 @@ export const slice1Data: SideBarSourceType[] = [
     title: 'Language guide',
     links: [
       {
-        title: 'Slice1 or Slice2',
-        path: `${SLICE_BASE_URL}/language-guide/slice1-or-slice2`
+        title: 'Compilation mode',
+        path: `${SLICE_BASE_URL}/language-guide/compilation-mode`
       },
       {
         title: 'Module',
@@ -130,8 +130,8 @@ export const slice1Data: SideBarSourceType[] = [
     title: 'Encoding reference',
     links: [
       {
-        title: 'Main features',
-        path: `${SLICE_BASE_URL}/encoding/main-features`
+        title: 'Overview',
+        path: `${SLICE_BASE_URL}/encoding/overview`
       },
       {
         title: 'Encoding-only constructs',
