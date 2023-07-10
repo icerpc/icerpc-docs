@@ -1,5 +1,5 @@
 ---
-title: Main features
+title: The Slice encoding
 description: Learn about the main characteristics of the Slice encoding.
 ---
 
@@ -23,24 +23,22 @@ Since the decoder has the same definitions, it expects the stream to hold an enc
 encoded `int32`. The stream does not encode "the following bytes represent a string". If the byte stream holds some
 other encoded type, the decoding fails.
 
-## Protocol independent
+## Slice encoding versions
 
-The Slice encoding is ultimately about encoding and decoding the payloads of IceRPC requests and responses, and the
-encoding could consider the protocol of the request / response (ice or icerpc) to be part of the contract between the
-encoder and the decoder.
+There are currently two versions of the Slice encoding: Slice1 and Slice2. The compilation mode of a Slice file
+determines the Slice encoding version to use when encoding the arguments and return values of operations defined in that
+file:
 
-However, this approach would not work when an intermediary forwards requests across protocols, as in:
+| Compilation mode | Slice encoding for operation args and return values |
+|------------------|-----------------------------------------------------|
+| Slice1           | Slice1                                              |
+| Slice2           | Slice2                                              |
 
-```mermaid
----
-title: A request forwarded across protocols
----
-flowchart LR
-    client[ice client\nencodes request payload] -- ice request --> forwarder[forwarder\nforwards request payload as-is]
-    forwarder -- icerpc request --> server[icerpc server\ndecodes request payload]
-```
+All types defined in a Slice1 file can be encoded with the Slice1 encoding, and all types defined in a Slice2 file can
+be encoded with the Slice2 encoding.
 
-As a result, the Slice encoding is protocol-independent.
+Furthermore, a [Slice2-compatible][slice2-compatible] type defined in a Slice1 file can be encoded with the Slice2
+encoding.
 
 ## Little-endian
 
@@ -59,3 +57,5 @@ favors big-endian ordering.
 We selected little-endian because Slice's main job is to encode/decode the payloads of requests and responses. Its use
 for the ice and icerpc frame headers is secondary. And it's simpler to use the same ordering (little-endian) in all
 situations.
+
+[slice2-compatible]: ../language-guide/compilation-mode#using-slice1-and-slice2-together

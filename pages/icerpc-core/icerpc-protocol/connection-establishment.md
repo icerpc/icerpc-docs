@@ -54,7 +54,7 @@ allows to encode the size of request and response headers on no more than 2 byte
 If a client or a server does not want to use this default value, it sends its desired value to the peer in the Settings
 frame. Each side then agrees to use the smallest `MaxHeaderSize` value. It is uncommon to change this setting.
 
-The Settings frame is specified in [Slice][slice] and encoded with [Slice2][slice2]:
+The Settings frame is specified in [Slice][slice]:
 
 ```slice
 enum ControlFrameType : uint8 {
@@ -74,4 +74,3 @@ unchecked enum SettingKey : varuint62 {
 ```
 
 [slice]: ../../slice
-[slice2]: ../../slice/language-guide/slice1-or-slice2

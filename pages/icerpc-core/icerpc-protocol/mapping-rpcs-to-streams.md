@@ -102,7 +102,7 @@ The response header holds:
 
 icerpc transmits the response fields without attaching any meaning to their values or presence.
 
-The response header is specified in [Slice][slice] and encoded using [Slice2][slice2]:
+The response header is specified in [Slice][slice]:
 
 ```slice
 compact struct Response {
@@ -127,4 +127,3 @@ For example, a response with status code Success, no fields and an empty payload
 ```
 
 [slice]: ../../slice
-[slice2]: ../../slice/language-guide/slice1-or-slice2
