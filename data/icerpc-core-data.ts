@@ -158,8 +158,8 @@ export const rpcCoreData: SideBarSourceType[] = [
     title: 'The Slic protocol',
     links: [
       {
-        title: 'Introduction',
-        path: `${RPC_CORE_BASE_URL}/slic-protocol/introduction`
+        title: 'Overview',
+        path: `${RPC_CORE_BASE_URL}/slic-protocol/`
       },
       {
         title: 'Connection establishment',
