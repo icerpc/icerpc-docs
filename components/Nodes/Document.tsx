@@ -91,7 +91,7 @@ export const Document = ({
         <Divider />
         <Feedback />
       </article>
-      {showToc && TableOfContents(toc)}
+      {showToc && <TableOfContents toc={toc} />}
     </div>
   );
 };

@@ -22,7 +22,7 @@ export type TOCItem = {
   level: number;
 };
 
-export const TableOfContents = (toc: TOCItem[]) => {
+export const TableOfContents = ({ toc }: { toc: TOCItem[] }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const currentPath = resolvePath(useRouter().pathname);
   const items = toc.filter(
@@ -112,6 +112,7 @@ export const TableOfContents = (toc: TOCItem[]) => {
     </aside>
   );
 };
+
 
 const resolvePath = (pathName: string): string => {
   return baseUrls.some((baseUrl) => pathName == baseUrl)
