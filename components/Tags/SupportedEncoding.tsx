@@ -15,11 +15,22 @@ export const SupportedEncodings = ({ supported }: Props) => {
 
   const updateEncoding = (encoding: Encoding) => {
     setEncoding(encoding);
-    // Update the URL to include the encoding as a query parameter using next router
-    router.push({
-      pathname: router.pathname,
-      query: { ...router.query, encoding: encoding }
-    });
+    // Update the URL
+    const path = router.asPath;
+
+    let newPath;
+    if (path === '/slice1') {
+      newPath = encoding === Encoding.Slice1 ? '/slice1' : '/slice2';
+    } else if (path === '/slice2') {
+      newPath = encoding === Encoding.Slice1 ? '/slice1' : '/slice2';
+    } else {
+      newPath = path.replace(
+        /\/slice[1-2]\//,
+        `/slice${encoding === Encoding.Slice1 ? 1 : 2}/`
+      );
+    }
+
+    router.push(newPath);
   };
 
   return (

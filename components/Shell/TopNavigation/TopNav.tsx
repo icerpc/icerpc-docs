@@ -11,37 +11,39 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { MobileMenu } from './MobileMenu';
 import { MobileSideNav } from '../SideNav';
 import { ThemeToggle } from 'components/ThemeToggle';
-import { useMounted } from 'context/state';
-import { Theme } from 'types';
+import { useEncoding, useMounted } from 'context/state';
+import { Encoding, Theme } from 'types';
 
 import darkIcon from 'public/Icerpc-dark-logo.svg';
 import lightIcon from 'public/Icerpc-logo.svg';
 
-export const navigationItems = [
-  {
-    name: 'Getting Started',
-    href: '/getting-started'
-  },
-  {
-    name: 'IceRPC Core',
-    href: '/icerpc-core'
-  },
-  {
-    name: 'Slice',
-    href: '/slice'
-  },
-  {
-    name: 'IceRPC for Ice users',
-    href: '/icerpc-for-ice-users'
-  },
-  {
-    name: 'API Reference',
-    href: 'https://docs.testing.zeroc.com/api/csharp/api/IceRpc.html'
-  }
-];
-
 export const TopNav = () => {
-  const pathname = useRouter().pathname;
+  const pathname = useRouter().asPath;
+  const { encoding} = useEncoding();
+
+  const navigationItems = [
+    {
+      name: 'Getting Started',
+      href: '/getting-started'
+    },
+    {
+      name: 'IceRPC Core',
+      href: '/icerpc-core'
+    },
+    {
+      name: 'Slice',
+      href: encoding === Encoding.Slice1 ? '/slice1' : '/slice2'
+    },
+    {
+      name: 'IceRPC for Ice users',
+      href: '/icerpc-for-ice-users'
+    },
+    {
+      name: 'API Reference',
+      href: 'https://docs.testing.zeroc.com/api/csharp/api/IceRpc.html'
+    }
+  ];
+
   return (
     <div
       className={clsx(
@@ -123,26 +125,21 @@ const TopNavigationItem = ({
   href,
   pathname
 }: TopNavigationItemProps) => {
-  // TODO: Add comments
-  function linkStyle(pathname: string, href: string) {
-    if (
-      (href === '/' && pathname === '/') ||
-      (href !== '/' && pathname.startsWith(href))
-    ) {
-      return 'text-primary dark:text-white no-underline decoration-2 underline-offset-[1.5rem] opacity-100 ';
-    } else {
-      return 'dark:text-[rgba(255,255,255,0.6)]';
-    }
-  }
+
+  // Check if the current path matches the href or starts with the href
+  const isActive = pathname === href || pathname.startsWith(`${href}/`) || (pathname.startsWith('/slice') && href === '/slice2');
+
+  // Generate the class names based on the active state
+  const linkClassName = clsx(
+    'overflow-hidden whitespace-nowrap px-2',
+    isActive ? 'text-primary no-underline decoration-2 underline-offset-[1.5rem] opacity-100 dark:text-white' : 'dark:text-[rgba(255,255,255,0.6)]'
+  );
 
   return (
     <li key={href}>
       <Link
         href={href}
-        className={clsx(
-          'overflow-hidden whitespace-nowrap px-2',
-          linkStyle(pathname, href)
-        )}
+        className={linkClassName}
       >
         {name}
       </Link>

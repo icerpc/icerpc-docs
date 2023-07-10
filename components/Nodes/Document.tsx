@@ -2,7 +2,6 @@
 
 import React, { ReactElement } from 'react';
 import { useRouter } from 'next/router';
-import queryString from 'query-string';
 
 import { Divider, EncodingSection, TOCItem, Title } from 'components';
 import { Encoding } from 'types';
@@ -28,28 +27,12 @@ export const Document = ({
   encoding,
   showToc = true
 }: Props) => {
-  const { encoding: currentEncoding, setEncoding } = useEncoding();
+  const { encoding: currentEncoding } = useEncoding();
   const [toc, setToc] = React.useState<TOCItem[]>([]);
   const router = useRouter();
   const path = router.asPath;
   const isBaseUrl = baseUrls.some((baseUrl) => path == baseUrl);
 
-  // If the encoding is specified in the url, try to set the version to the specified encoding.
-  const { query } = queryString.parseUrl(path, {
-    parseFragmentIdentifier: true
-  });
-  const encodingFromQuery: string | null = (() => {
-    const capitalize = (str?: string) => {
-      if (!str) return null;
-      return str.charAt(0).toUpperCase() + str.slice(1);
-    };
-    return capitalize(query.encoding?.toString());
-  })();
-  if (
-    Object.keys(Encoding).includes(encodingFromQuery as keyof typeof Encoding)
-  ) {
-    setEncoding(encodingFromQuery as Encoding);
-  }
 
   React.useEffect(() => {
     setToc(collectHeadings(children, currentEncoding));
@@ -87,7 +70,7 @@ export const Document = ({
         ) : (
           <>{children}</>
         )}
-        <PageHistory path={path} encoding={currentEncoding} />
+        <PageHistory path={path} />
         <Divider />
         <Feedback />
       </article>

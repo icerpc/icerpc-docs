@@ -24,7 +24,7 @@ export type TOCItem = {
 
 export const TableOfContents = ({ toc }: { toc: TOCItem[] }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const currentPath = resolvePath(useRouter().pathname);
+  const currentPath = resolvePath(useRouter().asPath);
   const items = toc.filter(
     (item) =>
       item.id &&

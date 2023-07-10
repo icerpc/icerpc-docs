@@ -20,9 +20,8 @@ export const Title = ({
   readingTime,
   showBreadcrumbs = true
 }: Props) => {
-  const { encoding } = useEncoding();
-  const path = useRouter().pathname;
-  const breadcrumbs = getBreadcrumbs(path, encoding);
+  const path = useRouter().asPath;
+  const breadcrumbs = getBreadcrumbs(path);
 
   return (
     <div className="not-prose mb-10">
@@ -46,7 +45,7 @@ const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;
 };
 
-export const getBreadcrumbs = (path: string, encoding: Encoding) => {
+export const getBreadcrumbs = (path: string) => {
   if (!path || path === '/') {
     return path === '/'
       ? [
@@ -63,7 +62,7 @@ export const getBreadcrumbs = (path: string, encoding: Encoding) => {
     return [];
   }
 
-  const categories = sideBarData(baseUrl, encoding).filter(isCategory);
+  const categories = sideBarData(baseUrl).filter(isCategory);
   const breadcrumbs: Breadcrumb[] = [
     {
       name: currentNavItem(baseUrl),

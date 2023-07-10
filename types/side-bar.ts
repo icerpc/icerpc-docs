@@ -1,6 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
-export const SLICE_BASE_URL = '/slice';
+export const SLICE1_BASE_URL = '/slice1';
+export const SLICE2_BASE_URL = '/slice2';
 export const GETTING_STARTED_BASE_URL = '/getting-started';
 export const RPC_CORE_BASE_URL = '/icerpc-core';
 export const ICERPC_FOR_ICE = '/icerpc-for-ice-users';

@@ -18,7 +18,7 @@ type Props = {
 export const Heading = ({ id = '', level = 1, children }: Props) => {
   const router = useRouter();
   const Component: any = `h${level}`;
-  const isDocs = router.pathname.startsWith('');
+  const isDocs = router.asPath.startsWith('');
   const origin =
     typeof window !== 'undefined' && window.location.origin
       ? window.location.origin
@@ -41,7 +41,7 @@ export const Heading = ({ id = '', level = 1, children }: Props) => {
         className="h-5 pl-2 opacity-0 duration-100 ease-in-out group-hover:opacity-100"
         aria-label="Copy link to heading"
         onClick={() => {
-          copy(origin + router.pathname + `#${id}`);
+          copy(origin + router.asPath + `#${id}`);
           router.push(`#${id}`);
         }}
       >

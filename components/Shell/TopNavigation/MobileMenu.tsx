@@ -3,13 +3,14 @@
 import React, { Fragment, useState } from 'react';
 import Link from 'next/link';
 
-import { navigationItems } from './TopNav';
 import { SearchButton } from 'components/Shell/SearchButton';
 import { ThemeToggle } from 'components/ThemeToggle';
 import { clsx } from 'clsx';
 import { EllipsisVerticalIcon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 import { Dialog, Transition } from '@headlessui/react';
+import { useEncoding } from 'context/state';
+import { Encoding } from 'types';
 
 export const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,6 +43,32 @@ type TopMenuModalProps = {
 };
 
 export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
+
+  const { encoding } = useEncoding();
+
+  const navigationItems = [
+    {
+      name: 'Getting Started',
+      href: '/getting-started'
+    },
+    {
+      name: 'IceRPC Core',
+      href: '/icerpc-core'
+    },
+    {
+      name: 'Slice',
+      href: encoding === Encoding.Slice1 ? '/slice1' : '/slice2'
+    },
+    {
+      name: 'IceRPC for Ice users',
+      href: '/icerpc-for-ice-users'
+    },
+    {
+      name: 'API Reference',
+      href: 'https://docs.testing.zeroc.com/api/csharp/api/IceRpc.html'
+    }
+  ];
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
