@@ -9,7 +9,7 @@ Slice supports two compilation modes: Slice1 and Slice2. Slice2 is the default m
 Slice1 provides interoperability with [Ice][ice] applications and must be enabled explicitly.
 
 Each Slice file has an associated compilation mode specified with the `mode` statement. This statement can only appear
-once per file, before any other statement. For example:
+once per file, and must come before any other statement. For example:
 
 ```slice
 // Copyright (c) ACME Corp.
@@ -19,12 +19,12 @@ mode = Slice1
 module Warehouse
 ```
 
-A file without a `mode` statement uses the default mode, Slice2.
+A file without a `mode` statement uses the default mode: Slice2.
 
 The compilation mode of a Slice file determines the types and features you can use in that particular file. For example,
-you can define a class in a Slice1 file (a Slice file with `mode = Slice1`), but not in a Slice2 file (a Slice file with
-`mode = Slice2`). Conversely, you can define an operation with a `stream` parameter in a Slice2 file but not in a Slice1
-file.
+you can define a `class` type in a Slice1 file (a Slice file with `mode = Slice1`), but not in a Slice2 file (a Slice
+file with `mode = Slice2`). Conversely, you can define an operation with a `stream` parameter in a Slice2 file but not
+in a Slice1 file.
 
 {% callout %}
 As you would expect, the Slice1 feature set is largely equivalent to the feature set of the IDL provided by Ice (the
@@ -38,7 +38,7 @@ you select Slice2, you don't see Slice1-specific features, and vice-versa.
 
 The mode is part of the contract between a client and a server: if you change the mode, you break the contract.
 
-For example, the following operations are not compatible even though they look almost identical:
+For example, the following operations are not compatible even though they are identical except for the compilation mode.
 
 {% side-by-side alignment="top" %}
 ```slice
@@ -62,8 +62,8 @@ interface Widget {
 ```
 {% /side-by-side %}
 
-A call to `spin` from a client using the Slice2 file will fail if the remote service is implemented with the Slice1
-version.
+Each compilation mode corresponds to a specific [encoding][encoding] for operation arguments. As a result, a call to
+`spin` from a client using the Slice2 file will fail if the remote service is implemented with the Slice1 file.
 
 ## Using Slice1 and Slice2 together
 
@@ -104,6 +104,7 @@ compat struct VehicleCarrier {
 The mode statement is not mapped to anything in C#. It does however influence the C# mapping of most other Slice
 definitions.
 
+[encoding]: ../encoding
 [enum-type]: enum-types
 [ice]: https://github.com/zeroc-ice/ice
 [original-slice]: https://doc.zeroc.com/ice/3.7/the-slice-language
