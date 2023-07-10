@@ -15,8 +15,8 @@ title: Path-based request routing
 flowchart LR
     subgraph Router
     direction LR
-    m1["middleware #1"] --> m2["middleware #2"] -- /greeter --> s1["mapped greeter service #1"]
-    m2 -- /user/joe --> s2["mounted account service #2"]
+    m1["middleware #1"] --> m2["middleware #2"] -- /greeter --> s1[" greeter service mapped at /greeter"]
+    m2 -- /user/joe --> s2["account service mounted at /user"]
     m2 -- /user/bob --> s2
     end
     connection --> m1
