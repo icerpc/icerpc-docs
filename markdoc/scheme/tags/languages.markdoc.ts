@@ -1,11 +1,9 @@
 // Copyright (c) ZeroC, Inc.
 
-import { LanguageSection } from 'components/Tags/LanguageSection';
-import { LanguageSelector } from 'components/Tags/LanguageSelector';
 import { Platform } from 'types';
 
 export const languageSelector = {
-  render: LanguageSelector,
+  render: "LanguageSelector",
   attributes: {
     languages: {
       type: [Platform],
@@ -15,7 +13,7 @@ export const languageSelector = {
 };
 
 export const languageSection = {
-  render: LanguageSection,
+  render: "LanguageSection",
   attributes: {
     language: {}
   }

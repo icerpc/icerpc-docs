@@ -1,12 +1,9 @@
 // Copyright (c) ZeroC, Inc.
 
 import { Tag, Node, Config } from '@markdoc/markdoc';
-import { Title } from 'components/Tags/Title';
 
 const title = {
-  render: Title,
-  children: [],
-  attributes: {},
+  render: "Title",
   transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);
     const frontmatter = config.variables?.markdoc.frontmatter;

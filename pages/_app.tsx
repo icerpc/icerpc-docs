@@ -97,7 +97,7 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
           <TopNav />
           <div className="mt-[6.5rem] flex flex-row justify-center lg:mt-[3.75rem] ">
             <div className="flex max-w-[100rem] grow flex-row justify-center">
-              <SideNav path={router.pathname} />
+              <SideNav path={router.asPath} />
               <main className={clsx(inter.className, 'grow')} id="main">
                 <div id="skip-nav" />
                 <Component {...pageProps} />

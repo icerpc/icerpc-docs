@@ -26,8 +26,8 @@ export const SideNav = ({ path }: SideNavProps) => {
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { encoding: currentEncoding } = useEncoding();
   const router = useRouter();
-
   const baseUrl = baseUrls.find((item) => path.startsWith(item)) ?? '';
+
   useEffect(() => {
     const links = sideBarData(baseUrl, currentEncoding) ?? [];
     setData(links);

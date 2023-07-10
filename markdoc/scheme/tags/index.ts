@@ -15,9 +15,10 @@ export { default as title } from './title.markdoc';
 export { slice1, slice2 } from './encoding-section.markdoc';
 
 module.exports['dark-mode'] = darkMode;
+module.exports['light-mode'] = lightMode;
 module.exports['language-section'] = languageSection;
 module.exports['language-selector'] = languageSelector;
-module.exports['light-mode'] = lightMode;
-// module.exports['link-card'] = linkCard;
+
+// // module.exports['link-card'] = linkCard;
 module.exports['mini-card'] = miniCard;
 module.exports['side-by-side'] = sideBySide;

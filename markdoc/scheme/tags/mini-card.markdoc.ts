@@ -1,12 +1,11 @@
 // Copyright (c) ZeroC, Inc.
 
 // import { MiniLink } from 'components/Tags/Card';
-import {  Card } from 'components/Tags/Card';
 import { Tag, nodes, Node, Config } from '@markdoc/markdoc';
 
 export const miniCard = {
   ...nodes.document,
-  render: Card,
+  render: "Card",
   attributes: {
     title: {
       type: 'string',

@@ -1,12 +1,10 @@
 // Copyright (c) ZeroC, Inc.
 
-import { Divider } from 'components/Divider';
-
 const divider = {
-  render: Divider,
+  render: "Divider",
   attributes: {
     margin: {
-      type: 'string',
+      type: String,
       required: false
     }
   }
