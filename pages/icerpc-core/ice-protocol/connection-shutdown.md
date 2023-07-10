@@ -26,6 +26,14 @@ This indicates the peer has completed all processing and it's safe to proceed to
 
 6. Close the duplex connection.
 
+The following sequence diagram shows the interactions between the client and server on connection shutdown:
+
+```mermaid
+sequenceDiagram
+    Client->>Server: CloseConnection frame
+    Server-->>Client: Close duplex connection
+```
+
 ## CloseConnection frame
 
 The CloseConnection frame is an ice protocol frame with type CloseConnection. Its body is empty. A client or server

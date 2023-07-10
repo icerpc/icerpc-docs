@@ -38,28 +38,22 @@ A Slic connection is established as follows:
     - Otherwise, it sends again the Initialize frame with a supported version and waits for the server to send back the
       InitializeAck frame.
 
-The following sequence diagram shows the interactions between the client and server on connection establishment when the client version is supported by the server:
+The following sequence diagram shows the interactions between the client and server on connection establishment:
 
 ```mermaid
 sequenceDiagram
-    Client-)Server: Open duplex connection
-    Note over Client,Server: Connect duplex connection
-    Client-)Server: Initialize frame
-    Server--)Client: InitializeAck frame
-```
-
-And the following sequence diagram shows the interactions when the client version is not supported by the server:
-```mermaid
-sequenceDiagram
-    Client-)Server: Open duplex connection
-    Note over Client,Server: Connect duplex connection
-    Client-)Server: Initialize frame
-    Server--)Client: Version frame
-    alt a server version is supported
-        Client-)Server: Initialize frame
-        Server--)Client: InitializeAck frame
-    else no server version is supported
-        Client-)Server: Duplex connection shutdown
+    Client->>Server: Connect duplex connection
+    Client->>Server: Initialize frame
+    alt client version is supported
+        Server-->>Client: InitializeAck frame
+    else client version is not supported
+        Server-->>Client: Version frame
+        alt server version is supported
+            Client->>Server: Initialize frame
+            Server-->>Client: InitializeAck frame
+        else server version is not supported
+            Client-)Server: Shutdown duplex connection
+        end
     end
 ```
 
