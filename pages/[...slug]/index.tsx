@@ -10,41 +10,41 @@ import { config, components } from 'markdoc/scheme/scheme';
 import { getAllMarkdownFiles } from 'lib/markdown';
 import fs from 'fs';
 
-
 type Params = {
     slug: string[];
 };
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
     const baseUrls = ['slice', 'icerpc-core', 'icerpc-for-ice-users', 'getting-started'];
-    const paths = baseUrls.flatMap((base) => {
-        const baseDir = base;
-        const markdownFiles = getAllMarkdownFiles(`pages/${baseDir}`, []);
-        const modifiedMarkdownFiles = markdownFiles.reduce<string[]>((acc, filePath) => {
-            if (base === 'slice') {
-                const slice1FilePath = filePath.replace(/^slice\//, 'slice1/');
-                const slice2FilePath = filePath.replace(/^slice\//, 'slice2/');
-                return [...acc, slice1FilePath, slice2FilePath];
-            } else {
-                return [...acc, filePath];
-            }
-        }, []);
+    const paths: { params: { slug: string[] } }[] = [];
+    for (const base of baseUrls) {
+        const markdownFiles = getAllMarkdownFiles(`pages/${base}`, []);
+        for (const filePath of markdownFiles) {
+            const pathWithoutMd = filePath.replace(/\.md$/, '');
+            const splitPath = pathWithoutMd.split('/');
 
-        return modifiedMarkdownFiles.map((filePath) => {
-            const slug = filePath.replace(/\.md$/, '').split('/').slice(1);
-            return {
-                params: {
-                    slug,
-                },
-            };
-        });
-    });
+            // Remove "index" from the slug if it's the last element
+            if (splitPath[splitPath.length - 1] === 'index') {
+                splitPath.pop();
+            }
+
+            // For 'slice' base, create paths for 'slice1' and 'slice2'
+            if (base === 'slice') {
+                const slice1Slug = splitPath.map(part => part === 'slice' ? 'slice1' : part).slice(1);
+                const slice2Slug = splitPath.map(part => part === 'slice' ? 'slice2' : part).slice(1);
+                paths.push({ params: { slug: slice1Slug } });
+                paths.push({ params: { slug: slice2Slug } });
+            } else {
+                paths.push({ params: { slug: splitPath.slice(1) } });
+            }
+        }
+    }
+
     return {
-    paths: paths,
-    fallback: true,
+        paths: paths,
+        fallback: false,
     };
 };
-
 
 
 export const getStaticProps: GetStaticProps<object, Params> = async ({ params }) => {
@@ -55,18 +55,18 @@ export const getStaticProps: GetStaticProps<object, Params> = async ({ params })
     let indexFilePath;
 
     if (slug) {
-      let baseFilePath = path.join(process.cwd(), 'pages', ...slug);
-      // If slug starts with slice1/ or slice2/, replace it with slice/ because markdown files are located in slice/
-      if (baseFilePath.startsWith(path.join(process.cwd(), 'pages', 'slice1')) || baseFilePath.startsWith(path.join(process.cwd(), 'pages', 'slice2')) ||
-        (slug.length === 1 && (slug[0] === 'slice1' || slug[0] === 'slice2'))) {
-        baseFilePath = baseFilePath.replace(/slice[12]/, 'slice');
-      }
+        let baseFilePath = path.join(process.cwd(), 'pages', ...slug);
+        // If slug starts with slice1/ or slice2/, replace it with slice/ because markdown files are located in slice/
+        if (baseFilePath.startsWith(path.join(process.cwd(), 'pages', 'slice1')) || baseFilePath.startsWith(path.join(process.cwd(), 'pages', 'slice2')) ||
+          (slug.length === 1 && (slug[0] === 'slice1' || slug[0] === 'slice2'))) {
+          baseFilePath = baseFilePath.replace(/slice[12]/, 'slice');
+        }
 
-      filePath = `${baseFilePath}.md`;
-      indexFilePath = `${baseFilePath}/index.md`;
-    } else {
-      indexFilePath = path.join(process.cwd(), 'pages', 'index.md');
-    }
+        filePath = `${baseFilePath}.md`;
+        indexFilePath = `${baseFilePath}/index.md`;
+      } else {
+        indexFilePath = path.join(process.cwd(), 'pages', 'index.md');
+      }
 
     const fileContent = filePath && fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') : null;
     const fallbackFileContent = indexFilePath && fs.existsSync(indexFilePath) ? fs.readFileSync(indexFilePath, 'utf8') : null;
@@ -77,9 +77,7 @@ export const getStaticProps: GetStaticProps<object, Params> = async ({ params })
         },
         notFound: !(fileContent || fallbackFileContent),
     };
-
 };
-
 
 
 export default function Page({ source }: { source: string }) {
@@ -101,7 +99,6 @@ export default function Page({ source }: { source: string }) {
             frontmatter,
         },
     };
-
 
     const content = Markdoc.transform(ast, updatedConfig);
     return Markdoc.renderers.react(content, React, { components });
