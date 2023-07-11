@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { LinkIcon } from '@heroicons/react/24/solid';
 import { useRouter } from 'next/router';
 import copy from 'copy-to-clipboard';

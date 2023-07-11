@@ -43,6 +43,7 @@ export const SliceSelector = () => {
     setSelectedIndex(encodings.indexOf(currentEncoding));
   }, [currentEncoding]);
 
+
   return (
     <>
       <div className="mb-6 mt-3 w-full pr-4">

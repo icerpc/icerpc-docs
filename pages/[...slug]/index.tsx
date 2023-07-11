@@ -71,12 +71,11 @@ export const getStaticProps: GetStaticProps<object, Params> = async ({ params })
     const fileContent = filePath && fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') : null;
     const fallbackFileContent = indexFilePath && fs.existsSync(indexFilePath) ? fs.readFileSync(indexFilePath, 'utf8') : null;
 
-    return {
-        props: {
-            source: fileContent || fallbackFileContent || '',
-        },
-        notFound: !(fileContent || fallbackFileContent),
-    };
+    const hasContent = !!(fileContent || fallbackFileContent);
+
+    return hasContent
+        ? { props: { source: fileContent || fallbackFileContent || '' } }
+        : { notFound: true };
 };
 
 
