@@ -26,4 +26,4 @@ of an [outgoing request](../invocation/outgoing-request). This split makes the [
 convenient and efficient, but is otherwise unnecessary. An outgoing response payload is conceptually one continuous
 stream of bytes.
 
-[slice-encoding]: ../../slice/encoding/main-features
+[slice-encoding]: ../../slice2/encoding/main-features

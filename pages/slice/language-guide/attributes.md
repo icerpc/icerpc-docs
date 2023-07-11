@@ -151,4 +151,4 @@ The `cs::internal` attribute maps a Slice type to one or more internal C# types.
 [dictionary-type]: dictionary-types#cs::type-attribute
 [oneway]: operation#oneway-attribute
 [sequence-type]: sequence-types#cs::type-attribute
-[sliced-format]: class-types?encoding=Slice1#slicing
+[sliced-format]: /slice1/language-guide/class-types#slicing
