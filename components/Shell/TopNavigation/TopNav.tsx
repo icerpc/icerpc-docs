@@ -12,13 +12,14 @@ import { MobileMenu } from './MobileMenu';
 import { MobileSideNav } from '../SideNav';
 import { ThemeToggle } from 'components/ThemeToggle';
 import { useEncoding, useMounted } from 'context/state';
+import { useHydrationFriendlyAsPath } from 'lib/utils';
 import { Encoding, Theme } from 'types';
 
 import darkIcon from 'public/Icerpc-dark-logo.svg';
 import lightIcon from 'public/Icerpc-logo.svg';
 
 export const TopNav = () => {
-  const pathname = useRouter().asPath;
+  const pathname = useHydrationFriendlyAsPath();
   const { encoding} = useEncoding();
 
   const navigationItems = [

@@ -1,7 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
 import React, { ReactElement } from 'react';
-import { useRouter } from 'next/router';
 
 import { Divider, EncodingSection, TOCItem, Title } from 'components';
 import { Encoding } from 'types';
@@ -9,6 +8,7 @@ import { useEncoding } from 'context/state';
 import { PageHistory, TableOfContents, Feedback } from 'components/Shell';
 import { collectHeadings } from 'utils/collectHeadings';
 import { baseUrls } from 'data/side-bar-data';
+import { useHydrationFriendlyAsPath } from 'lib/utils';
 
 type Props = {
   children: ReactElement[];
@@ -29,8 +29,7 @@ export const Document = ({
 }: Props) => {
   const { encoding: currentEncoding } = useEncoding();
   const [toc, setToc] = React.useState<TOCItem[]>([]);
-  const router = useRouter();
-  const path = router.asPath;
+  const path = useHydrationFriendlyAsPath()
   const isBaseUrl = baseUrls.some((baseUrl) => path == baseUrl);
 
 

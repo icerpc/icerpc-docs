@@ -7,6 +7,7 @@ import copy from 'copy-to-clipboard';
 import clsx from 'clsx';
 
 import { Divider } from 'components/Divider';
+import { useHydrationFriendlyAsPath } from 'lib/utils';
 
 type Props = {
   id?: string;
@@ -18,7 +19,8 @@ type Props = {
 export const Heading = ({ id = '', level = 1, children }: Props) => {
   const router = useRouter();
   const Component: any = `h${level}`;
-  const isDocs = router.asPath.startsWith('');
+  const path = useHydrationFriendlyAsPath();
+  const isDocs = path.startsWith('');
   const origin =
     typeof window !== 'undefined' && window.location.origin
       ? window.location.origin
@@ -41,7 +43,7 @@ export const Heading = ({ id = '', level = 1, children }: Props) => {
         className="h-5 pl-2 opacity-0 duration-100 ease-in-out group-hover:opacity-100"
         aria-label="Copy link to heading"
         onClick={() => {
-          copy(origin + router.asPath + `#${id}`);
+          copy(origin + path + `#${id}`);
           router.push(`#${id}`);
         }}
       >

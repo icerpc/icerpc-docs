@@ -10,7 +10,7 @@ import {
 
 import { sideBarData, baseUrls, flattenSideBarData } from 'data/side-bar-data';
 import { SideBarLink, isLink } from 'types';
-import { useRouter } from 'next/router';
+import { useHydrationFriendlyAsPath } from 'lib/utils';
 
 type Props = {
   path: string;
@@ -28,7 +28,7 @@ export const PageHistory = ({ path }: Props) => {
   ).filter(isLink);
 
   // Find the current page in the list of links
-  const index = links.map((item) => stripTrailingSlash(item.path)).indexOf(useRouter().asPath);
+  const index = links.map((item) => stripTrailingSlash(item.path)).indexOf(useHydrationFriendlyAsPath());
 
   // Get the previous and next links
   const previous = index > 0 ? links[index - 1] : undefined;

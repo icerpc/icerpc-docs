@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { baseUrls, currentNavItem, sideBarData } from 'data/side-bar-data';
 import { Breadcrumbs, Breadcrumb } from 'components/Breadcrumbs';
 import { SideBarLink, Encoding, isCategory, isLink } from 'types';
-import { useEncoding } from 'context/state';
+import { useHydrationFriendlyAsPath } from 'lib/utils';
 
 type Props = {
   title: string;
@@ -20,7 +20,7 @@ export const Title = ({
   readingTime,
   showBreadcrumbs = true
 }: Props) => {
-  const path = useRouter().asPath;
+  const path = useHydrationFriendlyAsPath();
   const breadcrumbs = getBreadcrumbs(path);
 
   return (

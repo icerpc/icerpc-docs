@@ -15,6 +15,7 @@ import {
 import { AppLink } from 'components/Nodes/AppLink';
 import { baseUrls } from 'data/side-bar-data';
 import { Divider } from 'components/Divider';
+import { useHydrationFriendlyAsPath } from 'lib/utils';
 
 export type TOCItem = {
   id: string;
@@ -24,7 +25,7 @@ export type TOCItem = {
 
 export const TableOfContents = ({ toc }: { toc: TOCItem[] }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const currentPath = resolvePath(useRouter().asPath);
+  const currentPath = resolvePath(useHydrationFriendlyAsPath());
   const items = toc.filter(
     (item) =>
       item.id &&
