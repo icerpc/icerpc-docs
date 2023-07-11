@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import queryString from 'query-string';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronLeft,
@@ -10,29 +9,28 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { sideBarData, baseUrls, flattenSideBarData } from 'data/side-bar-data';
-import { SideBarLink, Encoding, isLink } from 'types';
+import { SideBarLink, isLink } from 'types';
+import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
 
 type Props = {
   path: string;
-  encoding: Encoding;
 };
 
 const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;
 };
 
-export const PageHistory = ({ path, encoding }: Props) => {
+export const PageHistory = ({ path }: Props) => {
   // Get the side bar links for the current page
   const baseUrl = baseUrls.find((item) => path.startsWith(item)) ?? '';
-  const links: SideBarLink[] = flattenSideBarData(
-    sideBarData(baseUrl, encoding)
-  ).filter(isLink);
+  const links: SideBarLink[] = flattenSideBarData(sideBarData(baseUrl)).filter(
+    isLink
+  );
 
   // Find the current page in the list of links
-  const { url } = queryString.parseUrl(path, {
-    parseFragmentIdentifier: true
-  });
-  const index = links.map((item) => stripTrailingSlash(item.path)).indexOf(url);
+  const index = links
+    .map((item) => stripTrailingSlash(item.path))
+    .indexOf(useHydrationFriendlyAsPath());
 
   // Get the previous and next links
   const previous = index > 0 ? links[index - 1] : undefined;

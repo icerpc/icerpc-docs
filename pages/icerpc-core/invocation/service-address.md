@@ -112,6 +112,6 @@ in particular, it's an error to create an outgoing request with a relative servi
 
 Relative service addresses underpin [relative proxies][relative-proxies] in Slice.
 
-[relative-proxies]: ../../../slice/language-guide/proxy-types#relative-proxy
+[relative-proxies]: ../../../slice2/language-guide/proxy-types#relative-proxy
 [service-address]: csharp:IceRpc.ServiceAddress
 [uri]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier

@@ -74,9 +74,7 @@
     "misc",
     "lorem-ipsum"
   ],
-  "enableFiletypes": [
-    "markdoc"
-  ],
+  "enableFiletypes": ["markdoc"],
   "ignorePaths": [
     ".vscode",
     "node_modules",

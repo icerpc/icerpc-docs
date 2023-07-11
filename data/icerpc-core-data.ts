@@ -186,4 +186,5 @@ export const rpcCoreData: SideBarSourceType[] = [
         path: `${RPC_CORE_BASE_URL}/slic-protocol/protocol-frames`
       }
     ]
-  }];
+  }
+];

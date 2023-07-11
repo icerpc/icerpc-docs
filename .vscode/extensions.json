@@ -5,6 +5,6 @@
     "esbenp.prettier-vscode",
     "ms-vscode.vscode-typescript-next",
     "streetsidesoftware.code-spell-checker",
-    "stripe.markdoc-language-support",
+    "stripe.markdoc-language-support"
   ]
 }

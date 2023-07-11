@@ -1,10 +1,9 @@
 // Copyright (c) ZeroC, Inc.
 
 import { nodes } from '@markdoc/markdoc';
-import { CodeBlock } from 'components';
 
 const fence = {
-  render: CodeBlock,
+  render: 'CodeBlock',
   attributes: {
     ...nodes.fence.attributes,
     title: {

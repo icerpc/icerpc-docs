@@ -27,32 +27,32 @@ generated code offers you a convenient typed RPC API implemented using IceRPC re
 {% mini-card
    title="Slice components"
    description="A short description of each Slice component."
-   href="/slice/basics/slice-components" /%}
+   href="/slice2/basics/slice-components" /%}
 
 {% mini-card
    title="Contract-first model"
    description="Learn how to create an application using IceRPC and Slice."
-   href="/slice/basics/contract-first" /%}
+   href="/slice2/basics/contract-first" /%}
 
 {% mini-card
    title="Interface"
    description="Learn how to define interfaces in Slice."
-   href="/slice/language-guide/interface" /%}
+   href="/slice2/language-guide/interface" /%}
 
 {% mini-card
    title="Struct"
    description="Learn how to define and use structs in Slice."
-   href="/slice/language-guide/struct-types" /%}
+   href="/slice2/language-guide/struct-types" /%}
 
 {% mini-card
    title="Slice encoding"
    description="Learn how Slice encodes types into byte streams."
-   href="/slice/encoding-reference/main-features" /%}
+   href="/slice2/encoding-reference/main-features" /%}
 
 {% mini-card
    title="Examples"
    description="Discover the Slice syntax through a few examples"
-   href="/slice/basics/examples" /%}
+   href="/slice2/basics/examples" /%}
 
 {% /grid %}
 

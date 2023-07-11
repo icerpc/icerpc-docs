@@ -20,10 +20,22 @@ export const SliceSelector = () => {
   function onChange(index: number) {
     const encoding = encodings[index];
     setEncoding(encoding);
-    router.push({
-      pathname: router.pathname,
-      query: { ...router.query, encoding }
-    });
+
+    const path = router.asPath;
+
+    let newPath;
+    if (path === '/slice1') {
+      newPath = encoding === Encoding.Slice1 ? '/slice1' : '/slice2';
+    } else if (path === '/slice2') {
+      newPath = encoding === Encoding.Slice1 ? '/slice1' : '/slice2';
+    } else {
+      newPath = path.replace(
+        /\/slice[1-2]\//,
+        `/slice${encoding === Encoding.Slice1 ? 1 : 2}/`
+      );
+    }
+
+    router.push(newPath);
   }
 
   useEffect(() => {

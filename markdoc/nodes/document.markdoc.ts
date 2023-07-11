@@ -1,7 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
 import { nodes, Node, Config, Tag } from '@markdoc/markdoc';
-import { Document } from 'components/Nodes/Document';
 import readingTime from 'reading-time';
 
 const convertToRawText = (doc: Node) => {
@@ -16,10 +15,10 @@ const convertToRawText = (doc: Node) => {
 
 const document = {
   ...nodes.document,
-  render: Document,
+  render: 'Document',
   attributes: nodes.document.attributes,
   transform(node: Node, config: Config) {
-    const frontmatter = config.variables?.markdoc.frontmatter;
+    const frontmatter = config.variables?.frontmatter;
     const children = node.transformChildren(config) ?? [];
     const rawText = convertToRawText(node);
 

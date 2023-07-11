@@ -1,14 +1,14 @@
 // Copyright (c) ZeroC, Inc.
 
-import { Callout } from 'components/Tags/Callout';
-
 const callout = {
-  render: Callout,
+  render: 'Callout',
   children: ['paragraph', 'tag', 'list'],
   attributes: {
-    type: String,
-    default: 'note',
-    matches: ['critical', 'info']
+    type: {
+      type: String,
+      default: 'info',
+      matches: ['critical', 'info']
+    }
   }
 };
 

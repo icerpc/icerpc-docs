@@ -1,11 +1,10 @@
 // Copyright (c) ZeroC, Inc.
 
 import { Tag, Config, Node } from '@markdoc/markdoc';
-import { SupportedEncodings } from 'components/Tags/SupportedEncoding';
 import { Encoding } from 'types';
 
 const encodings = {
-  render: SupportedEncodings,
+  render: 'SupportedEncodings',
   transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);
     const frontmatter = config.variables?.markdoc.frontmatter;

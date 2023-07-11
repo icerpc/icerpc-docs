@@ -1,11 +1,10 @@
 // Copyright (c) ZeroC, Inc.
 
 import { Node, Config, Tag } from '@markdoc/markdoc';
-import { EncodingSection } from 'components/Tags/EncodingSection';
 import { Encoding } from 'types';
 
 export const slice1 = {
-  render: EncodingSection,
+  render: 'EncodingSection',
   transform(node: Node, config: Config) {
     const children = node.transformChildren(config);
     const encoding = Encoding.Slice1;
@@ -14,7 +13,7 @@ export const slice1 = {
 };
 
 export const slice2 = {
-  render: EncodingSection,
+  render: 'EncodingSection',
   transform(node: Node, config: Config) {
     const children = node.transformChildren(config);
     const encoding = Encoding.Slice2;

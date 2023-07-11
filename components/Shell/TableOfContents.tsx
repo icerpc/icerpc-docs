@@ -2,7 +2,6 @@
 
 import React, { ReactNode, useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +14,7 @@ import {
 import { AppLink } from 'components/Nodes/AppLink';
 import { baseUrls } from 'data/side-bar-data';
 import { Divider } from 'components/Divider';
+import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
 
 export type TOCItem = {
   id: string;
@@ -22,9 +22,9 @@ export type TOCItem = {
   level: number;
 };
 
-export const TableOfContents = (toc: TOCItem[]) => {
+export const TableOfContents = ({ toc }: { toc: TOCItem[] }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const currentPath = resolvePath(useRouter().pathname);
+  const currentPath = resolvePath(useHydrationFriendlyAsPath());
   const items = toc.filter(
     (item) =>
       item.id &&

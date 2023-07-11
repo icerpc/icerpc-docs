@@ -1,11 +1,9 @@
 // Copyright (c) ZeroC, Inc.
 
-import { useRouter } from 'next/router';
-
 import { baseUrls, currentNavItem, sideBarData } from 'data/side-bar-data';
 import { Breadcrumbs, Breadcrumb } from 'components/Breadcrumbs';
-import { SideBarLink, Encoding, isCategory, isLink } from 'types';
-import { useEncoding } from 'context/state';
+import { SideBarLink, isCategory, isLink } from 'types';
+import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
 
 type Props = {
   title: string;
@@ -20,9 +18,8 @@ export const Title = ({
   readingTime,
   showBreadcrumbs = true
 }: Props) => {
-  const { encoding } = useEncoding();
-  const path = useRouter().pathname;
-  const breadcrumbs = getBreadcrumbs(path, encoding);
+  const path = useHydrationFriendlyAsPath();
+  const breadcrumbs = getBreadcrumbs(path);
 
   return (
     <div className="not-prose mb-10">
@@ -46,7 +43,7 @@ const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;
 };
 
-export const getBreadcrumbs = (path: string, encoding: Encoding) => {
+export const getBreadcrumbs = (path: string) => {
   if (!path || path === '/') {
     return path === '/'
       ? [
@@ -63,7 +60,7 @@ export const getBreadcrumbs = (path: string, encoding: Encoding) => {
     return [];
   }
 
-  const categories = sideBarData(baseUrl, encoding).filter(isCategory);
+  const categories = sideBarData(baseUrl).filter(isCategory);
   const breadcrumbs: Breadcrumb[] = [
     {
       name: currentNavItem(baseUrl),

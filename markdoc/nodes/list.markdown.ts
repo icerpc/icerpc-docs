@@ -1,9 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
-import { List } from 'components';
-
 const list = {
-  render: List,
+  render: 'List',
   attributes: {
     ordered: { type: Boolean }
   }

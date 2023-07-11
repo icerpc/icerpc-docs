@@ -1,14 +1,13 @@
 // Copyright (c) ZeroC, Inc.
 
 import { Tag, Config, Node } from '@markdoc/markdoc';
-import { Grid } from 'components/Tags/Grid';
 
 const grid = {
-  render: Grid,
+  render: 'Grid',
   children: ['card'],
   attributes: {
     columns: {
-      type: 'number',
+      type: Number,
       required: false
     }
     // trailinglink: {

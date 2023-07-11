@@ -1,6 +1,12 @@
 // Copyright (c) ZeroC, Inc.
 
-import { SideBarSourceType, Encoding, isCategory, isLink } from 'types';
+import {
+  SideBarSourceType,
+  isCategory,
+  isLink,
+  SLICE1_BASE_URL,
+  SLICE2_BASE_URL
+} from 'types';
 import {
   slice1Data,
   slice2Data,
@@ -9,13 +15,13 @@ import {
   iceRpcForIceUsersData
 } from './index';
 
-const SLICE_BASE_URL = '/slice';
 const RPC_CORE_BASE_URL = '/icerpc-core';
 const GETTING_STARTED_BASE_URL = '/getting-started';
 const RPC_FOR_ICE_BASE_URL = '/icerpc-for-ice-users';
 
 export const baseUrls = [
-  SLICE_BASE_URL,
+  SLICE1_BASE_URL,
+  SLICE2_BASE_URL,
   RPC_CORE_BASE_URL,
   GETTING_STARTED_BASE_URL,
   RPC_FOR_ICE_BASE_URL
@@ -39,7 +45,8 @@ export const currentNavItem = (baseUrl: string) => {
   switch (baseUrl) {
     case GETTING_STARTED_BASE_URL:
       return 'Getting Started';
-    case SLICE_BASE_URL:
+    case SLICE1_BASE_URL:
+    case SLICE2_BASE_URL:
       return 'Slice';
     case RPC_CORE_BASE_URL:
       return 'IceRPC Core';
@@ -50,22 +57,14 @@ export const currentNavItem = (baseUrl: string) => {
   }
 };
 
-export const sideBarData = (
-  baseUrl: string,
-  encoding: Encoding
-): SideBarSourceType[] => {
+export const sideBarData = (baseUrl: string): SideBarSourceType[] => {
   switch (baseUrl) {
     case GETTING_STARTED_BASE_URL:
       return gettingStartedData;
-    case SLICE_BASE_URL:
-      switch (encoding) {
-        case Encoding.Slice1:
-          return slice1Data;
-        case Encoding.Slice2:
-          return slice2Data;
-        default:
-          return [];
-      }
+    case SLICE1_BASE_URL:
+      return slice1Data;
+    case SLICE2_BASE_URL:
+      return slice2Data;
     case RPC_CORE_BASE_URL:
       return rpcCoreData;
     case RPC_FOR_ICE_BASE_URL:

@@ -121,19 +121,19 @@ module WellKnownTypes
 custom Duration
 ```
 
-[attributes]: ../../slice/language-guide/attributes
-[custom]: ../../slice/language-guide/custom-types
-[dictionary]: ../../slice/language-guide/dictionary-types
-[enum]: ../../slice/language-guide/enum-types
-[exception]: ../../slice/language-guide/exception
+[attributes]: ../../slice2/language-guide/attributes
+[custom]: ../../slice2/language-guide/custom-types
+[dictionary]: ../../slice2/language-guide/dictionary-types
+[enum]: ../../slice2/language-guide/enum-types
+[exception]: ../../slice2/language-guide/exception
 [grpc]: https://grpc.io/
 [idl]: https://en.wikipedia.org/wiki/Interface_description_language
 [greeter-core]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterCore
 [greeter-json]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterJson
 [greeter-protobuf]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterProtobuf
-[primitive]: ../../slice/language-guide/primitive-types
-[sequence]: ../../slice/language-guide/sequence-types
-[slice]: ../../slice
-[struct]: ../../slice/language-guide/struct-types
-[tagged]: ../../slice/language-guide/parameters-and-fields#tagged-parameters-and-fields
-[well-known]: ../../slice/language-guide/well-known-types
+[primitive]: ../../slice2/language-guide/primitive-types
+[sequence]: ../../slice2/language-guide/sequence-types
+[slice]: ../../slice2
+[struct]: ../../slice2/language-guide/struct-types
+[tagged]: ../../slice2/language-guide/parameters-and-fields#tagged-parameters-and-fields
+[well-known]: ../../slice2/language-guide/well-known-types

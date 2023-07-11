@@ -2,8 +2,6 @@
 
 import { Tag, Node, Config, RenderableTreeNode } from '@markdoc/markdoc';
 
-import { Heading } from 'components';
-
 function generateID(
   children: RenderableTreeNode[],
   attributes: Record<string, any>
@@ -20,7 +18,7 @@ function generateID(
 }
 
 const heading = {
-  render: Heading,
+  render: 'Heading',
   children: ['inline'],
   attributes: {
     id: { type: String },

@@ -1,9 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
-import { AppLink } from 'components/Nodes/AppLink';
-
 const link = {
-  render: AppLink,
+  render: 'AppLink',
   attributes: {
     href: {
       type: String

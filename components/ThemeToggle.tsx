@@ -35,7 +35,6 @@ export const ThemeToggle = () => {
   );
 };
 
-
 // This code is from https://github.com/JoseRFelix/react-toggle-dark-mode
 // We have brought it in to avoid a dependency on a package that is no longer
 // maintained.
@@ -47,15 +46,15 @@ export const defaultProperties = {
     circle: { r: 9 },
     mask: { cx: '50%', cy: '23%' },
     svg: { transform: 'rotate(40deg)' },
-    lines: { opacity: 0 },
+    lines: { opacity: 0 }
   },
   light: {
-    circle: { r: 5},
-    mask: { cx: '100%', cy: '0%'},
-    svg: { transform: 'rotate(90deg)'},
-    lines: { opacity: 1 },
+    circle: { r: 5 },
+    mask: { cx: '100%', cy: '0%' },
+    svg: { transform: 'rotate(90deg)' },
+    lines: { opacity: 1 }
   },
-  springConfig: { mass: 4, tension: 250, friction: 35 },
+  springConfig: { mass: 4, tension: 250, friction: 35 }
 };
 
 let REACT_TOGGLE_DARK_MODE_GLOBAL_ID = 0;
@@ -100,19 +99,19 @@ const DarkModeSwitch: React.FC<Props> = ({
 
   const svgContainerProps = useSpring({
     ...svg,
-    config: animationProperties.springConfig,
+    config: animationProperties.springConfig
   });
   const centerCircleProps = useSpring({
     ...circle,
-    config: animationProperties.springConfig,
+    config: animationProperties.springConfig
   });
   const maskedCircleProps = useSpring({
     ...mask,
-    config: animationProperties.springConfig,
+    config: animationProperties.springConfig
   });
   const linesProps = useSpring({
     ...lines,
-    config: animationProperties.springConfig,
+    config: animationProperties.springConfig
   });
 
   const toggle = () => onChange(!checked);
@@ -135,7 +134,7 @@ const DarkModeSwitch: React.FC<Props> = ({
       style={{
         cursor: 'pointer',
         ...svgContainerProps,
-        ...style,
+        ...style
       }}
       {...rest}
     >

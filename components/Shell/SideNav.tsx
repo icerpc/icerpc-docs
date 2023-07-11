@@ -26,10 +26,11 @@ export const SideNav = ({ path }: SideNavProps) => {
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { encoding: currentEncoding } = useEncoding();
   const router = useRouter();
-
   const baseUrl = baseUrls.find((item) => path.startsWith(item)) ?? '';
+  const isSlice = baseUrl == '/slice1' || baseUrl == '/slice2';
+
   useEffect(() => {
-    const links = sideBarData(baseUrl, currentEncoding) ?? [];
+    const links = sideBarData(baseUrl) ?? [];
     setData(links);
     return () => {
       setData([]);
@@ -46,7 +47,7 @@ export const SideNav = ({ path }: SideNavProps) => {
     <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-darkBorder/60 dark:bg-black lg:flex">
       <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-10">
         <SearchButton className="mb-0 mt-8 flex items-start pr-6" />
-        {baseUrl == '/slice' && (
+        {isSlice && (
           <div className="top-0 mb-2 mt-4 bg-none pr-6">
             <SliceSelector />
           </div>
@@ -75,13 +76,13 @@ export function MobileSideNav({ pathname }: MobileSideNavProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { encoding: currentEncoding } = useEncoding();
-  const breadcrumbs = getBreadcrumbs(pathname, currentEncoding);
+  const breadcrumbs = getBreadcrumbs(pathname);
   const router = useRouter();
 
   const baseUrl = baseUrls.find((item) => pathname.startsWith(item)) ?? '';
 
   useEffect(() => {
-    const links = sideBarData(baseUrl, currentEncoding) ?? [];
+    const links = sideBarData(baseUrl) ?? [];
     setData(links);
     return () => {
       setData([]);
@@ -205,7 +206,7 @@ function createListItem(
   const leftPadding = noLeftPadding ? 'ml-0' : 'ml-3';
 
   if (isLink(link)) {
-    const isCurrentPage = router.pathname === link.path.replace(/\/$/, '');
+    const isCurrentPage = router.asPath === link.path.replace(/\/$/, '');
     return (
       <li key={link.path} className="flex">
         <Link
