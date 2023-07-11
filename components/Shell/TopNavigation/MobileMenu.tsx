@@ -43,7 +43,6 @@ type TopMenuModalProps = {
 };
 
 export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
-
   const { encoding } = useEncoding();
 
   const navigationItems = [

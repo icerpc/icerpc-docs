@@ -5,8 +5,8 @@ module.exports = {
       {
         source: '/',
         destination: '/getting-started',
-        permanent: true,
-      },
-    ]
-  },
-}
+        permanent: true
+      }
+    ];
+  }
+};

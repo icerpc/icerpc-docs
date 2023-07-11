@@ -1,13 +1,13 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode } from 'react';
 import { LinkIcon } from '@heroicons/react/24/solid';
 import { useRouter } from 'next/router';
 import copy from 'copy-to-clipboard';
 import clsx from 'clsx';
 
 import { Divider } from 'components/Divider';
-import { useHydrationFriendlyAsPath } from 'lib/utils';
+import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
 
 type Props = {
   id?: string;

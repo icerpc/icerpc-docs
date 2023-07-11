@@ -3,7 +3,7 @@
     "id": "icerpc-docs",
     "path": "pages/",
     "schema": {
-      "path": "markdoc/",
+      "path": "markdoc/schema.ts",
       "type": "esm",
       "watch": true
     }

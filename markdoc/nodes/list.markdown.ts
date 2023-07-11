@@ -1,8 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
-
 const list = {
-  render: "List",
+  render: 'List',
   attributes: {
     ordered: { type: Boolean }
   }

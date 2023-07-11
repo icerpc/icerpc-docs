@@ -1,9 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
-
-
 const sideBySide = {
-  render: "SideBySide",
+  render: 'SideBySide',
   attributes: {
     weighted: {
       type: 'string',

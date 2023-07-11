@@ -12,7 +12,8 @@ export const gettingStartedData: SideBarSourceType[] = [
     links: [
       {
         title: 'A modular RPC framework built for QUIC',
-        path: GETTING_STARTED_BASE_URL + '/raising-the-bar/modular-rpc-for-quic/'
+        path:
+          GETTING_STARTED_BASE_URL + '/raising-the-bar/modular-rpc-for-quic/'
       },
       {
         title: 'Slice - a better IDL',
@@ -36,5 +37,5 @@ export const gettingStartedData: SideBarSourceType[] = [
         path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/nuget-packages/'
       }
     ]
-  },
+  }
 ];

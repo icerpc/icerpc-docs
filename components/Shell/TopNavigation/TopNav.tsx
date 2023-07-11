@@ -1,6 +1,5 @@
 // Copyright (c) ZeroC, Inc.
 
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
@@ -12,7 +11,7 @@ import { MobileMenu } from './MobileMenu';
 import { MobileSideNav } from '../SideNav';
 import { ThemeToggle } from 'components/ThemeToggle';
 import { useEncoding, useMounted } from 'context/state';
-import { useHydrationFriendlyAsPath } from 'lib/utils';
+import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
 import { Encoding, Theme } from 'types';
 
 import darkIcon from 'public/Icerpc-dark-logo.svg';
@@ -20,7 +19,7 @@ import lightIcon from 'public/Icerpc-logo.svg';
 
 export const TopNav = () => {
   const pathname = useHydrationFriendlyAsPath();
-  const { encoding} = useEncoding();
+  const { encoding } = useEncoding();
 
   const navigationItems = [
     {
@@ -126,22 +125,23 @@ const TopNavigationItem = ({
   href,
   pathname
 }: TopNavigationItemProps) => {
-
   // Check if the current path matches the href or starts with the href
-  const isActive = pathname === href || pathname.startsWith(`${href}/`) || (pathname.startsWith('/slice') && href === '/slice2');
+  const isActive =
+    pathname === href ||
+    pathname.startsWith(`${href}/`) ||
+    (pathname.startsWith('/slice') && href === '/slice2');
 
   // Generate the class names based on the active state
   const linkClassName = clsx(
     'overflow-hidden whitespace-nowrap px-2',
-    isActive ? 'text-primary no-underline decoration-2 underline-offset-[1.5rem] opacity-100 dark:text-white' : 'dark:text-[rgba(255,255,255,0.6)]'
+    isActive
+      ? 'text-primary no-underline decoration-2 underline-offset-[1.5rem] opacity-100 dark:text-white'
+      : 'dark:text-[rgba(255,255,255,0.6)]'
   );
 
   return (
     <li key={href}>
-      <Link
-        href={href}
-        className={linkClassName}
-      >
+      <Link href={href} className={linkClassName}>
         {name}
       </Link>
     </li>

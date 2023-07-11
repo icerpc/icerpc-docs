@@ -3,7 +3,7 @@
 import { Tag, Node, Config } from '@markdoc/markdoc';
 
 const title = {
-  render: "Title",
+  render: 'Title',
   transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);
     const frontmatter = config.variables?.markdoc.frontmatter;

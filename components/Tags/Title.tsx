@@ -1,11 +1,9 @@
 // Copyright (c) ZeroC, Inc.
 
-import { useRouter } from 'next/router';
-
 import { baseUrls, currentNavItem, sideBarData } from 'data/side-bar-data';
 import { Breadcrumbs, Breadcrumb } from 'components/Breadcrumbs';
-import { SideBarLink, Encoding, isCategory, isLink } from 'types';
-import { useHydrationFriendlyAsPath } from 'lib/utils';
+import { SideBarLink, isCategory, isLink } from 'types';
+import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
 
 type Props = {
   title: string;

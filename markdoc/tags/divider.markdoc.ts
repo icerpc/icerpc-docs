@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
 const divider = {
-  render: "Divider",
+  render: 'Divider',
   attributes: {
     margin: {
       type: String,

@@ -38,11 +38,9 @@ export const SliceSelector = () => {
     router.push(newPath);
   }
 
-
   useEffect(() => {
     setSelectedIndex(encodings.indexOf(currentEncoding));
   }, [currentEncoding]);
-
 
   return (
     <>

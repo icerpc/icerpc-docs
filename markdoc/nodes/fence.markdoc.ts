@@ -3,7 +3,7 @@
 import { nodes } from '@markdoc/markdoc';
 
 const fence = {
-  render: "CodeBlock",
+  render: 'CodeBlock',
   attributes: {
     ...nodes.fence.attributes,
     title: {

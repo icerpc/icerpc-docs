@@ -3,7 +3,7 @@
 import { Config, Tag, nodes, Node } from '@markdoc/markdoc';
 
 export const table = {
-  render: "Table",
+  render: 'Table',
   attributes: {
     dividers: { type: Boolean, default: false }
   },
@@ -36,16 +36,16 @@ export const table = {
 };
 
 export const th = {
-  render: "TH",
+  render: 'TH',
   attributes: nodes.th.attributes
 };
 
 export const tr = {
-  render: "TR",
+  render: 'TR',
   attributes: nodes.tr.attributes
 };
 
 export const td = {
-  render: "TD",
+  render: 'TD',
   attributes: nodes.td.attributes
 };

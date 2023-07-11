@@ -17,11 +17,15 @@ type Props = {
 
 export const AppLink = (props: Props) => {
   const router = useRouter();
-  const { encoding, setEncoding} = useEncoding();
+  const { encoding, setEncoding } = useEncoding();
   const currentPagePath = router.asPath; // Use router.asPath as currentPagePath if not provided
 
   const resolveRelativeLink = (href: string) => {
-    if (href.startsWith('http://') || href.startsWith('https://') || href.startsWith('/')) {
+    if (
+      href.startsWith('http://') ||
+      href.startsWith('https://') ||
+      href.startsWith('/')
+    ) {
       return href; // Absolute link, return as is
     }
 
@@ -42,9 +46,11 @@ export const AppLink = (props: Props) => {
   // Rest of the code remains the same
   const target =
     props.target ||
-    (props.href.startsWith('http') || isApiLink(props.href) ? '_blank' : undefined);
+    (props.href.startsWith('http') || isApiLink(props.href)
+      ? '_blank'
+      : undefined);
   const style = props.style || {
-    textUnderlineOffset: '5px',
+    textUnderlineOffset: '5px'
   };
 
   return (
@@ -58,7 +64,12 @@ export const AppLink = (props: Props) => {
         if (isSliceLink(href)) {
           // Get the segments of the href path
           const pathSegments = href.split('/');
-          const hrefEncoding = pathSegments.find((segment) => segment === 'slice1' || segment === 'slice2') === 'slice1' ? Encoding.Slice1 : Encoding.Slice2;
+          const hrefEncoding =
+            pathSegments.find(
+              (segment) => segment === 'slice1' || segment === 'slice2'
+            ) === 'slice1'
+              ? Encoding.Slice1
+              : Encoding.Slice2;
 
           // If the href encoding is different from the current encoding, update the encoding
           if (hrefEncoding !== encoding) {
@@ -85,8 +96,7 @@ export const AppLink = (props: Props) => {
 const isSliceLink = (href: string) => {
   // Check if the link contains .../slice1/... or .../slice2/... or slice1/... or slice2/...
   return href.match(/(^|\/)slice[1-2]\//);
-}
-
+};
 
 const isApiLink = (href: string) => {
   const languages = ['csharp', 'rust'];

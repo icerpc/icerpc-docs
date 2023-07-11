@@ -3,7 +3,7 @@
 import { Tag, Config, Node } from '@markdoc/markdoc';
 
 const grid = {
-  render: "Grid",
+  render: 'Grid',
   children: ['card'],
   attributes: {
     columns: {

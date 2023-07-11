@@ -73,9 +73,9 @@ opening code fence.
 
 #### Attributes
 
-| Attribute | Description                                                                 |
-| --------- | --------------------------------------------------------------------------- |
-| title     | The title of the code block.                                                 |
+| Attribute   | Description                                                                                                                                                 |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| title       | The title of the code block.                                                                                                                                |
 | addEncoding | Whether or not to automatically add `encoding = 1` to the code block when viewing Slice1 documentation. Can be either `true` or `false` Default is `false`. |
 
 #### Examples
@@ -83,22 +83,20 @@ opening code fence.
 ##### Code block title
 
 ````md
-
 ```python title="hello.py"
 def hello(name):
   print("Hello, " + name)
 ```
-
 ````
 
 ##### Code block automatic encoding
 
 ````md
-
 ```slice addEncoding=true
 module Foo;
 
 interface Bar {};
+```
 ````
 
 ---
@@ -145,7 +143,6 @@ within the `callout` tag will be placed inside the callout box.
 ##### Info callout
 
 ```markdown
-
 {% callout %}
 
 This is an info callout
@@ -156,7 +153,6 @@ This is an info callout
 ##### Critical callout
 
 ```markdown
-
 {% callout type="critical" %}
 
 This is a critical callout
@@ -176,9 +172,9 @@ column while the text would be placed in the right column.
 
 #### Attributes
 
-| Attribute | Description                                                                 |
-| --------- | --------------------------------------------------------------------------- |
-| weighted  | The column that should have more content. Can be either `left` or `right`. Default is `left`. |
+| Attribute | Description                                                                                        |
+| --------- | -------------------------------------------------------------------------------------------------- |
+| weighted  | The column that should have more content. Can be either `left` or `right`. Default is `left`.      |
 | alignment | The alignment of the content in the columns. Can be either `top` or `center`. Default is `center`. |
 
 #### Examples
@@ -186,7 +182,6 @@ column while the text would be placed in the right column.
 ##### Left weighted side-by-side
 
 ````markdown
-
 {% side-by-side %}
 
 ```python
@@ -199,13 +194,11 @@ I will also be on the left
 I will be on the right
 
 {% /side-by-side %}
-
 ````
 
 ##### Right weighted side-by-side
 
 ````markdown
-
 {% side-by-side weighted="right" %}
 
 ```python
@@ -218,13 +211,11 @@ I will also be on the right
 I will be on the right
 
 {% /side-by-side %}
-
 ````
 
 ##### Top aligned side-by-side
 
 ````markdown
-
 {% side-by-side alignment="top" %}
 
 ```python
@@ -238,7 +229,6 @@ def hello(name):
 I will be on the right
 
 {% /side-by-side %}
-
 ````
 
 ---
@@ -264,14 +254,13 @@ The `grid` tag is used to create a grid of content. It is primarily intended to 
 
 #### Attributes
 
-| Attribute | Description                                                                 |
-| --------- | --------------------------------------------------------------------------- |
-| columns  | The number of columns the grid could have, defaults to `3`. (On mobile will always be 1) |
+| Attribute | Description                                                                              |
+| --------- | ---------------------------------------------------------------------------------------- |
+| columns   | The number of columns the grid could have, defaults to `3`. (On mobile will always be 1) |
 
 #### Examples
 
-````markdown
-
+```markdown
 {% grid columns=2 %}
 
 {% mini-card title="Foo" description="..." href="/foo" /%}
@@ -280,8 +269,7 @@ The `grid` tag is used to create a grid of content. It is primarily intended to 
 {% mini-card title="Buzz" description="..." href="/buzz" /%}
 
 {% grid %}
-
-````
+```
 
 ---
 
@@ -292,11 +280,11 @@ a title, description, and link.
 
 #### Attributes
 
-| Attribute | Description                                                                 |
-| --------- | --------------------------------------------------------------------------- |
-| title  | The title of the mini card. |
-| description  | The description of the mini card. |
-| href  | The href used when clicking the mini card |
+| Attribute   | Description                               |
+| ----------- | ----------------------------------------- |
+| title       | The title of the mini card.               |
+| description | The description of the mini card.         |
+| href        | The href used when clicking the mini card |
 
 #### Examples
 
@@ -369,13 +357,11 @@ The `light-mode` tag is used to render content that should only be visible in li
 
 #### Examples
 
-````markdown
-
+```markdown
 {% light-mode %}
 This content will only be visible in light mode
 {% /light-mode %}
-
-````
+```
 
 ---
 
@@ -385,11 +371,10 @@ The `dark-mode` tag is used to render content that should only be visible in dar
 
 #### Examples
 
-````markdown
-
+```markdown
 {% dark-mode %}
 This content will only be visible in dark mode
 {% /dark-mode %}
+```
 
-````
 ---

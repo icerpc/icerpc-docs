@@ -1,8 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
-
 const link = {
-  render: "AppLink",
+  render: 'AppLink',
   attributes: {
     href: {
       type: String

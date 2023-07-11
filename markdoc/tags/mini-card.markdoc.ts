@@ -5,7 +5,7 @@ import { Tag, nodes, Node, Config } from '@markdoc/markdoc';
 
 export const miniCard = {
   ...nodes.document,
-  render: "Card",
+  render: 'Card',
   attributes: {
     title: {
       type: 'string',

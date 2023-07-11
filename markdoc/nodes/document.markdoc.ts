@@ -15,7 +15,7 @@ const convertToRawText = (doc: Node) => {
 
 const document = {
   ...nodes.document,
-  render: "Document",
+  render: 'Document',
   attributes: nodes.document.attributes,
   transform(node: Node, config: Config) {
     const frontmatter = config.variables?.frontmatter;

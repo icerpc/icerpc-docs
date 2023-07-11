@@ -1,6 +1,12 @@
 // Copyright (c) ZeroC, Inc.
 
-import { SideBarSourceType, isCategory, isLink, SLICE1_BASE_URL, SLICE2_BASE_URL } from 'types';
+import {
+  SideBarSourceType,
+  isCategory,
+  isLink,
+  SLICE1_BASE_URL,
+  SLICE2_BASE_URL
+} from 'types';
 import {
   slice1Data,
   slice2Data,
@@ -51,9 +57,7 @@ export const currentNavItem = (baseUrl: string) => {
   }
 };
 
-export const sideBarData = (
-  baseUrl: string
-): SideBarSourceType[] => {
+export const sideBarData = (baseUrl: string): SideBarSourceType[] => {
   switch (baseUrl) {
     case GETTING_STARTED_BASE_URL:
       return gettingStartedData;

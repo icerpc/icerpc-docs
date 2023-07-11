@@ -1,3 +1,5 @@
+// Copyright (c) ZeroC, Inc.
+
 import { FeedbackData } from 'components/Shell/Feedback/FeedbackForm';
 import { NextApiRequest } from 'next';
 import { createTransport } from 'nodemailer';

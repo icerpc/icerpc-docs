@@ -1,8 +1,12 @@
+// Copyright (c) ZeroC, Inc.
 
 import fs from 'fs';
 import path from 'path';
 
-export function getAllMarkdownFiles(dirPath: string, arrayOfFiles: string[] = []): string[] {
+export function getAllMarkdownFiles(
+  dirPath: string,
+  arrayOfFiles: string[] = []
+): string[] {
   const files = fs.readdirSync(dirPath);
 
   files.forEach((file) => {

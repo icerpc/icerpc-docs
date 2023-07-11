@@ -8,7 +8,7 @@ import { useEncoding } from 'context/state';
 import { PageHistory, TableOfContents, Feedback } from 'components/Shell';
 import { collectHeadings } from 'utils/collectHeadings';
 import { baseUrls } from 'data/side-bar-data';
-import { useHydrationFriendlyAsPath } from 'lib/utils';
+import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
 
 type Props = {
   children: ReactElement[];
@@ -29,9 +29,8 @@ export const Document = ({
 }: Props) => {
   const { encoding: currentEncoding } = useEncoding();
   const [toc, setToc] = React.useState<TOCItem[]>([]);
-  const path = useHydrationFriendlyAsPath()
+  const path = useHydrationFriendlyAsPath();
   const isBaseUrl = baseUrls.some((baseUrl) => path == baseUrl);
-
 
   React.useEffect(() => {
     setToc(collectHeadings(children, currentEncoding));
