@@ -26,6 +26,10 @@
     @apply mx-auto my-6 w-full object-contain;
   }
 
+  main article .callout a {
+    @apply font-semibold !underline;
+  }
+
   li {
     @apply leading-[1.7rem] dark:text-[rgba(255,255,255,0.8)];
   }
