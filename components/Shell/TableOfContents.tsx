@@ -60,8 +60,12 @@ export const TableOfContents = ({ toc }: { toc: TOCItem[] }) => {
               On this page
             </h2>
             <ul className="m-0 max-h-[50vh] overflow-y-auto p-0">
-              {items.map((item) => (
-                <ListItem key={item.id} item={item} activeId={activeId ?? ''} />
+              {items.map((item, index) => (
+                <ListItem
+                  key={`${item.id}-${index}`}
+                  item={item}
+                  activeId={activeId ?? ''}
+                />
               ))}
             </ul>
             <Divider />
