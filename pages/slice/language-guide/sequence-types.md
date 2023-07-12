@@ -10,7 +10,7 @@ runtime but is not specified when you define the sequence type.
 
 You use a sequence type inline, without giving it a name, for example as the type for a parameter or field:
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 module VisitorCenter
 
 interface Greeter {
@@ -24,20 +24,24 @@ The order of the elements in the sequence is maintained when this sequence is tr
 The element type of a sequence can be any Slice type. For example:
 
 {% slice1 %}
+
 ```slice
 compact struct SequenceExample {
     x: sequence<sequence<string>>
     y: sequence<AnyClass?>
 }
 ```
+
 {% /slice1 %}
 {% slice2 %}
+
 ```slice
 struct SequenceExample {
     x: sequence<sequence<string>>
     y: sequence<int32?>
 }
 ```
+
 {% /slice2 %}
 
 ## C# mapping
@@ -50,6 +54,7 @@ The type of the `IList` elements is the mapped C# type for the Slice element typ
 
 {% slice1 %}
 {% side-by-side alignment="top" %}
+
 ```slice
 compact struct SequenceExample {
     x: sequence<sequence<string>>
@@ -65,11 +70,13 @@ public partial record struct SequenceExample
     public IList<SliceClass?> Y;
 }
 ```
+
 {% /side-by-side %}
 {% /slice1 %}
 
 {% slice2 %}
 {% side-by-side alignment="top" %}
+
 ```slice
 struct SequenceExample {
     x: sequence<sequence<string>>
@@ -85,6 +92,7 @@ public partial record struct SequenceExample
     public IList<int?> Y;
 }
 ```
+
 {% /side-by-side %}
 {% /slice2 %}
 
@@ -103,7 +111,7 @@ incoming and outgoing values makes sending sequences more convenient and occasio
 #### Sequence of bool or fixed-size numeric type
 
 | Mapping for outgoing values | Default mapping for incoming values |
-|-----------------------------|-------------------------------------|
+| --------------------------- | ----------------------------------- |
 | `ReadOnlyMemory<T>`         | `T[]`                               |
 
 {% slice2 %}
@@ -118,7 +126,7 @@ type you specified for incoming values, and `IEnumerable<T>` for outgoing values
 #### All other sequences
 
 | Mapping for outgoing values | Default mapping for incoming values |
-|-----------------------------|-------------------------------------|
+| --------------------------- | ----------------------------------- |
 | `IEnumerable<T>`            | `T[]`                               |
 
 You can override the default mapping for incoming values with the [`cs::type` attribute](#cs::type-attribute);
@@ -130,14 +138,16 @@ You can use the `cs::type` [attribute](attributes#c#-attributes) to customize th
 a single string argument: the name of a type similar to `List<int>`.
 
 More specifically, this type must:
- - provide a constructor that accepts an `IEnumerable<T>` or a `T[]` when T is a bool or a fixed-size integral type
- - provide a capacity constructor (with an `int` parameter) otherwise
+
+- provide a constructor that accepts an `IEnumerable<T>` or a `T[]` when T is a bool or a fixed-size integral type
+- provide a capacity constructor (with an `int` parameter) otherwise
 
 This type must implement `IList<T>` when `cs::type` is applied to a field; it must implement `ICollection<T>` when `cs::type` is applied to a parameter.
 
 For example:
 
 {% side-by-side alignment="top" %}
+
 ```slice
 interface ShapeCatalog {
     // HashSet<T> implements ICollection<T> and has
@@ -164,4 +174,5 @@ public partial interface IShapeCatalogService
         CancellationToken cancellationToken);
 }
 ```
+
 {% /side-by-side %}

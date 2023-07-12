@@ -10,16 +10,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { MobileMenu } from './MobileMenu';
 import { MobileSideNav } from '../SideNav';
 import { ThemeToggle } from 'components/ThemeToggle';
-import { useEncoding, useMounted } from 'context/state';
+import { useMode, useMounted } from 'context/state';
 import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
-import { Encoding, Theme } from 'types';
+import { Mode, Theme } from 'types';
 
 import darkIcon from 'public/Icerpc-dark-logo.svg';
 import lightIcon from 'public/Icerpc-logo.svg';
 
 export const TopNav = () => {
   const pathname = useHydrationFriendlyAsPath();
-  const { encoding } = useEncoding();
+  const { mode } = useMode();
 
   const navigationItems = [
     {
@@ -32,7 +32,7 @@ export const TopNav = () => {
     },
     {
       name: 'Slice',
-      href: encoding === Encoding.Slice1 ? '/slice1' : '/slice2'
+      href: mode === Mode.Slice1 ? '/slice1' : '/slice2'
     },
     {
       name: 'IceRPC for Ice users',

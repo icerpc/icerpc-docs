@@ -9,8 +9,8 @@ import { clsx } from 'clsx';
 import { EllipsisVerticalIcon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 import { Dialog, Transition } from '@headlessui/react';
-import { useEncoding } from 'context/state';
-import { Encoding } from 'types';
+import { useMode } from 'context/state';
+import { Mode } from 'types';
 
 export const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +43,7 @@ type TopMenuModalProps = {
 };
 
 export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
-  const { encoding } = useEncoding();
+  const { mode } = useMode();
 
   const navigationItems = [
     {
@@ -56,7 +56,7 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
     },
     {
       name: 'Slice',
-      href: encoding === Encoding.Slice1 ? '/slice1' : '/slice2'
+      href: mode === Mode.Slice1 ? '/slice1' : '/slice2'
     },
     {
       name: 'IceRPC for Ice users',

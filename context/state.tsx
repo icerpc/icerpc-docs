@@ -2,21 +2,21 @@
 
 import { ReactNode } from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { Encoding, Platform } from 'types';
+import { Mode, Platform } from 'types';
 
-type EncodingContextType = {
-  encoding: Encoding;
-  setEncoding: (encoding: Encoding) => void;
+type ModeContextType = {
+  mode: Mode;
+  setMode: (mode: Mode) => void;
 };
 type PlatformContextType = {
   platform: Platform;
   setPlatform: (platform: Platform) => void;
 };
 
-const EncodingContext = createContext<EncodingContextType>({
-  encoding: Encoding.Slice2,
+const ModeContext = createContext<ModeContextType>({
+  mode: Mode.Slice2,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setEncoding: () => {}
+  setMode: () => {}
 });
 const PlatformContext = createContext<PlatformContextType>({
   platform: Platform.csharp,
@@ -29,46 +29,42 @@ type Props = {
 };
 
 export function AppWrapper({ children }: Props) {
-  const [encoding, setEncoding] = useState<Encoding>(Encoding.Slice2);
+  const [mode, setMode] = useState<Mode>(Mode.Slice2);
   const [platform, setPlatform] = useState<Platform>(Platform.csharp);
 
   useEffect(() => {
-    // Get the platform and encoding from local storage if it exists
+    // Get the platform and mode from local storage if it exists
     const localPlatform = localStorage.getItem('platform');
-    const localEncoding = localStorage.getItem('encoding');
+    const localMode = localStorage.getItem('mode');
 
-    // If the platform and encoding exist in local storage, parse them and set them as the current platform and encoding
+    // If the platform and mode exist in local storage, parse them and set them as the current platform and mode
     const platform: Platform | null = localPlatform
       ? JSON.parse(localPlatform)
       : null;
-    const encoding: Encoding | null = localEncoding
-      ? JSON.parse(localEncoding)
-      : null;
+    const mode: Mode | null = localMode ? JSON.parse(localMode) : null;
 
     platform && setPlatform(platform);
-    encoding && setEncoding(encoding);
+    mode && setMode(mode);
   }, []);
 
   useEffect(() => {
-    // Set the platform and encoding in local storage when they change
-    localStorage.setItem('encoding', JSON.stringify(encoding));
+    // Set the platform and mode in local storage when they change
+    localStorage.setItem('mode', JSON.stringify(mode));
     localStorage.setItem('platform', JSON.stringify(platform));
-  }, [encoding, platform]);
+  }, [mode, platform]);
 
   return (
-    <EncodingContext.Provider
-      value={{ encoding: encoding, setEncoding: setEncoding }}
-    >
+    <ModeContext.Provider value={{ mode: mode, setMode: setMode }}>
       <PlatformContext.Provider value={{ platform, setPlatform }}>
         {children}
       </PlatformContext.Provider>
-    </EncodingContext.Provider>
+    </ModeContext.Provider>
   );
 }
 
-// Custom hook to handle setting and observing the encoding
-export const useEncoding = (): EncodingContextType => {
-  return useContext(EncodingContext);
+// Custom hook to handle setting and observing the mode
+export const useMode = (): ModeContextType => {
+  return useContext(ModeContext);
 };
 
 // Custom hook to handle setting and observing the platform

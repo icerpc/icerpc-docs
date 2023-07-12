@@ -1,23 +1,23 @@
 // Copyright (c) ZeroC, Inc.
 
 import { Node, Config, Tag } from '@markdoc/markdoc';
-import { Encoding } from 'types';
+import { Mode } from 'types';
 
 export const slice1 = {
-  render: 'EncodingSection',
+  render: 'ModeSection',
   transform(node: Node, config: Config) {
     const children = node.transformChildren(config);
-    const encoding = Encoding.Slice1;
-    return new Tag(`${this.render}`, { encoding }, children);
+    const mode = Mode.Slice1;
+    return new Tag(`${this.render}`, { mode }, children);
   }
 };
 
 export const slice2 = {
-  render: 'EncodingSection',
+  render: 'ModeSection',
   transform(node: Node, config: Config) {
     const children = node.transformChildren(config);
-    const encoding = Encoding.Slice2;
+    const mode = Mode.Slice2;
 
-    return new Tag(`${this.render}`, { encoding }, children);
+    return new Tag(`${this.render}`, { mode }, children);
   }
 };

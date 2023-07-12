@@ -1,16 +1,16 @@
 // Copyright (c) ZeroC, Inc.
 
 import clsx from 'clsx';
-import { useEncoding, usePlatform } from 'context/state';
+import { useMode, usePlatform } from 'context/state';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Encoding, Platform } from 'types';
+import { Mode, Platform } from 'types';
 
 export type FeedbackData = {
   option: string; // The title of the selected option
   path: string; // The path of the page the feedback was submitted from
   title: string; // The title of the page the feedback was submitted from
-  encoding: Encoding; // The user's currently selected encoding
+  mode: Mode; // The user's currently selected mode
   platform: Platform; // The user's currently selected platform
   additionalFeedback?: string; // Additional feedback from the user
   email?: string; // The user's email address
@@ -102,7 +102,7 @@ const sendFeedback = async (feedback: FeedbackData) => {
 
 export const FeedbackForm = ({ title, options }: Props) => {
   const { pathname } = useRouter();
-  const { encoding } = useEncoding();
+  const { mode } = useMode();
   const { platform } = usePlatform();
   const pageTitle = window.document.title;
 
@@ -218,7 +218,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
             sendFeedback({
               additionalFeedback: comment,
               email,
-              encoding,
+              mode,
               option: selectedOption.title,
               path: pathname,
               platform,

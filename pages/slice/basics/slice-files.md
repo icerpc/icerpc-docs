@@ -16,7 +16,7 @@ these files but only generates code for the source files.
 Like C# and unlike C and C++, the Slice compiler considers the definitions in all its input files and does not impose
 any ordering requirement. For instance, you can use a type before defining it:
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 module Example
 
 interface WidgetFactory {
@@ -37,7 +37,7 @@ enum WidgetError { DuplicateName, FactoryClosed }
 
 Two files can also contain definitions with circular references, such as:
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 // in Chicken.slice
 module Coop
 
@@ -46,7 +46,7 @@ interface Chicken {
 }
 ```
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 // in Egg.slice
 module Coop
 
@@ -62,7 +62,7 @@ source files for a project in one shot.
 
 The Slice language provides a few basic preprocessing directives for conditional compilation. For example:
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 module VisitorCenter
 
 interface Greeter {

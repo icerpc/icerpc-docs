@@ -7,12 +7,12 @@ const title = {
   transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);
     const frontmatter = config.variables?.markdoc.frontmatter;
-    const { title, description, encoding } = frontmatter;
+    const { title, description, mode } = frontmatter;
     return new Tag(`${this.render}`, {
       ...attributes,
       title,
       description,
-      encoding
+      mode
     });
   }
 };

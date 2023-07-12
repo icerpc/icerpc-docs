@@ -13,7 +13,7 @@ a server application hosts a service that implements this interface.
 
 For example:
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 module VisitorCenter
 
 // An interface with a single operation.
@@ -34,7 +34,7 @@ An interface can inherit from one or more interfaces, provided the operation nam
 
 For example:
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 module Draw
 
 interface Shape {
@@ -56,11 +56,11 @@ An interface definition produces a new type: a [proxy type](proxy-types).
 
 ## C# mapping
 
-The Slice compiler for C# compiles Slice interface *Name* into two C# interfaces (I*Name* and I*Name*Service) and one
+The Slice compiler for C# compiles Slice interface _Name_ into two C# interfaces (I*Name* and I*Name*Service) and one
 C# struct (*Name*Proxy). The identifiers of the generated interfaces and struct are always in Pascal case, per the usual
-C# naming conventions, even when *Name* is not in Pascal case.
+C# naming conventions, even when _Name_ is not in Pascal case.
 
-The attribute [`cs::identifier`][cs-identifier] allows you to remap *Name* to an identifier of your choice.
+The attribute [`cs::identifier`][cs-identifier] allows you to remap _Name_ to an identifier of your choice.
 
 ### I*Name*
 
@@ -70,7 +70,8 @@ Slice interface. It's a minimal interface with an abstract method for each opera
 For example:
 
 {% side-by-side alignment="top" %}
-```slice {% addEncoding=true %}
+
+```slice {% addMode=true %}
 module Example
 
 interface Widget {
@@ -90,11 +91,12 @@ public partial interface IWidget
         CancellationToken cancellationToken = default);
 }
 ```
+
 {% /side-by-side %}
 
 Slice interface inheritance naturally maps to interface inheritance in C#. For example:
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 module Draw
 
 interface Rectangle : Shape, Fillable {
@@ -121,7 +123,7 @@ public partial interface IRectangle : IShape, IFillable
 
 The generated record struct *Name*Proxy implements I*Name* by sending requests to a remote service with IceRPC.
 
-An instance of this struct is a local surrogate for the remote service that implements *Name*--in other words, a proxy
+An instance of this struct is a local surrogate for the remote service that implements _Name_--in other words, a proxy
 for this service.
 
 In order to call a remote service, you need to construct a proxy struct using one of its "invoker" constructors:
@@ -178,7 +180,7 @@ The proxy struct also provides a parameterless constructor that creates a relati
 When a Slice interface derives from another interface, its proxy struct provides an implicit conversion operator to be
 base interface. For example:
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 module Draw
 
 interface Rectangle : Shape, Fillable {
@@ -211,7 +213,7 @@ inheritance relationship between these proxy structs.
 ### I*Name*Service
 
 Interface I*Name*Service is a server-side helper: it helps you create a service (a C# class) that implements Slice
-interface *Name*.
+interface _Name_.
 
 The principle is straightforward: your service class must derive from class [`Service`](csharp:IceRpc.Slice.Service) and
 must implement interface I*Name*Service. This generated Service interface defines an abstract method for each operation
@@ -220,7 +222,8 @@ on the Slice interface and you need to implement all these abstract methods.
 For example:
 
 {% side-by-side alignment="top" %}
-```slice {% addEncoding=true %}
+
+```slice {% addMode=true %}
 module Example
 
 interface Widget {
@@ -240,6 +243,7 @@ public partial interface IWidgetService
         CancellationToken cancellationToken);
 }
 ```
+
 {% /side-by-side %}
 
 {% callout type="information" %}
@@ -251,7 +255,8 @@ Note that the same service class can implement any number of Slice interfaces pr
 names. For example:
 
 {% side-by-side alignment="top" %}
-```slice {% addEncoding=true %}
+
+```slice {% addMode=true %}
 module Example
 
 interface Widget {
@@ -272,6 +277,7 @@ internal class MyWidget : Service,
     // implements SpinAsync and GetCountAsync.
 }
 ```
+
 {% /side-by-side %}
 
 [cs-identifier]: attributes#cs::identifier-attribute

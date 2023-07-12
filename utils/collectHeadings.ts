@@ -2,8 +2,8 @@
 
 import React, { ReactElement } from 'react';
 
-import { Encoding } from 'types';
-import { TOCItem, EncodingSection } from 'components';
+import { Mode } from 'types';
+import { TOCItem, ModeSection } from 'components';
 
 type Heading = {
   level: number;
@@ -13,7 +13,7 @@ type Heading = {
 
 export function collectHeadings(
   children: ReactElement[],
-  encoding: Encoding
+  mode: Mode
 ): TOCItem[] {
   // Check if a given node is a heading
   const isHeading = (x: any): x is Heading => {
@@ -24,18 +24,18 @@ export function collectHeadings(
     );
   };
 
-  // Filter out any nodes that don't match the encoding, flatten the nodes and then map them to an array of TOCItem
+  // Filter out any nodes that don't match the mode, flatten the nodes and then map them to an array of TOCItem
   // objects
-  const filterNodesByEncoding = (node: ReactElement, encoding: Encoding) => {
-    if (node.type == EncodingSection)
-      if (node.props.encoding === encoding) return true;
+  const filterNodesByMode = (node: ReactElement, mode: Mode) => {
+    if (node.type == ModeSection)
+      if (node.props.mode === mode) return true;
       else return false;
     return true;
   };
 
-  // Flattens a node if it has an encoding prop, otherwise returns the node as an array with a single element
+  // Flattens a node if it has an mode prop, otherwise returns the node as an array with a single element
   const flattenNodes = (node: ReactElement) => {
-    if (node.props?.encoding) return node.props.children;
+    if (node.props?.mode) return node.props.children;
     else return node;
   };
 
@@ -49,7 +49,7 @@ export function collectHeadings(
 
   return React.Children.toArray(children)
     .map((c) => c as ReactElement)
-    .filter((c) => filterNodesByEncoding(c, encoding))
+    .filter((c) => filterNodesByMode(c, mode))
     .flatMap(flattenNodes)
     .map(mapNodesToHeadings)
     .filter(Boolean) as TOCItem[];

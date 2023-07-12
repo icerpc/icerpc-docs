@@ -4,7 +4,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
 import { SliceSelector } from '../SliceSelector';
-import { useEncoding } from 'context/state';
+import { useMode } from 'context/state';
 import clsx from 'clsx';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
 import { Dialog, Transition } from '@headlessui/react';
@@ -13,7 +13,6 @@ import {
   SideBarDivider,
   SideBarLink,
   SideBarSourceType,
-  Encoding,
   isCategory,
   isLink
 } from 'types';
@@ -24,7 +23,7 @@ import { SearchButton } from './SearchButton';
 
 export const SideNav = ({ path }: SideNavProps) => {
   const [data, setData] = useState<SideBarSourceType[]>([]);
-  const { encoding: currentEncoding } = useEncoding();
+  const { mode: currentMode } = useMode();
   const router = useRouter();
   const baseUrl = baseUrls.find((item) => path.startsWith(item)) ?? '';
   const isSlice = baseUrl == '/slice1' || baseUrl == '/slice2';
@@ -35,7 +34,7 @@ export const SideNav = ({ path }: SideNavProps) => {
     return () => {
       setData([]);
     };
-  }, [setData, path, currentEncoding, baseUrl]);
+  }, [setData, path, currentMode, baseUrl]);
 
   const cells = data.map((item) => {
     return transformSideBarData(router, item);
@@ -69,13 +68,12 @@ export const SideNav = ({ path }: SideNavProps) => {
 
 type MobileSideNavProps = {
   pathname: string;
-  encoding?: Encoding;
 };
 
 export function MobileSideNav({ pathname }: MobileSideNavProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState<SideBarSourceType[]>([]);
-  const { encoding: currentEncoding } = useEncoding();
+  const { mode: currentMode } = useMode();
   const breadcrumbs = getBreadcrumbs(pathname);
   const router = useRouter();
 
@@ -87,7 +85,7 @@ export function MobileSideNav({ pathname }: MobileSideNavProps) {
     return () => {
       setData([]);
     };
-  }, [setData, pathname, currentEncoding, baseUrl]);
+  }, [setData, pathname, currentMode, baseUrl]);
 
   const cells = data.map((item) => {
     return transformSideBarData(router, item, () => setIsOpen(false));

@@ -2,9 +2,9 @@
 
 import React, { ReactElement } from 'react';
 
-import { Divider, EncodingSection, TOCItem, Title } from 'components';
-import { Encoding } from 'types';
-import { useEncoding } from 'context/state';
+import { Divider, ModeSection, TOCItem, Title } from 'components';
+import { Mode } from 'types';
+import { useMode } from 'context/state';
 import { PageHistory, TableOfContents, Feedback } from 'components/Shell';
 import { collectHeadings } from 'utils/collectHeadings';
 import { baseUrls } from 'data/side-bar-data';
@@ -15,7 +15,7 @@ type Props = {
   title: string;
   description: string;
   readingTime: string;
-  encoding?: Encoding;
+  mode?: Mode;
   showToc?: boolean;
 };
 
@@ -24,25 +24,25 @@ export const Document = ({
   title,
   description,
   readingTime,
-  encoding,
+  mode,
   showToc = true
 }: Props) => {
-  const { encoding: currentEncoding } = useEncoding();
+  const { mode: currentMode } = useMode();
   const [toc, setToc] = React.useState<TOCItem[]>([]);
   const path = useHydrationFriendlyAsPath();
   const isBaseUrl = baseUrls.some((baseUrl) => path == baseUrl);
 
   React.useEffect(() => {
-    setToc(collectHeadings(children, currentEncoding));
-  }, [children, currentEncoding]);
+    setToc(collectHeadings(children, currentMode));
+  }, [children, currentMode]);
 
-  // A variable that is only true if the current encoding matches the encoding of the document (if specified).
-  const isCurrentEncoding = encoding ? encoding === currentEncoding : true;
+  // A variable that is only true if the current mode matches the mode of the document (if specified).
+  const isCurrentMode = mode ? mode === currentMode : true;
 
   return (
     <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip lg:justify-start">
       <article className="mx-6 mt-10 h-full w-full max-w-[52rem] md:mx-10 lg:mx-16">
-        {isCurrentEncoding && (
+        {isCurrentMode && (
           <Title
             title={title}
             description={description}
@@ -50,20 +50,20 @@ export const Document = ({
             showBreadcrumbs={!isBaseUrl}
           />
         )}
-        {encoding ? (
+        {mode ? (
           <>
-            <EncodingSection encoding={encoding}>{children}</EncodingSection>
-            <EncodingSection encoding={getAltEncoding(encoding)}>
+            <ModeSection mode={mode}>{children}</ModeSection>
+            <ModeSection mode={getAltMode(mode)}>
               <div className="h-[35vh] w-full">
                 <h1 className="mt-20 text-3xl font-extrabold text-[#333333] dark:text-white">
-                  {encoding} Only content.
+                  {mode} Only content.
                 </h1>
                 <p className="my-3 text-[var(--text-color-secondary)]  dark:text-white">
                   This page does not have any content available for the
-                  specified encoding.
+                  specified mode.
                 </p>
               </div>
-            </EncodingSection>
+            </ModeSection>
           </>
         ) : (
           <>{children}</>
@@ -77,9 +77,9 @@ export const Document = ({
   );
 };
 
-const getAltEncoding = (encoding: Encoding): Encoding => {
-  const { Slice1, Slice2 } = Encoding;
-  switch (encoding) {
+const getAltMode = (mode: Mode): Mode => {
+  const { Slice1, Slice2 } = Mode;
+  switch (mode) {
     case Slice1:
       return Slice2;
     case Slice2:

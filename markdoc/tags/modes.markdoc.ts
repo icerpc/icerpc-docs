@@ -1,16 +1,16 @@
 // Copyright (c) ZeroC, Inc.
 
 import { Tag, Config, Node } from '@markdoc/markdoc';
-import { Encoding } from 'types';
+import { Mode } from 'types';
 
-const encodings = {
-  render: 'SupportedEncodings',
+const modes = {
+  render: 'SupportedModes',
   transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);
     const frontmatter = config.variables?.markdoc.frontmatter;
-    const supported = frontmatter.encoding
-      ? [frontmatter.encoding]
-      : [Encoding.Slice1, Encoding.Slice2];
+    const supported = frontmatter.mode
+      ? [frontmatter.mode]
+      : [Mode.Slice1, Mode.Slice2];
     return new Tag(`${this.render}`, {
       ...attributes,
       supported
@@ -18,4 +18,4 @@ const encodings = {
   }
 };
 
-export default encodings;
+export default modes;

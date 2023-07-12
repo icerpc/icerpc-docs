@@ -1,32 +1,32 @@
 // Copyright (c) ZeroC, Inc.
 
 import clsx from 'clsx';
-import { useEncoding } from 'context/state';
+import { useMode } from 'context/state';
 import { useRouter } from 'next/router';
-import { Encoding } from 'types';
+import { Mode } from 'types';
 
 type Props = {
-  supported: Encoding[];
+  supported: Mode[];
 };
 
-export const SupportedEncodings = ({ supported }: Props) => {
-  const { encoding: currentEncoding, setEncoding } = useEncoding();
+export const SupportedModes = ({ supported }: Props) => {
+  const { mode: currentMode, setMode } = useMode();
   const router = useRouter();
 
-  const updateEncoding = (encoding: Encoding) => {
-    setEncoding(encoding);
+  const updateMode = (mode: Mode) => {
+    setMode(mode);
     // Update the URL
     const path = router.asPath;
 
     let newPath;
     if (path === '/slice1') {
-      newPath = encoding === Encoding.Slice1 ? '/slice1' : '/slice2';
+      newPath = mode === Mode.Slice1 ? '/slice1' : '/slice2';
     } else if (path === '/slice2') {
-      newPath = encoding === Encoding.Slice1 ? '/slice1' : '/slice2';
+      newPath = mode === Mode.Slice1 ? '/slice1' : '/slice2';
     } else {
       newPath = path.replace(
         /\/slice[1-2]\//,
-        `/slice${encoding === Encoding.Slice1 ? 1 : 2}/`
+        `/slice${mode === Mode.Slice1 ? 1 : 2}/`
       );
     }
 
@@ -38,19 +38,19 @@ export const SupportedEncodings = ({ supported }: Props) => {
       <h3 className="my-0 mr-2 text-sm font-semibold">Supports:</h3>
       <div className="flex flex-row items-center justify-start gap-2">
         {supported &&
-          supported.map((encoding) => (
+          supported.map((mode) => (
             <button
-              key={encoding}
-              onClick={() => updateEncoding(encoding)}
+              key={mode}
+              onClick={() => updateMode(mode)}
               className={clsx(
                 'flex flex-row items-center justify-center rounded-xl border px-3 py-1 text-sm font-medium leading-5',
                 'border-lightBorder dark:border-darkBorder dark:bg-black ',
-                encoding == currentEncoding
+                mode == currentMode
                   ? 'border-primary text-primary'
                   : 'dark:text-white/40'
               )}
             >
-              {encoding}
+              {mode}
             </button>
           ))}
       </div>

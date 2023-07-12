@@ -11,8 +11,8 @@ import { TH, TR, TD } from 'components/Nodes/Table';
 import { Callout } from 'components/Tags/Callout';
 import { ConditionalTheme } from 'components/Tags/ConditionalTheme';
 import { Divider } from 'components/Divider';
-import { EncodingSection } from 'components/Tags/EncodingSection';
-import { SupportedEncodings } from 'components/Tags/SupportedEncoding';
+import { ModeSection } from 'components/Tags/ModeSection';
+import { SupportedModes } from 'components/Tags/SupportedModes';
 import { Grid } from 'components/Tags/Grid';
 import { LanguageSection } from 'components/Tags/LanguageSection';
 import { LanguageSelector } from 'components/Tags/LanguageSelector';
@@ -37,8 +37,8 @@ export const components = {
   Callout,
   ConditionalTheme,
   Divider,
-  EncodingSection,
-  SupportedEncodings,
+  ModeSection,
+  SupportedModes,
   Grid,
   LanguageSection,
   LanguageSelector,

@@ -34,7 +34,7 @@ An enumerator is encoded as its associated numeric value using the
 
 For example:
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 enum Fruit { Apple, Strawberry, Orange = 300 }
 ```
 
@@ -83,7 +83,8 @@ If the proxy is null, we encode this proxy as the [null Ice identity](../../icer
 (two empty strings).
 
 Otherwise, we encode the service address like the following ServiceAddressData struct:
-```slice {% addEncoding=true %}
+
+```slice {% addMode=true %}
 compact struct ServiceAddressData {
     identity: Identity             // The service address path converted to an Ice identity (two strings).
     facet: sequence<string>        // The fragment encoded as an empty sequence or a 1-element sequence.
@@ -142,7 +143,7 @@ Other transport codes identify specific transports, such as tcp, ssl, ws (for We
 
 Transport codes Tcp and Ssl share the same encapsulation payload format:
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 compact struct TcpServerAddressBody {
     host: string
     port: int32      // limited in practice to uint16
@@ -173,7 +174,7 @@ does not break the "on-the-wire" contract.
 
 _Example: simple compact struct_
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 compact struct Point { x: int32, y: int32 }
 ```
 
@@ -203,14 +204,14 @@ Each non-tagged field is encoded as follows:
 - otherwise:
   - if the field value is set, set the corresponding bit in the bit sequence and encode the field value as usual.
   - otherwise, make sure the corresponding bit in the bit sequence is unset and don't encode anything else for this
-      field.
+    field.
 
 The tagged fields of a struct are encoded in tag order (not in definition order); the field with the lowest tag number
 is encoded first. For each tagged field:
 
 - if the field value is not set, don't encode anything
 - otherwise encode this field as `[number][size][value]` where number is the tag number encoded as a varint32, value is
-the encoded field value and size is a varuint62 with the number of bytes in value.
+  the encoded field value and size is a varuint62 with the number of bytes in value.
 
 Finally, we mark the end of the tagged fields (and the end of the struct) with the "tag end marker", -1 encoded as a
 `varint32`.
@@ -307,4 +308,5 @@ The contact id = 5, name = not set, age = 42 is encoded as:
 0x2A:                age's encoded value on a single byte
 0xFC:                tag end marker (-1 varint32, encoded on 1 byte)
 ```
+
 {% /slice2 %}

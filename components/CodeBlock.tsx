@@ -7,8 +7,8 @@ import { Highlight, themes, Prism } from 'prism-react-renderer';
 import { Inter, Roboto_Mono } from 'next/font/google';
 
 import dynamic from 'next/dynamic';
-import { useEncoding } from 'context/state';
-import { Encoding } from 'types';
+import { useMode } from 'context/state';
+import { Mode } from 'types';
 import { CopyButton } from './CopyButton';
 import { useTheme } from 'next-themes';
 import { Theme } from 'types';
@@ -67,7 +67,7 @@ type Props = {
   children: string;
   'data-language'?: string;
   title?: string;
-  addEncoding?: boolean;
+  addMode?: boolean;
   lineNumbers?: boolean;
 };
 
@@ -75,10 +75,10 @@ export const CodeBlock = ({
   children,
   'data-language': language,
   title,
-  addEncoding,
+  addMode,
   lineNumbers = false
 }: Props) => {
-  const { encoding } = useEncoding();
+  const { mode } = useMode();
   const { resolvedTheme } = useTheme();
 
   const [theme, setTheme] = useState<any>(themes.jettwaveDark);
@@ -93,14 +93,10 @@ export const CodeBlock = ({
     }
   }, [resolvedTheme]);
 
-  // If the code is a slice file, add the encoding to the first line if the current
-  if (
-    language?.toLowerCase() === 'slice' &&
-    addEncoding &&
-    encoding == Encoding.Slice1
-  ) {
-    const encodingLines = [`encoding = ${encoding}`, '\n'];
-    children = encodingLines.join('\n').concat(children);
+  // If the code is a slice file, add the mode to the first line if the current
+  if (language?.toLowerCase() === 'slice' && addMode && mode == Mode.Slice1) {
+    const modeLines = [`mode = ${mode}`, '\n'];
+    children = modeLines.join('\n').concat(children);
   }
 
   // If the language is mermaid, render the mermaid diagram

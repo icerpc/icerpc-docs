@@ -15,6 +15,7 @@ Adding or removing an attribute to the Slice definitions of your client applicat
 server application, and vice-versa.
 
 An attribute is enclosed in square brackets just before the construct it applies to. For example:
+
 ```slice
 [cs::readonly] // a struct attribute
 compact struct FooFighter {
@@ -29,6 +30,7 @@ interface Foo {
 
 You can also define a file-level attribute with double square brackets. A file-level attribute is a shortcut to apply
 this attribute to all definitions in the file that accept this attribute. For example:
+
 ```slice
 
 // The Slice compiler won't emit a warning when a Slice definition
@@ -43,13 +45,13 @@ module SampleModule
 
 The following attributes are available in all language mappings:
 
-| Attribute                             | Applies to               | Description                                                                             |
-|---------------------------------------|--------------------------|-----------------------------------------------------------------------------------------|
-| [`allow`](#allow-attribute)           | Interfaces, operations, parameters, constructed types, fields, enumerators | Suppress warnings during compilation. |
-| [`compress`][compress]                | Operations               | Request compression from the local compressor interceptor or middleware.                |
-| [`deprecated`](#deprecated-attribute) | Interfaces, operations, constructed types, fields, enumerators | Mark as deprecated.                               |
-| [`oneway`][oneway]                    | Operations               | Create one-way requests for this operation (client-side only).                          |
-| [`slicedFormat`][sliced-format]       | Operations (Slice1 only) | Encode the operation arguments or return value in Sliced format.                        |
+| Attribute                             | Applies to                                                                 | Description                                                              |
+| ------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [`allow`](#allow-attribute)           | Interfaces, operations, parameters, constructed types, fields, enumerators | Suppress warnings during compilation.                                    |
+| [`compress`][compress]                | Operations                                                                 | Request compression from the local compressor interceptor or middleware. |
+| [`deprecated`](#deprecated-attribute) | Interfaces, operations, constructed types, fields, enumerators             | Mark as deprecated.                                                      |
+| [`oneway`][oneway]                    | Operations                                                                 | Create one-way requests for this operation (client-side only).           |
+| [`slicedFormat`][sliced-format]       | Operations (Slice1 only)                                                   | Encode the operation arguments or return value in Sliced format.         |
 
 ### allow attribute
 
@@ -57,7 +59,7 @@ The allow attribute tells the Slice compiler to not emit warnings in situations 
 It accepts one or more of the following arguments:
 
 | Argument            | Description                                                                                              |
-|---------------------|----------------------------------------------------------------------------------------------------------|
+| ------------------- | -------------------------------------------------------------------------------------------------------- |
 | All                 | Do not emit any warning that can be suppressed.                                                          |
 | BrokenDocLink       | Do not emit a warning when a doc-comment link references an unknown Slice construct.                     |
 | Deprecated          | Do not emit a warning when referencing a deprecated type.                                                |
@@ -86,6 +88,7 @@ interface CompanyDirectory {
 
 The deprecated attribute marks a Slice definition as deprecated, and accepts an optional string argument. It has two
 separate purposes:
+
 - make the Slice compiler emit a warning when some other Slice definition references a deprecated type
 - when possible, generate a comparable deprecated attribute on the mapped construct
 
@@ -95,15 +98,15 @@ See [allow attribute](#allow-attribute) above for an example.
 
 The following attributes are specific to the C# mapping. They all start with the `cs::` suffix.
 
-| Attribute                                     | Applies to                         | Description                                                      |
-|-----------------------------------------------|------------------------------------|------------------------------------------------------------------|
-| [`cs::attribute`][cs-attribute-attribute]     | Enum types, enumerators and fields | Add the specified C# attribute to the mapped C# enum, enum member or field. |
-| [`cs::encodeReturn`][cs-encoded-return]       | Operations                         | Return an already encoded return value (server-side only).       |
-| [`cs::identifier`](#cs::identifier-attribute) | Interfaces, operations, parameters, constructed types, fields, enumerators | Change the name of the mapped C# identifier. |
-| [`cs::internal`](#cs::internal-attribute)     | Interfaces, constructed types      | Map to an internal C# type instead of a public C# type. |
-| [`cs::namespace`][cs-namespace]               | Modules                            | Change the name of the mapped C# namespace. |
-| [`cs::readonly`][cs-readonly]                 | Structs and struct fields          | Adds `readonly` to the mapped C# struct or field. |
-| `cs::type`                    | [Custom types][custom-type], [Sequences][sequence-type] and [dictionaries][dictionary-type] | Specify the mapped C# type.                                      |
+| Attribute                                     | Applies to                                                                                  | Description                                                                 |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| [`cs::attribute`][cs-attribute-attribute]     | Enum types, enumerators and fields                                                          | Add the specified C# attribute to the mapped C# enum, enum member or field. |
+| [`cs::encodeReturn`][cs-encoded-return]       | Operations                                                                                  | Return an already encoded return value (server-side only).                  |
+| [`cs::identifier`](#cs::identifier-attribute) | Interfaces, operations, parameters, constructed types, fields, enumerators                  | Change the name of the mapped C# identifier.                                |
+| [`cs::internal`](#cs::internal-attribute)     | Interfaces, constructed types                                                               | Map to an internal C# type instead of a public C# type.                     |
+| [`cs::namespace`][cs-namespace]               | Modules                                                                                     | Change the name of the mapped C# namespace.                                 |
+| [`cs::readonly`][cs-readonly]                 | Structs and struct fields                                                                   | Adds `readonly` to the mapped C# struct or field.                           |
+| `cs::type`                                    | [Custom types][custom-type], [Sequences][sequence-type] and [dictionaries][dictionary-type] | Specify the mapped C# type.                                                 |
 
 ### cs::identifier attribute
 
@@ -113,7 +116,8 @@ does not adjust the case of this identifier, but adds prefixes and suffixes as n
 For example:
 
 {% side-by-side alignment="top" %}
-```slice {% addEncoding=true %}
+
+```slice {% addMode=true %}
 [cs::identifier("RemoteEnumerator")]
 interface Enumerator {
     ...
@@ -136,6 +140,7 @@ public partial interface IRemoteEnumeratorService
     ...
 }
 ```
+
 {% /side-by-side %}
 
 ### cs::internal attribute

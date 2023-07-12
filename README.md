@@ -73,10 +73,10 @@ opening code fence.
 
 #### Attributes
 
-| Attribute   | Description                                                                                                                                                 |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| title       | The title of the code block.                                                                                                                                |
-| addEncoding | Whether or not to automatically add `encoding = 1` to the code block when viewing Slice1 documentation. Can be either `true` or `false` Default is `false`. |
+| Attribute | Description                                                                                                                                             |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| title     | The title of the code block.                                                                                                                            |
+| addMode   | Whether or not to automatically add `mode = 1` to the code block when viewing Slice1 documentation. Can be either `true` or `false` Default is `false`. |
 
 #### Examples
 
@@ -89,10 +89,10 @@ def hello(name):
 ```
 ````
 
-##### Code block automatic encoding
+##### Code block automatic mode
 
 ````md
-```slice addEncoding=true
+```slice addMode=true
 module Foo;
 
 interface Bar {};
@@ -297,7 +297,7 @@ See the [`grid`](#Grid) tag for an example of how to use the `mini-card` tag.
 The hierarchy of the side navigation is defined in `/data/`. Each top navigation
 item has a corresponding file, `getting-started-data.ts`, `icerpc-core-data.ts`,
 etc., with Slice having two files corresponding to which Slice
-encoding was selected. These files export an array that defines the pages and
+mode was selected. These files export an array that defines the pages and
 their order in the sidebar. The values in the arrays are either `SideBarLink` or
 `SideBarCategory` types.
 

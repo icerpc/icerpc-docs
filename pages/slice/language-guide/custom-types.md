@@ -10,7 +10,7 @@ language and you provide helper methods that encode/decode this type.
 
 For example, you could define a new 128-bit integer type as follows:
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 module Compute
 
 custom BigInt // a signed 128-bit int
@@ -26,7 +26,7 @@ argument: the name of the mapped C# type.
 
 For example:
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 module Compute
 
 [cs::type("Int128")] // maps Compute::BigInt to System.Int128
@@ -77,6 +77,7 @@ public static class BigIntSliceEncoderExtensions
     }
 }
 ```
+
 {% /slice1 %}
 
 {% callout type="information" %}

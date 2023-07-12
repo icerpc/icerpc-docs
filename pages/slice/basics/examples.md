@@ -7,7 +7,7 @@ This page offers a quick overview of the Slice syntax through examples.
 
 ## Interfaces
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 module Example
 
 interface Widget {
@@ -28,7 +28,8 @@ interface Gizmo : Widget {
 ## Operations
 
 {% slice1 %}
-```slice {% addEncoding=true %}
+
+```slice {% addMode=true %}
 module Example
 
 interface MyOperations {
@@ -51,8 +52,10 @@ interface MyOperations {
     idempotent opIdempotent(message: string) -> int32
 }
 ```
+
 {% /slice1 %}
 {% slice2 %}
+
 ```slice
 module Example
 
@@ -85,12 +88,14 @@ interface MyOperations {
     idempotent opIdempotent(message: string) -> int32
 }
 ```
+
 {% /slice2 %}
 
 ## Enums
 
 {% slice1 %}
-```slice {% addEncoding=true %}
+
+```slice {% addMode=true %}
 module Example
 
 // A checked enum is restricted to its enumerators.
@@ -108,9 +113,11 @@ unchecked enum Permissions {
     Delete = 4
 }
 ```
+
 {% /slice1 %}
 
 {% slice2 %}
+
 ```slice
 module Example
 
@@ -129,20 +136,24 @@ unchecked enum Permissions : uint8 {
     Delete = 4
 }
 ```
+
 {% /slice2 %}
 
 ## Structs
 
 {% slice1 %}
-```slice {% addEncoding=true %}
+
+```slice {% addMode=true %}
 module Example
 
 // A compact struct cannot have tagged fields.
 compact struct Point { x: int32, y: int32 }
 ```
+
 {% /slice1 %}
 
 {% slice2 %}
+
 ```slice
 module Example
 
@@ -164,12 +175,14 @@ struct Contact {
 // A compact struct has only required fields.
 compact struct Point { x: int32, y: int32 }
 ```
+
 {% /slice2 %}
 
 {% slice1 %}
+
 ## Classes
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 module Example
 
 // A class have both required and tagged fields.
@@ -191,12 +204,14 @@ class BusinessContact : Contact {
     tag(1) sendNewsletter: bool? // the scope of a tag is a class slice.
 }
 ```
+
 {% /slice1 %}
 
 ## Exceptions
 
 {% slice1 %}
-```slice {% addEncoding=true %}
+
+```slice {% addMode=true %}
 module Example
 
 // An exception is just like a class.
@@ -210,9 +225,11 @@ interface WidgetFactory {
     createWidget(name: string) -> Widget throws WidgetException
 }
 ```
+
 {% /slice1 %}
 
 {% slice2 %}
+
 ```slice
 module Example
 
@@ -227,11 +244,12 @@ interface WidgetFactory {
     createWidget(name: string) -> Widget throws WidgetException
 }
 ```
+
 {% /slice2 %}
 
 ## Sequences and dictionaries
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 module Example
 
 interface Dns {
@@ -246,7 +264,8 @@ interface Census {
 ## Custom and well-known types
 
 {% slice1 %}
-```slice {% addEncoding=true %}
+
+```slice {% addMode=true %}
 module Example
 
 // You can define your own custom types:
@@ -259,9 +278,11 @@ compact struct CustomBag {
     serviceAddress: WellKnownTypes::ServiceAddress
 }
 ```
+
 {% /slice1 %}
 
 {% slice2 %}
+
 ```slice
 module Example
 
@@ -278,11 +299,12 @@ struct CustomBag {
     serviceAddress: WellKnownTypes::ServiceAddress
 }
 ```
+
 {% /slice2 %}
 
 ## Attributes
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 [cs::namespace("AttributeExample")]
 module Example
 
@@ -296,7 +318,7 @@ interface Atlas {
 
 ## Doc comments
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 module Example
 
 /// Represents a factory for widgets.

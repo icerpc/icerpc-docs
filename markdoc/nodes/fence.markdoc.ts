@@ -10,7 +10,7 @@ const fence = {
       type: String,
       required: false
     },
-    addEncoding: {
+    addMode: {
       type: Boolean,
       required: false,
       default: false

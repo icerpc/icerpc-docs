@@ -7,7 +7,7 @@ description: Understand how to create an alias for a Slice type.
 
 You can use a `typealias` to give a new name to an existing type or typealias. For example:
 
-```slice {% addEncoding=true %}
+```slice {% addMode=true %}
 // Greeting is now another name for string
 typealias Greeting = string
 ```

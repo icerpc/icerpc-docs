@@ -4,8 +4,8 @@ import { ReactNode, CSSProperties } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import { Encoding } from 'types';
-import { useEncoding } from 'context/state';
+import { Mode } from 'types';
+import { useMode } from 'context/state';
 
 type Props = {
   href: string;
@@ -17,7 +17,7 @@ type Props = {
 
 export const AppLink = (props: Props) => {
   const router = useRouter();
-  const { encoding, setEncoding } = useEncoding();
+  const { mode, setMode } = useMode();
   const currentPagePath = router.asPath; // Use router.asPath as currentPagePath if not provided
 
   const resolveRelativeLink = (href: string) => {
@@ -60,20 +60,20 @@ export const AppLink = (props: Props) => {
       target={target}
       rel={target === '_blank' ? 'noreferrer' : undefined}
       onClick={() => {
-        // If the user navigates to a link with a different encoding, update the encoding
+        // If the user navigates to a link with a different mode, update the mode
         if (isSliceLink(href)) {
           // Get the segments of the href path
           const pathSegments = href.split('/');
-          const hrefEncoding =
+          const hrefMode =
             pathSegments.find(
               (segment) => segment === 'slice1' || segment === 'slice2'
             ) === 'slice1'
-              ? Encoding.Slice1
-              : Encoding.Slice2;
+              ? Mode.Slice1
+              : Mode.Slice2;
 
-          // If the href encoding is different from the current encoding, update the encoding
-          if (hrefEncoding !== encoding) {
-            setEncoding(hrefEncoding);
+          // If the href mode is different from the current mode, update the mode
+          if (hrefMode !== mode) {
+            setMode(hrefMode);
           }
         }
       }}

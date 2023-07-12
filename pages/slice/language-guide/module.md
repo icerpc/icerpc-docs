@@ -11,13 +11,14 @@ name, provided they are in different scopes (modules).
 Slice uses `::` as its [scope resolution operator][scope-resolution-operator].
 
 For example:
-```slice {% title="AnimalKingdom.slice" addEncoding=true %}
+
+```slice {% title="AnimalKingdom.slice" addMode=true %}
 module AnimalKingdom
 
 compact struct Lion { ... } // in module AnimalKingdom
 ```
 
-```slice {% title="Game.slice" addEncoding=true %}
+```slice {% title="Game.slice" addMode=true %}
 module Game
 
 interface Lion {
@@ -30,7 +31,8 @@ You can split the definitions within the same module into multiple Slice files.
 ## Sub-module
 
 A module can have sub-modules, sub-sub-modules etc. at any depth. Each level is separated by `::`. For example:
-```slice {% addEncoding=true %}
+
+```slice {% addMode=true %}
 module Res::Vacation
 
 // definitions in the Vacation sub-module...
@@ -47,7 +49,8 @@ namespace. This attribute accepts a single string argument: the name of the C# n
 For example:
 
 {% side-by-side alignment="top" %}
-```slice {% addEncoding=true %}
+
+```slice {% addMode=true %}
 [cs::namespace("Reservation.Bundles")]
 module Res::Vacation
 ...
@@ -57,6 +60,7 @@ module Res::Vacation
 namespace Reservation.Bundles;
 ...
 ```
+
 {% /side-by-side %}
 
 [scope-resolution-operator]: https://en.wikipedia.org/wiki/Scope_resolution_operator

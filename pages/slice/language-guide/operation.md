@@ -6,11 +6,12 @@ description: Learn how to define operations in Slice.
 ## Anatomy of an operation
 
 An operation consists of:
- - an optional operation [attribute](attributes)
- - a name (the name of operation)
- - a list of [parameters][parameters] (the operation parameters)
- - an arrow followed by one or more return [parameters][parameters] (optional)
- - an [exception specification](#exception-specification) (optional)
+
+- an optional operation [attribute](attributes)
+- a name (the name of operation)
+- a list of [parameters][parameters] (the operation parameters)
+- an arrow followed by one or more return [parameters][parameters] (optional)
+- an [exception specification](#exception-specification) (optional)
 
 For example:
 
@@ -133,12 +134,14 @@ interface Greeter {
 ```
 
 {% slice2 %}
+
 ```slice
 interface FileServer {
     // Request compression when sending the return value.
     [compress(Return)] getTextFile(name: string) -> stream string
 }
 ```
+
 {% /slice2 %}
 
 In C#, the generated code sets the [`ICompressFeature`][compress-feature] in the outgoing request features.
@@ -168,6 +171,7 @@ interface Logger {
 ```
 
 {% slice1 %}
+
 ### slicedFormat attribute
 
 The `slicedFormat` [attribute](attributes) instructs the generated code to encode the arguments or return value of the
@@ -178,16 +182,17 @@ See [Class slicing][class-slicing] for details.
 
 ## C# mapping
 
-A Slice operation named *opName* in interface `Greeter` is mapped to abstract method *OpName*Async in the interface
+A Slice operation named _opName_ in interface `Greeter` is mapped to abstract method *OpName*Async in the interface
 `IGreeter` and to abstract method *OpName*Async in interface `IGreeterService`.
 
-The mapped method name is always in Pascal case, per the usual C# naming conventions, even when *opName* is not in
+The mapped method name is always in Pascal case, per the usual C# naming conventions, even when _opName_ is not in
 Pascal case.
 
 For example:
 
 {% side-by-side alignment="top" %}
-```slice {% addEncoding=true %}
+
+```slice {% addMode=true %}
 module VisitorCenter
 
 // An interface with a single operation.
@@ -215,12 +220,14 @@ public partial interface IGreeterService
         CancellationToken cancellationToken);
 }
 ```
+
 {% /side-by-side %}
 
 While the two methods are similar, please note they are not the same:
- - the client-side method returns a `Task` or `Task<T>` while the service method returns a `ValueTask` or `ValueTask<T>`
- - the `features` parameter is nullable and defaults to null only in the client-side method
- - the cancellation token parameter has a default value only in the client-side method
+
+- the client-side method returns a `Task` or `Task<T>` while the service method returns a `ValueTask` or `ValueTask<T>`
+- the `features` parameter is nullable and defaults to null only in the client-side method
+- the cancellation token parameter has a default value only in the client-side method
 
 ### Request and Response helper classes
 
@@ -229,6 +236,7 @@ These nested classes provide helper methods to encode and decode the payloads of
 the interface operations, with up to 4 helper methods per operation.
 
 For example:
+
 ```slice
 module VisitorCenter
 
@@ -289,7 +297,7 @@ public partial interface IGreeterService
 
 {% slice2 %}
 {% callout type="information" %}
-If your operation has a stream parameter, the encode helper (in *NameProxy*.Request) does not encode the stream
+If your operation has a stream parameter, the encode helper (in _NameProxy_.Request) does not encode the stream
 argument; however, the decode helper (in I*Name*Service.Request) decodes all arguments, including the stream.
 
 Likewise, if your operation returns a stream, the encode helper (in I*Name*Service.Response) does not encode the stream
@@ -309,10 +317,11 @@ The returned [PipeReader][pipe-reader] represents the encoded return value. You 
 the Encode*OpName* method provided by the helper [`Response` class](#request-and-response-helper-classes).
 
 There are two somewhat common use-cases for this attribute:
- 1. You want to encode a mutable collection field of your class (such as `List<T>`) while holding a mutex lock; this
-lock prevents other operations from modifying this field while it's being encoded.
- 2. You want to return over and over the same return value that is costly to encode; this attribute allows you to encode
-the return value once, cache the encoded bytes and then return over and over these bytes.
+
+1.  You want to encode a mutable collection field of your class (such as `List<T>`) while holding a mutex lock; this
+    lock prevents other operations from modifying this field while it's being encoded.
+2.  You want to return over and over the same return value that is costly to encode; this attribute allows you to encode
+    the return value once, cache the encoded bytes and then return over and over these bytes.
 
 [class-slicing]: class-types#slicing
 [compress-feature]: csharp:IceRpc.Features.ICompressFeature
