@@ -126,9 +126,9 @@ export const FeedbackForm = ({ title, options }: Props) => {
     >
       <h3 className="my-0">{title}</h3>
       <form className="w-full p-3 pl-0 text-sm text-gray-700 dark:text-gray-200">
-        <ul>
+        <ul className="list-none pl-0">
           {options.map((option) => (
-            <li key={option.title}>
+            <li key={option.title} className="pl-0">
               <div className="flex shrink rounded py-1">
                 <input
                   id={'helper-radio' + option.title.replace(' ', '')}
@@ -136,7 +136,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
                   type="radio"
                   value=""
                   className={clsx(
-                    'mt-1 h-3 border-gray-300 bg-gray-100 text-primary',
+                    'mt-1 h-3 w-3 rounded-full border-gray-300 bg-gray-100 text-primary',
                     'dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-primary dark:focus:ring-offset-gray-700',
                     'focus:ring-2 focus:ring-primary'
                   )}
@@ -144,6 +144,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
                     setSelected(option.id);
                   }}
                 />
+
                 <div className="flex w-full shrink flex-col">
                   <div className="ml-2 text-sm">
                     <label className="font-medium text-gray-900 dark:text-gray-300">
