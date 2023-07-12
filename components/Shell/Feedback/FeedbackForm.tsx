@@ -135,6 +135,8 @@ export const FeedbackForm = ({ title, options }: Props) => {
                   name="helper-radio"
                   type="radio"
                   value=""
+                  aria-controls={'feedback-fields-' + option.id}
+                  tabIndex={0}
                   className={clsx(
                     'mt-1 h-3 w-3 rounded-full border-gray-300 bg-gray-100 text-primary',
                     'dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-primary dark:focus:ring-offset-gray-700',
@@ -145,9 +147,18 @@ export const FeedbackForm = ({ title, options }: Props) => {
                   }}
                 />
 
-                <div className="flex w-full shrink flex-col">
+                <div
+                  id={'feedback-fields-' + option.id}
+                  className={clsx(
+                    'flex w-full shrink flex-col',
+                    option.id == selected && 'visible'
+                  )}
+                >
                   <div className="ml-2 text-sm">
-                    <label className="font-medium text-gray-900 dark:text-gray-300">
+                    <label
+                      htmlFor={'helper-radio' + option.title.replace(' ', '')}
+                      className="font-medium text-gray-900 dark:text-gray-300"
+                    >
                       <div>{option.title}</div>
                       <p
                         id="helper-radio-text-4"
@@ -159,12 +170,16 @@ export const FeedbackForm = ({ title, options }: Props) => {
                   </div>
                   {option.id == selected && (
                     <>
-                      <label className="ml-2 mt-2 text-xs">
-                        <div className="font-medium text-gray-900 dark:text-gray-300">
+                      <div className="ml-2 mt-2 text-xs">
+                        <label
+                          htmlFor="feedback-comment"
+                          className="font-medium text-gray-900 dark:text-gray-300"
+                        >
                           Feedback
-                        </div>
+                        </label>
                         <textarea
-                          placeholder="Your feedback address ..."
+                          id="feedback-comment"
+                          placeholder="Your feedback ..."
                           className={clsx(
                             'mx-2 mt-2 h-14 w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-sm',
                             'dark:border-gray-500 dark:focus:border-primary dark:focus:ring-primary',
@@ -174,12 +189,16 @@ export const FeedbackForm = ({ title, options }: Props) => {
                             setComment(e.currentTarget.value);
                           }}
                         />
-                      </label>
-                      <label className="ml-2 mt-1 text-xs">
-                        <div className="font-medium text-gray-900 dark:text-gray-300">
+                      </div>
+                      <div className="ml-2 mt-1 text-xs">
+                        <label
+                          htmlFor="feedback-email"
+                          className="font-medium text-gray-900 dark:text-gray-300"
+                        >
                           Email
-                        </div>
+                        </label>
                         <input
+                          id="feedback-email"
                           type="email"
                           placeholder="Your email address ... "
                           className={clsx(
@@ -191,7 +210,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
                             setEmail(e.currentTarget.value);
                           }}
                         />
-                      </label>
+                      </div>
                     </>
                   )}
                 </div>
