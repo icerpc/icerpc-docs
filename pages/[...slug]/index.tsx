@@ -23,10 +23,10 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   ];
   const paths: { params: { slug: string[] } }[] = [];
   for (const base of baseUrls) {
-    const markdownFiles = getAllMarkdownFiles(`pages/${base}`, []);
+    const markdownFiles = getAllMarkdownFiles(path.join('pages', base), []);
     for (const filePath of markdownFiles) {
       const pathWithoutMd = filePath.replace(/\.md$/, '');
-      const splitPath = pathWithoutMd.split('/');
+      const splitPath = pathWithoutMd.split(path.sep);
 
       // Remove "index" from the slug if it's the last element
       if (splitPath[splitPath.length - 1] === 'index') {
