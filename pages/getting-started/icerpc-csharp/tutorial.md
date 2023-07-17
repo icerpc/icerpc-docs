@@ -158,9 +158,10 @@ This file contains a few lines of code that `Programs.cs` uses to wait for Ctrl+
 ### MyServer.csproj - the project file
 
 The project file is straightforward. It contains references to 4 separate IceRpc NuGet packages:
- - [IceRpc][icerpc-package] - the IceRPC for C# base package
- - [IceRpc.Slice.Tools][icerpc-slice-tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
- - [IceRpc.Deadline][deadline-package] and [IceRpc.Logger][logger-package] - the packages with the two middleware we
+- [IceRpc][icerpc-package] - the IceRPC for C# base package
+- [IceRpc.Slice][icerpc-slice] - the Sice IceRPC integration package
+- [IceRpc.Slice.Tools][icerpc-slice-tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
+- [IceRpc.Deadline][deadline-package] and [IceRpc.Logger][logger-package] - the packages with the two middleware we
    installed in the dispatch pipeline
 
 ## Step 3: Create the client
@@ -275,10 +276,11 @@ that triggers the connection establishment.
 ### MyClient.csproj - the project file
 
 The project file is identical to the server's project file, with references to 4 separate IceRpc NuGet packages:
- - [IceRpc][icerpc-package] - the IceRPC for C# base package
- - [IceRpc.Slice.Tools][icerpc-slice-tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
- - [IceRpc.Deadline][deadline-package] and [IceRpc.Logger][logger-package] - the packages with the two interceptors we
-   installed in our invocation pipeline
+- [IceRpc][icerpc-package] - the IceRPC for C# base package
+- [IceRpc.Slice][icerpc-slice] - the Sice IceRPC integration package
+- [IceRpc.Slice.Tools][icerpc-slice-tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
+- [IceRpc.Deadline][deadline-package] and [IceRpc.Logger][logger-package] - the packages with the two interceptors we
+  installed in our invocation pipeline
 
 ## Step 4: Run the application
 
@@ -332,6 +334,7 @@ dbug: IceRpc.Server[12]
 [dispatch-exception]: csharp:IceRpc.DispatchException
 [dispatch-pipeline]: ../../icerpc-core/dispatch/dispatch-pipeline
 [icerpc-package]: https://www.nuget.org/packages/IceRpc
+[icerpc-slice]: https://www.nuget.org/packages/IceRpc.Slice
 [icerpc-slice-tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
 [invocation-pipeline]: ../../icerpc-core/invocation/invocation-pipeline
 [logger]: https://github.com/icerpc/icerpc-csharp/tree/main/src/IceRpc.Logger
