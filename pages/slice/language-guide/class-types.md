@@ -181,7 +181,7 @@ the derived class type, this application will decode successfully the full type.
 ## C# mapping
 
 A Slice class maps to a public C# class with the same name. If the Slice class has no base class, the mapped class
-derives from [`SliceClass`](csharp:IceRpc.Slice.SliceClass), the base class for all C# Slice classes.
+derives from [`SliceClass`](csharp:ZeroC.Slice.SliceClass), the base class for all C# Slice classes.
 
 For example:
 

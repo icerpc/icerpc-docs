@@ -172,8 +172,8 @@ public partial record struct PostalAddress
 
 The mapped C# record struct provides a primary constructor with parameters for all its fields, and also a decoding
 constructor that constructs a new instance by decoding its fields from a
-[`SliceDecoder`](csharp:IceRpc.Slice.SliceDecoder). The generated `Encode` method encodes the struct fields with a
-[`SliceEncoder`](csharp:IceRpc.Slice.SliceEncoder).
+[`SliceDecoder`](csharp:ZeroC.Slice.SliceDecoder). The generated `Encode` method encodes the struct fields with a
+[`SliceEncoder`](csharp:ZeroC.Slice.SliceEncoder).
 
 ### cs::readonly attribute
 

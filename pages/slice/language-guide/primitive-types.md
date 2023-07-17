@@ -12,7 +12,7 @@ abstract base of all Slice [classes](class-types).
 
 | Slice    | C# mapping              |
 | ---------|-------------------------|
-| AnyClass | IceRpc.Slice.SliceClass |
+| AnyClass | ZeroC.Slice.SliceClass |
 
 {% /slice1 %}
 

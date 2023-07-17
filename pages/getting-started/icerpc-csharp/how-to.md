@@ -17,7 +17,7 @@ You always need the base package, `IceRpc`
 dotnet add package IceRpc
 ```
 
-If you plan on using [Slice][slice], add packages `IceRpc.Slice` and `IceRpc.Slice.Tools`
+If you plan on using [Slice][slice], add the `IceRpc.Slice` and `IceRpc.Slice.Tools` packages.
 
 ```
 dotnet add package IceRpc.Slice
