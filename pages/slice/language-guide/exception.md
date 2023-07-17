@@ -236,6 +236,6 @@ catch (DispatchException exception)
 [convert-to-unhandled]: csharp:IceRpc.DispatchException#IceRpc_DispatchException_ConvertToUnhandled
 [dispatch-exception]: csharp:IceRpc.DispatchException
 [exception-specification]: operation#exception-specification
-[slice-exception]: csharp:IceRpc.Slice.SliceException
+[slice-exception]: csharp:ZeroC.Slice.SliceException
 [sliced-format]: class-types#slicing
 [unhandled-exception]: csharp:IceRpc.StatusCodeIceRpc_StatusCode_UnhandledException
