@@ -80,14 +80,14 @@ const ModeTab = ({ mode, selected }: ModeTabProps) => {
       <p>
         Use Slice1 for Ice interop.
         <br />
-        <AppLink href="/slice/language-guide/compilation-mode">
+        <AppLink href="/slice1/language-guide/compilation-mode">
           Learn more
         </AppLink>
       </p>
     ) : (
       <p>
         Use Slice2 for new projects.{' '}
-        <AppLink href="/slice/language-guide/compilation-mode">
+        <AppLink href="/slice2/language-guide/compilation-mode">
           Learn more
         </AppLink>
       </p>
