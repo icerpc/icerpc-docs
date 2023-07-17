@@ -7,9 +7,8 @@ description: Learn about helper constructs used to encode other constructs.
 
 ## Tag record
 
-A tag record represents the encoding of a single tagged field (in a class or exception), tagged argument or tagged
-return value element. The goal of the tag record encoding is to allow a Slice decoder that doesn't know a tag number to
-skip the encoded bytes and keep decoding.
+A tag record represents the encoding of a tagged field. The goal of the tag record encoding is to allow a Slice decoder
+that doesn't know a tag number to skip the encoded bytes and keep decoding.
 
 The encoding of a tag record depends on its tag number. When the tag number is less than 30, a tag record is encoded as:
 
@@ -22,8 +21,8 @@ When the tag number is 30 or greater, a tag record is encoded as:
 - the tag number encoded as a [variable-length size](#variable-length-size)
 - the tagged value; its encoding depends on the tag type (see below)
 
-A leading byte with value 0xFF is reserved as the "tag end marker". The tag end marker is used when encoding fields, to
-mark the end of a slice; it's not used when encoding the arguments or return value of an operation.
+A leading byte with value 0xFF is reserved as the "tag end marker". The tag end marker is used to mark the end of a
+slice within a class or exception.
 
 The tag type is encoded on 3 bits and depends on the type of the tagged element, and determines how the tagged value is
 encoded.
@@ -37,7 +36,7 @@ encoded.
 | Size          | 4              | The value is encoded as a variable-length size.                           | enum                                                                                   |
 | VSize         | 5              | A variable-length size followed by the value encoded on size bytes.       | string, fixed-size struct, sequence or dictionary with fixed-size elements             |
 | FSize         | 6              | An int32 size ("fixed size") followed by the value encoded on size bytes. | variable-size struct, sequence or dictionary with variable-size elements, custom types |
-| Class         | 7              | Not encoded or decoded by IceRPC.                                         | N/A                                                                                    |
+| Class         | 7              | Not encoded or decoded by Slice.                                          | N/A                                                                                    |
 
 The VSize encoding is optimized when the tagged element type is a string or a sequence with elements of size 1: in this
 case, we don't encode the variable-length size as we can use the string or sequence's own variable-length size for the
@@ -76,7 +75,7 @@ Each position in the bit sequence encodes whether or not the element in the list
 at position P is set in the bit sequence, the element at position P has a value; when the bit is unset, the element at
 position P has no value.
 
-When we use a bit sequences to encode a struct, we ignore fields with a non-optional types. For example:
+When we use a bit sequences to encode a struct, we ignore fields with non-optional types. For example:
 
 ```slice
 compact struct Contact {
@@ -93,5 +92,7 @@ bit sequence associated with `Contact` are unused and must be unset.
 
 ## Segment
 
-A segment is a `varuint62` size followed by size bytes, just like a `sequence<uint8>`.
+A segment is a `varuint62` size followed by size bytes, just like a `sequence<uint8>`. The bytes that follow the size
+are called the body of the segment.
+
 {% /slice2 %}

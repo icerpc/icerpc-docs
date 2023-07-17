@@ -8,7 +8,7 @@ description: Learn how to define interfaces in Slice.
 The ultimate goal of the Slice language is to define operations and their enclosing scopes, interfaces. All other Slice
 constructs and statements merely support the definition of interfaces.
 
-An interface specifies an abstraction--a group of abstract operations. A client application calls these operations while
+An interface specifies an abstraction—a group of abstract operations. A client application calls these operations while
 a server application hosts a service that implements this interface.
 
 For example:
@@ -55,6 +55,10 @@ interface Rectangle : Shape, Fillable {
 An interface definition produces a new type: a [proxy type](proxy-types).
 
 ## C# mapping
+
+{% callout %}
+This section is specific to the IceRPC-Slice integration.
+{% /callout %}
 
 The Slice compiler for C# compiles Slice interface _Name_ into two C# interfaces (I*Name* and I*Name*Service) and one
 C# struct (*Name*Proxy). The identifiers of the generated interfaces and struct are always in Pascal case, per the usual

@@ -1,6 +1,6 @@
 ---
 title: Constructed types
-description: Learn how to encode structs, enums, exceptions and proxies with Slice.
+description: Learn how to encode structs, enums and other constructed types with Slice.
 ---
 
 {% slice1 %}
@@ -8,18 +8,16 @@ description: Learn how to encode structs, enums, exceptions and proxies with Sli
 ## Class
 
 The class encoding is complex and stateful. Since a class instance can point to another class instance (or even itself)
-and bring this instance into the encoded byte stream, the class encoding requires an indexing system and a scope, namely
-the payload of a request or a response.
+and bring this instance into the encoded byte stream, the class encoding requires an indexing system and a scope (the
+buffer where all the class instances are encoded).
 
-The class encoding is described in the
-[Ice manual](https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding/ice-encoding/data-encoding-for-classes). Slice1
-corresponds to encoding version 1.1 in the Ice manual.
+The class encoding is described in the [Ice manual][ice-manual-class-encoding]. Slice1 corresponds to encoding version
+1.1 in the Ice manual.
 
-IceRPC encodes classes in the compact format by default, just like Ice. You can switch to the sliced format with the
-`slicedFormat` attribute. IceRPC can decode classes in any format.
+When encoding operation arguments and return values, IceRPC encodes classes in the compact format by default, just like
+Ice. You can switch to the sliced format with the [`slicedFormat`][sliced-format-attribute] operation attribute.
 
-During decoding, IceRPC considers all classes that use the sliced format to be fully
-[preserved](https://doc.zeroc.com/ice/3.7/client-server-features/slicing-values-and-exceptions#id-.SlicingValuesandExceptionsv3.7-PreservingSlices).
+During decoding, Slice considers all classes that use the sliced format to be fully [preserved][slice-preservation].
 
 {% callout type="information" %}
 There is no attribute to turn off class slice preservation during decoding: it's always on.
@@ -29,8 +27,7 @@ There is no attribute to turn off class slice preservation during decoding: it's
 ## Enum
 
 {% slice1 %}
-An enumerator is encoded as its associated numeric value using the
-[variable-length size](encoding-only-constructs#variable-length-size) encoding.
+An enumerator is encoded as its associated numeric value using the [variable-length size][slice1-var-size] encoding.
 
 For example:
 
@@ -38,10 +35,8 @@ For example:
 enum Fruit { Apple, Strawberry, Orange = 300 }
 ```
 
-A `Strawberry` is encoded as `1` on 1 byte. An `Orange` is encoded as 255 (1 byte) followed by `300` encoded as an
-int32 (5 bytes total).
-
-The encoding is the same for checked and unchecked enums.
+A `Strawberry` is encoded as 1 on 1 byte. An `Orange` is encoded as 255 (1 byte) followed by 300 encoded as an
+`int32` (5 bytes total).
 {% /slice1 %}
 
 {% slice2 %}
@@ -53,113 +48,24 @@ For example:
 enum Fruit : uint16 { Apple, Strawberry, Orange = 300 }
 ```
 
-A `Strawberry` is encoded like a uint16 with value 1 (on 2 bytes). An `Orange` is encoded like a uint16 with value 300.
+A `Strawberry` is encoded like a `uint16` with value 1 (on 2 bytes). An `Orange` is encoded like a `uint16` with value
+300.
+{% /slice2 %}
 
 The encoding is the same for checked and unchecked enums.
-{% /slice2 %}
 
 ## Exception
 
 {% slice1 %}
-An exception is encoded like a [class](#class) with the same fields. IceRPC always encodes exceptions in sliced format;
+An exception is encoded like a [class](#class) with the same fields. Slice always encodes exceptions in sliced format;
 it can decode exceptions in any format.
 
-Exceptions are not [preserved](https://doc.zeroc.com/ice/3.7/client-server-features/slicing-values-and-exceptions#id-.SlicingValuesandExceptionsv3.7-PreservingSlices)
-during decoding: if IceRPC encounters a slice it doesn't know while decoding a sliced-format exception, this slice
-is dropped.
+Exception slices are not preserved during decoding: if Slice encounters a slice it doesn't know while decoding an
+exception in sliced format, this slice is dropped.
 {% /slice1 %}
 
 {% slice2 %}
 An exception is encoded exactly like a [struct](#struct) with the same fields.
-{% /slice2 %}
-
-## Proxy
-
-A proxy is encoded as its [service address](../../icerpc-core/invocation/service-address). The name of the proxy's
-interface is not encoded: it's only the proxy's untyped service address that gets encoded.
-
-{% slice1 %}
-If the proxy is null, we encode this proxy as the [null Ice identity](../../icerpc-for-ice-users/rpc-core/ice-identity)
-(two empty strings).
-
-Otherwise, we encode the service address like the following ServiceAddressData struct:
-
-```slice {% addMode=true %}
-compact struct ServiceAddressData {
-    identity: Identity             // The service address path converted to an Ice identity (two strings).
-    facet: sequence<string>        // The fragment encoded as an empty sequence or a 1-element sequence.
-    invocationMode: InvocationMode // IceRPC always encodes Twoway and ignores this value during decoding.
-    secure: bool                   // IceRPC always encodes false and ignores this value during decoding.
-    protocolMajor: uint8           // 1 for ice and 2 for icerpc.
-    protocolMinor: uint8           // Always 0.
-    encodingMajor: uint8           // IceRPC always encodes 1 and ignores this value during decoding.
-    encodingMinor: uint8           // IceRPC always encodes 1 and ignores this value during decoding.
-    serverAddressList: sequence<ServerAddressData>
-    adapterId: string              // Encoded only when serverAddressList is empty.
-}
-
-compact struct Identity {
-    name: string
-    category: string
-}
-
-enum InvocationMode { Twoway, Oneway, BatchOneway, Datagram, BatchDatagram }
-
-compact struct ServerAddressData {
-    transportCode: int16 // the TransportCode (see below) encoded as an int16
-    encapsulation: Encapsulation
-}
-
-compact struct Encapsulation {
-    size: int32              // payload size + 6
-    encodingMajor: uint8     // always 1
-    encodingMinor: uint8     // always 1
-    payload: uint8[...]      // pseudo-Slice
-}
-
-unchecked enum TransportCode {
-    Uri = 0
-    Tcp = 1
-    Ssl = 2
-}
-```
-
-The adapterId field corresponds to the value of the `adapter-id` parameter. This value can be empty. See
-[Proxy](../../icerpc-for-ice-users/rpc-core/proxy) for additional details.
-
-The format of the encapsulation payload in a ServerAddressData depends on its transport code.
-
-With transport code Uri (0), this payload is a URI string--the server address converted into a URI string, including the
-protocol/scheme. It's a wildcard transport code since the actual transport is specified in the URI string, or is left
-unspecified when the server address has no transport parameter. Uri is the only valid transport code with the icerpc
-protocol.
-
-{% callout type="information" %}
-Encoding an icerpc proxy with Slice1 is possible but uncommon. Usually, you'll encode ice proxies with Slice1 and icerpc
-proxies with Slice2.
-{% /callout %}
-
-Other transport codes identify specific transports, such as tcp, ssl, ws (for WebSocket), wss (WebSocket with TLS) etc.
-
-Transport codes Tcp and Ssl share the same encapsulation payload format:
-
-```slice {% addMode=true %}
-compact struct TcpServerAddressBody {
-    host: string
-    port: int32      // limited in practice to uint16
-    timeout: int32   // timeout parameter
-    compress: bool   // z parameter
-}
-```
-
-See [Endpoint](../../icerpc-for-ice-users/rpc-core/endpoint) for additional information.
-
-If a server address in an ice service address does not specify a transport name, IceRPC uses transport code Tcp to
-encode this server address.
-{% /slice1 %}
-
-{% slice2 %}
-A service address is encoded as a URI [string](../primitive-types#String).
 {% /slice2 %}
 
 ## Struct
@@ -190,8 +96,8 @@ A point x = 5, y = 32 is encoded as follows:
 {% slice2 %}
 A struct is encoded as:
 
-- a [bit sequence](encoding-only-constructs#bit-sequence) with N bits, where N is the number of non-tagged fields with
-  optional types in the struct, followed by
+- a [bit sequence][bit-sequence] with N bits, where N is the number of non-tagged fields with optional types in the
+  struct, followed by
 - the non-tagged fields encoded in definition order, followed by
 - the tagged fields
 
@@ -211,7 +117,7 @@ is encoded first. For each tagged field:
 
 - if the field value is not set, don't encode anything
 - otherwise encode this field as `[number][size][value]` where number is the tag number encoded as a varint32, value is
-  the encoded field value and size is a varuint62 with the number of bytes in value.
+  the encoded field value and size is a `varuint62` with the number of bytes in value.
 
 Finally, we mark the end of the tagged fields (and the end of the struct) with the "tag end marker", -1 encoded as a
 `varint32`.
@@ -310,3 +216,9 @@ The contact id = 5, name = not set, age = 42 is encoded as:
 ```
 
 {% /slice2 %}
+
+[bit-sequence]: encoding-only-constructs#bit-sequence
+[ice-manual-class-encoding]: https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding/ice-encoding/data-encoding-for-classes
+[slice-preservation]: ../language-guide/class-types#slice-preservation
+[sliced-format-attribute]: ../language-guide/operation#slicedformat-attribute
+[slice1-var-size]: encoding-only-constructs#variable-length-size

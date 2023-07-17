@@ -150,6 +150,10 @@ export const slice1Data: SideBarSourceType[] = [
         path: `${SLICE1_BASE_URL}/encoding/collection-types`
       },
       {
+        title: 'Proxy types',
+        path: `${SLICE1_BASE_URL}/encoding/proxy-types`
+      },
+      {
         title: 'Operation arguments',
         path: `${SLICE1_BASE_URL}/encoding/operation-arguments`
       },

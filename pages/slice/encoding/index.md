@@ -1,13 +1,12 @@
 ---
 title: The Slice encoding
-description: Learn about the main characteristics of the Slice encoding.
 ---
 
-## Compact binary encoding
+## Compact binary serialization format
 
 The Slice encoding defines how each Slice language construct is encoded into a stream of bytes. It's a non-self
-describing binary encoding: the Slice encoding relies on the encoder and decoder sharing the same contract (Slice
-definitions) to achieve compactness.
+describing format: the Slice encoding relies on the encoder and decoder sharing the same contract (Slice definitions) to
+achieve compactness.
 
 For example:
 
@@ -21,7 +20,7 @@ compact struct Item {
 The encoder encodes a `string` followed by an `int32` into a stream of bytes. Later on, a decoder decodes these bytes.
 Since the decoder has the same definitions, it expects the stream to hold an encoded `string` followed by an
 encoded `int32`. The stream does not encode "the following bytes represent a string". If the byte stream holds some
-other encoded type, the decoding fails.
+other encoded type, the decoding fails—or if by some miracle it succeeds, the decoded data is gibberish.
 
 ## Slice encoding versions
 
@@ -40,22 +39,23 @@ be encoded with the Slice2 encoding.
 Furthermore, a [Slice2-compatible][slice2-compatible] type defined in a Slice1 file can be encoded with the Slice2
 encoding.
 
-## Little-endian
+## Byte ordering
 
 When encoding integers and floating point numbers into multiple bytes, we have to select a byte ordering:
 [little-endian or big-endian](https://en.wikipedia.org/wiki/Endianness).
 
-All modern CPUs are little-endian, while the standard endianness for network protocols is big-endian.
-
-We use Slice to encode/decode application data into/from request and response payloads. This application data typically
-transits from one little-endian system to another little-endian system, so little-endian is simpler and slightly faster
-for this use-case: it allows us to keep the native endianness on most systems.
-
-On the other hand, the ice and icerpc protocols define their frame headers and control frames using Slice; this usage
-favors big-endian ordering.
-
-We selected little-endian because Slice's main job is to encode/decode the payloads of requests and responses. Its use
-for the ice and icerpc frame headers is secondary. And it's simpler to use the same ordering (little-endian) in all
-situations.
+Slice always uses little-endian: it's the simplest and most efficient choice since all modern CPUs are little-endian.
 
 [slice2-compatible]: ../language-guide/compilation-mode#using-slice1-and-slice2-together
+
+## IceRPC integration
+
+The Slice encoding defines how primitive types (such as `int32` and `string`) and constructed types (such as `enum` and
+`struct`) are encoded.
+
+The encoding of anything interface and operation-related (including operation parameters and [proxy types][proxy-types])
+is not part of the Slice encoding but belongs instead to the integration with a particular RPC framework.
+
+This chapter describes both the Slice encoding and the encoding provided by the IceRPC-Slice integration.
+
+[proxy-types]: language-guide/proxy-types

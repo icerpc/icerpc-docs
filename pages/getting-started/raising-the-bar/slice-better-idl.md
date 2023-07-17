@@ -8,23 +8,24 @@ Most RPC frameworks provide an [Interface Definition Language][idl] (IDL) and a 
 allows you to define a "contract" in a programming language neutral way, and then compile this contract into your target
 programming language(s). The typical and sometimes only way to use an RPC framework is with this bundled IDL.
 
-For example, [gRPC][grpc]'s IDL is Protobuf and you'd be hard pressed to find examples of gRPC applications that don't
-use Protobuf.
+For example, [gRPC][grpc]'s IDL is [Protobuf][protobuf] and you'd be hard pressed to find examples of gRPC applications
+that don't use Protobuf.
 
 IceRPC takes a different approach by providing a very usable byte-oriented API for requests and responses. This allows
 you to use IceRPC with the IDL of your choice, or no IDL at all. The [GreeterProtobuf][greeter-protobuf],
 [GreeterJson][greeter-json] and [GreeterCore][greeter-core] examples show how to use IceRPC with resp. Protobuf, JSON
 and no IDL.
 
-IceRPC also provides its own IDL, [Slice][slice]. We believe you'll want to use Slice with IceRPC because Slice is a
-better IDL, not because that's your only choice.
+That said, the easiest way to write applications with IceRPC is with [Slice][slice].
 
 ## Better IDL for RPCs
 
-Slice is a completely revised IDL designed for RPCs. And naturally, Slice is fully integrated with IceRPC.
+Slice is a completely revised IDL designed for RPCs. Slice can be used with any RPC framework, or with no RPC framework
+at all; in particular, Slice does not depend on IceRPC. Nevertheless, Slice and IceRPC play well together and are often
+used together.
 
-With IceRPC + Slice, a service implements one or more Slice interfaces, and each Slice interface holds one or more
-operations. For example:
+With Slice, a service implements one or more Slice interfaces, and each Slice interface holds one or more operations.
+For example:
 
 ```slice
 /// Represents a simple greeter.
@@ -79,8 +80,8 @@ As shown in the examples above, Slice provides a readable, modern syntax inspire
 streaming with the `stream` keyword, understands optionals with the usual `?` suffix, requires minimal punctuation, and
 more.
 
-In addition to [primitive][primitive] types with clear names such as `uint16`, `float64` and `string`, Slice provides a
-few constructed types—the building blocks for more advanced applications:
+Slice provides [primitive][primitive] types with clear names such as `uint16`, `float64` and `string`, and allows you to
+define your own types with a few building blocks:
  - [struct][struct]
  - [exception][exception]
  - [enum][enum]
@@ -88,7 +89,7 @@ few constructed types—the building blocks for more advanced applications:
  - [dictionary][dictionary]
  - [custom][custom]
 
-Last but not least, Slice's [tagged][tagged] parameters and fields allow you to update your operations and structs over
+Last but not least, Slice's [tagged][tagged] fields and parameters allow you to update your structs and operations over
 time without breaking on-the-wire compatibility.
 
 ## Flexible and extensible
@@ -108,11 +109,11 @@ you give to the generated code, the mapping for a `sequence<string>` parameter i
 Slice's custom types allow you to send any type you wish through Slice. You just need to provide methods to encode and
 decode instances of your custom type.
 
-The [well-known][well-known] types `Duration`, `TimeStamp` and `Uri` are custom types included in all IceRPC
-implementations; in C#, they correspond to the System types you'd expect—`TimeSpan`, `DateTime` and `Uri`.
+The [well-known][well-known] types `Duration`, `TimeStamp` and `Uri` are custom types included in all Slice
+implementations; in C#, they correspond to System types—`TimeSpan`, `DateTime` and `Uri`.
 
 ```slice
-[cs::namespace("IceRpc.Slice")]
+[cs::namespace("Slice")]
 module WellKnownTypes
 
 /// Represents a length of time, encoded as a varint62.
@@ -132,6 +133,7 @@ custom Duration
 [greeter-json]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterJson
 [greeter-protobuf]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterProtobuf
 [primitive]: ../../slice2/language-guide/primitive-types
+[protobuf]: https://en.wikipedia.org/wiki/Protocol_Buffers
 [sequence]: ../../slice2/language-guide/sequence-types
 [slice]: ../../slice2
 [struct]: ../../slice2/language-guide/struct-types

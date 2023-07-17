@@ -3,6 +3,11 @@ title: Operation return value and exception
 description: Learn how an operation's return value and exception is encoded with Slice.
 ---
 
+## IceRPC-specific rules
+
+The encoding rules on this page are specific to the IceRPC-Slice integration. If you use Slice with another RPC
+framework, consult the documentation for this specific integration.
+
 ## Status code
 
 The [status code](../../icerpc-core/invocation/incoming-response#status-code) of a response determines the contents of
@@ -28,24 +33,18 @@ encoded first. For each tagged element:
 
 - if the element value is not set, don't encode anything.
 - otherwise, encode this element as a [tag record](encoding-only-constructs#tag-record).
+
+Unlike the encoding of tagged fields in classes, the encoding of tagged elements does not end with the tag end marker.
 {% /slice1 %}
 
 {% slice2 %}
-The elements of a return value--stream element aside--are encoded as a segment into the payload of an outgoing response
-with status code `Success`.
+The payload of a `Success` outgoing response carries the return value of the operation encoded as a [segment][segment].
+The body of this segment corresponds to a virtual [struct](constructed-types#struct) with a field for each non-stream
+return parameter, in the same order.
 
-This [segment](encoding-only-constructs#segment) contains:
+Tagged return parameters are mapped to tagged fields in the virtual struct.
 
-- a [compact struct](constructed-types#struct) holding all the non-tagged elements, in definition order,
-    followed by
-- the tagged elements
-
-The tagged elements are encoded in tag order (not in definition order); the element with the lowest tag number is
-encoded first. For each tagged element:
-
-- if the element value is not set, don't encode anything.
-- otherwise, encode `[number][size][value]` where number is the tag number encoded as a varint32, value is the encoded
-element value and size is a varuint62 with the number of bytes in value.
+The stream return element, if any, is not encoded into the payload but into the payload continuation (see below).
 {% /slice2 %}
 
 {% slice2 %}
@@ -53,7 +52,7 @@ element value and size is a varuint62 with the number of bytes in value.
 ## Payload continuation of an outgoing response (Success)
 
 The stream element of a return value (if present) is encoded into the payload continuation of an outgoing response. If
-there is no stream element, the payload continuation is empty.
+there is no stream element or the stream element is empty, the payload continuation is empty.
 
 {% callout type="information" %}
 The IceRPC core may not provide a payload continuation for outgoing responses in all programming languages. In this
@@ -72,9 +71,8 @@ If the stream element type is fixed-size (e.g., an `int32`), the stream is encod
 without any demarcation.
 
 If the stream element type is variable-size (e.g., a `string` or an `int32?`), the stream is encoded as a series of
-[segments](encoding-only-constructs#segment), where each segment holds a whole number of encoded elements--at
-least 1 per segment. The segment's size corresponds to the number of bytes in the segment, not the number of streamed
-elements encoded in this segment.
+segments, where each segment holds a whole number of encoded elements—at least 1 per segment. The segment's size
+corresponds to the number of bytes in the segment, not the number of streamed elements encoded in this segment.
 {% /slice2 %}
 
 ## Payload of an outgoing response (ApplicationError)
@@ -88,9 +86,8 @@ exception is encoded into the payload of an outgoing response with status code `
 When an operation implementation throws an exception whose type matches the operation's exception specification, this
 exception is encoded inside a segment into the payload of an outgoing response with status code `ApplicationError`.
 
-This [segment](encoding-only-constructs#segment) contains only the encoded exception.
-
-The payload continuation of the outgoing response is empty in this situation.
+This segment contains only the encoded exception, and the payload continuation of the outgoing response is empty in this
+situation.
 
 ## Void optimization
 
@@ -104,3 +101,5 @@ an empty payload continuation.
 
 The payload continuation of an outgoing response is always empty.
 {% /slice1 %}
+
+[segment]: encoding-only-constructs#segment

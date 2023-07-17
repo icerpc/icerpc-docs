@@ -16,11 +16,11 @@ ratified in 2021 with implementations for all modern systems. QUIC underpins the
 ([HTTP/3][http3]).
 
 QUIC provides independent streams within the same reliable connection, and these streams are a perfect fit for RPCs:
-an RPC maps to a QUIC stream, with the request flowing in one direction and the response in the other. We anticipate that
-over time QUIC will become the dominant transport protocol for RPC frameworks.
+an RPC maps to a QUIC stream, with the request flowing in one direction and the response in the other. We anticipate
+that over time QUIC will become the dominant transport protocol for RPC frameworks.
 
-IceRPC is a new RPC framework built from the ground-up to take full advantage of QUIC, with support for bidirectional
-streaming. It is the first RPC framework of the QUIC era:
+IceRPC is a new RPC framework built from the ground-up to take full advantage of QUIC. It is the first RPC framework of
+the QUIC era:
 
 ```mermaid
 timeline

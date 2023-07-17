@@ -17,15 +17,16 @@ You always need the base package, `IceRpc`
 dotnet add package IceRpc
 ```
 
-If you plan on using [Slice][slice], add package `IceRpc.Slice.Tools`
+If you plan on using [Slice][slice], add packages `IceRpc.Slice` and `IceRpc.Slice.Tools`
 
 ```
+dotnet add package IceRpc.Slice
 dotnet add package IceRpc.Slice.Tools
 ```
 
 {% callout %}
-The Slice compiler included in `IceRpc.Slice.Tools` generates C# code that depends on the `IceRpc` package. You need
-`IceRpc.Slice.Tools` only during development.
+The Slice compiler included in `IceRpc.Slice.Tools` generates C# code that depends on the `IceRpc.Slice` package. You
+need `IceRpc.Slice.Tools` only during development.
 {% /callout %}
 
 Even though all the other packages are optional, it's likely you will want to install one or more of them. For example,

@@ -3,6 +3,11 @@ title: Operation arguments
 description: Understand how operation arguments are encoded with Slice.
 ---
 
+## IceRPC-specific rules
+
+The encoding rules on this page are specific to the IceRPC-Slice integration. If you use Slice with another RPC
+framework, consult the documentation for this specific integration.
+
 ## Payload of an outgoing request
 
 {% slice1 %}
@@ -10,8 +15,7 @@ The arguments of an operation are encoded into the payload of an outgoing reques
 
 This payload contains:
 
-- a [compact struct](constructed-types#struct) holding all the non-tagged arguments, in definition order,
-    followed by
+- a [compact struct](constructed-types#struct) holding all the non-tagged arguments, in definition order, followed by
 - the tagged arguments
 
 The tagged arguments are encoded in tag order (not in definition order); the argument with the lowest tag number is
@@ -19,23 +23,18 @@ encoded first. For each tagged argument:
 
 - if the argument value is not set, don't encode anything.
 - otherwise, encode this argument as a [tag record](encoding-only-constructs#tag-record).
+
+Unlike the encoding of tagged fields in classes, the encoding of tagged arguments does not end with the tag end marker.
 {% /slice1 %}
 
 {% slice2 %}
-The arguments of an operation--stream argument aside--are encoded as a segment into the payload of an outgoing request.
+The payload of an outgoing request carries the arguments of the operation encoded as a [segment][segment]. The body of
+this segment corresponds to a virtual [struct](constructed-types#struct) with a field for each non-stream operation
+parameter, in the same order.
 
-This [segment](encoding-only-constructs#segment) contains:
+Tagged parameters are mapped to tagged fields in the virtual struct.
 
-- a [compact struct](constructed-types#struct) holding all the non-tagged arguments, in definition order,
-    followed by
-- the tagged arguments
-
-The tagged arguments are encoded in tag order (not in definition order); the argument with the lowest tag number is
-encoded first. For each tagged argument:
-
-- if the value is not set, don't encode anything.
-- otherwise, encode `[number][size][value]` where number is the tag number encoded as a varint32, value is the
-encoded argument value and size is a varuint62 with the number of bytes in value.
+The stream argument, if any, is not encoded into the payload but into the payload continuation (see below).
 {% /slice2 %}
 
 ## Payload continuation of an outgoing request
@@ -46,9 +45,10 @@ The payload continuation of an outgoing request is always empty.
 
 {% slice2 %}
 The stream argument of an operation (if present) is encoded into the payload continuation of an outgoing request. If
-there is no stream argument, the payload continuation is empty.
+there is no stream argument or the stream argument is empty, the payload continuation is empty.
 
-If the stream parameter type is an optional type (for example, an `int32?`), the stream is encoded like a stream of:
+If the stream parameter type is an optional type (for example, an `int32?`), the stream parameter is encoded like a
+stream of:
 
 ```slice
 compact struct Element { value: T? }
@@ -60,7 +60,7 @@ If the stream parameter type is fixed-size (e.g., an `int32`), the stream is enc
 demarcation.
 
 If the stream parameter type is variable-size (e.g., a `string` or an `int32?`), the stream is encoded as a series of
-segments, where each segment holds a whole number of encoded elements--at least 1 per segment. The segment's size
+segments, where each segment holds a whole number of encoded elements—at least 1 element per segment. The segment's size
 corresponds to the number of bytes in the segment, not the number of streamed elements encoded in this segment.
 
 ## Empty optimization
