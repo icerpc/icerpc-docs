@@ -44,10 +44,5 @@ encoding/decoding details.
 
 [idl]: https://en.wikipedia.org/wiki/Interface_description_language
 [namespace]: csharp:ZeroC.Slice
-<<<<<<< HEAD
-[slice-decoder]: csharp:IceRpc.Slice.SliceDecoder
-[slice-encoder]: csharp:IceRpc.Slice.SliceEncoder
-=======
 [slice-decoder]: csharp:ZeroC.Slice.SliceDecoder
 [slice-encoder]: csharp:ZeroC.Slice.SliceEncoder
->>>>>>> 045a37e54aef087d54787ce409a782201fa5df95
