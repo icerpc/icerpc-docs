@@ -51,8 +51,8 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
       href: '/getting-started'
     },
     {
-      name: 'IceRPC Core',
-      href: '/icerpc-core'
+      name: 'IceRPC',
+      href: '/icerpc'
     },
     {
       name: 'Slice',

@@ -17,7 +17,7 @@ type Params = {
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const baseUrls = [
     'slice',
-    'icerpc-core',
+    'icerpc',
     'icerpc-for-ice-users',
     'getting-started'
   ];
@@ -58,46 +58,62 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 export const getStaticProps: GetStaticProps<object, Params> = async ({
   params
 }) => {
+  // Destructure slug from the params
   const { slug } = params ?? {};
 
-  // Generate the file path based on the slug
-  let filePath;
-  let indexFilePath;
+  // Build the base path from the slug, or use 'index' as default if no slug is provided
+  let basePathFromSlug = slug
+    ? path.join(process.cwd(), 'pages', ...slug)
+    : path.join(process.cwd(), 'pages', 'index');
 
-  if (slug) {
-    let baseFilePath = path.join(process.cwd(), 'pages', ...slug);
-    // If slug starts with slice1/ or slice2/, replace it with slice/ because markdown files are located in slice/
-    if (
-      baseFilePath.startsWith(path.join(process.cwd(), 'pages', 'slice1')) ||
-      baseFilePath.startsWith(path.join(process.cwd(), 'pages', 'slice2')) ||
-      (slug.length === 1 && (slug[0] === 'slice1' || slug[0] === 'slice2'))
-    ) {
-      baseFilePath = baseFilePath.replace(/slice[12]/, 'slice');
-    }
-
-    filePath = `${baseFilePath}.md`;
-    indexFilePath = `${baseFilePath}/index.md`;
-  } else {
-    indexFilePath = path.join(process.cwd(), 'pages', 'index.md');
+  // If slug starts with slice1 or slice2, replace it with slice
+  // The markdown files are located in the slice directory
+  if (
+    basePathFromSlug.startsWith(path.join(process.cwd(), 'pages', 'slice1')) ||
+    basePathFromSlug.startsWith(path.join(process.cwd(), 'pages', 'slice2')) ||
+    (slug &&
+      slug.length === 1 &&
+      (slug[0] === 'slice1' || slug[0] === 'slice2'))
+  ) {
+    basePathFromSlug = basePathFromSlug.replace(/slice[12]/, 'slice');
   }
 
-  const fileContent =
-    filePath && fs.existsSync(filePath)
-      ? fs.readFileSync(filePath, 'utf8')
-      : null;
-  const fallbackFileContent =
-    indexFilePath && fs.existsSync(indexFilePath)
-      ? fs.readFileSync(indexFilePath, 'utf8')
-      : null;
+  // Try with .md extension, then fall back to /index.md
+  let filePath = `${basePathFromSlug}.md`;
+  if (!fs.existsSync(filePath)) {
+    filePath = `${basePathFromSlug}/index.md`;
+  }
 
-  const hasContent = !!(fileContent || fallbackFileContent);
+  // If the markdown file exists, read its content, else set to null
+  const fileContent = fs.existsSync(filePath)
+    ? fs.readFileSync(filePath, 'utf8')
+    : null;
 
-  return hasContent
-    ? { props: { source: fileContent || fallbackFileContent || '' } }
+  // If there's content in the file, parse the frontmatter
+  let frontmatter;
+  if (fileContent) {
+    const ast = Markdoc.parse(fileContent);
+    frontmatter = ast.attributes.frontmatter
+      ? yaml.load(ast.attributes.frontmatter)
+      : {};
+  }
+
+  // Check if fileContent is available
+  const hasPageContent = !!fileContent;
+
+  // If there's content, return the source and metadata, else return notFound
+  return hasPageContent
+    ? { props: { source: fileContent, frontmatter } }
     : { notFound: true };
 };
 
-export default function Page({ source }: { source: string }) {
+export default function Page({
+  source,
+  frontmatter
+}: {
+  source: string;
+  frontmatter: any;
+}) {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -106,9 +122,6 @@ export default function Page({ source }: { source: string }) {
 
   // Import markdoc nodes and tags from markdoc folder
   const ast = Markdoc.parse(source);
-  const frontmatter = ast.attributes.frontmatter
-    ? yaml.load(ast.attributes.frontmatter)
-    : {};
 
   const updatedConfig: Config = {
     ...config,
@@ -118,5 +131,5 @@ export default function Page({ source }: { source: string }) {
   };
 
   const content = Markdoc.transform(ast, updatedConfig);
-  return Markdoc.renderers.react(content, React, { components });
+  return <>{Markdoc.renderers.react(content, React, { components })}</>;
 }
