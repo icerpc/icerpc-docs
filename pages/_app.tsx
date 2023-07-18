@@ -34,21 +34,21 @@ export async function getInitialProps(appContext: AppContext) {
 export default function MyApp(props: { Component: any; pageProps: any }) {
   const { Component, pageProps } = props;
   const router = useRouter();
-  const { frontmatter } = pageProps;
 
   // Get current hostname and port for og:image
   const hostname = typeof window !== 'undefined' ? window.location.origin : '';
 
-  if (pageProps.statusCode == 404) {
+  if (pageProps.statusCode == 404 || pageProps.statusCode == 500) {
     return (
       <div className="h-screen w-screen">
-        <ErrorPage statusCode={404} withDarkMode={false} />;
+        <ErrorPage statusCode={pageProps.statusCode} withDarkMode={false} />;
       </div>
     );
   }
 
   let title = TITLE;
   let description = DESCRIPTION;
+  const { frontmatter = {} } = pageProps;
 
   // If the page has a title or description, use that instead
   if (frontmatter.title) title = frontmatter.title;
@@ -60,7 +60,9 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
   return (
     <div>
       <Head>
-        <title>{frontmatter.title ? `${title} | IceRPC Docs` : title}</title>
+        <title>
+          {frontmatter && frontmatter.title ? `${title} | IceRPC Docs` : title}
+        </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="referrer" content="strict-origin" />
         <meta name="title" content={title} />
