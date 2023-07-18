@@ -3,16 +3,10 @@
 import * as React from 'react';
 import { useSpring, animated } from 'react-spring';
 import { useTheme } from 'next-themes';
-import { useMounted } from 'context/state';
 import { Theme } from 'types';
 
 export const ThemeToggle = () => {
-  const mounted = useMounted();
   const { theme, setTheme } = useTheme();
-
-  if (!mounted) {
-    return null;
-  }
 
   const toggleTheme = () => {
     setTheme(theme === Theme.Light ? Theme.Dark : Theme.Light);
@@ -20,7 +14,7 @@ export const ThemeToggle = () => {
 
   return (
     <button
-      className="flex cursor-pointer justify-center p-4"
+      className="flex h-full cursor-pointer items-center justify-center p-4"
       aria-label="Toggle Dark Mode"
       onClick={toggleTheme}
       style={{ background: 'transparent' }}
