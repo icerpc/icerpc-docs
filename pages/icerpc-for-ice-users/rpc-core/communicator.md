@@ -10,7 +10,7 @@ An Ice communicator has numerous responsibilities:
 - when the application makes an invocation, it selects the connection to use (and sometimes create this connection)
 - it provides invocation timeouts, invocation retries, logging/tracing, and metrics
 - it's used to create object adapters
-and more.
+  and more.
 
 IceRPC replaces this multi-purpose Communicator with smaller, more focused objects and abstractions that you compose to
 get the behavior you want.
@@ -74,5 +74,5 @@ await connection.ShutdownAsync();
 
 [client-connection]: csharp:IceRpc.ClientConnection
 [connection-cache]: csharp:IceRpc.ConnectionCache
-[invocation-pipeline]: ../../icerpc-core/invocation/invocation-pipeline
+[invocation-pipeline]: ../../icerpc/invocation/invocation-pipeline
 [options-pattern]: https://learn.microsoft.com/en-us/dotnet/core/extensions/options

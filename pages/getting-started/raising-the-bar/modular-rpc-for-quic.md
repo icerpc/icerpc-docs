@@ -51,6 +51,7 @@ network I/O. Async/await also makes your code easier to read and maintain: you c
 versus a local synchronous call since all RPC calls have "async" APIs that are usually awaited. For example:
 
 {% side-by-side %}
+
 ```csharp {% title="C# - Synchronous RPC (old style)" %}
 // It's unclear if this is a remote call that takes
 // milliseconds or a local call that takes at most
@@ -68,6 +69,7 @@ string greeting = greeterProxy.Greet(name);
 // version.
 string greeting = await greeterProxy.GreetAsync(name);
 ```
+
 {% /side-by-side %}
 
 With IceRPC, all calls that make network I/O are async and only async. IceRPC does not provide a second blocking
@@ -108,4 +110,4 @@ multiplexed transport and then plug it in IceRPC. All the transport interfaces a
 [http3]: https://en.wikipedia.org/wiki/HTTP/3
 [iap]: https://en.wikipedia.org/wiki/List_of_Bluetooth_profiles#iPod_Accessory_Protocol_(iAP)
 [quic]: https://en.wikipedia.org/wiki/QUIC
-[slic]: ../../icerpc-core/slic-protocol
+[slic]: ../../icerpc/slic-protocol

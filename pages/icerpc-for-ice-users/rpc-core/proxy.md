@@ -25,11 +25,11 @@ string is mapped to an absolute path in the service address URI as described in 
 
 Here are a few examples:
 
-| Ice proxy string                                  | Corresponding IceRPC service address URI          |
-|---------------------------------------------------|---------------------------------------------------|
-| `hello:tcp -h localhost -p 10000`                 | `ice://localhost:10000/hello?transport=tcp`       |
-| `IceGrid/Locator:default -h 192.168.1.2 -p 10000` | `ice://192.168.1.2:10000/IceGrid/Locator`         |
-| `hello:tcp -h h1 -p 10000:tcp -h h2 -p 10000`     | `ice://h1:10000/hello?transport=tcp&alt-server=h2:10000?transport=tcp`|
+| Ice proxy string                                  | Corresponding IceRPC service address URI                               |
+| ------------------------------------------------- | ---------------------------------------------------------------------- |
+| `hello:tcp -h localhost -p 10000`                 | `ice://localhost:10000/hello?transport=tcp`                            |
+| `IceGrid/Locator:default -h 192.168.1.2 -p 10000` | `ice://192.168.1.2:10000/IceGrid/Locator`                              |
+| `hello:tcp -h h1 -p 10000:tcp -h h2 -p 10000`     | `ice://h1:10000/hello?transport=tcp&alt-server=h2:10000?transport=tcp` |
 
 ## Indirect proxies
 
@@ -42,10 +42,10 @@ address.
 When the Slice engine decodes a Slice1-encoded proxy with no server address but with an adapter ID, it creates a service
 address with an adapter-id parameter. For example:
 
-| Proxy to decode (with Ice proxy string syntax)    | Decoded as                                        |
-|---------------------------------------------------|---------------------------------------------------|
-| `hello`                                           | `ice:/hello`                                      |
-| `hello@GreetersUnited`                            | `ice:/hello?adapter-id=GreetersUnited`            |
+| Proxy to decode (with Ice proxy string syntax) | Decoded as                             |
+| ---------------------------------------------- | -------------------------------------- |
+| `hello`                                        | `ice:/hello`                           |
+| `hello@GreetersUnited`                         | `ice:/hello?adapter-id=GreetersUnited` |
 
 ## Proxy options
 
@@ -63,11 +63,11 @@ As a result, the Slice engine's proxy-to-service-address decoding is lossy, unli
 
 For example:
 
-| Proxy to decode (with Ice proxy string syntax)    | Decoded as                                        |
-|---------------------------------------------------|---------------------------------------------------|
-| `hello -f facet:tcp -h localhost -p 10000`        | `ice://localhost:10000/hello?transport=tcp#facet` |
-| `hello -p 2.0:ssl -h localhost -p 10000`          | `icerpc://localhost:10000/hello?transport=ssl`    |
-| `hello -o -s:ssl -h localhost -p 10000`           | `ice://localhost:10000/hello?transport=ssl`       |
-| `hello -t`                                        | `ice:/hello`                                      |
+| Proxy to decode (with Ice proxy string syntax) | Decoded as                                        |
+| ---------------------------------------------- | ------------------------------------------------- |
+| `hello -f facet:tcp -h localhost -p 10000`     | `ice://localhost:10000/hello?transport=tcp#facet` |
+| `hello -p 2.0:ssl -h localhost -p 10000`       | `icerpc://localhost:10000/hello?transport=ssl`    |
+| `hello -o -s:ssl -h localhost -p 10000`        | `ice://localhost:10000/hello?transport=ssl`       |
+| `hello -t`                                     | `ice:/hello`                                      |
 
-[service-address]: ../../icerpc-core/invocation/service-address
+[service-address]: ../../icerpc/invocation/service-address

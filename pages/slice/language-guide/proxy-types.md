@@ -55,6 +55,7 @@ When you call `CreateWidgetAsync`, you get back a `WidgetProxy` instead of a pla
 address.
 
 {% slice2 %}
+
 ## Relative proxy
 
 A relative proxy is a proxy that encapsulates a [relative service address][relative-service-address]. You cannot use a
@@ -62,8 +63,9 @@ relative proxy to send requests.
 
 On the client side, when the generated code decodes a relative proxy from an incoming response payload, it produces a
 regular proxy with:
- - an absolute service address
- - an invocation pipeline
+
+- an absolute service address
+- an invocation pipeline
 
 This decoded proxy is a clone of the proxy you used to send the request, except for its path and type. The decoded
 proxy's path is the path carried by the relative proxy.
@@ -88,7 +90,7 @@ calls with this decoded proxy: it's all ready to go.
 
 [csharp-service-address]: csharp:IceRpc.ServiceAddress
 [encode-options]: csharp:IceRpc.Slice.SliceEncodeOptions
-[incoming-request-features]: ../../icerpc-core/dispatch/incoming-request#request-features
+[incoming-request-features]: ../../icerpc/dispatch/incoming-request#request-features
 [proxy-factory]: csharp:IceRpc.Slice.ISliceFeature#IceRpc_Slice_ISliceFeature_ProxyFactory
-[relative-service-address]: ../../icerpc-core/invocation/service-address#relative-service-address
+[relative-service-address]: ../../icerpc/invocation/service-address#relative-service-address
 [slice-feature]: csharp:IceRpc.Slice.ISliceFeature

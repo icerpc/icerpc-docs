@@ -5,7 +5,7 @@ description: Learn how an operation's return value and exception is encoded with
 
 ## Status code
 
-The [status code](../../icerpc-core/invocation/incoming-response#status-code) of a response determines the contents of
+The [status code](../../icerpc/invocation/incoming-response#status-code) of a response determines the contents of
 the response payload. When the status code is `Success`, the payload contains the encoded return value. When the status
 code is `ApplicationError`, the payload contains the encoded Slice exception thrown by the implementation of the
 operation. For all other status codes, the payload is usually empty and the generated code does not attempt to decode
@@ -20,7 +20,7 @@ framing.
 This payload contains:
 
 - a [compact struct](constructed-types#struct) holding all the non-tagged return value elements, in definition order,
-    followed by
+  followed by
 - the tagged return value elements
 
 The tagged elements are encoded in tag order (not in definition order); the element with the lowest tag number is
@@ -28,7 +28,7 @@ encoded first. For each tagged element:
 
 - if the element value is not set, don't encode anything.
 - otherwise, encode this element as a [tag record](encoding-only-constructs#tag-record).
-{% /slice1 %}
+  {% /slice1 %}
 
 {% slice2 %}
 The elements of a return value--stream element aside--are encoded as a segment into the payload of an outgoing response
@@ -37,7 +37,7 @@ with status code `Success`.
 This [segment](encoding-only-constructs#segment) contains:
 
 - a [compact struct](constructed-types#struct) holding all the non-tagged elements, in definition order,
-    followed by
+  followed by
 - the tagged elements
 
 The tagged elements are encoded in tag order (not in definition order); the element with the lowest tag number is
@@ -45,8 +45,8 @@ encoded first. For each tagged element:
 
 - if the element value is not set, don't encode anything.
 - otherwise, encode `[number][size][value]` where number is the tag number encoded as a varint32, value is the encoded
-element value and size is a varuint62 with the number of bytes in value.
-{% /slice2 %}
+  element value and size is a varuint62 with the number of bytes in value.
+  {% /slice2 %}
 
 {% slice2 %}
 
