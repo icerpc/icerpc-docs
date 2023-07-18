@@ -47,6 +47,13 @@ The payload continuation of an outgoing request is always empty.
 The stream argument of an operation (if present) is encoded into the payload continuation of an outgoing request. If
 there is no stream argument or the stream argument is empty, the payload continuation is empty.
 
+If the stream parameter type is fixed-size (e.g., an `int32`), the stream is encoded as successive elements without any
+demarcation.
+
+If the stream parameter type is variable-size (e.g., a `string`), the stream is encoded as a series of segments, where
+each segment holds a whole number of encoded elements—at least 1 element per segment. The segment's size corresponds to
+the number of bytes in the segment, not the number of streamed elements encoded in this segment.
+
 If the stream parameter type is an optional type (for example, an `int32?`), the stream parameter is encoded like a
 stream of:
 
@@ -56,15 +63,10 @@ compact struct Element { value: T? }
 
 where `T?` represents the stream parameter type.
 
-If the stream parameter type is fixed-size (e.g., an `int32`), the stream is encoded as successive elements without any
-demarcation.
-
-If the stream parameter type is variable-size (e.g., a `string` or an `int32?`), the stream is encoded as a series of
-segments, where each segment holds a whole number of encoded elements—at least 1 element per segment. The segment's size
-corresponds to the number of bytes in the segment, not the number of streamed elements encoded in this segment.
-
 ## Empty optimization
 
 As an optimization, when an operation has no argument at all, the empty argument list can be encoded as an empty
 payload plus an empty payload continuation.
 {% /slice2 %}
+
+[segment]: ../encoding-only-constructs#segment

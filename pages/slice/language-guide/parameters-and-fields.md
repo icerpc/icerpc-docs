@@ -27,8 +27,8 @@ the parameters or fields are on the same line, as in:
 compact struct Point { x: int32, y: int32 }
 ```
 
-The type of a parameter or field can be a [primitive types](primitive-types) (such an int32 or a string), a
-constructed type (a new type defined in Slice such an [enum](enumeration-types) or a [struct](struct-types)) or a
+The type of a parameter or field can be a [primitive type](primitive-types) (such an int32 or a string), a
+constructed type (a new type defined in Slice such an [enum](enum-types) or a [struct](struct-types)) or a
 [proxy type](proxy-types).
 
 ## Optionals

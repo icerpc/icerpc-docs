@@ -20,7 +20,7 @@ compact struct Item {
 The encoder encodes a `string` followed by an `int32` into a stream of bytes. Later on, a decoder decodes these bytes.
 Since the decoder has the same definitions, it expects the stream to hold an encoded `string` followed by an
 encoded `int32`. The stream does not encode "the following bytes represent a string". If the byte stream holds some
-other encoded type, the decoding fails—or if by some miracle it succeeds, the decoded data is gibberish.
+other encoded type, the decoding fails—or if by happenstance it succeeds, the decoded data is gibberish.
 
 ## Slice encoding versions
 

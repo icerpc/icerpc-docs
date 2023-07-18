@@ -75,7 +75,7 @@ Each position in the bit sequence encodes whether or not the element in the list
 at position P is set in the bit sequence, the element at position P has a value; when the bit is unset, the element at
 position P has no value.
 
-When we use a bit sequences to encode a struct, we ignore fields with non-optional types. For example:
+When we use a bit sequence to encode a struct, we ignore fields with non-optional types. For example:
 
 ```slice
 compact struct Contact {

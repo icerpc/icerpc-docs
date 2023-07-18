@@ -59,6 +59,13 @@ The IceRPC core may not provide a payload continuation for outgoing responses in
 case, the stream element is encoded at the end of the payload.
 {% /callout %}
 
+If the stream element type is fixed-size (e.g., an `int32`), the stream is encoded as successive streamed elements
+without any demarcation.
+
+If the stream element type is variable-size (e.g., a `string`), the stream is encoded as a series of segments, where
+each segment holds a whole number of encoded elements—at least 1 per segment. The segment's size corresponds to the
+number of bytes in the segment, not the number of streamed elements encoded in this segment.
+
 If the stream element type is an optional type (for example, an `int32?`), the stream is encoded like a stream of:
 
 ```slice
@@ -66,13 +73,6 @@ compact struct Element { value: T? }
 ```
 
 where `T?` represents the stream element type.
-
-If the stream element type is fixed-size (e.g., an `int32`), the stream is encoded as successive streamed elements
-without any demarcation.
-
-If the stream element type is variable-size (e.g., a `string` or an `int32?`), the stream is encoded as a series of
-segments, where each segment holds a whole number of encoded elements—at least 1 per segment. The segment's size
-corresponds to the number of bytes in the segment, not the number of streamed elements encoded in this segment.
 {% /slice2 %}
 
 ## Payload of an outgoing response (ApplicationError)
