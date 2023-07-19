@@ -4,12 +4,58 @@ description: A better IDL
 showToc: false
 ---
 
-The [IceRPC core][icerpc] provides all you need to create RPCs. When you use only the core, the payload of your
-requests and responses are streams of bytes, and you need to manually encode and decode any typed data (such as strings
-and integers) in these streams. This is doable but laborious.
+IceRPC provides everything you need to create RPCs. When you use only IceRPC's core API, the payload of your requests
+and responses are streams of bytes, and you need to manually encode and decode any typed data (such as strings and
+integers) in these streams. This is doable but laborious.
 
-Slice builds on the core's byte-oriented API to provide a higher-level API, with types. For example, the Thermostat
-interface below defines 3 operations, or RPCs, in Slice:
+It is easier and more typical to use IceRPC together with a serialization library and its associated language-neutral
+[IDL][idl]. For example, you can define a Person type in Protobuf or Slice and then let the Protobuf compiler resp. the
+Slice compiler generate code that encodes and decodes Person to and from bytes in the Protobuf resp. Slice binary
+format.
+
+{% side-by-side %}
+```proto
+// A Person message defined with Protobuf
+
+message Person {
+  optional string name = 1;
+  optional int32 id = 2;
+  optional string email = 3;
+}
+```
+
+```slice
+// A Person struct defined with Slice
+
+struct Person {
+   name: string
+   id: int32
+   tag(1) email: string?
+}
+```
+{% /side-by-side %}
+
+The Slice language, like the Protobuf language, includes RPC support without being tied to a specific RPC framework. It
+specifies the syntax and semantics for RPCs but leaves the actual implementation of this RPC support to external
+integrations:
+
+{% side-by-side %}
+
+```mermaid
+flowchart BT
+   grpc-protobuf[gRPC + Protobuf] --> Protobuf
+   icerpc-protobuf[IceRPC + Protobuf] --> Protobuf
+```
+
+```mermaid
+flowchart BT
+   icerpc-slice[IceRPC + Slice] --> Slice
+   rpc-slice[OtherRPC + Slice] --> Slice
+
+```
+{% /side-by-side %}
+
+For example, the Thermostat interface below defines 3 operations, or RPCs, in Slice:
 
 ```slice
 interface Thermostat {
@@ -19,8 +65,9 @@ interface Thermostat {
 }
 ```
 
-The Slice compiler parses this Slice interface and generates code in your favorite programming language. The resulting
-generated code offers you a convenient typed RPC API implemented using IceRPC requests and responses.
+The Slice compiler augmented by the IceRPC + Slice integration parses this Slice interface and generates code in the
+programming language of your choice. The resulting generated code offers you a convenient typed RPC API implemented
+using IceRPC requests and responses.
 
 {% grid %}
 
@@ -47,7 +94,7 @@ generated code offers you a convenient typed RPC API implemented using IceRPC re
 {% mini-card
    title="Slice encoding"
    description="Learn how Slice encodes types into byte streams."
-   href="/slice2/encoding-reference/main-features" /%}
+   href="/slice2/encoding" /%}
 
 {% mini-card
    title="Examples"
@@ -56,4 +103,5 @@ generated code offers you a convenient typed RPC API implemented using IceRPC re
 
 {% /grid %}
 
-[icerpc]: ../icerpc
+[icerpc]: ../
+[idl]: https://en.wikipedia.org/wiki/Interface_description_language
