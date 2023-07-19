@@ -4,11 +4,11 @@ description: A better IDL
 showToc: false
 ---
 
-The [IceRPC core][icerpc] provides all you need to create RPCs. When you use only the core, the payload of your
-requests and responses are streams of bytes, and you need to manually encode and decode any typed data (such as strings
-and integers) in these streams. This is doable but laborious.
+[IceRPC][icerpc] provides all you need to create RPCs. When you use only IceRPC, the payload of your requests and
+responses are streams of bytes, and you need to manually encode and decode any typed data (such as strings and integers)
+in these streams. This is doable but laborious.
 
-Slice builds on the core's byte-oriented API to provide a higher-level API, with types. For example, the Thermostat
+Slice builds on IceRPC's byte-oriented API to provide a higher-level API, with types. For example, the Thermostat
 interface below defines 3 operations, or RPCs, in Slice:
 
 ```slice

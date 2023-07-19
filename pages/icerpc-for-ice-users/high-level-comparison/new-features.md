@@ -49,9 +49,8 @@ With IceRPC:
 
 With Ice, you have to use Slice to encode your request and response payloads, even if you're just sending bytes.
 
-With IceRPC, Slice is optional: the IceRPC core sends and receives requests and responses with byte stream payloads,
-and doesn't know how these byte streams are encoded. This allows you to use IceRPC with Slice, or with another IDL, or
-with no IDL at all.
+With IceRPC, Slice is optional: IceRPC sends and receives requests and responses with byte stream payloads, and doesn't
+know how these byte streams are encoded. This allows you to use IceRPC with Slice, or with another IDL, or with no IDL at all.
 
 ## New Slice
 

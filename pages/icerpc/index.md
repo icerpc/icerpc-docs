@@ -1,12 +1,11 @@
 ---
-title: IceRPC Core
+title: IceRPC
 description: RPCs without an IDL
 showToc: false
 ---
 
-The IceRPC core provides everything you need to send and receive requests and responses over network connections. These
-requests and responses carry byte streams—if you want a typed API, use [Slice][slice] or another [IDL] together with the
-IceRPC core.
+IceRPC provides everything you need to send and receive requests and responses over network connections. These requests
+and responses carry byte streams—if you want a typed API, use [Slice][slice] or another [IDL] together with IceRPC.
 
 {% grid %}
 
@@ -47,17 +46,17 @@ IceRPC core.
 
 {% mini-card
    title="Core Example"
-   description="Using the IceRPC Core without an IDL."
+   description="Using IceRPC without an IDL."
    href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterCore" /%}
 
 {% mini-card
    title="JSON Example"
-   description="Using the IceRPC Core with JSON."
+   description="Using IceRPC with JSON."
    href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterJson" /%}
 
 {% mini-card
    title="Protobuf Example"
-   description="Using the IceRPC Core with Protobuf."
+   description="Using IceRPC with Protobuf."
    href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterProtobuf" /%}
 
 {% /grid %}

@@ -10,7 +10,7 @@ import {
 import {
   slice1Data,
   slice2Data,
-  rpcCoreData,
+  iceRpcData,
   gettingStartedData,
   iceRpcForIceUsersData
 } from './index';
@@ -66,7 +66,7 @@ export const sideBarData = (baseUrl: string): SideBarSourceType[] => {
     case SLICE2_BASE_URL:
       return slice2Data;
     case RPC_BASE_URL:
-      return rpcCoreData;
+      return iceRpcData;
     case RPC_FOR_ICE_BASE_URL:
       return iceRpcForIceUsersData;
     default:
