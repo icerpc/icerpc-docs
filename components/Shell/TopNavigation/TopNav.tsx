@@ -19,6 +19,7 @@ import lightIcon from 'public/Icerpc-logo.svg';
 
 export const TopNav = () => {
   const pathname = useHydrationFriendlyAsPath();
+
   const { mode } = useMode();
 
   const navigationItems = [
@@ -124,18 +125,10 @@ const TopNavigationItem = ({
   pathname
 }: TopNavigationItemProps) => {
   // Check if the current path matches the href or starts with the href
-  const isActive =
-    pathname === href ||
-    pathname.startsWith(`${href}/`) ||
-    (pathname.startsWith('/slice') && href === '/slice2');
+  const isActive = isActivePath(pathname, href);
 
-  // Generate the class names based on the active state
-  const linkClassName = clsx(
-    'overflow-hidden whitespace-nowrap px-2',
-    isActive
-      ? 'text-primary no-underline decoration-2 underline-offset-[1.5rem] opacity-100 dark:text-white'
-      : 'dark:text-[rgba(255,255,255,0.6)]'
-  );
+  // Get the class names based on the active state
+  const linkClassName = getLinkClassNames(isActive);
 
   return (
     <li key={href}>
@@ -145,3 +138,19 @@ const TopNavigationItem = ({
     </li>
   );
 };
+
+function isActivePath(pathname: string, href: string): boolean {
+  return (
+    pathname === href ||
+    pathname.startsWith(`${href}/`) ||
+    (pathname.startsWith('/slice') && href === '/slice2')
+  );
+}
+
+function getLinkClassNames(isActive: boolean): string {
+  return clsx(
+    'overflow-hidden whitespace-nowrap px-2 dark:text-[rgba(255,255,255,0.6)]',
+    isActive &&
+      'text-primary no-underline decoration-2 underline-offset-[1.5rem] opacity-100 dark:text-white'
+  );
+}
