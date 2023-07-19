@@ -56,7 +56,7 @@ This is the default mode and the preferred mode for when you don't need interop 
 
 This mode allows you to mark any type as optional with the `?` suffix. For example:
 ```slice
-// Implicitly uses `mode = Slice2` by default
+// Implicitly uses `mode = Slice2`
 
 interface Translator {
     // Both the "message" argument and the return value can be "not set".
