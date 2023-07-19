@@ -6,7 +6,7 @@ description: Learn how Ice identities are mapped to path in IceRPC.
 In Ice, each Ice object has an identity represented by a Slice-defined struct:
 
 ```slice
-encoding = Slice1
+mode = Slice1
 
 module Ice
 

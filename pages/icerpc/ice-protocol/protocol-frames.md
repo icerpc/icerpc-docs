@@ -27,7 +27,7 @@ type.
 The header is a compact struct defined as follows:
 
 ```slice
-encoding = Slice1
+mode = Slice1
 
 compact struct HeaderData {
     magic: int32               // always 0x49 0x63 0x65 0x50 i.e. "IceP".
@@ -58,7 +58,7 @@ The frameSize represents the total number of bytes in the frame, including the f
 A request frame carries an ice request. It consists of a header with the Request type followed by a RequestData body:
 
 ```slice
-encoding = Slice1
+mode = Slice1
 
 compact struct RequestData {
     requestId: int32
@@ -105,7 +105,7 @@ send batch requests and does not accept incoming batch request frames.
 A response frame carries an ice response. It consists of a header with the Reply type followed by a ReplyData body:
 
 ```slice
-encoding = Slice1
+mode = Slice1
 
 compact struct ReplyData {
     requestId: int32
@@ -163,7 +163,7 @@ RequestFailedData is a struct that holds the request's path, fragment and operat
 and the fragment is encoded as a `sequence<string>`:
 
 ```slice
-encoding = 1
+mode = 1
 
 compact struct RequestFailedData {
     path: Identity
@@ -190,7 +190,7 @@ An encapsulation is a holder for a request or response payload. It holds the pay
 the encapsulation size, equal to the payload size plus 6) and an encoding version:
 
 ```slice
-encoding = Slice1
+mode = Slice1
 
 compact struct Encapsulation {
     size: int32              // payload size + 6

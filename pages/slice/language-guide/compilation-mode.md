@@ -8,8 +8,8 @@ description: Understand when to use Slice1 or Slice2.
 Slice supports two compilation modes: Slice1 and Slice2. Slice2 is the default mode, recommended for most applications.
 Slice1 provides interoperability with [Ice][ice] applications and must be enabled explicitly.
 
-Each Slice file has an associated compilation mode specified with the `mode` statement. This statement can only appear
-once per file, and must come before any other statement. For example:
+The compilation mode of a Slice file can be specified with the `mode` statement.
+This statement can only appear once per file, and must come before any other statement. For example:
 
 ```slice
 // Copyright (c) ACME Corp.
@@ -31,8 +31,8 @@ As you would expect, the Slice1 feature set is largely equivalent to the feature
 [original Slice][original-slice] language).
 {% /callout %}
 
-Since you typically use a single compilation mode at a time, this documentation is split between Slice1 and Slice2. When
-you select Slice2, you don't see Slice1-specific features, and vice-versa.
+Since you typically use a single compilation mode per project, this documentation is split between Slice1 and Slice2.
+When you select Slice2, you don't see Slice1-specific features, and vice-versa.
 
 ## Mode and client-server contract
 
@@ -62,7 +62,7 @@ interface Widget {
 ```
 {% /side-by-side %}
 
-Each compilation mode corresponds to a specific [encoding][encoding] for operation arguments. As a result, a call to
+The [encoding][encoding] used for operation arguments is determined by the compilation mode. As a result, a call to
 `spin` from a client using the Slice2 file will fail if the remote service is implemented with the Slice1 file.
 
 ## Using Slice1 and Slice2 together

@@ -38,7 +38,7 @@ with a `?` suffix. For example:
 
 {% slice1 %}
 ```slice
-encoding = Slice1
+mode = Slice1
 
 module VisitorCenter
 

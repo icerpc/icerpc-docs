@@ -8,7 +8,7 @@ description: Learn how to write doc comments in Slice.
 Slice comments that start with `///` are doc comments. The Slice compiler uses these special comments as input for the
 doc comments it generates in the mapped language.
 
-Slice doc comments can be attached to all Slice definitions except encoding, modules, parameters and typealias.
+Slice doc comments can be attached to all Slice elements except parameters, modules, and mode declarations.
 
 ## Doc comments tags
 
