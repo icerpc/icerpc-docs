@@ -85,8 +85,9 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
           property="og:image"
           content={`${hostname}/api/og?title=${title}&description=${description}`}
         />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       <ThemeProvider attribute="class" enableSystem={true}>
         <AppWrapper>
