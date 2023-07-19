@@ -11,8 +11,8 @@ programming language(s). The typical and sometimes only way to use an RPC framew
 For example, [gRPC][grpc]'s IDL is Protobuf and you'd be hard pressed to find examples of gRPC applications that don't
 use Protobuf.
 
-IceRPC takes a different approach by providing a very usable byte-oriented API for requests and responses. This allows
-you to use IceRPC with the IDL of your choice, or no IDL at all. The [GreeterProtobuf][greeter-protobuf],
+IceRPC takes a different approach by providing an IDL agnostic API, that is user friendly, and well documented. This
+allows you to use IceRPC with the IDL of your choice, or no IDL at all. The [GreeterProtobuf][greeter-protobuf],
 [GreeterJson][greeter-json] and [GreeterCore][greeter-core] examples show how to use IceRPC with resp. Protobuf, JSON
 and no IDL.
 
