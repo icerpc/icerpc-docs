@@ -1,6 +1,6 @@
 ---
 title: Constructed types
-description: Learn how to encode structs, enums and other constructed types with Slice.
+description: Learn how to encode structs, enums, and other constructed types with Slice.
 ---
 
 {% slice1 %}
