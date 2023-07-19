@@ -12,9 +12,9 @@ In practice, this means you can write a new IceRPC client for an existing Ice se
 using IceRPC, or use IceRPC to create new services for your Ice clients.
 
 If you start from an existing Ice client or server, the first step is to convert your Slice definitions to the new Slice
-syntax. The converted Slice files must specify the `Slice1` encoding:
+syntax. The converted Slice files must be compiled in Slice1 mode:
 ```slice
-encoding = Slice1 // required for interop with Ice
+mode = Slice1 // required for interop with Ice
 ...
 
 ```
@@ -22,7 +22,7 @@ encoding = Slice1 // required for interop with Ice
 Make sure to use the `.slice` extension for these new Slice files.
 
 If you use IceRPC to create new services for your Ice client, you should start by defining your Slice interfaces with
-the new .slice syntax (and `encoding = Slice1`) before converting these definitions to the .ice syntax. The new syntax
+the new .slice syntax (and `mode = Slice1`) before converting these definitions to the .ice syntax. The new syntax
 allows you to mark a proxy or class parameter/field as optional or non-optional, for example:
 
 ```slice {% title="Slice with the .slice syntax" %}

@@ -14,7 +14,7 @@ file. This equivalent construct is naturally encoded the same way—otherwise, t
 All the .slice files used for interop with Ice must start with:
 
 ```slice
-encoding = Slice1
+mode = Slice1
 ```
 
 {% callout type="information" %}
@@ -23,7 +23,7 @@ Ice will soon provide an `ice2slice` tool to automate this conversion.
 
 ## Limitations
 
-A few definitions in .ice files has no equivalent with the .slice syntax and as a result cannot be converted:
+A few definitions in .ice files have no equivalent in the .slice syntax and as a result cannot be converted:
 
 - local Slice\
   The .slice syntax does not support local definitions.
