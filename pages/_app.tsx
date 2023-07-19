@@ -33,40 +33,36 @@ export async function getInitialProps(appContext: AppContext) {
 
 export default function MyApp(props: { Component: any; pageProps: any }) {
   const { Component, pageProps } = props;
-  const { markdoc } = pageProps;
   const router = useRouter();
 
   // Get current hostname and port for og:image
   const hostname = typeof window !== 'undefined' ? window.location.origin : '';
 
-  if (pageProps.statusCode == 404) {
+  if (pageProps.statusCode == 404 || pageProps.statusCode == 500) {
     return (
       <div className="h-screen w-screen">
-        <ErrorPage statusCode={404} withDarkMode={false} />;
+        <ErrorPage statusCode={pageProps.statusCode} withDarkMode={false} />;
       </div>
     );
   }
 
   let title = TITLE;
   let description = DESCRIPTION;
+  const { frontmatter = {} } = pageProps;
 
-  if (markdoc) {
-    if (markdoc.frontmatter.title) {
-      title = markdoc.frontmatter.title;
-    }
-    if (markdoc.frontmatter.description) {
-      description = markdoc.frontmatter.description;
-    }
-  }
+  // If the page has a title or description, use that instead
+  if (frontmatter.title) title = frontmatter.title;
+  if (frontmatter.description) description = frontmatter.description;
 
-  if (pageProps?.errorStatus) {
+  if (pageProps?.errorStatus)
     return <ErrorPage statusCode={pageProps.errorStatus} />;
-  }
 
   return (
     <div>
       <Head>
-        <title>{title}</title>
+        <title>
+          {frontmatter && frontmatter.title ? `${title} | IceRPC Docs` : title}
+        </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="referrer" content="strict-origin" />
         <meta name="title" content={title} />
@@ -89,8 +85,9 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
           property="og:image"
           content={`${hostname}/api/og?title=${title}&description=${description}`}
         />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       <ThemeProvider attribute="class" enableSystem={true}>
         <AppWrapper>

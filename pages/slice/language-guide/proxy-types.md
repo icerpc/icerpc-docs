@@ -44,6 +44,7 @@ When you call `CreateWidgetAsync`, you get back a `WidgetProxy` instead of a pla
 service address.
 
 {% slice2 %}
+
 ## Relative proxy
 
 {% callout %}
@@ -55,8 +56,9 @@ relative proxy to send requests.
 
 On the client side, when the generated code decodes a relative proxy from an incoming response payload, it produces a
 regular proxy with:
- - an absolute service address
- - an invocation pipeline
+
+- an absolute service address
+- an invocation pipeline
 
 This decoded proxy is a clone of the proxy you used to send the request, except for its path and type. The decoded
 proxy's path is the path carried by the relative proxy. You can then use this decoded proxy to make invocations on the
@@ -84,9 +86,15 @@ calls with this decoded proxy: it's ready to go.
 
 [csharp-service-address]: csharp:IceRpc.ServiceAddress
 [encode-options]: csharp:IceRpc.Slice.SliceEncodeOptions
+<<<<<<< HEAD
 [incoming-request-features]: ../../icerpc-core/dispatch/incoming-request#request-features
 [invocation-pipeline]: ../../icerpc-core/invocation/invocation-pipeline
 [proxy-factory]: csharp:IceRpc.Slice.ISliceFeature#IceRpc_Slice_ISliceFeature_ProxyFactory
 [relative-service-address]: ../../icerpc-core/invocation/service-address#relative-service-address
 [service-address]: ../../icerpc-core/invocation/service-address
+=======
+[incoming-request-features]: ../../icerpc/dispatch/incoming-request#request-features
+[proxy-factory]: csharp:IceRpc.Slice.ISliceFeature#IceRpc_Slice_ISliceFeature_ProxyFactory
+[relative-service-address]: ../../icerpc/invocation/service-address#relative-service-address
+>>>>>>> 19f32cea376310452ecd42c1b244f23f730e01b8
 [slice-feature]: csharp:IceRpc.Slice.ISliceFeature

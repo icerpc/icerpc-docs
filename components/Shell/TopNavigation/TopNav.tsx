@@ -27,8 +27,8 @@ export const TopNav = () => {
       href: '/getting-started'
     },
     {
-      name: 'IceRPC Core',
-      href: '/icerpc-core'
+      name: 'IceRPC',
+      href: '/icerpc'
     },
     {
       name: 'Slice',
@@ -70,7 +70,7 @@ export const TopNav = () => {
             <div className="mx-6 flex h-[30px] items-center border-l border-lightBorder pl-6 dark:border-darkBorder">
               <ThemeToggle />
               <a
-                className="p-4 hover:text-primary dark:text-[rgba(255,255,255,0.8)]"
+                className="flex h-full items-center justify-center p-4 hover:text-primary dark:text-[rgba(255,255,255,0.8)] "
                 href="https://github.com/zeroc-ice"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -90,22 +90,20 @@ export const TopNav = () => {
 
 const Logo = () => {
   const { resolvedTheme } = useTheme();
-  const mounted = useMounted();
+  const isMounted = useMounted();
 
-  // Default to light icon if theme is not yet resolved because of SSR
-  if (!mounted) {
-    return <Image src={lightIcon} height={25} alt="ZeroC Logo" />;
+  // if not mounted, default to light logo
+  let logo = lightIcon;
+
+  // once mounted, set the logo according to the resolved theme
+  if (isMounted) {
+    logo = resolvedTheme === Theme.Dark ? darkIcon : lightIcon;
   }
 
   return (
     <Link href="https://web.testing.zeroc.com/icerpc">
       <div className="mb-3 ml-[1.3rem] mr-0 mt-5 flex items-center justify-start gap-1 pb-4 lg:ml-[2.6rem]">
-        <Image
-          src={resolvedTheme === Theme.Dark ? darkIcon : lightIcon}
-          height={20}
-          alt="ZeroC Logo"
-          className="mt-2"
-        />
+        <Image src={logo} height={20} alt="ZeroC Logo" className="mt-2" />
         <div className="ml-1 pt-[8px] text-xl font-bold text-black dark:text-white">
           Docs
         </div>

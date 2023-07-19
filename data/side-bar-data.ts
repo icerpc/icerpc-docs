@@ -15,14 +15,14 @@ import {
   iceRpcForIceUsersData
 } from './index';
 
-const RPC_CORE_BASE_URL = '/icerpc-core';
+const RPC_BASE_URL = '/icerpc';
 const GETTING_STARTED_BASE_URL = '/getting-started';
 const RPC_FOR_ICE_BASE_URL = '/icerpc-for-ice-users';
 
 export const baseUrls = [
   SLICE1_BASE_URL,
   SLICE2_BASE_URL,
-  RPC_CORE_BASE_URL,
+  RPC_BASE_URL,
   GETTING_STARTED_BASE_URL,
   RPC_FOR_ICE_BASE_URL
 ];
@@ -48,8 +48,8 @@ export const currentNavItem = (baseUrl: string) => {
     case SLICE1_BASE_URL:
     case SLICE2_BASE_URL:
       return 'Slice';
-    case RPC_CORE_BASE_URL:
-      return 'IceRPC Core';
+    case RPC_BASE_URL:
+      return 'IceRPC';
     case RPC_FOR_ICE_BASE_URL:
       return 'IceRPC for Ice Users';
     default:
@@ -65,7 +65,7 @@ export const sideBarData = (baseUrl: string): SideBarSourceType[] => {
       return slice1Data;
     case SLICE2_BASE_URL:
       return slice2Data;
-    case RPC_CORE_BASE_URL:
+    case RPC_BASE_URL:
       return rpcCoreData;
     case RPC_FOR_ICE_BASE_URL:
       return iceRpcForIceUsersData;

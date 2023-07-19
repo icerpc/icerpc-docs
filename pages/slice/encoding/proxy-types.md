@@ -10,7 +10,7 @@ framework, consult the documentation for this specific integration.
 
 ## Service address
 
-A proxy is encoded as its [service address](../../icerpc-core/invocation/service-address) and only its service address.
+A proxy is encoded as its [service address](../../icerpc/invocation/service-address) and only its service address.
 The name of the proxy's interface is not encoded: it's only the proxy's untyped service address that gets encoded.
 
 {% slice1 %}

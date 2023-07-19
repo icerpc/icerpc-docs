@@ -4,7 +4,7 @@ description: A better IDL
 showToc: false
 ---
 
-The [IceRPC core][icerpc-core] provides all you need to create RPCs. When you use only the core, the payload of your
+The [IceRPC core][icerpc] provides all you need to create RPCs. When you use only the core, the payload of your
 requests and responses are streams of bytes, and you need to manually encode and decode any typed data (such as strings
 and integers) in these streams. This is doable but laborious.
 
@@ -56,4 +56,4 @@ generated code offers you a convenient typed RPC API implemented using IceRPC re
 
 {% /grid %}
 
-[icerpc-core]: ../icerpc-core
+[icerpc]: ../icerpc

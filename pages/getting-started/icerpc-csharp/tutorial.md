@@ -1,13 +1,14 @@
 ---
-title: "Tutorial: Writing your first IceRPC application in C#"
+title: 'Tutorial: Writing your first IceRPC application in C#'
 ---
 
 This tutorial shows how to create a complete application with IceRPC for C#. We start from scratch—you just need to have
 the .NET 7 SDK or .NET 8 SDK installed on your computer.
 
 The networked application we are building together consists of:
- - a server that hosts a single service (a simple greeter service)
- - a client that establishes a connection to the server and calls `greet` on this greeter service
+
+- a server that hosts a single service (a simple greeter service)
+- a client that establishes a connection to the server and calls `greet` on this greeter service
 
 The client and server are console applications that use plain .NET (no ASP.NET, no Dependency Injection).
 
@@ -158,11 +159,12 @@ This file contains a few lines of code that `Programs.cs` uses to wait for Ctrl+
 ### MyServer.csproj - the project file
 
 The project file is straightforward. It contains references to 4 separate IceRpc NuGet packages:
+
 - [IceRpc][icerpc-package] - the IceRPC for C# base package
 - [IceRpc.Slice][icerpc-slice] - the Slice IceRPC integration package
 - [IceRpc.Slice.Tools][icerpc-slice-tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
 - [IceRpc.Deadline][deadline-package] and [IceRpc.Logger][logger-package] - the packages with the two middleware we
-   installed in the dispatch pipeline
+  installed in the dispatch pipeline
 
 ## Step 3: Create the client
 
@@ -215,10 +217,11 @@ await using var connection = new ClientConnection(
 ```
 
 This connection naturally matches our server configuration:
- - the server address is `icerpc://localhost`, meaning we connect with the `icerpc` protocol to `localhost` on the
- default port for `icerpc` (4062)
- - we don't specify a transport so we use the default multiplexed transport (`tcp`)
- - the null `clientAuthenticationOptions` means we'll establish a plain non-secure TCP connection
+
+- the server address is `icerpc://localhost`, meaning we connect with the `icerpc` protocol to `localhost` on the
+  default port for `icerpc` (4062)
+- we don't specify a transport so we use the default multiplexed transport (`tcp`)
+- the null `clientAuthenticationOptions` means we'll establish a plain non-secure TCP connection
 
 {% callout %}
 Creating the connection instance does not establish the connection.
@@ -276,6 +279,7 @@ that triggers the connection establishment.
 ### MyClient.csproj - the project file
 
 The project file is identical to the server's project file, with references to 4 separate IceRpc NuGet packages:
+
 - [IceRpc][icerpc-package] - the IceRPC for C# base package
 - [IceRpc.Slice][icerpc-slice] - the Slice IceRPC integration package
 - [IceRpc.Slice.Tools][icerpc-slice-tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
@@ -332,15 +336,15 @@ dbug: IceRpc.Server[12]
 [deadline]: https://github.com/icerpc/icerpc-csharp/tree/main/src/IceRpc.Deadline
 [deadline-package]: https://www.nuget.org/packages/IceRpc.Deadline
 [dispatch-exception]: csharp:IceRpc.DispatchException
-[dispatch-pipeline]: ../../icerpc-core/dispatch/dispatch-pipeline
+[dispatch-pipeline]: ../../icerpc/dispatch/dispatch-pipeline
 [icerpc-package]: https://www.nuget.org/packages/IceRpc
 [icerpc-slice]: https://www.nuget.org/packages/IceRpc.Slice
 [icerpc-slice-tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
-[invocation-pipeline]: ../../icerpc-core/invocation/invocation-pipeline
+[invocation-pipeline]: ../../icerpc/invocation/invocation-pipeline
 [logger]: https://github.com/icerpc/icerpc-csharp/tree/main/src/IceRpc.Logger
 [logger-package]: https://www.nuget.org/packages/IceRpc.Logger
 [router]: csharp:IceRpc.Router
 [server]: csharp:IceRpc.Server
-[service-address]: ../../icerpc-core/invocation/service-address
+[service-address]: ../../icerpc/invocation/service-address
 [service-not-found]: csharp:IceRpc.StatusCode#ServiceNotFound
 [slice]: ../../slice

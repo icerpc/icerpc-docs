@@ -40,7 +40,10 @@ export const SideNav = ({ path }: SideNavProps) => {
     return transformSideBarData(router, item);
   });
 
-  if (cells.length === 0) return null;
+  // Return null if on 404 page, all other pages should have a side navigation
+  if (router.pathname == '/404') {
+    return null;
+  }
 
   return (
     <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-darkBorder/60 dark:bg-black lg:flex">

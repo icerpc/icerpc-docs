@@ -13,32 +13,32 @@ IceRPC core.
 {% mini-card
    title="How to create a connection"
    description="Learn how to create and accept connections with IceRPC."
-   href="/icerpc-core/connection/how-to-create-a-connection" /%}
+   href="/icerpc/connection/how-to-create-a-connection" /%}
 
 {% mini-card
    title="Invocation"
    description="Learn how to send requests and receive responses."
-   href="/icerpc-core/invocation/invocation-pipeline" /%}
+   href="/icerpc/invocation/invocation-pipeline" /%}
 
 {% mini-card
    title="Dispatch"
    description="Learn how to accept requests and return responses."
-   href="/icerpc-core/dispatch/dispatch-pipeline" /%}
+   href="/icerpc/dispatch/dispatch-pipeline" /%}
 
 {% mini-card
    title="Server Address"
    description="Understand the server address concept and syntax."
-   href="/icerpc-core/connection/server-address" /%}
+   href="/icerpc/connection/server-address" /%}
 
 {% mini-card
    title="Service Address"
    description="Understand the service address concept and syntax."
-   href="/icerpc-core/invocation/service-address" /%}
+   href="/icerpc/invocation/service-address" /%}
 
 {% mini-card
    title="Routing"
    description="Learn how to route incoming requests based on their path."
-   href="/icerpc-core/dispatch/router" /%}
+   href="/icerpc/dispatch/router" /%}
 {% /grid %}
 
 ## C# examples
