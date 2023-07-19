@@ -13,7 +13,7 @@ title: NuGet packages
 | [IceRpc.Metrics][icerpc-metrics]                                                | Metrics interceptor and middleware for IceRPC         |
 | [IceRpc.RequestContext][icerpc-request-context]                                 | Request context interceptor and middleware for IceRPC |
 | [IceRpc.Retry][icerpc-retry]                                                    | Retry interceptor for IceRPC                          |
-| [IceRpc.Slice][icerpc-slice]                                                    | The IceRPC-Slice integration                          |
+| [IceRpc.Slice][icerpc-slice]                                                    | The IceRPC-Slice integration library                  |
 | [IceRpc.Slice.Tools][icerpc-slice-tools]                                        | Compile Slice files into C# in MSBuild projects       |
 | [IceRpc.Telemetry][icerpc-telemetry]                                            | Telemetry interceptor and middleware for IceRPC       |
 | [IceRpc.Templates][icerpc-templates]                                            | Project templates for IceRPC                          |
