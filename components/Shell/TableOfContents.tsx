@@ -80,8 +80,8 @@ export const TableOfContents = ({ toc }: { toc: TOCItem[] }) => {
         >
           <MoreItem
             href={
-              'https://github.com/zeroc-ice/icerpc-docs/tree/main/pages' +
-              currentPath
+              'https://github.com/icerpc/icerpc-docs/tree/main/pages' +
+              currentPath.replace(/^\/slice\d/, '/slice')
             }
           >
             <FontAwesomeIcon
