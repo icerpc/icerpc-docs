@@ -30,7 +30,7 @@ together.
 {% mini-card
    title="Object adapter"
    description="What is replacing ObjectAdapter in IceRPC?"
-   href="/icerpc-for-ice-users/rpc-core/objected-adapter" /%}
+   href="/icerpc-for-ice-users/rpc-core/object-adapter" /%}
 
 {% mini-card
    title="Converting Slice definitions to the new Slice syntax"
