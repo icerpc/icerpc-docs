@@ -22,8 +22,8 @@ requests sent by this proxy with Ice's encoding version 1.0.
 
 With IceRPC's Slice, the encoding to use is a Slice compile-time decision. When you define an interface, the encoding
 that will be used to encode operation arguments and return values is specified unambiguously, and gets hard-coded in
-the generated code. This encoding can be specified at the top of a Slice file with the mode statement and applies to
-all interfaces defined in that file:
+the generated code. This encoding can be specified at the top of a Slice file with the
+[mode statement](/slice1/language-guide/compilation-mode) and applies to all interfaces defined in that file:
 
 ```slice
 mode = Slice1
