@@ -22,7 +22,8 @@ const stripTrailingSlash = (str: string) => {
 
 export const PageHistory = ({ path }: Props) => {
   // Get the side bar links for the current page
-  const baseUrl = baseUrls.find((item) => path.startsWith(item)) ?? '';
+  const pathSegments = path.split('/');
+  const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
   const links: SideBarLink[] = flattenSideBarData(sideBarData(baseUrl)).filter(
     isLink
   );

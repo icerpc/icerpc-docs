@@ -55,7 +55,8 @@ export const getBreadcrumbs = (path: string) => {
       : [];
   }
 
-  const baseUrl = baseUrls.find((item) => path.startsWith(item));
+  const pathSegments = path.split('/');
+  const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
   if (!baseUrl) {
     return [];
   }

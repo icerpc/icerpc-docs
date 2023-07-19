@@ -25,7 +25,8 @@ export const SideNav = ({ path }: SideNavProps) => {
   const [data, setData] = useState<SideBarSourceType[]>([]);
   const { mode: currentMode } = useMode();
   const router = useRouter();
-  const baseUrl = baseUrls.find((item) => path.startsWith(item)) ?? '';
+  const pathSegments = path.split('/');
+  const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
   const isSlice = baseUrl == '/slice1' || baseUrl == '/slice2';
 
   useEffect(() => {
@@ -80,7 +81,8 @@ export function MobileSideNav({ pathname }: MobileSideNavProps) {
   const breadcrumbs = getBreadcrumbs(pathname);
   const router = useRouter();
 
-  const baseUrl = baseUrls.find((item) => pathname.startsWith(item)) ?? '';
+  const pathSegments = pathname.split('/');
+  const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
 
   useEffect(() => {
     const links = sideBarData(baseUrl) ?? [];
