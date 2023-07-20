@@ -55,8 +55,8 @@ The stream element of a return value (if present) is encoded into the payload co
 there is no stream element or the stream element is empty, the payload continuation is empty.
 
 {% callout type="information" %}
-The IceRPC core may not provide a payload continuation for outgoing responses in all programming languages. In this
-case, the stream element is encoded at the end of the payload.
+IceRPC may not provide a payload continuation for outgoing responses in all programming languages. In this case,
+the stream element is encoded at the end of the payload.
 {% /callout %}
 
 If the stream element type is fixed-size (e.g., an `int32`), the stream is encoded as successive streamed elements

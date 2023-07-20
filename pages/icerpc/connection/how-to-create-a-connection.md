@@ -38,7 +38,7 @@ await clientConnection.ConnectAsync();
 ```
 
 This pattern where the constructor configures the new instance but does not actually run anything is common throughout
-the IceRPC core.
+IceRPC.
 
 A client connection maintains a single active connection: a (client) connection connected to a server.
 

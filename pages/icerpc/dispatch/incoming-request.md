@@ -21,8 +21,8 @@ application code.
 
 ## Request payload
 
-The payload of an incoming request is a stream of bytes that represents the argument(s) of an operation. As far as the
-IceRPC core is concerned, the number of bytes in this stream is unknown.
+The payload of an incoming request is a stream of bytes that represents the argument(s) of an operation. As far as
+IceRPC is concerned, the number of bytes in this stream is unknown.
 
 ## Request features
 

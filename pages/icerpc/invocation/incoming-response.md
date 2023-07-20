@@ -56,8 +56,8 @@ compressed with brotli"; the compressor interceptor can then decompress this (in
 
 ## Response payload
 
-The payload of an incoming response is a stream of bytes that represents the return value of an operation. As far as the
-IceRPC core is concerned, the number of bytes in this stream is unknown.
+The payload of an incoming response is a stream of bytes that represents the return value of an operation. As far as
+IceRPC is concerned, the number of bytes in this stream is unknown.
 
 [response-field-key]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/ResponseFieldKey.slice
 [slice]: ../../slice
