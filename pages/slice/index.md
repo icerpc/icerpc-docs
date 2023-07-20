@@ -4,7 +4,7 @@ description: A better IDL
 showToc: false
 ---
 
-IceRPC provides everything you need to create RPCs. When you use only IceRPC's core API, the payload of your requests
+IceRPC provides everything you need to make RPCs. When you use only IceRPC's core API, the payload of your requests
 and responses are streams of bytes, and you need to manually encode and decode any typed data (such as strings and
 integers) in these streams. This is doable but laborious.
 
@@ -17,10 +17,12 @@ format.
 ```proto
 // A Person message defined with Protobuf
 
+syntax = "proto3";
+
 message Person {
-  optional string name = 1;
-  optional int32 id = 2;
-  optional string email = 3;
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
 }
 ```
 
