@@ -135,7 +135,7 @@ export function CookiesBanner() {
               className="flex-1 px-4 py-3 text-gray-500 duration-150 hover:bg-green-400 hover:text-white"
               onClick={handleAccept}
             >
-              Of course
+              Accept
             </button>
           </div>
         </motion.div>
