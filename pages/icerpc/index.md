@@ -63,4 +63,4 @@ IceRPC core.
 {% /grid %}
 
 [idl]: https://en.wikipedia.org/wiki/Interface_description_language
-[slice]: ../slice
+[slice]: ../slice2
