@@ -61,7 +61,7 @@ There are 3 common types of invokers:
     several built-it interceptors for logging, compression and more.
 
 - **Pipeline**\
-    A [pipeline](pipeline) walks a request through interceptors registered with this pipeline before giving the request
+    A [pipeline](invocation-pipeline) walks a request through interceptors registered with this pipeline before giving the request
     to a leaf invoker.
 
 ```mermaid
