@@ -47,30 +47,30 @@ With IceRPC:
 
 ## Slice optional
 
-With Ice, you can't separate Slice from Ice: the Ice API is generated local Slice definitions and you use some Slice
-even when you're only sending or receiving bytes.
+With Ice, you can't separate Slice from Ice: the Ice API is generated from local Slice definitions and you always use
+some Slice even when if you are only sending or receiving bytes.
 
-On the other hand, IceRPC sends and receives requests and responses with byte stream payloads, and doesn't know how
-these byte streams are encoded. This allows you to use IceRPC with Slice, or with another IDL, or with no IDL at all.
+Conversely, IceRPC sends and receives requests and responses with byte stream payloads, and doesn't know how these byte
+streams are encoded. This allows you to use IceRPC with Slice, or with another IDL such as Protobuf, or with no IDL at
+all.
 
 ## New Slice
 
-As we introduce IceRPC, we also introduce a brand new Slice, with a new syntax, a new serialization format, and even a
-new file extension.
+IceRPC comes with a brand new Slice, with a new syntax, a new serialization format, and even a new file extension.
 
-This new Slice is also independent from IceRPC: you can naturally use it with IceRPC, but you can also use it without
-any RPC framework. Other RPC frameworks may also provide support for this new Slice in the future.
+This new Slice is actually independent from IceRPC: you can naturally use it with IceRPC, but you can also use it
+without a RPC framework. Other RPC frameworks may provide support for this new Slice in the future.
 
 The Ice compilation model for its Slice files is very much like C++: each Slice file needs to `#include` the Slice files
 with the definitions it depends on. You can use a forward declaration to introduce a type without fully defining it. And
 Slice files use the `.ice` file extension.
 
 On the other hand, the compilation model for the new Slice files is more like C# and Java: the compilation uses a set of
-reference files specified as argument to the compiler, and there is no `#include` preprocessing directive or
-forward declarations. These new Slice files use the `.slice` extension.
+reference files specified as argument to the compiler, and there is no `#include` preprocessing directive or forward
+declarations. These new Slice files use the `.slice` extension.
 
-The Slice syntax also changed significantly. Ice's Slice syntax uses a C-like syntax for parameters and fields, while
-the new Slice syntax is more like Rust and Swift:
+Another difference is the syntax for parameters and fields: Ice's Slice uses a C-like syntax, while the new Slice syntax
+is more like Rust and Swift:
 
 {% side-by-side alignment="top" %}
 

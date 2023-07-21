@@ -6,13 +6,13 @@ description: Learn how to use IceRPC with an existing Ice application.
 ## Interop basics
 
 IceRPC provides interop with Ice by implementing the `ice` protocol over the tcp/ssl duplex transport (with some
-limitations), and by supporting Slice with the Ice encoding version 1.1.
+limitations), and by supporting the Ice encoding via the Slice language.
 
 In practice, this means you can write a new IceRPC client for an existing Ice server, reimplement an existing Ice server
 using IceRPC, or use IceRPC to create new services for your Ice clients.
 
-If you start from an existing Ice client or server, the first step is to convert your Slice definitions to the new Slice
-syntax. The converted Slice files must specify `Slice1` mode:
+If you start from an existing Ice client or server, the first step is to convert your Ice/Slice definitions to the new
+Slice syntax. The converted Slice files must specify `Slice1` mode:
 ```slice
 mode = Slice1 // required for interop with Ice
 ...

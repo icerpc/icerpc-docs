@@ -19,7 +19,7 @@ Ice provides a suite of components to help you build portable, multi-language ne
 - metrics/telemetry (Ice metrics)
 - server deployment and monitoring (IceGrid)
 - pub/sub (IceStorm, DataStorm)
-- gateway for ingress traffic (Glacier2)
+- API gateway (Glacier2)
 
 On the other hand, IceRPC has a very narrow focus: RPCs (the name gave it away!). When building an application with
 IceRPC, you use IceRPC for your RPCs, and you need to find other solutions for configuration, logging, server
