@@ -272,10 +272,10 @@ module Example
 [cs::type("System.Decimal")]
 custom Money
 
-// And you can use the built-in custom type ServiceAddress defined in module WellKnownTypes:
+// You can use the built-in custom type ServiceAddress defined in module IceRpc:
 compact struct CustomBag {
     amount: Money
-    serviceAddress: WellKnownTypes::ServiceAddress
+    serviceAddress: IceRpc::ServiceAddress
 }
 ```
 
@@ -296,7 +296,6 @@ struct CustomBag {
     uri: WellKnownTypes::Uri
     duration: WellKnownTypes::Duration
     timeStamp: WellKnownTypes::TimeStamp
-    serviceAddress: WellKnownTypes::ServiceAddress
 }
 ```
 

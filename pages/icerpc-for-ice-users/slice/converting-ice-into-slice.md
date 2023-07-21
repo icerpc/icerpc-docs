@@ -305,12 +305,12 @@ breaking on-the-wire compatibility.
 | short       | int16                                           |
 | string      | string                                          |
 | Object      | AnyClass?                                       |
-| Object*     | Ice::Object? or WellKnownTypes::ServiceAddress? |
+| Object*     | Ice::Object? or IceRpc::ServiceAddress?         |
 | Value       | AnyClass?                                       |
 
-With the .ice syntax, Object, Object* and Value always represent nullable parameters or fields. With the .slice syntax,
-the corresponding AnyClass, Ice::Object or ServiceAddress can be optional (with a ? suffix) or non-optional (without a ?
-suffix).
+With the .ice syntax, `Object`, `Object*` and `Value` always represent nullable parameters or fields. With the .slice
+syntax, the corresponding `AnyClass`, `Ice::Object` or `IceRpc::ServiceAddress` can be optional (with a ? suffix) or
+non-optional (without a ? suffix).
 
 ## Sequence
 
