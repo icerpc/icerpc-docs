@@ -19,8 +19,8 @@ interface Greeter {
 }
 ```
 
-An interface must be defined in a module (`VisitorCenter` in the example above), and an operation must be defined in an
-interface.
+An interface must be defined in a module (`VisitorCenter` in the example above), and an operation must be defined inside
+an interface.
 
 We save these definitions in file `Greeter.slice`.
 
@@ -29,8 +29,9 @@ We save these definitions in file `Greeter.slice`.
 Once you've written the initial version of your Slice definitions, you need to compile them with the Slice compiler for
 your programming language.
 
-In C#, you would use the [Slice tools][slice-tools] to add Slice file compilation to your project. The Slice compiler
-for C# generates a C# file for each Slice file. Since we have single Slice file, we get a single C# file, `Greeter.cs`.
+In C#, you would use the [IceRPC Slice tools][slice-tools] to add Slice file compilation to your IceRPC project. The
+Slice compiler for C# generates a C# file for each Slice file. Since we have single Slice file, we get a single C# file,
+`Greeter.cs`.
 
 ## Step 3: Implement server application
 
@@ -71,8 +72,7 @@ internal class Chatbot : Service, IGreeterService
 
 An instance of the `Chatbot` class is an IceRPC service that implements the Slice interface `Greeter`.
 
-We then insert this service (dispatcher) into the server's [dispatch pipeline][dispatch-pipeline] as usual; this is no
-longer a Slice topic.
+We then insert this service (dispatcher) into the server's [dispatch pipeline][dispatch-pipeline] as usual.
 
 ## Step 4: Implement client application
 
