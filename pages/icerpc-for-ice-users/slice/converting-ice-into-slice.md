@@ -5,10 +5,10 @@ description: Learn how to convert .ice definitions into .slice definitions.
 
 ## Use-case
 
-You need to convert existing .ice definitions into .slice definitions when you want to use IceRPC to build a client or
-server application that interoperates with your existing Ice applications.
+You need to convert existing Ice/Slice definitions into new Slice definitions when you want to use IceRPC to build a
+client or server application that interoperates with your existing Ice applications.
 
-This page shows how to convert each construct in your .ice file into the equivalent construct in the your new .slice
+This page shows how to convert each construct in your Ice/Slice file into the equivalent construct in the your new Slice
 file. This equivalent construct is naturally encoded the same way—otherwise, there would be no interop.
 
 All the .slice files used for interop with Ice must start with:
@@ -161,7 +161,7 @@ The converted definition is more permissive since op can now throw any exception
 Another difference between Ice and IceRPC is where the exception specifications are checked:
 
 - with Ice, the generated code enforces exception specifications only when decoding responses
-- with IceRPC, the generated code enforces exception specifications only when encoding responses
+- with the IceRPC + Slice integration, the generated code enforces exception specifications only when encoding responses
 
 ## Interface
 

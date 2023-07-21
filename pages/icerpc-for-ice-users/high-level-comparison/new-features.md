@@ -21,7 +21,7 @@ With IceRPC, the invocation logic consists of multiple objects that you compose 
 include only what you need in this invocation pipeline, and you can easily insert your own custom logic in this
 pipeline.
 
-## Async-only API
+## Async API
 
 Ice's API is based on the assumption that async APIs are well-suited for RPCs but hard to use and occasionally slower;
 as a result, Ice offers synchronous/blocking APIs in addition to async APIs, for ease of use and sometimes slightly
@@ -45,32 +45,36 @@ With IceRPC:
 - methods that may take a while because their implementations can wait for I/O are async (e.g. proxy methods)
 - methods that never wait for I/O are synchronous (e.g. string-parsing methods)
 
-## Slice-free core API
+## Slice optional
 
-With Ice, you have to use Slice to encode your request and response payloads, even if you're just sending bytes.
+With Ice, you can't separate Slice from Ice: the Ice API is generated local Slice definitions and you use some Slice
+even when you're only sending or receiving bytes.
 
-With IceRPC, Slice is optional: IceRPC sends and receives requests and responses with byte stream payloads, and doesn't
-know how these byte streams are encoded. This allows you to use IceRPC with Slice, or with another IDL, or with no IDL at all.
+On the other hand, IceRPC sends and receives requests and responses with byte stream payloads, and doesn't know how
+these byte streams are encoded. This allows you to use IceRPC with Slice, or with another IDL, or with no IDL at all.
 
 ## New Slice
 
-IceRPC introduces a brand new Slice, with a new syntax, a new encoding, a new compilation model and a new file
-extension.
+As we introduce IceRPC, we also introduce a brand new Slice, with a new syntax, a new serialization format, and even a
+new file extension.
+
+This new Slice is also independent from IceRPC: you can naturally use it with IceRPC, but you can also use it without
+any RPC framework. Other RPC frameworks may also provide support for this new Slice in the future.
 
 The Ice compilation model for its Slice files is very much like C++: each Slice file needs to `#include` the Slice files
 with the definitions it depends on. You can use a forward declaration to introduce a type without fully defining it. And
 Slice files use the `.ice` file extension.
 
-On the other hand, the compilation model for IceRPC's Slice files is more like C# and Java: the compilation uses a
-set of reference files specified as argument to the compiler, and there is no `#include` preprocessing directive or
+On the other hand, the compilation model for the new Slice files is more like C# and Java: the compilation uses a set of
+reference files specified as argument to the compiler, and there is no `#include` preprocessing directive or
 forward declarations. These new Slice files use the `.slice` extension.
 
-The Slice syntax also changed significantly. Ice's `.ice` syntax uses a C-like syntax for parameters and fields, while
-IceRPC's `.slice` syntax is more like Rust and Swift:
+The Slice syntax also changed significantly. Ice's Slice syntax uses a C-like syntax for parameters and fields, while
+the new Slice syntax is more like Rust and Swift:
 
 {% side-by-side alignment="top" %}
 
-```slice {% title="Slice definitions (.ice syntax)" %}
+```slice {% title="Slice definitions (old syntax)" %}
 enum File { A, B, C, D, E, F, G, H }
 enum Rank { R1, R2, R3, R4, R5, R6, R7, R8 }
 
@@ -91,7 +95,7 @@ interface ChessPiece
 }
 ```
 
-```slice {% title="Slice definitions (new .slice syntax)" %}
+```slice {% title="Slice definitions (new syntax)" %}
 interface ChessPiece {
     // It's ok to use a type before defining it.
     currentPosition() -> Position
