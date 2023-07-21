@@ -295,7 +295,7 @@ See the [`grid`](#Grid) tag for an example of how to use the `mini-card` tag.
 ## Updating Navigation
 
 The hierarchy of the side navigation is defined in `/data/`. Each top navigation
-item has a corresponding file, `getting-started-data.ts`, `icerpc-core-data.ts`,
+item has a corresponding file, `getting-started-data.ts`, `icerpc-data.ts`,
 etc., with Slice having two files corresponding to which Slice
 mode was selected. These files export an array that defines the pages and
 their order in the sidebar. The values in the arrays are either `SideBarLink` or

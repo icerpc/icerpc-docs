@@ -27,8 +27,9 @@ the parameters or fields are on the same line, as in:
 compact struct Point { x: int32, y: int32 }
 ```
 
-The type of a parameter or field can be either a [primitive types](primitive-types) (such an int32 or a string) or a
-constructed type (a new type defined in Slice such an [enum](enumeration-types) or a [struct](struct-types)).
+The type of a parameter or field can be a [primitive type](primitive-types) (such an int32 or a string), a
+constructed type (a new type defined in Slice such an [enum](enum-types) or a [struct](struct-types)) or a
+[proxy type](proxy-types).
 
 ## Optionals
 
@@ -180,6 +181,21 @@ anything--the decoding code simply returns an empty stream.
 
 ## C# mapping
 
+A field `name: Type` is mapped to a C# field with the same name, with name converted to Pascal case. The type of the C#
+field is the mapped C# type for `Type`.
+
+Tagged fields are mapped just like regular fields. The tag and tag number don't appear in the mapped C# API.
+
+### Optionals in C#
+
+Optional types are mapped to nullable C# types. For example, `int32?` is mapped to `int?` in C#.
+
+### Parameters in C#
+
+{% callout %}
+This section is specific to the IceRPC-Slice integration.
+{% /callout %}
+
 An operation parameter `name: Type` is mapped to a C# parameter with the same name, with name converted to camel case.
 The type of the C# parameter is the mapped C# type for `Type`. For example, an int32 parameter is mapped to an int
 parameter in C#, as described in [Primitive types](primitive-types).
@@ -187,20 +203,14 @@ parameter in C#, as described in [Primitive types](primitive-types).
 A return parameter `name: Type` is mapped to a C# return tuple field with the same name, with name converted to Pascal
 case. The type of the C# field is the mapped C# type for `Type`.
 
-A field `name: Type` is mapped to a C# field with the same name, with name converted to Pascal case. The type of the C#
-field is the mapped C# type for `Type`.
-
-### Optionals in C#
-
-Optional types are mapped to nullable C# types. For example, `int32?` is mapped to `int?` in C#.
-
-### Tagged parameters and fields in C#
-
-Tagged parameters and fields are mapped just like regular parameters and fields. The tag and tag number don't appear
-in the mapped C# API.
+Tagged parameters are mapped just like regular parameters. The tag and tag number don't appear in the mapped C# API.
 
 {% slice2 %}
 ### Stream parameters in C#
+
+{% callout %}
+This section is specific to the IceRPC-Slice integration.
+{% /callout %}
 
 A stream parameter of type `uint8` is mapped to a [`PipeReader`][pipe-reader]. For example:
 
@@ -223,9 +233,9 @@ public partial interface IImageStore
 ```
 {% /side-by-side %}
 
-When you give such a stream to the Slice generated code, the Slice library will complete this stream when it's done
-reading it. This can occur when there is nothing left to read or when the peer stops reading. The Slice library always
-pass a null exception to [`Complete`][pipe-reader-complete].
+When you give such a stream to the Slice generated code, the IceRPC-Slice integration will complete this stream when
+it's done reading it. This can occur when there is nothing left to read or when the peer stops reading. The IceRPC-Slice
+integration always pass a null exception to [`Complete`][pipe-reader-complete].
 
 When you receive such a stream, you must call [`Complete`][pipe-reader-complete] or
 [`CompleteAsync`][pipe-reader-complete-async] on the stream when you're done reading it. The exception argument is
@@ -251,9 +261,9 @@ public partial interface ITemperatureProbe
 ```
 {% /side-by-side %}
 
-When you give such a stream to the Slice generated code, the Slice library will either iterate over all the elements
-(until your async enumerable yields `break`) or cancel the iteration early, typically because the peer doesn't want more
-elements. This early cancellation is communicated to your async enumerable using the
+When you give such a stream to the Slice generated code, the IceRPC-Slice integration will either iterate over all the
+elements (until your async enumerable yields `break`) or cancel the iteration early, typically because the peer doesn't
+want more elements. This early cancellation is communicated to your async enumerable using the
 [`EnumeratorCancellation` attribute][enumerator-cancellation], as demonstrated by the server-side of the
 [Stream example application][stream-example].
 

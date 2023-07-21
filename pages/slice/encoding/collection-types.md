@@ -17,8 +17,8 @@ compact struct Pair { key: Key, value: Value }
 {% slice1 %}
 ## Sequence
 
-A sequence of N elements of type T is encoded as a
-[variable-length size](#encoding-only-constructs#variable-length-size) N followed by each element encoded in order.
+A sequence of N elements of type T is encoded as a [variable-length size][slice1-var-size] N followed by each element
+encoded in order.
 
 _Example: empty sequence_
 
@@ -45,8 +45,8 @@ A sequence of `int32` with values 5, 32 and 2 is encoded as:
 
 ## Sequence with a non-optional element type
 
-A sequence of N elements with a non-optional element type T is encoded as a varuint62-encoded N followed by each element
-encoded in order.
+A sequence of N elements with a non-optional element type T is encoded as a `varuint62`-encoded N followed by each
+element encoded in order.
 
 _Example: empty sequence_
 
@@ -70,7 +70,7 @@ A sequence of `int32` with values 5, 32 and 2 is encoded as:
 ## Sequence with an optional element type
 
 A sequence of N elements with a optional element type T? is encoded as a varuint62-encoded N followed by a
-[bit sequence](bit-sequence) with N bits, followed by each element with a value encoded in order.
+[bit sequence][bit-sequence] with N bits, followed by each element with a value encoded in order.
 
 _Example: sequence of int32?_
 
@@ -84,3 +84,6 @@ A sequence of `int32?` with values 5, no-value, 2 and no-value is encoded as:
 ```
 
 {% /slice2 %}
+
+[bit-sequence]: encoding-only-constructs#bit-sequence
+[slice1-var-size]: encoding-only-constructs#variable-length-size

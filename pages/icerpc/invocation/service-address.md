@@ -107,7 +107,7 @@ IncomingResponse response = await connection.InvokeAsync(request);
 
 ## Relative service address
 
-A relative service address consists of an absolute path. The IceRPC core does not consume relative service addresses;
+A relative service address consists of an absolute path. IceRPC does not consume relative service addresses;
 in particular, it's an error to create an outgoing request with a relative service address.
 
 Relative service addresses underpin [relative proxies][relative-proxies] in Slice.

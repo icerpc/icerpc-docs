@@ -43,25 +43,29 @@ const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;
 };
 
-export const getBreadcrumbs = (path: string) => {
-  if (!path || path === '/') {
-    return path === '/'
-      ? [
-          {
-            name: 'Home',
-            href: '/'
-          }
-        ]
-      : [];
+export const getBreadcrumbs = (path: string): Breadcrumb[] => {
+  if (path === '/') {
+    return [
+      {
+        name: 'Home',
+        href: '/'
+      }
+    ];
   }
 
-  const pathSegments = path.split('/');
-  const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
-  if (!baseUrl) {
+  if (!path) {
+    return [];
+  }
+
+  const pathSegments = path.split('/').filter((segment) => segment);
+  const baseUrl = baseUrls.find((item) => item === `/${pathSegments[0]}`);
+
+  if (!baseUrl || pathSegments.length < 2) {
     return [];
   }
 
   const categories = sideBarData(baseUrl).filter(isCategory);
+
   const breadcrumbs: Breadcrumb[] = [
     {
       name: currentNavItem(baseUrl),
@@ -69,26 +73,36 @@ export const getBreadcrumbs = (path: string) => {
     }
   ];
 
-  categories.some((category) => {
-    const links = category.links.filter(isLink);
-    const linkFound = links.find(
-      (link: SideBarLink) =>
-        stripTrailingSlash(link.path) === stripTrailingSlash(path)
-    );
+  let currentPath = baseUrl;
 
-    if (linkFound) {
-      breadcrumbs.push({
-        name: category.title,
-        href: links[0].path
-      });
+  for (let i = 1; i < pathSegments.length; i++) {
+    currentPath += `/${pathSegments[i]}`;
 
-      // Break out of the loop early when a link is found
-      return true;
+    // Check for matching link within the categories
+    let found = false;
+
+    for (const category of categories) {
+      const matchingLink = category.links.find(
+        (linkItem) =>
+          isLink(linkItem) &&
+          stripTrailingSlash(linkItem.path) === stripTrailingSlash(currentPath)
+      );
+
+      if (matchingLink) {
+        breadcrumbs.push({
+          name: matchingLink.title,
+          href: currentPath
+        });
+        found = true;
+        break; // break out of the category loop
+      }
     }
 
-    // Continue the loop if no link is found
-    return false;
-  });
+    // If no matching link is found for a segment, the path is invalid
+    if (!found) {
+      return [];
+    }
+  }
 
   return breadcrumbs;
 };

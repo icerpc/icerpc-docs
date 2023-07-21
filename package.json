@@ -25,7 +25,7 @@
     "framer-motion": "^10.12.18",
     "js-yaml": "^4.1.0",
     "mermaid": "^10.2.4",
-    "next": "^13.4.9",
+    "next": "^13.4.10",
     "next-themes": "^1.0.0-beta.0",
     "nodemailer": "^6.9.3",
     "prism-react-renderer": "^2.0.6",
@@ -51,10 +51,10 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^5.0.0-alpha.2",
     "eslint-plugin-tailwindcss": "^3.13.0",
-    "postcss": "^8.4.25",
+    "postcss": "^8.4.26",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.4.0",
-    "tailwindcss": "^3.3.2",
+    "tailwindcss": "^3.3.3",
     "typescript": "^5.1.6"
   }
 }

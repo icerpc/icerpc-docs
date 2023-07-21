@@ -19,7 +19,7 @@ stream is bidirectional or unidirectional. The following table summarizes the fo
 | 0x00 | Client-Initiated, Bidirectional  |
 | 0x01 | Server-Initiated, Bidirectional  |
 | 0x02 | Client-Initiated, Unidirectional |
-| 0x04 | Server-Initiated, Unidirectional |
+| 0x03 | Server-Initiated, Unidirectional |
 
 The following table describes the stream frames defined by the Slic transport protocol:
 
@@ -40,7 +40,7 @@ Stream creation is initiated by the sending of the first [Stream][stream-frame] 
 The peer accepts a new stream when it receives a Stream or StreamLast frame with a stream identifier larger than the
 last accepted stream identifier.
 
-The stream identifier must be the next expected stream identifier. For example, if the last stream accepted by the server is the bidirectional stream with the identifier 0, the next stream identifier must be 4.
+The stream identifier must be the next expected stream identifier. For example, if the last stream accepted by the server is the bidirectional stream with the identifier 0, the identifier of the next accepted bidirectional stream must be 4.
 
 ## Stream closure
 
