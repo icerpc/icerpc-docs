@@ -95,7 +95,7 @@ get an error.
 await using var secureColocConnection = new ClientConnection(
     "icerpc://colochost",
     new SslClientAuthenticationOptions()
-    multiplexedClientTransport: new SlicClientTransport(colocClientTransport)
+    multiplexedClientTransport: new SlicClientTransport(colocClientTransport));
 ```
 
 [ssl-client-authentication-options]: https://learn.microsoft.com/en-us/dotnet/api/system.net.security.sslclientauthenticationoptions
