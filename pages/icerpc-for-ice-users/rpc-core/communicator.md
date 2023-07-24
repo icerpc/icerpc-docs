@@ -56,7 +56,7 @@ await using var connection = new ClientConnection(
     new Uri("ice://localhost:10000"));
 
 // We install only the deadline and retry interceptors.
-Pipeline pipeline = new Pipeline()with a new syntax, a new encoding,
+Pipeline pipeline = new Pipeline()
     .UseDeadline(TimeSpan.FromSeconds(30))
     .UseRetry()
     .Into(connection);

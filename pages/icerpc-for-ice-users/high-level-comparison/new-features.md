@@ -45,10 +45,10 @@ With IceRPC:
 - methods that may take a while because their implementations can wait for I/O are async (e.g. proxy methods)
 - methods that never wait for I/O are synchronous (e.g. string-parsing methods)
 
-## Slice optional
+## Optional IDL
 
-With Ice, you can't separate Slice from Ice: the Ice API is generated from local Slice definitions and you always use
-some Slice even when if you are only sending or receiving bytes.
+With Ice, you can't separate Ice's IDL (Slice) from Ice: the Ice API is generated from local Slice definitions and you
+always use some Slice even when if you are only sending or receiving bytes.
 
 Conversely, IceRPC sends and receives requests and responses with byte stream payloads, and doesn't know how these byte
 streams are encoded. This allows you to use IceRPC with Slice, or with another IDL such as Protobuf, or with no IDL at
@@ -59,7 +59,7 @@ all.
 IceRPC comes with a brand new Slice, with a new syntax, a new serialization format, and even a new file extension.
 
 This new Slice is actually independent from IceRPC: you can naturally use it with IceRPC, but you can also use it
-without a RPC framework. Other RPC frameworks may provide support for this new Slice in the future.
+without an RPC framework. Other RPC frameworks may provide support for this new Slice in the future.
 
 The Ice compilation model for its Slice files is very much like C++: each Slice file needs to `#include` the Slice files
 with the definitions it depends on. You can use a forward declaration to introduce a type without fully defining it. And
