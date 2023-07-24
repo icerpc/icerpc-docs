@@ -12,17 +12,17 @@ An Ice communicator has numerous responsibilities:
 - it's used to create object adapters
   and more.
 
-IceRPC replaces this multi-purpose Communicator with smaller, more focused objects and abstractions that you compose to
-get the behavior you want.
+IceRPC replaces this multi-purpose `Communicator` with smaller, more focused objects and abstractions that you compose
+to get the behavior you want.
 
 IceRPC has no equivalent for Ice configuration properties, and does not rely on any particular configuration file
 format. In C#, IceRPC follows the [Options Pattern][options-pattern], which allows you to set configuration
 programmatically or in a JSON file.
 
-The bulk of Communicator's client-side functionality corresponds to an IceRPC [invocation pipeline][invocation-pipeline]
-that flows into a [ConnectionCache][connection-cache].
+The bulk of `Communicator`'s client-side functionality corresponds to an IceRPC
+[invocation pipeline][invocation-pipeline] that flows into a [ConnectionCache][connection-cache].
 
-A Communicator-like invocation pipeline would include the following interceptors:
+A `Communicator`-like invocation pipeline would include the following interceptors:
 
 - the Deadline interceptor (for invocation timeouts)
 - the Locator interceptor (to resolve "indirect proxies" using an Ice Locator)
@@ -32,10 +32,10 @@ A Communicator-like invocation pipeline would include the following interceptors
 - the Retry interceptor (for automatic invocation retries)
 
 When you create a client application with IceRPC, you should create an invocation pipeline with the interceptors you
-need—please don't include all built-in interceptors "just in case". You should also check if a
-[ClientConnection][client-connection] is more appropriate than a ConnectionCache for your application.
+need—don't include all built-in interceptors "just in case". You should also check if a
+[ClientConnection][client-connection] is more appropriate than a `ConnectionCache` for your application.
 
-For example:
+#### Example
 
 {% side-by-side alignment="top" %}
 

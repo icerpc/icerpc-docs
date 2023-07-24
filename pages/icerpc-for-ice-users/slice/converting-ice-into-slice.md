@@ -5,13 +5,13 @@ description: Learn how to convert .ice definitions into .slice definitions.
 
 ## Use-case
 
-You need to convert existing .ice definitions into .slice definitions when you want to use IceRPC to build a client or
-server application that interoperates with your existing Ice applications.
+You need to convert existing Slice definitions into new Slice definitions when you want to use IceRPC to build a
+client or server application that interoperates with your existing Ice applications.
 
-This page shows how to convert each construct in your .ice file into the equivalent construct in the your new .slice
+This page shows how to convert each construct in your `.ice` file into the equivalent construct in the your new Slice
 file. This equivalent construct is naturally encoded the same way—otherwise, there would be no interop.
 
-All the .slice files used for interop with Ice must start with:
+All the .slice files used for interop with Ice must use the Slice1 compilation mode:
 
 ```slice
 mode = Slice1
@@ -145,23 +145,23 @@ void op(string s) throws ArgumentException, InvalidStateException, NotAvailableE
 ```
 
 The allowable exceptions include any exception derived from ArgumentException, InvalidStateException and
-NotAvailableException. If this list is empty (no throws), the operation is not allowed to throw any Slice-defined
+NotAvailableException. If this list is empty (no `throws`), the operation is not allowed to throw any Slice-defined
 exception.
 
 With the .slice syntax, an operation can only specify one exception in its exception specification. With Slice1, this
-unique exception can be AnyException (a keyword): it allows the operation to throw any Slice-defined exception. As a
+unique exception can be `AnyException` (a keyword): it allows the operation to throw any Slice-defined exception. As a
 result, we would convert op into:
 
 ```slice {% title="Same operation with the .slice syntax" %}
 op(s: string) throws AnyException
 ```
 
-The converted definition is more permissive since op can now throw any exception.
+The converted definition is more permissive since `op` can now throw any exception.
 
 Another difference between Ice and IceRPC is where the exception specifications are checked:
 
 - with Ice, the generated code enforces exception specifications only when decoding responses
-- with IceRPC, the generated code enforces exception specifications only when encoding responses
+- with the IceRPC + Slice integration, the generated code enforces exception specifications only when encoding responses
 
 ## Interface
 
@@ -347,4 +347,4 @@ compact struct Position {
 
 {% /side-by-side %}
 
-With the .slice syntax, all Slice1-encoded structs must be compact.
+With the .slice syntax and the Slice1 compilation mode, all structs must be compact.

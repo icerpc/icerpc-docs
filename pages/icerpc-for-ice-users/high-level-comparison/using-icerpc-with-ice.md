@@ -5,14 +5,14 @@ description: Learn how to use IceRPC with an existing Ice application.
 
 ## Interop basics
 
-IceRPC provides interop with Ice by implementing the ice protocol over the tcp/ssl duplex transport (with some
-limitations), and by supporting the Ice encoding version 1.1 (called Slice1 in IceRPC).
+IceRPC provides interop with Ice by implementing the `ice` protocol over the tcp/ssl duplex transport (with some
+limitations), and by supporting the Ice encoding via the Slice language.
 
 In practice, this means you can write a new IceRPC client for an existing Ice server, reimplement an existing Ice server
 using IceRPC, or use IceRPC to create new services for your Ice clients.
 
-If you start from an existing Ice client or server, the first step is to convert your Slice definitions to the new Slice
-syntax. The converted Slice files must specify `Slice1` mode:
+If you start from an existing Ice client or server, the first step is to convert your Slice definitions (in `.ice`
+files) to the new Slice syntax. The converted Slice files must specify `Slice1` mode:
 ```slice
 mode = Slice1 // required for interop with Ice
 ...
@@ -22,12 +22,12 @@ mode = Slice1 // required for interop with Ice
 Make sure to use the `.slice` extension for these new Slice files.
 
 If you use IceRPC to create new services for your Ice client, you should start by defining your Slice interfaces with
-the new .slice syntax (and `mode = Slice1`) before converting these definitions to the .ice syntax. The new syntax
-allows you to mark a proxy or class parameter/field as optional or non-optional, for example:
+the new Slice syntax (and `mode = Slice1`) before converting these definitions to the `.ice` Slice syntax. The new
+syntax allows you to mark a proxy or class parameter/field as optional or non-optional, for example:
 
 ```slice {% title="Slice with the .slice syntax" %}
 interface ContactRegistry {
-    // The new contact can't be null / not-set.
+    // The new contact cannot be null / not-set.
     addContact(contact: Contact)
 
     // Returns null/not-set when not found.
@@ -40,7 +40,7 @@ class Contact {
 }
 ```
 
-Whereas with the .ice syntax, a proxy or class parameter/field is always optional.
+With the `.ice` Slice syntax, you can't make this distinction: a proxy or class parameter/field is always optional.
 
 ## Limitations
 

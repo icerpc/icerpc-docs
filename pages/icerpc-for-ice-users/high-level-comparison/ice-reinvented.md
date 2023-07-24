@@ -4,7 +4,7 @@ title: Ice reinvented
 
 IceRPC is a brand new RPC framework, that we wrote from scratch and then rewrote several times over. It is a spiritual
 successor to Ice since many ideas and designs in IceRPC are a direct result of our experience developing Ice and helping
-Ice users build all kind of applications with Ice.
+Ice users build all kinds of applications with Ice.
 
 Ice and IceRPC are both RPC frameworks with similar names, but they are quite different:
 
@@ -19,7 +19,7 @@ Ice provides a suite of components to help you build portable, multi-language ne
 - metrics/telemetry (Ice metrics)
 - server deployment and monitoring (IceGrid)
 - pub/sub (IceStorm, DataStorm)
-- session management and firewall traversal (Glacier2)
+- API gateway (Glacier2)
 
 On the other hand, IceRPC has a very narrow focus: RPCs (the name gave it away!). When building an application with
 IceRPC, you use IceRPC for your RPCs, and you need to find other solutions for configuration, logging, server
