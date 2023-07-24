@@ -48,8 +48,6 @@ export const AppLink = ({
       ? '_blank'
       : undefined);
 
-  const shouldPrefetch = !isApiLink(originalHref);
-
   /**
    * Handles the click on the link, specifically for slice links.
    */
@@ -67,7 +65,6 @@ export const AppLink = ({
       href={href}
       target={target}
       rel={target === '_blank' ? 'noreferrer' : undefined}
-      prefetch={shouldPrefetch}
       onClick={handleLinkClick}
       className={clsx(
         className,
@@ -118,9 +115,8 @@ const isApiLink = (href: string) => {
 const resolveApiLink = (href: string) => {
   const [language, ...rest] = href.split(':');
   const [module, method] = rest.join('.').split('#');
-  return `https://docs.testing.zeroc.com/api/${language}/api/${module}.html${
-    method ? `#${method}` : ''
-  }`;
+  return `https://docs.testing.zeroc.com/api/${language}/api/${module}.html${method ? `#${method}` : ''
+    }`;
 };
 
 /**
