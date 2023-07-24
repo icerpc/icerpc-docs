@@ -41,13 +41,6 @@ export const AppLink = ({
 
   const style = { ...defaultStyle, ...originalStyle };
 
-  // Determine the target for the link, e.g., "_blank" for external links.
-  const target =
-    originalTarget ||
-    (isExternalLink(originalHref) || isApiLink(originalHref)
-      ? '_blank'
-      : undefined);
-
   /**
    * Handles the click on the link, specifically for slice links.
    */
@@ -64,9 +57,8 @@ export const AppLink = ({
   if (isExternalLink(originalHref) || isApiLink(originalHref)) {
     return <a
       href={href}
-      target={target}
-      rel={target === '_blank' ? 'noreferrer' : undefined}
-      onClick={handleLinkClick}
+      target={originalTarget ?? '_blank'}
+      rel='noreferrer'
       className={clsx(
         className,
         isApiLink(originalHref) && apiClasses
@@ -78,8 +70,7 @@ export const AppLink = ({
   } else {
     return <Link
       href={href}
-      target={target}
-      rel={target === '_blank' ? 'noreferrer' : undefined}
+      target={originalTarget}
       onClick={handleLinkClick}
       className={className}
       style={style}
