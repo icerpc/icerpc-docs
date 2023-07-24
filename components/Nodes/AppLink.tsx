@@ -60,21 +60,33 @@ export const AppLink = ({
     }
   };
 
-  return (
-    <Link
+  // Use a regular anchor tag for external links.
+  if (isExternalLink(originalHref) || isApiLink(originalHref)) {
+    return <a
       href={href}
       target={target}
       rel={target === '_blank' ? 'noreferrer' : undefined}
       onClick={handleLinkClick}
       className={clsx(
         className,
-        href.includes('docs.testing.zeroc.com/api') && apiClasses
+        isApiLink(originalHref) && apiClasses
       )}
       style={style}
     >
       {children}
+    </a>
+  } else {
+    return <Link
+      href={href}
+      target={target}
+      rel={target === '_blank' ? 'noreferrer' : undefined}
+      onClick={handleLinkClick}
+      className={className}
+      style={style}
+    >
+      {children}
     </Link>
-  );
+  }
 };
 
 // Utility Functions
