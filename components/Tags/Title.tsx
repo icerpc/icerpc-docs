@@ -2,7 +2,7 @@
 
 import { baseUrls, currentNavItem, sideBarData } from 'data/side-bar-data';
 import { Breadcrumbs, Breadcrumb } from 'components/Breadcrumbs';
-import { SideBarLink, isCategory, isLink } from 'types';
+import { isCategory, isLink } from 'types';
 import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
 
 type Props = {

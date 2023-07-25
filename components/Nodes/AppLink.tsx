@@ -41,13 +41,6 @@ export const AppLink = ({
 
   const style = { ...defaultStyle, ...originalStyle };
 
-  // Determine the target for the link, e.g., "_blank" for external links.
-  const target =
-    originalTarget ||
-    (isExternalLink(originalHref) || isApiLink(originalHref)
-      ? '_blank'
-      : undefined);
-
   /**
    * Handles the click on the link, specifically for slice links.
    */
@@ -60,21 +53,31 @@ export const AppLink = ({
     }
   };
 
-  return (
-    <Link
+  // Use a regular anchor tag for external links.
+  if (isExternalLink(originalHref) || isApiLink(originalHref)) {
+    return <a
       href={href}
-      target={target}
-      rel={target === '_blank' ? 'noreferrer' : undefined}
-      onClick={handleLinkClick}
+      target={originalTarget ?? '_blank'}
+      rel='noreferrer'
       className={clsx(
         className,
-        href.includes('docs.testing.zeroc.com/api') && apiClasses
+        isApiLink(originalHref) && apiClasses
       )}
       style={style}
     >
       {children}
+    </a>
+  } else {
+    return <Link
+      href={href}
+      target={originalTarget}
+      onClick={handleLinkClick}
+      className={className}
+      style={style}
+    >
+      {children}
     </Link>
-  );
+  }
 };
 
 // Utility Functions
