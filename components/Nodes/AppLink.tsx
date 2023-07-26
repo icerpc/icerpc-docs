@@ -53,31 +53,30 @@ export const AppLink = ({
     }
   };
 
-  // Use a regular anchor tag for external links.
-  if (isExternalLink(originalHref) || isApiLink(originalHref)) {
-    return <a
-      href={href}
-      target={originalTarget ?? '_blank'}
-      rel='noreferrer'
-      className={clsx(
-        className,
-        isApiLink(originalHref) && apiClasses
-      )}
-      style={style}
-    >
-      {children}
-    </a>
-  } else {
-    return <Link
-      href={href}
-      target={originalTarget}
-      onClick={handleLinkClick}
-      className={className}
-      style={style}
-    >
-      {children}
-    </Link>
-  }
+  // Determine the target for the link, e.g., "_blank" for external links.
+  const target =
+    originalTarget ||
+    (isExternalLink(originalHref) || isApiLink(originalHref)
+      ? '_blank'
+      : undefined);
+
+
+  const prefetch = isExternalLink(originalHref) || isApiLink(originalHref) ? false : undefined;
+
+  return <Link
+    href={href}
+    target={target}
+    rel={target === '_blank' ? 'noreferrer' : undefined}
+    onClick={handleLinkClick}
+    prefetch={prefetch}
+    className={clsx(
+      className,
+      isApiLink(originalHref) && apiClasses
+    )}
+    style={style}
+  >
+    {children}
+  </Link>
 };
 
 // Utility Functions
