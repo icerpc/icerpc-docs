@@ -155,7 +155,7 @@ export const iceRpcData: SideBarSourceType[] = [
     ]
   },
   {
-    title: 'The Slic protocol',
+    title: 'The Slic transport',
     links: [
       {
         title: 'Overview',
