@@ -38,7 +38,7 @@ classDiagram
 ```
 
 The icerpc protocol sends requests and responses over a multiplexed connection by creating a dedicated bidirectional
-stream for each request + response pair. It creates a unidirectional stream for each oneway request, since a oneway
+stream for each request + response pair. It creates a unidirectional stream for each one-way request, since a one-way
 request has no response.
 
 ```mermaid
@@ -57,13 +57,13 @@ flowchart LR
         s1["< request <\n > response >"]
     end
     subgraph stream2 [stream]
-        s2["> oneway request >"]
+        s2["> one-way request >"]
     end
     subgraph stream3 [stream]
         s3["> request >\n < response <"]
     end
     subgraph stream4 [stream]
-        s4["< oneway request <"]
+        s4["< one-way request <"]
     end
     Client --- s0
     Client --- s1
