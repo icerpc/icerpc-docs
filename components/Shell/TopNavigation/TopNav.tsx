@@ -130,9 +130,11 @@ const TopNavigationItem = ({
   // Get the class names based on the active state
   const linkClassName = getLinkClassNames(isActive);
 
+  const prefetch = href.startsWith('http') ? false : undefined;
+
   return (
     <li key={href}>
-      <Link href={href} className={linkClassName}>
+      <Link href={href} className={linkClassName} prefetch={prefetch}>
         {name}
       </Link>
     </li>
@@ -151,6 +153,6 @@ function getLinkClassNames(isActive: boolean): string {
   return clsx(
     'overflow-hidden whitespace-nowrap px-2 dark:text-[rgba(255,255,255,0.6)]',
     isActive &&
-      'text-primary no-underline decoration-2 underline-offset-[1.5rem] opacity-100 dark:text-white'
+    'text-primary no-underline decoration-2 underline-offset-[1.5rem] opacity-100 dark:text-white'
   );
 }

@@ -1,10 +1,10 @@
 ---
-title: The Slic multiplexed transport protocol
+title: The Slic multiplexed transport
 show_toc: false
 ---
 
-Slic is a transport protocol designed to provide the same functionality as [QUIC][quic]. Instead of relying on UDP, it
-relies on a duplex transport (such as TCP) for the data transmission.
+Slic is a multiplexed transport designed to provide the same functionality as [QUIC][quic]. Instead of relying on UDP,
+it relies on a duplex transport (such as TCP) for the data transmission.
 
 ## QUIC vs Slic
 
