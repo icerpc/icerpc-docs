@@ -79,9 +79,9 @@ compact struct Identity {
 enum OperationMode { Normal = 0, Idempotent = 2 } // encoded on 1 byte
 ```
 
-`requestId` 0 is reserved for use in one-way requests and indicates this request has no corresponding response. A
-`requestId` greater than 0 uniquely identifies the request on a connection, and must not be reused while a response for
-this `requestId` is outstanding.
+A `requestId` with a value greater than 0 uniquely identifies a two-way request on a connection, and must not be reused
+while a response for this request is outstanding. The `requestId` 0 is reserved for one-way requests; a one-way request
+has no corresponding response.
 
 The `id` field corresponds to the path of the outgoing request's service address encoded as an
 [Ice identity](../../icerpc-for-ice-users/rpc-core/ice-identity).
@@ -161,10 +161,10 @@ The format of the `replyPayload` depends on the reply status:
 ### RequestFailedData
 
 RequestFailedData is a struct that holds the request's path, fragment and operation. The path is encoded as an
-Identity` and the fragment is encoded as a `sequence<string>`:
+`Identity` and the fragment is encoded as a `sequence<string>`:
 
 ```slice
-mode = 1
+mode = Slice1
 
 compact struct RequestFailedData {
     path: Identity
