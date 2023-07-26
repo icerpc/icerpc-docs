@@ -110,4 +110,4 @@ multiplexed transport and then plug it in IceRPC. All the transport interfaces a
 [http3]: https://en.wikipedia.org/wiki/HTTP/3
 [iap]: https://en.wikipedia.org/wiki/List_of_Bluetooth_profiles#iPod_Accessory_Protocol_(iAP)
 [quic]: https://en.wikipedia.org/wiki/QUIC
-[slic]: ../../icerpc/slic-protocol
+[slic]: ../../icerpc/slic-transport

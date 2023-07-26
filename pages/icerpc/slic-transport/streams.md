@@ -21,7 +21,7 @@ stream is bidirectional or unidirectional. The following table summarizes the fo
 | 0x02 | Client-Initiated, Unidirectional |
 | 0x03 | Server-Initiated, Unidirectional |
 
-The following table describes the stream frames defined by the Slic transport protocol:
+The following table describes the stream frames defined by the Slic transport:
 
 | Frame Type         | Description                                                                   |
 | ------------------ | ----------------------------------------------------------------------------- |
