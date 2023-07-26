@@ -1,6 +1,6 @@
 ---
 title: IceRPC
-description: RPCs without an IDL
+description: A modular RPC framework built for QUIC
 showToc: false
 ---
 
@@ -25,12 +25,12 @@ and responses carry byte streams—if you want a typed API, use [Slice][slice] o
    href="/icerpc/dispatch/dispatch-pipeline" /%}
 
 {% mini-card
-   title="Server Address"
+   title="Server address"
    description="Understand the server address concept and syntax."
    href="/icerpc/connection/server-address" /%}
 
 {% mini-card
-   title="Service Address"
+   title="Service address"
    description="Understand the service address concept and syntax."
    href="/icerpc/invocation/service-address" /%}
 
@@ -45,17 +45,17 @@ and responses carry byte streams—if you want a typed API, use [Slice][slice] o
 {% grid %}
 
 {% mini-card
-   title="Core Example"
+   title="Core example"
    description="Using IceRPC without an IDL."
    href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterCore" /%}
 
 {% mini-card
-   title="JSON Example"
+   title="JSON example"
    description="Using IceRPC with JSON."
    href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterJson" /%}
 
 {% mini-card
-   title="Protobuf Example"
+   title="Protobuf example"
    description="Using IceRPC with Protobuf."
    href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterProtobuf" /%}
 
