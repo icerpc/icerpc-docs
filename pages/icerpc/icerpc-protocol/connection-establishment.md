@@ -45,7 +45,7 @@ The `Settings` frame is used to configure an icerpc connection during connection
 connection must send a `Settings` frame and wait until it receives a `Settings` frame from the peer; there is however no
 requirement to specify any setting.
 
-icerpc currently provides a single setting, `MaxHeaderSize`. It specifies the maximum size of the header of a request or
+There is currently only one setting, `MaxHeaderSize`. It specifies the maximum size of the header of a request or
 response sent over this connection.
 
 Not specifying the `MaxHeaderSize` setting is equivalent to specifying its default value, 16,383. This default value

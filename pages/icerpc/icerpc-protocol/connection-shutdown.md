@@ -15,7 +15,7 @@ from the peer.
 
 2. Send a `GoAway` frame to the peer over its outbound control stream.
 
-    The GoAway frame carries two stream IDs, the `bidirectionalStreamId` and the `unidirectionalStreamId`. Any stream
+    The `GoAway` frame carries two stream IDs, the `bidirectionalStreamId` and the `unidirectionalStreamId`. Any stream
     ID greater than or equal to these IDs will not be accepted by the `GoAway` sender.
 
     This way, the peer can identify the outstanding requests it has sent (or is sending) and cancel these requests: they
