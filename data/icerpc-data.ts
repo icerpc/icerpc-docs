@@ -159,31 +159,31 @@ export const iceRpcData: SideBarSourceType[] = [
     links: [
       {
         title: 'Overview',
-        path: `${ICERPC_BASE_URL}/slic-protocol/`
+        path: `${ICERPC_BASE_URL}/slic-transport/`
       },
       {
         title: 'Connection establishment',
-        path: `${ICERPC_BASE_URL}/slic-protocol/connection-establishment`
+        path: `${ICERPC_BASE_URL}/slic-transport/connection-establishment`
       },
       {
         title: 'Connection closure',
-        path: `${ICERPC_BASE_URL}/slic-protocol/connection-closure`
+        path: `${ICERPC_BASE_URL}/slic-transport/connection-closure`
       },
       {
         title: 'Connection idle timeout',
-        path: `${ICERPC_BASE_URL}/slic-protocol/connection-idle-timeout`
+        path: `${ICERPC_BASE_URL}/slic-transport/connection-idle-timeout`
       },
       {
         title: 'Streams',
-        path: `${ICERPC_BASE_URL}/slic-protocol/streams`
+        path: `${ICERPC_BASE_URL}/slic-transport/streams`
       },
       {
         title: 'Flow control',
-        path: `${ICERPC_BASE_URL}/slic-protocol/flow-control`
+        path: `${ICERPC_BASE_URL}/slic-transport/flow-control`
       },
       {
         title: 'Protocol frames',
-        path: `${ICERPC_BASE_URL}/slic-protocol/protocol-frames`
+        path: `${ICERPC_BASE_URL}/slic-transport/protocol-frames`
       }
     ]
   }
