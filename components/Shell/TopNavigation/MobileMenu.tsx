@@ -15,8 +15,6 @@ import { Mode } from 'types';
 export const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log('MobileMenu', isOpen);
-
   function closeModal() {
     setIsOpen(false);
   }
