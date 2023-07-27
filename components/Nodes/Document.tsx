@@ -25,13 +25,11 @@ export const Document = ({
   mode,
   showAside = true
 }: Props) => {
-
   const { mode: currentMode } = useMode();
   const [asideItems, setAsideItems] = useState<AsideItem[]>([]);
 
   useEffect(() => {
     setAsideItems(collectHeadings(children, currentMode));
-
   }, [children, currentMode]);
 
   // A variable that is only true if the current mode matches the mode of the document (if specified).

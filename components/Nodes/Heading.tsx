@@ -17,17 +17,19 @@ type Props = {
 
 const CopyButton = ({ id }: { id: string }) => {
   const router = useRouter();
-  return <button
-    className="h-5 pl-2 opacity-0 duration-100 ease-in-out group-hover:opacity-100"
-    aria-label="Copy link to heading"
-    onClick={() => {
-      copy(window.location.origin + window.location.pathname + `#${id}`);
-      router.push(`#${id}`);
-    }}
-  >
-    <LinkIcon className="h-4 w-4 font-bold text-slate-700 dark:text-slate-300" />
-  </button>
-}
+  return (
+    <button
+      className="h-5 pl-2 opacity-0 duration-100 ease-in-out group-hover:opacity-100"
+      aria-label="Copy link to heading"
+      onClick={() => {
+        copy(window.location.origin + window.location.pathname + `#${id}`);
+        router.push(`#${id}`);
+      }}
+    >
+      <LinkIcon className="h-4 w-4 font-bold text-slate-700 dark:text-slate-300" />
+    </button>
+  );
+};
 
 export const Heading = ({ id = '', level = 1, children }: Props) => {
   const Component: any = `h${level}`;

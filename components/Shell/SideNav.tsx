@@ -34,7 +34,8 @@ export const SideNav = () => {
       setPath(path);
 
       const pathSegments = path.split('/');
-      const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
+      const baseUrl =
+        baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
       setBaseUrl(baseUrl);
     }
   }, [isReady, asPath]);
@@ -45,9 +46,7 @@ export const SideNav = () => {
   // Sidebar data
   useEffect(() => {
     const links = sideBarData(baseUrl) ?? [];
-    setCells(links.map((item) =>
-      transformSideBarData(path, item)
-    ));
+    setCells(links.map((item) => transformSideBarData(path, item)));
   }, [path, currentMode, baseUrl]);
 
   //TODO: look into moving this check closer to _app.tsx
@@ -93,7 +92,8 @@ export function MobileSideNav() {
       setBreadcrumbs(getBreadcrumbs(path));
 
       const pathSegments = path.split('/');
-      const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
+      const baseUrl =
+        baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
       setBaseUrl(baseUrl);
     }
   }, [isReady, asPath]);
@@ -105,9 +105,11 @@ export function MobileSideNav() {
   // Sidebar data
   useEffect(() => {
     const links = sideBarData(baseUrl) ?? [];
-    setCells(links.map((item) =>
-      transformSideBarData(path, item, () => setIsOpen(false))
-    ));
+    setCells(
+      links.map((item) =>
+        transformSideBarData(path, item, () => setIsOpen(false))
+      )
+    );
   }, [path, currentMode, baseUrl]);
 
   function closeModal() {

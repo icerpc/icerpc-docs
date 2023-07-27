@@ -19,7 +19,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 export const TopNav = () => {
-
   const { mode } = useMode();
 
   const navigationItems = [
@@ -117,11 +116,7 @@ type TopNavigationItemProps = {
   href: string;
 };
 
-const TopNavigationItem = ({
-  name,
-  href
-}: TopNavigationItemProps) => {
-
+const TopNavigationItem = ({ name, href }: TopNavigationItemProps) => {
   const { asPath, isReady } = useRouter();
   const [path, setPath] = useState(asPath);
 
@@ -131,15 +126,17 @@ const TopNavigationItem = ({
 
   const prefetch = href.startsWith('http') ? false : undefined;
 
-  const baseClassName = 'overflow-hidden whitespace-nowrap px-2 dark:text-[rgba(255,255,255,0.6)]';
-  const activeClassName = 'text-primary no-underline decoration-2 underline-offset-[1.5rem] opacity-100 dark:text-white';
+  const baseClassName =
+    'overflow-hidden whitespace-nowrap px-2 dark:text-[rgba(255,255,255,0.6)]';
+  const activeClassName =
+    'text-primary no-underline decoration-2 underline-offset-[1.5rem] opacity-100 dark:text-white';
 
   const [linkClassName, setLinkClassName] = useState(baseClassName);
 
   useEffect(() => {
     const isActive = isActivePath(path, href);
-    setLinkClassName(clsx(baseClassName, isActive && activeClassName))
-  }, [href, path, setLinkClassName])
+    setLinkClassName(clsx(baseClassName, isActive && activeClassName));
+  }, [href, path, setLinkClassName]);
 
   return (
     <li key={href}>

@@ -28,7 +28,11 @@ export async function getInitialProps(appContext: AppContext) {
   };
 }
 
-export default function MyApp(props: { Component: any; pageProps: any, notFound: boolean }) {
+export default function MyApp(props: {
+  Component: any;
+  pageProps: any;
+  notFound: boolean;
+}) {
   const { Component, pageProps } = props;
 
   // Get current hostname and port for og:image

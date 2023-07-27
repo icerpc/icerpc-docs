@@ -37,7 +37,7 @@ export const Aside = ({ asideItems }: { asideItems: AsideItem[] }) => {
   const { asPath, isReady } = useRouter();
 
   // Edit this page URL
-  const baseEditPath = 'https://github.com/icerpc/icerpc-docs/tree/main/pages'
+  const baseEditPath = 'https://github.com/icerpc/icerpc-docs/tree/main/pages';
   const [editUrl, setEditUrl] = useState(baseEditPath + asPath);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export const Aside = ({ asideItems }: { asideItems: AsideItem[] }) => {
       path = path.replace(/^\/slice\d/, '/slice'); // strip away slice version
       setEditUrl(baseEditPath + path);
     }
-  }, [asPath, isReady])
+  }, [asPath, isReady]);
 
   useEffect(() => {
     const handleScroll = () => {
