@@ -18,7 +18,7 @@ import {
 } from 'types';
 import { Divider } from 'components/Divider';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
-import { getBreadcrumbs } from 'components/Tags/Title';
+import { getBreadcrumbs } from 'lib/breadcrumbs';
 import { SearchButton } from './SearchButton';
 
 export const SideNav = ({ path }: SideNavProps) => {
