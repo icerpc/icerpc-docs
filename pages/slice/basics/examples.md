@@ -45,7 +45,7 @@ interface MyOperations {
     // two operation parameters and two return parameters
     opParamsReturns(message: string, count: int32) -> (value: float32, list: sequence<int32>)
 
-    // a oneway operation
+    // a one-way operation
     [oneway] opOneway(message: string)
 
     // an idempotent operation
@@ -81,7 +81,7 @@ interface MyOperations {
     // two return parameters; the last return parameter is a stream
     receiveNextFile() -> (name: string, contents: stream uint8)
 
-    // a oneway operation
+    // a one-way operation
     [oneway] opOneway(message: string)
 
     // an idempotent operation

@@ -8,11 +8,11 @@ description: Understand how requests and responses are sent over icerpc.
 The QUIC transport and its multiplexed transport abstraction are ideal for RPCs and the icerpc protocol takes full
 advantage of these transports.
 
-icerpc creates a dedicated multiplexed stream for each RPC. A twoway RPC, with a request and a response, is carried by a
-bidirectional stream, while a oneway RPC, with a request and no response, is carried by an unidirectional stream.
+icerpc creates a dedicated multiplexed stream for each RPC. A two-way RPC, with a request and a response, is carried by
+a bidirectional stream, while a one-way RPC, with a request and no response, is carried by an unidirectional stream.
 
 A request flows from the endpoint that created the stream to the endpoint that accepted the stream. A response flows the
-other way--from the endpoint that accepted the stream to the endpoint that created the stream.
+other way—from the endpoint that accepted the stream to the endpoint that created the stream.
 
 ```mermaid
 ---
@@ -40,7 +40,7 @@ flowchart LR
     outbound1 -- request --> inbound1
     inbound1 -- response --> outbound1
 
-    outbound6 -- oneway request --> inbound6
+    outbound6 -- one-way request --> inbound6
 ```
 
 ## Request layout
@@ -56,7 +56,7 @@ The request header holds:
 
 icerpc transmits the request fields without attaching any meaning to their values or presence.
 
-The request header is specified using Slice and encoded using Slice2:
+The request header is specified using Slice:
 
 ```slice
 compact struct Request {
@@ -84,7 +84,7 @@ For example, a request for operation "op" at path "/foo" with an empty payload a
 ```
 
 {% callout type="information" %}
-With Slice2's varuint62 encoding, the first 2 bits of the first byte encode the number of bytes used to encode the
+With Slice's varuint62 encoding, the first 2 bits of the first byte encode the number of bytes used to encode the
 value. As a result, for a varuint62 encoded on a single byte, the encoded value is `source * 4`, and for a varuint62
 encoded on 2 bytes, the encoded value is `source * 4 + 1`.
 {% /callout %}
@@ -126,4 +126,4 @@ For example, a response with status code Success, no fields and an empty payload
 0x00                : field dictionary size (0) on 1 byte (no fields)
 ```
 
-[slice]: ../../slice
+[slice]: ../../slice2

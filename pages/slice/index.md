@@ -13,7 +13,7 @@ It is easier and more typical to use IceRPC together with a serialization librar
 Slice compiler generate code that encodes and decodes Person to and from bytes in the Protobuf resp. Slice binary
 format.
 
-{% side-by-side %}
+{% side-by-side alignment="top" %}
 ```proto
 // A Person message defined with Protobuf
 
