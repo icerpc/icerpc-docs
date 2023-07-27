@@ -42,7 +42,7 @@ export const SliceSelector = () => {
 
   return (
     <>
-      <div className="mb-6 mt-3 w-full pr-4">
+      <div className="mb-6 mt-3 w-full">
         <Tab.Group selectedIndex={selectedIndex} onChange={onChange}>
           <Tab.List className="flex space-x-2 rounded-xl bg-transparent">
             {modes.map((mode, index) => (
