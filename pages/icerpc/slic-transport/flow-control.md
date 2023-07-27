@@ -5,9 +5,9 @@ description: Understand how flow control works with Slic.
 
 ## Connection data flow control
 
-Slic doesn't implement connection level flow control. Instead, it solely relies on the duplex transport for applying
-back pressure on the sender if the receiver can't process the incoming data fast enough. Therefore, the underlying
-duplex transport must support flow control.
+Slic doesn't implement connection level flow control. Instead, it solely relies on the underlying duplex transport for
+applying back pressure on the sender if the receiver can't process the incoming data fast enough. Therefore, the
+underlying duplex transport must support flow control.
 
 ## Stream data flow control
 
