@@ -28,6 +28,20 @@ await using var connection = new ClientConnection(
 The same logic applies to servers: if you configure your server to use quic, any connection accepted by this server will
 use TLS.
 
+In C#, you need to specify TLS configuration—in particular a X.509 certificate—for any server that uses quic. For
+example:
+
+```csharp
+// SslServerAuthenticationOptions is required with QuicServerTransport.
+await using var server = new Server(
+    new Chatbot(),
+    new SslServerAuthenticationOptions
+    {
+        ServerCertificate = new X509Certificate2("server.p12")
+    },
+    multiplexedServerTransport: new QuicServerTransport());
+```
+
 ## tcp
 
 The tcp transport may or may not use TLS. If you specify TLS configuration when you create your client connection for
@@ -72,14 +86,14 @@ await using var connection = new ClientConnection(
     new SslClientAuthenticationOptions());
 ```
 
-The ssl transport is provided solely for backwards compatibility with Ice: the standard way for an Ice application to
+The ssl transport is provided solely for backward compatibility with Ice: the standard way for an Ice application to
 request a secure connection is to send a proxy with an ssl server address. When IceRPC + Slice receives such a proxy,
 the ssl transport captures this information ("TLS required") and ensures the client establishes a secure connection when
 it calls the decoded proxy.
 
 {% callout %}
 With Ice, the tcp transport means "don't use TLS". As described earlier, with IceRPC, the tcp transport means plain
-tcp or tcp + tls depending of your TLS configuration.
+tcp or tcp + tls depending on your TLS configuration.
 {% /callout %}
 
 With the icerpc protocol, both the client and the server must have the same TLS expectations, and an icerpc server
@@ -92,7 +106,7 @@ get an error.
 
 ```csharp
 // Does not work: can't get a TLS connection with a transport that doesn't support TLS.
-await using var secureColocConnection = new ClientConnection(
+await using var connection = new ClientConnection(
     "icerpc://colochost",
     new SslClientAuthenticationOptions()
     multiplexedClientTransport: new SlicClientTransport(colocClientTransport));
