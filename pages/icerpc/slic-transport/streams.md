@@ -77,11 +77,13 @@ The following state diagram shows the states of the stream write side.
 ```mermaid
 stateDiagram
     WritesClosed : Writes closed
-    [*] --> Ready: Create stream
-    [*] --> Ready: Accept stream
-    Ready --> WritesClosed: Send <i>StreamLast</i>
-    Ready --> Send: Send <i>Stream</i>
-    Send --> WritesClosed: <center>Send <i>StreamLast</i> or <i>StreamWritesClosed</i><br />Received <i>StreamReadsClosed</i></center>
+    [*] --> Ready: <center>Create<br/>stream</center>
+    [*] --> Ready: <center>Accept<br/>stream</center>
+    Ready --> Send: <center>Send<br/><i>Stream</i></center>
+    Ready --> WritesClosed: <center>Send<br/><i>StreamLast</i></center>
+    Send --> WritesClosed: <center>Received<br/><i>StreamReadsClosed</i></center>
+    Send --> WritesClosed: <center>Send<br/><i>StreamLast</i></center>
+    Send --> WritesClosed: <center>Send<br/><i>StreamWritesClosed</i></center>
     WritesClosed --> [*]
 ```
 
@@ -91,11 +93,13 @@ And the following state diagram shows the states of the stream read side.
 stateDiagram
     ReadsClosed : Reads closed
     DataReceived: Data received
-    [*] --> Receive: <center>Received <i>Stream</i><br />or <i>StreamLast</i></center>
-    [*] --> Receive: Create bidirectional stream
-    Receive --> ReadsClosed: <center>Send <i>StreamReadsClosed</i><br />Received <i>StreamWritesClosed</i></center>
-    Receive --> DataReceived: Received <i>StreamLast</i>
-    DataReceived --> ReadsClosed: Data consumed
+    [*] --> Receive: <center>Received<br/><i>Stream</i></center>
+    [*] --> Receive: <center>Create<br/>bidirectional stream</center>
+    [*] --> Receive: <center>Received<br/><i>StreamLast</i></center>
+    Receive --> ReadsClosed: <center>Send<br/><i>StreamReadsClosed</i></center>
+    Receive --> ReadsClosed: <center>Received<br/><i>StreamWritesClosed</i></center>
+    Receive --> DataReceived: <center>Received<br/><i>StreamLast</i></center>
+    DataReceived --> ReadsClosed: <center>Data<br/>consumed</center>
     ReadsClosed --> [*]
 ```
 
