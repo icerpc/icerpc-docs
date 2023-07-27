@@ -50,14 +50,16 @@ Slic version (V1) which is at present the only version.
 ## Initialize frame
 
 An Initialize frame carries parameters sent by a client to a server on connection establishment. It consists of a header
-with the Initialize type followed by:
-- a version encoded as a `varuint62`
-- an Initialize body
+with the Initialize type followed by an Initialize body.
 
-The Initialize body is defined as follows:
+The Initialize body has the following layout:
+- a Slic version
+- a version specific body
+
+For the first Slic version (V1), the version specific body is defined as follows:
 
 ```slice
-compact struct InitializeBody {
+compact struct V1InitializeBody {
     parameters: ParameterFields
 }
 
@@ -73,16 +75,6 @@ typealias ParameterFields = dictionary<ParameterKey, sequence<uint8>>
 ```
 
 The parameters are used to configure the connection.
-
-When the server receives the Initialize frame, it reads the Slic version. If supported, it reads the Initialize frame
-body. Otherwise, it skips its reading.
-
-{% callout %}
-
-The Slic version is not part of the Initialize frame body because an upcoming Slic version might update the definition
-of the Initialize frame body.
-
-{% /callout %}
 
 ## InitializeAck frame
 
