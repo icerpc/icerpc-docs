@@ -23,7 +23,6 @@ import { SearchButton } from './SearchButton';
 import { Breadcrumb } from 'components/Breadcrumbs';
 
 export const SideNav = () => {
-  const router = useRouter();
   const { asPath, isReady } = useRouter();
   const [path, setPath] = useState(asPath);
   const [baseUrl, setBaseUrl] = useState('');
@@ -48,12 +47,6 @@ export const SideNav = () => {
     const links = sideBarData(baseUrl) ?? [];
     setCells(links.map((item) => transformSideBarData(path, item)));
   }, [path, currentMode, baseUrl]);
-
-  //TODO: look into moving this check closer to _app.tsx
-  // Return null if on 404 page, all other pages should have a side navigation
-  if (router.pathname == '/404') {
-    return null;
-  }
 
   return (
     <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-darkBorder/60 dark:bg-black lg:flex">

@@ -9,7 +9,7 @@ import Head from 'next/head';
 import '/public/globals.css';
 
 import { AppWrapper } from 'context/state';
-import { SideNav, TopNav } from 'components';
+import { TopNav } from 'components';
 import { Footer } from 'components/Shell';
 import { CookiesBanner } from 'components/Cookies';
 
@@ -81,15 +81,9 @@ export default function MyApp(props: {
       <ThemeProvider attribute="class" enableSystem={true}>
         <AppWrapper>
           <TopNav />
-          <div className="mt-[6.5rem] flex flex-row justify-center lg:mt-[3.75rem] ">
-            <div className="flex max-w-[100rem] grow flex-row justify-center">
-              <SideNav />
-              <main className={clsx(inter.className, 'grow')} id="main">
-                <div id="skip-nav" />
-                <Component {...pageProps} />
-              </main>
-            </div>
-          </div>
+          <main className={clsx(inter.className)} id="main">
+            <Component {...pageProps} />
+          </main>
           <CookiesBanner />
           <Footer />
         </AppWrapper>
