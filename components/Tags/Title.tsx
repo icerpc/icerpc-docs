@@ -7,7 +7,6 @@ import { getBreadcrumbs } from 'lib/breadcrumbs';
 type Props = {
   title: string;
   description: string;
-  showBreadcrumbs?: boolean;
   readingTime?: string;
 };
 
@@ -15,7 +14,6 @@ export const Title = ({
   title,
   description,
   readingTime,
-  showBreadcrumbs = true
 }: Props) => {
   const path = useHydrationFriendlyAsPath();
   const breadcrumbs = getBreadcrumbs(path);
@@ -23,8 +21,8 @@ export const Title = ({
   return (
     <div className="not-prose mb-10">
       <div className="mb-2 flex flex-row items-center justify-between">
-        {showBreadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
-        {readingTime && showBreadcrumbs && (
+        {<Breadcrumbs breadcrumbs={breadcrumbs} />}
+        {readingTime && (
           <p className="text-xs">{readingTime}</p>
         )}
       </div>

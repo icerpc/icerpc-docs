@@ -7,7 +7,6 @@ import { Mode } from 'types';
 import { useMode } from 'context/state';
 import { PageHistory, TableOfContents, Feedback } from 'components/Shell';
 import { collectHeadings } from 'utils/collectHeadings';
-import { baseUrls } from 'data/side-bar-data';
 import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
 
 type Props = {
@@ -30,7 +29,6 @@ export const Document = ({
   const { mode: currentMode } = useMode();
   const [toc, setToc] = React.useState<TOCItem[]>([]);
   const path = useHydrationFriendlyAsPath();
-  const isBaseUrl = baseUrls.some((baseUrl) => path == baseUrl);
 
   React.useEffect(() => {
     setToc(collectHeadings(children, currentMode));
@@ -47,7 +45,6 @@ export const Document = ({
             title={title}
             description={description}
             readingTime={readingTime}
-            showBreadcrumbs={!isBaseUrl}
           />
         )}
         {mode ? (
