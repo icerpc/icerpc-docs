@@ -59,6 +59,8 @@ It is important to note that `EMPTY` is **not** a symbol, but a placeholder for 
 
 ## Core language
 
+### Lexical grammar
+
 This lexical grammar is not strictly context-free due to the following behavior:
 When a lexer has seen a '[' character, but hasn't seen a ']' character since then,
 it must prioritize producing `identifier` symbols over other symbols.
@@ -67,8 +69,6 @@ This allows attribute directives and arguments to accept strings that would norm
 For example: `[cs::custom("Foo")]`; without this exception, "custom" would produce a `custom_keyword` token.
 
 While context-dependent, this behavior is still unambiguous, since keywords cannot validly appear in attributes.
-
-### Lexical grammar
 
 ```EBNF
 identifier: "\"? LETTER ALPHANUMERIC*;
