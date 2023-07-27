@@ -98,6 +98,7 @@ export const getStaticProps: GetStaticProps<object, Params> = async ({
       : {};
   }
 
+  //TODO: this doesn't ever get hit when a page is not found
   // Check if fileContent is available
   const hasPageContent = !!fileContent;
 

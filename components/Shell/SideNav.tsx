@@ -2,7 +2,7 @@
 
 import React, { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { NextRouter, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { SliceSelector } from '../SliceSelector';
 import { useMode } from 'context/state';
 import clsx from 'clsx';
@@ -20,26 +20,37 @@ import { Divider } from 'components/Divider';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { getBreadcrumbs } from 'lib/breadcrumbs';
 import { SearchButton } from './SearchButton';
+import { Breadcrumb } from 'components/Breadcrumbs';
 
-export const SideNav = ({ path }: SideNavProps) => {
-  const [data, setData] = useState<SideBarSourceType[]>([]);
-  const { mode: currentMode } = useMode();
+export const SideNav = () => {
   const router = useRouter();
-  const pathSegments = path.split('/');
-  const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
+  const { asPath, isReady } = useRouter();
+  const [path, setPath] = useState(asPath);
+  const [baseUrl, setBaseUrl] = useState('');
 
   useEffect(() => {
+    if (isReady) {
+      const path = asPath.split('?')[0];
+      setPath(path);
+
+      const pathSegments = path.split('/');
+      const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
+      setBaseUrl(baseUrl);
+    }
+  }, [isReady, asPath]);
+
+  const { mode: currentMode } = useMode();
+  const [cells, setCells] = useState<React.ReactElement[][]>();
+
+  // Sidebar data
+  useEffect(() => {
     const links = sideBarData(baseUrl) ?? [];
-    setData(links);
-    return () => {
-      setData([]);
-    };
-  }, [setData, path, currentMode, baseUrl]);
+    setCells(links.map((item) =>
+      transformSideBarData(path, item)
+    ));
+  }, [path, currentMode, baseUrl]);
 
-  const cells = data.map((item) => {
-    return transformSideBarData(router, item);
-  });
-
+  //TODO: look into moving this check closer to _app.tsx
   // Return null if on 404 page, all other pages should have a side navigation
   if (router.pathname == '/404') {
     return null;
@@ -69,143 +80,143 @@ export const SideNav = ({ path }: SideNavProps) => {
   );
 };
 
-type MobileSideNavProps = {
-  pathname: string;
-};
-
-export function MobileSideNav({ pathname }: MobileSideNavProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState<SideBarSourceType[]>([]);
-  const { mode: currentMode } = useMode();
-  const breadcrumbs = getBreadcrumbs(pathname);
-  const router = useRouter();
-
-  const pathSegments = pathname.split('/');
-  const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
+export function MobileSideNav() {
+  const { asPath, isReady } = useRouter();
+  const [path, setPath] = useState(asPath);
+  const [breadcrumbs, setBreadcrumbs] = useState<Breadcrumb[]>([]);
+  const [baseUrl, setBaseUrl] = useState('');
 
   useEffect(() => {
-    const links = sideBarData(baseUrl) ?? [];
-    setData(links);
-    return () => {
-      setData([]);
-    };
-  }, [setData, pathname, currentMode, baseUrl]);
+    if (isReady) {
+      const path = asPath.split('?')[0];
+      setPath(path);
+      setBreadcrumbs(getBreadcrumbs(path));
 
-  const cells = data.map((item) => {
-    return transformSideBarData(router, item, () => setIsOpen(false));
-  });
+      const pathSegments = path.split('/');
+      const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
+      setBaseUrl(baseUrl);
+    }
+  }, [isReady, asPath]);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const { mode: currentMode } = useMode();
+  const [cells, setCells] = useState<React.ReactElement[][]>();
+
+  // Sidebar data
+  useEffect(() => {
+    const links = sideBarData(baseUrl) ?? [];
+    setCells(links.map((item) =>
+      transformSideBarData(path, item, () => setIsOpen(false))
+    ));
+  }, [path, currentMode, baseUrl]);
 
   function closeModal() {
     setIsOpen(false);
   }
 
-  if (breadcrumbs.length > 0) {
-    return (
-      <>
-        <div className="flex items-center justify-start border-t border-lightBorder p-4 text-sm dark:border-darkBorder lg:hidden">
-          <button>
-            <Bars3Icon
-              className="ml-1 mr-4 block h-5 w-5 text-slate-500 dark:text-white/80"
-              aria-hidden="true"
-              onClick={() => setIsOpen(!isOpen)}
-            />
-          </button>
-          {breadcrumbs.map((breadcrumb, index) => (
-            <div key={breadcrumb.href} className="flex items-center">
-              <Link
-                href={breadcrumb.href}
-                className={clsx(
-                  index !== breadcrumbs.length - 1
-                    ? 'text-slate-500 dark:text-white/80'
-                    : 'font-semibold text-black dark:text-white'
-                )}
-              >
-                {breadcrumb.name}
-              </Link>
-              {index !== breadcrumbs.length - 1 && (
-                <ChevronRightIcon
-                  className="mx-2 block h-4 w-4 text-slate-500 "
-                  aria-hidden="true"
-                />
+  return (
+    <>
+      <div className="flex items-center justify-start border-t border-lightBorder p-4 text-sm dark:border-darkBorder lg:hidden">
+        <button>
+          <Bars3Icon
+            className="ml-1 mr-4 block h-5 w-5 text-slate-500 dark:text-white/80"
+            aria-hidden="true"
+            onClick={() => setIsOpen(!isOpen)}
+          />
+        </button>
+        {breadcrumbs.map((breadcrumb, index) => (
+          <div key={breadcrumb.href} className="flex items-center">
+            <Link
+              href={breadcrumb.href}
+              className={clsx(
+                index !== breadcrumbs.length - 1
+                  ? 'text-slate-500 dark:text-white/80'
+                  : 'font-semibold text-black dark:text-white'
               )}
-            </div>
-          ))}
-        </div>
-        <Transition appear show={isOpen} as={Fragment}>
-          <Dialog as="div" className="relative z-10" onClose={closeModal}>
+            >
+              {breadcrumb.name}
+            </Link>
+            {index !== breadcrumbs.length - 1 && (
+              <ChevronRightIcon
+                className="mx-2 block h-4 w-4 text-slate-500 "
+                aria-hidden="true"
+              />
+            )}
+          </div>
+        ))}
+      </div>
+      <Transition appear show={isOpen} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200 delay-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black/60" />
+          </Transition.Child>
+          <div className="fixed inset-0 overflow-y-auto">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="ease-in duration-200 delay-100"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
+              enterFrom="-left-[300px]"
+              enterTo="left-0"
+              leave="ease-in duration-200"
+              leaveFrom="left-0"
+              leaveTo="-left-[300px]"
             >
-              <div className="fixed inset-0 bg-black/60" />
-            </Transition.Child>
-            <div className="fixed inset-0 overflow-y-auto">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="-left-[300px]"
-                enterTo="left-0"
-                leave="ease-in duration-200"
-                leaveFrom="left-0"
-                leaveTo="-left-[300px]"
+              <div
+                className={clsx(
+                  'fixed left-0 top-0 h-screen w-full max-w-[280px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
+                )}
               >
-                <div
-                  className={clsx(
-                    'fixed left-0 top-0 h-screen w-full max-w-[280px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
-                  )}
-                >
-                  <Dialog.Panel className="h-full w-full overflow-hidden rounded-r text-left align-middle text-sm font-bold shadow-xl transition-all">
-                    <div className="flex h-full w-full flex-col items-start">
-                      <section id="controls" className="mt-2 pl-6">
-                        <div className="flex flex-row justify-end">
-                          <button
-                            type="button"
-                            className={clsx(
-                              'group ml-auto mt-4 items-center justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium',
-                              'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-                            )}
-                            onClick={closeModal}
-                          >
-                            <XMarkIcon
-                              className="block h-5 w-5 group-hover:text-slate-500 dark:group-hover:text-slate-400"
-                              aria-hidden="true"
-                            />
-                          </button>
-                        </div>
-                        <div className="mt-6">
-                          {isSlicePage(baseUrl) && <SliceSelector />}
-                        </div>
-                      </section>
-                      <nav
-                        className={clsx(
-                          'block h-full w-full overflow-y-auto',
-                          'bg-none pb-10 pl-6 pr-3 pt-4'
-                        )}
-                      >
-                        <div className="pointer-events-none sticky top-0" />
-                        <ul className="mx-2">{cells}</ul>
-                      </nav>
-                    </div>
-                  </Dialog.Panel>
-                </div>
-              </Transition.Child>
-            </div>
-          </Dialog>
-        </Transition>
-      </>
-    );
-  } else {
-    return null;
-  }
+                <Dialog.Panel className="h-full w-full overflow-hidden rounded-r text-left align-middle text-sm font-bold shadow-xl transition-all">
+                  <div className="flex h-full w-full flex-col items-start">
+                    <section id="controls" className="mt-2 pl-6">
+                      <div className="flex flex-row justify-end">
+                        <button
+                          type="button"
+                          className={clsx(
+                            'group ml-auto mt-4 items-center justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium',
+                            'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                          )}
+                          onClick={closeModal}
+                        >
+                          <XMarkIcon
+                            className="block h-5 w-5 group-hover:text-slate-500 dark:group-hover:text-slate-400"
+                            aria-hidden="true"
+                          />
+                        </button>
+                      </div>
+                      <div className="mt-6">
+                        {isSlicePage(baseUrl) && <SliceSelector />}
+                      </div>
+                    </section>
+                    <nav
+                      className={clsx(
+                        'block h-full w-full overflow-y-auto',
+                        'bg-none pb-10 pl-6 pr-3 pt-4'
+                      )}
+                    >
+                      <div className="pointer-events-none sticky top-0" />
+                      <ul className="mx-2">{cells}</ul>
+                    </nav>
+                  </div>
+                </Dialog.Panel>
+              </div>
+            </Transition.Child>
+          </div>
+        </Dialog>
+      </Transition>
+    </>
+  );
 }
 
 function createListItem(
-  router: NextRouter,
+  path: string,
   link: SideBarLink | SideBarDivider,
   noLeftPadding = false,
   onClick: React.MouseEventHandler<HTMLAnchorElement> | undefined
@@ -213,7 +224,7 @@ function createListItem(
   const leftPadding = noLeftPadding ? 'ml-0' : 'ml-3';
 
   if (isLink(link)) {
-    const isCurrentPage = router.asPath === link.path.replace(/\/$/, '');
+    const isCurrentPage = path === link.path.replace(/\/$/, '');
     return (
       <li key={link.path} className="flex">
         <Link
@@ -244,7 +255,7 @@ function createListItem(
 }
 
 function transformSideBarData(
-  router: NextRouter,
+  path: string,
   data: SideBarSourceType,
   onClick: React.MouseEventHandler<HTMLAnchorElement> | undefined = undefined
 ): React.ReactElement[] {
@@ -264,7 +275,7 @@ function transformSideBarData(
               className="ml-[0.1rem] border-l-[1.5px] border-lightBorder pl-[0.1rem] dark:border-[#3D3D3D]"
             >
               {category.links.map((link) =>
-                createListItem(router, link, false, onClick)
+                createListItem(path, link, false, onClick)
               )}
             </ul>
           </li>
@@ -272,7 +283,7 @@ function transformSideBarData(
       </li>
     ];
   } else if (isLink(data)) {
-    return [createListItem(router, data, true, onClick)];
+    return [createListItem(path, data, true, onClick)];
   } else {
     return [
       <div key={data.title} className="mr-4 py-2 text-sm uppercase text-black">
@@ -286,7 +297,3 @@ function transformSideBarData(
 
 const isSlicePage = (baseUrl: string) =>
   ['/slice1', '/slice2'].includes(baseUrl);
-
-type SideNavProps = {
-  path: string;
-};
