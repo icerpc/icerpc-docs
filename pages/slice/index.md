@@ -1,7 +1,7 @@
 ---
 title: Slice
 description: A better IDL
-showToc: false
+showAside: false
 ---
 
 IceRPC provides everything you need to make RPCs. When you use only IceRPC's core API, the payload of your requests

@@ -16,16 +16,16 @@ import { baseUrls } from 'data/side-bar-data';
 import { Divider } from 'components/Divider';
 import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
 
-export type TOCItem = {
+export type AsideItem = {
   id: string;
   title: string;
   level: number;
 };
 
-export const TableOfContents = ({ toc }: { toc: TOCItem[] }) => {
+export const Aside = ({ asideItems }: { asideItems: AsideItem[] }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const currentPath = resolvePath(useHydrationFriendlyAsPath());
-  const items = toc.filter(
+  const items = asideItems.filter(
     (item) =>
       item.id &&
       (item.level === 2 || item.level === 3) &&
@@ -184,7 +184,7 @@ const MoreItem = ({ href, children }: MoreItemProps) => {
 };
 
 type ListItemProps = {
-  item: TOCItem;
+  item: AsideItem;
   activeId: string;
 };
 

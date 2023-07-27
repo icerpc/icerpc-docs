@@ -1,7 +1,7 @@
 ---
 title: IceRPC
 description: A modular RPC framework built for QUIC
-showToc: false
+showAside: false
 ---
 
 IceRPC provides everything you need to send and receive requests and responses over network connections. These requests

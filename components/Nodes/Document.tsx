@@ -2,10 +2,10 @@
 
 import { ReactElement, useEffect, useState } from 'react';
 
-import { Divider, ModeSection, TOCItem, Title } from 'components';
+import { Divider, ModeSection, AsideItem, Title } from 'components';
 import { Mode } from 'types';
 import { useMode } from 'context/state';
-import { PageHistory, TableOfContents, Feedback } from 'components/Shell';
+import { PageHistory, Aside, Feedback } from 'components/Shell';
 import { collectHeadings } from 'utils/collectHeadings';
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
   description: string;
   readingTime: string;
   mode?: Mode;
-  showToc?: boolean;
+  showAside?: boolean;
 };
 
 export const Document = ({
@@ -23,14 +23,14 @@ export const Document = ({
   description,
   readingTime,
   mode,
-  showToc = true
+  showAside = true
 }: Props) => {
 
   const { mode: currentMode } = useMode();
-  const [toc, setToc] = useState<TOCItem[]>([]);
+  const [asideItems, setAsideItems] = useState<AsideItem[]>([]);
 
   useEffect(() => {
-    setToc(collectHeadings(children, currentMode));
+    setAsideItems(collectHeadings(children, currentMode));
 
   }, [children, currentMode]);
 
@@ -69,7 +69,7 @@ export const Document = ({
         <Divider />
         <Feedback />
       </article>
-      {showToc && <TableOfContents toc={toc} />}
+      {showAside && <Aside asideItems={asideItems} />}
     </div>
   );
 };

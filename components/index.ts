@@ -6,7 +6,7 @@ export * from './Nodes/Table';
 
 export * from './Shell/Footer';
 export * from './Shell/SideNav';
-export * from './Shell/TableOfContents';
+export * from './Shell/Aside';
 export * from './Shell/TopNavigation/TopNav';
 
 export * from './Tags/Card';
