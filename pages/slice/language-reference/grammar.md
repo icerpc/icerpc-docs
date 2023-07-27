@@ -458,7 +458,7 @@ link_keyword:    "@link";
 left_brace:   "{";
 right_brace:  "}";
 colon:        ":";
-double_colon: ":";
+double_colon: "::";
 ```
 
 ### Syntactic grammar
