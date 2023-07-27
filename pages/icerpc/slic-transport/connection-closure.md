@@ -33,13 +33,14 @@ The closure of the connection on the client follows these steps:
 
 4. Upon receiving the writes shutdown notification, the client considers the connection closed.
 
-The following sequence diagram shows the interactions between the client and server when the connection closure is initiated by the client:
+The following sequence diagram shows the interactions between the client and server when the connection closure is
+initiated by the client:
 
 ```mermaid
 sequenceDiagram
     Client-)Server: Close frame
-    Client->>Server: Duplex connection writes shutdown
-    Server-->>Client: Duplex connection writes shutdown
+    Client->>Server: Notification that client shut down writes on<br/>underlying duplex connection (FIN with TCP)
+    Server-->>Client: Notification that server shut down writes on<br/>underlying duplex connection (FIN with TCP)
 ```
 
 The closure of the connection on the server is different. It follows these steps:
@@ -53,17 +54,19 @@ The closure of the connection on the server is different. It follows these steps
 
 4. Upon receiving the writes shutdown notification, the client considers the connection closed.
 
-The following sequence diagram shows the interactions between the client and server when the connection closure is initiated by the server:
+The following sequence diagram shows the interactions between the client and server when the connection closure is
+initiated by the server:
 
 ```mermaid
 sequenceDiagram
     Server->>Client: Close frame
-    Client-->>Server: Duplex connection writes shutdown
-    Server->>Client: Duplex connection writes shutdown
+    Client->>Server: Notification that client shut down writes on<br/>underlying duplex connection (FIN with TCP)
+    Server-->>Client: Notification that server shut down writes on<br/>underlying duplex connection (FIN with TCP)
 ```
 
 {% callout type="information" %}
-The duplex connection writes shutdown is always initiated by the client. When using the TCP transport, this ensures sockets won't be left in the TIME_WAIT state on the server.
+It's the client-and never the server-that is the first to shut down writes on its side of the underlying duplex
+connection. When using the TCP transport, this ensures sockets won't be left in the TIME_WAIT state on the server.
 {% /callout %}
 
 The Close frame carries an application error code. This error code provides the reason for the connection closure.
