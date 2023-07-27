@@ -1,13 +1,12 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { ReactElement } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 
 import { Divider, ModeSection, TOCItem, Title } from 'components';
 import { Mode } from 'types';
 import { useMode } from 'context/state';
 import { PageHistory, TableOfContents, Feedback } from 'components/Shell';
 import { collectHeadings } from 'utils/collectHeadings';
-import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
 
 type Props = {
   children: ReactElement[];
@@ -26,12 +25,13 @@ export const Document = ({
   mode,
   showToc = true
 }: Props) => {
-  const { mode: currentMode } = useMode();
-  const [toc, setToc] = React.useState<TOCItem[]>([]);
-  const path = useHydrationFriendlyAsPath();
 
-  React.useEffect(() => {
+  const { mode: currentMode } = useMode();
+  const [toc, setToc] = useState<TOCItem[]>([]);
+
+  useEffect(() => {
     setToc(collectHeadings(children, currentMode));
+
   }, [children, currentMode]);
 
   // A variable that is only true if the current mode matches the mode of the document (if specified).
@@ -65,7 +65,7 @@ export const Document = ({
         ) : (
           <>{children}</>
         )}
-        <PageHistory path={path} />
+        <PageHistory />
         <Divider />
         <Feedback />
       </article>
