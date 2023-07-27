@@ -1,14 +1,12 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { ReactElement } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 
-import { Divider, ModeSection, TOCItem, Title } from 'components';
+import { Divider, ModeSection, AsideItem, Title } from 'components';
 import { Mode } from 'types';
 import { useMode } from 'context/state';
-import { PageHistory, TableOfContents, Feedback } from 'components/Shell';
+import { PageHistory, Aside, Feedback } from 'components/Shell';
 import { collectHeadings } from 'utils/collectHeadings';
-import { baseUrls } from 'data/side-bar-data';
-import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
 
 type Props = {
   children: ReactElement[];
@@ -16,7 +14,7 @@ type Props = {
   description: string;
   readingTime: string;
   mode?: Mode;
-  showToc?: boolean;
+  showAside?: boolean;
 };
 
 export const Document = ({
@@ -25,15 +23,15 @@ export const Document = ({
   description,
   readingTime,
   mode,
-  showToc = true
+  showAside = true
 }: Props) => {
-  const { mode: currentMode } = useMode();
-  const [toc, setToc] = React.useState<TOCItem[]>([]);
-  const path = useHydrationFriendlyAsPath();
-  const isBaseUrl = baseUrls.some((baseUrl) => path == baseUrl);
 
-  React.useEffect(() => {
-    setToc(collectHeadings(children, currentMode));
+  const { mode: currentMode } = useMode();
+  const [asideItems, setAsideItems] = useState<AsideItem[]>([]);
+
+  useEffect(() => {
+    setAsideItems(collectHeadings(children, currentMode));
+
   }, [children, currentMode]);
 
   // A variable that is only true if the current mode matches the mode of the document (if specified).
@@ -47,7 +45,6 @@ export const Document = ({
             title={title}
             description={description}
             readingTime={readingTime}
-            showBreadcrumbs={!isBaseUrl}
           />
         )}
         {mode ? (
@@ -68,11 +65,11 @@ export const Document = ({
         ) : (
           <>{children}</>
         )}
-        <PageHistory path={path} />
+        <PageHistory />
         <Divider />
         <Feedback />
       </article>
-      {showToc && <TableOfContents toc={toc} />}
+      {showAside && <Aside asideItems={asideItems} />}
     </div>
   );
 };

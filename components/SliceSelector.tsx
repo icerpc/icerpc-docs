@@ -8,49 +8,49 @@ import { Tooltip } from 'flowbite-react';
 import { useMode } from 'context/state';
 import { Mode, modes } from 'types';
 import { AppLink } from './Nodes/AppLink';
+import { baseUrls } from 'data/side-bar-data';
 
 export const SliceSelector = () => {
-  const { mode, setMode } = useMode();
-  const router = useRouter();
+  const { setMode } = useMode();
+  const { asPath, isReady, push } = useRouter();
+  const [activeMode, setActiveMode] = useState(getModeFromPath(asPath));
 
-  const [selectedIndex, setSelectedIndex] = useState(modes.indexOf(mode));
+  useEffect(() => {
+    if (isReady) {
+      const mode = getModeFromPath(asPath);
+      setActiveMode(mode);
+    }
+  }, [asPath, isReady]);
 
   function onChange(index: number) {
     const mode = modes[index];
     setMode(mode);
 
-    const path = router.asPath;
-
     let newPath;
-    if (path === '/slice1') {
+    if (asPath === '/slice1') {
       newPath = mode === Mode.Slice1 ? '/slice1' : '/slice2';
-    } else if (path === '/slice2') {
+    } else if (asPath === '/slice2') {
       newPath = mode === Mode.Slice1 ? '/slice1' : '/slice2';
     } else {
-      newPath = path.replace(
+      newPath = asPath.replace(
         /\/slice[1-2]\//,
         `/slice${mode === Mode.Slice1 ? 1 : 2}/`
       );
     }
 
-    router.push(newPath);
+    push(newPath);
   }
-
-  useEffect(() => {
-    setSelectedIndex(modes.indexOf(mode));
-  }, [mode]);
 
   return (
     <>
-      <div className="mb-6 mt-3 w-full pr-4">
-        <Tab.Group selectedIndex={selectedIndex} onChange={onChange}>
+      <div className="mb-6 mt-3 w-full">
+        <Tab.Group
+          selectedIndex={modes.indexOf(activeMode)}
+          onChange={onChange}
+        >
           <Tab.List className="flex space-x-2 rounded-xl bg-transparent">
-            {modes.map((mode, index) => (
-              <ModeTab
-                key={mode}
-                mode={mode}
-                selected={index === selectedIndex}
-              />
+            {modes.map((mode) => (
+              <ModeTab key={mode} mode={mode} selected={mode == activeMode} />
             ))}
           </Tab.List>
         </Tab.Group>
@@ -58,6 +58,12 @@ export const SliceSelector = () => {
       <div className="mt-4 w-full border-t-[1px] border-lightBorder dark:border-darkBorder" />
     </>
   );
+};
+
+const getModeFromPath = (path: string) => {
+  const pathSegments = path.split('/');
+  const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
+  return baseUrl === '/slice1' ? Mode.Slice1 : Mode.Slice2;
 };
 
 type ModeTabProps = {

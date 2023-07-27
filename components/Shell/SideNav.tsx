@@ -18,7 +18,7 @@ import {
 } from 'types';
 import { Divider } from 'components/Divider';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
-import { getBreadcrumbs } from 'components/Tags/Title';
+import { getBreadcrumbs } from 'lib/breadcrumbs';
 import { SearchButton } from './SearchButton';
 
 export const SideNav = ({ path }: SideNavProps) => {
@@ -27,7 +27,6 @@ export const SideNav = ({ path }: SideNavProps) => {
   const router = useRouter();
   const pathSegments = path.split('/');
   const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
-  const isSlice = baseUrl == '/slice1' || baseUrl == '/slice2';
 
   useEffect(() => {
     const links = sideBarData(baseUrl) ?? [];
@@ -50,7 +49,7 @@ export const SideNav = ({ path }: SideNavProps) => {
     <div className="sticky top-[59px] hidden h-screen flex-col items-end border-r border-lightBorder dark:border-darkBorder/60 dark:bg-black lg:flex">
       <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-10">
         <SearchButton className="mb-0 mt-8 flex items-start pr-6" />
-        {isSlice && (
+        {isSlicePage(baseUrl) && (
           <div className="top-0 mb-2 mt-4 bg-none pr-6">
             <SliceSelector />
           </div>
@@ -157,34 +156,39 @@ export function MobileSideNav({ pathname }: MobileSideNavProps) {
               >
                 <div
                   className={clsx(
-                    'fixed left-0 top-0 h-screen w-full max-w-[300px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
+                    'fixed left-0 top-0 h-screen w-full max-w-[280px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
                   )}
                 >
                   <Dialog.Panel className="h-full w-full overflow-hidden rounded-r text-left align-middle text-sm font-bold shadow-xl transition-all">
                     <div className="flex h-full w-full flex-col items-start">
-                      <button
-                        type="button"
-                        className={clsx(
-                          'group absolute right-0 mr-8 mt-4 items-center justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium',
-                          'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-                        )}
-                        onClick={closeModal}
-                      >
-                        <XMarkIcon
-                          className="block h-5 w-5 group-hover:text-slate-500 dark:group-hover:text-slate-400"
-                          aria-hidden="true"
-                        />
-                      </button>
+                      <section id="controls" className="mt-2 pl-6">
+                        <div className="flex flex-row justify-end">
+                          <button
+                            type="button"
+                            className={clsx(
+                              'group ml-auto mt-4 items-center justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium',
+                              'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                            )}
+                            onClick={closeModal}
+                          >
+                            <XMarkIcon
+                              className="block h-5 w-5 group-hover:text-slate-500 dark:group-hover:text-slate-400"
+                              aria-hidden="true"
+                            />
+                          </button>
+                        </div>
+                        <div className="mt-6">
+                          {isSlicePage(baseUrl) && <SliceSelector />}
+                        </div>
+                      </section>
                       <nav
                         className={clsx(
                           'block h-full w-full overflow-y-auto',
-                          'bg-none pb-10 pl-6 pr-3 pt-4',
-                          baseUrl == '/slice' && 'mt-12'
+                          'bg-none pb-10 pl-6 pr-3 pt-4'
                         )}
                       >
                         <div className="pointer-events-none sticky top-0" />
-                        {baseUrl == '/slice' && <SliceSelector />}
-                        <ul className="mx-2 mt-4">{cells}</ul>
+                        <ul className="mx-2">{cells}</ul>
                       </nav>
                     </div>
                   </Dialog.Panel>
@@ -279,6 +283,9 @@ function transformSideBarData(
     ];
   }
 }
+
+const isSlicePage = (baseUrl: string) =>
+  ['/slice1', '/slice2'].includes(baseUrl);
 
 type SideNavProps = {
   path: string;
