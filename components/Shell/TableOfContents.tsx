@@ -36,7 +36,7 @@ export const TableOfContents = ({ toc }: { toc: TOCItem[] }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const position = window.pageYOffset;
+      const position = window.scrollY;
       setScrollPosition(position);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
