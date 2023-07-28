@@ -7,12 +7,14 @@ import copy from 'copy-to-clipboard';
 import clsx from 'clsx';
 
 import { Divider } from 'components/Divider';
+import { IcerpcSlice } from 'components/IcerpcSlice';
 
 type Props = {
   id?: string;
   level: 1 | 2 | 3 | 4;
   children: ReactNode;
   className?: string;
+  icerpcSlice?: boolean;
 };
 
 const CopyButton = ({ id }: { id: string }) => {
@@ -31,7 +33,12 @@ const CopyButton = ({ id }: { id: string }) => {
   );
 };
 
-export const Heading = ({ id = '', level = 1, children }: Props) => {
+export const Heading = ({
+  id = '',
+  level = 1,
+  children,
+  icerpcSlice
+}: Props) => {
   const Component: any = `h${level}`;
   const link = (
     <Component
@@ -39,13 +46,14 @@ export const Heading = ({ id = '', level = 1, children }: Props) => {
       data-text={children}
       role="presentation"
       className={clsx(
-        'mb-2 mt-6 items-center hover:[&>*]:opacity-100',
+        'mb-2 mt-6 flex items-center  hover:[&>*]:opacity-100',
         level !== 1 && 'group scroll-mt-20'
       )}
     >
       <span role="heading" aria-level={level}>
         {children}
       </span>
+      {icerpcSlice && <IcerpcSlice />}
       <CopyButton id={id} />
       {level >= 1 && level <= 3 && <Divider margin="my-4" />}
     </Component>
