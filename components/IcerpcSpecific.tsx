@@ -7,7 +7,7 @@ import { AppLink } from './Nodes/AppLink';
 export const IcerpcSpecific = () => {
   const tooltipContent = (
     <p>
-      This section is specific to IceRPC.
+      This section is specific to the IceRPC + Slice integration.
       <br />
       <AppLink href="/icerpc">Learn more</AppLink>
     </p>
@@ -23,7 +23,7 @@ export const IcerpcSpecific = () => {
           href="/icerpc"
           className="relative my-auto ml-2 mt-1 rounded border border-primary/20 bg-primary/10 p-[1px] px-[4px] text-xs font-bold text-primary/90 "
         >
-          IceRPC
+          IceRPC + Slice
         </Link>
       </div>
     </Tooltip>
