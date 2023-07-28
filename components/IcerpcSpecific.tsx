@@ -16,14 +16,16 @@ export const IcerpcSpecific = () => {
     <Tooltip
       content={tooltipContent}
       placement="bottom"
-      className="!py-0 text-sm dark:!bg-[#32363c] [&>*]:dark:!bg-[#32363c]"
+      className="flex items-center justify-center text-sm dark:!bg-[#32363c] [&>*]:dark:!bg-[#32363c]"
     >
-      <Link
-        href="/icerpc"
-        className="ml-2 mt-[2px] rounded bg-primary p-[1px] px-[4px] text-xs font-bold text-white hover:bg-blue-700"
-      >
-        IceRPC
-      </Link>
+      <div className="flex h-full w-full">
+        <Link
+          href="/icerpc"
+          className="relative my-auto ml-2 mt-1 rounded border border-primary/20 bg-primary/10 p-[1px] px-[4px] text-xs font-bold text-primary/90 "
+        >
+          IceRPC
+        </Link>
+      </div>
     </Tooltip>
   );
 };
