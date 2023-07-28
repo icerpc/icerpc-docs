@@ -31,7 +31,8 @@ The following table describes the stream frames defined by the Slic transport:
 | StreamWritesClosed | Informs the peer of the stream writes closure.                                |
 | StreamWindowUpdate | Informs the peer of a stream window update.                                   |
 
-Stream frames are sent over the Slic's underlying duplex connection. The sending of a stream frame can therefore block the sending of other stream frames or connection frames.
+Stream frames are sent over the Slic's underlying duplex connection. The sending of a stream frame can therefore block
+the sending of other stream frames or connection frames.
 
 ## Stream creation
 
@@ -42,11 +43,14 @@ protocol error.
 The peer accepts a new stream when it receives a Stream or StreamLast frame with a stream identifier larger than the
 last accepted stream identifier.
 
-The stream identifier must be the next expected stream identifier. For example, if the last stream accepted by the server is the bidirectional stream with the identifier 0, the identifier of the next accepted bidirectional stream must be 4.
+The stream identifier must be the next expected stream identifier. For example, if the last stream accepted by the
+server is the bidirectional stream with the identifier 0, the identifier of the next accepted bidirectional stream must
+be 4.
 
 ## Stream closure
 
-Each side of a stream maintains a reads and writes closed state. When the application is done sending data on a stream, it closes writes on the stream. When it's done reading data, it closes reads.
+Each side of a stream maintains a reads and writes closed state. When the application is done sending data on a stream,
+it closes writes on the stream. When it's done reading data, it closes reads.
 
 The update of the closed state must trigger the sending of one of the following frame:
 
