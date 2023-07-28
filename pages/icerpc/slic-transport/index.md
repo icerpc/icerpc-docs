@@ -1,6 +1,5 @@
 ---
 title: The Slic multiplexed transport
-show_toc: false
 ---
 
 Slic is a [multiplexed transport][multiplexed-transport] that emulates [QUIC][quic] while relying on a traditional

@@ -15,6 +15,7 @@ type Props = {
   readingTime: string;
   mode?: Mode;
   showAside?: boolean;
+  showReadingTime?: boolean;
 };
 
 export const Document = ({
@@ -23,7 +24,8 @@ export const Document = ({
   description,
   readingTime,
   mode,
-  showAside = true
+  showAside = true,
+  showReadingTime = true
 }: Props) => {
   const { mode: currentMode } = useMode();
   const [asideItems, setAsideItems] = useState<AsideItem[]>([]);
@@ -42,7 +44,7 @@ export const Document = ({
           <Title
             title={title}
             description={description}
-            readingTime={readingTime}
+            readingTime={showReadingTime ? readingTime : undefined}
           />
         )}
         {mode ? (

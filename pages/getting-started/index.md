@@ -1,6 +1,6 @@
 ---
 title: Getting started
-show_toc: false
+showAside: false
 ---
 
 Remote procedure call (RPC) is a fundamental paradigm for networked applications: a client sends a request to a server

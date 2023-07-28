@@ -14,7 +14,6 @@ type Props = {
 export const Title = ({ title, description, readingTime }: Props) => {
   const { asPath, isReady } = useRouter();
   const [breadcrumbs, setBreadcrumbs] = useState<Breadcrumb[]>([]);
-
   useEffect(() => {
     if (isReady) {
       const path = asPath.split('#')[0];
@@ -25,7 +24,7 @@ export const Title = ({ title, description, readingTime }: Props) => {
   return (
     <div className="not-prose mb-10">
       <div className="mb-2 flex flex-row items-center justify-between">
-        {<Breadcrumbs breadcrumbs={breadcrumbs} />}
+        {breadcrumbs.length > 1 && <Breadcrumbs breadcrumbs={breadcrumbs} />}
         {readingTime && <p className="text-xs">{readingTime}</p>}
       </div>
       <h1 className="bg-gradient-to-b from-slate-800 to-black bg-clip-text pr-10 text-4xl font-bold text-transparent dark:text-white">

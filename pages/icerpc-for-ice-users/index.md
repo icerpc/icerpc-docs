@@ -1,6 +1,7 @@
 ---
 title: IceRPC for Ice users
 showAside: false
+showReadingTime: false
 ---
 
 Start here if you are familiar with Ice and want to understand how IceRPC relates to Ice, and how to use IceRPC and Ice
