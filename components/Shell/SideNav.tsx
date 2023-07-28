@@ -60,9 +60,9 @@ export const SideNav = () => {
         <nav
           className={clsx(
             'sticky top-0 ml-[2px] block overflow-y-auto bg-none pb-10 pr-3',
-            baseUrl == '/slice'
-              ? 'h-[calc(100vh-59px-180px)]'
-              : 'h-[calc(100vh-59px-40px)]'
+            ['/slice1', '/slice2'].includes(baseUrl)
+              ? 'h-[calc(100vh-59px-160px)]'
+              : 'h-[calc(100vh-59px-60px)]'
           )}
         >
           <ul className="top-0 mr-2 mt-4">{cells}</ul>
