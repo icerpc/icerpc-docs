@@ -169,7 +169,7 @@ For example, the default path of Slice interface `VisitorCenter::Greeter` is `/V
 {% /callout %}
 
 {% slice2 %}
-If you want to create a [relative proxy](proxy#relative-proxy), call the `FromPath` static method:
+If you want to create a [relative proxy](proxy-types#relative-proxy), call the `FromPath` static method:
 
 ```csharp
 public readonly partial record struct WidgetProxy : IWidget, IProxy
@@ -274,9 +274,10 @@ interface Counter {
 
 ```csharp
 // A service class that implements 2 Slice interfaces
-internal class MyWidget : Service,
-                          IWidgetService,
-                          ICounterService
+internal class MyWidget :
+    Service,
+    IWidgetService,
+    ICounterService
 {
     // implements SpinAsync and GetCountAsync.
 }

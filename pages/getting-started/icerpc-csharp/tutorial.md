@@ -163,7 +163,7 @@ The project file is straightforward. It contains references to 4 separate IceRpc
 - [IceRpc][icerpc-package] - the IceRPC for C# base package
 - [IceRpc.Slice][icerpc-slice] - the Slice IceRPC integration package
 - [IceRpc.Slice.Tools][icerpc-slice-tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
-- [IceRpc.Deadline][deadline-package] and [IceRpc.Logger][logger-package] - the packages with the two middleware we
+- [IceRpc.Deadline][deadline] and [IceRpc.Logger][logger] - the packages with the two middleware we
   installed in the dispatch pipeline
 
 ## Step 3: Create the client
@@ -283,7 +283,7 @@ The project file is identical to the server's project file, with references to 4
 - [IceRpc][icerpc-package] - the IceRPC for C# base package
 - [IceRpc.Slice][icerpc-slice] - the Slice IceRPC integration package
 - [IceRpc.Slice.Tools][icerpc-slice-tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
-- [IceRpc.Deadline][deadline-package] and [IceRpc.Logger][logger-package] - the packages with the two interceptors we
+- [IceRpc.Deadline][deadline] and [IceRpc.Logger][logger] - the packages with the two interceptors we
   installed in our invocation pipeline
 
 ## Step 4: Run the application
@@ -333,16 +333,14 @@ dbug: IceRpc.Server[12]
       Listener 'icerpc://[::0]?transport=tcp' has stopped accepting connections
 ```
 
-[deadline]: https://github.com/icerpc/icerpc-csharp/tree/main/src/IceRpc.Deadline
-[deadline-package]: https://www.nuget.org/packages/IceRpc.Deadline
+[deadline]: https://www.nuget.org/packages/IceRpc.Deadline
 [dispatch-exception]: csharp:IceRpc.DispatchException
 [dispatch-pipeline]: ../../icerpc/dispatch/dispatch-pipeline
 [icerpc-package]: https://www.nuget.org/packages/IceRpc
 [icerpc-slice]: https://www.nuget.org/packages/IceRpc.Slice
 [icerpc-slice-tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
 [invocation-pipeline]: ../../icerpc/invocation/invocation-pipeline
-[logger]: https://github.com/icerpc/icerpc-csharp/tree/main/src/IceRpc.Logger
-[logger-package]: https://www.nuget.org/packages/IceRpc.Logger
+[logger]: https://www.nuget.org/packages/IceRpc.Logger
 [router]: csharp:IceRpc.Router
 [server]: csharp:IceRpc.Server
 [service-address]: ../../icerpc/invocation/service-address

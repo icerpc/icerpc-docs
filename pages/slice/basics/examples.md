@@ -287,7 +287,7 @@ compact struct CustomBag {
 module Example
 
 // You can define your own custom types:
-[cs::custom("System.Decimal")]
+[cs::type("System.Decimal")]
 custom Money
 
 // And you can use built-in custom types defined in module WellKnownTypes:
@@ -324,7 +324,6 @@ module Example
 interface WidgetFactory {
     /// Creates a new {@link Widget}.
     /// @param name: The name of the new widget.
-    /// @param color: The color of the new widget.
     /// @returns: A proxy to the new widget.
     /// @throws WidgetException: Thrown if the factory could not create the widget.
     createWidget(name: string) -> Widget throws WidgetException
