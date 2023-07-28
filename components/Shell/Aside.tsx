@@ -14,18 +14,18 @@ import {
 import { AppLink } from 'components/Nodes/AppLink';
 import { baseUrls } from 'data/side-bar-data';
 import { Divider } from 'components/Divider';
-import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
+import { useRouter } from 'next/router';
 
-export type TOCItem = {
+export type AsideItem = {
   id: string;
   title: string;
   level: number;
 };
 
-export const TableOfContents = ({ toc }: { toc: TOCItem[] }) => {
+export const Aside = ({ asideItems }: { asideItems: AsideItem[] }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const currentPath = resolvePath(useHydrationFriendlyAsPath());
-  const items = toc.filter(
+
+  const items = asideItems.filter(
     (item) =>
       item.id &&
       (item.level === 2 || item.level === 3) &&
@@ -34,9 +34,24 @@ export const TableOfContents = ({ toc }: { toc: TOCItem[] }) => {
 
   const activeId = useActiveId(items.map((item) => item.id));
 
+  const { asPath, isReady } = useRouter();
+
+  // Edit this page URL
+  const baseEditPath = 'https://github.com/icerpc/icerpc-docs/tree/main/pages';
+  const [editUrl, setEditUrl] = useState(baseEditPath + asPath);
+
+  useEffect(() => {
+    if (isReady) {
+      let path = asPath.split('#')[0];
+      path = resolvePath(path);
+      path = path.replace(/^\/slice\d/, '/slice'); // strip away slice version
+      setEditUrl(baseEditPath + path);
+    }
+  }, [asPath, isReady]);
+
   useEffect(() => {
     const handleScroll = () => {
-      const position = window.pageYOffset;
+      const position = window.scrollY;
       setScrollPosition(position);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -78,25 +93,20 @@ export const TableOfContents = ({ toc }: { toc: TOCItem[] }) => {
           className="m-0 p-0 pl-[2px]"
           style={{ color: 'var(--primary-color)' }}
         >
-          <MoreItem
-            href={
-              'https://github.com/icerpc/icerpc-docs/tree/main/pages' +
-              currentPath.replace(/^\/slice\d/, '/slice')
-            }
-          >
+          <ActionItem href={editUrl}>
             <FontAwesomeIcon
               icon={faPenToSquare}
               className="mr-[6px] h-[14px] w-[14px] text-primary"
             />
             Edit this page
-          </MoreItem>
-          <MoreItem href="https://github.com/zeroc-ice/icerpc">
+          </ActionItem>
+          <ActionItem href="https://github.com/zeroc-ice/icerpc">
             <FontAwesomeIcon
               icon={faMessage}
               className="mr-[6px] h-[14px] w-[14px] text-primary"
             />
             GitHub Discussions
-          </MoreItem>
+          </ActionItem>
         </ul>
         <Divider />
         {scrollPosition > 100 && (
@@ -168,12 +178,12 @@ function useActiveId(itemIds: string[]) {
   return activeId;
 }
 
-type MoreItemProps = {
+type ActionItemProps = {
   href: string;
   children: ReactNode;
 };
 
-const MoreItem = ({ href, children }: MoreItemProps) => {
+const ActionItem = ({ href, children }: ActionItemProps) => {
   return (
     <li className="m-0 my-5 text-sm">
       <AppLink href={href} className=" dark:text-[rgba(255,255,255,0.8)]">
@@ -184,7 +194,7 @@ const MoreItem = ({ href, children }: MoreItemProps) => {
 };
 
 type ListItemProps = {
-  item: TOCItem;
+  item: AsideItem;
   activeId: string;
 };
 

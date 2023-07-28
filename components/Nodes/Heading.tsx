@@ -7,7 +7,6 @@ import copy from 'copy-to-clipboard';
 import clsx from 'clsx';
 
 import { Divider } from 'components/Divider';
-import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
 
 type Props = {
   id?: string;
@@ -16,16 +15,24 @@ type Props = {
   className?: string;
 };
 
-export const Heading = ({ id = '', level = 1, children }: Props) => {
+const CopyButton = ({ id }: { id: string }) => {
   const router = useRouter();
-  const Component: any = `h${level}`;
-  const path = useHydrationFriendlyAsPath();
-  const isDocs = path.startsWith('');
-  const origin =
-    typeof window !== 'undefined' && window.location.origin
-      ? window.location.origin
-      : '';
+  return (
+    <button
+      className="h-5 pl-2 opacity-0 duration-100 ease-in-out group-hover:opacity-100"
+      aria-label="Copy link to heading"
+      onClick={() => {
+        copy(window.location.origin + window.location.pathname + `#${id}`);
+        router.push(`#${id}`);
+      }}
+    >
+      <LinkIcon className="h-4 w-4 font-bold text-slate-700 dark:text-slate-300" />
+    </button>
+  );
+};
 
+export const Heading = ({ id = '', level = 1, children }: Props) => {
+  const Component: any = `h${level}`;
   const link = (
     <Component
       id={id}
@@ -33,22 +40,13 @@ export const Heading = ({ id = '', level = 1, children }: Props) => {
       role="presentation"
       className={clsx(
         'mb-2 mt-6 items-center hover:[&>*]:opacity-100',
-        isDocs && level !== 1 && 'group scroll-mt-20'
+        level !== 1 && 'group scroll-mt-20'
       )}
     >
       <span role="heading" aria-level={level}>
         {children}
       </span>
-      <button
-        className="h-5 pl-2 opacity-0 duration-100 ease-in-out group-hover:opacity-100"
-        aria-label="Copy link to heading"
-        onClick={() => {
-          copy(origin + path + `#${id}`);
-          router.push(`#${id}`);
-        }}
-      >
-        <LinkIcon className="h-4 w-4 font-bold text-slate-700 dark:text-slate-300" />
-      </button>
+      <CopyButton id={id} />
       {level >= 1 && level <= 3 && <Divider margin="my-4" />}
     </Component>
   );

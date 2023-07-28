@@ -9,6 +9,7 @@ import config, { components } from 'markdoc/schema';
 import { getAllMarkdownFiles } from 'lib/markdown';
 import fs from 'fs';
 import yaml from 'js-yaml';
+import { SideNav } from 'components';
 
 type Params = {
   slug: string[];
@@ -98,6 +99,7 @@ export const getStaticProps: GetStaticProps<object, Params> = async ({
       : {};
   }
 
+  //TODO: this doesn't ever get hit when a page is not found
   // Check if fileContent is available
   const hasPageContent = !!fileContent;
 
@@ -131,5 +133,15 @@ export default function Page({
   };
 
   const content = Markdoc.transform(ast, updatedConfig);
-  return <>{Markdoc.renderers.react(content, React, { components })}</>;
+  return (
+    <div className="mt-[6.5rem] flex grow flex-row justify-center lg:mt-[3.75rem]">
+      <div className="flex max-w-[100rem] grow flex-row justify-center">
+        <SideNav />
+        <div className="grow">
+          <div id="skip-nav" />
+          {Markdoc.renderers.react(content, React, { components })}
+        </div>
+      </div>
+    </div >
+  );
 }

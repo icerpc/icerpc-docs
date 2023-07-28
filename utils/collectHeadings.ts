@@ -3,7 +3,7 @@
 import React, { ReactElement } from 'react';
 
 import { Mode } from 'types';
-import { TOCItem, ModeSection } from 'components';
+import { AsideItem, ModeSection } from 'components';
 
 type Heading = {
   level: number;
@@ -14,7 +14,7 @@ type Heading = {
 export function collectHeadings(
   children: ReactElement[],
   mode: Mode
-): TOCItem[] {
+): AsideItem[] {
   // Check if a given node is a heading
   const isHeading = (x: any): x is Heading => {
     return (
@@ -24,7 +24,7 @@ export function collectHeadings(
     );
   };
 
-  // Filter out any nodes that don't match the mode, flatten the nodes and then map them to an array of TOCItem
+  // Filter out any nodes that don't match the mode, flatten the nodes and then map them to an array of AsideItem
   // objects
   const filterNodesByMode = (node: ReactElement, mode: Mode) => {
     if (node.type == ModeSection)
@@ -39,7 +39,7 @@ export function collectHeadings(
     else return node;
   };
 
-  const mapNodesToHeadings = (node: ReactElement): TOCItem | null => {
+  const mapNodesToHeadings = (node: ReactElement): AsideItem | null => {
     if (isHeading(node.props)) {
       const { id, children, level } = node.props;
       return { id, title: children, level };
@@ -52,5 +52,5 @@ export function collectHeadings(
     .filter((c) => filterNodesByMode(c, mode))
     .flatMap(flattenNodes)
     .map(mapNodesToHeadings)
-    .filter(Boolean) as TOCItem[];
+    .filter(Boolean) as AsideItem[];
 }
