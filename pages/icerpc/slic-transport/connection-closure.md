@@ -65,7 +65,7 @@ sequenceDiagram
 ```
 
 {% callout type="information" %}
-It's the client-and never the server-that is the first to shut down writes on its side of the underlying duplex
+It's the client—and never the server—that is the first to shut down writes on its side of the underlying duplex
 connection. When using the TCP transport, this ensures sockets won't be left in the TIME_WAIT state on the server.
 {% /callout %}
 
