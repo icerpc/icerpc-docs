@@ -21,7 +21,7 @@ stream is bidirectional or unidirectional. The following table summarizes the fo
 | 0x02 | Client-Initiated, Unidirectional |
 | 0x03 | Server-Initiated, Unidirectional |
 
-The following table describes the frames dedicated to streams:
+The following table describes stream-specific frames:
 
 | Frame Type         | Description                                                                   |
 | ------------------ | ----------------------------------------------------------------------------- |
