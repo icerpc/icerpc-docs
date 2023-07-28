@@ -16,7 +16,7 @@ format.
 
 {% side-by-side alignment="top" %}
 
-```proto
+```protobuf
 // A Person message defined with Protobuf
 
 syntax = "proto3";
