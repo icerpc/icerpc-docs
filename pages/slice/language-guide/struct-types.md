@@ -5,7 +5,7 @@ description: Learn how to define and use structs in Slice.
 
 ## A named tuple
 
-A struct is a constructed type that holds a list of [fields](parameters-and-fields). For example:
+A struct is a constructed type that holds a list of [fields](fields). For example:
 
 {% slice1 %}
 ```slice
@@ -199,4 +199,4 @@ public readonly partial record struct Point
 
 You can also apply `cs::readonly` to a struct field to map this field to a read-only C# field.
 
-[tagged-fields]: parameters-and-fields#tagged-parameters-and-fields
+[tagged-fields]: fields#tagged-fields

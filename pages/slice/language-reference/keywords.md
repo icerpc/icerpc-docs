@@ -29,7 +29,7 @@ The following table lists all the keywords of the Slice language:
 
 - [bool](/slice2/language-guide/primitive-types#bool)
 - [float64](/slice2/language-guide/primitive-types#floating-point-types)
-- [stream](/slice2/language-guide/parameters-and-fields#stream-parameters)
+- [stream](/slice2/language-guide/parameters#stream-parameters)
 - [uint64](/slice2/language-guide/primitive-types#fixed-size-integral-types)
 
 ---
@@ -50,7 +50,7 @@ The following table lists all the keywords of the Slice language:
 
 - [custom](/slice2/language-guide/custom-types)
 - [int8](/slice2/language-guide/primitive-types#fixed-size-integral-types)
-- [tag](/slice2/language-guide/parameters-and-fields#tagged-parameters-and-fields)
+- [tag](/slice2/language-guide/fields#tagged-fields)
 - [varint62](/slice2/language-guide/primitive-types#variable-size-integral-types)
 
 ---

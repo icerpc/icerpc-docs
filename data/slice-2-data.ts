@@ -48,8 +48,12 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE2_BASE_URL}/language-guide/operation`
       },
       {
-        title: 'Parameters and fields',
-        path: `${SLICE2_BASE_URL}/language-guide/parameters-and-fields`
+        title: 'Fields',
+        path: `${SLICE2_BASE_URL}/language-guide/fields`
+      },
+      {
+        title: 'Parameters',
+        path: `${SLICE2_BASE_URL}/language-guide/parameters`
       },
       {
         title: 'Primitive types',
