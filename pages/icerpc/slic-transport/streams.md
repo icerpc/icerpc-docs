@@ -84,8 +84,8 @@ The state machines also depend on the type of the stream. The type of a stream i
 - a local stream is a stream created by the application
 - a remote stream is a stream accepted by the application
 
-A local stream doesn't have the same read or write state machine as a remote stream. As we will see bellow, this
-is required for [stream concurrency][stream-concurrency] flow control.
+A local stream doesn't have the same read or write state machine as a remote stream. As we will see below, different
+state machines are required for controlling [stream concurrency][stream-concurrency].
 
 ### Write-side states
 
@@ -95,27 +95,27 @@ The following state diagram shows the write state machine of a local stream:
 stateDiagram
     [*] --> Ready: Create stream
     Write --> Write: <center>Write<br/><i>Stream</i></center>
-    Write --> WaitForPeerConsume: <center>Write<br/><i>StreamLast</i></center>
+    Write --> WaitForPeerReadsClosed: <center>Write<br/><i>StreamLast</i></center>
     Ready --> Write: <center>Write<br/><i>Stream</i></center>
-    Ready --> WaitForPeerConsume: <center>Write<br/><i>StreamLast</i></center>
+    Ready --> WaitForPeerReadsClosed: <center>Write<br/><i>StreamLast</i></center>
     Write --> Closed: <center>Write<br/><i>StreamWritesClosed</i></center>
-    WaitForPeerConsume --> Closed: <center>Received<br/><i>StreamReadsClosed</i></center>
+    WaitForPeerReadsClosed --> Closed: <center>Read<br/><i>StreamReadsClosed</i></center>
     Closed --> [*]
 ```
 
 The write-side is initially in the `Ready` state. In this state, the stream is ready to accept data from the
-application. The write-side enters the `Write` state when the application starts writing data. The write-side sends
-Stream frames to carry the application data.
+application. The write-side enters the `Write` state when the application starts writing data. When the write-side is in
+the `Write` state, Slic can send Stream or StreamLast frames on that stream to carry the application data.
 
-The write-side exits the `Write` state to enter the `WaitForPeerConsume` state when the application indicates that no
-more data will be written. Once it gets this notification from the application, the write-side sends a StreamLast frame
-to notify the peer.
+The write-side exits the `Write` state to enter the `WaitForPeerReadsClosed` state when the application indicates that
+no more data will be written. Once it gets this notification from the application, the write-side sends a StreamLast
+frame to notify the peer.
 
-In the `WaitForPeerConsume` state, the write-side waits for the peer to consume all the data. This is required to keep
-track of the number of matching remote streams opened on the peer. The application can't open a new stream if the remote
-stream count reached `MaxBidirectionalStreams` or `MaxUnidirectionalStreams` (these parameters are provided by the peer
-on [connection establishment][connection-parameters]). The peer sends the StreamReadsClosed frame once it consumed all
-the data. The write-side enters the `Closed` state when the stream receives this frame.
+In the `WaitForPeerReadsClosed` state, the write-side waits for the peer to consume all the data. This is required to
+keep track of the number of matching remote streams opened on the peer. The application can't open a new stream if the
+remote stream count reached `MaxBidirectionalStreams` or `MaxUnidirectionalStreams` (these parameters are provided by
+the peer on [connection establishment][connection-parameters]). The peer sends the StreamReadsClosed frame once it
+consumed all the data. The write-side enters the `Closed` state when the stream receives this frame.
 
 If the application closes writes, the write-side enters directly the `Closed` state and sends the StreamWritesClosed
 frame to notify the peer of the writes closure.
@@ -134,8 +134,8 @@ stateDiagram
     Closed --> [*]
 ```
 
-The state machine doesn't have the `WaitForPeerConsume` state because the stream's write-side doesn't need to wait for
-the peer to consume all the data.
+The state machine doesn't have the `WaitForPeerReadsClosed` state because the stream's write-side doesn't need to wait
+for the peer to consume all the data.
 
 ### Read-side stream states
 
