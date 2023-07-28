@@ -30,7 +30,7 @@ const document = {
         // 149 is the average reading speed of a college student reading technical material
         readingTime: readingTime(rawText, { wordsPerMinute: 149 }).text,
         mode: frontmatter.mode,
-        showToc: frontmatter.showToc
+        showAside: frontmatter.showAside
       },
       children
     );

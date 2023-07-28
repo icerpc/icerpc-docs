@@ -1,18 +1,15 @@
 // Copyright (c) ZeroC, Inc.
 
-import React from 'react';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
-import { useRouter } from 'next/router';
 import App, { AppContext } from 'next/app';
 import clsx from 'clsx';
-import ErrorPage from 'next/error';
 import Head from 'next/head';
 
 import '/public/globals.css';
 
 import { AppWrapper } from 'context/state';
-import { SideNav, TopNav } from 'components';
+import { TopNav } from 'components';
 import { Footer } from 'components/Shell';
 import { CookiesBanner } from 'components/Cookies';
 
@@ -31,20 +28,15 @@ export async function getInitialProps(appContext: AppContext) {
   };
 }
 
-export default function MyApp(props: { Component: any; pageProps: any }) {
+export default function MyApp(props: {
+  Component: any;
+  pageProps: any;
+  notFound: boolean;
+}) {
   const { Component, pageProps } = props;
-  const router = useRouter();
 
   // Get current hostname and port for og:image
   const hostname = typeof window !== 'undefined' ? window.location.origin : '';
-
-  if (pageProps.statusCode == 404 || pageProps.statusCode == 500) {
-    return (
-      <div className="h-screen w-screen">
-        <ErrorPage statusCode={pageProps.statusCode} withDarkMode={false} />;
-      </div>
-    );
-  }
 
   let title = TITLE;
   let description = DESCRIPTION;
@@ -53,9 +45,6 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
   // If the page has a title or description, use that instead
   if (frontmatter.title) title = frontmatter.title;
   if (frontmatter.description) description = frontmatter.description;
-
-  if (pageProps?.errorStatus)
-    return <ErrorPage statusCode={pageProps.errorStatus} />;
 
   return (
     <div>
@@ -92,15 +81,9 @@ export default function MyApp(props: { Component: any; pageProps: any }) {
       <ThemeProvider attribute="class" enableSystem={true}>
         <AppWrapper>
           <TopNav />
-          <div className="mt-[6.5rem] flex flex-row justify-center lg:mt-[3.75rem] ">
-            <div className="flex max-w-[100rem] grow flex-row justify-center">
-              <SideNav path={router.asPath} />
-              <main className={clsx(inter.className, 'grow')} id="main">
-                <div id="skip-nav" />
-                <Component {...pageProps} />
-              </main>
-            </div>
-          </div>
+          <main className={clsx(inter.className)} id="main">
+            <Component {...pageProps} />
+          </main>
           <CookiesBanner />
           <Footer />
         </AppWrapper>

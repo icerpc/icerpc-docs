@@ -6,7 +6,7 @@ description: Understand the frames sent over a Slic connection.
 ## Frame layout
 
 The Slic transport protocol sends data over a duplex connection in protocol frames. The reading and writing of these
-frames are serialized on the duplex connection.
+frames are serialized on the underlying duplex connection.
 
 All the frames have the same layout: a header followed by a body.
 

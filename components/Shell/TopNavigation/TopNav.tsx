@@ -11,15 +11,14 @@ import { MobileMenu } from './MobileMenu';
 import { MobileSideNav } from '../SideNav';
 import { ThemeToggle } from 'components/ThemeToggle';
 import { useMode, useMounted } from 'context/state';
-import { useHydrationFriendlyAsPath } from 'utils/useHydrationFriendlyAsPath';
 import { Mode, Theme } from 'types';
 
 import darkIcon from 'public/Icerpc-dark-logo.svg';
 import lightIcon from 'public/Icerpc-logo.svg';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 export const TopNav = () => {
-  const pathname = useHydrationFriendlyAsPath();
-
   const { mode } = useMode();
 
   const navigationItems = [
@@ -63,7 +62,6 @@ export const TopNav = () => {
                     key={item.href}
                     name={item.name}
                     href={item.href}
-                    pathname={pathname}
                   />
                 ))}
               </ul>
@@ -84,7 +82,7 @@ export const TopNav = () => {
           <MobileMenu />
         </div>
       </div>
-      <MobileSideNav pathname={pathname} />
+      <MobileSideNav />
     </div>
   );
 };
@@ -116,21 +114,29 @@ const Logo = () => {
 type TopNavigationItemProps = {
   name: string;
   href: string;
-  pathname: string;
 };
 
-const TopNavigationItem = ({
-  name,
-  href,
-  pathname
-}: TopNavigationItemProps) => {
-  // Check if the current path matches the href or starts with the href
-  const isActive = isActivePath(pathname, href);
+const TopNavigationItem = ({ name, href }: TopNavigationItemProps) => {
+  const { asPath, isReady } = useRouter();
+  const [path, setPath] = useState(asPath);
 
-  // Get the class names based on the active state
-  const linkClassName = getLinkClassNames(isActive);
+  useEffect(() => {
+    isReady && setPath(asPath);
+  }, [isReady, asPath]);
 
   const prefetch = href.startsWith('http') ? false : undefined;
+
+  const baseClassName =
+    'overflow-hidden whitespace-nowrap px-2 dark:text-[rgba(255,255,255,0.6)]';
+  const activeClassName =
+    'text-primary no-underline decoration-2 underline-offset-[1.5rem] opacity-100 dark:text-white';
+
+  const [linkClassName, setLinkClassName] = useState(baseClassName);
+
+  useEffect(() => {
+    const isActive = isActivePath(path, href);
+    setLinkClassName(clsx(baseClassName, isActive && activeClassName));
+  }, [href, path, setLinkClassName]);
 
   return (
     <li key={href}>
@@ -141,18 +147,10 @@ const TopNavigationItem = ({
   );
 };
 
-function isActivePath(pathname: string, href: string): boolean {
+function isActivePath(path: string, href: string): boolean {
   return (
-    pathname === href ||
-    pathname.startsWith(`${href}/`) ||
-    (pathname.startsWith('/slice') && href === '/slice2')
-  );
-}
-
-function getLinkClassNames(isActive: boolean): string {
-  return clsx(
-    'overflow-hidden whitespace-nowrap px-2 dark:text-[rgba(255,255,255,0.6)]',
-    isActive &&
-    'text-primary no-underline decoration-2 underline-offset-[1.5rem] opacity-100 dark:text-white'
+    path === href ||
+    path.startsWith(`${href}/`) ||
+    (path.startsWith('/slice') && href === '/slice2')
   );
 }

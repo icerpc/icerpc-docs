@@ -35,9 +35,16 @@ export const AppLink = ({
   const router = useRouter();
   const { mode, setMode } = useMode();
 
-  const href = isApiLink(originalHref)
+  let href = isApiLink(originalHref)
     ? resolveApiLink(originalHref)
     : resolveRelativeLink(originalHref, router.asPath);
+
+  // If the link is a /slice/ link, we need to convert it to a /slice1/ or /slice2/ link based on the current mode.
+  if (isSliceLink(href) && getSliceMode(href) === undefined)
+    href = href.replace(
+      /\/slice\//,
+      mode === Mode.Slice1 ? '/slice1/' : '/slice2/'
+    );
 
   const style = { ...defaultStyle, ...originalStyle };
 
@@ -46,10 +53,9 @@ export const AppLink = ({
    */
   const handleLinkClick = () => {
     if (isSliceLink(href)) {
-      const hrefMode = href.includes('slice1') ? Mode.Slice1 : Mode.Slice2;
-      if (hrefMode !== mode) {
-        setMode(hrefMode);
-      }
+      // Pull the mode from the href if it's a slice1 or slice2 link and set it in the context.
+      const hrefMode = getSliceMode(href);
+      hrefMode && setMode(hrefMode);
     }
   };
 
@@ -60,26 +66,46 @@ export const AppLink = ({
       ? '_blank'
       : undefined);
 
+  const prefetch =
+    isExternalLink(originalHref) || isApiLink(originalHref) ? false : undefined;
 
-  const prefetch = isExternalLink(originalHref) || isApiLink(originalHref) ? false : undefined;
-
-  return <Link
-    href={href}
-    target={target}
-    rel={target === '_blank' ? 'noreferrer' : undefined}
-    onClick={handleLinkClick}
-    prefetch={prefetch}
-    className={clsx(
-      className,
-      isApiLink(originalHref) && apiClasses
-    )}
-    style={style}
-  >
-    {children}
-  </Link>
+  return (
+    <Link
+      href={href}
+      target={target}
+      rel={target === '_blank' ? 'noreferrer' : undefined}
+      onClick={handleLinkClick}
+      prefetch={prefetch}
+      className={clsx(className, isApiLink(originalHref) && apiClasses)}
+      style={style}
+    >
+      {children}
+    </Link>
+  );
 };
 
 // Utility Functions
+
+/**
+ * Maps a href to the corresponding mode.
+ * @param {string} href - The href to extract the mode from.
+ * @returns {Mode | undefined} - The mode if href is a slice link, undefined otherwise.
+ */
+const getSliceMode = (href: string): Mode | undefined => {
+  const match = href.match(/(?:^|\/)slice([1-2]?)(?:\/|$)/);
+  if (!match) return undefined;
+
+  const sliceNumber = match[1] || ''; // "" or "1" or "2"
+
+  switch (sliceNumber) {
+    case '1':
+      return Mode.Slice1;
+    case '2':
+      return Mode.Slice2;
+    default:
+      return undefined;
+  }
+};
 
 /**
  * Check if a link is external.
@@ -94,7 +120,7 @@ const isExternalLink = (href: string) =>
  * @param {string} href - The link to check.
  * @returns {boolean} - True if it's a slice link, false otherwise.
  */
-const isSliceLink = (href: string) => /(^|\/)slice[1-2]\//.test(href);
+const isSliceLink = (href: string) => /(^|\/)slice([1-2]?)(\/|$)/.test(href);
 
 /**
  * Determines if a link is an API link.
@@ -117,8 +143,9 @@ const isApiLink = (href: string) => {
 const resolveApiLink = (href: string) => {
   const [language, ...rest] = href.split(':');
   const [module, method] = rest.join('.').split('#');
-  return `https://docs.testing.zeroc.com/api/${language}/api/${module}.html${method ? `#${method}` : ''
-    }`;
+  return `https://docs.testing.zeroc.com/api/${language}/api/${module}.html${
+    method ? `#${method}` : ''
+  }`;
 };
 
 /**
