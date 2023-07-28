@@ -19,7 +19,7 @@ import { LanguageSelector } from 'components/Tags/LanguageSelector';
 import { Card } from 'components/Tags/Card';
 import { SideBySide } from 'components/Tags/SideBySide';
 import { Title } from 'components/Tags/Title';
-import { IcerpcSpecific } from 'components';
+import { IcerpcSlice } from 'components';
 
 import * as nodes from './nodes';
 import * as tags from './tags';
@@ -44,7 +44,7 @@ export const components = {
   Document,
   Grid,
   Heading,
-  IcerpcSpecific,
+  IcerpcSpecific: IcerpcSlice,
   LanguageSection,
   LanguageSelector,
   List,

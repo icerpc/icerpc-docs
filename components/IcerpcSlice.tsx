@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Tooltip } from 'flowbite-react';
 import { AppLink } from './Nodes/AppLink';
 
-export const IcerpcSpecific = () => {
+export const IcerpcSlice = () => {
   const tooltipContent = (
     <p>
       This section is specific to the IceRPC + Slice integration.

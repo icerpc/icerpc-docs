@@ -9,7 +9,7 @@ const heading = {
     id: { type: String },
     level: { type: Number, required: true, default: 1 },
     className: { type: String },
-    icerpcSpecific: { type: Boolean, default: false }
+    icerpcSlice: { type: Boolean, default: false }
   },
   transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);

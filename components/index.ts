@@ -18,4 +18,4 @@ export * from './Tags/Title';
 
 export * from './CodeBlock';
 export * from './Divider';
-export * from './IcerpcSpecific';
+export * from './IcerpcSlice';

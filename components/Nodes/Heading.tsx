@@ -7,14 +7,14 @@ import copy from 'copy-to-clipboard';
 import clsx from 'clsx';
 
 import { Divider } from 'components/Divider';
-import { IcerpcSpecific } from 'components/IcerpcSpecific';
+import { IcerpcSlice } from 'components/IcerpcSlice';
 
 type Props = {
   id?: string;
   level: 1 | 2 | 3 | 4;
   children: ReactNode;
   className?: string;
-  icerpcSpecific?: boolean;
+  icerpcSlice?: boolean;
 };
 
 const CopyButton = ({ id }: { id: string }) => {
@@ -37,7 +37,7 @@ export const Heading = ({
   id = '',
   level = 1,
   children,
-  icerpcSpecific
+  icerpcSlice
 }: Props) => {
   const Component: any = `h${level}`;
   const link = (
@@ -53,7 +53,7 @@ export const Heading = ({
       <span role="heading" aria-level={level}>
         {children}
       </span>
-      {icerpcSpecific && <IcerpcSpecific />}
+      {icerpcSlice && <IcerpcSlice />}
       <CopyButton id={id} />
       {level >= 1 && level <= 3 && <Divider margin="my-4" />}
     </Component>
