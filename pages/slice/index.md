@@ -14,6 +14,7 @@ Slice compiler generate code that encodes and decodes Person to and from bytes i
 format.
 
 {% side-by-side alignment="top" %}
+
 ```proto
 // A Person message defined with Protobuf
 
@@ -35,6 +36,7 @@ struct Person {
    tag(1) email: string?
 }
 ```
+
 {% /side-by-side %}
 
 The Slice language, like the Protobuf language, includes RPC support without being tied to a specific RPC framework. It
@@ -55,6 +57,7 @@ flowchart BT
    rpc-slice[OtherRPC + Slice] --> Slice
 
 ```
+
 {% /side-by-side %}
 
 For example, the Thermostat interface below defines 3 operations, or RPCs, in Slice:

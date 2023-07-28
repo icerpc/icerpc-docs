@@ -17,7 +17,6 @@ const stripTrailingSlash = (str: string) => {
 };
 
 export const PageHistory = () => {
-
   const { asPath, isReady } = useRouter();
 
   const [previous, setPrevious] = useState<SideBarLink | undefined>();
@@ -25,16 +24,16 @@ export const PageHistory = () => {
 
   useEffect(() => {
     if (isReady) {
-
       // Remove the anchor from the path before looking up the side bar data
       const path = asPath.split('#')[0];
 
       // Get the side bar links for the current page
       const pathSegments = path.split('/');
-      const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
-      const links: SideBarLink[] = flattenSideBarData(sideBarData(baseUrl)).filter(
-        isLink
-      );
+      const baseUrl =
+        baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
+      const links: SideBarLink[] = flattenSideBarData(
+        sideBarData(baseUrl)
+      ).filter(isLink);
 
       // Find the current page in the list of links
       const index = links
@@ -45,7 +44,6 @@ export const PageHistory = () => {
       setPrevious(index > 0 ? links[index - 1] : undefined);
       setNext(index < links.length - 1 ? links[index + 1] : undefined);
     }
-
   }, [asPath, isReady]);
 
   return (

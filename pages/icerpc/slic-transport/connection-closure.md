@@ -31,8 +31,8 @@ initiated by the client:
 ```mermaid
 sequenceDiagram
     Client-)Server: Close frame
-    Client->>Server: Duplex connection shutdown
-    Server-->>Client: Duplex connection shutdown
+    Client->>Server: Notification that client shut down writes on<br/>underlying duplex connection (FIN with TCP)
+    Server-->>Client: Notification that server shut down writes on<br/>underlying duplex connection (FIN with TCP)
 ```
 
 A server closes the connection as follows:
@@ -52,14 +52,13 @@ initiated by the server:
 ```mermaid
 sequenceDiagram
     Server->>Client: Close frame
-    Client-->>Server: Duplex connection shutdown
-    Server->>Client: Duplex connection shutdown
+    Client->>Server: Notification that client shut down writes on<br/>underlying duplex connection (FIN with TCP)
+    Server-->>Client: Notification that server shut down writes on<br/>underlying duplex connection (FIN with TCP)
 ```
 
 {% callout type="information" %}
-The difference between the client and the server connection closure is the timing of the duplex connection writes
-shutdown. The duplex connection writes shutdown is always first initiated by the client. When using the TCP transport,
-this ensures sockets won't be left in the TIME_WAIT state on the server.
+It's the client—and never the server—that is the first to shut down writes on its side of the underlying duplex
+connection. When using the TCP transport, this ensures sockets won't be left in the TIME_WAIT state on the server.
 {% /callout %}
 
 The Close frame carries an application error code. This error code provides the reason for the connection closure.
