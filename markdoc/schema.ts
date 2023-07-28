@@ -19,6 +19,7 @@ import { LanguageSelector } from 'components/Tags/LanguageSelector';
 import { Card } from 'components/Tags/Card';
 import { SideBySide } from 'components/Tags/SideBySide';
 import { Title } from 'components/Tags/Title';
+import { IcerpcSpecific } from 'components';
 
 import * as nodes from './nodes';
 import * as tags from './tags';
@@ -34,25 +35,26 @@ const config: Config = {
 };
 
 export const components = {
+  AppLink,
   Callout,
+  Card,
+  CodeBlock,
   ConditionalTheme,
   Divider,
-  ModeSection,
-  SupportedModes,
+  Document,
   Grid,
+  Heading,
+  IcerpcSpecific,
   LanguageSection,
   LanguageSelector,
-  Card,
-  SideBySide,
-  Title,
-  CodeBlock,
-  AppLink,
-  Heading,
   List,
-  Document,
+  ModeSection,
+  SideBySide,
+  SupportedModes,
+  TD,
   TH,
-  TR,
-  TD
+  Title,
+  TR
 };
 
 export default config;

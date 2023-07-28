@@ -54,7 +54,7 @@ interface Rectangle : Shape, Fillable {
 
 An interface definition produces a new type: a [proxy type](proxy-types).
 
-## C# mapping
+## C# mapping {% icerpcSpecific=true %}
 
 {% callout %}
 This section is specific to the IceRPC-Slice integration.
