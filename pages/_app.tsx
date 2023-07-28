@@ -13,7 +13,7 @@ import { TopNav } from 'components';
 import { Footer } from 'components/Shell';
 import { CookiesBanner } from 'components/Cookies';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin', 'latin-ext'] });
 const TITLE = 'IceRPC Docs';
 const DESCRIPTION = 'Explore our guides and examples to integrate IceRPC.';
 
