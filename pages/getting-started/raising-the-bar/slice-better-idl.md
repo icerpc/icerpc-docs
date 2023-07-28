@@ -113,7 +113,7 @@ The [well-known][well-known] types `Duration`, `TimeStamp` and `Uri` are custom 
 implementations; in C#, they correspond to System types—`TimeSpan`, `DateTime` and `Uri`.
 
 ```slice
-[cs::namespace("Slice")]
+[cs::namespace("ZeroC.Slice")]
 module WellKnownTypes
 
 /// Represents a length of time, encoded as a varint62.

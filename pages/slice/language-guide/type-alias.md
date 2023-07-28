@@ -15,7 +15,7 @@ typealias Greeting = string
 It is common to create a typealias to shorten a type with one or more attributes. For example:
 
 ```slice
-typealias StringList = [cs::type("HashSet<string>")] sequence<string>
+typealias StringSet = [cs::type("HashSet<string>")] sequence<string>
 ```
 
 ## C# mapping
