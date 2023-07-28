@@ -8,7 +8,7 @@ description: Understand the frames sent over a Slic connection.
 The Slic transport protocol sends data over a duplex connection in protocol frames. The reading and writing of these
 frames are serialized on the duplex connection.
 
-This page describes the frames from the first Slic version (V1) which is at present the only version. The frames are
+This page documents protocol frames for Slic version 1. The frames are
 defined using [Slice][slice].
 
 All the frames have the same layout:
@@ -45,7 +45,7 @@ follows:
 compact struct InitializeFrame {
     frameType: FrameType // = FrameType::Initialize
     frameSize: varuint62
-    version: varuint62 // = 1 (Slic V1)
+    version: varuint62 // = 1 (Slic version 1)
     parameters: ParameterFields
 }
 
@@ -180,4 +180,4 @@ compact struct StreamWindowUpdateFrame {
 The window size increment specifies the additional number of bytes that can be sent in addition to the existing window
 size.
 
-[slice]: ../../slice2
+[slice]: ../../slice
