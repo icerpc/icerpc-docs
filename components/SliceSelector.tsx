@@ -73,7 +73,7 @@ type ModeTabProps = {
 
 const ModeTab = ({ mode, selected }: ModeTabProps) => {
   const className = clsx(
-    'w-[114px] rounded border-[1.5px] bg-white p-2 text-center text-xs font-medium uppercase leading-tight',
+    'w-[114px] cursor-pointer rounded border-[1.5px] bg-white p-2 text-center text-xs font-medium uppercase leading-tight',
     'focus:outline-none focus:ring-0',
     'transition-shadow duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg',
     'dark:bg-transparent dark:text-white',
