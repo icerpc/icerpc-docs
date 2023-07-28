@@ -234,7 +234,7 @@ public partial interface IImageStore
 {% /side-by-side %}
 
 When you give such a stream to the Slice generated code, the IceRPC-Slice integration will complete this stream when
-it's done reading it. This can occur when there is nothing left to read or when the peer stops writing. The IceRPC-Slice
+it's done reading it. This can occur when there is nothing left to read or when the peer stops reading. The IceRPC-Slice
 integration always pass a null exception to [`Complete`][pipe-reader-complete].
 
 When you receive such a stream, you must call [`Complete`][pipe-reader-complete] or
