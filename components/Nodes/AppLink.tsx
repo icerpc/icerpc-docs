@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { Mode } from 'types';
 import { useMode } from 'context/state';
+import { ArrowUpRightIcon } from '@heroicons/react/20/solid';
 
 type AppLinkProps = {
   href: string;
@@ -76,10 +77,20 @@ export const AppLink = ({
       rel={target === '_blank' ? 'noreferrer' : undefined}
       onClick={handleLinkClick}
       prefetch={prefetch}
-      className={clsx(className, isApiLink(originalHref) && apiClasses)}
+      className={className}
       style={style}
     >
-      {children}
+      <span className="inline-flex items-center">
+        <span className={clsx(isApiLink(originalHref) && apiClasses)}>
+          {children}
+        </span>
+        {!isApiLink(originalHref) && isExternalLink(originalHref) && (
+          <ArrowUpRightIcon
+            className="mb-1 inline-block h-4 w-4 text-primary hover:text-[rgb(64,131,193)]"
+            aria-hidden="true"
+          />
+        )}
+      </span>
     </Link>
   );
 };
