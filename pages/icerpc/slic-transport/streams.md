@@ -35,7 +35,9 @@ Stream frames are sent over the Slic's underlying duplex connection. The sending
 
 ## Stream creation
 
-Stream creation is initiated by the sending of the first [Stream][stream-frame] or [StreamLast][stream-last-frame] frame with a newly allocated stream identifier. Sending a control stream frame with a newly allocated stream identifier is a protocol error.
+Stream creation is initiated by the sending of the first [Stream][stream-frame] or [StreamLast][stream-last-frame] frame
+with a newly allocated stream identifier. Sending another stream frame with a newly allocated stream identifier is a
+protocol error.
 
 The peer accepts a new stream when it receives a Stream or StreamLast frame with a stream identifier larger than the
 last accepted stream identifier.
@@ -46,9 +48,10 @@ The stream identifier must be the next expected stream identifier. For example, 
 
 Each side of a stream maintains a reads and writes closed state. When the application is done sending data on a stream, it closes writes on the stream. When it's done reading data, it closes reads.
 
-The update of the closed state must trigger the sending of a control frame:
+The update of the closed state must trigger the sending of one of the following frame:
 
-- When reads are closed, the transport implementation must send a [StreamReadsClosed][stream-reads-closed-frame] frame. Upon receiving this frame, the peer must stop sending data over the stream and close the stream writes.
+- When reads are closed, the transport implementation must send a [StreamReadsClosed][stream-reads-closed-frame] frame.
+  Upon receiving this frame, the peer must stop sending data over the stream and close the stream writes.
 
 - When writes are closed, the transport implementation must send a [StreamWritesClosed][stream-writes-closed-frame]
   frame. Upon receiving this frame, the peer must stop reading data from the stream and close the stream reads.
