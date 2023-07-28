@@ -8,16 +8,14 @@ description: Understand the frames sent over a Slic connection.
 The Slic transport protocol sends data over a duplex connection in protocol frames. The reading and writing of these
 frames are serialized on the duplex connection.
 
-All the frames have the same layout: a header followed by a body.
+This page describes the frames from the first Slic version (V1) which is at present the only version. The frames are
+defined using [Slice][slice].
 
-The header begins with a frame type followed by a frame size. It's defined as the following compact struct:
-
-```slice
-compact struct FrameHeader {
-    frameType: FrameType
-    frameSize: varuint62
-}
-```
+All the frames have the same layout:
+- a type defined as an `uint8` enumeration
+- a size defined as a `varuint62`.
+- a body that depends on the frame type and Slic version (with the exception of the Version frame which doesn't depend
+  on the Slic version)
 
 The frame type is defined as follows:
 ```slice
@@ -36,9 +34,7 @@ enum FrameType : uint8 {
 }
 ```
 
-The `frameSize` represents the total number of bytes of the frame body. The format of the body depends on the frame type
-and the Slic version. This page describes the frames from the first Slic version (V1) which is at present the only
-version.
+The `frameSize` represents the total number of bytes of the frame body.
 
 ## Initialize frame
 
@@ -93,6 +89,8 @@ compact struct VersionFrame {
     versions: sequence<varuint62>
 }
 ```
+
+All the Slic versions must support this frame.
 
 ## Close frame
 
@@ -154,7 +152,7 @@ compact struct StreamFrame {
 
 ## StreamReadsClosed and StreamWritesClosed frames
 
-A StreamReadsClosed or StreamWritesClosed frames doesn't carry any data. Both frames are defined as follows:
+A StreamReadsClosed or StreamWritesClosed frame doesn't carry any data. Both frames are defined as follows:
 
 ```slice
 compact struct StreamClosedFrame {
@@ -164,7 +162,7 @@ compact struct StreamClosedFrame {
 }
 ```
 
-These frames are used to notify the peer that the stream's reads or writes are closed.
+These frames are sent when reads or writes are closed on the stream.
 
 ## StreamWindowUpdate frame
 
@@ -181,3 +179,5 @@ compact struct StreamWindowUpdateFrame {
 
 The window size increment specifies the additional number of bytes that can be sent in addition to the existing window
 size.
+
+[slice]: ../../slice2
