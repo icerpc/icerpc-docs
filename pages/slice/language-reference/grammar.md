@@ -1,16 +1,16 @@
 ---
-title: Grammar Specification
+title: Grammar specification
 ---
 
-This page specifies the grammatical rules that define the structure of a Slice file.
+This page describes the grammar of the Slice language.
 
-Slice is defined by 3 sub-languages:
+Slice consists of three sub-languages:
 - The core Slice language for defining types and contracts
 - A preprocessing language for conditional compilation
 - A documentation language for describing Slice definitions
 
-Each of these sub-languages are in turn specified by a set of 2 [Context Free Grammars](https://en.wikipedia.org/wiki/Context-free_grammar).
-_Lexical grammars_ specify how unicode characters are combined to form basic tokens and
+Each of these sub-languages are in turn specified by a set of two [context-free grammars](https://en.wikipedia.org/wiki/Context-free_grammar).
+_Lexical grammars_ specify how Unicode characters are combined to form basic tokens and
 _syntactic grammars_ specify how tokens produced by the lexical grammar are combined to form full expressions.
 
 Context free grammars consist of a set of _symbols_ and _productions_.
@@ -71,11 +71,11 @@ For example: `[cs::custom("Foo")]`; without this exception, "custom" would produ
 While context-dependent, this behavior is still unambiguous, since keywords cannot validly appear in attributes.
 
 ```EBNF
-identifier: "\"? LETTER ALPHANUMERIC*;
+identifier: "\\"? LETTER ALPHANUMERIC*;
 
 integer_literal: DIGIT ALPHANUMERIC*;
 
-string_literal: "\"" (NON_DOUBLE_QUOTE_CHARACTER | ("\" CHARACTER))* "\"";
+string_literal: "\"" (NON_DOUBLE_QUOTE_CHARACTER | ("\\" CHARACTER))* "\"";
 
 doc_comment: "///" (NON_FORWARD_SLASH_CHARACTER CHARACTER*)? "\n";
 
@@ -438,7 +438,7 @@ Term
 
 ### Lexical grammar
 
-TODO add a diagram for explaining how a comment lexer transitions between modes.
+TODO add a diagram for explaining how a comment lexer transitions between modes,
 since it's lexical grammar also has some context dependency.
 
 ```EBNF
