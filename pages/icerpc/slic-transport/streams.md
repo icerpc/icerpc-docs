@@ -68,10 +68,11 @@ will be sent for this stream.
 Sending a Stream frame after a StreamLast frame or multiple StreamLast frames for the same stream is considered a
 protocol error.
 
-[Head-of-line blocking][hol] very much depends on the size of a Stream or StreamLast frame. A large frame will cause
-more head-of-line blocking than a smaller one. The [MaxStreamFrameSize][connection-parameters] parameter exchanged on
-connection establishment limits the maximum size of a Stream or StreamLast frame. If the application data is larger than
-this parameter value, the data will be sent in chunks with multiple Stream frames.
+The [MaxStreamFrameSize][connection-parameters] parameter exchanged on connection establishment limits the maximum size
+of a Stream or StreamLast frame. If the application data is larger than this parameter value, the data is sent in chunks
+with multiple Stream frames. Because the sending of data on the underlying connection is serialized, sending a large
+frame can significantly delay the sending of the next stream frames. Reducing the maximum stream frame size reduces this
+delay. It's in particular useful when dealing with slow connections.
 
 ## Stream states
 
@@ -178,7 +179,6 @@ The state machine doesn't have the `WaitForAppConsume` state because the stream'
 peer that its done reading.
 
 [rfc9000]: https://www.rfc-editor.org/rfc/rfc9000.html#name-stream-types-and-identifier
-[hol]: https://en.wikipedia.org/wiki/Head-of-line_blocking
 [connection-parameters]: connection-establishment#connection-establishment-parameters
 [stream-frame]: protocol-frames#stream-and-streamlast-frames
 [stream-last-frame]: protocol-frames#stream-and-streamlast-frames
