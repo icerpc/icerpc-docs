@@ -5,7 +5,7 @@ description: Learn how to define fields in Slice.
 
 ## Syntax
 
-A field is defined as `name: Type`, where `name` represents the field name, and `Type` is the field type. For example:
+A field is defined as `name: Type`, where `name` is the field's name, and `Type` is the field's type. For example:
 
 ```slice
 name: string
