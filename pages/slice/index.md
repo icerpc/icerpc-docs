@@ -10,9 +10,9 @@ and responses are streams of bytes, and you need to manually encode and decode a
 integers) in these streams. This is doable but laborious.
 
 It is easier and more typical to use IceRPC together with a serialization library and its associated language-neutral
-[IDL][idl]. For example, you can define a Person type in Protobuf or Slice and then let the Protobuf compiler resp. the
-Slice compiler generate code that encodes and decodes Person to and from bytes in the Protobuf resp. Slice binary
-format.
+[IDL][idl]. For example, you can define a Person type in [Protobuf][protobuf] or Slice and then let the Protobuf
+compiler resp. the Slice compiler generate code that encodes and decodes Person to and from bytes in the Protobuf resp.
+Slice binary format.
 
 {% side-by-side alignment="top" %}
 
@@ -110,4 +110,5 @@ using IceRPC requests and responses.
 {% /grid %}
 
 [icerpc]: ../
-[idl]: https://en.wikipedia.org/wiki/Interface_description_language
+[idl]: https://en.wikipedia.org/wiki/
+[protobuf]: https://protobuf.dev/
