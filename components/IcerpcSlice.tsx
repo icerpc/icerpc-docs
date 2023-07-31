@@ -21,7 +21,7 @@ export const IcerpcSlice = () => {
       >
         <div className="flex h-full w-full">
           <Link
-            href="/icerpc"
+            href="/slice2"
             className="relative my-auto ml-1 rounded border border-primary/20 bg-primary/10 p-[1px] px-[4px] text-xs font-bold text-primary/90 "
           >
             IceRPC + Slice
