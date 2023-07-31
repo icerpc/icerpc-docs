@@ -24,11 +24,11 @@ wheel.
 {% mini-card
    title="A modular RPC framework built for QUIC"
    description="See what sets IceRPC apart"
-   href="/getting-started/raising-the-bar/modular-rpc-for-quic" /%}
+   href="/getting-started/key-features/modular-rpc-for-quic" /%}
 {% mini-card
    title="A better IDL"
    description="Learn how to describe your RPCs with Slice"
-   href="/getting-started/raising-the-bar/slice-better-idl" /%}
+   href="/getting-started/key-features/slice-better-idl" /%}
 {% mini-card
    title="Tutorial"
    description="Write your first IceRPC application in C#"

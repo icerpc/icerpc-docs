@@ -37,7 +37,7 @@ sequenceDiagram
 
 A server closes the connection as follows:
 
-1. Send a Close frame to the client.
+1. Send a `Close` frame to the client.
 
 2. Wait for client to shut down writes on the underlying duplex connection.
 
@@ -61,7 +61,7 @@ It's the client—and never the server—that is the first to shut down writes o
 connection. When using the TCP transport, this ensures sockets won't be left in the TIME_WAIT state on the server.
 {% /callout %}
 
-The Close frame carries an application error code. This error code provides the reason for the connection closure.
+The `Close` frame carries an application error code. This error code provides the reason for the connection closure.
 
 ## Abortive connection closure
 

@@ -36,7 +36,7 @@ All Slic versions support the `Initialize` and `Version` frames. All the other f
 
 ## Initialize frame
 
-An Initialize frame carries parameters sent by a client to a server on connection establishment. It's defined as
+An `Initialize` frame carries parameters sent by a client to a server on connection establishment. It's defined as
 follows:
 
 ```slice
@@ -66,7 +66,7 @@ body is version-specific. If the server doesn't support the version from the `In
 
 ## InitializeAck frame
 
-An InitializeAck frame carries parameters. It's defined as follows:
+An `InitializeAck` frame carries parameters. It's defined as follows:
 
 ```slice
 compact struct InitializeAckFrame {
@@ -80,7 +80,7 @@ The parameters are used to configure the connection.
 
 ## Version frame
 
-A Version frame carries a sequence of `varint62` values where each value specifies a Slic version. It is sent by a
+A `Version` frame carries a sequence of `varint62` values where each value specifies a Slic version. It is sent by a
 server on connection establishment if the Slic version specified in the Initialize frame is not supported. It's defined
 as follows:
 
@@ -96,7 +96,7 @@ All Slic versions support this frame.
 
 ## Close frame
 
-A Close frame carries an application error code. It's defined as follows:
+A `Close` frame carries an application error code. It's defined as follows:
 
 ```slice
 compact struct CloseFrame {
@@ -110,7 +110,7 @@ The application error code is provided by the application on connection closure.
 
 ## Ping frame
 
-A Ping frame carries an opaque payload. It's defined as follows:
+A `Ping` frame carries an opaque payload. It's defined as follows:
 
 ```slice
 compact struct PingFrame {
@@ -122,7 +122,7 @@ compact struct PingFrame {
 custom OpaqueData // 64-bits opaque data
 ```
 
-A Pong frame with the same opaque payload must be sent after receiving a Ping frame.
+A `Pong` frame with the same opaque payload must be sent after receiving a `Ping` frame.
 
 ## Pong frame
 
@@ -136,11 +136,11 @@ compact struct PongFrame {
 }
 ```
 
-A Pong frame is sent in response of a Ping frame. It must include the same payload as the Ping frame.
+A `Pong` frame is sent in response of a `Ping` frame. It must include the same payload as the `Ping` frame.
 
 ## Stream and StreamLast frames
 
-A Stream or StreamLast frame carries the application payload. It consists of the frame header followed by the
+A `Stream` or `StreamLast` frame carries the application payload. It consists of the frame header followed by the
 stream ID and application data. It's defined as follows:
 
 ```slice
@@ -154,7 +154,7 @@ compact struct StreamFrame {
 
 ## StreamReadsClosed and StreamWritesClosed frames
 
-A StreamReadsClosed or StreamWritesClosed frame doesn't carry any data. Both frames are defined as follows:
+A `StreamReadsClosed` or `StreamWritesClosed` frame doesn't carry any data. Both frames are defined as follows:
 
 ```slice
 compact struct StreamClosedFrame {
@@ -168,7 +168,7 @@ These frames are sent when reads or writes are closed on the stream.
 
 ## StreamWindowUpdate frame
 
-A StreamWindowUpdate frame carries a window size increment value. It's defined as follows:
+A `StreamWindowUpdate` frame carries a window size increment value. It's defined as follows:
 
 ```slice
 compact struct StreamWindowUpdateFrame {
