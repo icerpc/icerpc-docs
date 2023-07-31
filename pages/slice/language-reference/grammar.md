@@ -44,7 +44,7 @@ Symbols produced by lexical grammars are written in `snake_case` and symbols pro
 
 This specification defines and references a set of 'convenience' symbols that exist only to simplify the specification and do not necessarily appear within actual implementations.
 These convenience tokens are written in `SCREAMING_SNAKE_CASE` and are defined by the following regular expressions:
-```EBNF
+```EBNF {% showTitle=false %}
 LETTER: "[a-zA-Z]";
 DIGIT:  "[0-9]";
 ALPHANUMERIC: "[_a-zA-Z0-9]";
@@ -64,15 +64,13 @@ It is important to note that `EMPTY` is **not** a symbol, but a placeholder for 
 ### Lexical grammar
 
 This lexical grammar is not strictly context-free due to the following behavior:
-When a compliant lexer has seen a '[' character, but hasn't seen a ']' character since then,
+
+When a compliant lexer has seen a '[' character and hasn't encountered a ']' since the '[',
 it must prioritize producing `identifier` symbols over other symbols.
-
 This allows attribute directives and arguments to accept strings that would normally produce keyword tokens.
-For example: `[cs::custom("Foo")]`; without this exception, "custom" would produce a `custom_keyword` token.
-
 While context-dependent, this behavior is still unambiguous, since keywords cannot validly appear in attributes.
 
-```EBNF
+```EBNF {% showTitle=false %}
 identifier: "\\"? LETTER ALPHANUMERIC*;
 
 integer_literal: DIGIT ALPHANUMERIC*;
@@ -148,7 +146,7 @@ minus:         "-";
 
 ### Syntactic grammar
 
-```EBNF
+```EBNF {% showTitle=false %}
 SliceFile
     : SliceFilePrelude Module? Definition*
     ;
@@ -351,7 +349,7 @@ lines like this, they are concatenated into a single `source_block` token for ea
 
 ### Lexical grammar
 
-```EBNF
+```EBNF {% showTitle=false %}
 // These are opaque strings that exist outside the grammar of preprocessor directives.
 source_block;
 
@@ -379,7 +377,7 @@ right_parenthesis: ")";
 
 ### Syntactic grammar
 
-```EBNF
+```EBNF {% showTitle=false %}
 SliceFile
     : Main*
     ;
@@ -444,8 +442,8 @@ Term
 TODO add a diagram for explaining how a comment lexer transitions between modes,
 since it's lexical grammar also has some context dependency.
 
-```EBNF
-identifier: ALPHANUMERIC+;
+```EBNF {% showTitle=false %}
+identifier: LETTER ALPHANUMERIC*;
 text: CHARACTER+;
 
 newline: "\n";
@@ -466,7 +464,7 @@ double_colon: "::";
 
 ### Syntactic grammar
 
-```EBNF
+```EBNF {% showTitle=false %}
 DocComment
     : Overview?
     | DocComment ParamBlock
