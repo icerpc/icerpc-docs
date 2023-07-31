@@ -160,7 +160,7 @@ The format of the `replyPayload` depends on the reply status:
 
 ### RequestFailedData
 
-RequestFailedData is a struct that holds the request's path, fragment and operation. The path is encoded as an
+`RequestFailedData` is a struct that holds the request's path, fragment and operation. The path is encoded as an
 `Identity` and the fragment is encoded as a `sequence<string>`:
 
 ```slice
