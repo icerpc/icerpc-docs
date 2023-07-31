@@ -5,7 +5,7 @@ description: Learn how to define fields in Slice.
 
 ## Syntax
 
-A field is defined as `name: Type`, where `name` represents the field name, and `Type` is the field type. For example:
+A field is defined as `name: Type`, where `name` is the field's name, and `Type` is the field's type. For example:
 
 ```slice
 name: string
@@ -13,14 +13,14 @@ image: sequence<uint8>
 address: WellKnownType::Uri
 ```
 
-Two fields can be separated by either whitespace or a single comma. You would typically use a comma when fields are on
-the same line, as in:
+Fields can be separated by either whitespace or a single comma. You would typically use a comma when fields are on the
+same line, as in:
 
 ```slice
 compact struct Point { x: int32, y: int32 }
 ```
 
-The type of a field can be a [primitive type](primitive-types) (such an int32 or a string), a constructed type (such an
+The type of a field can be a [primitive type](primitive-types) (such as an int32 or a string), a constructed type (such as an
 [enum](enum-types) or a [struct](struct-types)) or a [proxy type](proxy-types).
 
 ## Optional type
@@ -91,7 +91,7 @@ struct Person {
 ```
 {% /slice2 %}
 
-Tagged fields allow you to change your Slice definitions while maintaining on the wire compatibility with applications
+Tagged fields allow you to change your Slice definitions while maintaining on-the-wire compatibility with applications
 that use older or newer Slice definitions without these tagged fields.
 
 A tagged field can have any type, provided this type is marked optional, as shown in the example above.
