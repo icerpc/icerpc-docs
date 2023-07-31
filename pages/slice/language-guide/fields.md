@@ -45,9 +45,9 @@ class Person {
 Here, a person may have a spouse or a "not set" value for its spouse field.
 
 Leaving tagged fields aside, only a few field types can be marked optional with Slice1:
- - [classes][class-types] (like in the example above)
- - [proxies][proxy-types]
- - [custom types][custom-types]
+ - [classes](class-types) (like in the example above)
+ - [proxies](proxy-types)
+ - [custom types](custom-types)
 {% /slice1 %}
 
 {% slice2 %}
