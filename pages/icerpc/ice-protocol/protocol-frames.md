@@ -53,6 +53,20 @@ The `compressionStatus` field is not used or supported by IceRPC. It must be set
 
 The `frameSize` represents the total number of bytes in the frame, including the frame header.
 
+## CloseConnection frame
+
+The `CloseConnection` frame is an ice protocol frame with type `CloseConnection`. Its body is empty. A client or server
+must not send any additional frame after sending a `CloseConnection` frame.
+
+## ValidateConnection frame
+
+The `ValidateConnection` frame is an ice protocol frame with type `ValidateConnection`. Its body is empty. The
+server-side of an ice connection sends this frame to the client-side during [connection establishment][connection-establishment].
+
+This frame is also used for heartbeats: once the connection is established, the client or the server can send a
+`ValidateConnection` frame to its peer, and the peer will receive and ignore this frame. A heartbeat corresponds to one
+`ValidateConnection` frame.
+
 ## Request frame
 
 A request frame carries an ice request. It consists of a header with the `Request` type followed by a `RequestData`
@@ -219,3 +233,4 @@ For the same reason, when IceRPC receives an encapsulation, it makes sure the en
 set to 1.1.
 
 [protocol-and-encoding]: https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding
+[connection-establishment]: connection-establishment
