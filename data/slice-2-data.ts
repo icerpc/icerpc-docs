@@ -113,6 +113,10 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE2_BASE_URL}/language-reference/lexical-rules`
       },
       {
+        title: 'Grammar specification',
+        path: `${SLICE2_BASE_URL}/language-reference/grammar`,
+      },
+      {
         title: 'Preprocessor directives',
         path: `${SLICE2_BASE_URL}/language-reference/preprocessor-directives`
       },
