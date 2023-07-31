@@ -91,7 +91,7 @@ struct Person {
 ```
 {% /slice2 %}
 
-Tagged fields allow you to change your Slice definitions while maintaining on the wire compatibility with applications
+Tagged fields allow you to change your Slice definitions while maintaining on-the-wire compatibility with applications
 that use older or newer Slice definitions without these tagged fields.
 
 A tagged field can have any type, provided this type is marked optional, as shown in the example above.
