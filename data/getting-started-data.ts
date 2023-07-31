@@ -8,16 +8,16 @@ export const gettingStartedData: SideBarSourceType[] = [
     path: `${GETTING_STARTED_BASE_URL}/`
   },
   {
-    title: 'Raising the bar',
+    title: 'Key features',
     links: [
       {
         title: 'A modular RPC framework built for QUIC',
         path:
-          GETTING_STARTED_BASE_URL + '/raising-the-bar/modular-rpc-for-quic/'
+          GETTING_STARTED_BASE_URL + '/key-features/modular-rpc-for-quic/'
       },
       {
         title: 'Slice - a better IDL',
-        path: GETTING_STARTED_BASE_URL + '/raising-the-bar/slice-better-idl/'
+        path: GETTING_STARTED_BASE_URL + '/key-features/slice-better-idl/'
       }
     ]
   },

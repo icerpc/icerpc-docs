@@ -8,13 +8,10 @@ Most RPC frameworks provide an [Interface Definition Language][idl] (IDL) and a 
 allows you to define a "contract" in a programming language neutral way, and then compile this contract into your target
 programming language(s). The typical and sometimes only way to use an RPC framework is with this bundled IDL.
 
-For example, [gRPC][grpc]'s IDL is [Protobuf][protobuf] and you'd be hard pressed to find examples of gRPC applications
-that don't use Protobuf.
-
 IceRPC takes a different approach by providing a very usable byte-oriented API for requests and responses. This allows
 you to use IceRPC with the IDL of your choice, or no IDL at all. The [GreeterProtobuf][greeter-protobuf],
-[GreeterJson][greeter-json] and [GreeterCore][greeter-core] examples show how to use IceRPC with resp. Protobuf, JSON
-and no IDL.
+[GreeterJson][greeter-json] and [GreeterCore][greeter-core] examples show how to use IceRPC with resp.
+[Protobuf][protobuf], JSON and no IDL.
 
 That said, the easiest way to write applications with IceRPC is with [Slice][slice].
 
@@ -127,7 +124,6 @@ custom Duration
 [dictionary]: ../../slice2/language-guide/dictionary-types
 [enum]: ../../slice2/language-guide/enum-types
 [exception]: ../../slice2/language-guide/exception
-[grpc]: https://grpc.io/
 [idl]: https://en.wikipedia.org/wiki/Interface_description_language
 [greeter-core]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterCore
 [greeter-json]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterJson
