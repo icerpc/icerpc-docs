@@ -29,7 +29,7 @@ export const SideNav = () => {
 
   useEffect(() => {
     if (isReady) {
-      const path = asPath.split('?')[0];
+      const path = asPath.split('#')[0];
       setPath(path);
 
       const pathSegments = path.split('/');
@@ -80,7 +80,7 @@ export function MobileSideNav() {
 
   useEffect(() => {
     if (isReady) {
-      const path = asPath.split('?')[0];
+      const path = asPath.split('#')[0];
       setPath(path);
       setBreadcrumbs(getBreadcrumbs(path));
 
