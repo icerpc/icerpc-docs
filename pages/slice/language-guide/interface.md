@@ -56,10 +56,6 @@ An interface definition produces a new type: a [proxy type](proxy-types).
 
 ## C# mapping {% icerpcSlice=true %}
 
-{% callout %}
-This section is specific to the IceRPC-Slice integration.
-{% /callout %}
-
 The Slice compiler for C# compiles Slice interface _Name_ into two C# interfaces (I*Name* and I*Name*Service) and one
 C# struct (*Name*Proxy). The identifiers of the generated interfaces and struct are always in Pascal case, per the usual
 C# naming conventions, even when _Name_ is not in Pascal case.

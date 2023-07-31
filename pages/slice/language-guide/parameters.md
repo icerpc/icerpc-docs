@@ -68,11 +68,7 @@ exception GreeterException {
 }
 ```
 
-## C# mapping
-
-{% callout %}
-This section is specific to the IceRPC + Slice integration.
-{% /callout %}
+## C# mapping {% icerpcSlice=true %}
 
 An operation parameter `name: Type` is mapped to a C# parameter with the same name, with name converted to camel case.
 The type of the C# parameter is the mapped C# type for `Type`. For example, an `int32` parameter is mapped to an `int`

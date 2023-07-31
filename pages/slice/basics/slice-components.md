@@ -40,8 +40,7 @@ And lastly, a RPC framework that supports Slice adds:
 
 - a language mapping for Slice interfaces and operations\
 The RPC framework defines how Slice interfaces and operations are mapped in the target programming language. For
-example, the Slice integration provided by IceRPC for C# maps each Slice interface to two C# interfaces and one C#
-struct.
+example, the IceRPC + Slice integration for C# maps each Slice interface to two C# interfaces and one C# struct.
 
 - an augmented Slice compiler\
 The RPC framework includes an augmented Slice compiler than generates code for Slice interfaces and operations.

@@ -144,7 +144,7 @@ interface FileServer {
 
 {% /slice2 %}
 
-In C#, the generated code sets the [`ICompressFeature`][compress-feature] in the outgoing request features.
+In C# with IceRPC, the generated code sets the [`ICompressFeature`][compress-feature] in the outgoing request features.
 
 This compression request is typically fulfilled by the compressor interceptor or middleware, which needs to be installed
 in your invocation resp. dispatch pipeline. If you neglect to install this interceptor or middleware, the corresponding
@@ -180,7 +180,7 @@ operation in sliced format, instead of the default compact format. Its argument 
 See [Class slicing][class-slicing] for details.
 {% /slice1 %}
 
-## C# mapping
+## C# mapping {% icerpcSlice=true %}
 
 A Slice operation named _opName_ in interface `Greeter` is mapped to abstract method *OpName*Async in the interface
 `IGreeter` and to abstract method *OpName*Async in interface `IGreeterService`.
