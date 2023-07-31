@@ -13,8 +13,8 @@ image: sequence<uint8>
 address: WellKnownType::Uri
 ```
 
-Two fields can be separated by either whitespace or a single comma. You would typically use a comma when fields are on
-the same line, as in:
+Fields can be separated by either whitespace or a single comma. You would typically use a comma when fields are on the
+same line, as in:
 
 ```slice
 compact struct Point { x: int32, y: int32 }
