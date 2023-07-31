@@ -3,8 +3,6 @@ title: Connection shutdown
 description: Understand connection shutdown with ice.
 ---
 
-## What's a connection shutdown?
-
 A shutdown is a graceful closure of a connection. Each side wants to maximize the chances that outstanding requests
 complete successfully.
 
