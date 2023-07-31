@@ -2,16 +2,18 @@
 title: Grammar specification
 ---
 
+<!-- cspell:words ANTLR NAUR -->
+
 This page describes the grammar of the Slice language.
 
 Slice consists of three sub-languages:
-- The core Slice language for defining types and contracts
+- A core Slice language for defining types and contracts
 - A preprocessing language for conditional compilation
 - A documentation language for describing Slice definitions
 
-Each of these sub-languages are in turn specified by a set of two [context-free grammars](https://en.wikipedia.org/wiki/Context-free_grammar).
-_Lexical grammars_ specify how Unicode characters are combined to form basic tokens and
-_syntactic grammars_ specify how tokens produced by the lexical grammar are combined to form full expressions.
+Each of these sub-languages are in turn specified by a set of two [context-free grammars](https://en.wikipedia.org/wiki/Context-free_grammar):
+ - _Lexical grammars_ specify how Unicode characters are combined to form basic tokens and
+ - _syntactic grammars_ specify how tokens produced by the lexical grammar are combined to form full expressions.
 
 Context free grammars consist of a set of _symbols_ and _productions_.
 Symbols are abstract elements of the language that can represent anything from single characters to entire expressions.
@@ -62,7 +64,7 @@ It is important to note that `EMPTY` is **not** a symbol, but a placeholder for 
 ### Lexical grammar
 
 This lexical grammar is not strictly context-free due to the following behavior:
-When a lexer has seen a '[' character, but hasn't seen a ']' character since then,
+When a compliant lexer has seen a '[' character, but hasn't seen a ']' character since then,
 it must prioritize producing `identifier` symbols over other symbols.
 
 This allows attribute directives and arguments to accept strings that would normally produce keyword tokens.
@@ -342,9 +344,10 @@ UndelimitedList<T>
 
 ## Preprocessor directives
 
-The preprocessor only operates on lines beginning with a '#' character (ignoring any leading whitespace).
-Lines that don't meet this criteria are mapped to `source_block` tokens in the lexical grammar, and no additional processing is performed on them.
-If there are multiple consecutive lines like this, they are concatenated into a single `source_block` token for ease of processing.
+The preprocessor only operates on lines beginning with a '#' character (ignoring any leading whitespace). Lines that
+don't meet this criteria are mapped to `source_block` tokens in the lexical grammar. If there are multiple consecutive
+lines like this, they are concatenated into a single `source_block` token for ease of processing. The contents of these
+`source_block` tokens are passed as input to the [core language grammar](#core-language) described above.
 
 ### Lexical grammar
 
