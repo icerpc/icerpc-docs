@@ -9,13 +9,13 @@ This page describes the grammar of the Slice language.
 Slice consists of three sub-languages:
 - A core Slice language for defining types and contracts
 - A preprocessing language for conditional compilation
-- A documentation language for describing Slice definitions
+- A language for describing definitions with doc-comments
 
 Each of these sub-languages are in turn specified by a set of two [context-free grammars](https://en.wikipedia.org/wiki/Context-free_grammar):
  - _Lexical grammars_ specify how Unicode characters are combined to form basic tokens and
  - _syntactic grammars_ specify how tokens produced by the lexical grammar are combined to form full expressions.
 
-Context free grammars consist of a set of _symbols_ and _productions_.
+Context-free grammars consist of a set of _symbols_ and _productions_.
 Symbols are abstract elements of the language that can represent anything from single characters to entire expressions.
 Productions are sets of rules that specify how symbols can be combined to produce other symbols.
 
@@ -68,7 +68,7 @@ This lexical grammar is not strictly context-free due to the following behavior:
 When a compliant lexer has seen a '[' character and hasn't encountered a ']' since the '[',
 it must prioritize producing `identifier` symbols over other symbols.
 This allows attribute directives and arguments to accept strings that would normally produce keyword tokens.
-While context-dependent, this behavior is still unambiguous, since keywords cannot validly appear in attributes.
+While context dependent, this behavior is still unambiguous, since keywords cannot validly appear in attributes.
 
 ```EBNF {% showTitle=false %}
 identifier: "\\"? LETTER ALPHANUMERIC*;
