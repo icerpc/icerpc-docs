@@ -123,7 +123,9 @@ export default function Page({
   }
 
   // Import markdoc nodes and tags from markdoc folder
-  const ast = Markdoc.parse(source);
+  const tokenizer = new Markdoc.Tokenizer({ allowComments: true });
+  const tokens = tokenizer.tokenize(source);
+  const ast = Markdoc.parse(tokens);
 
   const updatedConfig: Config = {
     ...config,
@@ -142,6 +144,6 @@ export default function Page({
           {Markdoc.renderers.react(content, React, { components })}
         </div>
       </div>
-    </div >
+    </div>
   );
 }
