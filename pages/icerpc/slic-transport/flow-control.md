@@ -14,8 +14,8 @@ consume incoming data fast enough.
 Slic provides stream-level flow control. The sending of data on a stream is paused when the peer doesn't consume data
 fast enough from this stream.
 
-Slic's stream-level flow control is similar to the stream flow control provided by [HTTP/2][http-stream-flow-control].
-A flow control window defines the amount of data the receiving-side of a stream is willing to accept. A sender must stop
+Slic's stream-level flow control is similar to the stream flow control provided by [HTTP/2][http-stream-flow-control]. A
+flow control window defines the amount of data the receiving-side of a stream is willing to accept. A sender must stop
 sending data over the stream once the window is full. Sending more data is a protocol error. The sender can resume
 sending data only after receiving a [StreamWindowUpdate][stream-window-update] frame.
 
@@ -34,7 +34,7 @@ use a fixed window size and send a `StreamWindowUpdate` frame when a size thresh
 
 Each side of the connection defines how many streams it's willing to accept with the
 [MaxBidirectionalStreams][connection-parameters] and [MaxUnidirectionalStreams][connection-parameters] parameters
-transmitted during connection establishment. Stream creation is paused when this limit is reached. For example, if the
+transmitted during connection establishment. `Stream` creation is paused when this limit is reached. For example, if the
 peer's `MaxBidirectionalStreams` parameter is 5 and 5 bidirectional streams are opened, the creation of the next
 bidirectional stream is delayed until one of the stream is closed. Opening an additional stream when the limit is
 reached is a protocol error.
