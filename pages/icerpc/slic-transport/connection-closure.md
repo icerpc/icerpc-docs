@@ -8,9 +8,8 @@ description: Understand how a connection is closed.
 Connection closure is either graceful or abortive and can be initiated by the client or server. Violations of the
 protocol lead to an abortive close.
 
-Once the connection closure is initiated, neither the client nor the server sends
-[StreamReadsClosed][stream-reads-closed-frame] and [StreamWritesClosed][stream-writes-closed-frame] frames. The
-application must consider the streams as immediately closed.
+Once the connection closure is initiated, the streams are closed and neither the client nor the server sends
+[StreamReadsClosed][stream-reads-closed-frame] and [StreamWritesClosed][stream-writes-closed-frame] frames.
 
 ## Graceful connection closure
 
@@ -65,7 +64,7 @@ The Close frame carries an application error code. This error code provides the 
 
 ## Abortive connection closure
 
-Abortive connection closure must abort the duplex connection.
+Abortive connection closure aborts the duplex connection.
 
 [close-frame]: protocol-frames#close-frame
 [stream-reads-closed-frame]: protocol-frames#streamreadsclosed-and-streamwritesclosed-frames
