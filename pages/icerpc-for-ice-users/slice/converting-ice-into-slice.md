@@ -38,7 +38,7 @@ A few definitions in .ice files have no equivalent in the .slice syntax and as a
 
 {% side-by-side alignment="top" %}
 
-```slice {% title=".ice syntax" %}
+```ice {% title=".ice syntax" %}
 class Vehicle
 {
     string color;
@@ -68,7 +68,7 @@ class Bicycle : Vehicle {
 
 {% side-by-side alignment="top" %}
 
-```slice {% title=".ice syntax" %}
+```ice {% title=".ice syntax" %}
 dictionary<string, int> StringIntDict;
 ```
 
@@ -82,7 +82,7 @@ typealias StringIntDict = dictionary<string, int32>
 
 {% side-by-side alignment="top" %}
 
-```slice {% title=".ice syntax" %}
+```ice {% title=".ice syntax" %}
 enum Fruit
 {
     Apple,
@@ -111,7 +111,7 @@ no enumerator with this numeric value, the decoding fails with a checked enum an
 
 {% side-by-side alignment="top" %}
 
-```slice {% title=".ice syntax" %}
+```ice {% title=".ice syntax" %}
 exception SyntaxException
 {
     string message;
@@ -140,7 +140,7 @@ exception InvalidIdentifierException : SyntaxException {
 With the .ice syntax, an operation lists the Slice-defined exceptions it's allowed to throw in its exception
 specification. For example:
 
-```slice {% title=".ice syntax" %}
+```ice {% title=".ice syntax" %}
 void op(string s) throws ArgumentException, InvalidStateException, NotAvailableException;
 ```
 
@@ -167,7 +167,7 @@ Another difference between Ice and IceRPC is where the exception specifications 
 
 {% side-by-side alignment="top" %}
 
-```slice {% title=".ice syntax" %}
+```ice {% title=".ice syntax" %}
 interface ChessPiece
 {
     void move(Position newPosition)
@@ -202,7 +202,7 @@ interface Pawn : ChessPiece {
 
 {% side-by-side alignment="top" %}
 
-```slice {% title=".ice syntax" %}
+```ice {% title=".ice syntax" %}
 module BoardGame
 {
     module Checkers {}
@@ -228,7 +228,7 @@ or field must be marked optional (with a `?` suffix) in .slice files.
 
 {% side-by-side alignment="top" %}
 
-```slice {% title=".ice syntax" %}
+```ice {% title=".ice syntax" %}
 interface Widget
 {
     void spin(optional(1) int speed);
@@ -264,7 +264,7 @@ return type.
 
 {% side-by-side alignment="top" %}
 
-```slice {% title=".ice syntax" %}
+```ice {% title=".ice syntax" %}
 interface Sample
 {
     bool op(
@@ -316,7 +316,7 @@ non-optional (without a ? suffix).
 
 {% side-by-side alignment="top" %}
 
-```slice {% title=".ice syntax" %}
+```ice {% title=".ice syntax" %}
 sequence<string> StringSeq;
 ```
 
@@ -330,7 +330,7 @@ typealias StringSeq = sequence<string>
 
 {% side-by-side alignment="top" %}
 
-```slice {% title=".ice syntax" %}
+```ice {% title=".ice syntax" %}
 struct Position
 {
     int x;

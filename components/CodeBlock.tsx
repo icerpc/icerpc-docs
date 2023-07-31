@@ -28,6 +28,7 @@ require('prismjs/components/prism-csharp');
 require('prismjs/components/prism-bash');
 require('prismjs/components/prism-ebnf');
 require('prismjs/components/prism-protobuf');
+require('utils/prism-ice');
 
 const commandLineLanguages = [
   'bash',
