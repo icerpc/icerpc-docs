@@ -10,8 +10,8 @@ frames are serialized on the underlying duplex connection.
 
 Slic frames are defined using [Slice][slice].
 
-All the frames have a header and a body. The header is common to all Slic versions and is composed of the following
-fields:
+All the frames have a header and a body. The header layout is common to all Slic versions and is composed of the
+following fields:
 - a frame type defined as an `uint8` enumeration
 - a frame size defined as a `varuint62` representing the size of the frame body.
 
@@ -32,7 +32,7 @@ enum FrameType : uint8 {
 }
 ```
 
-All the Slic versions support the `Initialize` and `Version` frames. All the other frames are version-specific.
+All Slic versions support the `Initialize` and `Version` frames. All the other frames are version-specific.
 
 ## Initialize frame
 
@@ -60,7 +60,7 @@ typealias ParameterFields = dictionary<ParameterKey, sequence<uint8>>
 
 The parameters are used to configure the connection.
 
-All the Slic versions support an `Initialize` frame with a body that starts with a version field. The remainder of the
+All Slic versions support an `Initialize` frame with a body that starts with a version field. The remainder of the
 body is version-specific. If the server doesn't support the version from the `Initialize` frame, it must respond with a
 `Version` frame that specifies the versions it supports.
 
@@ -92,7 +92,7 @@ compact struct VersionFrame {
 }
 ```
 
-All the Slic versions support this frame.
+All Slic versions support this frame.
 
 ## Close frame
 
