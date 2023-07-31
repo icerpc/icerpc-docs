@@ -252,4 +252,4 @@ public partial class RearBumper : CarPart
 {% /slice1 %}
 
 [format-metadata]: https://doc.zeroc.com/ice/3.7/the-slice-language/slice-metadata-directives#id-.SliceMetadataDirectivesv3.7-format
-[tagged-fields]: parameters-and-fields#tagged-parameters-and-fields
+[tagged-fields]: fields#tagged-fields

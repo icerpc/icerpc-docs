@@ -325,6 +325,6 @@ There are two somewhat common use-cases for this attribute:
 
 [class-slicing]: class-types#slicing
 [compress-feature]: csharp:IceRpc.Features.ICompressFeature
-[parameters]: parameters-and-fields
+[parameters]: parameters
 [pipe-reader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
-[tagged-parameters]: parameters-and-fields#tagged-parameters-and-fields
+[tagged-parameters]: parameters#tagged-parameters

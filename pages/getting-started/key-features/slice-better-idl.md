@@ -133,5 +133,5 @@ custom Duration
 [sequence]: ../../slice2/language-guide/sequence-types
 [slice]: ../../slice2
 [struct]: ../../slice2/language-guide/struct-types
-[tagged]: ../../slice2/language-guide/parameters-and-fields#tagged-parameters-and-fields
+[tagged]: ../../slice2/language-guide/fields#tagged-fields
 [well-known]: ../../slice2/language-guide/well-known-types
