@@ -51,10 +51,10 @@ it closes writes on the stream. When it's done reading data, it closes reads.
 The update of the closed state triggers the sending of one of the following frames:
 
 - Slic sends a [StreamWritesClosed][stream-writes-closed-frame] frame to the peer when the application closes writes on
-  the stream. Upon receiving this frame, the peer must stop reading data from the stream and close the stream reads.
+  the stream. Upon receiving this frame, the peer stops reading data from the stream and close the stream reads.
 
 - Slic sends a [StreamReadsClosed][stream-reads-closed-frame] frame to the peer when the application closes writes on
-  the stream. Upon receiving this frame, the peer must stop sending data over the stream and close the stream writes.
+  the stream. Upon receiving this frame, the peer stops sending data over the stream and close the stream writes.
 
 A stream is considered closed when both writes and reads are closed.
 
