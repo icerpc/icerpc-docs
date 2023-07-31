@@ -68,11 +68,11 @@ will be sent for this stream.
 Sending a Stream frame after a StreamLast frame or multiple StreamLast frames for the same stream is considered a
 protocol error.
 
-The [MaxStreamFrameSize][connection-parameters] parameter exchanged on connection establishment limits the maximum size
-of a Stream or StreamLast frame. If the application data is larger than this parameter value, the data is sent in chunks
-with multiple Stream frames. Because the sending of data on the underlying connection is serialized, sending a large
-frame can significantly delay the sending of the next stream frames. Reducing the maximum stream frame size reduces this
-delay. It's in particular useful when dealing with slow connections.
+The [MaxStreamFrameSize][connection-parameters] parameter limits the maximum size of a Stream or StreamLast frame. If
+the application data is larger than this parameter value, the data is sent in chunks with multiple Stream frames.
+Because the sending of data on the underlying connection is serialized, sending a large frame can significantly delay
+the sending of the next stream frames. Reducing the maximum stream frame size reduces this delay. It's in particular
+useful when dealing with slow connections.
 
 ## Stream states
 
