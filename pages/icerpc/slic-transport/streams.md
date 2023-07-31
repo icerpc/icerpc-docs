@@ -70,9 +70,8 @@ protocol error.
 
 The [MaxStreamFrameSize][connection-parameters] parameter limits the maximum size of a Stream or StreamLast frame. If
 the application data is larger than this parameter value, the data is sent in chunks with multiple Stream frames.
-Because the sending of data on the underlying connection is serialized, sending a large frame can significantly delay
-the sending of the next stream frames. Reducing the maximum stream frame size reduces this delay. It's in particular
-useful when dealing with slow connections.
+Frames are serialized on the underlying duplex connection so sending a frame delays the sending of other frames.
+Reducing the maximum stream frame size reduces this delay. It's in particular useful when dealing with slow connections.
 
 ## Stream states
 
