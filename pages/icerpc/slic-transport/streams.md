@@ -21,7 +21,7 @@ stream is bidirectional or unidirectional. The following table summarizes the fo
 | 0x02 | Client-Initiated, Unidirectional |
 | 0x03 | Server-Initiated, Unidirectional |
 
-The following table describes the stream frames defined by the Slic transport:
+The following table describes stream-specific frames:
 
 | Frame Type         | Description                                                                   |
 | ------------------ | ----------------------------------------------------------------------------- |
@@ -30,9 +30,6 @@ The following table describes the stream frames defined by the Slic transport:
 | StreamReadsClosed  | Informs the peer of the stream reads closure.                                 |
 | StreamWritesClosed | Informs the peer of the stream writes closure.                                |
 | StreamWindowUpdate | Informs the peer of a stream window update.                                   |
-
-Stream frames are sent over the Slic's underlying duplex connection. The sending of a stream frame can therefore block
-the sending of other stream frames or connection frames.
 
 ## Stream creation
 
@@ -71,10 +68,10 @@ will be sent for this stream.
 Sending a Stream frame after a StreamLast frame or multiple StreamLast frames for the same stream is considered a
 protocol error.
 
-[Head-of-line blocking][hol] very much depends on the size of a Stream or StreamLast frame. A large stream frame will
-cause more head-of-line blocking that smaller stream frames. The [MaxStreamFrameSize][connection-parameters] parameter
-exchanged on connection establishment limits the maximum size of a Stream or StreamLast frame. If the application data
-is larger than this parameter value, the data will be sent in chunks with multiple Stream frames.
+[Head-of-line blocking][hol] very much depends on the size of a Stream or StreamLast frame. A large frame will cause
+more head-of-line blocking than a smaller one. The [MaxStreamFrameSize][connection-parameters] parameter exchanged on
+connection establishment limits the maximum size of a Stream or StreamLast frame. If the application data is larger than
+this parameter value, the data will be sent in chunks with multiple Stream frames.
 
 ## Stream states
 
