@@ -42,7 +42,7 @@ class Person {
 }
 ```
 
-Here, a person may have a spouse (a "pointer" to another Person instance) or a "not set" value for its spouse field.
+Here, a person may have a spouse or a "not set" value for its spouse field.
 
 Leaving tagged fields aside, only a few field types can be marked optional with Slice1:
  - [classes][class-types] (like in the example above)
@@ -54,11 +54,11 @@ Leaving tagged fields aside, only a few field types can be marked optional with 
 ```slice
 struct Person {
     name: string
-    dob: WellKnownTypes::TimeStamp?
+    dataOfBirth: WellKnownTypes::TimeStamp?
 }
 ```
 
-The field `dob` may have a value or a "not set" value (when the date of birth is unknown).
+The field `dataOfBirth` may have a value or a "not set" value (when the date of birth is unknown).
 {% /slice2 %}
 
 {% callout %}
@@ -98,7 +98,7 @@ A tagged field can have any type, provided this type is marked optional, as show
 
 ### Tag number
 
-A tag number is a positive integer, such as 0, 1, 77.
+A tag number is a non-negative integer.
 
 The scope of a tag number is the enclosing type. For example, the following definitions are correct, with several
 `tag(1)` in different scopes:
