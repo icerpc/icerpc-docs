@@ -7,6 +7,8 @@ duplex transport (such as TCP) for data transmission.
 
 Like QUIC, Slic provides independent streams and flow control, and helps monitor the connection's health.
 
+This chapter documents version 1 of the Slic multiplexed transport.
+
 ## QUIC vs Slic
 
 Because Slic relies on a duplex transport—just like HTTP/2 relies on TCP—it can be affected by
