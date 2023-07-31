@@ -4,7 +4,7 @@ import { useState, useEffect, Key } from 'react';
 import { faFileLines, faTerminal } from '@fortawesome/free-solid-svg-icons';
 import clsx from 'clsx';
 import { Highlight, themes, Prism } from 'prism-react-renderer';
-import { Inter, Roboto_Mono } from 'next/font/google';
+import { Fira_Mono } from 'next/font/google';
 
 import dynamic from 'next/dynamic';
 import { useMode } from 'context/state';
@@ -14,8 +14,7 @@ import { useTheme } from 'next-themes';
 import { Theme } from 'types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const inter = Inter({ subsets: ['latin'] });
-const robotoMono = Roboto_Mono({ subsets: ['latin'] });
+const firaMono = Fira_Mono({ weight: "400", subsets: ['latin', 'latin-ext'] });
 
 const MermaidDiagram = dynamic(() => import('components/Tags/Mermaid'), {
   ssr: false
@@ -90,12 +89,7 @@ export const CodeBlock = ({
   }
 
   return (
-    <div
-      className={clsx(
-        robotoMono.className,
-        'group relative my-4 w-full items-center overflow-hidden rounded-lg border border-[rgb(46,46,46)] bg-[rgb(6,22,38)] dark:bg-[#0e1116]'
-      )}
-    >
+    <div className='group relative my-4 w-full items-center overflow-hidden rounded-lg border border-[rgb(46,46,46)] bg-[rgb(6,22,38)] dark:bg-[#0e1116]'>
       <TopBar
         language={language}
         code={children}
@@ -108,7 +102,7 @@ export const CodeBlock = ({
         code={children?.trim()}
       >
         {({ className, tokens, getLineProps, getTokenProps, style }) => (
-          <pre className={clsx(className, 'my-3')} style={style}>
+          <pre className={clsx(className, firaMono.className, 'my-3')} style={style}>
             <code>
               {tokens.map((line, i) => {
                 const { key, ...rest } = getLineProps({
@@ -159,12 +153,7 @@ type TopBarProps = {
 
 const TopBar = ({ language, code, title, hideTitle }: TopBarProps) =>
   language && !hideTitle ? (
-    <div
-      className={clsx(
-        inter.className,
-        'flex h-12 flex-row items-center justify-between border-b border-b-[hsl(0,0%,18%)] bg-black/20 text-white dark:bg-black/20'
-      )}
-    >
+    <div className='flex h-12 flex-row items-center justify-between border-b border-b-[hsl(0,0%,18%)] bg-black/20 text-white dark:bg-black/20'>
       <div className="m-0 ml-4 flex flex-row items-center gap-3 p-0 text-sm">
         {LanguageIcon(language ?? '')}
         {title ?? fixLanguage(language) ?? ''}
