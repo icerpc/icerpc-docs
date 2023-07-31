@@ -71,6 +71,7 @@ type Props = {
   title?: string;
   addMode?: boolean;
   lineNumbers?: boolean;
+  showTitle?: boolean;
 };
 
 export const CodeBlock = ({
@@ -78,7 +79,8 @@ export const CodeBlock = ({
   'data-language': language,
   title,
   addMode,
-  lineNumbers = false
+  lineNumbers = false,
+  showTitle = true
 }: Props) => {
   const { mode } = useMode();
   const { resolvedTheme } = useTheme();
@@ -117,7 +119,12 @@ export const CodeBlock = ({
         'group relative my-4 w-full items-center overflow-hidden rounded-lg border border-[rgb(46,46,46)] bg-[rgb(6,22,38)] dark:bg-[#0e1116]'
       )}
     >
-      <TopBar language={language} code={children} title={title} />
+      <TopBar
+        language={language}
+        code={children}
+        title={title}
+        hideTitle={!showTitle}
+      />
       <Highlight
         theme={theme}
         language={language ?? ''}
@@ -152,7 +159,7 @@ export const CodeBlock = ({
           </pre>
         )}
       </Highlight>
-      {language == undefined && (
+      {!showTitle && (
         <div
           className={clsx(
             'absolute right-0 top-2 mr-4 rounded border border-[rgb(46,46,46)] bg-[rgb(6,22,38)] opacity-0',
@@ -170,10 +177,11 @@ type TopBarProps = {
   language?: string;
   title?: string;
   code: string;
+  hideTitle?: boolean;
 };
 
-const TopBar = ({ language, code, title }: TopBarProps) =>
-  language ? (
+const TopBar = ({ language, code, title, hideTitle }: TopBarProps) =>
+  language && !hideTitle ? (
     <div
       className={clsx(
         inter.className,
