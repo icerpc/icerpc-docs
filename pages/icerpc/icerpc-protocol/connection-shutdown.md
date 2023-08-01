@@ -69,4 +69,4 @@ compact struct GoAwayFrame {
 }
 ```
 
-[slice]: ../../slice2
+[slice]: /slice2

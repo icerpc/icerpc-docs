@@ -70,4 +70,4 @@ For example:
 | `hello -o -s:ssl -h localhost -p 10000`        | `ice://localhost:10000/hello?transport=ssl`       |
 | `hello -t`                                     | `ice:/hello`                                      |
 
-[service-address]: ../../icerpc/invocation/service-address
+[service-address]: /icerpc/invocation/service-address

@@ -119,19 +119,19 @@ module WellKnownTypes
 custom Duration
 ```
 
-[attributes]: ../../slice2/language-guide/attributes
-[custom]: ../../slice2/language-guide/custom-types
-[dictionary]: ../../slice2/language-guide/dictionary-types
-[enum]: ../../slice2/language-guide/enum-types
-[exception]: ../../slice2/language-guide/exception
+[attributes]: /slice2/language-guide/attributes
+[custom]: /slice2/language-guide/custom-types
+[dictionary]: /slice2/language-guide/dictionary-types
+[enum]: /slice2/language-guide/enum-types
+[exception]: /slice2/language-guide/exception
 [idl]: https://en.wikipedia.org/wiki/Interface_description_language
 [greeter-core]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterCore
 [greeter-json]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterJson
 [greeter-protobuf]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterProtobuf
-[primitive]: ../../slice2/language-guide/primitive-types
+[primitive]: /slice2/language-guide/primitive-types
 [protobuf]: https://en.wikipedia.org/wiki/Protocol_Buffers
-[sequence]: ../../slice2/language-guide/sequence-types
-[slice]: ../../slice2
-[struct]: ../../slice2/language-guide/struct-types
-[tagged]: ../../slice2/language-guide/fields#tagged-fields
-[well-known]: ../../slice2/language-guide/well-known-types
+[sequence]: /slice2/language-guide/sequence-types
+[slice]: /slice2
+[struct]: /slice2/language-guide/struct-types
+[tagged]: /slice2/language-guide/fields#tagged-fields
+[well-known]: /slice2/language-guide/well-known-types
