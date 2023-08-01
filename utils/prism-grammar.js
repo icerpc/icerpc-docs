@@ -1,3 +1,7 @@
+
+// This highlighter only handles a subset of ANTLR and EBNF syntax,
+// since we don't need the full language to express the grammar rules of Slice.
+
 (function (Prism) {
     Prism.languages.grammar = {
         string: /\"(?:\\.|[^\\\"\r\n])*?\"/,
