@@ -43,21 +43,19 @@ export const AppLink = ({
     // If the router is not ready, we can't resolve the link.
     if (!isReady) return;
 
-    let pathname = isApiLink(originalHref)
+    let url = isApiLink(originalHref)
       ? resolveApiLink(originalHref)
       : resolveRelativeLink(originalHref, asPath);
 
-    // Resolve relative urls like "/abc/../foo" to their absolute path.
-    pathname = new URL(pathname, 'https://docs.testing.zeroc.com').pathname;
+    // Resolve internal relative urls like "/abc/../foo" to their absolute path.
+    if (!isExternalLink(url)) {
+      url = new URL(url, 'https://docs.testing.zeroc.com').pathname;
 
-    // If the link is a /slice/ link, we need to convert it to a /slice1/ or /slice2/ link based on the current mode.
-    if (isSliceLink(pathname) && getSliceMode(pathname) === undefined)
-      pathname = pathname.replace(
-        /^\/slice(\/|$)/,
-        mode === Mode.Slice1 ? '/slice1/' : '/slice2/'
-      );
+      // If the link is a /slice/ link, we need to convert it to a /slice1/ or /slice2/ link based on the current mode.
+      url = url.replace(/^\/slice(\/|$)/, mode === Mode.Slice1 ? '/slice1/' : '/slice2/');
+    }
 
-    setHref(pathname);
+    setHref(url);
   }, [originalHref, asPath, href, isReady, mode]);
 
   const style = { ...defaultStyle, ...originalStyle };
