@@ -110,5 +110,5 @@ using IceRPC requests and responses.
 {% /grid %}
 
 [icerpc]: ../
-[idl]: https://en.wikipedia.org/wiki/
+[idl]: https://en.wikipedia.org/wiki/Interface_description_language
 [protobuf]: https://protobuf.dev/
