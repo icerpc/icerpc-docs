@@ -4,7 +4,7 @@
 // since we don't need the full language to express the grammar rules of Slice.
 
 (function (Prism) {
-    Prism.languages.grammar = {
+    Prism.languages.ebnf = {
         string: /\"(?:\\.|[^\\\"\r\n])*?\"/,
         comment: {
             pattern: /\/\/[^\r\n]*/,
