@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { ReactNode, CSSProperties } from 'react';
+import { ReactNode, CSSProperties, useState, useEffect } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
@@ -33,19 +33,32 @@ export const AppLink = ({
   style: originalStyle,
   children
 }: AppLinkProps) => {
-  const router = useRouter();
+  const { asPath, isReady } = useRouter();
+
+  const [href, setHref] = useState(originalHref);
+
   const { mode, setMode } = useMode();
 
-  let href = isApiLink(originalHref)
-    ? resolveApiLink(originalHref)
-    : resolveRelativeLink(originalHref, router.asPath);
+  useEffect(() => {
+    // If the router is not ready, we can't resolve the link.
+    if (!isReady) return;
 
-  // If the link is a /slice/ link, we need to convert it to a /slice1/ or /slice2/ link based on the current mode.
-  if (isSliceLink(href) && getSliceMode(href) === undefined)
-    href = href.replace(
-      /\/slice\/?/,
-      mode === Mode.Slice1 ? '/slice1/' : '/slice2/'
-    );
+    let pathname = isApiLink(originalHref)
+      ? resolveApiLink(originalHref)
+      : resolveRelativeLink(originalHref, asPath);
+
+    // Resolve relative urls like "/abc/../foo" to their absolute path.
+    pathname = new URL(pathname, 'https://docs.testing.zeroc.com').pathname;
+
+    // If the link is a /slice/ link, we need to convert it to a /slice1/ or /slice2/ link based on the current mode.
+    if (isSliceLink(pathname) && getSliceMode(pathname) === undefined)
+      pathname = pathname.replace(
+        /^\/slice(\/|$)/,
+        mode === Mode.Slice1 ? '/slice1/' : '/slice2/'
+      );
+
+    setHref(pathname);
+  }, [originalHref, asPath, href, isReady, mode]);
 
   const style = { ...defaultStyle, ...originalStyle };
 
@@ -154,9 +167,8 @@ const isApiLink = (href: string) => {
 const resolveApiLink = (href: string) => {
   const [language, ...rest] = href.split(':');
   const [module, method] = rest.join('.').split('#');
-  return `https://docs.testing.zeroc.com/api/${language}/api/${module}.html${
-    method ? `#${method}` : ''
-  }`;
+  return `https://docs.testing.zeroc.com/api/${language}/api/${module}.html${method ? `#${method}` : ''
+    }`;
 };
 
 /**
