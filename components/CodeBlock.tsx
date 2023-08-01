@@ -25,8 +25,8 @@ const MermaidDiagram = dynamic(() => import('components/Tags/Mermaid'), {
 require('prismjs/components/prism-rust');
 require('prismjs/components/prism-csharp');
 require('prismjs/components/prism-bash');
-require('prismjs/components/prism-ebnf');
 require('prismjs/components/prism-protobuf');
+require('utils/prism-ebnf');
 require('utils/prism-ice');
 require('utils/prism-slice');
 

@@ -44,7 +44,7 @@ Symbols produced by lexical grammars are written in `snake_case` and symbols pro
 
 This specification defines and references a set of 'convenience' symbols that exist only to simplify the specification and do not necessarily appear within actual implementations.
 These convenience tokens are written in `SCREAMING_SNAKE_CASE` and are defined by the following regular expressions:
-```EBNF {% showTitle=false %}
+```ebnf {% showTitle=false %}
 LETTER: "[a-zA-Z]";
 DIGIT:  "[0-9]";
 ALPHANUMERIC: "[_a-zA-Z0-9]";
@@ -70,7 +70,7 @@ it must prioritize producing `identifier` symbols over other symbols.
 This allows attribute directives and arguments to accept strings that would normally produce keyword tokens.
 While context dependent, this behavior is still unambiguous, since keywords cannot validly appear in attributes.
 
-```EBNF {% showTitle=false %}
+```ebnf {% showTitle=false %}
 identifier: "\\"? LETTER ALPHANUMERIC*;
 
 integer_literal: DIGIT ALPHANUMERIC*;
@@ -146,7 +146,7 @@ minus:         "-";
 
 ### Syntactic grammar
 
-```EBNF {% showTitle=false %}
+```ebnf {% showTitle=false %}
 SliceFile
     : SliceFilePrelude Module? Definition*
     ;
@@ -349,7 +349,7 @@ lines like this, they are concatenated into a single `source_block` token for ea
 
 ### Lexical grammar
 
-```EBNF {% showTitle=false %}
+```ebnf {% showTitle=false %}
 // These are opaque strings that exist outside the grammar of preprocessor directives.
 source_block;
 
@@ -377,7 +377,7 @@ right_parenthesis: ")";
 
 ### Syntactic grammar
 
-```EBNF {% showTitle=false %}
+```ebnf {% showTitle=false %}
 SliceFile
     : Main*
     ;
@@ -442,7 +442,7 @@ Term
 TODO add a diagram for explaining how a comment lexer transitions between modes,
 since it's lexical grammar also has some context dependency.
 
-```EBNF {% showTitle=false %}
+```ebnf {% showTitle=false %}
 identifier: LETTER ALPHANUMERIC*;
 text: CHARACTER+;
 
@@ -464,7 +464,7 @@ double_colon: "::";
 
 ### Syntactic grammar
 
-```EBNF {% showTitle=false %}
+```ebnf {% showTitle=false %}
 DocComment
     : Overview?
     | DocComment ParamBlock
