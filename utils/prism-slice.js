@@ -1,6 +1,6 @@
 (function (Prism) {
     Prism.languages.slice = {
-        keyword: /\b(interface|module|struct|class|exception|enum|throws|compact)\b/,
+        keyword: /\b(interface|module|struct|class|exception|enum|throws|compact|mode|typealias|tag)\b/,
         comment: [
             {
                 pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
@@ -21,6 +21,6 @@
         operator: /[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/,
         punctuation: /[{}[\];(),.:]/,
         builtin:
-            /\b(?:bool|int8|uint8|int16|uint16|int32|uint32|varint32|varuint32|int64|uint64|varint62|varuint62|float32|float64|string|Slice1|Slice2)\b/
+            /\b(?:bool|int8|uint8|int16|uint16|int32|uint32|varint32|varuint32|int64|uint64|varint62|varuint62|float32|float64|string|Slice1|Slice2|sequence|dictionary)\b/
     };
 }(Prism));

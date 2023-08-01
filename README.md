@@ -93,9 +93,9 @@ def hello(name):
 
 ````md
 ```slice addMode=true
-module Foo;
+module Foo
 
-interface Bar {};
+interface Bar {}
 ```
 ````
 

@@ -28,7 +28,6 @@ interface Gizmo : Widget {
 ## Operations
 
 {% slice1 %}
-
 ```slice {% addMode=true %}
 module Example
 
@@ -52,10 +51,9 @@ interface MyOperations {
     idempotent opIdempotent(message: string) -> int32
 }
 ```
-
 {% /slice1 %}
-{% slice2 %}
 
+{% slice2 %}
 ```slice
 module Example
 
@@ -88,13 +86,11 @@ interface MyOperations {
     idempotent opIdempotent(message: string) -> int32
 }
 ```
-
 {% /slice2 %}
 
 ## Enums
 
 {% slice1 %}
-
 ```slice {% addMode=true %}
 module Example
 
@@ -113,11 +109,9 @@ unchecked enum Permissions {
     Delete = 4
 }
 ```
-
 {% /slice1 %}
 
 {% slice2 %}
-
 ```slice
 module Example
 
@@ -136,24 +130,20 @@ unchecked enum Permissions : uint8 {
     Delete = 4
 }
 ```
-
 {% /slice2 %}
 
 ## Structs
 
 {% slice1 %}
-
 ```slice {% addMode=true %}
 module Example
 
 // A compact struct cannot have tagged fields.
 compact struct Point { x: int32, y: int32 }
 ```
-
 {% /slice1 %}
 
 {% slice2 %}
-
 ```slice
 module Example
 
@@ -175,11 +165,9 @@ struct Contact {
 // A compact struct has only required fields.
 compact struct Point { x: int32, y: int32 }
 ```
-
 {% /slice2 %}
 
 {% slice1 %}
-
 ## Classes
 
 ```slice {% addMode=true %}
@@ -204,13 +192,11 @@ class BusinessContact : Contact {
     tag(1) sendNewsletter: bool? // the scope of a tag is a class slice.
 }
 ```
-
 {% /slice1 %}
 
 ## Exceptions
 
 {% slice1 %}
-
 ```slice {% addMode=true %}
 module Example
 
@@ -225,11 +211,9 @@ interface WidgetFactory {
     createWidget(name: string) -> Widget throws WidgetException
 }
 ```
-
 {% /slice1 %}
 
 {% slice2 %}
-
 ```slice
 module Example
 
@@ -244,7 +228,6 @@ interface WidgetFactory {
     createWidget(name: string) -> Widget throws WidgetException
 }
 ```
-
 {% /slice2 %}
 
 ## Sequences and dictionaries
@@ -264,7 +247,6 @@ interface Census {
 ## Custom and well-known types
 
 {% slice1 %}
-
 ```slice {% addMode=true %}
 module Example
 
@@ -278,11 +260,9 @@ compact struct CustomBag {
     serviceAddress: IceRpc::ServiceAddress
 }
 ```
-
 {% /slice1 %}
 
 {% slice2 %}
-
 ```slice
 module Example
 
@@ -298,7 +278,6 @@ struct CustomBag {
     timeStamp: WellKnownTypes::TimeStamp
 }
 ```
-
 {% /slice2 %}
 
 ## Attributes
