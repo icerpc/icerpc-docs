@@ -24,7 +24,7 @@ The ice protocol sends requests, responses and other information over a duplex c
 All ice protocol frames have the same layout: a header followed by a body. The format of the body depends on the frame
 type.
 
-Frames and types from this page are defined using [Slice1][slice1].
+Frames and types from this page are defined using [Slice][slice].
 
 The header is a compact struct defined as follows:
 
@@ -215,4 +215,4 @@ For the same reason, when IceRPC receives an encapsulation, it makes sure the en
 set to 1.1.
 
 [protocol-and-encoding]: https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding
-[slice1]: ../../slice1
+[slice]: ../../slice1
