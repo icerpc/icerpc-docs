@@ -26,7 +26,7 @@ require('prismjs/components/prism-rust');
 require('prismjs/components/prism-csharp');
 require('prismjs/components/prism-bash');
 require('prismjs/components/prism-protobuf');
-require('utils/prism-grammar');
+require('utils/prism-ebnf');
 require('utils/prism-ice');
 require('utils/prism-slice');
 
