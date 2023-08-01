@@ -339,7 +339,6 @@ dbug: IceRpc.Server[12]
 [icerpc-package]: https://www.nuget.org/packages/IceRpc
 [icerpc-slice]: https://www.nuget.org/packages/IceRpc.Slice
 [icerpc-slice-tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
-[invocation-pipeline]: /icerpc/invocation/invocation-pipeline
 [logger]: https://www.nuget.org/packages/IceRpc.Logger
 [router]: csharp:IceRpc.Router
 [server]: csharp:IceRpc.Server

@@ -86,7 +86,7 @@ while a response for this request is outstanding. The `requestId` 0 is reserved 
 has no corresponding response.
 
 The `id` field corresponds to the path of the outgoing request's service address encoded as an
-[Ice identity]('/icerpc-for-ice-users/rpc-core/ice-identity).
+[Ice identity](/icerpc-for-ice-users/rpc-core/ice-identity).
 
 The `facet` field corresponds to the fragment of the outgoing request's service address encoded as a `sequence<string>`.
 This sequence is empty when the fragment is empty; otherwise, it has a single element with the fragment.
