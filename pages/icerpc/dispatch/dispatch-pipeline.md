@@ -91,5 +91,5 @@ flowchart LR
 ```
 
 [connections]: ../connection/how-to-create-a-connection
-[slice-service]: ../../slice2/language-guide/interface
+[slice-service]: ../../slice/language-guide/interface
 [dispatcher-interface]: csharp:IceRpc.IDispatcher

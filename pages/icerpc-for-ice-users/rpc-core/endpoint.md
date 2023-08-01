@@ -64,4 +64,4 @@ without losing any server address information.
 
 [local-network-address]: csharp:IceRpc.Transports.Tcp.TcpClientTransportOptions#IceRpc_Transports_Tcp_TcpClientTransportOptions_LocalNetworkAddress
 [server-address]: ../../icerpc/connection/server-address
-[transport-code]: ../../slice1/encoding/constructed-types#proxy
+[transport-code]: ../../slice1/encoding/proxy-types
