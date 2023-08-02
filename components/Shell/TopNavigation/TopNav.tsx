@@ -100,7 +100,7 @@ const Logo = () => {
   }
 
   return (
-    <Link href="https://web.testing.zeroc.com/icerpc">
+    <Link href="/">
       <div className="mb-3 ml-[1.3rem] mr-0 mt-5 flex items-center justify-start gap-1 pb-4 lg:ml-[2.6rem]">
         <Image src={logo} height={20} alt="ZeroC Logo" className="mt-2" />
         <div className="ml-1 pt-[8px] text-xl font-bold text-black dark:text-white">
