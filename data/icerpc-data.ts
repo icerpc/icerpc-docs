@@ -121,6 +121,10 @@ export const iceRpcData: SideBarSourceType[] = [
       {
         title: 'Duplex transport',
         path: `${ICERPC_BASE_URL}/customization/duplex-transport`
+      },
+      {
+        title: 'Multiplexed transport',
+        path: `${ICERPC_BASE_URL}/customization/multiplexed-transport`
       }
     ]
   },
