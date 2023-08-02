@@ -38,7 +38,7 @@ export const Aside = ({ asideItems }: { asideItems: AsideItem[] }) => {
 
   // Edit this page URL
   const baseEditPath = 'https://github.com/icerpc/icerpc-docs/tree/main/pages';
-  const [editUrl, setEditUrl] = useState(baseEditPath + asPath);
+  const [editUrl, setEditUrl] = useState(baseEditPath);
 
   useEffect(() => {
     if (isReady) {
