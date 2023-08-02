@@ -117,6 +117,10 @@ export const iceRpcData: SideBarSourceType[] = [
       {
         title: 'Protocol connection',
         path: `${ICERPC_BASE_URL}/customization/protocol-connection`
+      },
+      {
+        title: 'Duplex transport',
+        path: `${ICERPC_BASE_URL}/customization/duplex-transport`
       }
     ]
   },
