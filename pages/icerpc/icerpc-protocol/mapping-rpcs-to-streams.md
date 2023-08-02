@@ -126,4 +126,4 @@ For example, a response with status code Success, no fields and an empty payload
 0x00                : field dictionary size (0) on 1 byte (no fields)
 ```
 
-[slice]: ../../slice2
+[slice]: /slice2

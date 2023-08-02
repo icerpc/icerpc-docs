@@ -153,9 +153,9 @@ public readonly partial record struct WidgetProxy : IWidget, IProxy
 }
 ```
 
-The `invoker` parameter represents your [invocation pipeline](../../icerpc/invocation/invocation-pipeline), the
+The `invoker` parameter represents your [invocation pipeline](/icerpc/invocation/invocation-pipeline), the
 `serviceAddress` or `serviceAddressUri` parameter corresponds to the
-[address](../../icerpc/invocation/service-address) of the remote service, and the `encodeOptions` parameter allows
+[address](/icerpc/invocation/service-address) of the remote service, and the `encodeOptions` parameter allows
 you to customize the Slice encoding of operation parameters. See
 [SliceEncodeOptions](csharp:IceRpc.Slice.SliceEncodeOptions) for details.
 

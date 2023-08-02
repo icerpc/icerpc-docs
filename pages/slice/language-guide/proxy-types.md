@@ -86,9 +86,9 @@ calls with this decoded proxy: it's ready to go.
 
 [csharp-service-address]: csharp:IceRpc.ServiceAddress
 [encode-options]: csharp:IceRpc.Slice.SliceEncodeOptions
-[incoming-request-features]: ../../icerpc/dispatch/incoming-request#request-features
-[invocation-pipeline]: ../../icerpc/invocation/invocation-pipeline
+[incoming-request-features]: /icerpc/dispatch/incoming-request#request-features
+[invocation-pipeline]: /icerpc/invocation/invocation-pipeline
 [proxy-factory]: csharp:IceRpc.Slice.ISliceFeature#IceRpc_Slice_ISliceFeature_ProxyFactory
-[relative-service-address]: ../../icerpc/invocation/service-address#relative-service-address
-[service-address]: ../../icerpc/invocation/service-address
+[relative-service-address]: /icerpc/invocation/service-address#relative-service-address
+[service-address]: /icerpc/invocation/service-address
 [slice-feature]: csharp:IceRpc.Slice.ISliceFeature

@@ -39,4 +39,4 @@ dotnet add package IceRpc.Transports.Quic
 [full-list]: nuget-packages
 [nuget]: https://www.nuget.org/
 [packages]: nuget-packages
-[slice]: ../../slice
+[slice]: /slice

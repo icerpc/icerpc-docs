@@ -117,5 +117,5 @@ Console.WriteLine(greeting);
 ```
 
 [decorator-pattern]: https://en.wikipedia.org/wiki/Decorator_pattern
-[dispatch-pipeline]: ../../icerpc/dispatch/dispatch-pipeline
+[dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
 [slice-tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools

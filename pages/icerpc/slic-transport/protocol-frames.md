@@ -182,4 +182,4 @@ compact struct StreamWindowUpdateFrame {
 The window size increment specifies the additional number of bytes that can be sent in addition to the existing window
 size.
 
-[slice]: ../../slice2
+[slice]: /slice2

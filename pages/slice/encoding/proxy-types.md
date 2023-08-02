@@ -10,11 +10,11 @@ framework, consult the documentation for this specific integration.
 
 ## Service address
 
-A proxy is encoded as its [service address](../../icerpc/invocation/service-address) and only its service address.
+A proxy is encoded as its [service address](/icerpc/invocation/service-address) and only its service address.
 The name of the proxy's interface is not encoded: it's only the proxy's untyped service address that gets encoded.
 
 {% slice1 %}
-If the proxy is null, we encode this proxy as the [null Ice identity](../../icerpc-for-ice-users/rpc-core/ice-identity)
+If the proxy is null, we encode this proxy as the [null Ice identity](/icerpc-for-ice-users/rpc-core/ice-identity)
 (two empty strings).
 
 Otherwise, we encode the service address like the following `ServiceAddressData` struct:
