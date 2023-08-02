@@ -5,8 +5,8 @@ description: Understand what's a multiplexed transport
 
 ## What is a multiplexed transport?
 
-A multiplexed transport is an abstraction that provides multiplexed communication using several streams between a client
-and server.
+A multiplexed transport is an abstraction that provides multiplexed communication between a client and server using
+several streams.
 
 IceRPC uses multiplexed transports for the implementation of the [icerpc protocol][icerpc-protocol].
 
