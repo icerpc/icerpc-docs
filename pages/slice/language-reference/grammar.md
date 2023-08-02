@@ -203,13 +203,9 @@ Parameter
     : Prelude Tag? identifier colon stream_keyword? TypeRef
     ;
 
-ReturnMember
-    : Prelude Tag? identifier colon stream_keyword? TypeRef
-    ;
-
 ReturnType
     : Tag? stream_keyword? TypeRef
-    | left_parenthesis UndelimitedList<ReturnMember> right_parenthesis
+    | left_parenthesis UndelimitedList<Parameter> right_parenthesis
     ;
 
 ExceptionSpecification
