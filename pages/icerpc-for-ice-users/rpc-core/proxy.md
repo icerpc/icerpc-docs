@@ -59,7 +59,7 @@ When the IceRPC + Slice integration decodes a Slice1-encoded proxy, it processes
 - all other options are ignored
 
 As a result, the Slice engine's proxy-to-service-address decoding is lossy, unlike the
-[endpoint-to-server-address](../endpoint#endpoint-options) decoding.
+[endpoint-to-server-address](endpoint#endpoint-options) decoding.
 
 For example:
 
