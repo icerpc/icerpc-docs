@@ -24,6 +24,8 @@ The ice protocol sends requests, responses and other information over a duplex c
 All ice protocol frames have the same layout: a header followed by a body. The format of the body depends on the frame
 type.
 
+Frames and types from this page are defined using [Slice][slice].
+
 The header is a compact struct defined as follows:
 
 ```slice
@@ -106,8 +108,6 @@ send batch requests and does not accept incoming batch request frames.
 A response frame carries an ice response. It consists of a header with the `Reply` type followed by a `ReplyData` body:
 
 ```slice
-mode = Slice1
-
 compact struct ReplyData {
     requestId: int32
     replyStatus: ReplyStatus
@@ -164,8 +164,6 @@ The format of the `replyPayload` depends on the reply status:
 `Identity` and the fragment is encoded as a `sequence<string>`:
 
 ```slice
-mode = Slice1
-
 compact struct RequestFailedData {
     path: Identity
     facet: sequence<string>
@@ -191,8 +189,6 @@ An encapsulation is a holder for a request or response payload. It holds the pay
 the encapsulation size, equal to the payload size plus 6) and an encoding version:
 
 ```slice
-mode = Slice1
-
 compact struct Encapsulation {
     size: int32              // payload size + 6
     encodingMajor: uint8     // always 1
@@ -219,3 +215,4 @@ For the same reason, when IceRPC receives an encapsulation, it makes sure the en
 set to 1.1.
 
 [protocol-and-encoding]: https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding
+[slice]: ../../slice1
