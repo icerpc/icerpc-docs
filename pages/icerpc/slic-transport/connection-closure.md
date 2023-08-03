@@ -3,13 +3,11 @@ title: Connection closure
 description: Understand how a connection is closed.
 ---
 
-## What's connection closure?
+A client or a server can close a connection, and this closure can be either graceful or abortive.
 
-Connection closure is either graceful or abortive and can be initiated by the client or server. Violations of the
-protocol lead to an abortive close.
-
-Once the connection closure is initiated, the streams are closed and neither the client nor the server sends
-[StreamReadsClosed][stream-reads-closed-frame] and [StreamWritesClosed][stream-writes-closed-frame] frames.
+Once the closure of a connection is initiated, all the streams are closed. The client and the server no longer send
+[StreamReadsClosed][stream-reads-closed-frame] and [StreamWritesClosed][stream-writes-closed-frame] frames on this
+connection.
 
 ## Graceful connection closure
 
@@ -64,7 +62,7 @@ The `Close` frame carries an application error code. This error code provides th
 
 ## Abortive connection closure
 
-Abortive connection closure aborts the duplex connection.
+An abortive connection closure aborts the underlying duplex connection.
 
 [close-frame]: protocol-frames#close-frame
 [stream-reads-closed-frame]: protocol-frames#streamreadsclosed-and-streamwritesclosed-frames
