@@ -60,5 +60,5 @@ The payload of an incoming response is a stream of bytes that represents the ret
 IceRPC is concerned, the number of bytes in this stream is unknown.
 
 [response-field-key]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/ResponseFieldKey.slice
-[slice]: ../../slice
+[slice]: /slice
 [status-code]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/StatusCode.slice

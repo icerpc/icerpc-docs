@@ -335,14 +335,13 @@ dbug: IceRpc.Server[12]
 
 [deadline]: https://www.nuget.org/packages/IceRpc.Deadline
 [dispatch-exception]: csharp:IceRpc.DispatchException
-[dispatch-pipeline]: ../../icerpc/dispatch/dispatch-pipeline
+[dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
 [icerpc-package]: https://www.nuget.org/packages/IceRpc
 [icerpc-slice]: https://www.nuget.org/packages/IceRpc.Slice
 [icerpc-slice-tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
-[invocation-pipeline]: ../../icerpc/invocation/invocation-pipeline
 [logger]: https://www.nuget.org/packages/IceRpc.Logger
 [router]: csharp:IceRpc.Router
 [server]: csharp:IceRpc.Server
-[service-address]: ../../icerpc/invocation/service-address
+[service-address]: /icerpc/invocation/service-address
 [service-not-found]: csharp:IceRpc.StatusCode#ServiceNotFound
-[slice]: ../../slice
+[slice]: /slice
