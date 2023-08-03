@@ -170,7 +170,7 @@ The contact id = 5, name = not set, age = 42 is encoded as:
 _Example: simple struct_
 
 ```slice
-struct Point { x: int32, y: in32 }
+struct Point { x: int32, y: int32 }
 ```
 
 A (non-compact) point x = 5, y = 32 is encoded as follows:

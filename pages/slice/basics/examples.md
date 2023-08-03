@@ -291,7 +291,7 @@ interface Atlas {
     getMainCities(country: string) -> [cs::type("HashSet<string>")] sequence<string>
 }
 
-[cs::readonly] compact struct Point { x: int32, y: in32 }
+[cs::readonly] compact struct Point { x: int32, y: int32 }
 ```
 
 ## Doc comments
