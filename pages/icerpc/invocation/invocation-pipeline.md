@@ -13,11 +13,10 @@ server-side of a connection to the client-side of this connection.
 
 ## The Invoker abstraction
 
-With IceRPC, you always make an invocation by calling an invoker. An invoker is a simple abstraction with a single
-`invoke` method that accepts an [outgoing request](outgoing-request) and returns an
-[incoming response](incoming-response).
+With IceRPC, you always make an invocation by calling an invoker. An invoker is a simple abstraction that accepts an
+[outgoing request](outgoing-request) and returns an [incoming response](incoming-response).
 
-In C#, this abstraction is the [`IInvoker`][invoker-interface] interface:
+In C#, this abstraction is the [IInvoker][invoker-interface] interface:
 
 ```csharp
 namespace IceRpc;
@@ -46,23 +45,21 @@ It is common to perform additional processing on an invocation before giving it 
 want to compress the payloads of your requests, add a telemetry field to each request, add a deadline, or simply add
 logging.
 
-An invoker implementation can call `invoke` on another invoker, which itself calls `invoke` on another invoker, and so
-on; the invoker used to make an invocation can be the head of an invoker chain or tree, known as an
-"invocation pipeline".
+An invoker implementation can call on another invoker, which itself calls on another invoker, and so on; the invoker
+used to make an invocation can be the head of an invoker chain or tree, known as an "invocation pipeline".
 
 There are 3 common types of invokers:
 
 - **Leaf invoker**\
-   It's a leaf in the invocation pipeline that implements `invoke` without the help of another invoker. This leaf
-   invoker is typically a connection.
+   It's a leaf in the invocation pipeline. This leaf invoker is typically a connection.
 
 - **Interceptor**\
     An [interceptor](interceptor) intercepts an invocation and forwards it to the "next" interceptor. IceRPC provides
     several built-it interceptors for logging, compression and more.
 
 - **Pipeline**\
-    A [pipeline](invocation-pipeline) walks a request through interceptors registered with this pipeline before giving the request
-    to a leaf invoker.
+    A [pipeline](invocation-pipeline) walks a request through interceptors registered with this pipeline before giving
+    the request to a leaf invoker.
 
 ```mermaid
 ---

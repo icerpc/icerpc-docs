@@ -5,8 +5,8 @@ description: Understand how to interpret an incoming response.
 
 ## Receiving an incoming response
 
-The `invoke` method of an [invoker](invocation-pipeline#the-invoker-abstraction) returns an incoming response
-asynchronously. This incoming response is created by the connection when it receives the response from the peer.
+An [invoker](invocation-pipeline#the-invoker-abstraction) returns an incoming response asynchronously. This incoming
+response is created by the connection when it receives the response from the peer.
 
 An incoming response holds:
 
