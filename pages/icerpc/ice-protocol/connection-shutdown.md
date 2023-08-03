@@ -18,7 +18,7 @@ A client or a server follows these steps when it wants to shutdown an ice connec
 
 3. Stop sending [heartbeats](connection-establishment#validateconnection-frame) to the peer.
 
-4. Send a [`CloseConnection`](#closeconnection-frame) frame to the peer.\
+4. Send a [CloseConnection](#closeconnection-frame) frame to the peer.\
 The client or server skips this step if it already received a `CloseConnection` frame from the peer.
 
 5. Wait for a `CloseConnection` frame from the peer or for the peer to close the duplex connection.\

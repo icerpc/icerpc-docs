@@ -16,8 +16,8 @@ dispatch requests.
 ## The Dispatcher abstraction
 
 When a connection receives a request, it dispatches this request using its configured dispatcher. This dispatcher is an
-abstraction with a single `dispatch` method that accepts an incoming request and returns an outgoing response. It's the
-server-side counterpart to the [Invoker](../invocation/invocation-pipeline#the-invoker-abstraction) abstraction.
+abstraction that accepts an incoming request and returns an outgoing response. It's the server-side counterpart to the
+[Invoker](../invocation/invocation-pipeline#the-invoker-abstraction) abstraction.
 
 An important difference between Invoker and Dispatcher is you need to implement this Dispatcher abstraction to fulfill
 the requests and produce the responses. The Invoker abstraction is implemented by IceRPC's connections.
@@ -70,8 +70,7 @@ on; the dispatcher you configure on a server can be the head of a dispatcher cha
 There are 3 common types of dispatchers:
 
 - **Leaf dispatcher**\
-  It's a leaf in the dispatch pipeline that implements `dispatch` without the help of another dispatcher. For example,
-  a Slice service.
+  It's a leaf in the dispatch pipeline. For example, a Slice service.
 
 - **Middleware**\
    A [middleware](middleware) intercepts a dispatch and forwards it to the "next" dispatcher. IceRPC provides several
