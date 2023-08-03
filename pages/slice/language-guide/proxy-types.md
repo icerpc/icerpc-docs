@@ -28,8 +28,8 @@ interface WidgetFactory {
 Here, `createWidget` returns a `Widget` proxy: a local representative for a remote service that implements the `Widget`
 interface.
 
-Returning a proxy type has the advantage of producing a typed API in the generated code. For example, in C# with IceRPC,
-`createWidget` maps to:
+Returning a proxy type has the advantage of producing a typed API in the generated code. For example, with IceRPC and
+Slice in C#, `createWidget` maps to:
 
 ```csharp
 // Client-side mapping
@@ -45,11 +45,7 @@ service address.
 
 {% slice2 %}
 
-## Relative proxy
-
-{% callout %}
-This section is specific to the IceRPC-Slice integration.
-{% /callout %}
+## Relative proxy {% icerpcSlice=true %}
 
 A relative proxy is a proxy that encapsulates a [relative service address][relative-service-address]. You cannot use a
 relative proxy to send requests.
@@ -68,11 +64,7 @@ On the server side, when the generated code decodes a relative proxy from an inc
 relative proxy by default. You need convert this proxy into an absolute proxy before you can use it to make invocations.
 {% /slice2 %}
 
-## C# mapping
-
-{% callout %}
-This section is specific to the IceRPC-Slice integration.
-{% /callout %}
+## C# mapping {% icerpcSlice=true %}
 
 Proxies are mapped to *Name*Proxy record structs in C#, as described on the [interface page](interface#c#-mapping).
 

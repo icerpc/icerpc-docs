@@ -160,8 +160,7 @@ This file contains a few lines of code that `Programs.cs` uses to wait for Ctrl+
 
 The project file is straightforward. It contains references to 4 separate IceRpc NuGet packages:
 
-- [IceRpc][icerpc-package] - the IceRPC for C# base package
-- [IceRpc.Slice][icerpc-slice] - the Slice IceRPC integration package
+- [IceRpc.Slice][icerpc-slice] - the IceRPC + Slice integration package
 - [IceRpc.Slice.Tools][icerpc-slice-tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
 - [IceRpc.Deadline][deadline] and [IceRpc.Logger][logger] - the packages with the two middleware we
   installed in the dispatch pipeline
@@ -280,8 +279,7 @@ that triggers the connection establishment.
 
 The project file is identical to the server's project file, with references to 4 separate IceRpc NuGet packages:
 
-- [IceRpc][icerpc-package] - the IceRPC for C# base package
-- [IceRpc.Slice][icerpc-slice] - the Slice IceRPC integration package
+- [IceRpc.Slice][icerpc-slice] - the IceRPC + Slice integration package
 - [IceRpc.Slice.Tools][icerpc-slice-tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
 - [IceRpc.Deadline][deadline] and [IceRpc.Logger][logger] - the packages with the two interceptors we
   installed in our invocation pipeline

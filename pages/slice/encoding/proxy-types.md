@@ -3,12 +3,7 @@ title: Proxy types
 description: Learn how to encode proxies with Slice.
 ---
 
-## IceRPC-specific rules
-
-The encoding rules on this page are specific to the IceRPC-Slice integration. If you use Slice with another RPC
-framework, consult the documentation for this specific integration.
-
-## Service address
+## Service address {% icerpcSlice=true %}
 
 A proxy is encoded as its [service address](/icerpc/invocation/service-address) and only its service address.
 The name of the proxy's interface is not encoded: it's only the proxy's untyped service address that gets encoded.
