@@ -14,6 +14,34 @@ It is easier and more typical to use IceRPC together with a serialization librar
 compiler resp. the Slice compiler generate code that encodes and decodes Person to and from bytes in the Protobuf resp.
 Slice binary format.
 
+{% slice1 %}
+{% side-by-side alignment="top" %}
+
+```protobuf
+// A Person message defined with Protobuf
+
+syntax = "proto3";
+
+message Person {
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+}
+```
+
+```slice
+// A Person class defined with Slice
+
+class Person {
+   name: string
+   id: int32
+   tag(1) email: string?
+}
+```
+{% /side-by-side %}
+{% /slice1 %}
+
+{% slice2 %}
 {% side-by-side alignment="top" %}
 
 ```protobuf
@@ -37,8 +65,8 @@ struct Person {
    tag(1) email: string?
 }
 ```
-
 {% /side-by-side %}
+{% /slice2 %}
 
 The Slice language, like the Protobuf language, includes RPC support without being tied to a specific RPC framework. It
 specifies the syntax and semantics for RPCs but leaves the actual implementation of this RPC support to external
