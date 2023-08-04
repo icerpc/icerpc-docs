@@ -18,8 +18,9 @@ framework.
 
 ## Multiplexed transport
 
-A multiplexed transport is an abstraction for a modern transport that provides independent streams within a connection.
-The prototypical multiplexed transport is [QUIC](https://www.rfc-editor.org/rfc/rfc9000.html).
+A [multiplexed transport][multiplexed-transport] is an abstraction for a modern transport that provides independent
+streams within a connection. The prototypical multiplexed transport is
+[QUIC](https://www.rfc-editor.org/rfc/rfc9000.html).
 
 An icerpc connection runs over a multiplexed connection created by a multiplexed transport.
 
@@ -134,3 +135,5 @@ using await var clientConnection = new ClientConnection(
     "icerpc://hello.zeroc.com",
     multiplexedClientTransport: clientTransport);
 ```
+
+[multiplexed-transport]: ../customization/multiplexed-transport
