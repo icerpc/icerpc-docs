@@ -3,11 +3,12 @@ title: Duplex transport
 description: Learn about duplex transports and how IceRPC uses them.
 ---
 
-A duplex transport is an abstraction that provides duplex communication between a client and server. TCP is a duplex transport that IceRPC provides.
+A duplex transport is an abstraction that provides duplex communications between a client and server. TCP is the primary
+duplex transport provided by IceRPC.
 
-This abstraction allows writing custom duplex transports. For example, the [RFCOMM][rfcomm] transport could be supported
-by implementing this abstraction. Such custom transports need to conform to a number of requirements which are
-documented on this page.
+The duplex transport abstraction allows writing custom duplex transports. For example, the [RFCOMM][rfcomm] transport
+could be supported by implementing this abstraction. Such custom transports need to conform to a number of requirements
+which are documented on this page.
 
 IceRPC uses duplex transports for the implementation of the [ice protocol][ice-protocol] and the implementation of the
 [Slic transport][slic-transport].
@@ -16,7 +17,7 @@ IceRPC uses duplex transports for the implementation of the [ice protocol][ice-p
 
 IceRPC requires a duplex transport to be [connection-oriented] and to support the following features:
 - [full-duplex] communication over a bidirectional byte stream
-- [flow-control]
+- [flow control][flow-control]
 - half-closure where each side of the connection can be closed independently
 - graceful closure to allow closing the connection once all the data is delivered
 - abortive closure to close the connection and release its resources immediately without waiting for the data to be
@@ -24,11 +25,11 @@ IceRPC requires a duplex transport to be [connection-oriented] and to support th
 
 ## Duplex transport and TLS
 
-The duplex transport abstraction includes TLS support. For example, the TCP duplex transport can create both plain TCP
+A duplex transport abstraction can include TLS support. For example, the TCP duplex transport can create both plain TCP
 connections and TCP connections with TLS. See [Security with TLS](../connection/security-with-tls) for details.
 
-Supporting TLS is not required. A transport if free to only support unsecured connection, only support secured
-connection or support both.
+Supporting TLS is not required. A transport if free to only support unsecured connections, only support secured
+connections or support both.
 
 ## The C# duplex transport abstraction
 

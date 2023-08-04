@@ -3,11 +3,11 @@ title: Multiplexed transport
 description: Learn about multiplexed transports and how IceRPC uses them.
 ---
 
-A multiplexed transport is an abstraction that provides multiplexed communication between a client and server using
-several streams. [QUIC][quic] or [Slic][slic] are multiplexed transports supported by IceRPC.
+A multiplexed transport is an abstraction that provides multiplexed communications between a client and server using
+several streams. [QUIC][quic] and [Slic][slic] are multiplexed transports provided by IceRPC.
 
-This abstraction allows writing custom multiplexed transports. Such custom transports need to conform to a number of
-requirements which are documented on this page.
+The multiplexed transport abstraction allows writing custom multiplexed transports. Such custom transports need to
+conform to a number of requirements which are documented on this page.
 
 IceRPC uses multiplexed transports for the implementation of the [icerpc protocol][icerpc-protocol].
 
