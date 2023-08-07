@@ -7,7 +7,7 @@
     Prism.languages.ebnf = {
         string: /\"(?:\\.|[^\\\"\r\n])*?\"/,
         comment: {
-            pattern: /\/\/[^\r\n]*/,
+            pattern: /\/\/.*/,
             greedy: true
         },
         definition: [
@@ -22,7 +22,7 @@
         ],
         constant: {
             pattern: /\b[A-Z][A-Z_]+\b/,
-            alias: ['builtin']
+            alias: 'builtin'
         },
         punctuation: /[;:()\[\]]/,
         operator: /[?*+|]/

@@ -3,12 +3,7 @@ title: Operation return value and exception
 description: Learn how an operation's return value and exception is encoded with Slice.
 ---
 
-## IceRPC-specific rules
-
-The encoding rules on this page are specific to the IceRPC-Slice integration. If you use Slice with another RPC
-framework, consult the documentation for this specific integration.
-
-## Status code
+## Status code {% icerpcSlice=true %}
 
 The [status code](/icerpc/invocation/incoming-response#status-code) of a response determines the contents of
 the response payload. When the status code is `Success`, the payload contains the encoded return value. When the status
@@ -16,7 +11,7 @@ code is `ApplicationError`, the payload contains the encoded Slice exception thr
 operation. For all other status codes, the payload is usually empty and the generated code does not attempt to decode
 this payload.
 
-## Payload of an outgoing response (Success)
+## Payload of an outgoing response (Success) {% icerpcSlice=true %}
 
 {% slice1 %}
 The return value of an operation is encoded into the payload of a `Success` outgoing response without any special
@@ -49,7 +44,7 @@ The stream return element, if any, is not encoded into the payload but into the 
 
 {% slice2 %}
 
-## Payload continuation of an outgoing response (Success)
+## Payload continuation of an outgoing response (Success) {% icerpcSlice=true %}
 
 The stream element of a return value (if present) is encoded into the payload continuation of an outgoing response. If
 there is no stream element or the stream element is empty, the payload continuation is empty.
@@ -75,7 +70,7 @@ compact struct Element { value: T? }
 where `T?` represents the stream element type.
 {% /slice2 %}
 
-## Payload of an outgoing response (ApplicationError)
+## Payload of an outgoing response (ApplicationError) {% icerpcSlice=true %}
 
 {% slice1 %}
 When an operation implementation throws an exception whose type matches the operation's exception specification, this
@@ -97,7 +92,7 @@ an empty payload continuation.
 
 {% slice1 %}
 
-## Payload continuation of an outgoing response
+## Payload continuation of an outgoing response {% icerpcSlice=true %}
 
 The payload continuation of an outgoing response is always empty.
 {% /slice1 %}

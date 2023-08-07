@@ -3,12 +3,7 @@ title: Operation arguments
 description: Understand how operation arguments are encoded with Slice.
 ---
 
-## IceRPC-specific rules
-
-The encoding rules on this page are specific to the IceRPC-Slice integration. If you use Slice with another RPC
-framework, consult the documentation for this specific integration.
-
-## Payload of an outgoing request
+## Payload of an outgoing request {% icerpcSlice=true %}
 
 {% slice1 %}
 The arguments of an operation are encoded into the payload of an outgoing request without any special framing.
@@ -37,7 +32,7 @@ Tagged parameters are mapped to tagged fields in the virtual struct.
 The stream argument, if any, is not encoded into the payload but into the payload continuation (see below).
 {% /slice2 %}
 
-## Payload continuation of an outgoing request
+## Payload continuation of an outgoing request {% icerpcSlice=true %}
 
 {% slice1 %}
 The payload continuation of an outgoing request is always empty.
@@ -63,7 +58,7 @@ compact struct Element { value: T? }
 
 where `T?` represents the stream parameter type.
 
-## Empty optimization
+## Empty optimization {% icerpcSlice=true %}
 
 As an optimization, when an operation has no argument at all, the empty argument list can be encoded as an empty
 payload plus an empty payload continuation.

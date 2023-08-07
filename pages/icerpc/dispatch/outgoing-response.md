@@ -5,8 +5,8 @@ description: Learn how to create outgoing responses.
 
 ## Creating an outgoing response
 
-The `dispatch` method of a [dispatcher](dispatch-pipeline#the-dispatcher-abstraction) returns an outgoing response
-asynchronously. Since you're implementing this `dispatch` method, you are responsible to create this outgoing response.
+A [dispatcher](dispatch-pipeline#the-dispatcher-abstraction) returns an outgoing response asynchronously. Since you're
+implementing this dispatcher, you are responsible to create this outgoing response.
 
 An outgoing response carries:
 
