@@ -31,9 +31,9 @@ npm run dev
 
 Documentation is written in Markdown and is located in the `pages`
 directory. Additionally this Markdown uses syntax extensions provided by
-[MarkDoc](https://markdoc.dev/getting-started). These extensions allow the
-creation of custom components, such as code tabs, notes, and flow diagrams, all
-from within the Markdown file.
+[MarkDoc](https://markdoc.dev). These extensions allow the creation of custom
+components, such as code tabs, notes, and flow diagrams, all from within the
+Markdown file.
 
 [**Nodes**](#custom-nodes) are elements that Markdoc inherits from Markdown,
 specifically the CommonMark specification. Markdoc nodes enable you to customize
