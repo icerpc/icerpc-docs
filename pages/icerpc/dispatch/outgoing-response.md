@@ -11,7 +11,7 @@ implementing this dispatcher, you are responsible to create this outgoing respon
 An outgoing response carries:
 
 - a [status code](../invocation/incoming-response#status-code)
-- an error message, set only when the status code is not `Success`
+- an error message, set only when the status code is not `Ok`
 - response [fields](../invocation/incoming-response#response-fields)
 - the [payload](#response-payload) of the response
 

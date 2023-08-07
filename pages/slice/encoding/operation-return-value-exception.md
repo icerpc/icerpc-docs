@@ -6,16 +6,15 @@ description: Learn how an operation's return value and exception is encoded with
 ## Status code {% icerpcSlice=true %}
 
 The [status code](/icerpc/invocation/incoming-response#status-code) of a response determines the contents of
-the response payload. When the status code is `Success`, the payload contains the encoded return value. When the status
+the response payload. When the status code is `Ok`, the payload contains the encoded return value. When the status
 code is `ApplicationError`, the payload contains the encoded Slice exception thrown by the implementation of the
 operation. For all other status codes, the payload is usually empty and the generated code does not attempt to decode
 this payload.
 
-## Payload of an outgoing response (Success) {% icerpcSlice=true %}
+## Payload of an outgoing response (Ok) {% icerpcSlice=true %}
 
 {% slice1 %}
-The return value of an operation is encoded into the payload of a `Success` outgoing response without any special
-framing.
+The return value of an operation is encoded into the payload of an `Ok` outgoing response without any special framing.
 
 This payload contains:
 
@@ -33,7 +32,7 @@ Unlike the encoding of tagged fields in classes, the encoding of tagged elements
 {% /slice1 %}
 
 {% slice2 %}
-The payload of a `Success` outgoing response carries the return value of the operation encoded as a [segment][segment].
+The payload of an `Ok` outgoing response carries the return value of the operation encoded as a [segment][segment].
 The body of this segment corresponds to a virtual [struct](constructed-types#struct) with a field for each non-stream
 return parameter, in the same order.
 
@@ -44,7 +43,7 @@ The stream return element, if any, is not encoded into the payload but into the 
 
 {% slice2 %}
 
-## Payload continuation of an outgoing response (Success) {% icerpcSlice=true %}
+## Payload continuation of an outgoing response (Ok) {% icerpcSlice=true %}
 
 The stream element of a return value (if present) is encoded into the payload continuation of an outgoing response. If
 there is no stream element or the stream element is empty, the payload continuation is empty.

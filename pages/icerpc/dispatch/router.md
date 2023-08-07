@@ -53,8 +53,8 @@ It is common to map leaf dispatchers such as services and mount sub-routers, but
 You can map and mount the exact same path (for example, `/greeter`). The router will direct a request with path
 `/greeter` to the mapped dispatcher and a request with path `/greeter/foo` to the mounted dispatcher.
 
-If a router does not find a mapped or mounted dispatcher for an incoming request's path, it throws
-`DispatchException(IceRpcError.ServiceNotFound)`.
+If a router does not find a mapped or mounted dispatcher for an incoming request's path, it returns a response with
+status code `NotFound`.
 
 ## Sub-router
 
@@ -107,8 +107,8 @@ compressor middleware, and then finally the compressor middleware calls `Dispatc
 at `/greeter`.
 
 {% callout type="information" %}
-The router always dispatches incoming requests to its registered middleware, even when it ends up throwing
-`DispatchException(IceRpcError.ServiceNotFound)` because it can't find a match for the incoming request's path.
+The router always dispatches incoming requests to its registered middleware, even when it ends up returning a response
+with status code `NotFound`.
 {% /callout %}
 
 [csharp-router]: csharp:IceRpc.Router

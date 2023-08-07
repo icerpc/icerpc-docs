@@ -108,8 +108,7 @@ the [Logger][logger] middleware, then to the [Deadline][deadline] middleware and
 its path.
 
 The `Map` call means if the request's path is the default path for Slice interface `Greeter`, route it to the `Chatbot`
-instance. Otherwise, the router throws a [DispatchException][dispatch-exception] with status code
-[ServiceNotFound][service-not-found].
+instance. Otherwise, the router returns a response with status code [NotFound][not-found].
 
 The default path for `Greeter` is `/VisitorCenter.Greeter` (it uses the Slice module name and interface name). The `Map`
 call above is a shortcut for:
@@ -314,7 +313,7 @@ dbug: IceRpc.ClientConnection[3]
       Client connection from '[::1]:61582' to '[::1]:4062' connected
 info: IceRpc.Logger.LoggerInterceptor[0]
       Sent request greet to icerpc:/VisitorCenter.Greeter over
-      [::1]:61582<->[::1]:4062 and received a response with status code Success
+      [::1]:61582<->[::1]:4062 and received a response with status code Ok
 Hello, jose!
 dbug: IceRpc.ClientConnection[6]
       Client connection from '[::1]:61582' to '[::1]:4062' shutdown
@@ -332,7 +331,6 @@ dbug: IceRpc.Server[12]
 ```
 
 [deadline]: https://www.nuget.org/packages/IceRpc.Deadline
-[dispatch-exception]: csharp:IceRpc.DispatchException
 [dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
 [icerpc-package]: https://www.nuget.org/packages/IceRpc
 [icerpc-slice]: https://www.nuget.org/packages/IceRpc.Slice
@@ -341,5 +339,5 @@ dbug: IceRpc.Server[12]
 [router]: csharp:IceRpc.Router
 [server]: csharp:IceRpc.Server
 [service-address]: /icerpc/invocation/service-address
-[service-not-found]: csharp:IceRpc.StatusCode#ServiceNotFound
+[not-found]: csharp:IceRpc.StatusCode#NotFound
 [slice]: /slice
