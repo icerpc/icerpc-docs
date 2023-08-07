@@ -68,10 +68,6 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE2_BASE_URL}/language-guide/struct-types`
       },
       {
-        title: 'Exception',
-        path: `${SLICE2_BASE_URL}/language-guide/exception`
-      },
-      {
         title: 'Proxy types',
         path: `${SLICE2_BASE_URL}/language-guide/proxy-types`
       },
@@ -158,8 +154,8 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE2_BASE_URL}/encoding/operation-arguments`
       },
       {
-        title: 'Operation return value and exception',
-        path: `${SLICE2_BASE_URL}/encoding/operation-return-value-exception`
+        title: 'Operation return value',
+        path: `${SLICE2_BASE_URL}/encoding/operation-return-value`
       }
     ]
   }

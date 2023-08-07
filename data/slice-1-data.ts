@@ -163,7 +163,7 @@ export const slice1Data: SideBarSourceType[] = [
       },
       {
         title: 'Operation return value and exception',
-        path: `${SLICE1_BASE_URL}/encoding/operation-return-value-exception`
+        path: `${SLICE1_BASE_URL}/encoding/operation-return-value`
       }
     ]
   }

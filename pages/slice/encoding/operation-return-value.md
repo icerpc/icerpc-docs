@@ -1,22 +1,25 @@
 ---
-title: Operation return value and exception
-description: Learn how an operation's return value and exception is encoded with Slice.
+title: Operation return value
+description: Learn how an operation's return value is encoded with Slice.
 ---
 
 ## Status code {% icerpcSlice=true %}
 
-The [status code](/icerpc/invocation/incoming-response#status-code) of a response determines the contents of
-the response payload. When the status code is `Ok`, the payload contains the encoded return value. When the status
-code is `ApplicationError`, the payload contains the encoded Slice exception thrown by the implementation of the
-operation. For all other status codes, the payload is usually empty and the generated code does not attempt to decode
-this payload.
+The [status code](/icerpc/invocation/incoming-response#status-code) of a response determines the contents of the
+response payload. When the status code is `Ok`, the payload contains the encoded return value.
+
+{% slice1 %}
+When the status code is `ApplicationError`, the payload contains the Slice exception thrown by the of the operation.
+{% /slice1 %}
+
+For all other status codes, the payload is usually empty and the generated code does not attempt to decode this payload.
 
 ## Payload of an outgoing response (Ok) {% icerpcSlice=true %}
 
 {% slice1 %}
 The return value of an operation is encoded into the payload of an `Ok` outgoing response without any special framing.
 
-This payload contains:
+This payload logically contains:
 
 - a [compact struct](constructed-types#struct) holding all the non-tagged return value elements, in definition order,
   followed by
@@ -25,8 +28,8 @@ This payload contains:
 The tagged elements are encoded in tag order (not in definition order); the element with the lowest tag number is
 encoded first. For each tagged element:
 
-- if the element value is not set, don't encode anything.
-- otherwise, encode this element as a [tag record](encoding-only-constructs#tag-record).
+- if the element value is not set, the IceRPC + Slice integration doesn't encode anything.
+- otherwise, the IceRPC + Slice integration encodes this element as a [tag record](encoding-only-constructs#tag-record).
 
 Unlike the encoding of tagged fields in classes, the encoding of tagged elements does not end with the tag end marker.
 {% /slice1 %}
@@ -41,8 +44,18 @@ Tagged return parameters are mapped to tagged fields in the virtual struct.
 The stream return element, if any, is not encoded into the payload but into the payload continuation (see below).
 {% /slice2 %}
 
-{% slice2 %}
+{% slice1 %}
+## Payload of an outgoing response (ApplicationError) {% icerpcSlice=true %}
 
+When an operation implementation throws an exception compatible with the operation's exception specification, this
+exception is encoded into the payload of an outgoing response with status code `ApplicationError`.
+
+## Payload continuation of an outgoing response {% icerpcSlice=true %}
+
+The payload continuation of an outgoing response is always empty.
+{% /slice1 %}
+
+{% slice2 %}
 ## Payload continuation of an outgoing response (Ok) {% icerpcSlice=true %}
 
 The stream element of a return value (if present) is encoded into the payload continuation of an outgoing response. If
@@ -67,33 +80,11 @@ compact struct Element { value: T? }
 ```
 
 where `T?` represents the stream element type.
-{% /slice2 %}
-
-## Payload of an outgoing response (ApplicationError) {% icerpcSlice=true %}
-
-{% slice1 %}
-When an operation implementation throws an exception whose type matches the operation's exception specification, this
-exception is encoded into the payload of an outgoing response with status code `ApplicationError`.
-{% /slice1 %}
-
-{% slice2 %}
-When an operation implementation throws an exception whose type matches the operation's exception specification, this
-exception is encoded inside a segment into the payload of an outgoing response with status code `ApplicationError`.
-
-This segment contains only the encoded exception, and the payload continuation of the outgoing response is empty in this
-situation.
 
 ## Void optimization
 
 As an optimization, when an operation has no return value, a "void" return value can be encoded as an empty payload and
 an empty payload continuation.
 {% /slice2 %}
-
-{% slice1 %}
-
-## Payload continuation of an outgoing response {% icerpcSlice=true %}
-
-The payload continuation of an outgoing response is always empty.
-{% /slice1 %}
 
 [segment]: encoding-only-constructs#segment

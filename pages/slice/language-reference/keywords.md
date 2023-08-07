@@ -20,7 +20,7 @@ The following table lists all the keywords of the Slice language:
 
 ---
 
-- [AnyException](/slice2/language-guide/operation#exception-specification)
+- [AnyException](/slice1/language-guide/operation#exception-specification)
 - [float32](/slice2/language-guide/primitive-types#floating-point-types)
 - [sequence](/slice2/language-guide/sequence-types)
 - [uint32](/slice2/language-guide/primitive-types#fixed-size-integral-types)

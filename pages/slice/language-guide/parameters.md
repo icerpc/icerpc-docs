@@ -60,11 +60,7 @@ interface SingingGreeter {
     ) -> (
         greeting: string
         tag(1) song: sequence<uint8>?
-    ) throws GreeterException
-}
-
-exception GreeterException {
-    tag(1) errorCode: int32?
+    )
 }
 ```
 

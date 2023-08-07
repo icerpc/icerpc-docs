@@ -194,41 +194,24 @@ class BusinessContact : Contact {
 ```
 {% /slice1 %}
 
+{% slice1 %}
 ## Exceptions
 
-{% slice1 %}
 ```slice {% addMode=true %}
 module Example
 
-// An exception is just like a class.
+// An exception is like a class.
 exception WidgetException {
     error: WidgetError
-    tag(1) retryAfter: WellknownTypes::Duration?
+    tag(1) retryAfter: int32
 }
 
 interface WidgetFactory {
-    // Unlike a class, an exception can be thrown.
+    // Unlike a class, an exception can be thrown but can't be used as a field type.
     createWidget(name: string) -> Widget throws WidgetException
 }
 ```
 {% /slice1 %}
-
-{% slice2 %}
-```slice
-module Example
-
-// An exception is just like a struct.
-exception WidgetException {
-    error: WidgetError
-    tag(1) retryAfter: WellknownTypes::Duration?
-}
-
-interface WidgetFactory {
-    // Unlike a struct, an exception can be thrown.
-    createWidget(name: string) -> Widget throws WidgetException
-}
-```
-{% /slice2 %}
 
 ## Sequences and dictionaries
 
@@ -291,7 +274,8 @@ interface Atlas {
     getMainCities(country: string) -> [cs::type("HashSet<string>")] sequence<string>
 }
 
-[cs::readonly] compact struct Point { x: int32, y: int32 }
+[cs::readonly]
+compact struct Point { x: int32, y: int32 }
 ```
 
 ## Doc comments
@@ -304,13 +288,6 @@ interface WidgetFactory {
     /// Creates a new {@link Widget}.
     /// @param name: The name of the new widget.
     /// @returns: A proxy to the new widget.
-    /// @throws WidgetException: Thrown if the factory could not create the widget.
-    createWidget(name: string) -> Widget throws WidgetException
-
-    /// Retrieves the last {@link Widget} created by this factory.
-    /// @returns proxy: A proxy to the last widget.
-    /// @returns timeStamp: The creation time stamp.
-    /// @throws WidgetException: Thrown if the factory has not created any widget yet.
-    getLastWidget() -> (proxy: Widget, timeStamp: TimeStamp) throws WidgetException
+    createWidget(name: string) -> Widget
 }
 ```
