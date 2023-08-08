@@ -7,13 +7,15 @@ title: Grammar specification
 This page describes the grammar of the Slice language.
 
 Slice consists of three sub-languages:
+
 - A core Slice language for defining types and contracts
 - A preprocessing language for conditional compilation
 - A language for describing definitions with doc-comments
 
 Each of these sub-languages are in turn specified by a set of two [context-free grammars](https://en.wikipedia.org/wiki/Context-free_grammar):
- - _Lexical grammars_ specify how Unicode characters are combined to form basic tokens and
- - _syntactic grammars_ specify how tokens produced by the lexical grammar are combined to form full expressions.
+
+- _Lexical grammars_ specify how Unicode characters are combined to form basic tokens and
+- _syntactic grammars_ specify how tokens produced by the lexical grammar are combined to form full expressions.
 
 Context-free grammars consist of a set of _symbols_ and _productions_.
 Symbols are abstract elements of the language that can represent anything from single characters to entire expressions.
@@ -31,6 +33,7 @@ Additionally, the order of rules is arbitrary and doesn't imply any level of pre
 
 Rules are defined by a sequence of one or more symbols. For a rule to match, all its symbols must match, in the order they're specified.
 By default a symbol is matched a single time, but this is modified by the following characters:
+
 - `?` : match this symbol 0 or 1 times
 - `*` : match this symbol 0 or more times
 - `+` : match this symbol 1 or more times
@@ -44,6 +47,7 @@ Symbols produced by lexical grammars are written in `snake_case` and symbols pro
 
 This specification defines and references a set of 'convenience' symbols that exist only to simplify the specification and do not necessarily appear within actual implementations.
 These convenience tokens are written in `SCREAMING_SNAKE_CASE` and are defined by the following regular expressions:
+
 ```ebnf {% showTitle=false %}
 LETTER: "[a-zA-Z]";
 DIGIT:  "[0-9]";
@@ -61,7 +65,7 @@ It is important to note that `EMPTY` is **not** a symbol, but a placeholder for 
 
 ## Core language
 
-### Lexical grammar
+### Lexical grammar {% #core-lexical-grammar %}
 
 This lexical grammar is not strictly context-free due to the following behavior:
 
@@ -144,7 +148,7 @@ arrow:         "->";
 minus:         "-";
 ```
 
-### Syntactic grammar
+### Syntactic grammar {% #core-syntactic-grammar %}
 
 ```ebnf {% showTitle=false %}
 SliceFile
@@ -343,7 +347,7 @@ don't meet this criteria are mapped to `source_block` tokens in the lexical gram
 lines like this, they are concatenated into a single `source_block` token for ease of processing. The contents of these
 `source_block` tokens are passed as input to the [core language grammar](#core-language) described above.
 
-### Lexical grammar
+### Lexical grammar {% #preprocessor-lexical-grammar %}
 
 ```ebnf {% showTitle=false %}
 // These are opaque strings that exist outside the grammar of preprocessor directives.
@@ -371,7 +375,7 @@ left_parenthesis:  "(";
 right_parenthesis: ")";
 ```
 
-### Syntactic grammar
+### Syntactic grammar {% #preprocessor-syntactic-grammar %}
 
 ```ebnf {% showTitle=false %}
 SliceFile
@@ -433,7 +437,7 @@ Term
 
 ## Documentation comments
 
-### Lexical grammar
+### Lexical grammar {% #doc-comments-lexical-grammar %}
 
 TODO add a diagram for explaining how a comment lexer transitions between modes,
 since it's lexical grammar also has some context dependency.
@@ -458,7 +462,7 @@ colon:        ":";
 double_colon: "::";
 ```
 
-### Syntactic grammar
+### Syntactic grammar {% #doc-comments-syntactic-grammar %}
 
 ```ebnf {% showTitle=false %}
 DocComment
