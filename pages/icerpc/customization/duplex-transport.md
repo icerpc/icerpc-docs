@@ -28,7 +28,7 @@ IceRPC requires a duplex transport to be [connection-oriented] and to support th
 The TLS configuration from the application is passed through the duplex transport abstraction to allow the transport
 implementation to setup TLS for duplex connections.
 
-A transport if free to only support non-secure connections, only support secure connections or support both. For
+A transport is free to only support non-secure connections, only support secure connections or support both. For
 example, the TCP duplex transport can create secure or non-secure connections.
 
 If the application provides TLS configuration, the transport must create secure connections. If it doesn't support TLS,
