@@ -25,9 +25,16 @@ IceRPC requires a multiplexed transport to be [connection-oriented] and to suppo
 
 ## Multiplexed transport and TLS
 
-The multiplexed transport abstraction includes TLS support. The Slic multiplexed transport when used with TCP can create
-both plain TCP connections and TCP connections with TLS. With QUIC, there's no choice, the application is required to
-use the TLS support.
+The TLS configuration from the application is passed through the multiplexed transport abstraction to allow the
+transport implementation to setup TLS for multiplexed connections.
+
+A transport if free to only support non-secure connections, only support secure connections or support both. For
+example, Slic with TCP can create secure and non-secure connections while Quic can only create secure connections.
+
+If the application provides TLS configuration, the transport must create secure connections. If it doesn't support TLS,
+it must fail.
+
+See also [Security with TLS](../connection/security-with-tls) for additional information.
 
 ## The C# multiplexed transport abstraction
 

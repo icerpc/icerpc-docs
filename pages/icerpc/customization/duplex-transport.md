@@ -25,11 +25,16 @@ IceRPC requires a duplex transport to be [connection-oriented] and to support th
 
 ## Duplex transport and TLS
 
-A duplex transport abstraction can include TLS support. For example, the TCP duplex transport can create both plain TCP
-connections and TCP connections with TLS. See [Security with TLS](../connection/security-with-tls) for details.
+The TLS configuration from the application is passed through the duplex transport abstraction to allow the transport
+implementation to setup TLS for duplex connections.
 
-Supporting TLS is not required. A transport if free to only support unsecured connections, only support secured
-connections or support both.
+A transport if free to only support non-secure connections, only support secure connections or support both. For
+example, the TCP duplex transport can create secure or non-secure connections.
+
+If the application provides TLS configuration, the transport must create secure connections. If it doesn't support TLS,
+it must fail.
+
+See also [Security with TLS](../connection/security-with-tls) for additional information.
 
 ## The C# duplex transport abstraction
 
