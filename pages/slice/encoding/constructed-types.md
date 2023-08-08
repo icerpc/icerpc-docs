@@ -54,19 +54,15 @@ A `Strawberry` is encoded like a `uint16` with value 1 (on 2 bytes). An `Orange`
 
 The encoding is the same for checked and unchecked enums.
 
+{% slice1 %}
 ## Exception
 
-{% slice1 %}
 An exception is encoded like a [class](#class) with the same fields. Slice always encodes exceptions in sliced format;
 it can decode exceptions in any format.
 
 Exception slices are not preserved during decoding: if Slice encounters a slice it doesn't know while decoding an
 exception in sliced format, this slice is dropped.
 {% /slice1 %}
-
-{% slice2 %}
-An exception is encoded exactly like a [struct](#struct) with the same fields.
-{% /slice2 %}
 
 ## Struct
 

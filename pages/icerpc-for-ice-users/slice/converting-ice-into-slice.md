@@ -148,20 +148,18 @@ The allowable exceptions include any exception derived from ArgumentException, I
 NotAvailableException. If this list is empty (no `throws`), the operation is not allowed to throw any Slice-defined
 exception.
 
-With the .slice syntax, an operation can only specify one exception in its exception specification. With Slice1, this
-unique exception can be `AnyException` (a keyword): it allows the operation to throw any Slice-defined exception. As a
-result, we would convert op into:
+With the .slice syntax, an operation can also throw one or more exceptions. The only difference is a list of two or more
+exceptions must be in parenthesis:
 
 ```slice {% title="Same operation with the .slice syntax" %}
-op(s: string) throws AnyException
+op(s: string) throws (ArgumentException, InvalidStateException, NotAvailableException)
 ```
-
-The converted definition is more permissive since `op` can now throw any exception.
 
 Another difference between Ice and IceRPC is where the exception specifications are checked:
 
 - with Ice, the generated code enforces exception specifications only when decoding responses
-- with the IceRPC + Slice integration, the generated code enforces exception specifications only when encoding responses
+- with the IceRPC + Slice integration, the generated code enforces exception specifications during encoding and also
+during decoding.
 
 ## Interface
 

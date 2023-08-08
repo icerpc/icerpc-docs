@@ -117,7 +117,6 @@ string_keyword:    "string";
 any_class_keyword: "AnyClass";
 
 // Other keywords
-any_exception_keyword: "AnyException";
 compact_keyword:       "compact";
 idempotent_keyword:    "idempotent";
 mode_keyword:          "mode";
@@ -214,7 +213,7 @@ ReturnType
 
 ExceptionSpecification
     : throws_keyword TypeRef
-    | throws_keyword any_exception_keyword
+    | throws_keyword left_parenthesis NonEmptyCommaList<TypeRef> right_parenthesis
     ;
 
 Enum
@@ -396,7 +395,6 @@ Main
 DefineDirective
     : define_keyword identifier directive_end
     ;
-
 
 UndefineDirective
     : undefine_keyword identifier directive_end

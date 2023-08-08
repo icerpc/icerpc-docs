@@ -97,7 +97,7 @@ request: a stream of bytes with an unknown size. The response payload ends when 
 The response header holds:
 
 - a [status code](../invocation/incoming-response#status-code)
-- an error message when the status code is not Success
+- an error message when the status code is not `Ok`
 - [response fields](../invocation/incoming-response#response-fields)
 
 icerpc transmits the response fields without attaching any meaning to their values or presence.
@@ -113,12 +113,12 @@ compact struct Response {
 
 compact struct ResponseHeader {
     statusCode: StatusCode
-    errorMessage: string // only present when statusCode is not Success
+    errorMessage: string // only present when statusCode is not `Ok`
     fields: dictionary<ResponseFieldKey, sequence<uint8>>
 }
 ```
 
-For example, a response with status code Success, no fields and an empty payload can be encoded as:
+For example, a response with status code `Ok`, no fields and an empty payload can be encoded as:
 
 ```
 0x09 0x00           : header size (2) on 2 bytes, little endian

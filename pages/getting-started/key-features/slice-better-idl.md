@@ -8,7 +8,7 @@ Most RPC frameworks provide an [Interface Definition Language][idl] (IDL) and a 
 allows you to define a "contract" in a programming language neutral way, and then compile this contract into your target
 programming language(s). The typical and sometimes only way to use an RPC framework is with this bundled IDL.
 
-IceRPC takes a different approach by providing a very usable byte-oriented API for requests and responses. This allows
+IceRPC takes a different approach by providing a first class byte-oriented API for requests and responses. This allows
 you to use IceRPC with the IDL of your choice, or no IDL at all. The [GreeterProtobuf][greeter-protobuf],
 [GreeterJson][greeter-json] and [GreeterCore][greeter-core] examples show how to use IceRPC with resp.
 [Protobuf][protobuf], JSON and no IDL.
@@ -52,35 +52,15 @@ interface TourGuide {
 }
 ```
 
-An operation can also return a custom error, specified with a `throws`:
-
-```slice
-interface Translator {
-    translate(message: string) -> string throws TranslationException
-}
-
-exception TranslationException {
-    pos: int32
-    detectedLanguage: string?
-}
-```
-
-{% callout %}
-The `throws` syntax may evoke the now abandoned checked exception pattern first championed by Java. But that's not the
-correct analogy: `throws` is actually equivalent to `Result<Success, Failure>` in Rust and Swift, where an operation
-returns one type on success and another type on failure.
-{% /callout %}
-
 ## Clean syntax
 
 As shown in the examples above, Slice provides a readable, modern syntax inspired by Rust and Swift. Slice supports
 streaming with the `stream` keyword, understands optionals with the usual `?` suffix, requires minimal punctuation, and
 more.
 
-Slice provides [primitive][primitive] types with clear names such as `uint16`, `float64` and `string`, and allows you to
-define your own types with a few building blocks:
+Slice provides [primitive] types with clear names such as `uint16`, `float64` and `string`, and allows you to define
+your own types with a few building blocks:
  - [struct][struct]
- - [exception][exception]
  - [enum][enum]
  - [sequence][sequence]
  - [dictionary][dictionary]
@@ -106,8 +86,8 @@ you give to the generated code, the mapping for a `sequence<string>` parameter i
 Slice's custom types allow you to send any type you wish through Slice. You just need to provide methods to encode and
 decode instances of your custom type.
 
-The [well-known][well-known] types `Duration`, `TimeStamp` and `Uri` are custom types included in all Slice
-implementations; in C#, they correspond to System types—`TimeSpan`, `DateTime` and `Uri`.
+The [well-known] types `Duration`, `TimeStamp` and `Uri` are custom types included in all Slice implementations; in C#,
+they correspond to System types—`TimeSpan`, `DateTime` and `Uri`.
 
 ```slice
 [cs::namespace("ZeroC.Slice")]
@@ -123,7 +103,6 @@ custom Duration
 [custom]: /slice2/language-guide/custom-types
 [dictionary]: /slice2/language-guide/dictionary-types
 [enum]: /slice2/language-guide/enum-types
-[exception]: /slice2/language-guide/exception
 [idl]: https://en.wikipedia.org/wiki/Interface_description_language
 [greeter-core]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterCore
 [greeter-json]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterJson
