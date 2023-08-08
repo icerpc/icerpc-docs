@@ -21,9 +21,9 @@ The ice protocol is provided for interoperability with applications built with I
 
 ## Duplex transport
 
-A [duplex transport][duplex-transport] is an abstraction for a traditional transport like TCP or [RFCOMM][rfcomm]. It
-creates duplex (transport) connections. A duplex connection provides two byte streams: one from the client to the
-server, and another from the server to the client.
+The [duplex transport][duplex-transport] page describes an abstraction for a traditional transport like TCP or
+[RFCOMM][rfcomm]. It creates duplex (transport) connections. A duplex connection provides two byte streams: one from the
+client to the server, and another from the server to the client.
 
 An ice connection runs over a duplex connection.
 
