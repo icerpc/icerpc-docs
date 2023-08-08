@@ -25,16 +25,40 @@ Slice doc comments support the following tags:
 {% /slice1 %}
 
 {% slice2 %}
-| Tag                       | Applies to | Description                                                        |
-|---------------------------|------------|--------------------------------------------------------------------|
-| `{@link identifier}`      | All        | Provide a link to the Slice type, operation or field `identifier`. |
-| `@param name: ...`        | Operations | Describe the operation parameter `name`.                           |
-| `@returns name: ...`      | Operations | Describe the return parameter `name`.                              |
-| `@see identifier`         | All        | Suggest to see Slice type, operation or field `identifier`.        |
+| Tag                  | Applies to | Description                                                        |
+|----------------------|------------|--------------------------------------------------------------------|
+| `{@link identifier}` | All        | Provide a link to the Slice type, operation or field `identifier`. |
+| `@param name: ...`   | Operations | Describe the operation parameter `name`.                           |
+| `@returns name: ...` | Operations | Describe the return parameter `name`.                              |
+| `@see identifier`    | All        | Suggest to see Slice type, operation or field `identifier`.        |
 {% /slice2 %}
 
 ## Example
 
+{% slice1 %}
+```slice  {% addMode=true %}
+module Example
+
+/// Represents a factory for widgets.
+/// @see Widget
+interface WidgetFactory {
+    /// Creates a new {@link Widget}.
+    /// @param name: The name of the new widget.
+    /// @param color: The color of the new widget.
+    /// @returns: A proxy to the new widget.
+    /// @throws WidgetException: Thrown if the factory could not create the widget.
+    createWidget(name: string) -> Widget throws WidgetException
+
+    /// Retrieves the last {@link Widget} created by this factory.
+    /// @returns proxy: A proxy to the last widget.
+    /// @returns timeStamp: The creation time stamp.
+    /// @throws WidgetException: Thrown if the factory has not created any widget yet.
+    getLastWidget() -> (proxy: Widget, timeStamp: TimeStamp) throws WidgetException
+}
+```
+{% /slice1 %}
+
+{% slice2 %}
 ```slice
 module Example
 
@@ -46,5 +70,11 @@ interface WidgetFactory {
     /// @param color: The color of the new widget.
     /// @returns: A proxy to the new widget.
     createWidget(name: string) -> Widget
+
+    /// Retrieves the last {@link Widget} created by this factory.
+    /// @returns proxy: A proxy to the last widget.
+    /// @returns timeStamp: The creation time stamp.
+    getLastWidget() -> (proxy: Widget, timeStamp: WellKnownTypes::TimeStamp)
 }
 ```
+{% /slice2 %}

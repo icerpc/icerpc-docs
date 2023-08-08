@@ -148,8 +148,8 @@ The allowable exceptions include any exception derived from ArgumentException, I
 NotAvailableException. If this list is empty (no `throws`), the operation is not allowed to throw any Slice-defined
 exception.
 
-With the .slice syntax, an operation can also throw one or more exceptions. The only difference is a list of exceptions
-must be in parenthesis:
+With the .slice syntax, an operation can also throw one or more exceptions. The only difference is a list of two or more
+exceptions must be in parenthesis:
 
 ```slice {% title="Same operation with the .slice syntax" %}
 op(s: string) throws (ArgumentException, InvalidStateException, NotAvailableException)

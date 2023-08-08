@@ -203,7 +203,7 @@ module Example
 // An exception is like a class.
 exception WidgetException {
     error: WidgetError
-    tag(1) retryAfter: int32
+    tag(1) retryAfter: int32?
 }
 
 interface WidgetFactory {
@@ -280,14 +280,46 @@ compact struct Point { x: int32, y: int32 }
 
 ## Doc comments
 
-```slice {% addMode=true %}
+{% slice1 %}
+```slice  {% addMode=true %}
 module Example
 
 /// Represents a factory for widgets.
+/// @see Widget
 interface WidgetFactory {
     /// Creates a new {@link Widget}.
     /// @param name: The name of the new widget.
+    /// @param color: The color of the new widget.
     /// @returns: A proxy to the new widget.
-    createWidget(name: string) -> Widget
+    /// @throws WidgetException: Thrown if the factory could not create the widget.
+    createWidget(name: string) -> Widget throws WidgetException
+
+    /// Retrieves the last {@link Widget} created by this factory.
+    /// @returns proxy: A proxy to the last widget.
+    /// @returns timeStamp: The creation time stamp.
+    /// @throws WidgetException: Thrown if the factory has not created any widget yet.
+    getLastWidget() -> (proxy: Widget, timeStamp: TimeStamp) throws WidgetException
 }
 ```
+{% /slice1 %}
+
+{% slice2 %}
+```slice
+module Example
+
+/// Represents a factory for widgets.
+/// @see Widget
+interface WidgetFactory {
+    /// Creates a new {@link Widget}.
+    /// @param name: The name of the new widget.
+    /// @param color: The color of the new widget.
+    /// @returns: A proxy to the new widget.
+    createWidget(name: string) -> Widget
+
+    /// Retrieves the last {@link Widget} created by this factory.
+    /// @returns proxy: A proxy to the last widget.
+    /// @returns timeStamp: The creation time stamp.
+    getLastWidget() -> (proxy: Widget, timeStamp: WellKnownTypes::TimeStamp)
+}
+```
+{% /slice2 %}

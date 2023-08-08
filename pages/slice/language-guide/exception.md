@@ -29,12 +29,6 @@ class BaseError {
 class DerivedError : BaseError {
     measurement: float64
 }
-
-class TranslationError {
-    errorCode: TranslationErrorCode
-}
-
-enum TranslationErrorCode { UnknownWord, IOFailure }
 ```
 
 ```slice
@@ -45,12 +39,6 @@ exception BaseException {
 exception DerivedException : BaseException {
     measurement: float64
 }
-
-exception TranslationException {
-    errorCode: TranslationErrorCode
-}
-
-enum TranslationErrorCode { UnknownWord, IOFailure }
 ```
 {% /side-by-side %}
 
@@ -105,7 +93,7 @@ public partial class TranslationException : SliceException
 The mapped C# class provides a primary constructor with parameters for all its fields, plus an optional message and an
 optional inner exception (like most exceptions in C#).
 
-Slice exception inheritance maps the C# class inheritance:
+Slice exception inheritance maps to C# class inheritance:
 
 {% side-by-side alignment="top" %}
 ```slice

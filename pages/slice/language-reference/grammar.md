@@ -209,7 +209,7 @@ ReturnType
 
 ExceptionSpecification
     : throws_keyword TypeRef
-    | throws_keyword left_parenthesis UndelimitedList<TypeRef> right_parenthesis
+    | throws_keyword left_parenthesis NonEmptyCommaList<TypeRef> right_parenthesis
     ;
 
 Enum

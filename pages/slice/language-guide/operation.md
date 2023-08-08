@@ -74,8 +74,7 @@ op() -> tag(1) string?
 An operation can include an exception specification after its return parameter(s), or after the operation parameters if
 the operation returns nothing.
 
-An exception specification consists of the `throws` keyword followed by an exception name or a list of two or more
-exception names in parenthesis with optional comma separators.
+An exception specification consists of the `throws` keyword followed by an exception name or a list of exceptions names.
 
 For example:
 
@@ -85,7 +84,7 @@ create(name: string) -> throws (InvalidArgumentException, IOException)
 ```
 
 This exception specification allows the operation to return an exception when the implementation of the operation
-fails. When the operation succeeds, it returns the return parameters and this exception specification is not used.
+fails. When the operation succeeds, it returns the return parameters and the exception specification is not used.
 
 The operation can return any of the Slice exceptions after the `throws` or any Slice exception derived from these
 exceptions.
