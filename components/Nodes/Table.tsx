@@ -40,7 +40,7 @@ export const TH = ({ align, children }: THProps) => {
       className={clsx(
         'prose-sm pl-4',
         children !== undefined &&
-          'border-b-[1.5px] border-lightBorder py-3 dark:border-darkBorder',
+        'border-b-[1.5px] border-lightBorder py-3 dark:border-darkBorder',
         textAlignment(align)
       )}
     >
@@ -67,12 +67,21 @@ export const TD = ({ align, children, dividers }: TDProps) => {
   return (
     <td
       className={clsx(
-        'prose-sm rounded py-3 pl-4',
+        'prose-sm rounded py-3 pl-4 align-top',
         dividers && 'border border-lightBorder/60 dark:border-darkBorder/40',
         textAlignment(align)
       )}
     >
-      {children}
+      {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
+      <div className="code-container">{children}</div>
+      <style jsx>{`
+        .code-container {
+          display: inline-block;
+        }
+        .code-container :global(code) {
+          overflow-x: none;
+        }
+      `}</style>
     </td>
   );
 };
