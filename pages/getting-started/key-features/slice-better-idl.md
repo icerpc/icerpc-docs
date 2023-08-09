@@ -62,9 +62,9 @@ Slice provides [primitive] types with clear names such as `uint16`, `float64` an
 your own types with a few building blocks:
  - [struct]
  - [enum]
+ - [custom]
  - [Sequence][sequence]
  - [Dictionary][dictionary]
- - [custom]
 
 Last but not least, Slice's [tagged] fields and parameters allow you to update your structs and operations over
 time without breaking on-the-wire compatibility.

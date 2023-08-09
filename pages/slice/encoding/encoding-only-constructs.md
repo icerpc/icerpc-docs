@@ -27,16 +27,16 @@ slice within a class or exception.
 The tag type is encoded on 3 bits and depends on the type of the tagged element, and determines how the tagged value is
 encoded.
 
-| Tag type name | Tag type value | Tagged value encoding                                                     | Applies to                                                                             |
-| ------------- | -------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------|
-| F1            | 0              | The value is encoded on 1 byte.                                           | bool, uint8                                                                            |
-| F2            | 1              | The value is encoded on 2 bytes.                                          | int16                                                                                  |
-| F4            | 2              | The value is encoded on 4 bytes.                                          | float32, int32                                                                         |
-| F8            | 3              | The value is encoded on 8 bytes.                                          | float64, int64                                                                         |
-| Size          | 4              | The value is encoded as a variable-length size.                           | enum                                                                                   |
-| VSize         | 5              | A variable-length size followed by the value encoded on size bytes.       | string, fixed-size struct, Sequence or Dictionary with fixed-size elements             |
-| FSize         | 6              | An int32 size ("fixed size") followed by the value encoded on size bytes. | variable-size struct, Sequence or Dictionary with variable-size elements, custom types |
-| Class         | 7              | Not encoded or decoded by Slice.                                          | N/A                                                                                    |
+| Tag type name | Tag type value | Tagged value encoding                                                     | Applies to                                                                              |
+| ------------- | -------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| F1            | 0              | The value is encoded on 1 byte.                                           | bool, uint8                                                                             |
+| F2            | 1              | The value is encoded on 2 bytes.                                          | int16                                                                                   |
+| F4            | 2              | The value is encoded on 4 bytes.                                          | float32, int32                                                                          |
+| F8            | 3              | The value is encoded on 8 bytes.                                          | float64, int64                                                                          |
+| Size          | 4              | The value is encoded as a variable-length size.                           | enum                                                                                    |
+| VSize         | 5              | A variable-length size followed by the value encoded on size bytes.       | string, fixed-size struct, sequence, or dictionary with fixed-size elements             |
+| FSize         | 6              | An int32 size ("fixed size") followed by the value encoded on size bytes. | variable-size struct, custom type, sequence, or dictionary with variable-size elements, |
+| Class         | 7              | Not encoded or decoded by Slice.                                          | N/A                                                                                     |
 
 The VSize encoding is optimized when the tagged element type is a string or a sequence with elements of size 1: in this
 case, we don't encode the variable-length size as we can use the string or sequence's own variable-length size for the

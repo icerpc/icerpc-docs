@@ -83,8 +83,8 @@ translate(input: string) -> string throws TranslationException
 create(name: string) throws (InvalidArgumentException, IOException)
 ```
 
-This exception specification allows operations to return an exception when the implementation of the operation
-fails. When the operation succeeds, it returns the return parameters and the exception specification is not used.
+This exception specification allows operations to return an exception when their implementations fail.
+When an operation succeeds, it returns the return parameters and the exception specification is not used.
 
 The operation can return any of the Slice exceptions after the `throws` or any Slice exception derived from these
 exceptions.
