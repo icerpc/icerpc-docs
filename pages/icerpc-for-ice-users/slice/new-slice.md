@@ -9,7 +9,7 @@ The Slice compilers for the new Slice language understand only the new Slice syn
 accept Slice definitions saved in `.slice` files. These Slice compilers don't understand the Slice syntax used by Ice
 and they don't read or compile `.ice` files.
 
-As a result, you need to [convert][convert] your `.ice` files into `.slice` files to use IceRPC with your existing Ice
+As a result, you need to [convert] your `.ice` files into `.slice` files to use IceRPC with your existing Ice
 applications.
 
 ## Compilation mode and encoding version

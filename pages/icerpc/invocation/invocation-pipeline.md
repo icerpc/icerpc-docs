@@ -7,9 +7,9 @@ description: Understand how to send requests and receive responses.
 
 The process of sending a request and receiving the corresponding response is called an invocation.
 
-You would typically make invocations over client connections. Nevertheless, since client and server
-[connections][connections] have the same capabilities, you can also make invocations the other way around, from the
-server-side of a connection to the client-side of this connection.
+You would typically make invocations over client connections. Nevertheless, since client and server [connections] have
+the same capabilities, you can also make invocations the other way around, from the server-side of a connection to the
+client-side of this connection.
 
 ## The Invoker abstraction
 
