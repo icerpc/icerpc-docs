@@ -6,7 +6,7 @@ showReadingTime: false
 ---
 
 IceRPC provides everything you need to send and receive requests and responses over network connections. These requests
-and responses carry byte streams—if you want a typed API, use [Slice][slice] or another [IDL] together with IceRPC.
+and responses carry byte streams—if you want a typed API, use [Slice] or another [IDL] together with IceRPC.
 
 {% grid %}
 
@@ -63,4 +63,4 @@ and responses carry byte streams—if you want a typed API, use [Slice][slice] o
 {% /grid %}
 
 [idl]: https://en.wikipedia.org/wiki/Interface_description_language
-[slice]: /slice
+[Slice]: /slice

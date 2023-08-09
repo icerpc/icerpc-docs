@@ -9,11 +9,10 @@ allows you to define a "contract" in a programming language neutral way, and the
 programming language(s). The typical and sometimes only way to use an RPC framework is with this bundled IDL.
 
 IceRPC takes a different approach by providing a first class byte-oriented API for requests and responses. This allows
-you to use IceRPC with the IDL of your choice, or no IDL at all. The [GreeterProtobuf][greeter-protobuf],
-[GreeterJson][greeter-json] and [GreeterCore][greeter-core] examples show how to use IceRPC with resp.
-[Protobuf][protobuf], JSON and no IDL.
+you to use IceRPC with the IDL of your choice, or no IDL at all. The [GreeterProtobuf], [GreeterJson] and [GreeterCore]
+examples show how to use IceRPC with resp. [Protobuf], JSON and no IDL.
 
-That said, the easiest way to write applications with IceRPC is with [Slice][slice].
+That said, the easiest way to write applications with IceRPC is with [Slice].
 
 ## Better IDL for RPCs
 
@@ -104,9 +103,9 @@ custom Duration
 [dictionary]: /slice2/language-guide/dictionary-types
 [enum]: /slice2/language-guide/enum-types
 [idl]: https://en.wikipedia.org/wiki/Interface_description_language
-[greeter-core]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterCore
-[greeter-json]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterJson
-[greeter-protobuf]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterProtobuf
+[GreeterCore]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterCore
+[GreeterJson]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterJson
+[GreeterProtobuf]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterProtobuf
 [primitive]: /slice2/language-guide/primitive-types
 [protobuf]: https://en.wikipedia.org/wiki/Protocol_Buffers
 [sequence]: /slice2/language-guide/sequence-types

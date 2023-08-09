@@ -20,7 +20,7 @@ requests to your services.
 ## Creating a client connection
 
 In C#, you create a client connection with the [`ClientConnection`][client-connection] class or with the
-[`ConnectionCache`][connection-cache] class. For example:
+[ConnectionCache] class. For example:
 
 ```csharp
 using IceRpc;
@@ -50,7 +50,7 @@ different server. The connection cache helps locate and reuse these connections.
 On the server-side, you accept server connections with an instance of the `Server` class. This server listens for and
 accepts new connections on its configured [server address](server-address#server-configuration).
 
-In C#, this is again a two-step process, where you first construct a [Server][server] and later call [Listen][listen]:
+In C#, this is again a two-step process, where you first construct a [csharp:IceRpc.Server] and later call [Listen][listen]:
 
 ```csharp
 using IceRpc;
@@ -66,6 +66,6 @@ A server accepts connections and remembers which connections it accepted. This a
 connections when you shut down the server.
 
 [client-connection]: csharp:IceRpc.ClientConnection
-[connection-cache]: csharp:IceRpc.ConnectionCache
+[ConnectionCache]: csharp:IceRpc.ConnectionCache
 [server]: csharp:IceRpc.Server
 [listen]: csharp:IceRpc.Server#IceRpc_Server_Listen
