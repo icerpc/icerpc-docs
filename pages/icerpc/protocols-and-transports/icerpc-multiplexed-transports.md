@@ -90,6 +90,7 @@ icerpc provides the most direct realization of IceRPC's APIs and features. In pa
 [request fields](../invocation/outgoing-request#request-fields),
 [response fields](../invocation/incoming-response#response-fields) and
 [status codes](../invocation/incoming-response#status-code) are transmitted as-is by icerpc.
+It also supports [payload continuations](../invocation/outgoing-request#request-payload-and-payload-continuation).
 
 ## icerpc over a duplex connection
 
