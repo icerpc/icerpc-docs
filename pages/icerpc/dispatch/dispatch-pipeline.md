@@ -10,8 +10,8 @@ The process of accepting/fulfilling a request and returning a response is called
 Dispatches are typically created by server connections: a server connection receives a request, dispatches this request
 and then sends back the response provided by the dispatch.
 
-Nevertheless, since client and server [connections][connections] have the same capabilities, client connections can also
-dispatch requests.
+Nevertheless, since client and server [connections] have the same capabilities, client connections can also dispatch
+requests.
 
 ## The Dispatcher abstraction
 

@@ -22,9 +22,8 @@ encoded first. For each tagged argument:
 Unlike the encoding of tagged fields in classes, the encoding of tagged arguments does not end with the tag end marker.
 {% /slice1 %}
 
-{% slice2 %}
-The payload of an outgoing request carries the arguments of the operation encoded as a [segment][segment]. The body of
-this segment corresponds to a virtual [struct](constructed-types#struct) with a field for each non-stream operation
+{% slice2 %} The payload of an outgoing request carries the arguments of the operation encoded as a [segment]. The body
+of this segment corresponds to a virtual [struct](constructed-types#struct) with a field for each non-stream operation
 parameter, in the same order.
 
 Tagged parameters are mapped to tagged fields in the virtual struct.
