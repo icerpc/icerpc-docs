@@ -77,8 +77,7 @@ Slice2 also provides:
 
 However, Slice2 is not a superset of Slice1. The following constructs are only accepted in Slice1 mode:
  - classes, including AnyClass
- - exceptions with a base exception
- - AnyException in exception specifications
+ - exceptions
 
 ## New constructs
 

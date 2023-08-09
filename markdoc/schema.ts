@@ -5,14 +5,13 @@ import { Config } from '@markdoc/markdoc';
 // Nodes
 import { Document } from 'components/Nodes/Document';
 import { CodeBlock, AppLink, Heading, List } from 'components';
-import { TH, TR, TD } from 'components/Nodes/Table';
+import { TH, TR, TD, Table } from 'components/Nodes/Table';
 
 // Tags
 import { Callout } from 'components/Tags/Callout';
 import { ConditionalTheme } from 'components/Tags/ConditionalTheme';
 import { Divider } from 'components/Divider';
 import { ModeSection } from 'components/Tags/ModeSection';
-import { SupportedModes } from 'components/Tags/SupportedModes';
 import { Grid } from 'components/Tags/Grid';
 import { LanguageSection } from 'components/Tags/LanguageSection';
 import { LanguageSelector } from 'components/Tags/LanguageSelector';
@@ -44,13 +43,13 @@ export const components = {
   Document,
   Grid,
   Heading,
-  IcerpcSpecific: IcerpcSlice,
+  IcerpcSlice,
   LanguageSection,
   LanguageSelector,
   List,
   ModeSection,
   SideBySide,
-  SupportedModes,
+  Table,
   TD,
   TH,
   Title,

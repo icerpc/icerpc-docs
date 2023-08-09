@@ -63,7 +63,7 @@ flowchart LR
     end
 ```
 
-This serialization can result in [head-of-line blocking](https://en.wikipedia.org/wiki/Head-of-line_blocking).
+This serialization can result in [head-of-line blocking][head-of-line-blocking].
 
 If you send requests and responses concurrently over the same ice connection, make sure that all these requests and
 responses are fairly small. And if you can't avoid sending large requests or responses, you should consider creating a
@@ -76,9 +76,10 @@ The following IceRPC features are not available with the ice protocol:
 - [payload continuations](../invocation/invocation-pipeline#payload-and-payload-continuation)
 - [request fields](../invocation/outgoing-request#request-fields) other than Context and Idempotent
 - [response fields](../invocation/incoming-response#response-fields)
-- [status codes](../invocation/incoming-response#status-code) other than Success, ApplicationError, ServiceNotFound,
-OperationNotFound and UnhandledException
+- [status codes](../invocation/incoming-response#status-code) other than `Ok`, `ApplicationError`, `NotFound`,
+`NotImplemented` and `InternalError`
 
 [application-layer]: https://en.wikipedia.org/wiki/Application_layer
-[duplex-transport]: ../customization/duplex-transport.md
+[duplex-transport]: ../customization/duplex-transport
 [rfcomm]: https://en.wikipedia.org/wiki/List_of_Bluetooth_protocols#Radio_frequency_communication_(RFCOMM)
+[head-of-line-blocking]: https://en.wikipedia.org/wiki/Head-of-line_blocking

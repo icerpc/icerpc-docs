@@ -132,22 +132,22 @@ The `replyStatus` encodes the response's [status code](../invocation/incoming-re
 
 | Status code           | Encoded as reply status    |
 | --------------------- | -------------------------- |
-| Success               | Ok                         |
+| Ok                    | Ok                         |
 | ApplicationError      | UserException              |
-| ServiceNotFound       | ObjectNotExistException    |
-| OperationNotFound     | OperationNotExistException |
+| NotFound              | ObjectNotExistException    |
+| NotImplemented        | OperationNotExistException |
 | Any other status code | UnknownException           |
 
 When IceRPC receives a response frame, it creates an incoming response with a status code decoded from the reply status:
 
 | Reply status               | Decoded as status code |
 | -------------------------- | ---------------------- |
-| Ok                         | Success                |
+| Ok                         | Ok                     |
 | UserException              | ApplicationError       |
-| ObjectNotExistException    | ServiceNotFound        |
-| FacetNotExistException     | ServiceNotFound        |
-| OperationNotExistException | OperationNotFound      |
-| Unknown exceptions         | UnhandledException     |
+| ObjectNotExistException    | NotFound               |
+| FacetNotExistException     | NotFound               |
+| OperationNotExistException | NotImplemented         |
+| Unknown exceptions         | InternalError          |
 
 The format of the `replyPayload` depends on the reply status:
 
@@ -172,16 +172,16 @@ compact struct RequestFailedData {
 ```
 
 IceRPC always encodes the path, fragment and operation of the current incoming request in `RequestFailedData` when
-sending a response with status code `ServiceNotFound` or `OperationNotFound` in an ice response frame.
+sending a response with status code `NotFound` or `NotImplemented` in an ice response frame.
 
 When IceRPC receives an ice response with a `NotExist` reply status, it decodes the `RequestFailedData` to create the
 response's error message and then discards this `RequestFailedData`.
 
 ### Error message
 
-When the response's status code is `ApplicationError`, `ServiceNotFound` or `OperationNotFound`, the ice protocol does
-not provide a mechanism to transmit the response's error message. As a result, the error message is not sent to the peer
-or received from the peer with these status codes.
+When the response's status code is `ApplicationError`, `NotFound` or `NotImplemented`, the ice protocol does not provide
+a mechanism to transmit the response's error message. As a result, the error message is not sent to the peer or received
+from the peer with these status codes.
 
 ## Encapsulation
 

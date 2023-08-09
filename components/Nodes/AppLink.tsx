@@ -49,13 +49,16 @@ export const AppLink = ({
 
     // Resolve internal relative urls like "/abc/../foo" to their absolute path.
     if (!isExternalLink(url)) {
-      const baseURL = 'https://docs.testing.zeroc.com'
-      const parsedUrl = new URL(url, baseURL)
+      const baseURL = 'https://docs.testing.zeroc.com';
+      const parsedUrl = new URL(url, baseURL);
       // Strip baseURL from the url
       url = parsedUrl.href.replace(baseURL, '');
 
       // If the link is a /slice/ link, we need to convert it to a /slice1/ or /slice2/ link based on the current mode.
-      url = url.replace(/^\/slice(\/|$)/, mode === Mode.Slice1 ? '/slice1/' : '/slice2/');
+      url = url.replace(
+        /^\/slice(\/|$)/,
+        mode === Mode.Slice1 ? '/slice1/' : '/slice2/'
+      );
     }
 
     setHref(url);
@@ -168,8 +171,9 @@ const isApiLink = (href: string) => {
 const resolveApiLink = (href: string) => {
   const [language, ...rest] = href.split(':');
   const [module, method] = rest.join('.').split('#');
-  return `https://docs.testing.zeroc.com/api/${language}/api/${module}.html${method ? `#${method}` : ''
-    }`;
+  return `https://docs.testing.zeroc.com/api/${language}/api/${module}.html${
+    method ? `#${method}` : ''
+  }`;
 };
 
 /**
