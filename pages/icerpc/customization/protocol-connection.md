@@ -5,13 +5,13 @@ description: Understand how to create and use protocol connections.
 
 ## The protocol connection abstraction
 
-A server, a client connection and a connection cache all manage [connections][connections]. These somewhat low-level
-connections are represented by the protocol connection abstraction. A protocol connection:
+A server, a client connection and a connection cache all manage protocol connections. A protocol connection is an
+abstraction that:
 
 - holds a transport connection such as a QUIC connection or a tcp connection
 - implements an RPC protocol layer over this transport connection
 
-In C#, the protocol connection abstraction is represented by interface [IProtocolConnection][csharp-protocol-connection]:
+In C#, the protocol connection abstraction is represented by [IProtocolConnection][csharp-protocol-connection]:
 
 ```csharp
 namespace IceRpc;
@@ -25,7 +25,7 @@ public interface IProtocolConnection : IInvoker, IAsyncDisposable
 }
 ```
 
-Even though `IProtocolConnection` is public, a regular application should not use this API directly.
+Even though it's public, a regular application should not use this API directly.
 
 IceRPC provides two implementations of the protocol connection abstraction:
 [ice](../protocols-and-transports/ice-duplex-transports) and
@@ -45,10 +45,11 @@ This allows you to implement your own custom version of [ClientConnection][cshar
 [ConnectionCache][csharp-connection-cache].
 
 There is currently no public API to create server protocol connections; as a result, you can't create your own custom
-version of Server.
+version of [Server][csharp-server].
 
 [connections]: ../connection/how-to-create-a-connection
 [csharp-protocol-connection]: csharp:IceRpc.IProtocolConnection
 [csharp-client-protocol-connection-factory]: csharp:IceRpc.ClientProtocolConnectionFactory
 [csharp-client-connection]: csharp:IceRpc.ClientConnection
 [csharp-connection-cache]: csharp:IceRpc.ConnectionCache
+[csharp-server]: csharp:IceRpc.Server
