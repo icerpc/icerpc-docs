@@ -8,8 +8,8 @@ description: Lean about the icerpc protocol and multiplexed transports
 When you create a client connection to server address `icerpc://hello.zeroc.com`, you instruct IceRPC to establish a
 connection that uses the icerpc protocol.
 
-icerpc is an [application layer](https://en.wikipedia.org/wiki/Application_layer) protocol that transmits RPCs (requests
-and responses) over a multiplexed connection.
+icerpc is an [application layer][application-layer] protocol that transmits RPCs (requests and responses) over a
+multiplexed connection.
 
 {% callout type="information" %}
 We always spell icerpc in lowercase when discussing the icerpc protocol. This avoids confusion with the IceRPC
@@ -18,8 +18,9 @@ framework.
 
 ## Multiplexed transport
 
-A multiplexed transport is an abstraction for a modern transport that provides independent streams within a connection.
-The prototypical multiplexed transport is [QUIC](https://www.rfc-editor.org/rfc/rfc9000.html).
+The [multiplexed transport][multiplexed-transport] page describes an abstraction for a modern transport that provides
+independent streams within a connection. The prototypical multiplexed transport is
+[QUIC][quic].
 
 An icerpc connection runs over a multiplexed connection created by a multiplexed transport.
 
@@ -78,7 +79,7 @@ flowchart LR
 ```
 
 Since each stream is independent, there is no
-[head-of-line blocking](https://en.wikipedia.org/wiki/Head-of-line_blocking). You can send a mix of large and small
+[head-of-line blocking][head-of-line-blocking]. You can send a mix of large and small
 requests and responses over the same connection: the large requests and responses won't block or delay the small ones.
 
 ## IceRPC's preferred protocol
@@ -96,7 +97,7 @@ There is currently only one standard multiplexed transport: QUIC. Since QUIC is 
 may want to use icerpc with a traditional duplex transport such as TCP.
 
 The solution is IceRPC's Slic transport layer. Slic implements the multiplexed transport abstraction over the
-[duplex transport](ice-duplex-transports) abstraction.
+[duplex transport][duplex-transport] abstraction.
 
 ```mermaid
 ---
@@ -134,3 +135,9 @@ using await var clientConnection = new ClientConnection(
     "icerpc://hello.zeroc.com",
     multiplexedClientTransport: clientTransport);
 ```
+
+[application-layer]: https://en.wikipedia.org/wiki/Application_layer
+[multiplexed-transport]: ../customization/multiplexed-transport
+[duplex-transport]: ../customization/duplex-transport
+[quic]: https://www.rfc-editor.org/rfc/rfc9000.html
+[head-of-line-blocking]: https://en.wikipedia.org/wiki/Head-of-line_blocking

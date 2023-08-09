@@ -8,23 +8,22 @@ description: Learn about the ice protocol and duplex transports
 When you create a client connection to server address `ice://hello.zeroc.com`, you instruct IceRPC to establish a
 connection that uses the ice protocol.
 
-ice is an [application layer](https://en.wikipedia.org/wiki/Application_layer) protocol that transmits RPCs (requests
-and responses) over a duplex connection.
+ice is an [application layer][application-layer] protocol that transmits RPCs (requests and responses) over a duplex
+connection.
 
 {% callout type="information" %}
 We always spell ice in lowercase when discussing the ice protocol. This avoids confusion with the
 [Ice](https://github.com/zeroc-ice/ice) platform.
 
 The ice protocol is provided for interoperability with applications built with Ice. You should use
-[icerpc](ice-multiplexed-transports) if you don't need interop with Ice-based applications.
+[icerpc](icerpc-multiplexed-transports) if you don't need interop with Ice-based applications.
 {% /callout %}
 
 ## Duplex transport
 
-A duplex transport is an abstraction for a traditional transport like TCP or
-[RFCOMM](https://en.wikipedia.org/wiki/List_of_Bluetooth_protocols#Radio_frequency_communication_(RFCOMM)). It creates
-duplex (transport) connections. A duplex connection provides two byte streams: one from the client to the server, and
-another from the server to the client.
+The [duplex transport][duplex-transport] page describes an abstraction for a traditional transport like TCP or
+[RFCOMM][rfcomm]. It creates duplex (transport) connections. A duplex connection provides two byte streams: one from the
+client to the server, and another from the server to the client.
 
 An ice connection runs over a duplex connection.
 
@@ -64,16 +63,11 @@ flowchart LR
     end
 ```
 
-This serialization can result in [head-of-line blocking](https://en.wikipedia.org/wiki/Head-of-line_blocking).
+This serialization can result in [head-of-line blocking][head-of-line-blocking].
 
 If you send requests and responses concurrently over the same ice connection, make sure that all these requests and
 responses are fairly small. And if you can't avoid sending large requests or responses, you should consider creating a
 separate ice connection dedicated to these large requests or responses.
-
-## Duplex transport and TLS
-
-The duplex transport abstraction includes TLS support. For example, the TCP duplex transport can create both plain TCP
-connections and TCP connections with TLS. See [Security with TLS](../connection/security-with-tls) for details.
 
 ## Limitations of the ice protocol
 
@@ -84,3 +78,8 @@ The following IceRPC features are not available with the ice protocol:
 - [response fields](../invocation/incoming-response#response-fields)
 - [status codes](../invocation/incoming-response#status-code) other than `Ok`, `ApplicationError`, `NotFound`,
 `NotImplemented` and `InternalError`
+
+[application-layer]: https://en.wikipedia.org/wiki/Application_layer
+[duplex-transport]: ../customization/duplex-transport
+[rfcomm]: https://en.wikipedia.org/wiki/List_of_Bluetooth_protocols#Radio_frequency_communication_(RFCOMM)
+[head-of-line-blocking]: https://en.wikipedia.org/wiki/Head-of-line_blocking
