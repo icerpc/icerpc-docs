@@ -484,7 +484,7 @@ ReturnsBlock
     ;
 
 ThrowsBlock
-    : throws_keyword identifier? Section
+    : throws_keyword identifier Section
     ;
 
 SeeBlock

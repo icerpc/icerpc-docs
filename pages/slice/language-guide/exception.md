@@ -10,12 +10,12 @@ Exceptions are not supported with Slice2.
 {% slice1 %}
 ## Operation failure
 
-The implementation of a Slice [operation](operation) can:
+The implementation of a Slice [operation] can:
 - succeed and return an instance of the operation's return type,
 - fail and return a generic error, or
 - fail and return an exception defined in Slice
 
-In this last case, the exception or a base exception must be referenced in the
+In this last case, the exception or one of its base exceptions must be listed in the
 [exception specification][exception-specification] of the operation.
 
 Other than the `exception` keyword, the definition of an exception is syntactically identical to the definition of
@@ -48,11 +48,11 @@ The recommended naming convention is to give an `Exception` suffix to all Slice 
 
 ## Difference with classes
 
-A class is a constructed type, while an exception is not: you cannot use an exception as the type for a field.
+A class is a constructed type, while an exception is not: you cannot use an exception as the type of a field.
 
 An exception is always encoded in the [sliced format][sliced-format] (the `slicedFormat` attribute has no effect on
 the encoding of an exception). This way, when an application receives a derived exception it does not know, it can
-always slice off the exception slices it doesn't understand and construct a base exception. This base exception does not
+always slice off the exception slices it doesn't recognize and construct a base exception. This base exception does not
 preserve the sliced-off slices unlike a base class constructed after slicing.
 
 ## C# mapping {% icerpcSlice=true %}
@@ -146,7 +146,7 @@ When the generated code decodes an exception from a payload, it sets the excepti
 [`ConvertToInternalError`][convert-to-internal-error] property to `true`.
 
 This way, when the implementation of an operation makes an invocation and this invocation throws an exception, by
-default, this exception is not resent as-is but gets converted into a response with status code
+default, this exception is not re-sent as-is but gets converted into a response with status code
 [InternalError][internal-error]. If you don't want this conversion, you need to catch the exception and set
 `ConvertToInternalError` to `false`:
 
@@ -163,10 +163,10 @@ catch (DispatchException exception)
 }
 ```
 
-[convert-to-internal-error]: csharp:IceRpc.DispatchException#IceRpc_DispatchException_ConvertToInternalError
+[convert-to-internal-error]: csharp:IceRpc.Slice.DispatchException#IceRpc_DispatchException_ConvertToInternalError
 [exception-specification]: operation#exception-specification
 [slice-exception]: csharp:ZeroC.Slice.SliceException
 [sliced-format]: class-types#slicing
-[unhandled-exception]: csharp:IceRpc.StatusCodeIceRpc_StatusCode_UnhandledException
+[internal-error]: csharp:IceRpc.StatusCode#IceRpc_StatusCode_InternalError
 
 {% /slice1 %}
