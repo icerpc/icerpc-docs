@@ -9,8 +9,8 @@ An operation consists of:
 
 - an optional operation [attribute](attributes)
 - a name (the name of operation)
-- a list of [parameters][parameters] (the operation parameters)
-- an arrow followed by one or more return [parameters][parameters] (optional)
+- a list of [parameters] (the operation parameters)
+- an arrow followed by one or more return [parameters] (optional)
 {% slice1 %}
 - an [exception specification](#exception-specification) (optional)
 {% /slice1 %}
