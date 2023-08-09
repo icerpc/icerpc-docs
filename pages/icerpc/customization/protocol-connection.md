@@ -11,7 +11,7 @@ abstraction that:
 - holds a transport connection such as a QUIC connection or a tcp connection
 - implements an RPC protocol layer over this transport connection
 
-In C#, the protocol connection abstraction is represented by [IProtocolConnection][csharp-protocol-connection]:
+In C#, this abstraction is the [IProtocolConnection][csharp-protocol-connection] interface:
 
 ```csharp
 namespace IceRpc;
