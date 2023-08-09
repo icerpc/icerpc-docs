@@ -22,7 +22,7 @@ const textAlignment = (align?: string): string => {
 export const Table = ({ children }: TableProps) => {
   return (
     <div className="mb-10 min-w-full">
-      <table className="w-full table-fixed border-collapse rounded prose-headings:font-semibold">
+      <table className="w-full border-collapse rounded prose-headings:font-semibold">
         {children}
       </table>
     </div>
@@ -40,7 +40,7 @@ export const TH = ({ align, children }: THProps) => {
       className={clsx(
         'prose-sm pl-4',
         children !== undefined &&
-          'border-b-[1.5px] border-lightBorder py-3 dark:border-darkBorder',
+        'border-b-[1.5px] border-lightBorder py-3 dark:border-darkBorder',
         textAlignment(align)
       )}
     >
