@@ -98,15 +98,15 @@ See [allow attribute](#allow-attribute) above for an example.
 
 The following attributes are specific to the C# mapping. They all start with the `cs::` suffix.
 
-| Attribute                                     | Applies to                                                                                  | Description                                                                 |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| [`cs::attribute`][cs-attribute-attribute]     | Enum types, enumerators and fields                                                          | Add the specified C# attribute to the mapped C# enum, enum member or field. |
-| [`cs::encodeReturn`][cs-encoded-return]       | Operations                                                                                  | Return an already encoded return value (server-side only).                  |
-| [`cs::identifier`](#cs::identifier-attribute) | Interfaces, operations, parameters, constructed types, fields, enumerators                  | Change the name of the mapped C# identifier.                                |
-| [`cs::internal`](#cs::internal-attribute)     | Interfaces, constructed types                                                               | Map to an internal C# type instead of a public C# type.                     |
-| [`cs::namespace`][cs-namespace]               | Modules                                                                                     | Change the name of the mapped C# namespace.                                 |
-| [`cs::readonly`][cs-readonly]                 | Structs and struct fields                                                                   | Adds `readonly` to the mapped C# struct or field.                           |
-| `cs::type`                                    | [Custom types][custom-type], [Sequences][sequence-type] and [dictionaries][dictionary-type] | Specify the mapped C# type.                                                 |
+| Attribute                                     | Applies to                                                                                   | Description                                                                 |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| [`cs::attribute`][cs-attribute-attribute]     | Enum types, enumerators and fields                                                           | Add the specified C# attribute to the mapped C# enum, enum member or field. |
+| [`cs::encodeReturn`][cs-encoded-return]       | Operations                                                                                   | Return an already encoded return value (server-side only).                  |
+| [`cs::identifier`](#cs::identifier-attribute) | Interfaces, operations, parameters, constructed types, fields, enumerators                   | Change the name of the mapped C# identifier.                                |
+| [`cs::internal`](#cs::internal-attribute)     | Interfaces, constructed types                                                                | Map to an internal C# type instead of a public C# type.                     |
+| [`cs::namespace`][cs-namespace]               | Modules                                                                                      | Change the name of the mapped C# namespace.                                 |
+| [`cs::readonly`][cs-readonly]                 | Structs and struct fields                                                                    | Adds `readonly` to the mapped C# struct or field.                           |
+| `cs::type`                                    | [Custom types][custom-type], [sequences][sequence-type], and [dictionaries][dictionary-type] | Specify the mapped C# type.                                                 |
 
 ### cs::identifier attribute
 

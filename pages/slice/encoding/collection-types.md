@@ -12,7 +12,7 @@ A dictionary with N entries is encoded like a sequence with N elements where the
 compact struct Pair { key: Key, value: Value }
 ```
 
-`Key` represents the dictionary's key type and `Value` the dictionary's value type.
+`Key` represents the dictionary's key type and `Value` represents the dictionary's value type.
 
 {% slice1 %}
 ## Sequence

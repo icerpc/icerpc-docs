@@ -84,7 +84,7 @@ However, Slice2 is not a superset of Slice1. The following constructs are only a
 The .slice syntax adds a few constructs that are available with both Slice1 and Slice2 but have no equivalent with the
 .ice syntax, namely:
  - anonymous sequences and dictionaries\
-   You can now use `sequence<string>` directly as a parameter or field type.
+   You can now use `Sequence<string>` directly as a parameter or field type.
  - custom types\
    A custom type is a type that you encode and decode yourself in all language mappings.
  - typealias\

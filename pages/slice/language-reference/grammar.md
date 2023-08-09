@@ -94,8 +94,8 @@ custom_keyword:     "custom";
 type_alias_keyword: "typealias";
 
 // Collection Keywords
-sequence_keyword:   "sequence";
-dictionary_keyword: "dictionary";
+sequence_keyword:   "Sequence";
+dictionary_keyword: "Dictionary";
 
 // Primitive type keywords
 bool_keyword:      "bool";

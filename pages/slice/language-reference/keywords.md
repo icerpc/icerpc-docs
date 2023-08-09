@@ -15,7 +15,7 @@ The following table lists all the keywords of the Slice language:
 
 - [AnyClass](/slice1/language-guide/primitive-types#anyclass)
 - [float64](/slice2/language-guide/primitive-types#floating-point-types)
-- [sequence](/slice2/language-guide/sequence-types)
+- [Sequence](/slice2/language-guide/sequence-types)
 - [uint32](/slice2/language-guide/primitive-types#fixed-size-integral-types)
 
 ---
@@ -48,7 +48,7 @@ The following table lists all the keywords of the Slice language:
 
 ---
 
-- [dictionary](/slice2/language-guide/dictionary-types)
+- [Dictionary](/slice2/language-guide/dictionary-types)
 - [int32](/slice2/language-guide/primitive-types#fixed-size-integral-types)
 - [throws](/slice2/language-guide/operation#exception-specification)
 - [varuint32](/slice2/language-guide/primitive-types#variable-size-integral-types)

@@ -9,7 +9,7 @@ A field is defined as `name: Type`, where `name` is the field's name, and `Type`
 
 ```slice
 name: string
-image: sequence<uint8>
+image: Sequence<uint8>
 address: WellKnownType::Uri
 ```
 

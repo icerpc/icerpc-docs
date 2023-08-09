@@ -47,15 +47,15 @@ considered different identifiers.
 It is possible to use a Slice keyword as an identifier by prefixing the keyword with a backslash; for example:
 
 ```slice
-struct dictionary {     // Error!
+struct Dictionary {     // Error!
     // ...
 }
 
-struct \dictionary {    // OK
+struct \Dictionary {    // OK
     // ...
 }
 
-struct \foo {           // Legal, same as "struct foo"
+struct \Foo {           // Legal, same as "struct Foo"
     // ...
 }
 ```

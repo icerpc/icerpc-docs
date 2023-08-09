@@ -17,14 +17,14 @@ Otherwise, we encode the service address like the following `ServiceAddressData`
 ```slice {% addMode=true %}
 compact struct ServiceAddressData {
     identity: Identity             // The service address path converted to an Ice identity (two strings).
-    facet: sequence<string>        // The fragment encoded as an empty sequence or a 1-element sequence.
+    facet: Sequence<string>        // The fragment encoded as an empty sequence or a 1-element sequence.
     invocationMode: InvocationMode // IceRPC always encodes Twoway and ignores this value during decoding.
     secure: bool                   // IceRPC always encodes false and ignores this value during decoding.
     protocolMajor: uint8           // 1 for ice and 2 for icerpc.
     protocolMinor: uint8           // Always 0.
     encodingMajor: uint8           // IceRPC always encodes 1 and ignores this value during decoding.
     encodingMinor: uint8           // IceRPC always encodes 1 and ignores this value during decoding.
-    serverAddressList: sequence<ServerAddressData>
+    serverAddressList: Sequence<ServerAddressData>
     adapterId: string              // Encoded only when serverAddressList is empty.
 }
 

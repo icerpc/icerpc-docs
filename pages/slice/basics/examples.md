@@ -42,7 +42,7 @@ interface MyOperations {
     opParamReturn(message: string) -> int32?
 
     // two operation parameters and two return parameters
-    opParamsReturns(message: string, count: int32) -> (value: float32, list: sequence<int32>)
+    opParamsReturns(message: string, count: int32) -> (value: float32, list: Sequence<int32>)
 
     // a one-way operation
     [oneway] opOneway(message: string)
@@ -68,7 +68,7 @@ interface MyOperations {
     opParamReturn(message: string) -> int32?
 
     // two operation parameters and two return parameters
-    opParamsReturns(message: string, count: int32) -> (value: float32, list: sequence<int32>)
+    opParamsReturns(message: string, count: int32) -> (value: float32, list: Sequence<int32>)
 
     // a regular operation parameter and a stream operation parameter
     sendFile(name: string, contents: stream uint8)
@@ -219,11 +219,11 @@ interface WidgetFactory {
 module Example
 
 interface Dns {
-    resolveName(name: string) -> sequence<IPAddress>
+    resolveName(name: string) -> Sequence<IPAddress>
 }
 
 interface Census {
-    getCityPopulation(state: string) -> dictionary<string, int32>
+    getCityPopulation(state: string) -> Dictionary<string, int32>
 }
 ```
 
@@ -271,7 +271,7 @@ module Example
 
 [cs::identifier("WorldAtlas")]
 interface Atlas {
-    getMainCities(country: string) -> [cs::type("HashSet<string>")] sequence<string>
+    getMainCities(country: string) -> [cs::type("HashSet<string>")] Sequence<string>
 }
 
 [cs::readonly]

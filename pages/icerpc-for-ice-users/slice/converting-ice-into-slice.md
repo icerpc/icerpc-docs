@@ -73,7 +73,7 @@ dictionary<string, int> StringIntDict;
 ```
 
 ```slice {% title="Same dictionary with the .slice syntax" %}
-typealias StringIntDict = dictionary<string, int32>
+typealias StringIntDict = Dictionary<string, int32>
 ```
 
 {% /side-by-side %}
@@ -319,7 +319,7 @@ sequence<string> StringSeq;
 ```
 
 ```slice {% title="Same sequence with the .slice syntax" %}
-typealias StringSeq = sequence<string>
+typealias StringSeq = Sequence<string>
 ```
 
 {% /side-by-side %}
