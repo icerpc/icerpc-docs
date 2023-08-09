@@ -9,11 +9,11 @@ export const Footer = () => {
         <span className="text-sm text-gray-500 dark:text-gray-400 sm:text-center">
           © {new Date().getFullYear()} ZeroC
         </span>
-        <ul className="mr-10 mt-3 flex flex-wrap items-center text-sm font-medium sm:mt-0">
+        <ul className="mt-3 flex flex-wrap items-center space-x-6 text-sm font-medium sm:mt-0">
           <li>
             <Link
               href="https://zeroc.com/about"
-              className="mr-4 text-gray-500 hover:underline dark:text-[rgba(255,255,255,0.6)] md:mr-6  "
+              className="text-gray-500 hover:underline dark:text-[rgba(255,255,255,0.6)]"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -23,7 +23,7 @@ export const Footer = () => {
           <li>
             <Link
               href="https://zeroc.com/privacy"
-              className="mr-4 text-gray-500 hover:underline dark:text-[rgba(255,255,255,0.6)] md:mr-6 "
+              className="text-gray-500 hover:underline dark:text-[rgba(255,255,255,0.6)]"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -33,7 +33,7 @@ export const Footer = () => {
           <li>
             <Link
               href="https://zeroc.com/contact"
-              className="hover:underline dark:text-[rgba(255,255,255,0.6)]"
+              className="text-gray-500 hover:underline dark:text-[rgba(255,255,255,0.6)]"
               target="_blank"
               rel="noopener noreferrer"
             >
