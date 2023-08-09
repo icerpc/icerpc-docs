@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { ReactNode, useState, useEffect } from 'react';
+import React, { ReactNode, useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -134,49 +134,46 @@ const resolvePath = (pathName: string): string => {
 };
 
 function useActiveId(itemIds: string[]) {
-  const [activeId, setActiveId] = useState(``);
+  const [activeId, setActiveId] = useState('');
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        let maxRatio = 0;
-        let maxId = '';
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
-            maxRatio = entry.intersectionRatio;
-            maxId = entry.target.id;
-          }
-        });
-        // Only update activeId if maxId is not an empty string
-        if (maxId) {
-          setActiveId(maxId);
-        }
-      },
-      {
-        rootMargin: '50px 0px -70% 0px',
-        threshold: Array.from({ length: 101 }, (_, i) => i / 100) // Fire the callback for every 1% change in visibility.
-      }
-    );
+    const handleScroll = () => {
+      let potentialId = '';
+      let potentialDistance = Infinity;
 
-    itemIds.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) {
-        observer.observe(element);
-      }
-    });
-
-    return () => {
       itemIds.forEach((id) => {
         const element = document.getElementById(id);
         if (element) {
-          observer.unobserve(element);
+          const rect = element.getBoundingClientRect();
+
+          // Bias towards sections entering from the bottom
+          if (rect.top > 0 && rect.top < potentialDistance) {
+            potentialDistance = rect.top;
+            potentialId = id;
+          }
         }
       });
+
+      if (potentialId) {
+        setActiveId(potentialId);
+      }
+    };
+
+    // Attach the event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Initial setup
+    handleScroll();
+
+    // Clean up the listener when the hook is unmounted
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [itemIds]);
 
   return activeId;
 }
+
 
 type ActionItemProps = {
   href: string;
