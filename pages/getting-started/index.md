@@ -14,7 +14,7 @@ over the same connection.
 An RPC framework like IceRPC helps you apply this paradigm to your own networked
 applications without reinventing the wheel.
 
-## Main Features
+## Main features
 
 Some of IceRPC's main features include:
 
@@ -26,7 +26,7 @@ TODO: What are the main features we want to highlight? Middleware and Intercepto
 | [Bar](/getting-started)  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, sapien vel bibendum bibendum. |
 | [Fizz](/getting-started) | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, sapien vel bibendum bibendum. |
 
-## How to use the Docs
+## How to use the docs
 
 - **Navigation Bar:** At the top of your screen, you'll find the docs navigation
   bar. This bar categorizes the documentation into sections such as
@@ -47,7 +47,7 @@ For more detailed information or specific functionalities, don't forget to
 consult our [API Reference](https://docs.testing.zeroc.com/api/csharp/api/IceRpc.html).
 It's a comprehensive resource for in-depth technical details.
 
-## Quick Links
+## Quick links
 
 {% grid columns=3 %}
 {% mini-card
