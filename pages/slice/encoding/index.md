@@ -46,16 +46,4 @@ When encoding integers and floating point numbers into multiple bytes, we have t
 
 Slice always uses little-endian: it's the simplest and most efficient choice since all modern CPUs are little-endian.
 
-[slice2-compatible]: ../language-guide/compilation-mode#using-slice1-and-slice2-together
-
-## IceRPC + Slice integration
-
-The Slice encoding defines how primitive types (such as `int32` and `string`) and constructed types (such as `enum` and
-`struct`) are encoded.
-
-The encoding of anything interface and operation-related (including operation parameters and [proxy types][proxy-types]) is not part
-of the Slice encoding but belongs instead to the integration with a particular RPC framework.
-
-This chapter describes both the Slice encoding and the encoding provided by the IceRPC + Slice integration.
-
-[proxy-types]: language-guide/proxy-types
+[slice2-compatible]: /slice/language-guide/compilation-mode#using-slice1-and-slice2-together
