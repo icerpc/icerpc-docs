@@ -42,7 +42,7 @@ interface MyOperations {
     opParamReturn(message: string) -> int32?
 
     // two operation parameters and two return parameters
-    opParamsReturns(message: string, count: int32) -> (value: float32, list: sequence<int32>)
+    opParamsReturns(message: string, count: int32) -> (value: float32, list: Sequence<int32>)
 
     // a one-way operation
     [oneway] opOneway(message: string)
@@ -68,7 +68,7 @@ interface MyOperations {
     opParamReturn(message: string) -> int32?
 
     // two operation parameters and two return parameters
-    opParamsReturns(message: string, count: int32) -> (value: float32, list: sequence<int32>)
+    opParamsReturns(message: string, count: int32) -> (value: float32, list: Sequence<int32>)
 
     // a regular operation parameter and a stream operation parameter
     sendFile(name: string, contents: stream uint8)
@@ -207,7 +207,7 @@ exception WidgetException {
 }
 
 interface WidgetFactory {
-    // Unlike a class, an exception can be thrown but can't be used as a field type.
+    // Unlike a class, an exception can be thrown but can't be used as the type of a field.
     createWidget(name: string) -> Widget throws WidgetException
 }
 ```
@@ -219,11 +219,11 @@ interface WidgetFactory {
 module Example
 
 interface Dns {
-    resolveName(name: string) -> sequence<IPAddress>
+    resolveName(name: string) -> Sequence<IPAddress>
 }
 
 interface Census {
-    getCityPopulation(state: string) -> dictionary<string, int32>
+    getCityPopulation(state: string) -> Dictionary<string, int32>
 }
 ```
 
@@ -271,7 +271,7 @@ module Example
 
 [cs::identifier("WorldAtlas")]
 interface Atlas {
-    getMainCities(country: string) -> [cs::type("HashSet<string>")] sequence<string>
+    getMainCities(country: string) -> [cs::type("HashSet<string>")] Sequence<string>
 }
 
 [cs::readonly]
@@ -292,12 +292,14 @@ interface WidgetFactory {
     /// @param color: The color of the new widget.
     /// @returns: A proxy to the new widget.
     /// @throws WidgetException: Thrown if the factory could not create the widget.
-    createWidget(name: string) -> Widget throws WidgetException
+    /// @throws InvalidNameException: Thrown if the provided name was invalid.
+    createWidget(name: string) -> Widget throws (WidgetException, InvalidNameException)
 
     /// Retrieves the last {@link Widget} created by this factory.
     /// @returns proxy: A proxy to the last widget.
     /// @returns timeStamp: The creation time stamp.
     /// @throws WidgetException: Thrown if the factory has not created any widget yet.
+    /// @throws DerivedFromWidgetException: It's okay to document derived exceptions.
     getLastWidget() -> (proxy: Widget, timeStamp: TimeStamp) throws WidgetException
 }
 ```

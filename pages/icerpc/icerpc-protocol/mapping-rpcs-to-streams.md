@@ -68,7 +68,7 @@ compact struct Request {
 compact struct RequestHeader {
     path: string
     operation: string
-    fields: dictionary<RequestFieldKey, sequence<uint8>>
+    fields: Dictionary<RequestFieldKey, Sequence<uint8>>
 }
 ```
 
@@ -114,7 +114,7 @@ compact struct Response {
 compact struct ResponseHeader {
     statusCode: StatusCode
     errorMessage: string // only present when statusCode is not `Ok`
-    fields: dictionary<ResponseFieldKey, sequence<uint8>>
+    fields: Dictionary<ResponseFieldKey, Sequence<uint8>>
 }
 ```
 

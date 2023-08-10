@@ -66,10 +66,10 @@ mode = Slice1
 compact struct RequestData {
     requestId: int32
     id: Identity
-    facet: sequence<string>
+    facet: Sequence<string>
     operation: string
     mode: OperationMode
-    context: dictionary<string, string>
+    context: Dictionary<string, string>
     params: Encapsulation
 }
 
@@ -88,7 +88,7 @@ has no corresponding response.
 The `id` field corresponds to the path of the outgoing request's service address encoded as an
 [Ice identity](/icerpc-for-ice-users/rpc-core/ice-identity).
 
-The `facet` field corresponds to the fragment of the outgoing request's service address encoded as a `sequence<string>`.
+The `facet` field corresponds to the fragment of the outgoing request's service address encoded as a `Sequence<string>`.
 This sequence is empty when the fragment is empty; otherwise, it has a single element with the fragment.
 
 The `mode` encodes the value of the `Idempotent`
@@ -161,12 +161,12 @@ The format of the `replyPayload` depends on the reply status:
 ### RequestFailedData
 
 `RequestFailedData` is a struct that holds the request's path, fragment and operation. The path is encoded as an
-`Identity` and the fragment is encoded as a `sequence<string>`:
+`Identity` and the fragment is encoded as a `Sequence<string>`:
 
 ```slice
 compact struct RequestFailedData {
     path: Identity
-    facet: sequence<string>
+    facet: Sequence<string>
     operation: string
 }
 ```
