@@ -6,7 +6,7 @@ description: Understand when to use Slice1 or Slice2.
 ## Slice1 or Slice2
 
 Slice supports two compilation modes: Slice1 and Slice2. Slice2 is the default mode, recommended for most applications.
-Slice1 provides interoperability with [Ice][ice] applications and must be enabled explicitly.
+Slice1 provides interoperability with [Ice] applications and must be enabled explicitly.
 
 The compilation mode of a Slice file can be specified with the `mode` statement.
 This statement can only appear once per file, and must come before any other statement. For example:
@@ -62,8 +62,8 @@ interface Widget {
 ```
 {% /side-by-side %}
 
-The [encoding][encoding] used for operation arguments is determined by the compilation mode. As a result, a call to
-`spin` from a client using the Slice2 file will fail if the remote service is implemented with the Slice1 file.
+The [encoding] used for operation arguments is determined by the compilation mode. As a result, a call to `spin` from a
+client using the Slice2 file will fail if the remote service is implemented with the Slice1 file.
 
 ## Using Slice1 and Slice2 together
 
@@ -106,6 +106,7 @@ definitions.
 
 [encoding]: ../encoding
 [enum-type]: enum-types
-[ice]: https://github.com/zeroc-ice/ice
-[original-slice]: https://doc.zeroc.com/ice/3.7/the-slice-language
 [proxy-type]: proxy-types
+
+[Ice]: https://github.com/zeroc-ice/ice
+[original-slice]: https://doc.zeroc.com/ice/3.7/the-slice-language

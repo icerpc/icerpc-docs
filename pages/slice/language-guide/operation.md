@@ -318,7 +318,7 @@ code for their payloads.
 The `cs::encodeReturn` attribute allows you to change the return type of the mapped method on the generated Service
 interface: this attribute makes this method returns a `ValueTask<PipeReader>` instead of the usual `ValueTask<T>`.
 
-The returned [PipeReader][pipe-reader] represents the encoded return value. You would typically produce this value using
+The returned [PipeReader] represents the encoded return value. You would typically produce this value using
 the Encode*OpName* method provided by the helper [`Response` class](#request-and-response-helper-classes).
 
 There are two somewhat common use-cases for this attribute:
@@ -329,7 +329,9 @@ There are two somewhat common use-cases for this attribute:
     the return value once, cache the encoded bytes and then return over and over these bytes.
 
 [class-slicing]: class-types#slicing
-[compress-feature]: csharp:IceRpc.Features.ICompressFeature
 [parameters]: parameters
-[pipe-reader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
 [tagged-parameters]: parameters#tagged-parameters
+
+[PipeReader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
+
+[compress-feature]: csharp:IceRpc.Features.ICompressFeature

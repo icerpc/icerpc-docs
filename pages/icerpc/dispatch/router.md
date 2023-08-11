@@ -93,8 +93,7 @@ from the request's path before trying to match this path against entries in its 
 
 A router can execute one or more middleware before handing over the request to a mapped or mounted dispatcher.
 
-In C#, these middleware are registered with `Use{Name}` extension methods on class [`Router`][csharp-router]. For
-example:
+In C#, these middleware are registered with `Use{Name}` extension methods on class [Router]. For example:
 
 ```csharp
 Router router = new Router().UseLogger(loggerFactory).UseCompressor();
@@ -111,4 +110,4 @@ The router always dispatches incoming requests to its registered middleware, eve
 with status code `NotFound`.
 {% /callout %}
 
-[csharp-router]: csharp:IceRpc.Router
+[Router]: csharp:IceRpc.Router

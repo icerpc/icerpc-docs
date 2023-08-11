@@ -24,14 +24,14 @@ A `bool` is encoded on a single byte, where 0 means `false` and 1 means `true`. 
 | int32, uint32 | 4                  |
 | int64, uint64 | 8                  |
 
-The encoding of all signed integers uses [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement), the
+The encoding of all signed integers uses [two's complement][two-complement], the
 standard representation for signed integers.
 {% /slice2 %}
 
 ## Floating-point types
 
 A `float32` or `float64` is encoded on 4 resp. 8 bytes using the binary32 resp. binary64 formats specified by
-[IEEE 754](https://en.wikipedia.org/wiki/IEEE_754).
+[IEEE 754][IEEE_754].
 
 {% slice1 %}
 ## Integral types
@@ -47,9 +47,8 @@ A `float32` or `float64` is encoded on 4 resp. 8 bytes using the binary32 resp. 
 ## String
 
 {% slice1 %}
-A `string` is encoded using UTF-8 as a [variable-length size](encoding-only-constructs#variable-length-size) followed
-by size UTF-8 bytes. These UTF-8 bytes don't include a [BOM](https://en.wikipedia.org/wiki/Byte_order_mark). For
-example, the string "1 μs" is usually encoded as:
+A `string` is encoded using UTF-8 as a [variable-length size](encoding-only-constructs#variable-length-size) followed by
+size UTF-8 bytes. These UTF-8 bytes don't include a [BOM]. For example, the string "1 μs" is usually encoded as:
 ```
 0x05      # size 5 encoded on 1 byte
 0x31      # '1'
@@ -65,8 +64,8 @@ The size is not necessarily encoded on a single byte. It can be encoded on 5 byt
 {% /slice1 %}
 
 {% slice2 %}
-A `string` is encoded using UTF-8 as a `varuint62` size followed by size UTF-8 bytes. These UTF-8 bytes don't include
-a [BOM](https://en.wikipedia.org/wiki/Byte_order_mark). For example, the string "1 μs" is usually encoded as:
+A `string` is encoded using UTF-8 as a `varuint62` size followed by size UTF-8 bytes. These UTF-8 bytes don't include a
+[BOM]. For example, the string "1 μs" is usually encoded as:
 ```
 0x14      # size 5 encoded on 1 byte
 0x31      # '1'
@@ -124,3 +123,7 @@ The encoding of varuint62 is identical to the encoding of variable-length intege
 {% /callout %}
 
 {% /slice2 %}
+
+[IEEE_754]: https://en.wikipedia.org/wiki/IEEE_754
+[two-complement]: https://en.wikipedia.org/wiki/Two%27s_complement
+[BOM]: https://en.wikipedia.org/wiki/Byte_order_mark

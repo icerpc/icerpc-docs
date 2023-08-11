@@ -6,8 +6,8 @@ description: Learn how to write an interceptor and how to install an interceptor
 ## Intercepting outgoing requests
 
 An interceptor is an [invoker](invocation-pipeline#the-invoker-abstraction) that holds another invoker ("next") and
-calls `invoke` on this next invoker as part of the implementation of its own `invoke` method. This next invoker can be
- a `ClientConnection`, a `ConnectionCache`, another interceptor, or some other kind of invoker, it doesn't matter.
+calls `invoke` on this next invoker as part of the implementation of its own `invoke` method. This next invoker can be a
+ client connection, a connection cache`, another interceptor, or some other kind of invoker, it doesn't matter.
 
 An interceptor can include logic before calling `invoke` on the next invoker (before the request is sent) and after
 calling `invoke` on the next invoker (after it receives the response). An interceptor can also short-circuit the
@@ -34,8 +34,8 @@ public class SimpleInterceptor : IInvoker
 
 ## Installing an interceptor
 
-In C#, you can create an invocation pipeline by creating an instance of class [Pipeline][csharp-pipeline] and then
-calling `Use{Name}` extension methods to install interceptors on this pipeline.
+In C#, you can create an invocation pipeline by creating an instance of class [Pipeline] and then calling `Use{Name}`
+extension methods to install interceptors on this pipeline.
 
 For example:
 
@@ -67,4 +67,4 @@ interceptor to execute. With the pipeline we created above, the logger intercept
 `InvokeAsync` on the compressor interceptor, and then finally the compressor interceptor calls `InvokeAsync` on the
 client connection.
 
-[csharp-pipeline]: csharp:IceRpc.Pipeline
+[Pipeline]: csharp:IceRpc.Pipeline

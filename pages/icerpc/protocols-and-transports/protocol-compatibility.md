@@ -16,5 +16,7 @@ A server application does not have to be ice-only or icerpc-only because it can 
 - one server for ice
 - another server for icerpc
 
-These two servers can share the same [dispatch pipeline](../dispatch/dispatch-pipeline). This way, the server
-application as a whole is reachable through ice and icerpc and provides the same services to all its clients.
+These two servers can share the same [dispatch pipeline][dispatch-pipeline]. This way, the server application as a whole
+is reachable through ice and icerpc and provides the same services to all its clients.
+
+[dispatch-pipeline]: ../dispatch/dispatch-pipeline

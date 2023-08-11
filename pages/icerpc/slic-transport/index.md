@@ -2,8 +2,8 @@
 title: The Slic multiplexed transport
 ---
 
-Slic is a [multiplexed transport][multiplexed-transport] that emulates [QUIC][quic] while relying on a traditional
-duplex transport (such as TCP) for data transmission.
+Slic is a [multiplexed transport][multiplexed-transport] that emulates [QUIC] while relying on a traditional duplex
+transport (such as TCP) for data transmission.
 
 Like QUIC, Slic provides independent streams and flow control, and helps monitor the connection's health.
 
@@ -29,6 +29,6 @@ The name of the new multiplexed transport created with Slic is typically the nam
 For example, Slic over TCP is the "tcp" multiplexed transport.
 
 [hol]: https://en.wikipedia.org/wiki/Head-of-line_blocking
-[quic]: https://datatracker.ietf.org/doc/rfc9000
-[duplex-transport]: protocols-and-transports/ice-duplex-transports
-[multiplexed-transport]: protocols-and-transports/icerpc-multiplexed-transports
+[QUIC]: https://datatracker.ietf.org/doc/rfc9000
+[duplex-transport]: duplex-transport
+[multiplexed-transport]: multiplexed-transport

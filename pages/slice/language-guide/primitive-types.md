@@ -67,8 +67,7 @@ Slice provides 4 integral types.
 
 ## String
 
-Slice provides a string type, `string`. A string is a sequence of characters that can be encoded using
-[UTF-8](https://en.wikipedia.org/wiki/UTF-8).
+Slice provides a string type, `string`. A string is a sequence of characters that can be encoded using [UTF-8].
 
 | Slice    | C# mapping |
 | ---------|------------|
@@ -107,3 +106,5 @@ The integer value determines the minimum number of bytes required in the encoded
 
 Any other value is encoded using 8 bytes.
 {% /slice2 %}
+
+[UTF-8]: https://en.wikipedia.org/wiki/UTF-8

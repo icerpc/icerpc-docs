@@ -15,7 +15,7 @@ The class encoding is described in the [Ice manual][ice-manual-class-encoding]. 
 1.1 in the Ice manual.
 
 When encoding operation arguments and return values, IceRPC encodes classes in the compact format by default, just like
-Ice. You can switch to the sliced format with the [`slicedFormat`][sliced-format-attribute] operation attribute.
+Ice. You can switch to the sliced format with the [`slicedFormat`][slicedformat-attribute] operation attribute.
 
 During decoding, Slice considers all classes that use the sliced format to be fully [preserved][slice-preservation].
 
@@ -215,5 +215,5 @@ The contact id = 5, name = not set, age = 42 is encoded as:
 [bit-sequence]: encoding-only-constructs#bit-sequence
 [ice-manual-class-encoding]: https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding/ice-encoding/data-encoding-for-classes
 [slice-preservation]: ../language-guide/class-types#slice-preservation
-[sliced-format-attribute]: ../language-guide/operation#slicedformat-attribute
+[slicedformat-attribute]: ../language-guide/operation#slicedformat-attribute
 [slice1-var-size]: encoding-only-constructs#variable-length-size

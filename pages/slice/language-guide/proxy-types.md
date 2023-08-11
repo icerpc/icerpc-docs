@@ -39,9 +39,8 @@ Task<WidgetProxy> CreateWidgetAsync(
     CancellationToken cancellationToken = default);
 ```
 
-When you call `CreateWidgetAsync`, you get back a `WidgetProxy` instead of a plain
-[ServiceAddress][csharp-service-address], even though the only information transmitted over the wire with IceRPC is the
-service address.
+When you call `CreateWidgetAsync`, you get back a `WidgetProxy` instead of a plain [ServiceAddress], even though the
+only information transmitted over the wire with IceRPC is the service address.
 
 {% slice2 %}
 
@@ -70,17 +69,18 @@ Proxies are mapped to *Name*Proxy record structs in C#, as described on the [int
 
 When the generated code decodes a proxy from an incoming request payload, it produces by default a proxy with a null
 invoker. You can change this default behavior by configuring a [proxy factory][proxy-factory] in the
-[`ISliceFeature`][slice-feature] of your [incoming request features][incoming-request-features].
+[ISliceFeature] of your [incoming request features][incoming-request-features].
 
 On the client side, when the generated code decodes a proxy from an incoming response payload, it gives this new proxy
-the invoker and [`SliceEncodeOptions`][encode-options] of the proxy that sent the request. As a result, you can make
+the invoker and [SliceEncodeOptions] of the proxy that sent the request. As a result, you can make
 calls with this decoded proxy: it's ready to go.
 
-[csharp-service-address]: csharp:IceRpc.ServiceAddress
-[encode-options]: csharp:IceRpc.Slice.SliceEncodeOptions
 [incoming-request-features]: /icerpc/dispatch/incoming-request#request-features
 [invocation-pipeline]: /icerpc/invocation/invocation-pipeline
-[proxy-factory]: csharp:IceRpc.Slice.ISliceFeature#IceRpc_Slice_ISliceFeature_ProxyFactory
 [relative-service-address]: /icerpc/invocation/service-address#relative-service-address
 [service-address]: /icerpc/invocation/service-address
-[slice-feature]: csharp:IceRpc.Slice.ISliceFeature
+
+[proxy-factory]: csharp:IceRpc.Slice.ISliceFeature#IceRpc_Slice_ISliceFeature_ProxyFactory
+[ServiceAddress]: csharp:IceRpc.ServiceAddress
+[SliceEncodeOptions]: csharp:IceRpc.Slice.SliceEncodeOptions
+[ISliceFeature]: csharp:IceRpc.Slice.ISliceFeature

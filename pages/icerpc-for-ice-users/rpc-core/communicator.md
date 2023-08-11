@@ -19,8 +19,8 @@ IceRPC has no equivalent for Ice configuration properties, and does not rely on 
 format. In C#, IceRPC follows the [Options Pattern][options-pattern], which allows you to set configuration
 programmatically or in a JSON file.
 
-The bulk of `Communicator`'s client-side functionality corresponds to an IceRPC
-[invocation pipeline][invocation-pipeline] that flows into a [ConnectionCache][connection-cache].
+The bulk of `Communicator`'s client-side functionality corresponds to an IceRPC [invocation
+pipeline][invocation-pipeline] that flows into a [ConnectionCache].
 
 A `Communicator`-like invocation pipeline would include the following interceptors:
 
@@ -32,8 +32,8 @@ A `Communicator`-like invocation pipeline would include the following intercepto
 - the Retry interceptor (for automatic invocation retries)
 
 When you create a client application with IceRPC, you should create an invocation pipeline with the interceptors you
-need—don't include all built-in interceptors "just in case". You should also check if a
-[ClientConnection][client-connection] is more appropriate than a `ConnectionCache` for your application.
+need—don't include all built-in interceptors "just in case". You should also check if a [ClientConnection] is more
+appropriate than a `ConnectionCache` for your application.
 
 #### Example
 
@@ -72,7 +72,9 @@ await connection.ShutdownAsync();
 
 {% /side-by-side %}
 
-[client-connection]: csharp:IceRpc.ClientConnection
-[connection-cache]: csharp:IceRpc.ConnectionCache
 [invocation-pipeline]: /icerpc/invocation/invocation-pipeline
+
 [options-pattern]: https://learn.microsoft.com/en-us/dotnet/core/extensions/options
+
+[ClientConnection]: csharp:IceRpc.ClientConnection
+[ConnectionCache]: csharp:IceRpc.ConnectionCache

@@ -16,7 +16,7 @@ IceRPC for C# does not provide any special support for invocations within a DI s
 
 ## Building an invocation pipeline with Microsoft's DI container
 
-You can call [AddIceRpcInvoker][add-icerpc-invoker] to add a new invoker (invocation pipeline) singleton to your DI
+You can call [AddIceRpcInvoker] to add a new invoker (invocation pipeline) singleton to your DI
 container.
 
 For example:
@@ -40,10 +40,10 @@ You must specify a final invoker with the `Into` method. With this example, the 
 ## Installing an interceptor in an IInvokerBuilder
 
 All the interceptors bundled with IceRPC can be used with or without DI, and use [features] for communications within an
-invocation. For instance, the retry interceptor communicates with a connection cache using an
-[IServerAddressFeature][server-address-feature] to coordinate retries over replicated servers.
+invocation. For instance, the retry interceptor communicates with a connection cache using an [IServerAddressFeature] to
+coordinate retries over replicated servers.
 
-These interceptors can be installed into a [Pipeline][pipeline] or an [IInvokerBuilder][invoker-builder].
+These interceptors can be installed into a [Pipeline] or an [IInvokerBuilder].
 
 For example:
 
@@ -64,8 +64,8 @@ services
 ```
 
 Here, `UseLogger` is an extension method provided by the `IceRpc.Logger` assembly. This extension method works with any
-DI container that implements [IServiceProvider][service-provider], such as Microsoft's DI container and
-[Simple Injector][simple-injector]'s container.
+DI container that implements [IServiceProvider], such as Microsoft's DI container and [Simple
+Injector][simple-injector]'s container.
 
 The implementation of the `UseLogger` method simply retrieves a logger instance from the DI container and then create
 a new interceptor with this instance:
@@ -86,10 +86,11 @@ Calling the DI container at runtime is typically discouraged—it's the service 
 see the `UseLogger` extension method as infrastructure code exempt from this rule.
 {% /callout %}
 
-[add-icerpc-invoker]: csharp:IceRpc.Extensions.DependencyInjection.InvokerServiceCollectionExtensions#IceRpc_Extensions_DependencyInjection_InvokerServiceCollectionExtensions_AddIceRpcInvoker_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_IceRpc_Extensions_DependencyInjection_IInvokerBuilder__
 [features]: ../invocation/outgoing-request#request-features
-[invoker-builder]: csharp:IceRpc.Extensions.DependencyInjection.IInvokerBuilder
-[pipeline]: csharp:IceRpc.Pipeline
-[server-address-feature]: csharp:IceRpc.Features.IServerAddressFeature
-[service-provider]: https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider
 [simple-injector]: https://simpleinjector.org/
+
+[AddIceRpcInvoker]: csharp:IceRpc.Extensions.DependencyInjection.InvokerServiceCollectionExtensions#IceRpc_Extensions_DependencyInjection_InvokerServiceCollectionExtensions_AddIceRpcInvoker_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_IceRpc_Extensions_DependencyInjection_IInvokerBuilder__
+[IInvokerBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IInvokerBuilder
+[Pipeline]: csharp:IceRpc.Pipeline
+[IServerAddressFeature]: csharp:IceRpc.Features.IServerAddressFeature
+[IServiceProvider]: https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider
