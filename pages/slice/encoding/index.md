@@ -55,7 +55,7 @@ of the Slice encoding but belongs instead to the integration with a particular R
 
 This chapter describes both the Slice encoding and the encoding provided by the IceRPC + Slice integration.
 
-[Slice2-compatible]: ../language-guide/compilation-mode#using-slice1-and-slice2-together
+[Slice2-compatible]: /slice/language-guide/compilation-mode#using-slice1-and-slice2-together
 [proxy-types]: language-guide/proxy-types
 
 [little-endian-or-big-endian]: https://en.wikipedia.org/wiki/Endianness

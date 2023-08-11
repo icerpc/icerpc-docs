@@ -102,21 +102,20 @@ fields).
 
 Each non-tagged field is encoded as follows:
 
-- if the field has a non-optional type, encode the field value as usual.
+- if the field has a non-optional type, the field value is encoded as usual.
 - otherwise:
-  - if the field value is set, set the corresponding bit in the bit sequence and encode the field value as usual.
-  - otherwise, make sure the corresponding bit in the bit sequence is unset and don't encode anything else for this
-    field.
+  - if the field value is set, the corresponding bit in the bit sequence is set and the field value is encoded as usual.
+  - otherwise, the corresponding bit in the bit sequence is unset and nothing else is encoded for this field.
 
 The tagged fields of a struct are encoded in tag order (not in definition order); the field with the lowest tag number
 is encoded first. For each tagged field:
 
-- if the field value is not set, don't encode anything
-- otherwise encode this field as `[number][size][value]` where number is the tag number encoded as a varint32, value is
-  the encoded field value and size is a `varuint62` with the number of bytes in value.
+- if the field value is not set, nothing is encoded
+- otherwise, this field is encoded as `[number][size][value]` where number is the tag number encoded as a varint32,
+value is the encoded field value and size is a `varuint62` with the number of bytes in value.
 
-Finally, we mark the end of the tagged fields (and the end of the struct) with the "tag end marker", -1 encoded as a
-`varint32`.
+Finally, the "tag end marker" is encoded to mark the end of the tagged fields (and the end of the struct). This tag end
+marker is -1 encoded as a `varint32`.
 
 ### Compact struct
 

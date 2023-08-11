@@ -99,7 +99,7 @@ export const AppLink = ({
     >
       <span className="inline-flex items-center">
         <span className={clsx(isApiLink(originalHref) && apiClasses)}>
-          {children}
+          {isApiLink(originalHref) && (<code>{children}</code>) || children}
         </span>
         {!isApiLink(originalHref) && isExternalLink(originalHref) && (
           <ArrowUpRightIcon
