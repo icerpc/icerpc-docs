@@ -31,12 +31,12 @@ Tagged parameters are mapped to tagged fields in the virtual struct.
 
 The stream argument, if present, is encoded immediately after after the segment holding the non-stream arguments.
 
-If the stream parameter type is fixed-size as far the Slice encoding is concerned (e.g., an `int32`), the stream is
-encoded as successive elements without any demarcation.
+If the stream parameter type has a fixed size as far as the Slice encoding is concerned (e.g., an `int32`), the stream
+is encoded as successive elements without any demarcation.
 
-If the stream parameter type is variable-size (e.g., a `string`), the stream is encoded as a series of segments, where
-each segment holds a whole number of encoded elements—at least 1 element per segment. The segment's size corresponds to
-the number of bytes in the segment, not the number of streamed elements encoded in this segment.
+Otherwise, the stream is encoded as a series of segments, where each segment holds a whole number of encoded elements—at
+least 1 element per segment. The segment's size corresponds to the number of bytes in the segment, not the number of
+streamed elements encoded in this segment.
 
 If the stream parameter type is an optional type (for example, an `int32?`), the stream parameter is encoded like a
 stream of:
@@ -48,7 +48,9 @@ compact struct Element { value: T? }
 where `T?` represents the stream parameter type.
 
 ### Empty optimization
-As an optimization, when an operation has no argument at all, its empty argument list can be encoded as nothing at all.
+
+When an operation has no argument at all, its empty argument list can be encoded as a segment holding an empty struct
+(as per the rules described above) or as nothing at all.
 {% /slice2 %}
 
 ## Payload and payload continuation {% icerpcSlice=true %}
