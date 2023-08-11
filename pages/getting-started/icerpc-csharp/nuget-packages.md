@@ -2,38 +2,38 @@
 title: NuGet packages
 ---
 
-| Name                                                                            | Description                                           |
-|---------------------------------------------------------------------------------|-------------------------------------------------------|
-| [IceRpc][icerpc]                                                                | IceRPC for C# base package                            |
-| [IceRpc.Compressor][icerpc-compressor]                                          | Compressor interceptor and middleware for IceRPC      |
-| [IceRpc.Deadline][icerpc-deadline]                                              | Deadline interceptor and middleware for IceRPC        |
-| [IceRpc.Extensions.DependencyInjection][icerpc-extensions-dependency-injection] | Dependency injection extensions for IceRPC            |
-| [IceRpc.Locator][icerpc-locator]                                                | Locator interceptor for IceRPC                        |
-| [IceRpc.Logger][icerpc-logger]                                                  | Logger interceptor and middleware for IceRPC          |
-| [IceRpc.Metrics][icerpc-metrics]                                                | Metrics interceptor and middleware for IceRPC         |
-| [IceRpc.RequestContext][icerpc-request-context]                                 | Request context interceptor and middleware for IceRPC |
-| [IceRpc.Retry][icerpc-retry]                                                    | Retry interceptor for IceRPC                          |
-| [IceRpc.Slice][icerpc-slice]                                                    | The IceRPC + Slice integration library                |
-| [IceRpc.Slice.Tools][icerpc-slice-tools]                                        | Compile Slice files into C# in MSBuild projects       |
-| [IceRpc.Telemetry][icerpc-telemetry]                                            | Telemetry interceptor and middleware for IceRPC       |
-| [IceRpc.Templates][icerpc-templates]                                            | Project templates for IceRPC                          |
-| [IceRpc.Transports.Coloc][icerpc-transports-coloc]                              | Coloc transport for IceRPC                            |
-| [IceRpc.Transports.Quic][icerpc-transports-quic]                                | QUIC transport for IceRPC                             |
-| [ZeroC.Slice][zeroc-slice]                                                      | The Slice serialization library                       |
+| Name                                    | Description                                           |
+|-----------------------------------------|-------------------------------------------------------|
+| [IceRpc]                                | IceRPC for C# base package                            |
+| [IceRpc.Compressor]                     | Compressor interceptor and middleware for IceRPC      |
+| [IceRpc.Deadline]                       | Deadline interceptor and middleware for IceRPC        |
+| [IceRpc.Extensions.DependencyInjection] | Dependency injection extensions for IceRPC            |
+| [IceRpc.Locator]                        | Locator interceptor for IceRPC                        |
+| [IceRpc.Logger]                         | Logger interceptor and middleware for IceRPC          |
+| [IceRpc.Metrics]                        | Metrics interceptor and middleware for IceRPC         |
+| [IceRpc.RequestContext]                 | Request context interceptor and middleware for IceRPC |
+| [IceRpc.Retry]                          | Retry interceptor for IceRPC                          |
+| [IceRpc.Slice]                          | The IceRPC + Slice integration library                |
+| [IceRpc.Slice.Tools]                    | Compile Slice files into C# in MSBuild projects       |
+| [IceRpc.Telemetry]                      | Telemetry interceptor and middleware for IceRPC       |
+| [IceRpc.Templates]                      | Project templates for IceRPC                          |
+| [IceRpc.Transports.Coloc]               | Coloc transport for IceRPC                            |
+| [IceRpc.Transports.Quic]                | QUIC transport for IceRPC                             |
+| [ZeroC.Slice]                           | The Slice serialization library                       |
 
-[icerpc]: https://www.nuget.org/packages/IceRpc
-[icerpc-compressor]: https://www.nuget.org/packages/IceRpc.Compressor
-[icerpc-deadline]: https://www.nuget.org/packages/IceRpc.Deadline
-[icerpc-extensions-dependency-injection]: https://www.nuget.org/packages/IceRpc.Extensions.DependencyInjection
-[icerpc-locator]: https://www.nuget.org/packages/IceRpc.Locator
-[icerpc-logger]: https://www.nuget.org/packages/IceRpc.Logger
-[icerpc-metrics]: https://www.nuget.org/packages/IceRpc.Metrics
-[icerpc-request-context]: https://www.nuget.org/packages/IceRpc.RequestContext
-[icerpc-retry]: https://www.nuget.org/packages/IceRpc.Retry
-[icerpc-slice]: https://www.nuget.org/packages/IceRpc.Slice
-[icerpc-slice-tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
-[icerpc-telemetry]: https://www.nuget.org/packages/IceRpc.Telemetry
-[icerpc-templates]: https://www.nuget.org/packages/IceRpc.Templates
-[icerpc-transports-coloc]: https://www.nuget.org/packages/IceRpc.Transports.Coloc
-[icerpc-transports-quic]: https://www.nuget.org/packages/IceRpc.Transports.Quic
-[zeroc-slice]: https://www.nuget.org/packages/ZeroC.Slice
+[IceRpc]: https://www.nuget.org/packages/IceRpc
+[IceRpc.Compressor]: https://www.nuget.org/packages/IceRpc.Compressor
+[IceRpc.Deadline]: https://www.nuget.org/packages/IceRpc.Deadline
+[IceRpc.Extensions.DependencyInjection]: https://www.nuget.org/packages/IceRpc.Extensions.DependencyInjection
+[IceRpc.Locator]: https://www.nuget.org/packages/IceRpc.Locator
+[IceRpc.Logger]: https://www.nuget.org/packages/IceRpc.Logger
+[IceRpc.Metrics]: https://www.nuget.org/packages/IceRpc.Metrics
+[IceRpc.RequestContext]: https://www.nuget.org/packages/IceRpc.RequestContext
+[IceRpc.Retry]: https://www.nuget.org/packages/IceRpc.Retry
+[IceRpc.Slice]: https://www.nuget.org/packages/IceRpc.Slice
+[IceRpc.SliceTools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
+[IceRpc.Telemetry]: https://www.nuget.org/packages/IceRpc.Telemetry
+[IceRpc.Templates]: https://www.nuget.org/packages/IceRpc.Templates
+[IceRpc.Transports.Coloc]: https://www.nuget.org/packages/IceRpc.Transports.Coloc
+[IceRpc.Transports.Quic]: https://www.nuget.org/packages/IceRpc.Transports.Quic
+[ZeroC.Slice]: https://www.nuget.org/packages/ZeroC.Slice

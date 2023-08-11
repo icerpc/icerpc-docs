@@ -54,8 +54,8 @@ unchecked enum TransportCode {
 }
 ```
 
-The `adapterId` field corresponds to the value of the `adapter-id` parameter. This value can be empty. See
-[Proxy](../../icerpc-for-ice-users/rpc-core/proxy) for additional details.
+The `adapterId` field corresponds to the value of the `adapter-id` parameter. This value can be empty. See [Proxy] for
+additional details.
 
 The format of the encapsulation payload in a `ServerAddressData` depends on its transport code.
 
@@ -82,12 +82,16 @@ compact struct TcpServerAddressBody {
 }
 ```
 
-See [Endpoint](../../icerpc-for-ice-users/rpc-core/endpoint) for additional information.
+See [Endpoint] for additional information.
 
 If a server address in an ice service address does not specify a transport name, IceRPC uses transport code `Tcp` to
 encode this server address.
 {% /slice1 %}
 
 {% slice2 %}
-A service address is encoded as a URI [string](../primitive-types#String).
+A service address is encoded as a URI [string].
 {% /slice2 %}
+
+[Endpoint]: ../../icerpc-for-ice-users/rpc-core/endpoint
+[Proxy]: ../../icerpc-for-ice-users/rpc-core/proxy
+[string]: ../primitive-types#String

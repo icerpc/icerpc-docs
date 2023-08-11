@@ -58,7 +58,7 @@ preserve the sliced-off slices unlike a base class constructed after slicing.
 ## C# mapping {% icerpcSlice=true %}
 
 A Slice exception maps to a public C# class with the same name. If the exception doesn't derive from another exception,
-the mapped class derives from [`SliceException`][slice-exception], the base class for all C# Slice exceptions.
+the mapped class derives from [SliceException], the base class for all C# Slice exceptions.
 
 For example:
 
@@ -147,7 +147,7 @@ When the generated code decodes an exception from a payload, it sets the excepti
 
 This way, when the implementation of an operation makes an invocation and this invocation throws an exception, by
 default, this exception is not re-sent as-is but gets converted into a response with status code
-[InternalError][internal-error]. If you don't want this conversion, you need to catch the exception and set
+[InternalError]. If you don't want this conversion, you need to catch the exception and set
 `ConvertToInternalError` to `false`:
 
 ```csharp
@@ -165,8 +165,9 @@ catch (DispatchException exception)
 
 [convert-to-internal-error]: csharp:IceRpc.Slice.DispatchException#IceRpc_DispatchException_ConvertToInternalError
 [exception-specification]: operation#exception-specification
-[slice-exception]: csharp:ZeroC.Slice.SliceException
 [sliced-format]: class-types#slicing
-[internal-error]: csharp:IceRpc.StatusCode#IceRpc_StatusCode_InternalError
+
+[SliceException]: csharp:ZeroC.Slice.SliceException
+[InternalError]: csharp:IceRpc.StatusCode#IceRpc_StatusCode_InternalError
 
 {% /slice1 %}

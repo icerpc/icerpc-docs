@@ -20,7 +20,7 @@ implemented by several assemblies:
 interceptor/middleware assemblies provide extension methods for `IDispatcherBuilder` and `IInvokerBuilder`. These
 extension methods are DI container agnostic.
 - [IceRpc.Extensions.DependencyInjection.dll] provides support code for Microsoft's DI container. This includes various
-extension methods for [IServiceCollection], such as `AddIceRpcServer` and `AddIceRpcClientConnection`, and
+extension methods for [IServiceCollection], such as [AddIceRpcServer] and [AddIceRpcClientConnection], and
 implementations for `IDispatcherBuilder` and `IInvokerBuilder`.
 
 ```mermaid
@@ -42,6 +42,8 @@ flowchart BT
 
 [microsoft-di-container]: https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection
 
+[AddIceRpcServer]: csharp:IceRpc.Extensions.DependencyInjection.ServerServiceCollectionExtensions
+[AddIceRpcClientConnection]: csharp:IceRpc.Extensions.DependencyInjection.ClientConnectionServiceCollectionExtensions
 [IceRpc.Extensions.DependencyInjection]: csharp:IceRpc.Extensions.DependencyInjection
 [IServiceCollection]: https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
 [IDispatcherBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder

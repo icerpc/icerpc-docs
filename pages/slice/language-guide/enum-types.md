@@ -217,7 +217,7 @@ unchecked enums.
 ### cs::attribute attribute
 
 The `cs::attribute` [attribute](attributes) adds the specified C# attribute to the mapped C# enum. You typically use it
-to add the [FlagsAttribute][flags-attribute] to the mapped C# enum. For example:
+to add the [FlagsAttribute] to the mapped C# enum. For example:
 
 {% slice1 %}
 {% side-by-side alignment="top" %}
@@ -276,5 +276,6 @@ public enum MultiHue : byte
 You can also apply `cs::attribute` to an enumerator to get the specified C# attribute on the mapped C# enumerator.
 
 [fixed-size]: primitive-types#fixed-size-integral-types
-[flags-attribute]: https://learn.microsoft.com/en-us/dotnet/api/system.flagsattribute
 [variable-size]: primitive-types#variable-size-integral-types
+
+[FlagsAttribute]: https://learn.microsoft.com/en-us/dotnet/api/system.flagsattribute

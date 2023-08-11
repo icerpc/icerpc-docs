@@ -5,8 +5,8 @@ description: Learn how an operation's return value is encoded with Slice.
 
 ## Status code {% icerpcSlice=true %}
 
-The [status code](/icerpc/invocation/incoming-response#status-code) of a response determines the contents of the
-response payload. When the status code is `Ok`, the payload contains the encoded return value.
+The [status code][status-code] of a response determines the contents of the response payload. When the status code is
+`Ok`, the payload contains the encoded return value.
 
 {% slice1 %}
 When the status code is `ApplicationError`, the payload contains the Slice exception thrown by the of the operation.
@@ -35,7 +35,7 @@ Unlike the encoding of tagged fields in classes, the encoding of tagged elements
 {% /slice1 %}
 
 {% slice2 %}
-The payload of an `Ok` outgoing response carries the return value of the operation encoded as a [segment][segment].
+The payload of an `Ok` outgoing response carries the return value of the operation encoded as a [segment].
 The body of this segment corresponds to a virtual [struct](constructed-types#struct) with a field for each non-stream
 return parameter, in the same order.
 
@@ -87,4 +87,5 @@ As an optimization, when an operation has no return value, a "void" return value
 an empty payload continuation.
 {% /slice2 %}
 
+[status-code]: /icerpc/invocation/incoming-response#status-code
 [segment]: encoding-only-constructs#segment

@@ -62,8 +62,8 @@ your own types with a few building blocks:
  - [struct]
  - [enum]
  - [custom]
- - [Sequence][sequence]
- - [Dictionary][dictionary]
+ - [Sequence]
+ - [Dictionary]
 
 Last but not least, Slice's [tagged] fields and parameters allow you to update your structs and operations over
 time without breaking on-the-wire compatibility.
@@ -100,10 +100,10 @@ custom Duration
 
 [attributes]: /slice2/language-guide/attributes
 [custom]: /slice2/language-guide/custom-types
-[dictionary]: /slice2/language-guide/dictionary-types
+[Dictionary]: /slice2/language-guide/dictionary-types
 [enum]: /slice2/language-guide/enum-types
 [primitive]: /slice2/language-guide/primitive-types
-[sequence]: /slice2/language-guide/sequence-types
+[Sequence]: /slice2/language-guide/sequence-types
 [slice]: /slice2
 [struct]: /slice2/language-guide/struct-types
 [tagged]: /slice2/language-guide/fields#tagged-fields

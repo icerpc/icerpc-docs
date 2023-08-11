@@ -158,10 +158,9 @@ This file contains a few lines of code that `Programs.cs` uses to wait for Ctrl+
 
 The project file is straightforward. It contains references to 4 separate IceRpc NuGet packages:
 
-- [IceRpc.Slice][icerpc-slice] - the IceRPC + Slice integration package
-- [IceRpc.Slice.Tools][icerpc-slice-tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
-- [IceRpc.Deadline][deadline] and [IceRpc.Logger][logger] - the packages with the two middleware we
-  installed in the dispatch pipeline
+- [IceRpc.Slice] - the IceRPC + Slice integration package
+- [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
+- [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two middleware we installed in the dispatch pipeline
 
 ## Step 3: Create the client
 
@@ -233,9 +232,9 @@ Pipeline pipeline = new Pipeline()
     .Into(connection);
 ```
 
-When we send a request, the request goes through the Logger interceptor and the Deadline interceptor before being sent
-over the connection. The Deadline interceptor we install here ensures the request times out after 10 seconds without a
-response.
+When we send a request, the request goes through the [Logger] interceptor and the [Deadline] interceptor before being
+sent over the connection. The `Deadline` interceptor we install here ensures the request times out after 10 seconds
+without a response.
 
 {% callout %}
 The Deadline interceptor communicates with the Deadline middleware via a request field sent alongside each request;
@@ -277,10 +276,9 @@ that triggers the connection establishment.
 
 The project file is identical to the server's project file, with references to 4 separate IceRpc NuGet packages:
 
-- [IceRpc.Slice][icerpc-slice] - the IceRPC + Slice integration package
-- [IceRpc.Slice.Tools][icerpc-slice-tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
-- [IceRpc.Deadline][deadline] and [IceRpc.Logger][logger] - the packages with the two interceptors we
-  installed in our invocation pipeline
+- [IceRpc.Slice] - the IceRPC + Slice integration package
+- [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
+- [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two interceptors we installed in our invocation pipeline
 
 ## Step 4: Run the application
 
@@ -329,14 +327,17 @@ dbug: IceRpc.Server[12]
       Listener 'icerpc://[::0]?transport=tcp' has stopped accepting connections
 ```
 
-[deadline]: https://www.nuget.org/packages/IceRpc.Deadline
 [dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
-[icerpc-package]: https://www.nuget.org/packages/IceRpc
-[icerpc-slice]: https://www.nuget.org/packages/IceRpc.Slice
-[icerpc-slice-tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
-[Logger]: https://www.nuget.org/packages/IceRpc.Logger
+[service-address]: /icerpc/invocation/service-address
+[Slice]: /slice
+
+[IceRpc.Slice]: https://www.nuget.org/packages/IceRpc.Slice
+[IceRpc.Slice.Tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
+[IceRpc.Deadline]: https://www.nuget.org/packages/IceRpc.Deadline
+[IceRpc.Logger]: https://www.nuget.org/packages/IceRpc.Logger
+
+[Deadline]: csharp:IceRpc.Deadline
+[Logger]: csharp:IceRpc.Logger
 [Router]: csharp:IceRpc.Router
 [Server]: csharp:IceRpc.Server
-[service-address]: /icerpc/invocation/service-address
 [NotFound]: csharp:IceRpc.StatusCode#NotFound
-[Slice]: /slice

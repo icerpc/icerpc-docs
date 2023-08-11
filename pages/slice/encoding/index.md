@@ -36,17 +36,14 @@ file:
 All types defined in a Slice1 file can be encoded with the Slice1 encoding, and all types defined in a Slice2 file can
 be encoded with the Slice2 encoding.
 
-Furthermore, a [Slice2-compatible][slice2-compatible] type defined in a Slice1 file can be encoded with the Slice2
-encoding.
+Furthermore, a [Slice2-compatible] type defined in a Slice1 file can be encoded with the Slice2 encoding.
 
 ## Byte ordering
 
 When encoding integers and floating point numbers into multiple bytes, we have to select a byte ordering:
-[little-endian or big-endian](https://en.wikipedia.org/wiki/Endianness).
+[little-endian or big-endian][little-endian-or-big-endian].
 
 Slice always uses little-endian: it's the simplest and most efficient choice since all modern CPUs are little-endian.
-
-[slice2-compatible]: ../language-guide/compilation-mode#using-slice1-and-slice2-together
 
 ## IceRPC + Slice integration
 
@@ -58,4 +55,7 @@ of the Slice encoding but belongs instead to the integration with a particular R
 
 This chapter describes both the Slice encoding and the encoding provided by the IceRPC + Slice integration.
 
+[Slice2-compatible]: ../language-guide/compilation-mode#using-slice1-and-slice2-together
 [proxy-types]: language-guide/proxy-types
+
+[little-endian-or-big-endian]: https://en.wikipedia.org/wiki/Endianness
