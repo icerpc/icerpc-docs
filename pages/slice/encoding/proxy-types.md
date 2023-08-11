@@ -75,11 +75,11 @@ compact struct TcpServerAddressBody {
 }
 ```
 
-See [Endpoint](../../icerpc-for-ice-users/rpc-core/endpoint) for additional information.
+See [Endpoint] for additional information.
 {% /slice1 %}
 
 {% slice2 %}
-A proxy is encoded as a URI [string](../primitive-types#String). This URI can be absolute or relative.
+A proxy is encoded as a URI [string]. This URI can be absolute or relative.
 {% /slice2 %}
 
 ## IceRPC service address {% icerpcSlice=true %}
@@ -88,3 +88,5 @@ The IceRPC + Slice integration encodes a proxy by encoding its [service address]
 is not encoded.
 
 [service address]: /icerpc/invocation/service-address
+[Endpoint]: ../../icerpc-for-ice-users/rpc-core/endpoint
+[string]: ../primitive-types#String

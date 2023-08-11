@@ -6,12 +6,12 @@ description: Learn about duplex transports and how IceRPC uses them.
 A duplex transport is an abstraction that provides duplex communications between a client and server. TCP is the primary
 duplex transport provided by IceRPC.
 
-The duplex transport abstraction allows writing custom duplex transports. For example, the [RFCOMM][rfcomm] transport
+The duplex transport abstraction allows writing custom duplex transports. For example, the [RFCOMM] transport
 could be supported by implementing this abstraction. Such custom transports need to conform to a number of requirements
 which are documented on this page.
 
 IceRPC uses duplex transports for the implementation of the [ice protocol][ice-protocol] and the implementation of the
-[Slic transport][slic-transport].
+[Slic] transport.
 
 ## The duplex transport requirements
 
@@ -34,33 +34,34 @@ example, the TCP duplex transport can create secure or non-secure connections.
 If the application provides TLS configuration, the transport must create secure connections. If it doesn't support TLS,
 it must fail.
 
-See also [Security with TLS](../connection/security-with-tls) for additional information.
+See also [Security with TLS][security-with-tls] for additional information.
 
 ## The C# duplex transport abstraction
 
 The C# duplex transport abstraction is composed of a number of interfaces that a custom transport needs to implement:
-- [IDuplexClientTransport][duplex-client-transport]: a factory to create outgoing connections
-- [IDuplexServerTransport][duplex-server-transport]: a factory to create listeners
-- [IListener<IDuplexConnection>][duplex-listener]: a factory to listen for and create incoming connections
-- [IDuplexConnection][duplex-connection]: a connection to allow a client and server to communicate
+- [IDuplexClientTransport]: a factory to create outgoing connections
+- [IDuplexServerTransport]: a factory to create listeners
+- [IListener<IDuplexConnection>]: a factory to listen for and create incoming connections
+- [IDuplexConnection]: a connection to allow a client and server to communicate
 
 The API documentation of these interfaces specifies the contract a custom transport needs to comply with.
 
 To use a custom transport, the application needs to provide an instance of `IDuplexServerTransport` or
-`IDuplexClientTransport` to the [Server][server], [ConnectionCache][connection-cache] or
-[ClientConnection][client-connection] constructors.
+`IDuplexClientTransport` to the [Server], [ConnectionCache] or [ClientConnection] constructors.
 
-[rfcomm]: https://en.wikipedia.org/wiki/List_of_Bluetooth_protocols#Radio_frequency_communication_(RFCOMM)
+[security-with-tls]: connection/security-with-tls
+[Slic]: slic-transport
+
+[RFCOMM]: https://en.wikipedia.org/wiki/List_of_Bluetooth_protocols#Radio_frequency_communication_(RFCOMM)
 [connection-oriented]: https://en.wikipedia.org/wiki/Connection-oriented_communication
 [full-duplex]: https://en.wikipedia.org/wiki/Duplex_(telecommunications)#Full_duplex
 [flow-control]: https://en.wikipedia.org/wiki/Flow_control_(data)
-[ice-protocol]: ../protocols-and-transports/ice-duplex-transports
-[slic-transport]: ../slic-transport
-[multiplexed-transport]: multiplexed-transport
-[duplex-client-transport]: csharp:IceRpc.Transports.IDuplexClientTransport
-[duplex-server-transport]: csharp:IceRpc.Transports.IDuplexServerTransport
-[duplex-listener]: csharp:IceRpc.Transports.IListener-1
-[duplex-connection]: csharp:IceRpc.Transports.IDuplexConnection
-[server]: csharp:IceRpc.Server
-[connection-cache]: csharp:IceRpc.ConnectionCache
-[client-connection]: csharp:IceRpc.ClientConnection
+[ice-protocol]: protocols-and-transports/ice-duplex-transports
+
+[IDuplexClientTransport]: csharp:IceRpc.Transports.IDuplexClientTransport
+[IDuplexServerTransport]: csharp:IceRpc.Transports.IDuplexServerTransport
+[IListener<IDuplexConnection>]: csharp:IceRpc.Transports.IListener-1
+[IDuplexConnection]: csharp:IceRpc.Transports.IDuplexConnection
+[Server]: csharp:IceRpc.Server
+[ConnectionCache]: csharp:IceRpc.ConnectionCache
+[ClientConnection]: csharp:IceRpc.ClientConnection

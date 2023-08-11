@@ -153,7 +153,7 @@ The `invoker` parameter represents your [invocation pipeline](/icerpc/invocation
 `serviceAddress` or `serviceAddressUri` parameter corresponds to the
 [address](/icerpc/invocation/service-address) of the remote service, and the `encodeOptions` parameter allows
 you to customize the Slice encoding of operation parameters. See
-[SliceEncodeOptions](csharp:IceRpc.Slice.SliceEncodeOptions) for details.
+[SliceEncodeOptions] for details.
 
 A `null` service address is equivalent to an icerpc service address with the default path of the associated Slice
 interface.
@@ -282,3 +282,5 @@ internal class MyWidget :
 {% /side-by-side %}
 
 [cs-identifier]: attributes#cs::identifier-attribute
+
+[SliceEncodeOptions]: csharp:IceRpc.Slice.SliceEncodeOptions

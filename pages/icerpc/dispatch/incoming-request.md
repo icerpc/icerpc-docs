@@ -12,12 +12,12 @@ An incoming request holds:
 
 - the path of the target service
 - the name of the operation on this service
-- request [fields](../invocation/outgoing-request#request-fields)
+- request [fields]
 - the [payload](#request-payload) of the request
 
-In C#, an incoming request also holds [features](#request-features). These features are used for local communications
-within this dispatch pipeline; they are also used for communications between dispatchers in the pipeline and your
-application code.
+An incoming request also holds [features](#request-features). These features are used for local communications within
+this dispatch pipeline; they are also used for communications between dispatchers in the pipeline and your application
+code.
 
 ## Request payload
 
@@ -26,12 +26,11 @@ IceRPC is concerned, the number of bytes in this stream is unknown.
 
 ## Request features
 
-It is common for the dispatchers in a dispatch pipeline to transmit information to each other during a dispatch. These
-dispatchers get and set request [features][csharp-feature-collection] for these communications.
+It is common for the dispatchers in a dispatch pipeline to transmit information to each other during a dispatch. In C#,
+these dispatchers get and set the request's [IFeatureCollection] for these communications.
 
 You can also use these features to communicate with your service code. For example, if you install the dispatch
-information middleware, it sets the [`IDispatchInformationFeature`][dispatch-information-feature] and you can retrieve
-this feature in your code:
+information middleware, it sets the [IDispatchInformationFeature] and you can retrieve this feature in your code:
 
 ```csharp
 // In Slice service implementation
@@ -55,5 +54,7 @@ pipeline. IceRPC provides both request fields (carried by requests) and response
 only request features: since it's all local, there is no need for response features.
 {% /callout %}
 
-[csharp-feature-collection]: csharp:IceRpc.Features.FeatureCollection
-[dispatch-information-feature]: csharp:IceRpc.Features.IDispatchInformationFeature
+[fields]: ../invocation/outgoing-request#request-fields
+
+[IFeatureCollection]: csharp:IceRpc.Features.FeatureCollection
+[IDispatchInformationFeature]: csharp:IceRpc.Features.IDispatchInformationFeature
