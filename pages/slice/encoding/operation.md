@@ -29,7 +29,7 @@ Tagged parameters are mapped to tagged fields in the virtual struct.
 
 ### Stream encoding
 
-The stream argument, if present, is encoded immediately after after the segment holding the non-stream arguments.
+The stream argument, if present, is encoded immediately after the segment holding the non-stream arguments.
 
 If the stream parameter type has a fixed size as far as the Slice encoding is concerned (e.g., an `int32`), the stream
 is encoded as successive elements without any demarcation.

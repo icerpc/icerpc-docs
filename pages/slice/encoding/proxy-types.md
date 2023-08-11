@@ -12,14 +12,15 @@ A non-null proxy is encoded as the following `ServiceAddressData` struct:
 
 ```slice {% addMode=true %}
 compact struct ServiceAddressData {
-    identity: Identity             // The service address path converted to an Ice identity (two strings).
+    identity: Identity             // The identity of the target service.
     facet: Sequence<string>        // The fragment encoded as an empty sequence or a 1-element sequence.
-    invocationMode: InvocationMode // IceRPC always encodes Twoway and ignores this value during decoding.
-    secure: bool                   // IceRPC always encodes false and ignores this value during decoding.
+    invocationMode: InvocationMode // IceRPC + Slice always encodes Twoway and ignores this value during
+                                   // decoding.
+    secure: bool                   // IceRPC + Slice always encodes false and ignores this value during decoding.
     protocolMajor: uint8           // 1 for ice and 2 for icerpc.
     protocolMinor: uint8           // Always 0.
-    encodingMajor: uint8           // IceRPC always encodes 1 and ignores this value during decoding.
-    encodingMinor: uint8           // IceRPC always encodes 1 and ignores this value during decoding.
+    encodingMajor: uint8           // IceRPC + Slice always encodes 1 and ignores this value during decoding.
+    encodingMinor: uint8           // IceRPC + Slice always encodes 1 and ignores this value during decoding.
     serverAddressList: Sequence<ServerAddressData>
     adapterId: string              // Encoded only when serverAddressList is empty.
 }
@@ -69,7 +70,7 @@ Transport codes `Tcp` and `Ssl` share the same encapsulation payload format:
 ```slice {% addMode=true %}
 compact struct TcpServerAddressBody {
     host: string
-    port: int32      // limited in practice to uint16
+    port: int32      // the port number
     timeout: int32   // timeout parameter
     compress: bool   // z parameter
 }
@@ -84,8 +85,7 @@ A proxy is encoded as a URI [string]. This URI can be absolute or relative.
 
 ## IceRPC service address {% icerpcSlice=true %}
 
-The IceRPC + Slice integration encodes a proxy by encoding its [service address]. The name of the interface / proxy type
-is not encoded.
+The IceRPC + Slice integration encodes a proxy by encoding its [service address].
 
 [service address]: /icerpc/invocation/service-address
 [Endpoint]: ../../icerpc-for-ice-users/rpc-core/endpoint

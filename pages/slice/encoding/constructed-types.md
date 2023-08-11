@@ -29,11 +29,11 @@ There is no attribute to turn off class slice preservation during decoding: it's
 
 ### Tagged field
 
-The encoding of tagged fields ensures that when a decoder encounters a tagged field it doesn't know, it can skip this
-tagged field and keep decoding.
+The encoding of tagged fields ensures that when a decoder encounters a tagged field with a tag number it doesn't know,
+it can skip this tagged field and keep decoding.
 
-The encoding of a tagged field depends on its tag number. When the tag number is less than 30, a tagged field is encoded
-as:
+The encoding of a tagged field with a set (non-null) value depends on its tag number. When the tag number is less than
+30, a tagged field is encoded as:
 
 - a byte, with the tag type in the lowest 3 bits of this byte, and the tag number in the remaining 5 bits
 - the tagged value
@@ -101,7 +101,7 @@ The encoding is the same for checked and unchecked enums.
 ## Exception
 
 An exception is encoded like a [class](#class) with the same fields. Slice always encodes exceptions in sliced format;
-it can decode exceptions in any format.
+for interoperability with Ice, it can decode exceptions in any format.
 
 Exception slices are not preserved during decoding: if Slice encounters a slice it doesn't know while decoding an
 exception in sliced format, this slice is dropped.
@@ -117,7 +117,7 @@ The name of the struct and the name of the struct's fields are not encoded at al
 does not break the "on-the-wire" contract.
 {% /callout %}
 
-_Example: simple compact struct_
+#### Example: simple compact struct
 
 ```slice {% addMode=true %}
 compact struct Point { x: int32, y: int32 }
@@ -173,7 +173,7 @@ The name of the struct and the name of the struct's fields are not encoded at al
 does not break the "on-the-wire" contract.
 {% /callout %}
 
-_Example: simple compact struct_
+#### Example: simple compact struct
 
 ```slice
 compact struct Point { x: int32, y: int32 }
@@ -186,7 +186,7 @@ A point x = 5, y = 32 is encoded as follows:
 0x20 0x00 0x00 0x00: y's value (32 on 4 bytes in little-endian order)
 ```
 
-_Example: compact struct with a bit sequence_
+#### Example: compact struct with a bit sequence
 
 ```slice
 compact struct Contact {
@@ -205,7 +205,7 @@ The contact id = 5, name = not set, age = 42 is encoded as:
 0x2A:                age (42 encoded on a single byte)
 ```
 
-_Example: simple struct_
+#### Example: simple struct
 
 ```slice
 struct Point { x: int32, y: int32 }
@@ -219,7 +219,7 @@ A (non-compact) point x = 5, y = 32 is encoded as follows:
 0xFC:                tag end marker (-1 varint32, encoded on 1 byte)
 ```
 
-_Example: empty struct_
+#### Example: empty struct
 
 ```slice
 struct Empty {}
@@ -231,7 +231,7 @@ An instance of Empty is encoded as:
 0xFC: tag end marker
 ```
 
-_Example: struct with tagged fields_
+#### Example: struct with tagged fields
 
 ```slice
 struct Contact {
