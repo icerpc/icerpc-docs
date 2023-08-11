@@ -24,7 +24,7 @@ other encoded type, the decoding fails—or if by happenstance it succeeds, the 
 
 ## Slice encoding versions
 
-There are currently two versions of the Slice encoding: Slice1 and Slice2. The compilation mode of a Slice file
+There are currently two versions of the Slice encoding: Slice1 and Slice2. The [compilation mode] of a Slice file
 determines the Slice encoding version to use when encoding the arguments and return values of operations defined in that
 file:
 
@@ -41,9 +41,9 @@ encoding.
 
 ## Byte ordering
 
-When encoding integers and floating point numbers into multiple bytes, we have to select a byte ordering:
-[little-endian or big-endian](https://en.wikipedia.org/wiki/Endianness).
+Slice is [little-endian]: when encoding integers and floating point numbers into multiple bytes, the first byte encoded
+into the byte stream holds the least significant portion of the value.
 
-Slice always uses little-endian: it's the simplest and most efficient choice since all modern CPUs are little-endian.
-
+[compilation mode]: /slice/language-guide/compilation-mode
+[little-endian]: https://en.wikipedia.org/wiki/Endianness
 [slice2-compatible]: /slice/language-guide/compilation-mode#using-slice1-and-slice2-together

@@ -16,9 +16,9 @@ The tagged arguments are encoded in tag order (not in definition order); the arg
 encoded first. For each tagged argument:
 
 - if the argument value is not set, nothing is encoded
-- otherwise, the argument is encoded as a [tag record](encoding-only-constructs#tag-record)
+- otherwise, the argument is encoded like a [tagged field]
 
-Unlike the encoding of tagged fields in classes, the encoding of tagged arguments does not end with the tag end marker.
+Unlike the encoding of tagged fields in classes, the encoding of tagged arguments does not end with a tag end marker.
 {% /slice1 %}
 
 {% slice2 %}
@@ -68,3 +68,4 @@ arguments (encoded into a segment as described above). It fills the payload cont
 [outgoing response]: /icerpc/dispatch/outgoing-response
 [segment]: ../encoding-only-constructs#segment
 [struct]: constructed-types#struct
+[tagged field]: constructed-types#class-tagged-field
