@@ -22,7 +22,7 @@ export const Title = ({ title, description, readingTime }: Props) => {
   }, [isReady, asPath]);
 
   // Do not display title if on home page
-  if (asPath == "/") {
+  if (asPath == '/') {
     return null;
   }
 

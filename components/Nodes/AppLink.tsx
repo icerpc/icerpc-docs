@@ -171,8 +171,9 @@ const isApiLink = (href: string) => {
 const resolveApiLink = (href: string) => {
   const [language, ...rest] = href.split(':');
   const [module, method] = rest.join('.').split('#');
-  return `https://docs.testing.zeroc.com/api/${language}/api/${module}.html${method ? `#${method}` : ''
-    }`;
+  return `https://docs.testing.zeroc.com/api/${language}/api/${module}.html${
+    method ? `#${method}` : ''
+  }`;
 };
 
 /**

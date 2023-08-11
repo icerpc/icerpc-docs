@@ -40,7 +40,7 @@ export const TH = ({ align, children }: THProps) => {
       className={clsx(
         'prose-sm pl-4',
         children !== undefined &&
-        'border-b-[1.5px] border-lightBorder py-3 dark:border-darkBorder',
+          'border-b-[1.5px] border-lightBorder py-3 dark:border-darkBorder',
         textAlignment(align)
       )}
     >
