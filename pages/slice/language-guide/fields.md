@@ -104,12 +104,12 @@ The scope of a tag number is the enclosing type. For example, the following defi
 `tag(1)` in different scopes:
 
 ```slice
-exception MyException {
-    tag(1) errorCode: int32?
+struct Person {
+    tag(1) name: string
 }
 
-exception MyOtherException {
-    tag(1) message: string?
+struct Contact {
+    tag(1) name: string
 }
 ```
 
