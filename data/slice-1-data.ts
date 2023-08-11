@@ -158,12 +158,8 @@ export const slice1Data: SideBarSourceType[] = [
         path: `${SLICE1_BASE_URL}/encoding/proxy-types`
       },
       {
-        title: 'Operation arguments',
-        path: `${SLICE1_BASE_URL}/encoding/operation-arguments`
-      },
-      {
-        title: 'Operation return value or exception',
-        path: `${SLICE1_BASE_URL}/encoding/operation-return-value`
+        title: 'Operation arguments and return values',
+        path: `${SLICE1_BASE_URL}/encoding/operation`
       }
     ]
   }

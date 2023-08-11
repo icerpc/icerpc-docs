@@ -150,12 +150,8 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE2_BASE_URL}/encoding/proxy-types`
       },
       {
-        title: 'Operation arguments',
-        path: `${SLICE2_BASE_URL}/encoding/operation-arguments`
-      },
-      {
-        title: 'Operation return value',
-        path: `${SLICE2_BASE_URL}/encoding/operation-return-value`
+        title: 'Operation arguments and return values',
+        path: `${SLICE2_BASE_URL}/encoding/operation`
       }
     ]
   }

@@ -12,9 +12,9 @@ print. While you specify your RPCs in Slice, you implement the actual "business 
 your choice (C#, Rust, Python...). The Slice language is an [Interface Definition Language][idl] or IDL.
 
 - the Slice encoding\
-The Slice encoding specifies how Slice language constructs such as `string`, `int32`, `float64`, `struct` are encoded
-into streams of bytes. The Slice encoding is a simple, compact, binary serialization format. Most Slice users don't need
-to know the details of this encoding.
+The Slice encoding specifies how Slice language constructs such as `string`, `int32`, `float64`, `struct`, and operation
+arguments are encoded into streams of bytes. The Slice encoding is a simple, compact, binary serialization format. Most
+Slice users don't need to know the details of this encoding.
 
 Then, for each programming language that Slice supports (currently C#, and soon Rust, Python and more), Slice provides:
 
