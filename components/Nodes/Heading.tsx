@@ -15,6 +15,7 @@ type Props = {
   children: ReactNode;
   className?: string;
   icerpcSlice?: boolean;
+  showDividers?: boolean;
 };
 
 const CopyButton = ({ id }: { id: string }) => {
@@ -37,7 +38,8 @@ export const Heading = ({
   id = '',
   level = 1,
   children,
-  icerpcSlice
+  icerpcSlice,
+  showDividers = true
 }: Props) => {
   const Component: any = `h${level}`;
   const link = (
@@ -56,7 +58,7 @@ export const Heading = ({
 
       {icerpcSlice && <IcerpcSlice />}
       <CopyButton id={id} />
-      {level >= 1 && level <= 3 && <Divider margin="my-4" />}
+      {level >= 1 && level <= 3 && showDividers && <Divider margin="my-4" />}
     </Component>
   );
 

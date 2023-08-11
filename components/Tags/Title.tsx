@@ -21,6 +21,11 @@ export const Title = ({ title, description, readingTime }: Props) => {
     }
   }, [isReady, asPath]);
 
+  // Do not display title if on home page
+  if (asPath == "/") {
+    return null;
+  }
+
   return (
     <div className="not-prose mb-10">
       <div className="mb-2 flex flex-row items-center justify-between">

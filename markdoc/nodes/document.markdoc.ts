@@ -31,7 +31,8 @@ const document = {
         readingTime: readingTime(rawText, { wordsPerMinute: 149 }).text,
         mode: frontmatter.mode,
         showAside: frontmatter.showAside,
-        showReadingTime: frontmatter.showReadingTime
+        showReadingTime: frontmatter.showReadingTime,
+        showDividers: frontmatter.showDividers
       },
       children
     );

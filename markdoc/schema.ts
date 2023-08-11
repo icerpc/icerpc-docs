@@ -19,6 +19,9 @@ import { Card } from 'components/Tags/Card';
 import { SideBySide } from 'components/Tags/SideBySide';
 import { Title } from 'components/Tags/Title';
 import { IcerpcSlice } from 'components';
+import { Examples } from 'components/Tags/Examples';
+import { HomeTitle } from 'components/Tags/HomeTitle';
+import { Explore } from 'components/Tags/Explore';
 
 import * as nodes from './nodes';
 import * as tags from './tags';
@@ -41,8 +44,11 @@ export const components = {
   ConditionalTheme,
   Divider,
   Document,
+  Examples,
+  Explore,
   Grid,
   Heading,
+  HomeTitle,
   IcerpcSlice,
   LanguageSection,
   LanguageSelector,
