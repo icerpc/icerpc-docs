@@ -6,8 +6,8 @@ description: Learn how to write an interceptor and how to install an interceptor
 ## Intercepting outgoing requests
 
 An interceptor is an [invoker](invocation-pipeline#the-invoker-abstraction) that holds another invoker ("next") and
-calls `invoke` on this next invoker as part of the implementation of its own `invoke` method. This next invoker can be
- a `ClientConnection`, a `ConnectionCache`, another interceptor, or some other kind of invoker, it doesn't matter.
+calls `invoke` on this next invoker as part of the implementation of its own `invoke` method. This next invoker can be a
+ client connection, a connection cache`, another interceptor, or some other kind of invoker, it doesn't matter.
 
 An interceptor can include logic before calling `invoke` on the next invoker (before the request is sent) and after
 calling `invoke` on the next invoker (after it receives the response). An interceptor can also short-circuit the

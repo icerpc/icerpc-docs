@@ -62,5 +62,6 @@ and responses carry byte streams—if you want a typed API, use [Slice] or anoth
 
 {% /grid %}
 
-[IDL]: https://en.wikipedia.org/wiki/Interface_description_language
 [Slice]: /slice
+
+[IDL]: https://en.wikipedia.org/wiki/Interface_description_language

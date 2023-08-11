@@ -49,13 +49,15 @@ The API documentation of these interfaces specifies the contract a custom transp
 To use a custom transport, the application needs to provide an instance of `IDuplexServerTransport` or
 `IDuplexClientTransport` to the [Server], [ConnectionCache] or [ClientConnection] constructors.
 
+[security-with-tls]: connection/security-with-tls
+[Slic]: slic-transport
+
 [RFCOMM]: https://en.wikipedia.org/wiki/List_of_Bluetooth_protocols#Radio_frequency_communication_(RFCOMM)
 [connection-oriented]: https://en.wikipedia.org/wiki/Connection-oriented_communication
 [full-duplex]: https://en.wikipedia.org/wiki/Duplex_(telecommunications)#Full_duplex
 [flow-control]: https://en.wikipedia.org/wiki/Flow_control_(data)
 [ice-protocol]: protocols-and-transports/ice-duplex-transports
-[security-with-tls]: connection/security-with-tls
-[Slic]: slic-transport
+
 [IDuplexClientTransport]: csharp:IceRpc.Transports.IDuplexClientTransport
 [IDuplexServerTransport]: csharp:IceRpc.Transports.IDuplexServerTransport
 [IListener<IDuplexConnection>]: csharp:IceRpc.Transports.IListener-1

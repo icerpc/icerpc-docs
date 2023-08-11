@@ -70,8 +70,9 @@ flowchart LR
     connection -- response --> ti -- response --> i2 -- response --> i1 -- response --> app
 ```
 
-[ClientConnection]: csharp:IceRpc.ClientConnection
 [connections]: ../connection/how-to-create-a-connection
+
+[ClientConnection]: csharp:IceRpc.ClientConnection
 [ConnectionCache]: csharp:IceRpc.ConnectionCache
 [InvokeAsync]: csharp:IceRpc.IInvoker#IceRpc_IInvoker_InvokeAsync_IceRpc_OutgoingRequest_System_Threading_CancellationToken_
 [IInvoker]: csharp:IceRpc.IInvoker

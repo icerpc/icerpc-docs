@@ -52,12 +52,14 @@ To use a custom transport, the application needs to provide an instance of `IMul
 `IMultiplexedClientTransport` to the [Server], [ConnectionCache] or [ClientConnection] constructors.
 
 [Slic]: slic-transport
+[icerpc-protocol]: protocols-and-transports/icerpc-multiplexed-transports
+[security-with-tls]: connection/security-with-tls
+
 [QUIC]: https://www.rfc-editor.org/rfc/rfc9000.html
 [connection-oriented]: https://en.wikipedia.org/wiki/Connection-oriented_communication
 [full-duplex]: https://en.wikipedia.org/wiki/Duplex_(telecommunications)#Full_duplex
 [flow-control]: https://en.wikipedia.org/wiki/Flow_control_(data)
-[icerpc-protocol]: protocols-and-transports/icerpc-multiplexed-transports
-[security-with-tls]: connection/security-with-tls
+
 [IMultiplexedClientTransport]: csharp:IceRpc.Transports.IMultiplexedClientTransport
 [IMultiplexedServerTransport]: csharp:IceRpc.Transports.IMultiplexedServerTransport
 [IListener<IMultiplexedConnection>]: csharp:IceRpc.Transports.IListener-1

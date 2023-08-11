@@ -14,17 +14,17 @@ An outgoing request carries all the information an invoker needs to send a reque
 - request [fields](#request-fields)
 - the [payload](#request-payload-and-payload-continuation) of the request
 
-In C#, an outgoing request also holds [features](#request-features). These features are used for local communications
-within this pipeline; they are also used for communications between invokers in the pipeline and your application code.
+An outgoing request also holds [features](#request-features). These features are used for local communications within
+this pipeline; they are also used for communications between invokers in the pipeline and your application code.
 
 ## Request fields
 
 The request fields represent out-of-band information carried by a request "over the wire". These fields are usually read
-and written by [interceptors](interceptor) and [middleware](../dispatch/middleware) in an effort to coordinate the
-processing of the same request in the client and in the server.
+and written by [interceptors](interceptor) and [middleware] in an effort to coordinate the processing of the same
+request in the client and in the server.
 
-A field is an entry in a dictionary `RequestFieldKey` to sequence of bytes, where [RequestFieldKey][request-field-key]
-is an enumeration defined in Slice:
+A field is an entry in a dictionary `RequestFieldKey` to sequence of bytes, where [RequestFieldKey] is an enumeration
+defined in Slice:
 
 ```slice
 unchecked enum RequestFieldKey : varuint62 {
@@ -46,7 +46,7 @@ The payload of a request is a stream of bytes that represents the argument(s) of
 request, it reads and logically copies these bytes to the network connection until there is no more byte to read.
 
 On the other side, the connection reads these bytes from the network, creates an incoming request and gives this request
-to a [dispatcher](../dispatch/dispatch-pipeline#the-dispatcher-abstraction).
+to a [dispatcher].
 
 The payload of an outgoing request is actually split in two: a first part that the connection sends before awaiting the
 response, and a second part (the "continuation") that the connection sends in the background while it awaits, receives
@@ -68,7 +68,7 @@ On the other side, the dispatcher sees only a single continuous incoming request
 
 It is common for the invokers in an invocation pipeline to transmit information to each other during an invocation. For
 example, the retry interceptor needs to communicate with the connection cache to make sure the connection cache does not
-keep retrying with the same server address. These invokers get and set [request features][feature-collection] to
+keep retrying with the same server address. In C#, these invokers get and set the request's [IFeatureCollection] to
 communicate with each other.
 
 You can also use these features to communicate with the invocation pipeline. For example, you can set the feature
@@ -93,7 +93,11 @@ pipeline. IceRPC provides both request fields (carried by requests) and response
 only request features: since it's all local, there is no need for response features.
 {% /callout %}
 
-[feature-collection]: csharp:IceRpc.Features.FeatureCollection
-[request-field-key]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/RequestFieldKey.slice
+[middleware]: ../dispatch/middleware
+[dispatcher]: ../dispatch/dispatch-pipeline#the-dispatcher-abstraction
+
+[RequestFieldKey]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/RequestFieldKey.slice
 [CompressionFormat]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/CompressionFormat.slice
+
+[IFeatureCollection]: csharp:IceRpc.Features.FeatureCollection
 [ICompressFeature]: csharp:IceRpc.Features.ICompressFeature

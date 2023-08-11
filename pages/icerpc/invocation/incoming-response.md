@@ -17,8 +17,8 @@ An incoming response holds:
 
 ## Status code
 
-The status code represents the status of the [dispatch](../dispatch/dispatch-pipeline#definition) by the peer. It can be
-`Ok` or an error. [StatusCode] is an enumeration defined in Slice:
+The status code represents the status of the [dispatch] by the peer. It can be `Ok` or an error. [StatusCode] is an
+enumeration defined in Slice:
 
 ```slice
 unchecked enum StatusCode : varuint62 {
@@ -37,10 +37,10 @@ holds a Slice-encoded return value.
 ## Response fields
 
 The response fields represent out-of-band information carried by a response. These fields are usually read and written
-by [middleware](../dispatch/middleware) and [interceptors](interceptor) in an effort to coordinate the processing of the
+by [middleware] and [interceptors](interceptor) in an effort to coordinate the processing of the
 same response in the server and in the client.
 
-A field is an entry in a dictionary `ResponseFieldKey` to sequence of bytes, where [`ResponseFieldKey`] is an
+A field is an entry in a dictionary `ResponseFieldKey` to sequence of bytes, where [ResponseFieldKey] is an
 enumeration defined in Slice.
 
 ```slice
@@ -59,7 +59,11 @@ compressed with brotli"; the compressor interceptor can then decompress this (in
 The payload of an incoming response is a stream of bytes that represents the return value of an operation. As far as
 IceRPC is concerned, the number of bytes in this stream is unknown.
 
-[ResponseFieldKey]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/ResponseFieldKey.slice
+[dispatch]: ../dispatch/dispatch-pipeline#definition
+[middleware]: ../dispatch/middleware
 [Slice]: /slice
+
+[ResponseFieldKey]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/ResponseFieldKey.slice
 [StatusCode]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/StatusCode.slice
 [CompressionFormat]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/CompressionFormat.slice
+

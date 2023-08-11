@@ -86,10 +86,11 @@ Calling the DI container at runtime is typically discouraged—it's the service 
 see the `UseLogger` extension method as infrastructure code exempt from this rule.
 {% /callout %}
 
-[AddIceRpcInvoker]: csharp:IceRpc.Extensions.DependencyInjection.InvokerServiceCollectionExtensions#IceRpc_Extensions_DependencyInjection_InvokerServiceCollectionExtensions_AddIceRpcInvoker_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_IceRpc_Extensions_DependencyInjection_IInvokerBuilder__
 [features]: ../invocation/outgoing-request#request-features
+[simple-injector]: https://simpleinjector.org/
+
+[AddIceRpcInvoker]: csharp:IceRpc.Extensions.DependencyInjection.InvokerServiceCollectionExtensions#IceRpc_Extensions_DependencyInjection_InvokerServiceCollectionExtensions_AddIceRpcInvoker_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_IceRpc_Extensions_DependencyInjection_IInvokerBuilder__
 [IInvokerBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IInvokerBuilder
 [Pipeline]: csharp:IceRpc.Pipeline
 [IServerAddressFeature]: csharp:IceRpc.Features.IServerAddressFeature
 [IServiceProvider]: https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider
-[simple-injector]: https://simpleinjector.org/

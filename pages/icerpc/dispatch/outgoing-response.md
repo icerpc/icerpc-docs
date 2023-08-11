@@ -12,7 +12,7 @@ An outgoing response carries:
 
 - a [status code](../invocation/incoming-response#status-code)
 - an error message, set only when the status code is not `Ok`
-- response [fields](../invocation/incoming-response#response-fields)
+- response [fields]
 - the [payload](#response-payload) of the response
 
 ## Response payload
@@ -26,4 +26,5 @@ of an [outgoing request](../invocation/outgoing-request). This split makes the [
 convenient and efficient, but is otherwise unnecessary. An outgoing response payload is conceptually one continuous
 stream of bytes.
 
+[fields]: ../invocation/incoming-response#response-fields
 [slice-encoding]: /slice/encoding

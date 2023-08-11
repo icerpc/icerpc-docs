@@ -5,16 +5,17 @@ description: Understand how to build your dispatch pipeline with a DI container.
 
 ## Traditional dispatch pipeline
 
-A traditional dispatch pipeline is fairly static: you create a [router], add a few middleware, map or mount a small
-number of leaf dispatchers in this router and then let your server dispatch incoming requests to this router.
+A traditional dispatch pipeline is fairly static: you create a [router](../dispatch/router), add a few middleware, map
+or mount a small number of leaf dispatchers in this router and then let your server dispatch incoming requests to this
+router.
 
 The leaf dispatchers (typically Slice services) are mapped or mounted at fixed path (such as `/greeter` or
 `/admin/greeter-manager`). These dispatchers are singletons (or singleton-like) with the same lifetime as the router and
 the server.
 
-The middleware in your dispatch pipeline communicate with each others using [features][incoming-request-features]: an
-upstream middleware sets a feature that a downstream middleware can retrieve. The leaf dispatcher can also communicate
-with these middleware using the same features.
+The middleware in your dispatch pipeline communicate with each others using
+[features](../dispatch/incoming-request#request-features): an upstream middleware sets a feature that a downstream
+middleware can retrieve. The leaf dispatcher can also communicate with these middleware using the same features.
 
 This works well for many applications. However, this is not the typical model when using DI.
 
@@ -82,7 +83,7 @@ services.AddIceRpcDispatcher(
 
 Here, `UseLogger` is an extension method provided by the `IceRpc.Logger` assembly. This extension method works with any
 DI container that implements [IServiceProvider], such as Microsoft's DI container and [Simple
-Injector][simple-injector]'s container.
+Injector](https://simpleinjector.org/)'s container.
 
 The implementation of `UseLogger` simply retrieves a logger instance from the DI container and then creates a new
 middleware with this instance:
@@ -191,9 +192,6 @@ internal class Chatbot : Service, IGreeterService
 [Router]: csharp:IceRpc.Router
 [IceRpc.Extensions.DependencyInjection]: https://github.com/icerpc/icerpc-csharp/tree/main/src/IceRpc.Extensions.DependencyInjection
 [IDispatcherBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder
-[incoming-request-features]: ../dispatch/incoming-request#request-features
-[router]: ../dispatch/router
 [IServiceCollection]: https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
 [IServiceProvider]: https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider
 [IServiceProviderFeature]: csharp:IceRpc.Extensions.DependencyInjection.IServiceProviderFeature
-[simple-injector]: https://simpleinjector.org/
