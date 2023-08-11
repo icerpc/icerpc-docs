@@ -22,7 +22,7 @@ abstraction that accepts an incoming request and returns an outgoing response. I
 An important difference between Invoker and Dispatcher is you need to implement this Dispatcher abstraction to fulfill
 the requests and produce the responses. The Invoker abstraction is implemented by IceRPC's connections.
 
-In C#, this dispatcher abstraction is the [IDispatcher][dispatcher-interface] interface:
+In C#, this dispatcher abstraction is the [IDispatcher] interface:
 
 ```csharp
 namespace IceRpc;
@@ -43,7 +43,7 @@ await using var server = new Server(new Chatbot());
 
 Configuring a dispatcher for a client connection is optional since a client connection does not have to accept requests.
 
-In C#, you configure the dispatcher of a client connection with the `ConnectionOptions` class. For example:
+In C#, you configure the dispatcher of a client connection with the [ConnectionOptions] class. For example:
 
 ```csharp
 using IceRpc;
@@ -91,4 +91,5 @@ flowchart LR
 
 [connections]: ../connection/how-to-create-a-connection
 [slice-service]: /slice/language-guide/interface
-[dispatcher-interface]: csharp:IceRpc.IDispatcher
+[IDispatcher]: csharp:IceRpc.IDispatcher
+[ConnectionOptions]: csharp:IceRpc.ConnectionOptions

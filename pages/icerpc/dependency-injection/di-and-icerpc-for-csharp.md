@@ -20,7 +20,7 @@ All the DI-related APIs provided by IceRPC are in the same namespace,
 assemblies:
 - [IceRpc.dll](https://github.com/icerpc/icerpc-csharp/blob/main/src/IceRpc/README.md) provides abstractions such as
 [IDispatcherBuilder](csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder) and
-[IInvokerBuilder](csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder)
+[IInvokerBuilder](csharp:IceRpc.Extensions.DependencyInjection.IInvokerBuilder)
 - [IceRpc.Logger.dll](https://github.com/icerpc/icerpc-csharp/blob/main/src/IceRpc.Logger/README.md),
 [IceRpc.Deadline.dll](https://github.com/icerpc/icerpc-csharp/blob/main/src/IceRpc.Deadline/README.md) and other
 interceptor/middleware assemblies provide extension methods for `IDispatcherBuilder` and `IInvokerBuilder`. These

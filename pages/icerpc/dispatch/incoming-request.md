@@ -27,11 +27,10 @@ IceRPC is concerned, the number of bytes in this stream is unknown.
 ## Request features
 
 It is common for the dispatchers in a dispatch pipeline to transmit information to each other during a dispatch. These
-dispatchers get and set request [features][csharp-feature-collection] for these communications.
+dispatchers get and set request [features][feature-collection] for these communications.
 
 You can also use these features to communicate with your service code. For example, if you install the dispatch
-information middleware, it sets the [`IDispatchInformationFeature`][dispatch-information-feature] and you can retrieve
-this feature in your code:
+information middleware, it sets the [IDispatchInformationFeature] and you can retrieve this feature in your code:
 
 ```csharp
 // In Slice service implementation
@@ -55,5 +54,5 @@ pipeline. IceRPC provides both request fields (carried by requests) and response
 only request features: since it's all local, there is no need for response features.
 {% /callout %}
 
-[csharp-feature-collection]: csharp:IceRpc.Features.FeatureCollection
-[dispatch-information-feature]: csharp:IceRpc.Features.IDispatchInformationFeature
+[feature-collection]: csharp:IceRpc.Features.FeatureCollection
+[IDispatchInformationFeature]: csharp:IceRpc.Features.IDispatchInformationFeature

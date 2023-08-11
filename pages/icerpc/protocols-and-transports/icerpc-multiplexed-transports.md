@@ -20,7 +20,7 @@ framework.
 
 The [multiplexed transport][multiplexed-transport] page describes an abstraction for a modern transport that provides
 independent streams within a connection. The prototypical multiplexed transport is
-[QUIC][quic].
+[QUIC].
 
 An icerpc connection runs over a multiplexed connection created by a multiplexed transport.
 
@@ -138,7 +138,7 @@ using await var clientConnection = new ClientConnection(
 ```
 
 [application-layer]: https://en.wikipedia.org/wiki/Application_layer
-[multiplexed-transport]: ../customization/multiplexed-transport
-[duplex-transport]: ../customization/duplex-transport
-[quic]: https://www.rfc-editor.org/rfc/rfc9000.html
+[multiplexed-transport]: ../multiplexed-transport
+[duplex-transport]: ../duplex-transport
+[QUIC]: https://www.rfc-editor.org/rfc/rfc9000.html
 [head-of-line-blocking]: https://en.wikipedia.org/wiki/Head-of-line_blocking

@@ -16,7 +16,7 @@ client-side of this connection.
 With IceRPC, you always make an invocation by calling an invoker. An invoker is a simple abstraction that accepts an
 [outgoing request](outgoing-request) and returns an [incoming response](incoming-response).
 
-In C#, this abstraction is the [IInvoker][invoker-interface] interface:
+In C#, this abstraction is the [IInvoker] interface:
 
 ```csharp
 namespace IceRpc;
@@ -27,9 +27,8 @@ public interface IInvoker
 }
 ```
 
-Both [ClientConnection][client-connection] and [ConnectionCache][connection-cache] implement this interface. This
-allows you to make an invocation by creating a client connection or a connection cache and then calling
-[InvokeAsync][invoke-async] on the resulting instance:
+Both [ClientConnection] and [ConnectionCache] implement this interface. This allows you to make an invocation by
+creating a client connection or a connection cache and then calling [InvokeAsync] on the resulting instance:
 
 ```csharp
 await using var clientConnection = new ClientConnection(new Uri("icerpc://hello.zeroc.com"));
@@ -71,8 +70,8 @@ flowchart LR
     connection -- response --> ti -- response --> i2 -- response --> i1 -- response --> app
 ```
 
-[client-connection]: csharp:IceRpc.ClientConnection
+[ClientConnection]: csharp:IceRpc.ClientConnection
 [connections]: ../connection/how-to-create-a-connection
-[connection-cache]: csharp:IceRpc.ConnectionCache
-[invoke-async]: csharp:IceRpc.IInvoker#IceRpc_IInvoker_InvokeAsync_IceRpc_OutgoingRequest_System_Threading_CancellationToken_
-[invoker-interface]: csharp:IceRpc.IInvoker
+[ConnectionCache]: csharp:IceRpc.ConnectionCache
+[InvokeAsync]: csharp:IceRpc.IInvoker#IceRpc_IInvoker_InvokeAsync_IceRpc_OutgoingRequest_System_Threading_CancellationToken_
+[IInvoker]: csharp:IceRpc.IInvoker

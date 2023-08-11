@@ -5,8 +5,8 @@ description: Understand how to build your dispatch pipeline with a DI container.
 
 ## Traditional dispatch pipeline
 
-A traditional dispatch pipeline is fairly static: you create a [Router][router], add a few middleware, map or mount a
-small number of leaf dispatchers in this router and then let your server dispatch incoming requests to this router.
+A traditional dispatch pipeline is fairly static: you create a [router], add a few middleware, map or mount a small
+number of leaf dispatchers in this router and then let your server dispatch incoming requests to this router.
 
 The leaf dispatchers (typically Slice services) are mapped or mounted at fixed path (such as `/greeter` or
 `/admin/greeter-manager`). These dispatchers are singletons (or singleton-like) with the same lifetime as the router and
@@ -37,8 +37,8 @@ typically singletons managed by the DI container.
 
 ## Building a dispatch pipeline with Microsoft's DI container
 
-The [IceRpc.Extensions.DependencyInjection][di-assembly] assembly, provides a number of extension methods for
-[`IServiceCollection`][service-collection] that accept an `Action<IDispatcherBuilder>` parameter.
+The [IceRpc.Extensions.DependencyInjection] assembly, provides a number of extension methods for
+[IServiceCollection] that accept an `Action<IDispatcherBuilder>` parameter.
 
 All these methods allow you to build and configure a dispatch pipeline for Microsoft's DI container. For example:
 
@@ -54,7 +54,7 @@ services.AddIceRpcDispatcher(builder => builder.Map<IGreeterService>());
 ```
 
 The resulting dispatcher (dispatch pipeline) creates a new DI scope for each incoming request, and transmits this scope
-to downstream dispatchers using an [IServiceProviderFeature][service-provider-feature].
+to downstream dispatchers using an [IServiceProviderFeature].
 
 ## Installing a standard middleware in an IDispatcherBuilder
 
@@ -64,7 +64,7 @@ container injecting services to operate, and it implements interface `IDispatche
 All the middleware bundled with IceRPC are standard middleware: you can use them with or without DI, and they use
 features for communications within a dispatch.
 
-These middleware can be installed in a [Router][csharp-router] or an [IDispatcherBuilder][dispatcher-builder]. For
+These middleware can be installed in a [Router] or an [IDispatcherBuilder]. For
 example:
 
 ```csharp
@@ -81,8 +81,8 @@ services.AddIceRpcDispatcher(
 ```
 
 Here, `UseLogger` is an extension method provided by the `IceRpc.Logger` assembly. This extension method works with any
-DI container that implements [IServiceProvider][service-provider], such as Microsoft's DI container and
-[Simple Injector][simple-injector]'s container.
+DI container that implements [IServiceProvider], such as Microsoft's DI container and [Simple
+Injector][simple-injector]'s container.
 
 The implementation of `UseLogger` simply retrieves a logger instance from the DI container and then creates a new
 middleware with this instance:
@@ -109,9 +109,9 @@ Instead of providing a standard middleware, you can create a middleware that com
 leaf dispatcher via services injected by a DI container.
 
 Such a DI-friendly middleware needs to implement one of the following `IMiddleware` interfaces:
-- [IMiddleware<TDep>](csharp:IceRpc.IMiddleware-1)
-- [IMiddleware<TDep1, TDep2>](csharp:IceRpc.IMiddleware-2)
-- [IMiddleware<TDep1, TDep2, TDep3>](csharp:IceRpc.IMiddleware-3)
+- [IMiddleware<TDep>](csharp:IceRpc.Extensions.DependencyInjection.IMiddleware-1)
+- [IMiddleware<TDep1, TDep2>](csharp:IceRpc.Extensions.DependencyInjection.IMiddleware-2)
+- [IMiddleware<TDep1, TDep2, TDep3>](csharp:IceRpc.Extensions.DependencyInjection.IMiddleware-3)
 
 For example, say we want to reimplement the deadline middleware in a more DI-friendly fashion. The standard deadline
 middleware reads the deadline field and creates a deadline feature to communicate this deadline to downstream middleware
@@ -162,7 +162,7 @@ public class DIDeadlineMiddleware : IMiddleware<DeadlineInformation>
 ```
 
 If you use Microsoft's DI container, you can install this middleware with the `UseMiddleware` extension method provided
-by the IceRpc.Extensions.DependencyInjection assembly:
+by the `IceRpc.Extensions.DependencyInjection` assembly:
 
 ```csharp
 using IceRpc.Extensions.DependencyInjection;
@@ -188,12 +188,12 @@ internal class Chatbot : Service, IGreeterService
 }
 ```
 
-[csharp-router]: csharp:IceRpc.Router
-[di-assembly]: https://github.com/icerpc/icerpc-csharp/tree/main/src/IceRpc.Extensions.DependencyInjection
-[dispatcher-builder]: csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder
+[Router]: csharp:IceRpc.Router
+[IceRpc.Extensions.DependencyInjection]: https://github.com/icerpc/icerpc-csharp/tree/main/src/IceRpc.Extensions.DependencyInjection
+[IDispatcherBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder
 [incoming-request-features]: ../dispatch/incoming-request#request-features
 [router]: ../dispatch/router
-[service-collection]: https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
-[service-provider]: https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider
-[service-provider-feature]: csharp:IceRpc.Extensions.DependencyInjection.IServiceProviderFeature
+[IServiceCollection]: https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+[IServiceProvider]: https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider
+[IServiceProviderFeature]: csharp:IceRpc.Extensions.DependencyInjection.IServiceProviderFeature
 [simple-injector]: https://simpleinjector.org/

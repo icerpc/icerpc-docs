@@ -37,8 +37,8 @@ unchecked enum RequestFieldKey : varuint62 {
 ```
 
 For example, when the compressor interceptor compresses the payload of an outgoing request, it sets the request field
-[CompressionFormat][compression-format]. This tells the compressor middleware on the other side of the connection "this
-payload is compressed with brotli"; the compressor middleware can then decompress this (incoming) request payload.
+[CompressionFormat]. This tells the compressor middleware on the other side of the connection "this payload is
+compressed with brotli"; the compressor middleware can then decompress this (incoming) request payload.
 
 ## Request payload and payload continuation
 
@@ -68,12 +68,11 @@ On the other side, the dispatcher sees only a single continuous incoming request
 
 It is common for the invokers in an invocation pipeline to transmit information to each other during an invocation. For
 example, the retry interceptor needs to communicate with the connection cache to make sure the connection cache does not
-keep retrying with the same server address. These invokers get and set [request features][csharp-feature-collection] to
+keep retrying with the same server address. These invokers get and set [request features][feature-collection] to
 communicate with each other.
 
 You can also use these features to communicate with the invocation pipeline. For example, you can set the feature
-[ICompressFeature][compress-feature] to ask the compressor interceptor (if installed) to compress the payload of your
-request:
+[ICompressFeature] to ask the compressor interceptor (if installed) to compress the payload of your request:
 
 ```csharp
 using var request = new OutgoingRequest(serviceAddress)
@@ -94,7 +93,7 @@ pipeline. IceRPC provides both request fields (carried by requests) and response
 only request features: since it's all local, there is no need for response features.
 {% /callout %}
 
-[csharp-feature-collection]: csharp:IceRpc.Features.FeatureCollection
+[feature-collection]: csharp:IceRpc.Features.FeatureCollection
 [request-field-key]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/RequestFieldKey.slice
-[compression-format]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/CompressionFormat.slice
-[compress-feature]: csharp:IceRpc.Features.ICompressFeature
+[CompressionFormat]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/CompressionFormat.slice
+[ICompressFeature]: csharp:IceRpc.Features.ICompressFeature
