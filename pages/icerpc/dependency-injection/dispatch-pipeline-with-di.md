@@ -13,9 +13,9 @@ The leaf dispatchers (typically Slice services) are mapped or mounted at fixed p
 `/admin/greeter-manager`). These dispatchers are singletons (or singleton-like) with the same lifetime as the router and
 the server.
 
-The middleware in your dispatch pipeline communicate with each others using
-[features](../dispatch/incoming-request#request-features): an upstream middleware sets a feature that a downstream
-middleware can retrieve. The leaf dispatcher can also communicate with these middleware using the same features.
+The middleware in your dispatch pipeline communicate with each others using [features]: an upstream middleware sets a
+feature that a downstream middleware can retrieve. The leaf dispatcher can also communicate with these middleware using
+the same features.
 
 This works well for many applications. However, this is not the typical model when using DI.
 
@@ -189,9 +189,12 @@ internal class Chatbot : Service, IGreeterService
 }
 ```
 
-[Router]: csharp:IceRpc.Router
-[IceRpc.Extensions.DependencyInjection]: https://github.com/icerpc/icerpc-csharp/tree/main/src/IceRpc.Extensions.DependencyInjection
-[IDispatcherBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder
+[features]: ../dispatch/incoming-request#request-features
+
 [IServiceCollection]: https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
 [IServiceProvider]: https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider
+[IceRpc.Extensions.DependencyInjection]: https://github.com/icerpc/icerpc-csharp/tree/main/src/IceRpc.Extensions.DependencyInjection
+
+[Router]: csharp:IceRpc.Router
+[IDispatcherBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder
 [IServiceProviderFeature]: csharp:IceRpc.Extensions.DependencyInjection.IServiceProviderFeature

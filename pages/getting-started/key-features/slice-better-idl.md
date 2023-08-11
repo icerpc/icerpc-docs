@@ -102,14 +102,15 @@ custom Duration
 [custom]: /slice2/language-guide/custom-types
 [dictionary]: /slice2/language-guide/dictionary-types
 [enum]: /slice2/language-guide/enum-types
-[idl]: https://en.wikipedia.org/wiki/Interface_description_language
-[GreeterCore]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterCore
-[GreeterJson]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterJson
-[GreeterProtobuf]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterProtobuf
 [primitive]: /slice2/language-guide/primitive-types
-[protobuf]: https://en.wikipedia.org/wiki/Protocol_Buffers
 [sequence]: /slice2/language-guide/sequence-types
 [slice]: /slice2
 [struct]: /slice2/language-guide/struct-types
 [tagged]: /slice2/language-guide/fields#tagged-fields
 [well-known]: /slice2/language-guide/well-known-types
+
+[idl]: https://en.wikipedia.org/wiki/Interface_description_language
+[GreeterCore]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterCore
+[GreeterJson]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterJson
+[GreeterProtobuf]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterProtobuf
+[protobuf]: https://en.wikipedia.org/wiki/Protocol_Buffers

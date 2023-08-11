@@ -91,8 +91,7 @@ The `id` field corresponds to the path of the outgoing request's service address
 The `facet` field corresponds to the fragment of the outgoing request's service address encoded as a `Sequence<string>`.
 This sequence is empty when the fragment is empty; otherwise, it has a single element with the fragment.
 
-The `mode` encodes the value of the `Idempotent`
-[request field](../invocation/outgoing-request#request-fields). The default is `Normal`.
+The `mode` encodes the value of the `Idempotent` [request field][request-fields]. The default is `Normal`.
 
 The `context` encodes the value of the `Context` request field. The default is an empty dictionary.
 
@@ -128,7 +127,7 @@ enum ReplyStatus { // encoded on 1 byte
 
 The `requestId` field identifies the request associated with this response.
 
-The `replyStatus` encodes the response's [status code](../invocation/incoming-response#status-code) as follows:
+The `replyStatus` encodes the response's [status code][status-code] as follows:
 
 | Status code           | Encoded as reply status    |
 | --------------------- | -------------------------- |
@@ -216,3 +215,5 @@ set to 1.1.
 
 [protocol-and-encoding]: https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding
 [Slice]: /slice1
+[status-code]: ../invocation/incoming-response#status-code
+[request-fields]: ../invocation/outgoing-request#request-fields

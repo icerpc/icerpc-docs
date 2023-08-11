@@ -78,19 +78,16 @@ flowchart LR
     s4 --- Server
 ```
 
-Since each stream is independent, there is no
-[head-of-line blocking][head-of-line-blocking]. You can send a mix of large and small
-requests and responses over the same connection: the large requests and responses won't block or delay the small ones.
+Since each stream is independent, there is no [head-of-line blocking][head-of-line-blocking]. You can send a mix of
+large and small requests and responses over the same connection: the large requests and responses won't block or delay
+the small ones.
 
 ## IceRPC's preferred protocol
 
 icerpc is naturally IceRPC's preferred protocol.
 
-icerpc provides the most direct realization of IceRPC's APIs and features. In particular, IceRPC's
-[request fields](../invocation/outgoing-request#request-fields),
-[response fields](../invocation/incoming-response#response-fields) and
-[status codes](../invocation/incoming-response#status-code) are transmitted as-is by icerpc.
-It also supports [payload continuations](../invocation/outgoing-request#request-payload-and-payload-continuation).
+icerpc provides the most direct realization of IceRPC's APIs and features. In particular, IceRPC's [request
+fields][request-fields], [response fields][response-fields] and [status codes][status-code] are transmitted as-is by icerpc. It also supports [payload continuations][payload-continuation].
 
 ## icerpc over a duplex connection
 
@@ -137,8 +134,13 @@ using await var clientConnection = new ClientConnection(
     multiplexedClientTransport: clientTransport);
 ```
 
-[application-layer]: https://en.wikipedia.org/wiki/Application_layer
 [multiplexed-transport]: ../multiplexed-transport
 [duplex-transport]: ../duplex-transport
+[request-fields]: ../invocation/outgoing-request#request-fields
+[response-fields]: ../invocation/incoming-response#response-fields
+[status-code]: ../invocation/incoming-response#status-code
+[payload-continuation]: ../invocation/outgoing-request#request-payload-and-payload-continuation
+
+[application-layer]: https://en.wikipedia.org/wiki/Application_layer
 [QUIC]: https://www.rfc-editor.org/rfc/rfc9000.html
 [head-of-line-blocking]: https://en.wikipedia.org/wiki/Head-of-line_blocking

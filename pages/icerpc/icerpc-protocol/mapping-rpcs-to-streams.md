@@ -52,7 +52,7 @@ The request header holds:
 
 - the path of the service
 - the operation name
-- [request fields](../invocation/outgoing-request#request-fields)
+- [request fields][request-fields]
 
 icerpc transmits the request fields without attaching any meaning to their values or presence.
 
@@ -96,9 +96,9 @@ request: a stream of bytes with an unknown size. The response payload ends when 
 
 The response header holds:
 
-- a [status code](../invocation/incoming-response#status-code)
+- a [status code][status-code]
 - an error message when the status code is not `Ok`
-- [response fields](../invocation/incoming-response#response-fields)
+- [response fields][response-fields]
 
 icerpc transmits the response fields without attaching any meaning to their values or presence.
 
@@ -127,3 +127,6 @@ For example, a response with status code `Ok`, no fields and an empty payload ca
 ```
 
 [Slice]: /slice2
+[request-fields]: ../invocation/outgoing-request#request-fields
+[status-code]: ../invocation/incoming-response#status-code
+[response-fields]: ../invocation/incoming-response#response-fields
