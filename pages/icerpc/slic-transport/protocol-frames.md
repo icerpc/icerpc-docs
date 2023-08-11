@@ -55,7 +55,7 @@ unchecked enum ParameterKey : varuint62 {
     MaxStreamFrameSize = 4
 }
 
-typealias ParameterFields = dictionary<ParameterKey, sequence<uint8>>
+typealias ParameterFields = Dictionary<ParameterKey, Sequence<uint8>>
 ```
 
 The parameters are used to configure the connection.
@@ -88,7 +88,7 @@ as follows:
 compact struct VersionFrame {
     frameType: FrameType // = FrameType::Version
     frameSize: varuint62
-    versions: sequence<varuint62>
+    versions: Sequence<varuint62>
 }
 ```
 

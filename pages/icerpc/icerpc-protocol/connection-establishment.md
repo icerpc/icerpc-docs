@@ -66,7 +66,7 @@ enum ControlFrameType : uint8 {
 compact struct SettingsFrame {
     type: ControlFrameType // value is ControlFrameType::Settings
     bodySize: varuint62    // the number of bytes in body
-    body: dictionary<SettingKey, varuint62>
+    body: Dictionary<SettingKey, varuint62>
 }
 
 unchecked enum SettingKey : varuint62 {

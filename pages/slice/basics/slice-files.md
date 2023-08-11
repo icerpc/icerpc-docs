@@ -66,7 +66,7 @@ interface Greeter {
     greet(name: string) -> string
 
 #if NextGen // only available in the NextGen version of Greeter
-    sing(songName: string) -> sequence<uint8>
+    sing(songName: string) -> Sequence<uint8>
 #endif
 }
 ```

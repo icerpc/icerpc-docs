@@ -30,7 +30,7 @@ A few definitions in .ice files have no equivalent in the .slice syntax and as a
 - constants\
   You cannot define constants in .slice files.
 - optional fields and parameters whose type is a class or references a class.
-- default values for numeric and string fields in classes, exceptions and structs.
+- default values for numeric and string fields in classes, exceptions, and structs.
 - operations on classes (deprecated in Ice 3.7)
 - interface parameters and fields passed "by value" (deprecated in Ice 3.7)
 
@@ -73,7 +73,7 @@ dictionary<string, int> StringIntDict;
 ```
 
 ```slice {% title="Same dictionary with the .slice syntax" %}
-typealias StringIntDict = dictionary<string, int32>
+typealias StringIntDict = Dictionary<string, int32>
 ```
 
 {% /side-by-side %}
@@ -319,7 +319,7 @@ sequence<string> StringSeq;
 ```
 
 ```slice {% title="Same sequence with the .slice syntax" %}
-typealias StringSeq = sequence<string>
+typealias StringSeq = Sequence<string>
 ```
 
 {% /side-by-side %}

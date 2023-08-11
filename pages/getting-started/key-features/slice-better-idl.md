@@ -61,9 +61,9 @@ Slice provides [primitive] types with clear names such as `uint16`, `float64` an
 your own types with a few building blocks:
  - [struct]
  - [enum]
- - [sequence]
- - [dictionary]
  - [custom]
+ - [Sequence][sequence]
+ - [Dictionary][dictionary]
 
 Last but not least, Slice's [tagged] fields and parameters allow you to update your structs and operations over
 time without breaking on-the-wire compatibility.
@@ -75,12 +75,12 @@ can map a sequence to an array (the default), or to a list, or even to a hash se
 
 ```slice
 interface Translator {
-    getLanguages() -> [cs::type("HashSet<string>")] sequence<string>
+    getLanguages() -> [cs::type("HashSet<string>")] Sequence<string>
 }
 ```
 
 The `cs::type` attribute changes the mapping for values decoded by the generated code and returned to you. For values
-you give to the generated code, the mapping for a `sequence<string>` parameter is always `IEnumerable<string>`.
+you give to the generated code, the mapping for a `Sequence<string>` parameter is always `IEnumerable<string>`.
 
 Slice's custom types allow you to send any type you wish through Slice. You just need to provide methods to encode and
 decode instances of your custom type.

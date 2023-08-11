@@ -59,7 +59,7 @@ interface SingingGreeter {
         tag(1) timeOfDay: TimeOfDay?
     ) -> (
         greeting: string
-        tag(1) song: sequence<uint8>?
+        tag(1) song: Sequence<uint8>?
     )
 }
 ```

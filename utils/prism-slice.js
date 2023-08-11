@@ -29,7 +29,7 @@
         keyword: /\b(module|struct|exception|class|interface|enum|custom|typealias|compact|idempotent|mode|stream|tag|throws|unchecked)\b/,
         builtin: [
             {
-                pattern: /\b(bool|int8|uint8|int16|uint16|int32|uint32|varint32|varuint32|int64|uint64|varint62|varuint62|float32|float64|string|sequence|dictionary|AnyClass)\b/,
+                pattern: /\b(bool|int8|uint8|int16|uint16|int32|uint32|varint32|varuint32|int64|uint64|varint62|varuint62|float32|float64|string|Sequence|Dictionary|AnyClass)\b/,
                 alias: 'keyword'
             },
             {
