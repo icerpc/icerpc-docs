@@ -15,8 +15,8 @@ order, followed by the tagged arguments.
 The tagged arguments are encoded in tag order (not in definition order); the argument with the lowest tag number is
 encoded first. For each tagged argument:
 
-- if the argument value is not set, don't encode anything
-- otherwise, encode this argument as a [tag record](encoding-only-constructs#tag-record)
+- if the argument value is not set, nothing is encoded
+- otherwise, the argument is encoded as a [tag record](encoding-only-constructs#tag-record)
 
 Unlike the encoding of tagged fields in classes, the encoding of tagged arguments does not end with the tag end marker.
 {% /slice1 %}
