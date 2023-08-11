@@ -103,6 +103,20 @@ A tag number is a non-negative integer.
 The scope of a tag number is the enclosing type. For example, the following definitions are correct, with several
 `tag(1)` in different scopes:
 
+{% slice1 %}
+mode = Slice1
+
+```slice
+class Person {
+    tag(1) name: string
+}
+
+class Contact {
+    tag(1) name: string
+}
+```
+{% /slice1 %}
+{% slice2 %}
 ```slice
 struct Person {
     tag(1) name: string
@@ -112,6 +126,7 @@ struct Contact {
     tag(1) name: string
 }
 ```
+{% /slice2 %}
 
 ### Tag sorting
 
