@@ -43,9 +43,10 @@ Ice's local endpoint options (such as `--sourceAddress`) have no equivalent in I
 "non-local".
 
 With IceRPC for C#, you would set [TcpClientTransportOptions.LocalNetworkAddress] to configure the tcp/ssl source
-address. {% /callout %}
+address. 
+{% /callout %}
 
-When the Ice + Slice integration decodes a Slice1-encoded server address with a [transport code][transport-code] it
+When the IceRPC + Slice integration decodes a Slice1-encoded server address with a [transport code][transport-code] it
 doesn't know, it creates a server address with the opaque transport. The opaque transport supports the following
 options:
 
