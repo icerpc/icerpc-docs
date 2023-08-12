@@ -18,8 +18,8 @@ All well-known types are defined in module `WellKnownTypes`:
   A specific point in time, encoded as an int64.
 - [Uri][uri-type]\
   A Uniform Resource Identifier ([URI]), encoded as a string.
-  [Uuid][uuid-type]\
-  A Universal Unique Identifier ([UUID], encoded as a 128-bit value.
+- [Uuid][uuid-type]\
+  A Universal Unique Identifier ([UUID]), encoded as a 128-bit value.
 {% /slice2 %}
 
 [custom]: custom-types
