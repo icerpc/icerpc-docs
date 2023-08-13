@@ -21,7 +21,8 @@ compact struct Point { x: int32, y: int32 }
 ```
 
 The type of a field can be a [primitive type](primitive-types) (such as an int32 or a string), a constructed type (such
-as an [enum](enum-types) or a [struct](struct-types)) or a [proxy type](proxy-types).
+as an [enum](enum-types) or a [struct](struct-types)) or a collection type (a [Sequence](sequence-types) or a
+[Dictionary](dictionary-types)).
 
 ## Optional type
 

@@ -3,8 +3,6 @@ title: Operation arguments and return values
 description: Understand how operation arguments and return values are encoded with Slice.
 ---
 
-## Encoding
-
 The arguments and return value of an operation are encoded in exactly the same way. The text below describes the
 encoding of arguments, and the same rules apply to return values.
 
@@ -22,12 +20,14 @@ Unlike the encoding of tagged fields in classes, the encoding of tagged argument
 {% /slice1 %}
 
 {% slice2 %}
+## Non-stream encoding
+
 The arguments of an operation are encoded as a [segment]. The body of this segment corresponds to a virtual [struct]
 with a field for each non-stream operation parameter, in the same order.
 
 Tagged parameters are mapped to tagged fields in the virtual struct.
 
-### Stream encoding
+## Stream encoding
 
 The stream argument, if present, is encoded immediately after the segment holding the non-stream arguments.
 
@@ -47,25 +47,12 @@ compact struct Element { value: T? }
 
 where `T?` represents the stream parameter type.
 
-### Empty optimization
+## Empty optimization
 
 When an operation has no argument at all, its empty argument list can be encoded as a segment holding an empty struct
 (as per the rules described above) or as nothing at all.
 {% /slice2 %}
 
-## Payload and payload continuation {% icerpcSlice=true %}
-{% slice1 %}
-The IceRPC + Slice integration fills only the payloads of [outgoing requests][outgoing request] and
-[outgoing responses][outgoing response]. The payload continuation of an outgoing request or response is always empty.
-{% /slice1 %}
-{% slice2 %}
-The IceRPC + Slice integration fills the payload of an [outgoing request] resp. [outgoing response] with the non-stream
-arguments (encoded into a segment as described above). It fills the payload continuation of an outgoing response
-(resp. outgoing request) with the encoded stream argument (if any).
-{% /slice2 %}
-
-[outgoing request]: /icerpc/invocation/outgoing-request
-[outgoing response]: /icerpc/dispatch/outgoing-response
-[segment]: ../encoding-only-constructs#segment
+[segment]: encoding-only-constructs#segment
 [struct]: constructed-types#struct
 [tagged field]: constructed-types#class-tagged-field

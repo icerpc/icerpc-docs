@@ -1,88 +1,29 @@
 ---
-title: Proxy types
-description: Learn how to encode proxies with Slice.
+title: IceRPC + Slice integration
+description: Understand how the IceRPC + Slice integration applies the Slice encoding rules.
 ---
 
-## Encoding
+## Payload and payload continuation {% icerpcSlice=true %}
 
 {% slice1 %}
-A null proxy is encoded as the [null Ice identity](/icerpc-for-ice-users/rpc-core/ice-identity) (two empty strings).
-
-A non-null proxy is encoded as the following `ProxyData` struct:
-
-```slice {% addMode=true %}
-compact struct ProxyData {
-    identity: Identity
-    facet: Sequence<string>        // an empty sequence or a 1-element sequence
-    invocationMode: InvocationMode
-    secure: bool
-    protocolMajor: uint8           // 1 = ice, 2 = icerpc
-    protocolMinor: uint8
-    encodingMajor: uint8
-    encodingMinor: uint8
-    serverAddressList: Sequence<ServerAddressData>
-    adapterId: string              // only present when serverAddressList is empty
-}
-
-compact struct Identity {
-    name: string
-    category: string
-}
-
-enum InvocationMode { Twoway, Oneway, BatchOneway, Datagram, BatchDatagram }
-
-compact struct ServerAddressData {
-    transportCode: int16 // the TransportCode encoded as an int16
-    encapsulation: Encapsulation
-}
-
-unchecked enum TransportCode {
-    Uri = 0
-    Tcp = 1
-    Ssl = 2
-    Udp = 3
-    WS = 4
-    Wss = 5
-    BT = 6
-    Bts = 7
-    IAP = 8
-    IAps = 9
-}
-```
-
-Encapsulations are described on the [ice protocol] page. The format of the encapsulation payload in a
-`ServerAddressData` depends on its transport code.
-
-With transport code `Uri` (0), the encapsulation payload is a URI string: the server address converted into a URI
-string, including the protocol/scheme. `Uri` is a wildcard transport code since the actual transport is specified in the
-URI string, or is left unspecified when the server address has no transport parameter.
-
-Other transport codes identify specific transports, such as tcp, ssl, ws (for WebSocket), wss (WebSocket with TLS) etc.
-
-Transport codes `Tcp` and `Ssl` share the same encapsulation payload format:
-
-```slice {% addMode=true %}
-compact struct TcpServerAddressBody {
-    host: string
-    port: int32      // the port number
-    timeout: int32   // timeout parameter
-    compress: bool   // z parameter
-}
-```
-
-See [Endpoint] for additional information.
+The IceRPC + Slice integration fills only the payloads of [outgoing requests][outgoing request] and
+[outgoing responses][outgoing response] with the encoded arguments resp. return values. The payload continuation of an
+outgoing request or response is always empty.
 {% /slice1 %}
-
 {% slice2 %}
-A proxy is encoded as a URI [string]. This URI can be absolute or relative.
+The IceRPC + Slice integration fills the payload of an [outgoing request] resp. [outgoing response] with the non-stream
+arguments resp. return value (encoded into a segment).
+
+It fills the payload continuation of an outgoing response (resp. outgoing request) with the encoded stream argument
+resp. stream return value, if any.
 {% /slice2 %}
 
-## Implementation {% icerpcSlice=true %}
+## Proxies {% icerpcSlice=true %}
 
 The IceRPC + Slice integration encodes a proxy by encoding its [service address].
 
 {% slice1 %}
-When the IceRPC + Slice integration encodes a non-null service address, it sets the `ProxyData` fields as follows:
+When it encodes a non-null service address, it sets the [ProxyData] fields as follows:
 
 | ProxyData field   | Value set by IceRPC + Slice when encoding                                          |
 |-------------------|------------------------------------------------------------------------------------|
@@ -99,7 +40,7 @@ When the IceRPC + Slice integration encodes a non-null service address, it sets 
 
 The server addresses use only the `Uri` transport code when the protocol is `icerpc`.
 
-When the IceRPC + Slice integration decodes a non-null service address, it processes the `ProxyData` fields as follows:
+When IceRPC + Slice decodes a non-null service address, it processes the `ProxyData` fields as follows:
 
 | ProxyData field   | Service address decoded by IceRPC + Slice                                           |
 |-------------------|-------------------------------------------------------------------------------------|
@@ -115,7 +56,8 @@ When the IceRPC + Slice integration decodes a non-null service address, it proce
 | adapterId         | Converted into an `adapter-id` parameter if not empty                               |
 {% /slice1 %}
 
-[ice protocol]: /icerpc/ice-protocol/protocol-frames#encapsulation
-[Endpoint]: /icerpc-for-ice-users/rpc-core/endpoint
+[outgoing request]: /icerpc/invocation/outgoing-request
+[outgoing response]: /icerpc/dispatch/outgoing-response
+[ProxyData]: constructed-types#proxy
+[segment]: encoding-only-constructs#segment
 [service address]: /icerpc/invocation/service-address
-[string]: ../primitive-types#String
