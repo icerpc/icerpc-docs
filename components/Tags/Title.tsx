@@ -1,5 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
+import clsx from 'clsx';
 import { Breadcrumb, Breadcrumbs } from 'components/Breadcrumbs';
 import { getBreadcrumbs } from 'lib/breadcrumbs';
 import { useRouter } from 'next/router';
@@ -21,11 +22,18 @@ export const Title = ({ title, description, readingTime }: Props) => {
     }
   }, [isReady, asPath]);
 
+  const hasBreadcrumbs = breadcrumbs.length > 1;
+
   return (
     <div className="not-prose mb-10">
-      <div className="mb-2 flex flex-row items-center justify-between">
-        {breadcrumbs.length > 1 && <Breadcrumbs breadcrumbs={breadcrumbs} />}
-        {readingTime && <p className="text-xs">{readingTime}</p>}
+      <div
+        className={clsx(
+          'mb-2 flex flex-row items-center',
+          hasBreadcrumbs ? 'justify-between' : 'justify-end'
+        )}
+      >
+        {hasBreadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
+        {readingTime && <p className="pl-2 text-xs md:pl-0">{readingTime}</p>}
       </div>
       <h1 className="bg-gradient-to-b from-slate-800 to-black bg-clip-text pr-10 text-4xl font-bold text-transparent dark:text-white">
         {title}
