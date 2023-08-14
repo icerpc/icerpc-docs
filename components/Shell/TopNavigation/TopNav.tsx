@@ -23,10 +23,6 @@ export const TopNav = () => {
 
   const navigationItems = [
     {
-      name: 'Home',
-      href: '/'
-    },
-    {
       name: 'Getting Started',
       href: '/getting-started'
     },

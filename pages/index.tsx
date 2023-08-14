@@ -76,7 +76,6 @@ export default function Home({
           <section className="relative">
             <Hero />
             {Markdoc.renderers.react(content, React, { components })}
-            {/* <div className="absolute right-0 top-0 h-[400px] w-[200px] translate-x-[200px] bg-red-500 " /> */}
           </section>
         </div>
       </div>
@@ -120,8 +119,8 @@ const Hero = () => {
         IceRPC Documentation
       </h2>
       <p className="prose mx-4 max-w-xl text-center text-xl dark:prose-invert">
-        IceRPC empowers developers to craft efficient, scalable, and tailored
-        network application solutions.
+        Explore the IceRPC documentation for detailed information and guides for
+        all things IceRPC and Slice.
       </p>
       <div className="flex flex-row items-center space-x-4 py-4">
         <Link

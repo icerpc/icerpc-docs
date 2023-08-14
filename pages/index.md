@@ -6,7 +6,7 @@ showAside: false
 showDividers: false
 ---
 
-{% homeTitle title="What is IceRPC" description="Next-Gen RPC" /%}
+{% homeTitle title="What is IceRPC" description="Understanding the framework" /%}
 
 Remote Procedure Call (RPC) is a fundamental paradigm for networked
 applications: a client sends a request to a server over a network connection,
@@ -24,7 +24,7 @@ applications without reinventing the wheel.
 
 {% divider /%}
 
-{% homeTitle title="Main Features" description="Everything you expected" /%}
+{% homeTitle title="Main Features" description="What it offers" /%}
 
 Some of IceRPC's main features include:
 

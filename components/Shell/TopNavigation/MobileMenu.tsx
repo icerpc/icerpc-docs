@@ -47,10 +47,6 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
 
   const navigationItems = [
     {
-      name: 'Home',
-      href: '/'
-    },
-    {
       name: 'Getting Started',
       href: '/getting-started'
     },
