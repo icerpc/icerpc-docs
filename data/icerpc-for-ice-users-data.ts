@@ -44,8 +44,8 @@ export const iceRpcForIceUsersData: SideBarSourceType[] = [
         path: `${ICERPC_FOR_ICE}/rpc-core/ice-identity`
       },
       {
-        title: 'Proxy string',
-        path: `${ICERPC_FOR_ICE}/rpc-core/proxy-string`
+        title: 'Proxy',
+        path: `${ICERPC_FOR_ICE}/rpc-core/proxy`
       }
     ]
   },
