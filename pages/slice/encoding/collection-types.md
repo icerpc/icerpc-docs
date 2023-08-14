@@ -6,7 +6,7 @@ description: Learn how to encode sequences and dictionaries with Slice.
 ## Dictionary
 
 A dictionary with N entries is encoded like a sequence with N elements where the element type is a
-[compact struct](constructed-types#struct):
+[compact struct](user-defined-types#struct):
 
 ```slice
 compact struct Pair { key: Key, value: Value }
@@ -38,11 +38,9 @@ A sequence of `int32` with values 5, 32 and 9 is encoded as:
 0x20 0x00 0x00 0x00: 32 over 4 bytes in little-endian order
 0x09 0x00 0x00 0x00: 9 over 4 bytes in little-endian order
 ```
-
 {% /slice1 %}
 
 {% slice2 %}
-
 ## Sequence with a non-optional element type
 
 A sequence of N elements with a non-optional element type T is encoded as a `varuint62`-encoded N followed by each
@@ -82,7 +80,6 @@ A sequence of `int32?` with values 5, no-value, 9 and no-value is encoded as:
 0x05 0x00 0x00 0x00: 5 over 4 bytes in little-endian order
 0x09 0x00 0x00 0x00: 9 over 4 bytes in little-endian order
 ```
-
 {% /slice2 %}
 
 [bit-sequence]: encoding-only-constructs#bit-sequence

@@ -5,10 +5,11 @@ description: Learn how to define and use sequences in Slice.
 
 ## Unbounded list
 
-A sequence is a constructed type that represents a list of elements. The number of elements in each sequence is known at
-runtime but is not specified when you define the sequence type.
+A sequence is a built-in generic type that represents a list of elements with the same type. The number of elements in
+each sequence is known at runtime but is not specified when you define the sequence type.
 
-You use a sequence type inline, without giving it a name, for example as the type of a parameter or field:
+You can construct a sequence type inline, without giving it a name, for example to specify the type of a parameter or
+field:
 
 ```slice {% addMode=true %}
 module VisitorCenter
@@ -18,6 +19,8 @@ interface Greeter {
     allPreviousGreetings() -> Sequence<string>
 }
 ```
+
+In this example, `Sequence<string>` is a constructed type.
 
 The order of the elements in the sequence is maintained when this sequence is transmitted over the wire.
 
@@ -48,7 +51,7 @@ struct SequenceExample {
 
 ### Sequence fields
 
-A field, an element in another sequence, or a value in a dictionary with type `sequence<T>` is mapped to an `IList<T>`.
+A field, an element in another sequence, or a value in a dictionary with type `Sequence<T>` is mapped to an `IList<T>`.
 
 The type of the `IList` elements is the mapped C# type for the Slice element type. For example:
 
@@ -130,19 +133,21 @@ type you specified for incoming values, and `IEnumerable<T>` for outgoing values
 | `IEnumerable<T>`            | `T[]`                               |
 
 You can override the default mapping for incoming values with the [`cs::type` attribute](#cs::type-attribute);
-this gives you the C# type you specified for incoming values. `cs::type` doesn't change the mapping for outgoing values here.
+this gives you the C# type you specified for incoming values. `cs::type` doesn't change the mapping for outgoing values
+here.
 
 ### cs::type attribute
 
-You can use the `cs::type` [attribute](attributes#c#-attributes) to customize the mapping of your sequence. This attribute accepts
-a single string argument: the name of a type similar to `List<int>`.
+You can use the `cs::type` [attribute](attributes#c#-attributes) to customize the mapping of your sequence. This
+attribute accepts a single string argument: the name of a type similar to `List<int>`.
 
 More specifically, this type must:
 
 - provide a constructor that accepts an `IEnumerable<T>` or a `T[]` when T is a bool or a fixed-size integral type
 - provide a capacity constructor (with an `int` parameter) otherwise
 
-This type must implement `IList<T>` when `cs::type` is applied to a field; it must implement `ICollection<T>` when `cs::type` is applied to a parameter.
+This type must implement `IList<T>` when `cs::type` is applied to a field; it must implement `ICollection<T>` when
+`cs::type` is applied to a parameter.
 
 For example:
 

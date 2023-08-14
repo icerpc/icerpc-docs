@@ -7,7 +7,7 @@ description: Learn how primitive types are encoded with Slice.
 ## AnyClass
 
 `AnyClass` is an abstract type. When you encode or decode a parameter or field with type `AnyClass`, you are encoding
-or decoding a concrete class instance using the [class encoding/decoding rules](constructed-types#class).
+or decoding a concrete class instance using the [class encoding/decoding rules](user-defined-types#class).
 {% /slice1 %}
 
 ## Bool

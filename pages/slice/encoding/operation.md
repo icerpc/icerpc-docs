@@ -54,5 +54,5 @@ When an operation has no argument at all, its empty argument list can be encoded
 {% /slice2 %}
 
 [segment]: encoding-only-constructs#segment
-[struct]: constructed-types#struct
-[tagged field]: constructed-types#class-tagged-field
+[struct]: user-defined-types#struct
+[tagged field]: user-defined-types#class-tagged-field
