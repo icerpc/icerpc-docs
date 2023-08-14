@@ -5,8 +5,8 @@ description: Learn how to define and use dictionaries in Slice.
 
 ## Associative array
 
-A dictionary is a built-in generic type that represents an associative array. All the keys of this associative array
-have the same Slice type, and all the values have the same Slice type.
+A dictionary is a built-in generic type that represents an associative array. All keys of this associative array have
+the same Slice type, and all values have the same Slice type.
 
 A dictionary is like a sequence of key-value pairs with the following constraints:
 
@@ -26,7 +26,7 @@ interface Greeter {
 }
 ```
 
-In this example, `Dictionary<string, string>` is a constructed type.
+A built-in generic type with type arguments, such as a `Dictionary<string, string>`, is called a constructed type.
 
 You can use any Slice type for the value-type of your dictionary. For example:
 

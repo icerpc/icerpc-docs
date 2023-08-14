@@ -20,7 +20,7 @@ interface Greeter {
 }
 ```
 
-In this example, `Sequence<string>` is a constructed type.
+A built-in generic type with type arguments, such as a `Sequence<string>`, is called a constructed type.
 
 The order of the elements in the sequence is maintained when this sequence is transmitted over the wire.
 
