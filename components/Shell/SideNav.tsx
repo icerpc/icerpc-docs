@@ -109,6 +109,11 @@ export function MobileSideNav() {
     setIsOpen(false);
   }
 
+  // If on home page / return nothing
+  if (path === '/') {
+    return null;
+  }
+
   return (
     <>
       <div className="flex h-[57px] items-center justify-start border-t border-lightBorder p-4 text-sm dark:border-darkBorder lg:hidden">

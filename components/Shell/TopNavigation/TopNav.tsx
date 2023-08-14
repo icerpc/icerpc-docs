@@ -52,11 +52,11 @@ export const TopNav = () => {
       )}
     >
       <div id="main-nav" className="flex w-full justify-center">
-        <div className="flex h-[3.75rem] w-full max-w-[100rem] items-center justify-between text-sm font-medium">
-          <Logo />
+        <div className="flex h-[3.75rem] w-full max-w-[100rem] items-center justify-between text-sm">
+          <TopLogo />
           <div className="hidden items-center lg:flex">
             <nav>
-              <ul className="flex gap-x-4">
+              <ul className="flex">
                 {navigationItems.map((item) => (
                   <TopNavigationItem
                     key={item.href}
@@ -87,7 +87,23 @@ export const TopNav = () => {
   );
 };
 
-const Logo = () => {
+const TopLogo = () => (
+  <Link href="/">
+    <div className="mb-3 ml-[1.3rem] mr-0 mt-5 flex items-center justify-start gap-1 pb-4 lg:ml-[2.6rem]">
+      <Logo height={20} className="mt-2" />
+      <div className="ml-1 pt-[8px] text-xl font-bold text-black dark:text-white">
+        Docs
+      </div>
+    </div>
+  </Link>
+);
+
+type LogoProps = {
+  height: number;
+  className?: string;
+};
+
+export const Logo = ({ height, className }: LogoProps) => {
   const { resolvedTheme } = useTheme();
   const isMounted = useMounted();
 
@@ -100,14 +116,7 @@ const Logo = () => {
   }
 
   return (
-    <Link href="/">
-      <div className="mb-3 ml-[1.3rem] mr-0 mt-5 flex items-center justify-start gap-1 pb-4 lg:ml-[2.6rem]">
-        <Image src={logo} height={20} alt="ZeroC Logo" className="mt-2" />
-        <div className="ml-1 pt-[8px] text-xl font-bold text-black dark:text-white">
-          Docs
-        </div>
-      </div>
-    </Link>
+    <Image src={logo} height={height} alt="IceRPC Logo" className={className} />
   );
 };
 
@@ -127,9 +136,9 @@ const TopNavigationItem = ({ name, href }: TopNavigationItemProps) => {
   const prefetch = href.startsWith('http') ? false : undefined;
 
   const baseClassName =
-    'overflow-hidden whitespace-nowrap px-2 dark:text-[rgba(255,255,255,0.6)]';
+    'mx-3 overflow-hidden whitespace-nowrap dark:text-[rgba(255,255,255,0.6)]';
   const activeClassName =
-    'text-primary no-underline decoration-2 underline-offset-[1.5rem] opacity-100 dark:text-white';
+    'mx-3 text-primary font-semibold no-underline decoration-2 underline-offset-[1.5rem] opacity-100 dark:text-white';
 
   const [linkClassName, setLinkClassName] = useState(baseClassName);
 

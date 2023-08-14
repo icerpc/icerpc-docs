@@ -17,7 +17,8 @@ const document = {
         description: frontmatter.description,
         mode: frontmatter.mode,
         showAside: frontmatter.showAside,
-        showReadingTime: frontmatter.showReadingTime
+        showReadingTime: frontmatter.showReadingTime,
+        showDividers: frontmatter.showDividers
       },
       children
     );

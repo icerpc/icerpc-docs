@@ -22,7 +22,7 @@ const textAlignment = (align?: string): string => {
 export const Table = ({ children }: TableProps) => {
   return (
     <div className="mb-10 min-w-full">
-      <table className="w-full table-fixed border-collapse rounded prose-headings:font-semibold">
+      <table className="w-full border-collapse rounded prose-headings:font-semibold">
         {children}
       </table>
     </div>

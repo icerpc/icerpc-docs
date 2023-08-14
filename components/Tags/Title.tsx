@@ -22,6 +22,11 @@ export const Title = ({ title, description, readingTime }: Props) => {
     }
   }, [isReady, asPath]);
 
+  // Do not display title if on home page
+  if (asPath == '/') {
+    return null;
+  }
+
   const hasBreadcrumbs = breadcrumbs.length > 1;
 
   return (
