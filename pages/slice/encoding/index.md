@@ -24,7 +24,7 @@ other encoded type, the decoding fails—or if by happenstance it succeeds, the 
 
 ## Slice encoding versions
 
-There are currently two versions of the Slice encoding: Slice1 and Slice2. The compilation mode of a Slice file
+There are currently two versions of the Slice encoding: Slice1 and Slice2. The [compilation mode] of a Slice file
 determines the Slice encoding version to use when encoding the arguments and return values of operations defined in that
 file:
 
@@ -40,22 +40,9 @@ Furthermore, a [Slice2-compatible] type defined in a Slice1 file can be encoded 
 
 ## Byte ordering
 
-When encoding integers and floating point numbers into multiple bytes, we have to select a byte ordering:
-[little-endian or big-endian][little-endian-or-big-endian].
+Slice is [little-endian]: when encoding integers and floating point numbers into multiple bytes, the first byte encoded
+into the byte stream holds the least significant portion of the value.
 
-Slice always uses little-endian: it's the simplest and most efficient choice since all modern CPUs are little-endian.
-
-## IceRPC + Slice integration
-
-The Slice encoding defines how primitive types (such as `int32` and `string`) and constructed types (such as `enum` and
-`struct`) are encoded.
-
-The encoding of anything interface and operation-related (including operation parameters and [proxy types][proxy-types]) is not part
-of the Slice encoding but belongs instead to the integration with a particular RPC framework.
-
-This chapter describes both the Slice encoding and the encoding provided by the IceRPC + Slice integration.
-
-[Slice2-compatible]: /slice/language-guide/compilation-mode#using-slice1-and-slice2-together
-[proxy-types]: language-guide/proxy-types
-
-[little-endian-or-big-endian]: https://en.wikipedia.org/wiki/Endianness
+[compilation mode]: /slice/language-guide/compilation-mode
+[little-endian]: https://en.wikipedia.org/wiki/Endianness
+[slice2-compatible]: /slice/language-guide/compilation-mode#using-slice1-and-slice2-together

@@ -52,7 +52,7 @@ interface Rectangle : Shape, Fillable {
 
 ## Interface as a constructed type
 
-An interface definition produces a new type: a [proxy type](proxy-types).
+An interface definition produces a new constructed type: a [proxy type](proxy-types).
 
 ## C# mapping {% icerpcSlice=true %}
 
@@ -282,5 +282,4 @@ internal class MyWidget :
 {% /side-by-side %}
 
 [cs-identifier]: attributes#cs::identifier-attribute
-
 [SliceEncodeOptions]: csharp:IceRpc.Slice.SliceEncodeOptions

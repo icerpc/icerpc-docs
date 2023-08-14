@@ -1,6 +1,6 @@
 ---
 title: Proxy types
-description: What does it mean to use an interface as a type in Slice?
+description: Using an interface as a type in Slice.
 ---
 
 ## Using an interface as a type

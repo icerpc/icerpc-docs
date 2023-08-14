@@ -154,12 +154,16 @@ export const slice1Data: SideBarSourceType[] = [
         path: `${SLICE1_BASE_URL}/encoding/collection-types`
       },
       {
-        title: 'Proxy types',
-        path: `${SLICE1_BASE_URL}/encoding/proxy-types`
-      },
-      {
         title: 'Operation arguments and return values',
         path: `${SLICE1_BASE_URL}/encoding/operation`
+      },
+      {
+        title: 'Exceptions',
+        path: `${SLICE1_BASE_URL}/encoding/exceptions`
+      },
+      {
+        title: 'IceRPC + Slice integration',
+        path: `${SLICE1_BASE_URL}/encoding/icerpc`
       }
     ]
   }

@@ -74,8 +74,8 @@ If you are in this situation, you need to observe the following rules:
  - an interface defined in a Slice2 file can derive from an interface defined in a Slice1 file
  - a Slice1 file cannot use a type, an interface, or any other construct defined in a Slice2 file
 
-A type defined in a Slice1 file is Slice2-compatible if it's an [enum type][enum-type], a [proxy type][proxy-type], or
-if this type could be defined as-is in a Slice2 file. For example:
+A type defined in a Slice1 file is Slice2-compatible if it's an [enum type], a [proxy type], or if this type could be
+defined as-is in a Slice2 file. For example:
 
 ```slice
 mode = Slice1
@@ -105,8 +105,8 @@ The mode statement is not mapped to anything in C#. It does however influence th
 definitions.
 
 [encoding]: ../encoding
-[enum-type]: enum-types
-[proxy-type]: proxy-types
+[enum type]: enum-types
+[proxy type]: proxy-types
 
 [Ice]: https://github.com/zeroc-ice/ice
 [original-slice]: https://doc.zeroc.com/ice/3.7/the-slice-language
