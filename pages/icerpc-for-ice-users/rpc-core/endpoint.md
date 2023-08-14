@@ -42,11 +42,11 @@ later re-encode this server address without losing information.
 Ice's local endpoint options (such as `--sourceAddress`) have no equivalent in IceRPC. All server address parameters are
 "non-local".
 
-With IceRPC for C#, you would set [TcpClientTransportOptions.LocalNetworkAddress][local-network-address] to configure
-the tcp/ssl source address.
+With IceRPC for C#, you would set [TcpClientTransportOptions.LocalNetworkAddress] to configure the tcp/ssl source
+address. 
 {% /callout %}
 
-When the Ice + Slice integration decodes a Slice1-encoded server address with a [transport code][transport-code] it
+When the IceRPC + Slice integration decodes a Slice1-encoded server address with a [transport code][transport-code] it
 doesn't know, it creates a server address with the opaque transport. The opaque transport supports the following
 options:
 
@@ -62,6 +62,7 @@ since the actual host and port are encoded in the value of the `v` parameter.
 The opaque transport allows you to decode any proxy received from an Ice application and later re-encode this proxy
 without losing any server address information.
 
-[local-network-address]: csharp:IceRpc.Transports.Tcp.TcpClientTransportOptions#IceRpc_Transports_Tcp_TcpClientTransportOptions_LocalNetworkAddress
 [server-address]: /icerpc/connection/server-address
 [transport-code]: /slice1/encoding/proxy-types
+
+[TcpClientTransportOptions.LocalNetworkAddress]: csharp:IceRpc.Transports.Tcp.TcpClientTransportOptions#IceRpc_Transports_Tcp_TcpClientTransportOptions_LocalNetworkAddress

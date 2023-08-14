@@ -8,7 +8,7 @@ description: Understand the frames sent over a Slic connection.
 The Slic transport protocol sends data over a duplex connection in protocol frames. The reading and writing of these
 frames are serialized on the underlying duplex connection.
 
-Frames and types from this page are defined using [Slice][slice].
+Frames and types from this page are defined using [Slice].
 
 All the frames have a header and a body. The header layout is common to all Slic versions and is composed of the
 following fields:
@@ -55,7 +55,7 @@ unchecked enum ParameterKey : varuint62 {
     MaxStreamFrameSize = 4
 }
 
-typealias ParameterFields = dictionary<ParameterKey, sequence<uint8>>
+typealias ParameterFields = Dictionary<ParameterKey, Sequence<uint8>>
 ```
 
 The parameters are used to configure the connection.
@@ -88,7 +88,7 @@ as follows:
 compact struct VersionFrame {
     frameType: FrameType // = FrameType::Version
     frameSize: varuint62
-    versions: sequence<varuint62>
+    versions: Sequence<varuint62>
 }
 ```
 
@@ -182,4 +182,4 @@ compact struct StreamWindowUpdateFrame {
 The window size increment specifies the additional number of bytes that can be sent in addition to the existing window
 size.
 
-[slice]: /slice2
+[Slice]: /slice2

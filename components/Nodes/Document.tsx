@@ -1,12 +1,13 @@
 // Copyright (c) ZeroC, Inc.
 
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useEffect, useRef, useState } from 'react';
 
 import { Divider, ModeSection, AsideItem, Title } from 'components';
 import { Mode } from 'types';
 import { useMode } from 'context/state';
 import { PageHistory, Aside, Feedback } from 'components/Shell';
 import { collectHeadings } from 'utils/collectHeadings';
+import readingTimeFunc from 'reading-time';
 
 type Props = {
   children: ReactElement[];
@@ -22,16 +23,22 @@ export const Document = ({
   children,
   title,
   description,
-  readingTime,
   mode,
   showAside = true,
   showReadingTime = true
 }: Props) => {
   const { mode: currentMode } = useMode();
   const [asideItems, setAsideItems] = useState<AsideItem[]>([]);
+  const contentDivRef = useRef<HTMLDivElement | null>(null);
+  const [time, setReadTime] = useState('');
 
   useEffect(() => {
     setAsideItems(collectHeadings(children, currentMode));
+    if (contentDivRef.current) {
+      const htmlString: string = contentDivRef.current.innerHTML || '';
+      const content = extractTextFromHTML(htmlString);
+      setReadTime(readingTimeFunc(content, { wordsPerMinute: 149 }).text);
+    }
   }, [children, currentMode]);
 
   // A variable that is only true if the current mode matches the mode of the document (if specified).
@@ -44,7 +51,7 @@ export const Document = ({
           <Title
             title={title}
             description={description}
-            readingTime={showReadingTime ? readingTime : undefined}
+            readingTime={showReadingTime ? time : undefined}
           />
         )}
         {mode ? (
@@ -63,7 +70,9 @@ export const Document = ({
             </ModeSection>
           </>
         ) : (
-          <>{children}</>
+          <div ref={contentDivRef}>
+            <>{children}</>
+          </div>
         )}
         <PageHistory />
         <Divider />
@@ -83,3 +92,9 @@ const getAltMode = (mode: Mode): Mode => {
       return Slice1;
   }
 };
+
+function extractTextFromHTML(htmlString: string) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(htmlString, 'text/html');
+  return doc.body.textContent || '';
+}

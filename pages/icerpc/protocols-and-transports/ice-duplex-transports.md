@@ -21,9 +21,9 @@ The ice protocol is provided for interoperability with applications built with I
 
 ## Duplex transport
 
-The [duplex transport][duplex-transport] page describes an abstraction for a traditional transport like TCP or
-[RFCOMM][rfcomm]. It creates duplex (transport) connections. A duplex connection provides two byte streams: one from the
-client to the server, and another from the server to the client.
+The [duplex transport][duplex-transport] page describes an abstraction for a traditional transport like TCP or [RFCOMM].
+It creates duplex (transport) connections. A duplex connection provides two byte streams: one from the client to the
+server, and another from the server to the client.
 
 An ice connection runs over a duplex connection.
 
@@ -73,13 +73,17 @@ separate ice connection dedicated to these large requests or responses.
 
 The following IceRPC features are not available with the ice protocol:
 
-- [payload continuations](../invocation/outgoing-request#request-payload-and-payload-continuation)
-- [request fields](../invocation/outgoing-request#request-fields) other than Context and Idempotent
-- [response fields](../invocation/incoming-response#response-fields)
-- [status codes](../invocation/incoming-response#status-code) other than `Ok`, `ApplicationError`, `NotFound`,
-`NotImplemented` and `InternalError`
+- [payload continuations][payload-continuations]
+- [request fields][request-fields] other than Context and Idempotent
+- [response fields][response-fields]
+- [status codes][status-code] other than `Ok`, `ApplicationError`, `NotFound`, `NotImplemented` and `InternalError`
+
+[duplex-transport]: ../duplex-transport
+[payload-continuations]: ../invocation/outgoing-request#request-payload-and-payload-continuation
+[request-fields]: ../invocation/outgoing-request#request-fields
+[response-fields]: ../invocation/incoming-response#response-fields
+[status-code]: ../invocation/incoming-response#status-code
 
 [application-layer]: https://en.wikipedia.org/wiki/Application_layer
-[duplex-transport]: ../customization/duplex-transport
-[rfcomm]: https://en.wikipedia.org/wiki/List_of_Bluetooth_protocols#Radio_frequency_communication_(RFCOMM)
+[RFCOMM]: https://en.wikipedia.org/wiki/List_of_Bluetooth_protocols#Radio_frequency_communication_(RFCOMM)
 [head-of-line-blocking]: https://en.wikipedia.org/wiki/Head-of-line_blocking

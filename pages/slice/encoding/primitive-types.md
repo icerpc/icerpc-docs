@@ -7,7 +7,7 @@ description: Learn how primitive types are encoded with Slice.
 ## AnyClass
 
 `AnyClass` is an abstract type. When you encode or decode a parameter or field with type `AnyClass`, you are encoding
-or decoding a concrete class instance using the [class encoding/decoding rules](../constructed-types#class).
+or decoding a concrete class instance using the [class encoding/decoding rules](constructed-types#class).
 {% /slice1 %}
 
 ## Bool
@@ -24,14 +24,13 @@ A `bool` is encoded on a single byte, where 0 means `false` and 1 means `true`. 
 | int32, uint32 | 4                  |
 | int64, uint64 | 8                  |
 
-The encoding of all signed integers uses [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement), the
-standard representation for signed integers.
+The encoding of all signed integers uses [two's complement], the standard representation for signed integers.
 {% /slice2 %}
 
 ## Floating-point types
 
 A `float32` or `float64` is encoded on 4 resp. 8 bytes using the binary32 resp. binary64 formats specified by
-[IEEE 754](https://en.wikipedia.org/wiki/IEEE_754).
+[IEEE 754].
 
 {% slice1 %}
 ## Integral types
@@ -42,14 +41,15 @@ A `float32` or `float64` is encoded on 4 resp. 8 bytes using the binary32 resp. 
 | int16 | 2                  |
 | int32 | 4                  |
 | int64 | 8                  |
+
+The encoding of all signed integers uses [two's complement], the standard representation for signed integers.
 {% /slice1 %}
 
 ## String
 
 {% slice1 %}
-A `string` is encoded using UTF-8 as a [variable-length size](encoding-only-constructs#variable-length-size) followed
-by size UTF-8 bytes. These UTF-8 bytes don't include a [BOM](https://en.wikipedia.org/wiki/Byte_order_mark). For
-example, the string "1 μs" is usually encoded as:
+A `string` is encoded using UTF-8 as a [variable-length size](encoding-only-constructs#variable-length-size) followed by
+size UTF-8 bytes. These UTF-8 bytes don't include a [BOM]. For example, the string "1 μs" is usually encoded as:
 ```
 0x05      # size 5 encoded on 1 byte
 0x31      # '1'
@@ -65,8 +65,8 @@ The size is not necessarily encoded on a single byte. It can be encoded on 5 byt
 {% /slice1 %}
 
 {% slice2 %}
-A `string` is encoded using UTF-8 as a `varuint62` size followed by size UTF-8 bytes. These UTF-8 bytes don't include
-a [BOM](https://en.wikipedia.org/wiki/Byte_order_mark). For example, the string "1 μs" is usually encoded as:
+A `string` is encoded using UTF-8 as a `varuint62` size followed by size UTF-8 bytes. These UTF-8 bytes don't include a
+[BOM]. For example, the string "1 μs" is usually encoded as:
 ```
 0x14      # size 5 encoded on 1 byte
 0x31      # '1'
@@ -124,3 +124,7 @@ The encoding of varuint62 is identical to the encoding of variable-length intege
 {% /callout %}
 
 {% /slice2 %}
+
+[BOM]: https://en.wikipedia.org/wiki/Byte_order_mark
+[IEEE 754]: https://en.wikipedia.org/wiki/IEEE_754
+[two's complement]: https://en.wikipedia.org/wiki/Two%27s_complement

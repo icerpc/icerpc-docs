@@ -11,14 +11,14 @@ import {
 import { sideBarData, baseUrls, flattenSideBarData } from 'data/side-bar-data';
 import { SideBarLink, isLink } from 'types';
 import { useRouter } from 'next/router';
+import { Divider } from 'components/Divider';
+import clsx from 'clsx';
 
 const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;
 };
 
-export const PageHistory = () => {
-  const { asPath, isReady } = useRouter();
-
+const usePageLinks = (asPath: string, isReady: boolean) => {
   const [previous, setPrevious] = useState<SideBarLink | undefined>();
   const [next, setNext] = useState<SideBarLink | undefined>();
 
@@ -46,26 +46,83 @@ export const PageHistory = () => {
     }
   }, [asPath, isReady]);
 
+  return { previous, next };
+};
+
+export const PageHistory = () => {
+  const { asPath, isReady } = useRouter();
+  const { previous, next } = usePageLinks(asPath, isReady);
+
   return (
-    <div className="mx-[-1rem] mb-0 mt-12 flex flex-row justify-between p-0">
-      {previous ? (
-        <Link href={previous.path}>
-          <div className="flex h-10 flex-row items-center gap-2 rounded p-4 text-center text-primary hover:bg-[#E9F1FE] dark:hover:bg-[#E9F1FE]/20">
-            <FontAwesomeIcon icon={faChevronLeft} className="h-3 w-3" />
-            {previous.title}
-          </div>
-        </Link>
-      ) : (
-        <div></div>
+    <>
+      <Divider />
+      <div className="mx-[-1rem] mb-0 flex flex-row items-stretch justify-between p-0">
+        <NavLink
+          direction={Direction.Left}
+          path={previous?.path}
+          title={previous?.title}
+        />
+        <NavLink
+          direction={Direction.Right}
+          path={next?.path}
+          title={next?.title}
+        />
+      </div>
+    </>
+  );
+};
+
+const NavLink = ({
+  direction,
+  path,
+  title
+}: {
+  direction: Direction;
+  path?: string;
+  title?: string;
+}) => {
+  if (!path || !title) return <div className="w-1/2"></div>;
+
+  const isLeft = direction === Direction.Left;
+
+  return (
+    <div
+      className={clsx(
+        'flex w-1/2 items-start rounded-lg',
+        isLeft ? 'justify-start' : 'justify-end'
       )}
-      {next && (
-        <Link href={next.path}>
-          <div className="flex h-10 flex-row items-center gap-2 rounded p-4 text-center text-primary hover:bg-[#E9F1FE] dark:hover:bg-[#E9F1FE]/20">
-            {next.title}
-            <FontAwesomeIcon icon={faChevronRight} className="h-3 w-3" />
+    >
+      <Link
+        href={path}
+        className="group flex flex-col p-3 text-left text-primary "
+      >
+        <div className="flex flex-row items-center">
+          {isLeft && (
+            <FontAwesomeIcon
+              icon={faChevronLeft}
+              className="mr-2 mt-[21px] h-4 w-4"
+            />
+          )}
+          <div className="flex flex-col">
+            <span className="w-full text-sm font-[400] leading-normal text-slate-500 transition-colors group-hover:text-slate-800 dark:text-white/80 dark:group-hover:text-white">
+              {isLeft ? 'Previous' : 'Next'}
+            </span>
+            <span className="grow">{title}</span>
+            <div />
           </div>
-        </Link>
-      )}
+          {!isLeft && (
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              className="ml-2 mt-[21px] h-4 w-4"
+            />
+          )}
+        </div>
+      </Link>
     </div>
   );
 };
+
+enum Direction {
+  Left,
+  Right
+}

@@ -53,7 +53,7 @@ sequenceDiagram
 
 ## GoAway frame
 
-The `GoAway` frame is specified in [Slice][slice]:
+The `GoAway` frame is specified in [Slice]:
 
 ```slice
 enum ControlFrameType : uint8 {
@@ -69,4 +69,4 @@ compact struct GoAwayFrame {
 }
 ```
 
-[slice]: /slice2
+[Slice]: /slice2

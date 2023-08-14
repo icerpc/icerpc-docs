@@ -11,7 +11,6 @@ import {
   faPenToSquare
 } from '@fortawesome/free-regular-svg-icons';
 
-import { AppLink } from 'components/Nodes/AppLink';
 import { baseUrls } from 'data/side-bar-data';
 import { Divider } from 'components/Divider';
 import { useRouter } from 'next/router';
@@ -134,44 +133,40 @@ const resolvePath = (pathName: string): string => {
 };
 
 function useActiveId(itemIds: string[]) {
-  const [activeId, setActiveId] = useState(``);
+  const [activeId, setActiveId] = useState('');
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        let maxRatio = 0;
-        let maxId = '';
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
-            maxRatio = entry.intersectionRatio;
-            maxId = entry.target.id;
-          }
-        });
-        // Only update activeId if maxId is not an empty string
-        if (maxId) {
-          setActiveId(maxId);
-        }
-      },
-      {
-        rootMargin: '50px 0px -70% 0px',
-        threshold: Array.from({ length: 101 }, (_, i) => i / 100) // Fire the callback for every 1% change in visibility.
-      }
-    );
+    const handleScroll = () => {
+      let potentialId = '';
+      let potentialDistance = Infinity;
 
-    itemIds.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) {
-        observer.observe(element);
-      }
-    });
-
-    return () => {
       itemIds.forEach((id) => {
         const element = document.getElementById(id);
         if (element) {
-          observer.unobserve(element);
+          const rect = element.getBoundingClientRect();
+
+          // Bias towards sections entering from the bottom
+          if (rect.top > 0 && rect.top < potentialDistance) {
+            potentialDistance = rect.top;
+            potentialId = id;
+          }
         }
       });
+
+      if (potentialId) {
+        setActiveId(potentialId);
+      }
+    };
+
+    // Attach the event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Initial setup
+    handleScroll();
+
+    // Clean up the listener when the hook is unmounted
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [itemIds]);
 
@@ -186,9 +181,9 @@ type ActionItemProps = {
 const ActionItem = ({ href, children }: ActionItemProps) => {
   return (
     <li className="m-0 my-5 text-sm">
-      <AppLink href={href} className=" dark:text-[rgba(255,255,255,0.8)]">
+      <Link href={href} className=" dark:text-[rgba(255,255,255,0.8)]">
         <div className="flex items-center gap-[0.5em]">{children}</div>
-      </AppLink>
+      </Link>
     </li>
   );
 };

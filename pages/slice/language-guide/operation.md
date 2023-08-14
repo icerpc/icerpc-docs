@@ -9,8 +9,8 @@ An operation consists of:
 
 - an optional operation [attribute](attributes)
 - a name (the name of operation)
-- a list of [parameters][parameters] (the operation parameters)
-- an arrow followed by one or more return [parameters][parameters] (optional)
+- a list of [parameters] (the operation parameters)
+- an arrow followed by one or more return [parameters] (optional)
 {% slice1 %}
 - an [exception specification](#exception-specification) (optional)
 {% /slice1 %}
@@ -74,24 +74,24 @@ op() -> tag(1) string?
 An operation can include an exception specification after its return parameter(s), or after the operation parameters if
 the operation returns nothing.
 
-An exception specification consists of the `throws` keyword followed by an exception name or a list of exceptions names.
+An exception specification consists of the `throws` keyword followed by one or more exception names.
 
 For example:
 
 ```slice
 translate(input: string) -> string throws TranslationException
-create(name: string) -> throws (InvalidArgumentException, IOException)
+create(name: string) throws (InvalidArgumentException, IOException)
 ```
 
-This exception specification allows the operation to return an exception when the implementation of the operation
-fails. When the operation succeeds, it returns the return parameters and the exception specification is not used.
+This exception specification allows operations to return an exception when their implementations fail.
+When an operation succeeds, it returns the return parameters and the exception specification is not used.
 
 The operation can return any of the Slice exceptions after the `throws` or any Slice exception derived from these
 exceptions.
 
 {% callout %}
 Don't read too much in the terms "exception" and "throws". An exception specification is about sending a custom error
-in a response as an alternative to the return value. This custom error maps to an exception thats gets thrown in
+in a response as an alternative to the return value. This custom error maps to an exception that gets thrown in
 programming languages with exceptions (such as C#). In programming languages without exceptions (such as Rust), there is
 no exception or throwing: the exception is just a custom error.
 {% /callout %}
@@ -318,7 +318,7 @@ code for their payloads.
 The `cs::encodeReturn` attribute allows you to change the return type of the mapped method on the generated Service
 interface: this attribute makes this method returns a `ValueTask<PipeReader>` instead of the usual `ValueTask<T>`.
 
-The returned [PipeReader][pipe-reader] represents the encoded return value. You would typically produce this value using
+The returned [PipeReader] represents the encoded return value. You would typically produce this value using
 the Encode*OpName* method provided by the helper [`Response` class](#request-and-response-helper-classes).
 
 There are two somewhat common use-cases for this attribute:
@@ -329,7 +329,9 @@ There are two somewhat common use-cases for this attribute:
     the return value once, cache the encoded bytes and then return over and over these bytes.
 
 [class-slicing]: class-types#slicing
-[compress-feature]: csharp:IceRpc.Features.ICompressFeature
 [parameters]: parameters
-[pipe-reader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
 [tagged-parameters]: parameters#tagged-parameters
+
+[PipeReader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
+
+[compress-feature]: csharp:IceRpc.Features.ICompressFeature

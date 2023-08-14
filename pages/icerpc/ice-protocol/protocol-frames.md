@@ -24,7 +24,7 @@ The ice protocol sends requests, responses and other information over a duplex c
 All ice protocol frames have the same layout: a header followed by a body. The format of the body depends on the frame
 type.
 
-Frames and types from this page are defined using [Slice][slice].
+Frames and types from this page are defined using [Slice].
 
 The header is a compact struct defined as follows:
 
@@ -66,10 +66,10 @@ mode = Slice1
 compact struct RequestData {
     requestId: int32
     id: Identity
-    facet: sequence<string>
+    facet: Sequence<string>
     operation: string
     mode: OperationMode
-    context: dictionary<string, string>
+    context: Dictionary<string, string>
     params: Encapsulation
 }
 
@@ -88,11 +88,10 @@ has no corresponding response.
 The `id` field corresponds to the path of the outgoing request's service address encoded as an
 [Ice identity](/icerpc-for-ice-users/rpc-core/ice-identity).
 
-The `facet` field corresponds to the fragment of the outgoing request's service address encoded as a `sequence<string>`.
+The `facet` field corresponds to the fragment of the outgoing request's service address encoded as a `Sequence<string>`.
 This sequence is empty when the fragment is empty; otherwise, it has a single element with the fragment.
 
-The `mode` encodes the value of the `Idempotent`
-[request field](../invocation/outgoing-request#request-fields). The default is `Normal`.
+The `mode` encodes the value of the `Idempotent` [request field][request-fields]. The default is `Normal`.
 
 The `context` encodes the value of the `Context` request field. The default is an empty dictionary.
 
@@ -128,7 +127,7 @@ enum ReplyStatus { // encoded on 1 byte
 
 The `requestId` field identifies the request associated with this response.
 
-The `replyStatus` encodes the response's [status code](../invocation/incoming-response#status-code) as follows:
+The `replyStatus` encodes the response's [status code][status-code] as follows:
 
 | Status code           | Encoded as reply status    |
 | --------------------- | -------------------------- |
@@ -161,12 +160,12 @@ The format of the `replyPayload` depends on the reply status:
 ### RequestFailedData
 
 `RequestFailedData` is a struct that holds the request's path, fragment and operation. The path is encoded as an
-`Identity` and the fragment is encoded as a `sequence<string>`:
+`Identity` and the fragment is encoded as a `Sequence<string>`:
 
 ```slice
 compact struct RequestFailedData {
     path: Identity
-    facet: sequence<string>
+    facet: Sequence<string>
     operation: string
 }
 ```
@@ -215,4 +214,6 @@ For the same reason, when IceRPC receives an encapsulation, it makes sure the en
 set to 1.1.
 
 [protocol-and-encoding]: https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding
-[slice]: /slice1
+[Slice]: /slice1
+[status-code]: ../invocation/incoming-response#status-code
+[request-fields]: ../invocation/outgoing-request#request-fields

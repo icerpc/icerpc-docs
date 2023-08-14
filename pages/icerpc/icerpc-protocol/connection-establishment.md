@@ -55,7 +55,7 @@ If a client or a server does not want to use this default value, it sends its de
 `Settings` frame. This tells the peer: "I only accept frames with a header up to this size". It is uncommon to change
 this setting.
 
-The `Settings` frame is specified in [Slice][slice]:
+The `Settings` frame is specified in [Slice]:
 
 ```slice
 enum ControlFrameType : uint8 {
@@ -66,7 +66,7 @@ enum ControlFrameType : uint8 {
 compact struct SettingsFrame {
     type: ControlFrameType // value is ControlFrameType::Settings
     bodySize: varuint62    // the number of bytes in body
-    body: dictionary<SettingKey, varuint62>
+    body: Dictionary<SettingKey, varuint62>
 }
 
 unchecked enum SettingKey : varuint62 {
@@ -74,4 +74,4 @@ unchecked enum SettingKey : varuint62 {
 }
 ```
 
-[slice]: /slice2
+[Slice]: /slice2

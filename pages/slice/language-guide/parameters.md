@@ -59,7 +59,7 @@ interface SingingGreeter {
         tag(1) timeOfDay: TimeOfDay?
     ) -> (
         greeting: string
-        tag(1) song: sequence<uint8>?
+        tag(1) song: Sequence<uint8>?
     )
 }
 ```
@@ -78,7 +78,7 @@ Tagged parameters are mapped just like regular parameters. The tag and tag numbe
 {% slice2 %}
 ### Stream parameters in C#
 
-A stream parameter of type `uint8` is mapped to a [`PipeReader`][pipe-reader]. For example:
+A stream parameter of type `uint8` is mapped to a [PipeReader]. For example:
 
 {% side-by-side alignment="top" %}
 ```slice
@@ -101,11 +101,10 @@ public partial interface IImageStore
 
 When you give such a stream to the generated code, the IceRPC + Slice integration will complete this stream when it's
 done reading it. This can occur when there is nothing left to read or when the peer stops reading. The IceRPC + Slice
-integration always passes a null exception to [`Complete`][pipe-reader-complete].
+integration always passes a null exception to [Complete].
 
-When you receive such a stream, you must call [`Complete`][pipe-reader-complete] or
-[`CompleteAsync`][pipe-reader-complete-async] on the stream when you're done reading it. The exception argument is
-ignored: the peer doesn't see a difference between a null and non-null exception.
+When you receive such a stream, you must call [Complete] or [CompleteAsync] on the stream when you're done reading it.
+The exception argument is ignored: the peer doesn't see a difference between a null and non-null exception.
 
 For all other stream element types, a stream parameter is mapped to an `IAsyncEnumerable<T>`, where the async enumerable
 element type is the mapped C# type for the Slice stream element type. For example:
@@ -136,13 +135,12 @@ want more elements. This early cancellation is communicated to your async enumer
 When you receive such a stream, you can read all or only some of the elements, as demonstrated by the client-side of the
 [Stream example application][stream-example]. You don't need to do anything special if you don't want more elements:
 just exit the iteration. You can also inject your own cancellation token into the async enumerable stream provided by
-the generated code, with the [`WithCancellation`][with-cancellation] extension method. This injected cancellation token
-is used to cancel a blocked or slow read operation on the underlying byte stream.
-{% /slice2 %}
+the generated code, with the [WithCancellation] extension method. This injected cancellation token is used to cancel a
+blocked or slow read operation on the underlying byte stream. {% /slice2 %}
 
 [enumerator-cancellation]: https://learn.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.enumeratorcancellationattribute
-[pipe-reader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
-[pipe-reader-complete]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader.complete
-[pipe-reader-complete-async]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader.completeasync
+[PipeReader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
+[Complete]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader.complete
+[CompleteAsync]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader.completeasync
 [stream-example]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/Stream
-[with-cancellation]: https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskasyncenumerableextensions.withcancellation
+[WithCancellation]: https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskasyncenumerableextensions.withcancellation

@@ -10,19 +10,19 @@ The process of accepting/fulfilling a request and returning a response is called
 Dispatches are typically created by server connections: a server connection receives a request, dispatches this request
 and then sends back the response provided by the dispatch.
 
-Nevertheless, since client and server [connections][connections] have the same capabilities, client connections can also
-dispatch requests.
+Nevertheless, since client and server [connections] have the same capabilities, client connections can also dispatch
+requests.
 
 ## The Dispatcher abstraction
 
 When a connection receives a request, it dispatches this request using its configured dispatcher. This dispatcher is an
 abstraction that accepts an incoming request and returns an outgoing response. It's the server-side counterpart to the
-[invoker](../invocation/invocation-pipeline#the-invoker-abstraction) abstraction.
+[invoker] abstraction.
 
 An important difference between Invoker and Dispatcher is you need to implement this Dispatcher abstraction to fulfill
 the requests and produce the responses. The Invoker abstraction is implemented by IceRPC's connections.
 
-In C#, this dispatcher abstraction is the [IDispatcher][dispatcher-interface] interface:
+In C#, this dispatcher abstraction is the [IDispatcher] interface:
 
 ```csharp
 namespace IceRpc;
@@ -43,7 +43,7 @@ await using var server = new Server(new Chatbot());
 
 Configuring a dispatcher for a client connection is optional since a client connection does not have to accept requests.
 
-In C#, you configure the dispatcher of a client connection with the `ConnectionOptions` class. For example:
+In C#, you configure the dispatcher of a client connection with the [ConnectionOptions] class. For example:
 
 ```csharp
 using IceRpc;
@@ -90,5 +90,8 @@ flowchart LR
 ```
 
 [connections]: ../connection/how-to-create-a-connection
+[invoker]: ../invocation/invocation-pipeline#the-invoker-abstraction
 [slice-service]: /slice/language-guide/interface
-[dispatcher-interface]: csharp:IceRpc.IDispatcher
+
+[IDispatcher]: csharp:IceRpc.IDispatcher
+[ConnectionOptions]: csharp:IceRpc.ConnectionOptions

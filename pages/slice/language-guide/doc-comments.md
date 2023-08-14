@@ -47,12 +47,14 @@ interface WidgetFactory {
     /// @param color: The color of the new widget.
     /// @returns: A proxy to the new widget.
     /// @throws WidgetException: Thrown if the factory could not create the widget.
-    createWidget(name: string) -> Widget throws WidgetException
+    /// @throws InvalidNameException: Thrown if the provided name was invalid.
+    createWidget(name: string) -> Widget throws (WidgetException, InvalidNameException)
 
     /// Retrieves the last {@link Widget} created by this factory.
     /// @returns proxy: A proxy to the last widget.
     /// @returns timeStamp: The creation time stamp.
     /// @throws WidgetException: Thrown if the factory has not created any widget yet.
+    /// @throws DerivedFromWidgetException: It's okay to document derived exceptions.
     getLastWidget() -> (proxy: Widget, timeStamp: TimeStamp) throws WidgetException
 }
 ```

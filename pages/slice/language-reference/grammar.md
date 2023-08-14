@@ -94,8 +94,8 @@ custom_keyword:     "custom";
 type_alias_keyword: "typealias";
 
 // Collection Keywords
-sequence_keyword:   "sequence";
-dictionary_keyword: "dictionary";
+sequence_keyword:   "Sequence";
+dictionary_keyword: "Dictionary";
 
 // Primitive type keywords
 bool_keyword:      "bool";
@@ -165,7 +165,7 @@ FileCompilationMode
     ;
 
 Module
-    : Prelude module_keyword RelativelyScopedIdentifier
+    : Prelude module_keyword RelativeIdentifier
     ;
 
 Definition
@@ -268,8 +268,8 @@ TypeRefDefinition
     : Primitive
     | Sequence
     | Dictionary
-    | RelativelyScopedIdentifier
-    | GloballyScopedIdentifier
+    | RelativeIdentifier
+    | GlobalIdentifier
     ;
 
 FileAttribute
@@ -281,7 +281,7 @@ LocalAttribute
     ;
 
 Attribute
-    : RelativelyScopedIdentifier (left_parenthesis CommaList<AttributeArgument> right_parenthesis)?
+    : RelativeIdentifier (left_parenthesis CommaList<AttributeArgument> right_parenthesis)?
     ;
 
 AttributeArgument
@@ -289,11 +289,11 @@ AttributeArgument
     | identifier
     ;
 
-RelativelyScopedIdentifier
+RelativeIdentifier
     : identifier (double_colon identifier)*
     ;
 
-GloballyScopedIdentifier
+GlobalIdentifier
     : (double_colon identifier)+
     ;
 
@@ -484,7 +484,7 @@ ReturnsBlock
     ;
 
 ThrowsBlock
-    : throws_keyword identifier? Section
+    : throws_keyword identifier Section
     ;
 
 SeeBlock

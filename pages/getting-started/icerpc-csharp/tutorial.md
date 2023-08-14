@@ -36,7 +36,7 @@ Let's examine each file:
 
 ### slice/Greeter.slice - the contract
 
-This file holds the contract between our client and server applications, specified with the [Slice][slice] language.
+This file holds the contract between our client and server applications, specified with the [Slice] language.
 It's a simple greeter:
 
 ```slice
@@ -52,8 +52,8 @@ interface Greeter {
 }
 ```
 
-The `cs::namespace` attribute instructs the Slice compiler to map module `VisitorCenter` to C# namespace `MyServer`
-(our project name) instead of the default (`VisitorCenter`).
+The `cs::namespace` attribute instructs the Slice compiler to map module `VisitorCenter` to C# namespace `MyServer` (our
+project name) instead of the default (`VisitorCenter`).
 
 If you use this code as the starting point for a new application, you should update this interface to represent
 something meaningful for your application. For this tutorial, we just keep `Greeter` as-is.
@@ -88,7 +88,7 @@ However, it's more convenient to elide the type name, especially when this type 
 
 ### Program.cs - the dispatch pipeline and the server logic
 
-The main program starts by creating and configuring a [Router][router]:
+The main program starts by creating and configuring a [Router]:
 
 ```csharp
 // Create a simple console logger factory and configure the log level for category IceRpc.
@@ -104,11 +104,10 @@ Router router = new Router()
 ```
 
 This router corresponds to our [dispatch pipeline][dispatch-pipeline]: when we receive a request, we first give it to
-the [Logger][logger] middleware, then to the [Deadline][deadline] middleware and finally we route this request based on
-its path.
+the [Logger] middleware, then to the [Deadline] middleware and finally we route this request based on its path.
 
 The `Map` call means if the request's path is the default path for Slice interface `Greeter`, route it to the `Chatbot`
-instance. Otherwise, the router returns a response with status code [NotFound][not-found].
+instance. Otherwise, the router returns a response with status code [NotFound].
 
 The default path for `Greeter` is `/VisitorCenter.Greeter` (it uses the Slice module name and interface name). The `Map`
 call above is a shortcut for:
@@ -117,7 +116,7 @@ call above is a shortcut for:
 .Map("/VisitorCenter.Greeter", new Chatbot());
 ```
 
-The main program then creates a [Server][server] that directs all incoming requests to `router`:
+The main program then creates a [Server] that directs all incoming requests to `router`:
 
 ```csharp
 await using var server = new Server(
@@ -159,10 +158,9 @@ This file contains a few lines of code that `Programs.cs` uses to wait for Ctrl+
 
 The project file is straightforward. It contains references to 4 separate IceRpc NuGet packages:
 
-- [IceRpc.Slice][icerpc-slice] - the IceRPC + Slice integration package
-- [IceRpc.Slice.Tools][icerpc-slice-tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
-- [IceRpc.Deadline][deadline] and [IceRpc.Logger][logger] - the packages with the two middleware we
-  installed in the dispatch pipeline
+- [IceRpc.Slice] - the IceRPC + Slice integration package
+- [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
+- [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two middleware we installed in the dispatch pipeline
 
 ## Step 3: Create the client
 
@@ -234,9 +232,9 @@ Pipeline pipeline = new Pipeline()
     .Into(connection);
 ```
 
-When we send a request, the request goes through the Logger interceptor and the Deadline interceptor before being sent
-over the connection. The Deadline interceptor we install here ensures the request times out after 10 seconds without a
-response.
+When we send a request, the request goes through the [Logger] interceptor and the [Deadline] interceptor before being
+sent over the connection. The `Deadline` interceptor we install here ensures the request times out after 10 seconds
+without a response.
 
 {% callout %}
 The Deadline interceptor communicates with the Deadline middleware via a request field sent alongside each request;
@@ -278,10 +276,9 @@ that triggers the connection establishment.
 
 The project file is identical to the server's project file, with references to 4 separate IceRpc NuGet packages:
 
-- [IceRpc.Slice][icerpc-slice] - the IceRPC + Slice integration package
-- [IceRpc.Slice.Tools][icerpc-slice-tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
-- [IceRpc.Deadline][deadline] and [IceRpc.Logger][logger] - the packages with the two interceptors we
-  installed in our invocation pipeline
+- [IceRpc.Slice] - the IceRPC + Slice integration package
+- [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
+- [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two interceptors we installed in our invocation pipeline
 
 ## Step 4: Run the application
 
@@ -330,14 +327,17 @@ dbug: IceRpc.Server[12]
       Listener 'icerpc://[::0]?transport=tcp' has stopped accepting connections
 ```
 
-[deadline]: https://www.nuget.org/packages/IceRpc.Deadline
 [dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
-[icerpc-package]: https://www.nuget.org/packages/IceRpc
-[icerpc-slice]: https://www.nuget.org/packages/IceRpc.Slice
-[icerpc-slice-tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
-[logger]: https://www.nuget.org/packages/IceRpc.Logger
-[router]: csharp:IceRpc.Router
-[server]: csharp:IceRpc.Server
 [service-address]: /icerpc/invocation/service-address
-[not-found]: csharp:IceRpc.StatusCode#NotFound
-[slice]: /slice
+[Slice]: /slice
+
+[IceRpc.Slice]: https://www.nuget.org/packages/IceRpc.Slice
+[IceRpc.Slice.Tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
+[IceRpc.Deadline]: https://www.nuget.org/packages/IceRpc.Deadline
+[IceRpc.Logger]: https://www.nuget.org/packages/IceRpc.Logger
+
+[Deadline]: csharp:IceRpc.Deadline
+[Logger]: csharp:IceRpc.Logger
+[Router]: csharp:IceRpc.Router
+[Server]: csharp:IceRpc.Server
+[NotFound]: csharp:IceRpc.StatusCode#NotFound

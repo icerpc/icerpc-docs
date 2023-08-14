@@ -10,9 +10,9 @@ implementing this dispatcher, you are responsible to create this outgoing respon
 
 An outgoing response carries:
 
-- a [status code](../invocation/incoming-response#status-code)
+- a [status code][status-code]
 - an error message, set only when the status code is not `Ok`
-- response [fields](../invocation/incoming-response#response-fields)
+- response [fields]
 - the [payload](#response-payload) of the response
 
 ## Response payload
@@ -22,8 +22,11 @@ connection that dispatched the incoming request) reads and logically copies thes
 there is no more byte to read.
 
 In C#, the payload of an outgoing response is split in a payload and a payload continuation, just like the payload
-of an [outgoing request](../invocation/outgoing-request). This split makes the [Slice encoding][slice-encoding] more
+of an [outgoing request][outgoing-request]. This split makes the [Slice encoding][slice-encoding] more
 convenient and efficient, but is otherwise unnecessary. An outgoing response payload is conceptually one continuous
 stream of bytes.
 
+[fields]: ../invocation/incoming-response#response-fields
 [slice-encoding]: /slice/encoding
+[status-code]: ../invocation/incoming-response#status-code
+[outgoing-request]: ../invocation/outgoing-request

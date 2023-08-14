@@ -9,7 +9,7 @@ A field is defined as `name: Type`, where `name` is the field's name, and `Type`
 
 ```slice
 name: string
-image: sequence<uint8>
+image: Sequence<uint8>
 address: WellKnownType::Uri
 ```
 
@@ -21,7 +21,8 @@ compact struct Point { x: int32, y: int32 }
 ```
 
 The type of a field can be a [primitive type](primitive-types) (such as an int32 or a string), a constructed type (such
-as an [enum](enum-types) or a [struct](struct-types)) or a [proxy type](proxy-types).
+as an [enum](enum-types) or a [struct](struct-types)) or a collection type (a [Sequence](sequence-types) or a
+[Dictionary](dictionary-types)).
 
 ## Optional type
 
@@ -103,15 +104,30 @@ A tag number is a non-negative integer.
 The scope of a tag number is the enclosing type. For example, the following definitions are correct, with several
 `tag(1)` in different scopes:
 
+{% slice1 %}
+mode = Slice1
+
 ```slice
-exception MyException {
-    tag(1) errorCode: int32?
+class Person {
+    tag(1) name: string
 }
 
-exception MyOtherException {
-    tag(1) message: string?
+class Contact {
+    tag(1) name: string
 }
 ```
+{% /slice1 %}
+{% slice2 %}
+```slice
+struct Person {
+    tag(1) name: string
+}
+
+struct Contact {
+    tag(1) name: string
+}
+```
+{% /slice2 %}
 
 ### Tag sorting
 
