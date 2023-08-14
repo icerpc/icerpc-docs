@@ -50,7 +50,7 @@ interface Rectangle : Shape, Fillable {
 }
 ```
 
-## Interface as a user-define type
+## Interface as a user-defined type
 
 An interface definition produces a new user-defined type: a [proxy type](proxy-types).
 

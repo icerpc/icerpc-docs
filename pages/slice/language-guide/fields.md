@@ -20,7 +20,7 @@ same line, as in:
 compact struct Point { x: int32, y: int32 }
 ```
 
-The type of a field can be a [primitive type](primitive-types), a user-defined type or a constructed type.
+The type of a field can be a [primitive type](primitive-types), a user-defined type, or a constructed type.
 
 A constructed type is a built-in generic type with arguments for all type parameters. For example, `Sequence<string>`
 and `Dictionary<int32, string>` are constructed types.
