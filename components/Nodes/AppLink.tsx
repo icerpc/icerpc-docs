@@ -6,7 +6,6 @@ import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { Mode } from 'types';
 import { useMode } from 'context/state';
-import { ArrowUpRightIcon } from '@heroicons/react/20/solid';
 
 type AppLinkProps = {
   href: string;
@@ -97,17 +96,31 @@ export const AppLink = ({
       className={className}
       style={style}
     >
-      <span className="inline-flex items-center">
-        <span className={clsx(isApiLink(originalHref) && apiClasses)}>
-          {isApiLink(originalHref) && (<code>{children}</code>) || children}
+      <span className="relative inline-flex items-center">
+        <span
+          // eslint-disable-next-line tailwindcss/no-custom-classname
+          className={clsx(
+            isApiLink(originalHref) && apiClasses,
+            isExternalLink(originalHref) && 'with-arrow'
+          )}
+        >
+          {isApiLink(originalHref) ? <code>{children}</code> : children}
         </span>
-        {!isApiLink(originalHref) && isExternalLink(originalHref) && (
-          <ArrowUpRightIcon
-            className="mb-1 inline-block h-4 w-4 text-primary hover:text-[rgb(64,131,193)]"
-            aria-hidden="true"
-          />
-        )}
       </span>
+
+      <style jsx>{`
+        .with-arrow::after {
+          content: '';
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          background-image: url('/images/link_arrow.svg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          transform: scale(0.52);
+          transform-origin: 55% 70%;
+        }
+      `}</style>
     </Link>
   );
 };

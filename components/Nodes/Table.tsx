@@ -81,6 +81,11 @@ export const TD = ({ align, children, dividers }: TDProps) => {
         .code-container :global(code) {
           overflow-x: none;
         }
+
+        .code-container :global(a) {
+          overflow-x: none;
+          word-break: break-all;
+        }
       `}</style>
     </td>
   );

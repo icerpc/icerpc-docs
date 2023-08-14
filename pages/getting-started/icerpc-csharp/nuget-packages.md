@@ -3,7 +3,7 @@ title: NuGet packages
 ---
 
 | Name                                    | Description                                           |
-|-----------------------------------------|-------------------------------------------------------|
+| --------------------------------------- | ----------------------------------------------------- |
 | [IceRpc]                                | IceRPC for C# base package                            |
 | [IceRpc.Compressor]                     | Compressor interceptor and middleware for IceRPC      |
 | [IceRpc.Deadline]                       | Deadline interceptor and middleware for IceRPC        |
@@ -31,7 +31,7 @@ title: NuGet packages
 [IceRpc.RequestContext]: https://www.nuget.org/packages/IceRpc.RequestContext
 [IceRpc.Retry]: https://www.nuget.org/packages/IceRpc.Retry
 [IceRpc.Slice]: https://www.nuget.org/packages/IceRpc.Slice
-[IceRpc.SliceTools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
+[IceRpc.Slice.Tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
 [IceRpc.Telemetry]: https://www.nuget.org/packages/IceRpc.Telemetry
 [IceRpc.Templates]: https://www.nuget.org/packages/IceRpc.Templates
 [IceRpc.Transports.Coloc]: https://www.nuget.org/packages/IceRpc.Transports.Coloc
