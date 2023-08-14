@@ -11,7 +11,6 @@ import {
   faPenToSquare
 } from '@fortawesome/free-regular-svg-icons';
 
-import { AppLink } from 'components/Nodes/AppLink';
 import { baseUrls } from 'data/side-bar-data';
 import { Divider } from 'components/Divider';
 import { useRouter } from 'next/router';
@@ -174,7 +173,6 @@ function useActiveId(itemIds: string[]) {
   return activeId;
 }
 
-
 type ActionItemProps = {
   href: string;
   children: ReactNode;
@@ -183,9 +181,9 @@ type ActionItemProps = {
 const ActionItem = ({ href, children }: ActionItemProps) => {
   return (
     <li className="m-0 my-5 text-sm">
-      <AppLink href={href} className=" dark:text-[rgba(255,255,255,0.8)]">
+      <Link href={href} className=" dark:text-[rgba(255,255,255,0.8)]">
         <div className="flex items-center gap-[0.5em]">{children}</div>
-      </AppLink>
+      </Link>
     </li>
   );
 };
