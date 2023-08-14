@@ -110,22 +110,22 @@ mode = Slice1
 
 ```slice
 class Person {
-    tag(1) name: string
+    tag(1) name: string?
 }
 
 class Contact {
-    tag(1) name: string
+    tag(1) name: string?
 }
 ```
 {% /slice1 %}
 {% slice2 %}
 ```slice
 struct Person {
-    tag(1) name: string
+    tag(1) name: string?
 }
 
 struct Contact {
-    tag(1) name: string
+    tag(1) name: string?
 }
 ```
 {% /slice2 %}
