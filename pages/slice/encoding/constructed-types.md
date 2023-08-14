@@ -14,7 +14,7 @@ buffer where all the class instances are encoded).
 The class encoding is described in the [Ice manual][ice-manual-class-encoding] and is not reproduced here, except for
 the encoding of tagged fields (see below).
 
-{% callout type="information" %}
+{% callout type="info" %}
 Slice1 corresponds to version 1.1 of the Ice encoding in the Ice manual.
 {% /callout %}
 
