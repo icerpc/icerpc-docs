@@ -45,13 +45,13 @@ module SampleModule
 
 The following attributes are available in all language mappings:
 
-| Attribute                             | Applies to                                                                 | Description                                                              |
-| ------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| [`allow`](#allow-attribute)           | Interfaces, operations, parameters, constructed types, fields, enumerators | Suppress warnings during compilation.                                    |
-| [`compress`][compress]                | Operations                                                                 | Request compression from the local compressor interceptor or middleware. |
-| [`deprecated`](#deprecated-attribute) | Interfaces, operations, constructed types, fields, enumerators             | Mark as deprecated.                                                      |
-| [`oneway`][oneway]                    | Operations                                                                 | Create one-way requests for this operation (client-side only).           |
-| [`slicedFormat`][sliced-format]       | Operations (Slice1 only)                                                   | Encode the operation arguments or return value in Sliced format.         |
+| Attribute                             | Applies to                                                                  | Description                                                              |
+| ------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [`allow`](#allow-attribute)           | Interfaces, operations, parameters, user-defined types, fields, enumerators | Suppress warnings during compilation.                                    |
+| [`compress`][compress]                | Operations                                                                  | Request compression from the local compressor interceptor or middleware. |
+| [`deprecated`](#deprecated-attribute) | Interfaces, operations, user-defined types, fields, enumerators             | Mark as deprecated.                                                      |
+| [`oneway`][oneway]                    | Operations                                                                  | Create one-way requests for this operation (client-side only).           |
+| [`slicedFormat`][sliced-format]       | Operations (Slice1 only)                                                    | Encode the operation arguments or return value in Sliced format.         |
 
 ### allow attribute
 
@@ -102,8 +102,8 @@ The following attributes are specific to the C# mapping. They all start with the
 | --------------------------------------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | [`cs::attribute`][cs-attribute-attribute]     | Enum types, enumerators, and fields                                                          | Add the specified C# attribute to the mapped C# enum, enum member, or field. |
 | [`cs::encodeReturn`][cs-encoded-return]       | Operations                                                                                   | Return an already encoded return value (server-side only).                   |
-| [`cs::identifier`](#cs::identifier-attribute) | Interfaces, operations, parameters, constructed types, fields, and enumerators               | Change the name of the mapped C# identifier.                                 |
-| [`cs::internal`](#cs::internal-attribute)     | Interfaces and constructed types                                                             | Map to an internal C# type instead of a public C# type.                      |
+| [`cs::identifier`](#cs::identifier-attribute) | Interfaces, operations, parameters, user-defined types, fields, and enumerators              | Change the name of the mapped C# identifier.                                 |
+| [`cs::internal`](#cs::internal-attribute)     | Interfaces and user-defined types                                                            | Map to an internal C# type instead of a public C# type.                      |
 | [`cs::namespace`][cs-namespace]               | Modules                                                                                      | Change the name of the mapped C# namespace.                                  |
 | [`cs::readonly`][cs-readonly]                 | Structs and struct fields                                                                    | Adds `readonly` to the mapped C# struct or field.                            |
 | `cs::type`                                    | [Custom types][custom-type], [sequences][sequence-type], and [dictionaries][dictionary-type] | Specify the mapped C# type.                                                  |

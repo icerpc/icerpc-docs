@@ -5,14 +5,17 @@ description: Learn how to define and use dictionaries in Slice.
 
 ## Associative array
 
-A dictionary is a constructed type that represents an associative array. A dictionary is like a sequence of key-value
-pairs with the following constraints:
+A dictionary is a built-in generic type that represents an associative array. All the keys of this associative array
+have the same Slice type, and all the values have the same Slice type.
+
+A dictionary is like a sequence of key-value pairs with the following constraints:
 
 - each key is unique
 - the type of the key is a string, bool, integral type, enum type, custom type, or a compact struct with key-compatible
   fields
 
-You use a dictionary type inline, without giving it a name, for example as the type for a parameter or field:
+You can construct a dictionary type inline, without giving it a name, for example to specify the type of a parameter or
+field:
 
 ```slice {% addMode=true %}
 module VisitorCenter
@@ -23,7 +26,9 @@ interface Greeter {
 }
 ```
 
-You can use any Slice type for the values of your dictionary. For example:
+In this example, `Dictionary<string, string>` is a constructed type.
+
+You can use any Slice type for the value-type of your dictionary. For example:
 
 {% slice1 %}
 

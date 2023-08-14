@@ -3,9 +3,9 @@ title: Struct types
 description: Learn how to define and use structs in Slice.
 ---
 
-## A named tuple
+## Composite type
 
-A struct is a constructed type that holds a list of [fields](fields). For example:
+A struct is a user-defined type that holds a list of [fields](fields). For example:
 
 {% slice1 %}
 ```slice

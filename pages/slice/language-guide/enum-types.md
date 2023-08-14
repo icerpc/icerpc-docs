@@ -5,8 +5,8 @@ description: Learn how to define enumerations in Slice.
 
 ## Enumeration type
 
-An enumeration type or enum type holds a set of named constants, called enumerators, each with an associated integral
-value. It is similar to enumerations found in languages like C# and C++.
+An enumeration type or enum type is a user-defined type that holds a set of named constants, called enumerators, each
+with an associated integral value. It is similar to enumerations found in languages like C# and C++.
 
 The following example shows how to define an enumeration named `Fruit` with three enumerators: `Apple`, `Pear`, and
 `Orange`.

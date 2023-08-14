@@ -50,9 +50,9 @@ interface Rectangle : Shape, Fillable {
 }
 ```
 
-## Interface as a constructed type
+## Interface as a user-define type
 
-An interface definition produces a new constructed type: a [proxy type](proxy-types).
+An interface definition produces a new user-defined type: a [proxy type](proxy-types).
 
 ## C# mapping {% icerpcSlice=true %}
 

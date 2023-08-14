@@ -1,6 +1,6 @@
 ---
-title: Constructed types
-description: Learn how to encode structs, enums, and other constructed types with Slice.
+title: User-defined types
+description: Learn how to encode structs, enums, and other user-defined types with Slice.
 ---
 
 {% slice1 %}

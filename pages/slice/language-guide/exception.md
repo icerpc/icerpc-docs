@@ -48,7 +48,7 @@ The recommended naming convention is to give an `Exception` suffix to all Slice 
 
 ## Difference with classes
 
-A class is a constructed type, while an exception is not: you cannot use an exception as the type of a field.
+A class is a type, while an exception is not: you cannot use an exception as the type of a field.
 
 An exception is always encoded in the [sliced format][sliced-format] (the `slicedFormat` attribute has no effect on
 the encoding of an exception). This way, when an application receives a derived exception it does not know, it can
