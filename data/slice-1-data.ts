@@ -146,8 +146,8 @@ export const slice1Data: SideBarSourceType[] = [
         path: `${SLICE1_BASE_URL}/encoding/primitive-types`
       },
       {
-        title: 'Constructed types',
-        path: `${SLICE1_BASE_URL}/encoding/constructed-types`
+        title: 'User-defined types',
+        path: `${SLICE1_BASE_URL}/encoding/user-defined-types`
       },
       {
         title: 'Collection types',

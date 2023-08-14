@@ -10,7 +10,7 @@ Classes are not supported with Slice2.
 {% slice1 %}
 ## Super structs
 
-A class is a constructed type that holds a list of fields, just like a [struct](struct-types). Classes also offer
+A class is a user-defined type that holds a list of fields, just like a [struct](struct-types). Classes also offer
 capabilities not offered by structs:
  - extensibility\
    you can extend a class through inheritance and tagged fields
@@ -253,5 +253,4 @@ public partial class RearBumper : CarPart
 
 [format-metadata]: https://doc.zeroc.com/ice/3.7/the-slice-language/slice-metadata-directives#id-.SliceMetadataDirectivesv3.7-format
 [tagged-fields]: fields#tagged-fields
-
 [SliceClass]: csharp:ZeroC.Slice.SliceClass

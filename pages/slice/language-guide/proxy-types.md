@@ -6,7 +6,7 @@ description: Using an interface as a type in Slice.
 ## Using an interface as a type
 
 Each time you define an [interface](interface) in Slice, you define a proxy type named after this interface. This proxy
-type is a constructed type comparable to a struct. An instance of this type is a local object that represents a
+type is a user-defined type comparable to a struct. An instance of this type is a local object that represents a
 (remote) service that implements this interface.
 
 The exact meaning of a proxy depends on the RPC framework you're using. If you're using IceRPC, a proxy is a local

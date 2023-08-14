@@ -58,6 +58,6 @@ When IceRPC + Slice decodes a non-null service address, it processes the `ProxyD
 
 [outgoing request]: /icerpc/invocation/outgoing-request
 [outgoing response]: /icerpc/dispatch/outgoing-response
-[ProxyData]: constructed-types#proxy
+[ProxyData]: user-defined-types#proxy
 [segment]: encoding-only-constructs#segment
 [service address]: /icerpc/invocation/service-address
