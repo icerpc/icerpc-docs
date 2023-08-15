@@ -5,13 +5,17 @@ description: Learn how to write an interceptor and how to install an interceptor
 
 ## Intercepting outgoing requests
 
-An interceptor is an [invoker](invocation-pipeline#the-invoker-abstraction) that holds another invoker ("next") and
-calls `invoke` on this next invoker as part of the implementation of its own `invoke` method. This next invoker can be a
- client connection, a connection cache`, another interceptor, or some other kind of invoker, it doesn't matter.
+An interceptor is a piece of code that intercepts an outgoing request before it's sent over the network connection. The
+same code also intercepts the incoming response returned by the remote service before it reaches the caller.
+
+At a more technical level, an interceptor is an [invoker](invocation-pipeline#the-invoker-abstraction) that holds
+another invoker ("next") and calls `invoke` on this next invoker as part of the implementation of its own `invoke`
+method. This next invoker can be a client connection, a connection cache`, another interceptor, or some other kind of
+invoker; as far as the interceptor is concerned, it's just another invoker.
 
 An interceptor can include logic before calling `invoke` on the next invoker (before the request is sent) and after
 calling `invoke` on the next invoker (after it receives the response). An interceptor can also short-circuit the
-invocation pipeline by throwing an exception or returning a cached response.
+invocation pipeline returning a cached response or throwing an exception.
 
 For example, a simple C# interceptor could look like:
 
