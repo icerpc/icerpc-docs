@@ -254,5 +254,5 @@ export const FeedbackForm = ({ title, options }: Props) => {
 };
 
 function removeTrailingDocs(text: string) {
-  return text.replace(/\s+\|\s+IceRPC Docs$/, '');
+  return text.replace(/\s*\|\s*IceRPC Docs$/, '');
 }
