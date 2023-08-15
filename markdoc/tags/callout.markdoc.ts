@@ -7,7 +7,7 @@ const callout = {
     type: {
       type: String,
       default: 'note',
-      matches: ['critical', 'note']
+      matches: ['danger', 'note']
     }
   }
 };

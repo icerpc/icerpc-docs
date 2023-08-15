@@ -128,7 +128,7 @@ syntax for these links is `<language>:<class-name>`
 ### Callout
 
 The `callout` tag is used to create a callout box. The `callout` tag supports a
-`type` attribute that can be set to either `note` or `critical`. The `type`
+`type` attribute that can be set to either `note` or `danger`. The `type`
 attribute is used to set the color of the callout box and icon used. Any content
 within the `callout` tag will be placed inside the callout box.
 
@@ -136,26 +136,26 @@ within the `callout` tag will be placed inside the callout box.
 
 | Attribute | Description                                                                 |
 | --------- | --------------------------------------------------------------------------- |
-| type      | The type of callout. Can be either `note` or `critical`. Default is `note`. |
+| type      | The type of callout. Can be either `note` or `danger`. Default is `note`. |
 
 #### Examples
 
-##### Info callout
+##### Note callout
 
 ```markdown
 {% callout %}
 
-This is an info callout
+This is an note callout
 
 {% /callout %}
 ```
 
-##### Critical callout
+##### Danger callout
 
 ```markdown
-{% callout type="critical" %}
+{% callout type="danger" %}
 
-This is a critical callout
+This is a danger callout
 
 {% /callout %}
 ```
