@@ -10,20 +10,27 @@ Ice and IceRPC are both RPC frameworks with similar names, but they are quite di
 
 ## Different scopes
 
-Ice is a one-stop solution for building network applications. With Ice, you get an RPC framework and much more.
+Ice is a one-stop solution for building network applications. With Ice, you get an RPC framework and many other
+components to help you build portable, multi-language networked applications.
 
-Ice provides a suite of components to help you build portable, multi-language networked applications, including:
-- RPC
+Ice includes:
+- an RPC framework
+- an IDL and serialization format (Slice)
 - configuration (Ice properties)
 - logging (Ice logger)
 - metrics/telemetry (Ice metrics)
 - server deployment and monitoring (IceGrid)
 - pub/sub (IceStorm, DataStorm)
-- API gateway (Glacier2)
+- application gateway (Glacier2)
 
-On the other hand, IceRPC has a very narrow focus: RPCs (the name gave it away!). When building an application with
-IceRPC, you use IceRPC for your RPCs, and you need to find other solutions for configuration, logging, server
-deployment, pub/sub etc.
+On the other hand, IceRPC has a single focus: RPCs (the name gave it away!). When building an application with IceRPC,
+you use IceRPC for your RPCs, and you need to look outside IceRPC for other functionalities. For example, you could
+select:
+- IceRPC for your RPCs
+- Slice and Protobuf to define your network APIs
+- YAML for configuration
+- Kubernetes for server deployment and monitoring
+- OpenTelemetry for distributed telemetry
 
 ## Different philosophies
 

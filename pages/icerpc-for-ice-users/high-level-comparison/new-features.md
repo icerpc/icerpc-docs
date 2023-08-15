@@ -58,8 +58,8 @@ all.
 
 IceRPC comes with a brand new Slice, with a new syntax, a new serialization format, and even a new file extension.
 
-This new Slice is actually independent from IceRPC: you can naturally use it with IceRPC, but you can also use it
-without an RPC framework. Other RPC frameworks may provide support for this new Slice in the future.
+This new Slice is independent from IceRPC: you can naturally use it with IceRPC, but you can also use it without an RPC
+framework. Other RPC frameworks may provide support for this new Slice in the future.
 
 The Ice compilation model for its Slice files is very much like C++: each Slice file needs to `#include` the Slice files
 with the definitions it depends on. You can use a forward declaration to introduce a type without fully defining it. And
