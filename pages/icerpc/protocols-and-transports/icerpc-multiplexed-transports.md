@@ -11,7 +11,7 @@ connection that uses the icerpc protocol.
 icerpc is an [application layer][application-layer] protocol that transmits RPCs (requests and responses) over a
 multiplexed connection.
 
-{% callout type="information" %}
+{% callout type="note" %}
 We always spell icerpc in lowercase when discussing the icerpc protocol. This avoids confusion with the IceRPC
 framework.
 {% /callout %}

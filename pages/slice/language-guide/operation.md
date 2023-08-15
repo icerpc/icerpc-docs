@@ -301,7 +301,7 @@ public partial interface IGreeterService
 ```
 
 {% slice2 %}
-{% callout type="information" %}
+{% callout type="note" %}
 If your operation has a stream parameter, the encode helper (in _NameProxy_.Request) does not encode the stream
 argument; however, the decode helper (in I*Name*Service.Request) decodes all arguments, including the stream.
 

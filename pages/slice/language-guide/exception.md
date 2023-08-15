@@ -42,7 +42,7 @@ exception DerivedException : BaseException {
 ```
 {% /side-by-side %}
 
-{% callout type="information" %}
+{% callout type="note" %}
 The recommended naming convention is to give an `Exception` suffix to all Slice exceptions.
 {% /callout %}
 

@@ -21,7 +21,7 @@ compact struct PostalAddress {
 }
 ```
 
-{% callout type="information" %}
+{% callout type="note" %}
 All structs must be marked "compact" with Slice1. A compact struct cannot hold any [tagged field][tagged-fields].
 {% /callout %}
 {% /slice1 %}

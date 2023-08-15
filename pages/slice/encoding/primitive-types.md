@@ -81,7 +81,7 @@ The `varuint62` size is not necessarily encoded on a single byte. It can be enco
 ```
 {% /slice2 %}
 
-{% callout type="information" %}
+{% callout type="note" %}
 The size represents the number of UTF-8 bytes in the encoded representation of the string, not the number of characters
 in this string.
 {% /callout %}
@@ -118,7 +118,7 @@ In general, a Slice encoder should encode a value on as few bytes as possible. I
 encode a value on more bytes than required, and a Slice decoder must always decode such a value properly. For example,
 `7` is usually encoded on a single byte but can also be encoded on 2, 4 or 8 bytes.
 
-{% callout type="information" %}
+{% callout type="note" %}
 The encoding of varuint62 is identical to the encoding of variable-length integers in QUIC, except for the byte order
 (QUIC is big-endian, Slice is little-endian).
 {% /callout %}

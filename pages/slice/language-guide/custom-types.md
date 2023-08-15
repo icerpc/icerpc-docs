@@ -80,7 +80,7 @@ public static class BigIntSliceEncoderExtensions
 
 {% /slice1 %}
 
-{% callout type="information" %}
+{% callout type="note" %}
 A more logical name for this custom type would be `Int128`. We picked `BigInt` to make it clear where the Slice
 identifier is used in the classes and methods that encode/decode this custom type.
 {% /callout %}

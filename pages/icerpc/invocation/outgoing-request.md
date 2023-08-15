@@ -87,7 +87,7 @@ IncomingResponse response = await invoker.InvokeAsync(request);
 
 By convention, the features are keyed using interface types, such as `ICompressFeature` in the example above.
 
-{% callout type="information" %}
+{% callout type="note" %}
 Fields are used for communications "over the wire" while features are used for local communications within an invocation
 pipeline. IceRPC provides both request fields (carried by requests) and response fields (carried by responses), but
 only request features: since it's all local, there is no need for response features.

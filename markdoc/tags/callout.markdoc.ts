@@ -6,8 +6,8 @@ const callout = {
   attributes: {
     type: {
       type: String,
-      default: 'info',
-      matches: ['critical', 'info']
+      default: 'note',
+      matches: ['critical', 'note']
     }
   }
 };

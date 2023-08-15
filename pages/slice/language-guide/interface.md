@@ -158,7 +158,7 @@ you to customize the Slice encoding of operation parameters. See
 A `null` service address is equivalent to an icerpc service address with the default path of the associated Slice
 interface.
 
-{% callout type="information" %}
+{% callout type="note" %}
 The default path of a Slice interface is `/` followed by its fully qualified name with `::` replaced by `.`.
 
 For example, the default path of Slice interface `VisitorCenter::Greeter` is `/VisitorCenter.Greeter`.
@@ -246,7 +246,7 @@ public partial interface IWidgetService
 
 {% /side-by-side %}
 
-{% callout type="information" %}
+{% callout type="note" %}
 Even though I*Name*Service is an interface, it's not used as an abstraction: you shouldn't make calls to this interface
 or create decorators for this interface. It's just a model that your service class must implement.
 {% /callout %}

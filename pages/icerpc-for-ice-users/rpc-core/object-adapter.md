@@ -11,7 +11,7 @@ connections and hands out the incoming requests it receives to a dispatcher (an 
 
 Router is an implementation of the dispatcher abstraction and is somewhat comparable to the Active Servant Map.
 
-{% callout type="information" %}
+{% callout type="note" %}
 A router is read-only after the first dispatch, while with Ice, it's common to add new servants to an object adapter
 at runtime. If you need the "add at runtime" behavior with IceRPC, you can create your own custom dispatcher and
 configure your server to use this dispatcher.

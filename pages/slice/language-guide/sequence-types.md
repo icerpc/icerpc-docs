@@ -118,7 +118,7 @@ incoming and outgoing values makes sending sequences more convenient and occasio
 | `ReadOnlyMemory<T>`         | `T[]`                               |
 
 {% slice2 %}
-{% callout type="information" %}
+{% callout type="note" %}
 This mapping also applies to Slice enums whose underlying type is fixed-size.
 {% /callout %}
 {% /slice2 %}

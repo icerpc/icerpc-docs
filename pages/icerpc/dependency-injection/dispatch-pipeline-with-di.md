@@ -99,7 +99,7 @@ public static IDispatcherBuilder UseLogger(this IDispatcherBuilder builder) =>
 We recommend you follow the same pattern when you create your own standard middleware and provide `Use` extension
 methods for both `Router` and `IDispatcherBuilder`.
 
-{% callout type="information" %}
+{% callout type="note" %}
 Calling the DI container at runtime is typically discouraged—it's the service locator anti-pattern. Here, you should
 see the `UseLogger` extension method as infrastructure code exempt from this rule.
 {% /callout %}

@@ -27,7 +27,7 @@ These extra capabilities are not free: the encoding/decoding of a class is much 
 encoding/decoding of a struct, and its binary representation is larger. As a result, you should only select a class over
 a struct when these extra capabilities may be useful for your application.
 
-{% callout type="information" %}
+{% callout type="note" %}
 A class represents data that you transmit over the wire, just like a struct. You can't define operations on a Slice
 class or implement an [interface](interface) with a Slice class.
 {% /callout %}
@@ -122,7 +122,7 @@ class Node { string: name, next: Node? }
 
 ## Slicing
 
-{% callout type="information" %}
+{% callout type="note" %}
 This is an opt-in feature. It's not enabled by default.
 {% /callout %}
 
@@ -167,7 +167,7 @@ interface CarPartShop {
 }
 ```
 
-{% callout type="information" %}
+{% callout type="note" %}
 The corresponding Slice attribute (metadata) in Ice is [`format:sliced`][format-metadata]. Unlike `slicedFormat`,
 `format:sliced` always applies to both arguments and return value.
 {% /callout %}

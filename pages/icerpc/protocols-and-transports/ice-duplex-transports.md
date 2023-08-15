@@ -11,7 +11,7 @@ connection that uses the ice protocol.
 ice is an [application layer][application-layer] protocol that transmits RPCs (requests and responses) over a duplex
 connection.
 
-{% callout type="information" %}
+{% callout type="note" %}
 We always spell ice in lowercase when discussing the ice protocol. This avoids confusion with the
 [Ice](https://github.com/zeroc-ice/ice) platform.
 

@@ -83,7 +83,7 @@ For example, a request for operation "op" at path "/foo" with an empty payload a
 0x00                : field dictionary size (0) on 1 byte (no fields)
 ```
 
-{% callout type="information" %}
+{% callout type="note" %}
 With Slice's varuint62 encoding, the first 2 bits of the first byte encode the number of bytes used to encode the
 value. As a result, for a varuint62 encoded on a single byte, the encoded value is `source * 4`, and for a varuint62
 encoded on 2 bytes, the encoded value is `source * 4 + 1`.

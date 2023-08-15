@@ -14,7 +14,7 @@ buffer where all the class instances are encoded).
 The class encoding is described in the [Ice manual][ice-manual-class-encoding] and is not reproduced here, except for
 the encoding of tagged fields (see below).
 
-{% callout type="info" %}
+{% callout type="note" %}
 Slice1 corresponds to version 1.1 of the Ice encoding in the Ice manual.
 {% /callout %}
 
@@ -23,7 +23,7 @@ Ice. You can switch to the sliced format with the [`slicedFormat`][sliced-format
 
 During decoding, Slice considers all classes that use the sliced format to be fully [preserved][slice-preservation].
 
-{% callout type="information" %}
+{% callout type="note" %}
 There is no attribute to turn off class slice preservation during decoding: it's always on.
 {% /callout %}
 
@@ -176,7 +176,7 @@ A proxy is encoded as a URI [string]. This URI can be absolute or relative.
 {% slice1 %}
 A compact struct is encoded as its fields, in definition order, without any framing.
 
-{% callout type="information" %}
+{% callout type="note" %}
 The name of the struct and the name of the struct's fields are not encoded at all. As a result, changing these names
 does not break the "on-the-wire" contract.
 {% /callout %}
@@ -232,7 +232,7 @@ end marker.
 The encoding of a regular (non-compact) struct always includes the tag end marker byte, even when it has no tagged
 field. This is why a compact struct is slightly more compact than a regular struct.
 
-{% callout type="information" %}
+{% callout type="note" %}
 The name of the struct and the name of the struct's fields are not encoded at all. As a result, changing these names
 does not break the "on-the-wire" contract.
 {% /callout %}

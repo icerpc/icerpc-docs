@@ -105,7 +105,7 @@ middleware to execute. With the example above, the logger middleware executes fi
 compressor middleware, and then finally the compressor middleware calls `DispatchAsync` on the `Chatbot` service mapped
 at `/greeter`.
 
-{% callout type="information" %}
+{% callout type="note" %}
 The router always dispatches incoming requests to its registered middleware, even when it ends up returning a response
 with status code `NotFound`.
 {% /callout %}

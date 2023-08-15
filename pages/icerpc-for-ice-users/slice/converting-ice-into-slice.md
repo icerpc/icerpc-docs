@@ -17,7 +17,7 @@ All the .slice files used for interop with Ice must use the Slice1 compilation m
 mode = Slice1
 ```
 
-{% callout type="information" %}
+{% callout type="note" %}
 Ice will soon provide an `ice2slice` tool to automate this conversion.
 {% /callout %}
 
@@ -285,7 +285,7 @@ interface Sample {
 
 {% /side-by-side %}
 
-{% callout type="information" %}
+{% callout type="note" %}
 The names of the parameters and return type elements are not encoded; as a result, you can change them freely without
 breaking on-the-wire compatibility.
 {% /callout %}

@@ -5,7 +5,7 @@ import { clsx } from 'clsx';
 
 type Props = {
   children: ReactNode;
-  type: 'critical' | 'info';
+  type: 'critical' | 'note';
 };
 
 export const Callout = ({ children, type }: Props) => {

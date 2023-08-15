@@ -74,6 +74,6 @@ The following table lists all the keywords of the Slice language:
 
 {% /table %}
 
-{% callout type="information" %}
+{% callout type="note" %}
 Note that keywords are allowed as identifiers within preprocessor directives and attributes since they have no special meaning within those contexts.
 {% /callout %}

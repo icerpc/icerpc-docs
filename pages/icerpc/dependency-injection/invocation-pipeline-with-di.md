@@ -9,7 +9,7 @@ Unlike the [dispatch pipeline](dispatch-pipeline-with-di), the invocation pipeli
 without a DI container. That's because there is no natural DI scope for an invocation: if an invocation executes within
 a DI scope, this scope comes from another enclosing activity, such as a dispatch that makes this invocation.
 
-{% callout type="information" %}
+{% callout type="note" %}
 IceRPC for C# does not provide any special support for invocations within a DI scope. In particular
 [IMiddleware](dispatch-pipeline-with-di#middleware-with-injected-services) has no interceptor counterpart.
 {% /callout %}
@@ -81,7 +81,7 @@ public static IInvokerBuilder UseLogger(this IInvokerBuilder builder) =>
 We recommend you follow the same pattern when you create your own interceptor and provide `Use` extension methods
 for both `Pipeline` and `IInvokerBuilder`.
 
-{% callout type="information" %}
+{% callout type="note" %}
 Calling the DI container at runtime is typically discouraged—it's the service locator anti-pattern. Here, you should
 see the `UseLogger` extension method as infrastructure code exempt from this rule.
 {% /callout %}

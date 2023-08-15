@@ -52,7 +52,7 @@ sequenceDiagram
     Server-->>Client: Notification that server shut down writes on<br/>underlying duplex connection (FIN with TCP)
 ```
 
-{% callout type="information" %}
+{% callout type="note" %}
 It's the client—and never the server—that is the first to shut down writes on its side of the underlying duplex
 connection. When using the TCP transport, this ensures sockets won't be left in the TIME_WAIT state on the server.
 {% /callout %}
