@@ -60,7 +60,7 @@ await using var connection = new ClientConnection(clientConnectionOptions);
 
 ## Dispatch processing
 
-The dispatcher abstraction offers a great deal of flexibility. A [Slice service] is a dispatcher, so it's trivial to
+The dispatcher abstraction offers a great deal of flexibility. A [Slice service] is a dispatcher, so it's easy to
 configure a server to dispatch all the requests it receives to the same Slice service.
 
 A dispatcher implementation can dispatch to another dispatcher, which itself dispatches to another dispatcher, and so
