@@ -47,7 +47,7 @@ With the `.ice` Slice syntax, you can't make this distinction: a proxy or class 
 The main interop limitation for clients is IceRPC does not support Ice routers. As a result, an IceRPC client cannot
 call an Ice server through a Glacier2 router.
 
-The main interop limitations for servers is [batch requests][batch-request] and [IceGrid] support.
+The main interop limitations for servers is [batch requests] and [IceGrid] support.
 
 If your clients send batches requests, you can't reimplement the corresponding Ice server with IceRPC since IceRPC does
 not accept batch requests.
@@ -56,5 +56,5 @@ If your Ice server is managed (especially started) by IceGrid, you can't reimple
 generates Ice configuration files for the Ice servers it starts and IceRPC provides no support for Ice configuration
 files.
 
-[batch-request]: https://doc.zeroc.com/ice/3.7/client-side-features/batched-invocations
+[batch requests]: https://doc.zeroc.com/ice/3.7/client-side-features/batched-invocations
 [IceGrid]: https://doc.zeroc.com/ice/3.7/ice-services/icegrid
