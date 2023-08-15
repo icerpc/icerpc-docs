@@ -15,7 +15,7 @@ components to help you build portable, multi-language networked applications.
 
 Ice includes:
 - an RPC framework
-- an IDL and serialization format (Slice)
+- IDL and serialization format (Slice)
 - configuration (Ice properties)
 - logging (Ice logger)
 - metrics/telemetry (Ice metrics)
