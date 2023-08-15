@@ -1,6 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import clsx from 'clsx';
 
 import {
@@ -17,6 +18,14 @@ enum FeedbackType {
 export const Feedback = () => {
   // Undefined means the user has not yet clicked a feedback button
   const [feedbackType, setFeedbackType] = useState<FeedbackType>();
+  const { asPath, isReady } = useRouter();
+
+  // Reset feedback type when the route changes
+  useEffect(() => {
+    if (isReady) {
+      setFeedbackType(undefined);
+    }
+  }, [asPath, isReady]);
 
   switch (feedbackType) {
     case FeedbackType.Negative:

@@ -101,7 +101,7 @@ const sendFeedback = async (feedback: FeedbackData) => {
 };
 
 export const FeedbackForm = ({ title, options }: Props) => {
-  const { pathname } = useRouter();
+  const { asPath, isReady } = useRouter();
   const { mode } = useMode();
   const { platform } = usePlatform();
   const pageTitle = window.document.title;
@@ -111,12 +111,19 @@ export const FeedbackForm = ({ title, options }: Props) => {
   const [comment, setComment] = useState<string>();
   const [opacity, setOpacity] = useState('opacity-0');
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+  const [pathname, setPathname] = useState<string>('');
 
   useEffect(() => {
     setTimeout(() => {
       setOpacity('opacity-100');
     }, 100);
   }, []);
+
+  useEffect(() => {
+    if (isReady) {
+      setPathname(asPath);
+    }
+  }, [isReady, asPath]);
 
   return feedbackSubmitted ? (
     <h3 className="mb-10 mt-5">Thanks for the feedback!</h3>
