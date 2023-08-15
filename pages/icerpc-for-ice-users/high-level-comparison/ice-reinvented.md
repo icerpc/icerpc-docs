@@ -27,7 +27,7 @@ On the other hand, IceRPC has a single focus: RPCs (the name gave it away!). Whe
 you use IceRPC for your RPCs, and you need to look outside IceRPC for other functionalities. For example, you could
 select:
 - IceRPC for your RPCs
-- Slice and Protobuf to define your network APIs
+- Slice or Protobuf to define your network APIs
 - YAML for configuration
 - Kubernetes for server deployment and monitoring
 - OpenTelemetry for distributed telemetry
