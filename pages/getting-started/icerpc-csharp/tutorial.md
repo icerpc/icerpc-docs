@@ -14,15 +14,17 @@ The client and server are console applications that use plain .NET (no ASP.NET, 
 
 Let's jump right in:
 
-## Step 1: Install the dotnet-new templates for IceRPC
+{% step title="Install the dotnet-new templates for IceRPC" %}
+
+We use templates `IceRPC Client` and `IceRPC Server` for this tutorial.
 
 ```shell
 dotnet new install IceRpc.Templates
 ```
 
-We use templates `IceRPC Client` and `IceRPC Server` for this tutorial.
+{% /step %}
 
-## Step 2: Create the server
+{% step title="Create the server" %}
 
 ```shell
 dotnet new icerpc-server -o MyServer
@@ -162,7 +164,9 @@ The project file is straightforward. It contains references to 4 separate IceRpc
 - [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
 - [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two middleware we installed in the dispatch pipeline
 
-## Step 3: Create the client
+{% /step %}
+
+{% step title="Create the client" %}
 
 ```shell
 dotnet new icerpc-client -o MyClient
@@ -280,7 +284,9 @@ The project file is identical to the server's project file, with references to 4
 - [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
 - [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two interceptors we installed in our invocation pipeline
 
-## Step 4: Run the application
+{% /step %}
+
+{% step title="Run the application" %}
 
 ### Start the server
 
@@ -327,15 +333,15 @@ dbug: IceRpc.Server[12]
       Listener 'icerpc://[::0]?transport=tcp' has stopped accepting connections
 ```
 
+{% /step %}
+
 [dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
 [service-address]: /icerpc/invocation/service-address
 [Slice]: /slice
-
 [IceRpc.Slice]: https://www.nuget.org/packages/IceRpc.Slice
 [IceRpc.Slice.Tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
 [IceRpc.Deadline]: https://www.nuget.org/packages/IceRpc.Deadline
 [IceRpc.Logger]: https://www.nuget.org/packages/IceRpc.Logger
-
 [Deadline]: csharp:IceRpc.Deadline
 [Logger]: csharp:IceRpc.Logger
 [Router]: csharp:IceRpc.Router

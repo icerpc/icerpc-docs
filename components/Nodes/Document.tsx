@@ -71,6 +71,7 @@ export const Document = ({
             </ModeSection>
           </>
         ) : (
+          // eslint-disable-next-line tailwindcss/no-custom-classname
           <div ref={contentDivRef} className="step-container">
             <>{children}</>
           </div>

@@ -13,11 +13,14 @@ export const step = {
     const attributes = node.transformAttributes(config);
     const children = node.transformChildren(config);
     const { title } = attributes;
-    return new Tag(`${`${this.render}`}`, {
-      title,
-      level: 2,
-      id: title.replace(/[?]/g, '').replace(/\s+/g, '-').toLowerCase(),
+    return new Tag(
+      `${`${this.render}`}`,
+      {
+        title,
+        level: 2,
+        id: title.replace(/[?]/g, '').replace(/\s+/g, '-').toLowerCase()
+      },
       children
-    });
+    );
   }
 };
