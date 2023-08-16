@@ -1,5 +1,5 @@
 ---
-title: Add to an existing project
+title: Add IceRPC using using NuGet
 ---
 
 IceRPC for C# is distributed as [NuGet] packages. To add IceRPC to an existing
@@ -31,7 +31,7 @@ depends on the `IceRpc.Slice` package. You need `IceRpc.Slice.Tools` only during
 development.
 {% /callout %}
 
-## Adding Optional Packages
+## Adding optional packages
 
 Even though all the other packages are optional, it's likely you will want to
 install one or more of them. For example, you can add the package
