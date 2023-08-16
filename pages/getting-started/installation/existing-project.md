@@ -8,7 +8,7 @@ project.
 
 ## Installing the Base Package
 
-You always need the base package, [IceRpc]. To install it, use the following
+You always need the base package: [IceRpc]. To install it, use the following
 command:
 
 ```shell {% showTitle=false %}
@@ -34,7 +34,7 @@ development.
 ## Adding Optional Packages
 
 Even though all the other packages are optional, it's likely you will want to
-install one or more of them. For example, add the package
+install one or more of them. For example, you can add the package
 [IceRpc.Transports.Quic] to use the QUIC transport with the following command:
 
 ```shell {% showTitle=false %}

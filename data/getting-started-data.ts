@@ -15,7 +15,7 @@ export const gettingStartedData: SideBarSourceType[] = [
         path: GETTING_STARTED_BASE_URL + '/installation/template/'
       },
       {
-        title: 'Add to an existing project',
+        title: 'Using NuGet',
         path: GETTING_STARTED_BASE_URL + '/installation/existing-project/'
       },
       {

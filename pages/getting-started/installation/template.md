@@ -2,14 +2,11 @@
 title: Installing via .NET templates
 ---
 
-The recommended way to install IceRPC is via the .NET templates. The templates
-are available on NuGet.org and can be installed using the `dotnet new` command.
-
-## Installing the templates
+The recommended way to install IceRPC is via .NET templates. These templates
+are available on NuGet.org and can be installed using the `dotnet new` command:
 
 ```shell {% showTitle=false %}
 dotnet new install IceRpc.Templates
-```
 
 ## Available templates
 
@@ -19,11 +16,6 @@ dotnet new install IceRpc.Templates
 | `icerpc-server`    | A project template for creating an IceRPC server console application.                                |
 | `icerpc-di-client` | A project template for creating an IceRPC client console application using Microsoft's DI container. |
 | `icerpc-di-server` | A project template for creating an IceRPC server console application using Microsoft's DI container. |
-
-## Creating a new project
-
-The `icerpc-client` and `icerpc-server` create a simple console application that
-uses IceRPC and is the recommended starting point for your own project.
 
 ### Create a command line server application:
 
