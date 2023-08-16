@@ -20,9 +20,12 @@ export function collectHeadings(
     return (
       (x as Heading).level !== undefined &&
       (x as Heading).id !== undefined &&
-      (x as Heading).children !== undefined
+      (x as Heading).children !== undefined &&
+      typeof (x as Heading).children == 'string'
     );
   };
+
+  // Check if a given node is a step
 
   // Filter out any nodes that don't match the mode, flatten the nodes and then map them to an array of AsideItem
   // objects
@@ -43,9 +46,24 @@ export function collectHeadings(
     if (isHeading(node.props)) {
       const { id, children, level } = node.props;
       return { id, title: children, level };
+    } else if (node.props?.title && node.props?.level && node.props?.id) {
+      return {
+        id: node.props.id,
+        title: node.props.title,
+        level: node.props.level
+      };
+    } else {
+      return null;
     }
-    return null;
   };
+
+  console.log(
+    React.Children.toArray(children)
+      .map((c) => c as ReactElement)
+      .filter((c) => filterNodesByMode(c, mode))
+      .flatMap(flattenNodes)
+      .map(mapNodesToHeadings)
+  );
 
   return React.Children.toArray(children)
     .map((c) => c as ReactElement)

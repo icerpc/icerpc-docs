@@ -17,6 +17,7 @@ type Props = {
   mode?: Mode;
   showAside?: boolean;
   showReadingTime?: boolean;
+  headings: any[];
 };
 
 export const Document = ({
@@ -70,7 +71,7 @@ export const Document = ({
             </ModeSection>
           </>
         ) : (
-          <div ref={contentDivRef}>
+          <div ref={contentDivRef} className="step-container">
             <>{children}</>
           </div>
         )}
@@ -79,6 +80,11 @@ export const Document = ({
         <Feedback />
       </article>
       {showAside && <Aside asideItems={asideItems} />}
+      <style jsx>{`
+        .step-container {
+          counter-reset: step-counter;
+        }
+      `}</style>
     </div>
   );
 };

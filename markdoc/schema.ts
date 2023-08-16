@@ -22,6 +22,7 @@ import { IcerpcSlice } from 'components';
 import { Examples } from 'components/Tags/Examples';
 import { HomeTitle } from 'components/Tags/HomeTitle';
 import { Explore } from 'components/Tags/Explore';
+import { Step } from 'components/Tags/Step';
 
 import * as nodes from './nodes';
 import * as tags from './tags';
@@ -55,6 +56,7 @@ export const components = {
   List,
   ModeSection,
   SideBySide,
+  Step,
   Table,
   TD,
   TH,
