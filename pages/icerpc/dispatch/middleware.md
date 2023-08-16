@@ -1,17 +1,22 @@
 ---
 title: Middleware
-description: Learn how to write a middleware.
+description: Understand how to install and write a middleware.
 ---
 
 ## Intercepting incoming requests
 
-A middleware is a [dispatcher](dispatch-pipeline#the-dispatcher-abstraction) that holds another dispatcher ("next")
-and calls `dispatch` on this next dispatcher as part of the implementation of its own `dispatch` method. The next
-dispatcher can be another middleware, a service, a router, or some other kind of dispatcher, it doesn't matter.
+A middleware is a piece of code that intercepts an incoming request before this request reaches the target service. The
+same code also intercepts the outgoing response provided by the service before it's sent back to the caller.
+
+At a more technical level, a middleware is a [dispatcher](dispatch-pipeline#the-dispatcher-abstraction) that holds
+another dispatcher ("next") and calls `dispatch` on this next dispatcher as part of the implementation of its own
+`dispatch` method. The next dispatcher can be another middleware, a service, a router, or some other kind of dispatcher;
+as far as the middleware is concerned, it's just another dispatcher.
 
 A middleware can include logic before calling `dispatch` on the next dispatcher (before the request is processed) and
 after calling `dispatch` on the next dispatcher (after it receives the response). A middleware can also short-circuit
-the dispatch pipeline by throwing an exception or returning a cached response.
+the dispatch pipeline by returning a cached response or by returning an error (a response with a status code other
+than `Ok`).
 
 For example, a simple C# middleware could look like:
 
