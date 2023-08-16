@@ -8,12 +8,28 @@ export const gettingStartedData: SideBarSourceType[] = [
     path: `${GETTING_STARTED_BASE_URL}/`
   },
   {
+    title: 'Installation',
+    links: [
+      {
+        title: 'Installing via .NET templates',
+        path: GETTING_STARTED_BASE_URL + '/installation/template/'
+      },
+      {
+        title: 'Add to an existing project',
+        path: GETTING_STARTED_BASE_URL + '/installation/existing-project/'
+      },
+      {
+        title: 'NuGet packages',
+        path: GETTING_STARTED_BASE_URL + '/installation/nuget-packages/'
+      }
+    ]
+  },
+  {
     title: 'Key features',
     links: [
       {
         title: 'A modular RPC framework built for QUIC',
-        path:
-          GETTING_STARTED_BASE_URL + '/key-features/modular-rpc-for-quic/'
+        path: GETTING_STARTED_BASE_URL + '/key-features/modular-rpc-for-quic/'
       },
       {
         title: 'Slice - a better IDL',
