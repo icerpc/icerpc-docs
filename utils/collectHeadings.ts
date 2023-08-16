@@ -57,14 +57,6 @@ export function collectHeadings(
     }
   };
 
-  console.log(
-    React.Children.toArray(children)
-      .map((c) => c as ReactElement)
-      .filter((c) => filterNodesByMode(c, mode))
-      .flatMap(flattenNodes)
-      .map(mapNodesToHeadings)
-  );
-
   return React.Children.toArray(children)
     .map((c) => c as ReactElement)
     .filter((c) => filterNodesByMode(c, mode))
