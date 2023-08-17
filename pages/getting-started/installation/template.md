@@ -3,7 +3,7 @@ title: Using the IceRPC .NET Project Templates
 ---
 
 The easiest way to create a new project configured for IceRPC is by using a .NET
-project template. You can install the IceRPC project templates using the
+project template. You can install the IceRPC project templates with the
 following `dotnet new` command:
 
 ```shell {% showTitle=false %}
