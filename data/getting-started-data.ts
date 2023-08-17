@@ -25,6 +25,25 @@ export const gettingStartedData: SideBarSourceType[] = [
     ]
   },
   {
+    title: 'Using IceRPC',
+    links: [
+      {
+        title: 'Quickstart',
+        path: GETTING_STARTED_BASE_URL + '/using-icerpc/quickstart/'
+      },
+      {
+        title: 'Server project structure',
+        path:
+          GETTING_STARTED_BASE_URL + '/using-icerpc/server-project-structure/'
+      },
+      {
+        title: 'Client project structure',
+        path:
+          GETTING_STARTED_BASE_URL + '/using-icerpc/client-project-structure/'
+      }
+    ]
+  },
+  {
     title: 'Key features',
     links: [
       {
@@ -34,23 +53,6 @@ export const gettingStartedData: SideBarSourceType[] = [
       {
         title: 'Slice - a better IDL',
         path: GETTING_STARTED_BASE_URL + '/key-features/slice-better-idl/'
-      }
-    ]
-  },
-  {
-    title: 'Getting started with IceRPC for C#',
-    links: [
-      {
-        title: 'Tutorial: Writing your first IceRPC application in C#',
-        path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/tutorial/'
-      },
-      {
-        title: 'How to add IceRPC to an existing C# project?',
-        path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/how-to/'
-      },
-      {
-        title: 'NuGet packages',
-        path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/nuget-packages/'
       }
     ]
   }
