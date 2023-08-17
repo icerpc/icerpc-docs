@@ -24,7 +24,7 @@ The Slice compiler included in `IceRpc.Slice.Tools` generates C# code that depen
 
 ## IceRPC only
 
-If you plan on using IceRPC with JSON, Protobuf and some other serialization format, add the [IceRpc] package to your
+If you plan on using IceRPC with JSON, Protobuf, or some other serialization format, add the [IceRpc] package to your
 project with the following command:
 
 ```shell {% showTitle=false %}
