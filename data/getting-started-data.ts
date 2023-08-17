@@ -15,7 +15,7 @@ export const gettingStartedData: SideBarSourceType[] = [
         path: GETTING_STARTED_BASE_URL + '/installation/template/'
       },
       {
-        title: 'Add IceRPC using using NuGet',
+        title: 'Adding IceRPC to an existing project',
         path: GETTING_STARTED_BASE_URL + '/installation/existing-project/'
       },
       {

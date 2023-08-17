@@ -2,16 +2,13 @@
 title: Use the IceRPC .NET Project Templates
 ---
 
-If you are starting a new project the recommended way to install IceRPC is via
-.NET templates. These templates are available on NuGet.org and can be installed
-using the `dotnet new` command:
+The easiest way to create a new project configured for IceRPC is by using a .NET
+project template. You can install the IceRPC project templates using the
+following `dotnet new` command:
 
 ```shell {% showTitle=false %}
 dotnet new install IceRpc.Templates
 ```
-
-If you are adding IceRPC to an existing project, see the
-[Add IceRPC using using NuGet](./existing-project) page.
 
 ## Available templates
 
@@ -26,18 +23,12 @@ If you are adding IceRPC to an existing project, see the
 
 ```shell {% showTitle=false %}
 dotnet new icerpc-server -o MyServer
-cd MyServer
-dotnet build
-dotnet run
 ```
 
 ### Create a command line client application:
 
 ```shell {% showTitle=false %}
 dotnet new icerpc-client -o MyClient
-cd MyClient
-dotnet build
-dotnet run
 ```
 
 For additional information on the templates, see

@@ -1,5 +1,5 @@
 ---
-title: Add IceRPC using using NuGet
+title: Adding IceRPC to an existing project
 ---
 
 IceRPC for C# is distributed as [NuGet] packages. To add IceRPC to an existing
@@ -8,7 +8,8 @@ project.
 
 ## Installing the Base Package
 
-You always need the base package: [IceRpc]. To install it, use the following
+If you plan on using IceRPC without Slice you need to install the
+base package: [IceRpc]. To install it, use the following
 command:
 
 ```shell {% showTitle=false %}
@@ -17,13 +18,16 @@ dotnet add package IceRpc
 
 ## Using Slice with IceRPC
 
-If you plan on using [Slice], add the [IceRpc.Slice] and [IceRpc.Slice.Tools]
-packages with the following commands:
+If you plan on using [Slice], install the [IceRpc.Slice] and
+[IceRpc.Slice.Tools] packages with the following commands:
 
 ```shell {% showTitle=false %}
 dotnet add package IceRpc.Slice
 dotnet add package IceRpc.Slice.Tools
 ```
+
+[IceRpc.Slice] will automatically install the [IceRpc] package as a
+dependency.
 
 {% callout %}
 The Slice compiler included in `IceRpc.Slice.Tools` generates C# code that
