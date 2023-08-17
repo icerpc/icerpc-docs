@@ -244,7 +244,7 @@ function createListItem(
               ? noLeftPadding
                 ? 'font-medium text-primary dark:text-white'
                 : 'ml-[-3px] border-l-[1.5px] border-primary pl-[13.5px] font-medium text-primary dark:border-white/80 dark:text-white'
-              : 'hover:text-zinc-900 dark:hover:text-white'
+              : 'mr-1 hover:text-zinc-900 dark:hover:text-white'
           )}
           onClick={onClick}
         >
