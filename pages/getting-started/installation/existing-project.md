@@ -2,43 +2,39 @@
 title: Adding IceRPC to an existing project
 ---
 
-IceRPC for C# is distributed as [NuGet] packages. To add IceRPC to an existing
-C# project, just add one or more [IceRpc NuGet packages][full-list] to this
-project.
+IceRPC for C# is distributed as [NuGet] packages. To add IceRPC to an existing C# project, just add one or more
+[IceRpc NuGet packages][full-list] to this project.
 
-## Installing the Base Package
+## IceRPC and Slice packages
 
-If you plan on using IceRPC without Slice you need to install the
-base package: [IceRpc]. To install it, use the following
-command:
-
-```shell {% showTitle=false %}
-dotnet add package IceRpc
-```
-
-## Using Slice with IceRPC
-
-If you plan on using [Slice], install the [IceRpc.Slice] and
-[IceRpc.Slice.Tools] packages with the following commands:
+If you plan on using IceRPC together with [Slice], add the [IceRpc.Slice] and [IceRpc.Slice.Tools] packages to your
+project with the following commands:
 
 ```shell {% showTitle=false %}
 dotnet add package IceRpc.Slice
 dotnet add package IceRpc.Slice.Tools
 ```
 
-[IceRpc.Slice] will automatically install the [IceRpc] package as a
-dependency.
+Adding [IceRpc.Slice] automatically pulls its dependencies, including the [IceRpc] and [ZeroC.Slice] packages.
 
 {% callout %}
-The Slice compiler included in `IceRpc.Slice.Tools` generates C# code that
-depends on the `IceRpc.Slice` package. You need `IceRpc.Slice.Tools` only during
-development.
+The Slice compiler included in `IceRpc.Slice.Tools` generates C# code that depends on the `ZeroC.Slice` and
+`IceRpc.Slice` packages. You need `IceRpc.Slice.Tools` only during development.
 {% /callout %}
+
+## IceRPC only
+
+If you plan on using IceRPC with JSON, Protobuf, or some other serialization format, add the [IceRpc] package to your
+project with the following command:
+
+```shell {% showTitle=false %}
+dotnet add package IceRpc
+```
 
 ## Adding optional packages
 
 Even though all the other packages are optional, it's likely you will want to
-install one or more of them. For example, you can add the package
+add one or more of them to your project. For example, you can add the package
 [IceRpc.Transports.Quic] to use the QUIC transport with the following command:
 
 ```shell {% showTitle=false %}
@@ -54,3 +50,4 @@ The full list of IceRPC packages is available [here][full-list].
 [IceRpc.Slice]: https://www.nuget.org/packages/IceRpc.Slice
 [IceRpc.Slice.Tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
 [IceRpc.Transports.Quic]: https://www.nuget.org/packages/IceRpc.Transports.Quic
+[ZeroC.Slice]: https://www.nuget.org/packages/ZeroC.Slice
