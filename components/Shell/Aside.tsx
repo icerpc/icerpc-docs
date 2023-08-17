@@ -27,7 +27,7 @@ export const Aside = ({ asideItems }: { asideItems: AsideItem[] }) => {
   const items = asideItems.filter(
     (item) =>
       item.id &&
-      (item.level === 2 || item.level === 3) &&
+      (item.level === 2 || item.level === 3 || item.level === 4) &&
       item.title !== 'Next steps'
   );
 
@@ -195,14 +195,8 @@ type ListItemProps = {
 
 const ListItem = ({ item, activeId }: ListItemProps) => {
   const href = `#${item.id}`;
-  const leftPadding = (() => {
-    switch (item.level) {
-      case 3:
-        return '-ml-1';
-      default:
-        return '';
-    }
-  })();
+  const leftPadding = item.level >= 3 ? '-ml-1' : '';
+
   return (
     <li key={item.id} className={clsx('mb-4 pr-4 text-sm', leftPadding)}>
       <Link
