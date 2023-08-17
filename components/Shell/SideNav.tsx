@@ -242,8 +242,8 @@ function createListItem(
             `py-[6px] pl-0 pr-3 text-sm no-underline  ${leftPadding} dark:text-[#C4C7C5]`,
             isCurrentPage
               ? noLeftPadding
-                ? 'font-bold text-primary dark:text-white'
-                : 'ml-[-3px] border-l-[1.5px] border-primary pl-[13.5px] font-bold text-primary dark:border-white/80 dark:text-white'
+                ? 'font-medium text-primary dark:text-white'
+                : 'ml-[-3px] border-l-[1.5px] border-primary pl-[13.5px] font-medium text-primary dark:border-white/80 dark:text-white'
               : 'hover:text-zinc-900 dark:hover:text-white'
           )}
           onClick={onClick}
