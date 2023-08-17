@@ -1,5 +1,5 @@
 ---
-title: Use the IceRPC .NET Project Templates
+title: Using the IceRPC .NET Project Templates
 ---
 
 The easiest way to create a new project configured for IceRPC is by using a .NET

@@ -11,7 +11,7 @@ export const gettingStartedData: SideBarSourceType[] = [
     title: 'Installation',
     links: [
       {
-        title: 'Use the IceRPC .NET Project Templates',
+        title: 'Using the IceRPC .NET Project Templates',
         path: GETTING_STARTED_BASE_URL + '/installation/template/'
       },
       {
