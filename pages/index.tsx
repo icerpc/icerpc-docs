@@ -115,7 +115,7 @@ const Hero = () => {
       style={background}
     >
       <Logo height={75} className="my-4 pt-10" />
-      <h2 className="bg-gradient-to-b from-slate-800 to-black bg-clip-text text-[40px] font-extrabold dark:bg-none dark:text-white">
+      <h2 className="bg-gradient-to-b from-slate-800 to-black bg-clip-text text-center text-[40px] font-extrabold dark:bg-none dark:text-white">
         IceRPC Documentation
       </h2>
       <p className="prose mx-4 max-w-xl text-center text-xl dark:prose-invert">
