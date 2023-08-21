@@ -8,8 +8,8 @@ description: Understand how to provide interoperable services with IceRPC + Slic
 With Ice, all Slice interfaces implicitly derive from the `Ice::Object` interface, which provides 4 operations:
 `ice_ids`, `ice_ids`, `ice_ping` and `ice_isA`.
 
-The generated code implements these operations automatically. As an Ice application developer, you typically don't think
-about these built-in operations.
+The generated code implements these operations automatically. As an application developer using Ice, you typically don't
+think about these built-in operations.
 
 With IceRPC, a Slice interface does not have any implicit base interface, and `Ice::Object` is just a regular interface:
 
