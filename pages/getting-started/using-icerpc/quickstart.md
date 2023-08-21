@@ -3,9 +3,13 @@ title: 'Quickstart'
 description: 'Writing your first IceRPC application in C#'
 ---
 
-This tutorial shows how to create a complete application with IceRPC for C#.
-We start from scratch—you just need to have the .NET 7 SDK or .NET 8 SDK
-installed on your computer.
+This tutorial shows how to create a complete application with IceRPC for C#
+using the IceRPC .NET Project Templates. We start from scratch—you just need to
+have the .NET 7 SDK or .NET 8 SDK installed on your computer.
+
+If you would like to jump into building the same application without using the
+templates, you can follow the [Writing your first application][csharp-tutorial]
+tutorial instead.
 
 The networked application we are building together consists of:
 
@@ -114,6 +118,7 @@ dbug: IceRpc.Server[12]
 
 {% /step %}
 
+[csharp-tutorial]: /getting-started/using-icerpc/tutorial
 [dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
 [service-address]: /icerpc/invocation/service-address
 [Slice]: /slice
