@@ -5,7 +5,7 @@ description: Understand how to provide interoperable services with IceRPC + Slic
 
 ## The Ice::Object interface
 
-With Ice, all Slice interfaces implicitly derive from the `Ice::Object` interface, which provides 4 operations:
+With Ice, all Slice interfaces implicitly derive from the `Ice::Object` interface, which provides four operations:
 `ice_ids`, `ice_ids`, `ice_ping` and `ice_isA`.
 
 The generated code implements these operations automatically. As an application developer using Ice, you typically don't
@@ -37,8 +37,8 @@ interface Object {
 }
 ```
 {% callout %}
-IceRPC does not provide the fourth operation, `ice_id`. With IceRPC + Slice, service can implement multiple Slice
-interfaces and as a result there is not always a single most-derived interface / type ID.
+IceRPC does not provide the fourth operation, `ice_id`. With IceRPC + Slice, a service can implement multiple Slice
+interfaces and does not always have a single most-derived Slice interface / type ID.
 {% /callout %}
 
 When you implement a service with IceRPC + Slice, you decide if you want to implement this interface.
