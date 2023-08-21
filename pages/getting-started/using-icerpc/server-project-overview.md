@@ -5,9 +5,9 @@ title: 'Server project overview'
 This page provides an overview of the file and folder structure of a a simple
 IceRPC server application.
 
-This sample application used in this overview is generated from the
-`icerpc-server` IceRPC .NET Project Template which is demonstrated in the
-[Quickstart](/getting-started/using-icerpc/quickstart) page.
+The files being explained are the result of both the [Quickstart] and
+[Writing your first application][csharp-tutorial] tutorials since both
+illustrate making a simple Greeter console application.
 
 ## Files
 
@@ -139,15 +139,17 @@ The project file is straightforward. It contains references to 4 separate IceRpc
 - [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs`
 - [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two middleware we installed in the dispatch pipeline
 
+[csharp-tutorial]: /getting-started/using-icerpc/tutorial
+[Deadline]: csharp:IceRpc.Deadline
 [dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
-[service-address]: /icerpc/invocation/service-address
-[Slice]: /slice
-[IceRpc.Slice]: https://www.nuget.org/packages/IceRpc.Slice
-[IceRpc.Slice.Tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
 [IceRpc.Deadline]: https://www.nuget.org/packages/IceRpc.Deadline
 [IceRpc.Logger]: https://www.nuget.org/packages/IceRpc.Logger
-[Deadline]: csharp:IceRpc.Deadline
+[IceRpc.Slice.Tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
+[IceRpc.Slice]: https://www.nuget.org/packages/IceRpc.Slice
 [Logger]: csharp:IceRpc.Logger
+[NotFound]: csharp:IceRpc.StatusCode#NotFound
+[Quickstart]: /getting-started/quickstart
 [Router]: csharp:IceRpc.Router
 [Server]: csharp:IceRpc.Server
-[NotFound]: csharp:IceRpc.StatusCode#NotFound
+[service-address]: /icerpc/invocation/service-address
+[Slice]: /slice
