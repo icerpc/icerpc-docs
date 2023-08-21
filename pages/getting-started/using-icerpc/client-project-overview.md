@@ -1,5 +1,5 @@
 ---
-title: 'Client project structure'
+title: 'Client project overview'
 ---
 
 This page provides an overview of the file and folder structure of a a simple
@@ -8,24 +8,6 @@ IceRPC client application.
 This sample application used in this overview is generated from the
 `icerpc-client` IceRPC .NET Project Template which is demonstrated in the
 [Quickstart](/getting-started/using-icerpc/quickstart) page.
-
-## Project Structure
-
-#### Top Level Folders
-
-|             |                                                                                                                                                                                                 |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `bin`       | This folder contains the build output, including all the compiled files and resources required to run the application.                                                                          |
-| `generated` | The Slice compiler generates the C# code for the Slice interfaces in this folder. It includes the proxy and skeleton classes that are essential for your IceRPC application.                    |
-| `obj`       | This folder is used during the build process. It contains temporary files and other resources needed for compiling your application. You don't typically need to interact with this folder.     |
-| `slice`     | This folder contains the Slice files, which define the service interfaces for your IceRPC application. It is the basis for generating the proxy and skeleton classes in the `generated` folder. |
-
-#### Top Level Files
-
-|                   |                                                                                                                                                                                       |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Program.cs`      | The main program of the client application sets up the connection and invocation pipeline for the client, and then sends a greet request to the server.                               |
-| `MyClient.csproj` | This is the project file for the client application. It lists the dependencies and configurations for the build process, including references to the necessary IceRPC NuGet packages. |
 
 ## Files
 

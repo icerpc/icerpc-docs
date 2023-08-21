@@ -8,6 +8,10 @@ export const gettingStartedData: SideBarSourceType[] = [
     path: `${GETTING_STARTED_BASE_URL}/`
   },
   {
+    title: 'Quickstart',
+    path: GETTING_STARTED_BASE_URL + '/using-icerpc/quickstart/'
+  },
+  {
     title: 'Installation',
     links: [
       {
@@ -28,18 +32,18 @@ export const gettingStartedData: SideBarSourceType[] = [
     title: 'Using IceRPC',
     links: [
       {
-        title: 'Quickstart',
-        path: GETTING_STARTED_BASE_URL + '/using-icerpc/quickstart/'
+        title: 'Writing your first application',
+        path: GETTING_STARTED_BASE_URL + '/using-icerpc/tutorial/'
       },
       {
-        title: 'Server project structure',
+        title: 'Server project overview',
         path:
-          GETTING_STARTED_BASE_URL + '/using-icerpc/server-project-structure/'
+          GETTING_STARTED_BASE_URL + '/using-icerpc/server-project-overview/'
       },
       {
-        title: 'Client project structure',
+        title: 'Client project overview',
         path:
-          GETTING_STARTED_BASE_URL + '/using-icerpc/client-project-structure/'
+          GETTING_STARTED_BASE_URL + '/using-icerpc/client-project-overview/'
       }
     ]
   },

@@ -1,5 +1,5 @@
 ---
-title: 'Server project structure'
+title: 'Server project overview'
 ---
 
 This page provides an overview of the file and folder structure of a a simple
@@ -8,26 +8,6 @@ IceRPC server application.
 This sample application used in this overview is generated from the
 `icerpc-server` IceRPC .NET Project Template which is demonstrated in the
 [Quickstart](/getting-started/using-icerpc/quickstart) page.
-
-## Project Structure
-
-#### Top Level Folders
-
-|             |                                                                                                                                                                                                 |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `bin`       | This folder contains the build output, including all the compiled files and resources required to run the application.                                                                          |
-| `generated` | The Slice compiler generates the C# code for the Slice interfaces in this folder. It includes the proxy and skeleton classes that are essential for your IceRPC application.                    |
-| `obj`       | This folder is used during the build process. It contains temporary files and other resources needed for compiling your application. You don't typically need to interact with this folder.     |
-| `slice`     | This folder contains the Slice files, which define the service interfaces for your IceRPC application. It is the basis for generating the proxy and skeleton classes in the `generated` folder. |
-
-#### Top Level Files
-
-|                               |                                                                                                                                                                                                                            |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Chatbot.cs`                  | This file contains the implementation of the greeter service. It defines the Chatbot class, which inherits from the Service class and implements the IGreeterService interface, generated from the Slice file.             |
-| `MyServer.csproj`             | This is the project file for the server application. It lists the dependencies and configurations for the build process, including references to the necessary IceRPC NuGet packages.                                      |
-| `Program.CancelKeyPressed.cs` | This file contains a helper function that waits for a Ctrl+C input to gracefully shut down the server. It allows the server to stop listening for incoming requests and perform any cleanup operations before termination. |
-| `Program.cs`                  | The main program file. It initializes and configures the server's routing and middleware.                                                                                                                                  |
 
 ## Files
 
