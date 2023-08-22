@@ -118,6 +118,18 @@ dbug: IceRpc.Server[12]
 
 {% /step %}
 
+## Next steps
+
+Congratulations! You have successfully created your first IceRPC application.
+We recommend you to continue with by reading the following to learn more about
+what each file produced by the template does:
+
+- [Server Project Overview][server-overview]
+- [Client Project Overview][client-overview]
+
+[nuget-packages]: /getting-started/installation/nuget-packages
+[server-overview]: /getting-started/using-icerpc/server-project-overview
+[client-overview]: /getting-started/using-icerpc/client-project-overview
 [csharp-tutorial]: /getting-started/using-icerpc/tutorial
 [dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
 [service-address]: /icerpc/invocation/service-address
