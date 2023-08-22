@@ -41,7 +41,7 @@ add one or more of them to your project. For example, you can add the package
 dotnet add package IceRpc.Transports.Quic
 ```
 
-The full list of IceRPC packages is available [here][full-list].
+The full list of IceRPC packages is available on the [next page][full-list].
 
 [full-list]: nuget-packages
 [Slice]: /slice
