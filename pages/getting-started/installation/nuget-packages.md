@@ -6,22 +6,23 @@ description: A list of all the IceRPC NuGet packages
 | Name                                    | Description                                           |
 | --------------------------------------- | ----------------------------------------------------- |
 | [IceRpc]                                | IceRPC for C# base package                            |
-| [IceRpc.Compressor]                     | Compressor interceptor and middleware for IceRPC      |
-| [IceRpc.Deadline]                       | Deadline interceptor and middleware for IceRPC        |
-| [IceRpc.Extensions.DependencyInjection] | Dependency injection extensions for IceRPC            |
-| [IceRpc.Locator]                        | Locator interceptor for IceRPC                        |
-| [IceRpc.Logger]                         | Logger interceptor and middleware for IceRPC          |
-| [IceRpc.Metrics]                        | Metrics interceptor and middleware for IceRPC         |
-| [IceRpc.RequestContext]                 | Request context interceptor and middleware for IceRPC |
-| [IceRpc.Retry]                          | Retry interceptor for IceRPC                          |
-| [IceRpc.Slice]                          | The IceRPC + Slice integration library                |
-| [IceRpc.Slice.Tools]                    | Compile Slice files into C# in MSBuild projects       |
-| [IceRpc.Telemetry]                      | Telemetry interceptor and middleware for IceRPC       |
+| [IceRpc.Compressor]                     | Compressor interceptor and middleware                 |
+| [IceRpc.Deadline]                       | Deadline interceptor and middleware                   |
+| [IceRpc.Extensions.DependencyInjection] | Extensions for the Microsoft DI container             |
+| [IceRpc.Locator]                        | Locator interceptor (for [Ice interop])               |
+| [IceRpc.Logger]                         | Logger interceptor and middleware                     |
+| [IceRpc.Metrics]                        | Metrics interceptor and middleware                    |
+| [IceRpc.RequestContext]                 | Request context interceptor and middleware (primarily for Ice interop) |
+| [IceRpc.Retry]                          | Retry interceptor                                     |
+| [IceRpc.Slice]                          | IceRPC + Slice integration library                    |
+| [IceRpc.Slice.Tools]                    | Slice compiler for C# + MSBuild support            |
+| [IceRpc.Telemetry]                      | OpenTelemetry interceptor and middleware              |
 | [IceRpc.Templates]                      | Project templates for IceRPC                          |
-| [IceRpc.Transports.Coloc]               | Coloc transport for IceRPC                            |
-| [IceRpc.Transports.Quic]                | QUIC transport for IceRPC                             |
-| [ZeroC.Slice]                           | The Slice serialization library                       |
+| [IceRpc.Transports.Coloc]               | Coloc duplex transport                                |
+| [IceRpc.Transports.Quic]                | QUIC multiplexed transport                            |
+| [ZeroC.Slice]                           | Slice serialization library                           |
 
+[Ice interop]: /icerpc-for-ice-users
 [IceRpc]: https://www.nuget.org/packages/IceRpc
 [IceRpc.Compressor]: https://www.nuget.org/packages/IceRpc.Compressor
 [IceRpc.Deadline]: https://www.nuget.org/packages/IceRpc.Deadline
