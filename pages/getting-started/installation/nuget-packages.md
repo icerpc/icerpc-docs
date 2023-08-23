@@ -15,7 +15,7 @@ description: A list of all the IceRPC NuGet packages
 | [IceRpc.RequestContext]                 | Request context interceptor and middleware (primarily for Ice interop) |
 | [IceRpc.Retry]                          | Retry interceptor                                     |
 | [IceRpc.Slice]                          | IceRPC + Slice integration library                    |
-| [IceRpc.Slice.Tools]                    | Slice compiler for C# plus MSBuild support            |
+| [IceRpc.Slice.Tools]                    | Slice compiler for C# + MSBuild support            |
 | [IceRpc.Telemetry]                      | OpenTelemetry interceptor and middleware              |
 | [IceRpc.Templates]                      | Project templates for IceRPC                          |
 | [IceRpc.Transports.Coloc]               | Coloc duplex transport                                |
