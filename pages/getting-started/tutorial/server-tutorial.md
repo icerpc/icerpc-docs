@@ -1,5 +1,5 @@
 ---
-title: 'Writing your first IceRPC server in C#'
+title: Writing your first IceRPC server in C#
 ---
 
 This tutorial is the first part of a two part series that shows how to create a
@@ -22,8 +22,6 @@ Let's jump right in:
 
 {% step title="Install the dotnet-new templates for IceRPC" %}
 
-We use the `IceRPC Server` template for this tutorial.
-
 ```shell
 dotnet new install IceRpc.Templates
 ```
@@ -33,7 +31,7 @@ dotnet new install IceRpc.Templates
 {% step title="Create the server" %}
 
 ```shell
-dotnet new icerpc-server -o MyServer
+dotnet new icerpc-slice-server -o MyServer
 ```
 
 This command creates a new IceRPC server application in directory `MyServer`.

@@ -1,5 +1,5 @@
 ---
-title: 'Writing your first IceRPC client in C#'
+title: Writing your first IceRPC client in C#
 ---
 
 This tutorial is the second part of a two part series that shows how to create a
@@ -9,22 +9,10 @@ have the .NET 7 SDK or .NET 8 SDK installed on your computer.
 The first part of this tutorial showed how to
 [create the server][server-tutorial]. This part shows how to create the client.
 
-Let's jump right in:
-
-{% step title="Install the dotnet-new templates for IceRPC" %}
-
-We use the `IceRPC Client` template for this tutorial.
-
-```shell
-dotnet new install IceRpc.Templates
-```
-
-{% /step %}
-
 {% step title="Create the client" %}
 
 ```shell
-dotnet new icerpc-client -o MyClient
+dotnet new icerpc-slice-client -o MyClient
 ```
 
 This command creates a new IceRPC client application in directory `MyClient`.

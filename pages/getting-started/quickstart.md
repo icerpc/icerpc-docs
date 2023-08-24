@@ -1,16 +1,19 @@
 ---
-title: 'Quickstart'
-description: 'Writing your first IceRPC application in C#'
+title: Quickstart
+description: Quickly get up and running
 ---
 
-This tutorial shows how to quickly get up and running with a complete
+This quickstart shows how to quickly get up and running with a complete
 application with IceRPC for C# using the IceRPC .NET Project Templates.
 We start from scratch—you just need to have the .NET 7 SDK or .NET 8 SDK
 installed on your computer.
 
-If you would like a more in-depth tutorial you can follow the
-[Writing your first application][server-tutorial]
-tutorial instead.
+If you would like a more in-depth tutorial, you can follow
+
+- [Writing your first server application][server-tutorial]
+- [Writing your first client application][client-tutorial]
+
+---
 
 The networked application we are building together consists of:
 
@@ -25,9 +28,6 @@ Let's jump right in:
 
 {% step title="Install the dotnet-new templates for IceRPC" %}
 
-We will use the `IceRPC Client` and `IceRPC Server` .NET project templates for
-this tutorial.
-
 ```shell {% showTitle=false %}
 dotnet new install IceRpc.Templates
 ```
@@ -36,14 +36,15 @@ dotnet new install IceRpc.Templates
 
 {% step title="Create the server" %}
 
-Now, let's create the server application by using the template we installed in
-the previous step:
+Now, let's create the server application by using the `icerpc-slice-server`
+template we installed in the previous step:
 
 ```shell
-dotnet new icerpc-server -o MyServer
+dotnet new icerpc-slice-server -o MyServer
 ```
 
-This command creates a new IceRPC server application in directory `MyServer`.
+This command creates a new IceRPC + Slice server application application in
+directory `MyServer`.
 
 ![MyServer in Visual Studio Code](/images/MyServer.png)
 
@@ -54,10 +55,11 @@ This command creates a new IceRPC server application in directory `MyServer`.
 Similarly, let's create the client application:
 
 ```shell
-dotnet new icerpc-client -o MyClient
+dotnet new icerpc-slice-client -o MyClient
 ```
 
-This command creates a new IceRPC client application in directory `MyClient`.
+This command creates a new IceRPC + Slice client application in directory
+`MyClient`.
 
 ![MyClient in Visual Studio Code](/images/MyClient.png)
 
@@ -106,15 +108,6 @@ dbug: IceRpc.ClientConnection[6]
       Client connection from '[::1]:61582' to '[::1]:4062' shutdown
 dbug: IceRpc.ClientConnection[5]
       Client connection from '[::1]:61582' to '[::1]:4062' disposed
-```
-
-### Shutdown the server
-
-Press Ctrl+C on the server console to shut it down.
-
-```
-dbug: IceRpc.Server[12]
-      Listener 'icerpc://[::0]?transport=tcp' has stopped accepting connections
 ```
 
 {% /step %}
