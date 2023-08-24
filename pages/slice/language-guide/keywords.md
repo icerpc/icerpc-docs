@@ -2,8 +2,6 @@
 title: Keywords
 ---
 
--[comment]: <> (TODO: add a link to 'identifiers::escaping' to the first paragraph)
-
 Keywords are reserved identifiers that have special meanings in the Slice language. A keyword can't be used as an identifier for your definitions unless it's prefixed with a `\` to escape it. For example `\struct` is a valid identifier, but `struct` is not, since it's a keyword.
 
 Keywords (like all identifiers) are case sensitive.
@@ -11,7 +9,6 @@ Keywords (like all identifiers) are case sensitive.
 The following table lists all the keywords of the Slice language:
 
 {% table dividers=true %}
----
 
 - [AnyClass](/slice1/language-guide/primitive-types#anyclass)
 - [float64](/slice2/language-guide/primitive-types#floating-point-types)
