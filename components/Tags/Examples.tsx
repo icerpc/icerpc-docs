@@ -18,7 +18,7 @@ export const Examples = () => {
         href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterProtobuf"
       />
       <ExampleCard
-        title="Interop/Minimal"
+        title="Ice Interop"
         description="Illustrates how IceRPC can communicate with ZeroC Ice."
         href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/Interop/Minimal"
       />
