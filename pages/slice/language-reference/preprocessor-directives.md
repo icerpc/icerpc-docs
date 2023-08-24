@@ -2,13 +2,10 @@
 title: Preprocessor directives
 ---
 
-The preprocessor only operates on lines beginning with a `#` character (ignoring any leading whitespace). These lines
+The preprocessor operates on lines beginning with a `#` character (ignoring any leading whitespace). These s lines
 are called _preprocessor directives_.
 
 ## Lexical grammar
-
-Lines which do not match a preprocessor directive are mapped to `source_block` tokens in the lexical grammar.
-The contents of these `source_block` tokens are passed as input to the main grammar.
 
 ```ebnf {% showTitle=false %}
 // These are opaque strings that exist outside of the preprocessor directive grammar.
@@ -36,7 +33,7 @@ left_parenthesis:  "(";
 right_parenthesis: ")";
 ```
 
-## Syntactic grammar {% #preprocessor-syntactic-grammar %}
+## Syntactic grammar
 
 ```ebnf {% showTitle=false %}
 SliceFile

@@ -1,8 +1,6 @@
 ---
-title: Slice Grammar
+title: Slice grammar
 ---
-
-The core language is the language used to define types and contracts in Slice.
 
 ## Lexical grammar
 
