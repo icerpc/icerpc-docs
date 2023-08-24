@@ -2,15 +2,16 @@
 title: Preprocessor directives
 ---
 
-The preprocessor only operates on lines beginning with a '#' character (ignoring any leading whitespace). Lines that
-don't meet this criteria are mapped to `source_block` tokens in the lexical grammar. If there are multiple consecutive
-lines like this, they are concatenated into a single `source_block` token for ease of processing. The contents of these
-`source_block` tokens are passed as input to the [core language grammar](#core-language) described above.
+The preprocessor only operates on lines beginning with a `#` character (ignoring any leading whitespace). These lines
+are called _preprocessor directives_.
 
-## Lexical grammar {% #preprocessor-lexical-grammar %}
+## Lexical grammar
+
+Lines which do not match a preprocessor directive are mapped to `source_block` tokens in the lexical grammar.
+The contents of these `source_block` tokens are passed as input to the main grammar.
 
 ```ebnf {% showTitle=false %}
-// These are opaque strings that exist outside the grammar of preprocessor directives.
+// These are opaque strings that exist outside of the preprocessor directive grammar.
 source_block;
 
 identifier: LETTER ALPHANUMERIC*;

@@ -1,10 +1,10 @@
 ---
-title: Overview
+title: Language reference
 ---
 
 <!-- cspell:words ANTLR NAUR -->
 
-This section contains a technical reference for the Slice language.
+The language reference contains a technical reference for the Slice language.
 
 Slice consists of three sub-languages:
 
@@ -23,16 +23,16 @@ Productions are sets of rules that specify how symbols can be combined to produc
 
 ## Grammar notation
 
-The following sections define grammars through their productions.
-These productions are written using ANTLR's version of [Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form#EBNF).
+This language reference defines grammars through their productions. These productions are written using ANTLR's
+version of [Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form#EBNF).
 
 Productions start with the symbol they produce, followed by a colon.
 This is then followed by a set of rules separated by vertical bars, and finally a semicolon to finish the production.
 For productions with multiple rules, each rule is matched independently of any others.
 Additionally, the order of rules is arbitrary and doesn't imply any level of precedence.
 
-Rules are defined by a sequence of one or more symbols. For a rule to match, all its symbols must match, in the order they're specified.
-By default a symbol is matched a single time, but this is modified by the following characters:
+Rules are defined by a sequence of one or more symbols. For a rule to match, all its symbols must match, in the order
+they're specified.By default a symbol is matched a single time, but this is modified by the following characters:
 
 - `?` : match this symbol 0 or 1 times
 - `*` : match this symbol 0 or more times
@@ -43,10 +43,12 @@ These sub-rules function the same as rules: their contents must be matched fully
 
 ## Symbol conventions
 
-Symbols produced by lexical grammars are written in `snake_case` and symbols produced by syntactic grammars are written in `PascalCase`.
+Symbols produced by lexical grammars are written in `snake_case` and symbols produced by syntactic grammars are
+written in `PascalCase`.
 
-This specification defines and references a set of 'convenience' symbols that exist only to simplify the specification and do not necessarily appear within actual implementations.
-These convenience tokens are written in `SCREAMING_SNAKE_CASE` and are defined by the following regular expressions:
+We define several convenience symbols that exist only to improve readability and do not necessarily appear within
+actual implementations. These convenience tokens are written in `SCREAMING_SNAKE_CASE` and are defined by the
+following regular expressions:
 
 ```ebnf {% showTitle=false %}
 LETTER: "[a-zA-Z]";
@@ -60,5 +62,5 @@ NON_FORWARD_SLASH_CHARACTER: "[^\n\/]";
 ```
 
 Additionally, some rules consist of zero symbols, meaning that they match exactly nothing.
-For the sake of readability, this specification explicitly states that they match `EMPTY`.
+For the sake of readability, we explicitly state that they match `EMPTY`.
 It is important to note that `EMPTY` is **not** a symbol, but a placeholder for the absence of symbols.

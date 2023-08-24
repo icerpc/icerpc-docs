@@ -1,10 +1,10 @@
 ---
-title: Core language
+title: Slice Grammar
 ---
 
 The core language is the language used to define types and contracts in Slice.
 
-## Lexical grammar {% #core-lexical-grammar %}
+## Lexical grammar
 
 This lexical grammar is not strictly context-free due to the following behavior:
 
@@ -97,7 +97,7 @@ It is possible to use a Slice keyword as an identifier by prefixing the keyword 
 
 It's best to avoid using Slice keywords as identifiers.
 
-## Syntactic grammar {% #core-syntactic-grammar %}
+## Syntactic grammar
 
 ```ebnf {% showTitle=false %}
 SliceFile

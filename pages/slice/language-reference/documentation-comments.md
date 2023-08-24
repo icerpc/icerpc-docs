@@ -1,12 +1,11 @@
 ---
-title: Doc comments
+title: Documentation comments
 ---
 
-Slice comments that start with /// are doc comments. The Slice compiler uses these special comments as input for the doc comments it generates in the mapped language.
+Slice comments that start with /// are documentation (doc) comments. Slice doc comments can be attached to all Slice
+elements except parameter declarations, module declarations, and mode statements.
 
-Slice doc comments can be attached to all Slice elements except parameters, modules, and mode declarations.
-
-## Lexical grammar {% #doc-comments-lexical-grammar %}
+## Lexical grammar
 
 ```ebnf {% showTitle=false %}
 identifier: LETTER ALPHANUMERIC*;
@@ -28,7 +27,7 @@ colon:        ":";
 double_colon: "::";
 ```
 
-## Syntactic grammar {% #doc-comments-syntactic-grammar %}
+## Syntactic grammar
 
 ```ebnf {% showTitle=false %}
 DocComment
