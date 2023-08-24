@@ -7,7 +7,7 @@ showReadingTime: false
 ## Introduction to Slice
 
 Slice is a completely revised Interface Definition Language, [IDL], designed
-for RPCs. This language allows you to define a "contract" in a programming
+for RPCs. It allows you to define a "contract" in a programming
 language neutral way. Slice can be used with any RPC framework, or with no RPC
 framework at all; in particular, Slice does not depend on IceRPC. This allows
 you to use IceRPC with the IDL of your choice, or no IDL at all.
