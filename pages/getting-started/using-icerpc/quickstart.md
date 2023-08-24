@@ -3,12 +3,13 @@ title: 'Quickstart'
 description: 'Writing your first IceRPC application in C#'
 ---
 
-This tutorial shows how to create a complete application with IceRPC for C#
-using the IceRPC .NET Project Templates. We start from scratch—you just need to
-have the .NET 7 SDK or .NET 8 SDK installed on your computer.
+This tutorial shows how to quickly get up and running with a complete
+application with IceRPC for C# using the IceRPC .NET Project Templates.
+We start from scratch—you just need to have the .NET 7 SDK or .NET 8 SDK
+installed on your computer.
 
-If you would like to jump into building the same application without using the
-templates, you can follow the [Writing your first application][csharp-tutorial]
+If you would like a more in-depth tutorial you can follow the
+[Writing your first application][server-tutorial]
 tutorial instead.
 
 The networked application we are building together consists of:
@@ -100,7 +101,7 @@ dbug: IceRpc.ClientConnection[3]
 info: IceRpc.Logger.LoggerInterceptor[0]
       Sent request greet to icerpc:/VisitorCenter.Greeter over
       [::1]:61582<->[::1]:4062 and received a response with status code Ok
-Hello, jose!
+Hello, Reece!
 dbug: IceRpc.ClientConnection[6]
       Client connection from '[::1]:61582' to '[::1]:4062' shutdown
 dbug: IceRpc.ClientConnection[5]
@@ -122,24 +123,11 @@ dbug: IceRpc.Server[12]
 
 Congratulations! You have successfully created your first IceRPC application.
 We recommend you to continue with by reading the following to learn more about
-what each file produced by the template does:
+what each file produced by the template does in the full client and server
+tutorials:
 
-- [Server Project Overview][server-overview]
-- [Client Project Overview][client-overview]
+- [Writing your first server][server-tutorial]
+- [Writing your first client][client-tutorial]
 
-[nuget-packages]: /getting-started/installation/nuget-packages
-[server-overview]: /getting-started/using-icerpc/server-project-overview
-[client-overview]: /getting-started/using-icerpc/client-project-overview
-[csharp-tutorial]: /getting-started/using-icerpc/tutorial
-[dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
-[service-address]: /icerpc/invocation/service-address
-[Slice]: /slice
-[IceRpc.Slice]: https://www.nuget.org/packages/IceRpc.Slice
-[IceRpc.Slice.Tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
-[IceRpc.Deadline]: https://www.nuget.org/packages/IceRpc.Deadline
-[IceRpc.Logger]: https://www.nuget.org/packages/IceRpc.Logger
-[Deadline]: csharp:IceRpc.Deadline
-[Logger]: csharp:IceRpc.Logger
-[Router]: csharp:IceRpc.Router
-[Server]: csharp:IceRpc.Server
-[NotFound]: csharp:IceRpc.StatusCode#NotFound
+[client-tutorial]: /getting-started/using-icerpc/server-client
+[server-tutorial]: /getting-started/using-icerpc/server-tutorial

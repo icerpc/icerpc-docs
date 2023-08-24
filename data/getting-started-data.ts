@@ -32,18 +32,12 @@ export const gettingStartedData: SideBarSourceType[] = [
     title: 'Using IceRPC',
     links: [
       {
-        title: 'Writing your first application',
-        path: GETTING_STARTED_BASE_URL + '/using-icerpc/tutorial/'
+        title: 'Writing your first server application',
+        path: GETTING_STARTED_BASE_URL + '/using-icerpc/server-tutorial/'
       },
       {
-        title: 'Server project overview',
-        path:
-          GETTING_STARTED_BASE_URL + '/using-icerpc/server-project-overview/'
-      },
-      {
-        title: 'Client project overview',
-        path:
-          GETTING_STARTED_BASE_URL + '/using-icerpc/client-project-overview/'
+        title: 'Writing your first client application',
+        path: GETTING_STARTED_BASE_URL + '/using-icerpc/client-tutorial/'
       }
     ]
   },
