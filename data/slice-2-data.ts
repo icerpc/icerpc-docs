@@ -117,8 +117,8 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE2_BASE_URL}/language-reference/slice-grammar`
       },
       {
-        title: 'Documentation comments',
-        path: `${SLICE2_BASE_URL}/language-reference/documentation-comments`
+        title: 'Doc comments',
+        path: `${SLICE2_BASE_URL}/language-reference/doc-comments`
       },
       {
         title: 'Preprocessor directives',
