@@ -167,10 +167,8 @@ decode instances of your custom type.
 [enum]: /slice2/language-guide/enum-types
 [IDL]: https://en.wikipedia.org/wiki/Interface_description_language
 [primitive]: /slice2/language-guide/primitive-types
-[protobuf]: https://en.wikipedia.org/wiki/Protocol_Buffers
 [Protobuf]: https://protobuf.dev/
 [Sequence]: /slice2/language-guide/sequence-types
-[slice]: /slice2
 [struct]: /slice2/language-guide/struct-types
 [tagged]: /slice2/language-guide/fields#tagged-fields
 [GreeterCore]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterCore
