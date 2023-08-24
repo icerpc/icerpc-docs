@@ -38,6 +38,7 @@ class Person {
    tag(1) email: string?
 }
 ```
+
 {% /side-by-side %}
 {% /slice1 %}
 
@@ -65,6 +66,7 @@ struct Person {
    tag(1) email: string?
 }
 ```
+
 {% /side-by-side %}
 {% /slice2 %}
 
@@ -108,32 +110,32 @@ using IceRPC requests and responses.
 {% mini-card
    title="Slice components"
    description="A short description of each Slice component."
-   href="/slice2/basics/slice-components" /%}
+   href="/slice/basics/slice-components" /%}
 
 {% mini-card
    title="Contract-first model"
    description="Learn how to create an application using IceRPC and Slice."
-   href="/slice2/basics/contract-first" /%}
+   href="/slice/basics/contract-first" /%}
 
 {% mini-card
    title="Interface"
    description="Learn how to define interfaces in Slice."
-   href="/slice2/language-guide/interface" /%}
+   href="/slice/language-guide/interface" /%}
 
 {% mini-card
    title="Struct"
    description="Learn how to define and use structs in Slice."
-   href="/slice2/language-guide/struct-types" /%}
+   href="/slice/language-guide/struct-types" /%}
 
 {% mini-card
    title="Slice encoding"
    description="Learn how Slice encodes types into byte streams."
-   href="/slice2/encoding" /%}
+   href="/slice/encoding" /%}
 
 {% mini-card
    title="Examples"
    description="Discover the Slice syntax through a few examples"
-   href="/slice2/basics/examples" /%}
+   href="/slice/basics/examples" /%}
 
 {% /grid %}
 
