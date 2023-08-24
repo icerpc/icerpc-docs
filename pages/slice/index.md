@@ -4,13 +4,15 @@ description: A better IDL
 showReadingTime: false
 ---
 
-## What is Slice
+## Introduction to Slice
 
-Slice is a completely revised [IDL] designed for RPCs. Slice can be used with any
-RPC framework, or with no RPC framework at all; in particular, Slice does not
-depend on IceRPC. This allows you to use IceRPC with the IDL of your choice,
-or no IDL at all. The [GreeterProtobuf], [GreeterJson] and [GreeterCore]
-examples show how to use IceRPC with [Protobuf], JSON and no IDL.
+Slice is a completely revised Interface Definition Language, [IDL], designed
+for RPCs. This language allows you to define a "contract" in a programming
+language neutral way. Slice can be used with any RPC framework, or with no RPC
+framework at all; in particular, Slice does not depend on IceRPC. This allows
+you to use IceRPC with the IDL of your choice, or no IDL at all.
+The [GreeterProtobuf], [GreeterJson] and [GreeterCore] examples show how to use
+IceRPC with [Protobuf], JSON and no IDL.
 
 Nevertheless, Slice and IceRPC play well together and are often used together.
 It specifies the syntax and semantics for RPCs but leaves the actual
