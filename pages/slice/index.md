@@ -14,7 +14,7 @@ you to use IceRPC with the IDL of your choice, or no IDL at all.
 The [GreeterProtobuf], [GreeterJson] and [GreeterCore] examples show how to use
 IceRPC with [Protobuf], JSON and no IDL.
 
-Nevertheless, Slice and IceRPC play well together and are often used together.
+Nevertheless, Slice and IceRPC play well together and are designed to be used together.
 It specifies the syntax and semantics for RPCs but leaves the actual
 implementation of this RPC support to external integrations.
 
