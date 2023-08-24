@@ -26,10 +26,6 @@ wheel.
    description="See what sets IceRPC apart"
    href="/getting-started/key-features/modular-rpc-for-quic" /%}
 {% mini-card
-   title="A better IDL"
-   description="Learn how to describe your RPCs with Slice"
-   href="/getting-started/key-features/slice-better-idl" /%}
-{% mini-card
    title="Tutorial"
    description="Write your first IceRPC application in C#"
    href="/getting-started/icerpc-csharp/tutorial" /%}
