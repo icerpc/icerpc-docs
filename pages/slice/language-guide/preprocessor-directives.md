@@ -9,7 +9,7 @@ code one line at a time.
 
 ## Symbols
 
-Preprocessor symbols are [identifiers](./lexical-rules#identifiers) that can be defined and undefined by the
+Preprocessor symbols are identifiers that can be defined and undefined by the
 preprocessor. Unlike C/C++, preprocessor symbols can not be assigned a value. Instead, preprocessor symbols are either
 defined or undefined.
 
