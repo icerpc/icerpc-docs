@@ -227,5 +227,4 @@ dbug: IceRpc.Server[12]
 [NotFound]: csharp:IceRpc.StatusCode#NotFound
 [Router]: csharp:IceRpc.Router
 [Server]: csharp:IceRpc.Server
-[service-address]: /icerpc/invocation/service-address
 [Slice]: /slice

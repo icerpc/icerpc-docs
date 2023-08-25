@@ -202,4 +202,3 @@ dbug: IceRpc.Server[12]
 [Logger]: csharp:IceRpc.Logger
 [server-tutorial]: /getting-started/tutorial/server-tutorial
 [service-address]: /icerpc/invocation/service-address
-[Slice]: /slice

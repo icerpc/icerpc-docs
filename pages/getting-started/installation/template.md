@@ -19,13 +19,13 @@ dotnet new install IceRpc.Templates
 | `icerpc-di-client`    | A project template for creating an IceRPC + Slice client console application using Microsoft's DI container. |
 | `icerpc-di-server`    | A project template for creating an IceRPC + Slice server console application using Microsoft's DI container. |
 
-### Create a command line server application:
+### Create a command line server application
 
 ```shell {% showTitle=false %}
 dotnet new icerpc-slice-server -o MyServer
 ```
 
-### Create a command line client application:
+### Create a command line client application
 
 ```shell {% showTitle=false %}
 dotnet new icerpc-slice-client -o MyClient
