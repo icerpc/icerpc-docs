@@ -105,10 +105,10 @@ IceRPC provides everything you need to make RPCs. When you use only IceRPC's cor
 and responses are streams of bytes, and you need to manually encode and decode any typed data (such as strings and
 integers) in these streams. This is doable but laborious.
 
-It is easier and more typical to use IceRPC together with a serialization library and its associated language-neutral
-[Interface Definition Language][IDL] (IDL). For example, you can define a Person type in [Protobuf] or [Slice] and then
-let the Protobuf compiler resp. the Slice compiler generate code that encodes and decodes Person to and from bytes in
-the Protobuf resp. Slice binary format.
+It is easier and more typical to use IceRPC together with an [Interface Definition Language][IDL] (IDL) and its
+associated serialization format. For example, you can define a RPC in [Protobuf] or [Slice] and then let the Protobuf
+compiler resp. the Slice compiler generate code that encodes and decodes the RPC arguments and return value to and from
+bytes in the Protobuf resp. Slice binary format.
 
 The [IceRPC + Slice][Slice] integration helps you build applications with IceRPC and Slice. And the IceRPC + Protobuf
 integration will soon bring the same level of convenience to Protobuf.
@@ -168,7 +168,7 @@ integration will soon bring the same level of convenience to Protobuf.
 
 {% /grid %}
 
-[DI container]: /icerpc/di-and-icerpc-for-csharp
+[DI container]: /icerpc/dependency-injection/di-and-icerpc-for-csharp
 [hol]: https://en.wikipedia.org/wiki/Head-of-line_blocking
 [HTTP/3]: https://en.wikipedia.org/wiki/HTTP/3
 [icerpc]: /icerpc/icerpc-protocol/mapping-rpcs-to-streams
