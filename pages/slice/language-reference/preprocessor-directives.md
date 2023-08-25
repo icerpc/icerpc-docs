@@ -2,7 +2,7 @@
 title: Preprocessor directives
 ---
 
-The preprocessor operates on lines beginning with a `#` character (ignoring any leading whitespace). These s lines
+The preprocessor operates on lines beginning with a `#` character (ignoring any leading whitespace). These lines
 are called _preprocessor directives_.
 
 ## Lexical grammar
