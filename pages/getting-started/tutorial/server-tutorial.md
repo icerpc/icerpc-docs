@@ -75,7 +75,10 @@ Class Chatbot is a service that implements Slice interface `Greeter`:
 ```csharp
 internal class Chatbot : Service, IGreeterService
 {
-    public ValueTask<string> GreetAsync(string name, IFeatureCollection features, CancellationToken cancellationToken)
+    public ValueTask<string> GreetAsync(
+        string name,
+        IFeatureCollection features,
+        CancellationToken cancellationToken)
     {
         Console.WriteLine($"Dispatching greet request {{ name = '{name}' }}");
         return new($"Hello, {name}!");
@@ -175,7 +178,7 @@ Ctrl+C. It's not related to RPCs.
 
 ### MyServer.csproj - the project file
 
-The project file is straightforward. It contains references to 4 separate IceRpc
+The project file is straightforward. It contains references to the required IceRpc
 NuGet packages:
 
 - [IceRpc.Slice] - the IceRPC + Slice integration package
