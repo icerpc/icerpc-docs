@@ -4,7 +4,7 @@ title: Writing your first IceRPC server in C#
 
 This tutorial is the first part of a two part series that shows how to create a
 complete application with IceRPC for C#. We start from scratch—you just need to
-have the .NET 7 SDK or .NET 8 SDK installed on your computer.
+have the .NET 7 SDK installed on your computer.
 
 The networked application we are building together consists of:
 
@@ -216,7 +216,7 @@ dbug: IceRpc.Server[12]
 
 {% /step %}
 
-[client-tutorial]: /getting-started/using-icerpc/client-tutorial
+[client-tutorial]: /getting-started/tutorial/client-tutorial
 [Deadline]: csharp:IceRpc.Deadline
 [dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
 [IceRpc.Deadline]: https://www.nuget.org/packages/IceRpc.Deadline

@@ -1,12 +1,12 @@
 ---
 title: Quickstart
-description: Quickly get up and running
+description: Effortlessly jump into IceRPC
 ---
 
 This quickstart shows how to quickly get up and running with a complete
 application with IceRPC for C# using the IceRPC .NET Project Templates.
-We start from scratch—you just need to have the .NET 7 SDK or .NET 8 SDK
-installed on your computer.
+We start from scratch—you just need to have the .NET 7 SDK installed on your
+computer.
 
 If you would like a more in-depth tutorial, you can follow
 
@@ -122,5 +122,5 @@ tutorials:
 - [Writing your first server][server-tutorial]
 - [Writing your first client][client-tutorial]
 
-[client-tutorial]: /getting-started/using-icerpc/server-client
-[server-tutorial]: /getting-started/using-icerpc/server-tutorial
+[client-tutorial]: /getting-started/tutorial/server-client
+[server-tutorial]: /getting-started/tutorial/server-tutorial
