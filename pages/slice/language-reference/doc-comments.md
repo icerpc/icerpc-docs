@@ -2,7 +2,7 @@
 title: Documentation comments
 ---
 
-Slice comments that start with /// are documentation (doc) comments. Slice doc comments can be attached to all Slice
+Slice comments that start with `///` are documentation (doc) comments. Slice doc comments can be attached to all Slice
 elements except parameter declarations, module declarations, and mode statements.
 
 ## Lexical grammar
