@@ -4,20 +4,7 @@ showAside: false
 showReadingTime: false
 ---
 
-Remote procedure call (RPC) is a fundamental paradigm for networked applications: a client sends a request to a server
-over a network connection, the server processes this request and then sends back a response to the client over the same
-connection.
-
-{% light-mode %}
-![RPC diagram (light mode)](diagrams/rpc-light.svg)
-{% /light-mode %}
-
-{% dark-mode %}
-![RPC diagram (dark mode)](diagrams/rpc-dark.svg)
-{% /dark-mode %}
-
-An RPC framework like IceRPC helps you apply this paradigm to your own networked applications without reinventing the
-wheel.
+TODO: are we deleting this page?
 
 {% grid columns=3 %}
 
