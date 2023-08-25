@@ -52,7 +52,7 @@ usual `?` suffix, requires minimal punctuation, and more.
 // An ImageStore interface defined with Slice
 
 interface ImageStore {
-    uploadImage(person: Person, id: int32, bytes: Sequence<uint8>)
+    uploadImage(person: Person, bytes: Sequence<uint8>)
 
     retrieveImage(person: Person) -> Sequence<uint8>
 }
@@ -78,7 +78,7 @@ class Person {
 // An ImageStore interface defined with Slice
 
 interface ImageStore {
-    uploadImage(person: Person, bytes: stream uint8, id: int32)
+    uploadImage(person: Person, bytes: stream uint8)
 
     retrieveImage(person: Person) -> stream uint8
 }
