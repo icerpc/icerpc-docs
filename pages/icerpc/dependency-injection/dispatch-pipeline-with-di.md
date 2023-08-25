@@ -62,7 +62,7 @@ to downstream dispatchers using an [IServiceProviderFeature].
 A standard middleware is a middleware that can be used with or without a DI container: it does not rely on a DI
 container injecting services to operate, and it implements interface `IDispatcher`.
 
-All the middleware provided by IceRPC are standard middleware: you can use them with or without DI, and they use
+All of IceRPC's built-in middleware are standard middleware: you can use them with or without DI, and they use
 features for communications within a dispatch.
 
 These middleware can be installed in a [Router] or an [IDispatcherBuilder]. For
