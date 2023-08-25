@@ -3,19 +3,16 @@ title: Connection closure
 description: Understand how a connection is closed.
 ---
 
-## What's connection closure?
+A client or a server can close a connection, and this closure can be either graceful or abortive.
 
-Connection closure is either graceful or abortive and can be initiated by the client or server. Violations of the
-protocol lead to an abortive close.
-
-Once the connection closure is initiated, the streams are closed and neither the client nor the server sends
-[StreamReadsClosed][stream-reads-closed-frame] and [StreamWritesClosed][stream-writes-closed-frame] frames.
+Once the closure of a connection is initiated, all the streams are closed. The client and the server no longer send
+[StreamReadsClosed] and [StreamWritesClosed] frames on this connection.
 
 ## Graceful connection closure
 
 A client closes the connection as follows:
 
-1. Send a [Close][close-frame] frame to the server.
+1. Send a [Close] frame to the server.
 
 2. Shut down writes on the underlying duplex connection.
 
@@ -55,7 +52,7 @@ sequenceDiagram
     Server-->>Client: Notification that server shut down writes on<br/>underlying duplex connection (FIN with TCP)
 ```
 
-{% callout type="information" %}
+{% callout type="note" %}
 It's the client—and never the server—that is the first to shut down writes on its side of the underlying duplex
 connection. When using the TCP transport, this ensures sockets won't be left in the TIME_WAIT state on the server.
 {% /callout %}
@@ -64,8 +61,8 @@ The `Close` frame carries an application error code. This error code provides th
 
 ## Abortive connection closure
 
-Abortive connection closure aborts the duplex connection.
+An abortive connection closure aborts the underlying duplex connection.
 
-[close-frame]: protocol-frames#close-frame
-[stream-reads-closed-frame]: protocol-frames#streamreadsclosed-and-streamwritesclosed-frames
-[stream-writes-closed-frame]: protocol-frames#streamreadsclosed-and-streamwritesclosed-frames
+[Close]: protocol-frames#close-frame
+[StreamReadsClosed]: protocol-frames#streamreadsclosed-and-streamwritesclosed-frames
+[StreamWritesCosed]: protocol-frames#streamreadsclosed-and-streamwritesclosed-frames

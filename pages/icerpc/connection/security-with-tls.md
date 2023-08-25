@@ -47,8 +47,7 @@ await using var server = new Server(
 The tcp transport may or may not use TLS. If you specify TLS configuration when you create your client connection for
 tcp, the connection will use TLS. If you don't specify TLS configuration, the connection won't use TLS.
 
-In C#, this client-side TLS configuration is provided by a
-[`SslClientAuthenticationOptions`][ssl-client-authentication-options] parameter. For example:
+In C#, this client-side TLS configuration is provided by a [SslClientAuthenticationOptions] parameter. For example:
 
 ```csharp
 // The default multiplexed transport for icerpc is tcp (implemented by SlicClientTransport over TcpClientTransport).
@@ -112,6 +111,4 @@ await using var connection = new ClientConnection(
     multiplexedClientTransport: new SlicClientTransport(colocClientTransport));
 ```
 
-[ssl-client-authentication-options]: https://learn.microsoft.com/en-us/dotnet/api/system.net.security.sslclientauthenticationoptions
-[tcp-client-transport]: csharp:IceRpc.Transports.Tcp.TcpClientTransport
-[tcp-server-transport]: csharp:IceRpc.Transports.Tcp.TcpServerTransport
+[SslClientAuthenticationOptions]: https://learn.microsoft.com/en-us/dotnet/api/system.net.security.sslclientauthenticationoptions

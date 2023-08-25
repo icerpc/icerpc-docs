@@ -22,7 +22,7 @@ const textAlignment = (align?: string): string => {
 export const Table = ({ children }: TableProps) => {
   return (
     <div className="mb-10 min-w-full">
-      <table className="w-full table-fixed border-collapse rounded prose-headings:font-semibold">
+      <table className="w-full border-collapse rounded prose-headings:font-semibold">
         {children}
       </table>
     </div>
@@ -67,12 +67,26 @@ export const TD = ({ align, children, dividers }: TDProps) => {
   return (
     <td
       className={clsx(
-        'prose-sm rounded py-3 pl-4',
+        'prose-sm rounded py-3 pl-4 align-top',
         dividers && 'border border-lightBorder/60 dark:border-darkBorder/40',
         textAlignment(align)
       )}
     >
-      {children}
+      {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
+      <div className="code-container">{children}</div>
+      <style jsx>{`
+        .code-container {
+          display: inline-block;
+        }
+        .code-container :global(code) {
+          overflow-x: none;
+        }
+
+        .code-container :global(a) {
+          overflow-x: none;
+          word-break: break-all;
+        }
+      `}</style>
     </td>
   );
 };

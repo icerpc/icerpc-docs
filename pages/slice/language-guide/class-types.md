@@ -10,7 +10,7 @@ Classes are not supported with Slice2.
 {% slice1 %}
 ## Super structs
 
-A class is a constructed type that holds a list of fields, just like a [struct](struct-types). Classes also offer
+A class is a user-defined type that holds a list of fields, just like a [struct](struct-types). Classes also offer
 capabilities not offered by structs:
  - extensibility\
    you can extend a class through inheritance and tagged fields
@@ -27,7 +27,7 @@ These extra capabilities are not free: the encoding/decoding of a class is much 
 encoding/decoding of a struct, and its binary representation is larger. As a result, you should only select a class over
 a struct when these extra capabilities may be useful for your application.
 
-{% callout type="information" %}
+{% callout type="note" %}
 A class represents data that you transmit over the wire, just like a struct. You can't define operations on a Slice
 class or implement an [interface](interface) with a Slice class.
 {% /callout %}
@@ -122,7 +122,7 @@ class Node { string: name, next: Node? }
 
 ## Slicing
 
-{% callout type="information" %}
+{% callout type="note" %}
 This is an opt-in feature. It's not enabled by default.
 {% /callout %}
 
@@ -167,7 +167,7 @@ interface CarPartShop {
 }
 ```
 
-{% callout type="information" %}
+{% callout type="note" %}
 The corresponding Slice attribute (metadata) in Ice is [`format:sliced`][format-metadata]. Unlike `slicedFormat`,
 `format:sliced` always applies to both arguments and return value.
 {% /callout %}
@@ -181,7 +181,7 @@ the derived class type, this application will decode successfully the full type.
 ## C# mapping
 
 A Slice class maps to a public C# class with the same name. If the Slice class has no base class, the mapped class
-derives from [`SliceClass`](csharp:ZeroC.Slice.SliceClass), the base class for all C# Slice classes.
+derives from [SliceClass], the base class for all C# Slice classes.
 
 For example:
 
@@ -253,3 +253,4 @@ public partial class RearBumper : CarPart
 
 [format-metadata]: https://doc.zeroc.com/ice/3.7/the-slice-language/slice-metadata-directives#id-.SliceMetadataDirectivesv3.7-format
 [tagged-fields]: fields#tagged-fields
+[SliceClass]: csharp:ZeroC.Slice.SliceClass

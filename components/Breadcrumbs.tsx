@@ -13,7 +13,7 @@ type Props = { breadcrumbs: Breadcrumb[] };
 
 export const Breadcrumbs = ({ breadcrumbs }: Props) => {
   return (
-    <ul className="flex justify-start p-0 text-sm">
+    <ol className="hidden justify-start p-0 text-sm md:flex">
       {breadcrumbs.map((crumb, index) => {
         const name = crumb.name;
         const href = crumb.href;
@@ -22,15 +22,32 @@ export const Breadcrumbs = ({ breadcrumbs }: Props) => {
         return (
           <li
             key={name}
-            className={clsx('mb-0 flex flex-row gap-2', index == 0 && 'pl-0')}
+            className={clsx(
+              'mb-0 flex flex-row items-center gap-2',
+              index == 0 && 'pl-1'
+            )}
           >
             <Link href={href} className="dark:text-white/80">
               {name}
             </Link>
-            {!isLast ? '/' : null}
+            {!isLast ? (
+              <svg
+                fill="none"
+                height="22"
+                shapeRendering="geometricPrecision"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                className="-mx-2 text-[#64748b5b] dark:text-white/60"
+              >
+                <path d="M16.88 3.549L7.12 20.451"></path>
+              </svg>
+            ) : null}
           </li>
         );
       })}
-    </ul>
+    </ol>
   );
 };

@@ -53,8 +53,8 @@ It is common to map leaf dispatchers such as services and mount sub-routers, but
 You can map and mount the exact same path (for example, `/greeter`). The router will direct a request with path
 `/greeter` to the mapped dispatcher and a request with path `/greeter/foo` to the mounted dispatcher.
 
-If a router does not find a mapped or mounted dispatcher for an incoming request's path, it throws
-`DispatchException(IceRpcError.ServiceNotFound)`.
+If a router does not find a mapped or mounted dispatcher for an incoming request's path, it returns a response with
+status code `NotFound`.
 
 ## Sub-router
 
@@ -93,8 +93,7 @@ from the request's path before trying to match this path against entries in its 
 
 A router can execute one or more middleware before handing over the request to a mapped or mounted dispatcher.
 
-In C#, these middleware are registered with `Use{Name}` extension methods on class [`Router`][csharp-router]. For
-example:
+In C#, these middleware are registered with `Use{Name}` extension methods on class [Router]. For example:
 
 ```csharp
 Router router = new Router().UseLogger(loggerFactory).UseCompressor();
@@ -106,9 +105,9 @@ middleware to execute. With the example above, the logger middleware executes fi
 compressor middleware, and then finally the compressor middleware calls `DispatchAsync` on the `Chatbot` service mapped
 at `/greeter`.
 
-{% callout type="information" %}
-The router always dispatches incoming requests to its registered middleware, even when it ends up throwing
-`DispatchException(IceRpcError.ServiceNotFound)` because it can't find a match for the incoming request's path.
+{% callout type="note" %}
+The router always dispatches incoming requests to its registered middleware, even when it ends up returning a response
+with status code `NotFound`.
 {% /callout %}
 
-[csharp-router]: csharp:IceRpc.Router
+[Router]: csharp:IceRpc.Router

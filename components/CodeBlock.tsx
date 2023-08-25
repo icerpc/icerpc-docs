@@ -14,7 +14,7 @@ import { useTheme } from 'next-themes';
 import { Theme } from 'types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const firaMono = Fira_Mono({ weight: "400", subsets: ['latin', 'latin-ext'] });
+const firaMono = Fira_Mono({ weight: '400', subsets: ['latin', 'latin-ext'] });
 
 const MermaidDiagram = dynamic(() => import('components/Tags/Mermaid'), {
   ssr: false
@@ -89,7 +89,7 @@ export const CodeBlock = ({
   }
 
   return (
-    <div className='group relative my-4 w-full items-center overflow-hidden rounded-lg border border-[rgb(46,46,46)] bg-[rgb(6,22,38)] dark:bg-[#0e1116]'>
+    <div className="group relative my-4 w-full items-center overflow-hidden rounded-lg border border-[rgb(46,46,46)] bg-[rgb(6,22,38)] dark:bg-[#0e1116]">
       <TopBar
         language={language}
         code={children}
@@ -102,7 +102,10 @@ export const CodeBlock = ({
         code={children?.trim()}
       >
         {({ className, tokens, getLineProps, getTokenProps, style }) => (
-          <pre className={clsx(className, firaMono.className, 'my-3')} style={style}>
+          <pre
+            className={clsx(className, firaMono.className, 'my-3')}
+            style={style}
+          >
             <code>
               {tokens.map((line, i) => {
                 const { key, ...rest } = getLineProps({
@@ -153,7 +156,7 @@ type TopBarProps = {
 
 const TopBar = ({ language, code, title, hideTitle }: TopBarProps) =>
   language && !hideTitle ? (
-    <div className='flex h-12 flex-row items-center justify-between border-b border-b-[hsl(0,0%,18%)] bg-black/20 text-white dark:bg-black/20'>
+    <div className="flex h-12 flex-row items-center justify-between border-b border-b-[hsl(0,0%,18%)] bg-black/20 text-white dark:bg-black/20">
       <div className="m-0 ml-4 flex flex-row items-center gap-3 p-0 text-sm">
         {LanguageIcon(language ?? '')}
         {title ?? fixLanguage(language) ?? ''}

@@ -11,9 +11,9 @@ connection advertises its idle timeout and the minimum value is used for the con
 
 ## Keeping a connection alive
 
-To prevent the idle timeout from being triggered, the client or server can send a [Ping][ping] frame. When the peer
-receives this `Ping` frame, it resets its idle timeout timer and send back a [Pong][pong] frame. The reception of the
-`Pong` frame will in turn reset the idle timeout timer of the receiver.
+To prevent the idle timeout from being triggered, the client or server can send a [Ping] frame. When the peer receives
+this `Ping` frame, it resets its idle timeout timer and send back a [Pong] frame. The reception of the `Pong` frame will
+in turn reset the idle timeout timer of the receiver.
 
 It's up to the transport implementation to decide if and when `Ping` frames are sent.
 
@@ -28,5 +28,5 @@ measure the round-trip time (RTT). The opaque payload allows to identify the dif
 {% /callout %}
 
 [connection-parameters]: connection-establishment#connection-establishment-parameters
-[ping]: protocol-frames#ping-frame
-[pong]: protocol-frames#pong-frame
+[Ping]: protocol-frames#ping-frame
+[Pong]: protocol-frames#pong-frame

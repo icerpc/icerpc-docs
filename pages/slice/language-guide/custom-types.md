@@ -5,8 +5,8 @@ description: Understand how to extend the Slice type system with custom types.
 
 ## Extending Slice
 
-A custom type is a constructed type that it totally custom because you decide how it's mapped in each programming
-language and you provide helper methods that encode/decode this type.
+A custom type is a user-defined type that is totally custom because you decide how it's mapped in each programming
+language. You also need to provide helper methods that encode/decode this type.
 
 For example, you could define a new 128-bit integer type as follows:
 
@@ -80,7 +80,7 @@ public static class BigIntSliceEncoderExtensions
 
 {% /slice1 %}
 
-{% callout type="information" %}
+{% callout type="note" %}
 A more logical name for this custom type would be `Int128`. We picked `BigInt` to make it clear where the Slice
 identifier is used in the classes and methods that encode/decode this custom type.
 {% /callout %}

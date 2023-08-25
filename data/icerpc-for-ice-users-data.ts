@@ -44,8 +44,8 @@ export const iceRpcForIceUsersData: SideBarSourceType[] = [
         path: `${ICERPC_FOR_ICE}/rpc-core/ice-identity`
       },
       {
-        title: 'Proxy',
-        path: `${ICERPC_FOR_ICE}/rpc-core/proxy`
+        title: 'Proxy string',
+        path: `${ICERPC_FOR_ICE}/rpc-core/proxy-string`
       }
     ]
   },
@@ -59,6 +59,10 @@ export const iceRpcForIceUsersData: SideBarSourceType[] = [
       {
         title: 'Converting .ice into .slice',
         path: `${ICERPC_FOR_ICE}/slice/converting-ice-into-slice`
+      },
+      {
+        title: 'Ice::Object and checked cast',
+        path: `${ICERPC_FOR_ICE}/slice/ice-object`
       }
     ]
   }

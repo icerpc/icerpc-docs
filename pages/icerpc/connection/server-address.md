@@ -5,7 +5,7 @@ description: Understand the server address concept and syntax.
 
 ## Syntax
 
-A server address is a [URI][uri] with the following syntax: `protocol://host[:port][?name=value][&name=value...]`
+A server address is a [URI] with the following syntax: `protocol://host[:port][?name=value][&name=value...]`
 
 - `protocol` (the URI scheme) is either `ice` or `icerpc`
 - `host` is a DNS name or an IP address
@@ -18,7 +18,7 @@ The query parameter `transport` specifies the name of the underlying transport. 
 and configure this transport as the only transport they can use. As a result, it is common to leave out `transport`
 in server addresses.
 
-In C#, struct [`ServerAddress`][server-address] is just a parsed and validated representation of a server address URI:
+In C#, struct [ServerAddress] is just a parsed and validated representation of a server address URI:
 it holds exactly the same information.
 
 ## Client connection configuration
@@ -55,8 +55,8 @@ Here are some examples:
 | `icerpc://[::0]:0`        | Listen for icerpc connections on all interfaces; the OS selects the port number to use.                         |
 | `ice://0.0.0.0:10000`     | Listen for ice connections on all interfaces with an IPv4 address on port 10000.                                |
 
-In C#, when you specify port 0 in your server address, [`Listen`][listen] returns a server address with the port number
-selected by the OS:
+In C#, when you specify port 0 in your server address, [Listen] returns a server address with the port number selected
+by the OS:
 
 ```csharp
 using IceRpc;
@@ -67,6 +67,6 @@ Console.WriteLine($"server is now listening on {actualServerAddress}); // shows 
 // then somehow share this server address with the clients
 ```
 
-[listen]: csharp:IceRpc.Server#IceRpc_Server_Listen
-[server-address]: csharp:IceRpc.ServerAddress
-[uri]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
+[Listen]: csharp:IceRpc.Server#IceRpc_Server_Listen
+[ServerAddress]: csharp:IceRpc.ServerAddress
+[URI]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier

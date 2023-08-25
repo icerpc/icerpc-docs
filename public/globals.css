@@ -47,7 +47,7 @@
   }
 
   code {
-    @apply rounded border-[1px] bg-slate-100 px-[4px] py-[2px] font-mono shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] dark:border-darkBorder dark:bg-transparent dark:text-white;
+    @apply break-all rounded border-[1px] bg-slate-100 px-[4px] py-[2px] font-mono shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] dark:border-darkBorder dark:bg-transparent dark:text-white md:break-normal;
   }
 
   a code {

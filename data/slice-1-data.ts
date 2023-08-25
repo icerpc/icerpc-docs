@@ -106,6 +106,10 @@ export const slice1Data: SideBarSourceType[] = [
       {
         title: 'Doc comments',
         path: `${SLICE1_BASE_URL}/language-guide/doc-comments`
+      },
+      {
+        title: 'Preprocessor directives',
+        path: `${SLICE1_BASE_URL}/language-guide/preprocessor-directives`
       }
     ]
   },
@@ -113,20 +117,20 @@ export const slice1Data: SideBarSourceType[] = [
     title: 'Language reference',
     links: [
       {
-        title: 'Lexical rules',
-        path: `${SLICE1_BASE_URL}/language-reference/lexical-rules`
+        title: 'Overview',
+        path: `${SLICE1_BASE_URL}/language-reference/`
       },
       {
-        title: 'Grammar specification',
-        path: `${SLICE1_BASE_URL}/language-reference/grammar`,
+        title: 'Slice grammar',
+        path: `${SLICE1_BASE_URL}/language-reference/slice-grammar`
+      },
+      {
+        title: 'Doc comments',
+        path: `${SLICE1_BASE_URL}/language-reference/doc-comments`
       },
       {
         title: 'Preprocessor directives',
         path: `${SLICE1_BASE_URL}/language-reference/preprocessor-directives`
-      },
-      {
-        title: 'Keywords',
-        path: `${SLICE1_BASE_URL}/language-reference/keywords`
       }
     ]
   },
@@ -146,24 +150,24 @@ export const slice1Data: SideBarSourceType[] = [
         path: `${SLICE1_BASE_URL}/encoding/primitive-types`
       },
       {
-        title: 'Constructed types',
-        path: `${SLICE1_BASE_URL}/encoding/constructed-types`
+        title: 'User-defined types',
+        path: `${SLICE1_BASE_URL}/encoding/user-defined-types`
       },
       {
         title: 'Collection types',
         path: `${SLICE1_BASE_URL}/encoding/collection-types`
       },
       {
-        title: 'Proxy types',
-        path: `${SLICE1_BASE_URL}/encoding/proxy-types`
+        title: 'Operation arguments and return values',
+        path: `${SLICE1_BASE_URL}/encoding/operation`
       },
       {
-        title: 'Operation arguments',
-        path: `${SLICE1_BASE_URL}/encoding/operation-arguments`
+        title: 'Exceptions',
+        path: `${SLICE1_BASE_URL}/encoding/exceptions`
       },
       {
-        title: 'Operation return value and exception',
-        path: `${SLICE1_BASE_URL}/encoding/operation-return-value-exception`
+        title: 'IceRPC + Slice integration',
+        path: `${SLICE1_BASE_URL}/encoding/icerpc`
       }
     ]
   }

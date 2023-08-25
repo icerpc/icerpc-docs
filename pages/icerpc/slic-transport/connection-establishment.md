@@ -11,7 +11,7 @@ Connection establishment serves two purposes:
 
 - The transmission of transport parameters on both sides of the connection.
 
-Connection establishment relies on the [Initialize][initialize-frame], [Version][version-frame] and [InitializeAck][initialize-ack-frame] frames.
+Connection establishment relies on the [Initialize], [Version] and [InitializeAck] frames.
 
 ## Connection establishment steps
 
@@ -73,6 +73,6 @@ A number of parameters are exchanged with the `Initialize` and InitializeAck fra
 | `InitialStreamWindowSize` | Specifies the initial stream window size used for stream flow control. |
 | `MaxStreamFrameSize` | Specifies the maximum amount of data carried by a `Stream` or `StreamLast` frame. |
 
-[initialize-frame]: protocol-frames#initialize-frame
-[initialize-ack-frame]: protocol-frames#initializeack-frame
-[version-frame]: protocol-frames#version-frame
+[Initialize]: protocol-frames#initialize-frame
+[InitializeAck]: protocol-frames#initializeack-frame
+[Version]: protocol-frames#version-frame

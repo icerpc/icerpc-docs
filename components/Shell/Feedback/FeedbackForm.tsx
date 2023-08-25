@@ -101,7 +101,7 @@ const sendFeedback = async (feedback: FeedbackData) => {
 };
 
 export const FeedbackForm = ({ title, options }: Props) => {
-  const { pathname } = useRouter();
+  const { asPath, isReady } = useRouter();
   const { mode } = useMode();
   const { platform } = usePlatform();
   const pageTitle = window.document.title;
@@ -111,12 +111,19 @@ export const FeedbackForm = ({ title, options }: Props) => {
   const [comment, setComment] = useState<string>();
   const [opacity, setOpacity] = useState('opacity-0');
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+  const [pathname, setPathname] = useState<string>('');
 
   useEffect(() => {
     setTimeout(() => {
       setOpacity('opacity-100');
     }, 100);
   }, []);
+
+  useEffect(() => {
+    if (isReady) {
+      setPathname(asPath);
+    }
+  }, [isReady, asPath]);
 
   return feedbackSubmitted ? (
     <h3 className="mb-10 mt-5">Thanks for the feedback!</h3>
@@ -182,7 +189,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
                           placeholder="Your feedback ..."
                           className={clsx(
                             'mx-2 mt-2 h-14 w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-sm',
-                            'dark:border-gray-500 dark:focus:border-primary dark:focus:ring-primary',
+                            'dark:border-darkBorder dark:bg-black dark:focus:border-primary dark:focus:ring-primary',
                             'focus:border-primary focus:ring-primary'
                           )}
                           onChange={(e) => {
@@ -203,7 +210,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
                           placeholder="Your email address ... "
                           className={clsx(
                             'm-2 h-[40px] w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-sm',
-                            'dark:border-gray-500 dark:focus:border-primary dark:focus:ring-primary',
+                            'dark:border-darkBorder dark:bg-black dark:focus:border-primary dark:focus:ring-primary',
                             'focus:border-primary focus:ring-primary'
                           )}
                           onChange={(e) => {
@@ -242,7 +249,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
               option: selectedOption.title,
               path: pathname,
               platform,
-              title: pageTitle
+              title: removeTrailingDocs(pageTitle)
             });
           }}
         >
@@ -252,3 +259,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
     </div>
   );
 };
+
+function removeTrailingDocs(text: string) {
+  return text.replace(/\s*\|\s*IceRPC Docs$/, '');
+}

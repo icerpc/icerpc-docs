@@ -15,8 +15,14 @@ const heading = {
     const attributes = node.transformAttributes(config);
     const children = node.transformChildren(config);
     const id = generateID(children, attributes);
+    const frontmatter = config.variables?.frontmatter;
+    const showDividers = frontmatter.showDividers;
 
-    return new Tag(`${this.render}`, { ...attributes, id }, children);
+    return new Tag(
+      `${this.render}`,
+      { ...attributes, id, showDividers },
+      children
+    );
   }
 };
 

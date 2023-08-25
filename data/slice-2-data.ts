@@ -68,10 +68,6 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE2_BASE_URL}/language-guide/struct-types`
       },
       {
-        title: 'Exception',
-        path: `${SLICE2_BASE_URL}/language-guide/exception`
-      },
-      {
         title: 'Proxy types',
         path: `${SLICE2_BASE_URL}/language-guide/proxy-types`
       },
@@ -102,6 +98,10 @@ export const slice2Data: SideBarSourceType[] = [
       {
         title: 'Doc comments',
         path: `${SLICE2_BASE_URL}/language-guide/doc-comments`
+      },
+      {
+        title: 'Preprocessor directives',
+        path: `${SLICE2_BASE_URL}/language-guide/preprocessor-directives`
       }
     ]
   },
@@ -109,20 +109,20 @@ export const slice2Data: SideBarSourceType[] = [
     title: 'Language reference',
     links: [
       {
-        title: 'Lexical rules',
-        path: `${SLICE2_BASE_URL}/language-reference/lexical-rules`
+        title: 'Overview',
+        path: `${SLICE2_BASE_URL}/language-reference/`
       },
       {
-        title: 'Grammar specification',
-        path: `${SLICE2_BASE_URL}/language-reference/grammar`,
+        title: 'Slice grammar',
+        path: `${SLICE2_BASE_URL}/language-reference/slice-grammar`
+      },
+      {
+        title: 'Doc comments',
+        path: `${SLICE2_BASE_URL}/language-reference/doc-comments`
       },
       {
         title: 'Preprocessor directives',
         path: `${SLICE2_BASE_URL}/language-reference/preprocessor-directives`
-      },
-      {
-        title: 'Keywords',
-        path: `${SLICE2_BASE_URL}/language-reference/keywords`
       }
     ]
   },
@@ -142,24 +142,20 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE2_BASE_URL}/encoding/primitive-types`
       },
       {
-        title: 'Constructed types',
-        path: `${SLICE2_BASE_URL}/encoding/constructed-types`
+        title: 'User-defined types',
+        path: `${SLICE2_BASE_URL}/encoding/user-defined-types`
       },
       {
         title: 'Collection types',
         path: `${SLICE2_BASE_URL}/encoding/collection-types`
       },
       {
-        title: 'Proxy types',
-        path: `${SLICE2_BASE_URL}/encoding/proxy-types`
+        title: 'Operation arguments and return values',
+        path: `${SLICE2_BASE_URL}/encoding/operation`
       },
       {
-        title: 'Operation arguments',
-        path: `${SLICE2_BASE_URL}/encoding/operation-arguments`
-      },
-      {
-        title: 'Operation return value and exception',
-        path: `${SLICE2_BASE_URL}/encoding/operation-return-value-exception`
+        title: 'IceRPC + Slice integration',
+        path: `${SLICE2_BASE_URL}/encoding/icerpc`
       }
     ]
   }

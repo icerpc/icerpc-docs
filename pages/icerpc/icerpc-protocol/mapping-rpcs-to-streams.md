@@ -52,7 +52,7 @@ The request header holds:
 
 - the path of the service
 - the operation name
-- [request fields](../invocation/outgoing-request#request-fields)
+- [request fields][request-fields]
 
 icerpc transmits the request fields without attaching any meaning to their values or presence.
 
@@ -68,7 +68,7 @@ compact struct Request {
 compact struct RequestHeader {
     path: string
     operation: string
-    fields: dictionary<RequestFieldKey, sequence<uint8>>
+    fields: Dictionary<RequestFieldKey, Sequence<uint8>>
 }
 ```
 
@@ -83,7 +83,7 @@ For example, a request for operation "op" at path "/foo" with an empty payload a
 0x00                : field dictionary size (0) on 1 byte (no fields)
 ```
 
-{% callout type="information" %}
+{% callout type="note" %}
 With Slice's varuint62 encoding, the first 2 bits of the first byte encode the number of bytes used to encode the
 value. As a result, for a varuint62 encoded on a single byte, the encoded value is `source * 4`, and for a varuint62
 encoded on 2 bytes, the encoded value is `source * 4 + 1`.
@@ -96,13 +96,13 @@ request: a stream of bytes with an unknown size. The response payload ends when 
 
 The response header holds:
 
-- a [status code](../invocation/incoming-response#status-code)
-- an error message when the status code is not Success
-- [response fields](../invocation/incoming-response#response-fields)
+- a [status code][status-code]
+- an error message when the status code is not `Ok`
+- [response fields][response-fields]
 
 icerpc transmits the response fields without attaching any meaning to their values or presence.
 
-The response header is specified in [Slice][slice]:
+The response header is specified in [Slice]:
 
 ```slice
 compact struct Response {
@@ -113,12 +113,12 @@ compact struct Response {
 
 compact struct ResponseHeader {
     statusCode: StatusCode
-    errorMessage: string // only present when statusCode is not Success
-    fields: dictionary<ResponseFieldKey, sequence<uint8>>
+    errorMessage: string // only present when statusCode is not `Ok`
+    fields: Dictionary<ResponseFieldKey, Sequence<uint8>>
 }
 ```
 
-For example, a response with status code Success, no fields and an empty payload can be encoded as:
+For example, a response with status code `Ok`, no fields and an empty payload can be encoded as:
 
 ```
 0x09 0x00           : header size (2) on 2 bytes, little endian
@@ -126,4 +126,7 @@ For example, a response with status code Success, no fields and an empty payload
 0x00                : field dictionary size (0) on 1 byte (no fields)
 ```
 
-[slice]: ../../slice2
+[Slice]: /slice2
+[request-fields]: ../invocation/outgoing-request#request-fields
+[status-code]: ../invocation/incoming-response#status-code
+[response-fields]: ../invocation/incoming-response#response-fields

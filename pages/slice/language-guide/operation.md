@@ -9,18 +9,19 @@ An operation consists of:
 
 - an optional operation [attribute](attributes)
 - a name (the name of operation)
-- a list of [parameters][parameters] (the operation parameters)
-- an arrow followed by one or more return [parameters][parameters] (optional)
+- a list of [parameters] (the operation parameters)
+- an arrow followed by one or more return [parameters] (optional)
+{% slice1 %}
 - an [exception specification](#exception-specification) (optional)
+{% /slice1 %}
 
 For example:
 
 ```slice
-greet(name: string) -> string throws GreeterException
+greet(name: string) -> string
 ```
 
-Operation `greet` has a name (`greet`), an operation parameter (`name`), a nameless return parameter and an exception
-specification (it can throw a `GreeterException`).
+Operation `greet` has a name (`greet`), an operation parameter (`name`), and a nameless return parameter.
 
 Here are a few additional examples:
 
@@ -67,38 +68,35 @@ A single nameless return parameter can also get tagged. For example:
 op() -> tag(1) string?
 ```
 
+{% slice1 %}
 ## Exception specification
 
 An operation can include an exception specification after its return parameter(s), or after the operation parameters if
 the operation returns nothing.
 
-{% slice1 %}
-An exception specification consists of the `throws` keyword followed by an exception name or the `AnyException` keyword.
-{% /slice1 %}
-{% slice2 %}
-An exception specification consists of the `throws` keyword followed by an exception name.
-{% /slice2 %}
+An exception specification consists of the `throws` keyword followed by one or more exception names.
 
 For example:
 
 ```slice
 translate(input: string) -> string throws TranslationException
+create(name: string) throws (InvalidArgumentException, IOException)
 ```
 
-This exception specification allows the operation to return a custom error when the implementation of the operation
-fails. When the operation succeeds, it returns the return parameters and this exception specification is not used.
+This exception specification allows operations to return an exception when their implementations fail.
+When an operation succeeds, it returns the return parameters and the exception specification is not used.
 
-{% slice1 %}
-This custom error can be the exception after the `throws` or any Slice exception derived from this exception.
-`AnyException` means the operation can return (throw) any Slice exception as a custom error.
-{% /slice1 %}
+The operation can return any of the Slice exceptions after the `throws` or any Slice exception derived from these
+exceptions.
 
-{% callout type="information" %}
+{% callout %}
 Don't read too much in the terms "exception" and "throws". An exception specification is about sending a custom error
-in a response as an alternative to the return value. This custom error maps to an exception thats gets thrown in
+in a response as an alternative to the return value. This custom error maps to an exception that gets thrown in
 programming languages with exceptions (such as C#). In programming languages without exceptions (such as Rust), there is
 no exception or throwing: the exception is just a custom error.
 {% /callout %}
+
+{% /slice1 %}
 
 ## Idempotent operation
 
@@ -108,7 +106,7 @@ semantically equivalent to calling this operation once.
 For example:
 
 ```slice
-idempotent setTemperature(newValue: float64) throws ThermostatException
+idempotent setTemperature(newValue: float64)
 ```
 
 Setting the temperature over-and-over to the same value is like setting it once.
@@ -144,7 +142,7 @@ interface FileServer {
 
 {% /slice2 %}
 
-In C#, the generated code sets the [`ICompressFeature`][compress-feature] in the outgoing request features.
+In C# with IceRPC, the generated code sets the [`ICompressFeature`][compress-feature] in the outgoing request features.
 
 This compression request is typically fulfilled by the compressor interceptor or middleware, which needs to be installed
 in your invocation resp. dispatch pipeline. If you neglect to install this interceptor or middleware, the corresponding
@@ -161,8 +159,15 @@ operation. It has no effect on the server-side generated code (the I*Name*Servic
 A one-way request is a "fire and forget" request: the request is considered successful as soon as it's sent
 successfully.
 
+{% slice1 %}
 This attribute can only be applied to operations with no return type and no exception specification. It does not accept
-any argument. For example:
+any argument.
+{% /slice1 %}
+{% slice2 %}
+This attribute can only be applied to operations with no return type. It does not accept any argument.
+{% /slice2 %}
+
+For example:
 
 ```slice
 interface Logger {
@@ -180,7 +185,7 @@ operation in sliced format, instead of the default compact format. Its argument 
 See [Class slicing][class-slicing] for details.
 {% /slice1 %}
 
-## C# mapping
+## C# mapping {% icerpcSlice=true %}
 
 A Slice operation named _opName_ in interface `Greeter` is mapped to abstract method *OpName*Async in the interface
 `IGreeter` and to abstract method *OpName*Async in interface `IGreeterService`.
@@ -296,7 +301,7 @@ public partial interface IGreeterService
 ```
 
 {% slice2 %}
-{% callout type="information" %}
+{% callout type="note" %}
 If your operation has a stream parameter, the encode helper (in _NameProxy_.Request) does not encode the stream
 argument; however, the decode helper (in I*Name*Service.Request) decodes all arguments, including the stream.
 
@@ -313,7 +318,7 @@ code for their payloads.
 The `cs::encodeReturn` attribute allows you to change the return type of the mapped method on the generated Service
 interface: this attribute makes this method returns a `ValueTask<PipeReader>` instead of the usual `ValueTask<T>`.
 
-The returned [PipeReader][pipe-reader] represents the encoded return value. You would typically produce this value using
+The returned [PipeReader] represents the encoded return value. You would typically produce this value using
 the Encode*OpName* method provided by the helper [`Response` class](#request-and-response-helper-classes).
 
 There are two somewhat common use-cases for this attribute:
@@ -324,7 +329,9 @@ There are two somewhat common use-cases for this attribute:
     the return value once, cache the encoded bytes and then return over and over these bytes.
 
 [class-slicing]: class-types#slicing
-[compress-feature]: csharp:IceRpc.Features.ICompressFeature
 [parameters]: parameters
-[pipe-reader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
 [tagged-parameters]: parameters#tagged-parameters
+
+[PipeReader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
+
+[compress-feature]: csharp:IceRpc.Features.ICompressFeature

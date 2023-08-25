@@ -11,9 +11,8 @@ DCE, CORBA, SOAP, Ice, Thrift and more recently gRPC all use primarily or only T
 responses.
 
 TCP is ubiquitous today but is also showing its limits: handshakes with TLS is a laborious process, TCP retransmissions
-can significantly degrade performance, and more. The answer to TCP's woes is [QUIC][quic], a new UDP-based protocol
-ratified in 2021 with implementations for all modern systems. QUIC underpins the latest revision of the HTTP protocol
-([HTTP/3][http3]).
+can significantly degrade performance, and more. The answer to TCP's woes is [QUIC], a new UDP-based protocol ratified
+in 2021 with implementations for all modern systems. QUIC underpins the latest revision of the HTTP protocol ([HTTP/3]).
 
 QUIC provides independent streams within the same reliable connection, and these streams are a perfect fit for RPCs:
 an RPC maps to a QUIC stream, with the request flowing in one direction and the response in the other. We anticipate
@@ -33,9 +32,9 @@ timeline
 The primary transport for IceRPC is QUIC, but we're still in the early days of QUIC, so being QUIC-only is not
 practical.
 
-To bridge this gap, IceRPC provides a multiplexing adapter called [Slic][slic]. Slic implements a QUIC-like multiplexed
+To bridge this gap, IceRPC provides a multiplexing adapter called [Slic]. Slic implements a QUIC-like multiplexed
 transport over any duplex transport such as TCP. This way, you can use IceRPC with QUIC, with TCP (via Slic), and with
-various other traditional transports such as Bluetooth, [iAP][iap], named pipes, etc.
+various other traditional transports such as Bluetooth, [iAP], named pipes, etc.
 
 {% callout %}
 Slic over TCP suffers from the same [head-of-line blocking][hol] issue as HTTP/2. QUIC was created in part to address
@@ -107,7 +106,7 @@ multiplexed transport and then plug it in IceRPC. All the transport interfaces a
 
 [async-await]: https://en.wikipedia.org/wiki/Async/await
 [hol]: https://en.wikipedia.org/wiki/Head-of-line_blocking
-[http3]: https://en.wikipedia.org/wiki/HTTP/3
-[iap]: https://en.wikipedia.org/wiki/List_of_Bluetooth_profiles#iPod_Accessory_Protocol_(iAP)
-[quic]: https://en.wikipedia.org/wiki/QUIC
-[slic]: ../../icerpc/slic-transport
+[HTTP/3]: https://en.wikipedia.org/wiki/HTTP/3
+[iAP]: https://en.wikipedia.org/wiki/List_of_Bluetooth_profiles#iPod_Accessory_Protocol_(iAP)
+[QUIC]: https://en.wikipedia.org/wiki/QUIC
+[Slic]: /icerpc/slic-transport

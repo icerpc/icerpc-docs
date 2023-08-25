@@ -16,23 +16,20 @@ these files but only generates code for the source files.
 Like C# and unlike C and C++, the Slice compiler considers the definitions in all its input files and does not impose
 any ordering requirement. For instance, you can use a type before defining it:
 
-```slice {% addMode=true %}
+```slice
 module Example
 
 interface WidgetFactory {
-    // We can use Widget and WidgetException before defining them.
-    createWidget(name: string) -> Widget throws WidgetException
+    // We can use Widget before defining it.
+    createWidget(name: string) -> Widget
 }
 
 struct Widget {
     name: string
+    color: Color
 }
 
-exception WidgetException {
-    error: WidgetError
-}
-
-enum WidgetError { DuplicateName, FactoryClosed }
+enum Color { Blue, Red, White, Yellow }
 ```
 
 Two files can also contain definitions with circular references, such as:
@@ -69,7 +66,7 @@ interface Greeter {
     greet(name: string) -> string
 
 #if NextGen // only available in the NextGen version of Greeter
-    sing(songName: string) -> sequence<uint8>
+    sing(songName: string) -> Sequence<uint8>
 #endif
 }
 ```

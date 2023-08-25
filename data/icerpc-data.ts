@@ -112,13 +112,16 @@ export const iceRpcData: SideBarSourceType[] = [
     title: 'Advanced topics'
   },
   {
-    title: 'Customization',
-    links: [
-      {
-        title: 'Protocol connection',
-        path: `${ICERPC_BASE_URL}/customization/protocol-connection`
-      }
-    ]
+    title: 'Protocol connection',
+    path: `${ICERPC_BASE_URL}/protocol-connection`
+  },
+  {
+    title: 'Duplex transport',
+    path: `${ICERPC_BASE_URL}/duplex-transport`
+  },
+  {
+    title: 'Multiplexed transport',
+    path: `${ICERPC_BASE_URL}/multiplexed-transport`
   },
   {
     title: 'The icerpc protocol',

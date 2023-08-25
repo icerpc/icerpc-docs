@@ -48,8 +48,7 @@ public partial interface IGreeterService
 }
 ```
 
-We need to create a class that derives from [`Service`](csharp:IceRpc.Slice.Service) and implements this generated
-interface:
+We need to create a class that derives from [Service] and implements this generated interface:
 
 ```csharp
 using IceRpc;
@@ -94,7 +93,7 @@ public partial interface IGreeter
 }
 ```
 
-`IGreeter` is a minimal interface that you can easily [decorate][decorator-pattern].
+`IGreeter` is a minimal interface that you can easily [decorate].
 
 The `GreeterProxy` struct implements the methods of the generated interface by creating outgoing requests and calling
 `InvokeAsync` on its invoker with these requests.
@@ -116,6 +115,9 @@ string greeting = await greeter.GreetAsync("Syd");
 Console.WriteLine(greeting);
 ```
 
-[decorator-pattern]: https://en.wikipedia.org/wiki/Decorator_pattern
-[dispatch-pipeline]: ../../icerpc/dispatch/dispatch-pipeline
+[dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
+
+[decorate]: https://en.wikipedia.org/wiki/Decorator_pattern
 [slice-tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
+
+[Service]: csharp:IceRpc.Slice.Service

@@ -5,14 +5,13 @@ import { Config } from '@markdoc/markdoc';
 // Nodes
 import { Document } from 'components/Nodes/Document';
 import { CodeBlock, AppLink, Heading, List } from 'components';
-import { TH, TR, TD } from 'components/Nodes/Table';
+import { TH, TR, TD, Table } from 'components/Nodes/Table';
 
 // Tags
 import { Callout } from 'components/Tags/Callout';
 import { ConditionalTheme } from 'components/Tags/ConditionalTheme';
 import { Divider } from 'components/Divider';
 import { ModeSection } from 'components/Tags/ModeSection';
-import { SupportedModes } from 'components/Tags/SupportedModes';
 import { Grid } from 'components/Tags/Grid';
 import { LanguageSection } from 'components/Tags/LanguageSection';
 import { LanguageSelector } from 'components/Tags/LanguageSelector';
@@ -20,6 +19,10 @@ import { Card } from 'components/Tags/Card';
 import { SideBySide } from 'components/Tags/SideBySide';
 import { Title } from 'components/Tags/Title';
 import { IcerpcSlice } from 'components';
+import { Examples } from 'components/Tags/Examples';
+import { HomeTitle } from 'components/Tags/HomeTitle';
+import { Explore } from 'components/Tags/Explore';
+import { Step } from 'components/Tags/Step';
 
 import * as nodes from './nodes';
 import * as tags from './tags';
@@ -42,15 +45,19 @@ export const components = {
   ConditionalTheme,
   Divider,
   Document,
+  Examples,
+  Explore,
   Grid,
   Heading,
-  IcerpcSpecific: IcerpcSlice,
+  HomeTitle,
+  IcerpcSlice,
   LanguageSection,
   LanguageSelector,
   List,
   ModeSection,
   SideBySide,
-  SupportedModes,
+  Step,
+  Table,
   TD,
   TH,
   Title,

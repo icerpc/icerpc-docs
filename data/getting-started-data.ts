@@ -8,33 +8,49 @@ export const gettingStartedData: SideBarSourceType[] = [
     path: `${GETTING_STARTED_BASE_URL}/`
   },
   {
-    title: 'Key features',
+    title: 'Quickstart',
+    path: GETTING_STARTED_BASE_URL + '/quickstart/'
+  },
+  {
+    title: 'Installation',
     links: [
       {
-        title: 'A modular RPC framework built for QUIC',
-        path:
-          GETTING_STARTED_BASE_URL + '/key-features/modular-rpc-for-quic/'
+        title: 'Using the IceRPC .NET Project Templates',
+        path: GETTING_STARTED_BASE_URL + '/installation/template/'
       },
       {
-        title: 'Slice - a better IDL',
-        path: GETTING_STARTED_BASE_URL + '/key-features/slice-better-idl/'
+        title: 'Adding IceRPC to an existing project',
+        path: GETTING_STARTED_BASE_URL + '/installation/existing-project/'
+      },
+      {
+        title: 'NuGet packages',
+        path: GETTING_STARTED_BASE_URL + '/installation/nuget-packages/'
       }
     ]
   },
   {
-    title: 'Getting started with IceRPC for C#',
+    title: 'Tutorial',
     links: [
       {
-        title: 'Tutorial: Writing your first IceRPC application in C#',
-        path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/tutorial/'
+        title: 'Writing your first server application',
+        path: GETTING_STARTED_BASE_URL + '/tutorial/server-tutorial/'
       },
       {
-        title: 'How to add IceRPC to an existing C# project?',
-        path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/how-to/'
+        title: 'Writing your first client application',
+        path: GETTING_STARTED_BASE_URL + '/tutorial/client-tutorial/'
+      }
+    ]
+  },
+  {
+    title: 'Key features',
+    links: [
+      {
+        title: 'A modular RPC framework built for QUIC',
+        path: GETTING_STARTED_BASE_URL + '/key-features/modular-rpc-for-quic/'
       },
       {
-        title: 'NuGet packages',
-        path: GETTING_STARTED_BASE_URL + '/icerpc-csharp/nuget-packages/'
+        title: 'Slice - a better IDL',
+        path: GETTING_STARTED_BASE_URL + '/key-features/slice-better-idl/'
       }
     ]
   }

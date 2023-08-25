@@ -50,15 +50,11 @@ interface Rectangle : Shape, Fillable {
 }
 ```
 
-## Interface as a constructed type
+## Interface as a user-defined type
 
-An interface definition produces a new type: a [proxy type](proxy-types).
+An interface definition produces a new user-defined type: a [proxy type](proxy-types).
 
 ## C# mapping {% icerpcSlice=true %}
-
-{% callout %}
-This section is specific to the IceRPC-Slice integration.
-{% /callout %}
 
 The Slice compiler for C# compiles Slice interface _Name_ into two C# interfaces (I*Name* and I*Name*Service) and one
 C# struct (*Name*Proxy). The identifiers of the generated interfaces and struct are always in Pascal case, per the usual
@@ -153,16 +149,16 @@ public readonly partial record struct WidgetProxy : IWidget, IProxy
 }
 ```
 
-The `invoker` parameter represents your [invocation pipeline](../../icerpc/invocation/invocation-pipeline), the
+The `invoker` parameter represents your [invocation pipeline](/icerpc/invocation/invocation-pipeline), the
 `serviceAddress` or `serviceAddressUri` parameter corresponds to the
-[address](../../icerpc/invocation/service-address) of the remote service, and the `encodeOptions` parameter allows
+[address](/icerpc/invocation/service-address) of the remote service, and the `encodeOptions` parameter allows
 you to customize the Slice encoding of operation parameters. See
-[SliceEncodeOptions](csharp:IceRpc.Slice.SliceEncodeOptions) for details.
+[SliceEncodeOptions] for details.
 
 A `null` service address is equivalent to an icerpc service address with the default path of the associated Slice
 interface.
 
-{% callout type="information" %}
+{% callout type="note" %}
 The default path of a Slice interface is `/` followed by its fully qualified name with `::` replaced by `.`.
 
 For example, the default path of Slice interface `VisitorCenter::Greeter` is `/VisitorCenter.Greeter`.
@@ -250,7 +246,7 @@ public partial interface IWidgetService
 
 {% /side-by-side %}
 
-{% callout type="information" %}
+{% callout type="note" %}
 Even though I*Name*Service is an interface, it's not used as an abstraction: you shouldn't make calls to this interface
 or create decorators for this interface. It's just a model that your service class must implement.
 {% /callout %}
@@ -286,3 +282,4 @@ internal class MyWidget :
 {% /side-by-side %}
 
 [cs-identifier]: attributes#cs::identifier-attribute
+[SliceEncodeOptions]: csharp:IceRpc.Slice.SliceEncodeOptions

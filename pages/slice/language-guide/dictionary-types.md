@@ -5,32 +5,37 @@ description: Learn how to define and use dictionaries in Slice.
 
 ## Associative array
 
-A dictionary is a constructed type that represents an associative array. A dictionary is like a sequence of key-value
-pairs with the following constraints:
+A dictionary is a built-in generic type that represents an associative array. All keys of this associative array have
+the same Slice type, and all values have the same Slice type.
+
+A dictionary is like a sequence of key-value pairs with the following constraints:
 
 - each key is unique
-- the type of the key is a string, bool, integral type, enum type, custom type or a compact struct with key-compatible
+- the type of the key is a string, bool, integral type, enum type, custom type, or a compact struct with key-compatible
   fields
 
-You use a dictionary type inline, without giving it a name, for example as the type for a parameter or field:
+You can construct a dictionary type inline, without giving it a name, for example to specify the type of a parameter or
+field:
 
 ```slice {% addMode=true %}
 module VisitorCenter
 
 interface Greeter {
     greet(name: string) -> string
-    allPreviousGreetings() -> dictionary<string, string>
+    allPreviousGreetings() -> Dictionary<string, string>
 }
 ```
 
-You can use any Slice type for the values of your dictionary. For example:
+A built-in generic type with type arguments, such as a `Dictionary<string, string>`, is called a constructed type.
+
+You can use any Slice type for the value-type of your dictionary. For example:
 
 {% slice1 %}
 
 ```slice
 compact struct DictionaryExample {
-    x: dictionary<int32, dictionary<string, float64>> // dictionary of dictionaries
-    y: dictionary<string, AnyClass?>
+    x: Dictionary<int32, Dictionary<string, float64>> // dictionary of dictionaries
+    y: Dictionary<string, AnyClass?>
 }
 ```
 
@@ -39,8 +44,8 @@ compact struct DictionaryExample {
 
 ```slice
 struct DictionaryExample {
-    x: dictionary<int32, dictionary<string, float64>> // dictionary of dictionaries
-    y: dictionary<string, float64?>
+    x: Dictionary<int32, Dictionary<string, float64>> // dictionary of dictionaries
+    y: Dictionary<string, float64?>
 }
 ```
 
@@ -50,7 +55,7 @@ struct DictionaryExample {
 
 ### Dictionary fields
 
-A field, an element in a sequence, or a value in another dictionary with type `dictionary<K, V>` is mapped to an
+A field, an element in a sequence, or a value in another dictionary with type `Dictionary<K, V>` is mapped to an
 `IDictionary<TKey, TValue>`.
 
 `TKey` resp. `TValue` is the mapped C# type for the Slice key type resp. value type. For example:
@@ -60,8 +65,8 @@ A field, an element in a sequence, or a value in another dictionary with type `d
 
 ```slice
 compact struct DictionaryExample {
-    x: dictionary<int32, dictionary<string, float64>>
-    y: dictionary<string, AnyClass?>
+    x: Dictionary<int32, Dictionary<string, float64>>
+    y: Dictionary<string, AnyClass?>
 }
 ```
 
@@ -82,8 +87,8 @@ public partial record struct DictionaryExample
 
 ```slice
 struct DictionaryExample {
-    x: dictionary<int32, dictionary<string, float64>>
-    y: dictionary<string, float64?>
+    x: Dictionary<int32, Dictionary<string, float64>>
+    y: Dictionary<string, float64?>
 }
 ```
 
@@ -137,7 +142,7 @@ interface Greeter {
     // ICollection<KeyValuePair<TKey, TValue>>;
     // it also provides a capacity constructor.
     allPreviousGreetings() ->
-        [cs::type("List<KeyValuePair<string, string>>")] dictionary<string, string>
+        [cs::type("List<KeyValuePair<string, string>>")] Dictionary<string, string>
 }
 ```
 

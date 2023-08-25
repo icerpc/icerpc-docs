@@ -5,7 +5,7 @@ description: Understand the service address concept and syntax.
 
 ## Syntax
 
-A service address is a [URI][uri] that specifies the address of a service. It can be absolute or relative.
+A service address is a [URI] that specifies the address of a service. It can be absolute or relative.
 
 The scheme of an absolute service address is either ice or icerpc. A relative service address is an absolute path—query
 parameters and fragment are not allowed.
@@ -14,16 +14,16 @@ The URI scheme of an absolute service address identifies the protocol to use to 
 
 The path of a service address allows the server to route requests to the desired service.
 
-An absolute service address may include one or more [server addresses](../connection/server-address). These server
-addresses are used to establish or locate a connection to a server that hosts the service. The protocol of a server
-address is always the same as the protocol of the enclosing service address.
+An absolute service address may include one or more [server addresses][server-addresses]. These server addresses are
+used to establish or locate a connection to a server that hosts the service. The protocol of a server address is always
+the same as the protocol of the enclosing service address.
 
 An absolute service address without a server address can have query parameters.
 
 Finally, an ice service address can have a fragment; this fragment corresponds to an Ice facet.
 
-In C#, record class [`ServiceAddress`][service-address] is a parsed and validated representation of a service address
-URI: it holds exactly the same information.
+In C#, record class [ServiceAddress] is a parsed and validated representation of a service address URI: it holds exactly
+the same information.
 
 Service addresses can be divided in 4 categories:
 
@@ -112,6 +112,9 @@ in particular, it's an error to create an outgoing request with a relative servi
 
 Relative service addresses underpin [relative proxies][relative-proxies] in Slice.
 
-[relative-proxies]: ../../../slice2/language-guide/proxy-types#relative-proxy
-[service-address]: csharp:IceRpc.ServiceAddress
-[uri]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
+[relative-proxies]: /slice2/language-guide/proxy-types#relative-proxy
+[server-addresses]: ../connection/server-address
+
+[URI]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
+
+[ServiceAddress]: csharp:IceRpc.ServiceAddress

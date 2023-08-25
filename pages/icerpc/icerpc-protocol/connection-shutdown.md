@@ -36,7 +36,7 @@ that the peer won't accept.
 
 6. Wait for the peer to close the inbound control stream, which means it's done (see above).
 
-7. Close the multiplexed connection with the 0 (`Success`) error code.
+7. Close the multiplexed connection with the 0 error code (0 means no error).
 This step can fail because the peer closed the multiplexed connection first with error code 0. This remains a successful
 shutdown.
 
@@ -53,7 +53,7 @@ sequenceDiagram
 
 ## GoAway frame
 
-The `GoAway` frame is specified in [Slice][slice]:
+The `GoAway` frame is specified in [Slice]:
 
 ```slice
 enum ControlFrameType : uint8 {
@@ -69,4 +69,4 @@ compact struct GoAwayFrame {
 }
 ```
 
-[slice]: ../../slice2
+[Slice]: /slice2

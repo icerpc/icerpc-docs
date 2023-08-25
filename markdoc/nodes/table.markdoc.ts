@@ -5,6 +5,7 @@ import { Config, Tag, nodes, Node } from '@markdoc/markdoc';
 export const table = {
   render: 'Table',
   attributes: {
+    ...nodes.table.attributes,
     dividers: { type: Boolean, default: false }
   },
   transform(node: Node, config: Config) {
@@ -20,7 +21,7 @@ export const table = {
     );
 
     // If there is no tbody, then there is no need to transform the table.
-    if (!tbody) return;
+    if (!tbody) return new Tag(`${this.render}`, { ...attributes }, children);
 
     // Find all of the td nodes
     const tdTags = (tbody.children as Tag[])

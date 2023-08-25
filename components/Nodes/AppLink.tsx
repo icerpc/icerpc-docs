@@ -6,7 +6,6 @@ import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { Mode } from 'types';
 import { useMode } from 'context/state';
-import { ArrowUpRightIcon } from '@heroicons/react/20/solid';
 
 type AppLinkProps = {
   href: string;
@@ -49,10 +48,16 @@ export const AppLink = ({
 
     // Resolve internal relative urls like "/abc/../foo" to their absolute path.
     if (!isExternalLink(url)) {
-      url = new URL(url, 'https://docs.testing.zeroc.com').pathname;
+      const baseURL = 'https://docs.testing.zeroc.com';
+      const parsedUrl = new URL(url, baseURL);
+      // Strip baseURL from the url
+      url = parsedUrl.href.replace(baseURL, '');
 
       // If the link is a /slice/ link, we need to convert it to a /slice1/ or /slice2/ link based on the current mode.
-      url = url.replace(/^\/slice(\/|$)/, mode === Mode.Slice1 ? '/slice1/' : '/slice2/');
+      url = url.replace(
+        /^\/slice(\/|$)/,
+        mode === Mode.Slice1 ? '/slice1/' : '/slice2/'
+      );
     }
 
     setHref(url);
@@ -91,17 +96,31 @@ export const AppLink = ({
       className={className}
       style={style}
     >
-      <span className="inline-flex items-center">
-        <span className={clsx(isApiLink(originalHref) && apiClasses)}>
-          {children}
+      <span className="relative inline-flex items-center">
+        <span
+          // eslint-disable-next-line tailwindcss/no-custom-classname
+          className={clsx(
+            isApiLink(originalHref) && apiClasses,
+            isExternalLink(originalHref) && 'with-arrow'
+          )}
+        >
+          {isApiLink(originalHref) ? <code>{children}</code> : children}
         </span>
-        {!isApiLink(originalHref) && isExternalLink(originalHref) && (
-          <ArrowUpRightIcon
-            className="mb-1 inline-block h-4 w-4 text-primary hover:text-[rgb(64,131,193)]"
-            aria-hidden="true"
-          />
-        )}
       </span>
+
+      <style jsx>{`
+        .with-arrow::after {
+          content: '';
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          background-image: url('/images/link_arrow.svg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          transform: scale(0.52);
+          transform-origin: 55% 70%;
+        }
+      `}</style>
     </Link>
   );
 };
@@ -165,8 +184,9 @@ const isApiLink = (href: string) => {
 const resolveApiLink = (href: string) => {
   const [language, ...rest] = href.split(':');
   const [module, method] = rest.join('.').split('#');
-  return `https://docs.testing.zeroc.com/api/${language}/api/${module}.html${method ? `#${method}` : ''
-    }`;
+  return `https://docs.testing.zeroc.com/api/${language}/api/${module}.html${
+    method ? `#${method}` : ''
+  }`;
 };
 
 /**

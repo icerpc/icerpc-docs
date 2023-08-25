@@ -1,12 +1,12 @@
 ---
 title: Proxy types
-description: What does it mean to use an interface as a type in Slice?
+description: Using an interface as a type in Slice.
 ---
 
 ## Using an interface as a type
 
 Each time you define an [interface](interface) in Slice, you define a proxy type named after this interface. This proxy
-type is a constructed type comparable to a struct. An instance of this type is a local object that represents a
+type is a user-defined type comparable to a struct. An instance of this type is a local object that represents a
 (remote) service that implements this interface.
 
 The exact meaning of a proxy depends on the RPC framework you're using. If you're using IceRPC, a proxy is a local
@@ -28,8 +28,8 @@ interface WidgetFactory {
 Here, `createWidget` returns a `Widget` proxy: a local representative for a remote service that implements the `Widget`
 interface.
 
-Returning a proxy type has the advantage of producing a typed API in the generated code. For example, in C# with IceRPC,
-`createWidget` maps to:
+Returning a proxy type has the advantage of producing a typed API in the generated code. For example, with IceRPC and
+Slice in C#, `createWidget` maps to:
 
 ```csharp
 // Client-side mapping
@@ -39,17 +39,12 @@ Task<WidgetProxy> CreateWidgetAsync(
     CancellationToken cancellationToken = default);
 ```
 
-When you call `CreateWidgetAsync`, you get back a `WidgetProxy` instead of a plain
-[ServiceAddress][csharp-service-address], even though the only information transmitted over the wire with IceRPC is the
-service address.
+When you call `CreateWidgetAsync`, you get back a `WidgetProxy` instead of a plain [ServiceAddress], even though the
+only information transmitted over the wire with IceRPC is the service address.
 
 {% slice2 %}
 
-## Relative proxy
-
-{% callout %}
-This section is specific to the IceRPC-Slice integration.
-{% /callout %}
+## Relative proxy {% icerpcSlice=true %}
 
 A relative proxy is a proxy that encapsulates a [relative service address][relative-service-address]. You cannot use a
 relative proxy to send requests.
@@ -68,27 +63,24 @@ On the server side, when the generated code decodes a relative proxy from an inc
 relative proxy by default. You need convert this proxy into an absolute proxy before you can use it to make invocations.
 {% /slice2 %}
 
-## C# mapping
-
-{% callout %}
-This section is specific to the IceRPC-Slice integration.
-{% /callout %}
+## C# mapping {% icerpcSlice=true %}
 
 Proxies are mapped to *Name*Proxy record structs in C#, as described on the [interface page](interface#c#-mapping).
 
 When the generated code decodes a proxy from an incoming request payload, it produces by default a proxy with a null
 invoker. You can change this default behavior by configuring a [proxy factory][proxy-factory] in the
-[`ISliceFeature`][slice-feature] of your [incoming request features][incoming-request-features].
+[ISliceFeature] of your [incoming request features][incoming-request-features].
 
 On the client side, when the generated code decodes a proxy from an incoming response payload, it gives this new proxy
-the invoker and [`SliceEncodeOptions`][encode-options] of the proxy that sent the request. As a result, you can make
+the invoker and [SliceEncodeOptions] of the proxy that sent the request. As a result, you can make
 calls with this decoded proxy: it's ready to go.
 
-[csharp-service-address]: csharp:IceRpc.ServiceAddress
-[encode-options]: csharp:IceRpc.Slice.SliceEncodeOptions
-[incoming-request-features]: ../../icerpc/dispatch/incoming-request#request-features
-[invocation-pipeline]: ../../icerpc/invocation/invocation-pipeline
+[incoming-request-features]: /icerpc/dispatch/incoming-request#request-features
+[invocation-pipeline]: /icerpc/invocation/invocation-pipeline
+[relative-service-address]: /icerpc/invocation/service-address#relative-service-address
+[service-address]: /icerpc/invocation/service-address
+
 [proxy-factory]: csharp:IceRpc.Slice.ISliceFeature#IceRpc_Slice_ISliceFeature_ProxyFactory
-[relative-service-address]: ../../icerpc/invocation/service-address#relative-service-address
-[service-address]: ../../icerpc/invocation/service-address
-[slice-feature]: csharp:IceRpc.Slice.ISliceFeature
+[ServiceAddress]: csharp:IceRpc.ServiceAddress
+[SliceEncodeOptions]: csharp:IceRpc.Slice.SliceEncodeOptions
+[ISliceFeature]: csharp:IceRpc.Slice.ISliceFeature

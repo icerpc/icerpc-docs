@@ -5,19 +5,22 @@ description: Learn how to define and use sequences in Slice.
 
 ## Unbounded list
 
-A sequence is a constructed type that represents a list of elements. The number of elements in each sequence is known at
-runtime but is not specified when you define the sequence type.
+A sequence is a built-in generic type that represents a list of elements with the same type. The number of elements in
+each sequence is known at runtime but is not specified when you define the sequence type.
 
-You use a sequence type inline, without giving it a name, for example as the type for a parameter or field:
+You can construct a sequence type inline, without giving it a name, for example to specify the type of a parameter or
+field:
 
 ```slice {% addMode=true %}
 module VisitorCenter
 
 interface Greeter {
     greet(name: string) -> string
-    allPreviousGreetings() -> sequence<string>
+    allPreviousGreetings() -> Sequence<string>
 }
 ```
+
+A built-in generic type with type arguments, such as a `Sequence<string>`, is called a constructed type.
 
 The order of the elements in the sequence is maintained when this sequence is transmitted over the wire.
 
@@ -27,8 +30,8 @@ The element type of a sequence can be any Slice type. For example:
 
 ```slice
 compact struct SequenceExample {
-    x: sequence<sequence<string>>
-    y: sequence<AnyClass?>
+    x: Sequence<Sequence<string>>
+    y: Sequence<AnyClass?>
 }
 ```
 
@@ -37,8 +40,8 @@ compact struct SequenceExample {
 
 ```slice
 struct SequenceExample {
-    x: sequence<sequence<string>>
-    y: sequence<int32?>
+    x: Sequence<Sequence<string>>
+    y: Sequence<int32?>
 }
 ```
 
@@ -48,7 +51,7 @@ struct SequenceExample {
 
 ### Sequence fields
 
-A field, an element in another sequence, or a value in a dictionary with type `sequence<T>` is mapped to an `IList<T>`.
+A field, an element in another sequence, or a value in a dictionary with type `Sequence<T>` is mapped to an `IList<T>`.
 
 The type of the `IList` elements is the mapped C# type for the Slice element type. For example:
 
@@ -57,8 +60,8 @@ The type of the `IList` elements is the mapped C# type for the Slice element typ
 
 ```slice
 compact struct SequenceExample {
-    x: sequence<sequence<string>>
-    y: sequence<AnyClass?>
+    x: Sequence<Sequence<string>>
+    y: Sequence<AnyClass?>
 }
 ```
 
@@ -79,8 +82,8 @@ public partial record struct SequenceExample
 
 ```slice
 struct SequenceExample {
-    x: sequence<sequence<string>>
-    y: sequence<int32?>
+    x: Sequence<Sequence<string>>
+    y: Sequence<int32?>
 }
 ```
 
@@ -115,7 +118,7 @@ incoming and outgoing values makes sending sequences more convenient and occasio
 | `ReadOnlyMemory<T>`         | `T[]`                               |
 
 {% slice2 %}
-{% callout type="information" %}
+{% callout type="note" %}
 This mapping also applies to Slice enums whose underlying type is fixed-size.
 {% /callout %}
 {% /slice2 %}
@@ -130,19 +133,21 @@ type you specified for incoming values, and `IEnumerable<T>` for outgoing values
 | `IEnumerable<T>`            | `T[]`                               |
 
 You can override the default mapping for incoming values with the [`cs::type` attribute](#cs::type-attribute);
-this gives you the C# type you specified for incoming values. `cs::type` doesn't change the mapping for outgoing values here.
+this gives you the C# type you specified for incoming values. `cs::type` doesn't change the mapping for outgoing values
+here.
 
 ### cs::type attribute
 
-You can use the `cs::type` [attribute](attributes#c#-attributes) to customize the mapping of your sequence. This attribute accepts
-a single string argument: the name of a type similar to `List<int>`.
+You can use the `cs::type` [attribute](attributes#c#-attributes) to customize the mapping of your sequence. This
+attribute accepts a single string argument: the name of a type similar to `List<int>`.
 
 More specifically, this type must:
 
 - provide a constructor that accepts an `IEnumerable<T>` or a `T[]` when T is a bool or a fixed-size integral type
 - provide a capacity constructor (with an `int` parameter) otherwise
 
-This type must implement `IList<T>` when `cs::type` is applied to a field; it must implement `ICollection<T>` when `cs::type` is applied to a parameter.
+This type must implement `IList<T>` when `cs::type` is applied to a field; it must implement `ICollection<T>` when
+`cs::type` is applied to a parameter.
 
 For example:
 
@@ -153,7 +158,7 @@ interface ShapeCatalog {
     // HashSet<T> implements ICollection<T> and has
     // a capacity constructor.
     getShapes(prefix: string) ->
-        [cs::type("HashSet<Shape>")] sequence<Shape>
+        [cs::type("HashSet<Shape>")] Sequence<Shape>
 }
 ```
 

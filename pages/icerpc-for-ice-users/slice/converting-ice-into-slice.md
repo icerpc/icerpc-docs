@@ -17,7 +17,7 @@ All the .slice files used for interop with Ice must use the Slice1 compilation m
 mode = Slice1
 ```
 
-{% callout type="information" %}
+{% callout type="note" %}
 Ice will soon provide an `ice2slice` tool to automate this conversion.
 {% /callout %}
 
@@ -30,7 +30,7 @@ A few definitions in .ice files have no equivalent in the .slice syntax and as a
 - constants\
   You cannot define constants in .slice files.
 - optional fields and parameters whose type is a class or references a class.
-- default values for numeric and string fields in classes, exceptions and structs.
+- default values for numeric and string fields in classes, exceptions, and structs.
 - operations on classes (deprecated in Ice 3.7)
 - interface parameters and fields passed "by value" (deprecated in Ice 3.7)
 
@@ -73,7 +73,7 @@ dictionary<string, int> StringIntDict;
 ```
 
 ```slice {% title="Same dictionary with the .slice syntax" %}
-typealias StringIntDict = dictionary<string, int32>
+typealias StringIntDict = Dictionary<string, int32>
 ```
 
 {% /side-by-side %}
@@ -148,20 +148,18 @@ The allowable exceptions include any exception derived from ArgumentException, I
 NotAvailableException. If this list is empty (no `throws`), the operation is not allowed to throw any Slice-defined
 exception.
 
-With the .slice syntax, an operation can only specify one exception in its exception specification. With Slice1, this
-unique exception can be `AnyException` (a keyword): it allows the operation to throw any Slice-defined exception. As a
-result, we would convert op into:
+With the .slice syntax, an operation can also throw one or more exceptions. The only difference is a list of two or more
+exceptions must be in parenthesis:
 
 ```slice {% title="Same operation with the .slice syntax" %}
-op(s: string) throws AnyException
+op(s: string) throws (ArgumentException, InvalidStateException, NotAvailableException)
 ```
-
-The converted definition is more permissive since `op` can now throw any exception.
 
 Another difference between Ice and IceRPC is where the exception specifications are checked:
 
 - with Ice, the generated code enforces exception specifications only when decoding responses
-- with the IceRPC + Slice integration, the generated code enforces exception specifications only when encoding responses
+- with the IceRPC + Slice integration, the generated code enforces exception specifications during encoding and also
+during decoding.
 
 ## Interface
 
@@ -287,7 +285,7 @@ interface Sample {
 
 {% /side-by-side %}
 
-{% callout type="information" %}
+{% callout type="note" %}
 The names of the parameters and return type elements are not encoded; as a result, you can change them freely without
 breaking on-the-wire compatibility.
 {% /callout %}
@@ -321,7 +319,7 @@ sequence<string> StringSeq;
 ```
 
 ```slice {% title="Same sequence with the .slice syntax" %}
-typealias StringSeq = sequence<string>
+typealias StringSeq = Sequence<string>
 ```
 
 {% /side-by-side %}

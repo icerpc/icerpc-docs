@@ -10,9 +10,9 @@ the initiator of the stream to the peer. Data can be transmitted in both directi
 streams can be opened at the same time on a multiplexed connection. Streams are identified by an ever increasing 62-bit
 integer.
 
-Slic stream identifiers are similar to QUIC, see [RFC9000][rfc9000]. The first least significant bit of a stream
-identifier specifies if the initiator is the client or the server. The second least significant bit specifies if the
-stream is bidirectional or unidirectional. The following table summarizes the four stream types:
+Slic stream identifiers are similar to QUIC, see [RFC9000]. The first least significant bit of a stream identifier
+specifies if the initiator is the client or the server. The second least significant bit specifies if the stream is
+bidirectional or unidirectional. The following table summarizes the four stream types:
 
 | Bits | Stream Type                      |
 | ---- | -------------------------------- |
@@ -33,8 +33,8 @@ The following table describes stream-specific frames:
 
 ## Stream creation
 
-Sending a [Stream][stream-frame] or [StreamLast][stream-last-frame] frame with a newly allocated stream identifier
-creates the stream. Sending another stream frame with a newly allocated stream identifier is a protocol error.
+Sending a [Stream] or [StreamLast] frame with a newly allocated stream identifier creates the stream. Sending another
+stream frame with a newly allocated stream identifier is a protocol error.
 
 The peer accepts a new stream when it receives a `Stream` or `StreamLast` frame with a stream identifier larger than the
 last accepted stream identifier.
@@ -50,10 +50,10 @@ it closes writes on the stream. When it's done reading data, it closes reads.
 
 The update of the closed state triggers the sending of one of the following frames:
 
-- Slic sends a [StreamWritesClosed][stream-writes-closed-frame] frame to the peer when the application closes writes on
+- Slic sends a [StreamWritesClosed] frame to the peer when the application closes writes on
   the stream. Upon receiving this frame, the peer stops reading data from the stream and close the stream reads.
 
-- Slic sends a [StreamReadsClosed][stream-reads-closed-frame] frame to the peer when the application closes writes on
+- Slic sends a [StreamReadsClosed] frame to the peer when the application closes writes on
   the stream. Upon receiving this frame, the peer stops sending data over the stream and close the stream writes.
 
 A stream is considered closed when both writes and reads are closed.
@@ -177,11 +177,11 @@ stateDiagram
 The state machine doesn't have the `WaitForAppConsume` state because the stream's read-side doesn't need to notify the
 peer that its done reading.
 
-[rfc9000]: https://www.rfc-editor.org/rfc/rfc9000.html#name-stream-types-and-identifier
+[RFC9000]: https://www.rfc-editor.org/rfc/rfc9000.html#name-stream-types-and-identifier
 [connection-parameters]: connection-establishment#connection-establishment-parameters
-[stream-frame]: protocol-frames#stream-and-streamlast-frames
-[stream-last-frame]: protocol-frames#stream-and-streamlast-frames
-[stream-reads-closed-frame]: protocol-frames#streamreadsclosed-and-streamwritesclosed-frames
-[stream-writes-closed-frame]: protocol-frames#streamreadsclosed-and-streamwritesclosed-frames
-[stream-window-update-frame]: protocol-frames#streamwindowupdate-frame
+[Stream]: protocol-frames#stream-and-streamlast-frames
+[StreamLast]: protocol-frames#stream-and-streamlast-frames
+[StreamReadsClosed]: protocol-frames#streamreadsclosed-and-streamwritesclosed-frames
+[StreamWritesClosed]: protocol-frames#streamreadsclosed-and-streamwritesclosed-frames
+[StreamWindowUpdate]: protocol-frames#streamwindowupdate-frame
 [stream-concurrency]: flow-control#stream-concurrency

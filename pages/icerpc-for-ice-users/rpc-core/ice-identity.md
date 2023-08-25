@@ -25,8 +25,7 @@ For simple identities with only ASCII letters and numbers, the conversion is str
 - path `/name` is equivalent to Identity { name = "name", category = "" }
 - path `/` is equivalent to the "null" Identity (with an empty name and empty category)
 
-More generally, an identity is equivalent to a 1 or 2-segment absolute path, where each segment is
-[percent-escaped](https://en.wikipedia.org/wiki/Percent-encoding):
+More generally, an identity is equivalent to a 1 or 2-segment absolute path, where each segment is [percent-escaped]:
 
 - path `/percent-escaped-category/percent-escaped-name` is equivalent to Identity { name = "unescaped-name",
 category = "unescaped-category" }
@@ -40,3 +39,5 @@ Here are a few examples:
 | name = "hello", category = "Xyz"  | `/Xyz/hello`       |
 | name = "hello "                   | `/hello%20`        |
 | name = "hello", category = "Xyz/" | `/Xyz%2F/hello`    |
+
+[percent-escaped]: https://en.wikipedia.org/wiki/Percent-encoding

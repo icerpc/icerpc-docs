@@ -10,10 +10,39 @@ and responses are streams of bytes, and you need to manually encode and decode a
 integers) in these streams. This is doable but laborious.
 
 It is easier and more typical to use IceRPC together with a serialization library and its associated language-neutral
-[IDL][idl]. For example, you can define a Person type in [Protobuf][protobuf] or Slice and then let the Protobuf
-compiler resp. the Slice compiler generate code that encodes and decodes Person to and from bytes in the Protobuf resp.
-Slice binary format.
+[IDL]. For example, you can define a Person type in [Protobuf] or Slice and then let the Protobuf compiler resp. the
+Slice compiler generate code that encodes and decodes Person to and from bytes in the Protobuf resp. Slice binary
+format.
 
+{% slice1 %}
+{% side-by-side alignment="top" %}
+
+```protobuf
+// A Person message defined with Protobuf
+
+syntax = "proto3";
+
+message Person {
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+}
+```
+
+```slice
+// A Person class defined with Slice
+
+class Person {
+   name: string
+   id: int32
+   tag(1) email: string?
+}
+```
+
+{% /side-by-side %}
+{% /slice1 %}
+
+{% slice2 %}
 {% side-by-side alignment="top" %}
 
 ```protobuf
@@ -39,6 +68,7 @@ struct Person {
 ```
 
 {% /side-by-side %}
+{% /slice2 %}
 
 The Slice language, like the Protobuf language, includes RPC support without being tied to a specific RPC framework. It
 specifies the syntax and semantics for RPCs but leaves the actual implementation of this RPC support to external
@@ -80,35 +110,35 @@ using IceRPC requests and responses.
 {% mini-card
    title="Slice components"
    description="A short description of each Slice component."
-   href="/slice2/basics/slice-components" /%}
+   href="/slice/basics/slice-components" /%}
 
 {% mini-card
    title="Contract-first model"
    description="Learn how to create an application using IceRPC and Slice."
-   href="/slice2/basics/contract-first" /%}
+   href="/slice/basics/contract-first" /%}
 
 {% mini-card
    title="Interface"
    description="Learn how to define interfaces in Slice."
-   href="/slice2/language-guide/interface" /%}
+   href="/slice/language-guide/interface" /%}
 
 {% mini-card
    title="Struct"
    description="Learn how to define and use structs in Slice."
-   href="/slice2/language-guide/struct-types" /%}
+   href="/slice/language-guide/struct-types" /%}
 
 {% mini-card
    title="Slice encoding"
    description="Learn how Slice encodes types into byte streams."
-   href="/slice2/encoding" /%}
+   href="/slice/encoding" /%}
 
 {% mini-card
    title="Examples"
    description="Discover the Slice syntax through a few examples"
-   href="/slice2/basics/examples" /%}
+   href="/slice/basics/examples" /%}
 
 {% /grid %}
 
 [icerpc]: ../
-[idl]: https://en.wikipedia.org/wiki/Interface_description_language
-[protobuf]: https://protobuf.dev/
+[IDL]: https://en.wikipedia.org/wiki/Interface_description_language
+[Protobuf]: https://protobuf.dev/

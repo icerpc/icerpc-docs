@@ -6,7 +6,7 @@ description: Understand when to use Slice1 or Slice2.
 ## Slice1 or Slice2
 
 Slice supports two compilation modes: Slice1 and Slice2. Slice2 is the default mode, recommended for most applications.
-Slice1 provides interoperability with [Ice][ice] applications and must be enabled explicitly.
+Slice1 provides interoperability with [Ice] applications and must be enabled explicitly.
 
 The compilation mode of a Slice file can be specified with the `mode` statement.
 This statement can only appear once per file, and must come before any other statement. For example:
@@ -62,8 +62,8 @@ interface Widget {
 ```
 {% /side-by-side %}
 
-The [encoding][encoding] used for operation arguments is determined by the compilation mode. As a result, a call to
-`spin` from a client using the Slice2 file will fail if the remote service is implemented with the Slice1 file.
+The [encoding] used for operation arguments is determined by the compilation mode. As a result, a call to `spin` from a
+client using the Slice2 file will fail if the remote service is implemented with the Slice1 file.
 
 ## Using Slice1 and Slice2 together
 
@@ -74,8 +74,8 @@ If you are in this situation, you need to observe the following rules:
  - an interface defined in a Slice2 file can derive from an interface defined in a Slice1 file
  - a Slice1 file cannot use a type, an interface, or any other construct defined in a Slice2 file
 
-A type defined in a Slice1 file is Slice2-compatible if it's an [enum type][enum-type], a [proxy type][proxy-type], or
-if this type could be defined as-is in a Slice2 file. For example:
+A type defined in a Slice1 file is Slice2-compatible if it's an [enum type], a [proxy type], or if this type could be
+defined as-is in a Slice2 file. For example:
 
 ```slice
 mode = Slice1
@@ -105,7 +105,8 @@ The mode statement is not mapped to anything in C#. It does however influence th
 definitions.
 
 [encoding]: ../encoding
-[enum-type]: enum-types
-[ice]: https://github.com/zeroc-ice/ice
+[enum type]: enum-types
+[proxy type]: proxy-types
+
+[Ice]: https://github.com/zeroc-ice/ice
 [original-slice]: https://doc.zeroc.com/ice/3.7/the-slice-language
-[proxy-type]: proxy-types

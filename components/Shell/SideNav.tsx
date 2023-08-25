@@ -109,36 +109,50 @@ export function MobileSideNav() {
     setIsOpen(false);
   }
 
+  // If on home page / return nothing
+  if (path === '/') {
+    return null;
+  }
+
   return (
     <>
-      <div className="flex items-center justify-start border-t border-lightBorder p-4 text-sm dark:border-darkBorder lg:hidden">
+      <div className="flex h-[57px] items-center justify-start border-t border-lightBorder p-4 text-sm dark:border-darkBorder lg:hidden">
         <button>
           <Bars3Icon
-            className="ml-1 mr-4 block h-5 w-5 text-slate-500 dark:text-white/80"
+            className="ml-1 block h-5 w-5 text-slate-500 dark:text-white/80"
             aria-hidden="true"
             onClick={() => setIsOpen(!isOpen)}
           />
         </button>
-        {breadcrumbs.map((breadcrumb, index) => (
-          <div key={breadcrumb.href} className="flex items-center">
-            <Link
-              href={breadcrumb.href}
+        <ol className="ml-4 flex min-w-0 whitespace-nowrap">
+          {breadcrumbs.map((breadcrumb, index) => (
+            <li
+              key={breadcrumb.href}
               className={clsx(
                 index !== breadcrumbs.length - 1
-                  ? 'text-slate-500 dark:text-white/80'
-                  : 'font-semibold text-black dark:text-white'
+                  ? 'flex items-center'
+                  : 'truncate'
               )}
             >
-              {breadcrumb.name}
-            </Link>
-            {index !== breadcrumbs.length - 1 && (
-              <ChevronRightIcon
-                className="mx-2 block h-4 w-4 text-slate-500 "
-                aria-hidden="true"
-              />
-            )}
-          </div>
-        ))}
+              <Link
+                href={breadcrumb.href}
+                className={clsx(
+                  index !== breadcrumbs.length - 1
+                    ? 'text-slate-500 dark:text-white/80'
+                    : 'font-semibold text-black dark:text-white'
+                )}
+              >
+                {breadcrumb.name}
+              </Link>
+              {index !== breadcrumbs.length - 1 && (
+                <ChevronRightIcon
+                  className="mx-2 block h-4 w-4 text-slate-500 "
+                  aria-hidden="true"
+                />
+              )}
+            </li>
+          ))}
+        </ol>
       </div>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -228,9 +242,9 @@ function createListItem(
             `py-[6px] pl-0 pr-3 text-sm no-underline  ${leftPadding} dark:text-[#C4C7C5]`,
             isCurrentPage
               ? noLeftPadding
-                ? 'font-bold text-primary dark:text-white'
-                : 'ml-[-3px] border-l-[1.5px] border-primary pl-[13.5px] font-bold text-primary dark:border-white/80 dark:text-white'
-              : 'hover:text-zinc-900 dark:hover:text-white'
+                ? 'font-medium text-primary dark:text-white'
+                : 'ml-[-3px] border-l-[1.5px] border-primary pl-[13.5px] font-medium text-primary dark:border-white/80 dark:text-white'
+              : 'mr-1 hover:text-zinc-900 dark:hover:text-white'
           )}
           onClick={onClick}
         >

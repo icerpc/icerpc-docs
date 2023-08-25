@@ -42,7 +42,7 @@ interface MyOperations {
     opParamReturn(message: string) -> int32?
 
     // two operation parameters and two return parameters
-    opParamsReturns(message: string, count: int32) -> (value: float32, list: sequence<int32>)
+    opParamsReturns(message: string, count: int32) -> (value: float32, list: Sequence<int32>)
 
     // a one-way operation
     [oneway] opOneway(message: string)
@@ -68,7 +68,7 @@ interface MyOperations {
     opParamReturn(message: string) -> int32?
 
     // two operation parameters and two return parameters
-    opParamsReturns(message: string, count: int32) -> (value: float32, list: sequence<int32>)
+    opParamsReturns(message: string, count: int32) -> (value: float32, list: Sequence<int32>)
 
     // a regular operation parameter and a stream operation parameter
     sendFile(name: string, contents: stream uint8)
@@ -194,41 +194,24 @@ class BusinessContact : Contact {
 ```
 {% /slice1 %}
 
+{% slice1 %}
 ## Exceptions
 
-{% slice1 %}
 ```slice {% addMode=true %}
 module Example
 
-// An exception is just like a class.
+// An exception is like a class.
 exception WidgetException {
     error: WidgetError
-    tag(1) retryAfter: WellknownTypes::Duration?
+    tag(1) retryAfter: int32?
 }
 
 interface WidgetFactory {
-    // Unlike a class, an exception can be thrown.
+    // Unlike a class, an exception can be thrown but can't be used as the type of a field.
     createWidget(name: string) -> Widget throws WidgetException
 }
 ```
 {% /slice1 %}
-
-{% slice2 %}
-```slice
-module Example
-
-// An exception is just like a struct.
-exception WidgetException {
-    error: WidgetError
-    tag(1) retryAfter: WellknownTypes::Duration?
-}
-
-interface WidgetFactory {
-    // Unlike a struct, an exception can be thrown.
-    createWidget(name: string) -> Widget throws WidgetException
-}
-```
-{% /slice2 %}
 
 ## Sequences and dictionaries
 
@@ -236,11 +219,11 @@ interface WidgetFactory {
 module Example
 
 interface Dns {
-    resolveName(name: string) -> sequence<IPAddress>
+    resolveName(name: string) -> Sequence<IPAddress>
 }
 
 interface Census {
-    getCityPopulation(state: string) -> dictionary<string, int32>
+    getCityPopulation(state: string) -> Dictionary<string, int32>
 }
 ```
 
@@ -288,29 +271,57 @@ module Example
 
 [cs::identifier("WorldAtlas")]
 interface Atlas {
-    getMainCities(country: string) -> [cs::type("HashSet<string>")] sequence<string>
+    getMainCities(country: string) -> [cs::type("HashSet<string>")] Sequence<string>
 }
 
-[cs::readonly] compact struct Point { x: int32, y: in32 }
+[cs::readonly]
+compact struct Point { x: int32, y: int32 }
 ```
 
 ## Doc comments
 
-```slice {% addMode=true %}
+{% slice1 %}
+```slice  {% addMode=true %}
 module Example
 
 /// Represents a factory for widgets.
+/// @see Widget
 interface WidgetFactory {
     /// Creates a new {@link Widget}.
     /// @param name: The name of the new widget.
+    /// @param color: The color of the new widget.
     /// @returns: A proxy to the new widget.
     /// @throws WidgetException: Thrown if the factory could not create the widget.
-    createWidget(name: string) -> Widget throws WidgetException
+    /// @throws InvalidNameException: Thrown if the provided name was invalid.
+    createWidget(name: string) -> Widget throws (WidgetException, InvalidNameException)
 
     /// Retrieves the last {@link Widget} created by this factory.
     /// @returns proxy: A proxy to the last widget.
     /// @returns timeStamp: The creation time stamp.
     /// @throws WidgetException: Thrown if the factory has not created any widget yet.
+    /// @throws DerivedFromWidgetException: It's okay to document derived exceptions.
     getLastWidget() -> (proxy: Widget, timeStamp: TimeStamp) throws WidgetException
 }
 ```
+{% /slice1 %}
+
+{% slice2 %}
+```slice
+module Example
+
+/// Represents a factory for widgets.
+/// @see Widget
+interface WidgetFactory {
+    /// Creates a new {@link Widget}.
+    /// @param name: The name of the new widget.
+    /// @param color: The color of the new widget.
+    /// @returns: A proxy to the new widget.
+    createWidget(name: string) -> Widget
+
+    /// Retrieves the last {@link Widget} created by this factory.
+    /// @returns proxy: A proxy to the last widget.
+    /// @returns timeStamp: The creation time stamp.
+    getLastWidget() -> (proxy: Widget, timeStamp: WellKnownTypes::TimeStamp)
+}
+```
+{% /slice2 %}
