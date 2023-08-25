@@ -24,6 +24,8 @@ implementation of this RPC support to external integrations.
 <!-- markdownlint-disable MD001 -->
 #### Example
 
+{% slice2 %}
+
 The Thermostat interface below defines 3 operations, or RPCs, in Slice:
 
 ```slice
@@ -34,6 +36,21 @@ interface Thermostat {
 }
 ```
 
+{% /slice2 %}
+
+{% slice1 %}
+
+The Thermostat interface below defines 2 operations, or RPCs, in Slice:
+
+```slice
+interface Thermostat {
+   getCurrentTemperature() -> float64
+   getHistoricalTemperature(timeStamp: uint64) -> float64
+}
+```
+
+{% /slice1 %}
+
 The Slice compiler augmented by the IceRPC + Slice integration parses this Slice
 interface and generates code in the programming language of your choice. The
 resulting generated code offers you a convenient typed RPC API implemented
@@ -41,25 +58,29 @@ using IceRPC requests and responses.
 
 ## Clean syntax
 
-Slice provides a readable, modern syntax inspired by Rust and Swift. Slice
-supports streaming with the `stream` keyword, understands optionals with the
-usual `?` suffix, requires minimal punctuation, and more.
+Slice provides a readable, modern syntax inspired by Rust and Swift. {% slice2 %} Slice supports streaming with the
+`stream` keyword, understands optionals with the usual `?` suffix, requires minimal punctuation, and more. {% /slice2 %}
 
 {% slice1 %}
 {% side-by-side alignment="top" %}
 
 ```slice
-// An ImageStore interface defined with Slice
+// A TourGuide interface with an operation that
+// describes an attraction defined with Slice
 
-interface ImageStore {
-    uploadImage(person: Person, bytes: Sequence<uint8>)
-
-    retrieveImage(person: Person) -> Sequence<uint8>
+interface TourGuide {
+    audioDescription(attraction: string) -> (
+        title: string
+        duration: uint64
+        recording: Sequence<uint8>
+    )
 }
 ```
 
 ```slice
-// A Person class defined with Slice
+// A Person class with a name, id, and
+// optional email fields defined
+// with Slice
 
 class Person {
    name: string
@@ -75,17 +96,22 @@ class Person {
 {% side-by-side alignment="top" %}
 
 ```slice
-// An ImageStore interface defined with Slice
+// A TourGuide interface with an operation that
+// describes an attraction defined with Slice
 
-interface ImageStore {
-    uploadImage(person: Person, bytes: stream uint8)
-
-    retrieveImage(person: Person) -> stream uint8
+interface TourGuide {
+    audioDescription(attraction: string) -> (
+        title: string
+        duration: WellKnownTypes::Duration
+        recording: stream uint8
+    )
 }
 ```
 
 ```slice
-// A Person struct defined with Slice
+// A Person struct with a name, id, and
+// optional email fields defined
+// with Slice
 
 struct Person {
    name: string
@@ -164,12 +190,12 @@ decode instances of your custom type.
 
 {% /grid %}
 
-[attributes]: /slice2/language-guide/attributes
-[custom]: /slice2/language-guide/custom-types
-[Dictionary]: /slice2/language-guide/dictionary-types
-[enum]: /slice2/language-guide/enum-types
+[attributes]: /slice/language-guide/attributes
+[custom]: /slice/language-guide/custom-types
+[Dictionary]: /slice/language-guide/dictionary-types
+[enum]: /slice/language-guide/enum-types
 [IDL]: https://en.wikipedia.org/wiki/Interface_description_language
-[primitive]: /slice2/language-guide/primitive-types
-[Sequence]: /slice2/language-guide/sequence-types
-[struct]: /slice2/language-guide/struct-types
-[tagged]: /slice2/language-guide/fields#tagged-fields
+[primitive]: /slice/language-guide/primitive-types
+[Sequence]: /slice/language-guide/sequence-types
+[struct]: /slice/language-guide/struct-types
+[tagged]: /slice/language-guide/fields#tagged-fields
