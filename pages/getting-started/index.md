@@ -42,5 +42,5 @@ wheel.
    title="Examples"
    description="See IceRPC for C# in action"
    icon="terminal"
-   href="<https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/README.md>" /%}
+   href="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/README.md" /%}
 {% /grid %}
