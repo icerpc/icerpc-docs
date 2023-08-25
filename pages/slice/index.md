@@ -6,13 +6,19 @@ showReadingTime: false
 
 ## Introduction to Slice
 
-Slice is a completely revised Interface Definition Language, [IDL], designed
-for RPCs. It allows you to define a "contract" in a programming
-language neutral way. Slice can be used with any RPC framework, or with no RPC
-framework at all; in particular, Slice does not depend on IceRPC.
+IceRPC provides everything you need to make RPCs. When you use only IceRPC's
+core API, the payload of your requests and responses are streams of bytes, and
+you need to manually encode and decode any typed data (such as strings and
+integers) in these streams. This is doable but tedious. Fortunately we have a
+solution: Slice.
 
-Nevertheless, Slice and IceRPC play well together and are designed to be used together.
-It specifies the syntax and semantics for RPCs but leaves the actual
+Slice is a completely revised Interface Definition Language, [IDL], and
+serialization format designed for RPCs. It allows you to define a "contract" in
+a programming language neutral way. Slice can be used with any RPC framework, or
+with no RPC framework at all; in particular, Slice does not depend on IceRPC.
+
+Nevertheless, Slice and IceRPC play well together and are designed to be used
+together. It specifies the syntax and semantics for RPCs but leaves the actual
 implementation of this RPC support to external integrations.
 
 #### Example
@@ -27,8 +33,9 @@ interface Thermostat {
 }
 ```
 
-The Slice compiler augmented by the IceRPC + Slice integration parses this Slice interface and generates code in the
-programming language of your choice. The resulting generated code offers you a convenient typed RPC API implemented
+The Slice compiler augmented by the IceRPC + Slice integration parses this Slice
+interface and generates code in the programming language of your choice. The
+resulting generated code offers you a convenient typed RPC API implemented
 using IceRPC requests and responses.
 
 ## Clean syntax
