@@ -21,6 +21,7 @@ Nevertheless, Slice and IceRPC play well together and are designed to be used
 together. It specifies the syntax and semantics for RPCs but leaves the actual
 implementation of this RPC support to external integrations.
 
+<!-- markdownlint-disable MD001 -->
 #### Example
 
 The Thermostat interface below defines 3 operations, or RPCs, in Slice:
@@ -47,15 +48,13 @@ usual `?` suffix, requires minimal punctuation, and more.
 {% slice1 %}
 {% side-by-side alignment="top" %}
 
-```protobuf
-// A Person message defined with Protobuf
+```slice
+// An ImageStore interface defined with Slice
 
-syntax = "proto3";
+interface ImageStore {
+    uploadImage(person: Person, id: int32, bytes: Sequence<uint8>)
 
-message Person {
-  string name = 1;
-  int32 id = 2;
-  string email = 3;
+    retrieveImage(person: Person) -> Sequence<uint8>
 }
 ```
 
@@ -75,15 +74,13 @@ class Person {
 {% slice2 %}
 {% side-by-side alignment="top" %}
 
-```protobuf
-// A Person message defined with Protobuf
+```slice
+// An ImageStore interface defined with Slice
 
-syntax = "proto3";
+interface ImageStore {
+    uploadImage(person: Person, bytes: stream uint8, id: int32)
 
-message Person {
-  string name = 1;
-  int32 id = 2;
-  string email = 3;
+    retrieveImage(person: Person) -> stream uint8
 }
 ```
 
@@ -173,10 +170,6 @@ decode instances of your custom type.
 [enum]: /slice2/language-guide/enum-types
 [IDL]: https://en.wikipedia.org/wiki/Interface_description_language
 [primitive]: /slice2/language-guide/primitive-types
-[Protobuf]: https://protobuf.dev/
 [Sequence]: /slice2/language-guide/sequence-types
 [struct]: /slice2/language-guide/struct-types
 [tagged]: /slice2/language-guide/fields#tagged-fields
-[GreeterCore]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterCore
-[GreeterJson]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterJson
-[GreeterProtobuf]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterProtobuf
