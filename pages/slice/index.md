@@ -12,7 +12,7 @@ you need to manually encode and decode any typed data (such as strings and
 integers) in these streams. This is doable but tedious. Fortunately we have a
 solution: Slice.
 
-Slice is a completely revised Interface Definition Language, [IDL], and
+Slice is a completely revised Interface Definition Language ([IDL]) and
 serialization format designed for RPCs. It allows you to define a "contract" in
 a programming language neutral way. Slice can be used with any RPC framework, or
 with no RPC framework at all; in particular, Slice does not depend on IceRPC.
