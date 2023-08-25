@@ -45,7 +45,7 @@ The Thermostat interface below defines 2 operations, or RPCs, in Slice:
 ```slice
 interface Thermostat {
    getCurrentTemperature() -> float64
-   getHistoricalTemperature(timeStamp: uint64) -> float64
+   getHistoricalTemperature(timeStamp: int64) -> float64
 }
 ```
 
@@ -71,7 +71,7 @@ Slice provides a readable, modern syntax inspired by Rust and Swift. {% slice2 %
 interface TourGuide {
     audioDescription(attraction: string) -> (
         title: string
-        duration: uint64
+        duration: int64
         recording: Sequence<uint8>
     )
 }
