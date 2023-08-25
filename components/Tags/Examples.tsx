@@ -8,19 +8,19 @@ export const Examples = () => {
   return (
     <div className="mb-10 grid grid-cols-1  gap-4 md:grid-cols-2 lg:grid-cols-3">
       <ExampleCard
+        title="GreeterLog"
+        description="A typical IceRPC application."
+        href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterLog"
+      />
+      <ExampleCard
+        title="GreeterProtobuf"
+        description="Using Protobuf with IceRPC."
+        href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterProtobuf"
+      />
+      <ExampleCard
         title="Stream"
-        description="Illustrates how to stream random numbers from a server to a client."
+        description="IceRPC streaming in action."
         href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/Stream"
-      />
-      <ExampleCard
-        title="Telemetry"
-        description="How to use the IceRPC telemetry interceptor and middleware."
-        href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/Telemetry"
-      />
-      <ExampleCard
-        title="Retry"
-        description="How to use the retry interceptor to retry failed invocations."
-        href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/Retry"
       />
     </div>
   );
