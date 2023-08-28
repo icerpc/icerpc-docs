@@ -40,14 +40,5 @@ export const gettingStartedData: SideBarSourceType[] = [
         path: GETTING_STARTED_BASE_URL + '/tutorial/client-tutorial/'
       }
     ]
-  },
-  {
-    title: 'Key features',
-    links: [
-      {
-        title: 'A modular RPC framework built for QUIC',
-        path: GETTING_STARTED_BASE_URL + '/key-features/modular-rpc-for-quic/'
-      }
-    ]
   }
 ];
