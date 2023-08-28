@@ -127,7 +127,7 @@ the `stream` keyword, allows you to turn any type into an optional type with the
 punctuation, and more.
 
 The Slice [primitive] types have clear names such as `uint8`, `float64` and `string`. Slice also includes two built-in
-generic types, [Sequence] and [Dictionary]. And Slice lets you define your own types with [custom], [enum] and [struct].
+generic types, [Sequence] and [Dictionary]. And Slice lets you define your own types with [custom], [enum], and [struct].
 
 Last but not least, Slice's [tagged] fields and parameters allow you to update your structs and operations over time
 without breaking on-the-wire compatibility.
