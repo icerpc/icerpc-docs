@@ -1,29 +1,38 @@
 ---
 title: Getting started
-showAside: false
+description: Get up and running with IceRPC
 showReadingTime: false
 ---
 
-TODO: are we deleting this page?
+Welcome to the IceRPC Getting Started guide. This is your go-to resource for setting up, installing, and using IceRPC
+effectively.
+
+## Quick links
 
 {% grid columns=3 %}
 
 {% mini-card
-   title="A modular RPC framework built for QUIC"
-   description="See what sets IceRPC apart"
-   href="/getting-started/key-features/modular-rpc-for-quic" /%}
+   title="Quickstart"
+   description="The fastest way to get up and running with IceRPC."
+   href="/getting-started/quickstart" /%}
 {% mini-card
-   title="Tutorial"
-   description="Write your first IceRPC application in C#"
-   href="/getting-started/icerpc-csharp/tutorial" /%}
+   title="Templates"
+   description="Start a new project using an IceRPC project template."
+   href="/getting-started/installation/nuget-packages" /%}
 {% mini-card
-   title="How-to"
-   description="Add IceRPC to an existing C# project"
-   icon="terminal"
-   href="/getting-started/icerpc-csharp/how-to" /%}
+   title="Add to an existing project"
+   description="Learn how to get IceRPC set up in your existing project."
+   href="/getting-started/installation/nuget-packages" /%}
 {% mini-card
-   title="Examples"
-   description="See IceRPC for C# in action"
-   icon="terminal"
-   href="https://github.com/zeroc-ice/icerpc-csharp/tree/main/examples/README.md" /%}
+   title="NuGet Packages"
+   description="Complete list of IceRPC NuGet packages."
+   href="/getting-started/installation/nuget-packages" /%}
+{% mini-card
+   title="Writing your first server"
+   description="Learn how to write your first IceRPC server."
+   href="/getting-started/quickstart" /%}
+{% mini-card
+   title="Writing your first client"
+   description="Learn how to write your first IceRPC client."
+   href="/getting-started/installation/nuget-packages" /%}
 {% /grid %}
