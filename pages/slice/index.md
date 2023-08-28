@@ -123,15 +123,30 @@ struct Person {
 {% /side-by-side %}
 {% /slice2 %}
 
-Slice provides [primitive] types with clear names such as `uint16`, `float64`
+Slice provides [primitive] types with clear names such as `uint8`, `float64`
 and `string`, and allows you to define your own types with a few building
 blocks:
 
-- [struct]
-- [enum]
+{%slice1%}
+
+- [class]
 - [custom]
-- [Sequence]
+- [enum]
+- [struct]
 - [Dictionary]
+- [Sequence]
+
+{% /slice1 %}
+
+{%slice2%}
+
+- [custom]
+- [enum]
+- [struct]
+- [Dictionary]
+- [Sequence]
+
+{% /slice2 %}
 
 Last but not least, Slice's [tagged] fields and parameters allow you to update
 your structs and operations over time without breaking on-the-wire
@@ -191,6 +206,7 @@ decode instances of your custom type.
 {% /grid %}
 
 [attributes]: /slice/language-guide/attributes
+[class]:  /slice1/language-guide/class-types
 [custom]: /slice/language-guide/custom-types
 [Dictionary]: /slice/language-guide/dictionary-types
 [enum]: /slice/language-guide/enum-types
