@@ -4,9 +4,19 @@ import * as React from 'react';
 import { useSpring, animated } from 'react-spring';
 import { useTheme } from 'next-themes';
 import { Theme } from 'types';
+import { useMounted } from 'context/state';
 
 export const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
+  const isMounted = useMounted();
+
+  if (!isMounted) {
+    // We don't want to render anything until the theme provider
+    // is mounted, otherwise we get a flash of unstyled content.
+    // Instead we render an empty div with the same dimensions
+    // as the toggle.
+    return <div className="h-full w-[52px]" />;
+  }
 
   const toggleTheme = () => {
     setTheme(theme === Theme.Light ? Theme.Dark : Theme.Light);
