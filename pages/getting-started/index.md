@@ -18,11 +18,11 @@ effectively.
 {% mini-card
    title="Templates"
    description="Start a new project using an IceRPC project template."
-   href="/getting-started/installation/nuget-packages" /%}
+   href="/getting-started/installation/template" /%}
 {% mini-card
    title="Add to an existing project"
    description="Learn how to get IceRPC set up in your existing project."
-   href="/getting-started/installation/nuget-packages" /%}
+   href="/getting-started/installation/existing-project" /%}
 {% mini-card
    title="NuGet Packages"
    description="Complete list of IceRPC NuGet packages."
@@ -30,9 +30,9 @@ effectively.
 {% mini-card
    title="Writing your first server"
    description="Learn how to write your first IceRPC server."
-   href="/getting-started/quickstart" /%}
+   href="/getting-started/tutorial/server-tutorial" /%}
 {% mini-card
    title="Writing your first client"
    description="Learn how to write your first IceRPC client."
-   href="/getting-started/installation/nuget-packages" /%}
+   href="/getting-started/tutorial/client-tutorial" /%}
 {% /grid %}
