@@ -71,7 +71,8 @@ exception TranslationException {
 ```
 
 ```csharp
-public partial class TranslationException : SliceException
+public partial class TranslationException
+    : SliceException
 {
     public TranslationErrorCode ErrorCode;
     public string? DetectedLanguage;
