@@ -103,7 +103,7 @@ export const CodeBlock = ({
       >
         {({ className, tokens, getLineProps, getTokenProps, style }) => (
           <pre
-            className={clsx(className, firaMono.className, 'my-3')}
+            className={clsx(className, firaMono.className, 'my-2 pl-[10px]')}
             style={style}
           >
             <code>
