@@ -27,7 +27,7 @@ export const Aside = ({ asideItems }: { asideItems: AsideItem[] }) => {
   const items = asideItems.filter(
     (item) =>
       item.id &&
-      (item.level === 2 || item.level === 3 || item.level === 4) &&
+      (item.level === 2 || item.level === 3) &&
       item.title !== 'Next steps'
   );
 
