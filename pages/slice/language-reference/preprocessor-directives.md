@@ -2,13 +2,45 @@
 title: Preprocessor directives
 ---
 
-The preprocessor operates on lines beginning with a `#` character (ignoring any leading whitespace). These lines
-are called _preprocessor directives_.
+The preprocessor is line-based, meaning it operates on source code one line at a time.
+Only lines beginning with a `#` character (ignoring any leading whitespace) are resolved by the preprocessor. These lines are called _preprocessor directives_.
+All preprocessor directives will be removed from the source code when preprocessing is completed.
 
-## Lexical grammar
+Preprocessor directives can not span multiple lines. Newline characters always mark the end of a directive.
+Because of this, multi-line comments cannot be started on the same line as a preprocessor directive, only single-line comments are supported here.
+
+## Symbols
+
+The preprocessor operates on each Slice file independently. This means whether or not a symbol is defined in one file has no effect on any other file.
+
+Additionally, the scope of any symbol is its Slice file, ie. if you define a symbol it stays defined for the remainder of its Slice file (unless explicitly undefined). Whether or not it's nested inside other preprocessor directives makes no difference:
+
+```slice
+#if !FOO
+    #define BAR // `BAR` is defined for the rest of the Slice file, not just in this block.
+#endif
+```
+
+Like other Slice identifiers, preprocessor symbols are case sensitive.
+
+```slice
+#define foo
+#if FOO
+    // This section is excluded from compilation since `FOO` is undefined.
+#endif
+```
+
+While not encouraged, Slice keywords can be used in preprocessor directives without escaping, as they aren't treated as keywords in these contexts.
+
+## Grammar
+
+The following 2 sections provide a formal specification for the grammar of preprocessor directives. For an explanation on how to read these specifications, click [here](../language-reference#grammar-notation).
+
+### Lexical grammar
 
 ```ebnf {% showTitle=false %}
 // These are opaque strings that exist outside of the preprocessor directive grammar.
+// They correspond to lines not beginning with a `#` character.
 source_block;
 
 identifier: LETTER ALPHANUMERIC*;
@@ -33,7 +65,7 @@ left_parenthesis:  "(";
 right_parenthesis: ")";
 ```
 
-## Syntactic grammar
+### Syntactic grammar
 
 ```ebnf {% showTitle=false %}
 SliceFile

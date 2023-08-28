@@ -3,117 +3,74 @@ title: Preprocessor directives
 description: Learn about the Slice preprocessor.
 ---
 
-The Slice compiler contains a [preprocessor](https://en.wikipedia.org/wiki/Preprocessor) that can be used to
-conditionally compile parts of a Slice file. The preprocessor is line-based, which means that it operates on the source
-code one line at a time.
+The Slice compiler contains a [preprocessor](https://en.wikipedia.org/wiki/Preprocessor) that can be used to [conditionally compile](https://en.wikipedia.org/wiki/Conditional_compilation) parts of a Slice file.
 
-## Symbols
+## Defining Symbols
 
-Preprocessor symbols are identifiers that can be defined and undefined by the
-preprocessor. Unlike C/C++, preprocessor symbols can not be assigned a value. Instead, preprocessor symbols are either
-defined or undefined.
+A _symbol_ is a boolean variable that can be used by the preprocessor.
+But, instead of directly assigning values to them (like you would in C/C++), symbols can only ever be _defined_ or _undefined_:
 
-If a symbol has not been defined, then it is considered undefined. There is no difference between a symbol that has not
-been defined and a symbol that has been explicitly undefined. It is safe to define an already defined symbol or undefine an
-undefined symbol.
+```slice
+#define FOO // defines a symbol named `FOO`.
+#undef FOO  // undefines a symbol named `FOO`.
+```
 
-The convention is to use [SCREAMING_SNAKE_CASE](https://en.wikipedia.org/wiki/Snake_case) to distinguish preprocessor
-symbols from other identifiers, and we recommend that you follow the same convention in your own code.
+{% callout type="note" %}
+By convention, symbols should use [SCREAMING_SNAKE_CASE](https://en.wikipedia.org/wiki/Snake_case) to distinguish them from other identifiers.
+{% /callout %}
 
-Like other Slice identifiers, preprocessor symbols are case sensitive.
+A symbol is considered `true` if it is defined, and `false` if it is undefined.
+There is no difference between a symbol that hasn't been defined, and one that has been explicitly undefined.
+Additionally, it is safe to define a symbol that is already defined, or to undefine a symbol that is undefined, though doing so has no effect.
 
-## Syntax
-The preprocessor supports a number of directives that can be used to control the conditional compilation of Slice
-definitions. Preprocessor directives must be the first non-whitespace characters on a line, can not span multiple lines,
-and may be nested inside other preprocessor directives.
+## Conditional Compilation
 
-Preprocessor directives are:
+Conditional compilation allows sections of a Slice file to be conditionally included or excluded from compilation, based on a set of boolean expressions.
 
-- `#define <SYMBOL>` - Define a symbol.
-- `#undef <SYMBOL>` - Undefine a symbol.
-- `#if <SYMBOL>` - Open a conditional block if the given symbol is defined.
-- `#elif <SYMBOL>` - Close the previous conditional block and open a new one if the given symbol is defined.
-- `#else` - Close the previous conditional block and open a new one.
-- `#endif` - Close the previous conditional block.
+The preprocessor provides 4 directives for controlling this, that use a syntax similar to conditional blocks:
 
-The `#if` and `#elif` statements support several logical operators and parentheses:
+```slice
+#if <EXPRESSION_1>
+    // code in between these will only be compiled if EXPRESSION_1 is `true`.
+#elif <EXPRESSION_2>
+    // code in between these will only be compiled if EXPRESSION_1 is `false` and EXPRESSION_2 is `true`.
+#else
+    // code in between these will only be compiled if both EXPRESSION_1 and EXPRESSION_2 are `false`.
+#endif
+```
 
+The `#if` and `#endif` directives are required for conditional compilation and respectively mark the start/end of the block. You can have 0 or more `#elif` directives, and either 0 or 1 `#else` directives. They must appear in the above specified order.
+
+At most one section from the block will be included in compilation.
+The preprocessor checks the expressions in order, and will include the section under the first directive who's expression evaluates to `true`.
+If none of the expressions evaluate to `true` and an `#else` section is present, the `#else` section is included. Otherwise all sections are excluded.
+
+These directives can be arbitrarily nested inside one another:
+
+```slice
+#if FOO
+    //...
+    #if BAR
+        //...
+    #else
+        //...
+    #endif
+#endif
+```
+{% callout type="note" %}
+Indentation is not required to nest directives, but is recommended to improve readability.
+{% /callout %}
+
+The `#if` and `#elif` directives require a boolean expression that the preprocessor can check during compilation. These expressions can consist of symbols (which the preprocessor will transform into boolean values) and the following boolean operators:
+- `!` - Logical NOT
 - `&&` - Logical AND
 - `||` - Logical OR
-- `!` - Logical NOT
 - `(` and `)` - Parentheses to group expressions
 
-## Defining symbols
-
-A symbol can be defined by using the `#define` directive in a Slice file. The symbol will be defined for the
-remainder of the Slice file.
-
 ```slice
-#define ABC
-```
-
-## Examples
-
-Conditional compilation:
-
-```slice
-// Define symbol FOO
-#define FOO
-
-// Undefine symbol BAR
-#undef BAR
-
-#if FOO
-    // Everything here will be compiled.
-    // ...
-#elif BAR
-    // Everything here will be ignored.
-    // ...
-#else
-    // Everything here will be ignored.
-    // ...
+#if SLICEC_CS && !(MAC_OS || UNIX)
+    // Only included when running `slicec-cs` on platforms that are not MacOS or Unix.
+#elif SLICEC_RS && WINDOWS
+    // Only included when running `slicec-rs` on windows platforms.
 #endif
-```
-
-Nested conditional compilation:
-
-```slice
-#define FOO
-#define BAR
-
-#if FOO
-    #if BAR
-        // Everything here will be compiled.
-        // ...
-    #endif
-
-     // Undefine BAR
-    #undef BAR
-    #if BAR
-        // Everything here will be ignored.
-        // ...
-    #endif
-    // ...
-#endif
-
-```
-
-Logical operators and parentheses:
-
-```slice
-
-#define FOO
-#define BAR
-#undef BAZ
-
-#if (FOO || BAZ) && BAR
-    // Everything here will be compiled.
-    // ...
-#endif
-
-#if !BAZ
-    // Everything here will be compiled.
-    // ...
-#endif
-
 ```
