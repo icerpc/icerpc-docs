@@ -1,36 +1,86 @@
 ---
 title: Slice
 description: A better IDL
-showAside: false
 showReadingTime: false
 ---
 
-IceRPC provides everything you need to make RPCs. When you use only IceRPC's core API, the payload of your requests
-and responses are streams of bytes, and you need to manually encode and decode any typed data (such as strings and
-integers) in these streams. This is doable but laborious.
+## Introduction to Slice
 
-It is easier and more typical to use IceRPC together with a serialization library and its associated language-neutral
-[IDL]. For example, you can define a Person type in [Protobuf] or Slice and then let the Protobuf compiler resp. the
-Slice compiler generate code that encodes and decodes Person to and from bytes in the Protobuf resp. Slice binary
-format.
+IceRPC provides everything you need to make RPCs. When you use only IceRPC's
+core API, the payload of your requests and responses are streams of bytes, and
+you need to manually encode and decode any typed data (such as strings and
+integers) in these streams. This is doable but tedious. Fortunately we have a
+solution: Slice.
+
+Slice is a completely revised Interface Definition Language ([IDL]) and
+serialization format designed for RPCs. It allows you to define a "contract" in
+a programming language neutral way. Slice can be used with any RPC framework, or
+with no RPC framework at all; in particular, Slice does not depend on IceRPC.
+
+Nevertheless, Slice and IceRPC play well together and are designed to be used
+together. It specifies the syntax and semantics for RPCs but leaves the actual
+implementation of this RPC support to external integrations.
+
+<!-- markdownlint-disable MD001 -->
+#### Example
+
+{% slice2 %}
+
+The Thermostat interface below defines 3 operations, or RPCs, in Slice:
+
+```slice
+interface Thermostat {
+   getCurrentTemperature() -> float64
+   getHistoricalTemperature(timeStamp: WellKnownTypes::TimeStamp) -> float64
+   streamTemperature() -> stream float64
+}
+```
+
+{% /slice2 %}
+
+{% slice1 %}
+
+The Thermostat interface below defines 2 operations, or RPCs, in Slice:
+
+```slice
+interface Thermostat {
+   getCurrentTemperature() -> float64
+   getHistoricalTemperature(timeStamp: int64) -> float64
+}
+```
+
+{% /slice1 %}
+
+The Slice compiler augmented by the IceRPC + Slice integration parses this Slice
+interface and generates code in the programming language of your choice. The
+resulting generated code offers you a convenient typed RPC API implemented
+using IceRPC requests and responses.
+
+## Clean syntax
+
+Slice provides a readable, modern syntax inspired by Rust and Swift. {% slice2 %} Slice supports streaming with the
+`stream` keyword, understands optionals with the usual `?` suffix, requires minimal punctuation, and more. {% /slice2 %}
 
 {% slice1 %}
 {% side-by-side alignment="top" %}
 
-```protobuf
-// A Person message defined with Protobuf
+```slice
+// A TourGuide interface with an operation that
+// describes an attraction defined with Slice
 
-syntax = "proto3";
-
-message Person {
-  string name = 1;
-  int32 id = 2;
-  string email = 3;
+interface TourGuide {
+    audioDescription(attraction: string) -> (
+        title: string
+        duration: int64
+        recording: Sequence<uint8>
+    )
 }
 ```
 
 ```slice
-// A Person class defined with Slice
+// A Person class with a name, id, and
+// optional email fields defined
+// with Slice
 
 class Person {
    name: string
@@ -45,20 +95,23 @@ class Person {
 {% slice2 %}
 {% side-by-side alignment="top" %}
 
-```protobuf
-// A Person message defined with Protobuf
+```slice
+// A TourGuide interface with an operation that
+// describes an attraction defined with Slice
 
-syntax = "proto3";
-
-message Person {
-  string name = 1;
-  int32 id = 2;
-  string email = 3;
+interface TourGuide {
+    audioDescription(attraction: string) -> (
+        title: string
+        duration: WellKnownTypes::Duration
+        recording: stream uint8
+    )
 }
 ```
 
 ```slice
-// A Person struct defined with Slice
+// A Person struct with a name, id, and
+// optional email fields defined
+// with Slice
 
 struct Person {
    name: string
@@ -70,40 +123,53 @@ struct Person {
 {% /side-by-side %}
 {% /slice2 %}
 
-The Slice language, like the Protobuf language, includes RPC support without being tied to a specific RPC framework. It
-specifies the syntax and semantics for RPCs but leaves the actual implementation of this RPC support to external
-integrations:
+Slice provides [primitive] types with clear names such as `uint8`, `float64`
+and `string`, and allows you to define your own types with a few building
+blocks:
 
-{% side-by-side %}
+{%slice1%}
 
-```mermaid
-flowchart BT
-   grpc-protobuf[gRPC + Protobuf] --> Protobuf
-   icerpc-protobuf[IceRPC + Protobuf] --> Protobuf
-```
+- [class]
+- [custom]
+- [enum]
+- [struct]
+- [Dictionary]
+- [Sequence]
 
-```mermaid
-flowchart BT
-   icerpc-slice[IceRPC + Slice] --> Slice
-   rpc-slice[OtherRPC + Slice] --> Slice
+{% /slice1 %}
 
-```
+{%slice2%}
 
-{% /side-by-side %}
+- [custom]
+- [enum]
+- [struct]
+- [Dictionary]
+- [Sequence]
 
-For example, the Thermostat interface below defines 3 operations, or RPCs, in Slice:
+{% /slice2 %}
+
+Last but not least, Slice's [tagged] fields and parameters allow you to update
+your structs and operations over time without breaking on-the-wire
+compatibility.
+
+## Flexible and extensible
+
+You can fine-tune the API generated by the Slice compiler with Slice [attributes]. For example, in C#, you
+can map a sequence to an array (the default), or to a list, or even to a hash set:
 
 ```slice
-interface Thermostat {
-   getCurrentTemperature() -> float64
-   getHistoricalTemperature(timeStamp: WellKnownTypes::TimeStamp) -> float64
-   streamTemperature() -> stream float64
+interface Translator {
+    getLanguages() -> [cs::type("HashSet<string>")] Sequence<string>
 }
 ```
 
-The Slice compiler augmented by the IceRPC + Slice integration parses this Slice interface and generates code in the
-programming language of your choice. The resulting generated code offers you a convenient typed RPC API implemented
-using IceRPC requests and responses.
+The `cs::type` attribute changes the mapping for values decoded by the generated code and returned to you. For values
+you give to the generated code, the mapping for a `Sequence<string>` parameter is always `IEnumerable<string>`.
+
+Slice's custom types allow you to send any type you wish through Slice. You just need to provide methods to encode and
+decode instances of your custom type.
+
+## Next Steps
 
 {% grid %}
 
@@ -139,6 +205,13 @@ using IceRPC requests and responses.
 
 {% /grid %}
 
-[icerpc]: ../
+[attributes]: /slice/language-guide/attributes
+[class]:  /slice1/language-guide/class-types
+[custom]: /slice/language-guide/custom-types
+[Dictionary]: /slice/language-guide/dictionary-types
+[enum]: /slice/language-guide/enum-types
 [IDL]: https://en.wikipedia.org/wiki/Interface_description_language
-[Protobuf]: https://protobuf.dev/
+[primitive]: /slice/language-guide/primitive-types
+[Sequence]: /slice/language-guide/sequence-types
+[struct]: /slice/language-guide/struct-types
+[tagged]: /slice/language-guide/fields#tagged-fields

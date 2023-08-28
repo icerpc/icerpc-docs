@@ -47,10 +47,6 @@ export const gettingStartedData: SideBarSourceType[] = [
       {
         title: 'A modular RPC framework built for QUIC',
         path: GETTING_STARTED_BASE_URL + '/key-features/modular-rpc-for-quic/'
-      },
-      {
-        title: 'Slice - a better IDL',
-        path: GETTING_STARTED_BASE_URL + '/key-features/slice-better-idl/'
       }
     ]
   }
