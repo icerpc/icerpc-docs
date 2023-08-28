@@ -1,7 +1,7 @@
 (function (Prism) {
     Prism.languages.slice = {
         preprocessor: {
-            pattern: /^\s*#[^\r\n/]*/,
+            pattern: /(?<=\n|^)[^\S\r\n]*#[^\r\n\/]*/,
             inside: {
                 keyword: /#\s*(define|undef|if|elif|else|endif)\b/,
                 symbol: /\b\w+\b/,
