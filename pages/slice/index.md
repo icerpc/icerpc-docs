@@ -34,7 +34,7 @@ This chapter describes both Slice and the IceRPC + Slice integration provided by
 
 Once you've described your RPCs in Slice, you run the Slice compiler on your Slice definitions to generate code in the
 programming language of your choice. This generated code makes it easy to send requests to a remote service and later
-receive the corresponding responses. It also  helps you implement this remote service by providing a template to
+receive the corresponding responses. It also helps you implement this remote service by providing a template to
 fill-in.
 
 For example, the Slice compiler for C# generates two C# interfaces and a struct from the interface `Greeter` shown
