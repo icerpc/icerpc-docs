@@ -37,7 +37,7 @@ Slice provides 8 fixed-size integral types. Types that start with a `u` are unsi
 | int16     | -32,768 to 32,767                                                 | short      |
 | uint16    | 0 to 65,535                                                       | ushort     |
 | int32     | -2,147,483,648 to 2,147,483,647                                   | int        |
-| uint32     | 0 to 4,294,967,295                                               | uint       |
+| uint32    | 0 to 4,294,967,295                                                | uint       |
 | int64     | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807           | long       |
 | uint64    | 0 to 18,446,744,073,709,551,615                                   | ulong      |
 {% /slice2 %}
