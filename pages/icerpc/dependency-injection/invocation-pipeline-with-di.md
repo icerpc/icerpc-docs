@@ -39,9 +39,9 @@ You must specify a final invoker with the `Into` method. With this example, the 
 
 ## Installing an interceptor in an IInvokerBuilder
 
-All of IceRPC's built-in interceptors can be used with or without DI, and use [features] for communications within an
-invocation. For instance, the retry interceptor communicates with a connection cache using an [IServerAddressFeature] to
-coordinate retries over replicated servers.
+All the interceptors that ship with IceRPC can be used with or without DI, and use [features] for communications within
+an invocation. For instance, the retry interceptor communicates with a connection cache using an [IServerAddressFeature]
+to coordinate retries over replicated servers.
 
 These interceptors can be installed into a [Pipeline] or an [IInvokerBuilder].
 
