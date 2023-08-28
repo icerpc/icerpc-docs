@@ -3,12 +3,12 @@ title: Preprocessor directives
 description: Learn about the Slice preprocessor.
 ---
 
-The Slice compiler contains a [preprocessor](https://en.wikipedia.org/wiki/Preprocessor) that can be used to [conditionally compile](https://en.wikipedia.org/wiki/Conditional_compilation) parts of a Slice file.
+The Slice compiler contains a [preprocessor] that can be used to [conditionally compile] parts of a Slice file.
 
-## Defining Symbols
+## Defining symbols
 
 A _symbol_ is a boolean variable that can be used by the preprocessor.
-But, instead of directly assigning values to them (like you would in C/C++), symbols can only ever be _defined_ or _undefined_:
+But, instead of directly assigning values to them (like you would in C/C++), symbols can only ever be defined or undefined:
 
 ```slice
 #define FOO // defines a symbol named `FOO`.
@@ -16,14 +16,14 @@ But, instead of directly assigning values to them (like you would in C/C++), sym
 ```
 
 {% callout type="note" %}
-By convention, symbols should use [SCREAMING_SNAKE_CASE](https://en.wikipedia.org/wiki/Snake_case) to distinguish them from other identifiers.
+By convention, symbols should use [SCREAMING_SNAKE_CASE] to distinguish them from other identifiers.
 {% /callout %}
 
 A symbol is considered `true` if it is defined, and `false` if it is undefined.
 There is no difference between a symbol that hasn't been defined, and one that has been explicitly undefined.
 Additionally, it is safe to define a symbol that is already defined, or to undefine a symbol that is undefined, though doing so has no effect.
 
-## Conditional Compilation
+## Conditional compilation
 
 Conditional compilation allows sections of a Slice file to be conditionally included or excluded from compilation, based on a set of boolean expressions.
 
@@ -68,9 +68,13 @@ The `#if` and `#elif` directives require a boolean expression that the preproces
 - `(` and `)` - Parentheses to group expressions
 
 ```slice
-#if SLICEC_CS && !(MAC_OS || UNIX)
-    // Only included when running `slicec-cs` on platforms that are not MacOS or Unix.
-#elif SLICEC_RS && WINDOWS
-    // Only included when running `slicec-rs` on windows platforms.
+#if FOO && !(BAR || BAZ)
+    //...
+#elif BAR && BAZ
+    //...
 #endif
 ```
+
+[preprocessor]: https://en.wikipedia.org/wiki/Preprocessor
+[conditionally compile]: https://en.wikipedia.org/wiki/Conditional_compilation
+[SCREAMING_SNAKE_CASE]: https://en.wikipedia.org/wiki/Snake_case
