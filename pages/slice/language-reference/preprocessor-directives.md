@@ -4,10 +4,10 @@ title: Preprocessor directives
 
 The preprocessor is line-based, meaning it operates on source code one line at a time.
 Only lines beginning with a `#` character (ignoring any leading whitespace) are resolved by the preprocessor. These lines are called _preprocessor directives_.
-All preprocessor directives will be removed from the source code when preprocessing is completed.
+All preprocessor directives will of been removed from the source code when preprocessing is completed.
 
 Preprocessor directives can not span multiple lines. Newline characters always mark the end of a directive.
-Because of this, multi-line comments cannot be started on the same line as a preprocessor directive, only single-line comments are supported here.
+Because of this, multi-line comments cannot start on the same line as a preprocessor directive, only single-line comments are supported on the same line as a preprocessor directive.
 
 ## Symbols
 
@@ -21,7 +21,7 @@ Additionally, the scope of any symbol is its Slice file, ie. if you define a sym
 #endif
 ```
 
-Like other Slice identifiers, preprocessor symbols are case sensitive.
+Like other Slice identifiers, preprocessor symbols are case sensitive:
 
 ```slice
 #define foo
