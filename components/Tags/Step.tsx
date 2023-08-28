@@ -44,7 +44,7 @@ export const Step = ({ title, level = 2, id, children }: StepProps) => {
           data-text={children}
           role="presentation"
           // eslint-disable-next-line tailwindcss/no-custom-classname
-          className="step mb-0 mt-4 items-center text-xl hover:[&>*]:opacity-100"
+          className="step mb-0 mt-4 scroll-mt-[76px] items-center text-xl hover:[&>*]:opacity-100"
         >
           <span role="heading" aria-level={level}>
             {title}

@@ -42,19 +42,28 @@ export function collectHeadings(
     else return node;
   };
 
-  const mapNodesToHeadings = (node: ReactElement): AsideItem | null => {
+  const mapNodesToHeadings = (
+    node: ReactElement
+  ): AsideItem | AsideItem[] | null => {
+    const { id, children, level, title } = node.props;
+
+    let result: AsideItem | AsideItem[] | null = null;
+
     if (isHeading(node.props)) {
-      const { id, children, level } = node.props;
-      return { id, title: children, level };
-    } else if (node.props?.title && node.props?.level && node.props?.id) {
-      return {
-        id: node.props.id,
-        title: node.props.title,
-        level: node.props.level
-      };
-    } else {
-      return null;
+      result = { id, title: children, level };
+    } else if (id && title && level) {
+      const baseHeading = { id, title, level };
+
+      // Recursively collect subheadings from the children of the `step` node
+      const subHeadings = collectHeadings(children, mode).filter(
+        Boolean
+      ) as AsideItem[];
+
+      result =
+        subHeadings.length > 0 ? [baseHeading, ...subHeadings] : baseHeading;
     }
+
+    return result;
   };
 
   return React.Children.toArray(children)
@@ -62,5 +71,6 @@ export function collectHeadings(
     .filter((c) => filterNodesByMode(c, mode))
     .flatMap(flattenNodes)
     .map(mapNodesToHeadings)
+    .flatMap((x) => x)
     .filter(Boolean) as AsideItem[];
 }
