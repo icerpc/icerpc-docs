@@ -29,7 +29,9 @@ namespace IceRpc;
 
 public interface IDispatcher
 {
-    ValueTask<OutgoingResponse> DispatchAsync(IncomingRequest request, CancellationToken cancellationToken = default);
+    ValueTask<OutgoingResponse> DispatchAsync(
+        IncomingRequest request,
+        CancellationToken cancellationToken = default);
 }
 ```
 

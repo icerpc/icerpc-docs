@@ -283,7 +283,9 @@ public partial interface IGreeterService
     public static class Request
     {
         // Decodes the name argument from the request payload.
-        public static ValueTask<string> DecodeGreetAsync(IncomingRequest request, CancellationToken cancellationToken)
+        public static ValueTask<string> DecodeGreetAsync(
+            IncomingRequest request,
+            CancellationToken cancellationToken)
         {
             ...
         }

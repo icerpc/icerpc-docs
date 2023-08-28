@@ -95,7 +95,9 @@ struct DictionaryExample {
 ```csharp
 public partial record struct DictionaryExample
 {
-    public IDictionary<int32, IDictionary<string, double>> X;
+    public IDictionary<
+        int32,
+        IDictionary<string, double>> X;
 
     public IDictionary<string, double?> Y;
 }
@@ -149,14 +151,16 @@ interface Greeter {
 ```csharp
 public partial interface IGreeter
 {
-    Task<List<KeyValuePair<string, string>>> AllPreviousGreetingsAsync(
+    Task<List<KeyValuePair<string, string>>>
+    AllPreviousGreetingsAsync(
         IFeatureCollection? features = null,
         CancellationToken cancellationToken = default);
 }
 
 public partial interface IGreeterService
 {
-    ValueTask<IEnumerable<KeyValuePair<string, string>>> AllPreviousGreetingsAsync(
+    ValueTask<IEnumerable<KeyValuePair<string, string>>>
+    AllPreviousGreetingsAsync(
         IFeatureCollection features,
         CancellationToken cancellationToken);
 }

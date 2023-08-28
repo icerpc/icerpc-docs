@@ -21,7 +21,7 @@ Context-free grammars consist of a set of _symbols_ and _productions_.
 Symbols are abstract elements of the language that can represent anything from single characters to entire expressions.
 Productions are sets of rules that specify how symbols can be combined to produce other symbols.
 
-## Grammar notation
+®## Grammar notation
 
 This language reference defines grammars through their productions. These productions are written using ANTLR's
 version of [Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form#EBNF).

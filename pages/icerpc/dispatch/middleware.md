@@ -27,7 +27,9 @@ public class SimpleMiddleware : IDispatcher
 
     public SimpleMiddleware(IDispatcher next) => _next = next;
 
-    public async ValueTask<OutgoingResponse> DispatchAsync(IncomingRequest request, CancellationToken cancellationToken)
+    public async ValueTask<OutgoingResponse> DispatchAsync(
+        IncomingRequest request,
+        CancellationToken cancellationToken)
     {
         Console.WriteLine("before _next.DispatchAsync");
         OutgoingResponse response = await _next.DispatchAsync(request, cancellationToken);
