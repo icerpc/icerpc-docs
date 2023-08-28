@@ -3,7 +3,7 @@ title: Contract first model
 description: Learn how to create an application using IceRPC and Slice.
 ---
 
-## Step 1: Create Slice definitions (the contract)
+{% step title="Create Slice definitions (the contract)" %}
 
 When you create an application with IceRPC and Slice, the very first step is to model your RPCs with Slice. These Slice
 definitions represent the contract between your client and server applications. It is critical for both applications to
@@ -24,7 +24,9 @@ an interface.
 
 We save these definitions in file `Greeter.slice`.
 
-## Step 2: Compile Slice definitions with the Slice compiler
+{% /step %}
+
+{% step title="Compile Slice definitions with the Slice compiler" %}
 
 Once you've written the initial version of your Slice definitions, you need to compile them with the Slice compiler for
 your programming language.
@@ -33,7 +35,9 @@ In C#, you would use the [IceRPC Slice tools][slice-tools] to add Slice file com
 Slice compiler for C# generates a C# file for each Slice file. Since we have single Slice file, we get a single C# file,
 `Greeter.cs`.
 
-## Step 3: Implement server application
+{% /step %}
+
+{% step title="Implement server application" %}
 
 The Slice compiler for C# generates a C# interface named I*Name*Service for each Slice interface. This C# interface
 includes a method per Slice operation. The generated service interface for the `Greeter` interface defined earlier is:
@@ -76,7 +80,9 @@ An instance of the `Chatbot` class is an IceRPC service that implements the Slic
 
 We then insert this service (dispatcher) into the server's [dispatch pipeline][dispatch-pipeline] as usual.
 
-## Step 4: Implement client application
+{% /step %}
+
+{% step title="Implement client application" %}
 
 The Slice compiler for C# also generates a C# interface I*Name* and a struct *Name*Proxy for each Slice interface.
 *Name*Proxy implements I*Name*. The generated C# interface includes a method per operation in the Slice interface.
@@ -117,6 +123,8 @@ var greeterProxy = new GreeterProxy(connection, new Uri("icerpc:/greeter"));
 string greeting = await greeter.GreetAsync("Syd");
 Console.WriteLine(greeting);
 ```
+
+{% /step %}
 
 [dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
 
