@@ -46,7 +46,7 @@ export const gettingStartedData: SideBarSourceType[] = [
     links: [
       {
         title: 'IceRPC for C#',
-        path: GETTING_STARTED_BASE_URL + '/supported-platforms/icerpc-csharp-0_1_0'
+        path: GETTING_STARTED_BASE_URL + '/supported-platforms/icerpc-csharp-0_1'
       }
     ]
   }
