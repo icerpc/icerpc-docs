@@ -25,9 +25,9 @@ Additionally, it is safe to define a symbol that is already defined, or to undef
 
 ## Conditional compilation
 
-Conditional compilation allows sections of a Slice file to be conditionally included or excluded from compilation, based on a set of boolean expressions.
+Conditional compilation allows you to include or omit sections of your Slice file at compile time, based on a set of boolean expressions.
 
-The preprocessor provides 4 directives for controlling this, that use a syntax similar to conditional blocks:
+It works just like a standard if-elif-else statement, but uses preprocessor directives:
 
 ```slice
 #if <EXPRESSION_1>
@@ -39,13 +39,8 @@ The preprocessor provides 4 directives for controlling this, that use a syntax s
 #endif
 ```
 
-The `#if` and `#endif` directives are required for conditional compilation and respectively mark the start/end of the block. You can have 0 or more `#elif` directives, and either 0 or 1 `#else` directives. They must appear in the above specified order.
-
-At most one section from the block will be included in compilation.
-The preprocessor checks the expressions in order, and will include the section under the first directive who's expression evaluates to `true`.
-If none of the expressions evaluate to `true` and an `#else` section is present, the `#else` section is included. Otherwise all sections are excluded.
-
-These directives can be arbitrarily nested inside one another:
+Whereas normally, only a single section of a conditional statement will be executed, only a single block of this conditional compilation section will be compiled.
+Each block can contain anything inside them - Slice definitions, preprocessor directives, and even other conditional compilation blocks:
 
 ```slice
 #if FOO
