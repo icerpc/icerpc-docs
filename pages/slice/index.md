@@ -1,104 +1,97 @@
 ---
 title: Slice
-description: A better IDL
+description: A modern IDL and serialization format
 showReadingTime: false
 ---
 
-## Introduction to Slice
+## IDL for RPCs
 
-IceRPC provides everything you need to make RPCs. When you use only IceRPC's
-core API, the payload of your requests and responses are streams of bytes, and
-you need to manually encode and decode any typed data (such as strings and
-integers) in these streams. This is doable but tedious. Fortunately we have a
-solution: Slice.
+Slice is a new [Interface Definition Language][IDL] (IDL) that you use to model and describe your network API in a clear
+and concise manner.
 
-Slice is a completely revised Interface Definition Language ([IDL]) and
-serialization format designed for RPCs. It allows you to define a "contract" in
-a programming language neutral way. Slice can be used with any RPC framework, or
-with no RPC framework at all; in particular, Slice does not depend on IceRPC.
+Defining the customary Greeter service interface in Slice is straightforward:
 
-Nevertheless, Slice and IceRPC play well together and are designed to be used
-together. It specifies the syntax and semantics for RPCs but leaves the actual
-implementation of this RPC support to external integrations.
+```slice
+interface Greeter {
+    greet(name: string) -> string
+}
+```
 
-<!-- markdownlint-disable MD001 -->
+You don't need to craft special request and reply message types for the `greet` operation: you can specify all your
+parameters inline.
+
+## Slice and IceRPC
+
+You can use Slice with any RPC framework, or with no RPC framework at all. Slice is a separate framework that does not
+depend on IceRPC.
+
+That being said, Slice and IceRPC were developed in tandem and together form what you would typically understand as an
+"RPC framework".
+
+This chapter describes both Slice and the IceRPC + Slice integration provided by IceRPC.
+
+## Streamlined syntax
+
+{% slice1 %}
+In the Slice1 [compilation mode], Slice is a thorough revision of the [original Slice] language: it offers the same
+constructs (interface, class, struct, etc.) and capabilities but with a simpler syntax inspired by Rust and Swift.
+
+The Slice2 compilation mode provides additional features that have no equivalent in the original Slice, such as streamed
+parameters and variable-size integer types. You should use Slice1 only for interop with Ice applications.
+
 #### Example
 
-{% slice2 %}
-
-The Thermostat interface below defines 3 operations, or RPCs, in Slice:
-
-```slice
-interface Thermostat {
-   getCurrentTemperature() -> float64
-   getHistoricalTemperature(timeStamp: WellKnownTypes::TimeStamp) -> float64
-   streamTemperature() -> stream float64
-}
-```
-
-{% /slice2 %}
-
-{% slice1 %}
-
-The Thermostat interface below defines 2 operations, or RPCs, in Slice:
-
-```slice
-interface Thermostat {
-   getCurrentTemperature() -> float64
-   getHistoricalTemperature(timeStamp: int64) -> float64
-}
-```
-
-{% /slice1 %}
-
-The Slice compiler augmented by the IceRPC + Slice integration parses this Slice
-interface and generates code in the programming language of your choice. The
-resulting generated code offers you a convenient typed RPC API implemented
-using IceRPC requests and responses.
-
-## Clean syntax
-
-Slice provides a readable, modern syntax inspired by Rust and Swift. {% slice2 %} Slice supports streaming with the
-`stream` keyword, understands optionals with the usual `?` suffix, requires minimal punctuation, and more. {% /slice2 %}
-
-{% slice1 %}
 {% side-by-side alignment="top" %}
 
-```slice
-// A TourGuide interface with an operation that
-// describes an attraction defined with Slice
+```ice {% title="Slice definitions (original Ice syntax)" %}
+class Person
+{
+   string name;
+   optional(1) string nickname;
+   string email;
+}
 
-interface TourGuide {
-    audioDescription(attraction: string) -> (
-        title: string
-        duration: int64
-        recording: Sequence<uint8>
-    )
+sequence<Person> PersonList;
+
+interface Contacts
+{
+   PersonList find(string searchExpression);
 }
 ```
 
-```slice
-// A Person class with a name, id, and
-// optional email fields defined
-// with Slice
+```slice {% title="Slice definitions (new syntax)" %}
+mode = Slice1
+
+interface Contacts {
+   find(searchExpression: string) -> Sequence<Person>
+}
 
 class Person {
    name: string
-   id: int32
-   tag(1) email: string?
+   tag(1) nickname: string?
+   email: string
 }
 ```
-
 {% /side-by-side %}
+
+See more examples on the [Converting .ice into .slice] page.
 {% /slice1 %}
 
 {% slice2 %}
-{% side-by-side alignment="top" %}
+Slice provides a readable, modern syntax inspired by Rust and Swift. It includes support for streaming parameters with
+the `stream` keyword, allows you to turn any type into an optional type with the `?` suffix, requires minimal
+punctuation, and more.
+
+The Slice [primitive] types have clear names such as `uint8`, `float64`, and `string`. Slice also includes two built-in
+generic types, [Sequence] and [Dictionary]. And Slice lets you define your own types with [custom], [enum], and [struct].
+
+Last but not least, Slice's [tagged] fields and parameters allow you to update your structs and operations over time
+without breaking on-the-wire compatibility.
+
+#### Example
 
 ```slice
-// A TourGuide interface with an operation that
-// describes an attraction defined with Slice
-
+// A TourGuide interface with an operation that describes an attraction defined with Slice.
 interface TourGuide {
     audioDescription(attraction: string) -> (
         title: string
@@ -107,55 +100,58 @@ interface TourGuide {
     )
 }
 ```
+{% /slice2 %}
 
-```slice
-// A Person struct with a name, id, and
-// optional email fields defined
-// with Slice
+## Code generation
 
-struct Person {
-   name: string
-   id: int32
-   tag(1) email: string?
+Once you've described your RPCs in Slice, you run the Slice compiler on your Slice definitions to generate code in the
+programming language of your choice. This generated code makes it easy to send requests to a remote service and later
+receive the corresponding responses. It also helps you implement this remote service by providing a template to
+fill-in.
+
+For example, the Slice compiler for C# generates two C# interfaces and a struct from the interface `Greeter` shown
+earlier:
+
+```csharp {% title="C# generated code - client-side" %}
+public partial interface IGreeter
+{
+   Task<string> GreetAsync(
+      string name,
+      IFeatureCollection? features = null,
+      CancellationToken cancellationToken = default);
+}
+
+public readonly partial record struct GreeterProxy : IGreeter, IProxy
+{
+   public Task<string> GreetAsync(
+      string name,
+      IFeatureCollection? features = null,
+      CancellationToken cancellationToken = default)
+      {
+         // implemented using IceRPC...
+      }
 }
 ```
 
-{% /side-by-side %}
-{% /slice2 %}
+```csharp {% title="C# generated code - server-side" %}
+public partial interface IGreeterService
+{
+   ValueTask<string> GreetAsync(
+      string name,
+      IFeatureCollection features,
+      CancellationToken cancellationToken);
+}
+```
 
-Slice provides [primitive] types with clear names such as `uint8`, `float64`
-and `string`, and allows you to define your own types with a few building
-blocks:
-
-{%slice1%}
-
-- [class]
-- [custom]
-- [enum]
-- [struct]
-- [Dictionary]
-- [Sequence]
-
-{% /slice1 %}
-
-{%slice2%}
-
-- [custom]
-- [enum]
-- [struct]
-- [Dictionary]
-- [Sequence]
-
-{% /slice2 %}
-
-Last but not least, Slice's [tagged] fields and parameters allow you to update
-your structs and operations over time without breaking on-the-wire
-compatibility.
+{% callout %}
+The C# code shown above is generated by the Slice compiler augmented by the IceRPC + Slice integration. In particular,
+[IFeatureCollection] is an IceRPC type.
+{% /callout %}
 
 ## Flexible and extensible
 
-You can fine-tune the API generated by the Slice compiler with Slice [attributes]. For example, in C#, you
-can map a sequence to an array (the default), or to a list, or even to a hash set:
+You can fine-tune the API generated by the Slice compiler with Slice [attributes]. For example, in C#, you can map a
+sequence to an array (the default), or to a list, or even to a hash set:
 
 ```slice
 interface Translator {
@@ -169,13 +165,13 @@ you give to the generated code, the mapping for a `Sequence<string>` parameter i
 Slice's custom types allow you to send any type you wish through Slice. You just need to provide methods to encode and
 decode instances of your custom type.
 
-## Next Steps
+## Next steps
 
 {% grid %}
 
 {% mini-card
    title="Slice components"
-   description="A short description of each Slice component."
+   description="An overview of each Slice component."
    href="/slice/basics/slice-components" /%}
 
 {% mini-card
@@ -206,11 +202,14 @@ decode instances of your custom type.
 {% /grid %}
 
 [attributes]: /slice/language-guide/attributes
-[class]:  /slice1/language-guide/class-types
+[compilation mode]: /slice/language-guide/compilation-mode
+[Converting .ice into .slice]: /icerpc-for-ice-users/slice/converting-ice-into-slice
 [custom]: /slice/language-guide/custom-types
 [Dictionary]: /slice/language-guide/dictionary-types
 [enum]: /slice/language-guide/enum-types
 [IDL]: https://en.wikipedia.org/wiki/Interface_description_language
+[IFeatureCollection]: csharp:IceRpc.Features.IFeatureCollection
+[original Slice]: https://doc.zeroc.com/ice/3.7/the-slice-language
 [primitive]: /slice/language-guide/primitive-types
 [Sequence]: /slice/language-guide/sequence-types
 [struct]: /slice/language-guide/struct-types
