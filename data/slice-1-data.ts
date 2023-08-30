@@ -114,6 +114,27 @@ export const slice1Data: SideBarSourceType[] = [
     ]
   },
   {
+    title: 'Language reference',
+    links: [
+      {
+        title: 'Overview',
+        path: `${SLICE1_BASE_URL}/language-reference/`
+      },
+      {
+        title: 'Slice grammar',
+        path: `${SLICE1_BASE_URL}/language-reference/slice-grammar`
+      },
+      {
+        title: 'Doc comments',
+        path: `${SLICE1_BASE_URL}/language-reference/doc-comments`
+      },
+      {
+        title: 'Preprocessor directives',
+        path: `${SLICE1_BASE_URL}/language-reference/preprocessor-directives`
+      }
+    ]
+  },
+  {
     title: 'Encoding reference',
     links: [
       {
