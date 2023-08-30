@@ -13,7 +13,6 @@ export * from './Shell/TopNavigation/TopNav';
 export * from './Tags/Card';
 export * from './Tags/Grid';
 export * from './Tags/ModeSection';
-export * from './Tags/SupportedModes';
 export * from './Tags/Title';
 
 export * from './CodeBlock';
