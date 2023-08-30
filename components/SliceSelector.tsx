@@ -1,6 +1,5 @@
 // Copyright (c) ZeroC, Inc.
 
-import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
@@ -8,36 +7,36 @@ import { Tooltip } from 'flowbite-react';
 import { useMode } from 'context/state';
 import { Mode, modes } from 'types';
 import { AppLink } from './Nodes/AppLink';
-import { baseUrls } from 'data/side-bar-data';
 
 export const SliceSelector = () => {
-  const { setMode } = useMode();
-  const { asPath, isReady, push } = useRouter();
-  const [activeMode, setActiveMode] = useState(getModeFromPath(asPath));
-
-  useEffect(() => {
-    if (isReady) {
-      const mode = getModeFromPath(asPath);
-      setActiveMode(mode);
-    }
-  }, [asPath, isReady]);
+  const { mode: activeMode, setMode } = useMode();
+  const { asPath, push } = useRouter();
 
   function onChange(index: number) {
     const mode = modes[index];
     setMode(mode);
 
+    // Split the asPath into the path and fragment
+    const [path, fragment] = asPath.split('#');
+
     let newPath;
-    if (asPath === '/slice1') {
+    if (path === '/slice1') {
       newPath = mode === Mode.Slice1 ? '/slice1' : '/slice2';
-    } else if (asPath === '/slice2') {
+    } else if (path === '/slice2') {
       newPath = mode === Mode.Slice1 ? '/slice1' : '/slice2';
     } else {
-      newPath = asPath.replace(
+      newPath = path.replace(
         /\/slice[1-2]\//,
         `/slice${mode === Mode.Slice1 ? 1 : 2}/`
       );
     }
 
+    // Append the fragment back, if it exists
+    if (fragment) {
+      newPath = `${newPath}#${fragment}`;
+    }
+
+    console.log('newPath', newPath);
     push(newPath);
   }
 
@@ -58,12 +57,6 @@ export const SliceSelector = () => {
       <div className="mt-4 w-full border-t-[1px] border-lightBorder dark:border-darkBorder" />
     </>
   );
-};
-
-const getModeFromPath = (path: string) => {
-  const pathSegments = path.split('/');
-  const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
-  return baseUrl === '/slice1' ? Mode.Slice1 : Mode.Slice2;
 };
 
 type ModeTabProps = {
