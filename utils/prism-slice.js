@@ -3,7 +3,7 @@
         preprocessor: {
             pattern: /(?<=\n|^)[^\S\r\n]*#[^\r\n\/]*/,
             inside: {
-                keyword: /#\s*(define|undef|if|elif|else|endif)\b/,
+                "class-name": /#\s*(define|undef|if|elif|else|endif)\b/,
                 symbol: /\b\w+\b/,
                 operator: /\!|&&|\|\|/,
                 punctuation: /[#()]/
@@ -53,6 +53,6 @@
             }
         ],
         number: /\b[0-9]\w*\b/,
-        punctuation: /(->|::|\[\[|\]\]|[(){}<>\[\]:,=?-])/
+        punctuation: /(->|::|[(){}<>:,=?-])/
     };
 }(Prism));
