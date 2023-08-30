@@ -53,7 +53,7 @@ The update of the closed state triggers the sending of one of the following fram
 - Slic sends a [StreamWritesClosed] frame to the peer when the application closes writes on
   the stream. Upon receiving this frame, the peer stops reading data from the stream and close the stream reads.
 
-- Slic sends a [StreamReadsClosed] frame to the peer when the application closes writes on
+- Slic sends a [StreamReadsClosed] frame to the peer when the application closes reads on
   the stream. Upon receiving this frame, the peer stops sending data over the stream and close the stream writes.
 
 A stream is considered closed when both writes and reads are closed.
@@ -68,7 +68,7 @@ data will be sent for this stream.
 Sending a `Stream` frame after a `StreamLast` frame or multiple `StreamLast` frames for the same stream is considered a
 protocol error.
 
-The [MaxStreamFrameSize][connection-parameters] parameter limits the maximum size of a `Stream`` or `StreamLast` frame. If
+The [MaxStreamFrameSize][connection-parameters] parameter limits the maximum size of a `Stream` or `StreamLast` frame. If
 the application data is larger than this parameter value, the data is sent in chunks with multiple `Stream` frames.
 Frames are serialized on the underlying duplex connection so sending a frame delays the sending of other frames.
 Reducing the maximum stream frame size reduces this delay. It's in particular useful when dealing with slow connections.

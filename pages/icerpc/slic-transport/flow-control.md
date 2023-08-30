@@ -33,7 +33,7 @@ fixed window size and send a `StreamWindowUpdate` frame when a size threshold is
 
 Each side of the connection defines how many streams it's willing to accept with the
 [MaxBidirectionalStreams][connection-parameters] and [MaxUnidirectionalStreams][connection-parameters] parameters
-transmitted during connection establishment. `Stream` creation is paused when this limit is reached. For example, if the
+transmitted during connection establishment. Stream creation is paused when this limit is reached. For example, if the
 peer's `MaxBidirectionalStreams` parameter is 5 and 5 bidirectional streams are opened, the creation of the next
 bidirectional stream is delayed until one of the stream is closed. Opening an additional stream when the limit is
 reached is a protocol error.

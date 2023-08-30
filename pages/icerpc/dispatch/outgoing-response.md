@@ -27,5 +27,5 @@ unnecessary. An outgoing response payload is conceptually one continuous stream 
 
 [fields]: ../invocation/incoming-response#response-fields
 [outgoing request]: ../invocation/outgoing-request
-[Slice encoding]: /slice/encoding
 [status code]: ../invocation/incoming-response#status-code
+[Slice encoding]: /slice/encoding
