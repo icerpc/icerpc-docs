@@ -20,7 +20,7 @@ the same as the protocol of the enclosing service address.
 
 An absolute service address without a server address can have query parameters.
 
-Finally, an ice service address can have a fragment; this fragment corresponds to an Ice facet.
+Finally, an ice service address can have a fragment; this fragment corresponds to an [Ice facet].
 
 In C#, record class [ServiceAddress] is a parsed and validated representation of a service address URI: it holds exactly
 the same information.
@@ -33,7 +33,7 @@ A service address with a single server address is very common:
 
 ```
 icerpc://host[:port]/<path>[?name=value][&name=value...]
-icerpc://host[:port]/<path>[?name=value][&name=value...][#fragment]
+ice://host[:port]/<path>[?name=value][&name=value...][#fragment]
 ```
 
 The protocol (ice or icerpc), host, port and the query parameters specify the server address of the service address. The
@@ -118,3 +118,4 @@ Relative service addresses underpin [relative proxies][relative-proxies] in Slic
 [URI]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
 
 [ServiceAddress]: csharp:IceRpc.ServiceAddress
+[Ice facet]: https://doc.zeroc.com/ice/latest/client-server-features/facets

@@ -47,7 +47,7 @@ This allows you to implement your own custom version of [ClientConnection] or
 There is currently no public API to create server protocol connections; as a result, you can't create your own custom
 version of [Server].
 
-[ProtocolConnection]: csharp:IceRpc.IProtocolConnection
+[IProtocolConnection]: csharp:IceRpc.IProtocolConnection
 [ClientProtocolConnectionFactory]: csharp:IceRpc.ClientProtocolConnectionFactory
 [ClientConnection]: csharp:IceRpc.ClientConnection
 [ConnectionCache]: csharp:IceRpc.ConnectionCache

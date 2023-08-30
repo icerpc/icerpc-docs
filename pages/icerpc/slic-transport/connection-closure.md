@@ -65,4 +65,4 @@ An abortive connection closure aborts the underlying duplex connection.
 
 [Close]: protocol-frames#close-frame
 [StreamReadsClosed]: protocol-frames#streamreadsclosed-and-streamwritesclosed-frames
-[StreamWritesCosed]: protocol-frames#streamreadsclosed-and-streamwritesclosed-frames
+[StreamWritesClosed]: protocol-frames#streamreadsclosed-and-streamwritesclosed-frames
