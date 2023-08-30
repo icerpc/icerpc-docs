@@ -28,15 +28,24 @@ applications without reinventing the wheel.
 
 Some of IceRPC's main features include:
 
-| Feature                                                   | Description                                                                                                                                                                        |
-| --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Security with TLS](/icerpc/connection/security-with-tls) | Establish and enhance secure communication channels using advanced TLS protocols.                                                                                                  |
-| [Middleware](/icerpc/dispatch/middleware)                 | Integrate custom code seamlessly into the dispatching process, executing it before the request reaches completion.                                                                 |
-| [Router](/icerpc/dispatch/router)                         | Direct requests to appropriate dispatchers via a router, with middleware integration in the routing flow.                                                                          |
-| [Slice](/slice)                                           | Employ Slice as IceRPC's IDL for effortless serialization. Instead of manual byte stream handling, define structures and let Slice's compiler manage efficient binary conversions. |
+| Feature                | Description                                                                                  |
+|------------------------|----------------------------------------------------------------------------------------------|
+| [Invocation pipeline]  | Enhanced client-side request processing with a composable invocation pipeline.               |
+| [Dispatch pipeline]    | Enhanced server-side request processing with a composable dispatch pipeline.                 |
+| [Routing]              | A router with support for nested routers that allows direct requests to the target services. |
+| [Dependency injection] | Designed to be both DI-friendly and DI-container agnostic.                                   |
+| [QUIC]                 | Leverage QUIC's benefits with IceRPC's QUIC multiplexed transport.                           |
+| [Slice]                | Best-in-class IDL for defining your network API.                                             |
 
 {% divider /%}
 
 {% homeTitle title="Explore the Docs" description="Ready to jump in?" /%}
 
 {% explore /%}
+
+[Dependency injection]: /icerpc/dependency-injection/di-and-icerpc-for-csharp
+[Dispatch pipeline]: /icerpc/dispatch/dispatch-pipeline
+[Invocation pipeline]: /icerpc/invocation/invocation-pipeline
+[QUIC]: /icerpc/multiplexed-transport
+[Routing]: /icerpc/dispatch/router
+[Slice]: /slice
