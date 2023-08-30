@@ -19,7 +19,7 @@ export const Examples = () => {
       />
       <ExampleCard
         title="Stream"
-        description="IceRPC streaming in action."
+        description="Stream your data with IceRPC."
         href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/Stream"
       />
     </div>

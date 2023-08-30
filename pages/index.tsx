@@ -12,9 +12,6 @@ import React, { useEffect, useState } from 'react';
 import config, { components } from 'markdoc/schema';
 import fs from 'fs';
 import yaml from 'js-yaml';
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Logo } from 'components';
 import { useTheme } from 'next-themes';
 import { Theme } from 'types';
@@ -118,27 +115,6 @@ const Hero = () => {
       <h2 className="bg-gradient-to-b from-slate-800 to-black bg-clip-text text-center text-[40px] font-extrabold dark:bg-none dark:text-white">
         IceRPC Documentation
       </h2>
-      <p className="prose mx-4 max-w-xl text-center text-xl dark:prose-invert">
-        Explore the IceRPC documentation for detailed information and guides for
-        all things IceRPC and Slice.
-      </p>
-      <div className="flex flex-row items-center space-x-4 py-4">
-        <Link
-          className="flex w-full min-w-[130px] flex-row items-center justify-between rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-3 py-[8px] text-center text-sm text-white"
-          href="/getting-started"
-        >
-          Get Started
-          <FontAwesomeIcon icon={faArrowRight} className="h-4 w-4" />
-        </Link>
-        <span className="prose dark:prose-invert">or</span>
-        <a
-          className="w-full min-w-[120px] rounded-lg border border-black/20 bg-white px-3 py-[8px] text-center text-sm text-black/40 hover:border-black hover:text-black"
-          href="https://github.com/icerpc/"
-          target="_blank"
-        >
-          View Source
-        </a>
-      </div>
     </div>
   );
 };

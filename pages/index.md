@@ -1,51 +1,51 @@
 ---
-title: Getting started
-description: Welcome to the IceRPC Documentation
+title: Home
+description: IceRPC documentation
 showReadingTime: false
 showAside: false
 showDividers: false
 ---
 
-{% homeTitle title="What is IceRPC" description="Understanding the framework" /%}
+{% homeTitle title="Welcome" /%}
 
-Remote Procedure Call (RPC) is a fundamental paradigm for networked
-applications: a client sends a request to a server over a network connection,
-the server processes this request and then sends back a response to the client
-over the same connection.
+Welcome to the IceRPC documentation! You will find on this site a wide range of materials, including installation
+instructions, tutorials, programming guides, and more.
 
-An RPC framework like IceRPC helps you apply this paradigm to your own networked
-applications without reinventing the wheel.
+Want to make RPCs without reinventing the wheel? Want to take advantage of QUIC through a convenient, modern API? You've
+come to the right place.
+
+IceRPC is currently available for C# / .NET. We plan on adding support for more languages soon, starting with Rust.
 
 {% divider /%}
 
-{% homeTitle title="Try an Example" description="Get started in minutes" /%}
+{% homeTitle title="Key features" description="Discover IceRPC" /%}
+
+Jump directly to the documentation of these distinctive features:
+
+| Feature                | Description                                                                                  |
+|------------------------|----------------------------------------------------------------------------------------------|
+| [Invocation pipeline]  | Customize your client-side processing by composing interceptors into an invocation pipeline. |
+| [Dispatch pipeline]    | Compose middleware and services into your own custom server-side dispatch pipeline.          |
+| [Path-based routing]   | Learn how to route a request to the right service based on the request's path.               |
+| [Dependency injection] | Learn how to use IceRPC with a DI container.                                                 |
+| [Slice]                | A modern IDL and serialization format developed in tandem with IceRPC.                       |
+| [The icerpc protocol]  | A look under the hood: how does IceRPC send RPCs over QUIC?                                  |
+
+{% divider /%}
+
+{% homeTitle title="IceRPC by example" description="See IceRPC in action" /%}
 
 {% examples /%}
 
 {% divider /%}
 
-{% homeTitle title="Main Features" description="What it offers" /%}
-
-Some of IceRPC's main features include:
-
-| Feature                | Description                                                                                  |
-|------------------------|----------------------------------------------------------------------------------------------|
-| [Invocation pipeline]  | Enhanced client-side request processing with a composable invocation pipeline.               |
-| [Dispatch pipeline]    | Enhanced server-side request processing with a composable dispatch pipeline.                 |
-| [Routing]              | A router with support for nested routers that allows direct requests to the target services. |
-| [Dependency injection] | Designed to be both DI-friendly and DI-container agnostic.                                   |
-| [QUIC]                 | Leverage QUIC's benefits with IceRPC's QUIC multiplexed transport.                           |
-| [Slice]                | Best-in-class IDL for defining your network API.                                             |
-
-{% divider /%}
-
-{% homeTitle title="Explore the Docs" description="Ready to jump in?" /%}
+{% homeTitle title="Explore the docs" description="Let's go!" /%}
 
 {% explore /%}
 
 [Dependency injection]: /icerpc/dependency-injection/di-and-icerpc-for-csharp
 [Dispatch pipeline]: /icerpc/dispatch/dispatch-pipeline
 [Invocation pipeline]: /icerpc/invocation/invocation-pipeline
-[QUIC]: /icerpc/multiplexed-transport
-[Routing]: /icerpc/dispatch/router
+[Path-based routing]: /icerpc/dispatch/router
 [Slice]: /slice
+[The icerpc protocol]: /icerpc/protocols-and-transports/icerpc-multiplexed-transports
