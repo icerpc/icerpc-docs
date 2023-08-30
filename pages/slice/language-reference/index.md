@@ -10,7 +10,7 @@ Slice consists of three sub-languages:
 
 - A core Slice language for defining types and contracts
 - A preprocessing language for conditional compilation
-- A language for describing definitions with doc-comments
+- A language for describing definitions with doc comments
 
 Each of these sub-languages are in turn specified by a set of two [context-free grammars](https://en.wikipedia.org/wiki/Context-free_grammar):
 

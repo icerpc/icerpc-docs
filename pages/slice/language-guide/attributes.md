@@ -61,10 +61,10 @@ It accepts one or more of the following arguments:
 | Argument            | Description                                                                                              |
 | ------------------- | -------------------------------------------------------------------------------------------------------- |
 | All                 | Do not emit any warning that can be suppressed.                                                          |
-| BrokenDocLink       | Do not emit a warning when a doc-comment link references an unknown Slice construct.                     |
+| BrokenDocLink       | Do not emit a warning when a doc comment link references an unknown Slice construct.                     |
 | Deprecated          | Do not emit a warning when referencing a deprecated type.                                                |
-| IncorrectDocComment | Do not emit a warning for a doc-comment that is syntactically correct but contains a logic error.        |
-| MalformedDocComment | Do not emit a warning for doc-comments that are syntactically incorrect (as per the doc-comment syntax). |
+| IncorrectDocComment | Do not emit a warning for a doc comment that is syntactically correct but contains a logic error.        |
+| MalformedDocComment | Do not emit a warning for doc comments that are syntactically incorrect (as per the doc comment syntax). |
 
 `allow` can be specified as a regular attribute and as a file-level attribute. For example:
 
