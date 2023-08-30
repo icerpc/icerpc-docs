@@ -22,9 +22,10 @@ connection that dispatched the incoming request) reads and logically copies thes
 there is no more byte to read.
 
 In C#, the payload of an outgoing response is split in a payload and a payload continuation, just like the payload
-of an [outgoing request]. This split makes the response encoding more convenient and efficient, but is otherwise
+of an [outgoing request]. This split makes the [Slice encoding] more convenient and efficient, but is otherwise
 unnecessary. An outgoing response payload is conceptually one continuous stream of bytes.
 
 [fields]: ../invocation/incoming-response#response-fields
 [outgoing request]: ../invocation/outgoing-request
 [status code]: ../invocation/incoming-response#status-code
+[Slice encoding]: /slice/encoding
