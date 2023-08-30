@@ -52,12 +52,13 @@ export const Heading = ({
         level !== 1 && 'group scroll-mt-20'
       )}
     >
-      <span role="heading" aria-level={level}>
-        {children}
-      </span>
-
-      {icerpcSlice && <IcerpcSlice />}
-      <CopyButton id={id} />
+      <div className="flex items-center justify-start">
+        <span role="heading" aria-level={level}>
+          {children}
+        </span>
+        {icerpcSlice && <IcerpcSlice />}
+        <CopyButton id={id} />
+      </div>
       {level >= 1 && level <= 3 && showDividers && <Divider margin="my-4" />}
     </Component>
   );

@@ -55,8 +55,8 @@ export const AppLink = ({
 
       // If the link is a /slice/ link, we need to convert it to a /slice1/ or /slice2/ link based on the current mode.
       url = url.replace(
-        /^\/slice(\/|$)/,
-        mode === Mode.Slice1 ? '/slice1/' : '/slice2/'
+        /^\/slice(?=#|\/|$)/,
+        mode === Mode.Slice1 ? '/slice1' : '/slice2'
       );
     }
 

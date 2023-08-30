@@ -17,7 +17,6 @@ const heading = {
     const id = generateID(children, attributes);
     const frontmatter = config.variables?.frontmatter;
     const showDividers = frontmatter.showDividers;
-
     return new Tag(
       `${this.render}`,
       { ...attributes, id, showDividers },
@@ -33,11 +32,13 @@ function generateID(
   if (attributes.id && typeof attributes.id === 'string') {
     return attributes.id;
   }
+
   return children
     .filter((child) => typeof child === 'string')
     .join(' ')
     .replace(/[?]/g, '')
     .replace(/\s+/g, '-')
+    .replace(/-+$/, '')
     .toLowerCase();
 }
 
