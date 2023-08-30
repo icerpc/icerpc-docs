@@ -8,7 +8,7 @@ description: Learn how to convert .ice definitions into .slice definitions.
 You need to convert existing Slice definitions into new Slice definitions when you want to use IceRPC to build a
 client or server application that interoperates with your existing Ice applications.
 
-This page shows how to convert each construct in your `.ice` file into the equivalent construct in the your new Slice
+This page shows how to convert each construct in your .ice file into the equivalent construct in your new .slice
 file. This equivalent construct is naturally encoded the same way—otherwise, there would be no interop.
 
 All the .slice files used for interop with Ice must use the Slice1 compilation mode:
@@ -129,7 +129,8 @@ exception SyntaxException {
     message: string
 }
 
-exception InvalidIdentifierException : SyntaxException {
+exception InvalidIdentifierException
+    : SyntaxException {
     badIdentifier: string
 }
 ```
@@ -145,8 +146,8 @@ specification. For example:
 void op(string s) throws ArgumentException, InvalidStateException, NotAvailableException;
 ```
 
-The allowable exceptions include any exception derived from ArgumentException, InvalidStateException and
-NotAvailableException. If this list is empty (no `throws`), the operation is not allowed to throw any Slice-defined
+The allowable exceptions include any exception derived from `ArgumentException`, `InvalidStateException` and
+`NotAvailableException`. If this list is empty (no `throws`), the operation is not allowed to throw any Slice-defined
 exception.
 
 With the .slice syntax, an operation can also throw one or more exceptions. The only difference is a list of two or more
