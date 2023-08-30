@@ -36,7 +36,6 @@ export const SliceSelector = () => {
       newPath = `${newPath}#${fragment}`;
     }
 
-    console.log('newPath', newPath);
     push(newPath);
   }
 
