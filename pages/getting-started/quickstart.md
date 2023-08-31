@@ -1,28 +1,18 @@
 ---
 title: Quickstart
-description: Effortlessly jump into IceRPC
+description: Create a new IceRPC application in under a minute.
 ---
 
-This quickstart shows how to quickly get up and running with a complete
-application with IceRPC for C# using the IceRPC .NET Project Templates.
-We start from scratch—you just need to have the .NET 7 SDK installed on your
-computer.
+This quickstart shows how to build and run a complete client-server application with IceRPC in less than a minute.
 
-If you would like a more in-depth tutorial, you can follow
-
-- [Writing your first server application][server-tutorial]
-- [Writing your first client application][client-tutorial]
-
----
+Prerequisites: you just need to have the .NET 7 SDK installed on your computer.
 
 The networked application we are building together consists of:
 
 - a server that hosts a single service (a simple greeter service)
-- a client that establishes a connection to the server and calls `greet` on
-  this greeter service
+- a client that establishes a connection to the server and calls `greet` on this greeter service
 
-The client and server are console applications that use plain .NET (no ASP.NET,
-no Dependency Injection).
+The client and server are console applications that use plain .NET (no ASP.NET, no Dependency Injection).
 
 Let's jump right in:
 
@@ -36,43 +26,35 @@ dotnet new install IceRpc.Templates
 
 {% step title="Create the server" %}
 
-Now, let's create the server application by using the `icerpc-slice-server`
-template we installed in the previous step:
+We create the server application from the `icerpc-slice-server` template installed in the previous step:
 
 ```shell
 dotnet new icerpc-slice-server -o MyServer
 ```
 
-This command creates a new IceRPC + Slice server application application in
-directory `MyServer`.
-
-![MyServer in Visual Studio Code](/images/MyServer.png)
+This command creates our new IceRPC + Slice server application in directory `MyServer`.
 
 {% /step %}
 
 {% step title="Create the client" %}
 
-Similarly, let's create the client application:
+Similarly, we create the client application from a template:
 
 ```shell
 dotnet new icerpc-slice-client -o MyClient
 ```
 
-This command creates a new IceRPC + Slice client application in directory
-`MyClient`.
-
-![MyClient in Visual Studio Code](/images/MyClient.png)
+This command creates our new IceRPC + Slice client application in directory `MyClient`.
 
 {% /step %}
 
 {% step title="Run the application" %}
 
-Now that we have created both the client and server applications, we can run
-them.
+Now that we have created both the client and server applications, we can run them.
 
 ### Start the server
 
-Navigate to the server directory and run the server:
+Open a terminal and run the server:
 
 ```shell
 cd MyServer
@@ -88,7 +70,7 @@ dbug: IceRpc.Server[11]
 
 ### Start the client
 
-Now, navigate to the client directory and run the client:
+Open another terminal and run the client:
 
 ```shell
 cd MyClient
@@ -115,12 +97,11 @@ dbug: IceRpc.ClientConnection[5]
 ## Next steps
 
 Congratulations! You have successfully created your first IceRPC application.
-We recommend you to continue with by reading the following to learn more about
-what each file produced by the template does in the full client and server
-tutorials:
 
-- [Writing your first server][server-tutorial]
-- [Writing your first client][client-tutorial]
+You can learn more about what each file produced by the templates does in the Tutorial:
+
+- [Writing your first server application][server-tutorial]
+- [Writing your first client application][client-tutorial]
 
 [client-tutorial]: /getting-started/tutorial/server-client
 [server-tutorial]: /getting-started/tutorial/server-tutorial
