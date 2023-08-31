@@ -219,8 +219,8 @@ The principle is straightforward: your service class must derive from class [`Se
 must implement interface I*Name*Service. This generated Service interface defines an abstract method for each operation
 on the Slice interface and you need to implement all these abstract methods.
 
-The `Service` base class implements the [IDispatcher] interface, enabling the dispatch of requests for operations defined
-within the I*Name*Service interfaces that the service implements.
+`Service` implements the [IDispatcher] interface by directing incoming requests to the matching I*Name*Service method
+using reflection and helper static methods on I*Name*Service.
 
 For example:
 

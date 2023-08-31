@@ -81,8 +81,8 @@ An instance of the `Chatbot` class is an IceRPC service that implements the Slic
 We then insert this service (dispatcher) into the server's [dispatch pipeline][dispatch-pipeline] as usual.
 
 {% callout %}
-The `Service` base class implements the [IDispatcher] interface, enabling the dispatch of requests for operations defined
-within the I*Name*Service interfaces that the service implements.
+`Service` implements the [IDispatcher] interface by directing incoming requests to the matching I*Name*Service method
+using reflection and helper static methods on I*Name*Service.
 {% /callout %}
 
 {% /step %}
