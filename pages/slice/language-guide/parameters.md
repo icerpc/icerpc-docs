@@ -106,8 +106,8 @@ integration always passes a null exception to [Complete].
 When you receive such a stream, you must call [Complete] or [CompleteAsync] on the stream when you're done reading it.
 The exception argument is ignored: the peer doesn't see a difference between a null and non-null exception.
 
-For all other stream element types, a stream parameter is mapped to an `IAsyncEnumerable<T>`, where the async enumerable
-element type is the mapped C# type for the Slice stream element type. For example:
+For all other stream element types, a stream parameter is mapped to an [`IAsyncEnumerable<T>`], where
+the async enumerable element type is the mapped C# type for the Slice stream element type. For example:
 
 {% side-by-side alignment="top" %}
 ```slice
@@ -129,18 +129,18 @@ public partial interface ITemperatureProbe
 When you give such a stream to the generated code, the IceRPC + Slice integration will either iterate over all the
 elements (until your async enumerable yields `break`) or cancel the iteration early, typically because the peer doesn't
 want more elements. This early cancellation is communicated to your async enumerable using the
-[`EnumeratorCancellation` attribute][enumerator-cancellation], as demonstrated by the server-side of the
-[Stream example application][stream-example].
+[`EnumeratorCancellationAttribute`], as demonstrated by the server-side of the [Stream example] application.
 
 When you receive such a stream, you can read all or only some of the elements, as demonstrated by the client-side of the
-[Stream example application][stream-example]. You don't need to do anything special if you don't want more elements:
+[Stream example] application. You don't need to do anything special if you don't want more elements:
 just exit the iteration. You can also inject your own cancellation token into the async enumerable stream provided by
 the generated code, with the [WithCancellation] extension method. This injected cancellation token is used to cancel a
 blocked or slow read operation on the underlying byte stream. {% /slice2 %}
 
-[enumerator-cancellation]: https://learn.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.enumeratorcancellationattribute
+[`EnumeratorCancellationAttribute`]: https://learn.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.enumeratorcancellationattribute
 [PipeReader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
 [Complete]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader.complete
 [CompleteAsync]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader.completeasync
-[stream-example]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/Stream
+[Stream example]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/Stream
 [WithCancellation]: https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskasyncenumerableextensions.withcancellation
+[`IAsyncEnumerable<T>`]: https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iasyncenumerable-1

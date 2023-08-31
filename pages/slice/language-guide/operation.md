@@ -7,12 +7,12 @@ description: Learn how to define operations in Slice.
 
 An operation consists of:
 
-- an optional operation [attribute](attributes)
-- a name (the name of operation)
+- operation [attributes] (optional)
+- a name (the name of the operation)
 - a list of [parameters] (the operation parameters)
 - an arrow followed by one or more return [parameters] (optional)
 {% slice1 %}
-- an [exception specification](#exception-specification) (optional)
+- an [exception specification] (optional)
 {% /slice1 %}
 
 For example:
@@ -330,7 +330,9 @@ There are two somewhat common use-cases for this attribute:
 2.  You want to return over and over the same return value that is costly to encode; this attribute allows you to encode
     the return value once, cache the encoded bytes and then return over and over these bytes.
 
+[attributes]: attributes
 [class-slicing]: class-types#slicing
+[exception specification]: #exception-specification
 [parameters]: parameters
 [tagged-parameters]: parameters#tagged-parameters
 
