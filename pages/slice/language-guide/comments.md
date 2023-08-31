@@ -1,14 +1,31 @@
 ---
-title: Doc comments
-description: Learn how to write doc comments in Slice.
+title: Comments and doc comments
+description: Using comments and doc comments in Slice files.
 ---
 
-## Purpose of doc comments
+## Comments
 
-Slice comments that start with `///` are doc comments. The Slice compiler uses these special comments as input for the
-doc comments it generates in the mapped language.
+You can and should add comments to your Slice files to make your Slice definitions easier to understand.
 
-Slice doc comments can be attached to all Slice elements except parameters, modules, and mode declarations.
+A Slice comment starts with two slashes (`//`) and continues until the end of the line, just like in C# and Rust:
+
+```slice
+// This is a comment
+interface FooBar { // This is another comment
+}
+```
+
+Slice also supports block comments (`/* ... */`), like C, including nested block comments. However, we recommend you use
+only the `//` style for your comments.
+
+The Slice compiler completely ignores comments that are not doc comments.
+
+## Doc comments
+
+Slice comments that start with a triple slash (`///`) are doc comments. The Slice compiler uses these special comments
+as input for the doc comments it generates in the mapped language.
+
+Slice doc comments can be attached to all Slice elements except parameters, modules, and mode statements.
 
 ## Doc comments tags
 

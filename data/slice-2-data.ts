@@ -96,8 +96,8 @@ export const slice2Data: SideBarSourceType[] = [
         path: `${SLICE2_BASE_URL}/language-guide/attributes`
       },
       {
-        title: 'Doc comments',
-        path: `${SLICE2_BASE_URL}/language-guide/doc-comments`
+        title: 'Comments and doc comments',
+        path: `${SLICE2_BASE_URL}/language-guide/comments`
       },
       {
         title: 'Preprocessor directives',
