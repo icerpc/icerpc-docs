@@ -15,8 +15,7 @@ interface FooBar { // This is another comment
 }
 ```
 
-Slice also supports block comments (`/* ... */`), like C, including nested block comments. However, we recommend you use
-only the `//` style for your comments.
+Slice also supports block comments (`/* ... */`), like C, including nested block comments.
 
 The Slice compiler completely ignores comments that are not doc comments.
 
