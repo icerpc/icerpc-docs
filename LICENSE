@@ -1,0 +1,9 @@
+Copyright (c) ZeroC, Inc.
+
+This repository contains both documentation and code that helps render this documentation nicely.
+
+The documentation is licensed under the Creative Commons Attribution 4.0 International Public License [1].
+Unless otherwise noted, the code is licensed under the Apache License, Version 2.0 [2].
+
+[1]: https://creativecommons.org/licenses/by/4.0/legalcode
+[2]: https://www.apache.org/licenses/LICENSE-2.0
