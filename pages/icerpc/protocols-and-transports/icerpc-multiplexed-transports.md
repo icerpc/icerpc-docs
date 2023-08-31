@@ -86,8 +86,9 @@ the small ones.
 
 icerpc is naturally IceRPC's preferred protocol.
 
-icerpc provides the most direct realization of IceRPC's APIs and features. In particular, IceRPC's [request
-fields][request-fields], [response fields][response-fields] and [status codes][status-code] are transmitted as-is by icerpc. It also supports [payload continuations][payload-continuation].
+icerpc provides the most direct realization of IceRPC's APIs and features. In particular, IceRPC's
+[request fields][request-fields], [response fields][response-fields] and [status codes][status-code] are transmitted
+as-is by icerpc. It also supports [payload continuations][payload-continuation].
 
 ## icerpc over a duplex connection
 

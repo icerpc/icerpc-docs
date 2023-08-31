@@ -7,7 +7,7 @@ export const Explore = () => {
     <div className="mb-10 grid grid-cols-1  gap-4 md:grid-cols-2 lg:grid-cols-3">
       <ExploreCard
         title="Getting Started"
-        description="Learn how to use IceRPC in your C# project."
+        description="Learn how to install IceRPC and write your first IceRPC application."
         href="/getting-started"
       />
       <ExploreCard
@@ -17,17 +17,17 @@ export const Explore = () => {
       />
       <ExploreCard
         title="Slice"
-        description="Strongly-Typed Network Calls Made Easy."
+        description="Strongly-typed network calls made easy."
         href="/slice"
       />
       <ExploreCard
         title="IceRPC for Ice Users"
-        description="Understand how IceRPC relates to Ice, and how to use IceRPC and Ice together."
-        href="icerpc-for-ice-users"
+        description="Start here if you are coming from Ice."
+        href="/icerpc-for-ice-users"
       />
       <ExploreCard
         title="API Reference"
-        description="An in-depth reference for all IceRPC APIs."
+        description="The IceRPC for C# API reference."
         href="https://docs.testing.zeroc.com/api/csharp/api/IceRpc.html"
       />
     </div>
