@@ -65,7 +65,7 @@ module VisitorCenter
 interface Greeter {
     greet(name: string) -> string
 
-#if NextGen // only available in the NextGen version of Greeter
+#if NEXT_GEN // only available in the NEXT_GEN version of Greeter
     sing(songName: string) -> Sequence<uint8>
 #endif
 }

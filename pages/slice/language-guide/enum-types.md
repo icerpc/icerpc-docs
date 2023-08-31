@@ -38,7 +38,7 @@ is assigned a value of `0`, and subsequent enumerators are assigned increasing v
 The range of these enumerator values is 0 to 2,147,483,647 (int32 max).
 {% /slice1 %}
 {% slice2 %}
-The range of these enumerator values is the range of the underlying types.
+The range of these enumerator values is the range of the underlying type.
 {% /slice2 %}
 
 The following code example illustrates how you can explicitly assign values for the enumerators in your enumeration
@@ -156,7 +156,7 @@ public enum Fruit : byte
 
 {% slice1 %}
 The underlying type of the mapped enumeration is always `int`.
-{% /slice2 %}
+{% /slice1 %}
 
 {% slice2 %}
 The underlying type of the mapped enumeration is always the mapped type for the Slice underlying type. For example,

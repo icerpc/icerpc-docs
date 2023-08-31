@@ -67,7 +67,7 @@ client using the Slice2 file will fail if the remote service is implemented with
 
 ## Using Slice1 and Slice2 together
 
-It is possible but uncommon to use Slice files with both modes in the same application.
+It is possible but uncommon to use Slice files with different modes in the same application.
 
 If you are in this situation, you need to observe the following rules:
  - a Slice2 file can use a type defined in Slice1 file provided this type is Slice2-compatible (see below)

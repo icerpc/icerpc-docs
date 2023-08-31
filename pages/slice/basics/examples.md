@@ -44,6 +44,9 @@ interface MyOperations {
     // two operation parameters and two return parameters
     opParamsReturns(message: string, count: int32) -> (value: float32, list: Sequence<int32>)
 
+    // an operation with tagged operation parameters and tagged return parameters
+    opTagged(message: string, tag(1) from: string?) -> (value: float32, tag(1) list: Sequence<int32>?)
+
     // a one-way operation
     [oneway] opOneway(message: string)
 
@@ -69,6 +72,9 @@ interface MyOperations {
 
     // two operation parameters and two return parameters
     opParamsReturns(message: string, count: int32) -> (value: float32, list: Sequence<int32>)
+    
+    // an operation with tagged operation parameters and tagged return parameters
+    opTagged(message: string, tag(1) from: string?) -> (value: float32, tag(1) list: Sequence<int32>?)
 
     // a regular operation parameter and a stream operation parameter
     sendFile(name: string, contents: stream uint8)

@@ -219,6 +219,9 @@ The principle is straightforward: your service class must derive from class [`Se
 must implement interface I*Name*Service. This generated Service interface defines an abstract method for each operation
 on the Slice interface and you need to implement all these abstract methods.
 
+`Service` implements the [IDispatcher] interface by directing incoming requests to the matching I*Name*Service method
+using reflection and helper static methods on I*Name*Service.
+
 For example:
 
 {% side-by-side alignment="top" %}
@@ -283,3 +286,4 @@ internal class MyWidget :
 
 [cs-identifier]: attributes#cs::identifier-attribute
 [SliceEncodeOptions]: csharp:IceRpc.Slice.SliceEncodeOptions
+[IDispatcher]: csharp:IceRpc.IDispatcher

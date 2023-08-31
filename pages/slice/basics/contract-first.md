@@ -80,6 +80,11 @@ An instance of the `Chatbot` class is an IceRPC service that implements the Slic
 
 We then insert this service (dispatcher) into the server's [dispatch pipeline][dispatch-pipeline] as usual.
 
+{% callout %}
+`Service` implements the [IDispatcher] interface by directing incoming requests to the matching I*Name*Service method
+using reflection and helper static methods on I*Name*Service.
+{% /callout %}
+
 {% /step %}
 
 {% step title="Implement client application" %}
@@ -105,7 +110,7 @@ public partial interface IGreeter
 `IGreeter` is a minimal interface that you can easily [decorate].
 
 The `GreeterProxy` struct implements the methods of the generated interface by creating outgoing requests and calling
-`InvokeAsync` on its invoker with these requests.
+`InvokeAsync` on its [invoker] with these requests.
 
 You then create an instance of this proxy struct to make remote calls, for example:
 
@@ -127,8 +132,8 @@ Console.WriteLine(greeting);
 {% /step %}
 
 [dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
-
 [decorate]: https://en.wikipedia.org/wiki/Decorator_pattern
+[IDispatcher]: csharp:IceRpc.IDispatcher
 [slice-tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
-
 [Service]: csharp:IceRpc.Slice.Service
+[invoker]: /icerpc/invocation/invocation-pipeline#the-invoker-abstraction
