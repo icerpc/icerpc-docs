@@ -23,7 +23,7 @@ export const Explore = () => {
       <ExploreCard
         title="IceRPC for Ice Users"
         description="Start here if you are coming from Ice."
-        href="icerpc-for-ice-users"
+        href="/icerpc-for-ice-users"
       />
       <ExploreCard
         title="API Reference"

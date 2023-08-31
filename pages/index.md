@@ -27,9 +27,9 @@ Jump directly to the documentation of these distinctive features:
 | [Invocation pipeline]  | Customize your client-side processing by composing interceptors into an invocation pipeline. |
 | [Dispatch pipeline]    | Compose middleware and services into your own custom server-side dispatch pipeline.          |
 | [Path-based routing]   | Learn how to route a request to the right service based on the request's path.               |
-| [Dependency injection] | Learn how to use IceRPC with a DI container.                                                 |
 | [Slice]                | A modern IDL and serialization format developed in tandem with IceRPC.                       |
-| [The icerpc protocol]  | A look under the hood: how does IceRPC send RPCs over QUIC?                                  |
+| [Dependency injection] | Learn how to use IceRPC with a DI container.                                                 |
+| [Security with TLS]    | Learn how to secure your communications with TLS.                                            |
 
 {% divider /%}
 
@@ -48,4 +48,4 @@ Jump directly to the documentation of these distinctive features:
 [Invocation pipeline]: /icerpc/invocation/invocation-pipeline
 [Path-based routing]: /icerpc/dispatch/router
 [Slice]: /slice
-[The icerpc protocol]: /icerpc/protocols-and-transports/icerpc-multiplexed-transports
+[Security with TLS]: /icerpc/connection/security-with-tls
