@@ -27,7 +27,7 @@ const defaultStyle: CSSProperties = { textUnderlineOffset: '5px' };
 
 export const AppLink = ({
   href: originalHref,
-  target: originalTarget,
+  target: target,
   className = 'font-medium text-primary hover:text-[rgb(64,131,193)]',
   style: originalStyle,
   children
@@ -76,7 +76,6 @@ export const AppLink = ({
     }
   };
 
-  const target = originalTarget || undefined;
   const prefetch = isExternalLink(originalHref) || isApiLink(originalHref) ? false : undefined;
 
   return (
