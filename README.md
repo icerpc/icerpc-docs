@@ -53,7 +53,7 @@ that can be used in the documentation.
 - [Side-by-side](#side-by-side)
 - [Divider](#divider)
 - [Grid](#grid)
-- [Mini-Card](#minicard)
+- [Mini-Card](#mini-card)
 - [Light-Mode](#light-mode)
 - [Dark-Mode](#dark-mode)
 
