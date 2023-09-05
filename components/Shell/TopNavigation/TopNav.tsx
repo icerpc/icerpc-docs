@@ -71,7 +71,6 @@ export const TopNav = () => {
               <a
                 className="flex h-full items-center justify-center p-4 hover:text-primary dark:text-[rgba(255,255,255,0.8)] "
                 href="https://github.com/icerpc"
-                target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Github"
               >

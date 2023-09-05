@@ -93,7 +93,6 @@ export function CookiesBanner() {
                   policy in our{' '}
                   <Link
                     href="https://web.testing.zeroc.com/privacy"
-                    target="_blank"
                     className="text-blue-500 underline"
                   >
                     Privacy Policy

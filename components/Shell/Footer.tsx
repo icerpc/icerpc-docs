@@ -4,8 +4,6 @@ import Link from 'next/link';
 
 const linkAttributes = {
   className: 'text-gray-500 hover:underline dark:text-[rgba(255,255,255,0.6)]',
-  target: '_blank',
-  rel: 'noopener noreferrer'
 };
 
 const footerMenuItems = [

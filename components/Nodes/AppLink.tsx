@@ -76,15 +76,8 @@ export const AppLink = ({
     }
   };
 
-  // Determine the target for the link, e.g., "_blank" for external links.
-  const target =
-    originalTarget ||
-    (isExternalLink(originalHref) || isApiLink(originalHref)
-      ? '_blank'
-      : undefined);
-
-  const prefetch =
-    isExternalLink(originalHref) || isApiLink(originalHref) ? false : undefined;
+  const target = originalTarget || undefined;
+  const prefetch = isExternalLink(originalHref) || isApiLink(originalHref) ? false : undefined;
 
   return (
     <Link
