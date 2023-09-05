@@ -42,7 +42,6 @@ export const Grid = ({ children, columns = 3 }: Props) => {
             textDecoration: 'none'
           }}
           href={trailinglink.link}
-          target="_blank"
           rel="noreferrer"
         >
           <div style={bottomStyle}>
