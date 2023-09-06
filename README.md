@@ -1,14 +1,6 @@
 # IceRPC Docs
 
-This repository contains the source code for the IceRPC documentation site.
-
-## Table of Contents
-
-- [IceRPC Docs](#icerpc-docs)
-  - [Table of Contents](#table-of-contents)
-  - [Build Requirements](#build-requirements)
-  - [Building](#building)
-  - [Writing Documentation](#writing-documentation)
+This repository contains the source code and markdown files for the IceRPC documentation site.
 
 ## Build Requirements
 
