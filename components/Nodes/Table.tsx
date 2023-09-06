@@ -67,7 +67,7 @@ export const TD = ({ align, children, dividers }: TDProps) => {
   return (
     <td
       className={clsx(
-        'prose-sm rounded py-3 pl-4 align-top',
+        'prose-sm min-w-[100px] rounded py-3 pl-4 align-top',
         dividers && 'border border-lightBorder/60 dark:border-darkBorder/40',
         textAlignment(align)
       )}
@@ -84,7 +84,7 @@ export const TD = ({ align, children, dividers }: TDProps) => {
 
         .code-container :global(a) {
           overflow-x: none;
-          word-break: break-all;
+          word-break: break-word;
         }
       `}</style>
     </td>
