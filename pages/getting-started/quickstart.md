@@ -1,6 +1,6 @@
 ---
 title: Quickstart
-description: Create a new IceRPC application from scratch with a few commands.
+description: Create a new IceRPC application from scratch with a few simple commands.
 ---
 
 This quickstart shows how to build and run a complete client-server application with IceRPC in just a few minutes.
