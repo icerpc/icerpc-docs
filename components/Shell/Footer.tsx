@@ -1,7 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
 import Link from 'next/link';
-import Image from 'next/image';
 
 const linkAttributes = {
   className: 'text-gray-500 hover:underline dark:text-[rgba(255,255,255,0.6)]'
