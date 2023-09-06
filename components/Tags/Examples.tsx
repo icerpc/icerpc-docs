@@ -38,7 +38,7 @@ const ExampleCard = ({ title, description, href }: ExampleCardProps) => (
     className="flex flex-col justify-between rounded-xl border bg-white p-6 shadow-sm dark:border-darkBorder dark:bg-black"
   >
     <div className="relative flex h-6 w-6 items-center justify-center rounded-full ">
-      <FontAwesomeIcon icon={faGithub} />
+      <FontAwesomeIcon icon={faGithub} className="h-6 w-6" />
     </div>
     <div className="mt-8 flex flex-col justify-between">
       <h3 className="my-0 text-[16px] font-semibold">{title}</h3>
