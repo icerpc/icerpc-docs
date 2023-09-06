@@ -4,8 +4,19 @@ description: Get up and running with IceRPC
 showReadingTime: false
 ---
 
-Welcome to the IceRPC Getting Started guide. This is your go-to resource for setting up, installing, and using IceRPC
-effectively.
+Welcome to the IceRPC Getting Started guide. This guide is designed to get you up and running with IceRPC as quickly as
+possible.
+
+{% divider /%}
+
+#### Currently supported languages
+
+- [C#](/getting-started/quickstart)
+
+#### Future languages
+
+- Rust
+- More to come!
 
 ## Quick links
 
@@ -20,11 +31,11 @@ effectively.
    description="Start a new project using an IceRPC project template."
    href="/getting-started/installation/template" /%}
 {% mini-card
-   title="Add to an existing project"
+   title="Add IceRPC to an existing project"
    description="Learn how to get IceRPC set up in your existing project."
    href="/getting-started/installation/existing-project" /%}
 {% mini-card
-   title="NuGet Packages"
+   title="NuGet packages"
    description="Complete list of IceRPC NuGet packages."
    href="/getting-started/installation/nuget-packages" /%}
 {% mini-card
