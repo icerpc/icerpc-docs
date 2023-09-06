@@ -1,9 +1,9 @@
 ---
 title: Quickstart
-description: Create a new IceRPC application in under a minute.
+description: Create a new IceRPC application from scratch with a few simple commands.
 ---
 
-This quickstart shows how to build and run a complete client-server application with IceRPC in less than a minute.
+This quickstart shows how to build and run a complete client-server application with IceRPC in just a few minutes.
 
 Prerequisites: you just need to have the .NET 7 SDK installed on your computer.
 
