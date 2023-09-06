@@ -50,10 +50,10 @@ const usePageLinks = (asPath: string, isReady: boolean) => {
 };
 
 export const PageHistory = () => {
-  const { asPath, isReady } = useRouter();
+  const { asPath, isReady, pathname } = useRouter();
   const { previous, next } = usePageLinks(asPath, isReady);
 
-  const isHome = asPath === '/';
+  const isHome = pathname === '/';
 
   if (isHome) return null;
 
