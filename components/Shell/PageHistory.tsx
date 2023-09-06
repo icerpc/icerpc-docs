@@ -53,6 +53,10 @@ export const PageHistory = () => {
   const { asPath, isReady } = useRouter();
   const { previous, next } = usePageLinks(asPath, isReady);
 
+  const isHome = asPath === '/';
+
+  if (isHome) return null;
+
   return (
     <>
       <Divider />

@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { AppLink } from 'components/Nodes/AppLink';
+import Link from 'next/link';
 
 export const Explore = () => {
   return (
@@ -41,7 +41,7 @@ type ExploreCardProps = {
 };
 
 const ExploreCard = ({ title, description, href }: ExploreCardProps) => (
-  <AppLink
+  <Link
     href={href}
     className="flex flex-col justify-between rounded-xl border bg-white p-6 shadow-sm dark:border-darkBorder dark:bg-black"
   >
@@ -49,5 +49,5 @@ const ExploreCard = ({ title, description, href }: ExploreCardProps) => (
       <h3 className="my-0 text-[16px] font-semibold">{title}</h3>
       <p className="my-0 mt-1 text-[13px] text-gray-500">{description}</p>
     </div>
-  </AppLink>
+  </Link>
 );
