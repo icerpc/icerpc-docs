@@ -7,16 +7,8 @@ showReadingTime: false
 Welcome to the IceRPC Getting Started guide. This guide is designed to get you up and running with IceRPC as quickly as
 possible.
 
-{% divider /%}
-
-#### Currently supported languages
-
-- [C#](/getting-started/quickstart)
-
-#### Future languages
-
-- Rust
-- More to come!
+Currently, IceRPC supports C#. We have plans to add support for Rust as the next language. Stay tuned for more
+information about upcoming Rust support and other planned future languages.
 
 ## Quick links
 
