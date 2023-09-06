@@ -89,16 +89,14 @@ export const AppLink = ({
       className={className}
       style={style}
     >
-      <span className="relative inline-flex items-center">
-        <span
-          // eslint-disable-next-line tailwindcss/no-custom-classname
-          className={clsx(
-            isApiLink(originalHref) && apiClasses,
-            isExternalLink(originalHref) && 'with-arrow'
-          )}
-        >
-          {isApiLink(originalHref) ? <code>{children}</code> : children}
-        </span>
+      <span
+        // eslint-disable-next-line tailwindcss/no-custom-classname
+        className={clsx(
+          isApiLink(originalHref) && apiClasses,
+          isExternalLink(originalHref) && 'with-arrow'
+        )}
+      >
+        {isApiLink(originalHref) ? <code>{children}</code> : children}
       </span>
 
       <style jsx>{`
