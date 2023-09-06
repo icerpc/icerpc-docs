@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useTheme } from 'next-themes';
 import { clsx } from 'clsx';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,11 +9,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { MobileMenu } from './MobileMenu';
 import { MobileSideNav } from '../SideNav';
 import { ThemeToggle } from 'components/ThemeToggle';
-import { useMode, useMounted } from 'context/state';
-import { Mode, Theme } from 'types';
+import { useMode } from 'context/state';
+import { Mode } from 'types';
 
-import darkIcon from 'public/Icerpc-dark-logo.svg';
-import lightIcon from 'public/Icerpc-logo.svg';
+import logoIcon from 'public/Icerpc-logo.svg';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -102,22 +100,9 @@ type LogoProps = {
   className?: string;
 };
 
-export const Logo = ({ height, className }: LogoProps) => {
-  const { resolvedTheme } = useTheme();
-  const isMounted = useMounted();
-
-  // if not mounted, default to light logo
-  let logo = lightIcon;
-
-  // once mounted, set the logo according to the resolved theme
-  if (isMounted) {
-    logo = resolvedTheme === Theme.Dark ? darkIcon : lightIcon;
-  }
-
-  return (
-    <Image src={logo} height={height} alt="IceRPC Logo" className={className} />
-  );
-};
+export const Logo = ({ height, className }: LogoProps) => (
+  <Image src={logoIcon} height={height} alt="IceRPC Logo" className={className} />
+);
 
 type TopNavigationItemProps = {
   name: string;
