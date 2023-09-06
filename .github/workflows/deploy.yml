@@ -1,0 +1,42 @@
+name: Deploy IceRPC docs
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-push-deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/icerpc/icerpc-docs:latest
+
+      - name: Deploy docs
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.WEB_HOST }}
+          username: ${{ secrets.WEB_USERNAME }}
+          key: ${{ secrets.WEB_DEPLOY_KEY }}
+          script: |
+            cd services
+            docker-compose pull icerpc-docs
+            docker-compose up -d icerpc-docs
