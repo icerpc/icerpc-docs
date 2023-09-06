@@ -99,7 +99,7 @@ export const Aside = ({ asideItems }: { asideItems: AsideItem[] }) => {
             />
             Edit this page
           </ActionItem>
-          <ActionItem href="https://github.com/zeroc-ice/icerpc">
+          <ActionItem href="https://github.com/orgs/icerpc/discussions">
             <FontAwesomeIcon
               icon={faMessage}
               className="mr-[6px] h-[14px] w-[14px] text-primary"
