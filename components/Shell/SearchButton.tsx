@@ -4,8 +4,10 @@ import { DocSearch } from '@docsearch/react';
 import '@docsearch/css';
 import { useTheme } from 'next-themes';
 import { Theme } from 'types';
+import clsx from 'clsx';
 
-// TODO: Update the DocSearch API keys, these are test keys that DocSearch makes publicly available.
+// TODO: Replace the DocSearch API keys, these are test keys that DocSearch makes publicly available.
+// For testing purposes.
 function Search() {
   return (
     <DocSearch
@@ -23,7 +25,8 @@ type Props = {
 export const SearchButton = ({ className }: Props) => {
   const { resolvedTheme } = useTheme();
   return (
-    <div className={className}>
+    // TODO: Remove the hidden class when the search button is ready.
+    <div className={clsx(className, 'hidden')}>
       <Search />
       <style jsx>{`
         // Search button style
