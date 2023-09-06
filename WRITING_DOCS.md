@@ -272,7 +272,7 @@ a title, description, and link.
 
 #### Examples
 
-See the [`grid`](#grid) tag for an example of how to use the `mini-card` tag
+See the [`grid`](#grid) tag for an example of how to use the `mini-card` tag.
 
 ### Light-Mode
 

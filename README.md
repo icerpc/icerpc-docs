@@ -24,5 +24,5 @@ install node, it is recommended to follow the guide provided by Node.js
 
 ## Writing Documentation
 
-For comprehensive guidelines on documentation writing, including how to use custom nodes and tags, please refer to the
+For comprehensive guidelines on writing documentation, including how to use custom nodes and tags, please refer to the
 [Writing Documentation](/WRITING_DOCS.md) page.
