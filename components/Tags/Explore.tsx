@@ -28,7 +28,7 @@ export const Explore = () => {
       <ExploreCard
         title="API Reference"
         description="The IceRPC for C# API reference."
-        href="https://docs.testing.zeroc.com/api/csharp/api/IceRpc.html"
+        href="https://docs.icerpc.dev/api/csharp/api/IceRpc.html"
       />
     </div>
   );

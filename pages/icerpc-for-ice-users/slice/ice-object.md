@@ -36,6 +36,7 @@ interface Object {
     idempotent ice_ping()
 }
 ```
+
 {% callout %}
 IceRPC does not provide the fourth operation, `ice_id`. With IceRPC + Slice, a service can implement multiple Slice
 interfaces and does not always have a single most-derived Slice interface / type ID.
@@ -77,7 +78,7 @@ unnecessary (`uncheckedCast` works just as well), it's shown by all Ice demos an
 The net result is: if you reimplement an existing Ice server with IceRPC, your services need to implement `Ice::Object`
 when they are being "checked cast" by existing Ice client applications.
 
-## Checked cast and unchecked cast in IceRPC for C#
+## Checked cast and unchecked cast in IceRPC for C #
 
 If you like `checkedCast` and want to keep check-casting your proxies, the IceRPC + Slice integration provides an
 equivalent API: [AsAsync]. The target service must implement `Ice::Object`; otherwise, `AsAsync` will fail with a
@@ -108,8 +109,9 @@ var helloProxy = new HelloProxy(
 
 await helloProxy.SayHelloAsync();
 ```
+
 {% /side-by-side %}
 
-[AsAsync]: https://docs.testing.zeroc.com/api/csharp/api/IceRpc.Slice.Ice.ProxyExtensions.html#IceRpc_Slice_Ice_ProxyExtensions_AsAsync__1_IceRpc_Slice_IProxy_IceRpc_Features_IFeatureCollection_System_Threading_CancellationToken_
-[DispatchException]: https://docs.testing.zeroc.com/api/csharp/api/IceRpc.DispatchException.html
-[NotImplemented]: https://docs.testing.zeroc.com/api/csharp/api/IceRpc.StatusCode.html#NotImplemented
+[AsAsync]: https://docs.icerpc.dev/api/csharp/api/IceRpc.Slice.Ice.ProxyExtensions.html#IceRpc_Slice_Ice_ProxyExtensions_AsAsync__1_IceRpc_Slice_IProxy_IceRpc_Features_IFeatureCollection_System_Threading_CancellationToken_
+[DispatchException]: https://docs.icerpc.dev/api/csharp/api/IceRpc.DispatchException.html
+[NotImplemented]: https://docs.icerpc.dev/api/csharp/api/IceRpc.StatusCode.html#NotImplemented

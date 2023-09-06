@@ -92,7 +92,7 @@ export function CookiesBanner() {
                   use of these cookies. You can learn more about our cookies
                   policy in our{' '}
                   <Link
-                    href="https://web.testing.zeroc.com/privacy"
+                    href="https://zeroc.com/privacy"
                     className="text-blue-500 underline"
                   >
                     Privacy Policy

@@ -38,7 +38,7 @@ export const TopNav = () => {
     },
     {
       name: 'API Reference',
-      href: 'https://docs.testing.zeroc.com/api/csharp/api/IceRpc.html'
+      href: 'https://docs.icerpc.dev/api/csharp/api/IceRpc.html'
     }
   ];
 
@@ -101,7 +101,12 @@ type LogoProps = {
 };
 
 export const Logo = ({ height, className }: LogoProps) => (
-  <Image src={logoIcon} height={height} alt="IceRPC Logo" className={className} />
+  <Image
+    src={logoIcon}
+    height={height}
+    alt="IceRPC Logo"
+    className={className}
+  />
 );
 
 type TopNavigationItemProps = {

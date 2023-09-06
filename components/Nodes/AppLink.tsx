@@ -48,7 +48,7 @@ export const AppLink = ({
 
     // Resolve internal relative urls like "/abc/../foo" to their absolute path.
     if (!isExternalLink(url)) {
-      const baseURL = 'https://docs.testing.zeroc.com';
+      const baseURL = 'https://docs.icerpc.dev';
       const parsedUrl = new URL(url, baseURL);
       // Strip baseURL from the url
       url = parsedUrl.href.replace(baseURL, '');
@@ -76,7 +76,8 @@ export const AppLink = ({
     }
   };
 
-  const prefetch = isExternalLink(originalHref) || isApiLink(originalHref) ? false : undefined;
+  const prefetch =
+    isExternalLink(originalHref) || isApiLink(originalHref) ? false : undefined;
 
   return (
     <Link
@@ -176,7 +177,7 @@ const isApiLink = (href: string) => {
 const resolveApiLink = (href: string) => {
   const [language, ...rest] = href.split(':');
   const [module, method] = rest.join('.').split('#');
-  return `https://docs.testing.zeroc.com/api/${language}/api/${module}.html${
+  return `https://docs.icerpc.dev/api/${language}/api/${module}.html${
     method ? `#${method}` : ''
   }`;
 };
