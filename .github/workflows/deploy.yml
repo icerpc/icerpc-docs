@@ -36,6 +36,7 @@ jobs:
           host: ${{ secrets.WEB_HOST }}
           username: ${{ secrets.WEB_USERNAME }}
           key: ${{ secrets.WEB_DEPLOY_KEY }}
+          script_stop: true
           script: |
             cd services
             docker-compose pull icerpc-docs
