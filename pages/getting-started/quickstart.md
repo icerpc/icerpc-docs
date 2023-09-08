@@ -103,5 +103,5 @@ You can learn more about what each file produced by the templates does in the Tu
 - [Writing your first server application][server-tutorial]
 - [Writing your first client application][client-tutorial]
 
-[client-tutorial]: /getting-started/tutorial/server-client
+[client-tutorial]: /getting-started/tutorial/client-tutorial
 [server-tutorial]: /getting-started/tutorial/server-tutorial
