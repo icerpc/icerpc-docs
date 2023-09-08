@@ -11,9 +11,10 @@ import clsx from 'clsx';
 function Search() {
   return (
     <DocSearch
-      appId="R2IYF7ETH7"
-      apiKey="599cec31baffa4868cae4e79f180729b"
-      indexName="docsearch"
+      appId={process.env.NEXT_PUBLIC_ALGOLIA_APP_ID ?? ''}
+      apiKey={process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY ?? ''}
+      indexName="icerpc"
+      insights={true}
     />
   );
 }
@@ -25,8 +26,7 @@ type Props = {
 export const SearchButton = ({ className }: Props) => {
   const { resolvedTheme } = useTheme();
   return (
-    // TODO: Remove the hidden class when the search button is ready.
-    <div className={clsx(className, 'hidden')}>
+    <div className={clsx(className)}>
       <Search />
       <style jsx>{`
         // Search button style
