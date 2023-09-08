@@ -11,7 +11,7 @@ import '/public/globals.css';
 import { AppWrapper } from 'context/state';
 import { TopNav } from 'components';
 import { Footer } from 'components/Shell';
-import { CookiesBanner } from 'components/Cookies';
+import { Analytics } from 'components/Analytics';
 
 const inter = Inter({ subsets: ['latin', 'latin-ext'] });
 const TITLE = 'IceRPC Docs';
@@ -84,8 +84,8 @@ export default function MyApp(props: {
           <main className={clsx(inter.className)} id="main">
             <Component {...pageProps} />
           </main>
-          <CookiesBanner />
           <Footer />
+          <Analytics/>
         </AppWrapper>
       </ThemeProvider>
     </div>
