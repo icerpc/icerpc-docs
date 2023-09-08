@@ -12,6 +12,7 @@ type AppLinkProps = {
   target?: string;
   className?: string;
   style?: CSSProperties;
+  showArrow?: boolean;
   children: ReactNode;
 };
 
@@ -30,6 +31,7 @@ export const AppLink = ({
   target: target,
   className = 'font-medium text-primary hover:text-[rgb(64,131,193)]',
   style: originalStyle,
+  showArrow = true,
   children
 }: AppLinkProps) => {
   const { asPath, isReady } = useRouter();
@@ -93,7 +95,7 @@ export const AppLink = ({
         // eslint-disable-next-line tailwindcss/no-custom-classname
         className={clsx(
           isApiLink(originalHref) && apiClasses,
-          isExternalLink(originalHref) && 'with-arrow'
+          isExternalLink(originalHref) && showArrow && 'with-arrow'
         )}
       >
         {isApiLink(originalHref) ? <code>{children}</code> : children}
