@@ -44,10 +44,10 @@ export const SearchButton = ({ className }: Props) => {
           border-radius: 4px;
           // grayish white background
           background: ${resolvedTheme == Theme.Dark
-            ? 'rgba(0, 0, 0, 0.45)'
+            ? 'rgb(35,36,41)'
             : '#f7f7f7'};
           border: 1px solid
-            ${resolvedTheme == Theme.Dark ? '#1f1f1f' : '#eaeaea'};
+            ${resolvedTheme == Theme.Dark ? 'rgba(46,46,46,0.6)' : '#eaeaea'};
           width: 100%;
           height: 35px;
           margin: 0;

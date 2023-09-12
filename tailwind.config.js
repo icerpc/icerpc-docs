@@ -10,7 +10,9 @@ module.exports = {
       colors: {
         primary: '#43A0F7',
         lightBorder: '#dce6e9',
-        darkBorder: 'rgb(51, 51, 51)'
+        dark: 'rgb(26, 28, 33)',
+        darkAccent: 'rgb(35, 36, 41)',
+        darkBorder: 'rgb(46, 46, 46)'
       },
       screens: {
         '5xl': '64rem'

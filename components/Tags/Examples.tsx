@@ -35,14 +35,14 @@ type ExampleCardProps = {
 const ExampleCard = ({ title, description, href }: ExampleCardProps) => (
   <Link
     href={href}
-    className="flex flex-col justify-between rounded-xl border bg-white p-6 shadow-sm dark:border-darkBorder dark:bg-black"
+    className="flex flex-col justify-start rounded-xl border bg-white p-6 shadow-sm dark:border-darkBorder dark:bg-darkAccent"
   >
     <div className="relative flex h-6 w-6 items-center justify-center rounded-full ">
       <FontAwesomeIcon icon={faGithub} className="h-6 w-6" />
     </div>
     <div className="mt-8 flex flex-col justify-between">
       <h3 className="my-0 text-[16px] font-semibold">{title}</h3>
-      <p className="my-0 mt-1 text-[13px] text-gray-500">{description}</p>
+      <p className="my-0 mt-1 text-[13px] text-[var(--text-color-secondary)] dark:text-white/80">{description}</p>
     </div>
   </Link>
 );

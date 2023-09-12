@@ -35,7 +35,7 @@
   }
 
   body {
-    @apply bg-[#FAFAFA] dark:bg-dark-pattern;
+    @apply dark:bg-dark bg-[#FAFAFA];
   }
 
   h2 {

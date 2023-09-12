@@ -22,7 +22,7 @@ const footerMenuItems = [
 ];
 
 export const Footer = () => (
-  <footer className="-mb-2 mt-0 border-t border-lightBorder py-6 dark:border-darkBorder dark:bg-black">
+  <footer className="-mb-2 mt-0 border-t border-lightBorder py-6 dark:border-darkBorder dark:bg-dark">
     <div className="mx-auto w-full max-w-[100rem] px-4">
       <div className="flex w-full flex-col md:flex-row md:items-center md:justify-between  md:px-10">
         <span className="text-sm text-gray-500 dark:text-gray-400 sm:text-center">
@@ -48,11 +48,11 @@ export const Footer = () => (
           />
         </a>
         <br />
-        <div className="ml-3 max-w-xs">
+        <div className="ml-3 max-w-xs dark:text-gray-400">
           This work is licensed under a{' '}
           <a
             rel="license"
-            className="underline"
+            className="underline dark:text-gray-400"
             href="http://creativecommons.org/licenses/by/4.0/"
           >
             Creative Commons Attribution 4.0 International License
