@@ -180,19 +180,22 @@ the derived class type, this application will decode successfully the full type.
 
 ## Compact type IDs
 
-When the generated code encodes a class it needs a way to transmit the class's type.
-It does this by encoding the class's _type ID_ - a special value that is unique to each class.
-Normally, this is the class's fully-qualified identifier, which gets encoded as a string.
-However, to reduce overhead, Slice allows you to assign a numeric type ID to a class instead. For example:
+When the generated code encodes a class it needs to transmit the class's type.
+It does this by encoding the class's _type ID_ - a unique value associated with each class.
+Normally, this is the class's fully-qualified identifier.
+However, to reduce overhead, you can assign a numeric type ID to a class instead. For example:
 
 ```slice
-class ClassWithStringTypeId {}     // has a type ID of "ClassWithStringTypeId"
-class ClassWithNumericTypeId(9) {} // has a type ID of `9`
+module MyModule
+{
+    class ClassWithStringTypeId {}     // has a type ID of "MyModule::ClassWithStringTypeId"
+    class ClassWithNumericTypeId(9) {} // has a type ID of `9`
+}
 ```
 
-Compact type IDs have no effect on the mapping of a class, or the contract for using it.
-It only affects how the class is encoded and decoded.
-For more information on how classes are encoded, click [here][class-encoding].
+These _compact_ type IDs must be non-negative and unique across your application.
+They affect only the encoding of classes, not their mapping.
+Refer to the [Ice Manual][compact-type-ids] to learn more.
 
 ## C# mapping
 
@@ -270,4 +273,4 @@ public partial class RearBumper : CarPart
 [format-metadata]: https://doc.zeroc.com/ice/3.7/the-slice-language/slice-metadata-directives#id-.SliceMetadataDirectivesv3.7-format
 [tagged-fields]: fields#tagged-fields
 [SliceClass]: csharp:ZeroC.Slice.SliceClass
-[class-encoding]: /slice1/encoding/user-defined-types#class
+[compact-type-ids]: https://doc.zeroc.com/ice/3.7/the-slice-language/classes/classes-with-compact-type-ids
