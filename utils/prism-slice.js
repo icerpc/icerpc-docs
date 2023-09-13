@@ -1,7 +1,7 @@
 (function (Prism) {
     Prism.languages.slice = {
         preprocessor: {
-            pattern: /(?<=\n|^)[^\S\r\n]*#[^\r\n\/]*/,
+            pattern: /#[^\r\n\/]*/,
             inside: {
                 "class-name": /#\s*(define|undef|if|elif|else|endif)\b/,
                 symbol: /\b\w+\b/,
@@ -29,11 +29,11 @@
             pattern: /\[+[^\]\r\n]*\]+/,
             inside: {
                 arguments: {
-                    pattern: /(?<=\()[^\)\r\n]*(?=\))/,
+                    pattern: /\([^\)\r\n]*\)/,
                     inside: {
                         string: /\"(?:\\.|[^\\\"\r\n])*?\"/,
                         constant: /\b\w+\b/,
-                        punctuation: /,/
+                        punctuation: /[,()]/
                     }
                 },
                 function: /[\w:]+/,
