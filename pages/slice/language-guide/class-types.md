@@ -186,8 +186,8 @@ Normally, this is the class's fully-qualified identifier, which gets encoded as 
 However, to reduce overhead, Slice allows you to assign a numeric type ID to a class instead. For example:
 
 ```slice
-class ClassWithStringTypeId {}     // has a type-id of "ClassWithStringTypeId"
-class ClassWithNumericTypeId(9) {} // has a type-id of `9`
+class ClassWithStringTypeId {}     // has a type ID of "ClassWithStringTypeId"
+class ClassWithNumericTypeId(9) {} // has a type ID of `9`
 ```
 
 Compact type IDs have no effect on the mapping of a class, or the contract for using it.
