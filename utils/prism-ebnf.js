@@ -12,11 +12,7 @@
         },
         definition: [
             {
-                pattern: /\b[a-zA-Z]\w*(?=(<\w*>)?\s*:)/,
-                alias: ['rule', 'class-name']
-            },
-            {
-                pattern: /(?<=\n)[a-zA-Z]\w*(?=(<\w*>)?\s*;)/,
+                pattern: /\b[a-zA-Z]\w*(?=(<\w*>)?\s*[:;])/,
                 alias: ['rule', 'class-name']
             }
         ],

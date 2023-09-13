@@ -1,7 +1,7 @@
 (function (Prism) {
     Prism.languages.ice = {
         preprocessor: {
-            pattern: /(?<=\n|^)[^\S\r\n]*#\s*[a-zA-Z]+/,
+            pattern: /#\s*[a-zA-Z]+/,
             inside: {
                 "class-name": /#\s*[a-zA-Z]+/,
             }
