@@ -172,7 +172,7 @@ export function MobileSideNav() {
             >
               <div
                 className={clsx(
-                  'fixed left-0 top-0  w-full max-w-[280px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
+                  'fixed left-0 top-0 h-full w-full max-w-[280px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
                 )}
               >
                 <Dialog.Panel className="h-full w-full overflow-hidden rounded-r text-left align-middle text-sm font-bold shadow-xl transition-all">
