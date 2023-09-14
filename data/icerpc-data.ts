@@ -162,7 +162,7 @@ export const iceRpcData: SideBarSourceType[] = [
     links: [
       {
         title: 'Overview',
-        path: `${ICERPC_BASE_URL}/slic-transport/`
+        path: `${ICERPC_BASE_URL}/slic-transport/overview`
       },
       {
         title: 'Connection establishment',

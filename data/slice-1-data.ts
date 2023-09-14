@@ -118,7 +118,7 @@ export const slice1Data: SideBarSourceType[] = [
     links: [
       {
         title: 'Overview',
-        path: `${SLICE1_BASE_URL}/encoding/`
+        path: `${SLICE1_BASE_URL}/encoding/overview`
       },
       {
         title: 'Encoding-only constructs',

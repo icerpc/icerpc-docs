@@ -72,6 +72,7 @@ class Person {
    email: string
 }
 ```
+
 {% /side-by-side %}
 
 See more examples on the [Converting .ice into .slice] page.
@@ -100,6 +101,7 @@ interface TourGuide {
     )
 }
 ```
+
 {% /slice2 %}
 
 ## Code generation
@@ -192,7 +194,7 @@ decode instances of your custom type.
 {% mini-card
    title="Slice encoding"
    description="Learn how Slice encodes types into byte streams."
-   href="/slice/encoding" /%}
+   href="/slice/encoding/overview" /%}
 
 {% mini-card
    title="Examples"

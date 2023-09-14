@@ -167,5 +167,5 @@ integration will soon bring the same level of convenience to Protobuf.
 [IDL]: https://en.wikipedia.org/wiki/Interface_description_language
 [Protobuf]: https://protobuf.dev/
 [QUIC]: https://en.wikipedia.org/wiki/QUIC
-[Slic]: /icerpc/slic-transport
+[Slic]: /icerpc/slic-transport/overview
 [Slice]: /slice
