@@ -44,8 +44,8 @@ export const Feedback = () => {
       );
     default:
       return (
-        <div className={clsx('mb-16 flex flex-col items-center')}>
-          <h3 className="text-base text-[var(--text-color)]">
+        <div id="Feedback" className={clsx('my-12 flex flex-col items-center')}>
+          <h3 className="my-0 text-base text-[var(--text-color)]">
             Was this page helpful?
           </h3>
           <div className="mt-4 flex gap-8 text-4xl">

@@ -77,7 +77,7 @@ export const Document = ({
           </div>
         )}
         <PageHistory />
-        <Divider />
+        <Divider id="feedback-divider" margin="my-0" />
         <Feedback />
       </article>
       {showAside && <Aside asideItems={asideItems} />}

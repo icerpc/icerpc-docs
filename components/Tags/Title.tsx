@@ -38,7 +38,7 @@ export const Title = ({ title, description, readingTime }: Props) => {
         )}
       >
         {hasBreadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
-        {readingTime && <p className="pl-2 text-xs md:pl-0">{readingTime}</p>}
+        {readingTime && <p className="pl-1 text-xs md:pl-0">{readingTime}</p>}
       </div>
       <h1 className="bg-gradient-to-b from-slate-800 to-black bg-clip-text pr-10 text-4xl font-bold text-transparent dark:text-white">
         {title}
