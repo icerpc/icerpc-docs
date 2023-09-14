@@ -46,7 +46,7 @@ export const Document = ({
   const isCurrentMode = mode ? mode === currentMode : true;
 
   return (
-    <div className="flex min-h-screen shrink flex-row justify-center overflow-y-clip lg:justify-start">
+    <div className="flex shrink flex-row justify-center overflow-y-clip lg:justify-start">
       <article className="mx-6 mt-10 h-full w-full max-w-[52rem] md:mx-10 lg:mx-16">
         {isCurrentMode && (
           <Title
