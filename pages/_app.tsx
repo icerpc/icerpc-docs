@@ -80,12 +80,14 @@ export default function MyApp(props: {
       </Head>
       <ThemeProvider attribute="class" enableSystem={true}>
         <AppWrapper>
-          <TopNav />
-          <main className={clsx(inter.className)} id="main">
-            <Component {...pageProps} />
-          </main>
-          <Footer />
-          <Analytics/>
+          <div className='flex min-h-screen flex-col'>
+            <TopNav />
+            <main className={clsx(inter.className)} id="main">
+              <Component {...pageProps} />
+            </main>
+            <Footer />
+            <Analytics />
+          </div>
         </AppWrapper>
       </ThemeProvider>
     </div>
