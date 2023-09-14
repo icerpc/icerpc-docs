@@ -43,6 +43,12 @@ Jump directly to the documentation of these distinctive features:
 
 {% explore /%}
 
+{% divider /%}
+
+{% homeTitle title="License" /%}
+
+{% license /%}
+
 [Dependency injection]: /icerpc/dependency-injection/di-and-icerpc-for-csharp
 [Dispatch pipeline]: /icerpc/dispatch/dispatch-pipeline
 [Invocation pipeline]: /icerpc/invocation/invocation-pipeline

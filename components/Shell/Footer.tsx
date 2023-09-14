@@ -38,27 +38,6 @@ export const Footer = () => (
           ))}
         </ul>
       </div>
-      <div className="mt-4 flex flex-row text-xs md:px-10">
-        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            alt="Creative Commons License"
-            style={{ borderWidth: 0 }}
-            src="https://i.creativecommons.org/l/by/4.0/88x31.png"
-          />
-        </a>
-        <br />
-        <div className="ml-3 max-w-xs dark:text-gray-400">
-          This work is licensed under a{' '}
-          <a
-            rel="license"
-            className="underline dark:text-gray-400"
-            href="http://creativecommons.org/licenses/by/4.0/"
-          >
-            Creative Commons Attribution 4.0 International License
-          </a>
-        </div>
-      </div>
     </div>
   </footer>
 );

@@ -111,7 +111,7 @@ const Hero = () => {
       className="relative flex w-full max-w-[52rem] flex-col items-center space-y-2 border-b border-b-lightBorder py-10 dark:border-b-darkBorder dark:bg-transparent sm:mx-6 md:mx-10 lg:mx-16"
       style={background}
     >
-      <div className='mb-1 flex items-center justify-center rounded-full p-4'>
+      <div className="mb-1 flex items-center justify-center rounded-full p-4">
         <Logo height={75} className="aspect-square" />
       </div>
       <h2 className="bg-gradient-to-b from-slate-800 to-black bg-clip-text pb-4 text-center text-[40px] font-extrabold dark:bg-none dark:text-white">
