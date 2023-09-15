@@ -8,7 +8,7 @@ import { useMode } from 'context/state';
 import clsx from 'clsx';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
 import { Dialog, Transition } from '@headlessui/react';
-import { sideBarData, baseUrls } from 'data/data';
+import { sideBarData, baseUrls } from 'data';
 import {
   SideBarDivider,
   SideBarLink,

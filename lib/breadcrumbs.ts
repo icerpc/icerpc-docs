@@ -1,4 +1,4 @@
-import { baseUrls, currentNavItem, sideBarData } from 'data/data';
+import { baseUrls, currentNavItem, sideBarData } from 'data';
 import { Breadcrumb } from 'components/Breadcrumbs';
 import { SideBarLink, isCategory, isLink } from 'types';
 
