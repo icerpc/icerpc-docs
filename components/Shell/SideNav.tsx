@@ -8,7 +8,7 @@ import { useMode } from 'context/state';
 import clsx from 'clsx';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
 import { Dialog, Transition } from '@headlessui/react';
-import { sideBarData, baseUrls } from 'data/side-bar-data';
+import { sideBarData, baseUrls } from 'data/data';
 import {
   SideBarDivider,
   SideBarLink,
@@ -57,7 +57,7 @@ export const SideNav = () => {
             <SliceSelector />
           </div>
         )}
-        <nav className='sticky top-0 ml-[2px] block overflow-y-auto bg-none pb-10 pr-3'>
+        <nav className="sticky top-0 ml-[2px] block overflow-y-auto bg-none pb-10 pr-3">
           <ul className="top-0 mr-2 mt-4">{cells}</ul>
         </nav>
       </div>
@@ -170,7 +170,7 @@ export function MobileSideNav() {
               leaveFrom="left-0"
               leaveTo="-left-[300px]"
             >
-              <div className='fixed left-0 top-0 h-full w-full max-w-[280px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'>
+              <div className="fixed left-0 top-0 h-full w-full max-w-[280px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]">
                 <Dialog.Panel className="h-full w-full overflow-hidden rounded-r text-left align-middle text-sm font-bold shadow-xl transition-all">
                   <div className="flex h-full w-full flex-col items-start">
                     <section id="controls" className="mt-2 pl-6">
