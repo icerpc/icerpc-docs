@@ -86,8 +86,8 @@ export default function MyApp(props: {
               <Component {...pageProps} />
             </main>
             <Footer />
-            <Analytics />
           </div>
+          <Analytics />
         </AppWrapper>
       </ThemeProvider>
     </div>

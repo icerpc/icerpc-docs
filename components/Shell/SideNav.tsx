@@ -49,19 +49,21 @@ export const SideNav = () => {
   }, [path, currentMode, baseUrl]);
 
   return (
-    <div className="sticky top-[59px] hidden flex-col items-end border-r border-lightBorder dark:border-darkBorder/60 dark:bg-dark lg:flex">
+    <div className="sticky top-[59px] hidden h-[calc(100vh-59px-90px)] flex-col items-end overflow-scroll border-r border-lightBorder dark:border-darkBorder/60 dark:bg-dark lg:flex">
       <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-10">
-        <SearchButton className="mb-0 mt-8 flex items-start pr-6" />
-        {isSlicePage(baseUrl) && (
-          <div className="top-0 mb-2 mt-4 bg-none pr-6">
-            <SliceSelector />
-          </div>
-        )}
-        <nav className='sticky top-0 ml-[2px] block overflow-y-auto bg-none pb-10 pr-3'>
+        <div className='sticky top-0 bg-[#fafafa] dark:bg-dark '>
+          <SearchButton className="mb-0 mt-8 flex items-start pr-6" />
+          {isSlicePage(baseUrl) && (
+            <div className="top-0 mb-2 mt-4 bg-none pr-6">
+              <SliceSelector />
+            </div>
+          )}
+        </div>
+        <nav>
           <ul className="top-0 mr-2 mt-4">{cells}</ul>
         </nav>
       </div>
-    </div>
+    </div >
   );
 };
 
@@ -170,7 +172,11 @@ export function MobileSideNav() {
               leaveFrom="left-0"
               leaveTo="-left-[300px]"
             >
-              <div className='fixed left-0 top-0 h-full w-full max-w-[280px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'>
+              <div
+                className={clsx(
+                  'fixed left-0 top-0 h-screen w-full max-w-[280px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
+                )}
+              >
                 <Dialog.Panel className="h-full w-full overflow-hidden rounded-r text-left align-middle text-sm font-bold shadow-xl transition-all">
                   <div className="flex h-full w-full flex-col items-start">
                     <section id="controls" className="mt-2 pl-6">
