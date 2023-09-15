@@ -8,7 +8,7 @@ import {
   faChevronRight
 } from '@fortawesome/free-solid-svg-icons';
 
-import { sideBarData, baseUrls, flattenSideBarData } from 'data/side-bar-data';
+import { sideBarData, baseUrls, flattenSideBarData } from 'data';
 import { SideBarLink, isLink } from 'types';
 import { useRouter } from 'next/router';
 import { Divider } from 'components/Divider';

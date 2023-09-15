@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { baseUrls } from 'data/side-bar-data';
+import { baseUrls } from 'data';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';

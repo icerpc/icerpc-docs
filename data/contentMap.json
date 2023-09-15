@@ -1,0 +1,591 @@
+{
+  "getting_started": [
+    {
+      "title": "Overview",
+      "path": "/getting-started/"
+    },
+    {
+      "title": "Quickstart",
+      "path": "/getting-started/quickstart/"
+    },
+    {
+      "title": "Installation",
+      "links": [
+        {
+          "title": "Using the IceRPC .NET Project Templates",
+          "path": "/getting-started/installation/template/"
+        },
+        {
+          "title": "Adding IceRPC to an existing project",
+          "path": "/getting-started/installation/existing-project/"
+        },
+        {
+          "title": "NuGet packages",
+          "path": "/getting-started/installation/nuget-packages/"
+        }
+      ]
+    },
+    {
+      "title": "Tutorial",
+      "links": [
+        {
+          "title": "Writing your first server application",
+          "path": "/getting-started/tutorial/server-tutorial/"
+        },
+        {
+          "title": "Writing your first client application",
+          "path": "/getting-started/tutorial/client-tutorial/"
+        }
+      ]
+    },
+    {
+      "title": "Supported platforms",
+      "links": [
+        {
+          "title": "IceRPC for C#",
+          "path": "/getting-started/supported-platforms/icerpc-csharp-0_1"
+        }
+      ]
+    }
+  ],
+  "icerpc": [
+    {
+      "title": "Overview",
+      "path": "/icerpc"
+    },
+    {
+      "title": "Connection",
+      "links": [
+        {
+          "title": "How to create a connection",
+          "path": "/icerpc/connection/how-to-create-a-connection"
+        },
+        {
+          "title": "Server address",
+          "path": "/icerpc/connection/server-address"
+        },
+        {
+          "title": "Security with TLS",
+          "path": "/icerpc/connection/security-with-tls"
+        }
+      ]
+    },
+    {
+      "title": "Invocation",
+      "links": [
+        {
+          "title": "Invocation pipeline",
+          "path": "/icerpc/invocation/invocation-pipeline"
+        },
+        {
+          "title": "Outgoing request",
+          "path": "/icerpc/invocation/outgoing-request"
+        },
+        {
+          "title": "Incoming response",
+          "path": "/icerpc/invocation/incoming-response"
+        },
+        {
+          "title": "Interceptor",
+          "path": "/icerpc/invocation/interceptor"
+        },
+        {
+          "title": "Service address",
+          "path": "/icerpc/invocation/service-address"
+        }
+      ]
+    },
+    {
+      "title": "Dispatch",
+      "links": [
+        {
+          "title": "Dispatch pipeline",
+          "path": "/icerpc/dispatch/dispatch-pipeline"
+        },
+        {
+          "title": "Incoming request",
+          "path": "/icerpc/dispatch/incoming-request"
+        },
+        {
+          "title": "Outgoing response",
+          "path": "/icerpc/dispatch/outgoing-response"
+        },
+        {
+          "title": "Middleware",
+          "path": "/icerpc/dispatch/middleware"
+        },
+        {
+          "title": "Router",
+          "path": "/icerpc/dispatch/router"
+        }
+      ]
+    },
+    {
+      "title": "Protocols and transports",
+      "links": [
+        {
+          "title": "icerpc and multiplexed transports",
+          "path": "/icerpc/protocols-and-transports/icerpc-multiplexed-transports"
+        },
+        {
+          "title": "ice and duplex transports",
+          "path": "/icerpc/protocols-and-transports/ice-duplex-transports"
+        },
+        {
+          "title": "Protocol compatibility",
+          "path": "/icerpc/protocols-and-transports/protocol-compatibility"
+        }
+      ]
+    },
+    {
+      "title": "Dependency Injection",
+      "links": [
+        {
+          "title": "Dependency Injection and IceRPC for C#",
+          "path": "/icerpc/dependency-injection/di-and-icerpc-for-csharp"
+        },
+        {
+          "title": "Dispatch pipeline with DI",
+          "path": "/icerpc/dependency-injection/dispatch-pipeline-with-di"
+        },
+        {
+          "title": "Invocation pipeline with DI",
+          "path": "/icerpc/dependency-injection/invocation-pipeline-with-di"
+        }
+      ]
+    },
+    {
+      "title": "Advanced topics"
+    },
+    {
+      "title": "Protocol connection",
+      "path": "/icerpc/protocol-connection"
+    },
+    {
+      "title": "Duplex transport",
+      "path": "/icerpc/duplex-transport"
+    },
+    {
+      "title": "Multiplexed transport",
+      "path": "/icerpc/multiplexed-transport"
+    },
+    {
+      "title": "The icerpc protocol",
+      "links": [
+        {
+          "title": "Mapping RPCs to streams",
+          "path": "/icerpc/icerpc-protocol/mapping-rpcs-to-streams"
+        },
+        {
+          "title": "Connection establishment",
+          "path": "/icerpc/icerpc-protocol/connection-establishment"
+        },
+        {
+          "title": "Connection shutdown",
+          "path": "/icerpc/icerpc-protocol/connection-shutdown"
+        }
+      ]
+    },
+    {
+      "title": "The ice protocol",
+      "links": [
+        {
+          "title": "Protocol frames",
+          "path": "/icerpc/ice-protocol/protocol-frames"
+        },
+        {
+          "title": "Connection establishment",
+          "path": "/icerpc/ice-protocol/connection-establishment"
+        },
+        {
+          "title": "Connection shutdown",
+          "path": "/icerpc/ice-protocol/connection-shutdown"
+        }
+      ]
+    },
+    {
+      "title": "The Slic transport",
+      "links": [
+        {
+          "title": "Overview",
+          "path": "/icerpc/slic-transport/overview"
+        },
+        {
+          "title": "Connection establishment",
+          "path": "/icerpc/slic-transport/connection-establishment"
+        },
+        {
+          "title": "Connection closure",
+          "path": "/icerpc/slic-transport/connection-closure"
+        },
+        {
+          "title": "Connection idle timeout",
+          "path": "/icerpc/slic-transport/connection-idle-timeout"
+        },
+        {
+          "title": "Streams",
+          "path": "/icerpc/slic-transport/streams"
+        },
+        {
+          "title": "Flow control",
+          "path": "/icerpc/slic-transport/flow-control"
+        },
+        {
+          "title": "Protocol frames",
+          "path": "/icerpc/slic-transport/protocol-frames"
+        }
+      ]
+    }
+  ],
+  "slice1": [
+    {
+      "title": "Overview",
+      "path": "/slice1"
+    },
+    {
+      "title": "Basics",
+      "links": [
+        {
+          "title": "Slice components",
+          "path": "/slice1/basics/slice-components"
+        },
+        {
+          "title": "Contract first model",
+          "path": "/slice1/basics/contract-first"
+        },
+        {
+          "title": "Slice files",
+          "path": "/slice1/basics/slice-files"
+        },
+        {
+          "title": "Examples",
+          "path": "/slice1/basics/examples"
+        }
+      ]
+    },
+    {
+      "title": "Language guide",
+      "links": [
+        {
+          "title": "Compilation mode",
+          "path": "/slice1/language-guide/compilation-mode"
+        },
+        {
+          "title": "Module",
+          "path": "/slice1/language-guide/module"
+        },
+        {
+          "title": "Interface",
+          "path": "/slice1/language-guide/interface"
+        },
+        {
+          "title": "Operation",
+          "path": "/slice1/language-guide/operation"
+        },
+        {
+          "title": "Fields",
+          "path": "/slice1/language-guide/fields"
+        },
+        {
+          "title": "Parameters",
+          "path": "/slice1/language-guide/parameters"
+        },
+        {
+          "title": "Primitive types",
+          "path": "/slice1/language-guide/primitive-types"
+        },
+        {
+          "title": "Enum types",
+          "path": "/slice1/language-guide/enum-types"
+        },
+        {
+          "title": "Struct types",
+          "path": "/slice1/language-guide/struct-types"
+        },
+        {
+          "title": "Class types",
+          "path": "/slice1/language-guide/class-types"
+        },
+        {
+          "title": "Exception",
+          "path": "/slice1/language-guide/exception"
+        },
+        {
+          "title": "Proxy types",
+          "path": "/slice1/language-guide/proxy-types"
+        },
+        {
+          "title": "Sequence types",
+          "path": "/slice1/language-guide/sequence-types"
+        },
+        {
+          "title": "Dictionary types",
+          "path": "/slice1/language-guide/dictionary-types"
+        },
+        {
+          "title": "Custom types",
+          "path": "/slice1/language-guide/custom-types"
+        },
+        {
+          "title": "Well-known types",
+          "path": "/slice1/language-guide/well-known-types"
+        },
+        {
+          "title": "Type alias",
+          "path": "/slice1/language-guide/type-alias"
+        },
+        {
+          "title": "Attributes",
+          "path": "/slice1/language-guide/attributes"
+        },
+        {
+          "title": "Comments and doc comments",
+          "path": "/slice1/language-guide/comments"
+        },
+        {
+          "title": "Preprocessor directives",
+          "path": "/slice1/language-guide/preprocessor-directives"
+        }
+      ]
+    },
+    {
+      "title": "Encoding reference",
+      "links": [
+        {
+          "title": "Overview",
+          "path": "/slice1/encoding/overview"
+        },
+        {
+          "title": "Encoding-only constructs",
+          "path": "/slice1/encoding/encoding-only-constructs"
+        },
+        {
+          "title": "Primitive types",
+          "path": "/slice1/encoding/primitive-types"
+        },
+        {
+          "title": "User-defined types",
+          "path": "/slice1/encoding/user-defined-types"
+        },
+        {
+          "title": "Collection types",
+          "path": "/slice1/encoding/collection-types"
+        },
+        {
+          "title": "Operation arguments and return values",
+          "path": "/slice1/encoding/operation"
+        },
+        {
+          "title": "Exceptions",
+          "path": "/slice1/encoding/exceptions"
+        },
+        {
+          "title": "IceRPC + Slice integration",
+          "path": "/slice1/encoding/icerpc"
+        }
+      ]
+    }
+  ],
+  "slice2": [
+    {
+      "title": "Overview",
+      "path": "/slice2"
+    },
+    {
+      "title": "Basics",
+      "links": [
+        {
+          "title": "Slice components",
+          "path": "/slice2/basics/slice-components"
+        },
+        {
+          "title": "Contract first model",
+          "path": "/slice2/basics/contract-first"
+        },
+        {
+          "title": "Slice files",
+          "path": "/slice2/basics/slice-files"
+        },
+        {
+          "title": "Examples",
+          "path": "/slice2/basics/examples"
+        }
+      ]
+    },
+    {
+      "title": "Language guide",
+      "links": [
+        {
+          "title": "Compilation mode",
+          "path": "/slice2/language-guide/compilation-mode"
+        },
+        {
+          "title": "Module",
+          "path": "/slice2/language-guide/module"
+        },
+        {
+          "title": "Interface",
+          "path": "/slice2/language-guide/interface"
+        },
+        {
+          "title": "Operation",
+          "path": "/slice2/language-guide/operation"
+        },
+        {
+          "title": "Fields",
+          "path": "/slice2/language-guide/fields"
+        },
+        {
+          "title": "Parameters",
+          "path": "/slice2/language-guide/parameters"
+        },
+        {
+          "title": "Primitive types",
+          "path": "/slice2/language-guide/primitive-types"
+        },
+        {
+          "title": "Enum types",
+          "path": "/slice2/language-guide/enum-types"
+        },
+        {
+          "title": "Struct types",
+          "path": "/slice2/language-guide/struct-types"
+        },
+        {
+          "title": "Proxy types",
+          "path": "/slice2/language-guide/proxy-types"
+        },
+        {
+          "title": "Sequence types",
+          "path": "/slice2/language-guide/sequence-types"
+        },
+        {
+          "title": "Dictionary types",
+          "path": "/slice2/language-guide/dictionary-types"
+        },
+        {
+          "title": "Custom types",
+          "path": "/slice2/language-guide/custom-types"
+        },
+        {
+          "title": "Well-known types",
+          "path": "/slice2/language-guide/well-known-types"
+        },
+        {
+          "title": "Type alias",
+          "path": "/slice2/language-guide/type-alias"
+        },
+        {
+          "title": "Attributes",
+          "path": "/slice2/language-guide/attributes"
+        },
+        {
+          "title": "Comments and doc comments",
+          "path": "/slice2/language-guide/comments"
+        },
+        {
+          "title": "Preprocessor directives",
+          "path": "/slice2/language-guide/preprocessor-directives"
+        }
+      ]
+    },
+    {
+      "title": "Encoding reference",
+      "links": [
+        {
+          "title": "Overview",
+          "path": "/slice2/encoding/overview"
+        },
+        {
+          "title": "Encoding-only constructs",
+          "path": "/slice2/encoding/encoding-only-constructs"
+        },
+        {
+          "title": "Primitive types",
+          "path": "/slice2/encoding/primitive-types"
+        },
+        {
+          "title": "User-defined types",
+          "path": "/slice2/encoding/user-defined-types"
+        },
+        {
+          "title": "Collection types",
+          "path": "/slice2/encoding/collection-types"
+        },
+        {
+          "title": "Operation arguments and return values",
+          "path": "/slice2/encoding/operation"
+        },
+        {
+          "title": "IceRPC + Slice integration",
+          "path": "/slice2/encoding/icerpc"
+        }
+      ]
+    }
+  ],
+  "icerpc_for_ice_users": [
+    {
+      "title": "Overview",
+      "path": "/icerpc-for-ice-users"
+    },
+    {
+      "title": "High-level comparison",
+      "links": [
+        {
+          "title": "Ice reinvented",
+          "path": "/icerpc-for-ice-users/high-level-comparison/ice-reinvented"
+        },
+        {
+          "title": "New features",
+          "path": "/icerpc-for-ice-users/high-level-comparison/new-features"
+        },
+        {
+          "title": "Using IceRPC with Ice",
+          "path": "/icerpc-for-ice-users/high-level-comparison/using-icerpc-with-ice"
+        }
+      ]
+    },
+    {
+      "title": "RPC core",
+      "links": [
+        {
+          "title": "Communicator",
+          "path": "/icerpc-for-ice-users/rpc-core/communicator"
+        },
+        {
+          "title": "Object adapter",
+          "path": "/icerpc-for-ice-users/rpc-core/object-adapter"
+        },
+        {
+          "title": "Endpoint",
+          "path": "/icerpc-for-ice-users/rpc-core/endpoint"
+        },
+        {
+          "title": "Ice identity",
+          "path": "/icerpc-for-ice-users/rpc-core/ice-identity"
+        },
+        {
+          "title": "Proxy string",
+          "path": "/icerpc-for-ice-users/rpc-core/proxy-string"
+        }
+      ]
+    },
+    {
+      "title": "Slice",
+      "links": [
+        {
+          "title": "New Slice",
+          "path": "/icerpc-for-ice-users/slice/new-slice"
+        },
+        {
+          "title": "Converting .ice into .slice",
+          "path": "/icerpc-for-ice-users/slice/converting-ice-into-slice"
+        },
+        {
+          "title": "Ice::Object and checked cast",
+          "path": "/icerpc-for-ice-users/slice/ice-object"
+        }
+      ]
+    }
+  ]
+}

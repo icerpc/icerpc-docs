@@ -11,7 +11,7 @@ import {
   faPenToSquare
 } from '@fortawesome/free-regular-svg-icons';
 
-import { baseUrls } from 'data/side-bar-data';
+import { baseUrls } from 'data';
 import { Divider } from 'components/Divider';
 import { useRouter } from 'next/router';
 
