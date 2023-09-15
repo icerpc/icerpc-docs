@@ -49,8 +49,9 @@ export const SideNav = () => {
   }, [path, currentMode, baseUrl]);
 
   return (
-    <div className="sticky top-[59px] hidden flex-col items-end border-r border-lightBorder dark:border-darkBorder/60 dark:bg-dark lg:flex">
+    <div className="sticky top-[59px] hidden h-[calc(100vh-59px-90px)] flex-col items-end overflow-scroll border-r border-lightBorder dark:border-darkBorder/60 dark:bg-dark lg:flex">
       <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-10">
+<<<<<<< HEAD
         <SearchButton className="mb-0 mt-8 flex items-start pr-6" />
         {isSlicePage(baseUrl) && (
           <div className="top-0 mb-2 mt-4 bg-none pr-6">
@@ -58,10 +59,29 @@ export const SideNav = () => {
           </div>
         )}
         <nav className="sticky top-0 ml-[2px] block overflow-y-auto bg-none pb-10 pr-3">
+||||||| 4cd2a89
+        <SearchButton className="mb-0 mt-8 flex items-start pr-6" />
+        {isSlicePage(baseUrl) && (
+          <div className="top-0 mb-2 mt-4 bg-none pr-6">
+            <SliceSelector />
+          </div>
+        )}
+        <nav className='sticky top-0 ml-[2px] block overflow-y-auto bg-none pb-10 pr-3'>
+=======
+        <div className='sticky top-0 bg-[#fafafa] dark:bg-dark '>
+          <SearchButton className="mb-0 mt-8 flex items-start pr-6" />
+          {isSlicePage(baseUrl) && (
+            <div className="top-0 mb-2 mt-4 bg-none pr-6">
+              <SliceSelector />
+            </div>
+          )}
+        </div>
+        <nav>
+>>>>>>> origin/main
           <ul className="top-0 mr-2 mt-4">{cells}</ul>
         </nav>
       </div>
-    </div>
+    </div >
   );
 };
 
