@@ -189,11 +189,11 @@ However, to reduce overhead, you can assign a numeric type ID to a class instead
 module Foo
 {
     class ClassA {}     // has a type ID of "::Foo::ClassA"
-    class ClassB(9) {}  // has a type ID of `9`
+    class ClassB(9) {}  // has a compact type ID of `9`
 }
 ```
 
-These _compact_ type IDs must be non-negative and unique across your application.
+These compact type IDs must be non-negative and unique across your application.
 They affect only the encoding of classes, not their mapping.
 Refer to the [Ice Manual][compact-type-ids] to learn more.
 
