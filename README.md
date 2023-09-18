@@ -26,3 +26,14 @@ install node, it is recommended to follow the guide provided by Node.js
 
 For comprehensive guidelines on writing documentation, including how to use custom nodes and tags, please refer to the
 [Writing Documentation](/WRITING_DOCS.md) page.
+
+## Generating a PDF
+
+To generate a PDF of the documentation, use the `PDF` tool in `/tools/pdf`. This is a simple script that uses
+[puppeteer](https://pptr.dev) to generate a PDF of the documentation site. To use the tool, run the following command:
+
+```bash
+cd tools/pdf
+npm install
+npm run generate-pdf
+```

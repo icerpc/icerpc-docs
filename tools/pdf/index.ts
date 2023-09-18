@@ -11,13 +11,6 @@ import contentMap from '../../data/contentMap.json';
 const outputDir = './output';
 const outputName = 'IceRPC_docs';
 
-// SIGINT handler
-process.on('SIGINT', () => {
-  server.kill();
-  removeExistingOutput();
-  process.exit();
-});
-
 // Parse command line arguments
 program
   .version('1.0.0')
@@ -29,26 +22,37 @@ program
   .parse(process.argv);
 const options = program.opts();
 
-// Prepare output directory
-initializeOutput();
-
-// Spawn the docs server
-console.log('Running "npm run dev" to start the docs server...');
-const server = spawn('npm', ['run', 'dev']);
-
-server.stdout.on('data', async (data) => {
-  const match = data.toString().match(/localhost:(\d+)/);
-  if (match) {
-    const port = parseInt(match[1]);
-    console.log(`Server is running on port ${port}`);
-
-    // Generate PDF
-    await createPDF(contentMap, options, outputDir, outputName, port);
-
+// Main function
+(async () => {
+  // SIGINT handler
+  process.on('SIGINT', () => {
     server.kill();
+    removeExistingOutput();
     process.exit();
-  }
-});
+  });
+
+  // Prepare output directory
+  initializeOutput();
+
+  // Spawn the docs server
+  console.log('Running "npm run dev" to start the docs server...');
+  const server = spawn('npm', ['run', 'dev'], { cwd: '../../' });
+
+  // Wait for the server to start then generate the PDF
+  await server.stdout.on('data', async (data) => {
+    const match = data.toString().match(/localhost:(\d+)/);
+    if (match) {
+      const port = parseInt(match[1]);
+      console.log(`Server is running on port ${port}`);
+
+      // Generate PDF
+      await createPDF(contentMap, options, outputDir, outputName, port);
+
+      server.kill();
+      process.exit();
+    }
+  });
+})();
 
 function initializeOutput() {
   if (!fs.existsSync(outputDir)) {
