@@ -1,11 +1,12 @@
 module.exports = {
   pageExtensions: ['tsx'],
   output: 'standalone',
-  webpack: (config, {}) => {
+  webpack: (config, { defaultLoaders }) => {
     // Ignore the tools directory
     config.module.rules.push({
-      test: /tools/,
-      loader: 'ignore-loader'
+      test: /\.ts$/,
+      exclude: /tools/,
+      use: [defaultLoaders.babel]
     });
     return config;
   }
