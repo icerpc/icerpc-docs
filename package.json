@@ -4,7 +4,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "pdf": "ts-node scripts/pdf/index.ts",
+    "pdf": "ts-node -P scripts/pdf/tsconfig.pdf.json scripts/pdf/index.ts",
     "lint": "next lint"
   },
   "dependencies": {

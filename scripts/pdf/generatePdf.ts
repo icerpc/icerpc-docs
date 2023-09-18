@@ -63,12 +63,6 @@ async function initializeBrowser(page: PuppeteerPage, port: number) {
     path: '/',
     expires: Math.floor(Date.now() / 1000) + 60 * 60
   });
-  // The user may have theme preferences set in local storage from a previous
-  // visit to the docs site. We need to override this to light mode for the PDF.
-  await page.evaluate(() => {
-    localStorage.setItem('theme', 'light');
-  });
-
   await page.setViewport({
     width: 8.5 * 96,
     height: 11 * 96,
