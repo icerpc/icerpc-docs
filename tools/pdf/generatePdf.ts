@@ -1,5 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
+// cSpell:words lillallol
+
 import fs from 'fs';
 import puppeteer, { PDFOptions, Page as PuppeteerPage } from 'puppeteer';
 import { OptionValues } from 'commander';

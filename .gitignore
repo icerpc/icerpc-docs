@@ -1,5 +1,5 @@
 # dependencies
-/node_modules
+node_modules
 /.pnp
 .pnp.js
 
@@ -16,7 +16,6 @@
 # misc
 .DS_Store
 *.pem
-output
 
 # debug
 npm-debug.log*

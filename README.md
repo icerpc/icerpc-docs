@@ -29,8 +29,8 @@ For comprehensive guidelines on writing documentation, including how to use cust
 
 ## Generating a PDF
 
-To generate a PDF of the documentation, use the `PDF` tool in `/tools/pdf`. This is a simple script that uses
-[puppeteer](https://pptr.dev) to generate a PDF of the documentation site. To use the tool, run the following command:
+This repository provides a tool for generating a PDFs from the documentation using [puppeteer](https://pptr.dev).
+To run the tool, use the following commands:
 
 ```bash
 cd tools/pdf
