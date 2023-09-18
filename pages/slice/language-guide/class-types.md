@@ -187,10 +187,9 @@ However, to reduce overhead, you can assign a numeric type ID to a class instead
 
 ```slice
 module Foo
-{
-    class ClassA {}     // has a type ID of "::Foo::ClassA"
-    class ClassB(9) {}  // has a compact type ID of `9`
-}
+
+class ClassA {}     // has a type ID of "::Foo::ClassA"
+class ClassB(9) {}  // has a compact type ID of `9` in addition to a type ID of "::Foo::ClassB"
 ```
 
 These compact type IDs must be non-negative and unique across your application.
