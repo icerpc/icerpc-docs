@@ -1,0 +1,9 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "module": "CommonJS",
+        "allowJs": true,
+        "target": "ESNext",
+        "esModuleInterop": true
+    },
+}

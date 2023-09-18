@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "generate-pdf": "ts-node -P tsconfig.pdf.json index.ts"
+  },
+  "dependencies": {
+    "@lillallol/outline-pdf-cjs": "^1.0.5",
+    "commander": "^11.0.0",
+    "pdf-lib": "^1.17.1",
+    "puppeteer": "^21.2.1",
+    "ts-node": "^10.9.1"
+  }
+}
