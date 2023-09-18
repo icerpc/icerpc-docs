@@ -186,10 +186,10 @@ Normally, this is the class's fully-qualified identifier.
 However, to reduce overhead, you can assign a numeric type ID to a class instead. For example:
 
 ```slice
-module MyModule
+module Foo
 {
-    class ClassWithStringTypeId {}     // has a type ID of "MyModule::ClassWithStringTypeId"
-    class ClassWithNumericTypeId(9) {} // has a type ID of `9`
+    class ClassA {}     // has a type ID of "::Foo::ClassA"
+    class ClassB(9) {}  // has a type ID of `9`
 }
 ```
 
