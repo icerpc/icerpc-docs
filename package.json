@@ -4,6 +4,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "pdf": "ts-node scripts/pdf/index.ts",
     "lint": "next lint"
   },
   "dependencies": {
@@ -36,6 +37,7 @@
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
+    "@lillallol/outline-pdf-cjs": "^1.0.5",
     "@tailwindcss/typography": "^0.5.10",
     "@types/js-yaml": "^4.0.5",
     "@types/node": "^20.6.0",
@@ -46,15 +48,20 @@
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",
     "autoprefixer": "^10.4.15",
+    "commander": "^11.0.0",
     "eslint": "^8.49.0",
     "eslint-config-next": "^13.4.19",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-tailwindcss": "^3.13.0",
+    "pdf-lib": "^1.17.1",
     "postcss": "^8.4.29",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.4",
+    "puppeteer": "^21.2.1",
     "tailwindcss": "^3.3.3",
+    "ts-node": "^10.9.1",
+    "tsc-node": "^0.0.3",
     "typescript": "^5.2.2"
   }
 }
