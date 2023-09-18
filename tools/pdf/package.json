@@ -1,14 +1,8 @@
 {
-  "name": "pdf",
-  "version": "1.0.0",
-  "description": "Generate a PDF copy of the IceRPC docs",
+  "private": true,
   "scripts": {
-    "generate-pdf": "ts-node -P tsconfig.pdf.json index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate-pdf": "ts-node -P tsconfig.pdf.json index.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@lillallol/outline-pdf-cjs": "^1.0.5",
     "commander": "^11.0.0",
