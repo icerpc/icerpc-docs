@@ -93,7 +93,7 @@ class Vehicle {
     hasEngine: bool
 }
 
-// Slice2-incompatible: `VehicleCarrier` references a Slice1-only type (`Vehicle`)
+// Slice2-incompatible: `VehicleCarrier` references a Slice1-only type (`Vehicle`).
 compact struct VehicleCarrier {
     vehicle: Vehicle?
 }
