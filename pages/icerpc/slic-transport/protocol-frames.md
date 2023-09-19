@@ -124,6 +124,13 @@ custom OpaqueData // 64-bits opaque data
 
 A `Pong` frame with the same opaque payload must be sent after receiving a `Ping` frame.
 
+{% callout %}
+
+The `Ping` frame can be used for different purposes. For example, it can be used to prevent a connection from becoming
+idle or to measure the round-trip time (RTT). The opaque payload allows to identify the different `Ping` frames.
+
+{% /callout %}
+
 ## Pong frame
 
 An Pong frame carries an opaque payload. It's defined as follows:
