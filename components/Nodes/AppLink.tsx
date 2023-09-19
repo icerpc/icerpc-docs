@@ -9,6 +9,7 @@ import { useMode } from 'context/state';
 
 type AppLinkProps = {
   href: string;
+  path?: string;
   target?: string;
   className?: string;
   style?: CSSProperties;

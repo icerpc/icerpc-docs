@@ -13,6 +13,7 @@ type Props = {
   children: ReactElement[];
   title: string;
   description: string;
+  path: string;
   readingTime: string;
   mode?: Mode;
   showAside?: boolean;
@@ -24,6 +25,7 @@ export const Document = ({
   children,
   title,
   description,
+  path,
   mode,
   showAside = true,
   showReadingTime = true
@@ -52,6 +54,7 @@ export const Document = ({
           <Title
             title={title}
             description={description}
+            path={path}
             readingTime={showReadingTime ? time : undefined}
           />
         )}
@@ -76,11 +79,11 @@ export const Document = ({
             <>{children}</>
           </div>
         )}
-        <PageHistory />
+        <PageHistory path={path} />
         <Divider id="feedback-divider" margin="my-0" />
-        <Feedback />
+        <Feedback path={path} />
       </article>
-      {showAside && <Aside asideItems={asideItems} />}
+      {showAside && <Aside asideItems={asideItems} path={path} />}
       <style jsx>{`
         .step-container {
           counter-reset: step-counter;

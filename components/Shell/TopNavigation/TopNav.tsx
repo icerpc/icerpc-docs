@@ -7,40 +7,39 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { MobileMenu } from './MobileMenu';
-import { MobileSideNav } from '../SideNav';
+import { MobileSideNav } from '../SideNavigation/MobileSideNav';
+import { Mode } from 'types';
 import { ThemeToggle } from 'components/ThemeToggle';
 import { useMode } from 'context/state';
-import { Mode } from 'types';
-
 import logoIcon from 'public/Icerpc-logo.svg';
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import TopNavigationItem from './TopNavigationItem';
 
-export const TopNav = () => {
+const navigationData = (mode: Mode) => [
+  {
+    name: 'Getting Started',
+    href: '/getting-started'
+  },
+  {
+    name: 'IceRPC',
+    href: '/icerpc'
+  },
+  {
+    name: 'Slice',
+    href: mode === Mode.Slice1 ? '/slice1' : '/slice2'
+  },
+  {
+    name: 'IceRPC for Ice users',
+    href: '/icerpc-for-ice-users'
+  },
+  {
+    name: 'API Reference',
+    href: 'https://docs.icerpc.dev/api/csharp/index.html'
+  }
+];
+
+export const TopNav = ({ path }: { path: string }) => {
   const { mode } = useMode();
-
-  const navigationItems = [
-    {
-      name: 'Getting Started',
-      href: '/getting-started'
-    },
-    {
-      name: 'IceRPC',
-      href: '/icerpc'
-    },
-    {
-      name: 'Slice',
-      href: mode === Mode.Slice1 ? '/slice1' : '/slice2'
-    },
-    {
-      name: 'IceRPC for Ice users',
-      href: '/icerpc-for-ice-users'
-    },
-    {
-      name: 'API Reference',
-      href: 'https://docs.icerpc.dev/api/csharp/index.html'
-    }
-  ];
+  const data = navigationData(mode);
 
   return (
     <div
@@ -51,15 +50,16 @@ export const TopNav = () => {
     >
       <div id="main-nav" className="flex w-full justify-center">
         <div className="flex h-[3.75rem] w-full max-w-[100rem] items-center justify-between text-sm">
-          <TopLogo />
+          <Logo />
           <div className="hidden items-center lg:flex">
             <nav>
               <ul className="flex">
-                {navigationItems.map((item) => (
+                {data.map((item) => (
                   <TopNavigationItem
                     key={item.href}
                     name={item.name}
                     href={item.href}
+                    path={path}
                   />
                 ))}
               </ul>
@@ -79,76 +79,18 @@ export const TopNav = () => {
           <MobileMenu />
         </div>
       </div>
-      <MobileSideNav />
+      <MobileSideNav path={path} />
     </div>
   );
 };
 
-const TopLogo = () => (
+const Logo = () => (
   <Link href="/">
     <div className="mb-3 ml-[1.3rem] mr-0 mt-5 flex items-center justify-start gap-1 pb-4 lg:ml-[2.6rem]">
-      <Logo height={20} className="mt-2" />
+      <Image src={logoIcon} height={20} alt="IceRPC Logo" className="mt-2" />
       <div className="ml-1 pt-[8px] text-xl font-bold text-black dark:text-white">
         Docs
       </div>
     </div>
   </Link>
 );
-
-type LogoProps = {
-  height: number;
-  className?: string;
-};
-
-export const Logo = ({ height, className }: LogoProps) => (
-  <Image
-    src={logoIcon}
-    height={height}
-    alt="IceRPC Logo"
-    className={className}
-  />
-);
-
-type TopNavigationItemProps = {
-  name: string;
-  href: string;
-};
-
-const TopNavigationItem = ({ name, href }: TopNavigationItemProps) => {
-  const { asPath, isReady } = useRouter();
-  const [path, setPath] = useState(asPath);
-
-  useEffect(() => {
-    isReady && setPath(asPath);
-  }, [isReady, asPath]);
-
-  const prefetch = href.startsWith('http') ? false : undefined;
-
-  const baseClassName =
-    'mx-3 overflow-hidden whitespace-nowrap dark:text-[rgba(255,255,255,0.6)] hover:text-zinc-900 dark:hover:text-white';
-  const activeClassName =
-    'mx-3 text-primary font-semibold no-underline decoration-2 underline-offset-[1.5rem] opacity-100 dark:text-white hover:!text-primary dark:hover:!text-white';
-
-  const [linkClassName, setLinkClassName] = useState(baseClassName);
-
-  useEffect(() => {
-    const isActive = isActivePath(path, href);
-    setLinkClassName(clsx(baseClassName, isActive && activeClassName));
-  }, [href, path, setLinkClassName]);
-
-  return (
-    <li key={href}>
-      <Link href={href} className={linkClassName} prefetch={prefetch}>
-        {name}
-      </Link>
-    </li>
-  );
-};
-
-function isActivePath(path: string, href: string): boolean {
-  return (
-    path === href ||
-    path.startsWith(`${href}/`) ||
-    (path.startsWith('/slice') && href === '/slice2')
-  );
-}

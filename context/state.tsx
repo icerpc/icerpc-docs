@@ -1,7 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
 import { baseUrls } from 'data';
-import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { Mode, Platform } from 'types';
@@ -28,6 +27,7 @@ const PlatformContext = createContext<PlatformContextType>({
 
 type Props = {
   children: ReactNode;
+  path: string;
 };
 
 const getModeFromPath = (path: string) => {
@@ -45,18 +45,13 @@ const getModeFromPath = (path: string) => {
   }
 };
 
-export function AppWrapper({ children }: Props) {
+export function AppWrapper({ children, path }: Props) {
   const [mode, setMode] = useState<Mode>(Mode.Slice2);
   const [platform, setPlatform] = useState<Platform>(Platform.csharp);
-  const { asPath, isReady } = useRouter();
 
   useEffect(() => {
-    // If the router is not ready, we can't determine if we should ignore
-    // the current mode.
-    if (!isReady) return;
-
     // Get the mode from the path
-    const pathMode = getModeFromPath(asPath);
+    const pathMode = getModeFromPath(path);
 
     // Get the platform and mode strings from local storage if it exists
     const localPlatformString = localStorage.getItem('platform');
@@ -75,7 +70,7 @@ export function AppWrapper({ children }: Props) {
     // If the path mode exists, set the mode to the path mode
     // Otherwise, if the local mode exists, set the mode to the local mode
     pathMode ? setMode(pathMode) : localMode && setMode(localMode);
-  }, [asPath, isReady]);
+  }, [path]);
 
   useEffect(() => {
     // Set the platform and mode in local storage when they change

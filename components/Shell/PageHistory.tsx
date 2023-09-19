@@ -1,8 +1,8 @@
 // Copyright (c) ZeroC, Inc.
 
-import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import clsx from 'clsx';
 import {
   faChevronLeft,
   faChevronRight
@@ -10,50 +10,38 @@ import {
 
 import { sideBarData, baseUrls, flattenSideBarData } from 'data';
 import { SideBarLink, isLink } from 'types';
-import { useRouter } from 'next/router';
 import { Divider } from 'components/Divider';
-import clsx from 'clsx';
 
 const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;
 };
 
-const usePageLinks = (asPath: string, isReady: boolean) => {
-  const [previous, setPrevious] = useState<SideBarLink | undefined>();
-  const [next, setNext] = useState<SideBarLink | undefined>();
+const usePageLinks = (path: string) => {
+  // Remove the anchor from the path before looking up the side bar data
+  const basePath = path.split('#')[0];
 
-  useEffect(() => {
-    if (isReady) {
-      // Remove the anchor from the path before looking up the side bar data
-      const path = asPath.split('#')[0];
+  // Get the side bar links for the current page
+  const pathSegments = basePath.split('/');
+  const baseUrl = baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
+  const links: SideBarLink[] = flattenSideBarData(sideBarData(baseUrl)).filter(
+    isLink
+  );
 
-      // Get the side bar links for the current page
-      const pathSegments = path.split('/');
-      const baseUrl =
-        baseUrls.find((item) => item === `/${pathSegments[1]}`) ?? '';
-      const links: SideBarLink[] = flattenSideBarData(
-        sideBarData(baseUrl)
-      ).filter(isLink);
+  // Find the current page in the list of links
+  const index = links
+    .map((item) => stripTrailingSlash(item.path))
+    .indexOf(basePath);
 
-      // Find the current page in the list of links
-      const index = links
-        .map((item) => stripTrailingSlash(item.path))
-        .indexOf(path);
-
-      // Get the previous and next links
-      setPrevious(index > 0 ? links[index - 1] : undefined);
-      setNext(index < links.length - 1 ? links[index + 1] : undefined);
-    }
-  }, [asPath, isReady]);
+  // Get the previous and next links
+  const previous = index > 0 ? links[index - 1] : undefined;
+  const next = index < links.length - 1 ? links[index + 1] : undefined;
 
   return { previous, next };
 };
 
-export const PageHistory = () => {
-  const { asPath, isReady, pathname } = useRouter();
-  const { previous, next } = usePageLinks(asPath, isReady);
-
-  const isHome = pathname === '/';
+export const PageHistory = ({ path }: { path: string }) => {
+  const { previous, next } = usePageLinks(path);
+  const isHome = path === '/';
 
   if (isHome) return null;
 

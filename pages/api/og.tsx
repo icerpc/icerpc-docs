@@ -178,7 +178,6 @@ export async function getFonts() {
     }
   ];
 }
-
 // Utility function for getting URL parameters
 const getUrlParam = (searchParams: URLSearchParams, key: string) =>
   searchParams.has(key) ? searchParams.get(key)?.slice(0, 100) : '';

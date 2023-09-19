@@ -15,17 +15,15 @@ enum FeedbackType {
   Positive
 }
 
-export const Feedback = () => {
+export const Feedback = ({ path }: { path: string }) => {
   // Undefined means the user has not yet clicked a feedback button
   const [feedbackType, setFeedbackType] = useState<FeedbackType>();
-  const { asPath, isReady } = useRouter();
+  const route = useRouter().asPath;
 
   // Reset feedback type when the route changes
   useEffect(() => {
-    if (isReady) {
-      setFeedbackType(undefined);
-    }
-  }, [asPath, isReady]);
+    setFeedbackType(undefined);
+  }, [route]);
 
   switch (feedbackType) {
     case FeedbackType.Negative:
@@ -33,6 +31,7 @@ export const Feedback = () => {
         <FeedbackForm
           title="What went wrong?"
           options={negativeFeedbackOptions}
+          path={path}
         />
       );
     case FeedbackType.Positive:
@@ -40,6 +39,7 @@ export const Feedback = () => {
         <FeedbackForm
           title="What did you like?"
           options={positiveFeedbackOptions}
+          path={path}
         />
       );
     default:
