@@ -38,7 +38,7 @@ export const TopNav = () => {
     },
     {
       name: 'API Reference',
-      href: 'https://docs.icerpc.dev/api/csharp/api/IceRpc.html'
+      href: 'https://docs.icerpc.dev/api/csharp/index.html'
     }
   ];
 
