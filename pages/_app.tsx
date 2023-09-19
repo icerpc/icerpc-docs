@@ -12,6 +12,11 @@ import { AppWrapper } from 'context/state';
 import { TopNav } from 'components';
 import { Footer } from 'components/Shell';
 import { Analytics } from 'components/Analytics';
+import { getBreadcrumbs } from 'lib/breadcrumbs';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { Breadcrumb } from 'components/Breadcrumbs';
+import { baseUrls } from 'data';
 
 const inter = Inter({ subsets: ['latin', 'latin-ext'] });
 const TITLE = 'IceRPC Docs';
@@ -34,13 +39,21 @@ export default function MyApp(props: {
   notFound: boolean;
 }) {
   const { Component, pageProps } = props;
-
+  const { asPath, isReady } = useRouter();
+  const [breadcrumbs, setBreadcrumbs] = useState<Breadcrumb[]>([]);
+  const [path, setPath] = useState<string>('');
   // Get current hostname and port for og:image
   const hostname = typeof window !== 'undefined' ? window.location.origin : '';
 
   let title = TITLE;
   let description = DESCRIPTION;
   const { frontmatter = {} } = pageProps;
+
+  useEffect(() => {
+    if (!isReady) return;
+    setBreadcrumbs(getBreadcrumbs(asPath));
+    setPath(asPath);
+  }, [asPath, isReady]);
 
   // If the page has a title or description, use that instead
   if (frontmatter.title) title = frontmatter.title;
@@ -66,13 +79,17 @@ export default function MyApp(props: {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https:/.icerpc.com/" />
+        <meta property="og:url" content="https://docs.icerpc.dev/" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:locale" content="en_US" />
         <meta
           property="og:image"
-          content={`${hostname}/api/og?title=${title}&description=${description}`}
+          content={`${hostname}/api/og?title=${
+            baseUrls.includes(path) ? 'Overview' : title
+          }&description=${description}&breadcrumbs=${encodeURIComponent(
+            JSON.stringify(breadcrumbs.map((b) => b.name))
+          )}`}
         />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
