@@ -1,6 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
-import * as contentMap from './contentMap.json';
+import contentMap from './contentMap.json';
+
 import {
   SideBarSourceType,
   isCategory,
@@ -12,8 +13,6 @@ import {
   ICERPC_BASE_URL,
   SideBarLink
 } from '../types';
-
-export { contentMap };
 
 export const baseUrls = [
   SLICE1_BASE_URL,
