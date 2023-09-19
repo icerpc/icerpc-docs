@@ -61,6 +61,7 @@ export const getStaticProps: GetStaticProps<object, Params> = async ({
 }) => {
   // Destructure slug from the params
   const { slug } = params ?? {};
+  const slugString = '/' + slug?.join('/') ?? '';
 
   // Build the base path from the slug, or use 'index' as default if no slug is provided
   let basePathFromSlug = slug
@@ -105,7 +106,7 @@ export const getStaticProps: GetStaticProps<object, Params> = async ({
 
   // If there's content, return the source and metadata, else return notFound
   return hasPageContent
-    ? { props: { source: fileContent, frontmatter } }
+    ? { props: { source: fileContent, frontmatter, path: slugString } }
     : { notFound: true };
 };
 
