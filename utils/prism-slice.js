@@ -26,18 +26,18 @@
             }
         ],
         attribute: {
-            pattern: /\[+[^\]\r\n]*\]+/,
+            pattern: /\[+[ \t]*[a-zA-Z0-9_:]+[ \t]*(?:\([ \t]*(?:(?:[a-zA-Z0-9_]+|\"(?:\\.|[^\\\"\r\n])*\")[ \t,]*)*\)[ \t]*)?\]+/,
             inside: {
                 arguments: {
-                    pattern: /\([^\)\r\n]*\)/,
+                    pattern: /\([ \t]*(?:(?:[a-zA-Z0-9_]+|\"(?:\\.|[^\\\"\r\n])*\")[ \t,]*)*\)/,
                     inside: {
                         string: /\"(?:\\.|[^\\\"\r\n])*\"/,
-                        constant: /\b\w+\b/,
-                        punctuation: /[,()]/
+                        constant: /[a-zA-Z0-9_]+/,
+                        punctuation: /[(),]/,
                     }
                 },
-                function: /[\w:]+/,
-                punctuation: /[\[\]()]/,
+                function: /[a-zA-Z0-9_:]+/,
+                punctuation: /[\[\]]/,
             }
         },
         string: /\"(?:\\.|[^\\\"\r\n])*\"/,
