@@ -22,8 +22,8 @@
                 greedy: true
             }
         ],
-        attribute: {
-            pattern: /\[+(?:\s*(?:[a-zA-Z0-9:-]+|\"(?:\\.|[^\\\"\r\n])*\")\s*?,?)*\]+/,
+        metadata: {
+            pattern: /\[+(?:\s*\"(?:\\.|[^\\\"\r\n])*\"\s*?,?)*\]+/,
             inside: {
                 function: /[a-zA-Z0-9:-]+|\"(?:\\.|[^\\\"\r\n])*?\"/,
                 punctuation: /[\[\],]/
