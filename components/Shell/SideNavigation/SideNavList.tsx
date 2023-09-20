@@ -11,18 +11,19 @@ import {
   isCategory,
   isLink
 } from 'types';
+import { usePath } from 'context/state';
 
 type SideNavListProps = {
-  path: string;
   data: SideBarSourceType;
   onClick?: React.MouseEventHandler<HTMLAnchorElement> | undefined;
 };
 
 export const SideNavList = ({
-  path,
   data,
   onClick
 }: SideNavListProps): React.ReactElement[] => {
+  const path = usePath();
+
   if (isCategory(data)) {
     const category = data;
     return [

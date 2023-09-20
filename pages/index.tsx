@@ -61,8 +61,7 @@ export default function Home({
     const updatedConfig: Config = {
       ...config,
       variables: {
-        frontmatter,
-        path: '/'
+        frontmatter
       }
     };
 

@@ -42,7 +42,9 @@ const ExampleCard = ({ title, description, href }: ExampleCardProps) => (
     </div>
     <div className="mt-8 flex flex-col justify-between">
       <h3 className="my-0 text-[16px] font-semibold">{title}</h3>
-      <p className="my-0 mt-1 text-[13px] text-[var(--text-color-secondary)] dark:text-white/80">{description}</p>
+      <p className="my-0 mt-1 text-[13px] text-[var(--text-color-secondary)] dark:text-white/80">
+        {description}
+      </p>
     </div>
   </Link>
 );

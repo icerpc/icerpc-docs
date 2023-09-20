@@ -2,14 +2,16 @@
 
 import Link from 'next/link';
 import clsx from 'clsx';
+import { usePath } from 'context/state';
 
 type TopNavigationItemProps = {
   name: string;
   href: string;
-  path: string;
 };
 
-const TopNavigationItem = ({ name, href, path }: TopNavigationItemProps) => {
+const TopNavigationItem = ({ name, href }: TopNavigationItemProps) => {
+  const path = usePath();
+
   const prefetch = href.startsWith('http') ? false : undefined;
   const baseClassName =
     'mx-3 overflow-hidden whitespace-nowrap dark:text-[rgba(255,255,255,0.6)] hover:text-zinc-900 dark:hover:text-white';

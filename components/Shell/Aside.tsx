@@ -13,6 +13,7 @@ import {
 
 import { baseUrls } from 'data';
 import { Divider } from 'components/Divider';
+import { usePath } from 'context/state';
 
 export type AsideItem = {
   id: string;
@@ -20,14 +21,9 @@ export type AsideItem = {
   level: number;
 };
 
-export const Aside = ({
-  asideItems,
-  path
-}: {
-  asideItems: AsideItem[];
-  path: string;
-}) => {
+export const Aside = ({ asideItems }: { asideItems: AsideItem[] }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const path = usePath();
 
   // Edit this page URL
   const baseEditPath = 'https://github.com/icerpc/icerpc-docs/tree/main/pages';

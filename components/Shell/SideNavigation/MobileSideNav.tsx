@@ -11,9 +11,11 @@ import React, { Fragment, useState } from 'react';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { getBreadcrumbs } from 'lib/breadcrumbs';
 import { SideNavList, isSlicePage } from './SideNavList';
+import { usePath } from 'context/state';
 
-export function MobileSideNav({ path }: { path: string }) {
+export function MobileSideNav() {
   const [isOpen, setIsOpen] = useState(false);
+  const path = usePath();
 
   // Clean up path
   const pathNoFragment = path.split('#')[0]; // Remove fragment
@@ -24,12 +26,7 @@ export function MobileSideNav({ path }: { path: string }) {
   const breadcrumbs = getBreadcrumbs(path);
   const data = sideBarData(baseUrl);
   const cells = data.map((item, index) => (
-    <SideNavList
-      key={index}
-      path={path}
-      data={item}
-      onClick={() => closeModal()}
-    />
+    <SideNavList key={index} data={item} onClick={() => closeModal()} />
   ));
 
   function closeModal() {
@@ -122,7 +119,7 @@ export function MobileSideNav({ path }: { path: string }) {
                         </button>
                       </div>
                       <div className="mt-6">
-                        {isSlicePage(baseUrl) && <SliceSelector path={path} />}
+                        {isSlicePage(baseUrl) && <SliceSelector />}
                       </div>
                     </section>
                     <nav

@@ -112,12 +112,10 @@ export const getStaticProps: GetStaticProps<object, Params> = async ({
 
 export default function Page({
   source,
-  frontmatter,
-  path
+  frontmatter
 }: {
   source: string;
   frontmatter: any;
-  path: string;
 }) {
   const router = useRouter();
 
@@ -133,8 +131,7 @@ export default function Page({
   const updatedConfig: Config = {
     ...config,
     variables: {
-      frontmatter,
-      path
+      frontmatter
     }
   };
 
@@ -142,7 +139,7 @@ export default function Page({
   return (
     <div className="mt-[6.5rem] flex grow flex-row justify-center lg:mt-[3.75rem]">
       <div className="flex max-w-[100rem] grow flex-row justify-center">
-        <SideNav path={path} />
+        <SideNav />
         <div className="grow">
           <div id="skip-nav" />
           {Markdoc.renderers.react(content, React, { components })}

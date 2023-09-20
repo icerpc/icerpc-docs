@@ -4,12 +4,13 @@ import { useRouter } from 'next/router';
 import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
 import { Tooltip } from 'flowbite-react';
-import { useMode } from 'context/state';
+import { useMode, usePath } from 'context/state';
 import { Mode, modes } from 'types';
 import { AppLink } from './Nodes/AppLink';
 
-export const SliceSelector = ({ path }: { path: string }) => {
+export const SliceSelector = () => {
   const { mode: activeMode, setMode } = useMode();
+  const path = usePath();
   const { push } = useRouter();
 
   function onChange(index: number) {

@@ -11,6 +11,7 @@ import {
 import { sideBarData, baseUrls, flattenSideBarData } from 'data';
 import { SideBarLink, isLink } from 'types';
 import { Divider } from 'components/Divider';
+import { usePath } from 'context/state';
 
 const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;
@@ -39,7 +40,8 @@ const usePageLinks = (path: string) => {
   return { previous, next };
 };
 
-export const PageHistory = ({ path }: { path: string }) => {
+export const PageHistory = () => {
+  const path = usePath();
   const { previous, next } = usePageLinks(path);
   const isHome = path === '/';
 

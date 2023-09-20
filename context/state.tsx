@@ -13,37 +13,25 @@ type PlatformContextType = {
   platform: Platform;
   setPlatform: (platform: Platform) => void;
 };
+type Props = {
+  children: ReactNode;
+  path: string;
+};
+
+// Contexts for the mode, platform, and path
+const PathContext = createContext<string | null>(null);
 
 const ModeContext = createContext<ModeContextType>({
   mode: Mode.Slice2,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setMode: () => {}
 });
+
 const PlatformContext = createContext<PlatformContextType>({
   platform: Platform.csharp,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setPlatform: () => {}
 });
-
-type Props = {
-  children: ReactNode;
-  path: string;
-};
-
-const getModeFromPath = (path: string) => {
-  const pathSegments = path.split('/');
-  const modeSegmentWithoutFragment = pathSegments[1].split('#')[0];
-
-  const baseUrl =
-    baseUrls.find((item) => item === `/${modeSegmentWithoutFragment}`) ?? '';
-  if (baseUrl === '/slice1') {
-    return Mode.Slice1;
-  } else if (baseUrl === '/slice2') {
-    return Mode.Slice2;
-  } else {
-    return null;
-  }
-};
 
 export function AppWrapper({ children, path }: Props) {
   const [mode, setMode] = useState<Mode>(Mode.Slice2);
@@ -87,6 +75,22 @@ export function AppWrapper({ children, path }: Props) {
   );
 }
 
+export const PathProvider: React.FC<{ path: string; children: ReactNode }> = ({
+  children,
+  path
+}: Props) => {
+  return <PathContext.Provider value={path}>{children}</PathContext.Provider>;
+};
+
+// Custom hook to handle observing the path
+export const usePath = () => {
+  const context = useContext(PathContext);
+  if (!context) {
+    throw new Error('usePath must be used within a PathProvider');
+  }
+  return context;
+};
+
 // Custom hook to handle setting and observing the mode
 export const useMode = (): ModeContextType => {
   return useContext(ModeContext);
@@ -106,4 +110,21 @@ export const useMounted = () => {
   }, []);
 
   return mounted;
+};
+
+// Utility function to get the mode from the path
+
+const getModeFromPath = (path: string) => {
+  const pathSegments = path.split('/');
+  const modeSegmentWithoutFragment = pathSegments[1].split('#')[0];
+
+  const baseUrl =
+    baseUrls.find((item) => item === `/${modeSegmentWithoutFragment}`) ?? '';
+  if (baseUrl === '/slice1') {
+    return Mode.Slice1;
+  } else if (baseUrl === '/slice2') {
+    return Mode.Slice2;
+  } else {
+    return null;
+  }
 };
