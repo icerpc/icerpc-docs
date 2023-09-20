@@ -11,8 +11,8 @@ This page describes the grammatical rules, usage, and restrictions of the Slice 
 The `SliceFile` grammar rule is the parser's entry point.
 Once a file's contents have been [preprocessed], the resulting text is matched against this rule, in its entirety.
 
-While the contents of a Slice file may reference things defined in other files, each file is parsed separately.
-There is no notion of 'including' the contents of one file in another, and errors in one file do not affect the parsing of others.
+While the contents of a Slice file may reference definitions in other files, each file is parsed separately.
+There is no notion of 'including' the contents of one file in another, and errors in one file do not affect the parsing of other files.
 
 A Slice file consists of an optional [module declaration][module-declaration], followed by any number of Slice definitions.
 Additionally, [file attributes][attribute] and a [mode declaration][mode-declaration] may be specified at the top of a file, before any other definitions.
@@ -34,7 +34,7 @@ Definition
     ;
 ```
 
-For additional information on Slice files, see the [slice file][slice-file-guide] page.
+For additional information on Slice files, see the [Slice file][slice-file-guide] page.
 
 ### Mode declarations
 
@@ -47,7 +47,7 @@ FileCompilationMode
     ;
 ```
 
-Mode declarations must come before any Slice definitions, including [module declarations][module-declaration].
+Mode declarations must come before any Slice definitions or [module declarations][module-declaration].
 While the compilation mode you select will affect which Slice features are available to you,
 it has no effect on the parsing of, or validity of syntax within, your Slice file.
 For example, even though classes are a Slice1-only feature, `class` is still a keyword within a Slice2 file,
@@ -82,7 +82,7 @@ module A::B // Declares a submodule named `B` that is contained within module `A
 typealias T = AStruct // Don't need to qualify as `A::AStruct`.
 ```
 
-All slice definitions must be contained within modules - Slice definitions cannot exist at 'global' scope.
+All Slice definitions must be contained within modules - Slice definitions cannot exist at global scope.
 If a Slice file contains no Slice definitions, it is legal to omit the module declaration.
 Otherwise, if a Slice file contains any Slice definitions, a module declaration is required,
 and any Slice definitions in the remainder of the file will be contained within the declared module.
@@ -103,9 +103,8 @@ For additional information on modules, see the [module][module-guide] page.
 
 ### Primitive types
 
-Slice supports 17 primitive types (although `AnyClass` is only valid in [`Slice1`][compilation-mode-guide] mode).
-Primitive types are always available: they're defined in any scope of any Slice file.
-They can be referenced with their keywords:
+Slice supports 17 primitive types. These types are always available - they're defined in any scope of any Slice file -
+and can be referenced with their keywords:
 
 ```ebnf {% showTitle=false %}
 Primitive
@@ -124,11 +123,11 @@ Both types can be referenced with their respective keywords: `Sequence` and `Dic
 
 ```ebnf {% showTitle=false %}
 Sequence
-    : "sequence" "<" TypeRef ">"
+    : "Sequence" "<" TypeRef ">"
     ;
 
 Dictionary
-    : "dictionary" "<" TypeRef "," TypeRef ">"
+    : "Dictionary" "<" TypeRef "," TypeRef ">"
     ;
 ```
 
@@ -425,16 +424,16 @@ Examples of valid identifiers:
 ```slice
 // Examples of unscoped identifiers
 foo9
-_bar_
+b_a_r
 BAZ
 
 // Examples of relatively scoped identifiers
 foo9
-foo9::_bar_::BAZ
+foo9::b_a_r::BAZ
 
 // Examples of globally scoped identifiers
 ::foo9
-::foo9::_bar_::BAZ
+::foo9::b_a_r::BAZ
 ```
 
 All Slice [keywords] satisfy the definition of an unscoped identifier.
@@ -504,11 +503,13 @@ SignedInteger
 String literals consist of any number of UTF8 characters, wrapped in a pair of double quotes.
 Any characters within a string literal are treated as opaque text by the parser.
 
-Slice supports escaping special characters within string literals, this allows you to include unprintable characters or literal double quote characters in your string. Characters can be escaped by prefixing them with a backslash.
+Slice supports escaping special characters within string literals.
+This allows you to include unprintable characters or literal double quote characters in your string.
+Characters can be escaped by prefixing them with a backslash.
 To write a literal backslash, you must escape it with another backslash: `\\`.
 
-When parsing, Slice will resolve any escaped characters, removing the `\` escape character where present.
-Apart from this, Slice performs no additional processing of string literals.
+The parser resolves any escaped characters, removing the `\` escape character where present.
+Apart from this, no additional processing is performed on string literals.
 
 Examples of valid string literals:
 
@@ -519,6 +520,8 @@ Examples of valid string literals:
 "a backslash: '\\'"
 ```
 
+String literals can only appear as arguments to an [attribute].
+
 ### Attributes
 
 Slice supports two forms of attributes:
@@ -526,7 +529,7 @@ Slice supports two forms of attributes:
 - File attributes: these consist of an attribute wrapped in a pair of double brackets.
 
 Local attributes can be applied to most Slice definitions by placing them directly before the definition.
-File attributes apply to an entire [slice file][slice-file] and must appear before any Slice definitions or module declarations.
+File attributes apply to an entire [Slice file][slice-file] and must appear before any Slice definitions or module declarations.
 
 ```ebnf {% showTitle=false %}
 FileAttribute
