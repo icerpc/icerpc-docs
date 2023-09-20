@@ -18,7 +18,7 @@ export const SideNav = ({ path }: { path: string }) => {
   ));
 
   return (
-    <div className="sticky top-[59px] hidden h-[calc(100vh-59px-90px)] flex-col items-end overflow-y-auto border-r border-lightBorder dark:border-darkBorder/60 dark:bg-dark lg:flex">
+    <div className="sticky flex-none top-[59px] hidden h-[calc(100vh-59px-90px)] flex-col items-end overflow-y-auto border-r border-lightBorder dark:border-darkBorder/60 dark:bg-dark lg:flex">
       <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-10">
         <div className="sticky top-0 bg-[#fafafa] dark:bg-dark ">
           <SearchButton className="mb-0 mt-8 flex items-start pr-6" />
