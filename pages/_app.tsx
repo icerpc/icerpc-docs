@@ -83,9 +83,9 @@ export default function MyApp(props: {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       <ThemeProvider attribute="class" enableSystem={true}>
-        <AppWrapper>
+        <AppWrapper path={path}>
           <div className="flex min-h-screen flex-col">
-            <TopNav />
+            <TopNav path={path} />
             <main className={clsx(inter.className)} id="main">
               <Component {...pageProps} />
             </main>

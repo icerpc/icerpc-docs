@@ -6,15 +6,15 @@
 // index.md file.
 
 import { useRouter } from 'next/router';
-
+import Image from 'next/image';
 import Markdoc, { Config } from '@markdoc/markdoc';
 import React, { useEffect, useState } from 'react';
 import config, { components } from 'markdoc/schema';
 import fs from 'fs';
 import yaml from 'js-yaml';
-import { Logo } from 'components';
 import { useTheme } from 'next-themes';
 import { Theme } from 'types';
+import logoIcon from 'public/Icerpc-logo.svg';
 
 export async function getStaticProps() {
   let source;
@@ -61,7 +61,8 @@ export default function Home({
     const updatedConfig: Config = {
       ...config,
       variables: {
-        frontmatter
+        frontmatter,
+        path: '/'
       }
     };
 
@@ -112,7 +113,12 @@ const Hero = () => {
       style={background}
     >
       <div className="mb-1 flex items-center justify-center rounded-full p-4">
-        <Logo height={75} className="aspect-square" />
+        <Image
+          src={logoIcon}
+          height={75}
+          alt="IceRPC Logo"
+          className="aspect-square"
+        />
       </div>
       <h2 className="bg-gradient-to-b from-slate-800 to-black bg-clip-text pb-4 text-center text-[40px] font-extrabold dark:bg-none dark:text-white">
         IceRPC Documentation

@@ -9,12 +9,14 @@ const document = {
   transform(node: Node, config: Config) {
     const frontmatter = config.variables?.frontmatter;
     const children = node.transformChildren(config) ?? [];
+    const path = config.variables?.path;
 
     return new Tag(
       `${this.render}`,
       {
         title: frontmatter.title,
         description: frontmatter.description,
+        path: path,
         mode: frontmatter.mode,
         showAside: frontmatter.showAside,
         showReadingTime: frontmatter.showReadingTime,

@@ -1,32 +1,18 @@
 // Copyright (c) ZeroC, Inc.
 
 import clsx from 'clsx';
-import { Breadcrumb, Breadcrumbs } from 'components/Breadcrumbs';
+import { Breadcrumbs } from 'components/Breadcrumbs';
 import { getBreadcrumbs } from 'lib/breadcrumbs';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 
 type Props = {
   title: string;
   description: string;
+  path: string;
   readingTime?: string;
 };
 
-export const Title = ({ title, description, readingTime }: Props) => {
-  const { asPath, isReady } = useRouter();
-  const [breadcrumbs, setBreadcrumbs] = useState<Breadcrumb[]>([]);
-  useEffect(() => {
-    if (isReady) {
-      const path = asPath.split('#')[0];
-      setBreadcrumbs(getBreadcrumbs(path));
-    }
-  }, [isReady, asPath]);
-
-  // Do not display title if on home page
-  if (asPath == '/') {
-    return null;
-  }
-
+export const Title = ({ title, description, path, readingTime }: Props) => {
+  const breadcrumbs = getBreadcrumbs(path);
   const hasBreadcrumbs = breadcrumbs.length > 1;
 
   return (
