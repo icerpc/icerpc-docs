@@ -4,8 +4,11 @@ import { sideBarData, baseUrls } from 'data';
 import { SliceSelector } from '../../SliceSelector';
 import { SearchButton } from '../SearchButton';
 import { SideNavList, isSlicePage } from './SideNavList';
+import { usePath } from 'context/state';
 
-export const SideNav = ({ path }: { path: string }) => {
+export const SideNav = () => {
+  const path = usePath();
+
   // Clean up path
   const pathNoFragment = path.split('#')[0]; // Remove fragment
   const pathSegments = pathNoFragment.split('/'); // Split into segments
@@ -14,7 +17,7 @@ export const SideNav = ({ path }: { path: string }) => {
   // Construct the sidebar cells
   const data = sideBarData(baseUrl);
   const cells = data.map((item, index) => (
-    <SideNavList key={index} path={path} data={item} />
+    <SideNavList key={index} data={item} />
   ));
 
   return (
@@ -24,7 +27,7 @@ export const SideNav = ({ path }: { path: string }) => {
           <SearchButton className="mb-0 mt-8 flex items-start pr-6" />
           {isSlicePage(baseUrl) && (
             <div className="top-0 mb-2 mt-4 bg-none pr-6">
-              <SliceSelector path={path} />
+              <SliceSelector />
             </div>
           )}
         </div>

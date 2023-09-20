@@ -8,7 +8,7 @@ import Head from 'next/head';
 
 import '/public/globals.css';
 
-import { AppWrapper } from 'context/state';
+import { AppWrapper, PathProvider } from 'context/state';
 import { TopNav } from 'components';
 import { Footer } from 'components/Shell';
 import { Analytics } from 'components/Analytics';
@@ -83,16 +83,18 @@ export default function MyApp(props: {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       <ThemeProvider attribute="class" enableSystem={true}>
-        <AppWrapper path={path}>
-          <div className="flex min-h-screen flex-col">
-            <TopNav path={path} />
-            <main className={clsx(inter.className)} id="main">
-              <Component {...pageProps} />
-            </main>
-            <Footer />
-          </div>
-          <Analytics />
-        </AppWrapper>
+        <PathProvider path={path}>
+          <AppWrapper path={path}>
+            <div className="flex min-h-screen flex-col">
+              <TopNav />
+              <main className={clsx(inter.className)} id="main">
+                <Component {...pageProps} />
+              </main>
+              <Footer />
+            </div>
+            <Analytics />
+          </AppWrapper>
+        </PathProvider>
       </ThemeProvider>
     </div>
   );

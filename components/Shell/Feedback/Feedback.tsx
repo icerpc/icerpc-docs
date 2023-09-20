@@ -8,15 +8,17 @@ import {
   positiveFeedbackOptions,
   FeedbackForm
 } from './FeedbackForm';
+import { usePath } from 'context/state';
 
 enum FeedbackType {
   Negative,
   Positive
 }
 
-export const Feedback = ({ path }: { path: string }) => {
+export const Feedback = () => {
   // Undefined means the user has not yet clicked a feedback button
   const [feedbackType, setFeedbackType] = useState<FeedbackType>();
+  const path = usePath();
 
   // Reset feedback type when the route changes
   useEffect(() => setFeedbackType(undefined), [path]);

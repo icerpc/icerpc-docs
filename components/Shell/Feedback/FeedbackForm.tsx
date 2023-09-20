@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
 import clsx from 'clsx';
-import { useMode, usePlatform } from 'context/state';
+import { useMode, usePath, usePlatform } from 'context/state';
 import { useEffect, useState } from 'react';
 import { Mode, Platform } from 'types';
 
@@ -24,7 +24,6 @@ type FeedbackOption = {
 type Props = {
   title: string;
   options: FeedbackOption[];
-  path: string;
 };
 
 export const negativeFeedbackOptions: FeedbackOption[] = [
@@ -100,9 +99,10 @@ const sendFeedback = async (feedback: FeedbackData) => {
   }
 };
 
-export const FeedbackForm = ({ title, options, path }: Props) => {
+export const FeedbackForm = ({ title, options }: Props) => {
   const { mode } = useMode();
   const { platform } = usePlatform();
+  const path = usePath();
   const pageTitle = window.document.title;
 
   const [selected, setSelected] = useState<number>();

@@ -25,12 +25,12 @@ export const Document = ({
   children,
   title,
   description,
-  path,
   mode,
   showAside = true,
   showReadingTime = true
 }: Props) => {
   const { mode: currentMode } = useMode();
+
   const [asideItems, setAsideItems] = useState<AsideItem[]>([]);
   const contentDivRef = useRef<HTMLDivElement | null>(null);
   const [time, setReadTime] = useState('');
@@ -54,7 +54,6 @@ export const Document = ({
           <Title
             title={title}
             description={description}
-            path={path}
             readingTime={showReadingTime ? time : undefined}
           />
         )}
@@ -79,11 +78,11 @@ export const Document = ({
             <>{children}</>
           </div>
         )}
-        <PageHistory path={path} />
+        <PageHistory />
         <Divider id="feedback-divider" margin="my-0" />
-        <Feedback path={path} />
+        <Feedback />
       </article>
-      {showAside && <Aside asideItems={asideItems} path={path} />}
+      {showAside && <Aside asideItems={asideItems} />}
       <style jsx>{`
         .step-container {
           counter-reset: step-counter;

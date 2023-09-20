@@ -2,16 +2,18 @@
 
 import clsx from 'clsx';
 import { Breadcrumbs } from 'components/Breadcrumbs';
+import { usePath } from 'context/state';
 import { getBreadcrumbs } from 'lib/breadcrumbs';
 
 type Props = {
   title: string;
   description: string;
-  path: string;
   readingTime?: string;
 };
 
-export const Title = ({ title, description, path, readingTime }: Props) => {
+export const Title = ({ title, description, readingTime }: Props) => {
+  const path = usePath();
+
   const breadcrumbs = getBreadcrumbs(path);
   const hasBreadcrumbs = breadcrumbs.length > 1;
 

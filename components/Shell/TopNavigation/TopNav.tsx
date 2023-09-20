@@ -37,7 +37,7 @@ const navigationData = (mode: Mode) => [
   }
 ];
 
-export const TopNav = ({ path }: { path: string }) => {
+export const TopNav = () => {
   const { mode } = useMode();
   const data = navigationData(mode);
 
@@ -59,7 +59,6 @@ export const TopNav = ({ path }: { path: string }) => {
                     key={item.href}
                     name={item.name}
                     href={item.href}
-                    path={path}
                   />
                 ))}
               </ul>
@@ -79,7 +78,7 @@ export const TopNav = ({ path }: { path: string }) => {
           <MobileMenu />
         </div>
       </div>
-      <MobileSideNav path={path} />
+      <MobileSideNav />
     </div>
   );
 };
