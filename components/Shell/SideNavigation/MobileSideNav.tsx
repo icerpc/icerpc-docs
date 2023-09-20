@@ -26,12 +26,7 @@ export function MobileSideNav() {
   const breadcrumbs = getBreadcrumbs(path);
   const data = sideBarData(baseUrl);
   const cells = data.map((item, index) => (
-    <SideNavList
-      key={index}
-      path={path}
-      data={item}
-      onClick={() => closeModal()}
-    />
+    <SideNavList key={index} data={item} onClick={() => closeModal()} />
   ));
 
   function closeModal() {
@@ -124,7 +119,7 @@ export function MobileSideNav() {
                         </button>
                       </div>
                       <div className="mt-6">
-                        {isSlicePage(baseUrl) && <SliceSelector path={path} />}
+                        {isSlicePage(baseUrl) && <SliceSelector />}
                       </div>
                     </section>
                     <nav

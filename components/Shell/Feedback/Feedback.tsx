@@ -29,7 +29,6 @@ export const Feedback = () => {
         <FeedbackForm
           title="What went wrong?"
           options={negativeFeedbackOptions}
-          path={path}
         />
       );
     case FeedbackType.Positive:
@@ -37,7 +36,6 @@ export const Feedback = () => {
         <FeedbackForm
           title="What did you like?"
           options={positiveFeedbackOptions}
-          path={path}
         />
       );
     default:
