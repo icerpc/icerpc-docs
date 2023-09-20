@@ -31,7 +31,7 @@
                 arguments: {
                     pattern: /\([^\)\r\n]*\)/,
                     inside: {
-                        string: /\"(?:\\.|[^\\\"\r\n])*?\"/,
+                        string: /\"(?:\\.|[^\\\"\r\n])*\"/,
                         constant: /\b\w+\b/,
                         punctuation: /[,()]/
                     }
@@ -40,7 +40,7 @@
                 punctuation: /[\[\]()]/,
             }
         },
-        string: /\"(?:\\.|[^\\\"\r\n])*?\"/,
+        string: /\"(?:\\.|[^\\\"\r\n])*\"/,
         keyword: /\b(module|struct|exception|class|interface|enum|custom|typealias|compact|idempotent|mode|stream|tag|throws|unchecked)\b/,
         builtin: [
             {

@@ -23,13 +23,13 @@
             }
         ],
         metadata: {
-            pattern: /\[+(?:\s*\"(?:\\.|[^\\\"\r\n])*\"\s*?,?)*\]+/,
+            pattern: /\[+[ \t]*(?:\"(?:\\.|[^\\\"\r\n])*\"[ \t,]*)*\]+/,
             inside: {
-                function: /[a-zA-Z0-9:-]+|\"(?:\\.|[^\\\"\r\n])*?\"/,
+                function: /\"(?:\\.|[^\\\"\r\n])*\"/,
                 punctuation: /[\[\],]/
             }
         },
-        string: /\"(?:\\.|[^\\\"\r\n])*?\"/,
+        string: /\"(?:\\.|[^\\\"\r\n])*\"/,
         keyword: /\b(module|class|struct|exception|enum|interface|sequence|dictionary|const|optional|idempotent|out|local|extends|implements|throws)\b/,
         builtin: [
             {
