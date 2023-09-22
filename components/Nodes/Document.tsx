@@ -13,6 +13,7 @@ type Props = {
   children: ReactElement[];
   title: string;
   description: string;
+  path: string;
   readingTime: string;
   mode?: Mode;
   showAside?: boolean;
@@ -29,6 +30,7 @@ export const Document = ({
   showReadingTime = true
 }: Props) => {
   const { mode: currentMode } = useMode();
+
   const [asideItems, setAsideItems] = useState<AsideItem[]>([]);
   const contentDivRef = useRef<HTMLDivElement | null>(null);
   const [time, setReadTime] = useState('');

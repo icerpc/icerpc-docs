@@ -1,8 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
 import clsx from 'clsx';
-import { useMode, usePlatform } from 'context/state';
-import { useRouter } from 'next/router';
+import { useMode, usePath, usePlatform } from 'context/state';
 import { useEffect, useState } from 'react';
 import { Mode, Platform } from 'types';
 
@@ -101,9 +100,9 @@ const sendFeedback = async (feedback: FeedbackData) => {
 };
 
 export const FeedbackForm = ({ title, options }: Props) => {
-  const { asPath, isReady } = useRouter();
   const { mode } = useMode();
   const { platform } = usePlatform();
+  const path = usePath();
   const pageTitle = window.document.title;
 
   const [selected, setSelected] = useState<number>();
@@ -111,19 +110,12 @@ export const FeedbackForm = ({ title, options }: Props) => {
   const [comment, setComment] = useState<string>();
   const [opacity, setOpacity] = useState('opacity-0');
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
-  const [pathname, setPathname] = useState<string>('');
 
   useEffect(() => {
     setTimeout(() => {
       setOpacity('opacity-100');
     }, 100);
   }, []);
-
-  useEffect(() => {
-    if (isReady) {
-      setPathname(asPath);
-    }
-  }, [isReady, asPath]);
 
   return feedbackSubmitted ? (
     <h3 className="mb-10 mt-5">Thanks for the feedback!</h3>
@@ -247,7 +239,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
               email,
               mode,
               option: selectedOption.title,
-              path: pathname,
+              path,
               platform,
               title: removeTrailingDocs(pageTitle)
             });

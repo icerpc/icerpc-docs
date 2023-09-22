@@ -26,21 +26,21 @@
             }
         ],
         attribute: {
-            pattern: /\[+[^\]\r\n]*\]+/,
+            pattern: /\[+[ \t]*[a-zA-Z0-9_:]+[ \t]*(?:\([ \t]*(?:(?:[a-zA-Z0-9_]+|\"(?:\\.|[^\\\"\r\n])*\")[ \t]*(?:,[ \t]*(?:[a-zA-Z0-9_]+|\"(?:\\.|[^\\\"\r\n])*\")[ \t]*)*)?\)[ \t]*)?\]+/,
             inside: {
                 arguments: {
-                    pattern: /\([^\)\r\n]*\)/,
+                    pattern: /\([ \t]*(?:(?:[a-zA-Z0-9_]+|\"(?:\\.|[^\\\"\r\n])*\")[ \t]*(?:,[ \t]*(?:[a-zA-Z0-9_]+|\"(?:\\.|[^\\\"\r\n])*\")[ \t]*)*)?\)/,
                     inside: {
-                        string: /\"(?:\\.|[^\\\"\r\n])*?\"/,
-                        constant: /\b\w+\b/,
-                        punctuation: /[,()]/
+                        string: /\"(?:\\.|[^\\\"\r\n])*\"/,
+                        constant: /[a-zA-Z0-9_]+/,
+                        punctuation: /[(),]/,
                     }
                 },
-                function: /[\w:]+/,
-                punctuation: /[\[\]()]/,
+                function: /[a-zA-Z0-9_:]+/,
+                punctuation: /[\[\]]/,
             }
         },
-        string: /\"(?:\\.|[^\\\"\r\n])*?\"/,
+        string: /\"(?:\\.|[^\\\"\r\n])*\"/,
         keyword: /\b(module|struct|exception|class|interface|enum|custom|typealias|compact|idempotent|mode|stream|tag|throws|unchecked)\b/,
         builtin: [
             {

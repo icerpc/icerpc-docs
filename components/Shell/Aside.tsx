@@ -13,7 +13,7 @@ import {
 
 import { baseUrls } from 'data';
 import { Divider } from 'components/Divider';
-import { useRouter } from 'next/router';
+import { usePath } from 'context/state';
 
 export type AsideItem = {
   id: string;
@@ -23,6 +23,15 @@ export type AsideItem = {
 
 export const Aside = ({ asideItems }: { asideItems: AsideItem[] }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const path = usePath();
+
+  // Edit this page URL
+  const baseEditPath = 'https://github.com/icerpc/icerpc-docs/tree/main/pages';
+  let basePath = path.split('#')[0];
+  basePath = resolvePath(path);
+  basePath = path.replace(/^\/slice\d/, '/slice'); // strip away slice version
+  if (!basePath.endsWith('.md')) basePath += '.md'; // ensure that basePath ends with .md
+  const editUrl = baseEditPath + basePath;
 
   const items = asideItems.filter(
     (item) =>
@@ -30,23 +39,7 @@ export const Aside = ({ asideItems }: { asideItems: AsideItem[] }) => {
       (item.level === 2 || item.level === 3) &&
       item.title !== 'Next steps'
   );
-
   const activeId = useActiveId(items.map((item) => item.id));
-
-  const { asPath, isReady } = useRouter();
-
-  // Edit this page URL
-  const baseEditPath = 'https://github.com/icerpc/icerpc-docs/tree/main/pages';
-  const [editUrl, setEditUrl] = useState(baseEditPath);
-
-  useEffect(() => {
-    if (isReady) {
-      let path = asPath.split('#')[0];
-      path = resolvePath(path);
-      path = path.replace(/^\/slice\d/, '/slice'); // strip away slice version
-      setEditUrl(baseEditPath + path);
-    }
-  }, [asPath, isReady]);
 
   useEffect(() => {
     const handleScroll = () => {

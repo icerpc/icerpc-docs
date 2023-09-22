@@ -86,15 +86,15 @@ module Example
 enum Fruit { Apple, Orange }
 
 // Slice2-compatible: `Point` could be defined as-is in a Slice2 file.
-compat struct Point { x: int32, y: int32 }
+compact struct Point { x: int32, y: int32 }
 
 // Slice2-incompatible: a class cannot be defined in a Slice2 file.
 class Vehicle {
     hasEngine: bool
 }
 
-// Slice2-incompatible: `VehicleCarrier` references a Slice1-only type (`Vehicle`)
-compat struct VehicleCarrier {
+// Slice2-incompatible: `VehicleCarrier` references a Slice1-only type (`Vehicle`).
+compact struct VehicleCarrier {
     vehicle: Vehicle?
 }
 ```

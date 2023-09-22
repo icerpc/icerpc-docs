@@ -4,28 +4,28 @@ import { useRouter } from 'next/router';
 import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
 import { Tooltip } from 'flowbite-react';
-import { useMode } from 'context/state';
+import { useMode, usePath } from 'context/state';
 import { Mode, modes } from 'types';
 import { AppLink } from './Nodes/AppLink';
 
 export const SliceSelector = () => {
   const { mode: activeMode, setMode } = useMode();
-  const { asPath, push } = useRouter();
+  const path = usePath();
+  const { push } = useRouter();
 
   function onChange(index: number) {
     const mode = modes[index];
     setMode(mode);
 
-    // Split the asPath into the path and fragment
-    const [path, fragment] = asPath.split('#');
+    const [corePath, fragment] = path.split('#');
 
     let newPath;
-    if (path === '/slice1') {
+    if (corePath === '/slice1') {
       newPath = mode === Mode.Slice1 ? '/slice1' : '/slice2';
-    } else if (path === '/slice2') {
+    } else if (corePath === '/slice2') {
       newPath = mode === Mode.Slice1 ? '/slice1' : '/slice2';
     } else {
-      newPath = path.replace(
+      newPath = corePath.replace(
         /\/slice[1-2]\//,
         `/slice${mode === Mode.Slice1 ? 1 : 2}/`
       );
