@@ -8,16 +8,13 @@ type Props = {
   columns?: number;
 };
 
-export const Grid = ({ children, columns = 3 }: Props) => {
+export const Grid = ({ children }: Props) => {
   return (
     <>
       <div
         key={children?.toString() ?? 'grid'}
         // eslint-disable-next-line tailwindcss/no-custom-classname
-        className={clsx(
-          'my-8 grid gap-4',
-          columns !== undefined ? `lg:grid-cols-${columns}` : 'lg:grid-cols-1'
-        )}
+        className={clsx('my-8 grid grid-cols-1 gap-4 md:grid-cols-3')}
       >
         {Children.toArray(children).map((child, index) => {
           return <Fragment key={index}>{child}</Fragment>;

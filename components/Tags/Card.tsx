@@ -12,7 +12,7 @@ export const Card = ({ title, description, href }: CardProps) => {
   return (
     <AppLink
       href={href}
-      className="h-full rounded-md border-[1px] bg-white p-4 transition-shadow duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg dark:border-darkBorder dark:bg-darkAccent"
+      className="col-span-1 h-full rounded-md border-[1px] bg-white p-4 transition-shadow duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg dark:border-darkBorder dark:bg-darkAccent"
       showArrow={false}
     >
       <h4 className="m-0 font-semibold text-primary dark:text-white">
