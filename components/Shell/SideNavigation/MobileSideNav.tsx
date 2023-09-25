@@ -13,11 +13,11 @@ import React, { Fragment, useState } from 'react';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { getBreadcrumbs } from 'lib/breadcrumbs';
 import { SideNavList } from './SideNavList';
-import { usePath } from 'context/state';
+import { usePathname } from 'next/navigation';
 
 export function MobileSideNav() {
   const [isOpen, setIsOpen] = useState(false);
-  const path = usePath();
+  const path = usePathname();
 
   // Clean up path
   const pathNoFragment = path.split('#')[0]; // Remove fragment

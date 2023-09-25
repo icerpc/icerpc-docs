@@ -34,6 +34,9 @@ export default async function Home() {
             </p>
             <Divider />
             <HomeTitle title="Key Features" description="Discover IceRPC" />
+            <p>
+              Jump directly to the documentation of these distinctive features:
+            </p>
             <Table>
               <thead>
                 <TR>
@@ -87,10 +90,10 @@ export default async function Home() {
                 <TR>
                   <TD>
                     <AppLink href="/icerpc/dependency-injection/di-and-icerpc-for-csharp">
-                      Slice
+                      Dependency injection
                     </AppLink>
                   </TD>
-                  <TD>Dependency injection</TD>
+                  <TD>Learn how to use IceRPC with a DI container.</TD>
                 </TR>
                 <TR>
                   <TD>
