@@ -5,7 +5,7 @@
 import { useRouter } from 'next/navigation';
 import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
-import { Tooltip } from 'flowbite-react';
+import { Tooltip } from 'react-tooltip';
 import { useMode, usePath } from 'context/state';
 import { Mode, modes } from 'types';
 import { AppLink } from './Nodes/AppLink';
@@ -77,7 +77,7 @@ const ModeTab = ({ mode, selected }: ModeTabProps) => {
   );
   const tooltipContent =
     mode === Mode.Slice1 ? (
-      <p className="px-2">
+      <p>
         Use Slice1 for Ice interop.
         <br />
         <AppLink href="/slice1/language-guide/compilation-mode">
@@ -85,8 +85,9 @@ const ModeTab = ({ mode, selected }: ModeTabProps) => {
         </AppLink>
       </p>
     ) : (
-      <p className="px-2">
-        Use Slice2 for new projects.{' '}
+      <p>
+        Use Slice2 for new projects.
+        <br />
         <AppLink href="/slice2/language-guide/compilation-mode">
           Learn more
         </AppLink>
@@ -94,14 +95,27 @@ const ModeTab = ({ mode, selected }: ModeTabProps) => {
     );
 
   return (
-    <Tooltip
-      content={tooltipContent}
-      placement="bottom"
-      className="w-56 dark:!bg-[#32363c] [&>*]:dark:!bg-[#32363c]"
-    >
-      <Tab as="div" className={className}>
+    <>
+      <Tab
+        as="div"
+        className={className}
+        id={`tooltip-${mode}`}
+        data-tooltip-place="bottom"
+      >
         {mode}
       </Tab>
-    </Tooltip>
+      <Tooltip
+        anchorSelect={`#tooltip-${mode}`}
+        clickable
+        style={{
+          width: '14rem',
+          backgroundColor: '#32363c',
+          borderRadius: '0.6rem',
+          opacity: '1'
+        }}
+      >
+        {tooltipContent}
+      </Tooltip>
+    </>
   );
 };
