@@ -58,7 +58,7 @@ For additional information on modes, see the [compilation mode][compilation-mode
 ### Module declarations
 
 Module declarations consist of the `module` keyword, followed by an [identifier].
-[local attributes][attribute] can be applied to a module in its prelude, but [doc comments][doc-comment] on modules are forbidden.
+[Local attributes][attribute] can be applied to a module in its prelude, but [doc comments][doc-comment] on modules are forbidden.
 
 ```ebnf {% showTitle=false %}
 Module
