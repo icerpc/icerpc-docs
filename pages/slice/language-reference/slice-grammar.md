@@ -48,8 +48,8 @@ FileCompilationMode
 ```
 
 Mode declarations must come before any Slice definitions or [module declarations][module-declaration].
-While the compilation mode you select will affect which Slice features are available to you,
-it has no effect on the parsing of, or validity of syntax within, your Slice file.
+The compilation mode you select determines which Slice features are available to you
+but has no effect on the parsing of, or validity of syntax within, your Slice file.
 For example, even though classes are a Slice1-only feature, `class` is still a keyword within a Slice2 file,
 and if you define a class, syntax errors in that class's definition will still be reported normally.
 
@@ -265,10 +265,12 @@ ReturnType
     | "->" "(" UndelimitedList<Parameter> ")"
     ;
 ```
+Parameter lists may be optionally separated by commas. This applies to both operation parameters and return parameters.
 
 There are two syntaxes for [exception specifications][exception-specification-guide], depending on the number of [exceptions][exception] being specified.
 A single exception can be specified with the `throws` keyword, followed by the (possibly scoped) identifier of an exception.
 Multiple exceptions can be specified as a tuple. This consists of the `throws` keyword, followed by the (possibly scoped) identifiers of one or more exceptions, separated by commas.
+Exception specifications can only declared in [`Slice1`][compilation-mode-guide] mode.
 
 ```ebnf {% showTitle=false %}
 ExceptionSpecification
@@ -276,8 +278,6 @@ ExceptionSpecification
     | "throws" "(" NonEmptyCommaList<TypeRef> ")"
     ;
 ```
-
-Parameter lists may be optionally separated by commas. This applies to both operation parameters and return parameters.
 
 For additional information on operations, see the [operation][operation-guide] pages.
 
