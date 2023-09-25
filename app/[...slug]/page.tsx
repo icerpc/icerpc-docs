@@ -6,6 +6,8 @@ import React from 'react';
 import { components } from 'markdoc/schema';
 import { getAllMarkdownFiles, getMarkdownContent } from 'lib/markdown';
 import { SideNav } from 'components';
+import { Metadata } from 'next';
+import { baseUrls } from 'data';
 
 export const dynamicParams = false;
 
@@ -16,6 +18,26 @@ type Params = {
 type PageProps = {
   params: Params;
 };
+
+export async function generateMetadata({
+  params
+}: PageProps): Promise<Metadata> {
+  const path = '/' + params.slug.join('/') ?? '';
+  const { frontmatter } = await getMarkdownContent(path);
+  const title: string = frontmatter?.title ?? '';
+  const description: string = frontmatter?.description ?? '';
+  return {
+    title,
+    description,
+    openGraph: {
+      images: {
+        url: `https://docs.icerpc.dev/api/og?title=${
+          baseUrls.includes(path) ? 'Overview' : title
+        }&description=${description}&path=${encodeURIComponent(path)}`
+      }
+    }
+  };
+}
 
 export async function generateStaticParams() {
   const baseUrls = [

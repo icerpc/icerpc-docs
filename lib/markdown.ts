@@ -91,7 +91,10 @@ export async function getMarkdownContent(slug: string) {
       readingTime
     }
   };
-  return { content: Markdoc.transform(ast, updatedConfig) };
+  return {
+    content: Markdoc.transform(ast, updatedConfig),
+    frontmatter: (frontmatter as any) || {}
+  };
 }
 
 // This function is used to filter out tags that don't match the current mode.

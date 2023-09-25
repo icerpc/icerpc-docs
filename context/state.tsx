@@ -6,9 +6,10 @@ import { ReactNode } from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { getModeFromPath } from 'utils/modeFromPath';
 import { Mode, Platform } from 'types';
+import { usePathname } from 'next/navigation';
 
 type ModeContextType = {
-  mode: Mode;
+  mode?: Mode;
   setMode: (mode: Mode) => void;
 };
 type PlatformContextType = {
@@ -24,7 +25,7 @@ type Props = {
 const PathContext = createContext<string | null>(null);
 
 const ModeContext = createContext<ModeContextType>({
-  mode: Mode.Slice2,
+  mode: undefined,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setMode: () => {}
 });
@@ -35,24 +36,25 @@ const PlatformContext = createContext<PlatformContextType>({
   setPlatform: () => {}
 });
 
-export function AppWrapper({ children, path }: Props) {
-  const [mode, setMode] = useState<Mode>(Mode.Slice2);
+export function AppWrapper({ children }: { children: ReactNode }) {
+  const [mode, setMode] = useState<Mode | undefined>(undefined);
   const [platform, setPlatform] = useState<Platform>(Platform.csharp);
+  const path = usePathname();
 
   useEffect(() => {
     // Get the mode from the path
     const pathMode = getModeFromPath(path);
 
     // Get the platform and mode strings from local storage if it exists
-    const localPlatformString = localStorage.getItem('platform');
-    const localModeString = localStorage.getItem('mode');
+    const localPlatformString = localStorage.getItem('platform') || null;
+    const localModeString = localStorage.getItem('mode') || null;
 
     // If the platform and mode exist in local storage, parse them and set them as the current platform and mode
     const localPlatform: Platform | null = localPlatformString
-      ? JSON.parse(localPlatformString)
+      ? tryParseJSON(localPlatformString)
       : null;
     const localMode: Mode | null = localModeString
-      ? JSON.parse(localModeString)
+      ? tryParseJSON(localModeString)
       : null;
 
     localPlatform && setPlatform(localPlatform);
@@ -113,3 +115,11 @@ export const useMounted = () => {
 
   return mounted;
 };
+
+function tryParseJSON(jsonString: string) {
+  try {
+    return JSON.parse(jsonString);
+  } catch (e) {
+    return null;
+  }
+}
