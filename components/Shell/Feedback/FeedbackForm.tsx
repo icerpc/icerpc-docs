@@ -1,7 +1,9 @@
 // Copyright (c) ZeroC, Inc.
 
+'use client';
+
 import clsx from 'clsx';
-import { useMode, usePath, usePlatform } from 'context/state';
+import { useMode, usePlatform, usePath } from 'context/state';
 import { useEffect, useState } from 'react';
 import { Mode, Platform } from 'types';
 

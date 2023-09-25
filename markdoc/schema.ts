@@ -10,7 +10,6 @@ import { TH, TR, TD, Table } from 'components/Nodes/Table';
 // Tags
 import { Callout } from 'components/Tags/Callout';
 import { Card } from 'components/Tags/Card';
-import { ConditionalTheme } from 'components/Tags/ConditionalTheme';
 import { Divider } from 'components/Divider';
 import { Examples } from 'components/Tags/Examples';
 import { Explore } from 'components/Tags/Explore';
@@ -43,7 +42,6 @@ export const components = {
   Callout,
   Card,
   CodeBlock,
-  ConditionalTheme,
   Divider,
   Document,
   Examples,

@@ -1,5 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
+'use client';
+
 import { useMode } from 'context/state';
 import { ReactNode } from 'react';
 import { Mode } from 'types';

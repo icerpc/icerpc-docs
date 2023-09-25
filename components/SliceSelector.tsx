@@ -1,6 +1,8 @@
 // Copyright (c) ZeroC, Inc.
 
-import { useRouter } from 'next/router';
+'use client';
+
+import { useRouter } from 'next/navigation';
 import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
 import { Tooltip } from 'flowbite-react';

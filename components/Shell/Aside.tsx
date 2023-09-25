@@ -1,19 +1,17 @@
 // Copyright (c) ZeroC, Inc.
 
+'use client';
+
 import React, { ReactNode, useState, useEffect } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
-import {
-  faCircleUp,
-  faMessage,
-  faPenToSquare
-} from '@fortawesome/free-regular-svg-icons';
+import { faMessage, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 import { baseUrls } from 'data';
 import { Divider } from 'components/Divider';
-import { usePath } from 'context/state';
+import { BackToTop } from './BackToTop';
 
 export type AsideItem = {
   id: string;
@@ -21,18 +19,13 @@ export type AsideItem = {
   level: number;
 };
 
-export const Aside = ({ asideItems }: { asideItems: AsideItem[] }) => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const path = usePath();
-
-  // Edit this page URL
-  const baseEditPath = 'https://github.com/icerpc/icerpc-docs/tree/main/pages';
-  let basePath = path.split('#')[0];
-  basePath = resolvePath(path);
-  basePath = path.replace(/^\/slice\d/, '/slice'); // strip away slice version
-  if (!basePath.endsWith('.md')) basePath += '.md'; // ensure that basePath ends with .md
-  const editUrl = baseEditPath + basePath;
-
+export const Aside = ({
+  asideItems,
+  path
+}: {
+  asideItems: AsideItem[];
+  path: string;
+}) => {
   const items = asideItems.filter(
     (item) =>
       item.id &&
@@ -40,18 +33,6 @@ export const Aside = ({ asideItems }: { asideItems: AsideItem[] }) => {
       item.title !== 'Next steps'
   );
   const activeId = useActiveId(items.map((item) => item.id));
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const position = window.scrollY;
-      setScrollPosition(position);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     <aside
@@ -85,7 +66,7 @@ export const Aside = ({ asideItems }: { asideItems: AsideItem[] }) => {
           className="m-0 p-0 pl-[2px]"
           style={{ color: 'var(--primary-color)' }}
         >
-          <ActionItem href={editUrl}>
+          <ActionItem href={editPageUrl(path)}>
             <FontAwesomeIcon
               icon={faPenToSquare}
               className="mr-[6px] h-[14px] w-[14px] text-primary"
@@ -101,19 +82,7 @@ export const Aside = ({ asideItems }: { asideItems: AsideItem[] }) => {
           </ActionItem>
         </ul>
         <Divider />
-        {scrollPosition > 100 && (
-          <button
-            className="my-4 flex animate-fade-in-up flex-row items-center pl-[2px] text-xs font-semibold uppercase  dark:text-white"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            <FontAwesomeIcon
-              icon={faCircleUp}
-              className="mr-4 h-4 w-4 text-primary"
-            />
-
-            <h2> Back to top </h2>
-          </button>
-        )}
+        <BackToTop />
       </nav>
     </aside>
   );
@@ -209,4 +178,14 @@ const ListItem = ({ item, activeId }: ListItemProps) => {
       </Link>
     </li>
   );
+};
+
+const editPageUrl = (path: string) => {
+  const baseEditPath =
+    'https://github.com/icerpc/icerpc-docs/tree/main/content';
+  let basePath = path.split('#')[0];
+  basePath = resolvePath(path);
+  basePath = path.replace(/^\/slice\d/, '/slice'); // strip away slice version
+  if (!basePath.endsWith('.md')) basePath += '.md'; // ensure that basePath ends with .md
+  return baseEditPath + basePath;
 };

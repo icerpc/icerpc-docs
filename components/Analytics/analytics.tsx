@@ -1,5 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
+'use client';
+
 import { useState, useEffect } from 'react';
 import { setCookie, getCookie } from 'cookies-next';
 import { AnimatePresence } from 'framer-motion';

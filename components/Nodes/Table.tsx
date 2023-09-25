@@ -73,20 +73,9 @@ export const TD = ({ align, children, dividers }: TDProps) => {
       )}
     >
       {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-      <div className="code-container">{children}</div>
-      <style jsx>{`
-        .code-container {
-          display: inline-block;
-        }
-        .code-container :global(code) {
-          overflow-x: none;
-        }
-
-        .code-container :global(a) {
-          overflow-x: none;
-          word-break: break-word;
-        }
-      `}</style>
+      <div className="[&>code]:overflow-x-none [&>a]:overflow-x-none [&>a]:break-word inline-block">
+        {children}
+      </div>
     </td>
   );
 };

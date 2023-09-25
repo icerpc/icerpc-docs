@@ -1,8 +1,10 @@
 // Copyright (c) ZeroC, Inc.
 
-import { baseUrls } from 'data';
+'use client';
+
 import { ReactNode } from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
+import { getModeFromPath } from 'utils/modeFromPath';
 import { Mode, Platform } from 'types';
 
 type ModeContextType = {
@@ -110,21 +112,4 @@ export const useMounted = () => {
   }, []);
 
   return mounted;
-};
-
-// Utility function to get the mode from the path
-
-const getModeFromPath = (path: string) => {
-  const pathSegments = path.split('/');
-  const modeSegmentWithoutFragment = pathSegments[1].split('#')[0];
-
-  const baseUrl =
-    baseUrls.find((item) => item === `/${modeSegmentWithoutFragment}`) ?? '';
-  if (baseUrl === '/slice1') {
-    return Mode.Slice1;
-  } else if (baseUrl === '/slice2') {
-    return Mode.Slice2;
-  } else {
-    return null;
-  }
 };

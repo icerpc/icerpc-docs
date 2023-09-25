@@ -1,5 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
+'use client';
+
 import { useState } from 'react';
 import copy from 'copy-to-clipboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

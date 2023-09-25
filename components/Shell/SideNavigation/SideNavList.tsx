@@ -11,19 +11,18 @@ import {
   isCategory,
   isLink
 } from 'types';
-import { usePath } from 'context/state';
 
 type SideNavListProps = {
   data: SideBarSourceType;
+  path: string;
   onClick?: React.MouseEventHandler<HTMLAnchorElement> | undefined;
 };
 
 export const SideNavList = ({
   data,
+  path,
   onClick
 }: SideNavListProps): React.ReactElement[] => {
-  const path = usePath();
-
   if (isCategory(data)) {
     const category = data;
     return [
@@ -98,6 +97,3 @@ const ListItem = (
     );
   }
 };
-
-export const isSlicePage = (baseUrl: string) =>
-  ['/slice1', '/slice2'].includes(baseUrl);
