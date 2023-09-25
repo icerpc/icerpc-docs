@@ -3,30 +3,38 @@ title: Connection idle timeout
 description: Understand connection idle timeout.
 ---
 
-## Idle Timeout
+## Idle timeout
 
-The transport implementation considers the connection lost if it doesn't receive data within the period defined by the
-idle timeout. The idle timeout is specified with the [IdleTimeout][connection-parameters] parameter. Each side of the
-connection advertises its idle timeout and the minimum value is used for the connection.
+The transport implementation considers the connection lost if it doesn't receive any data within the period defined by
+the idle timeout. The idle timeout is specified with the [IdleTimeout][connection-parameters] parameter. Each side of
+the connection advertises its idle timeout and agree to use the minimum value during connection establishment.
+
+{% callout %}
+The default idle timeout is 30 seconds.
+{% /callout %}
+
+Each side of a connection maintains an idle timer that it restarts when it receives data. If this idle timer ever
+expires, the expired side of the connection considers the connection dead and disposes of this connection immediately.
+
+This idle timeout is comparable (but not identical) to QUIC's [idle timeout][QUIC idle timeout].
 
 ## Keeping a connection alive
 
-To prevent the idle timeout from being triggered, the client or server can send a [Ping] frame. When the peer receives
-this `Ping` frame, it resets its idle timeout timer and send back a [Pong] frame. The reception of the `Pong` frame will
-in turn reset the idle timeout timer of the receiver.
+Slic is responsible for preventing the connection's idle timers from expiring when the application (the upper protocol)
+doesn't write anything to this connection.
 
-It's up to the transport implementation to decide if and when `Ping` frames are sent.
+Slic keeps connections alive by sending [Ping] frames. A Slic client connection sends `Ping` frames to the server; a
+Slic server connection never sends `Ping` frames to the client.
 
-A `Ping` frame carries an opaque payload. This payload is sent back with the `Pong` frame. Multiple `Ping` frames can be
-sent concurrently.
+A Slic client connection sends a `Ping` frame (idle timeout / 2) after connection establishment and (idle timeout / 2)
+after any write to that connection. The sending of a `Ping` frame is itself a write that schedules the sending of a new
+`Ping` frame; this next `Ping` is deferred when the caller (upper protocol) on the client-side performs a write
+operation on the connection.
 
-{% callout %}
-
-The `Ping` frame can be used for different purposes. For example, it can be used to keep alive a connection or to
-measure the round-trip time (RTT). The opaque payload allows to identify the different `Ping` frames.
-
-{% /callout %}
+When the server receives a `Ping` frame, it restarts its idle timer and sends back a [Pong] frame. The reception of the
+`Pong` frame in turn restarts the idle timer of the client.
 
 [connection-parameters]: connection-establishment#connection-establishment-parameters
 [Ping]: protocol-frames#ping-frame
 [Pong]: protocol-frames#pong-frame
+[QUIC idle timeout]: https://www.rfc-editor.org/rfc/rfc9000.html#name-idle-timeout
