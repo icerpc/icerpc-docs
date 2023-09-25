@@ -185,7 +185,8 @@ const editPageUrl = (path: string) => {
     'https://github.com/icerpc/icerpc-docs/tree/main/content';
   let basePath = path.split('#')[0];
   basePath = resolvePath(path);
-  basePath = path.replace(/^\/slice\d/, '/slice'); // strip away slice version
+  basePath = basePath.replace(/^\/slice\d/, '/slice'); // strip away slice version
   if (!basePath.endsWith('.md')) basePath += '.md'; // ensure that basePath ends with .md
+
   return baseEditPath + basePath;
 };
