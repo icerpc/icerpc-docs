@@ -13,6 +13,7 @@ export const Grid = ({ children, columns = 3 }: Props) => {
     <>
       <div
         key={children?.toString() ?? 'grid'}
+        // eslint-disable-next-line tailwindcss/no-custom-classname
         className={clsx(
           'my-8 grid gap-4',
           columns !== undefined ? `lg:grid-cols-${columns}` : 'lg:grid-cols-1'

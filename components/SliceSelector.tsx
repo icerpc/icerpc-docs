@@ -77,7 +77,7 @@ const ModeTab = ({ mode, selected }: ModeTabProps) => {
   );
   const tooltipContent =
     mode === Mode.Slice1 ? (
-      <p>
+      <p className="px-2">
         Use Slice1 for Ice interop.
         <br />
         <AppLink href="/slice1/language-guide/compilation-mode">
@@ -85,7 +85,7 @@ const ModeTab = ({ mode, selected }: ModeTabProps) => {
         </AppLink>
       </p>
     ) : (
-      <p>
+      <p className="px-2">
         Use Slice2 for new projects.{' '}
         <AppLink href="/slice2/language-guide/compilation-mode">
           Learn more
