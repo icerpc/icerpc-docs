@@ -49,11 +49,9 @@ export const SliceSelector = () => {
           onChange={onChange}
         >
           <Tab.List className="flex space-x-2 rounded-xl bg-transparent">
-            {modes.map((mode) => {
-              return (
-                <ModeTab key={mode} mode={mode} selected={mode == activeMode} />
-              );
-            })}
+            {modes.map((mode) => (
+              <ModeTab key={mode} mode={mode} selected={mode == activeMode} />
+            ))}
           </Tab.List>
         </Tab.Group>
       </div>
@@ -99,7 +97,7 @@ const ModeTab = ({ mode, selected }: ModeTabProps) => {
     <Tooltip
       content={tooltipContent}
       placement="bottom"
-      className="w-56 p-3 dark:!bg-[#32363c] [&>*]:dark:!bg-[#32363c]"
+      className="w-56 dark:!bg-[#32363c] [&>*]:dark:!bg-[#32363c]"
     >
       <Tab as="div" className={className}>
         {mode}

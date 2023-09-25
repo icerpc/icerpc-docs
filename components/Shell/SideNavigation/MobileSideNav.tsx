@@ -43,6 +43,9 @@ export function MobileSideNav() {
   // If on home page / return nothing
   if (path === '/') return null;
 
+  // If no sidebar data return nothing
+  if (data.length === 0) return null;
+
   const isSlicePage = ['/slice1', '/slice2'].includes(baseUrl);
 
   return (
