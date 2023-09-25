@@ -7,11 +7,11 @@
 }
 
 /* Styles for dark theme */
-.search :global(.dark .DocSearch-Button) {
-  --docsearch-text-color: rgba(255, 255, 255, 1);
-  --docsearch-muted-color: rgba(255, 255, 255, 0.6);
-  background: rgb(35, 36, 41);
-  border: 1px solid rgba(46, 46, 46, 0.6);
+:global(html.dark) body .search :global(.DocSearch-Button) {
+  --docsearch-text-color: rgba(255, 255, 255, 1) !important;
+  --docsearch-muted-color: rgba(255, 255, 255, 0.6) !important;
+  background: rgb(35, 36, 41) !important;
+  border: 1px solid rgba(46, 46, 46, 0.6) !important;
 }
 
 /* Other Global Styles */
