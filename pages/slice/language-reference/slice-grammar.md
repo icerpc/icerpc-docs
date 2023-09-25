@@ -14,9 +14,9 @@ Once a file's contents have been [preprocessed], the resulting text is matched a
 While the contents of a Slice file may reference definitions in other files, each file is parsed separately.
 There is no notion of 'including' the contents of one file in another, and errors in one file do not affect the parsing of other files.
 
-A Slice file consists of an optional [module declaration][module-declaration], followed by any number of Slice definitions.
-Additionally, [file attributes][attribute] and a [mode declaration][mode-declaration] may be specified at the top of a file, before any other definitions.
-Declaring more than one mode in a single file is forbidden.
+A slice file consists of any number of [file attributes][attribute] and up to one [mode statement][mode-statement].
+These can appear in any order, but specifying more than one mode in a single file is forbidden.
+This is followed by an optional [module declaration][module-declaration], followed by any number of Slice definitions.
 
 ```ebnf {% showTitle=false %}
 SliceFile
@@ -528,8 +528,8 @@ Slice supports two forms of attributes:
 - Local attributes: these consist of an attribute wrapped in a pair of single brackets.
 - File attributes: these consist of an attribute wrapped in a pair of double brackets.
 
-Local attributes can be applied to most Slice definitions by placing them directly before the definition.
-File attributes apply to an entire [Slice file][slice-file] and must appear before any Slice definitions or module declarations.
+Local attributes can be applied to any Slice definition or declaration by appearing directly before one.
+File attributes apply to an entire [Slice file][slice-file] and must appear before any Slice definitions declarations.
 
 ```ebnf {% showTitle=false %}
 FileAttribute
@@ -542,8 +542,11 @@ LocalAttribute
 ```
 
 An attribute consists of a directive, optionally followed by attribute arguments.
-A directive is syntactically equivalent to a [scoped identifier][identifier], but instead of Slice scopes, its scopes determine when the attribute is meaningful.
-For example, a directive with no scope like `deprecated` will always apply, but a directive like `cs::type` will only apply when running `slicec-cs`.
+
+A directive is syntactically equivalent to a [scoped identifier][identifier], but instead of specifying namespaces, the presence of scopes limits when the attribute is applicable.
+When no scopes are specified, the attribute is always applied, but when scopes are present, it is applied conditionally.
+For example, `deprecated` is always applied, but `cs::type` will only be applied when compiling to C#.
+
 Attribute arguments consist of any number of arguments wrapped in a pair of parenthesis, separated by commas.
 Arguments may be either a [string literal][string] or an [unscoped identifier][identifier].
 
@@ -557,10 +560,8 @@ AttributeArgument
     ;
 ```
 
-How many arguments are accepted/required is up to the directive.
-But supplying too many or too few arguments is never a syntax error.
-
-For additional information on attributes, see the [attribute] page.
+Each attribute accepts/requires a different number of arguments.
+For a list of attributes and additional information on them, see the [attribute] page.
 
 ## Lexical grammar
 
