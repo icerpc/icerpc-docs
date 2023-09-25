@@ -331,7 +331,7 @@ Enumerator
     ;
 ```
 
-The enum that an enumerator is defined within determines the allowed values;
+The enum that an enumerator is defined within determines the allowed values.
 An enumerator's value must be within the bounds of the enum's underling type.
 
 For additional information on enumerators, see the [enumerator][enum-guide] page.
