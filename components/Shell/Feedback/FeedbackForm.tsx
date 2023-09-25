@@ -239,7 +239,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
             sendFeedback({
               additionalFeedback: comment,
               email,
-              mode,
+              mode: mode ?? Mode.Slice2,
               option: selectedOption.title,
               path,
               platform,
