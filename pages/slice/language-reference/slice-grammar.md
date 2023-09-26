@@ -14,7 +14,7 @@ Once a file's contents have been [preprocessed], the resulting text is matched a
 While the contents of a Slice file may reference definitions in other files, each file is parsed separately.
 There is no notion of 'including' the contents of one file in another, and errors in one file do not affect the parsing of other files.
 
-A slice file consists of any number of [file attributes][attribute] and up to one [mode statement][mode-statement].
+A slice file consists of any number of [file attributes][attribute] and at most one [mode statement][mode-statement].
 These can appear in any order, but specifying more than one mode in a single file is forbidden.
 This is followed by an optional [module declaration][module-declaration], followed by any number of Slice definitions.
 It is illegal for a file to contain Slice definitions without a module declaration.
