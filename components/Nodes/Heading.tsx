@@ -1,13 +1,11 @@
 // Copyright (c) ZeroC, Inc.
 
 import React, { ReactNode } from 'react';
-import { LinkIcon } from '@heroicons/react/24/solid';
-import { useRouter } from 'next/router';
-import copy from 'copy-to-clipboard';
 import clsx from 'clsx';
 
 import { Divider } from 'components/Divider';
 import { IcerpcSlice } from 'components/IcerpcSlice';
+import { HeadingCopyButton } from './HeadingCopyButton';
 
 type Props = {
   id?: string;
@@ -18,22 +16,6 @@ type Props = {
   showDividers?: boolean;
 };
 
-const CopyButton = ({ id }: { id: string }) => {
-  const router = useRouter();
-  return (
-    <button
-      className="h-5 pl-2 opacity-0 duration-100 ease-in-out group-hover:opacity-100"
-      aria-label="Copy link to heading"
-      onClick={() => {
-        copy(window.location.origin + window.location.pathname + `#${id}`);
-        router.push(`#${id}`);
-      }}
-    >
-      <LinkIcon className="h-4 w-4 font-bold text-slate-700 dark:text-slate-300" />
-    </button>
-  );
-};
-
 export const Heading = ({
   id = '',
   level = 1,
@@ -42,7 +24,7 @@ export const Heading = ({
   showDividers = true
 }: Props) => {
   const Component: any = `h${level}`;
-  const link = (
+  return (
     <Component
       id={id}
       data-text={children}
@@ -57,11 +39,9 @@ export const Heading = ({
           {children}
         </span>
         {icerpcSlice && <IcerpcSlice />}
-        <CopyButton id={id} />
+        <HeadingCopyButton id={id} />
       </div>
       {level >= 1 && level <= 3 && showDividers && <Divider margin="my-4" />}
     </Component>
   );
-
-  return link;
 };

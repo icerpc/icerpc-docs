@@ -1,9 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
+    './app/**/*.{js,ts,jsx,tsx,css}',
     './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    './node_modules/flowbite-react/**/*.js'
+    './components/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
     extend: {
@@ -39,6 +40,5 @@ module.exports = {
       }
     }
   },
-  plugins: [require('@tailwindcss/typography'), require('flowbite/plugin')],
-  darkMode: 'class'
+  plugins: [require('@tailwindcss/typography'), require('flowbite/plugin')]
 };

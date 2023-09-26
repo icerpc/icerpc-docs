@@ -1,8 +1,10 @@
 // Copyright (c) ZeroC, Inc.
 
+'use client';
+
 import Link from 'next/link';
 import clsx from 'clsx';
-import { usePath } from 'context/state';
+import { usePathname } from 'next/navigation';
 
 type TopNavigationItemProps = {
   name: string;
@@ -10,8 +12,7 @@ type TopNavigationItemProps = {
 };
 
 const TopNavigationItem = ({ name, href }: TopNavigationItemProps) => {
-  const path = usePath();
-
+  const path = usePathname();
   const prefetch = href.startsWith('http') ? false : undefined;
   const baseClassName =
     'mx-3 overflow-hidden whitespace-nowrap dark:text-[rgba(255,255,255,0.6)] hover:text-zinc-900 dark:hover:text-white';

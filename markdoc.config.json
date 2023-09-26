@@ -1,7 +1,7 @@
 [
   {
     "id": "icerpc-docs",
-    "path": "pages/",
+    "path": "content/",
     "schema": {
       "path": "markdoc/schema.ts",
       "type": "esm",

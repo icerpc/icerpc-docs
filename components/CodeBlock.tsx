@@ -1,5 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
+'use client';
+
 import { useState, useEffect, Key } from 'react';
 import { faFileLines, faTerminal } from '@fortawesome/free-solid-svg-icons';
 import clsx from 'clsx';

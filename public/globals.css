@@ -35,7 +35,7 @@
   }
 
   body {
-    @apply dark:bg-dark bg-[#FAFAFA];
+    @apply bg-[#FAFAFA] dark:bg-dark;
   }
 
   h2 {
@@ -103,6 +103,10 @@ h3 {
 
 a {
   color: rgba(75, 85, 99, 1);
+}
+
+[data-testid='flowbite-tooltip-arrow'] {
+  display: none !important;
 }
 
 .sr-only {

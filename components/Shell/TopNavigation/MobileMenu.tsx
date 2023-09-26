@@ -1,5 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
+'use client';
+
 import React, { Fragment, useState } from 'react';
 import Link from 'next/link';
 

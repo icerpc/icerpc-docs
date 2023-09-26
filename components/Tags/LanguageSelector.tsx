@@ -1,5 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
+'use client';
+
 import React, { useEffect } from 'react';
 import { Platform, Platforms } from 'types';
 import { usePlatform } from 'context/state';

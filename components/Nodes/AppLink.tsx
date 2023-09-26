@@ -1,11 +1,12 @@
 // Copyright (c) ZeroC, Inc.
 
+'use client';
+
 import { ReactNode, CSSProperties, useState, useEffect } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
-import { useRouter } from 'next/router';
 import { Mode } from 'types';
-import { useMode } from 'context/state';
+import { useMode, usePath } from 'context/state';
 
 type AppLinkProps = {
   href: string;
@@ -34,7 +35,7 @@ export const AppLink = ({
   showArrow = true,
   children
 }: AppLinkProps) => {
-  const { asPath, isReady } = useRouter();
+  const path = usePath();
 
   const [href, setHref] = useState(originalHref);
 
@@ -42,11 +43,10 @@ export const AppLink = ({
 
   useEffect(() => {
     // If the router is not ready, we can't resolve the link.
-    if (!isReady) return;
 
     let url = isApiLink(originalHref)
       ? resolveApiLink(originalHref)
-      : resolveRelativeLink(originalHref, asPath);
+      : resolveRelativeLink(originalHref, path);
 
     // Resolve internal relative urls like "/abc/../foo" to their absolute path.
     if (!isExternalLink(url)) {
@@ -63,7 +63,7 @@ export const AppLink = ({
     }
 
     setHref(url);
-  }, [originalHref, asPath, href, isReady, mode]);
+  }, [originalHref, path, href, mode]);
 
   const style = { ...defaultStyle, ...originalStyle };
 

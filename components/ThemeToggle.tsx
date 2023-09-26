@@ -1,5 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
+'use client';
+
 import * as React from 'react';
 import { useSpring, animated } from 'react-spring';
 import { useTheme } from 'next-themes';

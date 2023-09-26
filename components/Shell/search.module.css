@@ -1,0 +1,100 @@
+/* Default styles for light theme */
+.search :global(.DocSearch-Button) {
+  --docsearch-text-color: rgb(28, 30, 33);
+  --docsearch-muted-color: rgb(150, 159, 175);
+  background: #f7f7f7;
+  border: 1px solid #eaeaea;
+}
+
+/* Styles for dark theme */
+:global(html.dark) body .search :global(.DocSearch-Button) {
+  --docsearch-text-color: rgba(255, 255, 255, 1) !important;
+  --docsearch-muted-color: rgba(255, 255, 255, 0.6) !important;
+  background: rgb(35, 36, 41) !important;
+  border: 1px solid rgba(46, 46, 46, 0.6) !important;
+}
+
+/* Other Global Styles */
+.search :global(.DocSearch-Button) {
+  border-radius: 4px;
+  width: 100%;
+  height: 35px;
+  margin: 0;
+}
+
+/* Breakpoint Specific Styles */
+@media (max-width: 768px) {
+  .search :global(.DocSearch-Button) {
+    background: none;
+    box-shadow: none;
+    width: 50px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .search :global(.DocSearch-Button-Keys) {
+    padding-top: 2px;
+  }
+  .search :global(.DocSearch-Button) {
+    background: none;
+    box-shadow: none;
+    width: 150px;
+  }
+}
+
+/* Hover Styles */
+.search :global(.DocSearch-Button:hover) {
+  box-shadow: none;
+  background: none;
+}
+
+.search
+  :global(.DocSearch-Button:hover)
+  .search
+  :global(.DocSearch-Button-Placeholder),
+.search
+  :global(.DocSearch-Button:hover)
+  .search
+  :global(.DocSearch-Button-Key) {
+  color: #43a0f7;
+}
+
+/* Other Styles */
+.search :global(.DocSearch-Button-Keys) {
+  margin: -20px;
+}
+
+.search :global(.DocSearch-Button-Key) {
+  background: none;
+  box-shadow: none;
+  color: var(--docsearch-muted-color);
+  padding: 0;
+  margin: -2px;
+  height: 20px;
+  font-size: 12px;
+  transition: 0.3s;
+  justify-content: between;
+  align-items: center;
+  font-family: inherit;
+}
+
+.search :global(.DocSearch-Search-Icon) {
+  margin-right: 10px;
+  margin-left: 0px;
+  padding: 3px;
+}
+
+@media (max-width: 768px) {
+  .search :global(.DocSearch-Search-Icon) {
+    padding: 1px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 4px;
+  }
+}
+
+.search :global(.DocSearch-Button-Placeholder) {
+  font-size: 10pt;
+  color: var(--docsearch-muted-color);
+  padding: 2px;
+}

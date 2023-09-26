@@ -12,7 +12,7 @@ information about upcoming Rust support and other planned future languages.
 
 ## Quick links
 
-{% grid columns=3 %}
+{% grid %}
 
 {% mini-card
    title="Quickstart"

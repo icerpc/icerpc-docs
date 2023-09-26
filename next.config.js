@@ -1,5 +1,4 @@
 module.exports = {
-  pageExtensions: ['tsx'],
   output: 'standalone',
   webpack: (config, { defaultLoaders }) => {
     // Ignore the tools directory

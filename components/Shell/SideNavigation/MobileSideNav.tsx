@@ -1,5 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
+'use client';
+
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
 import { Dialog, Transition } from '@headlessui/react';
 import { sideBarData, baseUrls } from 'data';
@@ -10,12 +12,12 @@ import React, { Fragment, useState } from 'react';
 
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { getBreadcrumbs } from 'lib/breadcrumbs';
-import { SideNavList, isSlicePage } from './SideNavList';
-import { usePath } from 'context/state';
+import { SideNavList } from './SideNavList';
+import { usePathname } from 'next/navigation';
 
 export function MobileSideNav() {
   const [isOpen, setIsOpen] = useState(false);
-  const path = usePath();
+  const path = usePathname();
 
   // Clean up path
   const pathNoFragment = path.split('#')[0]; // Remove fragment
@@ -26,7 +28,12 @@ export function MobileSideNav() {
   const breadcrumbs = getBreadcrumbs(path);
   const data = sideBarData(baseUrl);
   const cells = data.map((item, index) => (
-    <SideNavList key={index} data={item} onClick={() => closeModal()} />
+    <SideNavList
+      key={index}
+      data={item}
+      path={path}
+      onClick={() => closeModal()}
+    />
   ));
 
   function closeModal() {
@@ -35,6 +42,11 @@ export function MobileSideNav() {
 
   // If on home page / return nothing
   if (path === '/') return null;
+
+  // If no sidebar data return nothing
+  if (data.length === 0) return null;
+
+  const isSlicePage = ['/slice1', '/slice2'].includes(baseUrl);
 
   return (
     <>
@@ -119,7 +131,7 @@ export function MobileSideNav() {
                         </button>
                       </div>
                       <div className="mt-6">
-                        {isSlicePage(baseUrl) && <SliceSelector />}
+                        {isSlicePage && <SliceSelector />}
                       </div>
                     </section>
                     <nav

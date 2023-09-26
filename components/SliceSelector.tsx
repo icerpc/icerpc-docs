@@ -1,9 +1,13 @@
 // Copyright (c) ZeroC, Inc.
 
-import { useRouter } from 'next/router';
+'use client';
+
+import React, { ReactElement, useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
+import { useRouter } from 'next/navigation';
 import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
-import { Tooltip } from 'flowbite-react';
+import { Tooltip } from 'react-tooltip';
 import { useMode, usePath } from 'context/state';
 import { Mode, modes } from 'types';
 import { AppLink } from './Nodes/AppLink';
@@ -43,7 +47,7 @@ export const SliceSelector = () => {
     <>
       <div className="mb-6 mt-3 w-full">
         <Tab.Group
-          selectedIndex={modes.indexOf(activeMode)}
+          selectedIndex={activeMode && modes.indexOf(activeMode)}
           onChange={onChange}
         >
           <Tab.List className="flex space-x-2 rounded-xl bg-transparent">
@@ -84,7 +88,8 @@ const ModeTab = ({ mode, selected }: ModeTabProps) => {
       </p>
     ) : (
       <p>
-        Use Slice2 for new projects.{' '}
+        Use Slice2 for new projects.
+        <br />
         <AppLink href="/slice2/language-guide/compilation-mode">
           Learn more
         </AppLink>
@@ -92,14 +97,46 @@ const ModeTab = ({ mode, selected }: ModeTabProps) => {
     );
 
   return (
-    <Tooltip
-      content={tooltipContent}
-      placement="bottom"
-      className="w-56 dark:!bg-[#32363c] [&>*]:dark:!bg-[#32363c]"
-    >
-      <Tab as="div" className={className}>
+    <>
+      <Tab
+        as="div"
+        className={className}
+        id={`tooltip-${mode}`}
+        data-tooltip-place="bottom"
+      >
         {mode}
       </Tab>
-    </Tooltip>
+      <TooltipPortal>
+        <Tooltip
+          anchorSelect={`#tooltip-${mode}`}
+          clickable
+          style={{
+            width: '14rem',
+            backgroundColor: '#32363c',
+            borderRadius: '0.6rem',
+            opacity: '1'
+          }}
+        >
+          {tooltipContent}
+        </Tooltip>
+      </TooltipPortal>
+    </>
   );
+};
+
+const TooltipPortal = ({ children }: { children: ReactElement }) => {
+  const [el, setEl] = useState<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const div = document.createElement('div');
+    setEl(div);
+    document.body.appendChild(div);
+    return () => {
+      document.body.removeChild(div);
+    };
+  }, []);
+
+  if (!el) return null; // Don't render anything on the server
+
+  return ReactDOM.createPortal(children, el);
 };

@@ -1,5 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
+'use client';
+
 import { Tooltip } from 'flowbite-react';
 import { AppLink } from './Nodes/AppLink';
 
