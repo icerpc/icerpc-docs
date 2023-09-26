@@ -2,6 +2,8 @@
 
 'use client';
 
+import React, { ReactElement, useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import { useRouter } from 'next/navigation';
 import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
@@ -104,18 +106,33 @@ const ModeTab = ({ mode, selected }: ModeTabProps) => {
       >
         {mode}
       </Tab>
-      <Tooltip
-        anchorSelect={`#tooltip-${mode}`}
-        clickable
-        style={{
-          width: '14rem',
-          backgroundColor: '#32363c',
-          borderRadius: '0.6rem',
-          opacity: '1'
-        }}
-      >
-        {tooltipContent}
-      </Tooltip>
+      <TooltipPortal>
+        <Tooltip
+          anchorSelect={`#tooltip-${mode}`}
+          clickable
+          style={{
+            width: '14rem',
+            backgroundColor: '#32363c',
+            borderRadius: '0.6rem',
+            opacity: '1'
+          }}
+        >
+          {tooltipContent}
+        </Tooltip>
+      </TooltipPortal>
     </>
   );
+};
+
+const TooltipPortal = ({ children }: { children: ReactElement }) => {
+  const [el] = useState(document.createElement('div'));
+
+  useEffect(() => {
+    document.body.appendChild(el);
+    return () => {
+      document.body.removeChild(el);
+    };
+  }, [el]);
+
+  return ReactDOM.createPortal(children, el);
 };
