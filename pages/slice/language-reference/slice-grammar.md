@@ -524,23 +524,6 @@ String literals can only appear as arguments to an [attribute].
 
 ### Attributes
 
-Slice supports two forms of attributes:
-- Local attributes: these consist of an attribute wrapped in a pair of single brackets.
-- File attributes: these consist of an attribute wrapped in a pair of double brackets.
-
-Local attributes can be applied to any Slice definition or declaration by appearing directly before one.
-File attributes apply to an entire [Slice file][slice-file] and must appear before any Slice definitions declarations.
-
-```ebnf {% showTitle=false %}
-FileAttribute
-    : "[[" Attribute "]]"
-    ;
-
-LocalAttribute
-    : "[" Attribute "]"
-    ;
-```
-
 An attribute consists of a directive, optionally followed by attribute arguments.
 
 A directive is syntactically equivalent to a [scoped identifier][identifier], but instead of specifying namespaces, the presence of scopes limits when the attribute is applicable.
@@ -562,6 +545,20 @@ AttributeArgument
 
 Each attribute accepts/requires a different number of arguments.
 For a list of attributes and additional information on them, see the [attribute] page.
+
+Attributes cannot appear on their own, they must always be applied to something.
+To apply an attribute to a Slice file, it must be wrapped in double brackets and appear at the top of the file (before any definitions or declarations).
+To apply an attribute to a Slice definition or declaration, it must be wrapped in single brackets and appear directly before the definition/declaration.
+
+```ebnf {% showTitle=false %}
+FileAttribute
+    : "[[" Attribute "]]"
+    ;
+
+LocalAttribute
+    : "[" Attribute "]"
+    ;
+```
 
 ## Lexical grammar
 
