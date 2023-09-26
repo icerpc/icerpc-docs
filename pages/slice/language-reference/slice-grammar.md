@@ -40,7 +40,7 @@ For additional information on Slice files, see the [Slice file][slice-file-guide
 ### Mode declarations
 
 Mode declarations consist of the `mode` keyword, followed by an equals sign, followed by an identifier.
-That identifier must be a valid Slice compilation mode - either `Slice1` or `Slice2`.
+This identifier must be a valid Slice compilation mode - either `Slice1` or `Slice2`.
 
 ```ebnf {% showTitle=false %}
 FileCompilationMode
