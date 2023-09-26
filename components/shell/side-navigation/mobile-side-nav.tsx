@@ -2,18 +2,18 @@
 
 'use client';
 
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
-import { Dialog, Transition } from '@headlessui/react';
-import { sideBarData, baseUrls } from 'data';
-import { SliceSelector } from '../../SliceSelector';
-import clsx from 'clsx';
-import Link from 'next/link';
 import React, { Fragment, useState } from 'react';
-
-import { ChevronRightIcon } from '@heroicons/react/24/outline';
-import { getBreadcrumbs } from 'lib/breadcrumbs';
-import { SideNavList } from './SideNavList';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
+import { ChevronRightIcon } from '@heroicons/react/24/outline';
+import { Dialog, Transition } from '@headlessui/react';
+import clsx from 'clsx';
+
+import { getBreadcrumbs } from 'lib/breadcrumbs';
+import { sideBarData, baseUrls } from 'data';
+import { SideNavList } from '@/components/shell/side-navigation/side-nav-list';
+import { SliceSelector } from '@/components/slice-selector';
 
 export function MobileSideNav() {
   const [isOpen, setIsOpen] = useState(false);

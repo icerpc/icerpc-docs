@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { AppLink } from 'components/Nodes/AppLink';
+import { AppLink } from '@/components/nodes/app-link';
 
 type CardProps = {
   title: string;

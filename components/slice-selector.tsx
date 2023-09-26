@@ -4,13 +4,14 @@
 
 import React, { ReactElement, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { useRouter } from 'next/navigation';
 import { Tab } from '@headlessui/react';
-import clsx from 'clsx';
 import { Tooltip } from 'react-tooltip';
-import { useMode, usePath } from 'context/state';
+import { useRouter } from 'next/navigation';
+import clsx from 'clsx';
+
+import { AppLink } from '@/components/nodes/app-link';
 import { Mode, modes } from 'types';
-import { AppLink } from './Nodes/AppLink';
+import { useMode, usePath } from 'context/state';
 
 export const SliceSelector = () => {
   const { mode: activeMode, setMode } = useMode();

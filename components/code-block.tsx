@@ -4,21 +4,20 @@
 
 import { useState, useEffect, Key } from 'react';
 import { faFileLines, faTerminal } from '@fortawesome/free-solid-svg-icons';
-import clsx from 'clsx';
-import { Highlight, themes, Prism } from 'prism-react-renderer';
 import { Fira_Mono } from 'next/font/google';
-
-import dynamic from 'next/dynamic';
-import { useMode } from 'context/state';
-import { Mode } from 'types';
-import { CopyButton } from './CopyButton';
-import { useTheme } from 'next-themes';
-import { Theme } from 'types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Highlight, themes, Prism } from 'prism-react-renderer';
+import { useTheme } from 'next-themes';
+import clsx from 'clsx';
+import dynamic from 'next/dynamic';
+
+import { CopyButton } from '@/components/copy-button';
+import { Mode, Theme } from 'types';
+import { useMode } from 'context/state';
 
 const firaMono = Fira_Mono({ weight: '400', subsets: ['latin', 'latin-ext'] });
 
-const MermaidDiagram = dynamic(() => import('components/Tags/Mermaid'), {
+const MermaidDiagram = dynamic(() => import('@/components/tags/mermaid'), {
   ssr: false
 });
 

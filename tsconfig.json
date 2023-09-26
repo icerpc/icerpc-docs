@@ -20,6 +20,11 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": ".",
+    "paths": {
+      "@/components/*": [
+        "components/*"
+      ]
+    },
     "plugins": [
       {
         "name": "next"

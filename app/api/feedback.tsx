@@ -1,6 +1,6 @@
 import { sendFeedbackMail } from 'lib/send-mail';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import type { FeedbackData } from 'components/Shell/Feedback/FeedbackForm';
+import type { FeedbackData } from '@/components/shell/feedback/feedback-form';
 
 export default async function handler(
   req: NextApiRequest,

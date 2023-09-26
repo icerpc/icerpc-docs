@@ -1,9 +1,9 @@
 // Copyright (c) ZeroC, Inc.
 
 import { sideBarData, baseUrls } from 'data';
-import { SliceSelector } from '../../SliceSelector';
-import { SearchButton } from '../SearchButton';
-import { SideNavList } from './SideNavList';
+import { SliceSelector } from '@/components/slice-selector';
+import { SearchButton } from '@/components/shell/search-button';
+import { SideNavList } from './side-nav-list';
 
 export const SideNav = ({ path }: { path: string }) => {
   // Clean up path

@@ -3,7 +3,7 @@
 'use client';
 
 import { Tooltip } from 'flowbite-react';
-import { AppLink } from './Nodes/AppLink';
+import { AppLink } from './nodes/app-link';
 
 export const IcerpcSlice = () => {
   const tooltipContent = (

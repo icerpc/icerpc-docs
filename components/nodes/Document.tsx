@@ -3,7 +3,7 @@
 import { ReactElement } from 'react';
 import { AsideItem, Divider, Title } from 'components';
 import { Mode } from 'types';
-import { PageHistory, Aside, Feedback } from 'components/Shell';
+import { PageHistory, Aside, Feedback } from '@/components/shell';
 
 type Props = {
   children: ReactElement[] | ReactElement;

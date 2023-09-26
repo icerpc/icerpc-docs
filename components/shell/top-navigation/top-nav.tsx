@@ -6,11 +6,11 @@ import { clsx } from 'clsx';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { MobileMenu } from './MobileMenu';
-import { MobileSideNav } from '../SideNavigation/MobileSideNav';
-import { ThemeToggle } from 'components/ThemeToggle';
+import { MobileMenu } from './mobile-menu';
+import { MobileSideNav } from '@/components/shell/side-navigation/mobile-side-nav';
+import { ThemeToggle } from '@/components/theme-toggle';
 import logoIcon from 'public/Icerpc-logo.svg';
-import { TopNavigationItems } from './TopNavItems';
+import { TopNavigationItems } from './top-nav-items';
 
 export const TopNav = () => (
   <div

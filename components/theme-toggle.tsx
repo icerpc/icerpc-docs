@@ -5,6 +5,7 @@
 import * as React from 'react';
 import { useSpring, animated } from 'react-spring';
 import { useTheme } from 'next-themes';
+
 import { Theme } from 'types';
 import { useMounted } from 'context/state';
 

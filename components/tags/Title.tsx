@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
 import clsx from 'clsx';
-import { Breadcrumbs } from 'components/Breadcrumbs';
+import { Breadcrumbs } from '@/components/breadcrumbs';
 import { getBreadcrumbs } from 'lib/breadcrumbs';
 
 type Props = {
