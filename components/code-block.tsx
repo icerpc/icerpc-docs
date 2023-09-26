@@ -11,7 +11,7 @@ import { useTheme } from 'next-themes';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 
-import { CopyButton } from '@/components/copy-button';
+import { CopyButton } from './copy-button';
 import { Mode, Theme } from 'types';
 import { useMode } from 'context/state';
 

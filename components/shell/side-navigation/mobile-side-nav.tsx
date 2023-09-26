@@ -12,7 +12,7 @@ import clsx from 'clsx';
 
 import { getBreadcrumbs } from 'lib/breadcrumbs';
 import { sideBarData, baseUrls } from 'data';
-import { SideNavList } from '@/components/shell/side-navigation/side-nav-list';
+import { SideNavList } from './side-nav-list';
 import { SliceSelector } from '@/components/slice-selector';
 
 export function MobileSideNav() {

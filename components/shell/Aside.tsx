@@ -10,7 +10,7 @@ import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faMessage, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 import { baseUrls } from 'data';
-import { BackToTop } from '@/components/shell/back-to-top';
+import { BackToTop } from './back-to-top';
 import { Divider } from '@/components/divider';
 
 export type AsideItem = {
