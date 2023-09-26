@@ -78,7 +78,7 @@ unnecessary (`uncheckedCast` works just as well), it's shown by all Ice demos an
 The net result is: if you reimplement an existing Ice server with IceRPC, your services need to implement `Ice::Object`
 when they are being "checked cast" by existing Ice client applications.
 
-## Checked cast and unchecked cast in IceRPC for C #
+## Checked cast and unchecked cast in IceRPC for C#
 
 If you like `checkedCast` and want to keep check-casting your proxies, the IceRPC + Slice integration provides an
 equivalent API: [AsAsync]. The target service must implement `Ice::Object`; otherwise, `AsAsync` will fail with a
