@@ -17,6 +17,7 @@ There is no notion of 'including' the contents of one file in another, and error
 A slice file consists of any number of [file attributes][attribute] and up to one [mode statement][mode-statement].
 These can appear in any order, but specifying more than one mode in a single file is forbidden.
 This is followed by an optional [module declaration][module-declaration], followed by any number of Slice definitions.
+It is illegal for a file to contain Slice definitions without a module declaration.
 
 ```ebnf {% showTitle=false %}
 SliceFile
@@ -295,7 +296,9 @@ Parameter
     ;
 ```
 
-Parameters also support the [`stream`][stream-guide] modifier keyword, which may be applied to the parameter's type.
+Parameters also support the [`stream`][streamed-parameters-guide] modifier keyword, which may be applied to the parameter's type.
+Streamed parameters are only supported in [`Slice2`][compilation-mode-guide] mode, and within a list of parameters,
+at most one may be streamed and it must be the last parameter in that list.
 
 For additional information on parameters, see the [parameter][parameter-guide] pages.
 
