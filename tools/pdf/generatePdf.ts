@@ -224,7 +224,7 @@ async function mergePdfs(
   pdfDoc.setCreationDate(new Date());
 
   // Serialize and save
-  ('Saving merged PDF...');
+  console.log('Saving merged PDF...');
   const mergedPdfBytes = await pdfDoc.save();
   fs.writeFileSync(`${outputDir}/merged_document.pdf`, mergedPdfBytes);
 
