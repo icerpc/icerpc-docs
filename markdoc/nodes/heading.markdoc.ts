@@ -14,6 +14,7 @@ const heading = {
   transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);
     const children = node.transformChildren(config);
+
     const id = generateID(children, attributes);
     const frontmatter = config.variables?.frontmatter;
     const showDividers = frontmatter.showDividers;
@@ -41,5 +42,12 @@ function generateID(
     .replace(/-+$/, '')
     .toLowerCase();
 }
+
+// Handles converting italic and bold tags to strinngs
+// function stringifyChildren(children: RenderableTreeNode[]) {
+//   children.map((child) => {
+
+//   });
+// }
 
 export default heading;

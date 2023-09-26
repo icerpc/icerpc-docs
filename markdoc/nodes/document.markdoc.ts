@@ -43,9 +43,31 @@ function extractHeadings(node: any, sections: any[] = [], mode?: Mode) {
     const tag = node as Tag;
     if (tag.name === 'ModeSection' && tag.attributes.mode != mode) return;
   }
+
+  // Add headings from step tags
+  if ((node as Tag).name === 'Step') {
+    sections.push({
+      ...node.attributes,
+      icerpcSlice: false,
+      showDividers: false
+    });
+  }
+
   if (node) {
     if (node.name === 'Heading') {
-      const title = node.children[0];
+      let title = '';
+      // Handle headings with italic tags
+      for (const child of node.children) {
+        if (typeof child === 'string') {
+          title += child;
+        } else if (child.name === 'em') {
+          for (const grandchild of child.children) {
+            if (typeof grandchild === 'string') {
+              title += grandchild;
+            }
+          }
+        }
+      }
 
       if (typeof title === 'string') {
         sections.push({
