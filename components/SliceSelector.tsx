@@ -125,14 +125,18 @@ const ModeTab = ({ mode, selected }: ModeTabProps) => {
 };
 
 const TooltipPortal = ({ children }: { children: ReactElement }) => {
-  const [el] = useState(document.createElement('div'));
+  const [el, setEl] = useState<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    document.body.appendChild(el);
+    const div = document.createElement('div');
+    setEl(div);
+    document.body.appendChild(div);
     return () => {
-      document.body.removeChild(el);
+      document.body.removeChild(div);
     };
-  }, [el]);
+  }, []);
+
+  if (!el) return null; // Don't render anything on the server
 
   return ReactDOM.createPortal(children, el);
 };
