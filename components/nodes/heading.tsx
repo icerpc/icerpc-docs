@@ -3,9 +3,9 @@
 import React, { ReactNode } from 'react';
 import clsx from 'clsx';
 
-import { Divider } from 'components/Divider';
-import { IcerpcSlice } from 'components/IcerpcSlice';
-import { HeadingCopyButton } from './HeadingCopyButton';
+import { Divider } from '@/components/divider';
+import { IcerpcSlice } from '@/components/icerpc-slice';
+import { HeadingCopyButton } from './heading-copy-button';
 
 type Props = {
   id?: string;

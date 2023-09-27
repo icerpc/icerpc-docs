@@ -10,7 +10,7 @@ import {
 
 import { sideBarData, baseUrls, flattenSideBarData } from 'data';
 import { SideBarLink, isLink } from 'types';
-import { Divider } from 'components/Divider';
+import { Divider } from '@/components/divider';
 
 const stripTrailingSlash = (str: string) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;

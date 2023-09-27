@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import clsx from 'clsx';
 
-import { Divider } from 'components/Divider';
+import { Divider } from '@/components/divider';
 import {
   SideBarDivider,
   SideBarLink,

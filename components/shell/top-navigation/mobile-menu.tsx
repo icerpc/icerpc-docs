@@ -5,8 +5,8 @@
 import React, { Fragment, useState } from 'react';
 import Link from 'next/link';
 
-import { SearchButton } from 'components/Shell/SearchButton';
-import { ThemeToggle } from 'components/ThemeToggle';
+import { SearchButton } from '@/components/shell/search-button';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { clsx } from 'clsx';
 import { EllipsisVerticalIcon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/20/solid';

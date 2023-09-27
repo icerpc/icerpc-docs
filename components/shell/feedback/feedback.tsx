@@ -9,7 +9,7 @@ import {
   negativeFeedbackOptions,
   positiveFeedbackOptions,
   FeedbackForm
-} from './FeedbackForm';
+} from './feedback-form';
 import { usePath } from 'context/state';
 
 enum FeedbackType {

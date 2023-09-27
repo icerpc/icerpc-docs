@@ -2,9 +2,9 @@
 
 import { AppWrapper, PathProvider } from 'context/state';
 import '/public/globals.css';
-import { ThemeProvider } from 'components/ThemeProvider';
+import { ThemeProvider } from '@/components/theme-provider';
 import { Footer, TopNav } from 'components';
-import { Analytics } from 'components/Analytics';
+import { Analytics } from '@/components/analytics';
 import { Inter } from 'next/font/google';
 import clsx from 'clsx';
 import { Metadata } from 'next';

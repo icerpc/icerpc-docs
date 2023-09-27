@@ -3,9 +3,9 @@
 'use client';
 
 import { useState } from 'react';
-import copy from 'copy-to-clipboard';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import copy from 'copy-to-clipboard';
 
 export const CopyButton = ({ text }: { text: string }) => {
   const [copied, setCopied] = useState(false);

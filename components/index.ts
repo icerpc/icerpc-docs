@@ -1,20 +1,20 @@
 // Copyright (c) ZeroC, Inc.
 
-export * from './Nodes/AppLink';
-export * from './Nodes/Heading';
-export * from './Nodes/Table';
-export * from './Nodes/List';
+export * from './nodes/app-link';
+export * from './nodes/heading';
+export * from './nodes/table';
+export * from './nodes/list';
 
-export * from './Shell/Footer';
-export * from './Shell/SideNavigation/SideNav';
-export * from './Shell/Aside';
-export * from './Shell/TopNavigation/TopNav';
+export * from './shell/footer';
+export * from './shell/side-navigation/side-nav';
+export * from './shell/aside';
+export * from './shell/top-navigation/top-nav';
 
-export * from './Tags/Card';
-export * from './Tags/Grid';
-export * from './Tags/ModeSection';
-export * from './Tags/Title';
+export * from './tags/card';
+export * from './tags/grid';
+export * from './tags/mode-section';
+export * from './tags/title';
 
-export * from './CodeBlock';
-export * from './Divider';
-export * from './IcerpcSlice';
+export * from './code-block';
+export * from './divider';
+export * from './icerpc-slice';

@@ -10,8 +10,8 @@ import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faMessage, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 import { baseUrls } from 'data';
-import { Divider } from 'components/Divider';
-import { BackToTop } from './BackToTop';
+import { BackToTop } from './back-to-top';
+import { Divider } from '@/components/divider';
 
 export type AsideItem = {
   id: string;
