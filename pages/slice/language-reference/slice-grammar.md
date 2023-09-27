@@ -120,7 +120,21 @@ For additional information on primitive types, see the [primitive type][primitiv
 ### Collection types
 
 Slice supports 2 built-in collection types: sequences and dictionaries.
-Both types can be referenced with their respective keywords: `Sequence` and `Dictionary`,
+
+These types are generic over the kinds of elements they contain.
+Sequences require a single type parameter: the _element_ type.
+Dictionaries require two type parameters: the _key_ and _value_ types.
+
+Any Slice type can be specified for element and value types, but since dictionary keys must be comparable, only the following are valid key types:
+- `bool`
+- `string`
+- integral types (`int8`, `uint8`, `int16`, `uint16`, `int32`, `uint32`, `varint32`, `varuint32`, `int64`, `uint64`, `varint62`, `varuint62`)
+- enum types
+- custom types
+- compact structs whose fields are also valid key types
+
+Sequences and dictionaries can be referenced with their respective keywords (`Sequence` and `Dictionary`),
+but must have concrete types specified for their type parameters.
 
 ```ebnf {% showTitle=false %}
 Sequence
@@ -132,14 +146,11 @@ Dictionary
     ;
 ```
 
-Since they are are generic over the types of elements they contain, you must also specify their type arguments:
-
 ```slice
 Sequence<bool>
 Dictionary<uint8, string>
 ```
 
-Since dictionary keys must be comparable, there are restrictions on which types can be used for them.
 For additional information on sequences and dictionaries, see the [sequence][sequence-guide] and [dictionary][dictionary-guide] pages.
 
 ### Struct types
