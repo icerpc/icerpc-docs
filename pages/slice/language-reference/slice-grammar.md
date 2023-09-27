@@ -177,7 +177,7 @@ Classes can never be tagged when used as the type of a [field] or [parameter].
 
 Class definitions consist of the `class` keyword, followed by an [identifier], optionally followed by a [compact ID][compact-id-guide], optionally followed by a base class, and then the class's body.
 Compact IDs consist of a positive integer wrapped in a pair of parenthesis.
-This integer must between `0` and `2,147,483,647` (the maximum value of a signed 32bit integer).
+This integer must between `0` and `2,147,483,647` (the maximum value of a signed 32-bit integer).
 Base classes are specified by a single colon, followed by a class's (possibly scoped) identifier.
 Class bodies consist of a list of [fields][field] wrapped in a pair of braces. These fields may be optionally separated by commas.
 Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the class in its prelude.
@@ -401,7 +401,7 @@ TypeRefDefinition
 ### Tags
 
 Tags consist of the `tag` keyword, followed by a positive integer wrapped in a pair of parenthesis.
-This integer must between `0` and `2,147,483,647` (the maximum value of a signed 32bit integer).
+This integer must between `0` and `2,147,483,647` (the maximum value of a signed 32-bit integer).
 Tags can only be applied to [fields][field] and [parameters][parameter], and only if the type of that field/parameter:
 - is optional (it ends with `?` symbol)
 - is not a class, and does not use classes internally
