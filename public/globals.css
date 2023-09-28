@@ -10,6 +10,8 @@
   --text-color: rgba(75, 85, 99, 1);
   --text-color-secondary: #3d4356;
   --primary-color: theme('colors.primary');
+  --docsearch-searchbox-height: 48px !important;
+  --docsearch-primary-color: #43a0f7 !important;
 }
 
 @layer base {
