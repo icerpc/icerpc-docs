@@ -23,17 +23,15 @@ export const SideNav = ({ path }: { path: string }) => {
   return (
     <div className="sticky top-[59px] hidden h-[calc(100vh-59px)] flex-none flex-col items-end overflow-y-auto border-r border-lightBorder dark:border-darkBorder/60 dark:bg-dark lg:flex">
       <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-10">
-        <div className="sticky top-0 bg-[#fafafa] dark:bg-dark ">
-          <SearchButton className="mb-0 mt-8 flex items-start pr-6" />
-          {isSlicePage && (
-            <div className="top-0 mb-2 mt-4 bg-none pr-6">
-              <SliceSelector className="mb-6 mt-3 w-full" />
-              <div className="mt-4 w-full border-t-[1px] border-lightBorder dark:border-darkBorder" />
-            </div>
-          )}
+        <div className="sticky top-0 space-y-5 bg-[#fafafa] pr-6 dark:bg-dark">
+          <SearchButton className="mb-0 mt-6 flex items-start" />
+          {isSlicePage && <SliceSelector className="w-full" />}
+          <div className="w-full border-t-[1px] border-lightBorder dark:border-darkBorder" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-[-2.25rem] h-9 w-full bg-gradient-to-t from-transparent to-[#fafafa]" />
         </div>
         <nav>
-          <ul className="top-0 mr-2 mt-4">{cells}</ul>
+          <ul className="top-0 mr-2 mt-5">{cells}</ul>
+          <div className="pointer-events-none sticky inset-x-0 bottom-0 h-10 w-full bg-gradient-to-t from-[#fafafa] to-transparent " />
         </nav>
       </div>
     </div>
