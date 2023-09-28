@@ -25,10 +25,7 @@ export const MobileMenu = () => {
     <div className="mr-4 flex h-4/6  items-center rounded-full lg:hidden">
       <SearchButton className="h-full w-full pt-[1px] md:mr-6" />
       <button
-        className={clsx(
-          'inline-flex items-center justify-center rounded-full p-1 text-gray-400',
-          'hover:bg-slate-300/40 dark:hover:bg-slate-300/40'
-        )}
+        className="inline-flex items-center justify-center rounded-full p-1 text-black/60"
         onClick={() => setIsOpen(true)}
       >
         <span className="sr-only">Open main menu</span>

@@ -27,7 +27,17 @@
   .search :global(.DocSearch-Button) {
     background: none;
     box-shadow: none;
-    width: 50px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    padding-right: 3px;
+  }
+
+  .search :global(.DocSearch-Search-Icon) {
+    color: rgba(0, 0, 0, 0.6);
   }
 }
 

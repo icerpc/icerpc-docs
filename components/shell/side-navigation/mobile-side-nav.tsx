@@ -11,7 +11,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 
 import { getBreadcrumbs } from 'lib/breadcrumbs';
-import { sideBarData, baseUrls } from 'data';
+import { sideBarData, baseUrls, currentNavItem } from 'data';
 import { SideNavList } from './side-nav-list';
 import { SliceSelector } from '@/components/slice-selector';
 
@@ -114,12 +114,13 @@ export function MobileSideNav() {
               <div className="fixed left-0 top-0 h-full w-full max-w-[280px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]">
                 <Dialog.Panel className="h-full w-full overflow-hidden rounded-r text-left align-middle text-sm font-bold shadow-xl transition-all">
                   <div className="flex h-full w-full flex-col items-start">
-                    <section id="controls" className="mt-2 pl-6">
-                      <div className="flex flex-row justify-end">
+                    <section id="controls" className="mt-2 w-full px-6">
+                      <div className="mt-4 flex flex-row items-center justify-end">
+                        <h2 className="px-1">{currentNavItem(baseUrl)}</h2>
                         <button
                           type="button"
                           className={clsx(
-                            'group ml-auto mt-4 items-center justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium',
+                            'group ml-auto items-center justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium',
                             'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
                           )}
                           onClick={closeModal}
@@ -130,14 +131,12 @@ export function MobileSideNav() {
                           />
                         </button>
                       </div>
-                      <div className="mt-6">
-                        {isSlicePage && (
-                          <>
-                            <SliceSelector className="mb-6 mt-3 w-full" />
-                            <div className="mt-4 w-full border-t-[1px] border-lightBorder dark:border-darkBorder" />
-                          </>
-                        )}
-                      </div>
+                      {isSlicePage && (
+                        <div className="mt-6">
+                          <SliceSelector className="mb-6 mt-3 w-full" />
+                        </div>
+                      )}
+                      <div className="mt-4 w-full border-t-[1px] border-lightBorder dark:border-darkBorder" />
                     </section>
                     <nav
                       className={clsx(
