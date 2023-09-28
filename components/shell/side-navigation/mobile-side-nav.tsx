@@ -131,7 +131,12 @@ export function MobileSideNav() {
                         </button>
                       </div>
                       <div className="mt-6">
-                        {isSlicePage && <SliceSelector />}
+                        {isSlicePage && (
+                          <>
+                            <SliceSelector className="mb-6 mt-3 w-full" />
+                            <div className="mt-4 w-full border-t-[1px] border-lightBorder dark:border-darkBorder" />
+                          </>
+                        )}
                       </div>
                     </section>
                     <nav

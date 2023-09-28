@@ -13,7 +13,19 @@ import { AppLink } from '@/components/nodes/app-link';
 import { Mode, modes } from 'types';
 import { useMode, usePath } from 'context/state';
 
-export const SliceSelector = () => {
+type SliceSelectorProps = {
+  className?: string;
+  showTooltips?: boolean;
+  updatePage?: boolean;
+  tabClassName?: string;
+};
+
+export const SliceSelector = ({
+  className,
+  showTooltips = true,
+  updatePage = true,
+  tabClassName = 'w-[114px]'
+}: SliceSelectorProps) => {
   const { mode: activeMode, setMode } = useMode();
   const path = usePath();
   const { push } = useRouter();
@@ -22,55 +34,68 @@ export const SliceSelector = () => {
     const mode = modes[index];
     setMode(mode);
 
-    const [corePath, fragment] = path.split('#');
+    if (updatePage) {
+      const [corePath, fragment] = path.split('#');
 
-    let newPath;
-    if (corePath === '/slice1') {
-      newPath = mode === Mode.Slice1 ? '/slice1' : '/slice2';
-    } else if (corePath === '/slice2') {
-      newPath = mode === Mode.Slice1 ? '/slice1' : '/slice2';
-    } else {
-      newPath = corePath.replace(
-        /\/slice[1-2]\//,
-        `/slice${mode === Mode.Slice1 ? 1 : 2}/`
-      );
+      let newPath;
+      if (corePath === '/slice1') {
+        newPath = mode === Mode.Slice1 ? '/slice1' : '/slice2';
+      } else if (corePath === '/slice2') {
+        newPath = mode === Mode.Slice1 ? '/slice1' : '/slice2';
+      } else {
+        newPath = corePath.replace(
+          /\/slice[1-2]\//,
+          `/slice${mode === Mode.Slice1 ? 1 : 2}/`
+        );
+      }
+
+      // Append the fragment back, if it exists
+      if (fragment) {
+        newPath = `${newPath}#${fragment}`;
+      }
+
+      push(newPath);
     }
-
-    // Append the fragment back, if it exists
-    if (fragment) {
-      newPath = `${newPath}#${fragment}`;
-    }
-
-    push(newPath);
   }
 
   return (
-    <>
-      <div className="mb-6 mt-3 w-full">
-        <Tab.Group
-          selectedIndex={activeMode && modes.indexOf(activeMode)}
-          onChange={onChange}
-        >
-          <Tab.List className="flex space-x-2 rounded-xl bg-transparent">
-            {modes.map((mode) => (
-              <ModeTab key={mode} mode={mode} selected={mode == activeMode} />
-            ))}
-          </Tab.List>
-        </Tab.Group>
-      </div>
-      <div className="mt-4 w-full border-t-[1px] border-lightBorder dark:border-darkBorder" />
-    </>
+    <div className={className}>
+      <Tab.Group
+        selectedIndex={activeMode && modes.indexOf(activeMode)}
+        onChange={onChange}
+      >
+        <Tab.List className="flex space-x-2 rounded-xl bg-transparent">
+          {modes.map((mode) => (
+            <ModeTab
+              key={mode}
+              mode={mode}
+              selected={mode == activeMode}
+              showTooltip={showTooltips}
+              tabClassName={tabClassName}
+            />
+          ))}
+        </Tab.List>
+      </Tab.Group>
+    </div>
   );
 };
 
 type ModeTabProps = {
   mode: Mode;
   selected: boolean;
+  showTooltip?: boolean;
+  tabClassName?: string;
 };
 
-const ModeTab = ({ mode, selected }: ModeTabProps) => {
+const ModeTab = ({
+  mode,
+  selected,
+  showTooltip,
+  tabClassName
+}: ModeTabProps) => {
   const className = clsx(
-    'w-[114px] cursor-pointer rounded border-[1.5px] bg-white p-2 text-center text-xs font-medium uppercase leading-tight',
+    tabClassName,
+    'cursor-pointer rounded border-[1.5px] bg-white p-2 text-center text-xs font-medium uppercase leading-tight',
     'focus:outline-none focus:ring-0',
     'transition-shadow duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg',
     'dark:bg-transparent dark:text-white',
@@ -102,25 +127,27 @@ const ModeTab = ({ mode, selected }: ModeTabProps) => {
       <Tab
         as="div"
         className={className}
-        id={`tooltip-${mode}`}
+        id={showTooltip == true ? `tooltip-${mode}` : ''}
         data-tooltip-place="bottom"
       >
         {mode}
       </Tab>
-      <TooltipPortal>
-        <Tooltip
-          anchorSelect={`#tooltip-${mode}`}
-          clickable
-          style={{
-            width: '14rem',
-            backgroundColor: '#32363c',
-            borderRadius: '0.6rem',
-            opacity: '1'
-          }}
-        >
-          {tooltipContent}
-        </Tooltip>
-      </TooltipPortal>
+      {showTooltip == true && (
+        <TooltipPortal>
+          <Tooltip
+            anchorSelect={`#tooltip-${mode}`}
+            clickable
+            style={{
+              width: '14rem',
+              backgroundColor: '#32363c',
+              borderRadius: '0.6rem',
+              opacity: '1'
+            }}
+          >
+            {tooltipContent}
+          </Tooltip>
+        </TooltipPortal>
+      )}
     </>
   );
 };

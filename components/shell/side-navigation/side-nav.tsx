@@ -27,7 +27,8 @@ export const SideNav = ({ path }: { path: string }) => {
           <SearchButton className="mb-0 mt-8 flex items-start pr-6" />
           {isSlicePage && (
             <div className="top-0 mb-2 mt-4 bg-none pr-6">
-              <SliceSelector />
+              <SliceSelector className="mb-6 mt-3 w-full" />
+              <div className="mt-4 w-full border-t-[1px] border-lightBorder dark:border-darkBorder" />
             </div>
           )}
         </div>
