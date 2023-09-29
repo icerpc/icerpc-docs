@@ -15,6 +15,7 @@ export type FeedbackData = {
   platform: Platform; // The user's currently selected platform
   additionalFeedback?: string; // Additional feedback from the user
   email?: string; // The user's email address
+  [key: string]: string | Mode | Platform | undefined;
 };
 
 type FeedbackOption = {

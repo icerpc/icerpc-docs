@@ -18,13 +18,23 @@ export const sendFeedbackMail = async (
   req: NextApiRequest,
   feedback: FeedbackData
 ) => {
-  const { email, option, path, additionalFeedback, title, mode, platform } =
-    feedback;
   const from = 'IceRPC Docs Feedback <no-reply-contact-us@zeroc.com>';
   const to = 'info@zeroc.com';
 
+  // Sanitize the feedback data
+  const sanitizeInput = (input: string) => input.replace(/(<([^>]+)>)/gi, '');
+  const { email, option, path, additionalFeedback, title, mode, platform } =
+    Object.fromEntries(
+      Object.entries(feedback).map(([key, originalValue]) => {
+        if (originalValue == null || typeof originalValue !== 'string')
+          return [key, originalValue];
+        return [key, sanitizeInput(originalValue)];
+      })
+    ) as FeedbackData & { path: string; option: string; title: string };
+
   // Construct the URL of the page using the req and path
-  const pageUrl = req.headers.origin + path;
+  const origin = req.headers.origin ?? 'https://docs.icerpc.dev';
+  const pageUrl = encodeURI(origin + path);
 
   const response = await transporter.sendMail({
     from,
