@@ -139,8 +139,7 @@ const pageImage = (
 };
 
 // Utility functions
-
-export async function getFonts() {
+async function getFonts() {
   // See https://github.com/vercel/next.js/issues/48081 for why this is necessary
   const [interRegular, interMedium, interSemiBold, interBold] =
     await Promise.all([
