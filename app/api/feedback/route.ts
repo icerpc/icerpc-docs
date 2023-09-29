@@ -19,12 +19,28 @@ const transporter = createTransport({
 
 export async function POST(request: NextRequest) {
   const data: FeedbackData = await request.json();
-  const { path } = data;
+
+  // Sanitize the feedback data
+  const sanitizeInput = (input: string) =>
+    input
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+
+  const sanitizedData = Object.fromEntries(
+    Object.entries(data).map(([key, originalValue]) => {
+      if (originalValue == null || typeof originalValue !== 'string')
+        return [key, originalValue];
+      return [key, sanitizeInput(originalValue)];
+    })
+  ) as FeedbackData & { path: string; option: string; title: string };
 
   // Construct the URL of the page using the request and path
   const origin = request.headers.get('origin');
-  const pageUrl = origin + path;
-  const result = await sendFeedback(to, from, pageUrl, data);
+  const pageUrl = origin + sanitizedData.path;
+  const result = await sendFeedback(to, from, pageUrl, sanitizedData);
 
   // Check if email was sent successfully
   const success = result.accepted.length > 0;
