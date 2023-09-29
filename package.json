@@ -16,7 +16,6 @@
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@markdoc/markdoc": "^0.3.2",
-    "@vercel/og": "^0.5.17",
     "clsx": "^2.0.0",
     "cookies-next": "^4.0.0",
     "copy-to-clipboard": "^3.3.3",
