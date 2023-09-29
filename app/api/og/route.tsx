@@ -1,35 +1,42 @@
-import { ImageResponse } from '@vercel/og';
-import { NextRequest } from 'next/server';
+// Copyright (c) ZeroC, Inc.
+
+import { NextRequest, NextResponse, ImageResponse } from 'next/server';
 import { getBreadcrumbs } from 'lib/breadcrumbs';
 
-export const config = {
-  runtime: 'edge'
-};
-
-export default async function handler(req: NextRequest) {
+export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url);
-    const hostname = req.headers.get('host');
+    const fonts = await getFonts();
+    const { searchParams } = new URL(request.url);
+    const hostname = request.headers.get('host');
 
     // Get the title, description, and path from the URL parameters
-    const description = getUrlParam(searchParams, 'description');
-    const title = getUrlParam(searchParams, 'title');
-    const path = getUrlParam(searchParams, 'path');
+    const getUrlParamValue = (param: string) =>
+      getUrlParam(searchParams, param);
+
+    const description = getUrlParamValue('description');
+    const title = getUrlParamValue('title');
+    const path = getUrlParamValue('path');
 
     const breadcrumbs: string[] = path
       ? getBreadcrumbs(path).map((crumb) => crumb.name)
       : [];
 
-    const fonts = await getFonts();
-
     // Render a different image for the homepage
-    if (path == '/') return homeImage(hostname);
-    return pageImage(hostname, breadcrumbs, title, description, fonts);
-  } catch (error: any) {
-    return new Response(error.message, { status: 500 });
+    const image =
+      path === '/'
+        ? homeImage(hostname)
+        : pageImage(hostname, breadcrumbs, title, description, fonts);
+
+    return image;
+  } catch (e: any) {
+    console.log(`${e.message}`);
+    return new NextResponse(`Failed to generate the image`, {
+      status: 500
+    });
   }
 }
 
+// Image rendering functions
 const homeImage = (hostname: string | null) => {
   return new ImageResponse(
     (
@@ -131,10 +138,9 @@ const pageImage = (
   );
 };
 
-// See https://github.com/vercel/next.js/issues/48081 for why this is necessary
-export async function getFonts() {
-  // This is unfortunate but I can't figure out how to load local font files
-  // when deployed to vercel.
+// Utility functions
+async function getFonts() {
+  // See https://github.com/vercel/next.js/issues/48081 for why this is necessary
   const [interRegular, interMedium, interSemiBold, interBold] =
     await Promise.all([
       fetch(`https://rsms.me/inter/font-files/Inter-Regular.woff`).then((res) =>
@@ -178,6 +184,7 @@ export async function getFonts() {
     }
   ];
 }
+
 // Utility function for getting URL parameters
 const getUrlParam = (searchParams: URLSearchParams, key: string) =>
   searchParams.has(key) ? searchParams.get(key)?.slice(0, 100) : '';
