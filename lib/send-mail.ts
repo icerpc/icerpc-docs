@@ -22,7 +22,13 @@ export const sendFeedbackMail = async (
   const to = 'info@zeroc.com';
 
   // Sanitize the feedback data
-  const sanitizeInput = (input: string) => input.replace(/(<([^>]+)>)/gi, '');
+  const sanitizeInput = (input: string) =>
+    input
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
   const { email, option, path, additionalFeedback, title, mode, platform } =
     Object.fromEntries(
       Object.entries(feedback).map(([key, originalValue]) => {
