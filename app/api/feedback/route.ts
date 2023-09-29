@@ -1,8 +1,11 @@
 // Copyright (c) ZeroC, Inc.
 
-import { FeedbackData } from '@/components/shell/feedback/feedback-form';
-import { NextApiRequest } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import { createTransport } from 'nodemailer';
+import type { FeedbackData } from 'types';
+
+const to = 'info@zeroc.com';
+const from = 'IceRPC Docs Feedback <no-reply-contact-us@zeroc.com>';
 
 // Create a transporter of nodemailer
 const transporter = createTransport({
@@ -14,19 +17,43 @@ const transporter = createTransport({
   }
 });
 
-export const sendFeedbackMail = async (
-  req: NextApiRequest,
-  feedback: FeedbackData
-) => {
-  const { email, option, path, additionalFeedback, title, mode, platform } =
-    feedback;
-  const from = 'IceRPC Docs Feedback <no-reply-contact-us@zeroc.com>';
-  const to = 'info@zeroc.com';
+export async function POST(request: NextRequest) {
+  const data: FeedbackData = await request.json();
+  const { path } = data;
 
-  // Construct the URL of the page using the req and path
-  const pageUrl = req.headers.origin + path;
+  // Construct the URL of the page using the request and path
+  const origin = request.headers.get('origin');
+  const pageUrl = origin + path;
+  const result = await sendFeedback(to, from, pageUrl, data);
 
-  const response = await transporter.sendMail({
+  // Check if email was sent successfully
+  const success = result.accepted.length > 0;
+
+  // Log error if email was not sent successfully
+  if (!success) {
+    console.error('Error sending feedback email: ', result);
+  }
+
+  // Return response
+  return new NextResponse(
+    success ? 'Email sent successfully' : 'Error sending email',
+    {
+      status: success ? 200 : 500,
+      headers: {
+        'Content-Type': 'text/plain'
+      }
+    }
+  );
+}
+
+async function sendFeedback(
+  to: string,
+  from: string,
+  url: string,
+  data: FeedbackData
+) {
+  const { email, option, additionalFeedback, title, mode, platform } = data;
+  return await transporter.sendMail({
     from,
     to,
     replyTo: email,
@@ -60,11 +87,11 @@ export const sendFeedbackMail = async (
                   <table align="center" border="0" cellPadding="0" cellSpacing="0" role="presentation" width="100%" style="margin-bottom:32px;margin-top:32px;text-align:center">
                     <tbody>
                       <tr>
-                        <td><a href="${pageUrl}" target="_blank" style="p-x:20px;p-y:12px;line-height:100%;text-decoration:none;display:inline-block;max-width:100%;padding:12px 20px;border-radius:0.25rem;background-color:rgb(0,0,0);text-align:center;font-size:12px;font-weight:600;color:rgb(255,255,255);text-decoration-line:none"><span></span><span style="p-x:20px;p-y:12px;max-width:100%;display:inline-block;line-height:120%;text-decoration:none;text-transform:none;mso-padding-alt:0px;mso-text-raise:9px">View the page</span><span></span></a></td>
+                        <td><a href="${url}" target="_blank" style="p-x:20px;p-y:12px;line-height:100%;text-decoration:none;display:inline-block;max-width:100%;padding:12px 20px;border-radius:0.25rem;background-color:rgb(0,0,0);text-align:center;font-size:12px;font-weight:600;color:rgb(255,255,255);text-decoration-line:none"><span></span><span style="p-x:20px;p-y:12px;max-width:100%;display:inline-block;line-height:120%;text-decoration:none;text-transform:none;mso-padding-alt:0px;mso-text-raise:9px">View the page</span><span></span></a></td>
                       </tr>
                     </tbody>
                   </table>
-                  <p style="font-size:14px;line-height:24px;margin:16px 0;color:rgb(0,0,0)">or copy and paste this URL into your browser: <a target="_blank" style="color:rgb(37,99,235);text-decoration:none;text-decoration-line:none" href="${pageUrl}">${pageUrl}</a></p>
+                  <p style="font-size:14px;line-height:24px;margin:16px 0;color:rgb(0,0,0)">or copy and paste this URL into your browser: <a target="_blank" style="color:rgb(37,99,235);text-decoration:none;text-decoration-line:none" href="${url}">${url}</a></p>
                   <hr style="width:100%;border:none;border-top:1px solid #eaeaea;margin-left:0px;margin-right:0px;margin-top:26px;margin-bottom:26px;border-width:1px;border-style:solid;border-color:rgb(234,234,234)" />
                   <p style="font-size:12px;line-height:24px;margin:16px 0;color:rgb(102,102,102)">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p>
                 </td>
@@ -74,5 +101,4 @@ export const sendFeedbackMail = async (
         </html>
     `
   });
-  return response;
-};
+}

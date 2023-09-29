@@ -5,23 +5,8 @@
 import clsx from 'clsx';
 import { useMode, usePlatform, usePath } from 'context/state';
 import { useEffect, useState } from 'react';
-import { Mode, Platform } from 'types';
-
-export type FeedbackData = {
-  option: string; // The title of the selected option
-  path: string; // The path of the page the feedback was submitted from
-  title: string; // The title of the page the feedback was submitted from
-  mode: Mode; // The user's currently selected mode
-  platform: Platform; // The user's currently selected platform
-  additionalFeedback?: string; // Additional feedback from the user
-  email?: string; // The user's email address
-};
-
-type FeedbackOption = {
-  title: string;
-  description: string;
-  id: number;
-};
+import { Mode } from 'types';
+import { FeedbackData, FeedbackOption } from 'types';
 
 type Props = {
   title: string;
