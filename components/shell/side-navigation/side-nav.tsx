@@ -21,8 +21,8 @@ export const SideNav = ({ path }: { path: string }) => {
   const isSlicePage = ['/slice1', '/slice2'].includes(baseUrl);
 
   return (
-    <div className="sticky top-[59px] hidden h-[calc(100vh-59px)] flex-none flex-col items-end overflow-y-auto border-r border-lightBorder dark:border-darkBorder/60 dark:bg-dark lg:flex">
-      <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start pl-10">
+    <div className="sticky top-[59px] hidden h-[calc(100vh-59px)] flex-none flex-col items-end border-r border-lightBorder dark:border-darkBorder/60 dark:bg-dark lg:flex">
+      <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start overflow-y-auto pl-10">
         <div className="sticky top-0 space-y-5 bg-[#fafafa] pr-6 dark:bg-dark">
           <SearchButton className="mb-0 mt-6 flex items-start" />
           {isSlicePage && <SliceSelector className="w-full" />}
