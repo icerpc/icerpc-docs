@@ -29,7 +29,13 @@ export async function generateMetadata({
   return {
     title,
     description,
+    twitter: {
+      title,
+      description
+    },
     openGraph: {
+      title,
+      description,
       images: {
         url: `https://docs.icerpc.dev/api/og?title=${
           baseUrls.includes(path) ? 'Overview' : title
