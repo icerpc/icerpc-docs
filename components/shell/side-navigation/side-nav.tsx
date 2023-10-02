@@ -27,11 +27,11 @@ export const SideNav = ({ path }: { path: string }) => {
           <SearchButton className="mb-0 mt-6 flex items-start" />
           {isSlicePage && <SliceSelector className="w-full" />}
           <div className="w-full border-t-[1px] border-lightBorder dark:border-darkBorder" />
-          <div className="pointer-events-none absolute inset-x-0 bottom-[-2.25rem] h-9 w-full bg-gradient-to-t from-transparent to-[#fafafa]" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-[-2.25rem] h-9 w-full bg-gradient-to-t from-transparent to-[#fafafa] dark:to-dark" />
         </div>
         <nav>
           <ul className="top-0 mr-2 mt-5">{cells}</ul>
-          <div className="pointer-events-none sticky inset-x-0 bottom-0 h-10 w-full bg-gradient-to-t from-[#fafafa] to-transparent " />
+          <div className="pointer-events-none sticky inset-x-0 bottom-0 h-10 w-full bg-gradient-to-t from-[#fafafa] to-transparent dark:from-dark " />
         </nav>
       </div>
     </div>

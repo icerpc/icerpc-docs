@@ -77,6 +77,7 @@ export const SearchButton = ({ className }: Props) => {
             updatePage={false}
             className="h-fit w-full"
             tabClassName="!p-1 !px-[6px] capitalize"
+            showDarkMode={false}
           />,
           portalContainer
         )}

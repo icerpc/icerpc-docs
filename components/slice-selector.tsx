@@ -18,13 +18,15 @@ type SliceSelectorProps = {
   showTooltips?: boolean;
   updatePage?: boolean;
   tabClassName?: string;
+  showDarkMode?: boolean;
 };
 
 export const SliceSelector = ({
   className,
   showTooltips = true,
   updatePage = true,
-  tabClassName = 'w-[114px]'
+  tabClassName = 'w-[114px]',
+  showDarkMode = true
 }: SliceSelectorProps) => {
   const { mode: activeMode, setMode } = useMode();
   const path = usePath();
@@ -71,6 +73,7 @@ export const SliceSelector = ({
               mode={mode}
               selected={mode == activeMode}
               showTooltip={showTooltips}
+              showDarkMode={showDarkMode}
               tabClassName={tabClassName}
             />
           ))}
@@ -85,23 +88,31 @@ type ModeTabProps = {
   selected: boolean;
   showTooltip?: boolean;
   tabClassName?: string;
+  showDarkMode: boolean;
 };
 
 const ModeTab = ({
   mode,
   selected,
   showTooltip,
-  tabClassName
+  tabClassName,
+  showDarkMode
 }: ModeTabProps) => {
   const className = clsx(
     tabClassName,
     'cursor-pointer rounded border-[1.5px] bg-white p-2 text-center text-xs font-medium uppercase leading-tight',
     'focus:outline-none focus:ring-0',
     'transition-shadow duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg',
-    'dark:bg-transparent dark:text-white',
     selected
-      ? 'border border-primary bg-white text-primary dark:border-white dark:text-primary'
-      : 'bg-slate-50 text-slate-500 hover:bg-white/80 hover:text-primary dark:border-darkBorder dark:text-white/40'
+      ? [
+          'border border-primary bg-white text-primary',
+          showDarkMode && 'dark:border-white dark:text-primary'
+        ]
+      : [
+          'bg-slate-50 text-slate-500 hover:bg-white/80 hover:text-primary',
+          showDarkMode && 'dark:border-darkBorder dark:text-white/40'
+        ],
+    showDarkMode && 'dark:bg-transparent dark:text-white'
   );
   const tooltipContent =
     mode === Mode.Slice1 ? (
