@@ -232,7 +232,7 @@ For additional information on fields, see the [field][field-guide] page.
 Interface definitions consist of the `interface` keyword, followed by an [identifier], optionally followed by a list of base interfaces, and then the interface's body.
 Base interfaces are specified by a single colon, followed by the (possibly scoped) identifiers of one or more interfaces, separated by commas.
 Interface bodies consist of a set of [operations][operation] wrapped in a pair of braces.
-Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the class in its prelude.
+Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the interface in its prelude.
 
 ```ebnf {% showTitle=false %}
 Interface
