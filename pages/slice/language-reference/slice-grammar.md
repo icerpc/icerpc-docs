@@ -109,8 +109,7 @@ For additional information on modules, see the [module][module-guide] page.
 
 ### Primitive types
 
-Slice supports 17 primitive types. These types are always available - they're defined in any scope of any Slice file -
-and can be referenced with their keywords:
+Slice supports the following primitive types:
 
 ```ebnf {% showTitle=false %}
 Primitive
@@ -232,7 +231,7 @@ Field
 
 For additional information on fields, see the [field][field-guide] page.
 
-### Interfaces
+### Interface types
 
 Interface definitions consist of the `interface` keyword, followed by an [identifier], optionally followed by a list of base interfaces, and then the interface's body.
 Base interfaces are specified by a single colon, followed by the (possibly scoped) identifiers of one or more interfaces, separated by commas.
@@ -245,18 +244,7 @@ Interface
     ;
 ```
 
-If you are using an RPC framework, every interface definition also defines a _proxy type_.
-This proxy type shares the same name and scope as its corresponding interface and can be used as a type.
-
-```slice
-interface Foo { // Defines an interface named `Foo`.
-    op() -> Foo // Returns a proxy named `Foo`.
-}
-```
-
-It is illegal to use an interface as a type without an RPC framework.
-
-For additional information on interfaces and proxies, see the [interface][interface-guide] and [proxy][proxy-guide] pages.
+For additional information on interfaces, see the [interface][interface-guide]
 
 ### Operations
 
@@ -366,7 +354,8 @@ CustomType
     ;
 ```
 
-For a custom type to be mappable, it must have a `[x::type]` attribute applied to it, where `x` is the mapping language's prefix.
+For a custom type to be usable with a particular language mapping, it must have an attribute of the form `[x::type]`,
+where `x` is the Slice prefix of that language.
 
 For additional information on custom types, see the [custom type][custom-type-guide] page.
 
