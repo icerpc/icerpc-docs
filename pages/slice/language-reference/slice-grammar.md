@@ -39,7 +39,7 @@ For additional information on Slice files, see the [Slice file][slice-file-guide
 
 ### Mode declarations
 
-Mode declarations consist of the `mode` keyword, followed by an equals sign, followed by an identifier.
+Mode declarations consist of the `mode` keyword, followed by an equals sign, followed by an [identifier].
 This identifier must be a valid Slice compilation mode - either `Slice1` or `Slice2`.
 
 ```ebnf {% showTitle=false %}
@@ -49,10 +49,9 @@ FileCompilationMode
 ```
 
 Mode declarations must come before any Slice definitions or [module declarations][module-declaration].
-The compilation mode you select determines which Slice features are available to you
-but has no effect on the parsing of, or validity of syntax within, your Slice file.
-For example, even though classes are a Slice1-only feature, `class` is still a keyword within a Slice2 file,
-and if you define a class, syntax errors in that class's definition will still be reported normally.
+The compilation mode you select determines which Slice features are available to you but has no effect on the parsing
+of your Slice files. For example, classes are a Slice1-only feature, so it is invalid to define one in a Slice2 file.
+But within this file, `class` is still treated as a keyword, and class definitions must still be syntactically correct.
 
 For additional information on modes, see the [compilation mode][compilation-mode-guide] page.
 
@@ -71,7 +70,7 @@ If the module's identifier is [unscoped][identifier], this declares a _top-level
 If the module's identifier is [scoped][identifier], this declares a _submodule_.
 
 Submodules are modules that are logically contained within another module (called the _parent_).
-Slice definitions within a submodule can reference types in parent modules without qualification.
+Slice definitions within a submodule can reference other definitions in parent modules without qualification.
 
 ```slice
 module A // Declares a top-level module named `A`.
@@ -96,6 +95,12 @@ SliceFile
     : SliceFilePrelude Module? Definition*
     ;
 ```
+
+It is legal to declare the same module in multiple Slice files.
+Slice definitions in those files will be contained in a single module, even though they're defined in different files.
+
+Even though they're in different files, Slice definitions in those files 
+
 
 It is legal for multiple Slice files to declare the same module.
 Slice definitions defined in those files will be in the same module, even if they're in different Slice files.
@@ -173,7 +178,7 @@ For additional information on structs, see the [struct][struct-guide] page.
 ### Class types
 
 Classes can only be defined or referenced in [`Slice1`][compilation-mode-guide] mode.
-Classes can never be tagged when used as the type of a [field] or [parameter].
+Classes can never be [tagged][tag] when used as the type of a [field] or [parameter].
 
 Class definitions consist of the `class` keyword, followed by an [identifier], optionally followed by a [compact ID][compact-id-guide], optionally followed by a base class, and then the class's body.
 Compact IDs consist of a positive integer wrapped in a pair of parenthesis.
@@ -295,7 +300,7 @@ For additional information on operations, see the [operation][operation-guide] p
 
 ### Parameters
 
-The syntax for parameters is identical to the syntax for [fields][field], but with added support for the `stream` modifier keyword.
+The syntax for parameters is identical to the syntax for [fields][field], but with added support for streams.
 
 Parameters consist of an [identifier], followed by a colon, and then a [type].
 Optionally, a [tag] may be applied to the parameter, directly before its identifier, making this a [tagged parameter][tag].
