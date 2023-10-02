@@ -299,7 +299,7 @@ The syntax for parameters is identical to the syntax for [fields][field], but wi
 
 Parameters consist of an [identifier], followed by a colon, and then a [type].
 Optionally, a [tag] may be applied to the parameter, directly before its identifier, making this a [tagged parameter][tag].
-Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the field in its prelude.
+Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the parameter in its prelude.
 
 ```ebnf {% showTitle=false %}
 Parameter
