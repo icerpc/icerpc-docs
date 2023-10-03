@@ -50,7 +50,7 @@ const SearchContext = createContext<ModeContextType>({
 export function AppWrapper({ children }: { children: ReactNode }) {
   const [mode, setMode] = useState<Mode | undefined>(undefined);
   const [platform, setPlatform] = useState<Platform>(Platform.csharp);
-  const [searchMode, setSearchMode] = useState<Mode | undefined>(undefined);
+  const [searchMode, setSearchMode] = useState<Mode | undefined>(Mode.Slice2);
 
   const path = usePathname();
 
