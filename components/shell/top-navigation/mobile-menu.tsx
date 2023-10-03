@@ -22,14 +22,17 @@ export const MobileMenu = () => {
   }
 
   return (
-    <div className="mr-4 flex h-4/6  items-center rounded-full lg:hidden">
-      <SearchButton className="h-full w-full pt-[1px] md:mr-6" />
+    <div className="mr-4 flex h-4/6 items-center rounded-full lg:hidden">
+      <SearchButton className="h-full w-full pt-[1px] md:mr-2" />
       <button
         className="inline-flex items-center justify-center rounded-full p-1 text-black/60"
         onClick={() => setIsOpen(true)}
       >
         <span className="sr-only">Open main menu</span>
-        <EllipsisVerticalIcon className="block h-7 w-7" aria-hidden="true" />
+        <EllipsisVerticalIcon
+          className="block h-7 w-7 dark:text-white/80"
+          aria-hidden="true"
+        />
       </button>
       <TopMenuModal isOpen={isOpen} closeModal={closeModal} />
     </div>

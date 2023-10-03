@@ -39,6 +39,15 @@
   .search :global(.DocSearch-Search-Icon) {
     color: rgba(0, 0, 0, 0.6);
   }
+
+  :global(html.dark) body .search :global(.DocSearch-Button) {
+    background: none !important;
+    border: none !important;
+  }
+
+  :global(html.dark) .search :global(.DocSearch-Search-Icon) {
+    color: rgb(255 255 255 / 0.8);
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -48,7 +57,7 @@
   .search :global(.DocSearch-Button) {
     background: none;
     box-shadow: none;
-    width: 150px;
+    width: 200px;
   }
 }
 
