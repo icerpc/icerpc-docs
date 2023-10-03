@@ -1,9 +1,9 @@
 // Copyright (c) ZeroC, Inc.
 
 import { sideBarData, baseUrls } from 'data';
-import { SliceSelector } from '@/components/slice-selector';
 import { SearchButton } from '@/components/shell/search-button';
 import { SideNavList } from './side-nav-list';
+import { SideNavSelector } from './side-nav-selector';
 
 export const SideNav = ({ path }: { path: string }) => {
   // Clean up path
@@ -25,7 +25,7 @@ export const SideNav = ({ path }: { path: string }) => {
       <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start overflow-y-auto pl-10">
         <div className="sticky top-0 space-y-5 bg-[#fafafa] pr-6 dark:bg-dark">
           <SearchButton className="mb-0 mt-6 flex items-start" />
-          {isSlicePage && <SliceSelector className="w-full" />}
+          <SideNavSelector isSlicePage={isSlicePage} path={path} />
           <div className="w-full border-t-[1px] border-lightBorder dark:border-darkBorder" />
           <div className="pointer-events-none absolute inset-x-0 bottom-[-2.25rem] h-9 w-full bg-gradient-to-t from-transparent to-[#fafafa] dark:to-dark" />
         </div>
