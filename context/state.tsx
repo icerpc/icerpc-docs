@@ -16,6 +16,11 @@ type PlatformContextType = {
   platform: Platform;
   setPlatform: (platform: Platform) => void;
 };
+type SearchContextType = {
+  mode?: Mode;
+  setMode: (mode: Mode) => void;
+};
+
 type Props = {
   children: ReactNode;
   path: string;
@@ -36,10 +41,23 @@ const PlatformContext = createContext<PlatformContextType>({
   setPlatform: () => {}
 });
 
+const SearchContext = createContext<ModeContextType>({
+  mode: undefined,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setMode: () => {}
+});
+
 export function AppWrapper({ children }: { children: ReactNode }) {
   const [mode, setMode] = useState<Mode | undefined>(undefined);
   const [platform, setPlatform] = useState<Platform>(Platform.csharp);
+  const [searchMode, setSearchMode] = useState<Mode | undefined>(undefined);
+
   const path = usePathname();
+
+  // Update the search mode when the mode changes
+  useEffect(() => {
+    setSearchMode(mode);
+  }, [mode]);
 
   useEffect(() => {
     // Get the mode from the path
@@ -73,7 +91,11 @@ export function AppWrapper({ children }: { children: ReactNode }) {
   return (
     <ModeContext.Provider value={{ mode: mode, setMode: setMode }}>
       <PlatformContext.Provider value={{ platform, setPlatform }}>
-        {children}
+        <SearchContext.Provider
+          value={{ mode: searchMode, setMode: setSearchMode }}
+        >
+          {children}
+        </SearchContext.Provider>
       </PlatformContext.Provider>
     </ModeContext.Provider>
   );
@@ -103,6 +125,11 @@ export const useMode = (): ModeContextType => {
 // Custom hook to handle setting and observing the platform
 export const usePlatform = (): PlatformContextType => {
   return useContext(PlatformContext);
+};
+
+// Custom hook to handle setting and observing the search mode
+export const useSearch = (): SearchContextType => {
+  return useContext(SearchContext);
 };
 
 // Custom hook to handle component mounting

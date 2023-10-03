@@ -6,7 +6,7 @@ import { DocSearch } from '@docsearch/react';
 import '@docsearch/css';
 import style from './search.module.css';
 import clsx from 'clsx';
-import { useMode } from 'context/state';
+import { useSearch } from 'context/state';
 import { Mode } from 'types';
 import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
@@ -17,15 +17,18 @@ type Props = {
 };
 
 export const SearchButton = ({ className }: Props) => {
-  const { mode } = useMode();
+  const context = useSearch();
   const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(
     null
   );
-  const filters = ((mode) => {
+
+  const setFilters = (mode: Mode | undefined) => {
     if (mode == Mode.Slice2) return 'NOT sliceType:slice1';
     if (mode == Mode.Slice1) return 'NOT sliceType:slice2';
     return 'NOT sliceType:slice1';
-  })(mode);
+  };
+
+  let filters = setFilters(context.mode);
 
   // When docsearch is opened, DocSearch--active' is added to the body
   // we use this to detect when docsearch is opened and add our custom
@@ -74,10 +77,14 @@ export const SearchButton = ({ className }: Props) => {
         ReactDOM.createPortal(
           <SliceSelector
             showTooltips={false}
-            updatePage={false}
             className="h-fit w-full"
             tabClassName="!p-1 !px-[6px] capitalize"
             showDarkMode={false}
+            activeMode={context.mode}
+            onChangeCallback={(mode) => {
+              context.setMode(mode);
+              filters = setFilters(mode);
+            }}
           />,
           portalContainer
         )}

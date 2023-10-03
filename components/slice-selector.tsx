@@ -6,58 +6,38 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Tab } from '@headlessui/react';
 import { Tooltip } from 'react-tooltip';
-import { useRouter } from 'next/navigation';
 import clsx from 'clsx';
 
 import { AppLink } from '@/components/nodes/app-link';
 import { Mode, modes } from 'types';
-import { useMode, usePath } from 'context/state';
+import { useMode } from 'context/state';
 
 type SliceSelectorProps = {
   className?: string;
   showTooltips?: boolean;
-  updatePage?: boolean;
   tabClassName?: string;
   showDarkMode?: boolean;
+  activeMode?: Mode;
+  onChangeCallback?: (mode: Mode) => void;
 };
 
 export const SliceSelector = ({
   className,
   showTooltips = true,
-  updatePage = true,
   tabClassName = 'w-[114px]',
-  showDarkMode = true
+  showDarkMode = true,
+  activeMode,
+  onChangeCallback = () => {}
 }: SliceSelectorProps) => {
-  const { mode: activeMode, setMode } = useMode();
-  const path = usePath();
-  const { push } = useRouter();
+  // If activeMode is not provided, use the mode from the context
+  const modeContext = useMode();
+  if (!activeMode) {
+    activeMode = modeContext.mode;
+  }
 
   function onChange(index: number) {
     const mode = modes[index];
-    setMode(mode);
-
-    if (updatePage) {
-      const [corePath, fragment] = path.split('#');
-
-      let newPath;
-      if (corePath === '/slice1') {
-        newPath = mode === Mode.Slice1 ? '/slice1' : '/slice2';
-      } else if (corePath === '/slice2') {
-        newPath = mode === Mode.Slice1 ? '/slice1' : '/slice2';
-      } else {
-        newPath = corePath.replace(
-          /\/slice[1-2]\//,
-          `/slice${mode === Mode.Slice1 ? 1 : 2}/`
-        );
-      }
-
-      // Append the fragment back, if it exists
-      if (fragment) {
-        newPath = `${newPath}#${fragment}`;
-      }
-
-      push(newPath);
-    }
+    onChangeCallback(mode);
   }
 
   return (
