@@ -24,15 +24,9 @@ Slic is responsible for preventing the connection's idle timers from expiring wh
 doesn't write anything to this connection.
 
 Slic keeps connections alive by sending [Ping] frames. A Slic client connection sends `Ping` frames to the server; a
-Slic server connection never sends `Ping` frames to the client.
-
-A Slic client connection sends a `Ping` frame (idle timeout / 2) after connection establishment and (idle timeout / 2)
-after any write to that connection. The sending of a `Ping` frame is itself a write that schedules the sending of a new
-`Ping` frame; this next `Ping` is deferred when the caller (upper protocol) on the client-side performs a write
-operation on the connection.
-
-When the server receives a `Ping` frame, it restarts its idle timer and sends back a [Pong] frame. The reception of the
-`Pong` frame in turn restarts the idle timer of the client.
+Slic server connection never sends `Ping` frames to the client. When the server receives a `Ping` frame, it restarts its
+idle timer and sends back a [Pong] frame. The reception of the `Pong` frame in turn restarts the idle timer of the
+client.
 
 [connection-parameters]: connection-establishment#connection-establishment-parameters
 [Ping]: protocol-frames#ping-frame
