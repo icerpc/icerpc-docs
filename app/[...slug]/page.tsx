@@ -8,6 +8,7 @@ import { getAllMarkdownFiles, getMarkdownContent } from 'lib/markdown';
 import { SideNav } from 'components';
 import { Metadata } from 'next';
 import { baseUrls } from 'data';
+import NotFound from 'app/not-found';
 
 export const dynamicParams = false;
 
@@ -92,6 +93,10 @@ export async function generateStaticParams() {
 export default async function Page({ params }: PageProps) {
   const path = '/' + params.slug.join('/') ?? '';
   const { content } = await getMarkdownContent(path);
+
+  if (path.match(/^\/slice(?=#|\/|$)/)) {
+    return <NotFound />;
+  }
 
   if (!content) {
     return <div>Not found</div>;
