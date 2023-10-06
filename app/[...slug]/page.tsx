@@ -99,7 +99,7 @@ export default async function Page({ params }: PageProps) {
   }
 
   if (!content) {
-    return <div>Not found</div>;
+    return notFound();
   }
 
   return (
