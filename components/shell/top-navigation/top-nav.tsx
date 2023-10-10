@@ -11,6 +11,7 @@ import { MobileSideNav } from '@/components/shell/side-navigation/mobile-side-na
 import { ThemeToggle } from '@/components/theme-toggle';
 import logoIcon from 'public/Icerpc-logo.svg';
 import { TopNavigationItems } from './top-nav-items';
+import { Button } from '@/components/ui/button';
 
 export const TopNav = () => (
   <div
@@ -28,16 +29,22 @@ export const TopNav = () => (
               <TopNavigationItems />
             </ul>
           </nav>
-          <div className="mx-6 flex h-[30px] items-center border-l border-lightBorder pl-6 dark:border-darkBorder">
+          <div className="mx-6 flex h-[30px] items-center border-l border-lightBorder pl-4 dark:border-darkBorder">
             <ThemeToggle />
-            <a
-              className="flex h-full items-center justify-center p-4 hover:text-primary dark:text-[rgba(255,255,255,0.8)] "
-              href="https://github.com/icerpc"
-              rel="noopener noreferrer"
-              aria-label="Github"
+            <Button
+              variant="outline"
+              size="icon"
+              className="border-none hover:bg-zinc-100 focus-visible:border-0 focus-visible:!outline-none focus-visible:ring-transparent dark:!outline-none dark:hover:bg-darkAccent dark:focus-visible:!border-0"
             >
-              <FontAwesomeIcon icon={faGithub} className="h-5 w-5" />
-            </a>
+              <a
+                className="flex h-full items-center justify-center p-4 dark:text-[rgba(255,255,255,0.8)] "
+                href="https://github.com/icerpc"
+                rel="noopener noreferrer"
+                aria-label="Github"
+              >
+                <FontAwesomeIcon icon={faGithub} className="h-5 w-5" />
+              </a>
+            </Button>
           </div>
         </div>
         <MobileMenu />
