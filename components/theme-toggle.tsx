@@ -5,6 +5,7 @@
 import * as React from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import clsx from 'clsx';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -13,9 +14,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
+import { Theme } from '@/types';
 
 export function ThemeToggle() {
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
+  const currentTheme = theme as Theme;
 
   return (
     <DropdownMenu>
@@ -35,19 +38,28 @@ export function ThemeToggle() {
         align="end"
       >
         <DropdownMenuItem
-          className="hover:bg-zinc-100 dark:hover:bg-darkAccent"
+          className={clsx(
+            'hover:bg-zinc-100 dark:hover:bg-darkAccent',
+            currentTheme == Theme.Light && 'font-bold'
+          )}
           onClick={() => setTheme('light')}
         >
           Light
         </DropdownMenuItem>
         <DropdownMenuItem
-          className="hover:bg-zinc-100 dark:hover:bg-darkAccent"
+          className={clsx(
+            'hover:bg-zinc-100 dark:hover:bg-darkAccent',
+            currentTheme == Theme.Dark && 'font-bold'
+          )}
           onClick={() => setTheme('dark')}
         >
           Dark
         </DropdownMenuItem>
         <DropdownMenuItem
-          className="hover:bg-zinc-100 dark:hover:bg-darkAccent"
+          className={clsx(
+            'hover:bg-zinc-100 dark:hover:bg-darkAccent',
+            currentTheme == Theme.System && 'font-bold'
+          )}
           onClick={() => setTheme('system')}
         >
           System
