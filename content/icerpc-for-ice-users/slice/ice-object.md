@@ -50,10 +50,11 @@ For example:
 
 ```csharp
 using IceRpc.Features;
-using IceRpc.Slice; // for Service
+using IceRpc.Slice; // for SliceService
 using IceRpc.Slice.Ice; // for IIceObjectService (Slice Ice::Object)
 
-internal class HelloService : Service, IHelloService, IIceObjectService
+[SliceService]
+internal partial class HelloService : IHelloService, IIceObjectService
 {
     // IIceObjectService provides default implementations for all the ice_ operations.
 

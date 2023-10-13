@@ -4,7 +4,7 @@ title: Writing your first IceRPC server in C#
 
 This tutorial is the first part of a two part series that shows how to create a
 complete application with IceRPC for C#. We start from scratch—you just need to
-have the .NET 7 SDK installed on your computer.
+have the .NET 8 SDK installed on your computer.
 
 The networked application we are building together consists of:
 
@@ -73,7 +73,8 @@ For this tutorial, we just keep `Greeter` as-is.
 Class Chatbot is a service that implements Slice interface `Greeter`:
 
 ```csharp
-internal class Chatbot : Service, IGreeterService
+[SliceService]
+internal partial class Chatbot : IGreeterService
 {
     public ValueTask<string> GreetAsync(
         string name,
@@ -98,8 +99,10 @@ is not marked `async`. We could write the return statement as:
     return new ValueTask<string>($"Hello, {name}!");
 ```
 
-However, it's more convenient to omit the type name, especially when this type
-is complicated.
+However, it's more convenient to omit the type name, especially when this type is complicated.
+
+We mark class `Chatbot` as partial because the [SliceService] attribute instructs the Slice Service code generator to
+implement interface [IDispatcher]—in other words, make `Chatbot` a service implementation.
 
 ### Program.cs - the dispatch pipeline and the server logic
 
@@ -219,6 +222,7 @@ dbug: IceRpc.Server[12]
 [client-tutorial]: /getting-started/tutorial/client-tutorial
 [Deadline]: csharp:IceRpc.Deadline
 [dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
+[IDispatcher]: csharp:IceRpc.IDispatcher
 [IceRpc.Deadline]: https://www.nuget.org/packages/IceRpc.Deadline
 [IceRpc.Logger]: https://www.nuget.org/packages/IceRpc.Logger
 [IceRpc.Slice.Tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
@@ -228,3 +232,4 @@ dbug: IceRpc.Server[12]
 [Router]: csharp:IceRpc.Router
 [Server]: csharp:IceRpc.Server
 [Slice]: /slice
+[SliceService]: csharp:IceRpc.Slice.SliceServiceAttribute
