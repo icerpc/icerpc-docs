@@ -101,8 +101,8 @@ is not marked `async`. We could write the return statement as:
 
 However, it's more convenient to omit the type name, especially when this type is complicated.
 
-We mark class `Chatbot` as partial because the [SliceService] attribute instructs the Slice Service code generator to
-implement interface [IDispatcher]—in other words, make `Chatbot` a service implementation.
+We mark class `Chatbot` as partial because the [SliceService] attribute instructs the Slice Service source generator to
+implement interface [IDispatcher]—in other words, make `Chatbot` an IceRPC service implementation.
 
 ### Program.cs - the dispatch pipeline and the server logic
 

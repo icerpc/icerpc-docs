@@ -218,7 +218,7 @@ interface _Name_.
 The principle is straightforward: your service class must be a partial class that implements I*Name*Service. It must
 also carry the [SliceService] attribute.
 
-The `SliceService` attribute instructs the Slice Service code generator to implement interface [IDispatcher] by
+The `SliceService` attribute instructs the Slice Service source generator to implement interface [IDispatcher] by
 directing incoming requests to I*Name*Service methods based on the operation names.
 
 For example:
@@ -236,6 +236,7 @@ interface Widget {
 ```csharp
 namespace Example;
 
+// Generated code
 public partial interface IWidgetService
 {
     // One method per operation

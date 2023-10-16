@@ -78,7 +78,7 @@ internal partial class Chatbot : IGreeterService
 }
 ```
 
-The `[SliceService]` attribute instructs the Slice Service code generator to generate an implementation of interface
+The `[SliceService]` attribute instructs the Slice Service source generator to generate an implementation of interface
 [IDispatcher]. This implementation dispatches incoming requests to the `Chatbot` methods based on the operation names
 carried by these requests.
 
