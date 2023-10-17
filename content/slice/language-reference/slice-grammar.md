@@ -477,7 +477,7 @@ TypeRefDefinition
 ### Tags
 
 Tags consist of the `tag` keyword, followed by a positive integer wrapped in a pair of parenthesis.  
-This integer must bebetween `0` and `2,147,483,647` (the maximum value of a signed 32-bit integer).
+This integer must be between `0` and `2,147,483,647` (the maximum value of a signed 32-bit integer).
 
 {% slice2 %}
 Tags can only be applied to [fields][field] and [parameters][parameter] with an optional type.
