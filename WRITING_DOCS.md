@@ -9,8 +9,6 @@
   - [Divider](#divider)
   - [Grid](#grid)
   - [Mini-Card](#mini-card)
-  - [Dark-Mode](#dark-mode)
-  - [Light-Mode](#light-mode)
 - [Updating Navigation](#updating-navigation)
 
 Documentation is written in Markdown and is located in the `pages`
@@ -273,32 +271,6 @@ a title, description, and link.
 #### Examples
 
 See the [`grid`](#grid) tag for an example of how to use the `mini-card` tag.
-
-### Light-Mode
-
-The `light-mode` tag is used to render content that should only be visible in light mode.
-
-#### Examples
-
-```markdown
-{% light-mode %}
-This content will only be visible in light mode
-{% /light-mode %}
-```
-
----
-
-### Dark-Mode
-
-The `dark-mode` tag is used to render content that should only be visible in dark mode.
-
-#### Examples
-
-```markdown
-{% dark-mode %}
-This content will only be visible in dark mode
-{% /dark-mode %}
-```
 
 ---
 

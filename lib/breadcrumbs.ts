@@ -1,5 +1,5 @@
 import { baseUrls, currentNavItem, sideBarData } from 'data';
-import { Breadcrumb } from 'components/Breadcrumbs';
+import { Breadcrumb } from '@/components/breadcrumbs';
 import { SideBarLink, isCategory, isLink } from 'types';
 
 export const getBreadcrumbs = (path: string): Breadcrumb[] => {

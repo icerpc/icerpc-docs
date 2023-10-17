@@ -1,73 +1,78 @@
 // Copyright (c) ZeroC, Inc.
 
-import { baseUrls } from 'data';
-import { useRouter } from 'next/router';
+'use client';
+
 import { ReactNode } from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
+import { getModeFromPath } from 'utils/modeFromPath';
 import { Mode, Platform } from 'types';
+import { usePathname } from 'next/navigation';
 
 type ModeContextType = {
-  mode: Mode;
+  mode?: Mode;
   setMode: (mode: Mode) => void;
 };
 type PlatformContextType = {
   platform: Platform;
   setPlatform: (platform: Platform) => void;
 };
+type SearchContextType = {
+  mode?: Mode;
+  setMode: (mode: Mode) => void;
+};
+
+type Props = {
+  children: ReactNode;
+  path: string;
+};
+
+// Contexts for the mode, platform, and path
+const PathContext = createContext<string | null>(null);
 
 const ModeContext = createContext<ModeContextType>({
-  mode: Mode.Slice2,
+  mode: undefined,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setMode: () => {}
 });
+
 const PlatformContext = createContext<PlatformContextType>({
   platform: Platform.csharp,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setPlatform: () => {}
 });
 
-type Props = {
-  children: ReactNode;
-};
+const SearchContext = createContext<ModeContextType>({
+  mode: undefined,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setMode: () => {}
+});
 
-const getModeFromPath = (path: string) => {
-  const pathSegments = path.split('/');
-  const modeSegmentWithoutFragment = pathSegments[1].split('#')[0];
-
-  const baseUrl =
-    baseUrls.find((item) => item === `/${modeSegmentWithoutFragment}`) ?? '';
-  if (baseUrl === '/slice1') {
-    return Mode.Slice1;
-  } else if (baseUrl === '/slice2') {
-    return Mode.Slice2;
-  } else {
-    return null;
-  }
-};
-
-export function AppWrapper({ children }: Props) {
-  const [mode, setMode] = useState<Mode>(Mode.Slice2);
+export function AppWrapper({ children }: { children: ReactNode }) {
+  const [mode, setMode] = useState<Mode | undefined>(undefined);
   const [platform, setPlatform] = useState<Platform>(Platform.csharp);
-  const { asPath, isReady } = useRouter();
+  const [searchMode, setSearchMode] = useState<Mode | undefined>(Mode.Slice2);
+
+  const path = usePathname();
+
+  // Update the search mode when the mode changes
+  useEffect(() => {
+    setSearchMode(mode);
+  }, [mode]);
 
   useEffect(() => {
-    // If the router is not ready, we can't determine if we should ignore
-    // the current mode.
-    if (!isReady) return;
-
     // Get the mode from the path
-    const pathMode = getModeFromPath(asPath);
+    const pathMode = getModeFromPath(path);
 
     // Get the platform and mode strings from local storage if it exists
-    const localPlatformString = localStorage.getItem('platform');
-    const localModeString = localStorage.getItem('mode');
+    const localPlatformString = localStorage.getItem('platform') || null;
+    const localModeString = localStorage.getItem('mode') || null;
 
     // If the platform and mode exist in local storage, parse them and set them as the current platform and mode
     const localPlatform: Platform | null = localPlatformString
-      ? JSON.parse(localPlatformString)
+      ? tryParseJSON(localPlatformString)
       : null;
     const localMode: Mode | null = localModeString
-      ? JSON.parse(localModeString)
+      ? tryParseJSON(localModeString)
       : null;
 
     localPlatform && setPlatform(localPlatform);
@@ -75,7 +80,7 @@ export function AppWrapper({ children }: Props) {
     // If the path mode exists, set the mode to the path mode
     // Otherwise, if the local mode exists, set the mode to the local mode
     pathMode ? setMode(pathMode) : localMode && setMode(localMode);
-  }, [asPath, isReady]);
+  }, [path]);
 
   useEffect(() => {
     // Set the platform and mode in local storage when they change
@@ -86,11 +91,31 @@ export function AppWrapper({ children }: Props) {
   return (
     <ModeContext.Provider value={{ mode: mode, setMode: setMode }}>
       <PlatformContext.Provider value={{ platform, setPlatform }}>
-        {children}
+        <SearchContext.Provider
+          value={{ mode: searchMode, setMode: setSearchMode }}
+        >
+          {children}
+        </SearchContext.Provider>
       </PlatformContext.Provider>
     </ModeContext.Provider>
   );
 }
+
+export const PathProvider: React.FC<{ path: string; children: ReactNode }> = ({
+  children,
+  path
+}: Props) => {
+  return <PathContext.Provider value={path}>{children}</PathContext.Provider>;
+};
+
+// Custom hook to handle observing the path
+export const usePath = () => {
+  const context = useContext(PathContext);
+  if (!context) {
+    throw new Error('usePath must be used within a PathProvider');
+  }
+  return context;
+};
 
 // Custom hook to handle setting and observing the mode
 export const useMode = (): ModeContextType => {
@@ -100,6 +125,11 @@ export const useMode = (): ModeContextType => {
 // Custom hook to handle setting and observing the platform
 export const usePlatform = (): PlatformContextType => {
   return useContext(PlatformContext);
+};
+
+// Custom hook to handle setting and observing the search mode
+export const useSearch = (): SearchContextType => {
+  return useContext(SearchContext);
 };
 
 // Custom hook to handle component mounting
@@ -112,3 +142,11 @@ export const useMounted = () => {
 
   return mounted;
 };
+
+function tryParseJSON(jsonString: string) {
+  try {
+    return JSON.parse(jsonString);
+  } catch (e) {
+    return null;
+  }
+}
