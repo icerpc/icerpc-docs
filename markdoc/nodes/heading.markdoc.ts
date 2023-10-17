@@ -43,7 +43,7 @@ function generateID(
     .toLowerCase();
 }
 
-// Handles converting italic and bold tags to strinngs
+// Handles converting italic and bold tags to strings
 // function stringifyChildren(children: RenderableTreeNode[]) {
 //   children.map((child) => {
 
