@@ -12,7 +12,7 @@
         },
         definition: [
             {
-                pattern: /[a-zA-Z]\w*(?=(<\w*>)?(?:\s*:|[ \t]*;))/,
+                pattern: /\b[a-zA-Z]\w*(?=(<\w*>)?(?:\s*:|[ \t]*;))/,
                 alias: ['rule', 'class-name']
             }
         ],
