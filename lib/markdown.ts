@@ -115,7 +115,7 @@ function filterMarkdown(markdown: string, mode?: Mode): string {
   // Retain only slices that match the current mode
   const filteredMarkdown = markdown.replace(regexPattern, (match, p1) => {
     // Convert the matched mode to uppercase before comparison
-    return p1.toUpperCase() === mode ? match : '';
+    return p1.toUpperCase() === mode.toUpperCase() ? match : '';
   });
 
   return filteredMarkdown;
