@@ -25,12 +25,44 @@ A `bool` is encoded on a single byte, where 0 means `false` and 1 means `true`. 
 | int64, uint64 | 8                  |
 
 The encoding of all signed integers uses [two's complement], the standard representation for signed integers.
+
+## Variable-size integral types
+
+A `varint32`, `varuint32`, `varint62`, `varuint62` is encoded on 1, 2, 4 or 8 bytes. The least significant 2 bits of the
+first byte encode the number of bytes used to encode the full value.
+
+| First 2 bits | Number of bytes |
+| ------------ | --------------- |
+| 0            | 1               |
+| 1            | 2               |
+| 2            | 4               |
+| 3            | 8               |
+
+The encoding for `varuint32` and `varuint62` is identical. The value is logically multiplied by 4, or'ed with the value
+of the first two bits and then stored in the selected number of bytes.
+
+Likewise, the encoding for `varint32` and `varint62` is identical. The value is logically multiplied by 4, or'ed with
+the value of the first two bits and then stored in the selected number of bytes.
+
+The value of the first 2 bits indirectly determines the min and max encodable values:
+
+| First 2 bits | Min varint | Max varint | Min varuint | Max varuint |
+| ------------ | ---------- | ---------- | ----------- | ----------- |
+| 0            | -2^5       | 2^5 - 1    | 0           | 2^6 - 1     |
+| 1            | -2^13      | 2^13 - 1   | 0           | 2^14 - 1    |
+| 2            | -2^29      | 2^29 - 1   | 0           | 2^30 - 1    |
+| 3            | -2^61      | 2^61 - 1   | 0           | 2^62 - 1    |
+
+In general, a Slice encoder should encode a value on as few bytes as possible. It's however ok for a Slice encoder to
+encode a value on more bytes than required, and a Slice decoder must always decode such a value properly. For example,
+`7` is usually encoded on a single byte but can also be encoded on 2, 4 or 8 bytes.
+
+{% callout type="note" %}
+The encoding of varuint62 is identical to the encoding of variable-length integers in QUIC, except for the byte order
+(QUIC is big-endian, Slice is little-endian).
+{% /callout %}
+
 {% /slice2 %}
-
-## Floating-point types
-
-A `float32` or `float64` is encoded on 4 resp. 8 bytes using the binary32 resp. binary64 formats specified by
-[IEEE 754].
 
 {% slice1 %}
 ## Integral types
@@ -44,6 +76,11 @@ A `float32` or `float64` is encoded on 4 resp. 8 bytes using the binary32 resp. 
 
 The encoding of all signed integers uses [two's complement], the standard representation for signed integers.
 {% /slice1 %}
+
+## Floating-point types
+
+A `float32` or `float64` is encoded on 4 resp. 8 bytes using the binary32 resp. binary64 formats specified by
+[IEEE 754].
 
 ## String
 
@@ -85,45 +122,6 @@ The `varuint62` size is not necessarily encoded on a single byte. It can be enco
 The size represents the number of UTF-8 bytes in the encoded representation of the string, not the number of characters
 in this string.
 {% /callout %}
-
-{% slice2 %}
-## Variable-size integral types
-
-A `varint32`, `varuint32`, `varint62`, `varuint62` is encoded on 1, 2, 4 or 8 bytes. The least significant 2 bits of the
-first byte encode the number of bytes used to encode the full value.
-
-| First 2 bits | Number of bytes |
-| ------------ | --------------- |
-| 0            | 1               |
-| 1            | 2               |
-| 2            | 4               |
-| 3            | 8               |
-
-The encoding for `varuint32` and `varuint62` is identical. The value is logically multiplied by 4, or'ed with the value
-of the first two bits and then stored in the selected number of bytes.
-
-Likewise, the encoding for `varint32` and `varint62` is identical. The value is logically multiplied by 4, or'ed with
-the value of the first two bits and then stored in the selected number of bytes.
-
-The value of the first 2 bits indirectly determines the min and max encodable values:
-
-| First 2 bits | Min varint | Max varint | Min varuint | Max varuint |
-| ------------ | ---------- | ---------- | ----------- | ----------- |
-| 0            | -2^5       | 2^5 - 1    | 0           | 2^6 - 1     |
-| 1            | -2^13      | 2^13 - 1   | 0           | 2^14 - 1    |
-| 2            | -2^29      | 2^29 - 1   | 0           | 2^30 - 1    |
-| 3            | -2^61      | 2^61 - 1   | 0           | 2^62 - 1    |
-
-In general, a Slice encoder should encode a value on as few bytes as possible. It's however ok for a Slice encoder to
-encode a value on more bytes than required, and a Slice decoder must always decode such a value properly. For example,
-`7` is usually encoded on a single byte but can also be encoded on 2, 4 or 8 bytes.
-
-{% callout type="note" %}
-The encoding of varuint62 is identical to the encoding of variable-length integers in QUIC, except for the byte order
-(QUIC is big-endian, Slice is little-endian).
-{% /callout %}
-
-{% /slice2 %}
 
 [BOM]: https://en.wikipedia.org/wiki/Byte_order_mark
 [IEEE 754]: https://en.wikipedia.org/wiki/IEEE_754
