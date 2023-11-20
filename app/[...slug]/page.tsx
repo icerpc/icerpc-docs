@@ -51,7 +51,8 @@ export async function generateStaticParams() {
     'slice',
     'icerpc',
     'icerpc-for-ice-users',
-    'getting-started'
+    'getting-started',
+    'protobuf'
   ];
 
   const paths: { params: { slug: string[] } }[] = [];

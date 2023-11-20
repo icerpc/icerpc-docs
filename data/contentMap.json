@@ -523,6 +523,21 @@
       ]
     }
   ],
+  "protobuf": [
+    {
+      "title": "Overview",
+      "path": "/protobuf"
+    },
+    {
+      "title": "Example Section",
+      "links": [
+        {
+          "title": "Example page",
+          "path": "/protobuf/example-section/example-page"
+        }
+      ]
+    }
+  ],
   "icerpc_for_ice_users": [
     {
       "title": "Overview",

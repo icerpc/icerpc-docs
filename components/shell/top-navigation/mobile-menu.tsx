@@ -61,6 +61,10 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
       href: mode === Mode.Slice1 ? '/slice1' : '/slice2'
     },
     {
+      name: 'Protobuf',
+      href: '/protobuf'
+    },
+    {
       name: 'IceRPC for Ice users',
       href: '/icerpc-for-ice-users'
     },
