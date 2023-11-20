@@ -46,7 +46,6 @@ type TopMenuModalProps = {
 
 export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
   const { mode } = useMode();
-
   const navigationItems = [
     {
       name: 'Getting Started',
@@ -66,7 +65,7 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
     },
     {
       name: 'API Reference',
-      href: 'https://docs.icerpc.dev/api/csharp/index.html'
+      href: `${process.env.NEXT_PUBLIC_API_HOST}/api/csharp/index.html`
     }
   ];
 

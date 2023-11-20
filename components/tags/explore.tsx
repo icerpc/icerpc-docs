@@ -28,7 +28,7 @@ export const Explore = () => {
       <ExploreCard
         title="API Reference"
         description="The IceRPC for C# API reference."
-        href="https://docs.icerpc.dev/api/csharp/index.html"
+        href={`${process.env.NEXT_PUBLIC_API_HOST}/api/csharp/index.html`}
       />
     </div>
   );
