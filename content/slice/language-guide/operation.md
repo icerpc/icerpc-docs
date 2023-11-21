@@ -325,9 +325,9 @@ the Encode*OpName* method provided by the helper [`Response` class](#request-and
 
 There are two somewhat common use-cases for this attribute:
 
-1.  You want to encode a mutable collection field of your class (such as `List<T>`) while holding a mutex lock; this
+1. You want to encode a mutable collection field of your class (such as `List<T>`) while holding a mutex lock; this
     lock prevents other operations from modifying this field while it's being encoded.
-2.  You want to return over and over the same return value that is costly to encode; this attribute allows you to encode
+2. You want to return over and over the same return value that is costly to encode; this attribute allows you to encode
     the return value once, cache the encoded bytes and then return over and over these bytes.
 
 [attributes]: attributes
