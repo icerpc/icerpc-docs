@@ -7,7 +7,7 @@ showReadingTime: false
 ## About Protocol Buffers
 
 Protocol Buffers or Protobuf for short is a popular [Interface Definition Language] (IDL) and serialization format
-created Google and available for many programming languages. [gRPC] and several other RPC frameworks use [Protobuf] as
+created by Google and available for many programming languages. [gRPC] and several other RPC frameworks use [Protobuf] as
 their IDL.
 
 This chapter describes the IceRPC + Protobuf integration, not Protobuf itself. The IceRPC + Protobuf integration uses
