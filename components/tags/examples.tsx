@@ -10,17 +10,17 @@ export const Examples = () => {
       <ExampleCard
         title="GreeterLog"
         description="A typical IceRPC application."
-        href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterLog"
+        href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/slice/Logger"
       />
       <ExampleCard
         title="GenericHost"
         description="IceRPC with the Microsoft DI container."
-        href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/GenericHost"
+        href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/slice/GenericHost"
       />
       <ExampleCard
         title="Stream"
         description="Stream your data with IceRPC and Slice."
-        href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/Stream"
+        href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/slice/Stream"
       />
     </div>
   );

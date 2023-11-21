@@ -144,19 +144,19 @@ integration will soon bring the same level of convenience to Protobuf.
 {% grid %}
 
 {% mini-card
-   title="Core example"
-   description="Using IceRPC without an IDL."
-   href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterCore" /%}
+   title="Slice example"
+   description="Using IceRPC with Slice"
+   href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/slice/Greeter" /%}
 
 {% mini-card
    title="JSON example"
    description="Using IceRPC with JSON."
-   href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterJson" /%}
+   href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/json/" /%}
 
 {% mini-card
    title="Protobuf example"
    description="Using IceRPC with Protobuf."
-   href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/GreeterProtobuf" /%}
+   href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/protobuf/Greeter" /%}
 
 {% /grid %}
 
