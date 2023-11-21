@@ -81,7 +81,7 @@ case. The type of the C# field is the mapped C# type for `Type`.
 Tagged parameters are mapped just like regular parameters. The tag and tag number don't appear in the mapped C# API.
 
 {% slice2 %}
-### Stream parameters in C #
+### Stream parameters in C#
 
 A stream parameter of type `uint8` is mapped to a [PipeReader]. For example:
 
