@@ -10,22 +10,27 @@ Parameters have the same syntax as [fields](fields), with one exception: when an
 this parameter cannot have a name. The syntax for this nameless return parameter is simply `Type` or `tag(N) Type?`.
 
 For example:
+
 ```slice
 greet(name: string) -> string // the return parameter has a type (string) but no name.
 anotherGreet(name: string) -> tag(1) string? // the return parameter is tagged
 ```
+
 {% /slice1 %}
 {% slice2 %}
 Parameters have the same syntax as [fields](fields), with two extensions:
 
 1. When an operation returns a single parameter, this parameter cannot have a name. The syntax for this nameless return
 parameter is simply `Type` or `tag(N) Type?`. For example:
+
     ```slice
     greet(name: string) -> string // the return parameter has a type (string) but no name.
     anotherGreet(name: string) -> tag(1) string? // the return parameter is tagged
     ```
+
 2. The last parameter of an operation or return type may be a stream parameter, with the `stream` keyword before the
 type. For example:
+
     ```slice
     downloadFile(name: string) -> stream uint8
 
@@ -81,6 +86,7 @@ Tagged parameters are mapped just like regular parameters. The tag and tag numbe
 A stream parameter of type `uint8` is mapped to a [PipeReader]. For example:
 
 {% side-by-side alignment="top" %}
+
 ```slice
 interface ImageStore {
     uploadImage(name: string, bytes: stream uint8)
@@ -97,6 +103,7 @@ public partial interface IImageStore
         CancellationToken cancellationToken = default);
 }
 ```
+
 {% /side-by-side %}
 
 When you give such a stream to the generated code, the IceRPC + Slice integration will complete this stream when it's
@@ -110,6 +117,7 @@ For all other stream element types, a stream parameter is mapped to an [`IAsyncE
 the async enumerable element type is the mapped C# type for the Slice stream element type. For example:
 
 {% side-by-side alignment="top" %}
+
 ```slice
 interface TemperatureProbe {
     read() -> stream float32
@@ -124,6 +132,7 @@ public partial interface ITemperatureProbe
         CancellationToken cancellationToken = default);
 }
 ```
+
 {% /side-by-side %}
 
 When you give such a stream to the generated code, the IceRPC + Slice integration will either iterate over all the
@@ -141,6 +150,6 @@ blocked or slow read operation on the underlying byte stream. {% /slice2 %}
 [PipeReader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
 [Complete]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader.complete
 [CompleteAsync]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader.completeasync
-[Stream example]: https://github.com/icerpc/icerpc-csharp/tree/main/examples/Stream
+[Stream example]: https://github.com/icerpc/icerpc-csharp/tree/0.1.x/examples/Stream
 [WithCancellation]: https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskasyncenumerableextensions.withcancellation
 [`IAsyncEnumerable<T>`]: https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iasyncenumerable-1
