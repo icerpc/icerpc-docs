@@ -1,7 +1,8 @@
 // Copyright (c) ZeroC, Inc.
 
-import { NextRequest, NextResponse, ImageResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { getBreadcrumbs } from 'lib/breadcrumbs';
+import { ImageResponse } from 'next/og';
 
 export async function GET(request: NextRequest) {
   try {

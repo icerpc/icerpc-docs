@@ -5,7 +5,6 @@
 import { useMode } from 'context/state';
 import { ReactNode, useEffect, useState } from 'react';
 import { Mode } from 'types';
-import { useRouter } from 'next/navigation';
 import { useLayoutEffect } from 'react';
 
 type Props = {
