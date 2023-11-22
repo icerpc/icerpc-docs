@@ -1,5 +1,6 @@
 # Writing Documentation
 
+- [Frontmatter](#frontmatter)
 - [Custom Nodes](#custom-nodes)
   - [Code Fences](#code-fences)
   - [Links](#links)
@@ -41,6 +42,28 @@ that can be used in the documentation.
 
 [**Updating Navigation**](#updating-navigation) is done by editing the
 `/data/*.ts` files.
+
+## Frontmatter
+
+Frontmatter is a way to add metadata to a page. Frontmatter is written at the top
+of a Markdown file and is enclosed by `---`. Frontmatter is written in YAML and
+is used to specify the title, description, and other metadata about the page.
+
+```yaml
+---
+title: Getting started
+description: Get up and running with IceRPC
+showAside: false
+showNavigation: false
+---
+```
+
+| Attribute       | Description                                                                                     |
+| --------------- | ----------------------------------------------------------------------------------------------- |
+| title           | The title of the page.                                                                          |
+| description     | The description of the page.                                                                    |
+| showAside       | Whether or not to show table of contents to the right of the page.  Can be either `true` or `false`. Defaults to `true`|
+| showNavigation  | Whether or not to show the navigation at the bottom of the page. Can be either `true` or `false`. Defaults to `true`   |
 
 ## Custom Nodes
 
