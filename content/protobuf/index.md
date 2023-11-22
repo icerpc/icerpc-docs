@@ -6,9 +6,9 @@ showReadingTime: false
 
 ## About Protocol Buffers
 
-Protocol Buffers or Protobuf for short is a popular [Interface Definition Language] (IDL) and serialization format
-created by Google and available for many programming languages. [gRPC] and several other RPC frameworks use [Protobuf] as
-their IDL.
+Protocol Buffers (Protobuf for short) is a popular [Interface Definition Language] (IDL) and serialization format
+created by Google and available for many programming languages. [Protobuf] is the IDL for [gRPC] and several other RPC
+frameworks.
 
 This chapter describes the IceRPC + Protobuf integration, not Protobuf itself. The IceRPC + Protobuf integration uses
 standard Protobuf files, with the regular Protobuf syntax and semantics.
@@ -21,13 +21,13 @@ IceRPC.
 In practical terms, the IceRPC + Protobuf integration for C#:
 
 - defines an IceRPC-specific client-side and server-side mapping for Protobuf services to C#
-- provides a `protoc` plugin (`protoc-gen-icerpc-csharp`) that generates code for Protobuf services
+- provides a `protoc` code generator (`protoc-gen-icerpc-csharp`) that generates code for Protobuf services
 - provides a support assembly used by this generated code, `IceRpc.Protobuf.dll`
-- provides a MSBuild integration that helps you execute `protoc` with the `protoc-gen-icerpc-csharp` plugin in MSBuild
-projects: `IceRpc.Protobuf.Tools`
+- provides an MSBuild integration that helps you execute `protoc` with the `protoc-gen-icerpc-csharp` code generator in
+MSBuild projects: `IceRpc.Protobuf.Tools`
 
-User-defined Protobuf types such as messages and enums are handled by the `protoc` compiler and its built-in C# plugin.
-The IceRPC + Protobuf integration does not customize this mapping in any way.
+User-defined Protobuf types such as messages and enums are handled by the `protoc` compiler and its built-in C# code
+generator. The IceRPC + Protobuf integration does not customize this mapping in any way.
 
 The net result is you need to write very little code to call or implement Protobuf services with IceRPC.
 
@@ -56,8 +56,8 @@ message GreetResponse {
 }
 ```
 
-`protoc`'s built-in plugin for C# generates C# classes for the `GreetRequest` and `GreetResponse` messages, while
-`protoc-gen-icerpc-csharp` generates two C# interfaces and a struct for the `Greeter` service:
+`protoc`'s built-in code generator for C# generates classes for the `GreetRequest` and `GreetResponse` messages, while
+`protoc-gen-icerpc-csharp` generates two interfaces and a struct for the `Greeter` service:
 
 ```csharp {% title="C# generated code - client-side" %}
 namespace VisitorCenter;

@@ -5,9 +5,9 @@ description: Learn how IceRPC + Protobuf formats the payloads of requests and re
 
 The [Protocol Buffers Encoding] specifies how to encode or decode Protobuf messages to or from a stream of bytes.
 
-This specification is however silent on how Protobuf RPC methods frame their input and output messages. As a result, a
-RPC framework that uses Protobuf needs to fill this blank and describe what the payloads of its requests and responses
-look like with Protobuf.
+However, this specification is silent on how Protobuf RPC methods frame their input and output messages. As a result, an
+RPC framework that uses Protobuf needs to fill in this blank and describe what the payloads of its requests and
+responses look like with Protobuf.
 
 The IceRPC + Protobuf integration adopts the framing used by the [gRPC protocol]: a Protobuf input or output message
 is encoded as a Length-Prefixed-Message inside a request or response payload:
