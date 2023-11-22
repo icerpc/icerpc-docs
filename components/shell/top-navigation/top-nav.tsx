@@ -12,6 +12,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import logoIcon from 'public/Icerpc-logo.svg';
 import { TopNavigationItems } from './top-nav-items';
 import { Button } from '@/components/ui/button';
+import { SearchButton } from '@/components/shell/search-button';
 
 export const TopNav = () => (
   <div
@@ -20,34 +21,42 @@ export const TopNav = () => (
       'dark:border-darkBorder/60 dark:bg-dark'
     )}
   >
-    <div id="main-nav" className="flex w-full justify-center">
-      <div className="flex h-[3.75rem] w-full max-w-[100rem] items-center justify-between text-sm">
-        <Logo />
-        <div className="hidden items-center lg:flex">
-          <nav>
-            <ul className="flex">
+    <div
+      id="main-nav"
+      className="flex w-full flex-col items-center justify-center"
+    >
+      <div className="w-full max-w-[100rem] ">
+        <div className="flex h-[3.75rem] w-full grow  items-center justify-between text-sm">
+          <Logo />
+          <div className="hidden items-center lg:flex">
+            <SearchButton className="w-full min-w-[300px]" />
+            <div className="mx-6 flex h-[30px] items-center border-l border-lightBorder pl-4 dark:border-darkBorder">
+              <ThemeToggle />
+              <Button
+                variant="outline"
+                size="icon"
+                className="border-none hover:bg-zinc-100 focus-visible:border-0 focus-visible:!outline-none focus-visible:ring-transparent dark:!outline-none dark:hover:bg-darkAccent dark:focus-visible:!border-0"
+              >
+                <a
+                  className="flex h-full items-center justify-center p-4 dark:text-[rgba(255,255,255,0.8)] "
+                  href="https://github.com/icerpc"
+                  rel="noopener noreferrer"
+                  aria-label="Github"
+                >
+                  <FontAwesomeIcon icon={faGithub} className="h-5 w-5" />
+                </a>
+              </Button>
+            </div>
+          </div>
+          <MobileMenu />
+        </div>
+        <div className="flex w-full grow items-start   justify-between text-sm lg:h-[2.65rem]">
+          <nav className="my-1 hidden items-center lg:flex">
+            <ul className="flex space-x-4 lg:ml-[1.8rem]">
               <TopNavigationItems />
             </ul>
           </nav>
-          <div className="mx-6 flex h-[30px] items-center border-l border-lightBorder pl-4 dark:border-darkBorder">
-            <ThemeToggle />
-            <Button
-              variant="outline"
-              size="icon"
-              className="border-none hover:bg-zinc-100 focus-visible:border-0 focus-visible:!outline-none focus-visible:ring-transparent dark:!outline-none dark:hover:bg-darkAccent dark:focus-visible:!border-0"
-            >
-              <a
-                className="flex h-full items-center justify-center p-4 dark:text-[rgba(255,255,255,0.8)] "
-                href="https://github.com/icerpc"
-                rel="noopener noreferrer"
-                aria-label="Github"
-              >
-                <FontAwesomeIcon icon={faGithub} className="h-5 w-5" />
-              </a>
-            </Button>
-          </div>
         </div>
-        <MobileMenu />
       </div>
     </div>
     <MobileSideNav />

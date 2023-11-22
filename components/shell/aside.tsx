@@ -37,7 +37,7 @@ export const Aside = ({
   return (
     <aside
       className={clsx(
-        'sticky top-[3.75rem] mr-10 hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 dark:bg-dark xl:flex',
+        'sticky top-[6.4rem] mr-10 hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 dark:bg-dark xl:flex',
         items.length > 1 ? '' : ''
       )}
     >
