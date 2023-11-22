@@ -14,6 +14,7 @@ type Props = {
   readingTime?: string;
   mode?: Mode; // The mode of the current page (if any) ex.) /slice1/foo would have a mode of Slice1
   showAside?: boolean;
+  showNavigation?: boolean;
 };
 
 export const Document = ({
@@ -23,7 +24,8 @@ export const Document = ({
   path,
   readingTime,
   headings,
-  showAside = true
+  showAside = true,
+  showNavigation = true
 }: Props) => {
   return (
     <div className="flex shrink flex-row justify-center overflow-y-clip lg:justify-start">
@@ -46,7 +48,7 @@ export const Document = ({
             <>{children}</>
           </div>
         }
-        <PageHistory path={path} />
+        {showNavigation && <PageHistory path={path} />}
         <Divider id="feedback-divider" margin="my-0" />
         <Feedback />
       </article>

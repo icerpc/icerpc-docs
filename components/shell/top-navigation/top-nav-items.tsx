@@ -29,7 +29,7 @@ export const TopNavigationItems = () => {
     },
     {
       name: 'API Reference',
-      href: 'https://docs.icerpc.dev/api/csharp/index.html'
+      href: `${process.env.NEXT_PUBLIC_API_HOST}/api/csharp/index.html`
     }
   ].map((item) => (
     <TopNavigationItem key={item.href} name={item.name} href={item.href} />

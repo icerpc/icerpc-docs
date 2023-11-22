@@ -128,11 +128,11 @@ const ModeTab = ({
           <Tooltip
             anchorSelect={`#tooltip-${mode}`}
             clickable
+            opacity={1}
             style={{
               width: '14rem',
               backgroundColor: '#32363c',
-              borderRadius: '0.6rem',
-              opacity: '1'
+              borderRadius: '0.6rem'
             }}
           >
             {tooltipContent}
