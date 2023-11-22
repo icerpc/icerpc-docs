@@ -177,9 +177,9 @@ const isApiLink = (href: string) => {
 const resolveApiLink = (href: string) => {
   const [language, ...rest] = href.split(':');
   const [module, method] = rest.join('.').split('#');
-  return `https://docs.icerpc.dev/api/${language}/api/${module}.html${
-    method ? `#${method}` : ''
-  }`;
+  return `${
+    process.env.NEXT_PUBLIC_API_HOST
+  }/api/${language}/api/${module}.html${method ? `#${method}` : ''}`;
 };
 
 /**

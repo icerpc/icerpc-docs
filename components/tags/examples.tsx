@@ -15,6 +15,7 @@ export const Examples = () => {
       <ExampleCard
         title="GenericHost"
         description="IceRPC with the Microsoft DI container."
+
         href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/slice/GenericHost"
       />
       <ExampleCard

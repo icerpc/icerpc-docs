@@ -46,7 +46,6 @@ type TopMenuModalProps = {
 
 export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
   const { mode } = useMode();
-
   const navigationItems = [
     {
       name: 'Getting Started',
@@ -61,12 +60,16 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
       href: mode === Mode.Slice1 ? '/slice1' : '/slice2'
     },
     {
+      name: 'Protobuf',
+      href: '/protobuf'
+    },
+    {
       name: 'IceRPC for Ice users',
       href: '/icerpc-for-ice-users'
     },
     {
       name: 'API Reference',
-      href: 'https://docs.icerpc.dev/api/csharp/index.html'
+      href: `${process.env.NEXT_PUBLIC_API_HOST}/api/csharp/index.html`
     }
   ];
 

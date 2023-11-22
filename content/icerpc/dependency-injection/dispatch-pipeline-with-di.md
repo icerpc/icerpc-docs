@@ -177,8 +177,9 @@ services.AddIceRpcDispatcher(
         .UseMiddleware<DIDeadlineMiddleware>()
         .Map<IGreeterService>());
 
-// Implements IGreeterService and is registered as a transient or scoped service in the DI container.
-internal class Chatbot : Service, IGreeterService
+// To be registered as a transient or scoped service in the DI container.
+[SliceService]
+internal partial class Chatbot : IGreeterService
 {
     // DeadlineInformation is auto-wired by the DI container.
     internal Chatbot(DeadlineInformation deadlineInfo)

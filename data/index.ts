@@ -6,20 +6,22 @@ import {
   SideBarSourceType,
   isCategory,
   isLink,
+  GETTING_STARTED_BASE_URL,
+  ICERPC_BASE_URL,
+  ICERPC_FOR_ICE,
+  PROTOBUF_BASE_URL,
   SLICE1_BASE_URL,
   SLICE2_BASE_URL,
-  GETTING_STARTED_BASE_URL,
-  ICERPC_FOR_ICE,
-  ICERPC_BASE_URL,
   SideBarLink
 } from '../types';
 
 export const baseUrls = [
-  SLICE1_BASE_URL,
-  SLICE2_BASE_URL,
-  ICERPC_BASE_URL,
   GETTING_STARTED_BASE_URL,
-  ICERPC_FOR_ICE
+  ICERPC_BASE_URL,
+  ICERPC_FOR_ICE,
+  PROTOBUF_BASE_URL,
+  SLICE1_BASE_URL,
+  SLICE2_BASE_URL
 ];
 
 export const flattenSideBarData = (
@@ -55,13 +57,15 @@ export const currentNavItem = (baseUrl: string) => {
   switch (baseUrl) {
     case GETTING_STARTED_BASE_URL:
       return 'Getting Started';
-    case SLICE1_BASE_URL:
-    case SLICE2_BASE_URL:
-      return 'Slice';
     case ICERPC_BASE_URL:
       return 'IceRPC';
     case ICERPC_FOR_ICE:
       return 'IceRPC for Ice Users';
+    case PROTOBUF_BASE_URL:
+      return 'Protobuf';
+    case SLICE1_BASE_URL:
+    case SLICE2_BASE_URL:
+      return 'Slice';
     default:
       return '';
   }
@@ -71,14 +75,17 @@ export const sideBarData = (baseUrl: string): SideBarSourceType[] => {
   switch (baseUrl) {
     case GETTING_STARTED_BASE_URL:
       return contentMap['getting_started'];
-    case SLICE1_BASE_URL:
-      return contentMap['slice1'];
-    case SLICE2_BASE_URL:
-      return contentMap['slice2'];
     case ICERPC_BASE_URL:
       return contentMap['icerpc'];
     case ICERPC_FOR_ICE:
       return contentMap['icerpc_for_ice_users'];
+    case PROTOBUF_BASE_URL:
+      return contentMap['protobuf'];
+    case SLICE1_BASE_URL:
+      return contentMap['slice1'];
+    case SLICE2_BASE_URL:
+      return contentMap['slice2'];
+
     default:
       return [];
   }

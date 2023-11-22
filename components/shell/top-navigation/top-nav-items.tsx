@@ -20,12 +20,16 @@ export const TopNavigationItems = () => {
       href: mode === Mode.Slice1 ? '/slice1' : '/slice2'
     },
     {
+      name: 'Protobuf',
+      href: '/protobuf'
+    },
+    {
       name: 'IceRPC for Ice users',
       href: '/icerpc-for-ice-users'
     },
     {
       name: 'API Reference',
-      href: 'https://docs.icerpc.dev/api/csharp/index.html'
+      href: `${process.env.NEXT_PUBLIC_API_HOST}/api/csharp/index.html`
     }
   ].map((item) => (
     <TopNavigationItem key={item.href} name={item.name} href={item.href} />

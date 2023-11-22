@@ -43,7 +43,7 @@
       "links": [
         {
           "title": "IceRPC for C#",
-          "path": "/getting-started/supported-platforms/icerpc-csharp-0_1"
+          "path": "/getting-started/supported-platforms/icerpc-csharp-0_2"
         }
       ]
     }
@@ -519,6 +519,21 @@
         {
           "title": "IceRPC + Slice integration",
           "path": "/slice2/encoding/icerpc"
+        }
+      ]
+    }
+  ],
+  "protobuf": [
+    {
+      "title": "Overview",
+      "path": "/protobuf"
+    },
+    {
+      "title": "Example Section",
+      "links": [
+        {
+          "title": "Example page",
+          "path": "/protobuf/example-section/example-page"
         }
       ]
     }

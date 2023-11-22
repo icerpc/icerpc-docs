@@ -30,7 +30,8 @@ const document = {
             ? config.variables?.readingTime
             : undefined,
         showReadingTime: frontmatter.showReadingTime,
-        showDividers: frontmatter.showDividers
+        showDividers: frontmatter.showDividers,
+        showNavigation: frontmatter.showNavigation
       },
       children
     );

@@ -50,10 +50,11 @@ For example:
 
 ```csharp
 using IceRpc.Features;
-using IceRpc.Slice; // for Service
+using IceRpc.Slice; // for SliceService
 using IceRpc.Slice.Ice; // for IIceObjectService (Slice Ice::Object)
 
-internal class HelloService : Service, IHelloService, IIceObjectService
+[SliceService]
+internal partial class HelloService : IHelloService, IIceObjectService
 {
     // IIceObjectService provides default implementations for all the ice_ operations.
 
@@ -112,6 +113,6 @@ await helloProxy.SayHelloAsync();
 
 {% /side-by-side %}
 
-[AsAsync]: https://docs.icerpc.dev/api/csharp/api/IceRpc.Slice.Ice.ProxyExtensions.html#IceRpc_Slice_Ice_ProxyExtensions_AsAsync__1_IceRpc_Slice_IProxy_IceRpc_Features_IFeatureCollection_System_Threading_CancellationToken_
-[DispatchException]: https://docs.icerpc.dev/api/csharp/api/IceRpc.DispatchException.html
-[NotImplemented]: https://docs.icerpc.dev/api/csharp/api/IceRpc.StatusCode.html#NotImplemented
+[AsAsync]: csharp:IceRpc.Slice.Ice.ProxyExtensions#IceRpc_Slice_Ice_ProxyExtensions_AsAsync__1_IceRpc_Slice_IProxy_IceRpc_Features_IFeatureCollection_System_Threading_CancellationToken_
+[DispatchException]:  csharp:IceRpc.DispatchException
+[NotImplemented]:  csharp:IceRpc.StatusCode#NotImplemented

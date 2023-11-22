@@ -74,6 +74,11 @@ export const CodeBlock = ({
     }
   }, [resolvedTheme]);
 
+  // If the user specified `proto` as the language, change it to protobuf
+  if (language?.toLowerCase() === 'proto') {
+    language = 'protobuf';
+  }
+
   // If the code is a slice file, add the mode to the first line if the current
   if (language?.toLowerCase() === 'slice' && addMode && mode == Mode.Slice1) {
     const modeLines = [`mode = ${mode}`, '\n'];

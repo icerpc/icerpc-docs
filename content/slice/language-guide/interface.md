@@ -215,12 +215,11 @@ inheritance relationship between these proxy structs.
 Interface I*Name*Service is a server-side helper: it helps you create a service (a C# class) that implements Slice
 interface _Name_.
 
-The principle is straightforward: your service class must derive from class [`Service`](csharp:IceRpc.Slice.Service) and
-must implement interface I*Name*Service. This generated Service interface defines an abstract method for each operation
-on the Slice interface and you need to implement all these abstract methods.
+The principle is straightforward: your service class must be a partial class that implements I*Name*Service. It must
+also carry the [SliceService] attribute.
 
-`Service` implements the [IDispatcher] interface by directing incoming requests to the matching I*Name*Service method
-using reflection and helper static methods on I*Name*Service.
+The `SliceService` attribute instructs the Slice Service source generator to implement interface [IDispatcher] by
+directing incoming requests to I*Name*Service methods based on the operation names.
 
 For example:
 
@@ -237,6 +236,7 @@ interface Widget {
 ```csharp
 namespace Example;
 
+// Generated code
 public partial interface IWidgetService
 {
     // One method per operation
@@ -244,6 +244,13 @@ public partial interface IWidgetService
         int speed,
         IFeatureCollection features,
         CancellationToken cancellationToken);
+}
+
+// Application code
+[SliceService]
+internal partial class MyWidget : IWidgetService
+{
+    // implement SpinAsync ...
 }
 ```
 
@@ -273,10 +280,8 @@ interface Counter {
 
 ```csharp
 // A service class that implements 2 Slice interfaces
-internal class MyWidget :
-    Service,
-    IWidgetService,
-    ICounterService
+[SliceService]
+internal partial class MyWidget : IWidgetService, ICounterService
 {
     // implements SpinAsync and GetCountAsync.
 }
@@ -287,3 +292,4 @@ internal class MyWidget :
 [cs-identifier]: attributes#cs::identifier-attribute
 [SliceEncodeOptions]: csharp:IceRpc.Slice.SliceEncodeOptions
 [IDispatcher]: csharp:IceRpc.IDispatcher
+[SliceService]: csharp:IceRpc.Slice.SliceServiceAttribute

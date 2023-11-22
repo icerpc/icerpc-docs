@@ -147,7 +147,6 @@ integration will soon bring the same level of convenience to Protobuf.
    title="Slice example"
    description="Using IceRPC with Slice"
    href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/slice/Greeter" /%}
-
 {% mini-card
    title="JSON example"
    description="Using IceRPC with JSON."
