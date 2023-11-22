@@ -529,13 +529,21 @@
       "path": "/protobuf"
     },
     {
-      "title": "Example Section",
+      "title": "Language mapping",
       "links": [
         {
-          "title": "Example page",
-          "path": "/protobuf/example-section/example-page"
+          "title": "Service",
+          "path": "/protobuf/language-mapping/service"
+        },
+        {
+          "title": "RPC method",
+          "path": "/protobuf/language-mapping/rpc-method"
         }
       ]
+    },
+    {
+       "title": "Encoding payloads with Protobuf",
+       "path": "/protobuf/encoding"
     }
   ],
   "icerpc_for_ice_users": [

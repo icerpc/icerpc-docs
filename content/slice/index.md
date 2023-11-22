@@ -6,7 +6,7 @@ showReadingTime: false
 
 ## IDL for RPCs
 
-Slice is a new [Interface Definition Language][IDL] (IDL) that you use to model and describe your network API in a clear
+Slice is a new [Interface Definition Language] (IDL) that you use to model and describe your network API in a clear
 and concise manner.
 
 Defining the customary Greeter service interface in Slice is straightforward:
@@ -209,7 +209,7 @@ decode instances of your custom type.
 [custom]: /slice/language-guide/custom-types
 [Dictionary]: /slice/language-guide/dictionary-types
 [enum]: /slice/language-guide/enum-types
-[IDL]: https://en.wikipedia.org/wiki/Interface_description_language
+[Interface Definition Language]: https://en.wikipedia.org/wiki/Interface_description_language
 [IFeatureCollection]: csharp:IceRpc.Features.IFeatureCollection
 [original Slice]: https://doc.zeroc.com/ice/3.7/the-slice-language
 [primitive]: /slice/language-guide/primitive-types
