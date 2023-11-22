@@ -1,5 +1,6 @@
 ---
 title: IceRPC for C# 0.1
+showNavigation: false
 ---
 
 ZeroC supports IceRPC for C# version 0.1 on the following platforms:
