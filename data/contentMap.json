@@ -29,12 +29,20 @@
       "title": "Tutorial",
       "links": [
         {
-          "title": "Writing your first server application",
-          "path": "/getting-started/tutorial/server-tutorial/"
+          "title": "Writing your first IceRPC + Protobuf server application",
+          "path": "/getting-started/tutorial/protobuf-server-tutorial/"
         },
         {
-          "title": "Writing your first client application",
-          "path": "/getting-started/tutorial/client-tutorial/"
+          "title": "Writing your first IceRPC + Protobuf client application",
+          "path": "/getting-started/tutorial/protobuf-client-tutorial/"
+        },
+        {
+          "title": "Writing your first IceRPC + Slice server application",
+          "path": "/getting-started/tutorial/slice-server-tutorial/"
+        },
+        {
+          "title": "Writing your first IceRPC + Slice client application",
+          "path": "/getting-started/tutorial/slice-client-tutorial/"
         }
       ]
     },

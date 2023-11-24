@@ -32,10 +32,10 @@ information about upcoming Rust support and other planned future languages.
    href="/getting-started/installation/nuget-packages" /%}
 {% mini-card
    title="Writing your first server"
-   description="Learn how to write your first IceRPC server."
-   href="/getting-started/tutorial/server-tutorial" /%}
+   description="Learn how to write your first IceRPC + Slice server."
+   href="/getting-started/tutorial/slice-server-tutorial" /%}
 {% mini-card
    title="Writing your first client"
-   description="Learn how to write your first IceRPC client."
-   href="/getting-started/tutorial/client-tutorial" /%}
+   description="Learn how to write your first IceRPC + Slice client."
+   href="/getting-started/tutorial/slice-client-tutorial" /%}
 {% /grid %}

@@ -1,47 +1,57 @@
 ---
-title: Writing your first IceRPC client in C#
+title: Writing your first IceRPC + Protobuf client in C#
 ---
 
 This tutorial is the second part of a two part series that shows how to create a
-complete application with IceRPC for C#. We start from scratch—you just need to
-have the .NET 7 SDK installed on your computer.
+complete application with IceRPC + Protobuf for C#. We start from scratch—you just need to
+have the .NET 8 SDK installed on your computer.
 
 The first part of this tutorial showed how to
-[create the server][server-tutorial]. This part shows how to create the client.
+[create the server][protobuf-server-tutorial]. This part shows how to create the client.
 
 {% step title="Create the client" %}
 
 ```shell
-dotnet new icerpc-slice-client -o MyClient
+dotnet new icerpc-protobuf-client -o MyProtobufClient
 ```
 
-This command creates a new IceRPC client application in directory `MyClient`.
+This command creates a new IceRPC client application in directory `MyProtobufClient`.
 
-![MyClient in Visual Studio Code](/images/MyClient.png)
+![MyProtobufClient in Visual Studio Code](/images/MyProtobufClient.png)
 
 Let's examine each file:
 
-### slice/Greeter.slice - the contract
+### proto/greeter.proto - the contract
 
-This file is (and must be) identical or almost identical to the `Greeter.slice`
+This file is (and must be) identical or almost identical to the `greeter.proto`
 we used for the server:
 
-```slice
-[cs::namespace("MyClient")]
-module VisitorCenter
+```proto
+syntax = "proto3";
 
-/// Represents a simple greeter.
-interface Greeter {
-    /// Creates a personalized greeting.
-    /// @param name: The name of the person to greet.
-    /// @returns: The greeting.
-    greet(name: string) -> string
+package visitor_center;
+option csharp_namespace = "MyProtobufClient";
+
+// Represents a simple greeter.
+service Greeter {
+    // Creates a personalized greeting.
+    rpc Greet (GreetRequest) returns (GreetResponse);
+}
+
+// The request contains the name of the person to greet.
+message GreetRequest {
+    string name = 1;
+}
+
+// The response contains the greeting.
+message GreetResponse {
+    string greeting = 1;
 }
 ```
 
-The only difference with our server's `Greeter.slice` is the `cs::namespace`
-attribute. That's fine: attributes don't change the contract. Here, the Slice
-compiler generates the C# code in namespace `MyClient` and contract-wise, it
+The only difference with our server's `greeter.proto` is the `csharp_namespace`
+option. That's fine: options don't change the contract. Here, the Protobuf
+compiler generates the C# code in namespace `MyProtobufClient` and contract-wise, it
 doesn't matter that the server uses a different namespace.
 
 ### Program.cs - the client
@@ -98,48 +108,48 @@ deadline created by the interceptor. On the other hand, the Logger interceptor
 and middleware are totally independent.
 {% /callout %}
 
-Next, the client program creates a `Greeter` proxy with this invocation
+Next, the client program creates a `Greeter` client with this invocation
 pipeline:
 
 ```csharp
-var greeterProxy = new GreeterProxy(pipeline);
+var greeterClient = new GreeterClient(pipeline);
 ```
 
-`GreeterProxy` is a struct that the Slice compiler generated from Slice
-interface `Greeter`. This struct allows us to send requests to a remote service
-that implements `Greeter`.
+`GreeterClient` is a struct that the `protoc-gen-icerpc-csharp` generator generates
+from Protobuf service `Greeter`. This struct allows us to send requests to a remote
+service that implements `Greeter`.
 
 With this code, the address of the target service (or
 [service address][service-address]) is the default for `Greeter`, namely
-`icerpc:/VisitorCenter.Greeter`. It matches the route we created in the server.
+`icerpc:/visitor_center.Greeter`. It matches the route we created in the server.
 We could also create the same proxy with an explicit service address:
 
 ```csharp
-var greeterProxy = new GreeterProxy(pipeline, new Uri("icerpc:/VisitorCenter.Greeter"));
+var greeterClient = new GreeterClient(pipeline, new Uri("icerpc:/visitor_center.Greeter"));
 ```
 
-Finally, the client sends a `greet` request, awaits the response (the greeting),
+Finally, the client sends a `Greet` request, awaits the response (the greeting),
 prints the greeting and shuts down the connection gracefully:
 
 ```csharp
-string greeting = await greeterProxy.GreetAsync(Environment.UserName);
+GreetResponse response = await greeterClient.GreetAsync(request);
 
-Console.WriteLine(greeting);
+Console.WriteLine(response.Greeting);
 await connection.ShutdownAsync();
 ```
 
-When we call `greeterProxy.GreetAsync`, the connection to the server is not yet
+When we call `greeterClient.GreetAsync`, the connection to the server is not yet
 established: it's the `GreetAsync` call that triggers the connection
 establishment.
 
-### MyClient.csproj - the project file
+### MyProtobufClient.csproj - the project file
 
 The project file is identical to the server's project file, with references to 4
 separate IceRpc NuGet packages:
 
-- [IceRpc.Slice] - the IceRPC + Slice integration package
-- [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into
-  `generated/Greeter.cs`
+- [IceRpc.Protobuf] - the IceRPC + Protobuf integration package
+- [IceRpc.Protobuf.Tools] - the package that compiles `greeter.proto` into
+  `generated/Greeter.cs` and `generated/Greeter.IceRpc.cs`
 - [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two interceptors
   we installed in our invocation pipeline
 
@@ -150,7 +160,7 @@ separate IceRpc NuGet packages:
 ### Start the server
 
 ```shell
-cd MyServer
+cd MyProtobufServer
 dotnet run
 ```
 
@@ -164,7 +174,7 @@ dbug: IceRpc.Server[11]
 ### Start the client
 
 ```shell
-cd MyClient
+cd MyProtobufClient
 dotnet run
 ```
 
@@ -197,8 +207,8 @@ dbug: IceRpc.Server[12]
 [Deadline]: csharp:IceRpc.Deadline
 [IceRpc.Deadline]: https://www.nuget.org/packages/IceRpc.Deadline
 [IceRpc.Logger]: https://www.nuget.org/packages/IceRpc.Logger
-[IceRpc.Slice.Tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
-[IceRpc.Slice]: https://www.nuget.org/packages/IceRpc.Slice
+[IceRpc.Protobuf.Tools]: https://www.nuget.org/packages/IceRpc.Protobuf.Tools
+[IceRpc.Protobuf]: https://www.nuget.org/packages/IceRpc.Protobuf
 [Logger]: csharp:IceRpc.Logger
-[server-tutorial]: /getting-started/tutorial/server-tutorial
+[protobuf-server-tutorial]: /getting-started/tutorial/protobuf-server-tutorial
 [service-address]: /icerpc/invocation/service-address
