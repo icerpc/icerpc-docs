@@ -103,5 +103,5 @@ You can learn more about what each file produced by the templates does in the Tu
 - [Writing your first IceRpc + Slice server application][slice-server-tutorial]
 - [Writing your first IceRpc + Slice client application][slice-client-tutorial]
 
-[slice-client-tutorial]: /getting-started/tutorial/client-tutorial
-[slice-server-tutorial]: /getting-started/tutorial/server-tutorial
+[slice-client-tutorial]: /getting-started/tutorial/slice-client-tutorial
+[slice-server-tutorial]: /getting-started/tutorial/slice-server-tutorial
