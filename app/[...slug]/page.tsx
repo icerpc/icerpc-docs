@@ -103,7 +103,7 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="mt-[6.5rem] flex grow flex-row justify-center lg:mt-[3.75rem]">
+    <div className="mt-[6.4rem] flex grow flex-row justify-center lg:mt-[7.5rem]">
       <div className="flex max-w-[100rem] grow flex-row justify-center">
         <SideNav path={path} />
         <div className="grow">
