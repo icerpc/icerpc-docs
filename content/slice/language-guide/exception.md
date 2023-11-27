@@ -144,7 +144,7 @@ public partial class DerivedException : BaseException
 ### ConvertToInternalError
 
 When the generated code decodes an exception from a payload, it sets the exception's
-[`ConvertToInternalError`][convert-to-internal-error] property to `true`.
+[ConvertToInternalError][convert-to-internal-error] property to `true`.
 
 This way, when the implementation of an operation makes an invocation and this invocation throws an exception, by
 default, this exception is not re-sent as-is but gets converted into a response with status code

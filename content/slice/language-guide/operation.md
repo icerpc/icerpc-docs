@@ -142,7 +142,7 @@ interface FileServer {
 
 {% /slice2 %}
 
-In C# with IceRPC, the generated code sets the [`ICompressFeature`][compress-feature] in the outgoing request features.
+In C# with IceRPC, the generated code sets the [ICompressFeature][compress-feature] in the outgoing request features.
 
 This compression request is typically fulfilled by the compressor interceptor or middleware, which needs to be installed
 in your invocation resp. dispatch pipeline. If you neglect to install this interceptor or middleware, the corresponding
