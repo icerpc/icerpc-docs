@@ -8,7 +8,7 @@ export const Examples = () => {
   return (
     <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
       <ExampleCard
-        title="GreeterLog"
+        title="Logger"
         description="A typical IceRPC application."
         href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/slice/Logger"
       />
