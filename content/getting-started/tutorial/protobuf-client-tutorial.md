@@ -182,15 +182,15 @@ The client sends a single `greet` request to the service hosted by our server:
 
 ```
 dbug: IceRpc.ClientConnection[3]
-      Client connection from '[::1]:61582' to '[::1]:4062' connected
+      Client connection from '[::1]:52308' to '[::1]:4062' connected
 info: IceRpc.Logger.LoggerInterceptor[0]
-      Sent request greet to icerpc:/VisitorCenter.Greeter over
-      [::1]:61582<->[::1]:4062 and received a response with status code Ok
-Hello, Reece!
+      Sent request Greet to icerpc:/visitor_center.Greeter over
+      [::1]:52308<->[::1]:4062 and received a response with status code Ok
+Hello, jose!
 dbug: IceRpc.ClientConnection[6]
-      Client connection from '[::1]:61582' to '[::1]:4062' shutdown
+      Client connection from '[::1]:52308' to '[::1]:4062' shutdown
 dbug: IceRpc.ClientConnection[5]
-      Client connection from '[::1]:61582' to '[::1]:4062' disposed
+      Client connection from '[::1]:52308' to '[::1]:4062' disposed
 ```
 
 ### Shutdown the server
