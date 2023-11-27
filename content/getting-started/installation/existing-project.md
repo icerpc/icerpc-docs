@@ -42,8 +42,8 @@ development.
 
 ## IceRPC only
 
-If you plan on using IceRPC with JSON, Protobuf, or some other serialization format, add the [IceRpc] package to your
-project with the following command:
+If you plan on using IceRPC with JSON, or some other serialization format, add the [IceRpc] package to your project with
+the following command:
 
 ```shell {% showTitle=false %}
 dotnet add package IceRpc
