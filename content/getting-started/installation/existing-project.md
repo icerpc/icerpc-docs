@@ -35,8 +35,9 @@ dotnet add package IceRpc.Protobuf.Tools
 Adding [IceRpc.Protobuf] automatically pulls its dependencies, including the [IceRpc] and [Google.Protobuf] packages.
 
 {% callout %}
-The protoc compiler included in `IceRpc.Protobuf.Tools` generates C# code that depends on the `Google.Protobuf` and
-`IceRpc.Protobuf` packages. You need `IceRpc.Protobuf.Tools` only during development.
+The protoc compiler and the protoc-gen-icerpc-csharp generator included in `IceRpc.Protobuf.Tools` generates C# code
+that depends on the `Google.Protobuf` and `IceRpc.Protobuf` packages. You need `IceRpc.Protobuf.Tools` only during
+development.
 {% /callout %}
 
 ## IceRPC only

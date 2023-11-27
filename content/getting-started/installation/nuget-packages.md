@@ -13,7 +13,7 @@ description: A list of all the IceRPC NuGet packages
 | [IceRpc.Logger]                         | Logger interceptor and middleware                                                       |
 | [IceRpc.Metrics]                        | Metrics interceptor and middleware                                                      |
 | [IceRpc.Protobuf]                       | IceRPC + Protobuf integration library                                                   |
-| [IceRpc.Protobuf.Tools]                 | Protobuf compiler, protoc, and the protoc-gen-icerpc-csharp generator + MSBuild support |
+| [IceRpc.Protobuf.Tools]                 | Protobuf compiler protoc, and the protoc-gen-icerpc-csharp generator + MSBuild support  |
 | [IceRpc.RequestContext]                 | Request context interceptor and middleware (primarily for Ice interop)                  |
 | [IceRpc.Retry]                          | Retry interceptor                                                                       |
 | [IceRpc.Slice]                          | IceRPC + Slice integration library                                                      |
