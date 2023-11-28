@@ -164,7 +164,7 @@ catch (DispatchException exception)
 }
 ```
 
-[convert-to-internal-error]: csharp:IceRpc.Slice.DispatchException#IceRpc_DispatchException_ConvertToInternalError
+[convert-to-internal-error]: csharp:IceRpc.DispatchException#IceRpc_DispatchException_ConvertToInternalError
 [exception-specification]: operation#exception-specification
 [sliced-format]: class-types#slicing
 
