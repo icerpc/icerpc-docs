@@ -190,8 +190,7 @@ interface ChessPiece {
 }
 
 interface Pawn : ChessPiece {
-    // The returned chess piece proxy is non-optional
-    // in this example.
+    // The returned chess piece proxy is non-optional.
     promote(newKind: Kind) -> ChessPieceProxy
         throws ChessException
 }
