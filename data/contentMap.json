@@ -310,10 +310,7 @@
           "title": "Exception",
           "path": "/slice1/language-guide/exception"
         },
-        {
-          "title": "Proxy types",
-          "path": "/slice1/language-guide/proxy-types"
-        },
+
         {
           "title": "Sequence types",
           "path": "/slice1/language-guide/sequence-types"
@@ -329,6 +326,10 @@
         {
           "title": "Well-known types",
           "path": "/slice1/language-guide/well-known-types"
+        },
+        {
+          "title": "Using proxies as Slice types",
+          "path": "/slice1/language-guide/using-proxies-as-slice-types"
         },
         {
           "title": "Type alias",
@@ -452,10 +453,6 @@
           "path": "/slice2/language-guide/struct-types"
         },
         {
-          "title": "Proxy types",
-          "path": "/slice2/language-guide/proxy-types"
-        },
-        {
           "title": "Sequence types",
           "path": "/slice2/language-guide/sequence-types"
         },
@@ -470,6 +467,10 @@
         {
           "title": "Well-known types",
           "path": "/slice2/language-guide/well-known-types"
+        },
+        {
+          "title": "Using proxies as Slice types",
+          "path": "/slice2/language-guide/using-proxies-as-slice-types"
         },
         {
           "title": "Type alias",

@@ -85,8 +85,8 @@ If you like `checkedCast` and want to keep check-casting your proxies, the IceRP
 equivalent API: [AsAsync]. The target service must implement `Ice::Object`; otherwise, `AsAsync` will fail with a
 [DispatchException] with status code [NotImplemented].
 
-There is no need for an `uncheckedCast` API in IceRPC + Slice, because you can construct a proxy using its constructor.
-For example:
+There is no need for an `uncheckedCast` API in IceRPC + Slice, because you can construct a proxy directly with its
+constructor. For example:
 
 {% side-by-side %}
 

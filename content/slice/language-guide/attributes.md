@@ -131,7 +131,9 @@ public partial interface IRemoteEnumerator
 }
 
 public readonly partial
-record struct RemoteEnumeratorProxy : IRemoteEnumerator, IProxy
+record struct RemoteEnumeratorProxy :
+    IRemoteEnumerator,
+    IProxy
 {
     ...
 }

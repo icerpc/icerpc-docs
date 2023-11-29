@@ -23,7 +23,7 @@ Make sure to use the `.slice` extension for these new Slice files.
 
 If you use IceRPC to create new services for your Ice client, you should start by defining your Slice interfaces with
 the new Slice syntax (and `mode = Slice1`) before converting these definitions to the `.ice` Slice syntax. The new
-syntax allows you to mark a proxy or class parameter/field as optional or non-optional, for example:
+syntax allows you to mark a class parameter/field as optional or non-optional, for example:
 
 ```slice {% title="Slice with the .slice syntax" %}
 interface ContactRegistry {
@@ -40,7 +40,7 @@ class Contact {
 }
 ```
 
-With the `.ice` Slice syntax, you can't make this distinction: a proxy or class parameter/field is always optional.
+With the `.ice` Slice syntax, you can't make this distinction: a class parameter/field is always optional.
 
 ## Limitations
 

@@ -190,13 +190,28 @@ interface ChessPiece {
 }
 
 interface Pawn : ChessPiece {
-    // The returned chess piece proxy is non-optional.
-    promote(newKind: Kind) -> ChessPiece
+    // The returned chess piece proxy is non-optional
+    // in this example.
+    promote(newKind: Kind) -> ChessPieceProxy
         throws ChessException
 }
+
+// A Slice type encoded/decoded as a service address.
+[cs::type("BoardGame.Chess.ChessPieceProxy")]
+custom ChessPieceProxy
 ```
 
 {% /side-by-side %}
+
+{% callout %}
+When you define an interface with the .ice syntax, you automatically define a Slice type with the same name. This Slice
+type represents a proxy to a service that implements this interface, and is encoded as the underlying service address.
+
+With the .slice syntax, an interface is a Slice construct but not a Slice type.
+
+As shown in the example above, when converting .ice definitions into .slice definitions, you may want to define a custom
+type named *Name*Proxy that wraps a service address. Please refer to [Using proxies as Slice types] for details.
+{% /callout %}
 
 ## Module
 
@@ -348,3 +363,5 @@ compact struct Position {
 {% /side-by-side %}
 
 With the .slice syntax and the Slice1 compilation mode, all structs must be compact.
+
+[Using proxies as Slice types]: /slice/language-guide/using-proxies-as-slice-types

@@ -270,7 +270,7 @@ public readonly partial record struct GreeterProxy : IGreeter, IProxy
         public static ValueTask<string> DecodeGreetAsync(
             IncomingResponse response,
             OutgoingRequest request,
-            GenericProxy sender,
+            IProxy sender,
             CancellationToken cancellationToken)
         {
             ...

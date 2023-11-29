@@ -28,6 +28,11 @@ When you create an application with Slice, these interfaces correspond to your e
 implement the C# (or Rust, Python...) abstractions and concrete implementations that the Slice compiler generates from
 your Slice interfaces.
 
+{% callout %}
+An interface is a Slice construct but not a Slice type. In particular, you cannot use an interface as the type of a
+Slice field or operation parameter.
+{% /callout %}
+
 ## Interface inheritance
 
 An interface can inherit from one or more interfaces, provided the operation names of all these interfaces are unique.
@@ -49,10 +54,6 @@ interface Rectangle : Shape, Fillable {
     idempotent resize(x: int32, y: int32)
 }
 ```
-
-## Interface as a user-defined type
-
-An interface definition produces a new user-defined type: a [proxy type](proxy-types).
 
 ## C# mapping {% icerpcSlice=true %}
 
@@ -123,7 +124,7 @@ public partial interface IRectangle : IShape, IFillable
 
 The generated record struct *Name*Proxy implements I*Name* by sending requests to a remote service with IceRPC.
 
-An instance of this struct is a local surrogate for the remote service that implements _Name_--in other words, a proxy
+An instance of this struct is a local surrogate for the remote service that implements _Name_—in other words, a proxy
 for this service.
 
 In order to call a remote service, you need to construct a proxy struct using one of its "invoker" constructors:
@@ -165,7 +166,7 @@ For example, the default path of Slice interface `VisitorCenter::Greeter` is `/V
 {% /callout %}
 
 {% slice2 %}
-If you want to create a [relative proxy](proxy-types#relative-proxy), call the `FromPath` static method:
+If you want to create a [relative proxy], call the `FromPath` static method:
 
 ```csharp
 public readonly partial record struct WidgetProxy : IWidget, IProxy
@@ -290,6 +291,7 @@ internal partial class MyWidget : IWidgetService, ICounterService
 {% /side-by-side %}
 
 [cs-identifier]: attributes#cs::identifier-attribute
+[relative proxy]: /slice2/language-guide/using-proxies-as-slice-types#relative-proxy
 [SliceEncodeOptions]: csharp:IceRpc.Slice.SliceEncodeOptions
 [IDispatcher]: csharp:IceRpc.IDispatcher
 [SliceService]: csharp:IceRpc.Slice.SliceServiceAttribute

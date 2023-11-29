@@ -97,80 +97,6 @@ A `Strawberry` is encoded like a `uint16` with value 1 (on 2 bytes). An `Orange`
 
 The encoding is the same for checked and unchecked enums.
 
-## Proxy
-
-{% slice1 %}
-A null proxy is encoded as the [null Ice identity](/icerpc-for-ice-users/rpc-core/ice-identity) (two empty strings).
-
-A non-null proxy is encoded as the following `ProxyData` struct:
-
-```slice {% addMode=true %}
-compact struct ProxyData {
-    identity: Identity
-    facet: Sequence<string>        // an empty sequence or a 1-element sequence
-    invocationMode: InvocationMode
-    secure: bool
-    protocolMajor: uint8           // 1 = ice, 2 = icerpc
-    protocolMinor: uint8
-    encodingMajor: uint8
-    encodingMinor: uint8
-    serverAddressList: Sequence<ServerAddressData>
-    adapterId: string              // only present when serverAddressList is empty
-}
-
-compact struct Identity {
-    name: string
-    category: string
-}
-
-enum InvocationMode { Twoway, Oneway, BatchOneway, Datagram, BatchDatagram }
-
-compact struct ServerAddressData {
-    transportCode: int16 // the TransportCode encoded as an int16
-    encapsulation: Encapsulation
-}
-
-unchecked enum TransportCode {
-    Uri = 0
-    Tcp = 1
-    Ssl = 2
-    Udp = 3
-    WS = 4
-    Wss = 5
-    BT = 6
-    Bts = 7
-    IAP = 8
-    IAps = 9
-}
-```
-
-Encapsulations are described on the [ice protocol] page. The format of the encapsulation payload in a
-`ServerAddressData` depends on its transport code.
-
-With transport code `Uri` (0), the encapsulation payload is a URI string: the server address converted into a URI
-string, including the protocol/scheme. `Uri` is a wildcard transport code since the actual transport is specified in the
-URI string, or is left unspecified when the server address has no transport parameter.
-
-Other transport codes identify specific transports, such as tcp, ssl, ws (for WebSocket), wss (WebSocket with TLS) etc.
-
-Transport codes `Tcp` and `Ssl` share the same encapsulation payload format:
-
-```slice {% addMode=true %}
-compact struct TcpServerAddressBody {
-    host: string
-    port: int32      // the port number
-    timeout: int32   // timeout parameter
-    compress: bool   // z parameter
-}
-```
-
-See [Endpoint] for additional information.
-{% /slice1 %}
-
-{% slice2 %}
-A proxy is encoded as a URI [string]. This URI can be absolute or relative.
-{% /slice2 %}
-
 ## Struct
 
 {% slice1 %}
@@ -320,10 +246,7 @@ The contact id = 5, name = not set, age = 42 is encoded as:
 {% /slice2 %}
 
 [bit-sequence]: encoding-only-constructs#bit-sequence
-[Endpoint]: /icerpc-for-ice-users/rpc-core/endpoint
 [ice-manual-class-encoding]: https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding/ice-encoding/data-encoding-for-classes
-[ice protocol]: /icerpc/ice-protocol/protocol-frames#encapsulation
 [slice-preservation]: /slice1/language-guide/class-types#slice-preservation
 [sliced-format-attribute]: /slice1/language-guide/operation#slicedformat-attribute
-[string]: primitive-types#String
 [variable-length size]: encoding-only-constructs#variable-length-size

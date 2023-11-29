@@ -70,11 +70,12 @@ client using the Slice2 file will fail if the remote service is implemented with
 It is possible but uncommon to use Slice files with different modes in the same application.
 
 If you are in this situation, you need to observe the following rules:
- - a Slice2 file can use a type defined in Slice1 file provided this type is Slice2-compatible (see below)
- - an interface defined in a Slice2 file can derive from an interface defined in a Slice1 file
- - a Slice1 file cannot use a type, an interface, or any other construct defined in a Slice2 file
 
-A type defined in a Slice1 file is Slice2-compatible if it's an [enum type], a [proxy type], or if this type could be
+- a Slice2 file can use a type defined in Slice1 file provided this type is Slice2-compatible (see below)
+- an interface defined in a Slice2 file can derive from an interface defined in a Slice1 file
+- a Slice1 file cannot use a type, an interface, or any other construct defined in a Slice2 file
+
+A type defined in a Slice1 file is Slice2-compatible if it's an [enum type], a [custom type], or if this type could be
 defined as-is in a Slice2 file. For example:
 
 ```slice
@@ -106,7 +107,7 @@ definitions.
 
 [encoding]: ../encoding
 [enum type]: enum-types
-[proxy type]: proxy-types
+[custom type]: custom-types
 
 [Ice]: https://github.com/zeroc-ice/ice
 [original-slice]: https://doc.zeroc.com/ice/3.7/the-slice-language
