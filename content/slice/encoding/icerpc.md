@@ -42,8 +42,7 @@ A service address is encoded as a URI [string]. This URI can be absolute or rela
 
 ## Encoding a ServiceAddress {% icerpcSlice=true %}
 
-A null service address is encoded as the [null Ice identity](/icerpc-for-ice-users/rpc-core/ice-identity) (two empty
-strings).
+A null service address is encoded as the [null Ice identity](/icerpc-for-ice-users/rpc-core/ice-identity) (empty category and name strings).
 
 A non-null service address is encoded as the following `ServiceAddressData` struct:
 
