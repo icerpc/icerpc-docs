@@ -29,7 +29,7 @@ implement the C# (or Rust, Python...) abstractions and concrete implementations 
 your Slice interfaces.
 
 {% callout %}
-An interface is a Slice construct but not a Slice type. In particular, you cannot use an interface as the type of a
+An interface is a Slice construct but not a Slice type. This means you cannot use an interface as the type of a
 Slice field or operation parameter.
 {% /callout %}
 
