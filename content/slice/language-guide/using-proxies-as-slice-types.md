@@ -11,8 +11,22 @@ proxy is not a construct or type in the Slice language itself.
 In each programming language, a proxy encapsulates an [invocation pipeline] and a [service address].
 
 If you want to transmit a proxy through a Slice operation, you can easily transmit its service address using the
-built-in custom type `IceRpc::ServiceAddress`. The recipient can then decode this service address and use it to create
-a proxy with the correct type. It can also set a suitable invoker and other options. For example:
+built-in custom type `IceRpc::ServiceAddress`:
+
+```slice
+mode = Slice1
+
+[cs::namespace("IceRpc.Slice")]
+module IceRpc
+
+/// Represents the address of an RPC service that can be called using ice or icerpc. This custom type is
+/// compatible with both Slice1 and Slice2.
+[cs::type("IceRpc.ServiceAddress")]
+custom ServiceAddress
+```
+
+The recipient can then decode this service address and use it to create a proxy with the correct type. It can also set
+a suitable invoker and other options. For example:
 
 ```slice
 interface Widget {

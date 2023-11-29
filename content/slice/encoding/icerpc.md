@@ -42,7 +42,8 @@ A service address is encoded as a URI [string]. This URI can be absolute or rela
 
 ## Encoding a ServiceAddress {% icerpcSlice=true %}
 
-A null service address is encoded as the [null Ice identity](/icerpc-for-ice-users/rpc-core/ice-identity) (empty category and name strings).
+A null service address is encoded as the [null Ice identity](/icerpc-for-ice-users/rpc-core/ice-identity) (empty
+category and name strings).
 
 A non-null service address is encoded as the following `ServiceAddressData` struct:
 
@@ -144,9 +145,6 @@ processes the `ServiceAddressData` fields as follows:
 | serverAddressList        | Converted into the server address and alt server address(es) of the service address |
 | adapterId                | Converted into an `adapter-id` parameter if not empty                               |
 
-The proxy options ignored and therefore lost during decoding are invocation mode (`-t`, `-o`, `-D` etc.), secure
-(`-s`), and encoding (`-e`).
-
 For example:
 
 | Service address to decode (with Ice proxy string syntax) | Decoded as                                        |
@@ -171,8 +169,8 @@ creates a server address with the opaque transport. The opaque transport support
 An opaque server address URI always starts with `ice://opaque/`; the host ("opaque") and port (4061) are meaningless
 since the actual host and port are encoded in the value of the `v` parameter.
 
-The opaque transport allows you to decode any proxy received from an Ice application and later re-encode this proxy
-without losing any server address information.
+The opaque transport allows you to decode any service address received from an Ice application and later re-encode this
+service address without losing any server address information.
 
 {% /slice1 %}
 
