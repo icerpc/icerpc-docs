@@ -203,7 +203,7 @@ custom ChessPieceProxy
 {% /side-by-side %}
 
 {% callout %}
-When you define an interface with the .ice syntax, you automatically define a Slice type with the same name. This Slice
+When you define an interface with the .ice syntax, you also implicitly define a Slice type with the same name. This Slice
 type represents a proxy to a service that implements this interface, and is encoded as the underlying service address.
 
 With the .slice syntax, an interface is a Slice construct but not a Slice type.
