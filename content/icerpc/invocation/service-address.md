@@ -7,16 +7,16 @@ description: Understand the service address concept and syntax.
 
 A service address is a [URI] that specifies the address of a service. It can be absolute or relative.
 
-The scheme of an absolute service address is either ice or icerpc. A relative service address is an absolute path—query
-parameters and fragment are not allowed.
+The scheme of an absolute service address is either ice or icerpc. A relative service address corresponds to an absolute
+path: the URI has no scheme, no query parameter and no fragment.
 
 The URI scheme of an absolute service address identifies the protocol to use to reach the target service.
 
 The path of a service address allows the server to route requests to the desired service.
 
-An absolute service address may include one or more [server addresses][server-addresses]. These server addresses are
-used to establish or locate a connection to a server that hosts the service. The protocol of a server address is always
-the same as the protocol of the enclosing service address.
+An absolute service address may include one or more [server addresses]. These server addresses are used to establish
+or locate a connection to a server that hosts the service. The protocol of a server address is always the same as the
+protocol of the enclosing service address.
 
 An absolute service address without a server address can have query parameters.
 
@@ -107,13 +107,13 @@ IncomingResponse response = await connection.InvokeAsync(request);
 
 ## Relative service address
 
-A relative service address consists of an absolute path. IceRPC does not consume relative service addresses;
-in particular, it's an error to create an outgoing request with a relative service address.
+A relative service address consists of an absolute path. IceRPC does not consume relative service addresses; in
+particular, it's an error to create an outgoing request with a relative service address.
 
-Relative service addresses underpin [relative proxies][relative-proxies] in Slice.
+Relative service addresses underpin [relative proxies] in Slice.
 
-[relative-proxies]: /slice2/language-guide/proxy-types#relative-proxy
-[server-addresses]: ../connection/server-address
+[relative proxies]: /slice2/language-guide/using-proxies-as-slice-types#relative-proxy
+[server addresses]: ../connection/server-address
 
 [URI]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
 

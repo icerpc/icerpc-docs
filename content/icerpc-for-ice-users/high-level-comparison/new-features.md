@@ -42,6 +42,7 @@ to provide a redundant synchronous API. The async/await syntax also makes it cle
 while, throw exceptions, and should not be confused with a local call that completes very quickly.
 
 With IceRPC:
+
 - methods that may take a while because their implementations can wait for I/O are async (e.g. proxy methods)
 - methods that never wait for I/O are synchronous (e.g. string-parsing methods)
 

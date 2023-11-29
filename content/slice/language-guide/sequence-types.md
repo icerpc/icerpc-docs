@@ -154,26 +154,28 @@ For example:
 {% side-by-side alignment="top" %}
 
 ```slice
-interface ShapeCatalog {
+interface WidgetCatalog {
     // HashSet<T> implements ICollection<T> and has
     // a capacity constructor.
-    getShapes(prefix: string) ->
-        [cs::type("HashSet<Shape>")] Sequence<Shape>
+    getWidgets(prefix: string) ->
+        [cs::type("HashSet<Widget>")] Sequence<Widget>
 }
+
+compact struct Widget { ... }
 ```
 
 ```csharp
-public partial interface IShapeCatalog
+public partial interface IWidgetCatalog
 {
-    Task<HashSet<ShapeProxy>> GetShapesAsync(
+    Task<HashSet<Widget>> GetWidgetsAsync(
         string prefix,
         IFeatureCollection? features = null,
         CancellationToken cancellationToken = default);
 }
 
-public partial interface IShapeCatalogService
+public partial interface IWidgetCatalogService
 {
-    ValueTask<IEnumerable<ShapeProxy>> GetShapesAsync(
+    ValueTask<IEnumerable<Widget>> GetWidgetsAsync(
         string prefix,
         IFeatureCollection features,
         CancellationToken cancellationToken);

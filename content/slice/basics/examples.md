@@ -14,11 +14,6 @@ interface Widget {
     spin(count: int32)
 }
 
-interface WidgetFactory {
-    // Returns a Widget proxy.
-    createWidget(name: string) -> Widget
-}
-
 // An interface can extend one or more other interfaces
 interface Gizmo : Widget {
     walk(direction: Direction)
@@ -28,6 +23,7 @@ interface Gizmo : Widget {
 ## Operations
 
 {% slice1 %}
+
 ```slice {% addMode=true %}
 module Example
 
@@ -54,9 +50,11 @@ interface MyOperations {
     idempotent opIdempotent(message: string) -> int32
 }
 ```
+
 {% /slice1 %}
 
 {% slice2 %}
+
 ```slice
 module Example
 
@@ -72,7 +70,7 @@ interface MyOperations {
 
     // two operation parameters and two return parameters
     opParamsReturns(message: string, count: int32) -> (value: float32, list: Sequence<int32>)
-    
+
     // an operation with tagged operation parameters and tagged return parameters
     opTagged(message: string, tag(1) from: string?) -> (value: float32, tag(1) list: Sequence<int32>?)
 
@@ -92,11 +90,13 @@ interface MyOperations {
     idempotent opIdempotent(message: string) -> int32
 }
 ```
+
 {% /slice2 %}
 
 ## Enums
 
 {% slice1 %}
+
 ```slice {% addMode=true %}
 module Example
 
@@ -115,9 +115,11 @@ unchecked enum Permissions {
     Delete = 4
 }
 ```
+
 {% /slice1 %}
 
 {% slice2 %}
+
 ```slice
 module Example
 
@@ -136,20 +138,24 @@ unchecked enum Permissions : uint8 {
     Delete = 4
 }
 ```
+
 {% /slice2 %}
 
 ## Structs
 
 {% slice1 %}
+
 ```slice {% addMode=true %}
 module Example
 
 // A compact struct cannot have tagged fields.
 compact struct Point { x: int32, y: int32 }
 ```
+
 {% /slice1 %}
 
 {% slice2 %}
+
 ```slice
 module Example
 
@@ -171,9 +177,11 @@ struct Contact {
 // A compact struct has only required fields.
 compact struct Point { x: int32, y: int32 }
 ```
+
 {% /slice2 %}
 
 {% slice1 %}
+
 ## Classes
 
 ```slice {% addMode=true %}
@@ -198,9 +206,11 @@ class BusinessContact : Contact {
     tag(1) sendNewsletter: bool? // the scope of a tag is a class slice.
 }
 ```
+
 {% /slice1 %}
 
 {% slice1 %}
+
 ## Exceptions
 
 ```slice {% addMode=true %}
@@ -217,6 +227,7 @@ interface WidgetFactory {
     createWidget(name: string) -> Widget throws WidgetException
 }
 ```
+
 {% /slice1 %}
 
 ## Sequences and dictionaries
@@ -236,6 +247,7 @@ interface Census {
 ## Custom and well-known types
 
 {% slice1 %}
+
 ```slice {% addMode=true %}
 module Example
 
@@ -249,9 +261,11 @@ compact struct CustomBag {
     serviceAddress: IceRpc::ServiceAddress
 }
 ```
+
 {% /slice1 %}
 
 {% slice2 %}
+
 ```slice
 module Example
 
@@ -267,6 +281,7 @@ struct CustomBag {
     timeStamp: WellKnownTypes::TimeStamp
 }
 ```
+
 {% /slice2 %}
 
 ## Attributes
@@ -287,6 +302,7 @@ compact struct Point { x: int32, y: int32 }
 ## Doc comments
 
 {% slice1 %}
+
 ```slice  {% addMode=true %}
 module Example
 
@@ -299,19 +315,26 @@ interface WidgetFactory {
     /// @returns: A proxy to the new widget.
     /// @throws WidgetException: Thrown if the factory could not create the widget.
     /// @throws InvalidNameException: Thrown if the provided name was invalid.
-    createWidget(name: string) -> Widget throws (WidgetException, InvalidNameException)
+    createWidget(name: string) -> WidgetProxy throws (WidgetException, InvalidNameException)
 
     /// Retrieves the last {@link Widget} created by this factory.
     /// @returns proxy: A proxy to the last widget.
     /// @returns timeStamp: The creation time stamp.
     /// @throws WidgetException: Thrown if the factory has not created any widget yet.
     /// @throws DerivedFromWidgetException: It's okay to document derived exceptions.
-    getLastWidget() -> (proxy: Widget, timeStamp: TimeStamp) throws WidgetException
+    getLastWidget() -> (proxy: WidgetProxy, timeStamp: TimeStamp) throws WidgetException
 }
+
+/// Represents a proxy to a Widget service.
+/// @see Widget
+[cs::type("Example.WidgetProxy")]
+custom WidgetProxy
 ```
+
 {% /slice1 %}
 
 {% slice2 %}
+
 ```slice
 module Example
 
@@ -330,4 +353,5 @@ interface WidgetFactory {
     getLastWidget() -> (proxy: Widget, timeStamp: WellKnownTypes::TimeStamp)
 }
 ```
+
 {% /slice2 %}

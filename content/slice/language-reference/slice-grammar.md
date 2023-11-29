@@ -40,8 +40,8 @@ For additional information on Slice files, see the [Slice file][slice-file-guide
 
 ### Mode Statements
 
-Mode statements consist of the `mode` keyword, followed by an equals sign, followed by an [identifier].  
-This identifier must be a valid Slice compilation mode - either `Slice1` or `Slice2`.  
+Mode statements consist of the `mode` keyword, followed by an equals sign, followed by an [identifier].
+This identifier must be a valid Slice compilation mode - either `Slice1` or `Slice2`.
 
 ```ebnf {% showTitle=false %}
 FileCompilationMode
@@ -59,9 +59,9 @@ For additional information on modes, see the [compilation mode][compilation-mode
 
 ### Module declarations
 
-Module declarations consist of the `module` keyword, followed by an [identifier].  
+Module declarations consist of the `module` keyword, followed by an [identifier].
 [Local attributes][attribute] can be applied to a module in its prelude, but [doc comments][doc-comment] on modules are
-forbidden.  
+forbidden.
 
 ```ebnf {% showTitle=false %}
 Module
@@ -69,11 +69,11 @@ Module
     ;
 ```
 
-If the module's identifier is [unscoped][identifier], this declares a _top-level module_.  
-If the module's identifier is [scoped][identifier], this declares a _submodule_.  
+If the module's identifier is [unscoped][identifier], this declares a _top-level module_.
+If the module's identifier is [scoped][identifier], this declares a _submodule_.
 
-Submodules are modules that are logically contained within another module (called the _parent_ module).  
-Slice definitions within a submodule can reference definitions in parent modules without qualification.  
+Submodules are modules that are logically contained within another module (called the _parent_ module).
+Slice definitions within a submodule can reference definitions in parent modules without qualification.
 
 ```slice
 module A // Declares a top-level module named `A`.
@@ -122,9 +122,9 @@ For additional information on primitive types, see the [primitive type][primitiv
 
 Slice supports 2 built-in generic collection types: sequences and dictionaries.
 
-These are generic over the type of elements they contain.  
-Sequences require a single type parameter: the _element_ type.  
-Dictionaries require two type parameters: the _key_ and _value_ types.  
+These are generic over the type of elements they contain.
+Sequences require a single type parameter: the _element_ type.
+Dictionaries require two type parameters: the _key_ and _value_ types.
 
 There is no restriction on the element and value types, but since dictionary keys must be comparable,
 key types must be one of the following:
@@ -160,7 +160,7 @@ For additional information on sequences and dictionaries, see the [sequence][seq
 
 ### Struct types
 
-Struct definitions consist of the `struct` keyword, followed by an [identifier], and then the struct's body.  
+Struct definitions consist of the `struct` keyword, followed by an [identifier], and then the struct's body.
 Struct bodies consist of a list of [fields][field] wrapped in a pair of braces. Fields may be optionally separated by
 commas. Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the struct in its prelude.
 
@@ -176,8 +176,8 @@ A [compact struct][compact-struct-guide] cannot contain [tagged fields][tag].
 {% /slice2 %}
 
 {% slice1 %}
-In [`Slice1`][compilation-mode-guide] mode, structs are required to have the `compact` modifier keyword.  
-A [compact struct][compact-struct-guide] cannot contain [tagged fields][tag].  
+In [`Slice1`][compilation-mode-guide] mode, structs are required to have the `compact` modifier keyword.
+A [compact struct][compact-struct-guide] cannot contain [tagged fields][tag].
 {% /slice1 %}
 
 For additional information on structs, see the [struct][struct-guide] page.
@@ -185,14 +185,14 @@ For additional information on structs, see the [struct][struct-guide] page.
 {% slice1 %}
 ### Class types
 
-Classes can only be defined or referenced in [`Slice1`][compilation-mode-guide] mode.  
-Classes can never be [tagged][tag] when used as the type of a [field] or [parameter].  
+Classes can only be defined or referenced in [`Slice1`][compilation-mode-guide] mode.
+Classes can never be [tagged][tag] when used as the type of a [field] or [parameter].
 
 Class definitions consist of the `class` keyword, followed by an [identifier], optionally followed by a
-[compact ID][compact-id-guide], optionally followed by a base class, and then the class's body.  
+[compact ID][compact-id-guide], optionally followed by a base class, and then the class's body.
 Compact IDs consist of a positive integer wrapped in a pair of parenthesis.
-This integer must between `0` and `2,147,483,647` (the maximum value of a signed 32-bit integer).  
-Base classes are specified by a single colon, followed by a class's (possibly scoped) identifier.  
+This integer must between `0` and `2,147,483,647` (the maximum value of a signed 32-bit integer).
+Base classes are specified by a single colon, followed by a class's (possibly scoped) identifier.
 Class bodies consist of a list of [fields][field] wrapped in a pair of braces. Fields may be optionally separated by
 commas.
 Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the class in its prelude.
@@ -214,12 +214,12 @@ For additional information on classes, see the [class][class-guide] page.
 ### Exceptions
 
 Exceptions can only be defined or referenced in [`Slice1`][compilation-mode-guide] mode.
-Exceptions cannot be used as types.  
+Exceptions cannot be used as types.
 They can only validly appear in the exception specifications of [operations][operation].
 
 Exception definitions consist of the `exception` keyword, followed by an [identifier],
-optionally followed by a base exception, and then the exception's body.  
-Base exceptions are specified by a single colon, followed by an exception's (possibly scoped) identifier.  
+optionally followed by a base exception, and then the exception's body.
+Base exceptions are specified by a single colon, followed by an exception's (possibly scoped) identifier.
 Exception bodies consist of a list of [fields][field] wrapped in a pair of braces. Fields may be optionally separated by
 commas. Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the exception in its prelude.
 
@@ -242,7 +242,7 @@ Fields can only be declared within [structs][struct].
 Fields can only be declared within [structs][struct], [classes][class], and [exceptions][exception].
 {% /slice1 %}
 
-Field declarations consist of an [identifier], followed by a colon, and then a [type].  
+Field declarations consist of an [identifier], followed by a colon, and then a [type].
 Optionally, a [tag] may be applied to the field, directly before its identifier, making this a tagged field.
 Additionally, [local attributes][attribute] and a [doc-comment][doc-comment] may be applied to the field in its prelude.
 
@@ -257,7 +257,7 @@ For additional information on fields, see the [field][field-guide] page.
 ### Interface types
 
 Interface definitions consist of the `interface` keyword, followed by an [identifier], optionally followed by a list of
-base interfaces, and then the interface's body.  
+base interfaces, and then the interface's body.
 Base interfaces are specified by a single colon,
 followed by the (possibly scoped) identifiers of one or more interfaces, separated by commas.
 Interface bodies consist of a set of [operations][operation] wrapped in a pair of braces.
@@ -345,7 +345,7 @@ For additional information on operations, see the [operation][operation-guide] p
 {% slice2 %}
 The syntax for parameters is identical to the syntax for [fields][field], but with added support for streams.
 
-Parameters consist of an [identifier], followed by a colon, and then a [type].  
+Parameters consist of an [identifier], followed by a colon, and then a [type].
 Optionally, a [tag] may be applied to the parameter, directly before its identifier, making this a tagged parameter.
 Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the parameter in its prelude.
 
@@ -371,8 +371,8 @@ For additional information on parameters, see the [parameter][parameter-guide] p
 
 {% slice2 %}
 Enum definitions consist of the `enum` keyword, followed by an [identifier], optionally followed by an
-[underlying type][type], and then the enum's body.  
-Underlying types are specified by a single colon, followed by an integral, non-optional type.  
+[underlying type][type], and then the enum's body.
+Underlying types are specified by a single colon, followed by an integral, non-optional type.
 Enum bodies consist of a list of [enumerators][enumerator] wrapped in a pair of braces. Enumerators may be optionally
 separated by commas.
 Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the enum in its prelude.
@@ -380,8 +380,8 @@ Additionally, [local attributes][attribute] and a [doc-comment] may be applied t
 
 {% slice1 %}
 Enum definitions consist of the `enum` keyword, followed by an [identifier], optionally followed by an
-[underlying type][type], and then the enum's body.  
-Underlying types are only supported in [`Slice2`][compilation-mode-guide] mode.  
+[underlying type][type], and then the enum's body.
+Underlying types are only supported in [`Slice2`][compilation-mode-guide] mode.
 Enum bodies consist of a list of [enumerators][enumerator] wrapped in a pair of braces. Enumerators may be optionally
 separated by commas.
 Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the enum in its prelude.
@@ -403,8 +403,8 @@ For additional information on enums, see the [enum][enum-guide] page.
 
 Enumerators can only be defined within [enums][enum].
 
-Enumerator definitions consist of an [identifier], optionally followed by an enumerator value.  
-Enumerator values consist of an equals sign, followed by a (possibly signed) [integer].  
+Enumerator definitions consist of an [identifier], optionally followed by an enumerator value.
+Enumerator values consist of an equals sign, followed by a (possibly signed) [integer].
 Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the enumerator in its prelude.
 
 ```ebnf {% showTitle=false %}
@@ -476,7 +476,7 @@ TypeRefDefinition
 
 ### Tags
 
-Tags consist of the `tag` keyword, followed by a positive integer wrapped in a pair of parenthesis.  
+Tags consist of the `tag` keyword, followed by a positive integer wrapped in a pair of parenthesis.
 This integer must be between `0` and `2,147,483,647` (the maximum value of a signed 32-bit integer).
 
 {% slice2 %}
@@ -550,12 +550,12 @@ struct   // The struct keyword
 ### Integer literals
 
 Slice supports three forms of integer literals:
-- A decimal literal for base-10 numbers.  
+- A decimal literal for base-10 numbers.
 These consist of one or more digits between `0` and `9` (inclusive).
-- A hexadecimal literal for base-16 numbers.  
+- A hexadecimal literal for base-16 numbers.
 These start with the prefix `0x`, followed by one or more digits between `0` and `9` or letters between `a` and `f`.
 Hexadecimal literals are not case-sensitive.
-- A binary literal for base-2 numbers.  
+- A binary literal for base-2 numbers.
 These start with the prefix `0b`, followed by one or more digits that are either `0` or `1`.
 
 Additionally, underscores can appear between any two characters of an integer literal.
@@ -601,7 +601,7 @@ SignedInteger
 
 ### String literals
 
-String literals consist of any number of [UTF-8] characters, wrapped in a pair of double quotes.  
+String literals consist of any number of [UTF-8] characters, wrapped in a pair of double quotes.
 Any characters within a string literal are treated as text and given no semantic meaning.
 
 Slice supports escaping characters within string literals.
@@ -974,7 +974,6 @@ UndelimitedList<T>
 [exception-guide]: /slice/language-guide/exception
 [field-guide]: /slice/language-guide/fields
 [interface-guide]: /slice/language-guide/interface
-[proxy-guide]: /slice/language-guide/proxy-types
 [operation-guide]: /slice/language-guide/operation
 [exception-specification-guide]: /slice/language-guide/operation#exception-specification
 [idempotent-guide]: /slice/language-guide/operation#idempotent-operation

@@ -4,6 +4,7 @@ description: Learn about helper constructs used to encode other constructs.
 ---
 
 {% slice1 %}
+
 ## Variable-length size
 
 A variable-length size is a non-negative integer encoded on 1 or 5 bytes. Its range is 0 to 2^31 - 1 inclusive. As its
