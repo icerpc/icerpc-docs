@@ -1,13 +1,13 @@
 ---
-title: Writing your first IceRPC + Protobuf client in C#
+title: Writing your first IceRPC client in C#
 ---
 
 This tutorial is the second part of a two part series that shows how to create a
 complete application with IceRPC + Protobuf for C#. We start from scratch—you just need to
 have the .NET 8 SDK installed on your computer.
 
-The first part of this tutorial showed how to
-[create the server][protobuf-server-tutorial]. This part shows how to create the client.
+The first part of this tutorial showed how to [create the server]. This part shows how to
+create the client.
 
 {% step title="Create the client" %}
 
@@ -204,11 +204,11 @@ dbug: IceRpc.Server[12]
 
 {% /step %}
 
+[create the server]: server-tutorial
 [Deadline]: csharp:IceRpc.Deadline
 [IceRpc.Deadline]: https://www.nuget.org/packages/IceRpc.Deadline
 [IceRpc.Logger]: https://www.nuget.org/packages/IceRpc.Logger
 [IceRpc.Protobuf.Tools]: https://www.nuget.org/packages/IceRpc.Protobuf.Tools
 [IceRpc.Protobuf]: https://www.nuget.org/packages/IceRpc.Protobuf
 [Logger]: csharp:IceRpc.Logger
-[protobuf-server-tutorial]: /getting-started/tutorial/protobuf-server-tutorial
 [service-address]: /icerpc/invocation/service-address

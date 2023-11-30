@@ -16,7 +16,7 @@ The client and server are console applications that use plain .NET (no ASP.NET,
 no Dependency Injection).
 
 The first part of this tutorial shows how to create the server. The second part
-shows how to [create the client][slice-client-tutorial].
+shows how to [create the client].
 
 Let's jump right in:
 
@@ -219,7 +219,7 @@ dbug: IceRpc.Server[12]
 
 {% /step %}
 
-[slice-client-tutorial]: /getting-started/tutorial/slice-client-tutorial
+[create the client]: client-tutorial
 [Deadline]: csharp:IceRpc.Deadline
 [dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
 [IDispatcher]: csharp:IceRpc.IDispatcher

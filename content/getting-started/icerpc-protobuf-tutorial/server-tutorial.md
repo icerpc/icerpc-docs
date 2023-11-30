@@ -1,5 +1,5 @@
 ---
-title: Writing your first IceRPC + Protobuf server in C#
+title: Writing your first IceRPC server in C#
 ---
 
 This tutorial is the first part of a two part series that shows how to create a
@@ -16,7 +16,7 @@ The client and server are console applications that use plain .NET (no ASP.NET,
 no Dependency Injection).
 
 The first part of this tutorial shows how to create the server. The second part
-shows how to [create the client][protobuf-client-tutorial].
+shows how to [create the client].
 
 Let's jump right in:
 
@@ -230,7 +230,7 @@ dbug: IceRpc.Server[12]
 
 {% /step %}
 
-[protobuf-client-tutorial]: /getting-started/tutorial/protobuf-client-tutorial
+[create the client]: client-tutorial
 [Deadline]: csharp:IceRpc.Deadline
 [dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
 [IDispatcher]: csharp:IceRpc.IDispatcher
