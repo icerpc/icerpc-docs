@@ -9,6 +9,10 @@
       "path": "/getting-started/quickstart/"
     },
     {
+      "title": "Choosing between Slice and Protobuf",
+      "path": "/getting-started/choosing/"
+    },
+    {
       "title": "Installation",
       "links": [
         {
