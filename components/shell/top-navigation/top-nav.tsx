@@ -52,7 +52,7 @@ export const TopNav = () => (
         </div>
         <div className="flex w-full grow items-start   justify-between text-sm lg:h-[2.65rem]">
           <nav className="my-1 hidden items-center lg:flex">
-            <ul className="flex space-x-4 lg:ml-[1.8rem]">
+            <ul className="flex space-x-4 lg:ml-[1.9rem]">
               <TopNavigationItems />
             </ul>
           </nav>
