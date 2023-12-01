@@ -115,12 +115,12 @@ The `invoker` parameter represents your [invocation pipeline](/icerpc/invocation
 [address](/icerpc/invocation/service-address) of the remote service, and the `encodeOptions` parameter allows
 you to customize the encoding of your Protobuf messages. See [ProtobufEncodeOptions] for details.
 
-A `null` service address is equivalent to an icerpc service address with the default path of the associated Protobuf
-service.
+A `null` service address is equivalent to an icerpc service address with the default service path of the associated
+Protobuf service.
 
 {% callout type="note" %}
-The default path of a Protobuf service is `/` followed by its fully qualified name. For example, the default path of
-Protobuf service `visitor_center.Greeter` is `/visitor_center.Greeter`.
+The default service path of a Protobuf service is `/` followed by its fully qualified name. For example, the default
+service path of Protobuf service `visitor_center.Greeter` is `/visitor_center.Greeter`.
 {% /callout %}
 
 ### I*Name*Service
