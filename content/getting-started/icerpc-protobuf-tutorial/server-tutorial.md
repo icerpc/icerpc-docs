@@ -1,9 +1,9 @@
 ---
-title: Writing your first IceRPC server in C#
+title: Writing your first IceRPC + Protobuf server in C#
 ---
 
 This tutorial is the first part of a two part series that shows how to create a
-complete application with IceRPC for C#. We start from scratch—you just need to
+complete application with IceRPC + Protobuf for C#. We start from scratch—you just need to
 have the .NET 8 SDK installed on your computer.
 
 The networked application we are building together consists of:
@@ -16,7 +16,7 @@ The client and server are console applications that use plain .NET (no ASP.NET,
 no Dependency Injection).
 
 The first part of this tutorial shows how to create the server. The second part
-shows how to [create the client][slice-client-tutorial].
+shows how to [create the client].
 
 Let's jump right in:
 
@@ -31,78 +31,89 @@ dotnet new install IceRpc.Templates
 {% step title="Create the server" %}
 
 ```shell
-dotnet new icerpc-slice-server -o MySliceServer
+dotnet new icerpc-protobuf-server -o MyProtobufServer
 ```
 
-This command creates a new IceRPC server application in directory `MySliceServer`.
+This command creates a new IceRPC server application in directory `MyProtobufServer`.
 
-![MySliceServer in Visual Studio Code](/images/MySliceServer.png)
+![MyProtobufServer in Visual Studio Code](/images/MyProtobufServer.png)
 
 Let's examine each file:
 
-### slice/Greeter.slice - the contract
+### proto/greeter.proto - the contract
 
 This file holds the contract between our client and server applications,
-specified with the [Slice] language.
+specified with the [Protobuf] language.
 
 It's a simple greeter:
 
-```slice
-[cs::namespace("MySliceServer")]
-module VisitorCenter
+```protobuf
+syntax = "proto3";
 
-/// Represents a simple greeter.
-interface Greeter {
-    /// Creates a personalized greeting.
-    /// @param name: The name of the person to greet.
-    /// @returns: The greeting.
-    greet(name: string) -> string
+package visitor_center;
+option csharp_namespace = "MyProtobufServer";
+
+// Represents a simple greeter.
+service Greeter {
+    // Creates a personalized greeting.
+    rpc Greet (GreetRequest) returns (GreetResponse);
+}
+
+// The request contains the name of the person to greet.
+message GreetRequest {
+    string name = 1;
+}
+
+// The response contains the greeting.
+message GreetResponse {
+    string greeting = 1;
 }
 ```
 
-The `cs::namespace` attribute instructs the Slice compiler to map module
-`VisitorCenter` to C# namespace `MySliceServer` (our project name) instead of the
-default (`VisitorCenter`).
+The `csharp_namespace` option instructs the protoc compiler to map package
+`visitor_center` to C# namespace `MyProtobufServer` (our project name) instead
+of the default (`VisitorCenter`).
 
 If you use this code as the starting point for a new application, you should
-update this interface to represent something meaningful for your application.
+update this service to represent something meaningful for your application.
 For this tutorial, we just keep `Greeter` as-is.
 
 ### Chatbot.cs - the service implementation
 
-Class Chatbot is a service that implements Slice interface `Greeter`:
+Class Chatbot is a service that implements Protobuf service `Greeter`:
 
 ```csharp
-[SliceService]
+[ProtobufService]
 internal partial class Chatbot : IGreeterService
 {
-    public ValueTask<string> GreetAsync(
-        string name,
+    public ValueTask<GreetResponse> GreetAsync(
+        GreetRequest message,
         IFeatureCollection features,
         CancellationToken cancellationToken)
     {
-        Console.WriteLine($"Dispatching greet request {{ name = '{name}' }}");
-        return new($"Hello, {name}!");
+        Console.WriteLine($"Dispatching Greet request {{ name = '{message.Name}' }}");
+        return new(new GreetResponse { Greeting = $"Hello, {message.Name}!" });
     }
 }
 ```
 
-The Slice compiler generates C# interface `IGreeterService` from Slice interface
-`Greeter`. This C# interface is a template: we implement `Greeter` by
-implementing this interface. As you can see above, the `greet` operation
+The `protoc-gen-icerpc-csharp` generator generates C# interface `IGreeterService`
+from Protobuf service `Greeter`. This C# interface is a template: we implement
+`Greeter` by implementing this interface. As you can see above, the `Greet` operation
 becomes a `GreetAsync` method with two additional parameters.
 
-Since we always fulfill `greet` synchronously, the `GreetAsync` implementation
+Since we always fulfill `Greet` synchronously, the `GreetAsync` implementation
 is not marked `async`. We could write the return statement as:
 
 ```csharp
-    return new ValueTask<string>($"Hello, {name}!");
+    return new ValueTask<GreetResponse>(
+        new GreetResponse { Greeting = $"Hello, {message.Name}!" });
 ```
 
 However, it's more convenient to omit the type name, especially when this type is complicated.
 
-We mark class `Chatbot` as partial because the [SliceService] attribute instructs the Slice Service source generator to
-implement interface [IDispatcher]—in other words, make `Chatbot` an IceRPC service implementation.
+We mark class `Chatbot` as partial because the [ProtobufService] attribute instructs the Protobuf Service source
+generator to implement interface [IDispatcher]—in other words, make `Chatbot` an IceRPC service implementation.
 
 ### Program.cs - the dispatch pipeline and the server logic
 
@@ -129,11 +140,11 @@ The `Map` call means if the request's path is the default path for Slice
 interface `Greeter`, route it to the `Chatbot` instance. Otherwise, the router
 returns a response with status code [NotFound].
 
-The default path for `Greeter` is `/VisitorCenter.Greeter` (it uses the Slice
-module name and interface name). The `Map` call above is a shortcut for:
+The default path for `Greeter` is `/visitor_center.Greeter` (it uses the Protobuf
+package name and service name). The `Map` call above is a shortcut for:
 
 ```csharp
-.Map("/VisitorCenter.Greeter", new Chatbot());
+.Map("/visitor_center.Greeter", new Chatbot());
 ```
 
 The main program then creates a [Server] that directs all incoming requests to
@@ -179,14 +190,14 @@ await server.ShutdownAsync();
 This file contains a few lines of code that `Programs.cs` uses to wait for
 Ctrl+C. It's not related to RPCs.
 
-### MySliceServer.csproj - the project file
+### MyProtobufServer.csproj - the project file
 
 The project file is straightforward. It contains references to the required IceRpc
 NuGet packages:
 
-- [IceRpc.Slice] - the IceRPC + Slice integration package
-- [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into
-  `generated/Greeter.cs`
+- [IceRpc.Protobuf] - the IceRPC + Protobuf integration package
+- [IceRpc.Protobuf.Tools] - the package that compiles `greeter.proto` into
+  `generated/Greeter.cs` and `generated/Greeter.IceRpc.cs`
 - [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two middleware
   we installed in the dispatch pipeline
 
@@ -197,7 +208,7 @@ NuGet packages:
 ### Start the server
 
 ```shell
-cd MySliceServer
+cd MyProtobufServer
 dotnet run
 ```
 
@@ -219,17 +230,17 @@ dbug: IceRpc.Server[12]
 
 {% /step %}
 
-[slice-client-tutorial]: /getting-started/tutorial/slice-client-tutorial
+[create the client]: client-tutorial
 [Deadline]: csharp:IceRpc.Deadline
 [dispatch-pipeline]: /icerpc/dispatch/dispatch-pipeline
 [IDispatcher]: csharp:IceRpc.IDispatcher
 [IceRpc.Deadline]: https://www.nuget.org/packages/IceRpc.Deadline
 [IceRpc.Logger]: https://www.nuget.org/packages/IceRpc.Logger
-[IceRpc.Slice.Tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
-[IceRpc.Slice]: https://www.nuget.org/packages/IceRpc.Slice
+[IceRpc.Protobuf.Tools]: https://www.nuget.org/packages/IceRpc.Protobuf.Tools
+[IceRpc.Protobuf]: https://www.nuget.org/packages/IceRpc.Protobuf
 [Logger]: csharp:IceRpc.Logger
 [NotFound]: csharp:IceRpc.StatusCode#NotFound
 [Router]: csharp:IceRpc.Router
 [Server]: csharp:IceRpc.Server
-[Slice]: /slice
-[SliceService]: csharp:IceRpc.Slice.SliceServiceAttribute
+[Protobuf]: https://protobuf.dev/
+[ProtobufService]: csharp:IceRpc.Protobuf.ProtobufServiceAttribute

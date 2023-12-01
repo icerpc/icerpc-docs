@@ -1,5 +1,5 @@
 ---
-title: Using the IceRPC .NET Project Templates
+title: Using the IceRPC .NET project templates
 ---
 
 ## Template installation
@@ -24,52 +24,12 @@ dotnet new install IceRpc.Templates
 | `icerpc-slice-di-client`    | A project template for creating an IceRPC + Slice client console application using Microsoft's DI container.    |
 | `icerpc-slice-di-server`    | A project template for creating an IceRPC + Slice server console application using Microsoft's DI container.    |
 
-#### Create a client application (IceRPC + Protobuf)
+## Using the templates
+
+You use the IceRPC templates with the standard `dotnet new <template>` command.
+
+For example, you can create a new project named `MyProtobufClient` for an IceRPC + Protobuf client application with:
 
 ```shell {% showTitle=false %}
-dotnet new icerpc-protobuf-client -o MyClient
+dotnet new icerpc-protobuf-client -o MyProtobufClient
 ```
-
-#### Create a server application (IceRPC + Protobuf)
-
-```shell {% showTitle=false %}
-dotnet new icerpc-protobuf-server -o MyServer
-```
-
-#### Create a client application (IceRPC + Protobuf and DI)
-
-```shell {% showTitle=false %}
-dotnet new icerpc-protobuf-di-client -o MyClient
-```
-
-#### Create a server application (IceRPC + Protobuf and DI)
-
-```shell {% showTitle=false %}
-dotnet new icerpc-protobuf-di-server -o MyServer
-```
-
-#### Create a client application (IceRPC + Slice)
-
-```shell {% showTitle=false %}
-dotnet new icerpc-slice-client -o MyClient
-```
-
-#### Create a server application (IceRPC + Slice)
-
-```shell {% showTitle=false %}
-dotnet new icerpc-slice-server -o MyServer
-```
-
-#### Create a client application (IceRPC + Slice and DI)
-
-```shell {% showTitle=false %}
-dotnet new icerpc-slice-di-client -o MyClient
-```
-
-#### Create a server application (IceRPC + Slice and DI)
-
-```shell {% showTitle=false %}
-dotnet new icerpc-slice-di-server -o MyServer
-```
-
-[dotnet new]: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-new

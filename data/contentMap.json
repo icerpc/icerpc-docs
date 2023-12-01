@@ -16,7 +16,7 @@
       "title": "Installation",
       "links": [
         {
-          "title": "Using the IceRPC .NET Project Templates",
+          "title": "Using the IceRPC .NET project templates",
           "path": "/getting-started/installation/template/"
         },
         {
@@ -30,23 +30,28 @@
       ]
     },
     {
-      "title": "Tutorial",
+      "title": "IceRPC + Slice Tutorial",
       "links": [
         {
-          "title": "Writing your first IceRPC + Protobuf server application",
-          "path": "/getting-started/tutorial/protobuf-server-tutorial/"
+          "title": "Writing your first IceRPC server",
+          "path": "/getting-started/icerpc-slice-tutorial/server-tutorial/"
         },
         {
-          "title": "Writing your first IceRPC + Protobuf client application",
-          "path": "/getting-started/tutorial/protobuf-client-tutorial/"
+          "title": "Writing your first IceRPC client",
+          "path": "/getting-started/icerpc-slice-tutorial/client-tutorial/"
+        }
+      ]
+    },
+    {
+      "title": "IceRPC + Protobuf Tutorial",
+      "links": [
+        {
+          "title": "Writing your first IceRPC server",
+          "path": "/getting-started/icerpc-protobuf-tutorial/server-tutorial/"
         },
         {
-          "title": "Writing your first IceRPC + Slice server application",
-          "path": "/getting-started/tutorial/slice-server-tutorial/"
-        },
-        {
-          "title": "Writing your first IceRPC + Slice client application",
-          "path": "/getting-started/tutorial/slice-client-tutorial/"
+          "title": "Writing your first IceRPC client",
+          "path": "/getting-started/icerpc-protobuf-tutorial/client-tutorial/"
         }
       ]
     },
