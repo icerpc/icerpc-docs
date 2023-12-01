@@ -90,9 +90,9 @@ The generated record struct *Name*Client implements I*Name* by sending requests 
 In order to call a remote service, you need to construct a client struct using one of its "invoker" constructors:
 
 ```csharp
-public readonly partial record struct WidgetProxy : IWidget
+public readonly partial record struct WidgetClient : IWidget, IProtobufClient
 {
-    public WidgetProxy(
+    public WidgetClient(
         IInvoker invoker,
         ServiceAddress? serviceAddress = null,
         ProtobufEncodeOptions? encodeOptions = null)
@@ -100,7 +100,7 @@ public readonly partial record struct WidgetProxy : IWidget
         ...
     }
 
-    public WidgetProxy(
+    public WidgetClient(
         IInvoker invoker,
         System.Uri serviceAddressUri,
         ProtobufEncodeOptions? encodeOptions = null)
