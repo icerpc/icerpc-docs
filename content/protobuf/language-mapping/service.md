@@ -111,7 +111,7 @@ public readonly partial record struct WidgetClient : IWidget, IProtobufClient
 ```
 
 The `invoker` parameter represents your [invocation pipeline](/icerpc/invocation/invocation-pipeline), the
-`serviceAddress` an `serviceAddressUri` parameters corresponds to the
+`serviceAddress` or `serviceAddressUri` parameter corresponds to the
 [address](/icerpc/invocation/service-address) of the remote service, and the `encodeOptions` parameter allows
 you to customize the encoding of your Protobuf messages. See [ProtobufEncodeOptions] for details.
 
