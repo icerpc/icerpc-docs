@@ -70,7 +70,7 @@ public partial interface IGreeter
       CancellationToken cancellationToken = default);
 }
 
-public readonly partial record struct GreeterClient : IGreeter
+public readonly partial record struct GreeterClient : IGreeter, IProtobufClient
 {
    public Task<GreetResponse> GreetAsync(
       GreetRequest message,
