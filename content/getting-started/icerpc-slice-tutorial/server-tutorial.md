@@ -125,11 +125,11 @@ This router corresponds to our [dispatch pipeline][dispatch-pipeline]: when we
 receive a request, we first give it to the [Logger] middleware, then to the
 [Deadline] middleware and finally we route this request based on its path.
 
-The `Map` call means if the request's path is the default path for Slice
+The `Map` call means if the request's path is the default service path for Slice
 interface `Greeter`, route it to the `Chatbot` instance. Otherwise, the router
 returns a response with status code [NotFound].
 
-The default path for `Greeter` is `/VisitorCenter.Greeter` (it uses the Slice
+The default service path for `Greeter` is `/VisitorCenter.Greeter` (it uses the Slice
 module name and interface name). The `Map` call above is a shortcut for:
 
 ```csharp
