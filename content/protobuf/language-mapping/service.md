@@ -111,7 +111,7 @@ public readonly partial record struct WidgetClient : IWidget, IProtobufClient
 ```
 
 The `invoker` parameter represents your [invocation pipeline](/icerpc/invocation/invocation-pipeline), the
-`serviceAddress` an `serviceAddressUri` parameters corresponds to the
+`serviceAddress` or `serviceAddressUri` parameter corresponds to the
 [address](/icerpc/invocation/service-address) of the remote service, and the `encodeOptions` parameter allows
 you to customize the encoding of your Protobuf messages. See [ProtobufEncodeOptions] for details.
 
@@ -119,7 +119,7 @@ A `null` service address is equivalent to an icerpc service address with the def
 service.
 
 {% callout type="note" %}
-The default path of a Protobuf service is `/` followed by its fully qualified name. For example, the default path of
+The default  path of a Protobuf service is `/` followed by its fully qualified name. For example, the default path of
 Protobuf service `visitor_center.Greeter` is `/visitor_center.Greeter`.
 {% /callout %}
 

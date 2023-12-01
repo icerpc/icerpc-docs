@@ -89,11 +89,10 @@ export default async function Home() {
                 </TR>
                 <TR>
                   <TD>
-                    <AppLink href="/protobuf">Protobuf</AppLink>
+                    <AppLink href="/protobuf">Protobuf support</AppLink>
                   </TD>
                   <TD>
-                     A popular Interface Definition Language (IDL) and serialization
-                     format created by Google.
+                     Learn how to call and implement Protobuf services with IceRPC.
                   </TD>
                 </TR>
                 <TR>
