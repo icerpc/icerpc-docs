@@ -29,8 +29,8 @@ implement the C# (or Rust, Python...) abstractions and concrete implementations 
 your Slice interfaces.
 
 {% callout %}
-An interface is a Slice construct but not a Slice type. This means you cannot use an interface as the type of a
-Slice field or operation parameter.
+An interface is a Slice construct but not a Slice type. This means you cannot use an interface as the type of a Slice
+field or operation parameter.
 {% /callout %}
 
 ## Interface inheritance
@@ -89,7 +89,8 @@ public partial interface IWidget
     Task SpinAsync(
         int speed,
         IFeatureCollection? features = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken =
+            default);
 }
 ```
 
@@ -156,14 +157,19 @@ The `invoker` parameter represents your [invocation pipeline](/icerpc/invocation
 you to customize the Slice encoding of operation parameters. See
 [SliceEncodeOptions] for details.
 
-A `null` service address is equivalent to an icerpc service address with the default path of the associated Slice
-interface.
+A `null` service address is equivalent to an icerpc service address with the default service path of the associated
+Slice interface.
 
-{% callout type="note" %}
-The default path of a Slice interface is `/` followed by its fully qualified name with `::` replaced by `.`.
+The default service path of a Slice interface is `/` followed by its fully qualified name with `::` replaced by `.`. For
+example, the default service path of Slice interface `VisitorCenter::Greeter` is `/VisitorCenter.Greeter`. It's also
+available as the constant `DefaultServicePath` in the generated proxy struct:
 
-For example, the default path of Slice interface `VisitorCenter::Greeter` is `/VisitorCenter.Greeter`.
-{% /callout %}
+```csharp
+public readonly partial record struct WidgetProxy : IWidget, IProxy
+{
+    public const string DefaultServicePath = "/Example/Widget";
+}
+```
 
 {% slice2 %}
 If you want to create a [relative proxy], call the `FromPath` static method:
@@ -175,8 +181,26 @@ public readonly partial record struct WidgetProxy : IWidget, IProxy
 }
 ```
 
-The proxy struct also provides a parameterless constructor that creates a relative proxy with the default path.
+For example, if you want to create a relative proxy with the default service path, call:
+
+```csharp
+// Creates a relative proxy with the default service path and an invalid invoker.
+var relativeProxy = WidgetProxy.FromPath(WidgetProxy.DefaultServicePath);
+```
+
 {% /slice2 %}
+
+The generated proxy struct also provides a parameterless constructor that initializes the proxy's service address to
+an icerpc service address with the default service path. If you call this constructor directly, you also need to
+initialize the invoker, for example:
+
+```csharp
+// Calls WidgetProxy's parameterless constructor
+var proxy = new WidgetProxy { Invoker = connection };
+
+// The above is equivalent to:
+var proxy = new WidgetPRoxy(connection);
+```
 
 When a Slice interface derives from another interface, its proxy struct provides an implicit conversion operator to be
 base interface. For example:
@@ -280,9 +304,10 @@ interface Counter {
 ```
 
 ```csharp
-// A service class that implements 2 Slice interfaces
+// Implements two Slice interfaces
 [SliceService]
-internal partial class MyWidget : IWidgetService, ICounterService
+internal partial class MyWidget : IWidgetService,
+                                  ICounterService
 {
     // implements SpinAsync and GetCountAsync.
 }
