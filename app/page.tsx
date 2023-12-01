@@ -89,6 +89,15 @@ export default async function Home() {
                 </TR>
                 <TR>
                   <TD>
+                    <AppLink href="/protobuf">Protobuf</AppLink>
+                  </TD>
+                  <TD>
+                     A popular Interface Definition Language (IDL) and serialization
+                     format created by Google.
+                  </TD>
+                </TR>
+                <TR>
+                  <TD>
                     <AppLink href="/icerpc/dependency-injection/di-and-icerpc-for-csharp">
                       Dependency injection
                     </AppLink>
