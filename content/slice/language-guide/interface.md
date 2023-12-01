@@ -89,7 +89,8 @@ public partial interface IWidget
     Task SpinAsync(
         int speed,
         IFeatureCollection? features = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken =
+            default);
 }
 ```
 
@@ -188,6 +189,18 @@ var relativeProxy = WidgetProxy.FromPath(WidgetProxy.DefaultServicePath);
 ```
 
 {% /slice2 %}
+
+The generated proxy struct also provides a parameterless constructor that initializes the proxy's service address to
+an icerpc service address with the default service path. If you call this constructor directly, you also need to
+initialize the invoker, for example:
+
+```csharp
+// Calls WidgetProxy's parameterless constructor
+var proxy = new WidgetProxy { Invoker = connection };
+
+// The above is equivalent to:
+var proxy = new WidgetPRoxy(connection);
+```
 
 When a Slice interface derives from another interface, its proxy struct provides an implicit conversion operator to be
 base interface. For example:
@@ -291,9 +304,10 @@ interface Counter {
 ```
 
 ```csharp
-// A service class that implements 2 Slice interfaces
+// Implements two Slice interfaces
 [SliceService]
-internal partial class MyWidget : IWidgetService, ICounterService
+internal partial class MyWidget : IWidgetService,
+                                  ICounterService
 {
     // implements SpinAsync and GetCountAsync.
 }
