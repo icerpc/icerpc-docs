@@ -22,7 +22,7 @@ export const Explore = () => {
       />
       <ExploreCard
         title="Protobuf"
-        description="The IceRPC + Protobuf integration"
+        description="The IceRPC + Protobuf integration."
         href="/protobuf"
       />
       <ExploreCard
