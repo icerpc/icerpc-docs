@@ -1,5 +1,5 @@
 ---
-title: Writing your first IceRPC server in C#
+title: Writing your first IceRPC + Slice server in C#
 ---
 
 This tutorial is the first part of a two part series that shows how to create a

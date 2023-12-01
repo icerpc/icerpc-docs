@@ -1,5 +1,5 @@
 ---
-title: Writing your first IceRPC client in C#
+title: Writing your first IceRPC + Slice client in C#
 ---
 
 This tutorial is the second part of a two part series that shows how to create a
