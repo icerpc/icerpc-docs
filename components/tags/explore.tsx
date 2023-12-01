@@ -21,6 +21,11 @@ export const Explore = () => {
         href="/slice"
       />
       <ExploreCard
+        title="Protobuf"
+        description="The IceRPC + Protobuf integration"
+        href="/protobuf"
+      />
+      <ExploreCard
         title="IceRPC for Ice Users"
         description="Start here if you are coming from Ice."
         href="/icerpc-for-ice-users"

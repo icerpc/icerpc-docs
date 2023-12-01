@@ -6,22 +6,16 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export const Examples = () => {
   return (
-    <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2">
       <ExampleCard
-        title="Logger"
-        description="A typical IceRPC application."
-        href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/slice/Logger"
+        title="IceRPC + Slice"
+        description="Example applications for using IceRPC + Slice."
+        href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/slice/"
       />
       <ExampleCard
-        title="GenericHost"
-        description="IceRPC with the Microsoft DI container."
-
-        href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/slice/GenericHost"
-      />
-      <ExampleCard
-        title="Stream"
-        description="Stream your data with IceRPC and Slice."
-        href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/slice/Stream"
+        title="IceRPC + Protobuf"
+        description="Example applications for using IceRPC + Protobuf."
+        href="https://github.com/icerpc/icerpc-csharp/tree/main/examples/protobuf"
       />
     </div>
   );
