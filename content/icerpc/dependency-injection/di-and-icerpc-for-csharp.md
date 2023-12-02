@@ -49,7 +49,7 @@ flowchart BT
 [IDispatcherBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder
 [IInvokerBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IInvokerBuilder
 
-[IceRpc.dll]: https://github.com/icerpc/icerpc-csharp/blob/main/src/IceRpc/README.md
-[IceRpc.Logger.dll]: https://github.com/icerpc/icerpc-csharp/blob/main/src/IceRpc.Logger/README.md
-[IceRpc.Deadline.dll]: https://github.com/icerpc/icerpc-csharp/blob/main/src/IceRpc.Deadline/README.md
-[IceRpc.Extensions.DependencyInjection.dll]: https://github.com/icerpc/icerpc-csharp/blob/main/src/IceRpc.Extensions.DependencyInjection/README.md
+[IceRpc.dll]: https://github.com/icerpc/icerpc-csharp/blob/0.1.x/src/IceRpc/README.md
+[IceRpc.Logger.dll]: https://github.com/icerpc/icerpc-csharp/blob/0.1.x/src/IceRpc.Logger/README.md
+[IceRpc.Deadline.dll]: https://github.com/icerpc/icerpc-csharp/blob/0.1.x/src/IceRpc.Deadline/README.md
+[IceRpc.Extensions.DependencyInjection.dll]: https://github.com/icerpc/icerpc-csharp/blob/0.1.x/src/IceRpc.Extensions.DependencyInjection/README.md
