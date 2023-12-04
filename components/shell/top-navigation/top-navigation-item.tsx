@@ -15,9 +15,9 @@ const TopNavigationItem = ({ name, href }: TopNavigationItemProps) => {
   const path = usePathname();
   const prefetch = href.startsWith('http') ? false : undefined;
   const baseClassName =
-    'mx-3 overflow-hidden whitespace-nowrap font-medium dark:text-[rgba(255,255,255,0.6)] hover:text-zinc-900 dark:hover:text-white';
+    'py-4 px-3 overflow-hidden font-semibold whitespace-nowrap font-medium dark:text-[rgba(255,255,255,0.6)] hover:text-zinc-900 dark:hover:text-white';
   const activeClassName =
-    'mx-3 text-primary font-semibold underline decoration-2 underline-offset-[1.22rem] opacity-100 dark:text-white hover:!text-primary dark:hover:!text-white';
+    'text-primary underline decoration-2 underline-offset-[1.18rem] opacity-100 dark:text-white hover:!text-primary dark:hover:!text-white';
   const isActive = isActivePath(path, href);
   const linkClassName = clsx(baseClassName, isActive && activeClassName);
 

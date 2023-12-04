@@ -16,6 +16,7 @@ code to help you use IceRPC with [Microsoft's DI container][microsoft-di-contain
 
 All the DI-related APIs provided by IceRPC are in the same namespace, [IceRpc.Extensions.DependencyInjection], but are
 implemented by several assemblies:
+
 - [IceRpc.dll] provides abstractions such as [IDispatcherBuilder] and [IInvokerBuilder] IceRpc.Deadline.dll] and other
 interceptor/middleware assemblies provide extension methods for `IDispatcherBuilder` and `IInvokerBuilder`. These
 extension methods are DI container agnostic.
@@ -50,6 +51,4 @@ flowchart BT
 [IInvokerBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IInvokerBuilder
 
 [IceRpc.dll]: https://github.com/icerpc/icerpc-csharp/blob/0.2.x/src/IceRpc/README.md
-[IceRpc.Logger.dll]: https://github.com/icerpc/icerpc-csharp/blob/0.2.x/src/IceRpc.Logger/README.md
-[IceRpc.Deadline.dll]: https://github.com/icerpc/icerpc-csharp/blob/0.2.x/src/IceRpc.Deadline/README.md
 [IceRpc.Extensions.DependencyInjection.dll]: https://github.com/icerpc/icerpc-csharp/blob/0.2.x/src/IceRpc.Extensions.DependencyInjection/README.md

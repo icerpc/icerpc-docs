@@ -27,10 +27,11 @@ dispatch and the leaf dispatcher is a service managed by your DI container. This
 
 A middleware in your DI dispatch pipeline can use features as usual to communicate with other middleware and the leaf
 dispatcher. However, a more idiomatic approach is to communicate using injected services. For example:
- - an upstream middleware receives a scoped service (via injection) and then fills-in this service
- - a downstream middleware receives the same scoped service (also via injection) and reads the information filled-in by
+
+- an upstream middleware receives a scoped service (via injection) and then fills-in this service
+- a downstream middleware receives the same scoped service (also via injection) and reads the information filled-in by
  the upstream middleware
- - the constructor of the leaf dispatcher (a scoped or transient service) is auto-wired with this previously filled
+- the constructor of the leaf dispatcher (a scoped or transient service) is auto-wired with this previously filled
 scoped service
 
 The chain of middleware is itself static: each dispatch does not create new middleware instances. The middleware are
@@ -110,6 +111,7 @@ Instead of providing a standard middleware, you can create a middleware that com
 leaf dispatcher via services injected by a DI container.
 
 Such a DI-friendly middleware needs to implement one of the following `IMiddleware` interfaces:
+
 - [IMiddleware<TDep>](csharp:IceRpc.Extensions.DependencyInjection.IMiddleware-1)
 - [IMiddleware<TDep1, TDep2>](csharp:IceRpc.Extensions.DependencyInjection.IMiddleware-2)
 - [IMiddleware<TDep1, TDep2, TDep3>](csharp:IceRpc.Extensions.DependencyInjection.IMiddleware-3)
