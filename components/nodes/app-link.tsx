@@ -95,7 +95,9 @@ export const AppLink = ({
         // eslint-disable-next-line tailwindcss/no-custom-classname
         className={clsx(
           isApiLink(originalHref) && apiClasses,
-          isExternalLink(originalHref) && showArrow && 'with-arrow'
+          isExternalLink(originalHref) &&
+            showArrow &&
+            'with-arrow whitespace-nowrap'
         )}
       >
         {isApiLink(originalHref) ? <code>{children}</code> : children}
