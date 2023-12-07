@@ -76,6 +76,10 @@ export default function RootLayout(props: any) {
             <Analytics />
           </PathProvider>
         </ThemeProvider>
+        {/* Fix for issue #368 - see discussion at https://github.com/algolia/docsearch/issues/1260 */}
+        <div className="fixed">
+          <input type="text" />
+        </div>
       </body>
     </html>
   );
