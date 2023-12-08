@@ -11,7 +11,9 @@ import { Metadata } from 'next';
 import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin', 'latin-ext'] });
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
+// Metadata and structured data for the site.
 export const metadata: Metadata = {
   title: {
     default: 'IceRPC Docs',
@@ -54,8 +56,26 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://docs.icerpc.dev')
 };
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-const schema = {
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'ZeroC',
+  url: 'https://www.zeroc.com/',
+  logo: 'https://download.zeroc.com/brand-assets/zeroc-logo.svg',
+  sameAs: [
+    'https://x.com/zeroc',
+    'https://www.linkedin.com/company/zeroc-inc/',
+    'https://github.com/zeroc-inc'
+  ],
+  brand: {
+    '@type': 'Brand',
+    name: 'IceRPC',
+    url: 'https://docs.icerpc.dev/',
+    logo: 'https://download.zeroc.com/brand-assets/icerpc-logo.svg'
+  }
+};
+
+const navigationSchema = {
   '@context': 'http://schema.org',
   '@type': 'ItemList',
   itemListElement: [
@@ -131,7 +151,14 @@ export default function RootLayout(props: any) {
         <Script
           id="navigation-structured-data"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(navigationSchema) }}
+        />
+        <Script
+          id="organization-structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema)
+          }}
         />
         {/* Fix for issue #368 - see discussion at https://github.com/algolia/docsearch/issues/1260 */}
         <div className="fixed">
