@@ -15,6 +15,7 @@ abstraction.
 ## The multiplexed transport requirements
 
 IceRPC requires a multiplexed transport to be [connection-oriented] and to support the following features:
+
 - [full-duplex] communication over multiple independent streams
 - [flow-control] for each stream
 - a mechanism to limit the number of active streams opened on a connection
@@ -40,6 +41,7 @@ See also [Security with TLS][security-with-tls] for additional information.
 
 The C# multiplexed transport abstraction consists of a number of interfaces that a custom transport needs to
 implement:
+
 - [IMultiplexedClientTransport]: a factory to create outgoing connections
 - [IMultiplexedServerTransport]: a factory to create listeners
 - [IListener<IMultiplexedConnection>]: a factory to listen for and create incoming connections
@@ -51,7 +53,7 @@ The API documentation of these interfaces specifies the contract a custom transp
 To use a custom transport, the application needs to provide an instance of `IMultiplexedServerTransport` or
 `IMultiplexedClientTransport` to the [Server], [ConnectionCache] or [ClientConnection] constructors.
 
-[Slic]: slic-transport
+[Slic]: slic-transport/overview
 [icerpc-protocol]: protocols-and-transports/icerpc-multiplexed-transports
 [security-with-tls]: connection/security-with-tls
 

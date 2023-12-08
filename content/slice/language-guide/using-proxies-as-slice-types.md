@@ -126,5 +126,5 @@ address.
 [ISliceFeature]: csharp:IceRpc.Slice.ISliceFeature
 [relative service address]: /icerpc/invocation/service-address#relative-service-address
 [service address]: /icerpc/invocation/service-address
-[outgoing request features]: /icerpc/dispatch/outgoing-request#request-features
+[outgoing request features]: /icerpc/invocation/outgoing-request#request-features
 [SliceEncodeOptions]: csharp:IceRpc.Slice.SliceEncodeOptions

@@ -30,5 +30,5 @@ For example, Slic over TCP is the "tcp" multiplexed transport.
 
 [hol]: https://en.wikipedia.org/wiki/Head-of-line_blocking
 [QUIC]: https://datatracker.ietf.org/doc/rfc9000
-[duplex-transport]: duplex-transport
-[multiplexed-transport]: multiplexed-transport
+[duplex-transport]: ../duplex-transport
+[multiplexed-transport]: ../multiplexed-transport

@@ -41,6 +41,7 @@ The mode is part of the contract between a client and a server: if you change th
 For example, the following operations are not compatible even though they are identical except for the compilation mode.
 
 {% side-by-side alignment="top" %}
+
 ```slice
 mode = Slice1
 
@@ -60,6 +61,7 @@ interface Widget {
     spin(speed: int32)
 }
 ```
+
 {% /side-by-side %}
 
 The [encoding] used for operation arguments is determined by the compilation mode. As a result, a call to `spin` from a
@@ -105,7 +107,7 @@ compact struct VehicleCarrier {
 The mode statement is not mapped to anything in C#. It does however influence the C# mapping of most other Slice
 definitions.
 
-[encoding]: ../encoding
+[encoding]: ../encoding/overview
 [enum type]: enum-types
 [custom type]: custom-types
 

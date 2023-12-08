@@ -33,9 +33,9 @@ information about upcoming Rust support and other planned future languages.
 {% mini-card
    title="Writing your first server"
    description="Learn how to write your first IceRPC + Slice server."
-   href="/getting-started/tutorial/slice-server-tutorial" /%}
+   href="/getting-started/icerpc-slice-tutorial/server-tutorial" /%}
 {% mini-card
    title="Writing your first client"
    description="Learn how to write your first IceRPC + Slice client."
-   href="/getting-started/tutorial/slice-client-tutorial" /%}
+   href="/getting-started/icerpc-slice-tutorial/client-tutorial" /%}
 {% /grid %}
