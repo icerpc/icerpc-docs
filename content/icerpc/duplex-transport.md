@@ -16,6 +16,7 @@ IceRPC uses duplex transports for the implementation of the [ice protocol][ice-p
 ## The duplex transport requirements
 
 IceRPC requires a duplex transport to be [connection-oriented] and to support the following features:
+
 - [full-duplex] communication over a bidirectional byte stream
 - [flow control][flow-control]
 - half-closure where each side of the connection can be closed independently
@@ -39,6 +40,7 @@ See also [Security with TLS][security-with-tls] for additional information.
 ## The C# duplex transport abstraction
 
 The C# duplex transport abstraction is composed of a number of interfaces that a custom transport needs to implement:
+
 - [IDuplexClientTransport]: a factory to create outgoing connections
 - [IDuplexServerTransport]: a factory to create listeners
 - [IListener<IDuplexConnection>]: a factory to listen for and create incoming connections
@@ -50,7 +52,7 @@ To use a custom transport, the application needs to provide an instance of `IDup
 `IDuplexClientTransport` to the [Server], [ConnectionCache] or [ClientConnection] constructors.
 
 [security-with-tls]: connection/security-with-tls
-[Slic]: slic-transport
+[Slic]: slic-transport/overview
 
 [RFCOMM]: https://en.wikipedia.org/wiki/List_of_Bluetooth_protocols#Radio_frequency_communication_(RFCOMM)
 [connection-oriented]: https://en.wikipedia.org/wiki/Connection-oriented_communication

@@ -69,6 +69,7 @@ op() -> tag(1) string?
 ```
 
 {% slice1 %}
+
 ## Exception specification
 
 An operation can include an exception specification after its return parameter(s), or after the operation parameters if
@@ -187,10 +188,10 @@ See [Class slicing][class-slicing] for details.
 
 ## C# mapping {% icerpcSlice=true %}
 
-A Slice operation named _opName_ in interface `Greeter` is mapped to abstract method *OpName*Async in the interface
+A Slice operation named *opName* in interface `Greeter` is mapped to abstract method *OpName*Async in the interface
 `IGreeter` and to abstract method *OpName*Async in interface `IGreeterService`.
 
-The mapped method name is always in Pascal case, per the usual C# naming conventions, even when _opName_ is not in
+The mapped method name is always in Pascal case, per the usual C# naming conventions, even when *opName* is not in
 Pascal case.
 
 For example:
@@ -304,7 +305,7 @@ public partial interface IGreeterService
 
 {% slice2 %}
 {% callout type="note" %}
-If your operation has a stream parameter, the encode helper (in _NameProxy_.Request) does not encode the stream
+If your operation has a stream parameter, the encode helper (in *NameProxy*.Request) does not encode the stream
 argument; however, the decode helper (in I*Name*Service.Request) decodes all arguments, including the stream.
 
 Likewise, if your operation returns a stream, the encode helper (in I*Name*Service.Response) does not encode the stream
@@ -335,7 +336,5 @@ There are two somewhat common use-cases for this attribute:
 [exception specification]: #exception-specification
 [parameters]: parameters
 [tagged-parameters]: parameters#tagged-parameters
-
 [PipeReader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
-
 [compress-feature]: csharp:IceRpc.Features.ICompressFeature
