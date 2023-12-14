@@ -137,6 +137,20 @@ unchecked enum Permissions : uint8 {
     Write = 2
     Delete = 4
 }
+
+// An enum without an underlying type is a discriminated union;
+// its enumerators may have fields
+enum Shape {
+    Circle(radius: uint32, tag(1) color: Color?)
+    Rectangle(width: uint32, length: uint32)
+    Dot
+}
+
+// A compact enum cannot have tagged fields
+compact enum LaunchResult {
+    Success(speed: int32, elapsed: WellKnownTypes::Duration)
+    Failure(message: string)
+}
 ```
 
 {% /slice2 %}
