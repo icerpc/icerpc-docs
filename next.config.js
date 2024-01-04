@@ -1,4 +1,5 @@
 module.exports = {
+  output: 'standalone',
   webpack: (config, { defaultLoaders }) => {
     // Ignore the tools directory
     config.module.rules.push({
