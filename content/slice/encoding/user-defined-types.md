@@ -109,8 +109,7 @@ An enumerator is encoded as:
 - for an unchecked enum, a `varuint62` holding the size of the encoded fields
 - a struct holding the fields of this enumerator
 
-The trailing struct is a compact struct when the enum itself is compact; otherwise, it's not compact and its encoding
-always ends with the tag end marker byte.
+The trailing struct is a compact struct when the enum itself is compact. Conversely, if the enum is not compact then the trailing struct is also not compact and its encoding always ends with the tag end marker byte.
 
 When an enumerator in a compact enum has no field, it's encoded as the discriminant value and nothing else since there
 is no struct-holding-fields to encode.
