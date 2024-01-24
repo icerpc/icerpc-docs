@@ -35,7 +35,7 @@ enum Fruit {
 }
 ```
 
-If you don't assign a value to an enumerator, the value of this enumerator is the value of the previous enumerator plus
+If you don't assign a value to an enumerator, the value of this enumerator is the previous enumerator's value plus
 one. In the `Fruit` enum above, `Orange` gets a value of `6`.
 {% /slice1 %}
 
