@@ -85,6 +85,7 @@ The encoding is the same for checked and unchecked enums.
 {% /slice1 %}
 
 {% slice2 %}
+
 ### Enum with underlying type
 
 An enumerator is encoded as its associated numeric value, using the encoding of the enumeration's underlying type.
