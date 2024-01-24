@@ -94,7 +94,7 @@ enum Fruit : uint8 {
 
 The enumerators of an enum with fields are not constants; you can think of them as instances of nested structs.
 
-And just like for the fields of a struct, you can include tagged fields unless the enclosing enum is marked `compact`.
+And just like the fields of a struct, you can include tagged fields unless the enclosing enum is marked `compact`.
 For example:
 
 ```slice
