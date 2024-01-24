@@ -220,7 +220,7 @@ The underlying type of the mapped enumeration is always `int`.
 
 ### Enum with underlying type in C#
 
-An enum with underlying type maps to a public C# enumeration with the same name, and each Slice enumerator maps to the
+An enum with underlying type maps to a public C# enumeration with the same name, and each Slice enumerator maps to a
 C# enumerator with the same name. For example:
 
 {% side-by-side alignment="top" %}
