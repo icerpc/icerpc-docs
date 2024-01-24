@@ -107,7 +107,7 @@ enum FlagColor {
 
 // A compact enum does not accept tagged fields
 compact enum LaunchResult {
-    Success(speed: float)
+    Success(speed: float32)
     Failure(message: string, errorCode: int32)
 }
 ```
