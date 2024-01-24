@@ -68,7 +68,7 @@ For example:
 enum Shape { // no underlying type
     Circle(radius: uint32)
     Rectangle(width: uint32, length: uint32)
-    Dot // an enumerator without any field
+    Dot // an enumerator without any fields
 }
 ```
 
