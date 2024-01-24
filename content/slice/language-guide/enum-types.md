@@ -393,7 +393,7 @@ public partial record class Shape
 
 {% /side-by-side %}
 
-This `Unknown` enumerator can be later re-encoded without losing any information.
+This `Unknown` enumerator can be re-encoded later without losing any information.
 {% /slice2 %}
 
 ### cs::attribute attribute
