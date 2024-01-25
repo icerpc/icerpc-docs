@@ -80,9 +80,14 @@ enum Fruit { Apple, Strawberry, Orange = 300 }
 
 A `Strawberry` is encoded as 1 on 1 byte. An `Orange` is encoded as 255 (1 byte) followed by 300 encoded as an
 `int32` (5 bytes total).
+
+The encoding is the same for checked and unchecked enums.
 {% /slice1 %}
 
 {% slice2 %}
+
+### Enum with underlying type
+
 An enumerator is encoded as its associated numeric value, using the encoding of the enumeration's underlying type.
 
 For example:
@@ -93,9 +98,36 @@ enum Fruit : uint16 { Apple, Strawberry, Orange = 300 }
 
 A `Strawberry` is encoded like a `uint16` with value 1 (on 2 bytes). An `Orange` is encoded like a `uint16` with value
 300.
-{% /slice2 %}
 
 The encoding is the same for checked and unchecked enums.
+
+### Enum with fields
+
+An enumerator is encoded as:
+
+- a `varint32` holding its discriminant value
+- for an unchecked enum, a `varuint62` holding the size of the encoded fields
+- a struct holding the fields of this enumerator
+
+The trailing struct is a compact struct when the enum itself is compact. Conversely, if the enum is not compact then the
+trailing struct is also not compact and its encoding always ends with the tag end marker byte.
+
+For example, with the following Slice enum:
+
+```slice
+enum Shape { Circle(radius: int32), Dot }
+```
+
+Circle is encoded as:
+
+- the discriminant value (0) on 1 byte
+- the radius on 4 bytes
+- the tag end marker on 1 byte
+
+If an enumerator in a compact enum has no fields, only the discriminant value is encoded, since there are no fields to
+encode.
+
+{% /slice2 %}
 
 ## Struct
 
