@@ -80,7 +80,7 @@ enumerators are assigned increasing values. The range of these enumerator values
 
 The following code example illustrates how you can explicitly assign values for the enumerators in your enumeration
 type. In this example, the `Apple` enumerator is assigned a value of `1`, the `Pear` enumerator is assigned a value
-of `5`, and the `Orange` enumerator is left without an explicitly assigned value.
+of `5`, and the `Orange` enumerator gets automatically a value of `6` (the value of the preceding enumerator plus 1).
 
 ```slice
 enum Fruit : uint8 {
@@ -102,7 +102,7 @@ For example:
 enum FlagColor {
     Red(tag(1) code: uint16?)
     White
-    Blue(tag(1) code: uint16?)
+    Blue(shade: string, tag(1) code: uint16?)
 }
 
 // A compact enum does not accept tagged fields
@@ -266,7 +266,7 @@ enum Shape {
 
 ```csharp
 [Dunet.Union]
-public partial record class Shape
+public partial abstract record class Shape
 {
     partial record Circle(uint Radius) : Shape;
 
@@ -281,8 +281,8 @@ public partial record class Shape
 {% /side-by-side %}
 
 {% callout %}
-The generated code for enum with fields has a dependency on the [Dunet package]. Since Dunet is a pure source generator,
-this dependency is strictly a build-time dependency; there is no Dunet runtime dependency.
+[ZeroC.Slice] has a dependency on the [Dunet package]; as a result, you don't need an explicit reference to Dunet in
+your project.
 {% /callout %}
 
 {% /slice2 %}
@@ -469,3 +469,4 @@ You can also apply `cs::attribute` to an enumerator to get the specified C# attr
 [variable-size]: primitive-types#variable-size-integral-types
 [InvalidDataException]: https://learn.microsoft.com/en-us/dotnet/api/system.io.invaliddataexception
 [FlagsAttribute]: https://learn.microsoft.com/en-us/dotnet/api/system.flagsattribute
+[ZeroC.Slice]: https://www.nuget.org/packages/ZeroC.Slice

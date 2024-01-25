@@ -151,6 +151,13 @@ compact enum LaunchResult {
     Success(speed: int32, elapsed: WellKnownTypes::Duration)
     Failure(message: string)
 }
+
+// A regular enum with fields can also be unchecked.
+unchecked enum RefrigerationError {
+    AmbientTemperatureTooHigh(ambient: float64)
+    OldFilter(age: WellKnownTypes::Duration)
+    // can add more enumerators later on
+}
 ```
 
 {% /slice2 %}
