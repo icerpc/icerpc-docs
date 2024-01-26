@@ -17,7 +17,7 @@ export const HeadingCopyButton = ({ id }: { id: string }) => {
         router.push(`#${id}`);
       }}
     >
-      <LinkIcon className="h-4 w-4 font-bold text-slate-700 dark:text-slate-300" />
+      <LinkIcon className="size-4 font-bold text-slate-700 dark:text-slate-300" />
     </button>
   );
 };

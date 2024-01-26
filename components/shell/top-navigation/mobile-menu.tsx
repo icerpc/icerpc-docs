@@ -23,14 +23,14 @@ export const MobileMenu = () => {
 
   return (
     <div className="mr-4 flex h-4/6 items-center rounded-full lg:hidden">
-      <SearchButton className="h-full w-full pt-[1px] md:mr-2" />
+      <SearchButton className="size-full pt-[1px] md:mr-2" />
       <button
         className="inline-flex items-center justify-center rounded-full p-1 text-black/60"
         onClick={() => setIsOpen(true)}
       >
         <span className="sr-only">Open main menu</span>
         <EllipsisVerticalIcon
-          className="block h-7 w-7 dark:text-white/80"
+          className="block size-7 dark:text-white/80"
           aria-hidden="true"
         />
       </button>
@@ -103,7 +103,7 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
                 'fixed right-4 top-4 w-full max-w-[250px] rounded-xl bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
               )}
             >
-              <Dialog.Panel className="h-full w-full flex-col overflow-hidden rounded text-left align-middle text-sm font-bold shadow-xl transition-all">
+              <Dialog.Panel className="size-full flex-col overflow-hidden rounded text-left align-middle text-sm font-bold shadow-xl transition-all">
                 <button
                   type="button"
                   className={clsx(
@@ -112,7 +112,7 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
                   onClick={closeModal}
                 >
                   <XMarkIcon
-                    className="block h-5 w-5 group-hover:text-slate-500 dark:group-hover:text-slate-400"
+                    className="block size-5 group-hover:text-slate-500 dark:group-hover:text-slate-400"
                     aria-hidden="true"
                   />
                 </button>

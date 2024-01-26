@@ -21,7 +21,7 @@ export const SideNav = ({ path }: { path: string }) => {
 
   return (
     <div className="sticky top-[6.4rem] hidden h-[calc(100vh-59px)] flex-none flex-col items-end border-r border-lightBorder dark:border-darkBorder/60 dark:bg-dark lg:flex">
-      <div className="flex h-full w-full min-w-[300px] max-w-[300px] flex-col justify-start overflow-y-auto pl-10">
+      <div className="flex size-full min-w-[300px] max-w-[300px] flex-col justify-start overflow-y-auto pl-10">
         <div className="sticky top-0 space-y-5 bg-[#fafafa] pr-6 dark:bg-dark">
           <SideNavSelector isSlicePage={isSlicePage} path={path} />
           <div className="pointer-events-none absolute inset-x-0 bottom-[-2.25rem] h-9 w-full bg-gradient-to-t from-transparent to-[#fafafa] dark:to-dark" />

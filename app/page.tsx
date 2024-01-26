@@ -15,7 +15,7 @@ export default async function Home() {
         <div id="skip-nav" />
         <Hero />
         <div className="flex shrink flex-row justify-center overflow-y-clip lg:justify-start">
-          <article className="mx-6 mb-20 mt-10 h-full w-full max-w-[52rem] md:mx-10 lg:mx-16">
+          <article className="mx-6 mb-20 mt-10 size-full max-w-[52rem] md:mx-10 lg:mx-16">
             <HomeTitle title="Welcome" description="" />
             <p>
               Welcome to the IceRPC documentation! You will find on this site a

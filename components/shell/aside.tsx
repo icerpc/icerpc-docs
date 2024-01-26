@@ -69,14 +69,14 @@ export const Aside = ({
           <ActionItem href={editPageUrl(path)}>
             <FontAwesomeIcon
               icon={faPenToSquare}
-              className="mr-[6px] h-[14px] w-[14px] text-primary"
+              className="mr-[6px] size-[14px] text-primary"
             />
             Edit this page
           </ActionItem>
           <ActionItem href="https://github.com/orgs/icerpc/discussions">
             <FontAwesomeIcon
               icon={faMessage}
-              className="mr-[6px] h-[14px] w-[14px] text-primary"
+              className="mr-[6px] size-[14px] text-primary"
             />
             GitHub Discussions
           </ActionItem>

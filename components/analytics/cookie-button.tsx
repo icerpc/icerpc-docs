@@ -29,7 +29,7 @@ export const CookieButton = ({ toggleShowBanner }: CookieButtonProps) => (
     exit="hidden"
     variants={bannerVariants}
   >
-    <FontAwesomeIcon icon={faCookie} className="mr-2 h-4 w-4" />
+    <FontAwesomeIcon icon={faCookie} className="mr-2 size-4" />
     Cookies
   </motion.button>
 );

@@ -124,7 +124,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
                   aria-controls={'feedback-fields-' + option.id}
                   tabIndex={0}
                   className={clsx(
-                    'mt-1 h-3 w-3 rounded-full border-gray-300 bg-gray-100 text-primary',
+                    'mt-1 size-3 rounded-full border-gray-300 bg-gray-100 text-primary',
                     'dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-primary dark:focus:ring-offset-gray-700',
                     'focus:ring-2 focus:ring-primary'
                   )}

@@ -44,7 +44,7 @@ export const Banner = ({
           onClick={() => toggleShowBanner()}
           aria-label="Close banner"
         >
-          <FontAwesomeIcon icon={faXmarkCircle} className="h-6 w-6" />
+          <FontAwesomeIcon icon={faXmarkCircle} className="size-6" />
         </button>
         <div className="flex flex-col pb-4 text-2xl">
           <small className="text-sm font-bold text-gray-500">Cookies</small>

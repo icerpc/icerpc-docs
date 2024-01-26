@@ -92,7 +92,7 @@ const NavLink = ({
           {isLeft && (
             <FontAwesomeIcon
               icon={faChevronLeft}
-              className="mr-2 mt-[21px] h-4 w-4"
+              className="mr-2 mt-[21px] size-4"
             />
           )}
           <div className="flex flex-col">
@@ -105,7 +105,7 @@ const NavLink = ({
           {!isLeft && (
             <FontAwesomeIcon
               icon={faChevronRight}
-              className="ml-2 mt-[21px] h-4 w-4"
+              className="ml-2 mt-[21px] size-4"
             />
           )}
         </div>
