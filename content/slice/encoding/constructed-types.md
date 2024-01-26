@@ -1,7 +1,19 @@
 ---
-title: Collection types
-description: Learn how to encode sequences and dictionaries with Slice.
+title: Constructed types
+description: Learn how to encode constructed types with Slice.
 ---
+
+{% slice1 %}
+Slice provides two built-in generic types: `Dictionary<Key, Value>` and `Sequence<T>`. You need to specify the type
+argument(s) of such a generic type in order to get an actual type - a constructed type. This page describes the encoding
+of such constructed types.
+{% /slice1 %}
+
+{% slice2 %}
+Slice provides three built-in generic types: `Dictionary<Key, Value>`, `Result<Success, Failure>` and `Sequence<T>`. You
+need to specify the type argument(s) of such a generic type in order to get an actual type - a constructed type. This
+page describes the encoding of such constructed types.
+{% /slice2 %}
 
 ## Dictionary
 
@@ -13,6 +25,24 @@ compact struct Pair { key: Key, value: Value }
 ```
 
 `Key` represents the dictionary's key type and `Value` represents the dictionary's value type.
+
+{% slice2 %}
+
+## Result
+
+A `Result<Success, Failure>` is encoded exactly like a compact enum with two enumerators (`Success` and `Failure`),
+where each enumerator has a single field of the Success resp. Failure type.
+
+For example, a `Result<string, int32>` is encoded like a:
+
+```slice
+compact enum StringInt32Result {
+    Success(value: string)
+    Failure(value: int32)
+}
+```
+
+{% /slice2 %}
 
 {% slice1 %}
 ## Sequence
@@ -80,6 +110,7 @@ A sequence of `int32?` with values 5, no-value, 9 and no-value is encoded as:
 0x05 0x00 0x00 0x00: 5 over 4 bytes in little-endian order
 0x09 0x00 0x00 0x00: 9 over 4 bytes in little-endian order
 ```
+
 {% /slice2 %}
 
 [bit-sequence]: encoding-only-constructs#bit-sequence

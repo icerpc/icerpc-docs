@@ -386,8 +386,8 @@
           "path": "/slice1/encoding/user-defined-types"
         },
         {
-          "title": "Collection types",
-          "path": "/slice1/encoding/collection-types"
+          "title": "Constructed types",
+          "path": "/slice1/encoding/constructed-types"
         },
         {
           "title": "Operation arguments and return values",
@@ -466,6 +466,10 @@
           "path": "/slice2/language-guide/enum-types"
         },
         {
+          "title": "Result types",
+          "path": "/slice2/language-guide/result-types"
+        },
+        {
           "title": "Struct types",
           "path": "/slice2/language-guide/struct-types"
         },
@@ -527,8 +531,8 @@
           "path": "/slice2/encoding/user-defined-types"
         },
         {
-          "title": "Collection types",
-          "path": "/slice2/encoding/collection-types"
+          "title": "Constructed types",
+          "path": "/slice2/encoding/constructed-types"
         },
         {
           "title": "Operation arguments and return values",
