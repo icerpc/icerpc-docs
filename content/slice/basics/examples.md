@@ -68,7 +68,7 @@ interface MyOperations {
     // a single operation parameter and single return parameter with an optional type
     opParamReturn(message: string) -> int32?
 
-    // an operation can also result a Result
+    // an operation can also return a Result
     opResult(message: string) -> Result<string, int32>
 
     // two operation parameters and two return parameters
