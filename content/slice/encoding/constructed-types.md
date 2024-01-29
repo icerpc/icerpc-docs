@@ -10,9 +10,9 @@ of such constructed types.
 {% /slice1 %}
 
 {% slice2 %}
-Slice provides three built-in generic types: `Dictionary<Key, Value>`, `Result<Success, Failure>` and `Sequence<T>`. You
-need to specify the type argument(s) of such a generic type in order to get an actual type - a constructed type. This
-page describes the encoding of such constructed types.
+Slice provides three built-in generic types: `Dictionary<Key, Value>`, `Result<Success, Failure>`, and `Sequence<T>`.
+You need to specify the type argument(s) of such a generic type in order to get an actual type - a constructed type.
+This page describes the encoding of such constructed types.
 {% /slice2 %}
 
 ## Dictionary
@@ -31,7 +31,7 @@ compact struct Pair { key: Key, value: Value }
 ## Result
 
 A `Result<Success, Failure>` is encoded exactly like a compact enum with two enumerators (`Success` and `Failure`),
-where each enumerator has a single field of the Success resp. Failure type.
+where each enumerator has a single field of the respective type (Success or Failure).
 
 For example, a `Result<string, int32>` is encoded like a:
 

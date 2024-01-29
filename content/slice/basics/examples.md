@@ -142,21 +142,23 @@ unchecked enum Permissions : uint8 {
 }
 
 // An enum without an underlying type is a discriminated union;
-// its enumerators may have fields, including tag fields
+// its enumerators may have fields, including tagged fields
 enum Shape {
     Circle(radius: uint32, tag(1) color: Color?)
     Rectangle(width: uint32, length: uint32)
     Dot
 }
 
-// A compact enum cannot have tagged fields
+// A compact enum cannot have tagged fields, but it can have fields with
+// an optional type.
 compact enum Action {
     StayPut // no field
     Move(x: int32, y: int32)
-    TurnAround(changeColor: Color?)
+    Rotate(angle: float32)
+    Save(name: string?) // "not set" is a valid value for name
 }
 
-// A regular enum with fields can also be unchecked.
+// An enum with fields can also be unchecked.
 unchecked enum TwoDShape {
     Circle(radius: uint32, tag(1) color: Color?)
     Rectangle(width: uint32, length: uint32)
@@ -173,8 +175,9 @@ unchecked enum TwoDShape {
 ```slice
 module Example
 
-// A Result<Success, Failure> is a regular Slice type, that can be used as a field or
-// as an operation parameter. It is typically used as the return type of an operation.
+// A 'Result<Success, Failure>' is a constructed Slice type, and can be used like
+// any other Slice type, for example as the type of a field. It is most commonly
+// used as the return type of an operation.
 
 interface Portal {
     login(username: string, password: string) -> Result<SessionProxy, PortalError>

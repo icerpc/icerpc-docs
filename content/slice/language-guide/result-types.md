@@ -4,17 +4,17 @@ description: Learn how to define and use results in Slice.
 ---
 
 {% slice1 %}
-The built-in generic type Result<Success, Failure> is not available with Slice1.
+The built-in generic type 'Result<Success, Failure>' is not available with Slice1.
 {% /slice1 %}
 
 {% slice2 %}
 
 ## Result
 
-A result is a built-in generic type that holds either a Success value or a Failure value, where `Success` and `Failure`
+Result is a built-in generic type that either holds a Success value or a Failure value, where `Success` and `Failure`
 are type parameters.
 
-You construct a result inline, without giving it a name, usually to specify the return type of an operation. For
+You can construct a result inline, without giving it a name, usually to specify the return type of an operation. For
 example:
 
 ```slice
@@ -32,11 +32,11 @@ unchecked enum GreeterError {
 }
 ```
 
-You can also use a constructed result as the type of a field, as the element type in a sequence, as the type of an
-operation parameter, and so on, just like any other Slice type.
+You can also use a constructed result as the type of a field, the element type of a sequence, the type of an operation
+parameter, and so on, just like any other Slice type.
 
 A result is conceptually equivalent to a compact enum with two enumerators (`Success` and `Failure`), each with a single
-field with the associated type. You can see `Result<string, GreeterError>` as a convenient way to reference:
+field of the associated type. You can see `Result<string, GreeterError>` as a convenient way to reference:
 
 ```slice
 compact enum Result<string, GreeterError> { // not a valid Slice identifier
@@ -47,8 +47,8 @@ compact enum Result<string, GreeterError> { // not a valid Slice identifier
 
 ## C# mapping
 
-A `Result<Success, Failure>` maps to the a `Result<TSuccess, TFailure>`, where [Result<TSuccess, TFailure>] is a C#
-record class in namespace ZeroC.Slice.
+`Result<Success, Failure>` maps `Result<TSuccess, TFailure>`, where [Result<TSuccess, TFailure>] is a C# record class in
+the ZeroC.Slice namespace.
 
 The Slice type parameters are mapped to C# type parameters, following the usual mapping rules. For example:
 
