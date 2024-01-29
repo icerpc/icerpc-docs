@@ -68,6 +68,9 @@ interface MyOperations {
     // a single operation parameter and single return parameter with an optional type
     opParamReturn(message: string) -> int32?
 
+    // an operation can also return a Result
+    opResult(message: string) -> Result<string, int32>
+
     // two operation parameters and two return parameters
     opParamsReturns(message: string, count: int32) -> (value: float32, list: Sequence<int32>)
 
@@ -139,24 +142,51 @@ unchecked enum Permissions : uint8 {
 }
 
 // An enum without an underlying type is a discriminated union;
-// its enumerators may have fields
+// its enumerators may have fields, including tagged fields
 enum Shape {
     Circle(radius: uint32, tag(1) color: Color?)
     Rectangle(width: uint32, length: uint32)
     Dot
 }
 
-// A compact enum cannot have tagged fields
-compact enum LaunchResult {
-    Success(speed: int32, elapsed: WellKnownTypes::Duration)
-    Failure(message: string)
+// A compact enum cannot have tagged fields, but it can have fields with
+// an optional type.
+compact enum Action {
+    StayPut // no field
+    Move(x: int32, y: int32)
+    Rotate(angle: float32)
+    Save(name: string?) // "not set" is a valid value for name
 }
 
-// A regular enum with fields can also be unchecked.
-unchecked enum RefrigerationError {
-    AmbientTemperatureTooHigh(ambient: float64)
-    OldFilter(age: WellKnownTypes::Duration)
+// An enum with fields can also be unchecked.
+unchecked enum TwoDShape {
+    Circle(radius: uint32, tag(1) color: Color?)
+    Rectangle(width: uint32, length: uint32)
     // can add more enumerators later on
+}
+```
+
+{% /slice2 %}
+
+{% slice2 %}
+
+## Result
+
+```slice
+module Example
+
+// A 'Result<Success, Failure>' is a constructed Slice type, and can be used like
+// any other Slice type, for example as the type of a field. It is most commonly
+// used as the return type of an operation.
+
+interface Portal {
+    login(username: string, password: string) -> Result<SessionProxy, PortalError>
+}
+
+unchecked enum PortalError : uint16 {
+    Busy
+    NotAuthorized
+    UnknownUser
 }
 ```
 
@@ -366,13 +396,18 @@ interface WidgetFactory {
     /// @param name: The name of the new widget.
     /// @param color: The color of the new widget.
     /// @returns: A proxy to the new widget.
-    createWidget(name: string) -> Widget
+    createWidget(name: string) -> WidgetProxy
 
     /// Retrieves the last {@link Widget} created by this factory.
     /// @returns proxy: A proxy to the last widget.
     /// @returns timeStamp: The creation time stamp.
-    getLastWidget() -> (proxy: Widget, timeStamp: WellKnownTypes::TimeStamp)
+    getLastWidget() -> (proxy: WidgetProxy, timeStamp: WellKnownTypes::TimeStamp)
 }
+
+/// Represents a proxy to a Widget service.
+/// @see Widget
+[cs::type("Example.WidgetProxy")]
+custom WidgetProxy
 ```
 
 {% /slice2 %}
