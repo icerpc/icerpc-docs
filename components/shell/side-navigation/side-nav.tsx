@@ -22,13 +22,13 @@ export const SideNav = ({ path }: { path: string }) => {
   return (
     <div className="sticky top-[6.4rem] hidden h-[calc(100vh-59px)] flex-none flex-col items-end border-r border-lightBorder dark:border-darkBorder/60 dark:bg-dark lg:flex">
       <div className="flex size-full min-w-[300px] max-w-[300px] flex-col justify-start overflow-y-auto pl-10">
-        <div className="sticky top-0 space-y-5 bg-[#fafafa] pr-6 dark:bg-dark">
+        <div className="sticky top-0 space-y-5 bg-white pr-6 dark:bg-dark">
           <SideNavSelector isSlicePage={isSlicePage} path={path} />
-          <div className="pointer-events-none absolute inset-x-0 bottom-[-2.25rem] h-9 w-full bg-gradient-to-t from-transparent to-[#fafafa] dark:to-dark" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-[-2.25rem] h-9 w-full bg-gradient-to-t from-transparent to-white dark:to-dark" />
         </div>
         <nav>
           <ul className="top-0 mb-2 mr-2 mt-4">{cells}</ul>
-          <div className="pointer-events-none sticky inset-x-0 bottom-0 h-10 w-full bg-gradient-to-t from-[#fafafa] to-transparent dark:from-dark " />
+          <div className="pointer-events-none sticky inset-x-0 bottom-0 h-10 w-full bg-gradient-to-t from-white to-transparent dark:from-dark " />
         </nav>
       </div>
     </div>
