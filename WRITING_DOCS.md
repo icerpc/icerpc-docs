@@ -6,10 +6,10 @@
   - [Links](#links)
 - [Available Tags](#available-tags)
   - [Callout](#callout)
-  - [Side-by-side](#side-by-side)
+  - [Aside](#aside)
   - [Divider](#divider)
   - [Grid](#grid)
-  - [Mini-Card](#mini-card)
+  - [Card](#card)
 - [Updating Navigation](#updating-navigation)
 
 Documentation is written in Markdown and is located in the `pages`
@@ -33,10 +33,10 @@ name, attributes, and content body. Tags allow for creating custom components
 that can be used in the documentation.
 
 - [Callout](#callout)
-- [Side-by-side](#side-by-side)
+- [Aside](#aside)
 - [Divider](#divider)
 - [Grid](#grid)
-- [Mini-Card](#mini-card)
+- [Card](#card)
 - [Light-Mode](#light-mode)
 - [Dark-Mode](#dark-mode)
 
@@ -167,10 +167,10 @@ This is a danger callout
 
 ---
 
-### Side-by-side
+### Aside
 
-The `side-by-side` tag is used to create columns of content that are
-side-by-side. The content is split by a vertical divider. The first item in the
+The `aside` tag is used to create columns of content that are
+aside. The content is split by a vertical divider. The first item in the
 content is placed in the left column, and the second item is placed in the right
 column. In the below example, the python codeblock would be placed in the left
 column while the text would be placed in the right column.
@@ -184,10 +184,10 @@ column while the text would be placed in the right column.
 
 #### Examples
 
-##### Left weighted side-by-side
+##### Left weighted aside
 
 ````markdown
-{% side-by-side %}
+{% aside %}
 
 ```python
 def hello(name):
@@ -198,13 +198,13 @@ I will also be on the left
 
 I will be on the right
 
-{% /side-by-side %}
+{% /aside %}
 ````
 
-##### Right weighted side-by-side
+##### Right weighted aside
 
 ````markdown
-{% side-by-side weighted="right" %}
+{% aside weighted="right" %}
 
 ```python
 def hello(name):
@@ -215,13 +215,13 @@ I will also be on the right
 
 I will be on the right
 
-{% /side-by-side %}
+{% /aside %}
 ````
 
-##### Top aligned side-by-side
+##### Top aligned aside
 
 ````markdown
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```python
 def hello(name):
@@ -233,7 +233,7 @@ def hello(name):
 
 I will be on the right
 
-{% /side-by-side %}
+{% /aside %}
 ````
 
 ---
@@ -255,7 +255,7 @@ Lorem ipsum dolor sit amet.
 
 ### Grid
 
-The `grid` tag is used to create a grid of content. It is primarily intended to be used with the `mini-card` tag.
+The `grid` tag is used to create a grid of content. It is primarily intended to be used with the `card` tag.
 
 #### Attributes
 
@@ -268,19 +268,19 @@ The `grid` tag is used to create a grid of content. It is primarily intended to 
 ```markdown
 {% grid columns=2 %}
 
-{% mini-card title="Foo" description="..." href="/foo" /%}
-{% mini-card title="Bar" description="..." href="/bar" /%}
-{% mini-card title="Fizz" description="..." href="/fizz" /%}
-{% mini-card title="Buzz" description="..." href="/buzz" /%}
+{% card title="Foo" description="..." href="/foo" /%}
+{% card title="Bar" description="..." href="/bar" /%}
+{% card title="Fizz" description="..." href="/fizz" /%}
+{% card title="Buzz" description="..." href="/buzz" /%}
 
 {% grid %}
 ```
 
 ---
 
-### Mini-Card
+### Card
 
-The `mini-card` tag is used to create a mini card. Mini cards are used in the grid tag. They are small cards with
+The `card` tag is used to create a mini card. Mini cards are used in the grid tag. They are small cards with
 a title, description, and link.
 
 #### Attributes
@@ -293,7 +293,7 @@ a title, description, and link.
 
 #### Examples
 
-See the [`grid`](#grid) tag for an example of how to use the `mini-card` tag.
+See the [`grid`](#grid) tag for an example of how to use the `card` tag.
 
 ---
 

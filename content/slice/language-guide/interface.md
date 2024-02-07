@@ -70,7 +70,7 @@ Slice interface. It's a minimal interface with an abstract method for each opera
 
 For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice {% addMode=true %}
 module Example
@@ -94,7 +94,7 @@ public partial interface IWidget
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 Slice interface inheritance naturally maps to interface inheritance in C#. For example:
 
@@ -248,7 +248,7 @@ directing incoming requests to I*Name*Service methods based on the operation nam
 
 For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice {% addMode=true %}
 module Example
@@ -279,7 +279,7 @@ internal partial class MyWidget : IWidgetService
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 {% callout type="note" %}
 Even though I*Name*Service is an interface, it's not used as an abstraction: you shouldn't make calls to this interface
@@ -289,7 +289,7 @@ or create decorators for this interface. It's just a model that your service cla
 Note that the same service class can implement any number of Slice interfaces provided their operations have unique
 names. For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice {% addMode=true %}
 module Example
@@ -313,7 +313,7 @@ internal partial class MyWidget : IWidgetService,
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 [cs-identifier]: attributes#cs::identifier-attribute
 [relative proxy]: /slice2/language-guide/using-proxies-as-slice-types#relative-proxy

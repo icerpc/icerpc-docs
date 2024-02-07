@@ -40,7 +40,7 @@ The mode is part of the contract between a client and a server: if you change th
 
 For example, the following operations are not compatible even though they are identical except for the compilation mode.
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 mode = Slice1
@@ -62,7 +62,7 @@ interface Widget {
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 The [encoding] used for operation arguments is determined by the compilation mode. As a result, a call to `spin` from a
 client using the Slice2 file will fail if the remote service is implemented with the Slice1 file.

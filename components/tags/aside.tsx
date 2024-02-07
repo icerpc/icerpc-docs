@@ -30,7 +30,7 @@ const RightColumn = ({ children, isCodeblocks }: Props) => (
   </div>
 );
 
-type SideBySideProps = {
+type AsideProps = {
   children: ReactNode[];
   // Can be "left" or "right"
   weighted: string;
@@ -38,7 +38,7 @@ type SideBySideProps = {
   alignment?: string;
 };
 
-export function SideBySide({ children, weighted, alignment }: SideBySideProps) {
+export function Aside({ children, weighted, alignment }: AsideProps) {
   // Check if all children are CodeBlocks to determine if we need to reduce
   // the padding on the left and right columns
   const isCodeblocks = children.every((child) => {

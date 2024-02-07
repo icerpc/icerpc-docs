@@ -37,7 +37,7 @@ appropriate than a `ConnectionCache` for your application.
 
 #### Example
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```csharp {% title="Simple client with Ice for C#" %}
 using var communicator = Ice.Util.initialize(ref args);
@@ -70,7 +70,7 @@ await helloProxy.SayHelloAsync();
 await connection.ShutdownAsync();
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 [invocation-pipeline]: /icerpc/invocation/invocation-pipeline
 

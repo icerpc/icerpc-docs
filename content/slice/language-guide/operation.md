@@ -196,7 +196,7 @@ Pascal case.
 
 For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice {% addMode=true %}
 module VisitorCenter
@@ -227,7 +227,7 @@ public partial interface IGreeterService
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 While the two methods are similar, please note they are not the same:
 

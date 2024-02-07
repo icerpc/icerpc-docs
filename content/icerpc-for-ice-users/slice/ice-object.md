@@ -88,7 +88,7 @@ equivalent API: [AsAsync]. The target service must implement `Ice::Object`; othe
 There is no need for an `uncheckedCast` API in IceRPC + Slice, because you can construct a proxy directly with its
 constructor. For example:
 
-{% side-by-side %}
+{% aside %}
 
 ```csharp {% title="Ice client in C#" %}
 using var communicator = Ice.Util.initialize(ref args);
@@ -111,7 +111,7 @@ var helloProxy = new HelloProxy(
 await helloProxy.SayHelloAsync();
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 [AsAsync]: csharp:IceRpc.Slice.Ice.ProxyExtensions#IceRpc_Slice_Ice_ProxyExtensions_AsAsync__1_IceRpc_Slice_IProxy_IceRpc_Features_IFeatureCollection_System_Threading_CancellationToken_
 [DispatchException]:  csharp:IceRpc.DispatchException

@@ -73,7 +73,7 @@ declarations. These new Slice files use the `.slice` extension.
 Another difference is the syntax for parameters and fields: Ice's Slice uses a C-like syntax, while the new Slice syntax
 is more like Rust and Swift:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```ice {% title="Slice definitions (old syntax)" %}
 enum File { A, B, C, D, E, F, G, H }
@@ -115,4 +115,4 @@ enum File : uint8 { A, B, C, D, E, F, G, H }
 enum Rank : uint8 { R1, R2, R3, R4, R5, R6, R7, R8 }
 ```
 
-{% /side-by-side %}
+{% /aside %}

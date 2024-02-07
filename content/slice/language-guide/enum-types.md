@@ -120,7 +120,7 @@ An enumeration maps to a public C# enumeration with the same name, and each Slic
 with the same name. For example:
 
 {% slice1 %}
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 enum Fruit { Apple, Pear, Orange }
@@ -134,11 +134,11 @@ public enum Fruit : int
     Orange = 2
 }
 ```
-{% /side-by-side %}
+{% /aside %}
 {% /slice1 %}
 
 {% slice2 %}
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 ```slice
 enum Fruit : uint8 { Apple, Pear, Orange }
 ```
@@ -151,7 +151,7 @@ public enum Fruit : byte
     Orange = 2,
 }
 ```
-{% /side-by-side %}
+{% /aside %}
 {% /slice2 %}
 
 {% slice1 %}
@@ -220,7 +220,7 @@ The `cs::attribute` [attribute](attributes) adds the specified C# attribute to t
 to add the [FlagsAttribute] to the mapped C# enum. For example:
 
 {% slice1 %}
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 ```slice
 [cs::attribute("Flags")]
 enum MultiHue {
@@ -243,11 +243,11 @@ public enum MultiHue : int
     Blue = 8,
 }
 ```
-{% /side-by-side %}
+{% /aside %}
 {% /slice1 %}
 
 {% slice2 %}
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 ```slice
 [cs::attribute("Flags")]
 enum MultiHue : uint8 {
@@ -270,7 +270,7 @@ public enum MultiHue : byte
     Blue = 8,
 }
 ```
-{% /side-by-side %}
+{% /aside %}
 {% /slice2 %}
 
 You can also apply `cs::attribute` to an enumerator to get the specified C# attribute on the mapped C# enumerator.

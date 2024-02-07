@@ -41,7 +41,7 @@ parameters and variable-size integer types. You should use Slice1 only for inter
 
 #### Example
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```ice {% title="Slice definitions (original Ice syntax)" %}
 class Person
@@ -73,7 +73,7 @@ class Person {
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 See more examples on the [Converting .ice into .slice] page.
 {% /slice1 %}
@@ -171,32 +171,32 @@ decode instances of your custom type.
 
 {% grid %}
 
-{% mini-card
+{% card
    title="Slice components"
    description="An overview of each Slice component."
    href="/slice/basics/slice-components" /%}
 
-{% mini-card
+{% card
    title="Contract-first model"
    description="Learn how to create an application using IceRPC and Slice."
    href="/slice/basics/contract-first" /%}
 
-{% mini-card
+{% card
    title="Interface"
    description="Learn how to define interfaces in Slice."
    href="/slice/language-guide/interface" /%}
 
-{% mini-card
+{% card
    title="Struct"
    description="Learn how to define and use structs in Slice."
    href="/slice/language-guide/struct-types" /%}
 
-{% mini-card
+{% card
    title="Slice encoding"
    description="Learn how Slice encodes types into byte streams."
    href="/slice/encoding/overview" /%}
 
-{% mini-card
+{% card
    title="Examples"
    description="Discover the Slice syntax through a few examples"
    href="/slice/basics/examples" /%}

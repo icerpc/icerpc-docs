@@ -48,7 +48,7 @@ namespace. This attribute accepts a single string argument: the name of the C# n
 
 For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice {% addMode=true %}
 [cs::namespace("Reservation.Bundles")]
@@ -61,6 +61,6 @@ namespace Reservation.Bundles;
 ...
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 [scope-resolution-operator]: https://en.wikipedia.org/wiki/Scope_resolution_operator

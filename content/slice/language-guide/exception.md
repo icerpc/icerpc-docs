@@ -20,7 +20,7 @@ In this last case, the exception or one of its base exceptions must be listed in
 
 Other than the `exception` keyword, the definition of an exception is syntactically identical to the definition of
 a [class](class-types). For example:
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 ```slice
 class BaseError {
     errorCode: int32
@@ -40,7 +40,7 @@ exception DerivedException : BaseException {
     measurement: float64
 }
 ```
-{% /side-by-side %}
+{% /aside %}
 
 {% callout type="note" %}
 The recommended naming convention is to give an `Exception` suffix to all Slice exceptions.
@@ -62,7 +62,7 @@ the mapped class derives from [SliceException], the base class for all C# Slice 
 
 For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 ```slice
 exception TranslationException {
     errorCode: TranslationErrorCode
@@ -89,14 +89,14 @@ public partial class TranslationException
     }
 }
 ```
-{% /side-by-side %}
+{% /aside %}
 
 The mapped C# class provides a primary constructor with parameters for all its fields, plus an optional message and an
 optional inner exception (like most exceptions in C#).
 
 Slice exception inheritance maps to C# class inheritance:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 ```slice
 exception BaseException {
     errorCode: int32
@@ -139,7 +139,7 @@ public partial class DerivedException : BaseException
     }
 }
 ```
-{% /side-by-side %}
+{% /aside %}
 
 ### ConvertToInternalError
 

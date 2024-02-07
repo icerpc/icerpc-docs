@@ -203,7 +203,7 @@ derives from [SliceClass], the base class for all C# Slice classes.
 
 For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 ```slice
 class CarPart {
     id: string
@@ -231,14 +231,14 @@ public partial class CarPart : SliceClass
 
 }
 ```
-{% /side-by-side %}
+{% /aside %}
 
 The mapped class has a primary constructor which sets all the fields. If any field has an optional type, the mapped
 class has a second constructor with a parameter for each non-nullable C# field.
 
 Slice class inheritance maps the C# class inheritance as you would expect:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 ```slice
 class FrontBumper : CarPart {
     color: Color
@@ -266,7 +266,7 @@ public partial class RearBumper : CarPart
     }
 }
 ```
-{% /side-by-side %}
+{% /aside %}
 {% /slice1 %}
 
 [format-metadata]: https://doc.zeroc.com/ice/3.7/the-slice-language/slice-metadata-directives#id-.SliceMetadataDirectivesv3.7-format

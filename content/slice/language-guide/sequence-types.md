@@ -56,7 +56,7 @@ A field, an element in another sequence, or a value in a dictionary with type `S
 The type of the `IList` elements is the mapped C# type for the Slice element type. For example:
 
 {% slice1 %}
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 compact struct SequenceExample {
@@ -74,11 +74,11 @@ public partial record struct SequenceExample
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 {% /slice1 %}
 
 {% slice2 %}
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 struct SequenceExample {
@@ -96,7 +96,7 @@ public partial record struct SequenceExample
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 {% /slice2 %}
 
 By default, when the generated code decodes a sequence, it creates an array that is transmitted to you (the
@@ -151,7 +151,7 @@ This type must implement `IList<T>` when `cs::type` is applied to a field; it mu
 
 For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 interface WidgetCatalog {
@@ -182,4 +182,4 @@ public partial interface IWidgetCatalogService
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}

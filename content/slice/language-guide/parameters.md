@@ -85,7 +85,7 @@ Tagged parameters are mapped just like regular parameters. The tag and tag numbe
 
 A stream parameter of type `uint8` is mapped to a [PipeReader]. For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 interface ImageStore {
@@ -104,7 +104,7 @@ public partial interface IImageStore
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 When you give such a stream to the generated code, the IceRPC + Slice integration will complete this stream when it's
 done reading it. This can occur when there is nothing left to read or when the peer stops reading. The IceRPC + Slice
@@ -116,7 +116,7 @@ The exception argument is ignored: the peer doesn't see a difference between a n
 For all other stream element types, a stream parameter is mapped to an [`IAsyncEnumerable<T>`], where
 the async enumerable element type is the mapped C# type for the Slice stream element type. For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 interface TemperatureProbe {
@@ -133,7 +133,7 @@ public partial interface ITemperatureProbe
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 When you give such a stream to the generated code, the IceRPC + Slice integration will either iterate over all the
 elements (until your async enumerable yields `break`) or cancel the iteration early, typically because the peer doesn't

@@ -115,7 +115,7 @@ does not adjust the case of this identifier, but adds prefixes and suffixes as n
 
 For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice {% addMode=true %}
 [cs::identifier("RemoteEnumerator")]
@@ -144,7 +144,7 @@ public partial interface IRemoteEnumeratorService
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 ### cs::internal attribute
 
