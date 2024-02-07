@@ -10,7 +10,7 @@ import { License } from '@/components/tags/license';
 
 export default async function Home() {
   return (
-    <div className="mt-[6.4rem] flex grow flex-row justify-center lg:mt-[7.5rem]">
+    <div className="mt-[3.75rem] flex grow flex-row justify-center lg:mt-[6.4rem]">
       <div className="relative flex max-w-[120rem] grow flex-col items-center justify-center">
         <div id="skip-nav" />
         <Hero />
@@ -92,7 +92,8 @@ export default async function Home() {
                     <AppLink href="/protobuf">Protobuf support</AppLink>
                   </TD>
                   <TD>
-                     Learn how to call and implement Protobuf services with IceRPC.
+                    Learn how to call and implement Protobuf services with
+                    IceRPC.
                   </TD>
                 </TR>
                 <TR>
