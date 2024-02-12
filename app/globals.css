@@ -9,9 +9,13 @@
   --highlighted-link-color: black;
   --text-color: rgba(75, 85, 99, 1);
   --text-color-secondary: #3d4356;
-  --primary-color: theme('colors.primary');
   --docsearch-searchbox-height: 48px !important;
   --docsearch-primary-color: #43a0f7 !important;
+  --primary-color: #1671F1;
+}
+
+.dark {
+  --primary-color: #43A0F7; /* Dark mode primary color */
 }
 
 @layer base {

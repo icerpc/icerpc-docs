@@ -39,9 +39,11 @@ export const Hero = () => {
             >
               Start with a tutorial
             </Link>
-            <span className="font-mono text-sm text-gray-500">or</span>
+            <span className="font-mono text-sm text-gray-500 dark:text-[rgba(255,255,255,0.6)]">
+              or
+            </span>
             <Link
-              className="w-full min-w-[130px] rounded-lg border border-gray-500 bg-white px-3 py-[10px] text-center  font-medium text-gray-500  hover:bg-gray-100 "
+              className="w-full min-w-[130px] rounded-lg border border-gray-500 bg-white px-3 py-[10px] text-center  font-medium text-gray-500  hover:bg-gray-100 dark:border-darkBorder dark:bg-[#232429] dark:text-[rgba(255,255,255,0.6)]"
               href="https://github.com/icerpc/icerpc-csharp/tree/0.2.x/examples"
             >
               View examples
