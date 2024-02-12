@@ -11,14 +11,19 @@
   --text-color-secondary: #3d4356;
   --docsearch-searchbox-height: 48px !important;
   --docsearch-primary-color: #43a0f7 !important;
-  --primary-color: #1671F1;
 }
 
-.dark {
-  --primary-color: #43A0F7; /* Dark mode primary color */
-}
 
 @layer base {
+
+  :root {
+    --primary-color: 22 113 241;
+  }
+
+  .dark {
+    --primary-color: 67 160 247;
+  }
+
   main article {
     @apply prose max-w-none dark:prose-invert prose-a:no-underline prose-code:font-light
     prose-code:text-[var(--tw-prose-body)] prose-code:before:hidden prose-code:after:hidden;
