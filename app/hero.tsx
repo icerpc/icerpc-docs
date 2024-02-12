@@ -42,12 +42,12 @@ export const Hero = () => {
             <span className="font-mono text-sm text-gray-500 dark:text-[rgba(255,255,255,0.6)]">
               or
             </span>
-            <Link
+            <a
               className="w-full min-w-[130px] rounded-lg border border-gray-500 bg-white px-3 py-[10px] text-center  font-medium text-gray-500  hover:bg-gray-100 dark:border-darkBorder dark:bg-[#232429] dark:text-[rgba(255,255,255,0.6)]"
               href="https://github.com/icerpc/icerpc-csharp/tree/0.2.x/examples"
             >
               View examples
-            </Link>
+            </a>
           </div>
         </div>
       </div>
