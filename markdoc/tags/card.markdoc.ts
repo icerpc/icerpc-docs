@@ -17,6 +17,11 @@ const card = {
     href: {
       type: String,
       required: true
+    },
+    level: {
+      type: Number,
+      default: 3,
+      required: false
     }
   }
 };

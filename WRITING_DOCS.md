@@ -285,11 +285,12 @@ a title, description, and link.
 
 #### Attributes
 
-| Attribute   | Description                               |
-| ----------- | ----------------------------------------- |
-| title       | The title of the mini card.               |
-| description | The description of the mini card.         |
-| href        | The href used when clicking the mini card |
+| Attribute   | Description                                      |
+| ----------- | -------------------------------------------------|
+| title       | The title of the mini card.                      |
+| description | The description of the mini card.                |
+| href        | The href used when clicking the mini card        |
+| level       | The heading level of the title. Defaults to `3`. |
 
 #### Examples
 
