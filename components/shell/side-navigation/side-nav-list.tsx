@@ -50,11 +50,11 @@ export const SideNavList = ({
     return [ListItem(path, data, true, onClick)];
   } else {
     return [
-      <div key={data.title} className="mr-4 py-2 text-sm uppercase text-black">
+      <li key={data.title} className="mr-4 py-2 text-sm uppercase text-black">
         <Divider margin="mb-4 mt-4 mr-[12px]" />
         <h2 className="my-2 text-sm font-bold dark:text-white">{data.title}</h2>
         <Divider margin="mt-4 mr-[12px]" />
-      </div>
+      </li>
     ];
   }
 };
