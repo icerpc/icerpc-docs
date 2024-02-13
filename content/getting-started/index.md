@@ -14,27 +14,27 @@ information about upcoming Rust support and other planned future languages.
 
 {% grid %}
 
-{% mini-card
+{% card
    title="Quickstart"
    description="The fastest way to get up and running with IceRPC."
    href="/getting-started/quickstart" /%}
-{% mini-card
+{% card
    title="Templates"
    description="Start a new project using an IceRPC project template."
    href="/getting-started/installation/template" /%}
-{% mini-card
+{% card
    title="Add IceRPC to an existing project"
    description="Learn how to get IceRPC set up in your existing project."
    href="/getting-started/installation/existing-project" /%}
-{% mini-card
+{% card
    title="NuGet packages"
    description="Complete list of IceRPC NuGet packages."
    href="/getting-started/installation/nuget-packages" /%}
-{% mini-card
+{% card
    title="Writing your first server"
    description="Learn how to write your first IceRPC + Slice server."
    href="/getting-started/icerpc-slice-tutorial/server-tutorial" /%}
-{% mini-card
+{% card
    title="Writing your first client"
    description="Learn how to write your first IceRPC + Slice client."
    href="/getting-started/icerpc-slice-tutorial/client-tutorial" /%}

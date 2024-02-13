@@ -2,7 +2,7 @@
 
 import { Tag, Node, Config } from '@markdoc/markdoc';
 
-export const step = {
+const step = {
   render: 'Step',
   attributes: {
     title: {
@@ -33,3 +33,5 @@ export const step = {
     );
   }
 };
+
+export default step;

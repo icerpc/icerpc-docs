@@ -2,21 +2,28 @@
 
 import { nodes } from '@markdoc/markdoc';
 
-export const miniCard = {
+const card = {
   ...nodes.document,
   render: 'Card',
   attributes: {
     title: {
-      type: 'string',
+      type: String,
       required: true
     },
     description: {
-      type: 'string',
+      type: String,
       required: true
     },
     href: {
-      type: 'string',
+      type: String,
       required: true
+    },
+    level: {
+      type: Number,
+      default: 3,
+      required: false
     }
   }
 };
+
+export default card;

@@ -1,5 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
-export const explore = {
+const explore = {
   render: 'Explore'
 };
+
+export default explore;

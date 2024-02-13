@@ -57,7 +57,7 @@ export function MobileSideNav() {
       <div className="flex h-[57px] items-center justify-start border-t border-lightBorder p-4 text-sm dark:border-darkBorder lg:hidden">
         <button>
           <Bars3Icon
-            className="ml-1 block h-5 w-5 text-slate-500 dark:text-white/80"
+            className="ml-1 block size-5 text-slate-500 dark:text-white/80"
             aria-hidden="true"
             onClick={() => setIsOpen(!isOpen)}
           />
@@ -84,7 +84,7 @@ export function MobileSideNav() {
               </Link>
               {index !== breadcrumbs.length - 1 && (
                 <ChevronRightIcon
-                  className="mx-2 block h-4 w-4 text-slate-500 "
+                  className="mx-2 block size-4 text-slate-500 "
                   aria-hidden="true"
                 />
               )}
@@ -115,9 +115,9 @@ export function MobileSideNav() {
               leaveFrom="left-0"
               leaveTo="-left-[300px]"
             >
-              <div className="fixed left-0 top-0 h-full w-full max-w-[280px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]">
-                <Dialog.Panel className="h-full w-full overflow-hidden rounded-r text-left align-middle text-sm font-bold shadow-xl transition-all">
-                  <div className="flex h-full w-full flex-col items-start">
+              <div className="fixed left-0 top-0 size-full max-w-[280px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]">
+                <Dialog.Panel className="size-full overflow-hidden rounded-r text-left align-middle text-sm font-bold shadow-xl transition-all">
+                  <div className="flex size-full flex-col items-start">
                     <section id="controls" className="mt-2 w-full px-6">
                       <div className="mt-4 flex flex-row items-center justify-end">
                         <h2 className="px-1">{currentNavItem(baseUrl)}</h2>
@@ -130,7 +130,7 @@ export function MobileSideNav() {
                           onClick={closeModal}
                         >
                           <XMarkIcon
-                            className="block h-5 w-5 group-hover:text-slate-500 dark:group-hover:text-slate-400"
+                            className="block size-5 group-hover:text-slate-500 dark:group-hover:text-slate-400"
                             aria-hidden="true"
                           />
                         </button>
@@ -171,7 +171,7 @@ export function MobileSideNav() {
                     </section>
                     <nav
                       className={clsx(
-                        'block h-full w-full overflow-y-auto',
+                        'block size-full overflow-y-auto',
                         'bg-none pb-10 pl-6 pr-3 pt-4'
                       )}
                     >

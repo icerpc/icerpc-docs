@@ -22,7 +22,7 @@ property is named Endpoints. On the other hand, an IceRPC server has only one se
 more granular building block: if you want to listen on multiple server addresses with IceRPC, you create multiple
 servers, each with its own server address, and all these servers can share the same dispatcher.
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```csharp {% title="Simple server with Ice for C#" %}
 using Communicator communicator =
@@ -55,4 +55,4 @@ await CancelKeyPressed;
 await server.ShutdownAsync();
 ```
 
-{% /side-by-side %}
+{% /aside %}

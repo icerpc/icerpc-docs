@@ -176,11 +176,11 @@ const TopBar = ({ language, code, title, hideTitle }: TopBarProps) =>
 // Provides an icon given the language of the code block
 function LanguageIcon(language: string) {
   return language === undefined ? (
-    <FontAwesomeIcon icon={faFileLines} className="h-4 w-4" />
+    <FontAwesomeIcon icon={faFileLines} className="size-4" />
   ) : commandLineLanguages.includes(language) ? (
-    <FontAwesomeIcon icon={faTerminal} className="h-4 w-4" />
+    <FontAwesomeIcon icon={faTerminal} className="size-4" />
   ) : (
-    <FontAwesomeIcon icon={faFileLines} className="h-4 w-4" />
+    <FontAwesomeIcon icon={faFileLines} className="size-4" />
   );
 }
 

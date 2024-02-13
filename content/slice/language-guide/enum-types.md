@@ -197,7 +197,7 @@ unchecked enum with fields.
 An enumeration maps to a public C# enumeration with the same name, and each Slice enumerator maps to the C# enumerator
 with the same name. For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 enum Fruit { Apple, Pear, Orange }
@@ -211,7 +211,7 @@ public enum Fruit : int
     Orange = 2
 }
 ```
-{% /side-by-side %}
+{% /aside %}
 
 The underlying type of the mapped enumeration is always `int`.
 {% /slice1 %}
@@ -223,7 +223,7 @@ The underlying type of the mapped enumeration is always `int`.
 An enum with underlying type maps to a public C# enumeration with the same name, and each Slice enumerator maps to a
 C# enumerator with the same name. For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 enum Fruit : uint8 { Apple, Pear, Orange }
@@ -237,7 +237,7 @@ public enum Fruit : uint8
     Orange = 2
 }
 ```
-{% /side-by-side %}
+{% /aside %}
 
 The underlying type of the mapped enumeration is always the mapped type for the Slice underlying type. For example,
 a Slice `uint8` corresponds to a C# `byte`.
@@ -254,7 +254,7 @@ generator to generate additional helper code for these partial records.
 
 For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 enum Shape {
@@ -278,7 +278,7 @@ public partial abstract record class Shape
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 {% callout %}
 [ZeroC.Slice] has a dependency on the [Dunet package]; as a result, you don't need an explicit reference to Dunet in
@@ -367,7 +367,7 @@ unchecked enums.
 The mapped C# API for checked and unchecked enums is the same, with one exception: the mapping for an unchecked enum
 with fields has an additional nested record class named `Unknown` that holds unknown enumerator values. For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 unchecked enum Shape {
@@ -392,7 +392,7 @@ public partial record class Shape
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 This `Unknown` enumerator can be re-encoded later without losing any information.
 {% /slice2 %}
@@ -403,7 +403,7 @@ The `cs::attribute` [attribute](attributes) adds the specified C# attribute to t
 to add the [FlagsAttribute] to the mapped C# enum. For example:
 
 {% slice1 %}
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 [cs::attribute("Flags")]
@@ -428,11 +428,11 @@ public enum MultiHue : int
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 {% /slice1 %}
 
 {% slice2 %}
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 [cs::attribute("Flags")]
@@ -457,7 +457,7 @@ public enum MultiHue : byte
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 {% /slice2 %}
 
 You can also apply `cs::attribute` to an enumerator to get the specified C# attribute on the mapped C# enumerator.

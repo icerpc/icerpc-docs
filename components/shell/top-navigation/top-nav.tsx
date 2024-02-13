@@ -43,7 +43,7 @@ export const TopNav = () => (
                   rel="noopener noreferrer"
                   aria-label="Github"
                 >
-                  <FontAwesomeIcon icon={faGithub} className="h-5 w-5" />
+                  <FontAwesomeIcon icon={faGithub} className="size-5" />
                 </a>
               </Button>
             </div>

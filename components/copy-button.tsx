@@ -19,7 +19,7 @@ export const CopyButton = ({ text }: { text: string }) => {
         setTimeout(() => setCopied(false), 3000);
       }}
     >
-      {copied ? '🎉' : <FontAwesomeIcon icon={faCopy} className="h-4 w-4" />}
+      {copied ? '🎉' : <FontAwesomeIcon icon={faCopy} className="size-4" />}
     </button>
   );
 };

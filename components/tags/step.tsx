@@ -54,7 +54,7 @@ export const Step = ({ title, level = 2, id, children }: StepProps) => {
         </Component>
         <FontAwesomeIcon
           icon={isExpanded ? faChevronUp : faChevronDown}
-          className="mt-4 h-4 w-4 text-gray-400"
+          className="mt-4 size-4 text-gray-400"
         />
       </div>
       <div

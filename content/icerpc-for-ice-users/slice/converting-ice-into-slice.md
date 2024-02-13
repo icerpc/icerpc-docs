@@ -36,7 +36,7 @@ A few definitions in .ice files have no equivalent in the .slice syntax and as a
 
 ## Class
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```ice {% title=".ice syntax" %}
 class Vehicle
@@ -62,11 +62,11 @@ class Bicycle : Vehicle {
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 ## Dictionary
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```ice {% title=".ice syntax" %}
 dictionary<string, int> StringIntDict;
@@ -76,11 +76,11 @@ dictionary<string, int> StringIntDict;
 typealias StringIntDict = Dictionary<string, int32>
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 ## Enum
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```ice {% title=".ice syntax" %}
 enum Fruit
@@ -101,7 +101,7 @@ enum Fruit {
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 A .slice enum can be checked (the default) or unchecked (with the unchecked keyword), while the "check-ness" of a .ice
 enum is language-mapping dependent. When the generated code decodes a numeric value into an enumerator, and the enum has
@@ -109,7 +109,7 @@ no enumerator with this numeric value, the decoding fails with a checked enum an
 
 ## Exception
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```ice {% title=".ice syntax" %}
 exception SyntaxException
@@ -135,7 +135,7 @@ exception InvalidIdentifierException
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 ## Exception specification
 
@@ -165,7 +165,7 @@ during decoding.
 
 ## Interface
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```ice {% title=".ice syntax" %}
 interface ChessPiece
@@ -200,7 +200,7 @@ interface Pawn : ChessPiece {
 custom ChessPieceProxy
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 {% callout %}
 When you define an interface with the .ice syntax, you also implicitly define a Slice type with the same name. This Slice
@@ -214,7 +214,7 @@ type named *Name*Proxy that wraps a service address. Please refer to [Using prox
 
 ## Module
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```ice {% title=".ice syntax" %}
 module BoardGame
@@ -233,14 +233,14 @@ module BoardGame::Checkers
 module BoardGame::Chess
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 ## Optional
 
 The `optional` keyword in .ice files is replaced by the `tag` keyword in .slice files and the type of a tagged parameter
 or field must be marked optional (with a `?` suffix) in .slice files.
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```ice {% title=".ice syntax" %}
 interface Widget
@@ -266,7 +266,7 @@ class Person {
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 ## Out parameters
 
@@ -276,7 +276,7 @@ with the .slice syntax, an operation has only "in" parameters but can return a t
 When converting .ice definitions into .slice definitions, keep in mind that Ice encodes out parameters _before_ the
 return type.
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```ice {% title=".ice syntax" %}
 interface Sample
@@ -299,7 +299,7 @@ interface Sample {
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 {% callout type="note" %}
 The names of the parameters and return type elements are not encoded; as a result, you can change them freely without
@@ -328,7 +328,7 @@ non-optional (without a ? suffix).
 
 ## Sequence
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```ice {% title=".ice syntax" %}
 sequence<string> StringSeq;
@@ -338,11 +338,11 @@ sequence<string> StringSeq;
 typealias StringSeq = Sequence<string>
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 ## Struct
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```ice {% title=".ice syntax" %}
 struct Position
@@ -359,7 +359,7 @@ compact struct Position {
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 With the .slice syntax and the Slice1 compilation mode, all structs must be compact.
 

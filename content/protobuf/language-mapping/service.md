@@ -54,7 +54,7 @@ Protobuf service.
 
 For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```protobuf
 syntax = "proto3";
@@ -81,7 +81,7 @@ public partial interface IWidget
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 ### *Name*Client
 
@@ -136,7 +136,7 @@ directing incoming requests to I*Name*Service methods based on the Protobuf RPC 
 
 For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```protobuf
 syntax = "proto3";
@@ -170,7 +170,7 @@ internal partial class MyWidget : IWidgetService
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 {% callout type="note" %}
 Even though I*Name*Service is an interface, it's not used as an abstraction: you shouldn't make calls to this interface
@@ -180,7 +180,7 @@ or create decorators for this interface. It's just a model that your service cla
 Note that the same service class can implement any number of Protobuf services, provided their RPC methods have unique
 names. For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```protobuf
 syntax = "proto3";
@@ -209,7 +209,7 @@ internal partial class MyWidget : IWidgetService,
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 
 ### deprecated option
 

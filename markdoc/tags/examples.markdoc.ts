@@ -1,5 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
-export const examples = {
+const examples = {
   render: 'Examples'
 };
+
+export default examples;

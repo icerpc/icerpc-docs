@@ -108,32 +108,32 @@ integration will soon bring the same level of convenience to Protobuf.
 ## Key features
 
 {% grid %}
-{% mini-card
+{% card
    title="How to create a connection"
    description="Learn how to create and accept connections with IceRPC."
    href="/icerpc/connection/how-to-create-a-connection" /%}
 
-{% mini-card
+{% card
    title="Invocation"
    description="Learn how to send requests and receive responses."
    href="/icerpc/invocation/invocation-pipeline" /%}
 
-{% mini-card
+{% card
    title="Dispatch"
    description="Learn how to accept requests and return responses."
    href="/icerpc/dispatch/dispatch-pipeline" /%}
 
-{% mini-card
+{% card
    title="Server address"
    description="Understand the server address concept and syntax."
    href="/icerpc/connection/server-address" /%}
 
-{% mini-card
+{% card
    title="Service address"
    description="Understand the service address concept and syntax."
    href="/icerpc/invocation/service-address" /%}
 
-{% mini-card
+{% card
    title="Routing"
    description="Learn how to route incoming requests based on their path."
    href="/icerpc/dispatch/router" /%}
@@ -143,15 +143,15 @@ integration will soon bring the same level of convenience to Protobuf.
 
 {% grid %}
 
-{% mini-card
+{% card
    title="Slice examples"
    description="Using IceRPC with Slice"
    href="https://github.com/icerpc/icerpc-csharp/tree/0.2.x/examples/slice/" /%}
-{% mini-card
+{% card
    title="Protobuf examples"
    description="Using IceRPC with Protobuf."
    href="https://github.com/icerpc/icerpc-csharp/tree/0.2.x/examples/protobuf/" /%}
-{% mini-card
+{% card
    title="JSON examples"
    description="Using the core IceRPC API together with JSON."
    href="https://github.com/icerpc/icerpc-csharp/tree/0.2.x/examples/json/" /%}

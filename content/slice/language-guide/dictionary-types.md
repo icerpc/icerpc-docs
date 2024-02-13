@@ -61,7 +61,7 @@ A field, an element in a sequence, or a value in another dictionary with type `D
 `TKey` resp. `TValue` is the mapped C# type for the Slice key type resp. value type. For example:
 
 {% slice1 %}
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 compact struct DictionaryExample {
@@ -79,11 +79,11 @@ public partial record struct DictionaryExample
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 {% /slice1 %}
 
 {% slice2 %}
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 struct DictionaryExample {
@@ -103,7 +103,7 @@ public partial record struct DictionaryExample
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}
 {% /slice2 %}
 
 By default, when the generated code decodes a dictionary, it creates a C# `Dictionary<TKey, TValue>` that is transmitted
@@ -136,7 +136,7 @@ More specifically, this type must provide a capacity constructor (with an `int` 
 `IDictionary<TKey, TValue>` when `cs::type` is applied to a field; it must implement
 `ICollection<KeyValuePair<TKey, TValue>>` when `cs::type` is applied to a parameter. For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 
 ```slice
 interface Greeter {
@@ -166,4 +166,4 @@ public partial interface IGreeterService
 }
 ```
 
-{% /side-by-side %}
+{% /aside %}

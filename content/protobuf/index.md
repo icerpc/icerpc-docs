@@ -98,17 +98,17 @@ public partial interface IGreeterService
 
 {% grid %}
 
-{% mini-card
+{% card
    title="Service mapping"
    description="Learn how to call and implement a Protobuf service with IceRPC in C#."
    href="/protobuf/language-mapping/service" /%}
 
-{% mini-card
+{% card
    title="Protocol Buffers Documentation"
    description="Google's documentation for Protocol Buffers."
    href="https://protobuf.dev/" /%}
 
-{% mini-card
+{% card
    title="Examples"
    description="See examples of the IceRPC + Protobuf integration for C#."
    href="https://github.com/icerpc/icerpc-csharp/tree/0.2.x/examples/protobuf" /%}

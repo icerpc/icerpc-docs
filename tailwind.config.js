@@ -17,7 +17,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: '#43A0F7',
+        primary: 'rgb(var(--primary-color) / <alpha-value>)',
         lightBorder: '#dce6e9',
         dark: 'rgb(26, 28, 33)',
         darkAccent: 'rgb(35, 36, 41)',
@@ -40,7 +40,7 @@ module.exports = {
           '100%': {
             opacity: '1',
             transform: 'translateY(0)'
-          },    
+          },
         },
         "accordion-down": {
           from: { height: 0 },

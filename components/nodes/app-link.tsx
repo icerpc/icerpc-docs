@@ -115,6 +115,10 @@ export const AppLink = ({
           transform: scale(0.52);
           transform-origin: 55% 70%;
         }
+
+        :global(html.dark) .with-arrow::after {
+          background-image: url('/images/link_arrow_dark.svg');
+        }
       `}</style>
     </Link>
   );

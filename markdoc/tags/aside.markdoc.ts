@@ -1,17 +1,17 @@
 // Copyright (c) ZeroC, Inc.
 
-const sideBySide = {
-  render: 'SideBySide',
+const aside = {
+  render: 'Aside',
   attributes: {
     weighted: {
-      type: 'string',
+      type: String,
       default: 'left'
     },
     alignment: {
-      type: 'string',
+      type: String,
       default: 'center'
     }
   }
 };
 
-export default sideBySide;
+export default aside;

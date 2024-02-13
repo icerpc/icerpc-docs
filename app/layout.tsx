@@ -162,7 +162,10 @@ export default function RootLayout(props: any) {
         />
         {/* Fix for issue #368 - see discussion at https://github.com/algolia/docsearch/issues/1260 */}
         <div className="fixed">
-          <input type="text" />
+          <label htmlFor="hiddenInput" className="sr-only">
+            Hidden Input for Search bar Fix
+          </label>
+          <input type="text" id="hiddenInput" />
         </div>
       </body>
     </html>

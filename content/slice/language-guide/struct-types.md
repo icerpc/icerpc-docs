@@ -64,7 +64,7 @@ byte per instance.
 A Slice struct maps to a public C# record struct with the same name. For example:
 
 {% slice1 %}
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 ```slice
 compact struct PostalAddress {
     recipientFullName: string
@@ -112,11 +112,11 @@ public partial record struct PostalAddress
     }
 }
 ```
-{% /side-by-side %}
+{% /aside %}
 {% /slice1 %}
 
 {% slice2 %}
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 ```slice
 struct PostalAddress {
     recipientFullName: string
@@ -167,7 +167,7 @@ public partial record struct PostalAddress
     }
 }
 ```
-{% /side-by-side %}
+{% /aside %}
 {% /slice2 %}
 
 The mapped C# record struct provides a primary constructor with parameters for all its fields, and also a decoding
@@ -179,7 +179,7 @@ encodes the struct fields with a [SliceEncoder].
 You can map a Slice struct to a readonly C# struct with the `cs::readonly` [attribute](attributes). This attribute does
 not accept any argument. For example:
 
-{% side-by-side alignment="top" %}
+{% aside alignment="top" %}
 ```slice
 [cs::readonly]
 compact struct Point { x: int32, y: int32 }
@@ -194,7 +194,7 @@ public readonly partial record struct Point
     ...
 }
 ```
-{% /side-by-side %}
+{% /aside %}
 
 You can also apply `cs::readonly` to a struct field to map this field to a read-only C# field.
 

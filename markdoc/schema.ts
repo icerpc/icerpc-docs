@@ -16,11 +16,9 @@ import { Explore } from '@/components/tags/explore';
 import { Grid } from '@/components/tags/grid';
 import { HomeTitle } from '@/components/tags/home-title';
 import { IcerpcSlice } from 'components';
-import { LanguageSection } from '@/components/tags/language-section';
-import { LanguageSelector } from '@/components/tags/language-selector';
 import { License } from '@/components/tags/license';
 import { ModeSection } from '@/components/tags/mode-section';
-import { SideBySide } from '@/components/tags/side-by-side';
+import { Aside } from '@/components/tags/aside';
 import { Step } from '@/components/tags/step';
 import { Title } from '@/components/tags/title';
 
@@ -50,12 +48,10 @@ export const components = {
   Heading,
   HomeTitle,
   IcerpcSlice,
-  LanguageSection,
-  LanguageSelector,
   License,
   List,
   ModeSection,
-  SideBySide,
+  Aside,
   Step,
   Table,
   TD,

@@ -29,7 +29,7 @@ export const BackToTop = () => {
       >
         <FontAwesomeIcon
           icon={faCircleUp}
-          className="mr-4 h-4 w-4 text-primary"
+          className="mr-4 size-4 text-primary"
         />
 
         <h2> Back to top </h2>
