@@ -49,6 +49,6 @@ flowchart BT
 [IServiceCollection]: https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
 [IDispatcherBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder
 [IInvokerBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IInvokerBuilder
-[IceRpc.dll]: https://github.com/icerpc/icerpc-csharp/blob/0.2.x/src/IceRpc/README.md
-[IceRpc.Deadline.dll]: https://github.com/icerpc/icerpc-csharp/blob/0.2.x/src/IceRpc.Deadline/README.md
-[IceRpc.Extensions.DependencyInjection.dll]: https://github.com/icerpc/icerpc-csharp/blob/0.2.x/src/IceRpc.Extensions.DependencyInjection/README.md
+[IceRpc.dll]: https://github.com/icerpc/icerpc-csharp/blob/0.3.x/src/IceRpc/README.md
+[IceRpc.Deadline.dll]: https://github.com/icerpc/icerpc-csharp/blob/0.3.x/src/IceRpc.Deadline/README.md
+[IceRpc.Extensions.DependencyInjection.dll]: https://github.com/icerpc/icerpc-csharp/blob/0.3.x/src/IceRpc.Extensions.DependencyInjection/README.md
