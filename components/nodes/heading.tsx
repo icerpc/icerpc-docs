@@ -31,7 +31,7 @@ export const Heading = ({
       role="presentation"
       className={clsx(
         'mb-2 mt-6 items-center  hover:[&>*]:opacity-100',
-        level !== 1 && 'group scroll-mt-20'
+        level !== 1 && 'group scroll-mt-28'
       )}
     >
       <div className="flex items-center justify-start">
