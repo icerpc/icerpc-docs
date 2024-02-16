@@ -13,7 +13,7 @@ const bannerVariants = {
     y: 0,
     transition: { type: 'spring', stiffness: 400, damping: 20 }
   },
-  exit: { opacity: 0, scale: 0.5, y: -50 }
+  exit: { opacity: 0, scale: 0.5, y: 50, transition: { ease: 'easeInOut' } }
 };
 
 // Cookie button component
