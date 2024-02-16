@@ -1,6 +1,5 @@
 // Copyright (c) ZeroC, Inc.
 
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
@@ -57,19 +56,24 @@ export const Banner = ({
           <span className="text-3xl font-bold">Your privacy</span>
         </div>
         <div className="pb-4">
-          <p className="text-sm">
-            This website uses cookies to analyze traffic and improve your
-            experience.
+          <div className="text-sm">
+            <p>
+              This website uses cookies to analyze traffic and improve your
+              experience.
+            </p>
             <br />
             <div className="mr-2 mt-3 text-[10px]  leading-[0.8rem] text-gray-500">
               By clicking &quot;Accept,&quot; you consent to the use of these
               cookies. You can learn more about our cookies policy in our{' '}
-              <Link href="/privacy" className="text-blue-500 underline">
+              <a
+                href="https://zeroc.com/privacy"
+                className="text-blue-500 underline"
+              >
                 Privacy Policy
-              </Link>
+              </a>
               .
             </div>
-          </p>
+          </div>
         </div>
       </div>
     </div>
