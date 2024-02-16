@@ -3,16 +3,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { setCookie, getCookie } from 'cookies-next';
+import { getCookie } from 'cookies-next';
 import { AnimatePresence } from 'framer-motion';
-import { OptionsType } from 'cookies-next/lib/types';
 import { GoogleAnalytics } from './google-analytics';
 import { Banner } from './banner';
 import { CookieButton } from './cookie-button';
 
 // Constants
-const COOKIE_EXPIRATION_TIME = 365 * 24 * 60 * 60 * 1000;
-const ALLOW_COOKIES = 'allow_cookies'; // A key to store the cookie value.
+const ALLOW_COOKIES = 'allow.cookies'; // A key to store the cookie value.
 
 export function Analytics() {
   const cookieValue = getCookie(ALLOW_COOKIES);
@@ -22,24 +20,19 @@ export function Analytics() {
     cookieValue === 'true' ? true : false
   );
 
-  const cookieOptions: OptionsType = {
-    secure: process.env.NODE_ENV === 'production',
-    expires: new Date(Date.now() + COOKIE_EXPIRATION_TIME),
-    sameSite: 'strict'
-  };
-
   useEffect(() => {
-    const cookieValue = getCookie(ALLOW_COOKIES);
     setShowBanner(cookieValue === undefined);
     setShowCookieButton(cookieValue === undefined);
     setEnableAnalytics(cookieValue === 'true' ? true : false);
-  }, []);
+  }, [cookieValue]);
 
   const handleSetCookieSettings = (value: boolean) => {
-    setCookie(ALLOW_COOKIES, value, cookieOptions);
     setShowCookieButton(false);
     setShowBanner(false);
     setEnableAnalytics(value === true);
+
+    // Safari workaround to keep the cookie stored for more than 7 days
+    fetch(`api/cookies?allow-cookies=${encodeURIComponent(value)}`);
   };
 
   const toggleShowBanner = () => setShowBanner(!showBanner);
