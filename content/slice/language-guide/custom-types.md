@@ -54,8 +54,8 @@ public static class BigIntSliceEncoderExtensions
 ```
 
 {% slice1 %}
-If you use this custom type as an optional (with a `?` suffix) outside of a tag context, you also need to supply methods
-to encode/decode a nullable value of this type. With our example:
+If this custom type is ever tagged or used as an optional type (with a `?` suffix), you also need to supply methods to
+encode/decode a nullable value of this type. With our example:
 
 ```csharp
 namespace Compute; // like above
