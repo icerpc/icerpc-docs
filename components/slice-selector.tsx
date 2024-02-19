@@ -5,12 +5,17 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Tab } from '@headlessui/react';
-import { Tooltip } from 'react-tooltip';
 import clsx from 'clsx';
 
 import { AppLink } from '@/components/nodes/app-link';
 import { Mode, modes } from 'types';
 import { useMode } from 'context/state';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from '@/components/ui/tooltip';
 
 type SliceSelectorProps = {
   className?: string;
@@ -114,32 +119,31 @@ const ModeTab = ({
     );
 
   return (
-    <>
-      <Tab
-        as="div"
-        className={className}
-        id={showTooltip == true ? `tooltip-${mode}` : ''}
-        data-tooltip-place="bottom"
-      >
-        {mode}
-      </Tab>
-      {showTooltip == true && (
-        <TooltipPortal>
-          <Tooltip
-            anchorSelect={`#tooltip-${mode}`}
-            clickable
-            opacity={1}
-            style={{
-              width: '14rem',
-              backgroundColor: '#32363c',
-              borderRadius: '0.6rem'
-            }}
-          >
-            {tooltipContent}
-          </Tooltip>
-        </TooltipPortal>
-      )}
-    </>
+    <Tab
+      as="div"
+      className={className}
+      id={showTooltip == true ? `tooltip-${mode}` : ''}
+      data-tooltip-place="bottom"
+    >
+      <TooltipProvider delayDuration={0}>
+        <Tooltip>
+          <TooltipTrigger className="size-full">
+            <span className="uppercase">{mode}</span>
+          </TooltipTrigger>
+          {showTooltip == true && (
+            <TooltipPortal>
+              <TooltipContent
+                side="bottom"
+                sideOffset={15}
+                className="ml-2 border border-lightBorder bg-white dark:border-darkBorder dark:bg-[#232429] dark:text-white"
+              >
+                {tooltipContent}
+              </TooltipContent>
+            </TooltipPortal>
+          )}
+        </Tooltip>
+      </TooltipProvider>
+    </Tab>
   );
 };
 
