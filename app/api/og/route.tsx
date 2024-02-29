@@ -6,7 +6,6 @@ import { getBreadcrumbs } from 'lib/breadcrumbs';
 
 export async function GET(request: NextRequest) {
   try {
-    const fonts = await getFonts();
     const { searchParams } = new URL(request.url);
     const hostname = request.headers.get('host');
 
@@ -26,7 +25,7 @@ export async function GET(request: NextRequest) {
     const image =
       path === '/'
         ? homeImage(hostname)
-        : pageImage(hostname, breadcrumbs, title, description, fonts);
+        : pageImage(hostname, breadcrumbs, title, description);
 
     return image;
   } catch (e: any) {
@@ -65,8 +64,7 @@ const pageImage = (
   hostname: string | null,
   breadcrumbs: string[],
   title: string | undefined,
-  description: string | undefined,
-  fonts: { name: string; data: ArrayBuffer; style: string; weight: number }[]
+  description: string | undefined
 ) => {
   return new ImageResponse(
     (
@@ -104,14 +102,13 @@ const pageImage = (
           >
             {renderBreadcrumb(breadcrumbs)}
           </ol>
-
           <h1
             style={{
               fontSize: '78px',
-              fontWeight: '700',
+              fontWeight: 700,
               lineHeight: '80px',
               marginTop: '4px',
-              marginLeft: '-4px'
+              marginLeft: '-6px'
             }}
           >
             {title}
@@ -132,59 +129,11 @@ const pageImage = (
     ),
     {
       // @ts-ignore - The FontOptions type cannot be imported
-      fonts: fonts,
       width: 1200,
       height: 630
     }
   );
 };
-
-// Utility functions
-async function getFonts() {
-  // See https://github.com/vercel/next.js/issues/48081 for why this is necessary
-  const [interRegular, interMedium, interSemiBold, interBold] =
-    await Promise.all([
-      fetch(`https://rsms.me/inter/font-files/Inter-Regular.woff`).then((res) =>
-        res.arrayBuffer()
-      ),
-      fetch(`https://rsms.me/inter/font-files/Inter-Medium.woff`).then((res) =>
-        res.arrayBuffer()
-      ),
-      fetch(`https://rsms.me/inter/font-files/Inter-SemiBold.woff`).then(
-        (res) => res.arrayBuffer()
-      ),
-      fetch(`https://rsms.me/inter/font-files/Inter-Bold.woff`).then((res) =>
-        res.arrayBuffer()
-      )
-    ]);
-
-  return [
-    {
-      name: 'Inter',
-      data: interRegular,
-      style: 'normal',
-      weight: 400
-    },
-    {
-      name: 'Inter',
-      data: interMedium,
-      style: 'normal',
-      weight: 500
-    },
-    {
-      name: 'Inter',
-      data: interSemiBold,
-      style: 'normal',
-      weight: 600
-    },
-    {
-      name: 'Inter',
-      data: interBold,
-      style: 'normal',
-      weight: 700
-    }
-  ];
-}
 
 // Utility function for getting URL parameters
 const getUrlParam = (searchParams: URLSearchParams, key: string) =>
