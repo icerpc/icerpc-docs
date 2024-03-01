@@ -23,7 +23,7 @@ const RightColumn = ({ children, isCodeblocks }: Props) => (
   <div
     className={clsx(
       'my-0 flex w-full flex-col py-2 [&>p]:mb-2',
-      isCodeblocks ? 'lg:pl-2' : 'lg:pr-5'
+      isCodeblocks ? 'lg:pl-2' : 'lg:pl-5'
     )}
   >
     {children}
