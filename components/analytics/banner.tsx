@@ -56,24 +56,19 @@ export const Banner = ({
           <span className="text-3xl font-bold">Your privacy</span>
         </div>
         <div className="pb-4">
-          <div className="text-sm">
-            <p>
-              This website uses cookies to analyze traffic and improve your
-              experience.
-            </p>
+          <p className="text-sm">
+            This website uses cookies to analyze traffic and improve your
+            experience.
             <br />
             <div className="mr-2 mt-3 text-[10px]  leading-[0.8rem] text-gray-500">
               By clicking &quot;Accept,&quot; you consent to the use of these
               cookies. You can learn more about our cookies policy in our{' '}
-              <a
-                href="https://zeroc.com/privacy"
-                className="text-blue-500 underline"
-              >
+              <a href="/privacy" className="text-blue-500 underline">
                 Privacy Policy
               </a>
               .
             </div>
-          </div>
+          </p>
         </div>
       </div>
     </div>
