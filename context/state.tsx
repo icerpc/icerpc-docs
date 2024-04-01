@@ -31,20 +31,17 @@ const PathContext = createContext<string | null>(null);
 
 const ModeContext = createContext<ModeContextType>({
   mode: undefined,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setMode: () => {}
+  setMode: () => { }
 });
 
 const PlatformContext = createContext<PlatformContextType>({
   platform: Platform.csharp,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setPlatform: () => {}
+  setPlatform: () => { }
 });
 
 const SearchContext = createContext<ModeContextType>({
   mode: undefined,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setMode: () => {}
+  setMode: () => { }
 });
 
 export function AppWrapper({ children }: { children: ReactNode }) {
