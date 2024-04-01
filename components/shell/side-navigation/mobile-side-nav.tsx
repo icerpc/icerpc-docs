@@ -167,7 +167,7 @@ export function MobileSideNav() {
                           />
                         </div>
                       )}
-                      <div className="mt-4 w-full border-t-[1px] border-lightBorder dark:border-darkBorder" />
+                      <div className="mt-4 w-full border-t-DEFAULT border-lightBorder dark:border-darkBorder" />
                     </section>
                     <nav
                       className={clsx(

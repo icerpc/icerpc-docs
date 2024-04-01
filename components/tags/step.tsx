@@ -32,7 +32,7 @@ export const Step = ({ title, level = 2, id, children }: StepProps) => {
   }, [isExpanded]);
 
   return (
-    <div className="border-t-[1px] border-lightBorder dark:border-darkBorder">
+    <div className="border-t-DEFAULT border-lightBorder dark:border-darkBorder">
       <div
         className="mb-4 flex cursor-pointer flex-row items-center justify-between"
         onClick={() => setIsExpanded(!isExpanded)}

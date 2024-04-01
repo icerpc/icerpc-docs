@@ -48,7 +48,7 @@ export const PageHistory = ({ path }: { path: string }) => {
   return (
     <>
       <Divider />
-      <div className="mx-[-1rem] mb-8 flex flex-row items-stretch justify-between p-0">
+      <div className="-mx-4 mb-8 flex flex-row items-stretch justify-between p-0">
         <NavLink
           direction={Direction.Left}
           path={previous?.path}

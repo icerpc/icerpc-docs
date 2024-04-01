@@ -23,7 +23,7 @@ export const MobileMenu = () => {
 
   return (
     <div className="mr-4 flex h-4/6 items-center rounded-full lg:hidden">
-      <SearchButton className="size-full pt-[1px] md:mr-2" />
+      <SearchButton className="size-full pt-px md:mr-2" />
       <button
         className="inline-flex items-center justify-center rounded-full p-1 text-black/60"
         onClick={() => setIsOpen(true)}

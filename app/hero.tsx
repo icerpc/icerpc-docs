@@ -26,7 +26,7 @@ export const Hero = () => {
           <h2 className="max-w-lg bg-gradient-to-b from-slate-800 to-black bg-clip-text text-center text-[40px] font-[750] leading-none tracking-[-0.04em] text-transparent md:max-w-xl md:text-5xl lg:max-w-5xl lg:text-7xl">
             Documentation
           </h2>
-          <p className="max-w-md text-center leading-snug text-gray-500 dark:text-slate-200 md:max-w-xl md:text-[20px] lg:max-w-[640px] lg:text-xl">
+          <p className="max-w-md text-center leading-snug text-gray-500 dark:text-slate-200 md:max-w-xl md:text-[20px] lg:max-w-screen-sm lg:text-xl">
             IceRPC is a new open-source RPC framework that helps you build
             blazing fast networked applications with very little code.
           </p>

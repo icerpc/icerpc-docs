@@ -23,7 +23,7 @@ export const IcerpcSlice = () => {
         <div className="flex size-full">
           <AppLink
             href="/slice#slice-and-icerpc"
-            className="relative my-auto ml-1 rounded border border-primary/20 bg-primary/10 p-[1px] px-[4px] text-xs font-bold text-primary/90 "
+            className="relative my-auto ml-1 rounded border border-primary/20 bg-primary/10 p-px px-[4px] text-xs font-bold text-primary/90 "
           >
             IceRPC + Slice
           </AppLink>
