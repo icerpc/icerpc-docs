@@ -33,3 +33,5 @@ For example, you can create a new project named `MyProtobufClient` for an IceRPC
 ```shell {% showTitle=false %}
 dotnet new icerpc-protobuf-client -o MyProtobufClient
 ```
+
+[dotnet new]: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-new
