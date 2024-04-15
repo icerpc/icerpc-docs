@@ -8,8 +8,8 @@ jobs:
   spellcheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: streetsidesoftware/cspell-action@v2
+      - uses: actions/checkout@v4
+      - uses: streetsidesoftware/cspell-action@v6
         with:
           files: |
             **/*.{md,ts,tsx,js,jsx}
