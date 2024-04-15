@@ -39,8 +39,8 @@ jobs:
           script_stop: true
           script: |
             cd services
-            docker-compose pull icerpc-docs
-            docker-compose up -d icerpc-docs
+            docker compose pull icerpc-docs
+            docker compose up -d icerpc-docs
 
       - name: Delete old container images
         uses: actions/delete-package-versions@v4
