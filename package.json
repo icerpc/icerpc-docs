@@ -26,11 +26,11 @@
     "copy-to-clipboard": "^3.3.3",
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.8.0",
-    "framer-motion": "^11.0.25",
+    "framer-motion": "^11.0.28",
     "js-yaml": "^4.1.0",
-    "lucide-react": "^0.365.0",
+    "lucide-react": "^0.368.0",
     "mermaid": "^10.9.0",
-    "next": "^14.1.4",
+    "next": "^14.2.1",
     "next-sitemap": "^4.2.3",
     "next-themes": "^1.0.0-beta.0",
     "nodemailer": "^6.9.13",
@@ -45,11 +45,11 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.12",
     "@types/js-yaml": "^4.0.9",
-    "@types/node": "^20.12.4",
+    "@types/node": "^20.12.7",
     "@types/nodemailer": "^6.4.14",
     "@types/prismjs": "^1.26.3",
-    "@types/react": "^18.2.74",
-    "@types/react-dom": "^18.2.24",
+    "@types/react": "^18.2.78",
+    "@types/react-dom": "^18.2.25",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.1.4",
@@ -60,6 +60,6 @@
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.13",
     "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.4"
+    "typescript": "^5.4.5"
   }
 }
