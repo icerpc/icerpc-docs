@@ -38,9 +38,8 @@ export async function generateMetadata({
       title,
       description,
       images: {
-        url: `https://docs.icerpc.dev/api/og?title=${
-          baseUrls.includes(path) ? 'Overview' : title
-        }&description=${description}&path=${encodeURIComponent(path)}`
+        url: `https://docs.icerpc.dev/api/og?title=${baseUrls.includes(path) ? 'Overview' : title
+          }&description=${description}&path=${encodeURIComponent(path)}`
       }
     }
   };
@@ -104,7 +103,7 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="mt-[6.4rem] flex grow flex-row justify-center lg:mt-[7.5rem]">
+    <div className="mt-[6.4rem] flex grow flex-row justify-center">
       <div className="flex max-w-[100rem] grow flex-row justify-center">
         <SideNav path={path} />
         <div className="grow">

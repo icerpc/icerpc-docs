@@ -20,7 +20,7 @@ export const SideNav = ({ path }: { path: string }) => {
   const isSlicePage = ['/slice1', '/slice2'].includes(baseUrl);
 
   return (
-    <div className="sticky top-[6.4rem] hidden h-[calc(100vh-59px)] flex-none flex-col items-end border-r border-lightBorder dark:border-darkBorder/60 dark:bg-dark lg:flex">
+    <div className="sticky top-[6.4rem] hidden h-screen flex-none flex-col items-end border-r border-lightBorder pb-[6.4rem] pt-4 dark:border-darkBorder/60 dark:bg-dark lg:flex">
       <div className="flex size-full min-w-[300px] max-w-[300px] flex-col justify-start overflow-y-auto pl-10">
         <div className="sticky top-0 space-y-5 bg-white pr-6 dark:bg-dark">
           <SideNavSelector isSlicePage={isSlicePage} path={path} />
