@@ -63,7 +63,7 @@ export const Banner = ({
             <div className="mr-2 mt-3 text-[10px]  leading-[0.8rem] text-gray-500">
               By clicking &quot;Accept,&quot; you consent to the use of these
               cookies. You can learn more about our cookies policy in our{' '}
-              <a href="/privacy" className="text-blue-500 underline">
+              <a href="https://zeroc.com/privacy" className="text-blue-500 underline">
                 Privacy Policy
               </a>
               .
