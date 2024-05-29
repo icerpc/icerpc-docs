@@ -53,7 +53,28 @@ export const metadata: Metadata = {
     }
   },
   category: 'Software',
-  metadataBase: new URL('https://docs.icerpc.dev')
+  metadataBase: new URL('https://docs.icerpc.dev'),
+  other: {
+    'application/ld+json': JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "IceRPC Documentation",
+      "description": "Comprehensive guide to using IceRPC, including setup, usage, and advanced features.",
+      "mainEntityOfPage": "https://docs.icerpc.dev",
+      "author": {
+        "@type": "Organization",
+        "name": "IceRPC Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "IceRPC",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://docs.icerpc.dev/icerpc-logo.svg"
+        }
+      },
+    }),
+  },
 };
 
 const organizationSchema = {

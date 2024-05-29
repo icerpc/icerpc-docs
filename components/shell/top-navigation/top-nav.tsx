@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { MobileMenu } from './mobile-menu';
 import { MobileSideNav } from '@/components/shell/side-navigation/mobile-side-nav';
 import { ThemeToggle } from '@/components/theme-toggle';
-import logoIcon from 'public/Icerpc-logo.svg';
+import logoIcon from 'public/icerpc-logo.svg';
 import { TopNavigationItems } from './top-nav-items';
 import { Button } from '@/components/ui/button';
 import { SearchButton } from '@/components/shell/search-button';
