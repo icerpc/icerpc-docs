@@ -78,6 +78,7 @@ Reducing the maximum stream frame size reduces this delay. It's in particular us
 A stream has two separate state machines: one for its write-side and one for its read-side.
 
 The state machines also depend on the type of the stream. The type of a stream is defined as follows:
+
 - a local stream is a stream created by the application
 - a remote stream is a stream accepted by the application
 
@@ -183,5 +184,4 @@ peer that its done reading.
 [StreamLast]: protocol-frames#stream-and-streamlast-frames
 [StreamReadsClosed]: protocol-frames#streamreadsclosed-and-streamwritesclosed-frames
 [StreamWritesClosed]: protocol-frames#streamreadsclosed-and-streamwritesclosed-frames
-[StreamWindowUpdate]: protocol-frames#streamwindowupdate-frame
 [stream-concurrency]: flow-control#stream-concurrency

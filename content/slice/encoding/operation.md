@@ -20,6 +20,7 @@ Unlike the encoding of tagged fields in classes, the encoding of tagged argument
 {% /slice1 %}
 
 {% slice2 %}
+
 ## Non-stream encoding
 
 The arguments of an operation are encoded as a [segment]. The body of this segment corresponds to a virtual [struct]

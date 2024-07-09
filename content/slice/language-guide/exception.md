@@ -8,9 +8,11 @@ Exceptions are not supported with Slice2.
 {% /slice2 %}
 
 {% slice1 %}
+
 ## Operation failure
 
 The implementation of a Slice [operation] can:
+
 - succeed and return an instance of the operation's return type,
 - fail and return a generic error, or
 - fail and return an exception defined in Slice
@@ -21,6 +23,7 @@ In this last case, the exception or one of its base exceptions must be listed in
 Other than the `exception` keyword, the definition of an exception is syntactically identical to the definition of
 a [class](class-types). For example:
 {% aside alignment="top" %}
+
 ```slice
 class BaseError {
     errorCode: int32
@@ -40,6 +43,7 @@ exception DerivedException : BaseException {
     measurement: float64
 }
 ```
+
 {% /aside %}
 
 {% callout type="note" %}
@@ -63,6 +67,7 @@ the mapped class derives from [SliceException], the base class for all C# Slice 
 For example:
 
 {% aside alignment="top" %}
+
 ```slice
 exception TranslationException {
     errorCode: TranslationErrorCode
@@ -89,6 +94,7 @@ public partial class TranslationException
     }
 }
 ```
+
 {% /aside %}
 
 The mapped C# class provides a primary constructor with parameters for all its fields, plus an optional message and an
@@ -97,6 +103,7 @@ optional inner exception (like most exceptions in C#).
 Slice exception inheritance maps to C# class inheritance:
 
 {% aside alignment="top" %}
+
 ```slice
 exception BaseException {
     errorCode: int32
@@ -139,6 +146,7 @@ public partial class DerivedException : BaseException
     }
 }
 ```
+
 {% /aside %}
 
 ### ConvertToInternalError

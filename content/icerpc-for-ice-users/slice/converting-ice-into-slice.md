@@ -273,7 +273,7 @@ class Person {
 With the .ice syntax, the return type of an operation can be split between a return type and out parameters, whereas
 with the .slice syntax, an operation has only "in" parameters but can return a tuple.
 
-When converting .ice definitions into .slice definitions, keep in mind that Ice encodes out parameters _before_ the
+When converting .ice definitions into .slice definitions, keep in mind that Ice encodes out parameters *before* the
 return type.
 
 {% aside alignment="top" %}

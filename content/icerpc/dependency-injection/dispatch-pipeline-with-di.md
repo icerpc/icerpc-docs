@@ -112,9 +112,9 @@ leaf dispatcher via services injected by a DI container.
 
 Such a DI-friendly middleware needs to implement one of the following `IMiddleware` interfaces:
 
-- [IMiddleware<TDep>](csharp:IceRpc.Extensions.DependencyInjection.IMiddleware-1)
-- [IMiddleware<TDep1, TDep2>](csharp:IceRpc.Extensions.DependencyInjection.IMiddleware-2)
-- [IMiddleware<TDep1, TDep2, TDep3>](csharp:IceRpc.Extensions.DependencyInjection.IMiddleware-3)
+- [`IMiddleware<TDep>`](csharp:IceRpc.Extensions.DependencyInjection.IMiddleware-1)
+- [`IMiddleware<TDep1, TDep2>`](csharp:IceRpc.Extensions.DependencyInjection.IMiddleware-2)
+- [`IMiddleware<TDep1, TDep2, TDep3>`](csharp:IceRpc.Extensions.DependencyInjection.IMiddleware-3)
 
 For example, say we want to reimplement the deadline middleware in a more DI-friendly fashion. The standard deadline
 middleware reads the deadline field and creates a deadline feature to communicate this deadline to downstream middleware

@@ -128,6 +128,7 @@ Dictionaries require two type parameters: the _key_ and _value_ types.
 
 There is no restriction on the element and value types, but since dictionary keys must be comparable,
 key types must be one of the following:
+
 - `bool`
 - `string`
 - integral types (`int8`, `uint8`, `int16`, `uint16`, `int32`, `uint32`, `varint32`, `varuint32`, `int64`, `uint64`,
@@ -150,6 +151,7 @@ Dictionary
 ```
 
 For example:
+
 ```slice
 Sequence<bool>
 Dictionary<uint8, string>
@@ -183,6 +185,7 @@ A [compact struct][compact-struct-guide] cannot contain [tagged fields][tag].
 For additional information on structs, see the [struct][struct-guide] page.
 
 {% slice1 %}
+
 ### Class types
 
 Classes can only be defined or referenced in [`Slice1`][compilation-mode-guide] mode.
@@ -211,6 +214,7 @@ For additional information on classes, see the [class][class-guide] page.
 {% /slice1 %}
 
 {% slice1 %}
+
 ### Exceptions
 
 Exceptions can only be defined or referenced in [`Slice1`][compilation-mode-guide] mode.
@@ -336,6 +340,7 @@ ExceptionSpecification
     | "throws" "(" NonEmptyCommaList<TypeRef> ")"
     ;
 ```
+
 {% /slice1 %}
 
 For additional information on operations, see the [operation][operation-guide] page.
@@ -414,6 +419,7 @@ Enumerator
 ```
 
 If an enumerator's value isn't explicitly assigned, it is given an implicit value according to the following rules:
+
 - If this is the first enumerator in an enum, it is assigned an implicit value of `0`.
 - Otherwise, it is assigned an implicit value equal to the previous enumerator's value `+ 1`.
 
@@ -485,6 +491,7 @@ Tags can only be applied to [fields][field] and [parameters][parameter] with an 
 
 {% slice1 %}
 Tags can only be applied to [fields][field] and [parameters][parameter], and only if the type of that field/parameter:
+
 - is optional (it ends with a `?` symbol)
 - is not a class, and does not use classes internally
 {% /slice1 %}
@@ -498,6 +505,7 @@ Tag
 ### Identifiers
 
 Slice supports three forms of identifiers:
+
 - **unscoped** identifiers consist of a letter, followed by any number of letters, digits, or underscores.
 - **relatively scoped** identifiers consist of one or more unscoped identifiers separated by `::` tokens.
 - **globally scoped** identifiers consist of a `::` token, followed by a relatively scoped identifier.
@@ -550,6 +558,7 @@ struct   // The struct keyword
 ### Integer literals
 
 Slice supports three forms of integer literals:
+
 - A decimal literal for base-10 numbers.
 These consist of one or more digits between `0` and `9` (inclusive).
 - A hexadecimal literal for base-16 numbers.
@@ -940,7 +949,6 @@ UndelimitedList<T>
     ;
 ```
 
-[slice-file]: #slice-files
 [mode-statement]: #mode-statements
 [module-declaration]: #module-declarations
 [primitive]: #primitive-types

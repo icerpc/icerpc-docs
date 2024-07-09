@@ -4,6 +4,7 @@ description: Learn how primitive types are encoded with Slice.
 ---
 
 {% slice1 %}
+
 ## AnyClass
 
 `AnyClass` is an abstract type. When you encode or decode a parameter or field with type `AnyClass`, you are encoding
@@ -15,6 +16,7 @@ or decoding a concrete class instance using the [class encoding/decoding rules](
 A `bool` is encoded on a single byte, where 0 means `false` and 1 means `true`. Other values are invalid.
 
 {% slice2 %}
+
 ## Fixed-size integral types
 
 | Type          | Encoded on N bytes |

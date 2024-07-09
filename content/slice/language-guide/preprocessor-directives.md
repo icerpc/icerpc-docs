@@ -62,6 +62,7 @@ Indentation is not required when nesting directives, but is recommended to impro
 
 The `#if` and `#elif` directives require a boolean expression that the preprocessor evaluates. These expressions consist
 of symbols (which evaluate to `true` or `false`) and the following boolean operators:
+
 - `!` - Logical NOT
 - `&&` - Logical AND
 - `||` - Logical OR

@@ -41,10 +41,10 @@ See also [Security with TLS][security-with-tls] for additional information.
 
 The C# duplex transport abstraction is composed of a number of interfaces that a custom transport needs to implement:
 
-- [IDuplexClientTransport]: a factory to create outgoing connections
-- [IDuplexServerTransport]: a factory to create listeners
-- [IListener<IDuplexConnection>]: a factory to listen for and create incoming connections
-- [IDuplexConnection]: a connection to allow a client and server to communicate
+- [`IDuplexClientTransport`]: a factory to create outgoing connections
+- [`IDuplexServerTransport`]: a factory to create listeners
+- [`IListener<IDuplexConnection>`]: a factory to listen for and create incoming connections
+- [`IDuplexConnection`]: a connection to allow a client and server to communicate
 
 The API documentation of these interfaces specifies the contract a custom transport needs to comply with.
 
@@ -60,10 +60,10 @@ To use a custom transport, the application needs to provide an instance of `IDup
 [flow-control]: https://en.wikipedia.org/wiki/Flow_control_(data)
 [ice-protocol]: protocols-and-transports/ice-duplex-transports
 
-[IDuplexClientTransport]: csharp:IceRpc.Transports.IDuplexClientTransport
-[IDuplexServerTransport]: csharp:IceRpc.Transports.IDuplexServerTransport
-[IListener<IDuplexConnection>]: csharp:IceRpc.Transports.IListener-1
-[IDuplexConnection]: csharp:IceRpc.Transports.IDuplexConnection
+[`IDuplexClientTransport`]: csharp:IceRpc.Transports.IDuplexClientTransport
+[`IDuplexServerTransport`]: csharp:IceRpc.Transports.IDuplexServerTransport
+[`IListener<IDuplexConnection>`]: csharp:IceRpc.Transports.IListener-1
+[`IDuplexConnection`]: csharp:IceRpc.Transports.IDuplexConnection
 [Server]: csharp:IceRpc.Server
 [ConnectionCache]: csharp:IceRpc.ConnectionCache
 [ClientConnection]: csharp:IceRpc.ClientConnection

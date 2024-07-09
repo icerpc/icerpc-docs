@@ -12,10 +12,12 @@ Frames and types from this page are defined using [Slice].
 
 All the frames have a header and a body. The header layout is common to all Slic versions and is composed of the
 following fields:
+
 - a frame type defined as an `uint8` enumeration
 - a frame size defined as a `varuint62` representing the size of the frame body.
 
 The frame type is defined as follows:
+
 ```slice
 enum FrameType : uint8 {
     Initialize = 1

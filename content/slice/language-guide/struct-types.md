@@ -8,6 +8,7 @@ description: Learn how to define and use structs in Slice.
 A struct is a user-defined type that holds a list of [fields](fields). For example:
 
 {% slice1 %}
+
 ```slice
 enum StateAbbreviation { AL, AK, AZ, AR, AS ... WY }
 
@@ -27,6 +28,7 @@ All structs must be marked "compact" with Slice1. A compact struct cannot hold a
 {% /slice1 %}
 
 {% slice2 %}
+
 ```slice
 enum StateAbbreviation : uint8 { AL, AK, AZ, AR, AS ... WY }
 
@@ -65,6 +67,7 @@ A Slice struct maps to a public C# record struct with the same name. For example
 
 {% slice1 %}
 {% aside alignment="top" %}
+
 ```slice
 compact struct PostalAddress {
     recipientFullName: string
@@ -112,11 +115,13 @@ public partial record struct PostalAddress
     }
 }
 ```
+
 {% /aside %}
 {% /slice1 %}
 
 {% slice2 %}
 {% aside alignment="top" %}
+
 ```slice
 struct PostalAddress {
     recipientFullName: string
@@ -167,6 +172,7 @@ public partial record struct PostalAddress
     }
 }
 ```
+
 {% /aside %}
 {% /slice2 %}
 
@@ -180,10 +186,12 @@ You can map a Slice struct to a readonly C# struct with the `cs::readonly` [attr
 not accept any argument. For example:
 
 {% aside alignment="top" %}
+
 ```slice
 [cs::readonly]
 compact struct Point { x: int32, y: int32 }
 ```
+
 ```csharp
 public readonly partial record struct Point
 {
@@ -194,6 +202,7 @@ public readonly partial record struct Point
     ...
 }
 ```
+
 {% /aside %}
 
 You can also apply `cs::readonly` to a struct field to map this field to a read-only C# field.

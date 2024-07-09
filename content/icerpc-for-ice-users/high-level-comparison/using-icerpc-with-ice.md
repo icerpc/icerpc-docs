@@ -13,6 +13,7 @@ using IceRPC, or use IceRPC to create new services for your Ice clients.
 
 If you start from an existing Ice client or server, the first step is to convert your Slice definitions (in `.ice`
 files) to the new Slice syntax. The converted Slice files must specify `Slice1` mode:
+
 ```slice
 mode = Slice1 // required for interop with Ice
 ...

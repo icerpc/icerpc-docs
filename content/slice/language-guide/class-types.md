@@ -8,18 +8,20 @@ Classes are not supported with Slice2.
 {% /slice2 %}
 
 {% slice1 %}
+
 ## Super structs
 
 A class is a user-defined type that holds a list of fields, just like a [struct](struct-types). Classes also offer
 capabilities not offered by structs:
- - extensibility\
-   you can extend a class through inheritance and tagged fields
- - graph preservation\
-   you can transmit a graph of class instances through a Slice operation
- - null/not-set value\
-   a class parameter or field can be null or not-set, whereas in general a struct parameter or field must have a value
- - slicing\
-   a recipient can decode a class instance into a base class by slicing off derived "slices" it does not know
+
+- extensibility\
+  you can extend a class through inheritance and tagged fields
+- graph preservation\
+  you can transmit a graph of class instances through a Slice operation
+- null/not-set value\
+  a class parameter or field can be null or not-set, whereas in general a struct parameter or field must have a value
+- slicing\
+  a recipient can decode a class instance into a base class by slicing off derived "slices" it does not know
 
 We will review each of these capabilities below.
 
@@ -204,6 +206,7 @@ derives from [SliceClass], the base class for all C# Slice classes.
 For example:
 
 {% aside alignment="top" %}
+
 ```slice
 class CarPart {
     id: string
@@ -231,6 +234,7 @@ public partial class CarPart : SliceClass
 
 }
 ```
+
 {% /aside %}
 
 The mapped class has a primary constructor which sets all the fields. If any field has an optional type, the mapped
@@ -239,6 +243,7 @@ class has a second constructor with a parameter for each non-nullable C# field.
 Slice class inheritance maps the C# class inheritance as you would expect:
 
 {% aside alignment="top" %}
+
 ```slice
 class FrontBumper : CarPart {
     color: Color
@@ -266,6 +271,7 @@ public partial class RearBumper : CarPart
     }
 }
 ```
+
 {% /aside %}
 {% /slice1 %}
 

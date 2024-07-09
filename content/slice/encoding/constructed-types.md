@@ -45,12 +45,13 @@ compact enum StringInt32Result {
 {% /slice2 %}
 
 {% slice1 %}
+
 ## Sequence
 
 A sequence of N elements of type T is encoded as a [variable-length size][slice1-var-size] N followed by each element
 encoded in order.
 
-#### Example: empty sequence
+### Example: empty sequence
 
 An empty sequence is encoded as:
 
@@ -58,7 +59,7 @@ An empty sequence is encoded as:
 0x00: size 0
 ```
 
-#### Example: sequence of int32
+### Example: sequence of int32
 
 A sequence of `int32` with values 5, 32 and 9 is encoded as:
 
@@ -68,15 +69,17 @@ A sequence of `int32` with values 5, 32 and 9 is encoded as:
 0x20 0x00 0x00 0x00: 32 over 4 bytes in little-endian order
 0x09 0x00 0x00 0x00: 9 over 4 bytes in little-endian order
 ```
+
 {% /slice1 %}
 
 {% slice2 %}
+
 ## Sequence with a non-optional element type
 
 A sequence of N elements with a non-optional element type T is encoded as a `varuint62`-encoded N followed by each
 element encoded in order.
 
-#### Example: empty sequence
+### Example: empty sequence
 
 An empty sequence is encoded as:
 
@@ -84,7 +87,7 @@ An empty sequence is encoded as:
 0x00: size 0
 ```
 
-#### Example: sequence of int32
+### Example: sequence of int32
 
 A sequence of `int32` with values 5, 32 and 9 is encoded as:
 
@@ -100,7 +103,7 @@ A sequence of `int32` with values 5, 32 and 9 is encoded as:
 A sequence of N elements with a optional element type T? is encoded as a varuint62-encoded N followed by a
 [bit sequence][bit-sequence] with N bits, followed by each element with a value encoded in order.
 
-#### Example: sequence of int32?
+### Example: sequence of int32?
 
 A sequence of `int32?` with values 5, no-value, 9 and no-value is encoded as:
 
