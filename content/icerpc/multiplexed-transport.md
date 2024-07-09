@@ -42,11 +42,11 @@ See also [Security with TLS][security-with-tls] for additional information.
 The C# multiplexed transport abstraction consists of a number of interfaces that a custom transport needs to
 implement:
 
-- [IMultiplexedClientTransport]: a factory to create outgoing connections
-- [IMultiplexedServerTransport]: a factory to create listeners
-- [IListener<IMultiplexedConnection>]: a factory to listen for and create incoming connections
-- [IMultiplexedConnection]: a connection to accept and create streams
-- [IMultiplexedStream]: a stream to allow a client and server to communicate
+- [`IMultiplexedClientTransport`]: a factory to create outgoing connections
+- [`IMultiplexedServerTransport`]: a factory to create listeners
+- [`IListener<IMultiplexedConnection>`]: a factory to listen for and create incoming connections
+- [`IMultiplexedConnection`]: a connection to accept and create streams
+- [`IMultiplexedStream`]: a stream to allow a client and server to communicate
 
 The API documentation of these interfaces specifies the contract a custom transport needs to comply with.
 
@@ -62,11 +62,11 @@ To use a custom transport, the application needs to provide an instance of `IMul
 [full-duplex]: https://en.wikipedia.org/wiki/Duplex_(telecommunications)#Full_duplex
 [flow-control]: https://en.wikipedia.org/wiki/Flow_control_(data)
 
-[IMultiplexedClientTransport]: csharp:IceRpc.Transports.IMultiplexedClientTransport
-[IMultiplexedServerTransport]: csharp:IceRpc.Transports.IMultiplexedServerTransport
-[IListener<IMultiplexedConnection>]: csharp:IceRpc.Transports.IListener-1
-[IMultiplexedConnection]: csharp:IceRpc.Transports.IMultiplexedConnection
-[IMultiplexedStream]: csharp:IceRpc.Transports.IMultiplexedStream
+[`IMultiplexedClientTransport`]: csharp:IceRpc.Transports.IMultiplexedClientTransport
+[`IMultiplexedServerTransport`]: csharp:IceRpc.Transports.IMultiplexedServerTransport
+[`IListener<IMultiplexedConnection>`]: csharp:IceRpc.Transports.IListener-1
+[`IMultiplexedConnection`]: csharp:IceRpc.Transports.IMultiplexedConnection
+[`IMultiplexedStream`]: csharp:IceRpc.Transports.IMultiplexedStream
 [Server]: csharp:IceRpc.Server
 [ConnectionCache]: csharp:IceRpc.ConnectionCache
 [ClientConnection]: csharp:IceRpc.ClientConnection

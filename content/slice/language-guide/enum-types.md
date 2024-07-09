@@ -138,21 +138,25 @@ matching enumerator.
 You can also get the opposite behavior—unchecked—by prepending `unchecked` to your enumeration definition. For example:
 
 {% slice1 %}
+
 ```slice
 unchecked enum ErrorCode {
     NotFound
     NotAuthorized
 }
 ```
+
 {% /slice1 %}
 
 {% slice2 %}
+
 ```slice
 unchecked enum ErrorCode : varuint62 {
     NotFound
     NotAuthorized
 }
 ```
+
 {% /slice2 %}
 
 Since `ErrorCode` is marked unchecked, the generated code will successfully decode an integral value without a matching
@@ -162,20 +166,25 @@ A checked enumeration must have at least one enumerator, while an unchecked enum
 For example, the following enumeration is valid:
 
 {% slice1 %}
+
 ```slice
 // Range: 0 to int32 max
 unchecked enum MyPositiveInteger {}
 ```
+
 {% /slice1 %}
 
 {% slice2 %}
+
 ```slice
 // Same range as int16
 unchecked enum MyInt16 : int16 {}
 ```
+
 {% /slice2 %}
 
 {% slice2 %}
+
 ### Unchecked enum with fields
 
 When Slice decodes an enum with fields and receives an unknown enumerator, it returns a special enumerator that holds
@@ -211,6 +220,7 @@ public enum Fruit : int
     Orange = 2
 }
 ```
+
 {% /aside %}
 
 The underlying type of the mapped enumeration is always `int`.
@@ -218,7 +228,7 @@ The underlying type of the mapped enumeration is always `int`.
 
 {% slice2 %}
 
-### Enum with underlying type in C#
+### Enum with underlying type in C\#
 
 An enum with underlying type maps to a public C# enumeration with the same name, and each Slice enumerator maps to a
 C# enumerator with the same name. For example:
@@ -237,12 +247,13 @@ public enum Fruit : uint8
     Orange = 2
 }
 ```
+
 {% /aside %}
 
 The underlying type of the mapped enumeration is always the mapped type for the Slice underlying type. For example,
 a Slice `uint8` corresponds to a C# `byte`.
 
-### Enum with fields in C#
+### Enum with fields in C\#
 
 C# does not provide a native discriminated union type. This mapping relies on an emulation based on record classes
 [proposed a few years ago]. Briefly, a Slice enum with fields maps to a C# partial record class with the same name, and

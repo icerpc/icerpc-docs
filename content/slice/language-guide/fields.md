@@ -35,6 +35,7 @@ This special "not set" value corresponds to null in C#, `std::nullopt` in C++, n
 For example:
 
 {% slice1 %}
+
 ```slice
 mode = Slice1
 
@@ -53,6 +54,7 @@ Leaving tagged fields aside, only a few field types can be marked optional with 
 {% /slice1 %}
 
 {% slice2 %}
+
 ```slice
 struct Person {
     name: string
@@ -75,6 +77,7 @@ A field can have a tag before its name, which makes this field a "tagged field".
 followed by a tag number in parenthesis. For example:
 
 {% slice1 %}
+
 ```slice
 mode = Slice1
 
@@ -83,14 +86,17 @@ class Person {
     tag(1) favoriteFood: Food? // tagged field
 }
 ```
+
 {% /slice1 %}
 {% slice2 %}
+
 ```slice
 struct Person {
     name: string
     tag(1) favoriteFood: Food? // tagged field
 }
 ```
+
 {% /slice2 %}
 
 Tagged fields allow you to change your Slice definitions while maintaining on-the-wire compatibility with applications
@@ -117,8 +123,10 @@ class Contact {
     tag(1) name: string?
 }
 ```
+
 {% /slice1 %}
 {% slice2 %}
+
 ```slice
 struct Person {
     tag(1) name: string?
@@ -128,6 +136,7 @@ struct Contact {
     tag(1) name: string?
 }
 ```
+
 {% /slice2 %}
 
 ### Tag sorting
@@ -137,6 +146,7 @@ You don't need to sort tagged fields by tag number. For instance, the `Person` b
 list:
 
 {% slice1 %}
+
 ```slice
 class Person {
     tag(5) emailAddress: string?
@@ -144,8 +154,10 @@ class Person {
     tag(1) favoriteFood: Food?
 }
 ```
+
 {% /slice1 %}
 {% slice2 %}
+
 ```slice
 struct Person {
     tag(5) emailAddress: string?
@@ -153,6 +165,7 @@ struct Person {
     tag(1) favoriteFood: Food?
 }
 ```
+
 {% /slice2 %}
 
 ### Tag semantics
@@ -177,6 +190,6 @@ field is the mapped C# type for `Type`.
 
 Tagged fields are mapped just like regular fields. The tag and tag number don't appear in the mapped C# API.
 
-### Optional type in C#
+### Optional type in C\#
 
 Optional types are mapped to nullable C# types. For example, `int32?` is mapped to `int?` in C#.

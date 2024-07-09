@@ -9,6 +9,7 @@ In order to make an RPC, you construct an outgoing request and then pass this re
 method of an [invoker](invocation-pipeline#the-invoker-abstraction).
 
 An outgoing request carries all the information an invoker needs to send a request:
+
 - the [service address](service-address) of the target service
 - the name of the operation to call on this service
 - request [fields](#request-fields)

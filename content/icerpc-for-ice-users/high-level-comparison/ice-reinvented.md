@@ -14,6 +14,7 @@ Ice is a one-stop solution for building network applications. With Ice, you get 
 components to help you build portable, multi-language networked applications.
 
 Ice includes:
+
 - an RPC framework
 - IDL and serialization format (Slice)
 - configuration (Ice properties)
@@ -26,6 +27,7 @@ Ice includes:
 On the other hand, IceRPC has a single focus: RPCs (the name gave it away!). When building an application with IceRPC,
 you use IceRPC for your RPCs, and you need to look outside IceRPC for other functionalities. For example, you could
 select:
+
 - IceRPC for your RPCs
 - Slice or Protobuf to define your network APIs
 - YAML for configuration

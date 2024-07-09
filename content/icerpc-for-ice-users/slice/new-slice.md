@@ -16,6 +16,7 @@ applications.
 
 With Ice, the version of the Ice encoding to use when sending a request is a runtime decision. You can reconfigure a
 proxy to use the version of your choice. For example:
+
 ```csharp {% title="Setting the Ice encoding version with Ice for C#" %}
 helloPrx = helloPrx.ice_encodingVersion(Ice.Util.Encoding_1_0);
 ```
@@ -27,12 +28,14 @@ With the new Slice language, the encoding to use is decided at build-time, when 
 define an interface, the encoding for operation arguments and return values is specified unambiguously with the
 [mode statement](/slice1/language-guide/compilation-mode), and gets hard-coded in the generated code.
 
-#### Example
+### Example
 
 ```slice
 mode = Slice1
 ```
+
 or
+
 ```slice
 mode = Slice2
 ```
@@ -46,7 +49,7 @@ A Slice file that doesn't specify a compilation mode uses the default mode: Slic
 
 The compilation mode also determines which definitions are allowed in your Slice file.
 
-#### Slice1
+### Slice1
 
 This mode provides an equivalent syntax for all Slice definitions in the .ice syntax, including classes, exceptions,
 interfaces, and structs. The names are mostly the same: for example, a class in a `.ice` file corresponds to a
@@ -54,11 +57,12 @@ class in a `.slice` file, and a struct in a `.ice` file corresponds to a compact
 
 You should use this mode when (and only when) you need to send or receive requests to and from Ice applications.
 
-#### Slice2
+### Slice2
 
 This is the default mode and the preferred mode when you don't need interop with Ice applications.
 
 This mode allows you to mark any type as optional with the `?` suffix. For example:
+
 ```slice
 // Implicitly uses `mode = Slice2`
 
@@ -69,25 +73,28 @@ interface Translator {
 ```
 
 Slice2 also provides:
- - stream parameters
- - unsigned integer types such as uint32
- - variable-size integer types such as varint64
- - underlying types for enums
- - structs that can be augmented while maintaining on-the-wire compatibility
 
-However, Slice2 is not a superset of Slice1. The following constructs are only accepted in Slice1 mode:
- - classes, including AnyClass
- - exceptions
+- stream parameters
+- unsigned integer types such as uint32
+- variable-size integer types such as varint64
+- underlying types for enums
+- structs that can be augmented while maintaining on-the-wire compatibility
+
+However, Slice2 is not a superset of Slice1. The following constructs are only accepted in Slice1 mode
+
+- classes, including AnyClass
+- exceptions
 
 ## New constructs
 
 The .slice syntax adds a few constructs that are available with both Slice1 and Slice2 but have no equivalent with the
 .ice syntax, namely:
- - anonymous sequences and dictionaries\
-   You can now use `Sequence<string>` directly as a parameter or field type.
- - custom types\
-   A custom type is a type that you encode and decode yourself in all language mappings.
- - typealias\
-   A typealias is a new name for another type.
+
+- anonymous sequences and dictionaries\
+  You can now use `Sequence<string>` directly as a parameter or field type.
+- custom types\
+  A custom type is a type that you encode and decode yourself in all language mappings.
+- typealias\
+  A typealias is a new name for another type.
 
 [convert]:  converting-ice-into-slice
