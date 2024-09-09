@@ -52,7 +52,7 @@ class RearBumper : CarPart {
 }
 ```
 
-`RearBumper` has two fields: `id` (inherited from `CartPart`) and `color`.
+`RearBumper` has three fields: `id` and `revision` (inherited from `CartPart`) and `color`.
 
 A derived class cannot redefine a field of its base class: all the fields must have unique names.
 
@@ -256,12 +256,12 @@ The mapped class always provides a parameterless constructor and a primary const
 any field has an optional type, the mapped class also provides a secondary constructor with a parameter for each
 non-nullable C# field.
 
-Slice class inheritance maps the C# class inheritance as you would expect:
+Slice class inheritance maps to C# class inheritance as you would expect:
 
 {% aside alignment="top" %}
 
 ```slice
-class FrontBumper : CarPart {
+class RearBumper : CarPart {
     color: Color
 }
 ```

@@ -108,7 +108,7 @@ public partial class TranslationException :
 {% /aside %}
 
 The mapped C# class provides a parameterless constructor and a primary constructor with parameters for all its fields.
-It also provides a secondary constructor if any Slice field has an optional type.
+A class with nullable fields also provides a secondary constructor that sets only the non-nullable fields.
 
 Slice exception inheritance maps to C# class inheritance:
 
