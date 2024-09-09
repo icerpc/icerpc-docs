@@ -76,7 +76,8 @@ exception TranslationException {
 ```
 
 ```csharp
-public partial class TranslationException : SliceException
+public partial class TranslationException :
+    SliceException
 {
     public TranslationErrorCode ErrorCode { get; set; }
     public string? DetectedLanguage { get; set; }
@@ -158,34 +159,9 @@ public partial class DerivedException : BaseException
 
 {% /aside %}
 
-### ConvertToInternalError
-
-When the generated code decodes an exception from a payload, it sets the exception's
-[ConvertToInternalError][convert-to-internal-error] property to `true`.
-
-This way, when the implementation of an operation makes an invocation and this invocation throws an exception, by
-default, this exception is not re-sent as-is but gets converted into a response with status code
-[InternalError]. If you don't want this conversion, you need to catch the exception and set
-`ConvertToInternalError` to `false`:
-
-```csharp
-try
-{
-    ...make invocation...
-}
-catch (DispatchException exception)
-{
-    // Don't convert to internal error.
-    exception.ConvertToInternalError = false;
-    throw;
-}
-```
-
-[convert-to-internal-error]: csharp:IceRpc.DispatchException#IceRpc_DispatchException_ConvertToInternalError
 [exception-specification]: operation#exception-specification
 [sliced-format]: class-types#slicing
 
 [SliceException]: csharp:ZeroC.Slice.SliceException
-[InternalError]: csharp:IceRpc.StatusCode#IceRpc_StatusCode_InternalError
 
 {% /slice1 %}

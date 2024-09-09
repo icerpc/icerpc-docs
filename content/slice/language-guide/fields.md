@@ -58,11 +58,11 @@ Leaving tagged fields aside, only a few field types can be marked optional with 
 ```slice
 struct Person {
     name: string
-    dataOfBirth: WellKnownTypes::TimeStamp?
+    dateOfBirth: WellKnownTypes::TimeStamp?
 }
 ```
 
-The field `dataOfBirth` may have a value or a "not set" value (when the date of birth is unknown).
+The field `dateOfBirth` may have a value or a "not set" value (when the date of birth is unknown).
 {% /slice2 %}
 
 {% callout %}
