@@ -76,29 +76,38 @@ exception TranslationException {
 ```
 
 ```csharp
-public partial class TranslationException
-    : SliceException
+public partial class TranslationException : SliceException
 {
-    public TranslationErrorCode ErrorCode;
-    public string? DetectedLanguage;
+    public TranslationErrorCode ErrorCode { get; set; }
+    public string? DetectedLanguage { get; set; }
+
+    // Parameterless constructor
+    public TranslationException()
+    {
+    }
 
     // Primary constructor
     public TranslationException(
         TranslationErrorCode errorCode,
-        string? detectedLanguage,
-        string? message = null,
-        System.Exception? innerException = null)
-        : base(message, innerException)
+        string? detectedLanguage)
     {
-        ...
+        this.ErrorCode = errorCode;
+        this.DetectedLanguage = detectedLanguage;
+    }
+
+    // Secondary constructor
+    public TranslationException(
+        TranslationErrorCode errorCode)
+    {
+        this.ErrorCode = errorCode;
     }
 }
 ```
 
 {% /aside %}
 
-The mapped C# class provides a primary constructor with parameters for all its fields, plus an optional message and an
-optional inner exception (like most exceptions in C#).
+The mapped C# class provides a parameterless constructor and a primary constructor with parameters for all its fields.
+It also provides a secondary constructor if any Slice field has an optional type.
 
 Slice exception inheritance maps to C# class inheritance:
 
@@ -117,32 +126,32 @@ exception DerivedException : BaseException {
 ```csharp
 public partial class BaseException : SliceException
 {
-    public int ErrorCode;
+    public int ErrorCode { get; set; }
 
-    // Primary constructor
-    public BaseException(
-        int errorCode,
-        string? message = null,
-        System.Exception? innerException = null)
-        : base(message, innerException)
+    public BaseException()
     {
-        ...
+    }
+
+    public BaseException(int errorCode)
+    {
+        this.ErrorCode = errorCode;
     }
 }
 
 public partial class DerivedException : BaseException
 {
-    public double Measurement;
+    public double Measurement { get; set; }
 
-    // Primary constructor.
+    public DerivedException()
+    {
+    }
+
     public DerivedException(
         int errorCode,
-        double measurement,
-        string? message = null,
-        System.Exception? innerException = null)
-        : base(errorCode, message, innerException)
+        double measurement)
+        : base(errorCode)
     {
-        ...
+        this.Measurement = measurement;
     }
 }
 ```

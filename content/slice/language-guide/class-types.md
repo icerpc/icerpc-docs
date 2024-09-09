@@ -44,6 +44,7 @@ example:
 ```slice
 class CarPart {
     id: string
+    revision: int32
 }
 
 class RearBumper : CarPart {
@@ -210,6 +211,7 @@ For example:
 ```slice
 class CarPart {
     id: string
+    revision: int32
     tag(1) shippingWeight: float64?
 }
 ```
@@ -217,28 +219,42 @@ class CarPart {
 ```csharp
 public partial class CarPart : SliceClass
 {
-    public string Id;
-    public double? ShippingWeight;
+    public required string Id { get; set; }
+
+    public int Revision { get; set; }
+
+    public double? ShippingWeight { get; set; }
+
+    // Parameterless constructor
+    public CarPart()
+    {
+    }
 
     // Primary constructor
-    public CarPart(string id, double? shippingWeight)
+    public CarPart(
+        string id,
+        int revision,
+        double? shippingWeight)
     {
-       ...
+        this.Id = id;
+        this.Revision = revision;
+        this.ShippingWeight = shippingWeight;
     }
 
     // Secondary constructor
-    public CarPart(string id)
+    public CarPart(string id, int revision)
     {
-       ...
+        this.Id = id;
+        this.Revision = revision;
     }
-
 }
 ```
 
 {% /aside %}
 
-The mapped class has a primary constructor which sets all the fields. If any field has an optional type, the mapped
-class has a second constructor with a parameter for each non-nullable C# field.
+The mapped class always provides a parameterless constructor and a primary constructor which sets all the fields. If
+any field has an optional type, the mapped class also provides a secondary constructor with a parameter for each
+non-nullable C# field.
 
 Slice class inheritance maps the C# class inheritance as you would expect:
 
@@ -253,21 +269,32 @@ class FrontBumper : CarPart {
 ```csharp
 public partial class RearBumper : CarPart
 {
-    public Color Color;
+    public Color Color { get; set; }
+
+    // Parameterless constructor
+    public RearBumper()
+    {
+    }
 
     // Primary constructor
     public RearBumper(
         string id,
+        int revision,
         double? shippingWeight,
         Color color)
+        : base(id, revision, shippingWeight)
     {
-        ...
+        this.Color = color;
     }
 
     // Secondary constructor
-    public RearBumper(string id, Color color)
+    public RearBumper(
+        string id,
+        int revision,
+        Color color)
+        : base(id, revision)
     {
-        ...
+       this.Color = color;
     }
 }
 ```
