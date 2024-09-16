@@ -111,7 +111,7 @@ public partial interface IGreeterService
 {% card
    title="Examples"
    description="See examples of the IceRPC + Protobuf integration for C#."
-   href="https://github.com/icerpc/icerpc-csharp/tree/0.3.x/examples/protobuf" /%}
+   href="https://github.com/icerpc/icerpc-csharp/tree/0.4.x/examples/protobuf" /%}
 
 {% /grid %}
 
