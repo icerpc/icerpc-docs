@@ -82,12 +82,12 @@ compact struct PostalAddress {
 ```csharp
 public partial record struct PostalAddress
 {
-    public string RecipientFullName;
-    public string StreetAddress1;
-    public string StreetAddress2;
-    public string City;
-    public StateAbbreviation State;
-    public string Zip;
+    public required string RecipientFullName { get; set; }
+    public required string StreetAddress1 { get; set; }
+    public required string StreetAddress2 { get; set; }
+    public required string City { get; set; }
+    public StateAbbreviation State { get; set; }
+    public required string Zip { get; set; }
 
     // Primary constructor.
     public PostalAddress(
@@ -98,7 +98,12 @@ public partial record struct PostalAddress
         StateAbbreviation state,
         string zip)
     {
-        ...
+        this.RecipientFullName = recipientFullName;
+        this.StreetAddress1 = streetAddress1;
+        this.StreetAddress2 = streetAddress2;
+        this.City = city;
+        this.State = state;
+        this.Zip = zip;
     }
 
     // Decoding constructor.
@@ -137,13 +142,13 @@ struct PostalAddress {
 ```csharp
 public partial record struct PostalAddress
 {
-    public string RecipientFullName;
-    public string StreetAddress1;
-    public string? StreetAddress2;
-    public string? StreetAddress3; // tagged
-    public string City;
-    public StateAbbreviation State;
-    public string Zip;
+    public required string RecipientFullName { get; set; }
+    public required string StreetAddress1 { get; set; }
+    public string? StreetAddress2 { get; set; }
+    public string? StreetAddress3 { get; set; }
+    public required string City { get; set; }
+    public StateAbbreviation State { get; set; }
+    public required string Zip { get; set; }
 
     // Primary constructor.
     public PostalAddress(
@@ -155,7 +160,13 @@ public partial record struct PostalAddress
         StateAbbreviation state,
         string zip)
     {
-        ...
+        this.RecipientFullName = recipientFullName;
+        this.StreetAddress1 = streetAddress1;
+        this.StreetAddress2 = streetAddress2;
+        this.StreetAddress3 = streetAddress3;
+        this.City = city;
+        this.State = state;
+        this.Zip = zip;
     }
 
     // Decoding constructor.
@@ -195,9 +206,8 @@ compact struct Point { x: int32, y: int32 }
 ```csharp
 public readonly partial record struct Point
 {
-    public readonly int X;
-
-    public readonly int Y;
+    public int X { get; init; }
+    public int Y { get; init; }
 
     ...
 }
@@ -205,7 +215,7 @@ public readonly partial record struct Point
 
 {% /aside %}
 
-You can also apply `cs::readonly` to a struct field to map this field to a read-only C# field.
+You can also apply `cs::readonly` to a struct field to map this field to a get-init property.
 
 [tagged-fields]: fields#tagged-fields
 

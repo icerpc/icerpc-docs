@@ -30,7 +30,7 @@ and `Dictionary<int32, string>` are constructed types.
 When you define a field, you can specify whether this field must hold a value of its type, or if holding a special "not
 set" value is also acceptable. In this latter situation, you would give the field an optional type, with a `?` suffix.
 
-This special "not set" value corresponds to null in C#, `std::nullopt` in C++, nil in Swift, etc.
+This special "not set" value corresponds to `null` in C#, `std::nullopt` in C++, `nil` in Swift, etc.
 
 For example:
 
@@ -58,11 +58,11 @@ Leaving tagged fields aside, only a few field types can be marked optional with 
 ```slice
 struct Person {
     name: string
-    dataOfBirth: WellKnownTypes::TimeStamp?
+    dateOfBirth: WellKnownTypes::TimeStamp?
 }
 ```
 
-The field `dataOfBirth` may have a value or a "not set" value (when the date of birth is unknown).
+The field `dateOfBirth` may have a value or a "not set" value (when the date of birth is unknown).
 {% /slice2 %}
 
 {% callout %}
@@ -185,8 +185,12 @@ applications that expect tag 7 fields (in this tag number scope) to be encoded a
 
 ## C# mapping
 
-A field `name: Type` is mapped to a C# field with the same name, with name converted to Pascal case. The type of the C#
-field is the mapped C# type for `Type`.
+A field `name: Type` is mapped to a C# property with the same name, with name converted to Pascal case. The type of the
+C# property is the mapped C# type for `Type`.
+
+When a Slice field type maps to a non-nullable C# reference type (for example, a C# string), the mapped property is
+"required". This ensures you provide a value for this property during construction or initialization of the enclosing
+type.
 
 Tagged fields are mapped just like regular fields. The tag and tag number don't appear in the mapped C# API.
 
