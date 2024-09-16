@@ -66,7 +66,7 @@ title: A typical invocation pipeline
 ---
 flowchart LR
     app([application code]) -- request --> i1["interceptor #1"] -- request --> i2["interceptor #2"]
-    i2 -- request --> ti["ClientConnection\n or ConnectionCache"] -- request --> connection
+    i2 -- request --> ti["ClientConnection<br> or ConnectionCache"] -- request --> connection
     connection -- response --> ti -- response --> i2 -- response --> i1 -- response --> app
 ```
 

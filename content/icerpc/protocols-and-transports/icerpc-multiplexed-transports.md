@@ -52,16 +52,16 @@ flowchart LR
     subgraph Server [icerpc server connection]
     end
     subgraph stream0 [stream]
-        s0["> request >\n < response <"]
+        s0["> request ><br> < response <"]
     end
     subgraph stream1 [stream]
-        s1["< request <\n > response >"]
+        s1["< request <<br> > response >"]
     end
     subgraph stream2 [stream]
         s2["> one-way request >"]
     end
     subgraph stream3 [stream]
-        s3["> request >\n < response <"]
+        s3["> request ><br> < response <"]
     end
     subgraph stream4 [stream]
         s4["< one-way request <"]
