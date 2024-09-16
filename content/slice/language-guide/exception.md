@@ -76,29 +76,40 @@ exception TranslationException {
 ```
 
 ```csharp
-public partial class TranslationException
-    : SliceException
+public partial class TranslationException :
+    SliceException
 {
-    public TranslationErrorCode ErrorCode;
-    public string? DetectedLanguage;
+    public TranslationErrorCode ErrorCode { get; set; }
+    public string? DetectedLanguage { get; set; }
+
+    // Parameterless constructor
+    public TranslationException()
+    {
+    }
 
     // Primary constructor
     public TranslationException(
         TranslationErrorCode errorCode,
-        string? detectedLanguage,
-        string? message = null,
-        System.Exception? innerException = null)
-        : base(message, innerException)
+        string? detectedLanguage)
     {
-        ...
+        this.ErrorCode = errorCode;
+        this.DetectedLanguage = detectedLanguage;
+    }
+
+    // Secondary constructor
+    public TranslationException(
+        TranslationErrorCode errorCode)
+    {
+        this.ErrorCode = errorCode;
     }
 }
 ```
 
 {% /aside %}
 
-The mapped C# class provides a primary constructor with parameters for all its fields, plus an optional message and an
-optional inner exception (like most exceptions in C#).
+The mapped C# class provides a parameterless constructor and a primary constructor which sets all the fields. If any
+field has an optional type, the mapped class also provides a secondary constructor with a parameter for each
+non-nullable C# field.
 
 Slice exception inheritance maps to C# class inheritance:
 
@@ -117,66 +128,41 @@ exception DerivedException : BaseException {
 ```csharp
 public partial class BaseException : SliceException
 {
-    public int ErrorCode;
+    public int ErrorCode { get; set; }
 
-    // Primary constructor
-    public BaseException(
-        int errorCode,
-        string? message = null,
-        System.Exception? innerException = null)
-        : base(message, innerException)
+    public BaseException()
     {
-        ...
+    }
+
+    public BaseException(int errorCode)
+    {
+        this.ErrorCode = errorCode;
     }
 }
 
 public partial class DerivedException : BaseException
 {
-    public double Measurement;
+    public double Measurement { get; set; }
 
-    // Primary constructor.
+    public DerivedException()
+    {
+    }
+
     public DerivedException(
         int errorCode,
-        double measurement,
-        string? message = null,
-        System.Exception? innerException = null)
-        : base(errorCode, message, innerException)
+        double measurement)
+        : base(errorCode)
     {
-        ...
+        this.Measurement = measurement;
     }
 }
 ```
 
 {% /aside %}
 
-### ConvertToInternalError
-
-When the generated code decodes an exception from a payload, it sets the exception's
-[ConvertToInternalError][convert-to-internal-error] property to `true`.
-
-This way, when the implementation of an operation makes an invocation and this invocation throws an exception, by
-default, this exception is not re-sent as-is but gets converted into a response with status code
-[InternalError]. If you don't want this conversion, you need to catch the exception and set
-`ConvertToInternalError` to `false`:
-
-```csharp
-try
-{
-    ...make invocation...
-}
-catch (DispatchException exception)
-{
-    // Don't convert to internal error.
-    exception.ConvertToInternalError = false;
-    throw;
-}
-```
-
-[convert-to-internal-error]: csharp:IceRpc.DispatchException#IceRpc_DispatchException_ConvertToInternalError
 [exception-specification]: operation#exception-specification
 [sliced-format]: class-types#slicing
 
 [SliceException]: csharp:ZeroC.Slice.SliceException
-[InternalError]: csharp:IceRpc.StatusCode#IceRpc_StatusCode_InternalError
 
 {% /slice1 %}
