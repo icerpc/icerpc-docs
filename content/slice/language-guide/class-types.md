@@ -252,8 +252,8 @@ public partial class CarPart : SliceClass
 
 {% /aside %}
 
-The mapped class always provides a parameterless constructor and a primary constructor which sets all the fields. If
-any field has an optional type, the mapped class also provides a secondary constructor with a parameter for each
+The mapped C# class provides a parameterless constructor and a primary constructor which sets all the fields. If any
+field has an optional type, the mapped class also provides a secondary constructor with a parameter for each
 non-nullable C# field.
 
 Slice class inheritance maps to C# class inheritance as you would expect:
