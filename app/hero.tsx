@@ -44,7 +44,7 @@ export const Hero = () => {
             </span>
             <a
               className="w-full min-w-[130px] rounded-lg border border-gray-500 bg-white px-3 py-[10px] text-center  font-medium text-gray-500  hover:bg-gray-100 dark:border-darkBorder dark:bg-[#232429] dark:text-[rgba(255,255,255,0.6)]"
-              href="https://github.com/icerpc/icerpc-csharp/tree/0.3.x/examples"
+              href="https://github.com/icerpc/icerpc-csharp/tree/0.4.x/examples"
             >
               View examples
             </a>
