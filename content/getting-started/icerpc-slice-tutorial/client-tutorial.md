@@ -53,11 +53,35 @@ The main program starts by creating a connection to the server:
 using ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
     builder
         .AddSimpleConsole()
-        .AddFilter("IceRpc", LogLevel.Debug));
+        .AddFilter("IceRpc", LogLevel.Information));
+
+// Path to the root CA certificate.
+using var rootCA = X509CertificateLoader.LoadCertificateFromFile("certs/cacert.der");
+
+// Create Client authentication options with custom certificate validation.
+var clientAuthenticationOptions = new SslClientAuthenticationOptions
+{
+    RemoteCertificateValidationCallback = (sender, certificate, chain, errors) =>
+    {
+        if (certificate is X509Certificate2 peerCertificate)
+        {
+            using var customChain = new X509Chain();
+            customChain.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
+            customChain.ChainPolicy.DisableCertificateDownloads = true;
+            customChain.ChainPolicy.TrustMode = X509ChainTrustMode.CustomRootTrust;
+            customChain.ChainPolicy.CustomTrustStore.Add(rootCA);
+            return customChain.Build(peerCertificate);
+        }
+        else
+        {
+            return false;
+        }
+    }
+};
 
 await using var connection = new ClientConnection(
     new Uri("icerpc://localhost"),
-    clientAuthenticationOptions: null,
+    clientAuthenticationOptions,
     logger: loggerFactory.CreateLogger<ClientConnection>());
 ```
 
@@ -67,8 +91,8 @@ This connection naturally matches our server configuration:
   `icerpc` protocol to `localhost` on the default port for `icerpc` (4062)
 - we don't specify a transport so we use the default multiplexed transport
   (`tcp`)
-- the null `clientAuthenticationOptions` means we'll establish a plain
-  non-secure TCP connection
+- Setting the `clientAuthenticationOptions` means we'll establish a secure
+  SSL connection
 
 {% callout %}
 
@@ -154,12 +178,7 @@ cd MySliceServer
 dotnet run
 ```
 
-The server is now listening for new connections from clients:
-
-```
-dbug: IceRpc.Server[11]
-      Listener 'icerpc://[::0]?transport=tcp' has started accepting connections
-```
+The server is now listening for new connections from clients.
 
 ### Start the client
 
@@ -171,26 +190,14 @@ dotnet run
 The client sends a single `greet` request to the service hosted by our server:
 
 ```
-dbug: IceRpc.ClientConnection[3]
-      Client connection from '[::1]:61582' to '[::1]:4062' connected
 info: IceRpc.Logger.LoggerInterceptor[0]
-      Sent request greet to icerpc:/VisitorCenter.Greeter over
-      [::1]:61582<->[::1]:4062 and received a response with status code Ok
-Hello, Reece!
-dbug: IceRpc.ClientConnection[6]
-      Client connection from '[::1]:61582' to '[::1]:4062' shutdown
-dbug: IceRpc.ClientConnection[5]
-      Client connection from '[::1]:61582' to '[::1]:4062' disposed
+      Sent request greet to icerpc:/VisitorCenter.Greeter over [::1]:59522<->[::1]:4062 and received a response with status code Ok
+Hello, jose!
 ```
 
 ### Shutdown the server
 
 Press Ctrl+C on the server console to shut it down.
-
-```
-dbug: IceRpc.Server[12]
-      Listener 'icerpc://[::0]?transport=tcp' has stopped accepting connections
-```
 
 {% /step %}
 

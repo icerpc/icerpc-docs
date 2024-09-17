@@ -124,7 +124,7 @@ The main program starts by creating and configuring a [Router]:
 using ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
     builder
         .AddSimpleConsole()
-        .AddFilter("IceRpc", LogLevel.Debug));
+        .AddFilter("IceRpc", LogLevel.Information));
 
 Router router = new Router()
     .UseLogger(loggerFactory)
@@ -151,9 +151,20 @@ The main program then creates a [Server] that directs all incoming requests to
 `router`:
 
 ```csharp
+
+var sslServerAuthenticationOptions = new SslServerAuthenticationOptions
+{
+    ServerCertificateContext = SslStreamCertificateContext.Create(
+        X509CertificateLoader.LoadPkcs12FromFile(
+            "certs/server.p12",
+            password: null,
+            keyStorageFlags: X509KeyStorageFlags.Exportable),
+        additionalCertificates: null)
+};
+
 await using var server = new Server(
     dispatcher: router,
-    serverAuthenticationOptions: null,
+    serverAuthenticationOptions,
     logger: loggerFactory.CreateLogger<Server>());
 ```
 
@@ -163,8 +174,8 @@ will listen for connections on all network interfaces with the default port for
 `icerpc` (4062).
 
 We don't specify a transport either so we use the default multiplexed transport
-(`tcp`). The null `serverAuthenticationOptions` means this server will accept
-plain TCP connections—it's a simple, non-secure server.
+(`tcp`). Setting the `serverAuthenticationOptions` means this server will only accept
+secure SSL connections.
 
 At this point, the server is created but is not doing anything yet. A client
 attempting to connect would get a "connection refused" error.
@@ -212,21 +223,11 @@ cd MyProtobufServer
 dotnet run
 ```
 
-The server is now listening for new connections from clients:
-
-```
-dbug: IceRpc.Server[11]
-      Listener 'icerpc://[::0]?transport=tcp' has started accepting connections
-```
+The server is now listening for new connections from clients.
 
 ### Shutdown the server
 
 Press Ctrl+C on the server console to shut it down.
-
-```
-dbug: IceRpc.Server[12]
-      Listener 'icerpc://[::0]?transport=tcp' has stopped accepting connections
-```
 
 {% /step %}
 
