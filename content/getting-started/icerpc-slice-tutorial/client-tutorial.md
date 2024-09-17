@@ -53,7 +53,7 @@ The main program starts by creating a connection to the server:
 using ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
     builder
         .AddSimpleConsole()
-        .AddFilter("IceRpc", LogLevel.Debug));
+        .AddFilter("IceRpc", LogLevel.Information));
 
 // Path to the root CA certificate.
 using var rootCA = X509CertificateLoader.LoadCertificateFromFile("certs/cacert.der");

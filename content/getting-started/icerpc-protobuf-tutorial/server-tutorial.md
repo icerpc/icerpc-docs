@@ -124,7 +124,7 @@ The main program starts by creating and configuring a [Router]:
 using ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
     builder
         .AddSimpleConsole()
-        .AddFilter("IceRpc", LogLevel.Debug));
+        .AddFilter("IceRpc", LogLevel.Information));
 
 Router router = new Router()
     .UseLogger(loggerFactory)

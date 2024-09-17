@@ -61,12 +61,7 @@ cd MyServer
 dotnet run
 ```
 
-The server is now listening for new connections from clients:
-
-```
-dbug: IceRpc.Server[11]
-      Listener 'icerpc://[::0]?transport=tcp' has started accepting connections
-```
+The server is now listening for new connections from clients.
 
 ### Start the client
 
@@ -80,16 +75,9 @@ dotnet run
 The client sends a single `greet` request to the service hosted by our server:
 
 ```
-dbug: IceRpc.ClientConnection[3]
-      Client connection from '[::1]:61582' to '[::1]:4062' connected
 info: IceRpc.Logger.LoggerInterceptor[0]
-      Sent request greet to icerpc:/VisitorCenter.Greeter over
-      [::1]:61582<->[::1]:4062 and received a response with status code Ok
-Hello, Reece!
-dbug: IceRpc.ClientConnection[6]
-      Client connection from '[::1]:61582' to '[::1]:4062' shutdown
-dbug: IceRpc.ClientConnection[5]
-      Client connection from '[::1]:61582' to '[::1]:4062' disposed
+      Sent request greet to icerpc:/VisitorCenter.Greeter over [::1]:59739<->[::1]:4062 and received a response with status code Ok
+Hello, jose!
 ```
 
 {% /step %}
