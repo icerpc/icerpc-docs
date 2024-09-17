@@ -10,12 +10,12 @@ export const Examples = () => {
       <ExampleCard
         title="IceRPC + Slice"
         description="Example applications that use both IceRPC and Slice."
-        href="https://github.com/icerpc/icerpc-csharp/tree/0.3.x/examples/slice/"
+        href="https://github.com/icerpc/icerpc-csharp/tree/0.4.x/examples/slice/"
       />
       <ExampleCard
         title="IceRPC + Protobuf"
         description="Example applications that use both IceRPC and Protobuf."
-        href="https://github.com/icerpc/icerpc-csharp/tree/0.3.x/examples/protobuf"
+        href="https://github.com/icerpc/icerpc-csharp/tree/0.4.x/examples/protobuf"
       />
     </div>
   );
