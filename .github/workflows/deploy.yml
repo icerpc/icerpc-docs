@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  build-push-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     permissions:
@@ -39,6 +39,7 @@ jobs:
           script_stop: true
           script: |
             cd services
+            echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             docker compose pull icerpc-docs
             docker compose up -d icerpc-docs
 
