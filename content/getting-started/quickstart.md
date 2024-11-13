@@ -5,7 +5,7 @@ description: Create a new IceRPC application from scratch with a few simple comm
 
 This quickstart shows how to build and run a complete client-server application with IceRPC in just a few minutes.
 
-Prerequisites: you just need to have the .NET 8 SDK installed on your computer.
+Prerequisites: you just need to have the .NET 8 SDK or .NET 9 SDK installed on your computer.
 
 The networked application we are building together consists of:
 
