@@ -23,7 +23,7 @@ type PageProps = {
 export async function generateMetadata({
   params
 }: PageProps): Promise<Metadata> {
-  const path = '/' + params.slug.join('/') ?? '';
+  const path = '/' + (params.slug.join('/') ?? '');
   const { frontmatter } = await getMarkdownContent(path);
   const title: string = frontmatter?.title ?? '';
   const description: string = frontmatter?.description ?? '';
@@ -91,7 +91,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: PageProps) {
-  const path = '/' + params.slug.join('/') ?? '';
+  const path = '/' + (params.slug.join('/') ?? '');
   const { content } = await getMarkdownContent(path);
 
   if (path.match(/^\/slice(?=#|\/|$)/)) {
