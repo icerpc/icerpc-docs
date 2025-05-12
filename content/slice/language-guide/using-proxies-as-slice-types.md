@@ -5,8 +5,8 @@ description: Learn how to a create custom type to represent your proxy in Slice.
 
 ## Transmitting a proxy as a service address {% icerpcSlice=true %}
 
-A proxy is a Slice language-mapping construct that allows you to call operations on a remote service using IceRPC. A
-proxy is not a construct or type in the Slice language itself.
+A proxy is a construct that allows you to call operations on a remote service using IceRPC. While proxies can be used
+to call operations defined in Slice, they are not a construct or type in the Slice language itself.
 
 In each programming language, a proxy encapsulates an [invocation pipeline] and a [service address].
 
