@@ -119,7 +119,7 @@ address.
 
 {% /slice2 %}
 
-[base proxy]: csharp:IceRpc.Slice.ISliceFeature.BaseProxy
+[base proxy]: csharp:IceRpc.Slice.ISliceFeature#IceRpc_Slice_ISliceFeature_BaseProxy
 [Custom types]: custom-types
 [incoming request features]: /icerpc/dispatch/incoming-request#request-features
 [invocation pipeline]: /icerpc/invocation/invocation-pipeline
