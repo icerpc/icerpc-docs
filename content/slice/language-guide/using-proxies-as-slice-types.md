@@ -1,5 +1,5 @@
 ---
-title: Using proxies as Slice types.
+title: Using proxies as Slice types
 description: Learn how to a create custom type to represent your proxy in Slice.
 ---
 
