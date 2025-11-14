@@ -19,18 +19,19 @@ other way—from the endpoint that accepted the stream to the endpoint that crea
 title: RPC mapped to a multiplexed stream
 ---
 flowchart LR
-    subgraph Server
-    inbound0["accept stream #0"]
-    inbound4["accept stream #4"]
-    outbound1["create stream #1"]
-    inbound6["accept stream #6"]
-    end
     subgraph Client
     outbound0["create stream #0"]
     outbound4["create stream #4"]
     inbound1["accept stream #1"]
     outbound6["create stream #6"]
     end
+    subgraph Server
+    inbound0["accept stream #0"]
+    inbound4["accept stream #4"]
+    outbound1["create stream #1"]
+    inbound6["accept stream #6"]
+    end
+
     outbound0 -- request --> inbound0
     inbound0 -- response --> outbound0
 
