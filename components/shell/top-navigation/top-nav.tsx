@@ -74,7 +74,7 @@ const Logo = () => (
         priority={true}
       />
       <div className="ml-1 pt-[8px] text-xl font-bold text-black dark:text-white">
-        Docs
+        IceRPC
       </div>
     </div>
   </Link>
