@@ -41,7 +41,7 @@ following template options:
 ```
 
 For example, you can create a new project named `MyProtobufClient` for an IceRPC + Protobuf client application that
-targets the .NET 9.0 framework and uses the QUIC transport with the following command:
+uses the QUIC transport with the following command:
 
 ```shell {% showTitle=false %}
 dotnet new icerpc-protobuf-client -o MyProtobufClient --transport quic
