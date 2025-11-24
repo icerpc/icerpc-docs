@@ -30,11 +30,6 @@ You use the IceRPC templates with the standard `dotnet new <template>` command. 
 following template options:
 
 ```
--F, --Framework <net8.0|net9.0>  The target framework for the project.
-                                 Type: choice
-                                   net8.0  Target net8.0
-                                   net9.0  Target net9.0
-                                 Default: net8.0
 --no-restore                     If specified, skips the automatic restore of the project on create.
                                  Type: bool
                                  Default: false
@@ -46,10 +41,10 @@ following template options:
 ```
 
 For example, you can create a new project named `MyProtobufClient` for an IceRPC + Protobuf client application that
-targets the .NET 9.0 framework and uses the QUIC transport with the following command:
+uses the QUIC transport with the following command:
 
 ```shell {% showTitle=false %}
-dotnet new icerpc-protobuf-client -o MyProtobufClient -F net9.0 --transport quic
+dotnet new icerpc-protobuf-client -o MyProtobufClient --transport quic
 ```
 
 [dotnet new]: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-new
