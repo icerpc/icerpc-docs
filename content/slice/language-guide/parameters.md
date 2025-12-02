@@ -151,6 +151,6 @@ blocked or slow read operation on the underlying byte stream. {% /slice2 %}
 [PipeReader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
 [Complete]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader.complete
 [CompleteAsync]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader.completeasync
-[Stream example]: https://github.com/icerpc/icerpc-csharp/tree/0.4.x/examples/slice/Stream
+[Stream example]: https://github.com/icerpc/icerpc-csharp/tree/0.5.x/examples/slice/Stream
 [WithCancellation]: https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskasyncenumerableextensions.withcancellation
 [`IAsyncEnumerable<T>`]: https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iasyncenumerable-1

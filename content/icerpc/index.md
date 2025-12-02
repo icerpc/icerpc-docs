@@ -146,15 +146,15 @@ integration will soon bring the same level of convenience to Protobuf.
 {% card
    title="Slice examples"
    description="Using IceRPC with Slice"
-   href="https://github.com/icerpc/icerpc-csharp/tree/0.4.x/examples/slice/" /%}
+   href="https://github.com/icerpc/icerpc-csharp/tree/0.5.x/examples/slice/" /%}
 {% card
    title="Protobuf examples"
    description="Using IceRPC with Protobuf."
-   href="https://github.com/icerpc/icerpc-csharp/tree/0.4.x/examples/protobuf/" /%}
+   href="https://github.com/icerpc/icerpc-csharp/tree/0.5.x/examples/protobuf/" /%}
 {% card
    title="JSON examples"
    description="Using the core IceRPC API together with JSON."
-   href="https://github.com/icerpc/icerpc-csharp/tree/0.4.x/examples/json/" /%}
+   href="https://github.com/icerpc/icerpc-csharp/tree/0.5.x/examples/json/" /%}
 
 {% /grid %}
 
