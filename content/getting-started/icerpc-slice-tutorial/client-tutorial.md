@@ -4,7 +4,7 @@ title: Writing your first IceRPC + Slice client in C#
 
 This tutorial is the second part of a two part series that shows how to create a
 complete application with IceRPC for C#. We start from scratch—you just need to
-have the .NET 8 or 9 SDK installed on your computer.
+have the .NET 10 SDK installed on your computer.
 
 The first part of this tutorial showed how to [create the server]. This part shows how to
 create the client.
