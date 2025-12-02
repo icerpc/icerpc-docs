@@ -69,7 +69,7 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
     },
     {
       name: 'API Reference',
-      href: `${process.env.NEXT_PUBLIC_API_HOST}/api/csharp/index.html`
+      href: `${process.env.NEXT_PUBLIC_API_HOST}/csharp/0.5.x/api/index.html`
     }
   ];
 
