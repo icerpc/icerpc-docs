@@ -1,20 +1,108 @@
 /* Copyright (c) ZeroC, Inc. */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-:root {
-  --link-color: rgba(75, 85, 99, 1);
-  --highlighted-link-color: black;
-  --text-color: rgba(75, 85, 99, 1);
-  --text-color-secondary: #3d4356;
-  --docsearch-searchbox-height: 48px !important;
-  --docsearch-primary-color: #43a0f7 !important;
+@plugin 'tailwindcss-animate';
+@plugin '@tailwindcss/typography';
+@plugin 'flowbite/plugin';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
 }
 
+@theme {
+  --color-primary: rgb(var(--primary-color));
+  --color-light-border: #dce6e9;
+  --color-dark: rgb(26, 28, 33);
+  --color-dark-accent: rgb(35, 36, 41);
+  --color-dark-border: rgb(46, 46, 46);
+
+  --breakpoint-5xl: 64rem;
+
+  --background-image-dark-pattern: linear-gradient(
+    to right,
+    #000 0%,
+    #000 10%,
+    #010409 50%,
+    rgb(14, 17, 22) 75%,
+    rgb(14, 17, 22) 100%
+  );
+  --background-image-og-image: url('/images/og.png');
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-fade-in-up: fade-in-up 0.5s ease-out;
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@layer utilities {
+  :root {
+    --link-color: rgba(75, 85, 99, 1);
+    --highlighted-link-color: black;
+    --text-color: rgba(75, 85, 99, 1);
+    --text-color-secondary: #3d4356;
+    --docsearch-searchbox-height: 48px !important;
+    --docsearch-primary-color: #43a0f7 !important;
+  }
+}
 
 @layer base {
+  /*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+  */
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
   :root {
     --primary-color: 67 160 247;
@@ -24,9 +112,60 @@
     --primary-color: 67 160 247;
   }
 
+  html {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .DocSearch-Input:focus {
+    /* Disable the docsearch input ring */
+    outline: none !important;
+    appearance: none !important;
+    box-shadow: var(--tw-ring-inset) 0 0 0
+      calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  }
+
+  body {
+    font-family:
+      Inter,
+      system-ui,
+      -apple-system,
+      Inter,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      'Noto Sans',
+      sans-serif,
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol',
+      'Noto Color Emoji';
+    color: rgba(60, 66, 87, 1);
+  }
+
+  h1 {
+    font-size: 52px;
+    color: #333333;
+    font-style: bold;
+    margin-top: 0;
+  }
+
+  h3 {
+    margin: 1.5em 0;
+    color: #000000;
+    font-weight: bold;
+    font-size: large;
+  }
+
+  a {
+    color: rgba(75, 85, 99, 1);
+  }
+
   main article {
-    @apply prose max-w-none dark:prose-invert prose-a:no-underline prose-code:font-light
-    prose-code:text-[var(--tw-prose-body)] prose-code:before:hidden prose-code:after:hidden;
+    @apply prose dark:prose-invert prose-a:no-underline prose-code:font-light prose-code:text-(--tw-prose-body) prose-code:before:hidden prose-code:after:hidden max-w-none;
   }
 
   main article li {
@@ -38,7 +177,7 @@
   }
 
   main article .callout a {
-    @apply font-semibold !underline;
+    @apply underline! font-semibold;
   }
 
   li {
@@ -46,7 +185,7 @@
   }
 
   body {
-    @apply bg-white dark:bg-dark;
+    @apply dark:bg-dark bg-white;
   }
 
   h2 {
@@ -58,70 +197,12 @@
   }
 
   code {
-    @apply break-all rounded border-[1px] bg-slate-100 px-[4px] py-[2px] font-mono shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] dark:border-darkBorder dark:bg-transparent dark:text-white md:break-normal;
+    @apply dark:border-dark-border break-all rounded-sm border bg-slate-100 px-1 py-0.5 font-mono shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] md:break-normal dark:bg-transparent dark:text-white;
   }
 
   a code {
-    @apply rounded border-[1px] bg-slate-100 px-[4px] py-[2px] font-mono font-medium text-primary shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] hover:text-[rgb(64,131,193)] dark:border-darkBorder dark:bg-transparent dark:text-primary dark:hover:text-[rgb(64,131,193)];
+    @apply text-primary dark:border-dark-border dark:text-primary rounded-sm border bg-slate-100 px-1 py-0.5 font-mono font-medium shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] hover:text-[rgb(64,131,193)] dark:bg-transparent dark:hover:text-[rgb(64,131,193)];
   }
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.DocSearch-Input:focus {
-  /* Diable the docsearch input ring */
-  outline: none !important;
-  appearance: none !important;
-  box-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width))
-    var(--tw-ring-color);
-}
-
-body {
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    Inter,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    'Noto Sans',
-    sans-serif,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    'Noto Color Emoji';
-  color: rgba(60, 66, 87, 1);
-}
-
-h1 {
-  font-size: 52px;
-  color: #333333;
-  font-style: bold;
-  margin-top: 0;
-}
-
-h3 {
-  margin: 1.5em 0;
-  color: #000000;
-  font-weight: bold;
-  font-size: large;
-}
-
-a {
-  color: rgba(75, 85, 99, 1);
 }
 
 [data-testid='flowbite-tooltip-arrow'] {

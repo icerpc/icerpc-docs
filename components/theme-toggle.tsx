@@ -26,20 +26,20 @@ export function ThemeToggle() {
         <Button
           variant="outline"
           size="icon"
-          className="border-none hover:bg-zinc-100 focus-visible:border-0 focus-visible:!outline-none focus-visible:ring-transparent dark:!outline-none dark:hover:bg-darkAccent dark:focus-visible:!border-0 dark:focus-visible:!ring-0"
+          className="dark:hover:bg-dark-accent border-none hover:bg-zinc-100 focus-visible:border-0 focus-visible:ring-transparent focus-visible:outline-hidden! dark:outline-hidden! dark:focus-visible:border-0! dark:focus-visible:ring-0!"
         >
-          <Sun className="size-[1.2rem] rotate-0 scale-100 ring-0 ring-offset-0 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute size-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 dark:text-white" />
+          <Sun className="size-[1.2rem] scale-100 rotate-0 ring-0 ring-offset-0 transition-all dark:scale-0 dark:-rotate-90" />
+          <Moon className="absolute size-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0 dark:text-white" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="!border-lightBorder !bg-white dark:!border-darkBorder dark:!bg-dark dark:!text-white"
+        className="border-light-border! dark:border-dark-border! dark:bg-dark! bg-white! dark:text-white!"
         align="end"
       >
         <DropdownMenuItem
           className={clsx(
-            'hover:bg-zinc-100 dark:hover:bg-darkAccent',
+            'dark:hover:bg-dark-accent hover:bg-zinc-100',
             currentTheme == Theme.Light && 'font-bold'
           )}
           onClick={() => setTheme('light')}
@@ -48,7 +48,7 @@ export function ThemeToggle() {
         </DropdownMenuItem>
         <DropdownMenuItem
           className={clsx(
-            'hover:bg-zinc-100 dark:hover:bg-darkAccent',
+            'dark:hover:bg-dark-accent hover:bg-zinc-100',
             currentTheme == Theme.Dark && 'font-bold'
           )}
           onClick={() => setTheme('dark')}
@@ -57,7 +57,7 @@ export function ThemeToggle() {
         </DropdownMenuItem>
         <DropdownMenuItem
           className={clsx(
-            'hover:bg-zinc-100 dark:hover:bg-darkAccent',
+            'dark:hover:bg-dark-accent hover:bg-zinc-100',
             currentTheme == Theme.System && 'font-bold'
           )}
           onClick={() => setTheme('system')}

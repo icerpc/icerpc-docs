@@ -24,12 +24,12 @@ export const BackToTop = () => {
   if (scrollPosition > 100) {
     return (
       <button
-        className="my-4 flex animate-fade-in-up flex-row items-center pl-[2px] text-xs font-semibold uppercase  dark:text-white"
+        className="animate-fade-in-up my-4 flex flex-row items-center pl-[2px] text-xs font-semibold uppercase dark:text-white"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         <FontAwesomeIcon
           icon={faCircleUp}
-          className="mr-4 size-4 text-primary"
+          className="text-primary mr-4 size-4"
         />
 
         <h2> Back to top </h2>

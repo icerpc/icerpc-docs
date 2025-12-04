@@ -26,13 +26,13 @@ export function Analytics() {
     setEnableAnalytics(cookieValue === 'true' ? true : false);
   }, [cookieValue]);
 
-  const handleSetCookieSettings = (value: boolean) => {
+  const handleSetCookieSettings = async (value: boolean) => {
     setShowCookieButton(false);
     setShowBanner(false);
     setEnableAnalytics(value === true);
 
     // Safari workaround to keep the cookie stored for more than 7 days
-    fetch(`api/cookies?allow-cookies=${encodeURIComponent(value)}`);
+    await fetch(`api/cookies?allow-cookies=${encodeURIComponent(value)}`);
   };
 
   const toggleShowBanner = () => setShowBanner(!showBanner);

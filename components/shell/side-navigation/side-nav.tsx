@@ -20,15 +20,15 @@ export const SideNav = ({ path }: { path: string }) => {
   const isSlicePage = ['/slice1', '/slice2'].includes(baseUrl);
 
   return (
-    <div className="sticky top-[6.4rem] hidden h-screen flex-none flex-col items-end border-r border-lightBorder pb-[6.4rem] pt-4 dark:border-darkBorder/60 dark:bg-dark lg:flex">
-      <div className="flex size-full min-w-[300px] max-w-[300px] flex-col justify-start overflow-y-auto pl-10">
-        <div className="sticky top-0 space-y-5 bg-white pr-6 dark:bg-dark">
+    <div className="border-light-border dark:border-dark-border/60 dark:bg-dark sticky top-[6.4rem] hidden h-screen flex-none flex-col items-end border-r pt-4 pb-[6.4rem] lg:flex">
+      <div className="flex size-full max-w-[300px] min-w-[300px] flex-col justify-start overflow-y-auto pl-10">
+        <div className="dark:bg-dark sticky top-0 space-y-5 bg-white pr-6">
           <SideNavSelector isSlicePage={isSlicePage} path={path} />
-          <div className="pointer-events-none absolute inset-x-0 -bottom-9 h-9 w-full bg-gradient-to-t from-transparent to-white dark:to-dark" />
+          <div className="dark:to-dark pointer-events-none absolute inset-x-0 -bottom-9 h-9 w-full bg-linear-to-t from-transparent to-white" />
         </div>
         <nav>
-          <ul className="top-0 mb-2 mr-2 mt-4">{cells}</ul>
-          <div className="pointer-events-none sticky inset-x-0 bottom-0 h-10 w-full bg-gradient-to-t from-white to-transparent dark:from-dark " />
+          <ul className="top-0 mt-4 mr-2 mb-2">{cells}</ul>
+          <div className="dark:from-dark pointer-events-none sticky inset-x-0 bottom-0 h-10 w-full bg-linear-to-t from-white to-transparent" />
         </nav>
       </div>
     </div>

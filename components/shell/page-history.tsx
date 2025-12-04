@@ -86,17 +86,17 @@ const NavLink = ({
     >
       <Link
         href={path}
-        className="group flex flex-col p-3 text-left text-primary "
+        className="group text-primary flex flex-col p-3 text-left"
       >
         <div className="flex flex-row items-center">
           {isLeft && (
             <FontAwesomeIcon
               icon={faChevronLeft}
-              className="mr-2 mt-[21px] size-4"
+              className="mt-[21px] mr-2 size-4"
             />
           )}
           <div className="flex flex-col">
-            <span className="w-full text-sm font-[400] leading-normal text-slate-500 transition-colors group-hover:text-slate-800 dark:text-white/80 dark:group-hover:text-white">
+            <span className="w-full text-sm leading-normal font-normal text-slate-500 transition-colors group-hover:text-slate-800 dark:text-white/80 dark:group-hover:text-white">
               {isLeft ? 'Previous' : 'Next'}
             </span>
             <span className="grow">{title}</span>
@@ -105,7 +105,7 @@ const NavLink = ({
           {!isLeft && (
             <FontAwesomeIcon
               icon={faChevronRight}
-              className="ml-2 mt-[21px] size-4"
+              className="mt-[21px] ml-2 size-4"
             />
           )}
         </div>

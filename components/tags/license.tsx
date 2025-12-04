@@ -3,7 +3,6 @@
 export const License = () => (
   <div className="flex flex-row text-sm">
     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         alt="Creative Commons License"
         style={{ borderWidth: 0 }}

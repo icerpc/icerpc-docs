@@ -85,7 +85,7 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black/40 " />
+          <div className="fixed inset-0 bg-black/40" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
@@ -100,14 +100,14 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
           >
             <div
               className={clsx(
-                'fixed right-4 top-4 w-full max-w-[250px] rounded-xl bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
+                'fixed top-4 right-4 w-full max-w-[250px] rounded-xl bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
               )}
             >
-              <Dialog.Panel className="size-full flex-col overflow-hidden rounded text-left align-middle text-sm font-bold shadow-xl transition-all">
+              <Dialog.Panel className="size-full flex-col overflow-hidden rounded-sm text-left align-middle text-sm font-bold shadow-xl transition-all">
                 <button
                   type="button"
                   className={clsx(
-                    'group fixed right-4 top-4 justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium'
+                    'group fixed top-4 right-4 justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium'
                   )}
                   onClick={closeModal}
                 >
@@ -122,7 +122,7 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
                       <Link
                         href={item.href}
                         className={clsx(
-                          'grow overflow-hidden whitespace-nowrap px-7 py-4 font-semibold group-hover:text-zinc-900 dark:text-slate-200 dark:hover:text-white'
+                          'grow overflow-hidden px-7 py-4 font-semibold whitespace-nowrap group-hover:text-zinc-900 dark:text-slate-200 dark:hover:text-white'
                         )}
                         onClick={closeModal}
                       >
@@ -133,8 +133,8 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
                 </ul>
                 <div
                   className={clsx(
-                    'mx-1 flex flex-row items-center justify-between border-t border-lightBorder py-2 pl-6 pr-3 ',
-                    'dark:border-darkBorder dark:text-slate-100 dark:hover:text-white'
+                    'border-light-border mx-1 flex flex-row items-center justify-between border-t py-2 pr-3 pl-6',
+                    'dark:border-dark-border dark:text-slate-100 dark:hover:text-white'
                   )}
                 >
                   Switch theme:
