@@ -72,11 +72,17 @@ export function AppWrapper({ children }: { children: ReactNode }) {
       ? tryParseJSON(localModeString)
       : null;
 
-    localPlatform && setPlatform(localPlatform);
+    if (localPlatform) {
+      setPlatform(localPlatform);
+    }
 
     // If the path mode exists, set the mode to the path mode
     // Otherwise, if the local mode exists, set the mode to the local mode
-    pathMode ? setMode(pathMode) : localMode && setMode(localMode);
+    if (pathMode) {
+      setMode(pathMode);
+    } else if (localMode) {
+      setMode(localMode);
+    }
   }, [path]);
 
   useEffect(() => {

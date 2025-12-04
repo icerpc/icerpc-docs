@@ -23,7 +23,7 @@ export const Heading = ({
   icerpcSlice,
   showDividers = true
 }: Props) => {
-  const Component: any = `h${level}`;
+  const Component: React.ElementType = `h${level}`;
   return (
     <Component
       id={id}

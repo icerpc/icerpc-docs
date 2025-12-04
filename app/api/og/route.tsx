@@ -28,8 +28,8 @@ export async function GET(request: NextRequest) {
         : pageImage(hostname, breadcrumbs, title, description);
 
     return image;
-  } catch (e: any) {
-    console.log(`${e.message}`);
+  } catch (e) {
+    console.log(`${e instanceof Error ? e.message : 'Unknown error'}`);
     return new NextResponse(`Failed to generate the image`, {
       status: 500
     });
@@ -124,7 +124,6 @@ const pageImage = (
       </div>
     </div>,
     {
-      // @ts-ignore - The FontOptions type cannot be imported
       width: 1200,
       height: 630
     }

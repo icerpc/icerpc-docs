@@ -15,7 +15,7 @@ type StepProps = {
 export const Step = ({ title, level = 2, id, children }: StepProps) => {
   const [isExpanded, setIsExpanded] = useState(true);
   const contentRef = useRef<HTMLDivElement | null>(null);
-  const Component: any = `h${level}`;
+  const Component: React.ElementType = `h${level}`;
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();

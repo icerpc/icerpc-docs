@@ -1,24 +1,30 @@
-import js from '@eslint/js';
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
 import prettier from 'eslint-plugin-prettier';
 import globals from 'globals';
-import tseslint from '@typescript-eslint/eslint-plugin';
-import tsparser from '@typescript-eslint/parser';
 
 export default [
   {
     ignores: ['.next/**', 'out/**', 'build/**', 'utils/prism-*.js']
   },
-  js.configs.recommended,
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  // TODO: Enable type-checked rules once ready to fix the. Also maybe just use strict, it contains recommended
+  // ...tseslint.configs.recommendedTypeChecked,
+  // ...tseslint.configs.stylisticTypeChecked,
+  // tseslint.configs.strict,
   {
-    plugins: { '@typescript-eslint': tseslint, prettier },
+    plugins: { prettier },
     languageOptions: {
-      parser: tsparser,
       globals: { ...globals.browser, ...globals.node }
+      // parserOptions: {
+      //   projectService: true
+      // }
     },
     rules: {
       'prettier/prettier': 'error',
-      'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': 'warn'
+      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-explicit-any': 'off'
     }
   }
 ];

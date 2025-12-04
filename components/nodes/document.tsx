@@ -10,7 +10,7 @@ type Props = {
   title: string;
   description: string;
   path: string;
-  headings: any[];
+  headings: unknown[];
   readingTime?: string;
   mode?: Mode; // The mode of the current page (if any) ex.) /slice1/foo would have a mode of Slice1
   showAside?: boolean;

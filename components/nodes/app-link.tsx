@@ -74,7 +74,9 @@ export const AppLink = ({
     if (isSliceLink(href)) {
       // Pull the mode from the href if it's a slice1 or slice2 link and set it in the context.
       const hrefMode = getSliceMode(href);
-      hrefMode && setMode(hrefMode);
+      if (hrefMode) {
+        setMode(hrefMode);
+      }
     }
   };
 
