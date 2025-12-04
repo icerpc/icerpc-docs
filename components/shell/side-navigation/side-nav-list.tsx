@@ -36,7 +36,7 @@ export const SideNavList = ({
           <li key={`${category.title}-content`} className="list-none">
             <ul
               key={category.title + '-list'}
-              className="ml-[0.1rem] border-l-[1.5px] border-lightBorder pl-[0.1rem] dark:border-[#3D3D3D]"
+              className="ml-[0.1rem] border-l-[1.5px] border-light-border pl-[0.1rem] dark:border-[#3D3D3D]"
             >
               {category.links.map((link) =>
                 ListItem(path, link, false, onClick)
@@ -90,7 +90,7 @@ const ListItem = (
   } else {
     return (
       <li key={link.title} className={clsx('my-2 pl-0 pr-2', leftPadding)}>
-        <h2 className="text-xs font-semibold uppercase text-slate-800 underline decoration-lightBorder underline-offset-[10px] dark:text-white dark:decoration-darkBorder">
+        <h2 className="text-xs font-semibold uppercase text-slate-800 underline decoration-light-border underline-offset-10 dark:text-white dark:decoration-dark-border">
           {link.title}
         </h2>
       </li>

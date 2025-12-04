@@ -19,7 +19,7 @@ type AppLinkProps = {
 
 // Set of classes to apply when the link is an API link.
 const apiClasses = [
-  'after:ml-[3px] after:mr-[1px] after:rounded-sm after:bg-primary after:px-[2px] after:py-[1px]',
+  'after:ml-[3px] after:mr-px after:rounded-xs after:bg-primary after:px-[2px] after:py-px',
   "after:align-middle after:text-[8px] after:font-semibold after:text-white after:content-['API']",
   'dark:after:bg-primary/80'
 ];

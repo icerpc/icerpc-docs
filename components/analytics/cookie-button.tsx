@@ -1,11 +1,11 @@
 // Copyright (c) ZeroC, Inc.
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCookie } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 
-const bannerVariants = {
+const bannerVariants: Variants = {
   hidden: { opacity: 0, scale: 0.5, y: 50 },
   visible: {
     opacity: 1,

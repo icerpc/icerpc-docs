@@ -115,7 +115,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
         <ul className="list-none pl-0">
           {options.map((option) => (
             <li key={option.title} className="pl-0">
-              <div className="flex shrink rounded py-1">
+              <div className="flex shrink rounded-sm py-1">
                 <input
                   id={'helper-radio' + option.title.replace(' ', '')}
                   name="helper-radio"
@@ -167,8 +167,8 @@ export const FeedbackForm = ({ title, options }: Props) => {
                           id="feedback-comment"
                           placeholder="Your feedback ..."
                           className={clsx(
-                            'mx-2 mt-2 h-14 w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-sm',
-                            'dark:border-darkBorder dark:bg-black dark:focus:border-primary dark:focus:ring-primary',
+                            'mx-2 mt-2 h-14 w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-xs',
+                            'dark:border-dark-border dark:bg-black dark:focus:border-primary dark:focus:ring-primary',
                             'focus:border-primary focus:ring-primary'
                           )}
                           onChange={(e) => {
@@ -188,8 +188,8 @@ export const FeedbackForm = ({ title, options }: Props) => {
                           type="email"
                           placeholder="Your email address ... "
                           className={clsx(
-                            'm-2 h-[40px] w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-sm',
-                            'dark:border-darkBorder dark:bg-black dark:focus:border-primary dark:focus:ring-primary',
+                            'm-2 h-[40px] w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-xs',
+                            'dark:border-dark-border dark:bg-black dark:focus:border-primary dark:focus:ring-primary',
                             'focus:border-primary focus:ring-primary'
                           )}
                           onChange={(e) => {
@@ -206,8 +206,8 @@ export const FeedbackForm = ({ title, options }: Props) => {
         </ul>
         <button
           className={clsx(
-            'mt-4 flex h-[28px] w-[60px] items-center justify-center rounded border-lightBorder bg-primary py-2',
-            'text-center text-sm font-semibold text-white shadow-sm',
+            'mt-4 flex h-[28px] w-[60px] items-center justify-center rounded-sm border-light-border bg-primary py-2',
+            'text-center text-sm font-semibold text-white shadow-xs',
             'disabled:cursor-not-allowed disabled:bg-gray-400/80 disabled:opacity-50'
           )}
           type="submit"

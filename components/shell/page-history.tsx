@@ -96,7 +96,7 @@ const NavLink = ({
             />
           )}
           <div className="flex flex-col">
-            <span className="w-full text-sm font-[400] leading-normal text-slate-500 transition-colors group-hover:text-slate-800 dark:text-white/80 dark:group-hover:text-white">
+            <span className="w-full text-sm font-normal leading-normal text-slate-500 transition-colors group-hover:text-slate-800 dark:text-white/80 dark:group-hover:text-white">
               {isLeft ? 'Previous' : 'Next'}
             </span>
             <span className="grow">{title}</span>

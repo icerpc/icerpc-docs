@@ -29,7 +29,7 @@ export const Document = ({
 }: Props) => {
   return (
     <div className="flex shrink flex-row justify-center overflow-y-clip lg:justify-start">
-      <article className="mx-6 mt-10 size-full max-w-[52rem] md:mx-10 lg:mx-16">
+      <article className="mx-6 mt-10 size-full max-w-208 md:mx-10 lg:mx-16">
         {true && (
           <Title
             title={title}

@@ -103,7 +103,7 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
                 'fixed right-4 top-4 w-full max-w-[250px] rounded-xl bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]'
               )}
             >
-              <Dialog.Panel className="size-full flex-col overflow-hidden rounded text-left align-middle text-sm font-bold shadow-xl transition-all">
+              <Dialog.Panel className="size-full flex-col overflow-hidden rounded-sm text-left align-middle text-sm font-bold shadow-xl transition-all">
                 <button
                   type="button"
                   className={clsx(
@@ -133,8 +133,8 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
                 </ul>
                 <div
                   className={clsx(
-                    'mx-1 flex flex-row items-center justify-between border-t border-lightBorder py-2 pl-6 pr-3 ',
-                    'dark:border-darkBorder dark:text-slate-100 dark:hover:text-white'
+                    'mx-1 flex flex-row items-center justify-between border-t border-light-border py-2 pl-6 pr-3 ',
+                    'dark:border-dark-border dark:text-slate-100 dark:hover:text-white'
                   )}
                 >
                   Switch theme:

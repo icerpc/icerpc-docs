@@ -95,7 +95,7 @@ export const CodeBlock = ({
   }
 
   return (
-    <div className="group relative my-4 w-full items-center overflow-hidden rounded-lg border border-[rgb(46,46,46)] bg-[rgb(6,22,38)] dark:bg-[#0e1116]">
+    <div className="group relative my-4 w-full items-center overflow-hidden rounded-lg border border-dark-border bg-[rgb(6,22,38)] dark:bg-[#0e1116]">
       <TopBar
         language={language}
         code={children}
@@ -142,7 +142,7 @@ export const CodeBlock = ({
       {!showTitle && (
         <div
           className={clsx(
-            'absolute right-0 top-2 mr-4 rounded border border-[rgb(46,46,46)] bg-[rgb(6,22,38)] opacity-0',
+            'absolute right-0 top-2 mr-4 rounded-sm border border-dark-border bg-[rgb(6,22,38)] opacity-0',
             'transition-opacity duration-500 group-hover:opacity-100'
           )}
         >

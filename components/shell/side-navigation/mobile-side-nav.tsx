@@ -54,7 +54,7 @@ export function MobileSideNav() {
 
   return (
     <>
-      <div className="flex h-[57px] items-center justify-start border-t border-lightBorder p-4 text-sm dark:border-darkBorder lg:hidden">
+      <div className="flex h-[57px] items-center justify-start border-t border-light-border p-4 text-sm dark:border-dark-border lg:hidden">
         <button>
           <Bars3Icon
             className="ml-1 block size-5 text-slate-500 dark:text-white/80"
@@ -125,7 +125,7 @@ export function MobileSideNav() {
                           type="button"
                           className={clsx(
                             'group ml-auto items-center justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium',
-                            'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                            'focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
                           )}
                           onClick={closeModal}
                         >
@@ -167,7 +167,7 @@ export function MobileSideNav() {
                           />
                         </div>
                       )}
-                      <div className="mt-4 w-full border-t border-lightBorder dark:border-darkBorder" />
+                      <div className="mt-4 w-full border-t border-light-border dark:border-dark-border" />
                     </section>
                     <nav
                       className={clsx(

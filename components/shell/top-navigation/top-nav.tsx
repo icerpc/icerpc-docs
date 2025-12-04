@@ -17,25 +17,25 @@ import { SearchButton } from '@/components/shell/search-button';
 export const TopNav = () => (
   <div
     className={clsx(
-      'fixed top-0 z-10 flex w-full flex-col justify-center border-b border-lightBorder bg-[#FCFCFC]',
-      'dark:border-darkBorder/60 dark:bg-dark'
+      'fixed top-0 z-10 flex w-full flex-col justify-center border-b border-light-border bg-[#FCFCFC]',
+      'dark:border-dark-border/60 dark:bg-dark'
     )}
   >
     <div
       id="main-nav"
       className="flex w-full flex-col items-center justify-center"
     >
-      <div className="w-full max-w-[100rem] ">
-        <div className="flex h-[3.75rem] w-full grow  items-center justify-between text-sm">
+      <div className="w-full max-w-400 ">
+        <div className="flex h-15 w-full grow  items-center justify-between text-sm">
           <Logo />
           <div className="hidden items-center lg:flex">
             <SearchButton className="w-full min-w-[300px]" />
-            <div className="mx-6 flex h-[30px] items-center border-l border-lightBorder pl-4 dark:border-darkBorder">
+            <div className="mx-6 flex h-[30px] items-center border-l border-light-border pl-4 dark:border-dark-border">
               <ThemeToggle />
               <Button
                 variant="outline"
                 size="icon"
-                className="border-none hover:bg-zinc-100 focus-visible:border-0 focus-visible:!outline-none focus-visible:ring-transparent dark:!outline-none dark:hover:bg-darkAccent dark:focus-visible:!border-0"
+                className="border-none hover:bg-zinc-100 focus-visible:border-0 focus-visible:outline-hidden! focus-visible:ring-transparent dark:outline-hidden! dark:hover:bg-dark-accent dark:focus-visible:border-0!"
               >
                 <a
                   className="flex h-full items-center justify-center p-4 dark:text-[rgba(255,255,255,0.8)] "

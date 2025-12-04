@@ -22,7 +22,7 @@ const textAlignment = (align?: string): string => {
 export const Table = ({ children }: TableProps) => {
   return (
     <div className="mb-10 min-w-full">
-      <table className="w-full border-collapse rounded prose-headings:font-semibold">
+      <table className="w-full border-collapse rounded-sm prose-headings:font-semibold">
         {children}
       </table>
     </div>
@@ -40,7 +40,7 @@ export const TH = ({ align, children }: THProps) => {
       className={clsx(
         'prose-sm pl-4',
         children !== undefined &&
-          'border-b-[1.5px] border-lightBorder py-3 dark:border-darkBorder',
+          'border-b-[1.5px] border-light-border py-3 dark:border-dark-border',
         textAlignment(align)
       )}
     >
@@ -51,7 +51,7 @@ export const TH = ({ align, children }: THProps) => {
 
 export const TR = ({ children }: { children: ReactNode }) => {
   return (
-    <tr className="prose-sm border-b border-lightBorder/60 text-gray-800 dark:border-darkBorder/40 dark:text-white">
+    <tr className="prose-sm border-b border-light-border/60 text-gray-800 dark:border-dark-border/40 dark:text-white">
       {children}
     </tr>
   );
@@ -67,8 +67,8 @@ export const TD = ({ align, children, dividers }: TDProps) => {
   return (
     <td
       className={clsx(
-        'prose-sm min-w-[100px] rounded py-3 pl-4 align-top',
-        dividers && 'border border-lightBorder/60 dark:border-darkBorder/40',
+        'prose-sm min-w-[100px] rounded-sm py-3 pl-4 align-top',
+        dividers && 'border border-light-border/60 dark:border-dark-border/40',
         textAlignment(align)
       )}
     >

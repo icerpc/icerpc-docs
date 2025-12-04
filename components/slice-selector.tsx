@@ -85,8 +85,8 @@ const ModeTab = ({
 }: ModeTabProps) => {
   const className = clsx(
     tabClassName,
-    'cursor-pointer rounded border-[1.5px] bg-white p-2 text-center text-xs font-medium uppercase leading-tight',
-    'focus:outline-none focus:ring-0',
+    'cursor-pointer rounded-sm border-[1.5px] bg-white p-2 text-center text-xs font-medium uppercase leading-tight',
+    'focus:outline-hidden focus:ring-0',
     'transition-shadow duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg',
     selected
       ? [
@@ -95,7 +95,7 @@ const ModeTab = ({
         ]
       : [
           'bg-slate-50 text-slate-500 hover:bg-white/80 hover:text-primary',
-          showDarkMode && 'dark:border-darkBorder dark:text-white/40'
+          showDarkMode && 'dark:border-dark-border dark:text-white/40'
         ],
     showDarkMode && 'dark:bg-transparent dark:text-white'
   );
@@ -135,7 +135,7 @@ const ModeTab = ({
               <TooltipContent
                 side="bottom"
                 sideOffset={15}
-                className="ml-2 border border-lightBorder bg-white dark:border-darkBorder dark:bg-[#232429] dark:text-white"
+                className="ml-2 border border-light-border bg-white dark:border-dark-border dark:bg-[#232429] dark:text-white"
               >
                 {tooltipContent}
               </TooltipContent>

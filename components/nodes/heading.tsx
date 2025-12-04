@@ -30,7 +30,7 @@ export const Heading = ({
       data-text={children}
       role="presentation"
       className={clsx(
-        'mb-2 mt-6 items-center  hover:[&>*]:opacity-100',
+        'mb-2 mt-6 items-center  *:hover:opacity-100',
         level !== 1 && 'group scroll-mt-28'
       )}
     >

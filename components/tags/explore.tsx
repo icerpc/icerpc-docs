@@ -48,12 +48,12 @@ type ExploreCardProps = {
 const ExploreCard = ({ title, description, href }: ExploreCardProps) => (
   <AppLink
     href={href}
-    className="flex flex-col justify-between rounded-xl border bg-white p-6 shadow-sm dark:border-darkBorder dark:bg-darkAccent"
+    className="flex flex-col justify-between rounded-xl border bg-white p-6 shadow-xs dark:border-dark-border dark:bg-dark-accent"
     showArrow={false}
   >
     <div className="flex flex-col justify-between">
       <h3 className="my-0 text-[16px] font-semibold">{title}</h3>
-      <p className="my-0 mt-1 text-[13px] text-[var(--text-color-secondary)] dark:text-white/80">
+      <p className="my-0 mt-1 text-[13px] text-(--text-color-secondary) dark:text-white/80">
         {description}
       </p>
     </div>

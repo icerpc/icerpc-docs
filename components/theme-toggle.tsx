@@ -26,7 +26,7 @@ export function ThemeToggle() {
         <Button
           variant="outline"
           size="icon"
-          className="border-none hover:bg-zinc-100 focus-visible:border-0 focus-visible:!outline-none focus-visible:ring-transparent dark:!outline-none dark:hover:bg-darkAccent dark:focus-visible:!border-0 dark:focus-visible:!ring-0"
+          className="border-none hover:bg-zinc-100 focus-visible:border-0 focus-visible:outline-hidden! focus-visible:ring-transparent dark:outline-hidden! dark:hover:bg-dark-accent dark:focus-visible:border-0! dark:focus-visible:ring-0!"
         >
           <Sun className="size-[1.2rem] rotate-0 scale-100 ring-0 ring-offset-0 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute size-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 dark:text-white" />
@@ -34,12 +34,12 @@ export function ThemeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="!border-lightBorder !bg-white dark:!border-darkBorder dark:!bg-dark dark:!text-white"
+        className="border-light-border! bg-white! dark:border-dark-border! dark:bg-dark! dark:text-white!"
         align="end"
       >
         <DropdownMenuItem
           className={clsx(
-            'hover:bg-zinc-100 dark:hover:bg-darkAccent',
+            'hover:bg-zinc-100 dark:hover:bg-dark-accent',
             currentTheme == Theme.Light && 'font-bold'
           )}
           onClick={() => setTheme('light')}
@@ -48,7 +48,7 @@ export function ThemeToggle() {
         </DropdownMenuItem>
         <DropdownMenuItem
           className={clsx(
-            'hover:bg-zinc-100 dark:hover:bg-darkAccent',
+            'hover:bg-zinc-100 dark:hover:bg-dark-accent',
             currentTheme == Theme.Dark && 'font-bold'
           )}
           onClick={() => setTheme('dark')}
@@ -57,7 +57,7 @@ export function ThemeToggle() {
         </DropdownMenuItem>
         <DropdownMenuItem
           className={clsx(
-            'hover:bg-zinc-100 dark:hover:bg-darkAccent',
+            'hover:bg-zinc-100 dark:hover:bg-dark-accent',
             currentTheme == Theme.System && 'font-bold'
           )}
           onClick={() => setTheme('system')}

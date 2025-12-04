@@ -12,7 +12,7 @@ export const CopyButton = ({ text }: { text: string }) => {
   return (
     <button
       aria-label="Copy to clipboard"
-      className="rounded px-[6px] py-1 text-white hover:bg-gray-800 hover:text-gray-300"
+      className="rounded-sm px-[6px] py-1 text-white hover:bg-gray-800 hover:text-gray-300"
       onClick={() => {
         copy(text);
         setCopied(true);
