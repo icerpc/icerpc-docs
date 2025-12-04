@@ -59,7 +59,7 @@ export function Aside({ children, weighted, alignment }: AsideProps) {
       className={`relative my-2 flex flex-col overflow-auto p-0 py-2 lg:flex-row ${itemAlignment}`}
     >
       <LeftColumn isCodeblocks={isCodeblocks}>{leftContent}</LeftColumn>
-      <div className="mx-auto my-4 h-px w-[90%] bg-light-border dark:bg-dark-border lg:absolute lg:left-1/2 lg:my-auto lg:h-[90%] lg:w-px" />
+      <div className="bg-light-border dark:bg-dark-border mx-auto my-4 h-px w-[90%] lg:absolute lg:left-1/2 lg:my-auto lg:h-[90%] lg:w-px" />
       <RightColumn isCodeblocks={isCodeblocks}>{rightContent}</RightColumn>
     </div>
   );

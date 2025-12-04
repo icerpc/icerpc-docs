@@ -92,7 +92,6 @@ export const AppLink = ({
       style={style}
     >
       <span
-        // eslint-disable-next-line tailwindcss/no-custom-classname
         className={clsx(
           isApiLink(originalHref) && apiClasses,
           isExternalLink(originalHref) &&

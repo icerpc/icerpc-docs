@@ -17,7 +17,7 @@ import { SearchButton } from '@/components/shell/search-button';
 export const TopNav = () => (
   <div
     className={clsx(
-      'fixed top-0 z-10 flex w-full flex-col justify-center border-b border-light-border bg-[#FCFCFC]',
+      'border-light-border fixed top-0 z-10 flex w-full flex-col justify-center border-b bg-[#FCFCFC]',
       'dark:border-dark-border/60 dark:bg-dark'
     )}
   >
@@ -25,20 +25,20 @@ export const TopNav = () => (
       id="main-nav"
       className="flex w-full flex-col items-center justify-center"
     >
-      <div className="w-full max-w-400 ">
-        <div className="flex h-15 w-full grow  items-center justify-between text-sm">
+      <div className="w-full max-w-400">
+        <div className="flex h-15 w-full grow items-center justify-between text-sm">
           <Logo />
           <div className="hidden items-center lg:flex">
             <SearchButton className="w-full min-w-[300px]" />
-            <div className="mx-6 flex h-[30px] items-center border-l border-light-border pl-4 dark:border-dark-border">
+            <div className="border-light-border dark:border-dark-border mx-6 flex h-[30px] items-center border-l pl-4">
               <ThemeToggle />
               <Button
                 variant="outline"
                 size="icon"
-                className="border-none hover:bg-zinc-100 focus-visible:border-0 focus-visible:outline-hidden! focus-visible:ring-transparent dark:outline-hidden! dark:hover:bg-dark-accent dark:focus-visible:border-0!"
+                className="dark:hover:bg-dark-accent border-none hover:bg-zinc-100 focus-visible:border-0 focus-visible:ring-transparent focus-visible:outline-hidden! dark:outline-hidden! dark:focus-visible:border-0!"
               >
                 <a
-                  className="flex h-full items-center justify-center p-4 dark:text-[rgba(255,255,255,0.8)] "
+                  className="flex h-full items-center justify-center p-4 dark:text-[rgba(255,255,255,0.8)]"
                   href="https://github.com/icerpc"
                   rel="noopener noreferrer"
                   aria-label="Github"
@@ -50,7 +50,7 @@ export const TopNav = () => (
           </div>
           <MobileMenu />
         </div>
-        <div className="flex w-full grow items-start   justify-between text-sm lg:h-[2.65rem]">
+        <div className="flex w-full grow items-start justify-between text-sm lg:h-[2.65rem]">
           <nav className="my-1 hidden items-center lg:flex">
             <ul className="flex space-x-4 lg:ml-[1.9rem]">
               <TopNavigationItems />
@@ -65,7 +65,7 @@ export const TopNav = () => (
 
 const Logo = () => (
   <Link href="/">
-    <div className="mb-3 ml-[1.3rem] mr-0 mt-5 flex items-center justify-start gap-1 pb-4 lg:ml-[2.6rem]">
+    <div className="mt-5 mr-0 mb-3 ml-[1.3rem] flex items-center justify-start gap-1 pb-4 lg:ml-[2.6rem]">
       <Image
         src={logoIcon}
         height={20}

@@ -34,10 +34,10 @@ export const LanguageSelector = () => {
             <button
               className={clsx(
                 'my-0 block rounded-xl border-[1.5px] bg-white px-2 py-1 font-medium uppercase',
-                'text-sm leading-tight focus:outline-hidden focus:ring-0 md:mr-2',
+                'text-sm leading-tight focus:ring-0 focus:outline-hidden md:mr-2',
                 currentTab === label
-                  ? 'border-primary bg-white text-primary'
-                  : 'bg-slate-50 text-slate-500 hover:bg-white/80 hover:text-primary'
+                  ? 'border-primary text-primary bg-white'
+                  : 'hover:text-primary bg-slate-50 text-slate-500 hover:bg-white/80'
               )}
               role="tab"
               aria-selected={label === currentTab}

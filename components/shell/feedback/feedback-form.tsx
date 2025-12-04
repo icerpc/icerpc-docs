@@ -105,10 +105,10 @@ export const FeedbackForm = ({ title, options }: Props) => {
   }, []);
 
   return feedbackSubmitted ? (
-    <h3 className="mb-10 mt-5">Thanks for the feedback!</h3>
+    <h3 className="mt-5 mb-10">Thanks for the feedback!</h3>
   ) : (
     <div
-      className={`mb-9 mt-4 flex flex-col gap-0 ${opacity} transition duration-700 ease-in-out`}
+      className={`mt-4 mb-9 flex flex-col gap-0 ${opacity} transition duration-700 ease-in-out`}
     >
       <h3 className="my-0">{title}</h3>
       <form className="w-full p-3 pl-0 text-sm text-gray-700 dark:text-gray-200">
@@ -124,9 +124,9 @@ export const FeedbackForm = ({ title, options }: Props) => {
                   aria-controls={'feedback-fields-' + option.id}
                   tabIndex={0}
                   className={clsx(
-                    'mt-1 size-3 rounded-full border-gray-300 bg-gray-100 text-primary',
-                    'dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-primary dark:focus:ring-offset-gray-700',
-                    'focus:ring-2 focus:ring-primary'
+                    'text-primary mt-1 size-3 rounded-full border-gray-300 bg-gray-100',
+                    'dark:focus:ring-primary dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700',
+                    'focus:ring-primary focus:ring-2'
                   )}
                   onClick={() => {
                     setSelected(option.id);
@@ -156,7 +156,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
                   </div>
                   {option.id == selected && (
                     <>
-                      <div className="ml-2 mt-2 text-xs">
+                      <div className="mt-2 ml-2 text-xs">
                         <label
                           htmlFor="feedback-comment"
                           className="font-medium text-gray-900 dark:text-gray-300"
@@ -168,7 +168,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
                           placeholder="Your feedback ..."
                           className={clsx(
                             'mx-2 mt-2 h-14 w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-xs',
-                            'dark:border-dark-border dark:bg-black dark:focus:border-primary dark:focus:ring-primary',
+                            'dark:border-dark-border dark:focus:border-primary dark:focus:ring-primary dark:bg-black',
                             'focus:border-primary focus:ring-primary'
                           )}
                           onChange={(e) => {
@@ -176,7 +176,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
                           }}
                         />
                       </div>
-                      <div className="ml-2 mt-1 text-xs">
+                      <div className="mt-1 ml-2 text-xs">
                         <label
                           htmlFor="feedback-email"
                           className="font-medium text-gray-900 dark:text-gray-300"
@@ -189,7 +189,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
                           placeholder="Your email address ... "
                           className={clsx(
                             'm-2 h-[40px] w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-xs',
-                            'dark:border-dark-border dark:bg-black dark:focus:border-primary dark:focus:ring-primary',
+                            'dark:border-dark-border dark:focus:border-primary dark:focus:ring-primary dark:bg-black',
                             'focus:border-primary focus:ring-primary'
                           )}
                           onChange={(e) => {
@@ -206,7 +206,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
         </ul>
         <button
           className={clsx(
-            'mt-4 flex h-[28px] w-[60px] items-center justify-center rounded-sm border-light-border bg-primary py-2',
+            'border-light-border bg-primary mt-4 flex h-[28px] w-[60px] items-center justify-center rounded-sm py-2',
             'text-center text-sm font-semibold text-white shadow-xs',
             'disabled:cursor-not-allowed disabled:bg-gray-400/80 disabled:opacity-50'
           )}

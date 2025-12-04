@@ -31,17 +31,17 @@ const PathContext = createContext<string | null>(null);
 
 const ModeContext = createContext<ModeContextType>({
   mode: undefined,
-  setMode: () => { }
+  setMode: () => {}
 });
 
 const PlatformContext = createContext<PlatformContextType>({
   platform: Platform.csharp,
-  setPlatform: () => { }
+  setPlatform: () => {}
 });
 
 const SearchContext = createContext<ModeContextType>({
   mode: undefined,
-  setMode: () => { }
+  setMode: () => {}
 });
 
 export function AppWrapper({ children }: { children: ReactNode }) {
@@ -143,7 +143,7 @@ export const useMounted = () => {
 function tryParseJSON(jsonString: string) {
   try {
     return JSON.parse(jsonString);
-  } catch (e) {
+  } catch {
     return null;
   }
 }

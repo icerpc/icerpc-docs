@@ -13,11 +13,11 @@ export const Card = ({ title, description, href, level = 3 }: CardProps) => {
   return (
     <AppLink
       href={href}
-      className="col-span-1 h-full flex-col justify-between rounded-xl border bg-white p-4 shadow-xs dark:border-dark-border dark:bg-dark-accent"
+      className="dark:border-dark-border dark:bg-dark-accent col-span-1 h-full flex-col justify-between rounded-xl border bg-white p-4 shadow-xs"
       showArrow={false}
     >
       <div
-        className="m-0 font-semibold text-primary dark:text-white"
+        className="text-primary m-0 font-semibold dark:text-white"
         role="heading"
         aria-level={level}
       >

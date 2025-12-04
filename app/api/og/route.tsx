@@ -39,20 +39,18 @@ export async function GET(request: NextRequest) {
 // Image rendering functions
 const homeImage = (hostname: string | null) => {
   return new ImageResponse(
-    (
-      <div
-        style={{
-          background: 'black',
-          height: '100%',
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          backgroundImage: `url(http://${hostname}/images/og-home.png)`,
-          backgroundSize: 'cover'
-        }}
-      />
-    ),
+    <div
+      style={{
+        background: 'black',
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        backgroundImage: `url(http://${hostname}/images/og-home.png)`,
+        backgroundSize: 'cover'
+      }}
+    />,
     {
       width: 1200,
       height: 630
@@ -67,66 +65,64 @@ const pageImage = (
   description: string | undefined
 ) => {
   return new ImageResponse(
-    (
+    <div
+      style={{
+        background: 'black',
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        backgroundImage: `url(http://${hostname}/images/og.png)`,
+        backgroundSize: 'cover'
+      }}
+    >
       <div
         style={{
-          background: 'black',
-          height: '100%',
-          width: '100%',
+          width: '80%',
+          height: '360px',
+          marginTop: '200px',
+          marginLeft: '84px',
+          marginRight: '84px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
-          backgroundImage: `url(http://${hostname}/images/og.png)`,
-          backgroundSize: 'cover'
+          justifyContent: 'flex-start'
         }}
       >
-        <div
+        <ol
           style={{
-            width: '80%',
-            height: '360px',
-            marginTop: '200px',
-            marginLeft: '84px',
-            marginRight: '84px',
             display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            justifyContent: 'flex-start'
+            justifyContent: 'flex-start',
+            padding: '0px'
           }}
         >
-          <ol
-            style={{
-              display: 'flex',
-              justifyContent: 'flex-start',
-              padding: '0px'
-            }}
-          >
-            {renderBreadcrumb(breadcrumbs)}
-          </ol>
-          <h1
-            style={{
-              fontSize: '78px',
-              fontWeight: 700,
-              lineHeight: '80px',
-              marginTop: '4px',
-              marginLeft: '-6px'
-            }}
-          >
-            {title}
-          </h1>
-          <h2
-            style={{
-              fontSize: '32px',
-              fontWeight: '600',
-              color: '#64748b',
-              maxWidth: '80%',
-              lineHeight: '42px'
-            }}
-          >
-            {description}
-          </h2>
-        </div>
+          {renderBreadcrumb(breadcrumbs)}
+        </ol>
+        <h1
+          style={{
+            fontSize: '78px',
+            fontWeight: 700,
+            lineHeight: '80px',
+            marginTop: '4px',
+            marginLeft: '-6px'
+          }}
+        >
+          {title}
+        </h1>
+        <h2
+          style={{
+            fontSize: '32px',
+            fontWeight: '600',
+            color: '#64748b',
+            maxWidth: '80%',
+            lineHeight: '42px'
+          }}
+        >
+          {description}
+        </h2>
       </div>
-    ),
+    </div>,
     {
       // @ts-ignore - The FontOptions type cannot be imported
       width: 1200,

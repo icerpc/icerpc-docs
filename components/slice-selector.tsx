@@ -135,7 +135,7 @@ const ModeTab = ({
               <TooltipContent
                 side="bottom"
                 sideOffset={15}
-                className="ml-2 border border-light-border bg-white dark:border-dark-border dark:bg-[#232429] dark:text-white"
+                className="border-light-border dark:border-dark-border ml-2 border bg-white dark:bg-[#232429] dark:text-white"
               >
                 {tooltipContent}
               </TooltipContent>

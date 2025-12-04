@@ -37,8 +37,9 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       title,
       description,
       images: {
-        url: `https://docs.icerpc.dev/api/og?title=${baseUrls.includes(path) ? 'Overview' : title
-          }&description=${description}&path=${encodeURIComponent(path)}`
+        url: `https://docs.icerpc.dev/api/og?title=${
+          baseUrls.includes(path) ? 'Overview' : title
+        }&description=${description}&path=${encodeURIComponent(path)}`
       }
     }
   };

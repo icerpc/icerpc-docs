@@ -32,7 +32,7 @@ export const Step = ({ title, level = 2, id, children }: StepProps) => {
   }, [isExpanded]);
 
   return (
-    <div className="border-t border-light-border dark:border-dark-border">
+    <div className="border-light-border dark:border-dark-border border-t">
       <div
         className="mb-4 flex cursor-pointer flex-row items-center justify-between"
         onClick={() => setIsExpanded(!isExpanded)}
@@ -45,8 +45,7 @@ export const Step = ({ title, level = 2, id, children }: StepProps) => {
           id={id}
           data-text={children}
           role="presentation"
-          // eslint-disable-next-line tailwindcss/no-custom-classname
-          className="step mb-0 mt-4 scroll-mt-28 items-center text-xl *:hover:opacity-100"
+          className="step mt-4 mb-0 scroll-mt-28 items-center text-xl *:hover:opacity-100"
         >
           <span role="heading" aria-level={level}>
             {title}

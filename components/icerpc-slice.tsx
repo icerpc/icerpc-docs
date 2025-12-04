@@ -14,7 +14,7 @@ export const IcerpcSlice = () => {
     </p>
   );
   return (
-    <div className="ml-1.5 mt-1 inline-flex">
+    <div className="mt-1 ml-1.5 inline-flex">
       <Tooltip
         content={tooltipContent}
         placement="bottom"
@@ -23,7 +23,7 @@ export const IcerpcSlice = () => {
         <div className="flex size-full">
           <AppLink
             href="/slice#slice-and-icerpc"
-            className="relative my-auto ml-1 rounded-sm border border-primary/20 bg-primary/10 p-px px-[4px] text-xs font-bold text-primary/90 "
+            className="border-primary/20 bg-primary/10 text-primary/90 relative my-auto ml-1 rounded-sm border p-px px-[4px] text-xs font-bold"
           >
             IceRPC + Slice
           </AppLink>

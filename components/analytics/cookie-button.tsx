@@ -33,7 +33,7 @@ export const CookieButton = ({ toggleShowBanner }: CookieButtonProps) => {
   else
     return (
       <motion.button
-        className="fixed bottom-6 right-10 hidden items-center rounded-full bg-gray-900 px-4 py-3 text-sm uppercase text-white md:flex"
+        className="fixed right-10 bottom-6 hidden items-center rounded-full bg-gray-900 px-4 py-3 text-sm text-white uppercase md:flex"
         onClick={() => toggleShowBanner()}
         initial="hidden"
         animate="visible"

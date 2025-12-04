@@ -36,7 +36,7 @@ export const SideNavList = ({
           <li key={`${category.title}-content`} className="list-none">
             <ul
               key={category.title + '-list'}
-              className="ml-[0.1rem] border-l-[1.5px] border-light-border pl-[0.1rem] dark:border-[#3D3D3D]"
+              className="border-light-border ml-[0.1rem] border-l-[1.5px] pl-[0.1rem] dark:border-[#3D3D3D]"
             >
               {category.links.map((link) =>
                 ListItem(path, link, false, onClick)
@@ -50,7 +50,7 @@ export const SideNavList = ({
     return [ListItem(path, data, true, onClick)];
   } else {
     return [
-      <li key={data.title} className="mr-4 py-2 text-sm uppercase text-black">
+      <li key={data.title} className="mr-4 py-2 text-sm text-black uppercase">
         <Divider margin="mb-4 mt-4 mr-[12px]" />
         <h2 className="my-2 text-sm font-bold dark:text-white">{data.title}</h2>
         <Divider margin="mt-4 mr-[12px]" />
@@ -74,11 +74,11 @@ const ListItem = (
         <Link
           href={link.path}
           className={clsx(
-            `py-[6px] pl-0 pr-3 text-sm no-underline  ${leftPadding} dark:text-[#C4C7C5]`,
+            `py-[6px] pr-3 pl-0 text-sm no-underline ${leftPadding} dark:text-[#C4C7C5]`,
             isCurrentPage
               ? noLeftPadding
-                ? 'font-medium text-primary dark:text-white'
-                : 'ml-[-3px] border-l-[1.5px] border-primary pl-[13.5px] font-medium text-primary dark:border-white/80 dark:text-white'
+                ? 'text-primary font-medium dark:text-white'
+                : 'border-primary text-primary ml-[-3px] border-l-[1.5px] pl-[13.5px] font-medium dark:border-white/80 dark:text-white'
               : 'mr-1 hover:text-zinc-900 dark:hover:text-white'
           )}
           onClick={onClick}
@@ -89,8 +89,8 @@ const ListItem = (
     );
   } else {
     return (
-      <li key={link.title} className={clsx('my-2 pl-0 pr-2', leftPadding)}>
-        <h2 className="text-xs font-semibold uppercase text-slate-800 underline decoration-light-border underline-offset-10 dark:text-white dark:decoration-dark-border">
+      <li key={link.title} className={clsx('my-2 pr-2 pl-0', leftPadding)}>
+        <h2 className="decoration-light-border dark:decoration-dark-border text-xs font-semibold text-slate-800 uppercase underline underline-offset-10 dark:text-white">
           {link.title}
         </h2>
       </li>

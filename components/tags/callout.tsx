@@ -11,16 +11,15 @@ type Props = {
 export const Callout = ({ children, type }: Props) => {
   return (
     <div
-      // eslint-disable-next-line tailwindcss/no-custom-classname
       className={clsx(
         'callout',
-        'my-6 flex items-start justify-start gap-2.5 rounded-xl border p-3 py-2 text-sm leading-6 ',
+        'my-6 flex items-start justify-start gap-2.5 rounded-xl border p-3 py-2 text-sm leading-6',
         type === 'danger'
-          ? 'border-red-600/20 bg-red-600/20  text-red-600/90 dark:*:text-red-500/80'
+          ? 'border-red-600/20 bg-red-600/20 text-red-600/90 dark:*:text-red-500/80'
           : 'border-primary/20 bg-primary/10 text-primary/90 dark:*:text-primary'
       )}
     >
-      <div className="mx-0 mt-[8px] flex items-center justify-center">
+      <div className="mx-0 mt-2 flex items-center justify-center">
         <svg
           width="16"
           height="16"

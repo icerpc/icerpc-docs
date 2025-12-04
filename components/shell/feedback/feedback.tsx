@@ -49,14 +49,14 @@ export const Feedback = () => {
           <div className="mt-4 flex gap-8 text-4xl">
             <button
               aria-label="Thumbs up"
-              className="hover:text-primary dark:text-slate-200 dark:hover:text-primary"
+              className="hover:text-primary dark:hover:text-primary dark:text-slate-200"
               onClick={() => setFeedbackType(FeedbackType.Positive)}
             >
               <ThumbUp />
             </button>
             <button
               aria-label="Thumbs down"
-              className="hover:text-primary dark:text-slate-200 dark:hover:text-primary"
+              className="hover:text-primary dark:hover:text-primary dark:text-slate-200"
               onClick={() => setFeedbackType(FeedbackType.Negative)}
             >
               <ThumbDown />

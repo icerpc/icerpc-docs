@@ -1,6 +1,8 @@
 import js from '@eslint/js';
 import prettier from 'eslint-plugin-prettier';
 import globals from 'globals';
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsparser from '@typescript-eslint/parser';
 
 export default [
   {
@@ -10,15 +12,14 @@ export default [
       'out/**',
       'build/**',
       '*.config.js',
-      '*.config.mjs'
+      '*.config.mjs',
+      'utils/prism-*.js'
     ]
   },
   js.configs.recommended,
   {
-    files: ['**/*.{js,mjs,cjs,jsx,ts,tsx}'],
-    plugins: {
-      prettier
-    },
+    files: ['**/*.{js,mjs,cjs,jsx}'],
+    plugins: { prettier },
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -32,7 +33,29 @@ export default [
     rules: {
       'prettier/prettier': 'error',
       'no-unused-vars': 'warn',
-      'no-undef': 'off' // Turn off since TypeScript handles this better
+      'no-undef': 'off'
+    }
+  },
+  {
+    files: ['**/*.{ts,tsx}'],
+    plugins: { '@typescript-eslint': tseslint, prettier },
+    languageOptions: {
+      parser: tsparser,
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        React: 'readonly',
+        JSX: 'readonly'
+      },
+      parserOptions: { ecmaFeatures: { jsx: true } }
+    },
+    rules: {
+      'prettier/prettier': 'error',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
+      'no-undef': 'off'
     }
   }
 ];
