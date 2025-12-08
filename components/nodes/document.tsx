@@ -10,7 +10,7 @@ type Props = {
   title: string;
   description: string;
   path: string;
-  headings: any[];
+  headings: unknown[];
   readingTime?: string;
   mode?: Mode; // The mode of the current page (if any) ex.) /slice1/foo would have a mode of Slice1
   showAside?: boolean;
@@ -29,17 +29,14 @@ export const Document = ({
 }: Props) => {
   return (
     <div className="flex shrink flex-row justify-center overflow-y-clip lg:justify-start">
-      <article className="mx-6 mt-10 size-full max-w-[52rem] md:mx-10 lg:mx-16">
-        {true && (
-          <Title
-            title={title}
-            description={description}
-            path={path}
-            readingTime={readingTime}
-          />
-        )}
+      <article className="mx-6 mt-10 size-full max-w-208 md:mx-10 lg:mx-16">
+        <Title
+          title={title}
+          description={description}
+          path={path}
+          readingTime={readingTime}
+        />
         {
-          // eslint-disable-next-line tailwindcss/no-custom-classname
           <div
             style={{
               counterReset: 'step-counter'

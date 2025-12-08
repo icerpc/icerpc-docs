@@ -20,9 +20,8 @@ type PageProps = {
   params: Params;
 };
 
-export async function generateMetadata({
-  params
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const path = '/' + (params.slug.join('/') ?? '');
   const { frontmatter } = await getMarkdownContent(path);
   const title: string = frontmatter?.title ?? '';
@@ -38,8 +37,9 @@ export async function generateMetadata({
       title,
       description,
       images: {
-        url: `https://docs.icerpc.dev/api/og?title=${baseUrls.includes(path) ? 'Overview' : title
-          }&description=${description}&path=${encodeURIComponent(path)}`
+        url: `https://docs.icerpc.dev/api/og?title=${
+          baseUrls.includes(path) ? 'Overview' : title
+        }&description=${description}&path=${encodeURIComponent(path)}`
       }
     }
   };
@@ -90,7 +90,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: PageProps) {
+export default async function Page(props: PageProps) {
+  const params = await props.params;
   const path = '/' + (params.slug.join('/') ?? '');
   const { content } = await getMarkdownContent(path);
 
@@ -104,7 +105,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <div className="mt-[6.4rem] flex grow flex-row justify-center">
-      <div className="flex max-w-[100rem] grow flex-row justify-center">
+      <div className="flex max-w-400 grow flex-row justify-center">
         <SideNav path={path} />
         <div className="grow">
           <div id="skip-nav" />

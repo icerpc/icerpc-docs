@@ -11,7 +11,7 @@ export const Divider = ({ margin, id }: Props) => {
     <div
       id={id}
       className={clsx(
-        'h-px bg-lightBorder dark:bg-darkBorder',
+        'bg-light-border dark:bg-dark-border h-px',
         margin ? margin : 'my-8'
       )}
     />

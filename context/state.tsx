@@ -31,17 +31,17 @@ const PathContext = createContext<string | null>(null);
 
 const ModeContext = createContext<ModeContextType>({
   mode: undefined,
-  setMode: () => { }
+  setMode: () => {}
 });
 
 const PlatformContext = createContext<PlatformContextType>({
   platform: Platform.csharp,
-  setPlatform: () => { }
+  setPlatform: () => {}
 });
 
 const SearchContext = createContext<ModeContextType>({
   mode: undefined,
-  setMode: () => { }
+  setMode: () => {}
 });
 
 export function AppWrapper({ children }: { children: ReactNode }) {
@@ -72,11 +72,17 @@ export function AppWrapper({ children }: { children: ReactNode }) {
       ? tryParseJSON(localModeString)
       : null;
 
-    localPlatform && setPlatform(localPlatform);
+    if (localPlatform) {
+      setPlatform(localPlatform);
+    }
 
     // If the path mode exists, set the mode to the path mode
     // Otherwise, if the local mode exists, set the mode to the local mode
-    pathMode ? setMode(pathMode) : localMode && setMode(localMode);
+    if (pathMode) {
+      setMode(pathMode);
+    } else if (localMode) {
+      setMode(localMode);
+    }
   }, [path]);
 
   useEffect(() => {
@@ -143,7 +149,7 @@ export const useMounted = () => {
 function tryParseJSON(jsonString: string) {
   try {
     return JSON.parse(jsonString);
-  } catch (e) {
+  } catch {
     return null;
   }
 }

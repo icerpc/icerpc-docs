@@ -22,7 +22,7 @@ const textAlignment = (align?: string): string => {
 export const Table = ({ children }: TableProps) => {
   return (
     <div className="mb-10 min-w-full">
-      <table className="w-full border-collapse rounded prose-headings:font-semibold">
+      <table className="prose-headings:font-semibold w-full border-collapse rounded-sm">
         {children}
       </table>
     </div>
@@ -40,7 +40,7 @@ export const TH = ({ align, children }: THProps) => {
       className={clsx(
         'prose-sm pl-4',
         children !== undefined &&
-          'border-b-[1.5px] border-lightBorder py-3 dark:border-darkBorder',
+          'border-light-border dark:border-dark-border border-b-[1.5px] py-3',
         textAlignment(align)
       )}
     >
@@ -51,7 +51,7 @@ export const TH = ({ align, children }: THProps) => {
 
 export const TR = ({ children }: { children: ReactNode }) => {
   return (
-    <tr className="prose-sm border-b border-lightBorder/60 text-gray-800 dark:border-darkBorder/40 dark:text-white">
+    <tr className="prose-sm border-light-border/60 dark:border-dark-border/40 border-b text-gray-800 dark:text-white">
       {children}
     </tr>
   );
@@ -67,12 +67,11 @@ export const TD = ({ align, children, dividers }: TDProps) => {
   return (
     <td
       className={clsx(
-        'prose-sm min-w-[100px] rounded py-3 pl-4 align-top',
-        dividers && 'border border-lightBorder/60 dark:border-darkBorder/40',
+        'prose-sm min-w-[100px] rounded-sm py-3 pl-4 align-top',
+        dividers && 'border-light-border/60 dark:border-dark-border/40 border',
         textAlignment(align)
       )}
     >
-      {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
       <div className="[&>code]:overflow-x-none [&>a]:overflow-x-none [&>a]:break-word inline-block">
         {children}
       </div>

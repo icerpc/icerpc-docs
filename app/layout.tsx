@@ -56,25 +56,26 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://docs.icerpc.dev'),
   other: {
     'application/ld+json': JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "TechArticle",
-      "headline": "IceRPC Documentation",
-      "description": "Comprehensive guide to using IceRPC, including setup, usage, and advanced features.",
-      "mainEntityOfPage": "https://docs.icerpc.dev",
-      "author": {
-        "@type": "Organization",
-        "name": "IceRPC Team"
+      '@context': 'https://schema.org',
+      '@type': 'TechArticle',
+      headline: 'IceRPC Documentation',
+      description:
+        'Comprehensive guide to using IceRPC, including setup, usage, and advanced features.',
+      mainEntityOfPage: 'https://docs.icerpc.dev',
+      author: {
+        '@type': 'Organization',
+        name: 'IceRPC Team'
       },
-      "publisher": {
-        "@type": "Organization",
-        "name": "IceRPC",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://docs.icerpc.dev/icerpc-logo.svg"
+      publisher: {
+        '@type': 'Organization',
+        name: 'IceRPC',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://docs.icerpc.dev/icerpc-logo.svg'
         }
-      },
-    }),
-  },
+      }
+    })
+  }
 };
 
 const organizationSchema = {
@@ -146,7 +147,11 @@ const navigationSchema = {
   ]
 };
 
-export default function RootLayout(props: any) {
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout(props: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>

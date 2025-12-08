@@ -19,7 +19,7 @@ type AppLinkProps = {
 
 // Set of classes to apply when the link is an API link.
 const apiClasses = [
-  'after:ml-[3px] after:mr-[1px] after:rounded-sm after:bg-primary after:px-[2px] after:py-[1px]',
+  'after:ml-[3px] after:mr-px after:rounded-xs after:bg-primary after:px-[2px] after:py-px',
   "after:align-middle after:text-[8px] after:font-semibold after:text-white after:content-['API']",
   'dark:after:bg-primary/80'
 ];
@@ -74,7 +74,9 @@ export const AppLink = ({
     if (isSliceLink(href)) {
       // Pull the mode from the href if it's a slice1 or slice2 link and set it in the context.
       const hrefMode = getSliceMode(href);
-      hrefMode && setMode(hrefMode);
+      if (hrefMode) {
+        setMode(hrefMode);
+      }
     }
   };
 
@@ -92,7 +94,6 @@ export const AppLink = ({
       style={style}
     >
       <span
-        // eslint-disable-next-line tailwindcss/no-custom-classname
         className={clsx(
           isApiLink(originalHref) && apiClasses,
           isExternalLink(originalHref) &&

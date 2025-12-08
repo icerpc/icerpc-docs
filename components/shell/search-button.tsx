@@ -44,7 +44,7 @@ export const SearchButton = ({ className }: Props) => {
             if (container && !existingDiv) {
               const myDiv = document.createElement('div');
               myDiv.className =
-                'slice-mode px-[var(--docsearch-spacing)] pt-[var(--docsearch-spacing)]';
+                'slice-mode px-(--docsearch-spacing) pt-(--docsearch-spacing)';
               container.prepend(myDiv);
               setPortalContainer(myDiv);
             }
@@ -78,7 +78,7 @@ export const SearchButton = ({ className }: Props) => {
           <SliceSelector
             showTooltips={false}
             className="h-fit w-full"
-            tabClassName="!p-1 !px-[6px] capitalize"
+            tabClassName="p-1! px-[6px]! capitalize"
             showDarkMode={false}
             activeMode={context.mode}
             onChangeCallback={(mode) => {

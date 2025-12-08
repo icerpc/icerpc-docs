@@ -43,20 +43,20 @@ export const Feedback = () => {
     default:
       return (
         <div id="Feedback" className={clsx('my-12 flex flex-col items-center')}>
-          <h3 className="my-0 text-base text-[var(--text-color)]">
+          <h3 className="my-0 text-base text-gray-600 dark:text-gray-300">
             Was this page helpful?
           </h3>
           <div className="mt-4 flex gap-8 text-4xl">
             <button
               aria-label="Thumbs up"
-              className="hover:text-primary dark:text-slate-200 hover:dark:text-primary"
+              className="hover:text-primary dark:hover:text-primary dark:text-slate-200"
               onClick={() => setFeedbackType(FeedbackType.Positive)}
             >
               <ThumbUp />
             </button>
             <button
               aria-label="Thumbs down"
-              className="hover:text-primary dark:text-slate-200 hover:dark:text-primary"
+              className="hover:text-primary dark:hover:text-primary dark:text-slate-200"
               onClick={() => setFeedbackType(FeedbackType.Negative)}
             >
               <ThumbDown />

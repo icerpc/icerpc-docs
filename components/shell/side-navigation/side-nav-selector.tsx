@@ -46,7 +46,7 @@ export const SideNavSelector = ({
               setMode(mode);
             }}
           />
-          <div className="w-full border-t border-lightBorder pb-2 dark:border-darkBorder" />
+          <div className="border-light-border dark:border-dark-border w-full border-t pb-2" />
         </>
       )}
     </>

@@ -37,14 +37,14 @@ export const Aside = ({
   return (
     <aside
       className={clsx(
-        'sticky top-[6.4rem] mr-10 hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 dark:bg-dark xl:flex',
+        'dark:bg-dark sticky top-[6.4rem] mr-10 hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 xl:flex',
         items.length > 1 ? '' : ''
       )}
     >
-      <nav className="h-full px-8 pb-6 pt-11">
+      <nav className="h-full px-8 pt-11 pb-6">
         {items.length > 1 && (
           <>
-            <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase  dark:text-white">
+            <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase dark:text-white">
               On this page
             </h2>
             <ul className="m-0 max-h-[50vh] overflow-y-auto p-0">
@@ -59,7 +59,7 @@ export const Aside = ({
             <Divider />
           </>
         )}
-        <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase   dark:text-white">
+        <h2 className="mb-4 flex flex-row items-center text-xs font-semibold uppercase dark:text-white">
           Actions
         </h2>
         <ul
@@ -69,14 +69,14 @@ export const Aside = ({
           <ActionItem href={editPageUrl(path)}>
             <FontAwesomeIcon
               icon={faPenToSquare}
-              className="mr-[6px] size-[14px] text-primary"
+              className="text-primary mr-[6px] size-[14px]"
             />
             Edit this page
           </ActionItem>
           <ActionItem href="https://github.com/orgs/icerpc/discussions">
             <FontAwesomeIcon
               icon={faMessage}
-              className="mr-[6px] size-[14px] text-primary"
+              className="text-primary mr-[6px] size-[14px]"
             />
             GitHub Discussions
           </ActionItem>
@@ -143,7 +143,7 @@ type ActionItemProps = {
 const ActionItem = ({ href, children }: ActionItemProps) => {
   return (
     <li className="m-0 my-5 text-sm">
-      <Link href={href} className=" dark:text-[rgba(255,255,255,0.8)]">
+      <Link href={href} className="dark:text-[rgba(255,255,255,0.8)]">
         <div className="flex items-center gap-[0.5em]">{children}</div>
       </Link>
     </li>
@@ -165,7 +165,7 @@ const ListItem = ({ item, activeId }: ListItemProps) => {
         href={href}
         className={clsx(
           'flex items-start text-inherit',
-          activeId === item.id && 'font-semibold text-primary dark:text-white'
+          activeId === item.id && 'text-primary font-semibold dark:text-white'
         )}
       >
         {item.level > 2 && (

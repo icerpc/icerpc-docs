@@ -10,12 +10,12 @@ import { License } from '@/components/tags/license';
 
 export default async function Home() {
   return (
-    <div className="mt-[3.75rem] flex grow flex-row justify-center lg:mt-[6.4rem]">
-      <div className="relative flex max-w-[120rem] grow flex-col items-center justify-center">
+    <div className="mt-15 flex grow flex-row justify-center lg:mt-[6.4rem]">
+      <div className="relative flex max-w-480 grow flex-col items-center justify-center">
         <div id="skip-nav" />
         <Hero />
         <div className="flex shrink flex-row justify-center overflow-y-clip lg:justify-start">
-          <article className="mx-6 mb-20 mt-10 size-full max-w-[52rem] md:mx-10 lg:mx-16">
+          <article className="mx-6 mt-10 mb-20 size-full max-w-208 md:mx-10 lg:mx-16">
             <HomeTitle title="Welcome" description="" />
             <p>
               Welcome to the IceRPC documentation! You will find on this site a

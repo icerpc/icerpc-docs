@@ -23,14 +23,14 @@ export const Heading = ({
   icerpcSlice,
   showDividers = true
 }: Props) => {
-  const Component: any = `h${level}`;
+  const Component: React.ElementType = `h${level}`;
   return (
     <Component
       id={id}
       data-text={children}
       role="presentation"
       className={clsx(
-        'mb-2 mt-6 items-center  hover:[&>*]:opacity-100',
+        'mt-6 mb-2 items-center *:hover:opacity-100',
         level !== 1 && 'group scroll-mt-28'
       )}
     >

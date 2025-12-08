@@ -54,7 +54,7 @@ export function MobileSideNav() {
 
   return (
     <>
-      <div className="flex h-[57px] items-center justify-start border-t border-lightBorder p-4 text-sm dark:border-darkBorder lg:hidden">
+      <div className="border-light-border dark:border-dark-border flex h-[57px] items-center justify-start border-t p-4 text-sm lg:hidden">
         <button>
           <Bars3Icon
             className="ml-1 block size-5 text-slate-500 dark:text-white/80"
@@ -84,7 +84,7 @@ export function MobileSideNav() {
               </Link>
               {index !== breadcrumbs.length - 1 && (
                 <ChevronRightIcon
-                  className="mx-2 block size-4 text-slate-500 "
+                  className="mx-2 block size-4 text-slate-500"
                   aria-hidden="true"
                 />
               )}
@@ -115,7 +115,7 @@ export function MobileSideNav() {
               leaveFrom="left-0"
               leaveTo="-left-[300px]"
             >
-              <div className="fixed left-0 top-0 size-full max-w-[280px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]">
+              <div className="fixed top-0 left-0 size-full max-w-[280px] rounded-r bg-white p-0 font-semibold text-slate-900 shadow-lg dark:bg-[#26282c]">
                 <Dialog.Panel className="size-full overflow-hidden rounded-r text-left align-middle text-sm font-bold shadow-xl transition-all">
                   <div className="flex size-full flex-col items-start">
                     <section id="controls" className="mt-2 w-full px-6">
@@ -125,7 +125,7 @@ export function MobileSideNav() {
                           type="button"
                           className={clsx(
                             'group ml-auto items-center justify-center rounded-full border border-transparent bg-slate-300/40 px-[14px] py-2 font-medium',
-                            'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                            'focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
                           )}
                           onClick={closeModal}
                         >
@@ -138,7 +138,7 @@ export function MobileSideNav() {
                       {isSlicePage && (
                         <div className="mt-6">
                           <SliceSelector
-                            className="mb-6 mt-3 w-full"
+                            className="mt-3 mb-6 w-full"
                             onChangeCallback={(mode) => {
                               const [corePath, fragment] = path.split('#');
 
@@ -167,12 +167,12 @@ export function MobileSideNav() {
                           />
                         </div>
                       )}
-                      <div className="mt-4 w-full border-t border-lightBorder dark:border-darkBorder" />
+                      <div className="border-light-border dark:border-dark-border mt-4 w-full border-t" />
                     </section>
                     <nav
                       className={clsx(
                         'block size-full overflow-y-auto',
-                        'bg-none pb-10 pl-6 pr-3 pt-4'
+                        'bg-none pt-4 pr-3 pb-10 pl-6'
                       )}
                     >
                       <div className="pointer-events-none sticky top-0" />
