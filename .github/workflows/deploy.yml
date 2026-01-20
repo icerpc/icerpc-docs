@@ -32,13 +32,13 @@ jobs:
           tags: ghcr.io/icerpc/icerpc-docs:latest
 
       - name: Deploy docs
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.WEB_HOST }}
           username: ${{ secrets.WEB_USERNAME }}
           key: ${{ secrets.WEB_DEPLOY_KEY }}
-          script_stop: true
           script: |
+            set -e
             cd services
             echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             docker compose pull icerpc-docs
