@@ -476,7 +476,7 @@ You can also apply `cs::attribute` to an enumerator to get the specified C# attr
 [Dunet]: https://github.com/domn1995/dunet
 [Dunet package]: https://www.nuget.org/packages/Dunet
 [fixed-size]: primitive-types#fixed-size-integral-types
-[proposed a few years ago]: https://github.com/dotnet/csharplang/blob/main/proposals/discriminated-unions.md
+[proposed a few years ago]: https://github.com/dotnet/csharplang/issues/8928
 [variable-size]: primitive-types#variable-size-integral-types
 [InvalidDataException]: https://learn.microsoft.com/en-us/dotnet/api/system.io.invaliddataexception
 [FlagsAttribute]: https://learn.microsoft.com/en-us/dotnet/api/system.flagsattribute
