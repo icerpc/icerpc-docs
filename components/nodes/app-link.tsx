@@ -184,9 +184,11 @@ const isApiLink = (href: string) => {
 const resolveApiLink = (href: string) => {
   const [language, ...rest] = href.split(':');
   const [module, method] = rest.join('.').split('#');
+  const version = languageApiReferenceVersion(language);
+  // Right now we only support the C# API reference, so the URL is hardcoded to the C# API reference.
   return `${
     process.env.NEXT_PUBLIC_API_HOST
-  }/api/${language}/api/${module}.html${method ? `#${method}` : ''}`;
+  }/${language}/${version}/api/api/${module}.html${method ? `#${method}` : ''}`;
 };
 
 /**
@@ -203,4 +205,16 @@ const resolveRelativeLink = (href: string, routerPath: string) => {
     return `${routerPath.split('#')[0]}${href}`;
   }
   return `${routerPath.replace(/\/[^/]+$/, '')}/${href}`;
+};
+
+/**
+ * Returns the API reference version for a given language.
+ * @param {string} language - The programming language (e.g., 'csharp').
+ * @returns {string} - The API reference version.
+ */
+const languageApiReferenceVersion = (language: string): string => {
+  const versions: Record<string, string> = {
+    csharp: '0.5.x'
+  };
+  return versions[language] || 'main';
 };
