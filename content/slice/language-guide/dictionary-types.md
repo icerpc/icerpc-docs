@@ -17,7 +17,7 @@ A dictionary is like a sequence of key-value pairs with the following constraint
 You can construct a dictionary type inline, without giving it a name, for example to specify the type of a parameter or
 field:
 
-```slice {% addMode=true %}
+```slice
 module VisitorCenter
 
 interface Greeter {
@@ -30,26 +30,12 @@ A built-in generic type with type arguments, such as a `Dictionary<string, strin
 
 You can use any Slice type for the value-type of your dictionary. For example:
 
-{% slice1 %}
-
-```slice
-compact struct DictionaryExample {
-    x: Dictionary<int32, Dictionary<string, float64>> // dictionary of dictionaries
-    y: Dictionary<string, AnyClass?>
-}
-```
-
-{% /slice1 %}
-{% slice2 %}
-
 ```slice
 struct DictionaryExample {
     x: Dictionary<int32, Dictionary<string, float64>> // dictionary of dictionaries
     y: Dictionary<string, float64?>
 }
 ```
-
-{% /slice2 %}
 
 ## C# mapping
 
@@ -59,30 +45,6 @@ A field, an element in a sequence, or a value in another dictionary with type `D
 `IDictionary<TKey, TValue>`.
 
 `TKey` resp. `TValue` is the mapped C# type for the Slice key type resp. value type. For example:
-
-{% slice1 %}
-{% aside alignment="top" %}
-
-```slice
-compact struct DictionaryExample {
-    x: Dictionary<int32, Dictionary<string, float64>>
-    y: Dictionary<string, AnyClass?>
-}
-```
-
-```csharp
-public partial record struct DictionaryExample
-{
-    public IDictionary<int, IDictionary<string, double>> X;
-
-    public IDictionary<string, SliceClass?> Y;
-}
-```
-
-{% /aside %}
-{% /slice1 %}
-
-{% slice2 %}
 {% aside alignment="top" %}
 
 ```slice
@@ -104,8 +66,6 @@ public partial record struct DictionaryExample
 ```
 
 {% /aside %}
-{% /slice2 %}
-
 By default, when the generated code decodes a dictionary, it creates a C# `Dictionary<TKey, TValue>` that is transmitted
 to you (the application) as an `IDictionary<TKey, TValue>`. You can safely cast this `IDictionary<TKey, TValue>` to a
 `Dictionary<TKey, TValue>` after decoding.

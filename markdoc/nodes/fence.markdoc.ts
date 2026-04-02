@@ -10,11 +10,6 @@ const fence = {
       type: String,
       required: false
     },
-    addMode: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
     showTitle: {
       type: Boolean,
       required: false,

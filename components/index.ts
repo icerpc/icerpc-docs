@@ -12,7 +12,6 @@ export * from './shell/top-navigation/top-nav';
 
 export * from './tags/card';
 export * from './tags/grid';
-export * from './tags/mode-section';
 export * from './tags/title';
 
 export * from './code-block';

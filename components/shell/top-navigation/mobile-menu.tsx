@@ -11,8 +11,6 @@ import { clsx } from 'clsx';
 import { EllipsisVerticalIcon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 import { Dialog, Transition } from '@headlessui/react';
-import { useMode } from 'context/state';
-import { Mode } from 'types';
 
 export const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +43,6 @@ type TopMenuModalProps = {
 };
 
 export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
-  const { mode } = useMode();
   const navigationItems = [
     {
       name: 'Getting Started',
@@ -57,7 +54,7 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
     },
     {
       name: 'Slice',
-      href: mode === Mode.Slice1 ? '/slice1' : '/slice2'
+      href: '/slice'
     },
     {
       name: 'Protobuf',

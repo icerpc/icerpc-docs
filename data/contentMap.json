@@ -254,29 +254,29 @@
       ]
     }
   ],
-  "slice1": [
+  "slice": [
     {
       "title": "Overview",
-      "path": "/slice1"
+      "path": "/slice"
     },
     {
       "title": "Basics",
       "links": [
         {
           "title": "Slice components",
-          "path": "/slice1/basics/slice-components"
+          "path": "/slice/basics/slice-components"
         },
         {
           "title": "Contract first model",
-          "path": "/slice1/basics/contract-first"
+          "path": "/slice/basics/contract-first"
         },
         {
           "title": "Slice files",
-          "path": "/slice1/basics/slice-files"
+          "path": "/slice/basics/slice-files"
         },
         {
           "title": "Examples",
-          "path": "/slice1/basics/examples"
+          "path": "/slice/basics/examples"
         }
       ]
     },
@@ -284,230 +284,76 @@
       "title": "Language guide",
       "links": [
         {
-          "title": "Compilation mode",
-          "path": "/slice1/language-guide/compilation-mode"
-        },
-        {
           "title": "Module",
-          "path": "/slice1/language-guide/module"
+          "path": "/slice/language-guide/module"
         },
         {
           "title": "Interface",
-          "path": "/slice1/language-guide/interface"
+          "path": "/slice/language-guide/interface"
         },
         {
           "title": "Operation",
-          "path": "/slice1/language-guide/operation"
+          "path": "/slice/language-guide/operation"
         },
         {
           "title": "Fields",
-          "path": "/slice1/language-guide/fields"
+          "path": "/slice/language-guide/fields"
         },
         {
           "title": "Parameters",
-          "path": "/slice1/language-guide/parameters"
+          "path": "/slice/language-guide/parameters"
         },
         {
           "title": "Primitive types",
-          "path": "/slice1/language-guide/primitive-types"
+          "path": "/slice/language-guide/primitive-types"
         },
         {
           "title": "Enum types",
-          "path": "/slice1/language-guide/enum-types"
-        },
-        {
-          "title": "Struct types",
-          "path": "/slice1/language-guide/struct-types"
-        },
-        {
-          "title": "Class types",
-          "path": "/slice1/language-guide/class-types"
-        },
-        {
-          "title": "Exception",
-          "path": "/slice1/language-guide/exception"
-        },
-
-        {
-          "title": "Sequence types",
-          "path": "/slice1/language-guide/sequence-types"
-        },
-        {
-          "title": "Dictionary types",
-          "path": "/slice1/language-guide/dictionary-types"
-        },
-        {
-          "title": "Custom types",
-          "path": "/slice1/language-guide/custom-types"
-        },
-        {
-          "title": "Well-known types",
-          "path": "/slice1/language-guide/well-known-types"
-        },
-        {
-          "title": "Using proxies as Slice types",
-          "path": "/slice1/language-guide/using-proxies-as-slice-types"
-        },
-        {
-          "title": "Type alias",
-          "path": "/slice1/language-guide/type-alias"
-        },
-        {
-          "title": "Attributes",
-          "path": "/slice1/language-guide/attributes"
-        },
-        {
-          "title": "Comments and doc comments",
-          "path": "/slice1/language-guide/comments"
-        },
-        {
-          "title": "Preprocessor directives",
-          "path": "/slice1/language-guide/preprocessor-directives"
-        }
-      ]
-    },
-    {
-      "title": "Encoding reference",
-      "links": [
-        {
-          "title": "Overview",
-          "path": "/slice1/encoding/overview"
-        },
-        {
-          "title": "Encoding-only constructs",
-          "path": "/slice1/encoding/encoding-only-constructs"
-        },
-        {
-          "title": "Primitive types",
-          "path": "/slice1/encoding/primitive-types"
-        },
-        {
-          "title": "User-defined types",
-          "path": "/slice1/encoding/user-defined-types"
-        },
-        {
-          "title": "Constructed types",
-          "path": "/slice1/encoding/constructed-types"
-        },
-        {
-          "title": "Operation arguments and return values",
-          "path": "/slice1/encoding/operation"
-        },
-        {
-          "title": "Exceptions",
-          "path": "/slice1/encoding/exceptions"
-        },
-        {
-          "title": "IceRPC + Slice integration",
-          "path": "/slice1/encoding/icerpc"
-        }
-      ]
-    }
-  ],
-  "slice2": [
-    {
-      "title": "Overview",
-      "path": "/slice2"
-    },
-    {
-      "title": "Basics",
-      "links": [
-        {
-          "title": "Slice components",
-          "path": "/slice2/basics/slice-components"
-        },
-        {
-          "title": "Contract first model",
-          "path": "/slice2/basics/contract-first"
-        },
-        {
-          "title": "Slice files",
-          "path": "/slice2/basics/slice-files"
-        },
-        {
-          "title": "Examples",
-          "path": "/slice2/basics/examples"
-        }
-      ]
-    },
-    {
-      "title": "Language guide",
-      "links": [
-        {
-          "title": "Compilation mode",
-          "path": "/slice2/language-guide/compilation-mode"
-        },
-        {
-          "title": "Module",
-          "path": "/slice2/language-guide/module"
-        },
-        {
-          "title": "Interface",
-          "path": "/slice2/language-guide/interface"
-        },
-        {
-          "title": "Operation",
-          "path": "/slice2/language-guide/operation"
-        },
-        {
-          "title": "Fields",
-          "path": "/slice2/language-guide/fields"
-        },
-        {
-          "title": "Parameters",
-          "path": "/slice2/language-guide/parameters"
-        },
-        {
-          "title": "Primitive types",
-          "path": "/slice2/language-guide/primitive-types"
-        },
-        {
-          "title": "Enum types",
-          "path": "/slice2/language-guide/enum-types"
+          "path": "/slice/language-guide/enum-types"
         },
         {
           "title": "Result types",
-          "path": "/slice2/language-guide/result-types"
+          "path": "/slice/language-guide/result-types"
         },
         {
           "title": "Struct types",
-          "path": "/slice2/language-guide/struct-types"
+          "path": "/slice/language-guide/struct-types"
         },
         {
           "title": "Sequence types",
-          "path": "/slice2/language-guide/sequence-types"
+          "path": "/slice/language-guide/sequence-types"
         },
         {
           "title": "Dictionary types",
-          "path": "/slice2/language-guide/dictionary-types"
+          "path": "/slice/language-guide/dictionary-types"
         },
         {
           "title": "Custom types",
-          "path": "/slice2/language-guide/custom-types"
+          "path": "/slice/language-guide/custom-types"
         },
         {
           "title": "Well-known types",
-          "path": "/slice2/language-guide/well-known-types"
+          "path": "/slice/language-guide/well-known-types"
         },
         {
           "title": "Using proxies as Slice types",
-          "path": "/slice2/language-guide/using-proxies-as-slice-types"
+          "path": "/slice/language-guide/using-proxies-as-slice-types"
         },
         {
           "title": "Type alias",
-          "path": "/slice2/language-guide/type-alias"
+          "path": "/slice/language-guide/type-alias"
         },
         {
           "title": "Attributes",
-          "path": "/slice2/language-guide/attributes"
+          "path": "/slice/language-guide/attributes"
         },
         {
           "title": "Comments and doc comments",
-          "path": "/slice2/language-guide/comments"
+          "path": "/slice/language-guide/comments"
         },
         {
           "title": "Preprocessor directives",
-          "path": "/slice2/language-guide/preprocessor-directives"
+          "path": "/slice/language-guide/preprocessor-directives"
         }
       ]
     },
@@ -516,31 +362,31 @@
       "links": [
         {
           "title": "Overview",
-          "path": "/slice2/encoding/overview"
+          "path": "/slice/encoding/overview"
         },
         {
           "title": "Encoding-only constructs",
-          "path": "/slice2/encoding/encoding-only-constructs"
+          "path": "/slice/encoding/encoding-only-constructs"
         },
         {
           "title": "Primitive types",
-          "path": "/slice2/encoding/primitive-types"
+          "path": "/slice/encoding/primitive-types"
         },
         {
           "title": "User-defined types",
-          "path": "/slice2/encoding/user-defined-types"
+          "path": "/slice/encoding/user-defined-types"
         },
         {
           "title": "Constructed types",
-          "path": "/slice2/encoding/constructed-types"
+          "path": "/slice/encoding/constructed-types"
         },
         {
           "title": "Operation arguments and return values",
-          "path": "/slice2/encoding/operation"
+          "path": "/slice/encoding/operation"
         },
         {
           "title": "IceRPC + Slice integration",
-          "path": "/slice2/encoding/icerpc"
+          "path": "/slice/encoding/icerpc"
         }
       ]
     }
@@ -618,14 +464,6 @@
     {
       "title": "Slice",
       "links": [
-        {
-          "title": "New Slice",
-          "path": "/icerpc-for-ice-users/slice/new-slice"
-        },
-        {
-          "title": "Converting .ice into .slice",
-          "path": "/icerpc-for-ice-users/slice/converting-ice-into-slice"
-        },
         {
           "title": "Ice::Object and checked cast",
           "path": "/icerpc-for-ice-users/slice/ice-object"

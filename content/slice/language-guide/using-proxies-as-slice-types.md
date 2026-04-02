@@ -14,13 +14,10 @@ If you want to transmit a proxy through a Slice operation, you can easily transm
 built-in custom type `IceRpc::ServiceAddress`:
 
 ```slice
-mode = Slice1
-
 [cs::namespace("IceRpc.Slice")]
 module IceRpc
 
-/// Represents the address of an RPC service that can be called using ice or icerpc. This custom type is
-/// compatible with both Slice1 and Slice2.
+/// Represents the address of an RPC service that can be called using ice or icerpc.
 [cs::type("IceRpc.ServiceAddress")]
 custom ServiceAddress
 ```
@@ -99,8 +96,6 @@ The decode method generated for *Name*Proxy decodes a service address and then c
 You can override this default behavior by configuring a [base proxy] in the [ISliceFeature] of your
 [outgoing request features] or [incoming request features].
 
-{% slice2 %}
-
 ## Relative proxy {% icerpcSlice=true %}
 
 A relative proxy is a proxy that encapsulates a [relative service address]. You cannot use a relative proxy to send requests.
@@ -116,8 +111,6 @@ When the decode method generated for *Name*Proxy decodes a relative service addr
 
 The decode method returns a relative proxy when there is no base service address to resolve the relative service
 address.
-
-{% /slice2 %}
 
 [base proxy]: csharp:IceRpc.Slice.ISliceFeature#IceRpc_Slice_ISliceFeature_BaseProxy
 [Custom types]: custom-types

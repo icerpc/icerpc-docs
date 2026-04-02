@@ -41,15 +41,11 @@
             }
         },
         string: /\"(?:\\.|[^\\\"\r\n])*\"/,
-        keyword: /\b(module|struct|exception|class|interface|enum|custom|typealias|compact|idempotent|mode|stream|tag|throws|unchecked)\b/,
+        keyword: /\b(module|struct|interface|enum|custom|typealias|compact|idempotent|stream|tag|unchecked)\b/,
         builtin: [
             {
-                pattern: /\b(bool|int8|uint8|int16|uint16|int32|uint32|varint32|varuint32|int64|uint64|varint62|varuint62|float32|float64|string|Sequence|Dictionary|Result|AnyClass)\b/,
+                pattern: /\b(bool|int8|uint8|int16|uint16|int32|uint32|varint32|varuint32|int64|uint64|varint62|varuint62|float32|float64|string|Sequence|Dictionary|Result)\b/,
                 alias: 'keyword'
-            },
-            {
-                pattern: /\b(Slice1|Slice2)\b/,
-                alias: 'constant'
             }
         ],
         number: /\b[0-9]\w*\b/,

@@ -12,13 +12,13 @@ Slice uses `::` as its [scope resolution operator][scope-resolution-operator].
 
 For example:
 
-```slice {% title="AnimalKingdom.slice" addMode=true %}
+```slice {% title="AnimalKingdom.slice" %}
 module AnimalKingdom
 
 compact struct Lion { ... } // in module AnimalKingdom
 ```
 
-```slice {% title="Game.slice" addMode=true %}
+```slice {% title="Game.slice" %}
 module Game
 
 interface Lion {
@@ -32,7 +32,7 @@ You can split the definitions within the same module into multiple Slice files.
 
 A module can have sub-modules, sub-sub-modules etc. at any depth. Each level is separated by `::`. For example:
 
-```slice {% addMode=true %}
+```slice
 module Res::Vacation
 
 // definitions in the Vacation sub-module...
@@ -50,7 +50,7 @@ For example:
 
 {% aside alignment="top" %}
 
-```slice {% addMode=true %}
+```slice
 [cs::namespace("Reservation.Bundles")]
 module Res::Vacation
 ...

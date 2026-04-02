@@ -10,7 +10,7 @@ language. You also need to provide helper methods that encode/decode this type.
 
 For example, you could define a new 128-bit integer type as follows:
 
-```slice {% addMode=true %}
+```slice
 module Compute
 
 custom BigInt // a signed 128-bit int
@@ -26,7 +26,7 @@ string argument: the name of the mapped C# type.
 
 For example:
 
-```slice {% addMode=true %}
+```slice
 module Compute
 
 [cs::type("Int128")] // maps Compute::BigInt to System.Int128
@@ -52,34 +52,6 @@ public static class BigIntSliceEncoderExtensions
     public static void EncodeBigInt(this ref SliceEncoder encoder, Int128 value) { ... your implementation ... }
 }
 ```
-
-{% slice1 %}
-If you use this custom type as an optional (with a `?` suffix), you also need to supply methods to encode/decode a
-nullable value of this type. With our example:
-
-```csharp
-namespace Compute; // like above
-
-public static class BigIntSliceDecoderExtensions
-{
-    public static Int128 DecodeBigInt(this ref SliceDecoder decoder) { ... your implementation ... }
-
-    public static Int128? DecodeNullableBigInt(this ref SliceDecoder decoder) { ... your implementation ... }
-}
-
-public static class BigIntSliceEncoderExtensions
-{
-    public static void EncodeBigInt(this ref SliceEncoder encoder, Int128 value) { ... your implementation ... }
-
-    public static void EncodeNullableBigInt(this ref SliceEncoder encoder, Int128? value)
-    {
-        ... your implementation ...
-    }
-}
-```
-
-{% /slice1 %}
-
 {% callout type="note" %}
 A more logical name for this custom type would be `Int128`. We picked `BigInt` to make it clear where the Slice
 identifier is used in the classes and methods that encode/decode this custom type.

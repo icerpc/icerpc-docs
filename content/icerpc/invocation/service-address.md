@@ -112,7 +112,7 @@ particular, it's an error to create an outgoing request with a relative service 
 
 Relative service addresses underpin [relative proxies] in Slice.
 
-[relative proxies]: /slice2/language-guide/using-proxies-as-slice-types#relative-proxy
+[relative proxies]: /slice/language-guide/using-proxies-as-slice-types#relative-proxy
 [server addresses]: ../connection/server-address
 
 [URI]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier

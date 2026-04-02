@@ -17,7 +17,6 @@ import { Grid } from '@/components/tags/grid';
 import { HomeTitle } from '@/components/tags/home-title';
 import { IcerpcSlice } from 'components';
 import { License } from '@/components/tags/license';
-import { ModeSection } from '@/components/tags/mode-section';
 import { Aside } from '@/components/tags/aside';
 import { Step } from '@/components/tags/step';
 import { Title } from '@/components/tags/title';
@@ -50,7 +49,6 @@ export const components = {
   IcerpcSlice,
   License,
   List,
-  ModeSection,
   Aside,
   Step,
   Table,

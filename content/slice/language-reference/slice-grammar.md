@@ -15,8 +15,7 @@ While the contents of a Slice file may reference definitions in other files, eac
 There is no notion of 'including' the contents of one file in another, and errors in one file do not affect the parsing
 of other files.
 
-A slice file consists of any number of [file attributes][attribute] and at most one [mode statement][mode-statement].
-File attributes can appear both before and after the mode statement.
+A slice file consists of any number of [file attributes][attribute].
 This is followed by an optional [module declaration][module-declaration], followed by any number of Slice definitions.
 It is illegal for a file to contain Slice definitions without a module declaration.
 
@@ -32,30 +31,11 @@ SliceFilePrelude
     ;
 
 Definition
-    : Struct | Class | Exception | Interface | Enum | CustomType | TypeAlias
+    : Struct | Interface | Enum | CustomType | TypeAlias
     ;
 ```
 
 For additional information on Slice files, see the [Slice file][slice-file-guide] page.
-
-### Mode Statements
-
-Mode statements consist of the `mode` keyword, followed by an equals sign, followed by an [identifier].
-This identifier must be a valid Slice compilation mode - either `Slice1` or `Slice2`.
-
-```ebnf {% showTitle=false %}
-FileCompilationMode
-    : "mode" "=" Identifier
-    ;
-```
-
-Mode statements must come before any Slice definitions or [module declarations][module-declaration].
-The compilation mode you select determines which Slice features are available to you but has no effect on the parsing
-of your Slice files. For example, classes are a Slice1-only feature, so it is invalid to define one in a Slice2 file.
-But within a Slice2 file, `class` is still treated as a keyword, and class definitions must still be syntactically
-correct.
-
-For additional information on modes, see the [compilation mode][compilation-mode-guide] page.
 
 ### Module declarations
 
@@ -89,8 +69,7 @@ All Slice definitions must be contained within modules - Slice definitions canno
 If a slice file contains any Slice definitions, a module declaration is required,
 and those definitions will be contained within the declared module.
 
-Module declarations must come before any Slice definitions and must come after any [file attributes][attribute] or
-[mode declarations][mode-statement].
+Module declarations must come before any Slice definitions and must come after any [file attributes][attribute].
 There can be at most one module declaration per Slice file.
 
 ```ebnf {% showTitle=false %}
@@ -112,7 +91,6 @@ Slice supports the following primitive types:
 Primitive
     : "bool"      | "int8"  | "uint8"  | "int16"    | "uint16"    | "int32"   | "uint32"  | "varint32"
     | "varuint32" | "int64" | "uint64" | "varint62" | "varuint62" | "float32" | "float64" | "string"
-    | "AnyClass"
     ;
 ```
 
@@ -172,80 +150,13 @@ Struct
     ;
 ```
 
-{% slice2 %}
 Structs also support the `compact` modifier keyword.
 A [compact struct][compact-struct-guide] cannot contain [tagged fields][tag].
-{% /slice2 %}
-
-{% slice1 %}
-In [`Slice1`][compilation-mode-guide] mode, structs are required to have the `compact` modifier keyword.
-A [compact struct][compact-struct-guide] cannot contain [tagged fields][tag].
-{% /slice1 %}
-
 For additional information on structs, see the [struct][struct-guide] page.
-
-{% slice1 %}
-
-### Class types
-
-Classes can only be defined or referenced in [`Slice1`][compilation-mode-guide] mode.
-Classes can never be [tagged][tag] when used as the type of a [field] or [parameter].
-
-Class definitions consist of the `class` keyword, followed by an [identifier], optionally followed by a
-[compact ID][compact-id-guide], optionally followed by a base class, and then the class's body.
-Compact IDs consist of a positive integer wrapped in a pair of parenthesis.
-This integer must between `0` and `2,147,483,647` (the maximum value of a signed 32-bit integer).
-Base classes are specified by a single colon, followed by a class's (possibly scoped) identifier.
-Class bodies consist of a list of [fields][field] wrapped in a pair of braces. Fields may be optionally separated by
-commas.
-Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the class in its prelude.
-
-```ebnf {% showTitle=false %}
-Class
-    : Prelude "class" Identifier CompactId? (":" TypeRef)? "{" UndelimitedList<Field> "}"
-    ;
-
-CompactId
-    : "(" SignedInteger ")"
-    ;
-```
-
-For additional information on classes, see the [class][class-guide] page.
-{% /slice1 %}
-
-{% slice1 %}
-
-### Exceptions
-
-Exceptions can only be defined or referenced in [`Slice1`][compilation-mode-guide] mode.
-Exceptions cannot be used as types.
-They can only validly appear in the exception specifications of [operations][operation].
-
-Exception definitions consist of the `exception` keyword, followed by an [identifier],
-optionally followed by a base exception, and then the exception's body.
-Base exceptions are specified by a single colon, followed by an exception's (possibly scoped) identifier.
-Exception bodies consist of a list of [fields][field] wrapped in a pair of braces. Fields may be optionally separated by
-commas. Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the exception in its prelude.
-
-```ebnf {% showTitle=false %}
-Exception
-    : Prelude "exception" Identifier (":" TypeRef)? "{" UndelimitedList<Field> "}"
-    ;
-```
-
-For additional information on exceptions, see the [exception][exception-guide] page.
-{% /slice1 %}
 
 ### Fields
 
-{% slice2 %}
 Fields can only be declared within [structs][struct].
-{% /slice2 %}
-
-{% slice1 %}
-Fields can only be declared within [structs][struct], [classes][class], and [exceptions][exception].
-{% /slice1 %}
-
 Field declarations consist of an [identifier], followed by a colon, and then a [type].
 Optionally, a [tag] may be applied to the field, directly before its identifier, making this a tagged field.
 Additionally, [local attributes][attribute] and a [doc-comment][doc-comment] may be applied to the field in its prelude.
@@ -277,23 +188,15 @@ For additional information on interfaces, see the [interface][interface-guide] p
 
 ### Operations
 
-{% slice2 %}
 An operation consists of an [identifier], followed by a list of [parameters][parameter], optionally followed by a
-return type, optionally followed by an [exception specification][exception-specification-guide].
-Exceptions are not supported in [`Slice2`][compilation-mode-guide] mode.
-{% /slice2 %}
-
-{% slice1 %}
-An operation consists of an [identifier], followed by a list of [parameters][parameter], optionally followed by a
-return type, optionally followed by an [exception specification][exception-specification-guide].
-{% /slice1 %}
+return type.
 
 Operations support the `idempotent` modifier keyword. See the [idempotent][idempotent-guide] guide for more information.
 Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the operation in its prelude.
 
 ```ebnf {% showTitle=false %}
 Operation
-    : Prelude "idempotent"? Identifier "(" UndelimitedList<Parameter> ")" ReturnType? ExceptionSpecification?
+    : Prelude "idempotent"? Identifier "(" UndelimitedList<Parameter> ")" ReturnType?
     ;
 ```
 
@@ -307,7 +210,7 @@ Multiple return parameters can be specified as a tuple. This consists of an arro
 [parameters][parameter] wrapped in parenthesis.
 It is illegal for a return tuple to contain less than 2 elements
 
-The `stream` keyword can only be used in [`Slice2`][compilation-mode-guide] mode, and within a list of parameters
+The `stream` keyword can only be used within a list of parameters
 at most one may be streamed and it must be the last parameter in that list. Note that operation parameter and return
 parameters are separate lists; each can contain their own streamed parameter.
 
@@ -320,34 +223,10 @@ ReturnType
     ;
 ```
 
-{% slice2 %}
-Exception specifications can only declared in [`Slice1`][compilation-mode-guide] mode.
-{% /slice2 %}
-
-{% slice1 %}
-There are two syntaxes for [specifying exceptions][exception-specification-guide], depending on the number of
-[exceptions][exception] being specified.
-
-Single exceptions can be specified with the `throws` keyword, followed by an exception's (possibly scoped) identifier.
-Multiple exceptions can be specified as a tuple. This consists of the `throws` keyword, followed by the
-(possibly scoped) identifiers of one or more exceptions, separated by (required) commas.
-
-Exception specifications can only declared in [`Slice1`][compilation-mode-guide] mode.
-
-```ebnf {% showTitle=false %}
-ExceptionSpecification
-    : "throws" TypeRef
-    | "throws" "(" NonEmptyCommaList<TypeRef> ")"
-    ;
-```
-
-{% /slice1 %}
-
 For additional information on operations, see the [operation][operation-guide] page.
 
 ### Parameters
 
-{% slice2 %}
 The syntax for parameters is identical to the syntax for [fields][field], but with added support for streams.
 
 Parameters consist of an [identifier], followed by a colon, and then a [type].
@@ -362,35 +241,18 @@ Parameter
 
 Parameters also support the [`stream`][streamed-parameters-guide] modifier keyword, which may be applied to the
 parameter's type.
-Streamed parameters are only supported in [`Slice2`][compilation-mode-guide] mode, and within a list of parameters
-at most one may be streamed and it must be the last parameter in that list.
-{% /slice2 %}
-
-{% slice1 %}
-The syntax for parameters is identical to the syntax for [fields][field].
-{% /slice1 %}
-
+Streamed parameters are only supported within a list of parameters at most one may be streamed and it must be the last
+parameter in that list.
 For additional information on parameters, see the [parameter][parameter-guide] page.
 
 ### Enum types
 
-{% slice2 %}
 Enum definitions consist of the `enum` keyword, followed by an [identifier], optionally followed by an
 [underlying type][type], and then the enum's body.
 Underlying types are specified by a single colon, followed by an integral, non-optional type.
 Enum bodies consist of a list of [enumerators][enumerator] wrapped in a pair of braces. Enumerators may be optionally
 separated by commas.
 Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the enum in its prelude.
-{% /slice2 %}
-
-{% slice1 %}
-Enum definitions consist of the `enum` keyword, followed by an [identifier], optionally followed by an
-[underlying type][type], and then the enum's body.
-Underlying types are only supported in [`Slice2`][compilation-mode-guide] mode.
-Enum bodies consist of a list of [enumerators][enumerator] wrapped in a pair of braces. Enumerators may be optionally
-separated by commas.
-Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the enum in its prelude.
-{% /slice1 %}
 
 ```ebnf {% showTitle=false %}
 Enum
@@ -484,17 +346,7 @@ TypeRefDefinition
 
 Tags consist of the `tag` keyword, followed by a positive integer wrapped in a pair of parenthesis.
 This integer must be between `0` and `2,147,483,647` (the maximum value of a signed 32-bit integer).
-
-{% slice2 %}
 Tags can only be applied to [fields][field] and [parameters][parameter] with an optional type.
-{% /slice2 %}
-
-{% slice1 %}
-Tags can only be applied to [fields][field] and [parameters][parameter], and only if the type of that field/parameter:
-
-- is optional (it ends with a `?` symbol)
-- is not a class, and does not use classes internally
-{% /slice1 %}
 
 ```ebnf {% showTitle=false %}
 Tag
@@ -694,8 +546,6 @@ doc_comment: "///" (NON_FORWARD_SLASH_CHARACTER CHARACTER*)? "\n";
 // Definition keywords
 module_keyword:     "module";
 struct_keyword:     "struct";
-exception_keyword:  "exception";
-class_keyword:      "class";
 interface_keyword:  "interface";
 enum_keyword:       "enum";
 custom_keyword:     "custom";
@@ -722,15 +572,12 @@ varuint62_keyword: "varuint62";
 float32_keyword:   "float32";
 float64_keyword:   "float64";
 string_keyword:    "string";
-any_class_keyword: "AnyClass";
 
 // Other keywords
 compact_keyword:       "compact";
 idempotent_keyword:    "idempotent";
-mode_keyword:          "mode";
 stream_keyword:        "stream";
 tag_keyword:           "tag";
-throws_keyword:        "throws";
 unchecked_keyword:     "unchecked";
 
 // Brackets
@@ -780,8 +627,6 @@ Module
 
 Definition
     : Struct
-    | Exception
-    | Class
     | Interface
     | Enum
     | CustomType
@@ -790,14 +635,6 @@ Definition
 
 Struct
     : Prelude compact_keyword? struct_keyword identifier left_brace UndelimitedList<Field> right_brace
-    ;
-
-Exception
-    : Prelude exception_keyword identifier (colon TypeRef)? left_brace UndelimitedList<Field> right_brace
-    ;
-
-Class
-    : Prelude class_keyword identifier CompactId? (colon TypeRef)? left_brace UndelimitedList<Field> right_brace
     ;
 
 Field
@@ -809,7 +646,7 @@ Interface
     ;
 
 Operation
-    : Prelude idempotent_keyword? identifier left_parenthesis UndelimitedList<Parameter> right_parenthesis (arrow ReturnType)? ExceptionSpecification?
+    : Prelude idempotent_keyword? identifier left_parenthesis UndelimitedList<Parameter> right_parenthesis (arrow ReturnType)?
     ;
 
 Parameter
@@ -819,11 +656,6 @@ Parameter
 ReturnType
     : Tag? stream_keyword? TypeRef
     | left_parenthesis UndelimitedList<Parameter> right_parenthesis
-    ;
-
-ExceptionSpecification
-    : throws_keyword TypeRef
-    | throws_keyword left_parenthesis NonEmptyCommaList<TypeRef> right_parenthesis
     ;
 
 Enum
@@ -867,7 +699,6 @@ Primitive
     | float32_keyword
     | float64_keyword
     | string_keyword
-    | any_class_keyword
     ;
 
 TypeRef
@@ -949,14 +780,11 @@ UndelimitedList<T>
     ;
 ```
 
-[mode-statement]: #mode-statements
 [module-declaration]: #module-declarations
 [primitive]: #primitive-types
 [sequence]: #collection-types
 [dictionary]: #collection-types
 [struct]: #struct-types
-[class]: #class-types
-[exception]: #exceptions
 [field]: #fields
 [operation]: #operations
 [parameter]: #parameters
@@ -970,20 +798,15 @@ UndelimitedList<T>
 [string]: #string-literals
 
 [slice-file-guide]: /slice/basics/slice-files
-[compilation-mode-guide]: /slice/language-guide/compilation-mode
 [module-guide]: /slice/language-guide/module
 [primitive-type-guide]: /slice/language-guide/primitive-types
 [sequence-guide]: /slice/language-guide/sequence-types
 [dictionary-guide]: /slice/language-guide/dictionary-types
 [struct-guide]: /slice/language-guide/struct-types
 [compact-struct-guide]: /slice/language-guide/struct-types#compact-struct
-[class-guide]: /slice1/language-guide/class-types
-[compact-id-guide]: /slice/language-guide/class-types#compact-type-ids
-[exception-guide]: /slice/language-guide/exception
 [field-guide]: /slice/language-guide/fields
 [interface-guide]: /slice/language-guide/interface
 [operation-guide]: /slice/language-guide/operation
-[exception-specification-guide]: /slice/language-guide/operation#exception-specification
 [idempotent-guide]: /slice/language-guide/operation#idempotent-operation
 [parameter-guide]: /slice/language-guide/parameters
 [enum-guide]: /slice/language-guide/enum-types

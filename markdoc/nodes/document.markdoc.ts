@@ -1,8 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
 import { nodes, Node, Config, Tag } from '@markdoc/markdoc';
-import { Mode } from 'types';
-import { getModeFromPath } from 'utils/modeFromPath';
 
 const document = {
   ...nodes.document,
@@ -11,10 +9,9 @@ const document = {
   transform(node: Node, config: Config) {
     const frontmatter = config.variables?.frontmatter;
     const path = config.variables?.path;
-    const mode = getModeFromPath(path);
     const children = node.transformChildren(config) ?? [];
     const headings = children
-      .map((child) => extractHeadings(child, [], mode))
+      .map((child) => extractHeadings(child, []))
       .flat();
 
     return new Tag(
@@ -22,7 +19,6 @@ const document = {
       {
         title: frontmatter.title,
         description: frontmatter.description,
-        mode,
         headings,
         path,
         readingTime:
@@ -38,13 +34,7 @@ const document = {
   }
 };
 
-function extractHeadings(node: any, sections: any[] = [], mode?: Mode) {
-  // Filter out headings that are not the mode of the document
-  if ((node as Tag) && mode) {
-    const tag = node as Tag;
-    if (tag.name === 'ModeSection' && tag.attributes.mode != mode) return;
-  }
-
+function extractHeadings(node: any, sections: any[] = []) {
   // Add headings from step tags
   if ((node as Tag).name === 'Step') {
     sections.push({
@@ -80,7 +70,7 @@ function extractHeadings(node: any, sections: any[] = [], mode?: Mode) {
 
     if (node.children) {
       for (const child of node.children) {
-        extractHeadings(child, sections, mode);
+        extractHeadings(child, sections);
       }
     }
   }

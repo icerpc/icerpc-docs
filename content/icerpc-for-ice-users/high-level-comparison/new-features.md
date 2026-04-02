@@ -57,7 +57,7 @@ all.
 
 ## New Slice
 
-IceRPC comes with a brand new Slice, with a new syntax, a new serialization format, and even a new file extension.
+IceRPC comes with a brand new Slice, with a new syntax, a new serialization format, and a new file extension (`.slice`).
 
 This new Slice is independent from IceRPC: you can naturally use it with IceRPC, but you can also use it without an RPC
 framework. Other RPC frameworks may provide support for this new Slice in the future.
@@ -68,10 +68,10 @@ Slice files use the `.ice` file extension.
 
 On the other hand, the compilation model for the new Slice files is more like C# and Java: the compilation uses a set of
 reference files specified as argument to the compiler, and there is no `#include` preprocessing directive or forward
-declarations. These new Slice files use the `.slice` extension.
+declarations.
 
-Another difference is the syntax for parameters and fields: Ice's Slice uses a C-like syntax, while the new Slice syntax
-is more like Rust and Swift:
+Another difference is the syntax for parameters and fields: Ice's uses a C-like syntax, while the new Slice syntax is
+more like Rust and Swift:
 
 {% aside alignment="top" %}
 

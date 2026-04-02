@@ -32,53 +32,6 @@ This chapter describes both Slice and the IceRPC + Slice integration provided by
 
 ## Streamlined syntax
 
-{% slice1 %}
-In the Slice1 [compilation mode], Slice is a thorough revision of the [original Slice] language: it offers the same
-constructs (interface, class, struct, etc.) and capabilities but with a simpler syntax inspired by Rust and Swift.
-
-The Slice2 compilation mode provides additional features that have no equivalent in the original Slice, such as streamed
-parameters and variable-size integer types. You should use Slice1 only for interop with Ice applications.
-
-#### Example
-
-{% aside alignment="top" %}
-
-```ice {% title="Slice definitions (original Ice syntax)" %}
-class Person
-{
-   string name;
-   optional(1) string nickname;
-   string email;
-}
-
-sequence<Person> PersonList;
-
-interface Contacts
-{
-   PersonList find(string searchExpression);
-}
-```
-
-```slice {% title="Slice definitions (new syntax)" %}
-mode = Slice1
-
-interface Contacts {
-   find(searchExpression: string) -> Sequence<Person>
-}
-
-class Person {
-   name: string
-   tag(1) nickname: string?
-   email: string
-}
-```
-
-{% /aside %}
-
-See more examples on the [Converting .ice into .slice] page.
-{% /slice1 %}
-
-{% slice2 %}
 Slice provides a readable, modern syntax inspired by Rust and Swift. It includes support for streaming parameters with
 the `stream` keyword, allows you to turn any type into an optional type with the `?` suffix, requires minimal
 punctuation, and more.
@@ -101,8 +54,6 @@ interface TourGuide {
     )
 }
 ```
-
-{% /slice2 %}
 
 ## Code generation
 
@@ -204,14 +155,11 @@ decode instances of your custom type.
 {% /grid %}
 
 [attributes]: /slice/language-guide/attributes
-[compilation mode]: /slice/language-guide/compilation-mode
-[Converting .ice into .slice]: /icerpc-for-ice-users/slice/converting-ice-into-slice
 [custom]: /slice/language-guide/custom-types
 [Dictionary]: /slice/language-guide/dictionary-types
 [enum]: /slice/language-guide/enum-types
 [Interface Definition Language]: https://en.wikipedia.org/wiki/Interface_description_language
 [IFeatureCollection]: csharp:IceRpc.Features.IFeatureCollection
-[original Slice]: https://doc.zeroc.com/ice/3.7/the-slice-language
 [primitive]: /slice/language-guide/primitive-types
 [Sequence]: /slice/language-guide/sequence-types
 [struct]: /slice/language-guide/struct-types

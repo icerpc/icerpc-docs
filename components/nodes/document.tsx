@@ -2,7 +2,6 @@
 
 import { ReactElement } from 'react';
 import { AsideItem, Divider, Title } from 'components';
-import { Mode } from 'types';
 import { PageHistory, Aside, Feedback } from '@/components/shell';
 
 type Props = {
@@ -12,7 +11,6 @@ type Props = {
   path: string;
   headings: unknown[];
   readingTime?: string;
-  mode?: Mode; // The mode of the current page (if any) ex.) /slice1/foo would have a mode of Slice1
   showAside?: boolean;
   showNavigation?: boolean;
 };

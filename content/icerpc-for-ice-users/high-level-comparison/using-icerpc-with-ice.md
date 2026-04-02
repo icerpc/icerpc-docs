@@ -11,37 +11,7 @@ limitations), and by supporting the Ice encoding and the Slice language.
 In practice, this means you can write a new IceRPC client for an existing Ice server, reimplement an existing Ice server
 using IceRPC, or use IceRPC to create new services for your Ice clients.
 
-If you start from an existing Ice client or server, the first step is to convert your Slice definitions (in `.ice`
-files) to the new Slice syntax. The converted Slice files must specify `Slice1` mode:
-
-```slice
-mode = Slice1 // required for interop with Ice
-...
-
-```
-
-Make sure to use the `.slice` extension for these new Slice files.
-
-If you use IceRPC to create new services for your Ice client, you should start by defining your Slice interfaces with
-the new Slice syntax (and `mode = Slice1`) before converting these definitions to the `.ice` Slice syntax. The new
-syntax allows you to mark a class parameter/field as optional or non-optional, for example:
-
-```slice {% title="Slice with the .slice syntax" %}
-interface ContactRegistry {
-    // The new contact cannot be null / not-set.
-    addContact(contact: Contact)
-
-    // Returns null/not-set when not found.
-    findContact(name: string) -> Contact?
-}
-
-class Contact {
-    name: string
-    ...
-}
-```
-
-With the `.ice` Slice syntax, you can't make this distinction: a class parameter/field is always optional.
+TBD: Ice IDL and encoding support.
 
 ## Limitations
 

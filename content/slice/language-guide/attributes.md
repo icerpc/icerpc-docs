@@ -51,7 +51,6 @@ The following attributes are available in all language mappings:
 | [`compress`][compress]                | Operations                                                                  | Request compression from the local compressor interceptor or middleware. |
 | [`deprecated`](#deprecated-attribute) | Interfaces, operations, user-defined types, fields, enumerators             | Mark as deprecated.                                                      |
 | [`oneway`][oneway]                    | Operations                                                                  | Create one-way requests for this operation (client-side only).           |
-| [`slicedFormat`][sliced-format]       | Operations (Slice1 only)                                                    | Encode the operation arguments or return value in Sliced format.         |
 
 ### allow attribute
 
@@ -117,7 +116,7 @@ For example:
 
 {% aside alignment="top" %}
 
-```slice {% addMode=true %}
+```slice
 [cs::identifier("RemoteEnumerator")]
 interface Enumerator {
     ...
@@ -159,4 +158,4 @@ The `cs::internal` attribute maps a Slice type to one or more internal C# types.
 [dictionary-type]: dictionary-types#cs::type-attribute
 [oneway]: operation#oneway-attribute
 [sequence-type]: sequence-types#cs::type-attribute
-[sliced-format]: /slice1/language-guide/class-types#slicing
+

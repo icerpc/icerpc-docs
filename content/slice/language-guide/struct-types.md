@@ -7,28 +7,6 @@ description: Learn how to define and use structs in Slice.
 
 A struct is a user-defined type that holds a list of [fields](fields). For example:
 
-{% slice1 %}
-
-```slice
-enum StateAbbreviation { AL, AK, AZ, AR, AS ... WY }
-
-compact struct PostalAddress {
-    recipientFullName: string
-    streetAddress1: string
-    streetAddress2: string
-    city: string
-    state: StateAbbreviation
-    zip: string
-}
-```
-
-{% callout type="note" %}
-All structs must be marked "compact" with Slice1. A compact struct cannot hold any [tagged field][tagged-fields].
-{% /callout %}
-{% /slice1 %}
-
-{% slice2 %}
-
 ```slice
 enum StateAbbreviation : uint8 { AL, AK, AZ, AR, AS ... WY }
 
@@ -59,72 +37,9 @@ compact struct BytePair { first: uint8, second: uint8 }
 
 The encoding of a compact struct is slightly more compact than the encoding of a regular struct: `compact` saves one
 byte per instance.
-{% /slice2 %}
-
 ## C# mapping
 
 A Slice struct maps to a public C# record struct with the same name. For example:
-
-{% slice1 %}
-{% aside alignment="top" %}
-
-```slice
-compact struct PostalAddress {
-    recipientFullName: string
-    streetAddress1: string
-    streetAddress2: string
-    city: string
-    state: StateAbbreviation
-    zip: string
-}
-```
-
-```csharp
-public partial record struct PostalAddress
-{
-    public required string RecipientFullName { get; set; }
-    public required string StreetAddress1 { get; set; }
-    public required string StreetAddress2 { get; set; }
-    public required string City { get; set; }
-    public StateAbbreviation State { get; set; }
-    public required string Zip { get; set; }
-
-    // Primary constructor.
-    public PostalAddress(
-        string recipientFullName,
-        string streetAddress1,
-        string streetAddress2,
-        string city,
-        StateAbbreviation state,
-        string zip)
-    {
-        this.RecipientFullName = recipientFullName;
-        this.StreetAddress1 = streetAddress1;
-        this.StreetAddress2 = streetAddress2;
-        this.City = city;
-        this.State = state;
-        this.Zip = zip;
-    }
-
-    // Decoding constructor.
-    public PostalAddress(ref SliceDecoder decoder)
-    {
-        ...
-    }
-
-    // Encodes this struct.
-    public readonly void Encode(
-        ref SliceEncoder encoder)
-    {
-        ...
-    }
-}
-```
-
-{% /aside %}
-{% /slice1 %}
-
-{% slice2 %}
 {% aside alignment="top" %}
 
 ```slice
@@ -185,8 +100,6 @@ public partial record struct PostalAddress
 ```
 
 {% /aside %}
-{% /slice2 %}
-
 The mapped C# record struct provides a primary constructor with parameters for all its fields, and also a decoding
 constructor that constructs a new instance by decoding its fields from a [SliceDecoder]. The generated `Encode` method
 encodes the struct fields with a [SliceEncoder].

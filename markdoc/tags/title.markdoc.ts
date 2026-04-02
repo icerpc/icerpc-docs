@@ -7,12 +7,11 @@ const title = {
   transform(node: Node, config: Config) {
     const attributes = node.transformAttributes(config);
     const frontmatter = config.variables?.frontmatter;
-    const { title, description, mode } = frontmatter;
+    const { title, description } = frontmatter;
     return new Tag(`${this.render}`, {
       ...attributes,
       title,
-      description,
-      mode
+      description
     });
   }
 };
