@@ -24,7 +24,7 @@ The Slice compiler completely ignores comments that are not doc comments.
 Slice comments that start with a triple slash (`///`) are doc comments. The Slice compiler uses these special comments
 as input for the doc comments it generates in the mapped language.
 
-Slice doc comments can be attached to all Slice elements except parameters and modules statements.
+Slice doc comments can be attached to all Slice elements except parameters and modules.
 
 ## Doc comments tags
 
