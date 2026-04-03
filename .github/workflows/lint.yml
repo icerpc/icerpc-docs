@@ -2,7 +2,7 @@ name: 'Lint Markdown Files'
 
 on:
   pull_request:
-    branches: [main]
+    branches: [csharp-0.6-dev]
 
 jobs:
   spellcheck:
