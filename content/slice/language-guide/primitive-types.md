@@ -2,20 +2,6 @@
 title: Primitive types
 description: Learn about Slice primitive types.
 ---
-
-{% slice1 %}
-
-## AnyClass
-
-A field or parameter with Slice type `AnyClass` can hold an instance of any Slice class. `AnyClass` is the implicit
-abstract base of all Slice [classes](class-types).
-
-| Slice    | C# mapping              |
-| ---------|-------------------------|
-| AnyClass | ZeroC.Slice.SliceClass |
-
-{% /slice1 %}
-
 ## Bool
 
 Slice provides a boolean type, `bool`. It can have two values: true (1) or false (0).
@@ -23,8 +9,6 @@ Slice provides a boolean type, `bool`. It can have two values: true (1) or false
 | Slice | C# mapping |
 | ------|------------|
 | bool  | bool       |
-
-{% slice2 %}
 
 ## Fixed-size integral types
 
@@ -41,8 +25,6 @@ Slice provides 8 fixed-size integral types. Types that start with a `u` are unsi
 | int64     | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807           | long       |
 | uint64    | 0 to 18,446,744,073,709,551,615                                   | ulong      |
 
-{% /slice2 %}
-
 ## Floating-point types
 
 Slice provides 2 floating-point types: a single precision type, `float32`, and a double-precision type, `float64`.
@@ -51,22 +33,6 @@ Slice provides 2 floating-point types: a single precision type, `float32`, and a
 | ---------|------------|
 | float32  | float      |
 | float64  | double     |
-
-{% slice1 %}
-
-## Integral types
-
-Slice provides 4 integral types.
-
-| Slice     | Range                                                             | C# mapping |
-|-----------|-------------------------------------------------------------------|------------|
-| uint8     | 0 to 255                                                          | byte       |
-| int16     | -32,768 to 32,767                                                 | short      |
-| int32     | -2,147,483,648 to 2,147,483,647                                   | int        |
-| int64     | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807           | long       |
-
-{% /slice1 %}
-
 ## String
 
 Slice provides a string type, `string`. A string is a sequence of characters that can be encoded using [UTF-8].
@@ -74,8 +40,6 @@ Slice provides a string type, `string`. A string is a sequence of characters tha
 | Slice    | C# mapping |
 | ---------|------------|
 | string   | string     |
-
-{% slice2 %}
 
 ## Variable-size integral types
 
@@ -107,6 +71,4 @@ The integer value determines the minimum number of bytes required in the encoded
 | varuint{32,62} | 16,384 to 1,073,741,823                                 | 4                       |
 
 Any other value is encoded using 8 bytes.
-{% /slice2 %}
-
 [UTF-8]: https://en.wikipedia.org/wiki/UTF-8

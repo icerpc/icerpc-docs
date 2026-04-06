@@ -3,12 +3,6 @@ title: Result types
 description: Learn how to define and use results in Slice.
 ---
 
-{% slice1 %}
-The built-in generic type 'Result<Success, Failure>' is not available with Slice1.
-{% /slice1 %}
-
-{% slice2 %}
-
 ## Result
 
 Result is a built-in generic type that either holds a Success value or a Failure value, where `Success` and `Failure`
@@ -71,8 +65,6 @@ string message = result.Match(
         away => $"Away until {away.Until.ToLocalTime()}",
         () => $"{failure.Value}"));
 ```
-
-{% /slice2 %}
 
 [Dunet]: https://github.com/domn1995/dunet
 [Result<TSuccess, TFailure>]: csharp:ZeroC.Slice.Result

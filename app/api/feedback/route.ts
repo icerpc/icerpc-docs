@@ -68,7 +68,7 @@ async function sendFeedback(
   url: string,
   data: FeedbackData
 ) {
-  const { email, option, additionalFeedback, title, mode, platform } = data;
+  const { email, option, additionalFeedback, title, platform } = data;
   return await transporter.sendMail({
     from,
     to,
@@ -94,7 +94,6 @@ async function sendFeedback(
                   } has left some feedback on the documentation page '<strong>${title}</strong>' on <strong>IceRpc Docs</strong>.</p>
                   <ul style="font-size:14px;line-height:24px;margin:16px 0;color:rgb(0,0,0);list-style-type:none;text-align:left;list-style-position: inside;">
                     <li style="padding:10px;"><strong>Selected option:</strong><br/>${option}</li>
-                    <li style="padding:10px;"><strong>Mode:</strong><br/>${mode}</li>
                     <li style="padding:10px;"><strong>Language:</strong><br/>${platform}</li>
                     <li style="padding:10px;padding-bottom:0px"><strong>Additional feedback:</strong><br/>${
                       additionalFeedback ?? 'None'

@@ -13,8 +13,7 @@ import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 
 import { CopyButton } from './copy-button';
-import { Mode, Theme } from 'types';
-import { useMode } from 'context/state';
+import { Theme } from 'types';
 
 const firaMono = Fira_Mono({ weight: '400', subsets: ['latin', 'latin-ext'] });
 
@@ -47,7 +46,6 @@ type Props = {
   children: string;
   'data-language'?: string;
   title?: string;
-  addMode?: boolean;
   lineNumbers?: boolean;
   showTitle?: boolean;
 };
@@ -56,11 +54,9 @@ export const CodeBlock = ({
   children,
   'data-language': language,
   title,
-  addMode,
   lineNumbers = false,
   showTitle = true
 }: Props) => {
-  const { mode } = useMode();
   const { resolvedTheme } = useTheme();
 
   const [theme, setTheme] = useState<any>(themes.jettwaveDark);
@@ -78,12 +74,6 @@ export const CodeBlock = ({
   // If the user specified `proto` as the language, change it to protobuf
   if (language?.toLowerCase() === 'proto') {
     language = 'protobuf';
-  }
-
-  // If the code is a slice file, add the mode to the first line if the current
-  if (language?.toLowerCase() === 'slice' && addMode && mode == Mode.Slice1) {
-    const modeLines = [`mode = ${mode}`, '\n'];
-    children = modeLines.join('\n').concat(children);
   }
 
   // If the language is mermaid, render the mermaid diagram

@@ -13,7 +13,7 @@ a server application hosts a service that implements this interface.
 
 For example:
 
-```slice {% addMode=true %}
+```slice
 module VisitorCenter
 
 // An interface with a single operation.
@@ -39,7 +39,7 @@ An interface can inherit from one or more interfaces, provided the operation nam
 
 For example:
 
-```slice {% addMode=true %}
+```slice
 module Draw
 
 interface Shape {
@@ -72,7 +72,7 @@ For example:
 
 {% aside alignment="top" %}
 
-```slice {% addMode=true %}
+```slice
 module Example
 
 interface Widget {
@@ -98,7 +98,7 @@ public partial interface IWidget
 
 Slice interface inheritance naturally maps to interface inheritance in C#. For example:
 
-```slice {% addMode=true %}
+```slice
 module Draw
 
 interface Rectangle : Shape, Fillable {
@@ -170,8 +170,6 @@ public readonly partial record struct WidgetProxy : IWidget, IProxy
     public const string DefaultServicePath = "/Example/Widget";
 }
 ```
-
-{% slice2 %}
 If you want to create a [relative proxy], call the `FromPath` static method:
 
 ```csharp
@@ -188,8 +186,6 @@ For example, if you want to create a relative proxy with the default service pat
 var relativeProxy = WidgetProxy.FromPath(WidgetProxy.DefaultServicePath);
 ```
 
-{% /slice2 %}
-
 The generated proxy struct also provides a parameterless constructor that initializes the proxy's service address to
 an icerpc service address with the default service path. If you call this constructor directly, you also need to
 initialize the invoker, for example:
@@ -205,7 +201,7 @@ var proxy = new WidgetPRoxy(connection);
 When a Slice interface derives from another interface, its proxy struct provides an implicit conversion operator to be
 base interface. For example:
 
-```slice {% addMode=true %}
+```slice
 module Draw
 
 interface Rectangle : Shape, Fillable {
@@ -250,7 +246,7 @@ For example:
 
 {% aside alignment="top" %}
 
-```slice {% addMode=true %}
+```slice
 module Example
 
 interface Widget {
@@ -291,7 +287,7 @@ names. For example:
 
 {% aside alignment="top" %}
 
-```slice {% addMode=true %}
+```slice
 module Example
 
 interface Widget {
@@ -316,7 +312,7 @@ internal partial class MyWidget : IWidgetService,
 {% /aside %}
 
 [cs-identifier]: attributes#cs::identifier-attribute
-[relative proxy]: /slice2/language-guide/using-proxies-as-slice-types#relative-proxy
+[relative proxy]: /slice/language-guide/using-proxies-as-slice-types#relative-proxy
 [SliceEncodeOptions]: csharp:IceRpc.Slice.SliceEncodeOptions
 [IDispatcher]: csharp:IceRpc.IDispatcher
 [SliceService]: csharp:IceRpc.Slice.SliceServiceAttribute

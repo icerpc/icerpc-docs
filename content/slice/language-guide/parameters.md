@@ -4,20 +4,6 @@ description: Learn how to define parameters in Slice.
 ---
 
 ## Syntax
-
-{% slice1 %}
-Parameters have the same syntax as [fields](fields), with one exception: when an operation returns a single parameter,
-this parameter cannot have a name. The syntax for this nameless return parameter is simply `Type` or `tag(N) Type?`.
-
-For example:
-
-```slice
-greet(name: string) -> string // the return parameter has a type (string) but no name.
-anotherGreet(name: string) -> tag(1) string? // the return parameter is tagged
-```
-
-{% /slice1 %}
-{% slice2 %}
 Parameters have the same syntax as [fields](fields), with two extensions:
 
 1. When an operation returns a single parameter, this parameter cannot have a name. The syntax for this nameless return
@@ -46,8 +32,6 @@ type. For example:
     generated code decodes a payload with an unexpected stream, it ignores this stream and tells the sender "don't send
     me more". In the reverse situation—the decoding code expects a stream at the end of the payload but the sender
     doesn't encode anything—the decoding code simply returns an empty stream.
-{% /slice2 %}
-
 ## Tagged parameters
 
 The syntax and semantics of tagged parameters is the same as the syntax and semantics of tagged fields. The scope of a
@@ -79,8 +63,6 @@ A return parameter `name: Type` is mapped to a C# return tuple field with the sa
 case. The type of the C# field is the mapped C# type for `Type`.
 
 Tagged parameters are mapped just like regular parameters. The tag and tag number don't appear in the mapped C# API.
-
-{% slice2 %}
 
 ### Stream parameters in C\#
 
@@ -145,7 +127,7 @@ When you receive such a stream, you can read all or only some of the elements, a
 [Stream example] application. You don't need to do anything special if you don't want more elements:
 just exit the iteration. You can also inject your own cancellation token into the async enumerable stream provided by
 the generated code, with the [WithCancellation] extension method. This injected cancellation token is used to cancel a
-blocked or slow read operation on the underlying byte stream. {% /slice2 %}
+blocked or slow read operation on the underlying byte stream.
 
 [`EnumeratorCancellationAttribute`]: https://learn.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.enumeratorcancellationattribute
 [PipeReader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader

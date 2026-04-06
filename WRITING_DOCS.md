@@ -81,7 +81,6 @@ opening code fence.
 | Attribute | Description                                                                                                                                             |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | title     | The title of the code block.                                                                                                                            |
-| addMode   | Whether or not to automatically add `mode = 1` to the code block when viewing Slice1 documentation. Can be either `true` or `false` Default is `false`. |
 
 #### Examples
 
@@ -91,16 +90,6 @@ opening code fence.
 ```python title="hello.py"
 def hello(name):
   print("Hello, " + name)
-```
-````
-
-##### Code block automatic mode
-
-````md
-```slice addMode=true
-module Foo
-
-interface Bar {}
 ```
 ````
 
@@ -301,10 +290,9 @@ See the [`grid`](#grid) tag for an example of how to use the `card` tag.
 ## Updating Navigation
 
 The hierarchy of the side navigation is defined in `/data/`. Each top navigation
-item has a corresponding file, `getting-started-data.ts`, `icerpc-data.ts`,
-etc., with Slice having two files corresponding to which Slice
-mode was selected. These files export an array that defines the pages and
-their order in the sidebar. The values in the arrays are either `SideBarLink` or
+item has a corresponding file, `getting-started-data.ts`, `icerpc-data.ts`, etc.
+These files export an array that defines the pages and their order in the
+sidebar. The values in the arrays are either `SideBarLink` or
 `SideBarCategory` types.
 
 For example, the following values define two `SideBarLink` objects, one with the

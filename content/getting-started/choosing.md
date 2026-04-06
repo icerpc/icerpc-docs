@@ -26,6 +26,8 @@ it's all handled by the generated code and its supporting libraries.
 IceRPC includes full support for two IDLs and their associated serialization formats: [Slice] and [Protobuf]. Let's
 figure out which one you should pick!
 
+TODO: mention Ice IDL
+
 ## Slice
 
 Slice is a modern IDL and serialization format that was developed in tandem with IceRPC. It takes full advantage of all

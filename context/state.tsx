@@ -4,21 +4,12 @@
 
 import { ReactNode } from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { getModeFromPath } from 'utils/modeFromPath';
-import { Mode, Platform } from 'types';
+import { Platform } from 'types';
 import { usePathname } from 'next/navigation';
 
-type ModeContextType = {
-  mode?: Mode;
-  setMode: (mode: Mode) => void;
-};
 type PlatformContextType = {
   platform: Platform;
   setPlatform: (platform: Platform) => void;
-};
-type SearchContextType = {
-  mode?: Mode;
-  setMode: (mode: Mode) => void;
 };
 
 type Props = {
@@ -26,81 +17,42 @@ type Props = {
   path: string;
 };
 
-// Contexts for the mode, platform, and path
+// Contexts for the platform and path
 const PathContext = createContext<string | null>(null);
-
-const ModeContext = createContext<ModeContextType>({
-  mode: undefined,
-  setMode: () => {}
-});
 
 const PlatformContext = createContext<PlatformContextType>({
   platform: Platform.csharp,
   setPlatform: () => {}
 });
 
-const SearchContext = createContext<ModeContextType>({
-  mode: undefined,
-  setMode: () => {}
-});
-
 export function AppWrapper({ children }: { children: ReactNode }) {
-  const [mode, setMode] = useState<Mode | undefined>(undefined);
   const [platform, setPlatform] = useState<Platform>(Platform.csharp);
-  const [searchMode, setSearchMode] = useState<Mode | undefined>(Mode.Slice2);
 
   const path = usePathname();
 
-  // Update the search mode when the mode changes
   useEffect(() => {
-    setSearchMode(mode);
-  }, [mode]);
-
-  useEffect(() => {
-    // Get the mode from the path
-    const pathMode = getModeFromPath(path);
-
-    // Get the platform and mode strings from local storage if it exists
+    // Get the platform string from local storage if it exists
     const localPlatformString = localStorage.getItem('platform') || null;
-    const localModeString = localStorage.getItem('mode') || null;
 
-    // If the platform and mode exist in local storage, parse them and set them as the current platform and mode
+    // If the platform exists in local storage, parse it and set it as the current platform
     const localPlatform: Platform | null = localPlatformString
       ? tryParseJSON(localPlatformString)
-      : null;
-    const localMode: Mode | null = localModeString
-      ? tryParseJSON(localModeString)
       : null;
 
     if (localPlatform) {
       setPlatform(localPlatform);
     }
-
-    // If the path mode exists, set the mode to the path mode
-    // Otherwise, if the local mode exists, set the mode to the local mode
-    if (pathMode) {
-      setMode(pathMode);
-    } else if (localMode) {
-      setMode(localMode);
-    }
   }, [path]);
 
   useEffect(() => {
-    // Set the platform and mode in local storage when they change
-    localStorage.setItem('mode', JSON.stringify(mode));
+    // Set the platform in local storage when it changes
     localStorage.setItem('platform', JSON.stringify(platform));
-  }, [mode, platform]);
+  }, [platform]);
 
   return (
-    <ModeContext.Provider value={{ mode: mode, setMode: setMode }}>
-      <PlatformContext.Provider value={{ platform, setPlatform }}>
-        <SearchContext.Provider
-          value={{ mode: searchMode, setMode: setSearchMode }}
-        >
-          {children}
-        </SearchContext.Provider>
-      </PlatformContext.Provider>
-    </ModeContext.Provider>
+    <PlatformContext.Provider value={{ platform, setPlatform }}>
+      {children}
+    </PlatformContext.Provider>
   );
 }
 
@@ -120,19 +72,9 @@ export const usePath = () => {
   return context;
 };
 
-// Custom hook to handle setting and observing the mode
-export const useMode = (): ModeContextType => {
-  return useContext(ModeContext);
-};
-
 // Custom hook to handle setting and observing the platform
 export const usePlatform = (): PlatformContextType => {
   return useContext(PlatformContext);
-};
-
-// Custom hook to handle setting and observing the search mode
-export const useSearch = (): SearchContextType => {
-  return useContext(SearchContext);
 };
 
 // Custom hook to handle component mounting

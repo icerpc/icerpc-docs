@@ -13,29 +13,7 @@ think about these built-in operations.
 
 With IceRPC, a Slice interface does not have any implicit base interface, and `Ice::Object` is just a regular interface:
 
-```slice
-mode = Slice1
-
-[cs::namespace("IceRpc.Slice.Ice")]
-module Ice
-
-/// Provides 3 ice_ operations. Services implemented with Ice or that offer compatibility with Ice implement this
-/// interface.
-[cs::identifier("IceObject")]
-interface Object {
-    /// Gets the Slice type IDs of all the interfaces implemented by the target service.
-    /// @returns: The Slice type IDs of all these interfaces, sorted alphabetically.
-    idempotent ice_ids() -> Sequence<string>
-
-    /// Tests whether the target service implements the specified interface.
-    /// @param id: The Slice type ID of the interface to test against.
-    /// @returns: True when the target service implements this interface; otherwise, false.
-    idempotent ice_isA(id: string) -> bool
-
-    /// Pings the service.
-    idempotent ice_ping()
-}
-```
+TODO: show Object.ice
 
 {% callout %}
 IceRPC does not provide the fourth operation, `ice_id`. With IceRPC + Slice, a service can implement multiple Slice

@@ -3,9 +3,8 @@
 'use client';
 
 import clsx from 'clsx';
-import { useMode, usePlatform, usePath } from 'context/state';
+import { usePlatform, usePath } from 'context/state';
 import { useEffect, useState } from 'react';
-import { Mode } from 'types';
 import { FeedbackData, FeedbackOption } from 'types';
 
 type Props = {
@@ -87,7 +86,6 @@ const sendFeedback = async (feedback: FeedbackData) => {
 };
 
 export const FeedbackForm = ({ title, options }: Props) => {
-  const { mode } = useMode();
   const { platform } = usePlatform();
   const path = usePath();
   const pageTitle = window.document.title;
@@ -224,7 +222,6 @@ export const FeedbackForm = ({ title, options }: Props) => {
             sendFeedback({
               additionalFeedback: comment,
               email,
-              mode: mode ?? Mode.Slice2,
               option: selectedOption.title,
               path,
               platform,
