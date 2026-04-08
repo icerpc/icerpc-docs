@@ -81,37 +81,16 @@ with a [DispatchException] with status code [NotImplemented].
 
 ## Unchecked cast
 
-There is no need for an `uncheckedCast` API in IceRPC + Ice, because you can construct a proxy directly with its
-constructor. For example:
+You can convert a proxy into any other proxy type with the [ToProxy] extension method. For example:
 
-{% aside %}
+```csharp {% title="IceRPC application" %}
+IceObjectProxy objectProxy = // ... a plain Ice::Object proxy
 
-```csharp {% title="Ice 3.7 client" %}
-using var communicator =
-    Ice.Util.initialize(ref args);
-
-ObjectPrx proxy = communicator.stringToProxy(
-    "hello:default -h localhost -p 10000");
-
-HelloPrx helloProxy =
-    HelloPrxHelper.uncheckedCast(proxy);
-
-helloProxy.sayHello();
+// Convert objectProxy into a WidgetProxy
+WidgetProxy widgetProxy = objectProxy.ToProxy<WidgetProxy>();
 ```
-
-```csharp {% title="IceRPC client" %}
-await using var connection = new ClientConnection(
-    new Uri("ice://localhost:10000"));
-
-var helloProxy = new HelloProxy(
-    connection,
-    new Uri("ice:/hello"));
-
-await helloProxy.SayHelloAsync();
-```
-
-{% /aside %}
 
 [AsAsync]: TODO
 [DispatchException]: csharp:IceRpc.DispatchException
 [NotImplemented]: csharp:IceRpc.StatusCode#NotImplemented
+[ToProxy]: TODO
