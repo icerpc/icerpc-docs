@@ -25,23 +25,28 @@ servers, each with its own server address, and all these servers can share the s
 {% aside alignment="top" %}
 
 ```csharp {% title="Simple server with Ice for C#" %}
-using Communicator communicator =
-    Ice.Util.initialize(ref args);
+await using var communicator = new Ice.Communicator(ref args);
 
-Console.CancelKeyPress +=
-    (sender, eventArgs) => communicator.shutdown();
-
-ObjectAdapter adapter =
+Ice.ObjectAdapter adapter =
     communicator.createObjectAdapterWithEndpoints(
-        "Hello",
-        "default -h * -p 10000");
+        "GreeterAdapter",
+        "tcp -p 10000");
 
 adapter.add(
-    new HelloI(),
-    Ice.Util.stringToIdentity("hello"));
+    new Chatbot(),
+    new Ice.Identity { name = "greeter" });
 
 adapter.activate();
-communicator.waitForShutdown();
+Console.WriteLine("Listening on port 10000...");
+
+Console.CancelKeyPress += (sender, eventArgs) =>
+{
+    eventArgs.Cancel = true;
+    Console.WriteLine("Caught Ctrl+C, shutting down...");
+    communicator.shutdown();
+};
+
+await communicator.shutdownCompleted;
 ```
 
 ```csharp {% title="Similar server with IceRPC for C#" %}

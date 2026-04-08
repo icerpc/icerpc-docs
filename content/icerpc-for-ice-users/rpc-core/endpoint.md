@@ -12,14 +12,14 @@ that accepts connections.
 
 Ice uses its own syntax for endpoint strings, while IceRPC uses URIs. Here are a few examples:
 
-| Ice endpoint                                         | Corresponding IceRPC server address URI                                  |
-| ---------------------------------------------------- | ------------------------------------------------------------------------ |
-| `tcp -h localhost -p 10000`                          | `ice://localhost:10000?transport=tcp`                                    |
-| `default -h localhost -p 10000`                      | `ice://localhost:10000`                                                  |
-| `ssl -h 192.168.100.10`                              | `ice://192.168.100.10:0?transport=ssl`                                   |
-| `default -h "::0" -p 10000`                          | `ice://[::0]:10000`                                                      |
-| `tcp -h *`                                           | `ice://[::0]:0?transport=tcp`                                            |
-| `tcp -h localhost -p 10000 -z -t 30000`              | `ice://localhost:10000?transport=tcp&z&t=30000`                          |
+| Ice endpoint                                         | Corresponding IceRPC server address URI         |
+| ---------------------------------------------------- | ------------------------------------------------|
+| `tcp -h localhost -p 10000`                          | `ice://localhost:10000?transport=tcp`           |
+| `default -h localhost -p 10000`                      | `ice://localhost:10000`                         |
+| `ssl -h 192.168.100.10`                              | `ice://192.168.100.10:0?transport=ssl`          |
+| `default -h "::0" -p 10000`                          | `ice://[::0]:10000`                             |
+| `tcp -h *`                                           | `ice://[::0]:0?transport=tcp`                   |
+| `tcp -h localhost -p 10000 -z -t 30000`              | `ice://localhost:10000?transport=tcp&z&t=30000` |
 
 {% callout %}
 The URI scheme identifies the RPC protocol to use. IceRPC supports two RPC protocols: ice and icerpc.

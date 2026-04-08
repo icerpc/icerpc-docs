@@ -30,7 +30,7 @@ In Ice, a proxy without an endpoint is called an "indirect proxy". When you send
 Locator to locate the actual endpoints of this proxy.
 
 In IceRPC, a service address without a server address has no special name: it's just a service address without a server
-address. The Ice adapter id is mapped to an `adapter-id` query parameter:
+address. The Ice adapter ID is mapped to an `adapter-id` query parameter:
 
 | Ice proxy string       | Corresponding IceRPC service address URI |
 | -----------------------| -----------------------------------------|

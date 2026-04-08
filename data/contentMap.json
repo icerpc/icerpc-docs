@@ -462,11 +462,67 @@
       ]
     },
     {
-      "title": "Slice",
+      "title": "Ice definitions",
       "links": [
         {
+          "title": "Language mapping for IceRPC",
+          "path": "/icerpc-for-ice-users/ice-definitions/language-mapping"
+        },
+        {
+          "title": "Module",
+          "path": "/icerpc-for-ice-users/ice-definitions/module"
+        },
+        {
+          "title": "Interface",
+          "path": "/icerpc-for-ice-users/ice-definitions/interface"
+        },
+        {
           "title": "Ice::Object and checked cast",
-          "path": "/icerpc-for-ice-users/slice/ice-object"
+          "path": "/icerpc-for-ice-users/ice-definitions/ice-object-and-checked-cast"
+        },
+        {
+          "title": "Operation",
+          "path": "/icerpc-for-ice-users/ice-definitions/operation"
+        },
+        {
+          "title": "Fields",
+          "path": "/icerpc-for-ice-users/ice-definitions/fields"
+        },
+        {
+          "title": "Parameters and return values",
+          "path": "/icerpc-for-ice-users/ice-definitions/parameters"
+        },
+        {
+          "title": "Basic types",
+          "path": "/icerpc-for-ice-users/ice-definitions/basic-types"
+        },
+        {
+          "title": "Enum types",
+          "path": "/icerpc-for-ice-users/ice-definitions/enum-types"
+        },
+        {
+          "title": "Struct types",
+          "path": "/icerpc-for-ice-users/ice-definitions/struct-types"
+        },
+        {
+          "title": "Class types",
+          "path": "/icerpc-for-ice-users/ice-definitions/class-types"
+        },
+        {
+          "title": "Exception",
+          "path": "/icerpc-for-ice-users/ice-definitions/exception"
+        },
+        {
+          "title": "Sequence types",
+          "path": "/icerpc-for-ice-users/ice-definitions/sequence-types"
+        },
+        {
+          "title": "Dictionary types",
+          "path": "/icerpc-for-ice-users/ice-definitions/dictionary-types"
+        },
+        {
+          "title": "Constants and literals",
+          "path": "/icerpc-for-ice-users/ice-definitions/constants"
         }
       ]
     }
