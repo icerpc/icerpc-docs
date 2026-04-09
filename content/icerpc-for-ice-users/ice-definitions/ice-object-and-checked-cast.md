@@ -90,7 +90,7 @@ IceObjectProxy objectProxy = // ... a plain Ice::Object proxy
 WidgetProxy widgetProxy = objectProxy.ToProxy<WidgetProxy>();
 ```
 
-[AsAsync]: TODO
+[AsAsync]: csharp:IceRpc.Ice.ProxyExtensions.AsAsync
 [DispatchException]: csharp:IceRpc.DispatchException
 [NotImplemented]: csharp:IceRpc.StatusCode#NotImplemented
-[ToProxy]: TODO
+[ToProxy]: csharp:IceRpc.Ice.ProxyExtensions.ToProxy
