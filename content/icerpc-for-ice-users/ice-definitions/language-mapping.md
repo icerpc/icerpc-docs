@@ -53,7 +53,7 @@ There are a few notable differences between the original C# mapping (when target
 | Mapping for operations | Sync and async C# methods            | Only async methods                                       |
 | Mapping for fields     | C# field (default), C# property      | C# property                                              |
 | Client-side mapping    | Prx interface such as `GreeterPrx`   | Interface (`IGreeter`) and proxy struct (`GreeterProxy`) |
-| Server-side Mapping    | Skeleton class such as `GreeterDisp_`| Service interface such as `IGreeterService`              |
+| Server-side mapping    | Skeleton class such as `GreeterDisp_`| Service interface such as `IGreeterService`              |
 
 [Ice Manual]: https://docs.zeroc.com/ice/3.8/csharp/the-slice-language
 [Slice]: ../../slice/
