@@ -37,7 +37,7 @@ By default, when the generated code decodes a dictionary, it creates a C# `Dicti
 to you (the application) as an `IDictionary<TKey, TValue>`. You can safely cast this `IDictionary<TKey, TValue>` to a
 `Dictionary<TKey, TValue>` after decoding.
 
-You can override this default with the `"cs:generic"` metadata directive describe below. This directive only changes
+You can override this default with the `"cs:generic"` metadata directive described below. This directive only changes
 the type that the generated code uses during decoding to fill-in the field: the C# field type itself remains an
 `IDictionary<TKey, TValue>`.
 
