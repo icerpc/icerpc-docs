@@ -130,7 +130,7 @@ initialize the invoker, for example:
 var proxy = new WidgetProxy { Invoker = connection };
 
 // The above is equivalent to:
-var proxy = new WidgetPRoxy(connection);
+var proxy = new WidgetProxy(connection);
 ```
 
 When an Ice interface derives from another interface, its proxy struct provides an implicit conversion operator to be
