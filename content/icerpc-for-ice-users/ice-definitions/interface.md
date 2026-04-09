@@ -180,6 +180,8 @@ also carry the [Service] attribute.
 The `Service` attribute instructs the Service Generator to implement interface [IDispatcher] by directing incoming
 requests to I*Name*Service methods based on the operation names.
 
+The Service Generator is a [C# source generator] provided by the [IceRpc.ServiceGenerator] NuGet package.
+
 For example:
 
 {% aside alignment="top" %}
@@ -255,7 +257,9 @@ internal partial class MyWidget : IWidgetService,
 
 {% /aside %}
 
+[C# source generator]: https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/#source-generators
 [cs-identifier]: https://docs.zeroc.com/ice/3.8/csharp/slice-metadata-directives#SliceMetadataDirectives-cs:identifier:csharp-identifier
 [IceEncodeOptions]: csharp:IceRpc.Ice.IceEncodeOptions
+[IceRpc.ServiceGenerator]: https://www.nuget.org/packages/IceRpc.ServiceGenerator
 [IDispatcher]: csharp:IceRpc.IDispatcher
 [Service]: csharp:IceRpc.ServiceAttribute

@@ -20,7 +20,7 @@ Consider this example:
 ```ice
 interface Example
 {
-    double op(int inp1, string inp2, out bool outp1, out long outp2);
+    double op(int inP1, string inP2, out bool outP1, out long outP2);
 }
 ```
 
@@ -30,9 +30,9 @@ The Ice compiler generates the following C# code for this interface:
 // Client-side interface
 public partial interface IExample
 {
-    Task<(double ReturnValue, bool Outp1, long Outp2)> OpAsync(
-        int inp1,
-        string inp2,
+    Task<(double ReturnValue, bool OutP1, long OutP2)> OpAsync(
+        int inP1,
+        string inP2,
         IceRpc.Features.IFeatureCollection? features = null,
         CancellationToken cancellationToken = default);
 }
@@ -43,9 +43,9 @@ public readonly partial record struct ExampleProxy : IExample, IIceProxy { ... }
 // Server-side interface
 public partial interface IExampleService
 {
-    ValueTask<(double ReturnValue, bool Outp1, long Outp2)> OpAsync(
-        int inp1,
-        string inp2,
+    ValueTask<(double ReturnValue, bool OutP1, long OutP2)> OpAsync(
+        int inP1,
+        string inP2,
         IceRpc.Features.IFeatureCollection features,
         CancellationToken cancellationToken);
 }
