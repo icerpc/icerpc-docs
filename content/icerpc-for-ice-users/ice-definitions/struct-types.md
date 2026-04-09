@@ -77,5 +77,6 @@ public readonly partial record struct Point
 
 {% /aside %}
 
+[IceDecoder]: csharp:IceRpc.Ice.Codec.IceDecoder
 [IceEncoder]: csharp:IceRpc.Ice.Codec.IceEncoder
 [cs-readonly]: TODO
