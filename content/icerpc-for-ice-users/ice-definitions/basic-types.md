@@ -16,4 +16,4 @@ The Ice built-in types are mapped to C# types as shown below:
 | double | double |
 | string | string |
 
-The mapped C# type has always exactly the same name as the Ice type.
+The mapped C# type always has exactly the same name as the Ice type.
