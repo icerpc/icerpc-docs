@@ -56,5 +56,5 @@ There are a few notable differences between the original C# mapping (when target
 | Server-side mapping    | Skeleton class such as `GreeterDisp_`| Service interface such as `IGreeterService`              |
 
 [Ice Manual]: https://docs.zeroc.com/ice/3.8/csharp/the-slice-language
-[Slice]: ../../slice/
+[Slice]: /slice
 [ZeroC.Ice.Slice.Tools]: https://www.nuget.org/packages/ZeroC.Ice.Slice.Tools
