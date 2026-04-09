@@ -76,7 +76,7 @@ single argument:
 
 ### Mapping to predefined generic containers
 
-You can change the default mapping for sequences to use a generic containers provided by C#. For example:
+You can change the default mapping for sequences to use a generic container provided by C#. For example:
 
 ```ice
 ["cs:generic:List"] sequence<string> StringSeq;
