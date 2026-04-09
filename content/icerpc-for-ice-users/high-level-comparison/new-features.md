@@ -47,7 +47,7 @@ With IceRPC:
 
 ## Optional IDL
 
-With Ice, you can't separate Ice's IDL (the Slice language) from Ice: you always use some Slice even when if you are
+With Ice, you can't separate Ice's IDL (the Slice language) from Ice: you always use some Slice even if you are
 only sending or receiving bytes.
 
 Conversely, IceRPC sends and receives requests and responses with byte stream payloads, and doesn't know how these byte
