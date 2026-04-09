@@ -26,7 +26,9 @@ it's all handled by the generated code and its supporting libraries.
 IceRPC includes full support for two IDLs and their associated serialization formats: [Slice] and [Protobuf]. Let's
 figure out which one you should pick!
 
-TODO: mention Ice IDL
+{% callout %}
+IceRPC actually includes support for a third IDL, [ZeroC Ice]'s IDL. See [IceRPC for Ice users] for details.
+{% /callout %}
 
 ## Slice
 
@@ -47,6 +49,8 @@ alternative to JSON, used extensively within Google.
 If you are already familiar with Protobuf or your application interacts with other applications that consume or send
 Protobuf messages, you should use IceRPC together with Protobuf.
 
+[IceRPC for Ice users]: ../icerpc-for-ice-users
 [Interface Definition Language]: https://en.wikipedia.org/wiki/Interface_description_language
 [Protobuf]: https://en.wikipedia.org/wiki/Protocol_Buffers
 [Slice]: ../slice
+[ZeroC Ice]: https://zeroc.com/ice
