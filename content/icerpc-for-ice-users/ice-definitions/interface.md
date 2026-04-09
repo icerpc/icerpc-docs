@@ -184,11 +184,13 @@ For example:
 
 {% aside alignment="top" %}
 
-```slice {% addMode=true %}
+```ice
 module Example
-
-interface Widget {
-    spin(speed: int32)
+{
+    interface Widget
+    {
+        void spin(int speed);
+    }
 }
 ```
 
