@@ -117,7 +117,7 @@ available as the constant `DefaultServicePath` in the generated proxy struct:
 ```csharp
 public readonly partial record struct WidgetProxy : IWidget, IIceProxy
 {
-    public const string DefaultServicePath = "/Example/Widget";
+    public const string DefaultServicePath = "/Example.Widget";
 }
 ```
 
