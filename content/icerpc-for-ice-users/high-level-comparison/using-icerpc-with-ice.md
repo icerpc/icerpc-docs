@@ -13,7 +13,7 @@ using IceRPC, or use IceRPC to create new services for your Ice clients.
 
 ## Generating code for IceRPC
 
-The Slice compiler and tooling provided by the Ice framework allows you to target IceRPC when compiling `.ice` files.
+The Slice compiler and tooling provided by the Ice framework allow you to target IceRPC when compiling `.ice` files.
 This way, you can very easily add IceRPC components to your existing Ice applications.
 
 ## Limitations
