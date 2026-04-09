@@ -22,9 +22,9 @@ The main interop limitation for clients is IceRPC does not currently provide sup
 [Glacier2] router. So if you have an Ice client that calls a server through Glacier2, you cannot reimplement this client
 with IceRPC. This is a [temporary] limitation, not a fundamental design choice within IceRPC.
 
-The main interop limitations for servers is [batch requests] and [IceGrid] support.
+The main interop limitations for servers are [batch requests] and [IceGrid] support.
 
-If your Ice clients send batches requests, you can't reimplement the corresponding Ice server with IceRPC since IceRPC
+If your Ice clients send batch requests, you can't reimplement the corresponding Ice server with IceRPC since IceRPC
 does not accept batch requests.
 
 If your Ice server is started by IceGrid, you can't reimplement this server with IceRPC. IceGrid generates Ice
