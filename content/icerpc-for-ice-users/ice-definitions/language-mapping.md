@@ -24,7 +24,7 @@ can set the `IceRpc` attribute to true:
 or
 
 ```xml
-  <!-- Set the default Rpc framework for .ice file compilation to icerpc -->
+  <!-- Set the default RPC framework for .ice file compilation to icerpc -->
 <ItemDefinitionGroup>
   <SliceCompile>
     <IceRpc>true</IceRpc>
