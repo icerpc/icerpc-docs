@@ -40,7 +40,7 @@ The [ZeroC.Ice.Slice.Tools] NuGet package provides the `slice2cs` compiler and t
 
 ## C# language mapping
 
-This chapter describe how Ice definitions map to C# when targeting IceRPC. As you would expect, an Ice struct
+This chapter describes how Ice definitions map to C# when targeting IceRPC. As you would expect, an Ice struct
 maps to C# record struct, an Ice class maps to a C# class, an Ice enum maps to a C# enum, an Ice field maps to a
 C# property, and so on.
 
