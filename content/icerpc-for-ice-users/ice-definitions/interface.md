@@ -133,7 +133,7 @@ var proxy = new WidgetProxy { Invoker = connection };
 var proxy = new WidgetProxy(connection);
 ```
 
-When an Ice interface derives from another interface, its proxy struct provides an implicit conversion operator to be
+When an Ice interface derives from another interface, its proxy struct provides an implicit conversion operator to the
 base interface. For example:
 
 ```ice
