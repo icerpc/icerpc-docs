@@ -129,15 +129,16 @@ The `"marshaled-result"`[marshaled-result] metadata directive allows you to chan
 method on the generated Service interface: `marshaled-result` makes this method return a `ValueTask<PipeReader>`
 instead of the usual `ValueTask<T>`.
 
+{% callout %}
+`"marshaled-result"` changes the mapped return type only when your operation returns a class, a struct, a sequence, or
+a dictionary, or has an `out` parameter of these types. In all other cases, `"marshaled-result"` has no effect.
+{% /callout %}
+
 The returned [PipeReader] represents the encoded return value. You would typically produce this value using
 the Encode*OpName* method provided by the helper [`Response` class](#request-and-response-helper-classes).
 
-There are two somewhat common use-cases for this directive:
-
-1. You want to encode a mutable collection field of your class (such as `List<T>`) while holding a mutex lock; this
-    lock prevents other operations from modifying this field while it's being encoded.
-2. You want to return over and over the same return value that is costly to encode; this metadata directive allows you
-    to encode the return value once, cache the encoded bytes and then return over and over these bytes.
+This metadata directive allows you to encode a mutable collection field of your service class (such as `List<T>`)
+while holding a mutex lock; this lock prevents other operations from modifying this field while it's being encoded.
 
 [marshaled-result]: https://docs.zeroc.com/ice/3.8/csharp/slice-metadata-directives#SliceMetadataDirectives-marshaled-result
 [PipeReader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
