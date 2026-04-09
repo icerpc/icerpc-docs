@@ -49,7 +49,7 @@ There are a few notable differences between the original C# mapping (when target
 |                        | Ice target (default)                 | IceRPC target                                            |
 |------------------------|--------------------------------------|----------------------------------------------------------|
 | C# identifier          | Same as the Ice identifier           | Follows C# conventions (Pascal case, camel case)         |
-| C# interface           | Same as the Ice interface name       | C# interface with na `I` prefix as per C# conventions    |
+| C# interface           | Same as the Ice interface name       | C# interface with an `I` prefix as per C# conventions    |
 | Mapping for operations | Sync and async C# methods            | Only async methods                                       |
 | Mapping for fields     | C# field (default), C# property      | C# property                                              |
 | Client-side mapping    | Prx interface such as `GreeterPrx`   | Interface (`IGreeter`) and proxy struct (`GreeterProxy`) |
