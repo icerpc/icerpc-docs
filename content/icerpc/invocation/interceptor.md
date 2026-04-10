@@ -28,7 +28,7 @@ internal class SimpleInterceptor : IInvoker
     {
         Console.WriteLine("before _next.InvokeAsync");
         IncomingResponse response = await _next.InvokeAsync(request, cancellationToken);
-        Console.WriteLine($"after _next.InvokerAsync; the response status code is {response.StatusCode}");
+        Console.WriteLine($"after _next.InvokeAsync; the response status code is {response.StatusCode}");
         return response;
     }
 
