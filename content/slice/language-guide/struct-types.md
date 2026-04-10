@@ -68,7 +68,7 @@ internal partial record struct PostalAddress
     internal required string Zip { get; set; }
 
     // Primary constructor.
-    [SetRequiredMembers]
+    [SetsRequiredMembers]
     internal PostalAddress(
         string recipientFullName,
         string streetAddress1,
