@@ -141,7 +141,7 @@ public class PriorityQueue<T> : IEnumerable<T>
 
     public void Add(T element);
 
-    public PriorityQueue();
+    public PriorityQueue() { }
 
     // Other methods and fields here...
 }
