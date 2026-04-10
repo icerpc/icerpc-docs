@@ -38,7 +38,7 @@ By default, when the generated code decodes a sequence, it creates an array that
 application) as an `IList<T>`. So if you need an array, you can safely cast this `IList<T>` to an array after decoding.
 
 You can override this default mapping with the `"cs:generic"` metadata directive described below. `"cs:generic"` changes
-the mapping to the specified C# type with one exception: `"cs:generic:List"` keeps `IList<T>` as the formal type.
+the mapping to the specified C# type with one special case: `"cs:generic:List"` keeps `IList<T>` as the formal type.
 
 ## Sequence parameters and return values
 
@@ -126,6 +126,7 @@ to your custom type as `global::MyTypes.PriorityQueue<int>`.
 Your custom type can have whatever interface you deem appropriate, but it must meet the following requirements:
 
 - The custom type must implement `System.Collections.Generic.IEnumerable<T>`.
+- The custom type must provide a parameterless constructor.
 - The custom type must provide a `Count` property that returns the number of elements in the collection.
 - The custom type must provide an `Add` method that appends an element to the end of the collection.
 
@@ -139,6 +140,8 @@ public class PriorityQueue<T> : IEnumerable<T>
     public int Count { get; }
 
     public void Add(T element);
+
+    public PriorityQueue() { }
 
     // Other methods and fields here...
 }
