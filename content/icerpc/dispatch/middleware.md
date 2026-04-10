@@ -21,11 +21,9 @@ than `Ok`).
 For example, a simple C# middleware could look like:
 
 ```csharp
-public class SimpleMiddleware : IDispatcher
+internal class SimpleMiddleware : IDispatcher
 {
     private readonly IDispatcher _next;
-
-    public SimpleMiddleware(IDispatcher next) => _next = next;
 
     public async ValueTask<OutgoingResponse> DispatchAsync(
         IncomingRequest request,
@@ -36,6 +34,8 @@ public class SimpleMiddleware : IDispatcher
         Console.WriteLine($"after _next.DispatchAsync; the response status code is {response.StatusCode}");
         return response;
     }
+
+    internal SimpleMiddleware(IDispatcher next) => _next = next;
 }
 ```
 

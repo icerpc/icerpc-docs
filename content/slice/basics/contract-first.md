@@ -46,7 +46,7 @@ includes a method per Slice operation. The generated service interface for the `
 // generated code
 namespace VisitorCenter;
 
-public partial interface IGreeterService
+internal partial interface IGreeterService
 {
     ValueTask<string> GreetAsync(string name, IFeatureCollection features, CancellationToken cancellationToken);
 }
@@ -97,7 +97,7 @@ The generated interface for our `Greeter` Slice interface is:
 // generated code
 namespace VisitorCenter;
 
-public partial interface IGreeter
+internal partial interface IGreeter
 {
     Task<string> GreetAsync(
         string name,

@@ -52,6 +52,7 @@ public static class BigIntSliceEncoderExtensions
     public static void EncodeBigInt(this ref SliceEncoder encoder, Int128 value) { ... your implementation ... }
 }
 ```
+
 {% callout type="note" %}
 A more logical name for this custom type would be `Int128`. We picked `BigInt` to make it clear where the Slice
 identifier is used in the classes and methods that encode/decode this custom type.

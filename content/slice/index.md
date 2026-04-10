@@ -66,7 +66,7 @@ For example, the Slice compiler for C# generates two C# interfaces and a struct 
 earlier:
 
 ```csharp {% title="C# generated code - client-side" %}
-public partial interface IGreeter
+internal partial interface IGreeter
 {
    Task<string> GreetAsync(
       string name,
@@ -74,7 +74,7 @@ public partial interface IGreeter
       CancellationToken cancellationToken = default);
 }
 
-public readonly partial record struct GreeterProxy : IGreeter, IProxy
+internal readonly partial record struct GreeterProxy : IGreeter, IProxy
 {
    public Task<string> GreetAsync(
       string name,
@@ -87,7 +87,7 @@ public readonly partial record struct GreeterProxy : IGreeter, IProxy
 ```
 
 ```csharp {% title="C# generated code - server-side" %}
-public partial interface IGreeterService
+internal partial interface IGreeterService
 {
    ValueTask<string> GreetAsync(
       string name,

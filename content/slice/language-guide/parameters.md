@@ -77,7 +77,7 @@ interface ImageStore {
 ```
 
 ```csharp
-public partial interface IImageStore
+internal partial interface IImageStore
 {
     Task UploadImageAsync(
         string name,
@@ -108,7 +108,7 @@ interface TemperatureProbe {
 ```
 
 ```csharp
-public partial interface ITemperatureProbe
+internal partial interface ITemperatureProbe
 {
     Task<IAsyncEnumerable<float>> ReadAsync(
         IFeatureCollection? features = null,

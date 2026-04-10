@@ -39,7 +39,7 @@ The encoding of a compact struct is slightly more compact than the encoding of a
 byte per instance.
 ## C# mapping
 
-A Slice struct maps to a public C# record struct with the same name. For example:
+A Slice struct maps to a C# record struct with the same name. For example:
 {% aside alignment="top" %}
 
 ```slice
@@ -55,18 +55,18 @@ struct PostalAddress {
 ```
 
 ```csharp
-public partial record struct PostalAddress
+internal partial record struct PostalAddress
 {
-    public required string RecipientFullName { get; set; }
-    public required string StreetAddress1 { get; set; }
-    public string? StreetAddress2 { get; set; }
-    public string? StreetAddress3 { get; set; }
-    public required string City { get; set; }
-    public StateAbbreviation State { get; set; }
-    public required string Zip { get; set; }
+    internal required string RecipientFullName { get; set; }
+    internal required string StreetAddress1 { get; set; }
+    internal string? StreetAddress2 { get; set; }
+    internal string? StreetAddress3 { get; set; }
+    internal required string City { get; set; }
+    internal StateAbbreviation State { get; set; }
+    internal required string Zip { get; set; }
 
     // Primary constructor.
-    public PostalAddress(
+    internal PostalAddress(
         string recipientFullName,
         string streetAddress1,
         string? streetAddress2,
@@ -85,14 +85,13 @@ public partial record struct PostalAddress
     }
 
     // Decoding constructor.
-    public PostalAddress(ref SliceDecoder decoder)
+    internal PostalAddress(ref SliceDecoder decoder)
     {
         ...
     }
 
     // Encodes this struct.
-    public readonly void Encode(
-        ref SliceEncoder encoder)
+    internal readonly void Encode(ref SliceEncoder encoder)
     {
         ...
     }
@@ -117,10 +116,10 @@ compact struct Point { x: int32, y: int32 }
 ```
 
 ```csharp
-public readonly partial record struct Point
+internal readonly partial record struct Point
 {
-    public int X { get; init; }
-    public int Y { get; init; }
+    internal int X { get; init; }
+    internal int Y { get; init; }
 
     ...
 }
