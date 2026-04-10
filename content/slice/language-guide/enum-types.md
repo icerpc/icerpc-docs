@@ -139,7 +139,7 @@ enum Fruit : uint8 { Apple, Pear, Orange }
 ```
 
 ```csharp
-internal enum Fruit : uint8
+internal enum Fruit : byte
 {
     Apple = 0,
     Pear = 1,
