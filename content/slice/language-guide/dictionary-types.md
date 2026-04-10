@@ -58,7 +58,7 @@ struct DictionaryExample {
 internal partial record struct DictionaryExample
 {
     internal IDictionary<
-        int32,
+        int,
         IDictionary<string, double>> X;
 
     internal IDictionary<string, double?> Y;
