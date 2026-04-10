@@ -127,6 +127,7 @@ interface Logger {
     [oneway] logMessage(message: string)
 }
 ```
+
 ## C# mapping {% icerpcSlice=true %}
 
 A Slice operation named *opName* in interface `Greeter` is mapped to abstract method *OpName*Async in the interface
@@ -151,7 +152,7 @@ interface Greeter {
 ```csharp
 namespace VisitorCenter;
 
-public partial interface IGreeter
+internal partial interface IGreeter
 {
     Task<string> GreetAsync(
         string name,
@@ -159,7 +160,7 @@ public partial interface IGreeter
         CancellationToken cancellationToken = default);
 }
 
-public partial interface IGreeterService
+internal partial interface IGreeterService
 {
     ValueTask<string> GreetAsync(
         string name,
@@ -195,21 +196,21 @@ interface Greeter {
 produces 4 helper methods:
 
 ```csharp
-public readonly partial record struct GreeterProxy : IGreeter, IProxy
+internal readonly partial record struct GreeterProxy : IGreeter, IProxy
 {
-    public static class Request
+    internal static class Request
     {
         // Encodes the name argument into a request payload (a PipeReader).
-        public static PipeReader EncodeGreet(string name, SliceEncodeOptions? encodeOptions = null)
+        internal static PipeReader EncodeGreet(string name, SliceEncodeOptions? encodeOptions = null)
         {
             ...
         }
     }
 
-    public static class Response
+    internal static class Response
     {
         // Decodes the response payload into a string (the greeting).
-        public static ValueTask<string> DecodeGreetAsync(
+        internal static ValueTask<string> DecodeGreetAsync(
             IncomingResponse response,
             OutgoingRequest request,
             IProxy sender,
@@ -220,12 +221,12 @@ public readonly partial record struct GreeterProxy : IGreeter, IProxy
     }
 }
 
-public partial interface IGreeterService
+internal partial interface IGreeterService
 {
-    public static class Request
+    internal static class Request
     {
         // Decodes the name argument from the request payload.
-        public static ValueTask<string> DecodeGreetAsync(
+        internal static ValueTask<string> DecodeGreetAsync(
             IncomingRequest request,
             CancellationToken cancellationToken)
         {
@@ -233,16 +234,17 @@ public partial interface IGreeterService
         }
     }
 
-    public static class Response
+    internal static class Response
     {
         // Encodes the greeting return value into a response payload.
-        public static PipeReader EncodeGreet(string returnValue, SliceEncodeOptions? encodeOptions = null)
+        internal static PipeReader EncodeGreet(string returnValue, SliceEncodeOptions? encodeOptions = null)
         {
             ...
         }
     }
 }
 ```
+
 {% callout type="note" %}
 If your operation has a stream parameter, the encode helper (in *NameProxy*.Request) does not encode the stream
 argument; however, the decode helper (in I*Name*Service.Request) decodes all arguments, including the stream.

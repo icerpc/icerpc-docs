@@ -20,19 +20,19 @@ invocation pipeline returning a cached response or throwing an exception.
 For example, a simple C# interceptor could look like:
 
 ```csharp
-public class SimpleInterceptor : IInvoker
+internal class SimpleInterceptor : IInvoker
 {
     private readonly IInvoker _next;
-
-    public SimpleInterceptor(IInvoker next) => _next = next;
 
     public async Task<IncomingResponse> InvokeAsync(OutgoingRequest request, CancellationToken cancellationToken)
     {
         Console.WriteLine("before _next.InvokeAsync");
         IncomingResponse response = await _next.InvokeAsync(request, cancellationToken);
-        Console.WriteLine($"after _next.InvokerAsync; the response status code is {response.StatusCode}");
+        Console.WriteLine($"after _next.InvokeAsync; the response status code is {response.StatusCode}");
         return response;
     }
+
+    internal SimpleInterceptor(IInvoker next) => _next = next;
 }
 ```
 

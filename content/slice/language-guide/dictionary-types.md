@@ -55,13 +55,13 @@ struct DictionaryExample {
 ```
 
 ```csharp
-public partial record struct DictionaryExample
+internal partial record struct DictionaryExample
 {
-    public IDictionary<
-        int32,
+    internal IDictionary<
+        int,
         IDictionary<string, double>> X;
 
-    public IDictionary<string, double?> Y;
+    internal IDictionary<string, double?> Y;
 }
 ```
 
@@ -109,7 +109,7 @@ interface Greeter {
 ```
 
 ```csharp
-public partial interface IGreeter
+internal partial interface IGreeter
 {
     Task<List<KeyValuePair<string, string>>>
     AllPreviousGreetingsAsync(
@@ -117,7 +117,7 @@ public partial interface IGreeter
         CancellationToken cancellationToken = default);
 }
 
-public partial interface IGreeterService
+internal partial interface IGreeterService
 {
     ValueTask<IEnumerable<KeyValuePair<string, string>>>
     AllPreviousGreetingsAsync(

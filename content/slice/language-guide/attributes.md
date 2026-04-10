@@ -102,8 +102,8 @@ The following attributes are specific to the C# mapping. They all start with the
 | [`cs::attribute`][cs-attribute-attribute]     | Enum types, enumerators, and fields                                                          | Add the specified C# attribute to the mapped C# enum, enum member, or field. |
 | [`cs::encodeReturn`][cs-encoded-return]       | Operations                                                                                   | Return an already encoded return value (server-side only).                   |
 | [`cs::identifier`](#cs::identifier-attribute) | Interfaces, operations, parameters, user-defined types, fields, and enumerators              | Change the name of the mapped C# identifier.                                 |
-| [`cs::internal`](#cs::internal-attribute)     | Interfaces and user-defined types                                                            | Map to an internal C# type instead of a public C# type.                      |
 | [`cs::namespace`][cs-namespace]               | Modules                                                                                      | Change the name of the mapped C# namespace.                                  |
+| [`cs::public`](#cs::public-attribute)         | Interfaces and user-defined types                                                            | Map to a public C# type instead of an internal C# type.                      |
 | [`cs::readonly`][cs-readonly]                 | Structs and struct fields                                                                    | Adds `readonly` to the mapped C# struct or field.                            |
 | `cs::type`                                    | [Custom types][custom-type], [sequences][sequence-type], and [dictionaries][dictionary-type] | Specify the mapped C# type.                                                  |
 
@@ -124,12 +124,12 @@ interface Enumerator {
 ```
 
 ```csharp
-public partial interface IRemoteEnumerator
+internal partial interface IRemoteEnumerator
 {
     ...
 }
 
-public readonly partial
+internal readonly partial
 record struct RemoteEnumeratorProxy :
     IRemoteEnumerator,
     IProxy
@@ -137,7 +137,7 @@ record struct RemoteEnumeratorProxy :
     ...
 }
 
-public partial interface IRemoteEnumeratorService
+internal partial interface IRemoteEnumeratorService
 {
     ...
 }
@@ -145,9 +145,9 @@ public partial interface IRemoteEnumeratorService
 
 {% /aside %}
 
-### cs::internal attribute
+### cs::public attribute
 
-The `cs::internal` attribute maps a Slice type to one or more internal C# types. It does not accept any argument.
+The `cs::public` attribute maps a Slice type to one or more public C# types. It does not accept any argument.
 
 [compress]: operation#compress-attribute
 [cs-attribute-attribute]: enum-types#cs::attribute-attribute
@@ -158,4 +158,3 @@ The `cs::internal` attribute maps a Slice type to one or more internal C# types.
 [dictionary-type]: dictionary-types#cs::type-attribute
 [oneway]: operation#oneway-attribute
 [sequence-type]: sequence-types#cs::type-attribute
-

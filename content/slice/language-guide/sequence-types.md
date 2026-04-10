@@ -50,11 +50,11 @@ struct SequenceExample {
 ```
 
 ```csharp
-public partial record struct SequenceExample
+internal partial record struct SequenceExample
 {
-    public IList<IList<string>> X;
+    internal IList<IList<string>> X;
 
-    public IList<int?> Y;
+    internal IList<int?> Y;
 }
 ```
 
@@ -121,7 +121,7 @@ compact struct Widget { ... }
 ```
 
 ```csharp
-public partial interface IWidgetCatalog
+internal partial interface IWidgetCatalog
 {
     Task<HashSet<Widget>> GetWidgetsAsync(
         string prefix,
@@ -129,7 +129,7 @@ public partial interface IWidgetCatalog
         CancellationToken cancellationToken = default);
 }
 
-public partial interface IWidgetCatalogService
+internal partial interface IWidgetCatalogService
 {
     ValueTask<IEnumerable<Widget>> GetWidgetsAsync(
         string prefix,

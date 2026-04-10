@@ -83,7 +83,7 @@ interface Widget {
 ```csharp
 namespace Example;
 
-public partial interface IWidget
+internal partial interface IWidget
 {
     // One method per operation
     Task SpinAsync(
@@ -111,7 +111,7 @@ maps to:
 ```csharp
 namespace Draw;
 
-public partial interface IRectangle : IShape, IFillable
+internal partial interface IRectangle : IShape, IFillable
 {
     Task ResizeAsync(
         int x,
@@ -131,9 +131,9 @@ for this service.
 In order to call a remote service, you need to construct a proxy struct using one of its "invoker" constructors:
 
 ```csharp
-public readonly partial record struct WidgetProxy : IWidget, IProxy
+internal readonly partial record struct WidgetProxy : IWidget, IProxy
 {
-    public WidgetProxy(
+    internal WidgetProxy(
         IInvoker invoker,
         ServiceAddress? serviceAddress = null,
         SliceEncodeOptions? encodeOptions = null)
@@ -141,7 +141,7 @@ public readonly partial record struct WidgetProxy : IWidget, IProxy
         ...
     }
 
-    public WidgetProxy(
+    internal WidgetProxy(
         IInvoker invoker,
         System.Uri serviceAddressUri,
         SliceEncodeOptions? encodeOptions = null)
@@ -165,17 +165,18 @@ example, the default service path of Slice interface `VisitorCenter::Greeter` is
 available as the constant `DefaultServicePath` in the generated proxy struct:
 
 ```csharp
-public readonly partial record struct WidgetProxy : IWidget, IProxy
+internal readonly partial record struct WidgetProxy : IWidget, IProxy
 {
-    public const string DefaultServicePath = "/Example/Widget";
+    internal const string DefaultServicePath = "/Example/Widget";
 }
 ```
+
 If you want to create a [relative proxy], call the `FromPath` static method:
 
 ```csharp
-public readonly partial record struct WidgetProxy : IWidget, IProxy
+internal readonly partial record struct WidgetProxy : IWidget, IProxy
 {
-    public static WidgetProxy FromPath(string path) { ... }
+    internal static WidgetProxy FromPath(string path) { ... }
 }
 ```
 
@@ -214,14 +215,14 @@ maps to:
 ```csharp
 namespace Draw;
 
-public readonly partial record struct RectangleProxy : IRectangle, IProxy
+internal readonly partial record struct RectangleProxy : IRectangle, IProxy
 {
-    public static implicit operator ShapeProxy(RectangleProxy proxy)
+    internal static implicit operator ShapeProxy(RectangleProxy proxy)
     {
         ...
     }
 
-    public static implicit operator FillableProxy(RectangleProxy proxy)
+    internal static implicit operator FillableProxy(RectangleProxy proxy)
     {
         ...
     }
@@ -258,7 +259,7 @@ interface Widget {
 namespace Example;
 
 // Generated code
-public partial interface IWidgetService
+internal partial interface IWidgetService
 {
     // One method per operation
     ValueTask SpinAsync(

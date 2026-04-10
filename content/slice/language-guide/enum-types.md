@@ -129,7 +129,7 @@ unchecked enum with fields.
 
 ### Enum with underlying type in C\#
 
-An enum with underlying type maps to a public C# enumeration with the same name, and each Slice enumerator maps to a
+An enum with underlying type maps to an internal C# enumeration with the same name, and each Slice enumerator maps to a
 C# enumerator with the same name. For example:
 
 {% aside alignment="top" %}
@@ -139,7 +139,7 @@ enum Fruit : uint8 { Apple, Pear, Orange }
 ```
 
 ```csharp
-public enum Fruit : uint8
+internal enum Fruit : byte
 {
     Apple = 0,
     Pear = 1,
@@ -164,8 +164,6 @@ generator to generate additional helper code for these partial records.
 
 For example:
 
-{% aside alignment="top" %}
-
 ```slice
 enum Shape {
     Circle(radius: uint32)
@@ -174,21 +172,19 @@ enum Shape {
 }
 ```
 
+maps to:
+
 ```csharp
 [Dunet.Union]
-public partial abstract record class Shape
+internal abstract partial record class Shape
 {
-    partial record Circle(uint Radius) : Shape;
+    public partial record Circle(uint Radius) : Shape;
 
-    partial record Rectangle(
-        uint Width,
-        uint Length) : Shape;
+    public partial record Rectangle(uint Width, uint Length) : Shape;
 
-    partial record Dot : Shape;
+    public partial record Dot : Shape;
 }
 ```
-
-{% /aside %}
 
 {% callout %}
 [ZeroC.Slice] has a dependency on the [Dunet package]; as a result, you don't need an explicit reference to Dunet in
@@ -205,14 +201,14 @@ The Slice compiler generates extension methods to encode and decode instances of
 With our `Fruit` example, we get:
 
 ```csharp
-public static class FruitSliceEncoderExtensions
+internal static class FruitSliceEncoderExtensions
 {
-    public static void EncodeFruit(this ref SliceEncoder encoder, Fruit value) => ...
+    internal static void EncodeFruit(this ref SliceEncoder encoder, Fruit value) => ...
 }
 
-public static class FruitSliceDecoderExtensions
+internal static class FruitSliceDecoderExtensions
 {
-    public static Fruit DecodeFruit(this ref SliceDecoder decoder) => ...
+    internal static Fruit DecodeFruit(this ref SliceDecoder decoder) => ...
 }
 ```
 
@@ -222,9 +218,9 @@ of the underlying type into an enumerator.
 With our Fruit example:
 
 ```csharp
-public static class FruitByteExtensions
+internal static class FruitByteExtensions
 {
-    public static Fruit AsFruit(this byte value) => ...
+    internal static Fruit AsFruit(this byte value) => ...
 }
 ```
 
@@ -236,8 +232,6 @@ This conversion fails and throws [InvalidDataException] when the value does not 
 The mapped C# API for checked and unchecked enums is the same, with one exception: the mapping for an unchecked enum
 with fields has an additional nested record class named `Unknown` that holds unknown enumerator values. For example:
 
-{% aside alignment="top" %}
-
 ```slice
 unchecked enum Shape {
     Circle(radius: uint32)
@@ -245,25 +239,23 @@ unchecked enum Shape {
 }
 ```
 
+maps to:
+
 ```csharp
 [Dunet.Union]
-public partial record class Shape
+internal abstract partial record class Shape
 {
-    partial record Circle(uint Radius) : Shape;
+    public partial record Circle(uint Radius) : Shape;
 
-    partial record Dot : Shape;
+    public partial record Dot : Shape;
 
-    // Extra "enumerator" when mapping an
-    // unchecked enum with fields
-    partial record Unknown(
-        int Discriminant,
-        ReadOnlyMemory<byte> Fields) : Shape;
+    // Extra "enumerator" when mapping an unchecked enum with fields
+    public partial record Unknown(int Discriminant, ReadOnlyMemory<byte> Fields) : Shape;
 }
 ```
 
-{% /aside %}
-
 This `Unknown` enumerator can be re-encoded later without losing any information.
+
 ### cs::attribute attribute
 
 The `cs::attribute` [attribute](attributes) adds the specified C# attribute to the mapped C# enum. You typically use it
@@ -283,7 +275,7 @@ enum MultiHue : uint8 {
 
 ```csharp
 [Flags]
-public enum MultiHue : byte
+internal enum MultiHue : byte
 {
     None = 0,
     Black = 1,
