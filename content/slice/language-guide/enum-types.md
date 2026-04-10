@@ -129,7 +129,7 @@ unchecked enum with fields.
 
 ### Enum with underlying type in C\#
 
-An enum with underlying type maps to a C# enumeration with the same name, and each Slice enumerator maps to a
+An enum with underlying type maps to an internal C# enumeration with the same name, and each Slice enumerator maps to a
 C# enumerator with the same name. For example:
 
 {% aside alignment="top" %}
@@ -241,10 +241,9 @@ unchecked enum Shape {
 
 maps to:
 
-
 ```csharp
 [Dunet.Union]
-internal partial abstract record class Shape
+internal abstract partial record class Shape
 {
     public partial record Circle(uint Radius) : Shape;
 

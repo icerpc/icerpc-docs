@@ -8,7 +8,7 @@ description: Learn how to define and use structs in Slice.
 A struct is a user-defined type that holds a list of [fields](fields). For example:
 
 ```slice
-enum StateAbbreviation : uint8 { AL, AK, AZ, AR, AS ... WY }
+enum StateAbbreviation : uint8 { AL, AK, AZ, AR, AS, WY }
 
 struct PostalAddress {
     recipientFullName: string
@@ -37,9 +37,11 @@ compact struct BytePair { first: uint8, second: uint8 }
 
 The encoding of a compact struct is slightly more compact than the encoding of a regular struct: `compact` saves one
 byte per instance.
+
 ## C# mapping
 
-A Slice struct maps to a C# record struct with the same name. For example:
+A Slice struct maps to an internal C# record struct with the same name. For example:
+
 {% aside alignment="top" %}
 
 ```slice
@@ -66,6 +68,7 @@ internal partial record struct PostalAddress
     internal required string Zip { get; set; }
 
     // Primary constructor.
+    [SetRequiredMembers]
     internal PostalAddress(
         string recipientFullName,
         string streetAddress1,
@@ -99,6 +102,7 @@ internal partial record struct PostalAddress
 ```
 
 {% /aside %}
+
 The mapped C# record struct provides a primary constructor with parameters for all its fields, and also a decoding
 constructor that constructs a new instance by decoding its fields from a [SliceDecoder]. The generated `Encode` method
 encodes the struct fields with a [SliceEncoder].
