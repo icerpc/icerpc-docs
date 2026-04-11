@@ -129,9 +129,9 @@ Interface I*Name*Service is a server-side helper: it helps you create a service 
 service _Name_.
 
 The principle is straightforward: your service class must be a partial class that implements I*Name*Service. It must
-also carry the [ProtobufService] attribute.
+also carry the [Service] attribute.
 
-The `ProtobufService` attribute instructs the Protobuf Service source generator to implement interface [IDispatcher] by
+The `Service` attribute instructs the Service Generator (a C# source generator) to implement interface [IDispatcher] by
 directing incoming requests to I*Name*Service methods based on the Protobuf RPC method names.
 
 For example:
@@ -163,7 +163,7 @@ public partial interface IWidgetService
 }
 
 // Application code
-[ProtobufService]
+[Service]
 internal partial class MyWidget : IWidgetService
 {
     // implement SpinAsync ...
@@ -201,7 +201,7 @@ service Counter {
 ```csharp
 // A service class that implements 2 Protobuf
 // services
-[ProtobufService]
+[Service]
 internal partial class MyWidget : IWidgetService,
                                   ICounterService
 {
@@ -219,4 +219,4 @@ If you set the `deprecated` option to `true` on a Protobuf service, the 2 interf
 [IDispatcher]: csharp:IceRpc.IDispatcher
 [Obsolete]: https://learn.microsoft.com/en-us/dotnet/api/system.obsoleteattribute
 [ProtobufEncodeOptions]: csharp:IceRpc.Protobuf.ProtobufEncodeOptions
-[ProtobufService]: csharp:IceRpc.Protobuf.ProtobufServiceAttribute
+[Service]: csharp:IceRpc.ServiceAttribute

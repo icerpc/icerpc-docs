@@ -53,18 +53,17 @@ internal partial interface IGreeterService
 ```
 
 We just need to create a partial class that implements this generated interface. This class must also carry the
-[SliceService] attribute:
+[Service] attribute:
 
 ```csharp
 using IceRpc;
 using IceRpc.Features;
-using IceRpc.Slice;
 using VisitorCenter;
 
 namespace GreeterServer;
 
 // Our own implementation for Slice interface Greeter.
-[SliceService]
+[Service]
 internal partial class Chatbot : IGreeterService
 {
     public ValueTask<string> GreetAsync(
@@ -78,9 +77,9 @@ internal partial class Chatbot : IGreeterService
 }
 ```
 
-The `[SliceService]` attribute instructs the Slice Service source generator to generate an implementation of interface
-[IDispatcher]. This implementation dispatches incoming requests to the `Chatbot` methods based on the operation names
-carried by these requests.
+The `[Service]` attribute instructs the Service Generator (a C# source generator) to generate an implementation of
+interface [IDispatcher]. This implementation dispatches incoming requests to the `Chatbot` methods based on the
+operation names carried by these requests.
 
 We then insert this dispatcher into the server's [dispatch pipeline][dispatch-pipeline], as usual.
 
@@ -134,5 +133,5 @@ Console.WriteLine(greeting);
 [decorate]: https://en.wikipedia.org/wiki/Decorator_pattern
 [IDispatcher]: csharp:IceRpc.IDispatcher
 [slice-tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
-[SliceService]: csharp:IceRpc.Slice.SliceServiceAttribute
+[Service]: csharp:IceRpc.ServiceAttribute
 [invoker]: /icerpc/invocation/invocation-pipeline#the-invoker-abstraction

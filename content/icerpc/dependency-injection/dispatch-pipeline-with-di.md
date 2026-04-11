@@ -180,7 +180,7 @@ services.AddIceRpcDispatcher(
         .Map<IGreeterService>());
 
 // To be registered as a transient or scoped service in the DI container.
-[SliceService]
+[Service]
 internal partial class Chatbot : IGreeterService
 {
     // DeadlineInformation is auto-wired by the DI container.

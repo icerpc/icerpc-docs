@@ -33,6 +33,7 @@ Slice provides 2 floating-point types: a single precision type, `float32`, and a
 | ---------|------------|
 | float32  | float      |
 | float64  | double     |
+
 ## String
 
 Slice provides a string type, `string`. A string is a sequence of characters that can be encoded using [UTF-8].

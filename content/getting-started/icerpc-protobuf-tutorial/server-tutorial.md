@@ -83,7 +83,7 @@ For this tutorial, we just keep `Greeter` as-is.
 Class Chatbot is a service that implements Protobuf service `Greeter`:
 
 ```csharp
-[ProtobufService]
+[Service]
 internal partial class Chatbot : IGreeterService
 {
     public ValueTask<GreetResponse> GreetAsync(
@@ -112,8 +112,8 @@ is not marked `async`. We could write the return statement as:
 
 However, it's more convenient to omit the type name, especially when this type is complicated.
 
-We mark class `Chatbot` as partial because the [ProtobufService] attribute instructs the Protobuf Service source
-generator to implement interface [IDispatcher]—in other words, make `Chatbot` an IceRPC service implementation.
+We mark class `Chatbot` as partial because the [Service] attribute instructs the Service Generator (a C# source
+generator) to implement interface [IDispatcher]—in other words, make `Chatbot` an IceRPC service implementation.
 
 ### Program.cs - the dispatch pipeline and the server logic
 
@@ -244,4 +244,4 @@ Press Ctrl+C on the server console to shut it down.
 [Router]: csharp:IceRpc.Router
 [Server]: csharp:IceRpc.Server
 [Protobuf]: https://protobuf.dev/
-[ProtobufService]: csharp:IceRpc.Protobuf.ProtobufServiceAttribute
+[Service]: csharp:IceRpc.ServiceAttribute

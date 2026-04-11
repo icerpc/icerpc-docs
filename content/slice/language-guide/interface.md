@@ -238,9 +238,9 @@ Interface I*Name*Service is a server-side helper: it helps you create a service 
 interface _Name_.
 
 The principle is straightforward: your service class must be a partial class that implements I*Name*Service. It must
-also carry the [SliceService] attribute.
+also carry the [Service] attribute.
 
-The `SliceService` attribute instructs the Slice Service source generator to implement interface [IDispatcher] by
+The `Service` attribute instructs the Service Generator (a C# source generator) to implement interface [IDispatcher] by
 directing incoming requests to I*Name*Service methods based on the operation names.
 
 For example:
@@ -269,7 +269,7 @@ internal partial interface IWidgetService
 }
 
 // Application code
-[SliceService]
+[Service]
 internal partial class MyWidget : IWidgetService
 {
     // implement SpinAsync ...
@@ -302,7 +302,7 @@ interface Counter {
 
 ```csharp
 // Implements two Slice interfaces
-[SliceService]
+[Service]
 internal partial class MyWidget : IWidgetService,
                                   ICounterService
 {
@@ -316,4 +316,4 @@ internal partial class MyWidget : IWidgetService,
 [relative proxy]: /slice/language-guide/using-proxies-as-slice-types#relative-proxy
 [SliceEncodeOptions]: csharp:IceRpc.Slice.SliceEncodeOptions
 [IDispatcher]: csharp:IceRpc.IDispatcher
-[SliceService]: csharp:IceRpc.Slice.SliceServiceAttribute
+[Service]: csharp:IceRpc.ServiceAttribute

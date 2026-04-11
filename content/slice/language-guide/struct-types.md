@@ -135,5 +135,5 @@ You can also apply `cs::readonly` to a struct field to map this field to a get-i
 
 [tagged-fields]: fields#tagged-fields
 
-[SliceEncoder]: csharp:ZeroC.Slice.SliceEncoder
-[SliceDecoder]: csharp:ZeroC.Slice.SliceDecoder
+[SliceEncoder]: csharp:ZeroC.Slice.Codec.SliceEncoder
+[SliceDecoder]: csharp:ZeroC.Slice.Codec.SliceDecoder

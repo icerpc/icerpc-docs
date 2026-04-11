@@ -62,7 +62,7 @@ internal partial record struct SequenceExample
 By default, when the generated code decodes a sequence, it creates an array that is transmitted to you (the
 application) as an `IList<T>`. So if you need an array, you can safely cast this `IList<T>` to an array after decoding.
 
-You can override this default with the [`cs::type` attribute](#cs::type-attribute). This attribute only changes
+You can override this default with the [cs::type attribute](#cs::type-attribute). This attribute only changes
 the type that the generated code uses during decoding to fill-in the field: the C# field type itself remains an
 `IList<T>`.
 
@@ -79,7 +79,7 @@ incoming and outgoing values makes sending sequences more convenient and occasio
 {% callout type="note" %}
 This mapping also applies to Slice enums whose underlying type is fixed-size.
 {% /callout %}
-You can override the default mapping with the [`cs::type` attribute](#cs::type-attribute); this gives you the C#
+You can override the default mapping with the [cs::type attribute](#cs::type-attribute); this gives you the C#
 type you specified for incoming values, and `IEnumerable<T>` for outgoing values.
 
 #### All other sequences
@@ -88,7 +88,7 @@ type you specified for incoming values, and `IEnumerable<T>` for outgoing values
 | --------------------------- | ----------------------------------- |
 | `IEnumerable<T>`            | `T[]`                               |
 
-You can override the default mapping for incoming values with the [`cs::type` attribute](#cs::type-attribute);
+You can override the default mapping for incoming values with the [cs::type attribute](#cs::type-attribute);
 this gives you the C# type you specified for incoming values. `cs::type` doesn't change the mapping for outgoing values
 here.
 
