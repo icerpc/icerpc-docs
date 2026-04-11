@@ -41,7 +41,7 @@ compact enum Result<string, GreeterError> { // not a valid Slice identifier
 
 ## C# mapping
 
-`Result<Success, Failure>` maps `Result<TSuccess, TFailure>`, where [Result<TSuccess, TFailure>] is a C# record class in
+`Result<Success, Failure>` maps to `Result<TSuccess, TFailure>`, where [Result<TSuccess, TFailure>] is a C# record class in
 the ZeroC.Slice.Codec namespace.
 
 The Slice type parameters are mapped to C# type parameters, following the usual mapping rules. For example:
