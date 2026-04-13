@@ -52,8 +52,8 @@ interface Egg {
 }
 ```
 
-For C#, the Slice compiler generates a C# file (.cs) for each source Slice file. You typically compile all the Slice
-source files for a project in one shot.
+For C#, the Slice code generator generates a C# file (.cs) for each source Slice file. You typically compile all the
+Slice source files for a project in one shot.
 
 ## Preprocessing
 

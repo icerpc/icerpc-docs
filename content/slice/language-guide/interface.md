@@ -25,8 +25,8 @@ interface Greeter {
 All operations are abstract at the Slice level: you can't implement an operation in Slice.
 
 When you create an application with Slice, these interfaces correspond to your entry point into Slice: you call and
-implement the C# (or Rust, Python...) abstractions and concrete implementations that the Slice compiler generates from
-your Slice interfaces.
+implement the C# (or Rust, Python...) abstractions and concrete implementations that the Slice code generators generate
+from your Slice interfaces.
 
 {% callout %}
 An interface is a Slice construct but not a Slice type. This means you cannot use an interface as the type of a Slice
@@ -57,8 +57,8 @@ interface Rectangle : Shape, Fillable {
 
 ## C# mapping {% icerpcSlice=true %}
 
-The Slice compiler for C# compiles Slice interface _Name_ into two C# interfaces (I*Name* and I*Name*Service) and one
-C# struct (*Name*Proxy). The identifiers of the generated interfaces and struct are always in Pascal case, per the usual
+The code generator for C# creates two C# interfaces (I*Name* and I*Name*Service) and one C# struct (*Name*Proxy) from
+Slice interface _Name_. The identifiers of the generated interfaces and struct are always in Pascal case, per the usual
 C# naming conventions, even when _Name_ is not in Pascal case.
 
 The attribute [`cs::identifier`][cs-identifier] allows you to remap _Name_ to an identifier of your choice.

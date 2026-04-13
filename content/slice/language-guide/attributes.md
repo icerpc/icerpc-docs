@@ -101,15 +101,14 @@ The following attributes are specific to the C# mapping. They all start with the
 | --------------------------------------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | [`cs::attribute`][cs-attribute-attribute]     | Enum types, enumerators, and fields                                                          | Add the specified C# attribute to the mapped C# enum, enum member, or field. |
 | [`cs::encodeReturn`][cs-encoded-return]       | Operations                                                                                   | Return an already encoded return value (server-side only).                   |
-| [`cs::identifier`](#cs::identifier-attribute) | Interfaces, operations, parameters, user-defined types, fields, and enumerators              | Change the name of the mapped C# identifier.                                 |
-| [`cs::namespace`][cs-namespace]               | Modules                                                                                      | Change the name of the mapped C# namespace.                                  |
+| [`cs::identifier`](#cs::identifier-attribute) | Modules, interfaces, operations, parameters, user-defined types, fields, and enumerators     | Change the name of the mapped C# identifier.                                 |
 | [`cs::public`](#cs::public-attribute)         | Interfaces and user-defined types                                                            | Map to a public C# type instead of an internal C# type.                      |
 | [`cs::readonly`][cs-readonly]                 | Structs and struct fields                                                                    | Adds `readonly` to the mapped C# struct or field.                            |
 | `cs::type`                                    | [Custom types][custom-type], [sequences][sequence-type], and [dictionaries][dictionary-type] | Specify the mapped C# type.                                                  |
 
 ### cs::identifier attribute
 
-The `cs::identifier` attribute specifies the exact mapped C# identifier you want as its argument. The Slice compiler
+The `cs::identifier` attribute specifies the exact mapped C# identifier you want as its argument. The C# code generator
 does not adjust the case of this identifier, but adds prefixes and suffixes as needed.
 
 For example:
@@ -152,7 +151,6 @@ The `cs::public` attribute maps a Slice type to one or more public C# types. It 
 [compress]: operation#compress-attribute
 [cs-attribute-attribute]: enum-types#cs::attribute-attribute
 [cs-encoded-return]: operation#cs::encodedreturn-attribute
-[cs-namespace]: module#c#-mapping
 [cs-readonly]: struct-types#cs::readonly-attribute
 [custom-type]: custom-types#c#-mapping
 [dictionary-type]: dictionary-types#cs::type-attribute

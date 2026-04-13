@@ -19,8 +19,8 @@ compact struct Pair { key: Key, value: Value }
 
 ## Result
 
-A `Result<Success, Failure>` is encoded exactly like a compact enum with two enumerators (`Success` and `Failure`),
-where each enumerator has a single field of the respective type (Success or Failure).
+A `Result<Success, Failure>` is encoded exactly like a compact variant enum with two variants (`Success` and `Failure`),
+where each variant has a single field of the respective type (Success or Failure).
 
 For example, a `Result<string, int32>` is encoded like a:
 

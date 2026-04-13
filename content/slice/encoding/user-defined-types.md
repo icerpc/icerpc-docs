@@ -4,7 +4,7 @@ description: Learn how to encode structs, enums, and other user-defined types wi
 ---
 ## Enum
 
-### Enum with underlying type
+### Basic enum
 
 An enumerator is encoded as its associated numeric value, using the encoding of the enumeration's underlying type.
 
@@ -19,13 +19,13 @@ A `Strawberry` is encoded like a `uint16` with value 1 (on 2 bytes). An `Orange`
 
 The encoding is the same for checked and unchecked enums.
 
-### Enum with fields
+### Variant enum
 
-An enumerator is encoded as:
+A variant is encoded as:
 
 - a `varint32` holding its discriminant value
 - for an unchecked enum, a `varuint62` holding the size of the encoded fields
-- a struct holding the fields of this enumerator
+- a struct holding the fields of this variant
 
 The trailing struct is a compact struct when the enum itself is compact. Conversely, if the enum is not compact then the
 trailing struct is also not compact and its encoding always ends with the tag end marker byte.
@@ -46,6 +46,7 @@ If an enumerator in a compact enum has no fields, only the discriminant value is
 encode.
 
 ## Struct
+
 A struct is encoded as:
 
 - a [bit sequence][bit-sequence] with N bits, where N is the number of non-tagged fields with optional types in the

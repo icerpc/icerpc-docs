@@ -179,7 +179,7 @@ While the two methods are similar, please note they are not the same:
 
 ### Request and Response helper classes
 
-The Slice compiler generates helper nested static classes named Request and Response in *Name*Proxy and I*Name*Service.
+The code generator generates helper nested static classes named Request and Response in *Name*Proxy and I*Name*Service.
 These nested classes provide helper methods to encode and decode the payloads of requests and responses associated with
 the interface operations, with up to 4 helper methods per operation.
 

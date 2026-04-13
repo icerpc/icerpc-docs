@@ -36,5 +36,3 @@ other positions in the bit sequence associated with `Contact` are unused and mus
 
 A segment is a `varuint62` size followed by size bytes, just like a `Sequence<uint8>`. The bytes that follow the size
 are called the body of the segment.
-
-[int32]: primitive-types#integral-types

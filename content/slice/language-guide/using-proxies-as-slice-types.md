@@ -14,7 +14,7 @@ If you want to transmit a proxy through a Slice operation, you can easily transm
 built-in custom type `IceRpc::ServiceAddress`:
 
 ```slice
-[cs::namespace("IceRpc.Slice")]
+[cs::identifier("IceRpc.Slice")]
 module IceRpc
 
 /// Represents the address of an RPC service that can be called using ice or icerpc.
@@ -81,7 +81,7 @@ The advantage with this custom proxy approach is we get a typed API and the invo
 automatically by the decoding code (see below).
 
 When you define a custom type, you need to provide methods that encode and decode this type in each programming language
-you want to support. See [Custom types] for details. As a convenience, the Slice compiler always generates these encode
+you want to support. See [Custom types] for details. As a convenience, the code generator always generates these encode
 and decode methods for *Name*Proxy. This way, if you decide to create a custom type *Name*Proxy (where *Name* is the
 name of a Slice interface), you don't need to implement these methods. And that's exactly what we did in the example
 above.

@@ -29,8 +29,8 @@ unchecked enum GreeterError {
 You can also use a constructed result as the type of a field, the element type of a sequence, the type of an operation
 parameter, and so on, just like any other Slice type.
 
-A result is conceptually equivalent to a compact enum with two enumerators (`Success` and `Failure`), each with a single
-field of the associated type. You can see `Result<string, GreeterError>` as a convenient way to reference:
+A result is conceptually equivalent to a compact variant enum with two variants (`Success` and `Failure`), each with a
+single field of the associated type. You can see `Result<string, GreeterError>` as a convenient way to reference:
 
 ```slice
 compact enum Result<string, GreeterError> { // not a valid Slice identifier
