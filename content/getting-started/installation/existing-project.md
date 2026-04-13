@@ -51,23 +51,22 @@ dotnet add package IceRpc
 
 ## Adding optional packages
 
-Even though all the other packages are optional, it's likely you will want to
-add one or more of them to your project. For example, you can add the package
-[IceRpc.Transports.Quic] to use the QUIC transport with the following command:
+Even though all the other packages are optional, it's likely you will want to add one or more of them to your project.
+For example, you can add the package [IceRpc.Logger] to use the Logger interceptor and middleware:
 
 ```shell {% showTitle=false %}
-dotnet add package IceRpc.Transports.Quic
+dotnet add package IceRpc.Logger
 ```
 
 The full list of IceRPC packages is available on the [next page][full-list].
 
 [full-list]: nuget-packages
+[IceRpc.Logger]: https://www.nuget.org/packages/IceRpc.Logger
 [Google.Protobuf]: https://www.nuget.org/packages/Google.Protobuf
 [IceRpc.Protobuf.Tools]: https://www.nuget.org/packages/IceRpc.Protobuf.Tools
 [IceRpc.Protobuf]: https://www.nuget.org/packages/IceRpc.Protobuf
 [IceRpc.Slice.Tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
 [IceRpc.Slice]: https://www.nuget.org/packages/IceRpc.Slice
-[IceRpc.Transports.Quic]: https://www.nuget.org/packages/IceRpc.Transports.Quic
 [IceRpc]: https://www.nuget.org/packages/IceRpc
 [nuget]: https://www.nuget.org/
 [Protobuf]: https://protobuf.dev/
