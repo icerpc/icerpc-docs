@@ -118,4 +118,4 @@ Relative service addresses underpin [relative proxies] in Slice.
 [URI]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
 
 [ServiceAddress]: csharp:IceRpc.ServiceAddress
-[Ice facet]: https://doc.zeroc.com/ice/latest/client-server-features/facets
+[Ice facet]: https://docs.zeroc.com/ice/3.8/cpp/facets

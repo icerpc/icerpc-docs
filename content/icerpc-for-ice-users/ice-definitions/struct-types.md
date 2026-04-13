@@ -79,4 +79,4 @@ public readonly partial record struct Point
 
 [IceDecoder]: csharp:IceRpc.Ice.Codec.IceDecoder
 [IceEncoder]: csharp:IceRpc.Ice.Codec.IceEncoder
-[cs-readonly]: TODO
+[cs-readonly]: https://docs.zeroc.com/ice/3.8/csharp/slice-metadata-directives#SliceMetadataDirectives-cs:readonly

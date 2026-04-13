@@ -167,6 +167,3 @@ The contact id = 5, name = not set, age = 42 is encoded as:
 ```
 
 [bit-sequence]: encoding-only-constructs#bit-sequence
-[ice-manual-class-encoding]: https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding/ice-encoding/data-encoding-for-classes
-[sliced-format-attribute]: /slice/language-guide/operation#slicedformat-attribute
-[variable-length size]: encoding-only-constructs#variable-length-size
