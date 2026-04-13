@@ -14,11 +14,10 @@ All well-known types are defined in module `WellKnownTypes`:
   A Uniform Resource Identifier ([URI]), encoded as a string.
 - [Uuid][uuid-type]\
   A Universal Unique Identifier ([UUID]), encoded as a 128-bit value.
-[custom]: custom-types
 
+[custom]: custom-types
 [URI]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
 [UUID]: https://en.wikipedia.org/wiki/Universally_unique_identifier
-
 [Duration]: https://github.com/icerpc/icerpc-slice/blob/main/WellKnownTypes/Duration.slice
 [TimeStamp]: https://github.com/icerpc/icerpc-slice/blob/main/WellKnownTypes/TimeStamp.slice
 [uri-type]: https://github.com/icerpc/icerpc-slice/blob/main/WellKnownTypes/Uri.slice

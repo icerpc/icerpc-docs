@@ -187,8 +187,8 @@ internal abstract partial record class Shape
 ```
 
 {% callout %}
-[ZeroC.Slice] has a dependency on the [Dunet package]; as a result, you don't need an explicit reference to Dunet in
-your project.
+[ZeroC.Slice.Codec] has a dependency on the [Dunet package]; as a result, you don't need an explicit reference to Dunet
+in your project.
 {% /callout %}
 
 ### Extension methods
@@ -295,4 +295,4 @@ You can also apply `cs::attribute` to an enumerator to get the specified C# attr
 [variable-size]: primitive-types#variable-size-integral-types
 [InvalidDataException]: https://learn.microsoft.com/en-us/dotnet/api/system.io.invaliddataexception
 [FlagsAttribute]: https://learn.microsoft.com/en-us/dotnet/api/system.flagsattribute
-[ZeroC.Slice]: https://www.nuget.org/packages/ZeroC.Slice
+[ZeroC.Slice.Codec]: https://www.nuget.org/packages/ZeroC.Slice.Codec

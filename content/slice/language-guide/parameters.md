@@ -4,6 +4,7 @@ description: Learn how to define parameters in Slice.
 ---
 
 ## Syntax
+
 Parameters have the same syntax as [fields](fields), with two extensions:
 
 1. When an operation returns a single parameter, this parameter cannot have a name. The syntax for this nameless return
@@ -32,6 +33,7 @@ type. For example:
     generated code decodes a payload with an unexpected stream, it ignores this stream and tells the sender "don't send
     me more". In the reverse situation—the decoding code expects a stream at the end of the payload but the sender
     doesn't encode anything—the decoding code simply returns an empty stream.
+
 ## Tagged parameters
 
 The syntax and semantics of tagged parameters is the same as the syntax and semantics of tagged fields. The scope of a

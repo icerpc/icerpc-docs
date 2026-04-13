@@ -73,7 +73,7 @@ For this tutorial, we just keep `Greeter` as-is.
 Class Chatbot is a service that implements Slice interface `Greeter`:
 
 ```csharp
-[SliceService]
+[Service]
 internal partial class Chatbot : IGreeterService
 {
     public ValueTask<string> GreetAsync(
@@ -101,8 +101,8 @@ is not marked `async`. We could write the return statement as:
 
 However, it's more convenient to omit the type name, especially when this type is complicated.
 
-We mark class `Chatbot` as partial because the [SliceService] attribute instructs the Slice Service source generator to
-implement interface [IDispatcher]—in other words, make `Chatbot` an IceRPC service implementation.
+We mark class `Chatbot` as partial because the [Service] attribute instructs the Service Generator (a C# source
+generator) to implement interface [IDispatcher]—in other words, make `Chatbot` an IceRPC service implementation.
 
 ### Program.cs - the dispatch pipeline and the server logic
 
@@ -231,5 +231,6 @@ Press Ctrl+C on the server console to shut it down.
 [NotFound]: csharp:IceRpc.StatusCode#NotFound
 [Router]: csharp:IceRpc.Router
 [Server]: csharp:IceRpc.Server
+[Service]: csharp:IceRpc.ServiceAttribute
 [Slice]: /slice
-[SliceService]: csharp:IceRpc.Slice.SliceServiceAttribute
+

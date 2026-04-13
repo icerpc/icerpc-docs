@@ -22,7 +22,7 @@ description: A list of all the IceRPC NuGet packages
 | [IceRpc.Templates]                      | Project templates for IceRPC                                                            |
 | [IceRpc.Transports.Coloc]               | Coloc duplex transport                                                                  |
 | [IceRpc.Transports.Quic]                | QUIC multiplexed transport                                                              |
-| [ZeroC.Slice]                           | Slice serialization library                                                             |
+| [ZeroC.Slice.Codec]                     | Slice serialization library                                                             |
 
 [Ice interop]: /icerpc-for-ice-users
 [IceRpc]: https://www.nuget.org/packages/IceRpc
@@ -42,4 +42,4 @@ description: A list of all the IceRPC NuGet packages
 [IceRpc.Templates]: https://www.nuget.org/packages/IceRpc.Templates
 [IceRpc.Transports.Coloc]: https://www.nuget.org/packages/IceRpc.Transports.Coloc
 [IceRpc.Transports.Quic]: https://www.nuget.org/packages/IceRpc.Transports.Quic
-[ZeroC.Slice]: https://www.nuget.org/packages/ZeroC.Slice
+[ZeroC.Slice.Codec]: https://www.nuget.org/packages/ZeroC.Slice.Codec
