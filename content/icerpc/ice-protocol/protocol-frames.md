@@ -24,7 +24,7 @@ The ice protocol sends requests, responses and other information over a duplex c
 All ice protocol frames have the same layout: a header followed by a body. The format of the body depends on the frame
 type.
 
-Frames and types from this page are defined using [Ice's interface definition language].
+Frames and types from this page are defined using [Ice's interface definition language][ice-slice].
 
 The header is an Ice struct defined as follows:
 
@@ -226,7 +226,7 @@ Ice encoding version 1.1.
 For the same reason, when IceRPC receives an encapsulation, it makes sure the encoding version in this encapsulation is
 set to 1.1.
 
-[Ice's interface definition language]: https://docs.zeroc.com/ice/3.8/csharp/the-slice-language
 [ice-protocol]: https://docs.zeroc.com/ice/3.8/cpp/ice-protocol
+[ice-slice]: https://docs.zeroc.com/ice/3.8/csharp/the-slice-language
 [status-code]: ../invocation/incoming-response#status-code
 [request-fields]: ../invocation/outgoing-request#request-field
