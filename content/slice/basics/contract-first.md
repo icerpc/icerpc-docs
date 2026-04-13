@@ -32,7 +32,7 @@ Once you've written the initial version of your Slice definitions, you need to c
 configured to use code generators for your target programming language.
 
 In C#, you would use the [IceRPC Slice tools][slice-tools] to add Slice file compilation to your IceRPC project. The
-Slice compiler calls two C# code generators on each Slice file. Since we have single Slice file, we get two C# files,
+Slice compiler calls two C# code generators on each Slice file. Since we have a single Slice file, we get two C# files,
 `Greeter.cs` and `Greeter.IceRpc.cs`.
 
 {% /step %}
