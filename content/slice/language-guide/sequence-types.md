@@ -62,7 +62,7 @@ internal partial record struct SequenceExample
 By default, when the generated code decodes a sequence, it creates an array that is transmitted to you (the
 application) as an `IList<T>`. So if you need an array, you can safely cast this `IList<T>` to an array after decoding.
 
-You can override this default with the [cs::type attribute](#cs::type-attribute). This attribute only changes
+You can override this default with the [`cs::type` attribute](#cs::type-attribute). This attribute only changes
 the type that the generated code uses during decoding to fill-in the field: the C# field type itself remains an
 `IList<T>`.
 
