@@ -55,7 +55,7 @@ enum Fruit : uint8 {
 
 ## Variants
 
-The variants of an variant enum are not constants; you can think of them as instances of nested structs.
+The variants of a variant enum are not constants; you can think of them as instances of nested structs.
 
 And just like the fields of a struct, you can include tagged fields unless the enclosing enum is marked `compact`.
 For example:
