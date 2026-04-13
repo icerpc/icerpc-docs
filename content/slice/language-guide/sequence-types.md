@@ -88,7 +88,7 @@ type you specified for incoming values, and `IEnumerable<T>` for outgoing values
 | --------------------------- | ----------------------------------- |
 | `IEnumerable<T>`            | `T[]`                               |
 
-You can override the default mapping for incoming values with the [cs::type attribute](#cs::type-attribute);
+You can override the default mapping for incoming values with the [`cs::type` attribute](#cs::type-attribute);
 this gives you the C# type you specified for incoming values. `cs::type` doesn't change the mapping for outgoing values
 here.
 

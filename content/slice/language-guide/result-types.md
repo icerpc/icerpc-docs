@@ -41,8 +41,8 @@ compact enum Result<string, GreeterError> { // not a valid Slice identifier
 
 ## C# mapping
 
-`Result<Success, Failure>` maps to `Result<TSuccess, TFailure>`, where [Result<TSuccess, TFailure>] is a C# record class in
-the ZeroC.Slice.Codec namespace.
+`Result<Success, Failure>` maps to `Result<TSuccess, TFailure>`, where [Result<TSuccess, TFailure>] is a C# record class
+in the ZeroC.Slice namespace.
 
 The Slice type parameters are mapped to C# type parameters, following the usual mapping rules. For example:
 
@@ -67,4 +67,4 @@ string message = result.Match(
 ```
 
 [Dunet]: https://github.com/domn1995/dunet
-[Result<TSuccess, TFailure>]: csharp:ZeroC.Slice.Codec.Result-2
+[Result<TSuccess, TFailure>]: csharp:ZeroC.Slice.Result-2

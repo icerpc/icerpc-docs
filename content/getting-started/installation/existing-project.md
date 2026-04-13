@@ -18,7 +18,7 @@ dotnet add package IceRpc.Slice.Tools
 Adding [IceRpc.Slice] automatically pulls its dependencies, including the [IceRpc] and [ZeroC.Slice.Codec] packages.
 
 {% callout %}
-The Slice compiler included in `IceRpc.Slice.Tools` generates C# code that depends on the `ZeroC.Slice.Codec` and
+The Slice code generators included in `IceRpc.Slice.Tools` generate C# code that depends on the `ZeroC.Slice.Codec` and
 `IceRpc.Slice` packages. You need `IceRpc.Slice.Tools` only during development.
 {% /callout %}
 
