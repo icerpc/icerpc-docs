@@ -20,8 +20,8 @@ Later on, you can use `BigInt` as a parameter type or field type just like any o
 
 ## C# mapping
 
-When you use a custom type from another Slice definition, you must specify the mapped C# type with the
-`cs::type` [attribute](attributes#c#-attributes); otherwise, code generation fails. The attribute accepts a single
+To map a custom Slice type to C#, you must specify the mapped C# type on the `custom` definition with the
+`cs::type` [attribute](attributes#c#-attributes); otherwise, code generation fails. This attribute accepts a single
 string argument: the name of the mapped C# type.
 
 For example:
