@@ -44,7 +44,7 @@ interface includes a method per Slice operation. The generated service interface
 earlier is:
 
 ```csharp
-// generated code in Greeter.IceRrp.cs
+// generated code in Greeter.IceRpc.cs
 namespace VisitorCenter;
 
 internal partial interface IGreeterService
