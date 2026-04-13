@@ -40,8 +40,8 @@ interface Greeter {
 ```
 
 The only difference with our server's `Greeter.slice` is the `cs::identifier`
-attribute. That's fine: attributes don't change the contract. Here, the Slice
-compiler generates the C# code in namespace `MySliceClient` and contract-wise, it
+attribute. That's fine: attributes don't change the contract. Here, the C# code
+generator generates the C# code in namespace `MySliceClient` and contract-wise, it
 doesn't matter that the server uses a different namespace.
 
 ### Program.cs - the client
