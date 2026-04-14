@@ -76,9 +76,11 @@ incoming and outgoing values makes sending sequences more convenient and occasio
 | Mapping for outgoing values | Default mapping for incoming values |
 | --------------------------- | ----------------------------------- |
 | `ReadOnlyMemory<T>`         | `T[]`                               |
+
 {% callout type="note" %}
 This mapping also applies to Slice enums whose underlying type is fixed-size.
 {% /callout %}
+
 You can override the default mapping with the [`cs::type` attribute](#cs::type-attribute); this gives you the C#
 type you specified for incoming values, and `IEnumerable<T>` for outgoing values.
 

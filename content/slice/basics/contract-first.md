@@ -28,22 +28,23 @@ We save these definitions in file `Greeter.slice`.
 
 {% step title="Compile Slice definitions with the Slice compiler" %}
 
-Once you've written the initial version of your Slice definitions, you need to compile them with the Slice compiler for
-your programming language.
+Once you've written the initial version of your Slice definitions, you need to compile them with the Slice compiler
+configured to use code generators for your target programming language.
 
 In C#, you would use the [IceRPC Slice tools][slice-tools] to add Slice file compilation to your IceRPC project. The
-Slice compiler for C# generates a C# file for each Slice file. Since we have single Slice file, we get a single C# file,
-`Greeter.cs`.
+Slice compiler calls two C# code generators on each Slice file. Since we have a single Slice file, we get two C# files,
+`Greeter.cs` and `Greeter.IceRpc.cs`.
 
 {% /step %}
 
 {% step title="Implement server application" %}
 
-The Slice compiler for C# generates a C# interface named I*Name*Service for each Slice interface. This C# interface
-includes a method per Slice operation. The generated service interface for the `Greeter` interface defined earlier is:
+The Slice code generator for C# generates a C# interface named I*Name*Service for each Slice interface. This C#
+interface includes a method per Slice operation. The generated service interface for the `Greeter` interface defined
+earlier is:
 
 ```csharp
-// generated code
+// generated code in Greeter.IceRpc.cs
 namespace VisitorCenter;
 
 internal partial interface IGreeterService
@@ -87,8 +88,9 @@ We then insert this dispatcher into the server's [dispatch pipeline][dispatch-pi
 
 {% step title="Implement client application" %}
 
-The Slice compiler for C# also generates a C# interface I*Name* and a struct *Name*Proxy for each Slice interface.
-*Name*Proxy implements I*Name*. The generated C# interface includes a method per operation in the Slice interface.
+The Slice code generator for C# also generates a C# interface I*Name* and a record struct *Name*Proxy for each Slice
+interface. *Name*Proxy implements I*Name*. The generated C# interface includes a method per operation in the Slice
+interface.
 
 The generated interface for our `Greeter` Slice interface is:
 
@@ -107,8 +109,8 @@ internal partial interface IGreeter
 
 `IGreeter` is a minimal interface that you can easily [decorate].
 
-The `GreeterProxy` struct implements the methods of the generated interface by creating outgoing requests and calling
-`InvokeAsync` on its [invoker] with these requests.
+The `GreeterProxy` record struct implements the methods of the generated interface by creating outgoing requests and
+calling `InvokeAsync` on its [invoker] with these requests.
 
 You then create an instance of this proxy struct to make remote calls, for example:
 

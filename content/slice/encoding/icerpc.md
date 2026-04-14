@@ -16,7 +16,7 @@ resp. stream return value, if any.
 A [service address] is represented in Slice by the custom type `IceRpc::ServiceAddress`:
 
 ```slice
-[cs::namespace("IceRpc.Slice")]
+[cs::identifier("IceRpc.Slice")]
 module IceRpc
 
 /// Represents the address of an RPC service that can be called using ice or icerpc.

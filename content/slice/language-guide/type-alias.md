@@ -20,5 +20,5 @@ typealias StringSet = [cs::type("HashSet<string>")] Sequence<string>
 
 ## C# mapping
 
-A typealias is not mapped to anything in C#. The Slice compiler generates code as if the typealias was replaced by its
-underlying type (including [attributes](attributes), if any).
+A typealias is not mapped to anything in C#. The C# code generator generates code as if the typealias was replaced by
+its underlying type (including [attributes](attributes), if any).

@@ -66,14 +66,16 @@ interface MyOperations {
 ```slice
 module Example
 
-// A checked enum is restricted to its enumerators.
+// A basic enum has an underlying type and one or more enumerators.
+// It is checked by default, which means the decoding rejects
+// unknown enumerators.
 enum Fruit : uint8 {
     Apple
     Strawberry
     Pineapple
 }
 
-// An unchecked enum can hold any value in its underlying type.
+// An unchecked basic enum can hold any value in its underlying type.
 unchecked enum Permissions : uint8 {
     Execute = 0
     Read = 1
@@ -81,24 +83,16 @@ unchecked enum Permissions : uint8 {
     Delete = 4
 }
 
-// An enum without an underlying type is a discriminated union;
-// its enumerators may have fields, including tagged fields
+// A variant enum is a discriminated union, and doesn't have an
+// underlying type. Its members (called variants) may have fields,
+// including tagged fields.
 enum Shape {
     Circle(radius: uint32, tag(1) color: Color?)
     Rectangle(width: uint32, length: uint32)
     Dot
 }
 
-// A compact enum cannot have tagged fields, but it can have fields with
-// an optional type.
-compact enum Action {
-    StayPut // no field
-    Move(x: int32, y: int32)
-    Rotate(angle: float32)
-    Save(name: string?) // "not set" is a valid value for name
-}
-
-// An enum with fields can also be unchecked.
+// A variant enum can also be unchecked.
 unchecked enum TwoDShape {
     Circle(radius: uint32, tag(1) color: Color?)
     Rectangle(width: uint32, length: uint32)
@@ -185,7 +179,7 @@ struct CustomBag {
 ## Attributes
 
 ```slice
-[cs::namespace("AttributeExample")]
+[cs::identifier("AttributeExample")]
 module Example
 
 [cs::identifier("WorldAtlas")]

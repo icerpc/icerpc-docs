@@ -43,7 +43,7 @@ module Res::Vacation
 
 A Slice module is mapped to a C# namespace with the same name converted to Pascal case.
 
-You can customize this mapping with the `cs::namespace` [attribute](attributes) and remap the module to the specified
+You can customize this mapping with the `cs::identifier` [attribute](attributes) and remap the module to the specified
 namespace. This attribute accepts a single string argument: the name of the C# namespace.
 
 For example:
@@ -51,7 +51,7 @@ For example:
 {% aside alignment="top" %}
 
 ```slice
-[cs::namespace("Reservation.Bundles")]
+[cs::identifier("Reservation.Bundles")]
 module Res::Vacation
 ...
 ```

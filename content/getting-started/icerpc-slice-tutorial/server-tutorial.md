@@ -48,7 +48,7 @@ specified with the [Slice] language.
 It's a simple greeter:
 
 ```slice
-[cs::namespace("MySliceServer")]
+[cs::identifier("MySliceServer")]
 module VisitorCenter
 
 /// Represents a simple greeter.
@@ -60,7 +60,7 @@ interface Greeter {
 }
 ```
 
-The `cs::namespace` attribute instructs the Slice compiler to map module
+The `cs::identifier` attribute instructs the C# code generators to map module
 `VisitorCenter` to C# namespace `MySliceServer` (our project name) instead of the
 default (`VisitorCenter`).
 
@@ -87,8 +87,8 @@ internal partial class Chatbot : IGreeterService
 }
 ```
 
-The Slice compiler generates C# interface `IGreeterService` from Slice interface
-`Greeter`. This C# interface is a template: we implement `Greeter` by
+The code generator for IceRPC generates C# interface `IGreeterService` from Slice
+interface `Greeter`. This C# interface is a template: we implement `Greeter` by
 implementing this interface. As you can see above, the `greet` operation
 becomes a `GreetAsync` method with two additional parameters.
 
@@ -99,10 +99,12 @@ is not marked `async`. We could write the return statement as:
     return new ValueTask<string>($"Hello, {name}!");
 ```
 
-However, it's more convenient to omit the type name, especially when this type is complicated.
+However, it's more convenient to omit the type name, especially when this type is
+complicated.
 
-We mark class `Chatbot` as partial because the [Service] attribute instructs the Service Generator (a C# source
-generator) to implement interface [IDispatcher]—in other words, make `Chatbot` an IceRPC service implementation.
+We mark class `Chatbot` as partial because the [Service] attribute instructs the Service
+Generator (a C# source generator) to implement interface [IDispatcher]—in other words,
+make `Chatbot` an IceRPC service implementation.
 
 ### Program.cs - the dispatch pipeline and the server logic
 
@@ -233,4 +235,3 @@ Press Ctrl+C on the server console to shut it down.
 [Server]: csharp:IceRpc.Server
 [Service]: csharp:IceRpc.ServiceAttribute
 [Slice]: /slice
-

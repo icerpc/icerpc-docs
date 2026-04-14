@@ -27,7 +27,7 @@ This file is (and must be) identical or almost identical to the `Greeter.slice`
 we used for the server:
 
 ```slice
-[cs::namespace("MySliceClient")]
+[cs::identifier("MySliceClient")]
 module VisitorCenter
 
 /// Represents a simple greeter.
@@ -39,9 +39,9 @@ interface Greeter {
 }
 ```
 
-The only difference with our server's `Greeter.slice` is the `cs::namespace`
-attribute. That's fine: attributes don't change the contract. Here, the Slice
-compiler generates the C# code in namespace `MySliceClient` and contract-wise, it
+The only difference with our server's `Greeter.slice` is the `cs::identifier`
+attribute. That's fine: attributes don't change the contract. Here, the C# code
+generator generates the C# code in namespace `MySliceClient` and contract-wise, it
 doesn't matter that the server uses a different namespace.
 
 ### Program.cs - the client
@@ -129,8 +129,8 @@ pipeline:
 var greeterProxy = new GreeterProxy(pipeline);
 ```
 
-`GreeterProxy` is a struct that the Slice compiler generated from Slice
-interface `Greeter`. This struct allows us to send requests to a remote service
+`GreeterProxy` is a record struct that the C# code generator generated from Slice
+interface `Greeter`. This record struct allows us to send requests to a remote service
 that implements `Greeter`.
 
 With this code, the address of the target service (or
