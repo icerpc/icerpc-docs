@@ -8,7 +8,7 @@ description: Understand how requests and responses are sent over ice.
 This section describes the ice protocol as implemented by IceRPC. The ice protocol as implemented by Ice is described
 in the [Ice Manual][ice-protocol], where it's known as version 1.0 of the Ice protocol.
 
-Both implementations are naturally compatible to allow Ice and IceRPC applications to communicate with each others.
+Both implementations are naturally compatible to allow Ice and IceRPC applications to communicate with each other.
 
 The ice protocol implementation provided by IceRPC does not support a few non-essential features that Ice supports,
 namely:
@@ -162,10 +162,10 @@ When IceRPC receives a response frame, it creates an incoming response with a st
 The format of the `replyPayload` depends on the reply status:
 
 | Reply status                 | Format of the reply payload                                           |
-| ----------------------------| --------------------------------------------------------------------- |
+| ---------------------------- | --------------------------------------------------------------------- |
 | Ok                           | An [encapsulation](#encapsulation) that holds the response's payload. |
 | UserException                | An [encapsulation](#encapsulation) that holds the response's payload. |
-| Any *NotExist* reply status | A `RequestFailedData` encoded with the Ice encoding.                  |
+| Any *NotExist* reply status  | A `RequestFailedData` encoded with the Ice encoding.                  |
 | Other values                 | The response's error message encoded with the Ice encoding.           |
 
 ### RequestFailedData
