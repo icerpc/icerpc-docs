@@ -75,7 +75,7 @@ compact enum LaunchResult {
 }
 ```
 
-You can also assign a numeric value to each enumerator. These numeric values are called discriminants and are used to
+You can also assign a numeric value to each variant. These numeric values are called discriminants and are used to
 encode and decode the variant enum.
 
 For example:
