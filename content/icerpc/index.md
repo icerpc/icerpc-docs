@@ -98,7 +98,7 @@ and responses are streams of bytes, and you need to manually encode and decode a
 integers) in these streams. This is doable but laborious.
 
 It is easier and more typical to use IceRPC together with an [Interface Definition Language][IDL] (IDL) and its
-associated serialization format. For example, you can define a RPC in [Protobuf] or [Slice] and then let the
+associated serialization format. For example, you can define an RPC in [Protobuf] or [Slice] and then let the
 corresponding code generator generate code that encodes and decodes the RPC arguments and return value to and from bytes
 in the Protobuf or Slice binary format.
 
