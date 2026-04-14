@@ -52,7 +52,8 @@ encodes the struct fields with an [IceEncoder].
 
 ## cs:readonly metadata directive
 
-You can map an Ice struct to a readonly C# struct with the `"cs:readonly"`[cs-readonly] metadata directive. For example:
+You can map an Ice struct to a readonly C# struct with the [`"cs:readonly"`][cs-readonly] metadata directive. For
+example:
 
 {% aside alignment="top" %}
 
@@ -79,4 +80,4 @@ public readonly partial record struct Point
 
 [IceDecoder]: csharp:IceRpc.Ice.Codec.IceDecoder
 [IceEncoder]: csharp:IceRpc.Ice.Codec.IceEncoder
-[cs-readonly]: TODO
+[cs-readonly]: https://docs.zeroc.com/ice/3.8/csharp/slice-metadata-directives#SliceMetadataDirectives-cs:readonly

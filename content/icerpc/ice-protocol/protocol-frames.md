@@ -6,9 +6,9 @@ description: Understand how requests and responses are sent over ice.
 ## Ice interop
 
 This section describes the ice protocol as implemented by IceRPC. The ice protocol as implemented by Ice is described
-in the [Ice Manual][protocol-and-encoding], where it's known as version 1.0 of the Ice protocol.
+in the [Ice Manual][ice-protocol], where it's known as version 1.0 of the Ice protocol.
 
-Both implementations are naturally compatible to allow Ice and IceRPC applications to communicate with each others.
+Both implementations are naturally compatible to allow Ice and IceRPC applications to communicate with each other.
 
 The ice protocol implementation provided by IceRPC does not support a few non-essential features that Ice supports,
 namely:
@@ -24,11 +24,32 @@ The ice protocol sends requests, responses and other information over a duplex c
 All ice protocol frames have the same layout: a header followed by a body. The format of the body depends on the frame
 type.
 
-Frames and types from this page are defined using [Slice].
+Frames and types from this page are defined using [Ice's interface definition language][ice-slice].
 
-The header is a compact struct defined as follows:
+The header is an Ice struct defined as follows:
 
-TODO: ice definitions
+```ice
+enum FrameType
+{
+    Request = 0,
+    RequestBatch = 1,
+    Reply = 2,
+    ValidateConnection = 3,
+    CloseConnection = 4,
+}
+
+struct HeaderData
+{
+    int magic;                 // always the bytes 0x49 0x63 0x65 0x50 ("IceP"), i.e. 0x50656349 in little-endian.
+    byte protocolMajor;        // always 1
+    byte protocolMinor;        // always 0
+    byte encodingMajor;        // always 1
+    byte encodingMinor;        // always 0
+    FrameType frameType;
+    byte compressionStatus;
+    int frameSize;
+}
+```
 
 The `compressionStatus` field is not used or supported by IceRPC. It must be set to 0.
 
@@ -39,7 +60,29 @@ The `frameSize` represents the total number of bytes in the frame, including the
 A request frame carries an ice request. It consists of a header with the `Request` type followed by a `RequestData`
 body:
 
-TODO: ice definitions
+```ice
+enum OperationMode { Normal = 0, Idempotent = 2 }
+
+struct Identity
+{
+    string name;
+    string category;
+}
+
+sequence<string> Facet;
+dictionary<string, string> Context;
+
+struct RequestData
+{
+    int requestId;
+    Identity id;
+    Facet facet;
+    string operation;
+    OperationMode mode;
+    Context context;
+    Encapsulation params;
+}
+```
 
 A `requestId` with a value greater than 0 uniquely identifies a two-way request on a connection, and must not be reused
 while a response for this request is outstanding. The `requestId` 0 is reserved for one-way requests; a one-way request
@@ -48,7 +91,7 @@ has no corresponding response.
 The `id` field corresponds to the path of the outgoing request's service address encoded as an
 [Ice identity](/icerpc-for-ice-users/rpc-core/ice-identity).
 
-The `facet` field corresponds to the fragment of the outgoing request's service address encoded as a `Sequence<string>`.
+The `facet` field corresponds to the fragment of the outgoing request's service address encoded as a `sequence<string>`.
 This sequence is empty when the fragment is empty; otherwise, it has a single element with the fragment.
 
 The `mode` encodes the value of the `Idempotent` [request field][request-fields]. The default is `Normal`.
@@ -66,46 +109,78 @@ send batch requests and does not accept incoming batch request frames.
 
 A response frame carries an ice response. It consists of a header with the `Reply` type followed by a `ReplyData` body:
 
-TODO: ice definitions
+```ice
+enum ReplyStatus
+{
+    Ok = 0,
+    UserException,
+    ObjectNotExist,
+    FacetNotExist,
+    OperationNotExist,
+    UnknownLocalException,
+    UnknownUserException,
+    UnknownException,
+    InvalidData,
+    Unauthorized
+}
+
+struct ReplyData
+{
+    int requestId;
+    ReplyStatus replyStatus;
+    byte[...] replyPayload; // pseudo-Ice
+}
+```
 
 The `requestId` field identifies the request associated with this response.
 
 The `replyStatus` encodes the response's [status code][status-code] as follows:
 
-| Status code           | Encoded as reply status    |
-| --------------------- | -------------------------- |
-| Ok                    | Ok                         |
-| ApplicationError      | UserException              |
-| NotFound              | ObjectNotExistException    |
-| NotImplemented        | OperationNotExistException |
-| Any other status code | UnknownException           |
+| Status code           | Encoded as reply status |
+| --------------------- | ----------------------- |
+| Ok                    | Ok                      |
+| ApplicationError      | UserException           |
+| NotFound              | ObjectNotExist          |
+| NotImplemented        | OperationNotExist       |
+| InvalidData           | InvalidData             |
+| Unauthorized          | Unauthorized            |
+| Any other status code | UnknownException        |
 
 When IceRPC receives a response frame, it creates an incoming response with a status code decoded from the reply status:
 
-| Reply status               | Decoded as status code |
-| -------------------------- | ---------------------- |
-| Ok                         | Ok                     |
-| UserException              | ApplicationError       |
-| ObjectNotExistException    | NotFound               |
-| FacetNotExistException     | NotFound               |
-| OperationNotExistException | NotImplemented         |
-| Unknown exceptions         | InternalError          |
+| Reply status      | Decoded as status code |
+| ----------------- | ---------------------- |
+| Ok                | Ok                     |
+| UserException     | ApplicationError       |
+| ObjectNotExist    | NotFound               |
+| FacetNotExist     | NotFound               |
+| OperationNotExist | NotImplemented         |
+| InvalidData       | InvalidData            |
+| Unauthorized      | Unauthorized           |
+| All other values  | InternalError          |
 
 The format of the `replyPayload` depends on the reply status:
 
-| Reply status        | Format of the reply payload                                           |
-| ------------------- | --------------------------------------------------------------------- |
-| Ok                  | An [encapsulation](#encapsulation) that holds the response's payload. |
-| UserException       | An [encapsulation](#encapsulation) that holds the response's payload. |
-| NotExist exceptions | A `RequestFailedData` encoded with the Ice encoding.                  |
-| Unknown exceptions  | The response's error message encoded with the Ice encoding.           |
+| Reply status                 | Format of the reply payload                                           |
+| ---------------------------- | --------------------------------------------------------------------- |
+| Ok                           | An [encapsulation](#encapsulation) that holds the response's payload. |
+| UserException                | An [encapsulation](#encapsulation) that holds the response's payload. |
+| Any *NotExist* reply status  | A `RequestFailedData` encoded with the Ice encoding.                  |
+| Other values                 | The response's error message encoded with the Ice encoding.           |
 
 ### RequestFailedData
 
 `RequestFailedData` is a struct that holds the request's path, fragment and operation. The path is encoded as an
-`Identity` and the fragment is encoded as a `Sequence<string>`:
+`Identity` and the fragment is encoded as a `sequence<string>`:
 
-TODO: ice definitions
+```ice
+struct RequestFailedData
+{
+    Identity path;
+    Facet facet;
+    string operation;
+}
+```
 
 IceRPC always encodes the path, fragment and operation of the current incoming request in `RequestFailedData` when
 sending a response with status code `NotFound` or `NotImplemented` in an ice response frame.
@@ -124,7 +199,15 @@ from the peer with these status codes.
 An encapsulation is a holder for a request or response payload. It holds the payload and encodes the payload size (as
 the encapsulation size, equal to the payload size plus 6) and an encoding version:
 
-TODO: ice definitions
+```ice
+struct Encapsulation
+{
+    int size;               // payload size + 6
+    byte encodingMajor;     // always 1
+    byte encodingMinor;     // always 1
+    byte[...] payload;      // pseudo-Ice
+}
+```
 
 IceRPC does not know (and does not want to know) how a request or response payload is encoded. As far as IceRPC is
 concerned, the payload is just a stream of bytes. It's the user of IceRPC that knows how these payloads are encoded; a
@@ -143,7 +226,7 @@ Ice encoding version 1.1.
 For the same reason, when IceRPC receives an encapsulation, it makes sure the encoding version in this encapsulation is
 set to 1.1.
 
-[protocol-and-encoding]: https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding
-[Slice]: /slice
+[ice-protocol]: https://docs.zeroc.com/ice/3.8/cpp/ice-protocol
+[ice-slice]: https://docs.zeroc.com/ice/3.8/csharp/the-slice-language
 [status-code]: ../invocation/incoming-response#status-code
 [request-fields]: ../invocation/outgoing-request#request-field
