@@ -129,8 +129,8 @@ pipeline:
 var greeterProxy = new GreeterProxy(pipeline);
 ```
 
-`GreeterProxy` is a struct that the C# code generator generated from Slice
-interface `Greeter`. This struct allows us to send requests to a remote service
+`GreeterProxy` is a record struct that the C# code generator generated from Slice
+interface `Greeter`. This record struct allows us to send requests to a remote service
 that implements `Greeter`.
 
 With this code, the address of the target service (or
