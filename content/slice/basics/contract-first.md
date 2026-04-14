@@ -88,8 +88,9 @@ We then insert this dispatcher into the server's [dispatch pipeline][dispatch-pi
 
 {% step title="Implement client application" %}
 
-The Slice code generator for C# also generates a C# interface I*Name* and a struct *Name*Proxy for each Slice interface.
-*Name*Proxy implements I*Name*. The generated C# interface includes a method per operation in the Slice interface.
+The Slice code generator for C# also generates a C# interface I*Name* and a record struct *Name*Proxy for each Slice
+interface. *Name*Proxy implements I*Name*. The generated C# interface includes a method per operation in the Slice
+interface.
 
 The generated interface for our `Greeter` Slice interface is:
 
@@ -108,8 +109,8 @@ internal partial interface IGreeter
 
 `IGreeter` is a minimal interface that you can easily [decorate].
 
-The `GreeterProxy` struct implements the methods of the generated interface by creating outgoing requests and calling
-`InvokeAsync` on its [invoker] with these requests.
+The `GreeterProxy` record struct implements the methods of the generated interface by creating outgoing requests and
+calling `InvokeAsync` on its [invoker] with these requests.
 
 You then create an instance of this proxy struct to make remote calls, for example:
 
