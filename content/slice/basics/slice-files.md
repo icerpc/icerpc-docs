@@ -52,9 +52,6 @@ interface Egg {
 }
 ```
 
-For C#, the Slice code generator generates a C# file (.cs) for each source Slice file. You typically compile all the
-Slice source files for a project in one shot.
-
 ## Preprocessing
 
 The Slice language provides a few basic preprocessing directives for conditional compilation. For example:
