@@ -58,9 +58,9 @@ interface Rectangle : Shape, Fillable {
 
 ## C# mapping {% icerpcSlice=true %}
 
-The code generator for C# creates two C# interfaces (I*Name* and I*Name*Service) and one C# struct (*Name*Proxy) from
-Slice interface _Name_. The identifiers of the generated interfaces and struct are always in Pascal case, per the usual
-C# naming conventions, even when _Name_ is not in Pascal case.
+The code generator for C# creates two C# interfaces (I*Name* and I*Name*Service) and one C# record struct
+(*Name*Proxy) from Slice interface _Name_. The identifiers of the generated interfaces and record struct are always in
+Pascal case, per the usual C# naming conventions, even when _Name_ is not in Pascal case.
 
 The attribute [`cs::identifier`][cs-identifier] allows you to remap _Name_ to an identifier of your choice.
 
