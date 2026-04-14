@@ -161,12 +161,12 @@ When IceRPC receives a response frame, it creates an incoming response with a st
 
 The format of the `replyPayload` depends on the reply status:
 
-| Reply status    | Format of the reply payload                                           |
-| ----------------| --------------------------------------------------------------------- |
-| Ok              | An [encapsulation](#encapsulation) that holds the response's payload. |
-| UserException   | An [encapsulation](#encapsulation) that holds the response's payload. |
-| NotExist values | A `RequestFailedData` encoded with the Ice encoding.                  |
-| Other values    | The response's error message encoded with the Ice encoding.           |
+| Reply status                 | Format of the reply payload                                           |
+| ----------------------------| --------------------------------------------------------------------- |
+| Ok                           | An [encapsulation](#encapsulation) that holds the response's payload. |
+| UserException                | An [encapsulation](#encapsulation) that holds the response's payload. |
+| Any *NotExist* reply status | A `RequestFailedData` encoded with the Ice encoding.                  |
+| Other values                 | The response's error message encoded with the Ice encoding.           |
 
 ### RequestFailedData
 
