@@ -62,7 +62,7 @@ programming language of your choice. This generated code makes it easy to send r
 receive the corresponding responses. It also helps you implement this remote service by providing a template to
 fill-in.
 
-For example, the C# code generator generates two C# interfaces and a struct from the interface `Greeter` shown
+For example, the C# code generator generates two C# interfaces and a record struct from the interface `Greeter` shown
 earlier:
 
 ```csharp {% title="C# generated code - client-side" %}
