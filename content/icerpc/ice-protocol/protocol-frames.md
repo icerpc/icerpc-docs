@@ -137,7 +137,7 @@ The `requestId` field identifies the request associated with this response.
 The `replyStatus` encodes the response's [status code][status-code] as follows:
 
 | Status code           | Encoded as reply status |
-| --------------------- | ------------------------ |
+| --------------------- | ----------------------- |
 | Ok                    | Ok                      |
 | ApplicationError      | UserException           |
 | NotFound              | ObjectNotExist          |
@@ -149,7 +149,7 @@ The `replyStatus` encodes the response's [status code][status-code] as follows:
 When IceRPC receives a response frame, it creates an incoming response with a status code decoded from the reply status:
 
 | Reply status      | Decoded as status code |
-| ------------------ | ---------------------- |
+| ----------------- | ---------------------- |
 | Ok                | Ok                     |
 | UserException     | ApplicationError       |
 | ObjectNotExist    | NotFound               |
