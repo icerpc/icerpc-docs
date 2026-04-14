@@ -40,7 +40,7 @@ enum FrameType
 
 struct HeaderData
 {
-    int magic;                 // always 0x49 0x63 0x65 0x50 i.e. "IceP".
+    int magic;                 // always the bytes 0x49 0x63 0x65 0x50 ("IceP"), i.e. 0x50656349 in little-endian.
     byte protocolMajor;        // always 1
     byte protocolMinor;        // always 0
     byte encodingMajor;        // always 1
