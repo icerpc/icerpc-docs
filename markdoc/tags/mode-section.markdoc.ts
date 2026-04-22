@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
 import { Node, Config, Tag } from '@markdoc/markdoc';
-import { Mode } from 'types';
+import { Mode } from '@/types';
 
 export const slice1 = {
   render: 'ModeSection',

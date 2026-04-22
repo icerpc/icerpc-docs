@@ -3,9 +3,15 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { createContext, useContext, useEffect, useState } from 'react';
-import { getModeFromPath } from 'utils/modeFromPath';
-import { Mode, Platform } from 'types';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useSyncExternalStore
+} from 'react';
+import { getModeFromPath } from '@/utils/modeFromPath';
+import { Mode, Platform } from '@/types';
 import { usePathname } from 'next/navigation';
 
 type ModeContextType = {
@@ -137,13 +143,11 @@ export const useSearch = (): SearchContextType => {
 
 // Custom hook to handle component mounting
 export const useMounted = () => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  return mounted;
+  return useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 };
 
 function tryParseJSON(jsonString: string) {

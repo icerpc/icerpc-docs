@@ -1,13 +1,13 @@
 // Copyright (c) ZeroC, Inc.
 
 import Markdoc, { Config } from '@markdoc/markdoc';
-import config from 'markdoc/schema';
+import config from '@/markdoc/schema';
 import fs from 'fs';
 import yaml from 'js-yaml';
-import { getModeFromPath } from 'utils/modeFromPath';
+import { getModeFromPath } from '@/utils/modeFromPath';
 import readingTimeFunc from 'reading-time';
 import path from 'path';
-import { Mode } from 'types';
+import { Mode } from '@/types';
 
 export function getAllMarkdownFiles(
   dirPath: string,

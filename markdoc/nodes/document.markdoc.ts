@@ -1,8 +1,8 @@
 // Copyright (c) ZeroC, Inc.
 
 import { nodes, Node, Config, Tag } from '@markdoc/markdoc';
-import { Mode } from 'types';
-import { getModeFromPath } from 'utils/modeFromPath';
+import { Mode } from '@/types';
+import { getModeFromPath } from '@/utils/modeFromPath';
 
 const document = {
   ...nodes.document,

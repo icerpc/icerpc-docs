@@ -4,7 +4,7 @@ import { Config } from '@markdoc/markdoc';
 
 // Nodes
 import { Document } from '@/components/nodes/document';
-import { CodeBlock, AppLink, Heading, List } from 'components';
+import { CodeBlock, AppLink, Heading, List } from '@/components';
 import { TH, TR, TD, Table } from '@/components/nodes/table';
 
 // Tags
@@ -15,7 +15,7 @@ import { Examples } from '@/components/tags/examples';
 import { Explore } from '@/components/tags/explore';
 import { Grid } from '@/components/tags/grid';
 import { HomeTitle } from '@/components/tags/home-title';
-import { IcerpcSlice } from 'components';
+import { IcerpcSlice } from '@/components';
 import { License } from '@/components/tags/license';
 import { ModeSection } from '@/components/tags/mode-section';
 import { Aside } from '@/components/tags/aside';

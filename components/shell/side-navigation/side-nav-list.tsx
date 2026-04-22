@@ -10,7 +10,7 @@ import {
   SideBarSourceType,
   isCategory,
   isLink
-} from 'types';
+} from '@/types';
 
 type SideNavListProps = {
   data: SideBarSourceType;

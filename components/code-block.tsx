@@ -3,7 +3,7 @@
 
 'use client';
 
-import { useState, useEffect, Key } from 'react';
+import { useMemo, Key } from 'react';
 import { faFileLines, faTerminal } from '@fortawesome/free-solid-svg-icons';
 import { Fira_Mono } from 'next/font/google';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,8 +13,8 @@ import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 
 import { CopyButton } from './copy-button';
-import { Mode, Theme } from 'types';
-import { useMode } from 'context/state';
+import { Mode, Theme } from '@/types';
+import { useMode } from '@/context/state';
 
 const firaMono = Fira_Mono({ weight: '400', subsets: ['latin', 'latin-ext'] });
 
@@ -28,9 +28,9 @@ require('prismjs/components/prism-rust');
 require('prismjs/components/prism-csharp');
 require('prismjs/components/prism-bash');
 require('prismjs/components/prism-protobuf');
-require('utils/prism-ebnf');
-require('utils/prism-ice');
-require('utils/prism-slice');
+require('@/utils/prism-ebnf');
+require('@/utils/prism-ice');
+require('@/utils/prism-slice');
 
 const commandLineLanguages = [
   'bash',
@@ -63,16 +63,13 @@ export const CodeBlock = ({
   const { mode } = useMode();
   const { resolvedTheme } = useTheme();
 
-  const [theme, setTheme] = useState<any>(themes.jettwaveDark);
-
-  useEffect(() => {
+  const theme = useMemo(() => {
     if (resolvedTheme === Theme.Dark) {
-      const darkTheme = { ...themes.vsDark }; // Create a new theme object
+      const darkTheme = { ...themes.vsDark };
       darkTheme.plain = { ...darkTheme.plain, backgroundColor: '#0e1116' };
-      setTheme(darkTheme);
-    } else {
-      setTheme(themes.jettwaveDark);
+      return darkTheme;
     }
+    return themes.jettwaveDark;
   }, [resolvedTheme]);
 
   // If the user specified `proto` as the language, change it to protobuf

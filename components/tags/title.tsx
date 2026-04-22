@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import { Breadcrumbs } from '@/components/breadcrumbs';
-import { getBreadcrumbs } from 'lib/breadcrumbs';
+import { getBreadcrumbs } from '@/lib/breadcrumbs';
 
 type Props = {
   title: string;

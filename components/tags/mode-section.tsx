@@ -2,10 +2,9 @@
 
 'use client';
 
-import { useMode } from 'context/state';
-import { ReactNode, useEffect, useState } from 'react';
-import { Mode } from 'types';
-import { useLayoutEffect } from 'react';
+import { useMode } from '@/context/state';
+import { ReactNode, useEffect } from 'react';
+import { Mode } from '@/types';
 
 type Props = {
   mode: Mode;
@@ -22,16 +21,7 @@ export const ModeSection = ({ mode, children }: Props) => {
   }
 
   const { mode: currentMode } = useMode();
-  const [contentRendered, setContentRendered] = useState(false);
-
-  useLayoutEffect(() => {
-    // Check if the target content is rendered
-    if (mode === currentMode) {
-      setContentRendered(true);
-    } else {
-      setContentRendered(false);
-    }
-  }, [currentMode, mode]);
+  const contentRendered = mode === currentMode;
 
   useEffect(() => {
     if (contentRendered && window.location.hash) {

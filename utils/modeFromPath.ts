@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
-import { baseUrls } from 'data';
-import { Mode } from 'types';
+import { baseUrls } from '@/data';
+import { Mode } from '@/types';
 
 // Utility function to get the mode from the path
 

@@ -30,7 +30,7 @@
     "js-yaml": "^4.1.1",
     "lucide-react": "^0.575.0",
     "mermaid": "^11.12.3",
-    "next": "16.1.7",
+    "next": "16.2.4",
     "next-sitemap": "^4.2.3",
     "next-themes": "^1.0.0-beta.0",
     "nodemailer": "^8.0.4",
@@ -43,8 +43,6 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.4",
-    "@eslint/js": "^9.39.2",
     "@tailwindcss/typography": "^0.5.19",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^25.3.0",
@@ -55,8 +53,6 @@
     "autoprefixer": "^10.4.24",
     "eslint-config-next": "^16.1.6",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.5",
-    "globals": "^17.3.0",
     "postcss": "^8.5.6",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",

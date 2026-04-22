@@ -3,9 +3,9 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useMode } from 'context/state';
+import { useMode } from '@/context/state';
 import { SliceSelector } from '@/components/slice-selector';
-import { Mode } from 'types/mode';
+import { Mode } from '@/types/mode';
 
 export const SideNavSelector = ({
   isSlicePage,

@@ -1,12 +1,16 @@
 // Copyright (c) ZeroC, Inc.
 
+import Image from 'next/image';
+
 export const License = () => (
   <div className="flex flex-row text-sm">
     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-      <img
+      <Image
         alt="Creative Commons License"
-        style={{ borderWidth: 0 }}
         src="/icons/by.svg"
+        width={88}
+        height={31}
+        style={{ borderWidth: 0 }}
       />
     </a>
     <br />

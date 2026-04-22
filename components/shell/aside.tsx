@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faMessage, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
-import { baseUrls } from 'data';
+import { baseUrls } from '@/data';
 import { BackToTop } from './back-to-top';
 import { Divider } from '@/components/divider';
 

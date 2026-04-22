@@ -8,8 +8,8 @@ import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
 
 import { AppLink } from '@/components/nodes/app-link';
-import { Mode, modes } from 'types';
-import { useMode } from 'context/state';
+import { Mode, modes } from '@/types';
+import { useMode } from '@/context/state';
 import {
   Tooltip,
   TooltipContent,
@@ -127,7 +127,7 @@ const ModeTab = ({
     >
       <TooltipProvider delayDuration={0}>
         <Tooltip>
-          <TooltipTrigger className="size-full">
+          <TooltipTrigger className="size-full cursor-pointer">
             <span className="uppercase">{mode}</span>
           </TooltipTrigger>
           {showTooltip == true && (
@@ -148,16 +148,26 @@ const ModeTab = ({
 };
 
 const TooltipPortal = ({ children }: { children: ReactElement }) => {
-  const [el, setEl] = useState<HTMLDivElement | null>(null);
+  const [el] = useState(() => {
+    if (typeof document !== 'undefined') {
+      const div = document.createElement('div');
+      document.body.appendChild(div);
+      return div;
+    }
+    return null;
+  });
 
   useEffect(() => {
-    const div = document.createElement('div');
-    setEl(div);
-    document.body.appendChild(div);
     return () => {
-      document.body.removeChild(div);
+      if (
+        el &&
+        typeof document !== 'undefined' &&
+        el.parentNode === document.body
+      ) {
+        document.body.removeChild(el);
+      }
     };
-  }, []);
+  }, [el]);
 
   if (!el) return null; // Don't render anything on the server
 
