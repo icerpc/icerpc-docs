@@ -2,8 +2,7 @@
 
 'use client';
 
-import React, { ReactElement, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import { Tab } from '@headlessui/react';
 import clsx from 'clsx';
 
@@ -13,6 +12,7 @@ import { useMode } from '@/context/state';
 import {
   Tooltip,
   TooltipContent,
+  TooltipPortal,
   TooltipProvider,
   TooltipTrigger
 } from '@/components/ui/tooltip';
@@ -127,7 +127,7 @@ const ModeTab = ({
     >
       <TooltipProvider delayDuration={0}>
         <Tooltip>
-          <TooltipTrigger className="size-full cursor-pointer">
+          <TooltipTrigger asChild>
             <span className="uppercase">{mode}</span>
           </TooltipTrigger>
           {showTooltip == true && (
@@ -145,31 +145,4 @@ const ModeTab = ({
       </TooltipProvider>
     </Tab>
   );
-};
-
-const TooltipPortal = ({ children }: { children: ReactElement }) => {
-  const [el] = useState(() => {
-    if (typeof document !== 'undefined') {
-      const div = document.createElement('div');
-      document.body.appendChild(div);
-      return div;
-    }
-    return null;
-  });
-
-  useEffect(() => {
-    return () => {
-      if (
-        el &&
-        typeof document !== 'undefined' &&
-        el.parentNode === document.body
-      ) {
-        document.body.removeChild(el);
-      }
-    };
-  }, [el]);
-
-  if (!el) return null; // Don't render anything on the server
-
-  return ReactDOM.createPortal(children, el);
 };
