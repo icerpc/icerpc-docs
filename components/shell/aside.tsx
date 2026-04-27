@@ -2,7 +2,7 @@
 
 'use client';
 
-import React, { ReactNode, useState, useEffect } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -63,20 +63,20 @@ export const Aside = ({
           Actions
         </h2>
         <ul
-          className="m-0 p-0 pl-[2px]"
+          className="m-0 p-0 pl-0.5"
           style={{ color: 'var(--primary-color)' }}
         >
           <ActionItem href={editPageUrl(path)}>
             <FontAwesomeIcon
               icon={faPenToSquare}
-              className="text-primary mr-[6px] size-[14px]"
+              className="text-primary mr-1.5 size-3.5"
             />
             Edit this page
           </ActionItem>
-          <ActionItem href="https://github.com/orgs/icerpc/discussions">
+          <ActionItem href="https://github.com/icerpc/icerpc-csharp/discussions">
             <FontAwesomeIcon
               icon={faMessage}
-              className="text-primary mr-[6px] size-[14px]"
+              className="text-primary mr-1.5 size-3.5"
             />
             GitHub Discussions
           </ActionItem>

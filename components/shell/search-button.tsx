@@ -3,7 +3,7 @@
 'use client';
 
 import { DocSearch } from '@docsearch/react';
-import '@docsearch/css';
+import '@docsearch/css/dist/style.css';
 import style from './search.module.css';
 import clsx from 'clsx';
 import { useSearch } from '@/context/state';
@@ -67,11 +67,15 @@ export const SearchButton = ({ className }: Props) => {
       <DocSearch
         appId={process.env.NEXT_PUBLIC_ALGOLIA_APP_ID ?? ''}
         apiKey={process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY ?? ''}
-        indexName="icerpc"
+        indices={[
+          {
+            name: 'icerpc',
+            searchParameters: {
+              filters
+            }
+          }
+        ]}
         insights={true}
-        searchParameters={{
-          filters
-        }}
       />
       {portalContainer &&
         ReactDOM.createPortal(
