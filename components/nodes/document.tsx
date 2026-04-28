@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
 import { ReactElement } from 'react';
-import { AsideItem, Divider, Title } from 'components';
+import { AsideItem, Divider, Title } from '@/components';
 import { PageHistory, Aside, Feedback } from '@/components/shell';
 
 type Props = {

@@ -3,7 +3,7 @@
 import { motion, Variants } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCookie } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
+import { useMounted } from '@/context/state';
 
 const bannerVariants: Variants = {
   hidden: { opacity: 0, scale: 0.5, y: 50 },
@@ -22,26 +22,22 @@ type CookieButtonProps = {
 };
 
 export const CookieButton = ({ toggleShowBanner }: CookieButtonProps) => {
-  const [isBot, setIsBot] = useState(false);
-
-  useEffect(() => {
-    const userAgent = navigator.userAgent;
-    setIsBot(/bot|crawler|spider|crawling/i.test(userAgent));
-  }, []);
+  const mounted = useMounted();
+  const isBot =
+    mounted && /bot|crawler|spider|crawling/i.test(navigator.userAgent);
 
   if (isBot) return null;
-  else
-    return (
-      <motion.button
-        className="fixed right-10 bottom-6 hidden items-center rounded-full bg-gray-900 px-4 py-3 text-sm text-white uppercase md:flex"
-        onClick={() => toggleShowBanner()}
-        initial="hidden"
-        animate="visible"
-        exit="hidden"
-        variants={bannerVariants}
-      >
-        <FontAwesomeIcon icon={faCookie} className="mr-2 size-4" />
-        Cookies
-      </motion.button>
-    );
+  return (
+    <motion.button
+      className="fixed right-10 bottom-6 hidden items-center rounded-full bg-gray-900 px-4 py-3 text-sm text-white uppercase md:flex"
+      onClick={() => toggleShowBanner()}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      variants={bannerVariants}
+    >
+      <FontAwesomeIcon icon={faCookie} className="mr-2 size-4" />
+      Cookies
+    </motion.button>
+  );
 };

@@ -3,21 +3,20 @@
 'use client';
 
 import React, { Fragment, useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 
-import { getBreadcrumbs } from 'lib/breadcrumbs';
-import { sideBarData, baseUrls, currentNavItem } from 'data';
+import { getBreadcrumbs } from '@/lib/breadcrumbs';
+import { sideBarData, baseUrls, currentNavItem } from '@/data';
 import { SideNavList } from './side-nav-list';
 
 export function MobileSideNav() {
   const [isOpen, setIsOpen] = useState(false);
   const path = usePathname();
-  const { push } = useRouter();
 
   // Clean up path
   const pathNoFragment = path.split('#')[0]; // Remove fragment

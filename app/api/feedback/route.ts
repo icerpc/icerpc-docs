@@ -2,7 +2,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createTransport } from 'nodemailer';
-import type { FeedbackData } from 'types';
+import type { FeedbackData } from '@/types';
 
 const to = 'info@zeroc.com';
 const from = 'IceRPC Docs Feedback <no-reply-contact-us@zeroc.com>';

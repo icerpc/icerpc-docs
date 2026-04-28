@@ -2,10 +2,10 @@
 
 'use client';
 
-import { ReactNode, CSSProperties, useState, useEffect } from 'react';
+import { ReactNode, CSSProperties, useMemo } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
-import { usePath } from 'context/state';
+import { usePath } from '@/context/state';
 
 type AppLinkProps = {
   href: string;
@@ -36,25 +36,18 @@ export const AppLink = ({
 }: AppLinkProps) => {
   const path = usePath();
 
-  const [href, setHref] = useState(originalHref);
-
-  useEffect(() => {
-    // If the router is not ready, we can't resolve the link.
-
+  const href = useMemo(() => {
     let url = isApiLink(originalHref)
       ? resolveApiLink(originalHref)
       : resolveRelativeLink(originalHref, path);
 
-    // Resolve internal relative urls like "/abc/../foo" to their absolute path.
     if (!isExternalLink(url)) {
       const baseURL = 'https://docs.icerpc.dev';
       const parsedUrl = new URL(url, baseURL);
-      // Strip baseURL from the url
       url = parsedUrl.href.replace(baseURL, '');
     }
-
-    setHref(url);
-  }, [originalHref, path, href]);
+    return url;
+  }, [originalHref, path]);
 
   const style = { ...defaultStyle, ...originalStyle };
 

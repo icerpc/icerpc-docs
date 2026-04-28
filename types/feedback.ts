@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { Platform } from 'types';
+import { Platform } from '@/types';
 export type FeedbackData = {
   option: string; // The title of the selected option
   path: string; // The path of the page the feedback was submitted from

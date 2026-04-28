@@ -3,9 +3,14 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { createContext, useContext, useEffect, useState } from 'react';
-import { Platform } from 'types';
-import { usePathname } from 'next/navigation';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useSyncExternalStore
+} from 'react';
+import { Platform } from '@/types';
 
 type PlatformContextType = {
   platform: Platform;
@@ -26,23 +31,11 @@ const PlatformContext = createContext<PlatformContextType>({
 });
 
 export function AppWrapper({ children }: { children: ReactNode }) {
-  const [platform, setPlatform] = useState<Platform>(Platform.csharp);
-
-  const path = usePathname();
-
-  useEffect(() => {
-    // Get the platform string from local storage if it exists
-    const localPlatformString = localStorage.getItem('platform') || null;
-
-    // If the platform exists in local storage, parse it and set it as the current platform
-    const localPlatform: Platform | null = localPlatformString
-      ? tryParseJSON(localPlatformString)
-      : null;
-
-    if (localPlatform) {
-      setPlatform(localPlatform);
-    }
-  }, [path]);
+  const [platform, setPlatform] = useState<Platform>(() => {
+    if (typeof window === 'undefined') return Platform.csharp;
+    const stored = localStorage.getItem('platform');
+    return (stored && tryParseJSON(stored)) || Platform.csharp;
+  });
 
   useEffect(() => {
     // Set the platform in local storage when it changes
@@ -79,13 +72,11 @@ export const usePlatform = (): PlatformContextType => {
 
 // Custom hook to handle component mounting
 export const useMounted = () => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  return mounted;
+  return useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 };
 
 function tryParseJSON(jsonString: string) {

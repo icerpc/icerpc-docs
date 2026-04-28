@@ -1,7 +1,7 @@
 // Copyright (c) ZeroC, Inc.
 
 import Markdoc, { Config } from '@markdoc/markdoc';
-import config from 'markdoc/schema';
+import config from '@/markdoc/schema';
 import fs from 'fs';
 import yaml from 'js-yaml';
 import readingTimeFunc from 'reading-time';
@@ -28,7 +28,7 @@ export function getAllMarkdownFiles(
 
 export async function getMarkdownContent(slug: string) {
   // Build the base path from the slug, or use 'index' as default if no slug is provided
-  let basePathFromSlug = slug
+  const basePathFromSlug = slug
     ? path.join(process.cwd(), 'content', slug)
     : path.join(process.cwd(), 'content', 'index');
 

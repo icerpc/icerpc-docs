@@ -77,13 +77,13 @@ export const Banner = ({
     </div>
     <div className="flex w-full items-center justify-center gap-3 px-8 pb-4 text-sm">
       <button
-        className="flex-1 rounded-lg border border-black/20 bg-white px-3 py-[10px] text-center text-black/40 hover:border-black hover:text-black"
+        className="flex-1 cursor-pointer rounded-lg border border-black/20 bg-white px-3 py-[10px] text-center text-black/40 hover:border-black hover:text-black"
         onClick={handleReject}
       >
         No thanks
       </button>
       <button
-        className="flex-1 rounded-lg bg-linear-to-r from-cyan-500 to-blue-500 px-3 py-[10px] text-center text-white"
+        className="flex-1 cursor-pointer rounded-lg bg-linear-to-r from-cyan-500 to-blue-500 px-3 py-[10px] text-center text-white"
         onClick={handleAccept}
       >
         Accept

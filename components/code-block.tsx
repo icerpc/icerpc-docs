@@ -3,7 +3,7 @@
 
 'use client';
 
-import { useState, useEffect, Key } from 'react';
+import { useMemo, Key } from 'react';
 import { faFileLines, faTerminal } from '@fortawesome/free-solid-svg-icons';
 import { Fira_Mono } from 'next/font/google';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,7 +13,8 @@ import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 
 import { CopyButton } from './copy-button';
-import { Theme } from 'types';
+import { Theme } from '@/types';
+import { useMounted } from '@/context/state';
 
 const firaMono = Fira_Mono({ weight: '400', subsets: ['latin', 'latin-ext'] });
 
@@ -27,9 +28,9 @@ require('prismjs/components/prism-rust');
 require('prismjs/components/prism-csharp');
 require('prismjs/components/prism-bash');
 require('prismjs/components/prism-protobuf');
-require('utils/prism-ebnf');
-require('utils/prism-ice');
-require('utils/prism-slice');
+require('@/utils/prism-ebnf');
+require('@/utils/prism-ice');
+require('@/utils/prism-slice');
 
 const commandLineLanguages = [
   'bash',
@@ -57,19 +58,18 @@ export const CodeBlock = ({
   lineNumbers = false,
   showTitle = true
 }: Props) => {
+  const mounted = useMounted();
   const { resolvedTheme } = useTheme();
 
-  const [theme, setTheme] = useState<any>(themes.jettwaveDark);
-
-  useEffect(() => {
-    if (resolvedTheme === Theme.Dark) {
-      const darkTheme = { ...themes.vsDark }; // Create a new theme object
+  const theme = useMemo(() => {
+    // Use a stable pre-hydration theme to avoid server/client style mismatches.
+    if (mounted && resolvedTheme === Theme.Dark) {
+      const darkTheme = { ...themes.vsDark };
       darkTheme.plain = { ...darkTheme.plain, backgroundColor: '#0e1116' };
-      setTheme(darkTheme);
-    } else {
-      setTheme(themes.jettwaveDark);
+      return darkTheme;
     }
-  }, [resolvedTheme]);
+    return themes.jettwaveDark;
+  }, [mounted, resolvedTheme]);
 
   // If the user specified `proto` as the language, change it to protobuf
   if (language?.toLowerCase() === 'proto') {
@@ -100,7 +100,7 @@ export const CodeBlock = ({
       >
         {({ className, tokens, getLineProps, getTokenProps, style }) => (
           <pre
-            className={clsx(className, firaMono.className, 'my-2 pl-[10px]')}
+            className={clsx(className, firaMono.className, 'my-2 pl-2.5')}
             style={style}
           >
             <code>
@@ -116,10 +116,10 @@ export const CodeBlock = ({
                     {lineNumbers && (
                       <span className="mr-4 text-white/40">{i + 1}</span>
                     )}
-                    {line.map((token, key) => {
+                    {line.map((token, tokenIndex) => {
                       const { key: tokenKey, ...rest } = getTokenProps({
                         token,
-                        key
+                        key: tokenIndex
                       });
                       return <span key={tokenKey as Key} {...rest} />;
                     })}

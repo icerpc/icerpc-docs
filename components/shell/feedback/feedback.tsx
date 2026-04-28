@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import clsx from 'clsx';
 
 import {
@@ -10,7 +10,7 @@ import {
   positiveFeedbackOptions,
   FeedbackForm
 } from './feedback-form';
-import { usePath } from 'context/state';
+import { usePath } from '@/context/state';
 
 enum FeedbackType {
   Negative,
@@ -18,12 +18,14 @@ enum FeedbackType {
 }
 
 export const Feedback = () => {
-  // Undefined means the user has not yet clicked a feedback button
-  const [feedbackType, setFeedbackType] = useState<FeedbackType>();
   const path = usePath();
 
-  // Reset feedback type when the route changes
-  useEffect(() => setFeedbackType(undefined), [path]);
+  return <FeedbackInner key={path} />;
+};
+
+const FeedbackInner = () => {
+  // Undefined means the user has not yet clicked a feedback button
+  const [feedbackType, setFeedbackType] = useState<FeedbackType>();
 
   switch (feedbackType) {
     case FeedbackType.Negative:

@@ -3,9 +3,9 @@
 'use client';
 
 import clsx from 'clsx';
-import { usePlatform, usePath } from 'context/state';
+import { usePlatform, usePath } from '@/context/state';
 import { useEffect, useState } from 'react';
-import { FeedbackData, FeedbackOption } from 'types';
+import { FeedbackData, FeedbackOption } from '@/types';
 
 type Props = {
   title: string;

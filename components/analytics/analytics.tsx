@@ -2,9 +2,10 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { getCookie } from 'cookies-next';
 import { AnimatePresence } from 'framer-motion';
+import { useMounted } from '@/context/state';
 import { GoogleAnalytics } from './google-analytics';
 import { Banner } from './banner';
 import { CookieButton } from './cookie-button';
@@ -13,29 +14,29 @@ import { CookieButton } from './cookie-button';
 const ALLOW_COOKIES = 'allow.cookies'; // A key to store the cookie value.
 
 export function Analytics() {
-  const cookieValue = getCookie(ALLOW_COOKIES);
-  const [showBanner, setShowBanner] = useState(false);
-  const [showCookieButton, setShowCookieButton] = useState(false);
-  const [enableAnalytics, setEnableAnalytics] = useState(
-    cookieValue === 'true' ? true : false
-  );
+  const mounted = useMounted();
+  const cookieValue = mounted ? getCookie(ALLOW_COOKIES) : undefined;
+  const storedConsent =
+    cookieValue === undefined ? undefined : cookieValue === 'true';
 
-  useEffect(() => {
-    setShowBanner(cookieValue === undefined);
-    setShowCookieButton(cookieValue === undefined);
-    setEnableAnalytics(cookieValue === 'true' ? true : false);
-  }, [cookieValue]);
+  // Explicit user action takes precedence over persisted cookie value.
+  const [cookieConsent, setCookieConsent] = useState<boolean | undefined>();
+  const [bannerDismissed, setBannerDismissed] = useState(false);
+
+  const effectiveConsent = cookieConsent ?? storedConsent;
+  const enableAnalytics = effectiveConsent === true;
+  const showBanner = effectiveConsent === undefined && !bannerDismissed;
+  const showCookieButton = effectiveConsent === undefined && bannerDismissed;
 
   const handleSetCookieSettings = async (value: boolean) => {
-    setShowCookieButton(false);
-    setShowBanner(false);
-    setEnableAnalytics(value === true);
+    setBannerDismissed(false);
+    setCookieConsent(value);
 
     // Safari workaround to keep the cookie stored for more than 7 days
     await fetch(`api/cookies?allow-cookies=${encodeURIComponent(value)}`);
   };
 
-  const toggleShowBanner = () => setShowBanner(!showBanner);
+  const toggleShowBanner = () => setBannerDismissed((prev) => !prev);
   const handleAccept = () => handleSetCookieSettings(true);
   const handleReject = () => handleSetCookieSettings(false);
 

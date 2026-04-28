@@ -3,7 +3,7 @@
 import React from 'react';
 import { Hero } from './hero';
 import { HomeTitle } from '@/components/tags/home-title';
-import { AppLink, Divider, Table, TD, TH, TR } from 'components';
+import { AppLink, Divider, Table, TD, TH, TR } from '@/components';
 import { Explore } from '@/components/tags/explore';
 import { Examples } from '@/components/tags/examples';
 import { License } from '@/components/tags/license';

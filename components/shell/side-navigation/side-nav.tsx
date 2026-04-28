@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { sideBarData, baseUrls } from 'data';
+import { sideBarData, baseUrls } from '@/data';
 import { SideNavList } from './side-nav-list';
 
 export const SideNav = ({ path }: { path: string }) => {

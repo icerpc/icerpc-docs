@@ -1,9 +1,9 @@
 // Copyright (c) ZeroC, Inc.
 
-import { AppWrapper, PathProvider } from 'context/state';
+import { AppWrapper, PathProvider } from '@/context/state';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
-import { Footer, TopNav } from 'components';
+import { Footer, TopNav } from '@/components';
 import { Analytics } from '@/components/analytics';
 import { Inter } from 'next/font/google';
 import clsx from 'clsx';
