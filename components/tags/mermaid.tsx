@@ -3,7 +3,7 @@
 import mermaidAPI from 'mermaid';
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
-import { Theme } from 'types';
+import { Theme } from '@/types';
 
 type Props = {
   value: string;

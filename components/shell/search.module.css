@@ -1,7 +1,7 @@
 /* Default styles for light theme */
 .search :global(.DocSearch-Button) {
   --docsearch-text-color: rgb(28, 30, 33);
-  --docsearch-muted-color: #6B7280;
+  --docsearch-muted-color: #6b7280;
   background: #f7f7f7;
   border: 1px solid #eaeaea;
 }
@@ -20,6 +20,9 @@
   width: 100%;
   height: 35px;
   margin: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
 /* Breakpoint Specific Styles */
@@ -80,7 +83,12 @@
 
 /* Other Styles */
 .search :global(.DocSearch-Button-Keys) {
-  margin: -20px;
+  margin-left: auto;
+  margin-right: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
 }
 
 .search :global(.DocSearch-Button-Key) {
@@ -88,7 +96,7 @@
   box-shadow: none;
   color: var(--docsearch-muted-color);
   padding: 0;
-  margin: -2px;
+  margin: 0;
   height: 20px;
   font-size: 12px;
   transition: 0.3s;
@@ -102,8 +110,6 @@
   margin-left: 0px;
   padding: 3px;
 }
-
-
 
 @media (max-width: 768px) {
   .search :global(.DocSearch-Search-Icon) {

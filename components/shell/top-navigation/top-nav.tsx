@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { MobileMenu } from './mobile-menu';
 import { MobileSideNav } from '@/components/shell/side-navigation/mobile-side-nav';
 import { ThemeToggle } from '@/components/theme-toggle';
-import logoIcon from 'public/icerpc-logo.svg';
+import logoIcon from '@/public/icerpc-logo.svg';
 import { TopNavigationItems } from './top-nav-items';
 import { Button } from '@/components/ui/button';
 import { SearchButton } from '@/components/shell/search-button';
@@ -29,8 +29,8 @@ export const TopNav = () => (
         <div className="flex h-15 w-full grow items-center justify-between text-sm">
           <Logo />
           <div className="hidden items-center lg:flex">
-            <SearchButton className="w-full min-w-[300px]" />
-            <div className="border-light-border dark:border-dark-border mx-6 flex h-[30px] items-center border-l pl-4">
+            <SearchButton className="w-full min-w-75" />
+            <div className="border-light-border dark:border-dark-border mx-6 flex h-7.5 items-center border-l pl-4">
               <ThemeToggle />
               <Button
                 variant="outline"

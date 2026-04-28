@@ -2,11 +2,11 @@
 
 'use client';
 
-import { ReactNode, CSSProperties, useState, useEffect } from 'react';
+import { ReactNode, CSSProperties, useMemo } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
-import { Mode } from 'types';
-import { useMode, usePath } from 'context/state';
+import { Mode } from '@/types';
+import { useMode, usePath } from '@/context/state';
 
 type AppLinkProps = {
   href: string;
@@ -37,33 +37,24 @@ export const AppLink = ({
 }: AppLinkProps) => {
   const path = usePath();
 
-  const [href, setHref] = useState(originalHref);
-
   const { mode, setMode } = useMode();
 
-  useEffect(() => {
-    // If the router is not ready, we can't resolve the link.
-
+  const href = useMemo(() => {
     let url = isApiLink(originalHref)
       ? resolveApiLink(originalHref)
       : resolveRelativeLink(originalHref, path);
 
-    // Resolve internal relative urls like "/abc/../foo" to their absolute path.
     if (!isExternalLink(url)) {
       const baseURL = 'https://docs.icerpc.dev';
       const parsedUrl = new URL(url, baseURL);
-      // Strip baseURL from the url
       url = parsedUrl.href.replace(baseURL, '');
-
-      // If the link is a /slice/ link, we need to convert it to a /slice1/ or /slice2/ link based on the current mode.
       url = url.replace(
         /^\/slice(?=#|\/|$)/,
         mode === Mode.Slice1 ? '/slice1' : '/slice2'
       );
     }
-
-    setHref(url);
-  }, [originalHref, path, href, mode]);
+    return url;
+  }, [originalHref, path, mode]);
 
   const style = { ...defaultStyle, ...originalStyle };
 

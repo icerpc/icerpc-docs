@@ -3,11 +3,11 @@
 import path from 'path';
 import Markdoc from '@markdoc/markdoc';
 import React from 'react';
-import { components } from 'markdoc/schema';
-import { getAllMarkdownFiles, getMarkdownContent } from 'lib/markdown';
-import { SideNav } from 'components';
+import { components } from '@/markdoc/schema';
+import { getAllMarkdownFiles, getMarkdownContent } from '@/lib/markdown';
+import { SideNav } from '@/components';
 import { Metadata } from 'next';
-import { baseUrls } from 'data';
+import { baseUrls } from '@/data';
 import { notFound } from 'next/navigation';
 
 export const dynamicParams = false;

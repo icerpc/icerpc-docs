@@ -1,30 +1,27 @@
-import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import prettier from 'eslint-plugin-prettier';
-import globals from 'globals';
+import { defineConfig } from 'eslint/config';
+import nextVitals from 'eslint-config-next/core-web-vitals';
+import nextTypescript from 'eslint-config-next/typescript';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
-export default [
+export default defineConfig(
   {
-    ignores: ['.next/**', 'out/**', 'build/**', 'utils/prism-*.js']
+    ignores: [
+      // Default ignores of eslint-config-next:
+      '.next/**',
+      'out/**',
+      'build/**',
+      'next-env.d.ts',
+      // Project-specific generated files:
+      'utils/prism-*.js',
+      'components/ui/*'
+    ]
   },
-  eslint.configs.recommended,
-  ...tseslint.configs.recommended,
-  // TODO: Enable type-checked rules once ready to fix the. Also maybe just use strict, it contains recommended
-  // ...tseslint.configs.recommendedTypeChecked,
-  // ...tseslint.configs.stylisticTypeChecked,
-  // tseslint.configs.strict,
+  ...nextVitals,
+  ...nextTypescript,
   {
-    plugins: { prettier },
-    languageOptions: {
-      globals: { ...globals.browser, ...globals.node }
-      // parserOptions: {
-      //   projectService: true
-      // }
-    },
     rules: {
-      'prettier/prettier': 'error',
-      '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/no-explicit-any': 'off'
     }
-  }
-];
+  },
+  eslintConfigPrettier
+);

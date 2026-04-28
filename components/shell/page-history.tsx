@@ -8,8 +8,8 @@ import {
   faChevronRight
 } from '@fortawesome/free-solid-svg-icons';
 
-import { sideBarData, baseUrls, flattenSideBarData } from 'data';
-import { SideBarLink, isLink } from 'types';
+import { sideBarData, baseUrls, flattenSideBarData } from '@/data';
+import { SideBarLink, isLink } from '@/types';
 import { Divider } from '@/components/divider';
 
 const stripTrailingSlash = (str: string) => {

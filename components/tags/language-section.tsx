@@ -2,9 +2,9 @@
 
 'use client';
 
-import React, { useEffect, ReactNode } from 'react';
-import { Platform } from 'types';
-import { usePlatform } from 'context/state';
+import { ReactNode } from 'react';
+import { Platform } from '@/types';
+import { usePlatform } from '@/context/state';
 
 type Props = {
   language: Platform;
@@ -20,20 +20,9 @@ export const LanguageSection = ({ language, children }: Props) => {
     );
   }
   const { platform } = usePlatform();
-  const [currentTab, setCurrentTab] = React.useState(platform);
-  useEffect(() => {
-    switch (platform) {
-      case Platform.csharp:
-        setCurrentTab(platform);
-        break;
-      case Platform.rust:
-        setCurrentTab(platform);
-        break;
-      default:
-        setCurrentTab(Platform.csharp);
-        break;
-    }
-  }, [platform]);
+  const currentTab = [Platform.csharp, Platform.rust].includes(platform)
+    ? platform
+    : Platform.csharp;
 
   return language == currentTab ? children : null;
 };

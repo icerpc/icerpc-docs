@@ -1,8 +1,8 @@
 'use client';
 
-import { useMode } from 'context/state';
+import { useMode } from '@/context/state';
 import TopNavigationItem from './top-navigation-item';
-import { Mode } from 'types';
+import { Mode } from '@/types';
 
 export const TopNavigationItems = () => {
   const { mode } = useMode();

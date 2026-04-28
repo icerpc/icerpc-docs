@@ -3,11 +3,11 @@
 'use client';
 
 import { DocSearch } from '@docsearch/react';
-import '@docsearch/css';
+import '@docsearch/css/dist/style.css';
 import style from './search.module.css';
 import clsx from 'clsx';
-import { useSearch } from 'context/state';
-import { Mode } from 'types';
+import { useSearch } from '@/context/state';
+import { Mode } from '@/types';
 import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { SliceSelector } from '../slice-selector';
@@ -28,7 +28,7 @@ export const SearchButton = ({ className }: Props) => {
     return 'NOT sliceType:slice1';
   };
 
-  let filters = setFilters(context.mode);
+  const filters = setFilters(context.mode);
 
   // When docsearch is opened, DocSearch--active' is added to the body
   // we use this to detect when docsearch is opened and add our custom
@@ -67,11 +67,15 @@ export const SearchButton = ({ className }: Props) => {
       <DocSearch
         appId={process.env.NEXT_PUBLIC_ALGOLIA_APP_ID ?? ''}
         apiKey={process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY ?? ''}
-        indexName="icerpc"
+        indices={[
+          {
+            name: 'icerpc',
+            searchParameters: {
+              filters
+            }
+          }
+        ]}
         insights={true}
-        searchParameters={{
-          filters
-        }}
       />
       {portalContainer &&
         ReactDOM.createPortal(
@@ -83,7 +87,7 @@ export const SearchButton = ({ className }: Props) => {
             activeMode={context.mode}
             onChangeCallback={(mode) => {
               context.setMode(mode);
-              filters = setFilters(mode);
+              // filters will update automatically on next render
             }}
           />,
           portalContainer

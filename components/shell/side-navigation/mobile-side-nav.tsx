@@ -10,12 +10,12 @@ import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 
-import { getBreadcrumbs } from 'lib/breadcrumbs';
-import { Mode } from 'types';
-import { sideBarData, baseUrls, currentNavItem } from 'data';
+import { getBreadcrumbs } from '@/lib/breadcrumbs';
+import { Mode } from '@/types';
+import { sideBarData, baseUrls, currentNavItem } from '@/data';
 import { SideNavList } from './side-nav-list';
 import { SliceSelector } from '@/components/slice-selector';
-import { useMode } from 'context/state';
+import { useMode } from '@/context/state';
 
 export function MobileSideNav() {
   const [isOpen, setIsOpen] = useState(false);

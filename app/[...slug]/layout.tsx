@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { PathProvider } from 'context/state';
+import { PathProvider } from '@/context/state';
 import { ReactNode } from 'react';
 
 interface DocsLayoutProps {

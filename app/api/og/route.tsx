@@ -2,7 +2,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { ImageResponse } from 'next/og';
-import { getBreadcrumbs } from 'lib/breadcrumbs';
+import { getBreadcrumbs } from '@/lib/breadcrumbs';
 
 export async function GET(request: NextRequest) {
   try {
