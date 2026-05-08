@@ -36,7 +36,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v7
         with:
-          push: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.event_name != 'pull_request' && github.repository == 'icerpc/icerpc-docs' }}
           platforms: linux/amd64,linux/arm64
           tags: ghcr.io/icerpc/icerpc-docs:latest
           cache-from: type=gha
@@ -44,7 +44,7 @@ jobs:
 
       - name: Deploy docs
         uses: appleboy/ssh-action@v1
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && github.repository == 'icerpc/icerpc-docs'
         with:
           host: ${{ secrets.WEB_HOST }}
           username: ${{ secrets.WEB_USERNAME }}
@@ -57,7 +57,7 @@ jobs:
             docker compose up -d icerpc-docs
 
       - name: Delete old container images
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && github.repository == 'icerpc/icerpc-docs'
         uses: actions/delete-package-versions@v5
         with:
           package-name: icerpc-docs
