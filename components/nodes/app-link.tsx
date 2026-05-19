@@ -130,7 +130,7 @@ const resolveApiLink = (href: string) => {
   // Right now we only support the C# API reference, so the URL is hardcoded to the C# API reference.
   return `${
     process.env.NEXT_PUBLIC_API_HOST
-  }/${language}/${version}/api/api/${module}.html${method ? `#${method}` : ''}`;
+  }/${language}/${version}/api/reference/${module}.html${method ? `#${method}` : ''}`;
 };
 
 /**
