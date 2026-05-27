@@ -34,7 +34,7 @@ jobs:
         uses: docker/setup-buildx-action@v4
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v7
+        uses: docker/build-push-action@v7.1.0
         with:
           push: ${{ github.event_name != 'pull_request' && github.repository == 'icerpc/icerpc-docs' }}
           platforms: linux/amd64,linux/arm64
