@@ -30,8 +30,8 @@ dotnet new install IceRpc.Templates
 
 ## Using the templates
 
-You use the IceRPC templates with the standard `dotnet new <template>` command. The IceRPC templates for Protobuf
-and Slice offer the following template options:
+You use the IceRPC templates with the standard `dotnet new <template>` command. The following options are available
+(note: `--transport` is supported by the IceRPC templates for Protobuf and Slice):
 
 ```
 --no-restore                     If specified, skips the automatic restore of the project on create.
