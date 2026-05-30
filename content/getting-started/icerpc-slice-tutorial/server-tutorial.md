@@ -120,19 +120,20 @@ using ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
 Router router = new Router()
     .UseLogger(loggerFactory)
     .UseDeadline()
-    .Map<IGreeterService>(new Chatbot());
+    .Map(new Chatbot());
 ```
 
 This router corresponds to our [dispatch pipeline][dispatch-pipeline]: when we
 receive a request, we first give it to the [Logger] middleware, then to the
 [Deadline] middleware and finally we route this request based on its path.
 
-The `Map` call means if the request's path is the default service path for Slice
-interface `Greeter`, route it to the `Chatbot` instance. Otherwise, the router
-returns a response with status code [NotFound].
+The `Map` call means if the request's path is the default service path for the `Chatbot`
+instance, route it to this `Chatbot` instance. Otherwise, the router returns a response
+with status code [NotFound].
 
-The default service path for `Greeter` is `/VisitorCenter.Greeter` (it uses the Slice
-module name and interface name). The `Map` call above is a shortcut for:
+The default service path for the `Chatbot` instance is `/VisitorCenter.Greeter` because
+`Chatbot` implements a single Slice interface, `Greeter`. The `Map` call above is a
+shortcut for:
 
 ```csharp
 .Map("/VisitorCenter.Greeter", new Chatbot());
