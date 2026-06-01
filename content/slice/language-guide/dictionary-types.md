@@ -97,7 +97,7 @@ More specifically, this type must provide a capacity constructor (with an `int` 
 
 ```slice
 interface Greeter {
-    // SortedList<TKey, TValue>> implements IDictionary<TKey, TValue>
+    // SortedList<TKey, TValue> implements IDictionary<TKey, TValue>
     // and provides a capacity constructor.
     allPreviousGreetings() ->
         [cs::type("SortedList<string, string>")] Dictionary<string, string>
