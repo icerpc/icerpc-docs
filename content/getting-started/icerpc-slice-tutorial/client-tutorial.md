@@ -56,32 +56,14 @@ using ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
         .AddFilter("IceRpc", LogLevel.Information));
 
 // Path to the root CA certificate.
-using var rootCA = X509CertificateLoader.LoadCertificateFromFile("certs/cacert.der");
+using X509Certificate2 rootCA =
+    X509CertificateLoader.LoadCertificateFromFile("certs/cacert.der");
 
-// Create Client authentication options with custom certificate validation.
-var clientAuthenticationOptions = new SslClientAuthenticationOptions
-{
-    RemoteCertificateValidationCallback = (sender, certificate, chain, errors) =>
-    {
-        if (certificate is X509Certificate2 peerCertificate)
-        {
-            using var customChain = new X509Chain();
-            customChain.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
-            customChain.ChainPolicy.DisableCertificateDownloads = true;
-            customChain.ChainPolicy.TrustMode = X509ChainTrustMode.CustomRootTrust;
-            customChain.ChainPolicy.CustomTrustStore.Add(rootCA);
-            return customChain.Build(peerCertificate);
-        }
-        else
-        {
-            return false;
-        }
-    }
-};
-
+// Create a client connection that logs messages to a logger with category
+// IceRpc.ClientConnection.
 await using var connection = new ClientConnection(
     new Uri("icerpc://localhost"),
-    clientAuthenticationOptions,
+    clientAuthenticationOptions: CreateClientAuthenticationOptions(rootCA),
     logger: loggerFactory.CreateLogger<ClientConnection>());
 ```
 
@@ -90,9 +72,8 @@ This connection naturally matches our server configuration:
 - the server address is `icerpc://localhost`, meaning we connect with the
   `icerpc` protocol to `localhost` on the default port for `icerpc` (4062)
 - we don't specify a transport so we use the default multiplexed transport
-  (`tcp`)
-- Setting the `clientAuthenticationOptions` means we'll establish a secure
-  SSL connection
+  (`quic`)
+- Setting `clientAuthenticationOptions` is required with `quic`
 
 {% callout %}
 
@@ -126,7 +107,7 @@ Next, the client program creates a `Greeter` proxy with this invocation
 pipeline:
 
 ```csharp
-var greeterProxy = new GreeterProxy(pipeline);
+var greeter = new GreeterProxy(pipeline);
 ```
 
 `GreeterProxy` is a record struct that the C# code generator generated from Slice
@@ -139,22 +120,27 @@ With this code, the address of the target service (or
 We could also create the same proxy with an explicit service address:
 
 ```csharp
-var greeterProxy = new GreeterProxy(pipeline, new Uri("icerpc:/VisitorCenter.Greeter"));
+var greeter = new GreeterProxy(pipeline, new Uri("icerpc:/VisitorCenter.Greeter"));
 ```
 
 Finally, the client sends a `greet` request, awaits the response (the greeting),
 prints the greeting and shuts down the connection gracefully:
 
 ```csharp
-string greeting = await greeterProxy.GreetAsync(Environment.UserName);
+string greeting = await greeter.GreetAsync(Environment.UserName);
 
 Console.WriteLine(greeting);
 await connection.ShutdownAsync();
 ```
 
-When we call `greeterProxy.GreetAsync`, the connection to the server is not yet
+When we call `greeter.GreetAsync`, the connection to the server is not yet
 established: it's the `GreetAsync` call that triggers the connection
 establishment.
+
+### Program.Authentication.cs - AuthenticationOptions helper
+
+This file contains the `CreateClientAuthenticationOptions` helper method. It creates an
+`SslClientAuthenticationOptions` from the root CA.
 
 ### MySliceClient.csproj - the project file
 
@@ -163,7 +149,7 @@ separate IceRpc NuGet packages:
 
 - [IceRpc.Slice] - the IceRPC + Slice integration package
 - [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into
-  `generated/Greeter.cs`
+  `generated/Greeter.IceRpc.cs`
 - [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two interceptors
   we installed in our invocation pipeline
 

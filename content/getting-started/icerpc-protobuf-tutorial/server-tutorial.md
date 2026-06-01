@@ -148,24 +148,18 @@ is a shortcut for:
 .Map("/visitor_center.Greeter", new Chatbot());
 ```
 
-The main program then creates a [Server] that directs all incoming requests to
-`router`:
+The main program then creates a [Server] that directs all incoming requests to `router`:
 
 ```csharp
 
-var sslServerAuthenticationOptions = new SslServerAuthenticationOptions
-{
-    ServerCertificateContext = SslStreamCertificateContext.Create(
-        X509CertificateLoader.LoadPkcs12FromFile(
-            "certs/server.p12",
-            password: null,
-            keyStorageFlags: X509KeyStorageFlags.Exportable),
-        additionalCertificates: null)
-};
+using X509Certificate2 serverCertificate = X509CertificateLoader.LoadPkcs12FromFile(
+    "certs/server.p12",
+    password: null,
+    keyStorageFlags: X509KeyStorageFlags.Exportable);
 
 await using var server = new Server(
     dispatcher: router,
-    serverAuthenticationOptions,
+    serverAuthenticationOptions: CreateServerAuthenticationOptions(serverCertificate),
     logger: loggerFactory.CreateLogger<Server>());
 ```
 
@@ -174,9 +168,8 @@ We don't specify a server address so this server uses the default server address
 will listen for connections on all network interfaces with the default port for
 `icerpc` (4062).
 
-We don't specify a transport either so we use the default multiplexed transport
-(`tcp`). Setting the `serverAuthenticationOptions` means this server will only accept
-secure SSL connections.
+We don't specify a transport either so we use the default multiplexed transport (`quic`).
+Setting `serverAuthenticationOptions` is required with `quic`.
 
 At this point, the server is created but is not doing anything yet. A client
 attempting to connect would get a "connection refused" error.
@@ -196,6 +189,11 @@ Ctrl+C, it shuts down the server gracefully:
 await CancelKeyPressed;
 await server.ShutdownAsync();
 ```
+
+### Program.Authentication.cs - AuthenticationOptions helper
+
+This file contains the `CreateServerAuthenticationOptions` helper method. It creates an
+`SslServerAuthenticationOptions` from an `X509Certificate2`.
 
 ### Program.CancelKeyPressed.cs - small Ctrl+C helper
 

@@ -143,19 +143,14 @@ The main program then creates a [Server] that directs all incoming requests to
 `router`:
 
 ```csharp
-var sslServerAuthenticationOptions = new SslServerAuthenticationOptions
-{
-    ServerCertificateContext = SslStreamCertificateContext.Create(
-        X509CertificateLoader.LoadPkcs12FromFile(
-            "certs/server.p12",
-            password: null,
-            keyStorageFlags: X509KeyStorageFlags.Exportable),
-        additionalCertificates: null)
-};
+using X509Certificate2 serverCertificate = X509CertificateLoader.LoadPkcs12FromFile(
+    "certs/server.p12",
+    password: null,
+    keyStorageFlags: X509KeyStorageFlags.Exportable);
 
 await using var server = new Server(
     dispatcher: router,
-    serverAuthenticationOptions,
+    serverAuthenticationOptions: CreateServerAuthenticationOptions(serverCertificate),
     logger: loggerFactory.CreateLogger<Server>());
 ```
 
@@ -165,8 +160,7 @@ will listen for connections on all network interfaces with the default port for
 `icerpc` (4062).
 
 We don't specify a transport either so we use the default multiplexed transport
-(`tcp`). Setting the `serverAuthenticationOptions` means this server will only accept
-secure SSL connections.
+(`quic`). Setting `serverAuthenticationOptions` is required with `quic`.
 
 At this point, the server is created but is not doing anything yet. A client
 attempting to connect would get a "connection refused" error.
@@ -199,7 +193,7 @@ NuGet packages:
 
 - [IceRpc.Slice] - the IceRPC + Slice integration package
 - [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into
-  `generated/Greeter.cs`
+  `generated/Greeter.IceRpc.cs`
 - [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two middleware
   we installed in the dispatch pipeline
 
