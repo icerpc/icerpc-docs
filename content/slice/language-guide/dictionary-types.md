@@ -89,41 +89,37 @@ outgoing values.
 
 ### cs::type attribute
 
-You can use the `cs::type` [attribute](attributes#c#-attributes) to customize the mapping of your dictionary. This attribute
-accepts a single string argument: the name of a type similar to `Dictionary<TKey, TValue>`.
+You can use the `cs::type` [attribute](attributes#c#-attributes) to customize the mapping of your dictionary. This
+attribute accepts a single string argument: the name of a type similar to `Dictionary<TKey, TValue>`.
 
 More specifically, this type must provide a capacity constructor (with an `int` parameter). It must also implement
-`IDictionary<TKey, TValue>` when `cs::type` is applied to a field; it must implement
-`ICollection<KeyValuePair<TKey, TValue>>` when `cs::type` is applied to a parameter. For example:
-
-{% aside alignment="top" %}
+`IDictionary<TKey, TValue>`. For example:
 
 ```slice
 interface Greeter {
-    // List<KeyValuePair<TKey, TValue>> implements
-    // ICollection<KeyValuePair<TKey, TValue>>;
-    // it also provides a capacity constructor.
+    // SortedList<TKey, TValue> implements IDictionary<TKey, TValue>
+    // and provides a capacity constructor.
     allPreviousGreetings() ->
-        [cs::type("List<KeyValuePair<string, string>>")] Dictionary<string, string>
+        [cs::type("SortedList<string, string>")] Dictionary<string, string>
 }
 ```
 
+corresponds to:
+
 ```csharp
+// Client-side
 internal partial interface IGreeter
 {
-    Task<List<KeyValuePair<string, string>>>
-    AllPreviousGreetingsAsync(
+    Task<SortedList<string, string>> AllPreviousGreetingsAsync(
         IFeatureCollection? features = null,
         CancellationToken cancellationToken = default);
 }
 
+// Server-side
 internal partial interface IGreeterService
 {
-    ValueTask<IEnumerable<KeyValuePair<string, string>>>
-    AllPreviousGreetingsAsync(
+    ValueTask<IEnumerable<KeyValuePair<string, string>>> AllPreviousGreetingsAsync(
         IFeatureCollection features,
         CancellationToken cancellationToken);
 }
 ```
-
-{% /aside %}
