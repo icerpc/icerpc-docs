@@ -83,7 +83,7 @@ For this tutorial, we just keep `Greeter` as-is.
 Class Chatbot is a service that implements Protobuf service `Greeter`:
 
 ```csharp
-[ProtobufService]
+[Service]
 internal partial class Chatbot : IGreeterService
 {
     public ValueTask<GreetResponse> GreetAsync(
@@ -112,8 +112,8 @@ is not marked `async`. We could write the return statement as:
 
 However, it's more convenient to omit the type name, especially when this type is complicated.
 
-We mark class `Chatbot` as partial because the [ProtobufService] attribute instructs the Protobuf Service source
-generator to implement interface [IDispatcher]—in other words, make `Chatbot` an IceRPC service implementation.
+We mark class `Chatbot` as partial because the [Service] attribute instructs the Service Generator (a C# source
+generator) to implement interface [IDispatcher]—in other words, make `Chatbot` an IceRPC service implementation.
 
 ### Program.cs - the dispatch pipeline and the server logic
 
@@ -129,42 +129,37 @@ using ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
 Router router = new Router()
     .UseLogger(loggerFactory)
     .UseDeadline()
-    .Map<IGreeterService>(new Chatbot());
+    .Map(new Chatbot());
 ```
 
 This router corresponds to our [dispatch pipeline][dispatch-pipeline]: when we
 receive a request, we first give it to the [Logger] middleware, then to the
 [Deadline] middleware and finally we route this request based on its path.
 
-The `Map` call means if the request's path is the default service path for Slice
-interface `Greeter`, route it to the `Chatbot` instance. Otherwise, the router
-returns a response with status code [NotFound].
+The `Map` call means if the request's path is the default service path for the `Chatbot`
+instance, route it to the `Chatbot` instance. Otherwise, the router returns a response
+with status code [NotFound].
 
-The default service path for `Greeter` is `/visitor_center.Greeter` (it uses the Protobuf
-package name and service name). The `Map` call above is a shortcut for:
+The default service path for the `Chatbot` instance is `/visitor_center.Greeter` because
+`Chatbot` implements a single Protobuf service, `Greeter`. The `Map` call above
+is a shortcut for:
 
 ```csharp
 .Map("/visitor_center.Greeter", new Chatbot());
 ```
 
-The main program then creates a [Server] that directs all incoming requests to
-`router`:
+The main program then creates a [Server] that directs all incoming requests to `router`:
 
 ```csharp
 
-var sslServerAuthenticationOptions = new SslServerAuthenticationOptions
-{
-    ServerCertificateContext = SslStreamCertificateContext.Create(
-        X509CertificateLoader.LoadPkcs12FromFile(
-            "certs/server.p12",
-            password: null,
-            keyStorageFlags: X509KeyStorageFlags.Exportable),
-        additionalCertificates: null)
-};
+using X509Certificate2 serverCertificate = X509CertificateLoader.LoadPkcs12FromFile(
+    "certs/server.p12",
+    password: null,
+    keyStorageFlags: X509KeyStorageFlags.Exportable);
 
 await using var server = new Server(
     dispatcher: router,
-    serverAuthenticationOptions,
+    serverAuthenticationOptions: CreateServerAuthenticationOptions(serverCertificate),
     logger: loggerFactory.CreateLogger<Server>());
 ```
 
@@ -173,9 +168,8 @@ We don't specify a server address so this server uses the default server address
 will listen for connections on all network interfaces with the default port for
 `icerpc` (4062).
 
-We don't specify a transport either so we use the default multiplexed transport
-(`tcp`). Setting the `serverAuthenticationOptions` means this server will only accept
-secure SSL connections.
+We don't specify a transport either so we use the default multiplexed transport (`quic`).
+Setting `serverAuthenticationOptions` is required with `quic`.
 
 At this point, the server is created but is not doing anything yet. A client
 attempting to connect would get a "connection refused" error.
@@ -195,6 +189,11 @@ Ctrl+C, it shuts down the server gracefully:
 await CancelKeyPressed;
 await server.ShutdownAsync();
 ```
+
+### Program.Authentication.cs - AuthenticationOptions helper
+
+This file contains the `CreateServerAuthenticationOptions` helper method. It creates an
+`SslServerAuthenticationOptions` from an `X509Certificate2`.
 
 ### Program.CancelKeyPressed.cs - small Ctrl+C helper
 
@@ -244,4 +243,4 @@ Press Ctrl+C on the server console to shut it down.
 [Router]: csharp:IceRpc.Router
 [Server]: csharp:IceRpc.Server
 [Protobuf]: https://protobuf.dev/
-[ProtobufService]: csharp:IceRpc.Protobuf.ProtobufServiceAttribute
+[Service]: csharp:IceRpc.ServiceAttribute

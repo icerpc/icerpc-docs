@@ -17,7 +17,7 @@ A dictionary is like a sequence of key-value pairs with the following constraint
 You can construct a dictionary type inline, without giving it a name, for example to specify the type of a parameter or
 field:
 
-```slice {% addMode=true %}
+```slice
 module VisitorCenter
 
 interface Greeter {
@@ -30,26 +30,12 @@ A built-in generic type with type arguments, such as a `Dictionary<string, strin
 
 You can use any Slice type for the value-type of your dictionary. For example:
 
-{% slice1 %}
-
-```slice
-compact struct DictionaryExample {
-    x: Dictionary<int32, Dictionary<string, float64>> // dictionary of dictionaries
-    y: Dictionary<string, AnyClass?>
-}
-```
-
-{% /slice1 %}
-{% slice2 %}
-
 ```slice
 struct DictionaryExample {
     x: Dictionary<int32, Dictionary<string, float64>> // dictionary of dictionaries
     y: Dictionary<string, float64?>
 }
 ```
-
-{% /slice2 %}
 
 ## C# mapping
 
@@ -59,30 +45,6 @@ A field, an element in a sequence, or a value in another dictionary with type `D
 `IDictionary<TKey, TValue>`.
 
 `TKey` resp. `TValue` is the mapped C# type for the Slice key type resp. value type. For example:
-
-{% slice1 %}
-{% aside alignment="top" %}
-
-```slice
-compact struct DictionaryExample {
-    x: Dictionary<int32, Dictionary<string, float64>>
-    y: Dictionary<string, AnyClass?>
-}
-```
-
-```csharp
-public partial record struct DictionaryExample
-{
-    public IDictionary<int, IDictionary<string, double>> X;
-
-    public IDictionary<string, SliceClass?> Y;
-}
-```
-
-{% /aside %}
-{% /slice1 %}
-
-{% slice2 %}
 {% aside alignment="top" %}
 
 ```slice
@@ -93,19 +55,17 @@ struct DictionaryExample {
 ```
 
 ```csharp
-public partial record struct DictionaryExample
+internal partial record struct DictionaryExample
 {
-    public IDictionary<
-        int32,
+    internal IDictionary<
+        int,
         IDictionary<string, double>> X;
 
-    public IDictionary<string, double?> Y;
+    internal IDictionary<string, double?> Y;
 }
 ```
 
 {% /aside %}
-{% /slice2 %}
-
 By default, when the generated code decodes a dictionary, it creates a C# `Dictionary<TKey, TValue>` that is transmitted
 to you (the application) as an `IDictionary<TKey, TValue>`. You can safely cast this `IDictionary<TKey, TValue>` to a
 `Dictionary<TKey, TValue>` after decoding.
@@ -129,41 +89,37 @@ outgoing values.
 
 ### cs::type attribute
 
-You can use the `cs::type` [attribute](attributes#c#-attributes) to customize the mapping of your dictionary. This attribute
-accepts a single string argument: the name of a type similar to `Dictionary<TKey, TValue>`.
+You can use the `cs::type` [attribute](attributes#c#-attributes) to customize the mapping of your dictionary. This
+attribute accepts a single string argument: the name of a type similar to `Dictionary<TKey, TValue>`.
 
 More specifically, this type must provide a capacity constructor (with an `int` parameter). It must also implement
-`IDictionary<TKey, TValue>` when `cs::type` is applied to a field; it must implement
-`ICollection<KeyValuePair<TKey, TValue>>` when `cs::type` is applied to a parameter. For example:
-
-{% aside alignment="top" %}
+`IDictionary<TKey, TValue>`. For example:
 
 ```slice
 interface Greeter {
-    // List<KeyValuePair<TKey, TValue>> implements
-    // ICollection<KeyValuePair<TKey, TValue>>;
-    // it also provides a capacity constructor.
+    // SortedList<TKey, TValue> implements IDictionary<TKey, TValue>
+    // and provides a capacity constructor.
     allPreviousGreetings() ->
-        [cs::type("List<KeyValuePair<string, string>>")] Dictionary<string, string>
+        [cs::type("SortedList<string, string>")] Dictionary<string, string>
 }
 ```
 
+corresponds to:
+
 ```csharp
-public partial interface IGreeter
+// Client-side
+internal partial interface IGreeter
 {
-    Task<List<KeyValuePair<string, string>>>
-    AllPreviousGreetingsAsync(
+    Task<SortedList<string, string>> AllPreviousGreetingsAsync(
         IFeatureCollection? features = null,
         CancellationToken cancellationToken = default);
 }
 
-public partial interface IGreeterService
+// Server-side
+internal partial interface IGreeterService
 {
-    ValueTask<IEnumerable<KeyValuePair<string, string>>>
-    AllPreviousGreetingsAsync(
+    ValueTask<IEnumerable<KeyValuePair<string, string>>> AllPreviousGreetingsAsync(
         IFeatureCollection features,
         CancellationToken cancellationToken);
 }
 ```
-
-{% /aside %}

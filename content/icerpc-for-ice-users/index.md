@@ -38,10 +38,4 @@ together.
    href="/icerpc-for-ice-users/rpc-core/object-adapter"
    level=2 /%}
 
-{% card
-   title="Converting Slice definitions to the new Slice syntax"
-   description="Learn how to convert Slice in the .ice syntax to the .slice syntax."
-   href="/icerpc-for-ice-users/slice/converting-ice-into-slice"
-   level=2 /%}
-
 {% /grid %}

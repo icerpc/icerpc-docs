@@ -11,7 +11,7 @@ each sequence is known at runtime but is not specified when you define the seque
 You can construct a sequence type inline, without giving it a name, for example to specify the type of a parameter or
 field:
 
-```slice {% addMode=true %}
+```slice
 module VisitorCenter
 
 interface Greeter {
@@ -26,26 +26,12 @@ The order of the elements in the sequence is maintained when this sequence is tr
 
 The element type of a sequence can be any Slice type. For example:
 
-{% slice1 %}
-
-```slice
-compact struct SequenceExample {
-    x: Sequence<Sequence<string>>
-    y: Sequence<AnyClass?>
-}
-```
-
-{% /slice1 %}
-{% slice2 %}
-
 ```slice
 struct SequenceExample {
     x: Sequence<Sequence<string>>
     y: Sequence<int32?>
 }
 ```
-
-{% /slice2 %}
 
 ## C# mapping
 
@@ -54,30 +40,6 @@ struct SequenceExample {
 A field, an element in another sequence, or a value in a dictionary with type `Sequence<T>` is mapped to an `IList<T>`.
 
 The type of the `IList` elements is the mapped C# type for the Slice element type. For example:
-
-{% slice1 %}
-{% aside alignment="top" %}
-
-```slice
-compact struct SequenceExample {
-    x: Sequence<Sequence<string>>
-    y: Sequence<AnyClass?>
-}
-```
-
-```csharp
-public partial record struct SequenceExample
-{
-    public IList<IList<string>> X;
-
-    public IList<SliceClass?> Y;
-}
-```
-
-{% /aside %}
-{% /slice1 %}
-
-{% slice2 %}
 {% aside alignment="top" %}
 
 ```slice
@@ -88,17 +50,15 @@ struct SequenceExample {
 ```
 
 ```csharp
-public partial record struct SequenceExample
+internal partial record struct SequenceExample
 {
-    public IList<IList<string>> X;
+    internal IList<IList<string>> X;
 
-    public IList<int?> Y;
+    internal IList<int?> Y;
 }
 ```
 
 {% /aside %}
-{% /slice2 %}
-
 By default, when the generated code decodes a sequence, it creates an array that is transmitted to you (the
 application) as an `IList<T>`. So if you need an array, you can safely cast this `IList<T>` to an array after decoding.
 
@@ -117,11 +77,9 @@ incoming and outgoing values makes sending sequences more convenient and occasio
 | --------------------------- | ----------------------------------- |
 | `ReadOnlyMemory<T>`         | `T[]`                               |
 
-{% slice2 %}
 {% callout type="note" %}
 This mapping also applies to Slice enums whose underlying type is fixed-size.
 {% /callout %}
-{% /slice2 %}
 
 You can override the default mapping with the [`cs::type` attribute](#cs::type-attribute); this gives you the C#
 type you specified for incoming values, and `IEnumerable<T>` for outgoing values.
@@ -165,7 +123,7 @@ compact struct Widget { ... }
 ```
 
 ```csharp
-public partial interface IWidgetCatalog
+internal partial interface IWidgetCatalog
 {
     Task<HashSet<Widget>> GetWidgetsAsync(
         string prefix,
@@ -173,7 +131,7 @@ public partial interface IWidgetCatalog
         CancellationToken cancellationToken = default);
 }
 
-public partial interface IWidgetCatalogService
+internal partial interface IWidgetCatalogService
 {
     ValueTask<IEnumerable<Widget>> GetWidgetsAsync(
         string prefix,

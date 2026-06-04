@@ -9,4 +9,3 @@ export { default as explore } from './explore.markdoc';
 export { default as grid } from './grid.markdoc';
 export { default as step } from './step.markdoc';
 export { default as title } from './title.markdoc';
-export { slice1, slice2 } from './mode-section.markdoc';

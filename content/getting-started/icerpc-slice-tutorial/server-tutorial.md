@@ -48,7 +48,7 @@ specified with the [Slice] language.
 It's a simple greeter:
 
 ```slice
-[cs::namespace("MySliceServer")]
+[cs::identifier("MySliceServer")]
 module VisitorCenter
 
 /// Represents a simple greeter.
@@ -60,7 +60,7 @@ interface Greeter {
 }
 ```
 
-The `cs::namespace` attribute instructs the Slice compiler to map module
+The `cs::identifier` attribute instructs the C# code generators to map module
 `VisitorCenter` to C# namespace `MySliceServer` (our project name) instead of the
 default (`VisitorCenter`).
 
@@ -73,7 +73,7 @@ For this tutorial, we just keep `Greeter` as-is.
 Class Chatbot is a service that implements Slice interface `Greeter`:
 
 ```csharp
-[SliceService]
+[Service]
 internal partial class Chatbot : IGreeterService
 {
     public ValueTask<string> GreetAsync(
@@ -87,8 +87,8 @@ internal partial class Chatbot : IGreeterService
 }
 ```
 
-The Slice compiler generates C# interface `IGreeterService` from Slice interface
-`Greeter`. This C# interface is a template: we implement `Greeter` by
+The code generator for IceRPC generates C# interface `IGreeterService` from Slice
+interface `Greeter`. This C# interface is a template: we implement `Greeter` by
 implementing this interface. As you can see above, the `greet` operation
 becomes a `GreetAsync` method with two additional parameters.
 
@@ -99,10 +99,12 @@ is not marked `async`. We could write the return statement as:
     return new ValueTask<string>($"Hello, {name}!");
 ```
 
-However, it's more convenient to omit the type name, especially when this type is complicated.
+However, it's more convenient to omit the type name, especially when this type is
+complicated.
 
-We mark class `Chatbot` as partial because the [SliceService] attribute instructs the Slice Service source generator to
-implement interface [IDispatcher]—in other words, make `Chatbot` an IceRPC service implementation.
+We mark class `Chatbot` as partial because the [Service] attribute instructs the Service
+Generator (a C# source generator) to implement interface [IDispatcher]—in other words,
+make `Chatbot` an IceRPC service implementation.
 
 ### Program.cs - the dispatch pipeline and the server logic
 
@@ -118,19 +120,20 @@ using ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
 Router router = new Router()
     .UseLogger(loggerFactory)
     .UseDeadline()
-    .Map<IGreeterService>(new Chatbot());
+    .Map(new Chatbot());
 ```
 
 This router corresponds to our [dispatch pipeline][dispatch-pipeline]: when we
 receive a request, we first give it to the [Logger] middleware, then to the
 [Deadline] middleware and finally we route this request based on its path.
 
-The `Map` call means if the request's path is the default service path for Slice
-interface `Greeter`, route it to the `Chatbot` instance. Otherwise, the router
-returns a response with status code [NotFound].
+The `Map` call means if the request's path is the default service path for the `Chatbot`
+instance, route it to this `Chatbot` instance. Otherwise, the router returns a response
+with status code [NotFound].
 
-The default service path for `Greeter` is `/VisitorCenter.Greeter` (it uses the Slice
-module name and interface name). The `Map` call above is a shortcut for:
+The default service path for the `Chatbot` instance is `/VisitorCenter.Greeter` because
+`Chatbot` implements a single Slice interface, `Greeter`. The `Map` call above is a
+shortcut for:
 
 ```csharp
 .Map("/VisitorCenter.Greeter", new Chatbot());
@@ -140,19 +143,14 @@ The main program then creates a [Server] that directs all incoming requests to
 `router`:
 
 ```csharp
-var sslServerAuthenticationOptions = new SslServerAuthenticationOptions
-{
-    ServerCertificateContext = SslStreamCertificateContext.Create(
-        X509CertificateLoader.LoadPkcs12FromFile(
-            "certs/server.p12",
-            password: null,
-            keyStorageFlags: X509KeyStorageFlags.Exportable),
-        additionalCertificates: null)
-};
+using X509Certificate2 serverCertificate = X509CertificateLoader.LoadPkcs12FromFile(
+    "certs/server.p12",
+    password: null,
+    keyStorageFlags: X509KeyStorageFlags.Exportable);
 
 await using var server = new Server(
     dispatcher: router,
-    serverAuthenticationOptions,
+    serverAuthenticationOptions: CreateServerAuthenticationOptions(serverCertificate),
     logger: loggerFactory.CreateLogger<Server>());
 ```
 
@@ -162,8 +160,7 @@ will listen for connections on all network interfaces with the default port for
 `icerpc` (4062).
 
 We don't specify a transport either so we use the default multiplexed transport
-(`tcp`). Setting the `serverAuthenticationOptions` means this server will only accept
-secure SSL connections.
+(`quic`). Setting `serverAuthenticationOptions` is required with `quic`.
 
 At this point, the server is created but is not doing anything yet. A client
 attempting to connect would get a "connection refused" error.
@@ -196,7 +193,7 @@ NuGet packages:
 
 - [IceRpc.Slice] - the IceRPC + Slice integration package
 - [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into
-  `generated/Greeter.cs`
+  `generated/Greeter.IceRpc.cs`
 - [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two middleware
   we installed in the dispatch pipeline
 
@@ -231,5 +228,5 @@ Press Ctrl+C on the server console to shut it down.
 [NotFound]: csharp:IceRpc.StatusCode#NotFound
 [Router]: csharp:IceRpc.Router
 [Server]: csharp:IceRpc.Server
+[Service]: csharp:IceRpc.ServiceAttribute
 [Slice]: /slice
-[SliceService]: csharp:IceRpc.Slice.SliceServiceAttribute

@@ -34,7 +34,7 @@ function isActivePath(path: string, href: string): boolean {
   return (
     path === href ||
     path.startsWith(`${href}/`) ||
-    (path.startsWith('/slice') && href === '/slice2')
+    (path.startsWith('/slice') && href === '/slice')
   );
 }
 

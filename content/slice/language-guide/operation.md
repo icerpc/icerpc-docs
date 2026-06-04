@@ -11,10 +11,6 @@ An operation consists of:
 - a name (the name of the operation)
 - a list of [parameters] (the operation parameters)
 - an arrow followed by one or more return [parameters] (optional)
-{% slice1 %}
-- an [exception specification] (optional)
-{% /slice1 %}
-
 For example:
 
 ```slice
@@ -67,38 +63,6 @@ A single nameless return parameter can also get tagged. For example:
 // returns a tagged string
 op() -> tag(1) string?
 ```
-
-{% slice1 %}
-
-## Exception specification
-
-An operation can include an exception specification after its return parameter(s), or after the operation parameters if
-the operation returns nothing.
-
-An exception specification consists of the `throws` keyword followed by one or more exception names.
-
-For example:
-
-```slice
-translate(input: string) -> string throws TranslationException
-create(name: string) throws (InvalidArgumentException, IOException)
-```
-
-This exception specification allows operations to return an exception when their implementations fail.
-When an operation succeeds, it returns the return parameters and the exception specification is not used.
-
-The operation can return any of the Slice exceptions after the `throws` or any Slice exception derived from these
-exceptions.
-
-{% callout %}
-Don't read too much in the terms "exception" and "throws". An exception specification is about sending a custom error
-in a response as an alternative to the return value. This custom error maps to an exception that gets thrown in
-programming languages with exceptions (such as C#). In programming languages without exceptions (such as Rust), there is
-no exception or throwing: the exception is just a custom error.
-{% /callout %}
-
-{% /slice1 %}
-
 ## Idempotent operation
 
 An operation can be marked as idempotent, which means calling this operation several times with the same arguments is
@@ -132,16 +96,12 @@ interface Greeter {
 }
 ```
 
-{% slice2 %}
-
 ```slice
 interface FileServer {
     // Request compression when sending the return value.
     [compress(Return)] getTextFile(name: string) -> stream string
 }
 ```
-
-{% /slice2 %}
 
 In C# with IceRPC, the generated code sets the [ICompressFeature][compress-feature] in the outgoing request features.
 
@@ -159,15 +119,7 @@ operation. It has no effect on the server-side generated code (the I*Name*Servic
 
 A one-way request is a "fire and forget" request: the request is considered successful as soon as it's sent
 successfully.
-
-{% slice1 %}
-This attribute can only be applied to operations with no return type and no exception specification. It does not accept
-any argument.
-{% /slice1 %}
-{% slice2 %}
 This attribute can only be applied to operations with no return type. It does not accept any argument.
-{% /slice2 %}
-
 For example:
 
 ```slice
@@ -175,16 +127,6 @@ interface Logger {
     [oneway] logMessage(message: string)
 }
 ```
-
-{% slice1 %}
-
-### slicedFormat attribute
-
-The `slicedFormat` [attribute](attributes) instructs the generated code to encode the arguments or return value of the
-operation in sliced format, instead of the default compact format. Its argument can be `Args`, `Return`, or both.
-
-See [Class slicing][class-slicing] for details.
-{% /slice1 %}
 
 ## C# mapping {% icerpcSlice=true %}
 
@@ -198,7 +140,7 @@ For example:
 
 {% aside alignment="top" %}
 
-```slice {% addMode=true %}
+```slice
 module VisitorCenter
 
 // An interface with a single operation.
@@ -210,7 +152,7 @@ interface Greeter {
 ```csharp
 namespace VisitorCenter;
 
-public partial interface IGreeter
+internal partial interface IGreeter
 {
     Task<string> GreetAsync(
         string name,
@@ -218,7 +160,7 @@ public partial interface IGreeter
         CancellationToken cancellationToken = default);
 }
 
-public partial interface IGreeterService
+internal partial interface IGreeterService
 {
     ValueTask<string> GreetAsync(
         string name,
@@ -237,7 +179,7 @@ While the two methods are similar, please note they are not the same:
 
 ### Request and Response helper classes
 
-The Slice compiler generates helper nested static classes named Request and Response in *Name*Proxy and I*Name*Service.
+The code generator generates helper nested static classes named Request and Response in *Name*Proxy and I*Name*Service.
 These nested classes provide helper methods to encode and decode the payloads of requests and responses associated with
 the interface operations, with up to 4 helper methods per operation.
 
@@ -254,21 +196,21 @@ interface Greeter {
 produces 4 helper methods:
 
 ```csharp
-public readonly partial record struct GreeterProxy : IGreeter, IProxy
+internal readonly partial record struct GreeterProxy : IGreeter, IProxy
 {
-    public static class Request
+    internal static class Request
     {
         // Encodes the name argument into a request payload (a PipeReader).
-        public static PipeReader EncodeGreet(string name, SliceEncodeOptions? encodeOptions = null)
+        internal static PipeReader EncodeGreet(string name, SliceEncodeOptions? encodeOptions = null)
         {
             ...
         }
     }
 
-    public static class Response
+    internal static class Response
     {
         // Decodes the response payload into a string (the greeting).
-        public static ValueTask<string> DecodeGreetAsync(
+        internal static ValueTask<string> DecodeGreetAsync(
             IncomingResponse response,
             OutgoingRequest request,
             IProxy sender,
@@ -279,12 +221,12 @@ public readonly partial record struct GreeterProxy : IGreeter, IProxy
     }
 }
 
-public partial interface IGreeterService
+internal partial interface IGreeterService
 {
-    public static class Request
+    internal static class Request
     {
         // Decodes the name argument from the request payload.
-        public static ValueTask<string> DecodeGreetAsync(
+        internal static ValueTask<string> DecodeGreetAsync(
             IncomingRequest request,
             CancellationToken cancellationToken)
         {
@@ -292,10 +234,10 @@ public partial interface IGreeterService
         }
     }
 
-    public static class Response
+    internal static class Response
     {
         // Encodes the greeting return value into a response payload.
-        public static PipeReader EncodeGreet(string returnValue, SliceEncodeOptions? encodeOptions = null)
+        internal static PipeReader EncodeGreet(string returnValue, SliceEncodeOptions? encodeOptions = null)
         {
             ...
         }
@@ -303,7 +245,6 @@ public partial interface IGreeterService
 }
 ```
 
-{% slice2 %}
 {% callout type="note" %}
 If your operation has a stream parameter, the encode helper (in *NameProxy*.Request) does not encode the stream
 argument; however, the decode helper (in I*Name*Service.Request) decodes all arguments, including the stream.
@@ -311,8 +252,6 @@ argument; however, the decode helper (in I*Name*Service.Request) decodes all arg
 Likewise, if your operation returns a stream, the encode helper (in I*Name*Service.Response) does not encode the stream
 return value, while the decode helper (in *Name*Proxy.Response) decodes everything.
 {% /callout %}
-{% /slice2 %}
-
 These helper methods allow you to create/consume plain IceRPC requests and responses while still using the generated
 code for their payloads.
 
@@ -332,8 +271,6 @@ There are two somewhat common use-cases for this attribute:
     the return value once, cache the encoded bytes and then return over and over these bytes.
 
 [attributes]: attributes
-[class-slicing]: class-types#slicing
-[exception specification]: #exception-specification
 [parameters]: parameters
 [tagged-parameters]: parameters#tagged-parameters
 [PipeReader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader

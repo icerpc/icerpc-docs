@@ -3,7 +3,7 @@
 'use client';
 
 import React, { Fragment, useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
@@ -11,17 +11,12 @@ import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 
 import { getBreadcrumbs } from '@/lib/breadcrumbs';
-import { Mode } from '@/types';
 import { sideBarData, baseUrls, currentNavItem } from '@/data';
 import { SideNavList } from './side-nav-list';
-import { SliceSelector } from '@/components/slice-selector';
-import { useMode } from '@/context/state';
 
 export function MobileSideNav() {
   const [isOpen, setIsOpen] = useState(false);
   const path = usePathname();
-  const { push } = useRouter();
-  const { setMode } = useMode();
 
   // Clean up path
   const pathNoFragment = path.split('#')[0]; // Remove fragment
@@ -49,8 +44,6 @@ export function MobileSideNav() {
 
   // If no sidebar data return nothing
   if (data.length === 0) return null;
-
-  const isSlicePage = ['/slice1', '/slice2'].includes(baseUrl);
 
   return (
     <>
@@ -135,38 +128,6 @@ export function MobileSideNav() {
                           />
                         </button>
                       </div>
-                      {isSlicePage && (
-                        <div className="mt-6">
-                          <SliceSelector
-                            className="mt-3 mb-6 w-full"
-                            onChangeCallback={(mode) => {
-                              const [corePath, fragment] = path.split('#');
-
-                              let newPath;
-                              if (corePath === '/slice1') {
-                                newPath =
-                                  mode === Mode.Slice1 ? '/slice1' : '/slice2';
-                              } else if (corePath === '/slice2') {
-                                newPath =
-                                  mode === Mode.Slice1 ? '/slice1' : '/slice2';
-                              } else {
-                                newPath = corePath.replace(
-                                  /\/slice[1-2]\//,
-                                  `/slice${mode === Mode.Slice1 ? 1 : 2}/`
-                                );
-                              }
-
-                              // Append the fragment back, if it exists
-                              if (fragment) {
-                                newPath = `${newPath}#${fragment}`;
-                              }
-
-                              push(newPath);
-                              setMode(mode);
-                            }}
-                          />
-                        </div>
-                      )}
                       <div className="border-light-border dark:border-dark-border mt-4 w-full border-t" />
                     </section>
                     <nav

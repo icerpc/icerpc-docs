@@ -34,27 +34,6 @@ This special "not set" value corresponds to `null` in C#, `std::nullopt` in C++,
 
 For example:
 
-{% slice1 %}
-
-```slice
-mode = Slice1
-
-class Person {
-    name: string
-    spouse: Person?
-}
-```
-
-Here, a person may have a spouse or a "not set" value for its spouse field.
-
-Leaving tagged fields aside, only a few field types can be marked optional with Slice1:
-
-- [classes](class-types) (like in the example above)
-- [custom types](custom-types)
-{% /slice1 %}
-
-{% slice2 %}
-
 ```slice
 struct Person {
     name: string
@@ -63,8 +42,6 @@ struct Person {
 ```
 
 The field `dateOfBirth` may have a value or a "not set" value (when the date of birth is unknown).
-{% /slice2 %}
-
 {% callout %}
 A regular field with an optional type, as shown in the example above, is a mandatory field. It just happens that a valid
 value for this field is "not set". On the other hand, a tagged field (described below) is a truly optional field that
@@ -76,28 +53,12 @@ the sender or recipient may not know at all.
 A field can have a tag before its name, which makes this field a "tagged field". A tag consists of the `tag` keyword
 followed by a tag number in parenthesis. For example:
 
-{% slice1 %}
-
-```slice
-mode = Slice1
-
-class Person {
-    name: string
-    tag(1) favoriteFood: Food? // tagged field
-}
-```
-
-{% /slice1 %}
-{% slice2 %}
-
 ```slice
 struct Person {
     name: string
     tag(1) favoriteFood: Food? // tagged field
 }
 ```
-
-{% /slice2 %}
 
 Tagged fields allow you to change your Slice definitions while maintaining on-the-wire compatibility with applications
 that use older or newer Slice definitions without these tagged fields.
@@ -111,22 +72,6 @@ A tag number is a non-negative integer.
 The scope of a tag number is the enclosing type. For example, the following definitions are correct, with several
 `tag(1)` in different scopes:
 
-{% slice1 %}
-mode = Slice1
-
-```slice
-class Person {
-    tag(1) name: string?
-}
-
-class Contact {
-    tag(1) name: string?
-}
-```
-
-{% /slice1 %}
-{% slice2 %}
-
 ```slice
 struct Person {
     tag(1) name: string?
@@ -137,26 +82,11 @@ struct Contact {
 }
 ```
 
-{% /slice2 %}
-
 ### Tag sorting
 
 A tagged field can appear anywhere in the enclosing type's field list, in particular before or after a non-tagged field.
 You don't need to sort tagged fields by tag number. For instance, the `Person` below has a valid though unusual field
 list:
-
-{% slice1 %}
-
-```slice
-class Person {
-    tag(5) emailAddress: string?
-    name: string
-    tag(1) favoriteFood: Food?
-}
-```
-
-{% /slice1 %}
-{% slice2 %}
 
 ```slice
 struct Person {
@@ -165,8 +95,6 @@ struct Person {
     tag(1) favoriteFood: Food?
 }
 ```
-
-{% /slice2 %}
 
 ### Tag semantics
 

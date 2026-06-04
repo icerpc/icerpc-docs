@@ -1,11 +1,8 @@
 'use client';
 
-import { useMode } from '@/context/state';
 import TopNavigationItem from './top-navigation-item';
-import { Mode } from '@/types';
 
 export const TopNavigationItems = () => {
-  const { mode } = useMode();
   return [
     {
       name: 'Getting Started',
@@ -17,7 +14,7 @@ export const TopNavigationItems = () => {
     },
     {
       name: 'Slice',
-      href: mode === Mode.Slice1 ? '/slice1' : '/slice2'
+      href: '/slice'
     },
     {
       name: 'Protobuf',
@@ -29,7 +26,7 @@ export const TopNavigationItems = () => {
     },
     {
       name: 'API Reference',
-      href: `${process.env.NEXT_PUBLIC_API_HOST}/csharp/0.5.x/api/index.html`
+      href: `${process.env.NEXT_PUBLIC_API_HOST}/csharp/0.6.x/api/index.html`
     }
   ].map((item) => (
     <TopNavigationItem key={item.href} name={item.name} href={item.href} />

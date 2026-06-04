@@ -98,12 +98,12 @@ and responses are streams of bytes, and you need to manually encode and decode a
 integers) in these streams. This is doable but laborious.
 
 It is easier and more typical to use IceRPC together with an [Interface Definition Language][IDL] (IDL) and its
-associated serialization format. For example, you can define a RPC in [Protobuf] or [Slice] and then let the Protobuf
-compiler resp. the Slice compiler generate code that encodes and decodes the RPC arguments and return value to and from
-bytes in the Protobuf resp. Slice binary format.
+associated serialization format. For example, you can define an RPC in [Protobuf] or [Slice] and then let the
+corresponding code generator generate code that encodes and decodes the RPC arguments and return value to and from bytes
+in the Protobuf or Slice binary format.
 
-The [IceRPC + Slice][Slice] integration helps you build applications with IceRPC and Slice. And the IceRPC + Protobuf
-integration will soon bring the same level of convenience to Protobuf.
+The IceRPC + Slice integration helps you build applications with IceRPC and Slice. And the IceRPC + Protobuf integration
+brings the same level of convenience to Protobuf.
 
 ## Key features
 
@@ -146,15 +146,15 @@ integration will soon bring the same level of convenience to Protobuf.
 {% card
    title="Slice examples"
    description="Using IceRPC with Slice"
-   href="https://github.com/icerpc/icerpc-csharp/tree/0.5.x/examples/slice/" /%}
+   href="https://github.com/icerpc/icerpc-csharp/tree/0.6.x/examples/slice/" /%}
 {% card
    title="Protobuf examples"
    description="Using IceRPC with Protobuf."
-   href="https://github.com/icerpc/icerpc-csharp/tree/0.5.x/examples/protobuf/" /%}
+   href="https://github.com/icerpc/icerpc-csharp/tree/0.6.x/examples/protobuf/" /%}
 {% card
    title="JSON examples"
    description="Using the core IceRPC API together with JSON."
-   href="https://github.com/icerpc/icerpc-csharp/tree/0.5.x/examples/json/" /%}
+   href="https://github.com/icerpc/icerpc-csharp/tree/0.6.x/examples/json/" /%}
 
 {% /grid %}
 

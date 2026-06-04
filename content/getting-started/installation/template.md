@@ -23,11 +23,15 @@ dotnet new install IceRpc.Templates
 | `icerpc-slice-server`       | A project template for creating an IceRPC + Slice server console application.                                   |
 | `icerpc-slice-di-client`    | A project template for creating an IceRPC + Slice client console application using Microsoft's DI container.    |
 | `icerpc-slice-di-server`    | A project template for creating an IceRPC + Slice server console application using Microsoft's DI container.    |
+| `icerpc-ice-client`         | A project template for creating an IceRPC + Ice client console application (for interop with [Ice]).            |
+| `icerpc-ice-server`         | A project template for creating an IceRPC + Ice server console application (for interop with [Ice]).            |
+| `icerpc-ice-di-client`      | A project template for creating an IceRPC + Ice client console application using Microsoft's DI container.      |
+| `icerpc-ice-di-server`      | A project template for creating an IceRPC + Ice server console application using Microsoft's DI container.      |
 
 ## Using the templates
 
-You use the IceRPC templates with the standard `dotnet new <template>` command. All IceRPC templates offer the
-following template options:
+You use the IceRPC templates with the standard `dotnet new <template>` command. The following options are available
+(note: `--transport` is supported by the IceRPC templates for Protobuf and Slice):
 
 ```
 --no-restore                     If specified, skips the automatic restore of the project on create.
@@ -37,7 +41,7 @@ following template options:
                                  Type: choice
                                    quic  Use the QUIC transport
                                    tcp   Use the TCP transport
-                                 Default: tcp
+                                 Default: quic
 ```
 
 For example, you can create a new project named `MyProtobufClient` for an IceRPC + Protobuf client application that
@@ -47,4 +51,7 @@ uses the QUIC transport with the following command:
 dotnet new icerpc-protobuf-client -o MyProtobufClient --transport quic
 ```
 
+The IceRPC templates for Ice use the `ice` protocol over the `tcp` transport.
+
 [dotnet new]: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-new
+[Ice]: https://github.com/zeroc-ice/ice

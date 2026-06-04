@@ -34,7 +34,7 @@ enum Color { Blue, Red, White, Yellow }
 
 Two files can also contain definitions with circular references, such as:
 
-```slice {% addMode=true %}
+```slice
 // in Chicken.slice
 module Coop
 
@@ -43,7 +43,7 @@ interface Chicken {
 }
 ```
 
-```slice {% addMode=true %}
+```slice
 // in Egg.slice
 module Coop
 
@@ -52,14 +52,11 @@ interface Egg {
 }
 ```
 
-For C#, the Slice compiler generates a C# file (.cs) for each source Slice file. You typically compile all the Slice
-source files for a project in one shot.
-
 ## Preprocessing
 
 The Slice language provides a few basic preprocessing directives for conditional compilation. For example:
 
-```slice {% addMode=true %}
+```slice
 module VisitorCenter
 
 interface Greeter {

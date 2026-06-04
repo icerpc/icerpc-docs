@@ -180,7 +180,7 @@ services.AddIceRpcDispatcher(
         .Map<IGreeterService>());
 
 // To be registered as a transient or scoped service in the DI container.
-[SliceService]
+[Service]
 internal partial class Chatbot : IGreeterService
 {
     // DeadlineInformation is auto-wired by the DI container.
@@ -196,7 +196,7 @@ internal partial class Chatbot : IGreeterService
 
 [IServiceCollection]: https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
 [IServiceProvider]: https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider
-[IceRpc.Extensions.DependencyInjection]: https://github.com/icerpc/icerpc-csharp/tree/0.5.x/src/IceRpc.Extensions.DependencyInjection
+[IceRpc.Extensions.DependencyInjection]: https://github.com/icerpc/icerpc-csharp/tree/0.6.x/src/IceRpc.Extensions.DependencyInjection
 
 [Router]: csharp:IceRpc.Router
 [IDispatcherBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder

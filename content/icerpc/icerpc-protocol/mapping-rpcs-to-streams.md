@@ -127,7 +127,7 @@ For example, a response with status code `Ok`, no fields and an empty payload ca
 0x00                : field dictionary size (0) on 1 byte (no fields)
 ```
 
-[Slice]: /slice2
+[Slice]: /slice
 [request-fields]: ../invocation/outgoing-request#request-fields
 [status-code]: ../invocation/incoming-response#status-code
 [response-fields]: ../invocation/incoming-response#response-fields

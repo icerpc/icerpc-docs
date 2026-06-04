@@ -74,4 +74,4 @@ unchecked enum SettingKey : varuint62 {
 }
 ```
 
-[Slice]: /slice2
+[Slice]: /slice

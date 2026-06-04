@@ -3,7 +3,7 @@ title: Documentation comments
 ---
 
 Slice comments that start with `///` are documentation (doc) comments. Slice doc comments can be attached to all Slice
-elements except parameter declarations, module declarations, and mode statements.
+elements except parameter declarations and module declarations.
 
 ## Lexical grammar
 
@@ -16,7 +16,6 @@ newline: "\n";
 // Tag keywords
 param_keyword:   "@param";
 returns_keyword: "@returns";
-throws_keyword:  "@throws";
 see_keyword:     "@see";
 link_keyword:    "@link";
 

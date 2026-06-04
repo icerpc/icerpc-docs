@@ -4,8 +4,7 @@ export const GETTING_STARTED_BASE_URL = '/getting-started';
 export const ICERPC_BASE_URL = '/icerpc';
 export const ICERPC_FOR_ICE = '/icerpc-for-ice-users';
 export const PROTOBUF_BASE_URL = '/protobuf';
-export const SLICE1_BASE_URL = '/slice1';
-export const SLICE2_BASE_URL = '/slice2';
+export const SLICE_BASE_URL = '/slice';
 
 export interface SideBarLink {
   title: string;

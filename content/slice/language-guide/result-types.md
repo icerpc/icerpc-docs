@@ -3,12 +3,6 @@ title: Result types
 description: Learn how to define and use results in Slice.
 ---
 
-{% slice1 %}
-The built-in generic type 'Result<Success, Failure>' is not available with Slice1.
-{% /slice1 %}
-
-{% slice2 %}
-
 ## Result
 
 Result is a built-in generic type that either holds a Success value or a Failure value, where `Success` and `Failure`
@@ -35,8 +29,8 @@ unchecked enum GreeterError {
 You can also use a constructed result as the type of a field, the element type of a sequence, the type of an operation
 parameter, and so on, just like any other Slice type.
 
-A result is conceptually equivalent to a compact enum with two enumerators (`Success` and `Failure`), each with a single
-field of the associated type. You can see `Result<string, GreeterError>` as a convenient way to reference:
+A result is conceptually equivalent to a compact variant enum with two variants (`Success` and `Failure`), each with a
+single field of the associated type. You can see `Result<string, GreeterError>` as a convenient way to reference:
 
 ```slice
 compact enum Result<string, GreeterError> { // not a valid Slice identifier
@@ -47,8 +41,8 @@ compact enum Result<string, GreeterError> { // not a valid Slice identifier
 
 ## C# mapping
 
-`Result<Success, Failure>` maps `Result<TSuccess, TFailure>`, where [Result<TSuccess, TFailure>] is a C# record class in
-the ZeroC.Slice namespace.
+`Result<Success, Failure>` maps to `Result<TSuccess, TFailure>`, where [Result<TSuccess, TFailure>] is a C# record class
+in the ZeroC.Slice namespace.
 
 The Slice type parameters are mapped to C# type parameters, following the usual mapping rules. For example:
 
@@ -72,7 +66,5 @@ string message = result.Match(
         () => $"{failure.Value}"));
 ```
 
-{% /slice2 %}
-
 [Dunet]: https://github.com/domn1995/dunet
-[Result<TSuccess, TFailure>]: csharp:ZeroC.Slice.Result
+[Result<TSuccess, TFailure>]: csharp:ZeroC.Slice.Result-2

@@ -3,16 +3,13 @@ title: Ice identity
 description: Learn how Ice identities are mapped to path in IceRPC.
 ---
 
-In Ice, each Ice object has an identity represented by a Slice-defined struct:
+In Ice, each Ice object has an identity represented by an Ice struct:
 
-```slice
-mode = Slice1
-
-module Ice
-
-compact struct Identity {
-    name: string
-    category: string
+```ice
+struct Identity
+{
+    string name;
+    string category = "";
 }
 ```
 

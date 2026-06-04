@@ -3,64 +3,27 @@ title: Enum types
 description: Learn how to define enumerations in Slice.
 ---
 
-{% slice1 %}
-
-## Enumeration type
-
-An enumeration type or enum type is a user-defined type that holds a set of named constants, called enumerators, each
-with an associated integral value. It is similar to enumerations found in languages like C# and C++.
-
-The following example shows how to define an enumeration named `Fruit` with three enumerators: `Apple`, `Pear`, and
-`Orange`.
-
-```slice
-enum Fruit { Apple, Pear, Orange }
-```
-
-## Enumerator values
-
-The default behavior of the Slice compiler is to assign values to the enumerators automatically. The first enumerator
-is assigned a value of `0`, and subsequent enumerators are assigned increasing values. The range of these enumerator
-values is 0 to 2,147,483,647 (int32 max).
-
-The following code example illustrates how you can explicitly assign values for the enumerators in your enumeration
-type. In this example, the `Apple` enumerator is assigned a value of `1`, the `Pear` enumerator is assigned a value
-of `5`, and the `Orange` enumerator is left without an explicitly assigned value.
-
-```slice
-enum Fruit {
-    Apple = 1
-    Pear = 5
-    Orange
-}
-```
-
-If you don't assign a value to an enumerator, the value of this enumerator is the previous enumerator's value plus
-one. In the `Fruit` enum above, `Orange` gets a value of `6`.
-{% /slice1 %}
-
-{% slice2 %}
-
 ## Enumeration type
 
 An enumeration type or enum type is a user-defined type that can take two forms:
 
-### Enum with underlying type
+### Basic enum
 
-An enum with an underlying type holds a set of named constants called enumerators, and is similar to C++ and C# enums.
+A basic enum holds a set of named constants called enumerators, and is similar to C++ and C# enums.
 
-The underlying type can be any integral type: both [fixed size][fixed-size] and [variable size][variable-size] integral
-types are accepted. The following example shows how to define an enumeration named `Fruit` with three enumerators:
-`Apple`, `Pear`, and `Orange`. Its underlying type is `uint8`:
+A basic enum always specifies an underlying type. This underlying type can be any integral type: both
+[fixed size][fixed-size] and [variable size][variable-size] integral types are accepted. The following example shows how
+to define a basic enum named `Fruit` with three enumerators: `Apple`, `Pear`, and `Orange`:
 
 ```slice
 enum Fruit : uint8 { Apple, Pear, Orange }
 ```
 
-### Enum with fields
+### Variant enum
 
-An enum with no underlying type is called an "enum with fields" because each of its enumerators may define fields. An
-enum with fields is a discriminated union, just like enums in Rust and Swift.
+An enum with no underlying type is called a variant enum, and its members are called variants. A variant may define one
+or more fields (no field is also acceptable). A variant enum is a discriminated union, just like enums in Rust and enums
+with associated values in Swift.
 
 For example:
 
@@ -68,18 +31,18 @@ For example:
 enum Shape { // no underlying type
     Circle(radius: uint32)
     Rectangle(width: uint32, length: uint32)
-    Dot // an enumerator without any fields
+    Dot // a variant without any fields
 }
 ```
 
-## Enumerators - with underlying type
+## Enumerators
 
-The enumerators of an enum with an underlying type are integral constants. The default behavior of the Slice compiler is
-to assign values to these enumerators automatically. The first enumerator is assigned a value of `0`, and subsequent
-enumerators are assigned increasing values. The range of these enumerator values is the range of the underlying type.
+The enumerators of a basic enum are integral constants. The default behavior of the Slice compiler is to assign values
+to these enumerators automatically. The first enumerator is assigned a value of `0`, and subsequent enumerators are
+assigned increasing values. The range of these enumerator values is the range of the underlying type.
 
-The following code example illustrates how you can explicitly assign values for the enumerators in your enumeration
-type. In this example, the `Apple` enumerator is assigned a value of `1`, the `Pear` enumerator is assigned a value
+The following code example illustrates how you can explicitly assign values for the enumerators in your basic enum type.
+In this example, the `Apple` enumerator is assigned a value of `1`, the `Pear` enumerator is assigned a value
 of `5`, and the `Orange` enumerator gets automatically a value of `6` (the value of the preceding enumerator plus 1).
 
 ```slice
@@ -90,9 +53,9 @@ enum Fruit : uint8 {
 }
 ```
 
-## Enumerators - with fields
+## Variants
 
-The enumerators of an enum with fields are not constants; you can think of them as instances of nested structs.
+The variants of a variant enum are not constants; you can think of them as instances of nested structs.
 
 And just like the fields of a struct, you can include tagged fields unless the enclosing enum is marked `compact`.
 For example:
@@ -112,8 +75,8 @@ compact enum LaunchResult {
 }
 ```
 
-You can also assign a numeric value to each enumerator. These numeric values are called discriminants and are used to
-encode and decode the enumeration.
+You can also assign a numeric value to each variant. These numeric values are called discriminants and are used to
+encode and decode the variant enum.
 
 For example:
 
@@ -127,28 +90,13 @@ enum Shape {
 
 The range of these discriminants is 0 to 2,147,483,647 (int32 max).
 
-{% /slice2 %}
-
 ## Unchecked enumeration
 
-By default, when the code generated by the Slice compiler decodes an instance of an enumeration, it makes sure this
-instance corresponds to a known enumerator. This is the "checked" behavior: the decoding fails for a value with no
-matching enumerator.
+By default, when the code generated by the Slice code generator decodes an instance of an enum, it makes sure this
+instance corresponds to a known enumerator or variant. This is the "checked" behavior: the decoding fails for a value
+with no matching enumerator or variant.
 
-You can also get the opposite behavior—unchecked—by prepending `unchecked` to your enumeration definition. For example:
-
-{% slice1 %}
-
-```slice
-unchecked enum ErrorCode {
-    NotFound
-    NotAuthorized
-}
-```
-
-{% /slice1 %}
-
-{% slice2 %}
+You can also get the opposite behavior—unchecked—by prepending `unchecked` to your enum definition. For example:
 
 ```slice
 unchecked enum ErrorCode : varuint62 {
@@ -157,81 +105,33 @@ unchecked enum ErrorCode : varuint62 {
 }
 ```
 
-{% /slice2 %}
-
 Since `ErrorCode` is marked unchecked, the generated code will successfully decode an integral value without a matching
 enumerator.
 
-A checked enumeration must have at least one enumerator, while an unchecked enumeration may have no enumerator at all.
-For example, the following enumeration is valid:
-
-{% slice1 %}
-
-```slice
-// Range: 0 to int32 max
-unchecked enum MyPositiveInteger {}
-```
-
-{% /slice1 %}
-
-{% slice2 %}
+A checked enum must have at least one enumerator, while an unchecked enum may have no enumerator at all. For example,
+the following basic enum type is valid:
 
 ```slice
 // Same range as int16
 unchecked enum MyInt16 : int16 {}
 ```
 
-{% /slice2 %}
+### Unchecked variant enum
 
-{% slice2 %}
-
-### Unchecked enum with fields
-
-When Slice decodes an enum with fields and receives an unknown enumerator, it returns a special enumerator that holds
-the undecodable bytes received from the peer.
+When the generated code decodes a variant enum and receives an unknown variant, it returns a special variant that
+holds the undecodable bytes received from the peer.
 
 {% callout %}
-An unchecked enum cannot be marked `compact`. As a result, you can always use tagged fields in the enumerators of an
-unchecked enum with fields.
+An unchecked variant enum cannot be marked `compact`. As a result, you can always use tagged fields in the variants of
+an unchecked variant enum.
 {% /callout %}
-
-{% /slice2 %}
 
 ## C# mapping
 
-{% slice1 %}
+### Basic enum in C\#
 
-### C# enum
-
-An enumeration maps to a public C# enumeration with the same name, and each Slice enumerator maps to the C# enumerator
+A basic enum maps to an internal C# enumeration with the same name, and each Slice enumerator maps to a C# enumerator
 with the same name. For example:
-
-{% aside alignment="top" %}
-
-```slice
-enum Fruit { Apple, Pear, Orange }
-```
-
-```csharp
-public enum Fruit : int
-{
-    Apple = 0,
-    Pear = 1,
-    Orange = 2
-}
-```
-
-{% /aside %}
-
-The underlying type of the mapped enumeration is always `int`.
-{% /slice1 %}
-
-{% slice2 %}
-
-### Enum with underlying type in C\#
-
-An enum with underlying type maps to a public C# enumeration with the same name, and each Slice enumerator maps to a
-C# enumerator with the same name. For example:
 
 {% aside alignment="top" %}
 
@@ -240,7 +140,7 @@ enum Fruit : uint8 { Apple, Pear, Orange }
 ```
 
 ```csharp
-public enum Fruit : uint8
+internal enum Fruit : byte
 {
     Apple = 0,
     Pear = 1,
@@ -250,22 +150,20 @@ public enum Fruit : uint8
 
 {% /aside %}
 
-The underlying type of the mapped enumeration is always the mapped type for the Slice underlying type. For example,
+The underlying type of the mapped enum type is always the mapped type for the Slice underlying type. For example,
 a Slice `uint8` corresponds to a C# `byte`.
 
-### Enum with fields in C\#
+### Variant enum in C\#
 
 C# does not provide a native discriminated union type. This mapping relies on an emulation based on record classes
-[proposed a few years ago]. Briefly, a Slice enum with fields maps to a C# partial record class with the same name, and
-each enumerator maps to a public nested record class with the same name as the enumerator. This nested record class
+[proposed a few years ago]. Briefly, a Slice variant enum maps to a C# partial record class with the same name, and
+each variant maps to a public nested record class with the same name as the variant. This nested record class
 derives from the enclosing "enum type" record class.
 
 The Slice code generator adds the attribute `[Dunet.Union]` to the base record class, which instructs the [Dunet] source
 generator to generate additional helper code for these partial records.
 
 For example:
-
-{% aside alignment="top" %}
 
 ```slice
 enum Shape {
@@ -275,110 +173,65 @@ enum Shape {
 }
 ```
 
+maps to:
+
 ```csharp
 [Dunet.Union]
-public partial abstract record class Shape
+internal abstract partial record class Shape
 {
-    partial record Circle(uint Radius) : Shape;
+    public partial record Circle(uint Radius) : Shape;
 
-    partial record Rectangle(
-        uint Width,
-        uint Length) : Shape;
+    public partial record Rectangle(uint Width, uint Length) : Shape;
 
-    partial record Dot : Shape;
+    public partial record Dot : Shape;
 }
 ```
 
-{% /aside %}
-
 {% callout %}
-[ZeroC.Slice] has a dependency on the [Dunet package]; as a result, you don't need an explicit reference to Dunet in
-your project.
+[ZeroC.Slice.Codec] has a dependency on the [Dunet package]; as a result, you don't need an explicit reference to Dunet
+in your project.
 {% /callout %}
-
-{% /slice2 %}
 
 ### Extension methods
 
-The Slice compiler generates extension methods to encode and decode instances of each enum:
+The Slice code generator generates extension methods to encode and decode instances of each enum:
 
 - Encode*Name* to encode an enum instance
 - Decode*Name* to decode an enum instance
 
 With our `Fruit` example, we get:
 
-{% slice1 %}
-
 ```csharp
-public static class FruitSliceEncoderExtensions
+internal static class FruitSliceEncoderExtensions
 {
-    public static void EncodeFruit(this ref SliceEncoder encoder, Fruit value) => ...
+    internal static void EncodeFruit(this ref SliceEncoder encoder, Fruit value) => ...
 }
 
-public static class FruitSliceDecoderExtensions
+internal static class FruitSliceDecoderExtensions
 {
-    public static Fruit DecodeFruit(this ref SliceDecoder decoder) => ...
+    internal static Fruit DecodeFruit(this ref SliceDecoder decoder) => ...
 }
 ```
 
-The Slice compiler also generates an extension method As*Name* to convert an int value into an enumerator.
+For basic enums, the C# code generator also generates an extension method As*Name* to convert a value of the underlying
+type into an enumerator.
 
 With our Fruit example:
 
 ```csharp
-public static class FruitIntExtensions
+internal static class FruitByteExtensions
 {
-    public static Fruit AsFruit(this int value) => ...
+    internal static Fruit AsFruit(this byte value) => ...
 }
 ```
-
-{% /slice1 %}
-
-{% slice2 %}
-
-```csharp
-public static class FruitSliceEncoderExtensions
-{
-    public static void EncodeFruit(this ref SliceEncoder encoder, Fruit value) => ...
-}
-
-public static class FruitSliceDecoderExtensions
-{
-    public static Fruit DecodeFruit(this ref SliceDecoder decoder) => ...
-}
-```
-
-For enums with an underlying type, the Slice compiler also generates an extension method As*Name* to convert a value
-of the underlying type into an enumerator.
-
-With our Fruit example:
-
-```csharp
-public static class FruitByteExtensions
-{
-    public static Fruit AsFruit(this byte value) => ...
-}
-```
-
-{% /slice2 %}
 
 This conversion fails and throws [InvalidDataException] when the value does not correspond to any enumerator of the
 (checked) enum.
 
 ### C# mapping for unchecked enum
 
-{% slice1 %}
-The mapped C# API for checked and unchecked enums is the same. The difference lies in the implementations of the
-As*Name* and Decode*Name* methods: these implementations check values for checked enums and don't check values for
-unchecked enums.
-{% /slice1 %}
-
-{% slice2 %}
-
-The mapped C# API for checked and unchecked enums is the same, with one exception: the mapping for an unchecked enum
-with fields has an additional nested record class named `Unknown` that holds unknown enumerator values. For example:
-
-{% aside alignment="top" %}
+The mapped C# API for checked and unchecked enums is the same, with one exception: the mapping for an unchecked variant
+enum has an additional nested record class named `Unknown` that holds unknown variant values. For example:
 
 ```slice
 unchecked enum Shape {
@@ -387,62 +240,27 @@ unchecked enum Shape {
 }
 ```
 
+maps to:
+
 ```csharp
 [Dunet.Union]
-public partial record class Shape
+internal abstract partial record class Shape
 {
-    partial record Circle(uint Radius) : Shape;
+    public partial record Circle(uint Radius) : Shape;
 
-    partial record Dot : Shape;
+    public partial record Dot : Shape;
 
-    // Extra "enumerator" when mapping an
-    // unchecked enum with fields
-    partial record Unknown(
-        int Discriminant,
-        ReadOnlyMemory<byte> Fields) : Shape;
+    // Extra variant when mapping an unchecked variant enum
+    public partial record Unknown(int Discriminant, ReadOnlyMemory<byte> Fields) : Shape;
 }
 ```
 
-{% /aside %}
-
-This `Unknown` enumerator can be re-encoded later without losing any information.
-{% /slice2 %}
+This `Unknown` variant can be re-encoded later without losing any information.
 
 ### cs::attribute attribute
 
 The `cs::attribute` [attribute](attributes) adds the specified C# attribute to the mapped C# enum. You typically use it
 to add the [FlagsAttribute] to the mapped C# enum. For example:
-
-{% slice1 %}
-{% aside alignment="top" %}
-
-```slice
-[cs::attribute("Flags")]
-enum MultiHue {
-    None = 0,
-    Black = 1,
-    Red = 2,
-    Green = 4,
-    Blue = 8
-}
-```
-
-```csharp
-[Flags]
-public enum MultiHue : int
-{
-    None = 0,
-    Black = 1,
-    Red = 2,
-    Green = 4,
-    Blue = 8,
-}
-```
-
-{% /aside %}
-{% /slice1 %}
-
-{% slice2 %}
 {% aside alignment="top" %}
 
 ```slice
@@ -458,7 +276,7 @@ enum MultiHue : uint8 {
 
 ```csharp
 [Flags]
-public enum MultiHue : byte
+internal enum MultiHue : byte
 {
     None = 0,
     Black = 1,
@@ -469,9 +287,8 @@ public enum MultiHue : byte
 ```
 
 {% /aside %}
-{% /slice2 %}
-
-You can also apply `cs::attribute` to an enumerator to get the specified C# attribute on the mapped C# enumerator.
+You can also apply `cs::attribute` to an enumerator or variant to get the specified C# attribute on the mapped C#
+enumerator or variant.
 
 [Dunet]: https://github.com/domn1995/dunet
 [Dunet package]: https://www.nuget.org/packages/Dunet
@@ -480,4 +297,4 @@ You can also apply `cs::attribute` to an enumerator to get the specified C# attr
 [variable-size]: primitive-types#variable-size-integral-types
 [InvalidDataException]: https://learn.microsoft.com/en-us/dotnet/api/system.io.invaliddataexception
 [FlagsAttribute]: https://learn.microsoft.com/en-us/dotnet/api/system.flagsattribute
-[ZeroC.Slice]: https://www.nuget.org/packages/ZeroC.Slice
+[ZeroC.Slice.Codec]: https://www.nuget.org/packages/ZeroC.Slice.Codec

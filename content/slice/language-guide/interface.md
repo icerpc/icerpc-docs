@@ -13,7 +13,7 @@ a server application hosts a service that implements this interface.
 
 For example:
 
-```slice {% addMode=true %}
+```slice
 module VisitorCenter
 
 // An interface with a single operation.
@@ -24,9 +24,10 @@ interface Greeter {
 
 All operations are abstract at the Slice level: you can't implement an operation in Slice.
 
-When you create an application with Slice, these interfaces correspond to your entry point into Slice: you call and
-implement the C# (or Rust, Python...) abstractions and concrete implementations that the Slice compiler generates from
-your Slice interfaces.
+When you create an application with Slice, these interfaces are your entry point into Slice: the Slice code generators
+generate code from your Slice interfaces, and you interact with this generated code in both your client and server
+applications. On the client side, you call generated proxies (concrete classes) that send requests to remote services.
+On the server side, you implement services using templates (abstract interfaces) generated from the Slice interfaces.
 
 {% callout %}
 An interface is a Slice construct but not a Slice type. This means you cannot use an interface as the type of a Slice
@@ -39,7 +40,7 @@ An interface can inherit from one or more interfaces, provided the operation nam
 
 For example:
 
-```slice {% addMode=true %}
+```slice
 module Draw
 
 interface Shape {
@@ -57,9 +58,9 @@ interface Rectangle : Shape, Fillable {
 
 ## C# mapping {% icerpcSlice=true %}
 
-The Slice compiler for C# compiles Slice interface _Name_ into two C# interfaces (I*Name* and I*Name*Service) and one
-C# struct (*Name*Proxy). The identifiers of the generated interfaces and struct are always in Pascal case, per the usual
-C# naming conventions, even when _Name_ is not in Pascal case.
+The code generator for C# creates two C# interfaces (I*Name* and I*Name*Service) and one C# record struct
+(*Name*Proxy) from Slice interface _Name_. The identifiers of the generated interfaces and proxy structs are always in
+Pascal case, per the usual C# naming conventions, even when _Name_ is not in Pascal case.
 
 The attribute [`cs::identifier`][cs-identifier] allows you to remap _Name_ to an identifier of your choice.
 
@@ -72,7 +73,7 @@ For example:
 
 {% aside alignment="top" %}
 
-```slice {% addMode=true %}
+```slice
 module Example
 
 interface Widget {
@@ -83,7 +84,7 @@ interface Widget {
 ```csharp
 namespace Example;
 
-public partial interface IWidget
+internal partial interface IWidget
 {
     // One method per operation
     Task SpinAsync(
@@ -98,7 +99,7 @@ public partial interface IWidget
 
 Slice interface inheritance naturally maps to interface inheritance in C#. For example:
 
-```slice {% addMode=true %}
+```slice
 module Draw
 
 interface Rectangle : Shape, Fillable {
@@ -111,7 +112,7 @@ maps to:
 ```csharp
 namespace Draw;
 
-public partial interface IRectangle : IShape, IFillable
+internal partial interface IRectangle : IShape, IFillable
 {
     Task ResizeAsync(
         int x,
@@ -131,9 +132,9 @@ for this service.
 In order to call a remote service, you need to construct a proxy struct using one of its "invoker" constructors:
 
 ```csharp
-public readonly partial record struct WidgetProxy : IWidget, IProxy
+internal readonly partial record struct WidgetProxy : IWidget, IProxy
 {
-    public WidgetProxy(
+    internal WidgetProxy(
         IInvoker invoker,
         ServiceAddress? serviceAddress = null,
         SliceEncodeOptions? encodeOptions = null)
@@ -141,7 +142,7 @@ public readonly partial record struct WidgetProxy : IWidget, IProxy
         ...
     }
 
-    public WidgetProxy(
+    internal WidgetProxy(
         IInvoker invoker,
         System.Uri serviceAddressUri,
         SliceEncodeOptions? encodeOptions = null)
@@ -165,19 +166,18 @@ example, the default service path of Slice interface `VisitorCenter::Greeter` is
 available as the constant `DefaultServicePath` in the generated proxy struct:
 
 ```csharp
-public readonly partial record struct WidgetProxy : IWidget, IProxy
+internal readonly partial record struct WidgetProxy : IWidget, IProxy
 {
-    public const string DefaultServicePath = "/Example/Widget";
+    internal const string DefaultServicePath = "/Example/Widget";
 }
 ```
 
-{% slice2 %}
 If you want to create a [relative proxy], call the `FromPath` static method:
 
 ```csharp
-public readonly partial record struct WidgetProxy : IWidget, IProxy
+internal readonly partial record struct WidgetProxy : IWidget, IProxy
 {
-    public static WidgetProxy FromPath(string path) { ... }
+    internal static WidgetProxy FromPath(string path) { ... }
 }
 ```
 
@@ -187,8 +187,6 @@ For example, if you want to create a relative proxy with the default service pat
 // Creates a relative proxy with the default service path and an invalid invoker.
 var relativeProxy = WidgetProxy.FromPath(WidgetProxy.DefaultServicePath);
 ```
-
-{% /slice2 %}
 
 The generated proxy struct also provides a parameterless constructor that initializes the proxy's service address to
 an icerpc service address with the default service path. If you call this constructor directly, you also need to
@@ -205,7 +203,7 @@ var proxy = new WidgetPRoxy(connection);
 When a Slice interface derives from another interface, its proxy struct provides an implicit conversion operator to be
 base interface. For example:
 
-```slice {% addMode=true %}
+```slice
 module Draw
 
 interface Rectangle : Shape, Fillable {
@@ -218,14 +216,14 @@ maps to:
 ```csharp
 namespace Draw;
 
-public readonly partial record struct RectangleProxy : IRectangle, IProxy
+internal readonly partial record struct RectangleProxy : IRectangle, IProxy
 {
-    public static implicit operator ShapeProxy(RectangleProxy proxy)
+    internal static implicit operator ShapeProxy(RectangleProxy proxy)
     {
         ...
     }
 
-    public static implicit operator FillableProxy(RectangleProxy proxy)
+    internal static implicit operator FillableProxy(RectangleProxy proxy)
     {
         ...
     }
@@ -241,16 +239,16 @@ Interface I*Name*Service is a server-side helper: it helps you create a service 
 interface _Name_.
 
 The principle is straightforward: your service class must be a partial class that implements I*Name*Service. It must
-also carry the [SliceService] attribute.
+also carry the [Service] attribute.
 
-The `SliceService` attribute instructs the Slice Service source generator to implement interface [IDispatcher] by
+The `Service` attribute instructs the Service Generator (a C# source generator) to implement interface [IDispatcher] by
 directing incoming requests to I*Name*Service methods based on the operation names.
 
 For example:
 
 {% aside alignment="top" %}
 
-```slice {% addMode=true %}
+```slice
 module Example
 
 interface Widget {
@@ -262,7 +260,7 @@ interface Widget {
 namespace Example;
 
 // Generated code
-public partial interface IWidgetService
+internal partial interface IWidgetService
 {
     // One method per operation
     ValueTask SpinAsync(
@@ -272,7 +270,7 @@ public partial interface IWidgetService
 }
 
 // Application code
-[SliceService]
+[Service]
 internal partial class MyWidget : IWidgetService
 {
     // implement SpinAsync ...
@@ -291,7 +289,7 @@ names. For example:
 
 {% aside alignment="top" %}
 
-```slice {% addMode=true %}
+```slice
 module Example
 
 interface Widget {
@@ -305,7 +303,7 @@ interface Counter {
 
 ```csharp
 // Implements two Slice interfaces
-[SliceService]
+[Service]
 internal partial class MyWidget : IWidgetService,
                                   ICounterService
 {
@@ -316,7 +314,7 @@ internal partial class MyWidget : IWidgetService,
 {% /aside %}
 
 [cs-identifier]: attributes#cs::identifier-attribute
-[relative proxy]: /slice2/language-guide/using-proxies-as-slice-types#relative-proxy
+[relative proxy]: /slice/language-guide/using-proxies-as-slice-types#relative-proxy
 [SliceEncodeOptions]: csharp:IceRpc.Slice.SliceEncodeOptions
 [IDispatcher]: csharp:IceRpc.IDispatcher
-[SliceService]: csharp:IceRpc.Slice.SliceServiceAttribute
+[Service]: csharp:IceRpc.ServiceAttribute

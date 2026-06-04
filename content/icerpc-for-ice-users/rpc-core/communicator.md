@@ -40,15 +40,14 @@ appropriate than a `ConnectionCache` for your application.
 {% aside alignment="top" %}
 
 ```csharp {% title="Simple client with Ice for C#" %}
-using var communicator = Ice.Util.initialize(ref args);
+await using var communicator = new Ice.Communicator(ref args);
 
-var hello = HelloPrxHelper.checkedCast(
-    communicator.stringToProxy(
-        "hello:default -h localhost -p 10000"));
+GreeterPrx greeter = GreeterPrxHelper.createProxy(
+    communicator,
+    "greeter:tcp -h localhost -p 10000");
 
-hello.sayHello();
-
-communicator.shutdown();
+string greeting = await greeter.GreetAsync(Environment.UserName);
+Console.WriteLine(greeting);
 ```
 
 ```csharp {% title="Similar client with IceRPC for C#" %}
@@ -61,11 +60,10 @@ Pipeline pipeline = new Pipeline()
     .UseRetry()
     .Into(connection);
 
-var helloProxy = new HelloProxy(
-    pipeline,
-    new Uri("ice:/hello"));
+var greeter = new GreeterProxy(pipeline, new Uri("ice:/greeter"));
 
-await helloProxy.SayHelloAsync();
+string greeting = await greeter.GreetAsync(Environment.UserName);
+Console.WriteLine(greeting);
 
 await connection.ShutdownAsync();
 ```

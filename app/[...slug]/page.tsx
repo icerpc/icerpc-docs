@@ -69,19 +69,7 @@ export async function generateStaticParams() {
         splitPath.pop();
       }
 
-      // For 'slice' base, create paths for 'slice1' and 'slice2'
-      if (base === 'slice') {
-        const slice1Slug = splitPath
-          .map((part) => (part === 'slice' ? 'slice1' : part))
-          .slice(1);
-        const slice2Slug = splitPath
-          .map((part) => (part === 'slice' ? 'slice2' : part))
-          .slice(1);
-        paths.push({ params: { slug: slice1Slug } });
-        paths.push({ params: { slug: slice2Slug } });
-      } else {
-        paths.push({ params: { slug: splitPath.slice(1) } });
-      }
+      paths.push({ params: { slug: splitPath.slice(1) } });
     }
   }
 
@@ -94,10 +82,6 @@ export default async function Page(props: PageProps) {
   const params = await props.params;
   const path = '/' + (params.slug.join('/') ?? '');
   const { content } = await getMarkdownContent(path);
-
-  if (path.match(/^\/slice(?=#|\/|$)/)) {
-    return notFound();
-  }
 
   if (!content) {
     return notFound();

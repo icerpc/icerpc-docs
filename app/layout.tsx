@@ -127,7 +127,7 @@ const navigationSchema = {
       position: 4,
       name: 'Slice',
       description: 'A modern IDL and serialization format.',
-      url: new URL('/slice2', baseUrl).href
+      url: new URL('/slice', baseUrl).href
     },
     {
       '@type': 'SiteNavigationElement',

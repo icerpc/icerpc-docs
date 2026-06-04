@@ -7,7 +7,7 @@ description: Understand how to create an alias for a Slice type.
 
 You can use a `typealias` to give a new name to an existing type or typealias. For example:
 
-```slice {% addMode=true %}
+```slice
 // Greeting is now another name for string
 typealias Greeting = string
 ```
@@ -20,5 +20,5 @@ typealias StringSet = [cs::type("HashSet<string>")] Sequence<string>
 
 ## C# mapping
 
-A typealias is not mapped to anything in C#. The Slice compiler generates code as if the typealias was replaced by its
-underlying type (including [attributes](attributes), if any).
+A typealias is not mapped to anything in C#. The C# code generator generates code as if the typealias was replaced by
+its underlying type (including [attributes](attributes), if any).
