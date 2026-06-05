@@ -36,6 +36,14 @@ These other dispatchers are registered with the router using `map` and `mount` m
     router.Map("/greeter", chatbot);
     ```
 
+    A Slice- or Protobuf-generated service has a default service path. You can map such a service at this default path
+    with the `Map` overload that takes only the service:
+
+    ```csharp
+    var router = new Router();
+    router.Map(new Chatbot()); // maps Chatbot at its default service path, e.g. /VisitorCenter.Greeter
+    ```
+
 - `mount` associates a dispatcher with a path prefix in the router.
 
     For example, you can mount path-prefix `/user` to an account service. A request with path `/user` or

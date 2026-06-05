@@ -11,7 +11,8 @@ created by Google and available for many programming languages. [Protobuf] is th
 frameworks.
 
 This chapter describes the IceRPC + Protobuf integration, not Protobuf itself. The IceRPC + Protobuf integration uses
-standard Protobuf files, with the regular Protobuf syntax and semantics.
+standard Protobuf files, with the regular Protobuf syntax and semantics; it supports both proto3 and
+[Protobuf editions].
 
 ## The IceRPC + Protobuf integration
 
@@ -117,4 +118,5 @@ public partial interface IGreeterService
 
 [gRPC]: https://grpc.io/
 [Interface Definition Language]: https://en.wikipedia.org/wiki/Interface_description_language
+[Protobuf editions]: https://protobuf.dev/editions/overview/
 [Protobuf]: https://en.wikipedia.org/wiki/Protocol_Buffers
