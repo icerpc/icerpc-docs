@@ -118,20 +118,22 @@ classDiagram
     DuplexConnection <|-- TcpConnection
 ```
 
-In C#, the default multiplexed transport is Slic over TCP and is called `tcp`. The following statements all create
-equivalent icerpc connections.
+In C#, the default multiplexed transport is QUIC. To run icerpc over Slic-over-TCP instead, set the transport
+to `tcp` in the server address:
 
 ```csharp
-// Create a client connection with the default multiplexed client transport, Slic over TCP.
-using await var clientConnection = new ClientConnection("icerpc://hello.zeroc.com");
+// Select Slic over TCP with the transport parameter.
+await using var clientConnection = new ClientConnection("icerpc://hello.zeroc.com?transport=tcp");
+```
 
-// Make sure we use Slic over TCP (correct but redundant).
-using await var clientConnection = new ClientConnection("icerpc://hello.zeroc.com?transport=tcp");
+You can also create the Slic-over-TCP transport explicitly and pass it to the connection—for instance, to
+configure Slic or TCP options:
 
-// Create a new multiplexed client transport with default options.
+```csharp
+// Create a multiplexed client transport (Slic over TCP) with default options.
 var clientTransport = new SlicClientTransport(new TcpClientTransport());
-using await var clientConnection = new ClientConnection(
-    "icerpc://hello.zeroc.com",
+await using var clientConnection = new ClientConnection(
+    "icerpc://hello.zeroc.com?transport=tcp",
     multiplexedClientTransport: clientTransport);
 ```
 

@@ -32,13 +32,20 @@ In C#, you need to specify TLS configuration—in particular a X.509 certificate
 example:
 
 ```csharp
-// SslServerAuthenticationOptions is required with QuicServerTransport.
+using X509Certificate2 serverCertificate = X509CertificateLoader.LoadPkcs12FromFile(
+    "server.p12", password: null, keyStorageFlags: X509KeyStorageFlags.Exportable);
+
+// SslServerAuthenticationOptions is a standard .NET type (System.Net.Security).
+var serverAuthenticationOptions = new SslServerAuthenticationOptions
+{
+    ServerCertificateContext = SslStreamCertificateContext.Create(
+        serverCertificate,
+        additionalCertificates: null)
+};
+
 await using var server = new Server(
     new Chatbot(),
-    new SslServerAuthenticationOptions
-    {
-        ServerCertificate = new X509Certificate2("server.p12")
-    },
+    serverAuthenticationOptions,
     multiplexedServerTransport: new QuicServerTransport());
 ```
 
@@ -50,13 +57,13 @@ tcp, the connection will use TLS. If you don't specify TLS configuration, the co
 In C#, this client-side TLS configuration is provided by a [SslClientAuthenticationOptions] parameter. For example:
 
 ```csharp
-// The default multiplexed transport for icerpc is tcp (implemented by SlicClientTransport over TcpClientTransport).
+// We select the tcp transport (Slic over TCP) with ?transport=tcp, since the default transport is quic.
 // This connection does not use TLS since we don't pass a SslClientAuthenticationOptions parameter.
-await using var plainTcpConnection = new ClientConnection("icerpc://hello.zeroc.com");
+await using var plainTcpConnection = new ClientConnection("icerpc://hello.zeroc.com?transport=tcp");
 
 // We pass a non-null SslClientAuthenticationOptions so the connection uses TLS.
 await using var secureTcpConnection = new ClientConnection(
-    "icerpc://hello.zeroc.com",
+    "icerpc://hello.zeroc.com?transport=tcp",
     new SslClientAuthenticationOptions());
 ```
 
@@ -107,7 +114,7 @@ get an error.
 // Does not work: can't get a TLS connection with a transport that doesn't support TLS.
 await using var connection = new ClientConnection(
     "icerpc://colochost",
-    new SslClientAuthenticationOptions()
+    new SslClientAuthenticationOptions(),
     multiplexedClientTransport: new SlicClientTransport(colocClientTransport));
 ```
 
