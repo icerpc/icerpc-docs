@@ -18,6 +18,10 @@ An outgoing request carries all the information an invoker needs to send a reque
 An outgoing request also holds [features](#request-features). These features are used for local communications within
 this pipeline; they are also used for communications between invokers in the pipeline and your application code.
 
+By default, an outgoing request is two-way—the invoker sends the request and awaits a response. You can make a request
+one-way by setting its [IsOneway] property to `true`; a one-way request carries no response, so the invocation completes
+once the request has been sent.
+
 ## Request fields
 
 The request fields represent out-of-band information carried by a request "over the wire". These fields are usually read
@@ -102,3 +106,4 @@ only request features: since it's all local, there is no need for response featu
 
 [IFeatureCollection]: csharp:IceRpc.Features.FeatureCollection
 [ICompressFeature]: csharp:IceRpc.Features.ICompressFeature
+[IsOneway]: csharp:IceRpc.OutgoingRequest#IceRpc_OutgoingRequest_IsOneway
