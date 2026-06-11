@@ -37,6 +37,6 @@ where `T?` represents the stream parameter type.
 
 When an operation has no argument at all, its empty argument list can be encoded as a segment holding an empty struct
 (as per the rules described above) or as nothing at all.
+
 [segment]: encoding-only-constructs#segment
 [struct]: user-defined-types#struct
-[tagged field]: user-defined-types#class-tagged-field
