@@ -32,7 +32,11 @@ For example:
 | ------------------------------------|-----------------------------------------------------------------------------------------------------------------|
 | `icerpc://hello.zeroc.com`          | Connect to `hello.zeroc.com` on port 4062 using the icerpc protocol; the underlying transport is not specified. |
 | `icerpc://192.168.100.10:10000?transport=quic` | Connect to `192.168.100.10` on port 10000 using the icerpc protocol over QUIC.                       |
+| `icerpc://hello.zeroc.com?transport=tcp` | Connect to `hello.zeroc.com` on port 4062 using the icerpc protocol over Slic over TCP.                        |
 | `ice://hello.zeroc.com`             | Connect to `hello.zeroc.com` on port 4061 using the ice protocol.                                               |
+
+When you omit the `transport` parameter from an `icerpc` server address, the client connection uses the default
+multiplexed transport, QUIC. To use Slic over TCP instead, add `?transport=tcp` to the server address.
 
 ## Server configuration
 
