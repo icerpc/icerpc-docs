@@ -90,6 +90,34 @@ icerpc provides the most direct realization of IceRPC's APIs and features. In pa
 [request fields][request-fields], [response fields][response-fields] and [status codes][status-code] are transmitted
 as-is by icerpc. It also supports [payload continuations][payload-continuation].
 
+## icerpc over QUIC
+
+QUIC is the default multiplexed transport, so you don't need to select a transport to run icerpc over QUIC. A client
+connection created from a bare `icerpc` server address uses QUIC:
+
+```csharp
+// QUIC is the default: a bare icerpc server address uses QUIC.
+await using var clientConnection = new ClientConnection("icerpc://hello.zeroc.com");
+```
+
+You can also select QUIC explicitly with the `transport` parameter:
+
+```csharp
+// Select QUIC explicitly with the transport parameter.
+await using var clientConnection = new ClientConnection("icerpc://hello.zeroc.com?transport=quic");
+```
+
+You can also create the QUIC transport explicitly and pass it to the connection—for instance, to configure
+QUIC options:
+
+```csharp
+// Create a multiplexed client transport (QUIC) with default options.
+var clientTransport = new QuicClientTransport();
+await using var clientConnection = new ClientConnection(
+    "icerpc://hello.zeroc.com",
+    multiplexedClientTransport: clientTransport);
+```
+
 ## icerpc over a duplex connection
 
 There is currently only one standard multiplexed transport: QUIC. Since QUIC is new and not universally available, you
@@ -118,8 +146,7 @@ classDiagram
     DuplexConnection <|-- TcpConnection
 ```
 
-In C#, the default multiplexed transport is QUIC. To run icerpc over Slic-over-TCP instead, set the transport
-to `tcp` in the server address:
+To run icerpc over Slic-over-TCP instead of QUIC, set the transport to `tcp` in the server address:
 
 ```csharp
 // Select Slic over TCP with the transport parameter.

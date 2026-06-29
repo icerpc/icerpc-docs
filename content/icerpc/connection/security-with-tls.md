@@ -28,7 +28,7 @@ await using var connection = new ClientConnection(
 The same logic applies to servers: if you configure your server to use quic, any connection accepted by this server will
 use TLS.
 
-In C#, you need to specify TLS configuration—in particular a X.509 certificate—for any server that uses quic. For
+In C#, you need to specify TLS configuration—in particular an X.509 certificate—for any server that uses quic. For
 example:
 
 ```csharp
