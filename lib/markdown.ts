@@ -3,7 +3,7 @@
 import Markdoc, { Config } from '@markdoc/markdoc';
 import config from '@/markdoc/schema';
 import fs from 'fs';
-import yaml from 'js-yaml';
+import { load as yamlLoad } from 'js-yaml';
 import readingTimeFunc from 'reading-time';
 import path from 'path';
 
@@ -50,7 +50,7 @@ export async function getMarkdownContent(slug: string) {
   if (fileContent) {
     const ast = Markdoc.parse(fileContent);
     frontmatter = ast.attributes.frontmatter
-      ? yaml.load(ast.attributes.frontmatter)
+      ? yamlLoad(ast.attributes.frontmatter)
       : {};
   }
 
