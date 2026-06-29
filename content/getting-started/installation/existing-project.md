@@ -82,7 +82,7 @@ The full list of IceRPC packages is available on the [next page][full-list].
 
 The Slice and Protobuf toolchains—[IceRpc.Slice.Tools] and [IceRpc.Protobuf.Tools]—collect anonymous build telemetry by
 default. During the compilation of your Slice or Protobuf files, a build plug-in sends anonymous data over a secure
-connection to the IceRPC build telemetry server. This data includes, for example:
+connection to the IceRPC build telemetry server. This data includes:
 
 - The versions of the compiler and code generators.
 - The operating system, version, and platform architecture.

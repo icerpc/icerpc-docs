@@ -19,7 +19,7 @@ description: A list of all the IceRPC NuGet packages
 | [IceRpc.Retry]                          | Retry interceptor                                                                       |
 | [IceRpc.ServiceGenerator]               | C# source generator enabled by the `[Service]` attribute.                               |
 | [IceRpc.Slice]                          | IceRPC + Slice integration library                                                      |
-| [IceRpc.Slice.Tools]                    | Slice compiler slicec, the C# code generators, and MSBuild support                      |
+| [IceRpc.Slice.Tools]                    | Slice compiler (`slicec`), the C# code generators, and MSBuild support                  |
 | [IceRpc.Telemetry]                      | OpenTelemetry interceptor and middleware                                                |
 | [IceRpc.Templates]                      | Project templates for IceRPC                                                            |
 | [IceRpc.Transports.Coloc]               | Coloc duplex transport                                                                  |

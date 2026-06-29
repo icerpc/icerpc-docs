@@ -24,11 +24,11 @@ your `.ice` files with the `SliceCompile` item type and set its `IceRpc` attribu
 </ItemGroup>
 ```
 
-Instead of setting `IceRpc="true"` on each `SliceCompile` item, you can make icerpc the default RPC framework for all
+Instead of setting `IceRpc="true"` on each `SliceCompile` item, you can make IceRPC the default RPC framework for all
 `.ice` files in your project:
 
 ```xml
-<!-- Set the default RPC framework for .ice file compilation to icerpc -->
+<!-- Set the default RPC framework for .ice file compilation to IceRPC -->
 <ItemDefinitionGroup>
   <SliceCompile>
     <IceRpc>true</IceRpc>
