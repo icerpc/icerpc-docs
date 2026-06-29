@@ -160,7 +160,7 @@ configure Slic or TCP options:
 // Create a multiplexed client transport (Slic over TCP) with default options.
 var clientTransport = new SlicClientTransport(new TcpClientTransport());
 await using var clientConnection = new ClientConnection(
-    "icerpc://hello.zeroc.com?transport=tcp",
+    "icerpc://hello.zeroc.com",
     multiplexedClientTransport: clientTransport);
 ```
 
