@@ -12,19 +12,23 @@ Ice's Slice language is described in the [Ice Manual].
 
 ## Targeting IceRPC
 
-The Ice compiler for C# (`slice2cs`) allows you to generate code for IceRPC. If you build your project with MSBuild, you
-can set the `IceRpc` attribute to true:
+The Ice compiler for C# (`slice2cs`) allows you to generate code for IceRPC. If you build your project with MSBuild, add
+your `.ice` files with the `SliceCompile` item type and set its `IceRpc` attribute to true, then reference the
+[ZeroC.Ice.Slice.Tools] and [IceRpc.Ice] packages:
 
 ```xml
 <ItemGroup>
   <SliceCompile Include="../slice/Greeter.ice" IceRpc="true" />
+  <PackageReference Include="ZeroC.Ice.Slice.Tools" PrivateAssets="All" />
+  <PackageReference Include="IceRpc.Ice" />
 </ItemGroup>
 ```
 
-or
+Instead of setting `IceRpc="true"` on each `SliceCompile` item, you can make IceRPC the default RPC framework for all
+`.ice` files in your project:
 
 ```xml
-  <!-- Set the default RPC framework for .ice file compilation to icerpc -->
+<!-- Set the default RPC framework for .ice file compilation to IceRPC -->
 <ItemDefinitionGroup>
   <SliceCompile>
     <IceRpc>true</IceRpc>
@@ -35,7 +39,10 @@ or
 In IceRPC mode, `slice2cs` generates C# files with the extension `.IceRpc.cs`.
 
 {% callout %}
-The [ZeroC.Ice.Slice.Tools] NuGet package provides the `slice2cs` compiler and the `SliceCompile` task.
+The [ZeroC.Ice.Slice.Tools] NuGet package provides the `slice2cs` compiler and the `SliceCompile` task; it is a
+build-time-only dependency, hence `PrivateAssets="All"`. The [IceRpc.Ice] package provides the runtime integration
+between IceRPC's core APIs and the generated `.IceRpc.cs` code—without it, the generated integration code does not
+compile.
 {% /callout %}
 
 ## C# language mapping
@@ -58,3 +65,4 @@ There are a few notable differences between the original C# mapping (when target
 [Ice Manual]: https://docs.zeroc.com/ice/3.8/csharp/the-slice-language
 [Slice]: /slice
 [ZeroC.Ice.Slice.Tools]: https://www.nuget.org/packages/ZeroC.Ice.Slice.Tools
+[IceRpc.Ice]: https://www.nuget.org/packages/IceRpc.Ice
