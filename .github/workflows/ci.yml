@@ -103,6 +103,22 @@ jobs:
             docker compose pull icerpc-docs
             docker compose up -d icerpc-docs
 
+      - name: Invalidate CloudFront cache
+        # Next.js serves prerendered pages with `Cache-Control: s-maxage=31536000`,
+        # so CloudFront caches each HTML page for up to a year. This deploy replaces
+        # the container along with its content-hashed /_next/static chunks, so a
+        # stale cached page would keep referencing chunk files the new build no
+        # longer has — a 404 that breaks hydration (e.g. the top-nav search stops
+        # working). Purge the edge cache so pages are re-fetched with the new
+        # build's asset URLs. Immutable /_next/static assets are unaffected.
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: us-east-1
+          DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+        run: |
+          aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths '/*'
+
   cleanup:
     name: Cleanup old images
     needs: publish
