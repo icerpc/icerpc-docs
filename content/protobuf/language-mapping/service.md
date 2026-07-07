@@ -72,7 +72,7 @@ namespace Example;
 
 public partial interface IWidget
 {
-    // One C# method per rpc method
+    // One C# method per RPC method
     Task<WellKnownTypes.Empty> SpinAsync(
         SpinConfig message,
         IFeatureCollection? features = null,
@@ -155,7 +155,7 @@ namespace Example;
 // Generated code
 public partial interface IWidgetService
 {
-    // One method per rpc method
+    // One method per RPC method
     ValueTask<WellKnownTypes.Empty> SpinAsync(
         SpinConfig message,
         IFeatureCollection features,
