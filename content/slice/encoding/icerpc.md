@@ -25,8 +25,7 @@ custom ServiceAddress
 ```
 
 A service address is encoded as a URI [string]. This URI can be absolute or relative.
-[Endpoint]: /icerpc-for-ice-users/rpc-core/endpoint
-[ice protocol]: /icerpc/ice-protocol/protocol-frames#encapsulation
+
 [outgoing request]: /icerpc/invocation/outgoing-request
 [outgoing response]: /icerpc/dispatch/outgoing-response
 [service address]: /icerpc/invocation/service-address
