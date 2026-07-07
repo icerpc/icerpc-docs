@@ -1,6 +1,6 @@
 ---
 title: Ice identity
-description: Learn how Ice identities are mapped to path in IceRPC.
+description: Learn how Ice identities are mapped to paths in IceRPC.
 ---
 
 In Ice, each Ice object has an identity represented by an Ice struct:

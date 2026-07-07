@@ -15,7 +15,7 @@ While the contents of a Slice file may reference definitions in other files, eac
 There is no notion of 'including' the contents of one file in another, and errors in one file do not affect the parsing
 of other files.
 
-A slice file consists of any number of [file attributes][attribute].
+A Slice file consists of any number of [file attributes][attribute].
 This is followed by an optional [module declaration][module-declaration], followed by any number of Slice definitions.
 It is illegal for a file to contain Slice definitions without a module declaration.
 
@@ -66,7 +66,7 @@ typealias T = Foo // Doesn't need to be qualified as `A::Foo`.
 ```
 
 All Slice definitions must be contained within modules - Slice definitions cannot exist at global scope.
-If a slice file contains any Slice definitions, a module declaration is required,
+If a Slice file contains any Slice definitions, a module declaration is required,
 and those definitions will be contained within the declared module.
 
 Module declarations must come before any Slice definitions and must come after any [file attributes][attribute].

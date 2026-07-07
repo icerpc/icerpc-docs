@@ -76,7 +76,7 @@ EndifDirective
     ;
 
 ConditionalStatement
-    : (IfDirective BlockContent) (ElifDirective BlockContent)* (ElseDirective <BlockContent>)? EndifDirective
+    : (IfDirective BlockContent) (ElifDirective BlockContent)* (ElseDirective BlockContent)? EndifDirective
     ;
 
 Expression

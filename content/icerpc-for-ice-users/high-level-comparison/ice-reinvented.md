@@ -53,7 +53,7 @@ IceRPC implementations in different languages.
 
 Ice and IceRPC are both fully open source but use different open source licenses.
 
-For Ice, we selected GPLv2, a widely used and well understood reciprocal license. It's a good fit for for projects
+For Ice, we selected GPLv2, a widely used and well understood reciprocal license. It's a good fit for projects
 licensed under GPLv2, for evaluation, and for some internal use. For most other use-cases, you need to purchase a
 commercial license in order to use Ice in your application.
 

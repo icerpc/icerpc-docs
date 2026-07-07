@@ -88,8 +88,8 @@ Congratulations! You have successfully created your first IceRPC application.
 
 You can learn more about what each file produced by the templates does in the Tutorial:
 
-- [Writing your first IceRpc + Slice server application][slice-server-tutorial]
-- [Writing your first IceRpc + Slice client application][slice-client-tutorial]
+- [Writing your first IceRPC + Slice server application][slice-server-tutorial]
+- [Writing your first IceRPC + Slice client application][slice-client-tutorial]
 
 [slice-client-tutorial]: /getting-started/icerpc-slice-tutorial/client-tutorial
 [slice-server-tutorial]: /getting-started/icerpc-slice-tutorial/server-tutorial

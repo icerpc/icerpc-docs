@@ -61,7 +61,7 @@ And just like the fields of a struct, you can include tagged fields unless the e
 For example:
 
 ```slice
-// Fields can be tagged unless the enum if marked compact
+// Fields can be tagged unless the enum is marked compact
 enum FlagColor {
     Red(tag(1) code: uint16?)
     White

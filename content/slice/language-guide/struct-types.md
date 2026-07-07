@@ -26,7 +26,7 @@ The fields of a struct can be regular fields (like the fields shown earlier) or 
 
 ## Compact struct
 
-A compact struct is a struct that cannot have tagged fields--unlike a regular struct, it cannot be augmented without
+A compact struct is a struct that cannot have tagged fields—unlike a regular struct, it cannot be augmented without
 breaking on the wire compatibility.
 
 For example:

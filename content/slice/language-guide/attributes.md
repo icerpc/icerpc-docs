@@ -95,7 +95,7 @@ See [allow attribute](#allow-attribute) above for an example.
 
 ## C# attributes
 
-The following attributes are specific to the C# mapping. They all start with the `cs::` suffix.
+The following attributes are specific to the C# mapping. They all start with the `cs::` prefix.
 
 | Attribute                                     | Applies to                                                                                         | Description                                                                          |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |

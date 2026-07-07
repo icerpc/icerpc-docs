@@ -51,7 +51,7 @@ server address to establish or reuse a connection to the target server and send 
 ### Service address with two or more server addresses
 
 A service address can specify additional server addresses with the `alt-server` query parameter. The value of this
-parameter is a server address without the `ice://` ori `icerpc://` prefix. For example:
+parameter is a server address without the `ice://` or `icerpc://` prefix. For example:
 
 ```
 icerpc://hello.zeroc.com/hello?alt-server=bonjour.zeroc.com,hola.zeroc.com

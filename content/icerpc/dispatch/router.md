@@ -5,7 +5,7 @@ description: Learn how to route incoming requests based on their path.
 
 ## Path-based routing
 
-A router is a dispatcher than routes incoming requests to other dispatchers based on the request's path. It can also
+A router is a dispatcher that routes incoming requests to other dispatchers based on the request's path. It can also
 execute middleware along this route.
 
 ```mermaid

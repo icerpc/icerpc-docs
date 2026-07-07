@@ -48,7 +48,7 @@ even when _Name_ is not in Pascal case.
 
 ### I*Name*
 
-Interface I*Name* provides the client-side API that allows you to call the remote IceRPC service that implements the
+Interface I*Name* provides the client-side API that allows you to call the remote IceRPC service that implements
 the associated Protobuf service. It's a minimal interface with an abstract method for each RPC method defined in this
 Protobuf service.
 
@@ -155,7 +155,7 @@ namespace Example;
 // Generated code
 public partial interface IWidgetService
 {
-    // One method per operation
+    // One method per rpc method
     ValueTask<WellKnownTypes.Empty> SpinAsync(
         SpinConfig message,
         IFeatureCollection features,
