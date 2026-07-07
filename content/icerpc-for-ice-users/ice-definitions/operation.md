@@ -125,7 +125,7 @@ public partial interface IGreeterService
 
 ## marshaled-result metadata directive
 
-The `"marshaled-result"`[marshaled-result] metadata directive allows you to change the return type of the mapped
+The [`"marshaled-result"`][marshaled-result] metadata directive allows you to change the return type of the mapped
 method on the generated Service interface: `marshaled-result` makes this method return a `ValueTask<PipeReader>`
 instead of the usual `ValueTask<T>`.
 

@@ -104,6 +104,6 @@ only request features: since it's all local, there is no need for response featu
 [RequestFieldKey]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/RequestFieldKey.slice
 [CompressionFormat]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/CompressionFormat.slice
 
-[IFeatureCollection]: csharp:IceRpc.Features.FeatureCollection
+[IFeatureCollection]: csharp:IceRpc.Features.IFeatureCollection
 [ICompressFeature]: csharp:IceRpc.Features.ICompressFeature
 [IsOneway]: csharp:IceRpc.OutgoingRequest#IceRpc_OutgoingRequest_IsOneway

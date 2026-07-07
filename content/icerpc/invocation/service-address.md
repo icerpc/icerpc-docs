@@ -48,7 +48,7 @@ icerpc://hello.zeroc.com/hello?transport=quic
 Such a service address is typically used when making invocations with a connection cache. The connection cache uses the
 server address to establish or reuse a connection to the target server and send requests on this connection.
 
-### Service address with two or more server addresses
+## Service address with two or more server addresses
 
 A service address can specify additional server addresses with the `alt-server` query parameter. The value of this
 parameter is a server address without the `ice://` or `icerpc://` prefix. For example:

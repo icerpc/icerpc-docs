@@ -29,4 +29,4 @@ A service address is encoded as a URI [string]. This URI can be absolute or rela
 [outgoing request]: /icerpc/invocation/outgoing-request
 [outgoing response]: /icerpc/dispatch/outgoing-response
 [service address]: /icerpc/invocation/service-address
-[string]: primitive-types#String
+[string]: primitive-types#string
