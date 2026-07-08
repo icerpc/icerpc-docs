@@ -63,7 +63,7 @@ option csharp_namespace = "Example";
 
 service Widget {
     rpc Spin (SpinConfig)
-        returns (google.protobuf.Empty)
+        returns (google.protobuf.Empty);
 }
 ```
 

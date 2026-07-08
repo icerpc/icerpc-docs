@@ -52,9 +52,9 @@ struct SequenceExample {
 ```csharp
 internal partial record struct SequenceExample
 {
-    internal IList<IList<string>> X;
+    internal required IList<IList<string>> X { get; set; }
 
-    internal IList<int?> Y;
+    internal required IList<int?> Y { get; set; }
 }
 ```
 

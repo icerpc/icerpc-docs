@@ -34,9 +34,9 @@ information middleware, it sets the [IDispatchInformationFeature] and you can re
 
 ```csharp
 // In Slice service implementation
-public ValueTask OpAsync(string message, FeatureCollection features, CancellationToken cancellationToken)
+public ValueTask OpAsync(string message, IFeatureCollection features, CancellationToken cancellationToken)
 {
-    if (features.Get<IDispatchInformationFeature> is IDispatchInformationFeature dispatchInformation)
+    if (features.Get<IDispatchInformationFeature>() is IDispatchInformationFeature dispatchInformation)
     {
         EndPoint from = dispatchInformation.ConnectionContext.TransportConnectionInformation.RemoteNetworkAddress;
         Console.WriteLine($"dispatching request from {from}");

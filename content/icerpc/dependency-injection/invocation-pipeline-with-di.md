@@ -31,7 +31,7 @@ using Microsoft.Extensions.DependencyInjection;
 // Add a new IInvoker singleton configured with an action.
 services
     .AddIceRpcClientConnection()
-    .AddIceRpcInvoker(builder => builder.Into<ClientConnection>())
+    .AddIceRpcInvoker(builder => builder.Into<ClientConnection>());
 ```
 
 You must specify a final invoker with the `Into` method. With this example, the new invoker flows into the
@@ -60,7 +60,7 @@ services
     .AddIceRpcInvoker(builder =>
         builder
             .UseLogger()
-            .Into<ClientConnection>())
+            .Into<ClientConnection>());
 ```
 
 Here, `UseLogger` is an extension method provided by the `IceRpc.Logger` assembly. This extension method works with any

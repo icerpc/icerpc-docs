@@ -13,7 +13,7 @@ enum Fruit { Apple, Pear, Orange }
 ```
 
 ```csharp
-enum Fruit { Apple, Pear, Orange }
+public enum Fruit { Apple, Pear, Orange }
 ```
 
 {% /aside %}

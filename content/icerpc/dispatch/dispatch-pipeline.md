@@ -54,7 +54,7 @@ using IceRpc;
 var clientConnectionOptions = new ClientConnectionOptions
 {
     Dispatcher = new MyCallback(),
-    ServerAddress = new Uri("icerpc://hello.zeroc.com")
+    ServerAddress = new ServerAddress(new Uri("icerpc://hello.zeroc.com"))
 };
 
 await using var connection = new ClientConnection(clientConnectionOptions);

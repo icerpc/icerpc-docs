@@ -49,7 +49,7 @@ The Slice type parameters are mapped to C# type parameters, following the usual 
 | Slice                                      | C# mapping                          |
 |--------------------------------------------|-------------------------------------|
 | `Result<string, int32>`                    | `Result<string, int>`               |
-| `Result<WellknownTypes::TimeStamp, int32>` | `Result<DateTime, int>`             |
+| `Result<WellKnownTypes::TimeStamp, int32>` | `Result<DateTime, int>`             |
 | `Result<string?, varint32>`                | `Result<string?, int>`              |
 | `Result<MyStruct, MyEnum>`                 | `Result<MyStruct, MyEnum>`          |
 

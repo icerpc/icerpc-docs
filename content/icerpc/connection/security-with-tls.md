@@ -21,7 +21,7 @@ For example:
 ```csharp
 // Always uses TLS.
 await using var connection = new ClientConnection(
-    "icerpc://hello.zeroc.com",
+    new Uri("icerpc://hello.zeroc.com"),
     multiplexedClientTransport: new QuicClientTransport());
 ```
 
@@ -59,11 +59,11 @@ In C#, this client-side TLS configuration is provided by a [SslClientAuthenticat
 ```csharp
 // We select the tcp transport (Slic over TCP) with ?transport=tcp, since the default transport is quic.
 // This connection does not use TLS since we don't pass a SslClientAuthenticationOptions parameter.
-await using var plainTcpConnection = new ClientConnection("icerpc://hello.zeroc.com?transport=tcp");
+await using var plainTcpConnection = new ClientConnection(new Uri("icerpc://hello.zeroc.com?transport=tcp"));
 
 // We pass a non-null SslClientAuthenticationOptions so the connection uses TLS.
 await using var secureTcpConnection = new ClientConnection(
-    "icerpc://hello.zeroc.com?transport=tcp",
+    new Uri("icerpc://hello.zeroc.com?transport=tcp"),
     new SslClientAuthenticationOptions());
 ```
 
@@ -81,14 +81,14 @@ For example:
 
 ```csharp
 // Uses the default client transport, TcpClientTransport.
-await using var connection = new ClientConnection("ice://hello.zeroc.com?transport=ssl");
+await using var connection = new ClientConnection(new Uri("ice://hello.zeroc.com?transport=ssl"));
 ```
 
 is equivalent to:
 
 ```csharp
 await using var connection = new ClientConnection(
-    "ice://hello.zeroc.com?transport=tcp",
+    new Uri("ice://hello.zeroc.com?transport=tcp"),
     new SslClientAuthenticationOptions());
 ```
 
@@ -113,7 +113,7 @@ get an error.
 ```csharp
 // Does not work: can't get a TLS connection with a transport that doesn't support TLS.
 await using var connection = new ClientConnection(
-    "icerpc://colochost",
+    new Uri("icerpc://colochost"),
     new SslClientAuthenticationOptions(),
     multiplexedClientTransport: new SlicClientTransport(colocClientTransport));
 ```

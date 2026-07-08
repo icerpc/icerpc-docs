@@ -31,7 +31,7 @@ interface Widget {
 }
 
 interface WidgetFactory {
-    /// Creates a new @Widget and returns its service address.
+    /// Creates a new {@link Widget} and returns its service address.
     createWidget() -> IceRpc::ServiceAddress
 }
 ```
@@ -62,7 +62,7 @@ interface Widget {
 }
 
 interface WidgetFactory {
-    /// Creates a new @Widget and returns a proxy to this new Widget.
+    /// Creates a new {@link Widget} and returns a proxy to this new Widget.
     createWidget() -> WidgetProxy
 }
 

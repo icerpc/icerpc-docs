@@ -23,7 +23,7 @@ struct Person
 maps to:
 
 ```csharp
-public record struct Person
+public partial record struct Person
 {
     public required string Name { get; set; } // Ice string maps to C# string
     public Address? Address { get; set; }     // Ice Address maps to nullable C# Address
@@ -84,7 +84,7 @@ struct Location
 maps to:
 
 ```csharp
-public record struct Location
+public partial record struct Location
 {
     public required string Name { get; set; }
     public Point Point { get; set; }
