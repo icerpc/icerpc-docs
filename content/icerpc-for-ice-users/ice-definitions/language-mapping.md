@@ -1,5 +1,6 @@
 ---
 title: Mapping Ice to C# with IceRPC
+description: An overview of how Ice definitions are mapped to C#.
 ---
 
 IceRPC provides full support for Ice's original Slice language, with definitions stored in `.ice` files.

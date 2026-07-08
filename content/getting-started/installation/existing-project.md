@@ -1,5 +1,6 @@
 ---
 title: Adding IceRPC to an existing project
+description: Learn how to get IceRPC set up in your existing project.
 ---
 
 IceRPC for C# is distributed as [NuGet] packages. To add IceRPC to an existing C# project, just add one or more

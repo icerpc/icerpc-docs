@@ -1,5 +1,6 @@
 ---
 title: IceRPC for Ice users
+description: Understand how IceRPC relates to Ice and how to use IceRPC and Ice together.
 showAside: false
 showReadingTime: false
 ---

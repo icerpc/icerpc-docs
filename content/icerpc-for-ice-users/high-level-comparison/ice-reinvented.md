@@ -1,5 +1,6 @@
 ---
 title: Ice reinvented
+description: Learn how IceRPC compares to Ice.
 ---
 
 IceRPC is a brand new RPC framework, that we wrote from scratch and then rewrote several times over. It is a spiritual

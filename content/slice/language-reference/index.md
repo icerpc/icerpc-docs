@@ -1,5 +1,6 @@
 ---
 title: Language reference
+description: A technical reference for the Slice language and its grammar notation.
 ---
 
 <!-- cspell:words ANTLR NAUR -->

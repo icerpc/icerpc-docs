@@ -1,5 +1,6 @@
 ---
 title: Constants and literals
+description: Learn how Ice constants and literals map to C#.
 ---
 
 An Ice constant is mapped to a C# static class with the same name. The generated class contains a constant named

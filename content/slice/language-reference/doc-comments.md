@@ -1,5 +1,6 @@
 ---
 title: Documentation comments
+description: A technical reference for Slice documentation comments.
 ---
 
 Slice comments that start with `///` are documentation (doc) comments. Slice doc comments can be attached to all Slice

@@ -1,5 +1,6 @@
 ---
 title: The Slic multiplexed transport
+description: An overview of the Slic multiplexed transport protocol.
 ---
 
 Slic is a [multiplexed transport][multiplexed-transport] that emulates [QUIC] while relying on a traditional duplex
