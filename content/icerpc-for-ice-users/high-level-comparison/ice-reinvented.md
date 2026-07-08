@@ -2,7 +2,7 @@
 title: Ice reinvented
 ---
 
-IceRPC is a brand new RPC framework that we wrote from scratch and then rewrote several times over. It is a spiritual
+IceRPC is a brand new RPC framework that we wrote from scratch and then rewrote several times over. It is the spiritual
 successor to Ice since many ideas and designs in IceRPC are a direct result of our experience developing Ice and helping
 Ice users build all kinds of applications with Ice.
 

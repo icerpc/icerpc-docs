@@ -28,7 +28,7 @@ The request fields represent out-of-band information carried by a request "over 
 and written by [interceptors](interceptor) and [middleware] in an effort to coordinate the processing of the same
 request in the client and in the server.
 
-A field is an entry in a dictionary from `RequestFieldKey` to sequence of bytes, where [RequestFieldKey] is an enumeration
+A field is an entry in a dictionary from `RequestFieldKey` to a sequence of bytes, where [RequestFieldKey] is an enumeration
 defined in Slice:
 
 ```slice

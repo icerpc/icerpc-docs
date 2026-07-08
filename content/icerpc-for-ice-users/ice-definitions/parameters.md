@@ -5,8 +5,7 @@ description: Learn how Ice parameters and return values are mapped to C#
 
 ## In parameters
 
-An in parameter is mapped to a C# parameter with the same name converted to camel case; its type is the
-mapped C# type.
+An in parameter is mapped to a C# parameter with the same name converted to camel case; its type is the mapped C# type.
 
 For example, an Ice parameter `string name` is mapped to a C# parameter `string name`.
 
