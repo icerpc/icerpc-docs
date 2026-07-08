@@ -55,7 +55,7 @@ Fruit enumeration.
 
 ## cs:attribute metadata directive
 
-The `"cs:attribute"`[cs-attribute] metadata directive adds the specified C# attribute to the mapped C# enum. You
+The [`"cs:attribute"`][cs-attribute] metadata directive adds the specified C# attribute to the mapped C# enum. You
 can use it to add the [FlagsAttribute] to the mapped C# enum. For example:
 
 {% aside alignment="top" %}
@@ -90,5 +90,6 @@ The `Flags` attribute is moderately useful with IceRPC since the decoding code o
 enumerators. For example, you won't be able to decode `6` for `Red` and `Green` since `6` doesn't correspond to any
 enumerator.
 
+[InvalidDataException]: https://learn.microsoft.com/en-us/dotnet/api/system.io.invaliddataexception
 [cs-attribute]: https://docs.zeroc.com/ice/3.8/csharp/slice-metadata-directives#SliceMetadataDirectives-cs:attribute
 [FlagsAttribute]: https://learn.microsoft.com/en-us/dotnet/api/system.flagsattribute

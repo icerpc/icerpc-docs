@@ -72,4 +72,5 @@ The integer value determines the minimum number of bytes required in the encoded
 | varuint{32,62} | 16,384 to 1,073,741,823                                 | 4                       |
 
 Any other value is encoded using 8 bytes.
+
 [UTF-8]: https://en.wikipedia.org/wiki/UTF-8

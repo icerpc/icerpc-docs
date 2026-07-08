@@ -228,4 +228,4 @@ set to 1.1.
 [ice-protocol]: https://docs.zeroc.com/ice/3.8/cpp/ice-protocol
 [ice-slice]: https://docs.zeroc.com/ice/3.8/csharp/the-slice-language
 [status-code]: ../invocation/incoming-response#status-code
-[request-fields]: ../invocation/outgoing-request#request-field
+[request-fields]: ../invocation/outgoing-request#request-fields

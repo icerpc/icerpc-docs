@@ -9,8 +9,7 @@ An Ice communicator has numerous responsibilities:
 - it creates and manages client connections
 - when the application makes an invocation, it selects the connection to use (and sometimes create this connection)
 - it provides invocation timeouts, invocation retries, logging/tracing, and metrics
-- it's used to create object adapters
-  and more.
+- it's used to create object adapters, and more.
 
 IceRPC replaces this multi-purpose `Communicator` with smaller, more focused objects and abstractions that you compose
 to get the behavior you want.

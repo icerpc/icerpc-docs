@@ -151,7 +151,6 @@ is a shortcut for:
 The main program then creates a [Server] that directs all incoming requests to `router`:
 
 ```csharp
-
 using X509Certificate2 serverCertificate = X509CertificateLoader.LoadPkcs12FromFile(
     "certs/server.p12",
     password: null,

@@ -11,6 +11,7 @@ An operation consists of:
 - a name (the name of the operation)
 - a list of [parameters] (the operation parameters)
 - an arrow followed by one or more return [parameters] (optional)
+
 For example:
 
 ```slice

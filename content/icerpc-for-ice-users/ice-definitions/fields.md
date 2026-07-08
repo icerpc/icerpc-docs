@@ -4,7 +4,7 @@ description: Learn how Ice fields are mapped to C#
 ---
 
 An Ice field maps to a C# property with the same name converted to Pascal case. You can customize this C# name with the
-`"cs:identifier"`[cs-identifier] metadata directive.
+[`"cs:identifier"`][cs-identifier] metadata directive.
 
 The type of the C# field is the mapped Ice type; this C# type is nullable for proxies and classes.
 

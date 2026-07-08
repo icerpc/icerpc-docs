@@ -815,8 +815,9 @@ UndelimitedList<T>
 [type-alias-guide]: /slice/language-guide/type-alias
 [attribute-guide]: /slice/language-guide/attributes
 
-[doc-comment]: TODO
-[keywords]: TODO
-[streamed-parameters-guide]: TODO
+[doc-comment]: /slice/language-reference/doc-comments
+[keywords]: #lexical-grammar
+[preprocessed]: /slice/language-reference/preprocessor-directives
+[streamed-parameters-guide]: /slice/language-guide/parameters
 
 [utf-8]: https://en.wikipedia.org/wiki/UTF-8

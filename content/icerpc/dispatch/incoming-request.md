@@ -56,5 +56,5 @@ only request features: since it's all local, there is no need for response featu
 
 [fields]: ../invocation/outgoing-request#request-fields
 
-[IFeatureCollection]: csharp:IceRpc.Features.FeatureCollection
+[IFeatureCollection]: csharp:IceRpc.Features.IFeatureCollection
 [IDispatchInformationFeature]: csharp:IceRpc.Features.IDispatchInformationFeature
