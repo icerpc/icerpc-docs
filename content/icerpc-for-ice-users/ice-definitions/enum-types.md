@@ -90,6 +90,6 @@ The `Flags` attribute is moderately useful with IceRPC since the decoding code o
 enumerators. For example, you won't be able to decode `6` for `Red` and `Green` since `6` doesn't correspond to any
 enumerator.
 
+[InvalidDataException]: https://learn.microsoft.com/en-us/dotnet/api/system.io.invaliddataexception
 [cs-attribute]: https://docs.zeroc.com/ice/3.8/csharp/slice-metadata-directives#SliceMetadataDirectives-cs:attribute
 [FlagsAttribute]: https://learn.microsoft.com/en-us/dotnet/api/system.flagsattribute
-[InvalidDataException]: https://learn.microsoft.com/en-us/dotnet/api/system.io.invaliddataexception
