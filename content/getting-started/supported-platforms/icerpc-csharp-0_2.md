@@ -1,5 +1,6 @@
 ---
 title: IceRPC for C# 0.2
+description: The supported platforms for IceRPC for C# 0.2.
 ---
 
 ZeroC supports IceRPC for C# on the following platforms:

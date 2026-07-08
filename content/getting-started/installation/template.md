@@ -1,5 +1,6 @@
 ---
 title: Using the IceRPC .NET project templates
+description: Start a new project using an IceRPC project template.
 ---
 
 ## Template installation

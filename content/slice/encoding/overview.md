@@ -1,5 +1,6 @@
 ---
 title: The Slice encoding
+description: Learn how Slice encodes types into byte streams.
 ---
 
 ## Compact binary serialization format

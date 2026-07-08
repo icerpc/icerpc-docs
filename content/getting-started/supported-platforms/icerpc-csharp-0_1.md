@@ -1,5 +1,6 @@
 ---
 title: IceRPC for C# 0.1
+description: The supported platforms for IceRPC for C# 0.1.
 showNavigation: false
 ---
 

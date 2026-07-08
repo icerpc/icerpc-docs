@@ -1,5 +1,6 @@
 ---
 title: Slice grammar
+description: The complete lexical and syntactic grammar of the Slice language.
 ---
 
 This page describes the grammatical rules, usage, and restrictions of the Slice language.

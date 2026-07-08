@@ -1,5 +1,6 @@
 ---
 title: Preprocessor directives
+description: A technical reference for the Slice preprocessor directives.
 ---
 
 The preprocessor operates on lines beginning with a `#` character (ignoring any leading whitespace). These lines
