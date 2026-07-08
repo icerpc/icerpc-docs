@@ -66,7 +66,7 @@ namespace VisitorCenter;
 public partial interface IGreeter
 {
    Task<GreetResponse> GreetAsync(
-      GreeterRequest message,
+      GreetRequest message,
       IFeatureCollection? features = null,
       CancellationToken cancellationToken = default);
 }

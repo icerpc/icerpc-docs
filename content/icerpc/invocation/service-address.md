@@ -102,7 +102,7 @@ await using var clientConnection = new ClientConnection(new Uri("icerpc://hello.
 using var request = new OutgoingRequest(new ServiceAddress(new Uri("icerpc:/greeter")));
 
 // ClientConnection accepts requests that don't specify a server address
-IncomingResponse response = await connection.InvokeAsync(request);
+IncomingResponse response = await clientConnection.InvokeAsync(request);
 ```
 
 ## Relative service address

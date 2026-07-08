@@ -67,7 +67,7 @@ using IceRpc;
 
 await using var server = new Server(..., new Uri("icerpc://[::1]:0"));
 ServerAddress actualServerAddress = server.Listen();
-Console.WriteLine($"server is now listening on {actualServerAddress}); // shows actual port
+Console.WriteLine($"server is now listening on {actualServerAddress}"); // shows actual port
 // then somehow share this server address with the clients
 ```
 

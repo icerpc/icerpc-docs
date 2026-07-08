@@ -197,11 +197,11 @@ initialize the invoker, for example:
 var proxy = new WidgetProxy { Invoker = connection };
 
 // The above is equivalent to:
-var proxy = new WidgetPRoxy(connection);
+var proxy = new WidgetProxy(connection);
 ```
 
-When a Slice interface derives from another interface, its proxy struct provides an implicit conversion operator to be
-base interface. For example:
+When a Slice interface derives from another interface, its proxy struct provides an implicit conversion operator to the
+base interface's proxy struct. For example:
 
 ```slice
 module Draw
@@ -218,12 +218,12 @@ namespace Draw;
 
 internal readonly partial record struct RectangleProxy : IRectangle, IProxy
 {
-    internal static implicit operator ShapeProxy(RectangleProxy proxy)
+    public static implicit operator ShapeProxy(RectangleProxy proxy)
     {
         ...
     }
 
-    internal static implicit operator FillableProxy(RectangleProxy proxy)
+    public static implicit operator FillableProxy(RectangleProxy proxy)
     {
         ...
     }

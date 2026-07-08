@@ -137,6 +137,8 @@ Finally, the client sends a `Greet` request, awaits the response (the greeting),
 prints the greeting and shuts down the connection gracefully:
 
 ```csharp
+var request = new GreetRequest { Name = Environment.UserName };
+
 GreetResponse response = await greeter.GreetAsync(request);
 
 Console.WriteLine(response.Greeting);

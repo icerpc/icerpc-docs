@@ -57,11 +57,11 @@ struct DictionaryExample {
 ```csharp
 internal partial record struct DictionaryExample
 {
-    internal IDictionary<
+    internal required IDictionary<
         int,
-        IDictionary<string, double>> X;
+        IDictionary<string, double>> X { get; set; }
 
-    internal IDictionary<string, double?> Y;
+    internal required IDictionary<string, double?> Y { get; set; }
 }
 ```
 

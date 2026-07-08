@@ -125,7 +125,7 @@ await using var connection = new ClientConnection(new Uri("icerpc://examples.zer
 var greeterProxy = new GreeterProxy(connection, new Uri("icerpc:/greeter"));
 
 // Make an RPC and print the return value.
-string greeting = await greeter.GreetAsync("Syd");
+string greeting = await greeterProxy.GreetAsync("Syd");
 Console.WriteLine(greeting);
 ```
 

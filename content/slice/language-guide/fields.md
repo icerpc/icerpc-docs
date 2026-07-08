@@ -10,7 +10,7 @@ A field is defined as `name: Type`, where `name` is the field's name, and `Type`
 ```slice
 name: string
 image: Sequence<uint8>
-address: WellKnownType::Uri
+address: WellKnownTypes::Uri
 ```
 
 Fields can be separated by either whitespace or a single comma. You would typically use a comma when fields are on the

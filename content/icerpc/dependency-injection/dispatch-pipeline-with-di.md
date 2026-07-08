@@ -154,6 +154,7 @@ public class DIDeadlineMiddleware : IMiddleware<DeadlineInformation>
             deadlineInfo.Value = deadline;
 
             // TODO: enforce deadline while calling _next.DispatchAsync.
+            return _next.DispatchAsync(request, cancellationToken);
         }
         else
         {
