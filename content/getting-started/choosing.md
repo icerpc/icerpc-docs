@@ -17,7 +17,7 @@ definitions are also known as the "contract" between your client and your server
 A code generator then produces code from these definitions. This generated code:
 
 - provides a typed API in the programming language of your choice
-- implements this API by encoding/decoding typed data (integers, strings, structs, etc.) into and from stream of bytes
+- implements this API by encoding/decoding typed data (integers, strings, structs, etc.) into and from a stream of bytes
 in a well-defined format
 
 With an IDL, you don't need to worry about encoding and decoding data structures into and from a portable binary format:

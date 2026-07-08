@@ -68,14 +68,14 @@ internal partial class HelloService : IHelloService, IIceObjectService
 ## Checked cast
 
 `checkedCast` is a helper method that calls the `ice_isA` operation on the proxy being "checked cast": it asks the
-target service (Ice object with Ice's terminology) if it implements a specific Ice interface. While this check is
+target service (Ice object in Ice's terminology) if it implements a specific Ice interface. While this check is
 generally unnecessary (`uncheckedCast` works just as well), it used to be shown by all Ice demos and is therefore very
 common in existing code.
 
 The net result is: if you reimplement an existing Ice server with IceRPC, your services need to implement `Ice::Object`
 when they are being "checked cast" by existing Ice client applications.
 
-On the client-side, if you like `checkedCast` and want to keep check-casting your proxies, the IceRPC + Ice integration
+On the client side, if you like `checkedCast` and want to keep check-casting your proxies, the IceRPC + Ice integration
 provides an equivalent API: [AsAsync]. The target service must implement `Ice::Object`; otherwise, `AsAsync` will fail
 with a [DispatchException] with status code [NotImplemented].
 

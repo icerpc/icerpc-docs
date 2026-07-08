@@ -3,7 +3,7 @@ title: Ice reinvented
 description: Learn how IceRPC compares to Ice.
 ---
 
-IceRPC is a brand new RPC framework, that we wrote from scratch and then rewrote several times over. It is a spiritual
+IceRPC is a brand new RPC framework that we wrote from scratch and then rewrote several times over. It is the spiritual
 successor to Ice since many ideas and designs in IceRPC are a direct result of our experience developing Ice and helping
 Ice users build all kinds of applications with Ice.
 
@@ -37,7 +37,7 @@ select:
 
 ## Different philosophies
 
-Ice delivers a uniform set of components, features, APIs across platforms and languages. The same APIs are available in
+Ice delivers a uniform set of components, features, and APIs across platforms and languages. The same APIs are available in
 pretty much all programming languages and look the same. This way, when you port your code from one programming language
 to another, the Ice portion of your code can essentially remain the same.
 

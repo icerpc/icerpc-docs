@@ -28,7 +28,7 @@ The request fields represent out-of-band information carried by a request "over 
 and written by [interceptors](interceptor) and [middleware] in an effort to coordinate the processing of the same
 request in the client and in the server.
 
-A field is an entry in a dictionary `RequestFieldKey` to sequence of bytes, where [RequestFieldKey] is an enumeration
+A field is an entry in a dictionary from `RequestFieldKey` to a sequence of bytes, where [RequestFieldKey] is an enumeration
 defined in Slice:
 
 ```slice
@@ -48,7 +48,7 @@ compressed with brotli"; the compressor middleware can then decompress this (inc
 ## Request payload and payload continuation
 
 The payload of a request is a stream of bytes that represents the argument(s) of an operation. When a connection sends a
-request, it reads and logically copies these bytes to the network connection until there is no more byte to read.
+request, it reads and logically copies these bytes to the network connection until there are no more bytes to read.
 
 On the other side, the connection reads these bytes from the network, creates an incoming request and gives this request
 to a [dispatcher].

@@ -49,7 +49,7 @@ compile.
 ## C# language mapping
 
 This chapter describes how Ice definitions map to C# when targeting IceRPC. As you would expect, an Ice struct
-maps to C# record struct, an Ice class maps to a C# class, an Ice enum maps to a C# enum, an Ice field maps to a
+maps to a C# record struct, an Ice class maps to a C# class, an Ice enum maps to a C# enum, an Ice field maps to a
 C# property, and so on.
 
 There are a few notable differences between the original C# mapping (when targeting Ice) and the new mapping for IceRPC:

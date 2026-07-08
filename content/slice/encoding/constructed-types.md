@@ -57,7 +57,7 @@ A sequence of `int32` with values 5, 32 and 9 is encoded as:
 
 ## Sequence with an optional element type
 
-A sequence of N elements with a optional element type T? is encoded as a varuint62-encoded N followed by a
+A sequence of N elements with an optional element type T? is encoded as a varuint62-encoded N followed by a
 [bit sequence][bit-sequence] with N bits, followed by each element with a value encoded in order.
 
 ### Example: sequence of int32?

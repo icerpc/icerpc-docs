@@ -12,7 +12,7 @@ connection, except for the very first step:
 
     (server only) Accept a multiplexed connection from a client.
 
-2. Connect the multiplexed connection. This connect operation is transport-dependent and can be no-op.
+2. Connect the multiplexed connection. This connect operation is transport-dependent and can be a no-op.
 
 3. Open a unidirectional stream to the peer in the connected multiplexed connection: the outbound control stream.
 
@@ -49,7 +49,7 @@ There is currently only one setting, `MaxHeaderSize`. It specifies the maximum s
 response sent over this connection.
 
 Not specifying the `MaxHeaderSize` setting is equivalent to specifying its default value, 16,383. This default value
-allows to encode the size of request and response headers on no more than 2 bytes.
+allows the size of request and response headers to be encoded on no more than 2 bytes.
 
 If a client or a server does not want to use this default value, it sends its desired value to the peer in the
 `Settings` frame. This tells the peer: "I only accept frames with a header up to this size". It is uncommon to change

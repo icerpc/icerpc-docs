@@ -11,7 +11,7 @@ peer.
 For example, you can map a Slice struct to a read-only C# record struct with the `[cs::readonly]` attribute. The
 addition of the `readonly` keyword to your C# struct has no effect whatsoever on the data transmitted over the wire.
 
-Adding or removing an attribute to the Slice definitions of your client application has no effect on an unmodified
+Adding an attribute to (or removing an attribute from) the Slice definitions of your client application has no effect on an unmodified
 server application, and vice-versa.
 
 An attribute is enclosed in square brackets just before the construct it applies to. For example:

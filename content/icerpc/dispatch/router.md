@@ -47,7 +47,7 @@ These other dispatchers are registered with the router using `map` and `mount` m
 - `mount` associates a dispatcher with a path prefix in the router.
 
     For example, you can mount path-prefix `/user` to an account service. A request with path `/user` or
-    `/user/foo` is a match. A request with path `/`, `/user2` is not a match.
+    `/user/foo` is a match. A request with path `/` or `/user2` is not a match.
 
     In C#, you would write:
 

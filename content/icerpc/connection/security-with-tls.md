@@ -5,7 +5,7 @@ description: Learn how to secure your connections with TLS.
 
 ## TLS - a transport feature
 
-The ice and icerpc protocol are neither secure nor non-secure because securing communications using TLS is the
+The ice and icerpc protocols are neither secure nor non-secure because securing communications using TLS is the
 responsibility of the underlying transport.
 
 There is no "s" variation of the icerpc protocol or a distinct secure port for secure icerpc connections. When you see
@@ -94,7 +94,7 @@ await using var connection = new ClientConnection(
 
 The ssl transport is provided solely for backward compatibility with Ice: the standard way for an Ice application to
 request a secure connection is to use a proxy with an ssl server address. When IceRPC + Slice decodes a service
-address with a ssl server address, the ssl transport captures this information ("TLS required") and ensures the client
+address with an ssl server address, the ssl transport captures this information ("TLS required") and ensures the client
 establishes a secure connection when it makes an invocation to this service address.
 
 {% callout %}

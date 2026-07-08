@@ -67,7 +67,7 @@ Here, `UseLogger` is an extension method provided by the `IceRpc.Logger` assembl
 DI container that implements [IServiceProvider], such as Microsoft's DI container and [Simple
 Injector][simple-injector]'s container.
 
-The implementation of the `UseLogger` method simply retrieves a logger instance from the DI container and then create
+The implementation of the `UseLogger` method simply retrieves a logger instance from the DI container and then creates
 a new interceptor with this instance:
 
 ```csharp

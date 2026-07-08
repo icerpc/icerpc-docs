@@ -29,14 +29,14 @@ type. For example:
     unknown.
 
     A stream parameter cannot be tagged. Tagging is unnecessary for stream parameters because you can add or remove a
-    stream parameter to/from an operation or a return type without breaking on the wire compatibility. When the
+    stream parameter to/from an operation or a return type without breaking on-the-wire compatibility. When the
     generated code decodes a payload with an unexpected stream, it ignores this stream and tells the sender "don't send
     me more". In the reverse situation—the decoding code expects a stream at the end of the payload but the sender
     doesn't encode anything—the decoding code simply returns an empty stream.
 
 ## Tagged parameters
 
-The syntax and semantics of tagged parameters is the same as the syntax and semantics of tagged fields. The scope of a
+The syntax and semantics of tagged parameters are the same as the syntax and semantics of tagged fields. The scope of a
 tag number within an operation is the parameter list or return type that contains the tagged parameter. It doesn't
 encroach on the scope of other tagged parameters or fields.
 

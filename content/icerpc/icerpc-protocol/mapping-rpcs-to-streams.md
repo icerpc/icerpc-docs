@@ -9,7 +9,7 @@ The QUIC transport and its multiplexed transport abstraction are ideal for RPCs 
 advantage of these transports.
 
 icerpc creates a dedicated multiplexed stream for each RPC. A two-way RPC, with a request and a response, is carried by
-a bidirectional stream, while a one-way RPC, with a request and no response, is carried by an unidirectional stream.
+a bidirectional stream, while a one-way RPC, with a request and no response, is carried by a unidirectional stream.
 
 A request flows from the endpoint that created the stream to the endpoint that accepted the stream. A response flows the
 other way—from the endpoint that accepted the stream to the endpoint that created the stream.

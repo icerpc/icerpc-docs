@@ -74,7 +74,7 @@ flowchart LR
 
 These pipelines intercept your requests and responses and you decide what they do with them. If you want to log your
 requests and responses, add the Logger interceptor to your invocation pipeline or the Logger middleware to your dispatch
-pipeline. If you want to retry automatically failed requests that can be retried, add the Retry interceptor to your
+pipeline. If you want to automatically retry failed requests that can be retried, add the Retry interceptor to your
 invocation pipeline. IceRPC provides a number of interceptors and middleware for compression, deadlines, logging,
 metrics, OpenTelemetry integration, and more. You can also easily create and install your own interceptors or middleware
 to customize these pipelines.
@@ -87,13 +87,13 @@ and fewer bugs.
 ### Transports and more
 
 This modularity and extensibility is everywhere in IceRPC. You can easily implement a new duplex or multiplexed
-transport and then plug it in IceRPC. All the transport interfaces are public and fully documented.
+transport and then plug it into IceRPC. All the transport interfaces are public and fully documented.
 
 And you can use IceRPC with a [DI container]—or not. It's all opt-in.
 
 ### Choose your IDL
 
-IceRPC provides everything you need to make RPCs. When you use only IceRPC's core API, the payload of your requests
+IceRPC provides everything you need to make RPCs. When you use only IceRPC's core API, the payloads of your requests
 and responses are streams of bytes, and you need to manually encode and decode any typed data (such as strings and
 integers) in these streams. This is doable but laborious.
 

@@ -208,11 +208,11 @@ A single return parameter can be specified by an arrow, followed by an optional 
 The syntax of a single return type is identical to a [parameter], but without an identifier or colon separator.
 
 Multiple return parameters can be specified as a tuple. This consists of an arrow, followed by a list of
-[parameters][parameter] wrapped in parenthesis.
-It is illegal for a return tuple to contain less than 2 elements
+[parameters][parameter] wrapped in parentheses.
+It is illegal for a return tuple to contain less than 2 elements.
 
-The `stream` keyword can only be used within a list of parameters
-at most one may be streamed and it must be the last parameter in that list. Note that operation parameter and return
+The `stream` keyword can only be used within a list of parameters;
+at most one may be streamed, and it must be the last parameter in that list. Note that operation parameter and return
 parameters are separate lists; each can contain their own streamed parameter.
 
 Parameters in lists can be optionally separated by commas.
@@ -242,8 +242,8 @@ Parameter
 
 Parameters also support the [`stream`][streamed-parameters-guide] modifier keyword, which may be applied to the
 parameter's type.
-Streamed parameters are only supported within a list of parameters at most one may be streamed and it must be the last
-parameter in that list.
+Streamed parameters are only supported within a list of parameters; at most one may be streamed, and it must be the
+last parameter in that list.
 For additional information on parameters, see the [parameter][parameter-guide] page.
 
 ### Enum types
@@ -467,7 +467,7 @@ String literals consist of any number of [UTF-8] characters, wrapped in a pair o
 Any characters within a string literal are treated as text and given no semantic meaning.
 
 Slice supports escaping characters within string literals.
-This allows you include any character in your string, including double-quotes.
+This allows you to include any character in your string, including double-quotes.
 To escape a character, prefix it with a backslash.
 To write a literal backslash, you must escape it with another backslash: `\\`.
 
@@ -493,7 +493,7 @@ An attribute consists of a directive, optionally followed by attribute arguments
 A directive is syntactically equivalent to a [scoped identifier][identifier], but instead of specifying namespaces,
 the presence of scopes limits when the attribute is applied.
 
-Attribute arguments consist of any number of arguments wrapped in a pair of parenthesis, separated by commas.
+Attribute arguments consist of any number of arguments wrapped in a pair of parentheses, separated by commas.
 Arguments may be either a [string literal][string] or an [unscoped identifier][identifier].
 
 ```ebnf {% showTitle=false %}

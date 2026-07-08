@@ -19,7 +19,7 @@ sending data over the stream once the window is full. Sending more data is a pro
 sending data only after receiving a [StreamWindowUpdate] frame.
 
 The `StreamWindowUpdate` frame carries the amount of additional data the receiver is willing to accept. The receiver can
-send this frame at anytime to increase the stream window size in the sender.
+send this frame at any time to increase the stream window size in the sender.
 
 The initial window size is specified by the [InitialStreamWindowSize][connection-parameters] parameter exchanged on
 connection establishment.
@@ -35,7 +35,7 @@ Each side of the connection defines how many streams it's willing to accept with
 [MaxBidirectionalStreams][connection-parameters] and [MaxUnidirectionalStreams][connection-parameters] parameters
 transmitted during connection establishment. Stream creation is paused when this limit is reached. For example, if the
 peer's `MaxBidirectionalStreams` parameter is 5 and 5 bidirectional streams are opened, the creation of the next
-bidirectional stream is delayed until one of the stream is closed. Opening an additional stream when the limit is
+bidirectional stream is delayed until one of the streams is closed. Opening an additional stream when the limit is
 reached is a protocol error.
 
 [http-stream-flow-control]: https://datatracker.ietf.org/doc/html/rfc7540#page-22

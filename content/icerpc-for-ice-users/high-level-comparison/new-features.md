@@ -66,7 +66,7 @@ with the definitions it depends on. You can use a forward declaration to introdu
 Slice files use the `.ice` file extension.
 
 On the other hand, the compilation model for the new Slice files is more like C# and Java: the compilation uses a set of
-reference files specified as argument to the compiler, and there is no `#include` preprocessing directive or forward
+reference files specified as arguments to the compiler, and there is no `#include` preprocessing directive or forward
 declarations.
 
 Another difference is the syntax for parameters and fields: Ice's uses a C-like syntax, while the new Slice syntax is

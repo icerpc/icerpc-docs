@@ -13,7 +13,7 @@ positions 8 to 15 etc., until position N - 1. The remaining bits, if any, must b
 
 Bit sequences are used to encode fields, sequences, and other lists with optional types in a space-optimized fashion.
 
-Each position in the bit sequence encodes whether or not the element in the list has a value or no value. When the bit
+Each position in the bit sequence encodes whether the element in the list has a value or no value. When the bit
 at position P is set in the bit sequence, the element at position P has a value; when the bit is unset, the element at
 position P has no value.
 

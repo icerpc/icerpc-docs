@@ -51,7 +51,7 @@ the sender or recipient may not know at all.
 ## Tagged fields
 
 A field can have a tag before its name, which makes this field a "tagged field". A tag consists of the `tag` keyword
-followed by a tag number in parenthesis. For example:
+followed by a tag number in parentheses. For example:
 
 ```slice
 struct Person {

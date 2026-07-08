@@ -14,7 +14,7 @@ struct Identity
 ```
 
 In IceRPC, Ice objects are called services, and each service has a URI-compatible absolute path. For interop with Ice,
-the identity of Ice objects can be converted back and forth into URI-compatible percent-escaped path.
+the identities of Ice objects can be converted back and forth into URI-compatible percent-escaped paths.
 
 For simple identities with only ASCII letters and numbers, the conversion is straightforward:
 

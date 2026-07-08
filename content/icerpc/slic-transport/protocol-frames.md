@@ -13,7 +13,7 @@ Frames and types from this page are defined using [Slice].
 All the frames have a header and a body. The header layout is common to all Slic versions and is composed of the
 following fields:
 
-- a frame type defined as an `uint8` enumeration
+- a frame type defined as a `uint8` enumeration
 - a frame size defined as a `varuint62` representing the size of the frame body.
 
 The frame type is defined as follows:
@@ -121,7 +121,7 @@ compact struct PingFrame {
     payload: OpaqueData
 }
 
-custom OpaqueData // 64-bits opaque data
+custom OpaqueData // 64-bit opaque data
 ```
 
 A `Pong` frame with the same opaque payload must be sent after receiving a `Ping` frame.
@@ -129,13 +129,13 @@ A `Pong` frame with the same opaque payload must be sent after receiving a `Ping
 {% callout %}
 
 The `Ping` frame can be used for different purposes. For example, it can be used to prevent a connection from becoming
-idle or to measure the round-trip time (RTT). The opaque payload allows to identify the different `Ping` frames.
+idle or to measure the round-trip time (RTT). The opaque payload makes it possible to identify the different `Ping` frames.
 
 {% /callout %}
 
 ## Pong frame
 
-An Pong frame carries an opaque payload. It's defined as follows:
+A `Pong` frame carries an opaque payload. It's defined as follows:
 
 ```slice
 compact struct PongFrame {
@@ -145,7 +145,7 @@ compact struct PongFrame {
 }
 ```
 
-A `Pong` frame is sent in response of a `Ping` frame. It must include the same payload as the `Ping` frame.
+A `Pong` frame is sent in response to a `Ping` frame. It must include the same payload as the `Ping` frame.
 
 ## Stream and StreamLast frames
 
