@@ -18,7 +18,7 @@ is encoded as a Length-Prefixed-Message inside a request or response payload:
 - the following bytes are the Protobuf-encoded message
 
 It's a simple and uniform framing. IceRPC + Protobuf does not currently provide support for gRPC-style compression
-(`Compress-Flag` set to 1) so `Compress-Flag` is always set to 0.
+(`Compressed-Flag` set to 1) so `Compressed-Flag` is always set to 0.
 
 As a special case, a one-way call produces a response with an empty payload—zero bytes, carrying no
 Length-Prefixed-Message. IceRPC + Protobuf accepts such an empty response payload and decodes it as a

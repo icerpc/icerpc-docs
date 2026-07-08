@@ -60,9 +60,9 @@ A stream is considered closed when both writes and reads are closed.
 
 ## Sending and receiving data over a stream
 
-The `Stream` and `StreamLast` frames cary a sequence of bytes provided by the application. Multiple `Stream` frames can
+The `Stream` and `StreamLast` frames carry a sequence of bytes provided by the application. Multiple `Stream` frames can
 be sent over the Slic connection for a specific stream. They will be received in order by the peer. The `StreamLast`
-frame cary the last sequence of bytes delivered to the peer. Upon receiving this frame, the peer can assume that no more
+frame carries the last sequence of bytes delivered to the peer. Upon receiving this frame, the peer can assume that no more
 data will be sent for this stream.
 
 Sending a `Stream` frame after a `StreamLast` frame or multiple `StreamLast` frames for the same stream is considered a
@@ -106,7 +106,7 @@ application. The write-side enters the `Write` state when the application starts
 the `Write` state, Slic can send `Stream` or `StreamLast` frames on that stream to carry the application data.
 
 The write-side exits the `Write` state to enter the `WaitForPeerReadsClosed` state when the application indicates that
-no more data will be written. Once it gets this notification from the application, the write-side sends a StreamLast
+no more data will be written. Once it gets this notification from the application, the write-side sends a `StreamLast`
 frame to notify the peer.
 
 In the `WaitForPeerReadsClosed` state, the write-side waits for the peer to consume all the data. This is required to
@@ -176,7 +176,7 @@ stateDiagram
 ```
 
 The state machine doesn't have the `WaitForAppConsume` state because the stream's read-side doesn't need to notify the
-peer that its done reading.
+peer that it's done reading.
 
 [RFC9000]: https://www.rfc-editor.org/rfc/rfc9000.html#name-stream-types-and-identifier
 [connection-parameters]: connection-establishment#connection-establishment-parameters

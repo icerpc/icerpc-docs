@@ -1,6 +1,6 @@
 ---
 title: icerpc and multiplexed transports
-description: Lean about the icerpc protocol and multiplexed transports
+description: Learn about the icerpc protocol and multiplexed transports
 ---
 
 ## The icerpc protocol

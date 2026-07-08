@@ -10,7 +10,7 @@ same code also intercepts the incoming response returned by the remote service b
 
 At a more technical level, an interceptor is an [invoker](invocation-pipeline#the-invoker-abstraction) that holds
 another invoker ("next") and calls `invoke` on this next invoker as part of the implementation of its own `invoke`
-method. This next invoker can be a client connection, a connection cache`, another interceptor, or some other kind of
+method. This next invoker can be a client connection, a connection cache, another interceptor, or some other kind of
 invoker; as far as the interceptor is concerned, it's just another invoker.
 
 An interceptor can include logic before calling `invoke` on the next invoker (before the request is sent) and after

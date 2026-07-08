@@ -183,7 +183,7 @@ await server.ShutdownAsync();
 
 ### Program.CancelKeyPressed.cs - small Ctrl+C helper
 
-This file contains a few lines of code that `Programs.cs` uses to wait for
+This file contains a few lines of code that `Program.cs` uses to wait for
 Ctrl+C. It's not related to RPCs.
 
 ### MySliceServer.csproj - the project file

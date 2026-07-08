@@ -30,12 +30,12 @@ A Slic connection is established as follows:
 
     - Or the `Version` frame with the Slic versions it supports.
 
-5. If the client receives the `InitializeAck` frame, it considers the connection  established. Otherwise if it receives
+5. If the client receives the `InitializeAck` frame, it considers the connection established. Otherwise if it receives
    the `Version` frame, it checks the versions supported by the server:
 
     - If it doesn't support any, it shuts down the duplex connection.
 
-    - Otherwise, it sends again the Initialize frame with a supported version and waits for the server to send back the
+    - Otherwise, it sends the `Initialize` frame again with a supported version and waits for the server to send back the
       `InitializeAck` frame.
 
 The following sequence diagram shows the interactions between the client and server on connection establishment:
@@ -63,7 +63,7 @@ Streams can be created or accepted once the connection is considered established
 
 ## Connection establishment parameters
 
-A number of parameters are exchanged with the `Initialize` and InitializeAck frames. The following table describes each parameter:
+A number of parameters are exchanged with the `Initialize` and `InitializeAck` frames. The following table describes each parameter:
 
 | Name | Description |
 | ---- | ----------- |

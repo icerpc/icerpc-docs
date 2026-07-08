@@ -54,7 +54,7 @@ There are 3 common types of invokers:
 
 - **Interceptor**\
     An [interceptor](interceptor) intercepts an invocation and forwards it to the "next" interceptor. IceRPC provides
-    several built-it interceptors for logging, compression and more.
+    several built-in interceptors for logging, compression and more.
 
 - **Pipeline**\
     A [pipeline](invocation-pipeline) walks a request through interceptors registered with this pipeline before giving

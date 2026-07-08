@@ -1,6 +1,6 @@
 ---
 title: Using proxies as Slice types
-description: Learn how to a create custom type to represent your proxy in Slice.
+description: Learn how to create a custom type to represent your proxy in Slice.
 ---
 
 ## Transmitting a proxy as a service address {% icerpcSlice=true %}

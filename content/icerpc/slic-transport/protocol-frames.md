@@ -83,7 +83,7 @@ The parameters are used to configure the connection.
 ## Version frame
 
 A `Version` frame carries a sequence of `varint62` values where each value specifies a Slic version. It is sent by a
-server on connection establishment if the Slic version specified in the Initialize frame is not supported. It's defined
+server on connection establishment if the Slic version specified in the `Initialize` frame is not supported. It's defined
 as follows:
 
 ```slice

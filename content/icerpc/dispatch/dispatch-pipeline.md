@@ -76,11 +76,11 @@ There are 3 common types of dispatchers:
 
 - **Middleware**\
    A [middleware](middleware) intercepts a dispatch and forwards it to the "next" dispatcher. IceRPC provides several
-   built-it middleware for logging, compression and more.
+   built-in middleware for logging, compression and more.
 
 - **Router**\
    A [router](router) routes a request to a dispatcher registered with this router based on the request's path. It can
-   also host one ore more middleware.
+   also host one or more middleware.
 
 ```mermaid
 ---

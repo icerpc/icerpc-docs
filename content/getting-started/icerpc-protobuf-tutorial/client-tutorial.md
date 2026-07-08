@@ -183,7 +183,7 @@ cd MyProtobufClient
 dotnet run
 ```
 
-The client sends a single `greet` request to the service hosted by our server:
+The client sends a single `Greet` request to the service hosted by our server:
 
 ```
 info: IceRpc.Logger.LoggerInterceptor[0]

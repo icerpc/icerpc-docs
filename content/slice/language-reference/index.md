@@ -32,7 +32,7 @@ For productions with multiple rules, each rule is matched independently of any o
 Additionally, the order of rules is arbitrary and doesn't imply any level of precedence.
 
 Rules are defined by a sequence of one or more symbols. For a rule to match, all its symbols must match, in the order
-they're specified.By default a symbol is matched a single time, but this is modified by the following characters:
+they're specified. By default a symbol is matched a single time, but this is modified by the following characters:
 
 - `?` : match this symbol 0 or 1 times
 - `*` : match this symbol 0 or more times

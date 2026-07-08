@@ -149,7 +149,7 @@ decode instances of your custom type.
 
 {% card
    title="Examples"
-   description="Discover the Slice syntax through a few examples"
+   description="Discover the Slice syntax through a few examples."
    href="/slice/basics/examples" /%}
 
 {% /grid %}

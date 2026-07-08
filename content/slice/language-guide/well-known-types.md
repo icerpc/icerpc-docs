@@ -13,7 +13,7 @@ All well-known types are defined in module `WellKnownTypes`:
 - [Uri][uri-type]\
   A Uniform Resource Identifier ([URI]), encoded as a string.
 - [Uuid][uuid-type]\
-  A Universal Unique Identifier ([UUID]), encoded as a 128-bit value.
+  A Universally Unique Identifier ([UUID]), encoded as a 128-bit value.
 
 [custom]: custom-types
 [URI]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier

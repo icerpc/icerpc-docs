@@ -246,7 +246,7 @@ internal partial interface IGreeterService
 ```
 
 {% callout type="note" %}
-If your operation has a stream parameter, the encode helper (in *NameProxy*.Request) does not encode the stream
+If your operation has a stream parameter, the encode helper (in *Name*Proxy.Request) does not encode the stream
 argument; however, the decode helper (in I*Name*Service.Request) decodes all arguments, including the stream.
 
 Likewise, if your operation returns a stream, the encode helper (in I*Name*Service.Response) does not encode the stream

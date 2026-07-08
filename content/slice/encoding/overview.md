@@ -4,9 +4,9 @@ title: The Slice encoding
 
 ## Compact binary serialization format
 
-The Slice encoding defines how each Slice language construct is encoded into a stream of bytes. It's a non-self
-describing format: the Slice encoding relies on the encoder and decoder sharing the same contract (Slice definitions) to
-achieve compactness.
+The Slice encoding defines how each Slice language construct is encoded into a stream of bytes. It's a
+non-self-describing format: the Slice encoding relies on the encoder and decoder sharing the same contract (Slice
+definitions) to achieve compactness.
 
 For example:
 

@@ -17,7 +17,7 @@ description: A list of all the IceRPC NuGet packages
 | [IceRpc.Protobuf.Tools]                 | Protobuf compiler protoc, and the protoc-gen-icerpc-csharp generator + MSBuild support  |
 | [IceRpc.RequestContext]                 | Request context interceptor and middleware (primarily for Ice interop)                  |
 | [IceRpc.Retry]                          | Retry interceptor                                                                       |
-| [IceRpc.ServiceGenerator]               | C# source generator enabled by the `[Service]` attribute.                               |
+| [IceRpc.ServiceGenerator]               | C# source generator enabled by the `[Service]` attribute                                |
 | [IceRpc.Slice]                          | IceRPC + Slice integration library                                                      |
 | [IceRpc.Slice.Tools]                    | Slice compiler (`slicec`), the C# code generators, and MSBuild support                  |
 | [IceRpc.Telemetry]                      | OpenTelemetry interceptor and middleware                                                |

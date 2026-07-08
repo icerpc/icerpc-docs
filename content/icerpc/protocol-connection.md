@@ -8,7 +8,7 @@ description: Understand how to create and use protocol connections.
 A server, a client connection and a connection cache all manage protocol connections. A protocol connection is an
 abstraction that:
 
-- holds a transport connection such as a QUIC connection or a tcp connection
+- holds a transport connection such as a QUIC connection or a TCP connection
 - implements an RPC protocol layer over this transport connection
 
 In C#, this abstraction is the [IProtocolConnection] interface:

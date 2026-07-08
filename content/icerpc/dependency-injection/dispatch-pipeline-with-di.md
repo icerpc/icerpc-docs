@@ -137,7 +137,7 @@ public class DIDeadlineMiddleware : IMiddleware<DeadlineInformation>
     // A constructor with an IDispatcher parameter is required for auto-wiring.
     public DIDeadlineMiddleware(IDispatcher next) => _next = next;
 
-    // deadlineInfo is a scope service provided by the DI container.
+    // deadlineInfo is a scoped service provided by the DI container.
     public ValueTask<OutgoingResponse> DispatchAsync(
         IncomingRequest request,
         DeadlineInformation deadlineInfo,

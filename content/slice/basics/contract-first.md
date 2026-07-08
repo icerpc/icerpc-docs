@@ -1,5 +1,5 @@
 ---
-title: Contract first model
+title: Contract-first model
 description: Learn how to create an application using IceRPC and Slice.
 ---
 
