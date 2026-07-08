@@ -201,7 +201,6 @@ module Example
 interface WidgetFactory {
     /// Creates a new {@link Widget}.
     /// @param name: The name of the new widget.
-    /// @param color: The color of the new widget.
     /// @returns: A proxy to the new widget.
     createWidget(name: string) -> WidgetProxy
 

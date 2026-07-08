@@ -15,7 +15,7 @@ identifier: LETTER ALPHANUMERIC*;
 
 // Directive keywords
 define_keyword:    "#" "define";
-undefined_keyword: "#" "undef";
+undefine_keyword:  "#" "undef";
 if_keyword:        "#" "if";
 elif_keyword:      "#" "elif";
 else_keyword:      "#" "else";

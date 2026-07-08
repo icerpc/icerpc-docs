@@ -33,7 +33,6 @@ DocComment
     : Overview?
     | DocComment ParamBlock
     | DocComment ReturnsBlock
-    | DocComment ThrowsBlock
     | DocComment SeeBlock
     ;
 
@@ -49,9 +48,6 @@ ReturnsBlock
     : returns_keyword identifier? Section
     ;
 
-ThrowsBlock
-    : throws_keyword identifier Section
-    ;
 
 SeeBlock
     : see_keyword ScopedIdentifier newline

@@ -40,7 +40,7 @@ This command creates a new IceRPC server application in directory `MyProtobufSer
 
 Let's examine each file:
 
-### proto/greeter.proto - the contract
+### proto/visitor_center/greeter.proto - the contract
 
 This file holds the contract between our client and server applications,
 specified with the [Protobuf] language.

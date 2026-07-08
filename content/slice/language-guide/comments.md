@@ -15,7 +15,7 @@ interface FooBar { // This is another comment
 }
 ```
 
-Slice also supports block comments (`/* ... */`), like C, including nested block comments.
+Slice also supports block comments (`/* ... */`), like C. Block comments cannot be nested.
 
 The Slice compiler completely ignores comments that are not doc comments.
 
@@ -47,14 +47,13 @@ module Example
 interface WidgetFactory {
     /// Creates a new {@link Widget}.
     /// @param name: The name of the new widget.
-    /// @param color: The color of the new widget.
     /// @returns: A proxy to the new widget.
-    createWidget(name: string) -> Widget
+    createWidget(name: string) -> WidgetProxy
 
     /// Retrieves the last {@link Widget} created by this factory.
     /// @returns proxy: A proxy to the last widget.
     /// @returns timeStamp: The creation time stamp.
-    getLastWidget() -> (proxy: Widget, timeStamp: WellKnownTypes::TimeStamp)
+    getLastWidget() -> (proxy: WidgetProxy, timeStamp: WellKnownTypes::TimeStamp)
 }
 ```
 

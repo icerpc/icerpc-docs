@@ -38,8 +38,12 @@ Two files can also contain definitions with circular references, such as:
 // in Chicken.slice
 module Coop
 
-interface Chicken {
-   Egg lay()
+struct Chicken {
+    name: string
+}
+
+interface Henhouse {
+    hatch(egg: Egg) -> Chicken
 }
 ```
 
@@ -47,8 +51,12 @@ interface Chicken {
 // in Egg.slice
 module Coop
 
-interface Egg {
-    Chicken hatch()
+struct Egg {
+    weight: float64
+}
+
+interface Nest {
+    lay(chicken: Chicken) -> Egg
 }
 ```
 

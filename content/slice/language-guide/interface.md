@@ -26,7 +26,7 @@ All operations are abstract at the Slice level: you can't implement an operation
 
 When you create an application with Slice, these interfaces are your entry point into Slice: the Slice code generators
 generate code from your Slice interfaces, and you interact with this generated code in both your client and server
-applications. On the client side, you call generated proxies (concrete classes) that send requests to remote services.
+applications. On the client side, you call generated proxies (concrete types) that send requests to remote services.
 On the server side, you implement services using templates (abstract interfaces) generated from the Slice interfaces.
 
 {% callout %}
@@ -168,7 +168,7 @@ available as the constant `DefaultServicePath` in the generated proxy struct:
 ```csharp
 internal readonly partial record struct WidgetProxy : IWidget, IProxy
 {
-    internal const string DefaultServicePath = "/Example/Widget";
+    internal const string DefaultServicePath = "/Example.Widget";
 }
 ```
 

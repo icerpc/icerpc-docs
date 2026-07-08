@@ -40,7 +40,7 @@ This command creates a new IceRPC server application in directory `MySliceServer
 
 Let's examine each file:
 
-### slice/Greeter.slice - the contract
+### slice/VisitorCenter/Greeter.slice - the contract
 
 This file holds the contract between our client and server applications,
 specified with the [Slice] language.
@@ -181,6 +181,11 @@ await CancelKeyPressed;
 await server.ShutdownAsync();
 ```
 
+### Program.Authentication.cs - AuthenticationOptions helper
+
+This file contains the `CreateServerAuthenticationOptions` helper method. It creates an
+`SslServerAuthenticationOptions` from an `X509Certificate2`.
+
 ### Program.CancelKeyPressed.cs - small Ctrl+C helper
 
 This file contains a few lines of code that `Program.cs` uses to wait for
@@ -193,7 +198,7 @@ NuGet packages:
 
 - [IceRpc.Slice] - the IceRPC + Slice integration package
 - [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into
-  `generated/Greeter.IceRpc.cs`
+  `generated/Greeter.cs` and `generated/Greeter.IceRpc.cs`
 - [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two middleware
   we installed in the dispatch pipeline
 

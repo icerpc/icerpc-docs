@@ -17,9 +17,9 @@ code to help you use IceRPC with [Microsoft's DI container][microsoft-di-contain
 All the DI-related APIs provided by IceRPC are in the same namespace, [IceRpc.Extensions.DependencyInjection], but are
 implemented by several assemblies:
 
-- [IceRpc.dll] provides abstractions such as [IDispatcherBuilder] and [IInvokerBuilder] [IceRpc.Deadline.dll] and other
-interceptor/middleware assemblies provide extension methods for `IDispatcherBuilder` and `IInvokerBuilder`. These
-extension methods are DI container agnostic.
+- [IceRpc.dll] provides abstractions such as [IDispatcherBuilder] and [IInvokerBuilder].
+- [IceRpc.Deadline.dll] and other interceptor/middleware assemblies provide extension methods for
+  `IDispatcherBuilder` and `IInvokerBuilder`. These extension methods are DI container agnostic.
 - [IceRpc.Extensions.DependencyInjection.dll] provides support code for Microsoft's DI container. This includes various
 extension methods for [IServiceCollection], such as [AddIceRpcServer] and [AddIceRpcClientConnection], and
 implementations for `IDispatcherBuilder` and `IInvokerBuilder`.

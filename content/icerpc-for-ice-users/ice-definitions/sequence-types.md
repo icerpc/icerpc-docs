@@ -111,7 +111,7 @@ but sequence type `MyClassLinkedList` uses the default mapping.
 ### Mapping to custom types
 
 If the array mapping and the predefined containers are unsuitable for your application (for example, because you may
-need a priority queue, which is not a standard C# container), you can implement your own custom containers and direct
+need a specialized container such as a priority queue), you can implement your own custom containers and direct
 the Ice compiler to map sequences to these custom containers. For example:
 
 ```ice
