@@ -8,7 +8,7 @@ complete successfully.
 
 ## Shutdown steps
 
-A client or a server follows these steps when it wants to shutdown an icerpc connection:
+A client or a server follows these steps when it wants to shut down an icerpc connection:
 
 1. Stop sending new requests (creating new streams) to the peer, and stop accepting new requests (accepting new streams)
 from the peer.

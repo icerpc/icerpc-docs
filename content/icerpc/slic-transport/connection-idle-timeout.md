@@ -7,7 +7,7 @@ description: Understand connection idle timeout.
 
 The transport implementation considers the connection lost if it doesn't receive any data within the period defined by
 the idle timeout. The idle timeout is specified with the [IdleTimeout][connection-parameters] parameter. Each side of
-the connection advertises its idle timeout and agree to use the minimum value during connection establishment.
+the connection advertises its idle timeout and agrees to use the minimum value during connection establishment.
 
 {% callout %}
 The default idle timeout is 30 seconds.

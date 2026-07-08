@@ -40,7 +40,7 @@ with [`cs::identifier`][cs-identifier]). With our `BigInt` custom type, the gene
 ```csharp
 namespace Compute; // must be in the mapped C# namespace
 
-// You must provide these two classes; the generated code call these methods.
+// You must provide these two classes; the generated code calls these methods.
 
 public static class BigIntSliceDecoderExtensions
 {

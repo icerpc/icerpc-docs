@@ -38,7 +38,7 @@ to you (the application) as an `IDictionary<TKey, TValue>`. You can safely cast 
 `Dictionary<TKey, TValue>` after decoding.
 
 You can override this default with the `"cs:generic"` metadata directive described below. This directive only changes
-the type that the generated code uses during decoding to fill-in the field: the C# field type itself remains an
+the type that the generated code uses during decoding to fill in the field: the C# field type itself remains an
 `IDictionary<TKey, TValue>`.
 
 ## Dictionary parameters and return values

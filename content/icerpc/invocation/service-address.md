@@ -25,7 +25,7 @@ Finally, an ice service address can have a fragment; this fragment corresponds t
 In C#, record class [ServiceAddress] is a parsed and validated representation of a service address URI: it holds exactly
 the same information.
 
-Service addresses can be divided in 4 categories:
+Service addresses can be divided into 4 categories:
 
 ## Service address with a single server address
 

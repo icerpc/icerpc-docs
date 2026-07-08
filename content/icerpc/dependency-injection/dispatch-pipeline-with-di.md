@@ -9,11 +9,11 @@ A traditional dispatch pipeline is fairly static: you create a [router](../dispa
 or mount a small number of leaf dispatchers in this router and then let your server dispatch incoming requests to this
 router.
 
-The leaf dispatchers (typically Slice services) are mapped or mounted at fixed path (such as `/greeter` or
+The leaf dispatchers (typically Slice services) are mapped or mounted at fixed paths (such as `/greeter` or
 `/admin/greeter-manager`). These dispatchers are singletons (or singleton-like) with the same lifetime as the router and
 the server.
 
-The middleware in your dispatch pipeline communicate with each others using [features]: an upstream middleware sets a
+The middleware in your dispatch pipeline communicate with each other using [features]: an upstream middleware sets a
 feature that a downstream middleware can retrieve. The leaf dispatcher can also communicate with these middleware using
 the same features.
 
@@ -28,8 +28,8 @@ dispatch and the leaf dispatcher is a service managed by your DI container. This
 A middleware in your DI dispatch pipeline can use features as usual to communicate with other middleware and the leaf
 dispatcher. However, a more idiomatic approach is to communicate using injected services. For example:
 
-- an upstream middleware receives a scoped service (via injection) and then fills-in this service
-- a downstream middleware receives the same scoped service (also via injection) and reads the information filled-in by
+- an upstream middleware receives a scoped service (via injection) and then fills in this service
+- a downstream middleware receives the same scoped service (also via injection) and reads the information filled in by
  the upstream middleware
 - the constructor of the leaf dispatcher (a scoped or transient service) is auto-wired with this previously filled
 scoped service
@@ -39,7 +39,7 @@ typically singletons managed by the DI container.
 
 ## Building a dispatch pipeline with Microsoft's DI container
 
-The [IceRpc.Extensions.DependencyInjection] assembly, provides a number of extension methods for
+The [IceRpc.Extensions.DependencyInjection] assembly provides a number of extension methods for
 [IServiceCollection] that accept an `Action<IDispatcherBuilder>` parameter.
 
 All these methods allow you to build and configure a dispatch pipeline for Microsoft's DI container. For example:

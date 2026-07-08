@@ -15,7 +15,7 @@ invoker; as far as the interceptor is concerned, it's just another invoker.
 
 An interceptor can include logic before calling `invoke` on the next invoker (before the request is sent) and after
 calling `invoke` on the next invoker (after it receives the response). An interceptor can also short-circuit the
-invocation pipeline returning a cached response or throwing an exception.
+invocation pipeline by returning a cached response or throwing an exception.
 
 For example, a simple C# interceptor could look like:
 

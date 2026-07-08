@@ -25,7 +25,7 @@ A Slic connection is established as follows:
 
 4. The server receives this frame and sends back either:
 
-    - The `InitializeAck` frame if it supports the Slic version specified in the `Initialize` frame. Once it sent this
+    - The `InitializeAck` frame if it supports the Slic version specified in the `Initialize` frame. Once it has sent this
       frame, the server considers the connection established.
 
     - Or the `Version` frame with the Slic versions it supports.

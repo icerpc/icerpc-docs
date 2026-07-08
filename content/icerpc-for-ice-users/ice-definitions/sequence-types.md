@@ -65,7 +65,7 @@ C# type you specified for incoming values. `"cs:generic"` doesn't change the map
 
 ## cs:generic metadata
 
-You can use `"cs:generic"` metadata directive to customize the mapping for your sequence. This directive accepts a
+You can use the `"cs:generic"` metadata directive to customize the mapping for your sequence. This directive accepts a
 single argument:
 
 - `List`

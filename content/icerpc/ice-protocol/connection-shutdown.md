@@ -8,7 +8,7 @@ complete successfully.
 
 ## Shutdown steps
 
-A client or a server follows these steps when it wants to shutdown an ice connection:
+A client or a server follows these steps when it wants to shut down an ice connection:
 
 1. Stop sending new requests to the peer, and stop accepting new requests from the peer.
 

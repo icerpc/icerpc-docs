@@ -40,7 +40,7 @@ The response fields represent out-of-band information carried by a response. The
 by [middleware] and [interceptors] in an effort to coordinate the processing of the same response in the server and in
 the client.
 
-A field is an entry in a dictionary `ResponseFieldKey` to sequence of bytes, where [ResponseFieldKey] is an
+A field is an entry in a dictionary from `ResponseFieldKey` to sequence of bytes, where [ResponseFieldKey] is an
 enumeration defined in Slice.
 
 ```slice

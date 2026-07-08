@@ -20,14 +20,14 @@ IceRPC requires a multiplexed transport to be [connection-oriented] and to suppo
 - [flow-control] for each stream
 - a mechanism to limit the number of active streams opened on a connection
 - stream half-closure where each side of the stream can be closed independently
-- graceful connection closure to notify the peer of the connection closure and wait for its acknowledgement
+- graceful connection closure to notify the peer of the connection closure and wait for its acknowledgment
 - abortive closure to close the connection and release its resources immediately without waiting for the peer to
   acknowledge the connection closure
 
 ## Multiplexed transport and TLS
 
 The TLS configuration from the application is passed through the multiplexed transport abstraction to allow the
-transport implementation to setup TLS for multiplexed connections.
+transport implementation to set up TLS for multiplexed connections.
 
 A transport is free to only support non-secure connections, only support secure connections or support both. For
 example, Slic with TCP can create secure and non-secure connections while QUIC can only create secure connections.

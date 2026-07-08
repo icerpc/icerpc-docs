@@ -12,7 +12,7 @@ Slice consists of three sub-languages:
 - A preprocessing language for conditional compilation
 - A language for describing definitions with doc comments
 
-Each of these sub-languages are in turn specified by a set of two [context-free grammars](https://en.wikipedia.org/wiki/Context-free_grammar):
+Each of these sub-languages is in turn specified by a set of two [context-free grammars](https://en.wikipedia.org/wiki/Context-free_grammar):
 
 - _Lexical grammars_ specify how Unicode characters are combined to form basic tokens and
 - _syntactic grammars_ specify how tokens produced by the lexical grammar are combined to form full expressions.
@@ -38,7 +38,7 @@ they're specified. By default a symbol is matched a single time, but this is mod
 - `*` : match this symbol 0 or more times
 - `+` : match this symbol 1 or more times
 
-Additionally, symbols can be grouped into sub-rules using parenthesis: `(symbol1+ symbol2)?`.
+Additionally, symbols can be grouped into sub-rules using parentheses: `(symbol1+ symbol2)?`.
 These sub-rules function the same as rules: their contents must be matched fully, and in order.
 
 ## Symbol conventions

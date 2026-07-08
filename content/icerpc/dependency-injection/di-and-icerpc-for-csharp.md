@@ -7,7 +7,7 @@ description: Understand how IceRPC for C# provides support for Dependency Inject
 
 The first rule of DI is: don't introduce a dependency on DI.
 
-IceRPC for C# takes this rule at heart by providing full support for DI while making this support completely optional.
+IceRPC for C# takes this rule to heart by providing full support for DI while making this support completely optional.
 
 The IceRPC C# API was designed to be both DI-friendly and DI container agnostic. Additionally, IceRPC provides support
 code to help you use IceRPC with [Microsoft's DI container][microsoft-di-container].

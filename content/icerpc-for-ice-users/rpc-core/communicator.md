@@ -7,7 +7,7 @@ An Ice communicator has numerous responsibilities:
 
 - it holds configuration properties
 - it creates and manages client connections
-- when the application makes an invocation, it selects the connection to use (and sometimes create this connection)
+- when the application makes an invocation, it selects the connection to use (and sometimes creates this connection)
 - it provides invocation timeouts, invocation retries, logging/tracing, and metrics
 - it's used to create object adapters
   and more.

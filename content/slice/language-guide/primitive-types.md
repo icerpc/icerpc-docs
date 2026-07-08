@@ -53,7 +53,7 @@ Slice provides 4 variable-size integral types. Types that start with a `varu` ar
 | varint62  | -2,305,843,009,213,693,952 to 2,305,843,009,213,693,951           | long       |
 | varuint62 | 0 to 4,611,686,018,427,387,903                                    | ulong      |
 
-"variable-size" and "fixed-size" is in reference to the Slice encoding for these types: a fixed size integral type is
+"variable-size" and "fixed-size" are in reference to the Slice encoding for these types: a fixed-size integral type is
 always encoded on the same number of bytes (for example, an int32 is always encoded on 4 bytes), whereas a variable-size
 integral type is encoded on 1, 2, 4 or 8 bytes.
 

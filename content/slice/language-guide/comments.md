@@ -26,7 +26,7 @@ comments as input for the doc comments they generate in the mapped languages.
 
 Slice doc comments can be attached to all Slice elements except parameters and modules.
 
-## Doc comments tags
+## Doc comment tags
 
 Slice doc comments support the following tags:
 
