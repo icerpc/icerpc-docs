@@ -26,7 +26,6 @@ SliceFile
 
 SliceFilePrelude
     : EMPTY
-    | SliceFilePrelude FileCompilationMode
     | SliceFilePrelude FileAttribute
     ;
 
@@ -546,7 +545,6 @@ string_literal: "\"" (NON_DOUBLE_QUOTE_CHARACTER | ("\\" CHARACTER))* "\"";
 doc_comment: "///" (NON_FORWARD_SLASH_CHARACTER CHARACTER*)? "\n";
 
 // Definition keywords
-mode_keyword:       "mode";
 module_keyword:     "module";
 struct_keyword:     "struct";
 interface_keyword:  "interface";
@@ -616,12 +614,7 @@ SliceFile
 
 SliceFilePrelude
     : EMPTY
-    | SliceFilePrelude FileCompilationMode
     | SliceFilePrelude FileAttribute
-    ;
-
-FileCompilationMode
-    : mode_keyword equals identifier
     ;
 
 Module
