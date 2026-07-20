@@ -27,7 +27,6 @@ SliceFile
 
 SliceFilePrelude
     : EMPTY
-    | SliceFilePrelude FileCompilationMode
     | SliceFilePrelude FileAttribute
     ;
 
@@ -157,7 +156,7 @@ For additional information on structs, see the [struct][struct-guide] page.
 
 ### Fields
 
-Fields can only be declared within [structs][struct].
+Fields can only be declared within [structs][struct] and [enumerators][enumerator].
 Field declarations consist of an [identifier], followed by a colon, and then a [type].
 Optionally, a [tag] may be applied to the field, directly before its identifier, making this a tagged field.
 Additionally, [local attributes][attribute] and a [doc-comment][doc-comment] may be applied to the field in its prelude.
@@ -232,7 +231,8 @@ The syntax for parameters is identical to the syntax for [fields][field], but wi
 
 Parameters consist of an [identifier], followed by a colon, and then a [type].
 Optionally, a [tag] may be applied to the parameter, directly before its identifier, making this a tagged parameter.
-Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the parameter in its prelude.
+Additionally, [local attributes][attribute] can be applied to a parameter in its prelude, but [doc comments][doc-comment]
+on parameters are forbidden.
 
 ```ebnf {% showTitle=false %}
 Parameter
@@ -257,11 +257,11 @@ Additionally, [local attributes][attribute] and a [doc-comment] may be applied t
 
 ```ebnf {% showTitle=false %}
 Enum
-    : Prelude "unchecked"? "enum" Identifier (":" TypeRef)? "{" UndelimitedList<Enumerator> "}"
+    : Prelude "compact"? "unchecked"? "enum" Identifier (":" TypeRef)? "{" UndelimitedList<Enumerator> "}"
     ;
 ```
 
-Enums also support the `unchecked` modifier keyword.
+Enums also support the `compact` and `unchecked` modifier keywords.
 An [unchecked enum][unchecked-enum-guide] can be empty.
 An enum without this modifier must have at least one enumerator.
 
@@ -271,13 +271,14 @@ For additional information on enums, see the [enum][enum-guide] page.
 
 Enumerators can only be defined within [enums][enum].
 
-Enumerator definitions consist of an [identifier], optionally followed by an enumerator value.
+Enumerator definitions consist of an [identifier], optionally followed by a list of [fields][field] wrapped in
+parentheses, and then optionally an enumerator value.
 Enumerator values consist of an equals sign, followed by a (possibly signed) [integer].
 Additionally, [local attributes][attribute] and a [doc-comment] may be applied to the enumerator in its prelude.
 
 ```ebnf {% showTitle=false %}
 Enumerator
-    : Prelude Identifier ("=" SignedInteger)?
+    : Prelude Identifier ("(" UndelimitedList<Field> ")")? ("=" SignedInteger)?
     ;
 ```
 
@@ -345,7 +346,7 @@ TypeRefDefinition
 
 ### Tags
 
-Tags consist of the `tag` keyword, followed by a positive integer wrapped in a pair of parenthesis.
+Tags consist of the `tag` keyword, followed by a non-negative integer wrapped in a pair of parentheses.
 This integer must be between `0` and `2,147,483,647` (the maximum value of a signed 32-bit integer).
 Tags can only be applied to [fields][field] and [parameters][parameter] with an optional type.
 
@@ -431,7 +432,7 @@ Examples of valid integer literals:
 0b1010
 
 335_445_996
-0x_ab_cd_ef  // Same as 0xabcded
+0x_ab_cd_ef  // Same as 0xabcdef
 0b0_______1  // Same as 0b01
 
 0x_0b1101  // hexadecimal literal
@@ -614,12 +615,7 @@ SliceFile
 
 SliceFilePrelude
     : EMPTY
-    | SliceFilePrelude FileCompilationMode
     | SliceFilePrelude FileAttribute
-    ;
-
-FileCompilationMode
-    : mode_keyword equals identifier
     ;
 
 Module
@@ -660,11 +656,11 @@ ReturnType
     ;
 
 Enum
-    : Prelude unchecked_keyword? enum_keyword identifier (colon TypeRef)? left_brace UndelimitedList<Enumerator> right_brace
+    : Prelude compact_keyword? unchecked_keyword? enum_keyword identifier (colon TypeRef)? left_brace UndelimitedList<Enumerator> right_brace
     ;
 
 Enumerator
-    : Prelude identifier (equals SignedInteger)?
+    : Prelude identifier (left_parenthesis UndelimitedList<Field> right_parenthesis)? (equals SignedInteger)?
     ;
 
 CustomType
@@ -715,11 +711,11 @@ TypeRefDefinition
     ;
 
 FileAttribute
-    : double_left_brace Attribute double_right_brace
+    : double_left_bracket Attribute double_right_bracket
     ;
 
 LocalAttribute
-    : left_brace Attribute right_brace
+    : left_bracket Attribute right_bracket
     ;
 
 Attribute
@@ -752,9 +748,6 @@ Tag
     : tag_keyword left_parenthesis SignedInteger right_parenthesis
     ;
 
-CompactId
-    : left_parenthesis SignedInteger right_parenthesis
-    ;
 
 Prelude
     : EMPTY

@@ -22,7 +22,7 @@ This command creates a new IceRPC client application in directory `MySliceClient
 
 Let's examine each file:
 
-### slice/Greeter.slice - the contract
+### slice/VisitorCenter/Greeter.slice - the contract
 
 This file is (and must be) identical or almost identical to the `Greeter.slice`
 we used for the server:
@@ -150,7 +150,7 @@ separate IceRpc NuGet packages:
 
 - [IceRpc.Slice] - the IceRPC + Slice integration package
 - [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into
-  `generated/Greeter.IceRpc.cs`
+  `generated/Greeter.cs` and `generated/Greeter.IceRpc.cs`
 - [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two interceptors
   we installed in our invocation pipeline
 

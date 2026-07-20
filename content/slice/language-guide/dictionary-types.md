@@ -11,8 +11,8 @@ the same Slice type, and all values have the same Slice type.
 A dictionary is like a sequence of key-value pairs with the following constraints:
 
 - each key is unique
-- the type of the key is a string, bool, integral type, enum type, custom type, or a compact struct with key-compatible
-  fields
+- the type of the key is a string, bool, integral type, basic enum type, custom type, or a compact struct with
+  key-compatible fields
 
 You can construct a dictionary type inline, without giving it a name, for example to specify the type of a parameter or
 field:

@@ -22,7 +22,7 @@ This command creates a new IceRPC client application in directory `MyProtobufCli
 
 Let's examine each file:
 
-### proto/greeter.proto - the contract
+### proto/visitor_center/greeter.proto - the contract
 
 This file is (and must be) identical or almost identical to the `greeter.proto`
 we used for the server:
@@ -128,7 +128,7 @@ service that implements `Greeter`.
 With this code, the address of the target service (or
 [service address][service-address]) is the default for `Greeter`, namely
 `icerpc:/visitor_center.Greeter`. It matches the route we created in the server.
-We could also create the same proxy with an explicit service address:
+We could also create the same client with an explicit service address:
 
 ```csharp
 var greeter = new GreeterClient(pipeline, new Uri("icerpc:/visitor_center.Greeter"));

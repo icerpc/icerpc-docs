@@ -49,8 +49,9 @@ encode a value on more bytes than required, and a Slice decoder must always deco
 `7` is usually encoded on a single byte but can also be encoded on 2, 4 or 8 bytes.
 
 {% callout type="note" %}
-The encoding of varuint62 is identical to the encoding of variable-length integers in QUIC, except for the byte order
-(QUIC is big-endian, Slice is little-endian).
+The encoding of varuint62 is similar to the encoding of variable-length integers in QUIC, with two differences: QUIC
+stores the 2-bit length in the most significant bits of the first byte and uses big-endian ordering, while Slice stores
+this length in the least significant bits of the first byte and uses little-endian ordering.
 {% /callout %}
 
 ## Floating-point types

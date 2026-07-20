@@ -56,7 +56,7 @@ await using var server = new Server(
 
 server.Listen(); // similar to "activate"
 
-await CancelKeyPressed;
+await CancelKeyPressed; // a Task that completes on Ctrl+C
 await server.ShutdownAsync();
 ```
 

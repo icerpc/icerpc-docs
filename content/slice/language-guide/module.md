@@ -5,8 +5,8 @@ description: Learn about Slice modules.
 
 ## Module basics
 
-A module is a naming scope for Slice types. It allows you to define and reference different Slice types with the same
-name, provided they are in different scopes (modules).
+A module is a naming scope for Slice types and interfaces. It allows you to define and reference different Slice types
+and interfaces with the same name, provided they are in different scopes (modules).
 
 Slice uses `::` as its [scope resolution operator][scope-resolution-operator].
 

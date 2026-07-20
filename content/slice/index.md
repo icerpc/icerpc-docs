@@ -36,8 +36,9 @@ Slice provides a readable, modern syntax inspired by Rust and Swift. It includes
 the `stream` keyword, allows you to turn any type into an optional type with the `?` suffix, requires minimal
 punctuation, and more.
 
-The Slice [primitive] types have clear names such as `uint8`, `float64`, and `string`. Slice also includes two built-in
-generic types, [Sequence] and [Dictionary]. And Slice lets you define your own types with [custom], [enum], and [struct].
+The Slice [primitive] types have clear names such as `uint8`, `float64`, and `string`. Slice also includes three
+built-in generic types: [Sequence], [Dictionary], and [Result]. And Slice lets you define your own types with [custom],
+[enum], and [struct].
 
 Last but not least, Slice's [tagged] fields and parameters allow you to update your structs and operations over time
 without breaking on-the-wire compatibility.
@@ -161,6 +162,7 @@ decode instances of your custom type.
 [Interface Definition Language]: https://en.wikipedia.org/wiki/Interface_description_language
 [IFeatureCollection]: csharp:IceRpc.Features.IFeatureCollection
 [primitive]: /slice/language-guide/primitive-types
+[Result]: /slice/language-guide/result-types
 [Sequence]: /slice/language-guide/sequence-types
 [struct]: /slice/language-guide/struct-types
 [tagged]: /slice/language-guide/fields#tagged-fields

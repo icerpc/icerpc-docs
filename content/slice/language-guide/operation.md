@@ -258,8 +258,8 @@ code for their payloads.
 
 ### cs::encodedReturn attribute
 
-The `cs::encodeReturn` attribute allows you to change the return type of the mapped method on the generated Service
-interface: this attribute makes this method returns a `ValueTask<PipeReader>` instead of the usual `ValueTask<T>`.
+The `cs::encodedReturn` attribute allows you to change the return type of the mapped method on the generated Service
+interface: this attribute makes the method return a `ValueTask<PipeReader>` instead of the usual `ValueTask<T>`.
 
 The returned [PipeReader] represents the encoded return value. You would typically produce this value using
 the Encode*OpName* method provided by the helper [`Response` class](#request-and-response-helper-classes).
