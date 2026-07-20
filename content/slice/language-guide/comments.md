@@ -47,7 +47,7 @@ module Example
 interface WidgetFactory {
     /// Creates a new {@link Widget}.
     /// @param name: The name of the new widget.
-    /// @returns: A proxy to the new widget.
+    /// @returns: The new widget.
     createWidget(name: string) -> Widget
 
     /// Retrieves the last {@link Widget} created by this factory.
