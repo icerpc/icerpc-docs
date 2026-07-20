@@ -101,7 +101,7 @@ attribute accepts a single string argument: the name of a type similar to `List<
 
 More specifically, this type must:
 
-- provide a constructor that accepts an `IEnumerable<T>` or a `T[]` when T is a bool or a fixed-size numeric type
+- provide a constructor that accepts an `IEnumerable<T>` or a `T[]` when T is a fixed-size primitive type
 - provide a capacity constructor (with an `int` parameter) otherwise
 
 This type must implement `IList<T>` when `cs::type` is applied to a field; it must implement `ICollection<T>` when
