@@ -53,7 +53,7 @@ interface WidgetFactory {
     /// Retrieves the last {@link Widget} created by this factory.
     /// @returns widget: A copy of the last widget.
     /// @returns timeStamp: The creation time stamp.
-    getLastWidget() -> (proxy: WidgetProxy, timeStamp: WellKnownTypes::TimeStamp)
+    getLastWidget() -> (widget: Proxy, timeStamp: WellKnownTypes::TimeStamp)
 }
 ```
 
