@@ -9,6 +9,12 @@ updates:
     groups:
       npm:
         patterns: ["*"]
+    ignore:
+      # eslint-config-next pulls in typescript-eslint, which requires the TS 6
+      # compiler API. TS 7 ships without one, so a major bump breaks `npm run
+      # lint` outright. See typescript-eslint/typescript-eslint#10940.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: "github-actions"
     directory: "/"
