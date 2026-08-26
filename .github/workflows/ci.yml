@@ -100,6 +100,7 @@ jobs:
             set -e
             cd services
             echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            trap 'docker logout ghcr.io' EXIT
             docker compose pull icerpc-docs
             docker compose up -d icerpc-docs
 
