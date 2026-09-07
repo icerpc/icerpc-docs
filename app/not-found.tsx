@@ -2,7 +2,7 @@
 
 export default function NotFound() {
   return (
-    <div className="flex h-screen flex-col items-center justify-center">
+    <div className="flex grow flex-col items-center justify-center">
       <div className="flex flex-row items-center">
         <h2 className="border-r-light-border border-r-2 pr-6 text-3xl leading-10 font-semibold">
           404

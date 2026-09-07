@@ -22,7 +22,7 @@ const footerMenuItems = [
 ];
 
 export const Footer = () => (
-  <footer className="border-light-border dark:border-dark-border dark:bg-dark mt-auto -mb-2 border-t py-6">
+  <footer className="border-light-border dark:border-dark-border dark:bg-dark border-t py-6">
     <div className="mx-auto w-full max-w-400 px-4">
       <div className="flex w-full flex-col md:flex-row md:items-center md:justify-between md:px-10">
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
