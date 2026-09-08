@@ -26,7 +26,6 @@
     "cookies-next": "^6.1.1",
     "copy-to-clipboard": "^4.0.2",
     "flowbite": "^4.0.2",
-    "flowbite-react": "^0.12.17",
     "framer-motion": "^12.43.0",
     "js-yaml": "^5.2.2",
     "lucide-react": "^1.27.0",
@@ -59,8 +58,5 @@
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3"
-  },
-  "overrides": {
-    "deepmerge-ts": "^8.0.2"
   }
 }

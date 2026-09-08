@@ -205,10 +205,6 @@
   }
 }
 
-[data-testid='flowbite-tooltip-arrow'] {
-  display: none !important;
-}
-
 .sr-only {
   border: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important;
