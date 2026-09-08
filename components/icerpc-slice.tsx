@@ -2,6 +2,7 @@
 
 'use client';
 
+import Link from 'next/link';
 import {
   Tooltip,
   TooltipContent,
@@ -16,14 +17,12 @@ export const IcerpcSlice = () => (
     <TooltipProvider delayDuration={0}>
       <Tooltip>
         <TooltipTrigger asChild>
-          <div className="flex size-full">
-            <AppLink
-              href="/slice#slice-and-icerpc"
-              className="border-primary/20 bg-primary/10 text-primary/90 relative my-auto ml-1 rounded-sm border p-px px-[4px] text-xs font-bold"
-            >
-              IceRPC + Slice
-            </AppLink>
-          </div>
+          <Link
+            href="/slice#slice-and-icerpc"
+            className="border-primary/20 bg-primary/10 text-primary/90 relative my-auto ml-1 rounded-sm border p-px px-[4px] text-xs font-bold"
+          >
+            IceRPC + Slice
+          </Link>
         </TooltipTrigger>
         <TooltipPortal>
           <TooltipContent
