@@ -122,8 +122,8 @@ export const FeedbackForm = ({ title, options }: Props) => {
                   aria-controls={'feedback-fields-' + option.id}
                   tabIndex={0}
                   className={clsx(
-                    'text-primary mt-1 size-3 rounded-full border-gray-300 bg-gray-100',
-                    'dark:focus:ring-primary dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700',
+                    'mt-1 size-3 rounded-full border-gray-300 bg-gray-100 checked:bg-primary',
+                    'dark:focus:ring-primary dark:border-gray-500 dark:bg-gray-600 dark:checked:bg-primary dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700',
                     'focus:ring-primary focus:ring-2'
                   )}
                   onClick={() => {
