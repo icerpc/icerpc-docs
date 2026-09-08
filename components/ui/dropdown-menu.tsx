@@ -1,6 +1,5 @@
 // Copyright (c) ZeroC, Inc.
 
-/* eslint-disable */
 
 'use client';
 

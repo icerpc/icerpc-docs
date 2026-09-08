@@ -1,6 +1,5 @@
 // Copyright (c) ZeroC, Inc.
 
-/* eslint-disable */
 
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
