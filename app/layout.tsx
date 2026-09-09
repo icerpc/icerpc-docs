@@ -165,7 +165,10 @@ export default function RootLayout(props: RootLayoutProps) {
             <AppWrapper>
               <div className="flex min-h-screen flex-col">
                 <TopNav />
-                <main className={clsx(inter.className)} id="main">
+                <main
+                  className={clsx('flex grow flex-col', inter.className)}
+                  id="main"
+                >
                   {props.children}
                 </main>
                 <Footer />
