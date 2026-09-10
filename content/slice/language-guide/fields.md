@@ -106,10 +106,12 @@ On the other hand, a tagged field tolerates mismatches. The sender can encode a 
 know about (it will be ignored), and the recipient can expect a tagged field that the sender doesn't know (the recipient
 gets a "not set" value in this case).
 
-You can add, remove and reorder tagged fields over time while maintaining on the wire compatibility. The only constraint
-is you can never change the type associated with a tag number. If the type associated with tag 7 is a string, it must
-always remain a string; if you were to reuse tag 7 with another type, you would break on the wire compatibility with
-applications that expect tag 7 fields (in this tag number scope) to be encoded as strings.
+You can add, remove and reorder tagged fields over time while maintaining on-the-wire compatibility. However, you must
+never reuse a tag number: once you define `tag(7) name: string?` in a given tag number scope, tag 7 belongs to this
+field forever, even after you remove the field. Reusing tag 7 with another type breaks on-the-wire compatibility with
+applications that expect tag 7 fields to be encoded as strings. Reusing tag 7 with a string but a different meaning
+preserves on-the-wire compatibility but breaks the application contract: applications that use the old definition
+decode the new field as `name`.
 
 ## C# mapping
 
