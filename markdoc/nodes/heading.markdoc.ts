@@ -1,8 +1,14 @@
 // Copyright (c) ZeroC, Inc.
 
-import { Tag, Node, Config, RenderableTreeNode } from '@markdoc/markdoc';
+import {
+  Tag,
+  Node,
+  Config,
+  RenderableTreeNode,
+  Schema
+} from '@markdoc/markdoc';
 
-const heading = {
+const heading: Schema = {
   render: 'Heading',
   children: ['inline'],
   attributes: {
