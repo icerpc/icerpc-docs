@@ -1,8 +1,10 @@
 // Copyright (c) ZeroC, Inc.
 
-const grid = {
+import { Schema } from '@markdoc/markdoc';
+
+const grid: Schema = {
   render: 'Grid',
-  children: ['card']
+  children: ['tag']
 };
 
 export default grid;

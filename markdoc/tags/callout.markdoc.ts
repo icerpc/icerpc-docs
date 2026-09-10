@@ -1,6 +1,8 @@
 // Copyright (c) ZeroC, Inc.
 
-const callout = {
+import { Schema } from '@markdoc/markdoc';
+
+const callout: Schema = {
   render: 'Callout',
   children: ['paragraph', 'tag', 'list'],
   attributes: {
