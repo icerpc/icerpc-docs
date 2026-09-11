@@ -32,7 +32,7 @@ This chapter describes both Slice and the IceRPC + Slice integration provided by
 
 ## Streamlined syntax
 
-Slice provides a readable, modern syntax inspired by Rust and Swift. It includes support for streaming parameters with
+Slice provides a readable, modern syntax inspired by Rust and Swift. It includes support for [streaming parameters] with
 the `stream` keyword, allows you to turn any type into an optional type with the `?` suffix, requires minimal
 punctuation, and more.
 
@@ -164,5 +164,6 @@ decode instances of your custom type.
 [primitive]: /slice/language-guide/primitive-types
 [Result]: /slice/language-guide/result-types
 [Sequence]: /slice/language-guide/sequence-types
+[streaming parameters]: /slice/language-guide/stream-parameters
 [struct]: /slice/language-guide/struct-types
 [tagged]: /slice/language-guide/fields#tagged-fields

@@ -304,6 +304,10 @@
           "path": "/slice/language-guide/parameters"
         },
         {
+          "title": "Stream parameters",
+          "path": "/slice/language-guide/stream-parameters"
+        },
+        {
           "title": "Primitive types",
           "path": "/slice/language-guide/primitive-types"
         },
