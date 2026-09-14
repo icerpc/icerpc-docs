@@ -107,11 +107,11 @@ know about (it will be ignored), and the recipient can expect a tagged field tha
 gets a "not set" value in this case).
 
 You can add, remove and reorder tagged fields over time while maintaining on-the-wire compatibility. However, you must
-never reuse a tag number: once you define `tag(7) name: string?` in a given tag number scope, tag 7 belongs to this
-field forever, even after you remove the field. Reusing tag 7 with another type breaks on-the-wire compatibility with
-applications that expect tag 7 fields to be encoded as strings. Reusing tag 7 with a string but a different meaning
-preserves on-the-wire compatibility but breaks the application contract: applications that use the old definition
-decode the new field as `name`.
+never reuse a tag number: once you define `tag(7) name: string?` in a given tag number scope, tag 7 stays reserved
+forever, even after you remove the field. Reusing tag 7 with another type breaks on-the-wire compatibility with
+applications that expect tag 7 to be of type `string`. Reusing tag 7 with a string but a different meaning preserves
+on-the-wire compatibility but breaks the application contract: applications that use the old definition mistake the new
+field for `name`.
 
 ## C# mapping
 
