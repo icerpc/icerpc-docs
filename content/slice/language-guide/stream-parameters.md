@@ -23,7 +23,7 @@ parameter.
 
 ## Semantics
 
-A stream parameter means the operation sends or returns a stream of elements of this type, not just one element. This
+A stream parameter means the operation accepts or returns a stream of elements of this type, not just one element. This
 stream can be empty or include numerous elements. Unlike a [sequence](sequence-types), the number of elements in a
 stream is unknown: the sender does not need to have all the elements up-front, and the recipient consumes the elements
 as they arrive.
@@ -39,12 +39,12 @@ empty stream.
 
 ## C# mapping {% icerpcSlice=true %}
 
-The C# mapping of a stream parameter depends on the direction of the stream:
+The C# mapping of a stream parameter depends on the direction of the stream and the type of its elements:
 
-- an **outgoing** stream is a stream your code gives to the generated code: the stream argument you pass to a proxy
-  method, or the stream return value your service implementation returns
-- an **incoming** stream is a stream the generated code gives to your code: the stream return value you receive from a
-  proxy method, or the stream argument your service implementation receives
+- an **outgoing** stream is a stream your code gives to the generated code, namely the stream argument you pass to a
+  proxy method or the stream return value your service implementation returns
+- an **incoming** stream is a stream the generated code gives to your code, namely the stream return value you receive
+  from a proxy method or the stream argument your service implementation receives
 
 | Stream element type | Outgoing stream         | Incoming stream     |
 | ------------------- | ----------------------- | ------------------- |
