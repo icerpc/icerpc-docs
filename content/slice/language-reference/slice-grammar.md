@@ -812,6 +812,6 @@ UndelimitedList<T>
 [doc-comment]: /slice/language-reference/doc-comments
 [keywords]: #lexical-grammar
 [preprocessed]: /slice/language-reference/preprocessor-directives
-[streamed-parameters-guide]: /slice/language-guide/parameters
+[streamed-parameters-guide]: /slice/language-guide/stream-parameters
 
 [utf-8]: https://en.wikipedia.org/wiki/UTF-8
