@@ -99,25 +99,28 @@ function useActiveId(itemIds: string[]) {
 
   useEffect(() => {
     const handleScroll = () => {
-      let potentialId = '';
-      let potentialDistance = Infinity;
+      // At the bottom of the page the last headings can't scroll up to the
+      // header, so the last one wins.
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 1;
 
+      // The active heading is the last one scrolled up to the sticky header,
+      // which is where a heading's scroll-margin-top leaves it after a jump.
+      let currentId = itemIds[0];
       itemIds.forEach((id) => {
         const element = document.getElementById(id);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-
-          // Bias towards sections entering from the bottom
-          if (rect.top > 0 && rect.top < potentialDistance) {
-            potentialDistance = rect.top;
-            potentialId = id;
-          }
+        if (
+          element &&
+          (atBottom ||
+            element.getBoundingClientRect().top <=
+              parseFloat(getComputedStyle(element).scrollMarginTop) + 1)
+        ) {
+          currentId = id;
         }
       });
 
-      if (potentialId) {
-        setActiveId(potentialId);
-      }
+      setActiveId(currentId);
     };
 
     // Attach the event listener
@@ -160,7 +163,10 @@ const ListItem = ({ item, activeId }: ListItemProps) => {
   const leftPadding = item.level >= 3 ? '-ml-1' : '';
 
   return (
-    <li key={item.id} className={clsx('mb-4 pr-4 text-sm', leftPadding)}>
+    <li
+      key={item.id}
+      className={clsx('mb-2 pr-4 text-sm leading-6', leftPadding)}
+    >
       <Link
         href={href}
         className={clsx(
@@ -169,10 +175,9 @@ const ListItem = ({ item, activeId }: ListItemProps) => {
         )}
       >
         {item.level > 2 && (
-          <FontAwesomeIcon
-            icon={faMinus}
-            className="mx-2 mt-[2px] h-4 w-2 shrink-0"
-          />
+          <span className="mx-2 flex h-[1lh] shrink-0 items-center">
+            <FontAwesomeIcon icon={faMinus} />
+          </span>
         )}
         {item.title}
       </Link>
