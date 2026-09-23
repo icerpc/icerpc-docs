@@ -32,7 +32,7 @@ export const Aside = ({
       (item.level === 2 || item.level === 3) &&
       item.title !== 'Next steps'
   );
-  const [activeId, selectId] = useActiveId(items.map((item) => item.id));
+  const activeId = useActiveId(items.map((item) => item.id));
 
   return (
     <aside
@@ -53,7 +53,6 @@ export const Aside = ({
                   key={`${item.id}-${index}`}
                   item={item}
                   activeId={activeId ?? ''}
-                  onSelect={selectId}
                 />
               ))}
             </ul>
@@ -99,20 +98,14 @@ function useActiveId(itemIds: string[]) {
   const [activeId, setActiveId] = useState('');
 
   // A jump to any heading too near the end of the page to pass under the
-  // header lands at the bottom, so there the heading last jumped to, by a
-  // click, a link, or Back and Forward, decides which one is active, until
-  // the reader scrolls back up.
+  // header lands at the bottom, so there the heading last jumped to, by a link
+  // or by Back and Forward, decides which one is active, until the reader
+  // scrolls back up.
   const jumpedId = useRef('');
 
+  // A page opened at a heading's link has jumped to it.
   useEffect(() => {
-    const readHash = () => {
-      jumpedId.current = location.hash.slice(1);
-    };
-    readHash();
-    window.addEventListener('popstate', readHash);
-    return () => {
-      window.removeEventListener('popstate', readHash);
-    };
+    jumpedId.current = location.hash.slice(1);
   }, []);
 
   useEffect(() => {
@@ -172,24 +165,38 @@ function useActiveId(itemIds: string[]) {
       setActiveId(headings[Math.max(active, 0)].id);
     };
 
-    // Attach the event listener
+    // A jump by a link on this page, or by Back and Forward, doesn't scroll
+    // when the page is already at the bottom, so it updates the active heading
+    // itself.
+    const handleJump = (id: string) => {
+      jumpedId.current = id;
+      handleScroll();
+    };
+    const handleClick = (event: MouseEvent) => {
+      const link = (event.target as Element).closest('a');
+      if (link?.hash && link.pathname === location.pathname) {
+        handleJump(link.hash.slice(1));
+      }
+    };
+    const handlePopState = () => handleJump(location.hash.slice(1));
+
+    // Attach the event listeners
     window.addEventListener('scroll', handleScroll);
+    document.addEventListener('click', handleClick);
+    window.addEventListener('popstate', handlePopState);
 
     // Initial setup
     handleScroll();
 
-    // Clean up the listener when the hook is unmounted
+    // Clean up the listeners when the hook is unmounted
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClick);
+      window.removeEventListener('popstate', handlePopState);
     };
   }, [itemIds]);
 
-  const selectId = (id: string) => {
-    jumpedId.current = id;
-    setActiveId(id);
-  };
-
-  return [activeId, selectId] as const;
+  return activeId;
 }
 
 type ActionItemProps = {
@@ -210,10 +217,9 @@ const ActionItem = ({ href, children }: ActionItemProps) => {
 type ListItemProps = {
   item: AsideItem;
   activeId: string;
-  onSelect: (id: string) => void;
 };
 
-const ListItem = ({ item, activeId, onSelect }: ListItemProps) => {
+const ListItem = ({ item, activeId }: ListItemProps) => {
   const href = `#${item.id}`;
   const leftPadding = item.level >= 3 ? '-ml-1' : '';
 
@@ -224,7 +230,6 @@ const ListItem = ({ item, activeId, onSelect }: ListItemProps) => {
     >
       <Link
         href={href}
-        onClick={() => onSelect(item.id)}
         className={clsx(
           'flex items-start text-inherit',
           activeId === item.id && 'text-primary font-semibold dark:text-white'
