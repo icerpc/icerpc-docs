@@ -102,8 +102,9 @@ function useActiveId(itemIds: string[]) {
       // At the bottom of the page the last headings can't scroll up to the
       // header, so the last one wins.
       const atBottom =
+        window.scrollY > 0 &&
         window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 1;
+          document.documentElement.scrollHeight - 1;
 
       // The active heading is the last one scrolled up to the sticky header,
       // which is where a heading's scroll-margin-top leaves it after a jump.
