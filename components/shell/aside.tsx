@@ -229,7 +229,7 @@ const ListItem = ({ item, activeId }: ListItemProps) => {
         href={href}
         className={clsx(
           'flex items-start text-inherit',
-          activeId === item.id && 'text-primary font-semibold dark:text-white'
+          activeId === item.id && 'text-primary'
         )}
       >
         {item.level > 2 && (
