@@ -151,7 +151,7 @@ function useActiveId(ids: string) {
 
       // At the bottom of the page the last heading is active, unless the
       // reader jumped to another one that can't pass under the header.
-      if (maxScroll > 0 && scrollY >= maxScroll - 1) {
+      if (scrollY >= maxScroll - 1) {
         const jumped = headings.findIndex((heading) => heading.id === jumpedId);
         active =
           jumped !== -1 && targets[jumped] > maxScroll
