@@ -32,7 +32,7 @@ export const Aside = ({
       (item.level === 2 || item.level === 3) &&
       item.title !== 'Next steps'
   );
-  const activeId = useActiveId(items.map((item) => item.id));
+  const activeId = useActiveId(items.map((item) => item.id).join('\n'));
 
   return (
     <aside
@@ -94,43 +94,104 @@ const resolvePath = (pathName: string): string => {
     : pathName + '.md';
 };
 
-function useActiveId(itemIds: string[]) {
-  const [activeId, setActiveId] = useState('');
+// The ids come joined into one string, so a render that builds a new list
+// doesn't re-run the effect and re-attach its listeners.
+function useActiveId(ids: string) {
+  const [activeId, setActiveId] = useState(ids.split('\n')[0]);
 
   useEffect(() => {
+    const itemIds = ids.split('\n');
+    let lastScrollY = window.scrollY;
+
+    // A jump to any heading too near the end of the page to pass under the
+    // header lands at the bottom, so there the heading last jumped to, by a
+    // link, by Back and Forward, or by opening the page at its link, decides
+    // which one is active, until the reader scrolls back up.
+    let jumpedId = location.hash.slice(1);
+
     const handleScroll = () => {
-      let potentialId = '';
-      let potentialDistance = Infinity;
+      const headings = itemIds.flatMap(
+        (id) => document.getElementById(id) ?? []
+      );
+      if (headings.length === 0) return;
+      const { innerHeight, scrollY } = window;
+      const maxScroll = document.documentElement.scrollHeight - innerHeight;
+      const tops = headings.map(
+        (heading) => heading.getBoundingClientRect().top
+      );
 
-      itemIds.forEach((id) => {
-        const element = document.getElementById(id);
-        if (element) {
-          const rect = element.getBoundingClientRect();
+      if (scrollY < lastScrollY) jumpedId = '';
+      lastScrollY = scrollY;
 
-          // Bias towards sections entering from the bottom
-          if (rect.top > 0 && rect.top < potentialDistance) {
-            potentialDistance = rect.top;
-            potentialId = id;
-          }
-        }
-      });
+      // The scroll position at which each heading passes under the header: a
+      // pixel past where a jump to it leaves it, at its scroll-margin-top.
+      const margin = parseFloat(getComputedStyle(headings[0]).scrollMarginTop);
+      const targets = tops.map((top) => top + scrollY - margin + 1);
 
-      if (potentialId) {
-        setActiveId(potentialId);
+      // Headings too near the end of the page never pass under the header, so
+      // their targets are squeezed into the scroll left after the last one
+      // that does. They then activate in order by the bottom of the page.
+      const lastReachable =
+        targets.findLast((target) => target <= maxScroll) ?? 0;
+      const last = targets[targets.length - 1];
+      const squeeze =
+        last > maxScroll && maxScroll > lastReachable
+          ? (maxScroll - lastReachable) / (last - lastReachable)
+          : 1;
+      const squeezed = targets.map((target) =>
+        target > lastReachable
+          ? lastReachable + (target - lastReachable) * squeeze
+          : target
+      );
+
+      // The active heading is the last one passed, or the next one once it's
+      // in the top half of the viewport.
+      let active = squeezed.findLastIndex((target) => target <= scrollY);
+      if (tops[active + 1] < innerHeight / 2) active++;
+
+      // At the bottom of the page the last heading is active, unless the
+      // reader jumped to another one that can't pass under the header.
+      if (scrollY >= maxScroll - 1) {
+        const jumped = headings.findIndex((heading) => heading.id === jumpedId);
+        active =
+          jumped !== -1 && targets[jumped] > maxScroll
+            ? jumped
+            : headings.length - 1;
       }
+
+      setActiveId(headings[Math.max(active, 0)].id);
     };
 
-    // Attach the event listener
+    // A jump by a link on this page, or by Back and Forward, doesn't scroll
+    // when the page is already at the bottom, so it updates the active heading
+    // itself.
+    const handleJump = (id: string) => {
+      jumpedId = id;
+      handleScroll();
+    };
+    const handleClick = (event: MouseEvent) => {
+      const link = (event.target as Element).closest('a');
+      if (link?.hash && link.pathname === location.pathname) {
+        handleJump(link.hash.slice(1));
+      }
+    };
+    const handlePopState = () => handleJump(location.hash.slice(1));
+
+    // Attach the event listeners
     window.addEventListener('scroll', handleScroll);
+    document.addEventListener('click', handleClick);
+    window.addEventListener('popstate', handlePopState);
 
     // Initial setup
     handleScroll();
 
-    // Clean up the listener when the hook is unmounted
+    // Clean up the listeners when the hook is unmounted
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClick);
+      window.removeEventListener('popstate', handlePopState);
     };
-  }, [itemIds]);
+  }, [ids]);
 
   return activeId;
 }
@@ -142,7 +203,7 @@ type ActionItemProps = {
 
 const ActionItem = ({ href, children }: ActionItemProps) => {
   return (
-    <li className="m-0 my-5 text-sm">
+    <li className="mb-2 text-sm leading-6">
       <Link href={href} className="dark:text-[rgba(255,255,255,0.8)]">
         <div className="flex items-center gap-[0.5em]">{children}</div>
       </Link>
@@ -160,7 +221,10 @@ const ListItem = ({ item, activeId }: ListItemProps) => {
   const leftPadding = item.level >= 3 ? '-ml-1' : '';
 
   return (
-    <li key={item.id} className={clsx('mb-4 pr-4 text-sm', leftPadding)}>
+    <li
+      key={item.id}
+      className={clsx('mb-2 pr-4 text-sm leading-6', leftPadding)}
+    >
       <Link
         href={href}
         className={clsx(
@@ -169,10 +233,9 @@ const ListItem = ({ item, activeId }: ListItemProps) => {
         )}
       >
         {item.level > 2 && (
-          <FontAwesomeIcon
-            icon={faMinus}
-            className="mx-2 mt-[2px] h-4 w-2 shrink-0"
-          />
+          <span className="mx-2 flex h-lh shrink-0 items-center">
+            <FontAwesomeIcon icon={faMinus} />
+          </span>
         )}
         {item.title}
       </Link>
