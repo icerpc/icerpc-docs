@@ -156,7 +156,7 @@ const resolveRelativeLink = (href: string, routerPath: string) => {
  */
 const languageApiReferenceVersion = (language: string): string => {
   const versions: Record<string, string> = {
-    csharp: '0.6.x'
+    csharp: 'main'
   };
   return versions[language] || 'main';
 };

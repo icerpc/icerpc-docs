@@ -2,17 +2,17 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [csharp-0.7-dev]
   pull_request:
-    branches: [main]
+    branches: [csharp-0.7-dev]
   schedule:
     - cron: '0 0 * * 0'
 
 # One active run per ref. On PRs, newer pushes cancel older in-progress runs;
-# on main, runs queue instead so an in-flight publish/deploy always finishes.
+# on csharp-0.7-dev, runs queue instead so an in-flight publish/deploy always finishes.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/csharp-0.7-dev' }}
 
 permissions:
   contents: read
@@ -83,7 +83,7 @@ jobs:
         run: |
           docker buildx imagetools create \
             --tag ${IMAGE}:${GITHUB_SHA} \
-            --tag ${IMAGE}:latest \
+            --tag ${IMAGE}:dev \
             ${IMAGE}:${GITHUB_SHA}-amd64 \
             ${IMAGE}:${GITHUB_SHA}-arm64
 
@@ -105,8 +105,8 @@ jobs:
             cd /opt/web
             echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             trap 'docker logout ghcr.io' EXIT
-            docker compose pull icerpc-docs
-            docker compose up -d icerpc-docs
+            docker compose pull icerpc-docs-dev
+            docker compose up -d icerpc-docs-dev
 
   cleanup:
     name: Cleanup old images
