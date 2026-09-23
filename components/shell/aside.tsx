@@ -32,7 +32,7 @@ export const Aside = ({
       (item.level === 2 || item.level === 3) &&
       item.title !== 'Next steps'
   );
-  const activeId = useActiveId(items.map((item) => item.id));
+  const activeId = useActiveId(items.map((item) => item.id).join('\n'));
 
   return (
     <aside
@@ -94,8 +94,10 @@ const resolvePath = (pathName: string): string => {
     : pathName + '.md';
 };
 
-function useActiveId(itemIds: string[]) {
-  const [activeId, setActiveId] = useState('');
+// The ids come joined into one string, so a render that builds a new list
+// doesn't re-run the effect and re-attach its listeners.
+function useActiveId(ids: string) {
+  const [activeId, setActiveId] = useState(ids.split('\n')[0]);
 
   // A jump to any heading too near the end of the page to pass under the
   // header lands at the bottom, so there the heading last jumped to, by a link
@@ -103,13 +105,12 @@ function useActiveId(itemIds: string[]) {
   // scrolls back up.
   const jumpedId = useRef('');
 
-  // A page opened at a heading's link has jumped to it.
   useEffect(() => {
-    jumpedId.current = location.hash.slice(1);
-  }, []);
-
-  useEffect(() => {
+    const itemIds = ids.split('\n');
     let lastScrollY = window.scrollY;
+
+    // A page opened at a heading's link has jumped to it.
+    jumpedId.current = location.hash.slice(1);
 
     const handleScroll = () => {
       const headings = itemIds.flatMap(
@@ -194,7 +195,7 @@ function useActiveId(itemIds: string[]) {
       document.removeEventListener('click', handleClick);
       window.removeEventListener('popstate', handlePopState);
     };
-  }, [itemIds]);
+  }, [ids]);
 
   return activeId;
 }
