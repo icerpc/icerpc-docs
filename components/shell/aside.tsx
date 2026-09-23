@@ -2,7 +2,7 @@
 
 'use client';
 
-import { ReactNode, useState, useEffect, useRef } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -99,18 +99,15 @@ const resolvePath = (pathName: string): string => {
 function useActiveId(ids: string) {
   const [activeId, setActiveId] = useState(ids.split('\n')[0]);
 
-  // A jump to any heading too near the end of the page to pass under the
-  // header lands at the bottom, so there the heading last jumped to, by a link
-  // or by Back and Forward, decides which one is active, until the reader
-  // scrolls back up.
-  const jumpedId = useRef('');
-
   useEffect(() => {
     const itemIds = ids.split('\n');
     let lastScrollY = window.scrollY;
 
-    // A page opened at a heading's link has jumped to it.
-    jumpedId.current = location.hash.slice(1);
+    // A jump to any heading too near the end of the page to pass under the
+    // header lands at the bottom, so there the heading last jumped to, by a
+    // link, by Back and Forward, or by opening the page at its link, decides
+    // which one is active, until the reader scrolls back up.
+    let jumpedId = location.hash.slice(1);
 
     const handleScroll = () => {
       const headings = itemIds.flatMap(
@@ -123,7 +120,7 @@ function useActiveId(ids: string) {
         (heading) => heading.getBoundingClientRect().top
       );
 
-      if (scrollY < lastScrollY) jumpedId.current = '';
+      if (scrollY < lastScrollY) jumpedId = '';
       lastScrollY = scrollY;
 
       // The scroll position at which each heading passes under the header: a
@@ -152,15 +149,14 @@ function useActiveId(ids: string) {
       let active = squeezed.findLastIndex((target) => target <= scrollY);
       if (tops[active + 1] < innerHeight / 2) active++;
 
-      const jumped = headings.findIndex(
-        (heading) => heading.id === jumpedId.current
-      );
-      if (
-        scrollY >= maxScroll - 1 &&
-        jumped !== -1 &&
-        targets[jumped] > maxScroll
-      ) {
-        active = jumped;
+      // At the bottom of the page the last heading is active, unless the
+      // reader jumped to another one that can't pass under the header.
+      if (maxScroll > 0 && scrollY >= maxScroll - 1) {
+        const jumped = headings.findIndex((heading) => heading.id === jumpedId);
+        active =
+          jumped !== -1 && targets[jumped] > maxScroll
+            ? jumped
+            : headings.length - 1;
       }
 
       setActiveId(headings[Math.max(active, 0)].id);
@@ -170,7 +166,7 @@ function useActiveId(ids: string) {
     // when the page is already at the bottom, so it updates the active heading
     // itself.
     const handleJump = (id: string) => {
-      jumpedId.current = id;
+      jumpedId = id;
       handleScroll();
     };
     const handleClick = (event: MouseEvent) => {
@@ -207,7 +203,7 @@ type ActionItemProps = {
 
 const ActionItem = ({ href, children }: ActionItemProps) => {
   return (
-    <li className="m-0 mb-2 text-sm leading-6">
+    <li className="mb-2 text-sm leading-6">
       <Link href={href} className="dark:text-[rgba(255,255,255,0.8)]">
         <div className="flex items-center gap-[0.5em]">{children}</div>
       </Link>
@@ -237,7 +233,7 @@ const ListItem = ({ item, activeId }: ListItemProps) => {
         )}
       >
         {item.level > 2 && (
-          <span className="mx-2 flex h-[1lh] shrink-0 items-center">
+          <span className="mx-2 flex h-lh shrink-0 items-center">
             <FontAwesomeIcon icon={faMinus} />
           </span>
         )}
