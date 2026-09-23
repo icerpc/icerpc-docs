@@ -2,7 +2,7 @@
 
 'use client';
 
-import { ReactNode, useState, useEffect } from 'react';
+import { ReactNode, useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -32,7 +32,7 @@ export const Aside = ({
       (item.level === 2 || item.level === 3) &&
       item.title !== 'Next steps'
   );
-  const activeId = useActiveId(items.map((item) => item.id));
+  const [activeId, selectId] = useActiveId(items.map((item) => item.id));
 
   return (
     <aside
@@ -53,6 +53,7 @@ export const Aside = ({
                   key={`${item.id}-${index}`}
                   item={item}
                   activeId={activeId ?? ''}
+                  onSelect={selectId}
                 />
               ))}
             </ul>
@@ -97,31 +98,66 @@ const resolvePath = (pathName: string): string => {
 function useActiveId(itemIds: string[]) {
   const [activeId, setActiveId] = useState('');
 
+  // A jump to any heading too near the end of the page to pass under the
+  // header lands at the bottom, so there the entry last clicked decides which
+  // one is active, until the reader scrolls back up.
+  const clickedId = useRef('');
+
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
-      // At the bottom of the page the last headings can't scroll up to the
-      // header, so the last one wins.
-      const atBottom =
-        window.scrollY > 0 &&
-        window.innerHeight + window.scrollY >=
-          document.documentElement.scrollHeight - 1;
+      const headings = itemIds.flatMap(
+        (id) => document.getElementById(id) ?? []
+      );
+      if (headings.length === 0) return;
+      const { innerHeight, scrollY } = window;
+      const maxScroll = document.documentElement.scrollHeight - innerHeight;
+      const tops = headings.map(
+        (heading) => heading.getBoundingClientRect().top
+      );
 
-      // The active heading is the last one scrolled up to the sticky header,
-      // which is where a heading's scroll-margin-top leaves it after a jump.
-      let currentId = itemIds[0];
-      itemIds.forEach((id) => {
-        const element = document.getElementById(id);
-        if (
-          element &&
-          (atBottom ||
-            element.getBoundingClientRect().top <=
-              parseFloat(getComputedStyle(element).scrollMarginTop) + 1)
-        ) {
-          currentId = id;
-        }
-      });
+      if (scrollY < lastScrollY) clickedId.current = '';
+      lastScrollY = scrollY;
 
-      setActiveId(currentId);
+      // The scroll position at which each heading passes under the header: a
+      // pixel past where a jump to it leaves it, at its scroll-margin-top.
+      const margin = parseFloat(getComputedStyle(headings[0]).scrollMarginTop);
+      const targets = tops.map((top) => top + scrollY - margin + 1);
+
+      // Headings too near the end of the page never pass under the header, so
+      // their targets are squeezed into the scroll left after the last one
+      // that does. They then activate in order by the bottom of the page.
+      const lastReachable =
+        targets.findLast((target) => target <= maxScroll) ?? 0;
+      const last = targets[targets.length - 1];
+      const squeeze =
+        last > maxScroll && maxScroll > lastReachable
+          ? (maxScroll - lastReachable) / (last - lastReachable)
+          : 1;
+      const squeezed = targets.map((target) =>
+        target > lastReachable
+          ? lastReachable + (target - lastReachable) * squeeze
+          : target
+      );
+
+      // The active heading is the last one passed, or the next one once it's
+      // in the top half of the viewport.
+      let active = squeezed.findLastIndex((target) => target <= scrollY);
+      if (tops[active + 1] < innerHeight / 2) active++;
+
+      const clicked = headings.findIndex(
+        (heading) => heading.id === clickedId.current
+      );
+      if (
+        scrollY >= maxScroll - 1 &&
+        clicked !== -1 &&
+        targets[clicked] > maxScroll
+      ) {
+        active = clicked;
+      }
+
+      setActiveId(headings[Math.max(active, 0)].id);
     };
 
     // Attach the event listener
@@ -136,7 +172,12 @@ function useActiveId(itemIds: string[]) {
     };
   }, [itemIds]);
 
-  return activeId;
+  const selectId = (id: string) => {
+    clickedId.current = id;
+    setActiveId(id);
+  };
+
+  return [activeId, selectId] as const;
 }
 
 type ActionItemProps = {
@@ -157,9 +198,10 @@ const ActionItem = ({ href, children }: ActionItemProps) => {
 type ListItemProps = {
   item: AsideItem;
   activeId: string;
+  onSelect: (id: string) => void;
 };
 
-const ListItem = ({ item, activeId }: ListItemProps) => {
+const ListItem = ({ item, activeId, onSelect }: ListItemProps) => {
   const href = `#${item.id}`;
   const leftPadding = item.level >= 3 ? '-ml-1' : '';
 
@@ -170,6 +212,7 @@ const ListItem = ({ item, activeId }: ListItemProps) => {
     >
       <Link
         href={href}
+        onClick={() => onSelect(item.id)}
         className={clsx(
           'flex items-start text-inherit',
           activeId === item.id && 'text-primary font-semibold dark:text-white'
