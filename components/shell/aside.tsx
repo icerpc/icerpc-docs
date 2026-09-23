@@ -99,9 +99,21 @@ function useActiveId(itemIds: string[]) {
   const [activeId, setActiveId] = useState('');
 
   // A jump to any heading too near the end of the page to pass under the
-  // header lands at the bottom, so there the entry last clicked decides which
-  // one is active, until the reader scrolls back up.
-  const clickedId = useRef('');
+  // header lands at the bottom, so there the heading last jumped to, by a
+  // click, a link, or Back and Forward, decides which one is active, until
+  // the reader scrolls back up.
+  const jumpedId = useRef('');
+
+  useEffect(() => {
+    const readHash = () => {
+      jumpedId.current = location.hash.slice(1);
+    };
+    readHash();
+    window.addEventListener('popstate', readHash);
+    return () => {
+      window.removeEventListener('popstate', readHash);
+    };
+  }, []);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -117,7 +129,7 @@ function useActiveId(itemIds: string[]) {
         (heading) => heading.getBoundingClientRect().top
       );
 
-      if (scrollY < lastScrollY) clickedId.current = '';
+      if (scrollY < lastScrollY) jumpedId.current = '';
       lastScrollY = scrollY;
 
       // The scroll position at which each heading passes under the header: a
@@ -146,15 +158,15 @@ function useActiveId(itemIds: string[]) {
       let active = squeezed.findLastIndex((target) => target <= scrollY);
       if (tops[active + 1] < innerHeight / 2) active++;
 
-      const clicked = headings.findIndex(
-        (heading) => heading.id === clickedId.current
+      const jumped = headings.findIndex(
+        (heading) => heading.id === jumpedId.current
       );
       if (
         scrollY >= maxScroll - 1 &&
-        clicked !== -1 &&
-        targets[clicked] > maxScroll
+        jumped !== -1 &&
+        targets[jumped] > maxScroll
       ) {
-        active = clicked;
+        active = jumped;
       }
 
       setActiveId(headings[Math.max(active, 0)].id);
@@ -173,7 +185,7 @@ function useActiveId(itemIds: string[]) {
   }, [itemIds]);
 
   const selectId = (id: string) => {
-    clickedId.current = id;
+    jumpedId.current = id;
     setActiveId(id);
   };
 
