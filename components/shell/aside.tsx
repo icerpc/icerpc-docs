@@ -150,11 +150,12 @@ function useActiveId(ids: string) {
       if (tops[active + 1] < innerHeight / 2) active++;
 
       // At the bottom of the page the last heading is active, unless the
-      // reader jumped to another one that can't pass under the header.
+      // reader jumped to another one whose jump lands there too, within the
+      // same pixel that counts as the bottom.
       if (scrollY >= maxScroll - 1) {
         const jumped = headings.findIndex((heading) => heading.id === jumpedId);
         active =
-          jumped !== -1 && targets[jumped] > maxScroll
+          jumped !== -1 && targets[jumped] > maxScroll - 1
             ? jumped
             : headings.length - 1;
       }
