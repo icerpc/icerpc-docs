@@ -5,13 +5,14 @@ const nextConfig: NextConfig = {
   // A build with SITE_NOINDEX=true is for the dev site, which must not compete
   // with docs.icerpc.dev in search results.
   async headers() {
-    if (process.env.SITE_NOINDEX !== 'true') return [];
-    return [
-      {
-        source: '/:path*',
-        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }]
-      }
-    ];
+    return process.env.SITE_NOINDEX === 'true'
+      ? [
+          {
+            source: '/:path*',
+            headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }]
+          }
+        ]
+      : [];
   }
 };
 
