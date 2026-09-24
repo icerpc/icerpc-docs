@@ -57,6 +57,8 @@ jobs:
           pull: true
           # Attestations show up as extra unknown/unknown entries in the manifest.
           provenance: false
+          # Only main deploys docs.icerpc.dev; keep the dev site out of search indexes.
+          build-args: SITE_NOINDEX=${{ github.ref != 'refs/heads/main' }}
           push: ${{ github.event_name != 'pull_request' && github.repository == 'icerpc/icerpc-docs' }}
           tags: ${{ env.IMAGE }}:${{ github.sha }}-${{ matrix.arch }}
           cache-from: type=gha,scope=${{ matrix.arch }}
