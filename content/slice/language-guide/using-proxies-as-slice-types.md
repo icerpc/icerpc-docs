@@ -98,26 +98,30 @@ You can override this default behavior by configuring a [base proxy] in the [ISl
 
 ## Relative proxy {% icerpcSlice=true %}
 
-A relative proxy is a proxy that encapsulates a [relative service address]. You cannot use a relative proxy to send requests.
+A relative proxy is a proxy that identifies its target service by a path only. It's encoded as this path, not as a
+service address URI. You cannot use a relative proxy to send requests.
 
-A relative service address is converted into a regular service address with the help of a base service address. This
-base service address can be any absolute service address. The resulting service address is simply the base service
-address with its path replaced by the path of the relative service address.
+A typical use case is a server that returns a proxy to one of its own services without knowing how the client reaches
+it: the server returns a relative proxy, and the client resolves it into a regular proxy that uses the same route as
+the request.
 
-When the decode method generated for *Name*Proxy decodes a relative service address, it uses as base service address:
+A relative proxy is resolved with the help of a base proxy: the resulting proxy has the invoker and encode options of
+the base proxy, and its service address is the service address of the base proxy with its path replaced by the path of
+the relative proxy.
 
-- the service address of the configured [base proxy] unless it's null or relative, or
-- (client side) the service address of the proxy that sent the request
+When the decode method generated for *Name*Proxy decodes a relative proxy, it uses as base proxy:
 
-The decode method returns a relative proxy when there is no base service address to resolve the relative service
-address.
+- the configured [base proxy], or
+- (client side) the proxy that sent the request
+
+On the server side, when no base proxy is configured, the decode method returns a relative proxy. A base proxy cannot
+itself be a relative proxy.
 
 [base proxy]: csharp:IceRpc.Slice.ISliceFeature#IceRpc_Slice_ISliceFeature_BaseProxy
 [Custom types]: custom-types
 [incoming request features]: /icerpc/dispatch/incoming-request#request-features
 [invocation pipeline]: /icerpc/invocation/invocation-pipeline
 [ISliceFeature]: csharp:IceRpc.Slice.ISliceFeature
-[relative service address]: /icerpc/invocation/service-address#relative-service-address
 [service address]: /icerpc/invocation/service-address
 [outgoing request features]: /icerpc/invocation/outgoing-request#request-features
 [SliceEncodeOptions]: csharp:IceRpc.Slice.SliceEncodeOptions

@@ -24,7 +24,7 @@ module IceRpc
 custom ServiceAddress
 ```
 
-A service address is encoded as a URI [string]. This URI can be absolute or relative.
+A service address is encoded as its URI [string].
 
 [outgoing request]: /icerpc/invocation/outgoing-request
 [outgoing response]: /icerpc/dispatch/outgoing-response

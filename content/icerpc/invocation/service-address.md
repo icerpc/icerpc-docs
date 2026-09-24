@@ -5,27 +5,24 @@ description: Understand the service address concept and syntax.
 
 ## Syntax
 
-A service address is a [URI] that specifies the address of a service. It can be absolute or relative.
+A service address is an absolute [URI] that specifies the address of a service.
 
-The scheme of an absolute service address is either ice or icerpc. A relative service address corresponds to an absolute
-path: the URI has no scheme, no query parameter and no fragment.
-
-The URI scheme of an absolute service address identifies the protocol to use to reach the target service.
+The scheme of a service address is either ice or icerpc: it identifies the protocol to use to reach the target service.
 
 The path of a service address allows the server to route requests to the desired service.
 
-An absolute service address may include one or more [server addresses]. These server addresses are used to establish
-or locate a connection to a server that hosts the service. The protocol of a server address is always the same as the
-protocol of the enclosing service address.
+A service address may include one or more [server addresses]. These server addresses are used to establish or locate a
+connection to a server that hosts the service. The protocol of a server address is always the same as the protocol of
+the enclosing service address.
 
-An absolute service address without a server address can have query parameters.
+A service address without a server address can have query parameters.
 
 Finally, an ice service address can have a fragment; this fragment corresponds to an [Ice facet].
 
 In C#, record class [ServiceAddress] is a parsed and validated representation of a service address URI: it holds exactly
 the same information.
 
-Service addresses can be divided into 4 categories:
+Service addresses can be divided into 3 categories:
 
 ## Service address with a single server address
 
@@ -73,9 +70,9 @@ For example:
 icerpc://hello.zeroc.com/hello?alt-server=bonjour.zeroc.com?transport=tcp$other=foo
 ```
 
-## Absolute service address with no server address
+## Service address with no server address
 
-An absolute service address with no host does not specify a server address. Its syntax is:
+A service address can also omit the server address altogether. Its syntax is:
 
 ```
 icerpc:/path[?name=value][&name=value...]
@@ -105,14 +102,6 @@ using var request = new OutgoingRequest(new ServiceAddress(new Uri("icerpc:/gree
 IncomingResponse response = await clientConnection.InvokeAsync(request);
 ```
 
-## Relative service address
-
-A relative service address consists of an absolute path. IceRPC does not consume relative service addresses; in
-particular, it's an error to create an outgoing request with a relative service address.
-
-Relative service addresses underpin [relative proxies] in Slice.
-
-[relative proxies]: /slice/language-guide/using-proxies-as-slice-types#relative-proxy
 [server addresses]: ../connection/server-address
 
 [URI]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
