@@ -65,7 +65,12 @@ jobs:
           # Only main deploys docs.icerpc.dev; keep the dev site out of search indexes.
           build-args: SITE_NOINDEX=${{ github.ref != 'refs/heads/main' }}
           # Pushed by digest only; the publish job tags the multi-arch index.
-          outputs: type=image,name=${{ env.IMAGE }},push-by-digest=true,name-canonical=true,push=${{ github.event_name != 'pull_request' && github.repository == 'icerpc/icerpc-docs' }}
+          outputs: >-
+            type=image,
+            name=${{ env.IMAGE }},
+            push-by-digest=true,
+            name-canonical=true,
+            push=${{ github.event_name != 'pull_request' && github.repository == 'icerpc/icerpc-docs' }}
           cache-from: type=gha,scope=${{ matrix.arch }}
           cache-to: type=gha,mode=max,scope=${{ matrix.arch }}
 
