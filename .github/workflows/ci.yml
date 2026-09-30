@@ -33,6 +33,10 @@ jobs:
             runner: ubuntu-latest
           - arch: arm64
             runner: ubuntu-24.04-arm # there is no ubuntu-latest-arm yet
+    # Matrix jobs share one set of outputs, so each arch writes its own.
+    outputs:
+      digest-amd64: ${{ steps.digest.outputs.digest-amd64 }}
+      digest-arm64: ${{ steps.digest.outputs.digest-arm64 }}
 
     steps:
       - name: Checkout repository
@@ -50,6 +54,7 @@ jobs:
         uses: docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e # v4.3.0
 
       - name: Build and push image
+        id: build
         uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
         with:
           context: .
@@ -59,13 +64,25 @@ jobs:
           provenance: false
           # Only main deploys docs.icerpc.dev; keep the dev site out of search indexes.
           build-args: SITE_NOINDEX=${{ github.ref != 'refs/heads/main' }}
-          push: ${{ github.event_name != 'pull_request' && github.repository == 'icerpc/icerpc-docs' }}
-          tags: ${{ env.IMAGE }}:${{ github.sha }}-${{ matrix.arch }}
+          # Pushed by digest only; the publish job tags the multi-arch index.
+          outputs: >-
+            type=image,
+            name=${{ env.IMAGE }},
+            push-by-digest=true,
+            name-canonical=true,
+            push=${{ github.event_name != 'pull_request' && github.repository == 'icerpc/icerpc-docs' }}
           cache-from: type=gha,scope=${{ matrix.arch }}
           cache-to: type=gha,mode=max,scope=${{ matrix.arch }}
 
+      - name: Record the image digest
+        id: digest
+        env:
+          ARCH: ${{ matrix.arch }}
+          DIGEST: ${{ steps.build.outputs.digest }}
+        run: echo "digest-${ARCH}=${DIGEST}" >> "$GITHUB_OUTPUT"
+
   publish:
-    name: Publish multi-arch tags
+    name: Publish image
     needs: build
     if: github.event_name != 'pull_request' && github.repository == 'icerpc/icerpc-docs'
     runs-on: ubuntu-latest
@@ -81,13 +98,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create and push multi-arch manifests
+      - name: Create and push the multi-arch image
+        env:
+          DIGEST_AMD64: ${{ needs.build.outputs.digest-amd64 }}
+          DIGEST_ARM64: ${{ needs.build.outputs.digest-arm64 }}
         run: |
           docker buildx imagetools create \
-            --tag ${IMAGE}:${GITHUB_SHA} \
-            --tag ${IMAGE}:latest \
-            ${IMAGE}:${GITHUB_SHA}-amd64 \
-            ${IMAGE}:${GITHUB_SHA}-arm64
+            --tag "${IMAGE}:latest" \
+            "${IMAGE}@${DIGEST_AMD64}" \
+            "${IMAGE}@${DIGEST_ARM64}"
 
   deploy:
     name: Deploy
@@ -109,17 +128,3 @@ jobs:
             trap 'docker logout ghcr.io' EXIT
             docker compose pull icerpc-docs
             docker compose up -d icerpc-docs
-
-  cleanup:
-    name: Cleanup old images
-    needs: publish
-    if: github.event_name != 'pull_request' && github.repository == 'icerpc/icerpc-docs'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Delete old container images (keep the 10 most recent)
-        uses: actions/delete-package-versions@e5bc658cc4c965c472efe991f8beea3981499c55 # v5.0.0
-        with:
-          package-name: icerpc-docs
-          package-type: container
-          min-versions-to-keep: 10
