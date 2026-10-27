@@ -28,12 +28,12 @@ server. It is common to use DNS names in these server addresses.
 
 For example:
 
-| Server address                      | Meaning                                                                                                         |
-| ------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `icerpc://hello.zeroc.com`          | Connect to `hello.zeroc.com` on port 4062 using the icerpc protocol; the underlying transport is not specified. |
-| `icerpc://192.168.100.10:10000?transport=quic` | Connect to `192.168.100.10` on port 10000 using the icerpc protocol over QUIC.                       |
-| `icerpc://hello.zeroc.com?transport=tcp` | Connect to `hello.zeroc.com` on port 4062 using the icerpc protocol over Slic over TCP.                        |
-| `ice://hello.zeroc.com`             | Connect to `hello.zeroc.com` on port 4061 using the ice protocol.                                               |
+| Server address                                 | Meaning                                                                                                         |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `icerpc://hello.zeroc.com`                     | Connect to `hello.zeroc.com` on port 4062 using the icerpc protocol; the underlying transport is not specified. |
+| `icerpc://192.168.100.10:10000?transport=quic` | Connect to `192.168.100.10` on port 10000 using the icerpc protocol over QUIC.                                  |
+| `icerpc://hello.zeroc.com?transport=tcp`       | Connect to `hello.zeroc.com` on port 4062 using the icerpc protocol over Slic over TCP.                         |
+| `ice://hello.zeroc.com`                        | Connect to `hello.zeroc.com` on port 4061 using the ice protocol.                                               |
 
 When you omit the `transport` parameter from an `icerpc` server address, the client connection uses the default
 multiplexed transport, QUIC. To use Slic over TCP instead, add `?transport=tcp` to the server address.
@@ -54,7 +54,7 @@ won't listen on tcp or udp port 0.
 Here are some examples:
 
 | Server address            | Meaning                                                                                                         |
-| --------------------------|-----------------------------------------------------------------------------------------------------------------|
+| ------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `icerpc://192.168.100.10` | Listen for icerpc connections on the interface associated with `192.168.100.10`, using the default icerpc port. |
 | `icerpc://[::0]:0`        | Listen for icerpc connections on all interfaces; the OS selects the port number to use.                         |
 | `ice://0.0.0.0:10000`     | Listen for ice connections on all interfaces with an IPv4 address on port 10000.                                |

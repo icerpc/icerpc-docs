@@ -19,7 +19,7 @@ export const IcerpcSlice = () => (
         <TooltipTrigger asChild>
           <Link
             href="/slice#slice-and-icerpc"
-            className="border-primary/20 bg-primary/10 text-primary/90 relative my-auto ml-1 rounded-sm border p-px px-[4px] text-xs font-bold"
+            className="relative my-auto ml-1 rounded-sm border border-primary/20 bg-primary/10 p-px px-[4px] text-xs font-bold text-primary/90"
           >
             IceRPC + Slice
           </Link>

@@ -134,6 +134,5 @@ internal readonly partial record struct Point
 You can also apply `cs::readonly` to a struct field to map this field to a get-init property.
 
 [tagged-fields]: fields#tagged-fields
-
 [SliceEncoder]: csharp:ZeroC.Slice.Codec.SliceEncoder
 [SliceDecoder]: csharp:ZeroC.Slice.Codec.SliceDecoder

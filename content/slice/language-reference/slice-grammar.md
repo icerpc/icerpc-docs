@@ -414,12 +414,12 @@ struct   // The struct keyword
 Slice supports three forms of integer literals:
 
 - A decimal literal for base-10 numbers.
-These consist of one or more digits between `0` and `9` (inclusive).
+  These consist of one or more digits between `0` and `9` (inclusive).
 - A hexadecimal literal for base-16 numbers.
-These start with the prefix `0x`, followed by one or more digits between `0` and `9` or letters between `a` and `f`.
-Hexadecimal literals are not case-sensitive.
+  These start with the prefix `0x`, followed by one or more digits between `0` and `9` or letters between `a` and `f`.
+  Hexadecimal literals are not case-sensitive.
 - A binary literal for base-2 numbers.
-These start with the prefix `0b`, followed by one or more digits that are either `0` or `1`.
+  These start with the prefix `0b`, followed by one or more digits that are either `0` or `1`.
 
 Additionally, underscores can appear between any two characters of an integer literal.
 These underscores carry no semantic meaning and are discarded by the parser.
@@ -790,7 +790,6 @@ UndelimitedList<T>
 [type]: #type-references
 [integer]: #integer-literals
 [string]: #string-literals
-
 [slice-file-guide]: /slice/basics/slice-files
 [module-guide]: /slice/language-guide/module
 [primitive-type-guide]: /slice/language-guide/primitive-types
@@ -808,10 +807,8 @@ UndelimitedList<T>
 [custom-type-guide]: /slice/language-guide/custom-types
 [type-alias-guide]: /slice/language-guide/type-alias
 [attribute-guide]: /slice/language-guide/attributes
-
 [doc-comment]: /slice/language-reference/doc-comments
 [keywords]: #lexical-grammar
 [preprocessed]: /slice/language-reference/preprocessor-directives
 [streamed-parameters-guide]: /slice/language-guide/stream-parameters
-
 [utf-8]: https://en.wikipedia.org/wiki/UTF-8

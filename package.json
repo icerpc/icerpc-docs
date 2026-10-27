@@ -6,7 +6,9 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@docsearch/react": "^5.1.1",
@@ -51,6 +53,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "autoprefixer": "^10.6.1",
+    "eslint": "^9.39.5",
     "eslint-config-next": "^16.3.6",
     "eslint-config-prettier": "^10.1.8",
     "postcss": "^8.5.28",

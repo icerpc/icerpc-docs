@@ -170,7 +170,6 @@ await using var clientConnection = new ClientConnection(
 [response-fields]: ../invocation/incoming-response#response-fields
 [status-code]: ../invocation/incoming-response#status-code
 [payload-continuation]: ../invocation/outgoing-request#request-payload-and-payload-continuation
-
 [application-layer]: https://en.wikipedia.org/wiki/Application_layer
 [QUIC]: https://www.rfc-editor.org/rfc/rfc9000.html
 [head-of-line-blocking]: https://en.wikipedia.org/wiki/Head-of-line_blocking

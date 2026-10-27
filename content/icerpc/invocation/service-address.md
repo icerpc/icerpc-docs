@@ -114,8 +114,6 @@ Relative service addresses underpin [relative proxies] in Slice.
 
 [relative proxies]: /slice/language-guide/using-proxies-as-slice-types#relative-proxy
 [server addresses]: ../connection/server-address
-
 [URI]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
-
 [ServiceAddress]: csharp:IceRpc.ServiceAddress
 [Ice facet]: https://docs.zeroc.com/ice/3.8/cpp/facets

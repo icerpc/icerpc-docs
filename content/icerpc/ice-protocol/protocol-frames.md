@@ -161,12 +161,12 @@ When IceRPC receives a response frame, it creates an incoming response with a st
 
 The format of the `replyPayload` depends on the reply status:
 
-| Reply status                 | Format of the reply payload                                           |
-| ---------------------------- | --------------------------------------------------------------------- |
-| Ok                           | An [encapsulation](#encapsulation) that holds the response's payload. |
-| UserException                | An [encapsulation](#encapsulation) that holds the response's payload. |
-| Any *NotExist* reply status  | A `RequestFailedData` encoded with the Ice encoding.                  |
-| Other values                 | The response's error message encoded with the Ice encoding.           |
+| Reply status                | Format of the reply payload                                           |
+| --------------------------- | --------------------------------------------------------------------- |
+| Ok                          | An [encapsulation](#encapsulation) that holds the response's payload. |
+| UserException               | An [encapsulation](#encapsulation) that holds the response's payload. |
+| Any _NotExist_ reply status | A `RequestFailedData` encoded with the Ice encoding.                  |
+| Other values                | The response's error message encoded with the Ice encoding.           |
 
 ### RequestFailedData
 
@@ -219,7 +219,7 @@ For compatibility with Ice, IceRPC always encodes 1.1 (on 2 bytes) as the Ice en
 though IceRPC doesn't know anything about payload encoding. That's because:
 
 - if this encapsulation is received by an Ice application, the only encoding supported by both Ice and IceRPC is the
-Ice encoding version 1.1.
+  Ice encoding version 1.1.
 - if this encapsulation is received by an IceRPC application, this 1.1 version is ignored.
 
 For the same reason, when IceRPC receives an encapsulation, it makes sure the encoding version in this encapsulation is

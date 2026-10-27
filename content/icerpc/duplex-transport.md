@@ -53,13 +53,11 @@ To use a custom transport, the application needs to provide an instance of `IDup
 
 [security-with-tls]: connection/security-with-tls
 [Slic]: slic-transport/overview
-
 [RFCOMM]: https://en.wikipedia.org/wiki/List_of_Bluetooth_protocols#Radio_frequency_communication_(RFCOMM)
 [connection-oriented]: https://en.wikipedia.org/wiki/Connection-oriented_communication
 [full-duplex]: https://en.wikipedia.org/wiki/Duplex_(telecommunications)#Full_duplex
 [flow-control]: https://en.wikipedia.org/wiki/Flow_control_(data)
 [ice-protocol]: protocols-and-transports/ice-duplex-transports
-
 [`IDuplexClientTransport`]: csharp:IceRpc.Transports.IDuplexClientTransport
 [`IDuplexServerTransport`]: csharp:IceRpc.Transports.IDuplexServerTransport
 [`IListener<IDuplexConnection>`]: csharp:IceRpc.Transports.IListener-1

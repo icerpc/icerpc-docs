@@ -75,12 +75,12 @@ There are 3 common types of dispatchers:
   It's a leaf in the dispatch pipeline. For example, a Slice service.
 
 - **Middleware**\
-   A [middleware](middleware) intercepts a dispatch and forwards it to the "next" dispatcher. IceRPC provides several
-   built-in middleware for logging, compression and more.
+  A [middleware](middleware) intercepts a dispatch and forwards it to the "next" dispatcher. IceRPC provides several
+  built-in middleware for logging, compression and more.
 
 - **Router**\
-   A [router](router) routes a request to a dispatcher registered with this router based on the request's path. It can
-   also host one or more middleware.
+  A [router](router) routes a request to a dispatcher registered with this router based on the request's path. It can
+  also host one or more middleware.
 
 ```mermaid
 ---
@@ -94,6 +94,5 @@ flowchart LR
 [connections]: ../connection/how-to-create-a-connection
 [invoker]: ../invocation/invocation-pipeline#the-invoker-abstraction
 [Slice service]: /slice/language-guide/interface
-
 [IDispatcher]: csharp:IceRpc.IDispatcher
 [ConnectionOptions]: csharp:IceRpc.ConnectionOptions

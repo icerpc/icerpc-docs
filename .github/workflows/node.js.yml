@@ -17,5 +17,7 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
+      - name: Check formatting
+        run: npm run format:check
       - name: Build
         run: npm run build --omit=dev

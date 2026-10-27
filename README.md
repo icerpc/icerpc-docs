@@ -22,6 +22,17 @@ install node, it is recommended to follow the guide provided by Node.js
    npm run dev
    ```
 
+## Linting and Formatting
+
+CI fails a pull request on any ESLint error or warning, and on any file Prettier would reformat, Markdown pages
+included.
+
+```bash
+npm run lint          # ESLint
+npm run format        # reformat every file with Prettier
+npm run format:check  # list the files Prettier would reformat
+```
+
 ## Writing Documentation
 
 For comprehensive guidelines on writing documentation, including how to use custom nodes and tags, please refer to the

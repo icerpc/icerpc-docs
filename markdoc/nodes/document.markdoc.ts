@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { nodes, Node, Config, Tag } from '@markdoc/markdoc';
+import { nodes, Node, Config, RenderableTreeNode, Tag } from '@markdoc/markdoc';
 
 const document = {
   ...nodes.document,
@@ -10,9 +10,7 @@ const document = {
     const frontmatter = config.variables?.frontmatter;
     const path = config.variables?.path;
     const children = node.transformChildren(config) ?? [];
-    const headings = children
-      .map((child) => extractHeadings(child, []))
-      .flat();
+    const headings = children.map((child) => extractHeadings(child, [])).flat();
 
     return new Tag(
       `${this.render}`,
@@ -34,9 +32,16 @@ const document = {
   }
 };
 
-function extractHeadings(node: any, sections: any[] = []) {
+function extractHeadings(
+  node: RenderableTreeNode,
+  sections: Record<string, unknown>[]
+) {
+  if (!Tag.isTag(node)) {
+    return sections;
+  }
+
   // Add headings from step tags
-  if ((node as Tag).name === 'Step') {
+  if (node.name === 'Step') {
     sections.push({
       ...node.attributes,
       icerpcSlice: false,
@@ -44,35 +49,29 @@ function extractHeadings(node: any, sections: any[] = []) {
     });
   }
 
-  if (node) {
-    if (node.name === 'Heading') {
-      let title = '';
-      // Handle headings with italic tags
-      for (const child of node.children) {
-        if (typeof child === 'string') {
-          title += child;
-        } else if (child.name === 'em') {
-          for (const grandchild of child.children) {
-            if (typeof grandchild === 'string') {
-              title += grandchild;
-            }
+  if (node.name === 'Heading') {
+    let title = '';
+    // Handle headings with italic tags
+    for (const child of node.children) {
+      if (typeof child === 'string') {
+        title += child;
+      } else if (Tag.isTag(child) && child.name === 'em') {
+        for (const grandchild of child.children) {
+          if (typeof grandchild === 'string') {
+            title += grandchild;
           }
         }
       }
-
-      if (typeof title === 'string') {
-        sections.push({
-          ...node.attributes,
-          title
-        });
-      }
     }
 
-    if (node.children) {
-      for (const child of node.children) {
-        extractHeadings(child, sections);
-      }
-    }
+    sections.push({
+      ...node.attributes,
+      title
+    });
+  }
+
+  for (const child of node.children) {
+    extractHeadings(child, sections);
   }
 
   return sections;

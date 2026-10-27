@@ -7,26 +7,26 @@ ZeroC supports IceRPC for C# on the following platforms:
 
 ## Windows
 
-OS             | Version | Architectures | .NET version
----------------|---------|---------------|-------------
-Windows 10     | 22H2    | x64, x86      | .NET 8
-Windows 11     | 22H2    | x64, x86      | .NET 8
-Windows Server | 2022    | x64           | .NET 8
+| OS             | Version | Architectures | .NET version |
+| -------------- | ------- | ------------- | ------------ |
+| Windows 10     | 22H2    | x64, x86      | .NET 8       |
+| Windows 11     | 22H2    | x64, x86      | .NET 8       |
+| Windows Server | 2022    | x64           | .NET 8       |
 
 ## Linux
 
-OS                       | Version | Architectures | .NET version
--------------------------|---------|---------------|-------------
-Alpine Linux             | 3.18    | x64, Arm64    | .NET 8
-Debian                   | 12      | x64, Arm64    | .NET 8
-Red Hat Enterprise Linux | 9       | x64, Arm64    | .NET 8
-Ubuntu                   | 22.04   | x64, Arm64    | .NET 8
+| OS                       | Version | Architectures | .NET version |
+| ------------------------ | ------- | ------------- | ------------ |
+| Alpine Linux             | 3.18    | x64, Arm64    | .NET 8       |
+| Debian                   | 12      | x64, Arm64    | .NET 8       |
+| Red Hat Enterprise Linux | 9       | x64, Arm64    | .NET 8       |
+| Ubuntu                   | 22.04   | x64, Arm64    | .NET 8       |
 
 ## macOS
 
-OS    | Version      | Architectures | .NET version
-------|--------------|---------------|-------------
-macOS | 14 (Sonoma) | x64, Arm64    | .NET 8
+| OS    | Version     | Architectures | .NET version |
+| ----- | ----------- | ------------- | ------------ |
+| macOS | 14 (Sonoma) | x64, Arm64    | .NET 8       |
 
 ## Other platforms
 

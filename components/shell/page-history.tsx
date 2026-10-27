@@ -86,7 +86,7 @@ const NavLink = ({
     >
       <Link
         href={path}
-        className="group text-primary flex flex-col p-3 text-left"
+        className="group flex flex-col p-3 text-left text-primary"
       >
         <div className="flex flex-row items-center">
           {isLeft && (

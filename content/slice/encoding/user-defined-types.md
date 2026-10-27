@@ -2,6 +2,7 @@
 title: User-defined types
 description: Learn how to encode structs, enums, and other user-defined types with Slice.
 ---
+
 ## Enum
 
 ### Basic enum
@@ -14,8 +15,8 @@ For example:
 enum Fruit : uint16 { Apple, Strawberry, Orange = 300 }
 ```
 
-A `Strawberry` is encoded like a `uint16` with value 1 (on 2 bytes). An `Orange` is encoded like a `uint16` with value
-300.
+A `Strawberry` is encoded like a `uint16` with value 1 (on 2 bytes). An `Orange` is encoded like a `uint16`
+with value 300.
 
 The encoding is the same for checked and unchecked enums.
 
@@ -69,7 +70,7 @@ is encoded first. For each tagged field:
 
 - if the field value is not set, nothing is encoded
 - otherwise, this field is encoded as `[number][size][value]` where number is the tag number encoded as a varint32,
-value is the encoded field value and size is a `varuint62` with the number of bytes in value.
+  value is the encoded field value and size is a `varuint62` with the number of bytes in value.
 
 Finally, the "tag end marker" is encoded to mark the end of the tagged fields (and the end of the struct). This tag end
 marker is -1 encoded as a `varint32`.

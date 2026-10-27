@@ -165,7 +165,7 @@
   }
 
   main article {
-    @apply prose dark:prose-invert prose-a:no-underline prose-code:font-light prose-code:text-(--tw-prose-body) prose-code:before:hidden prose-code:after:hidden max-w-none;
+    @apply prose max-w-none dark:prose-invert prose-a:no-underline prose-code:font-light prose-code:text-(--tw-prose-body) prose-code:before:hidden prose-code:after:hidden;
   }
 
   main article li {
@@ -177,7 +177,7 @@
   }
 
   main article .callout a {
-    @apply underline! font-semibold;
+    @apply font-semibold underline!;
   }
 
   li {
@@ -185,7 +185,7 @@
   }
 
   body {
-    @apply dark:bg-dark bg-white;
+    @apply bg-white dark:bg-dark;
   }
 
   h2 {
@@ -197,11 +197,11 @@
   }
 
   code {
-    @apply dark:border-dark-border break-all rounded-sm border bg-slate-100 px-1 py-0.5 font-mono shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] md:break-normal dark:bg-transparent dark:text-white;
+    @apply rounded-sm border bg-slate-100 px-1 py-0.5 font-mono break-all shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] md:break-normal dark:border-dark-border dark:bg-transparent dark:text-white;
   }
 
   a code {
-    @apply text-primary dark:border-dark-border dark:text-primary rounded-sm border bg-slate-100 px-1 py-0.5 font-mono font-medium shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] hover:text-[rgb(64,131,193)] dark:bg-transparent dark:hover:text-[rgb(64,131,193)];
+    @apply rounded-sm border bg-slate-100 px-1 py-0.5 font-mono font-medium text-primary shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] hover:text-[rgb(64,131,193)] dark:border-dark-border dark:bg-transparent dark:text-primary dark:hover:text-[rgb(64,131,193)];
   }
 }
 
