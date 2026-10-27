@@ -30,7 +30,7 @@ type ExampleCardProps = {
 const ExampleCard = ({ title, description, href }: ExampleCardProps) => (
   <Link
     href={href}
-    className="dark:border-dark-border dark:bg-dark-accent flex flex-col justify-start rounded-xl border bg-white p-6 shadow-xs"
+    className="flex flex-col justify-start rounded-xl border bg-white p-6 shadow-xs dark:border-dark-border dark:bg-dark-accent"
   >
     <div className="relative flex size-6 items-center justify-center rounded-full">
       <FontAwesomeIcon icon={faGithub} className="size-6" />

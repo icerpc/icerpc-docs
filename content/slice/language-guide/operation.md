@@ -64,6 +64,7 @@ A single nameless return parameter can also get tagged. For example:
 // returns a tagged string
 op() -> tag(1) string?
 ```
+
 ## Idempotent operation
 
 An operation can be marked as idempotent, which means calling this operation several times with the same arguments is
@@ -131,10 +132,10 @@ interface Logger {
 
 ## C# mapping {% icerpcSlice=true %}
 
-A Slice operation named *opName* in interface `Greeter` is mapped to abstract method *OpName*Async in the interface
+A Slice operation named _opName_ in interface `Greeter` is mapped to abstract method *OpName*Async in the interface
 `IGreeter` and to abstract method *OpName*Async in interface `IGreeterService`.
 
-The mapped method name is always in Pascal case, per the usual C# naming conventions, even when *opName* is not in
+The mapped method name is always in Pascal case, per the usual C# naming conventions, even when _opName_ is not in
 Pascal case.
 
 For example:
@@ -267,9 +268,9 @@ the Encode*OpName* method provided by the helper [`Response` class](#request-and
 There are two somewhat common use-cases for this attribute:
 
 1. You want to encode a mutable collection field of your class (such as `List<T>`) while holding a mutex lock; this
-    lock prevents other operations from modifying this field while it's being encoded.
+   lock prevents other operations from modifying this field while it's being encoded.
 2. You want to return over and over the same return value that is costly to encode; this attribute allows you to encode
-    the return value once, cache the encoded bytes and then return over and over these bytes.
+   the return value once, cache the encoded bytes and then return over and over these bytes.
 
 [attributes]: attributes
 [parameters]: parameters

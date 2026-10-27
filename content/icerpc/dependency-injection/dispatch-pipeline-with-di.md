@@ -30,9 +30,9 @@ dispatcher. However, a more idiomatic approach is to communicate using injected 
 
 - an upstream middleware receives a scoped service (via injection) and then fills in this service
 - a downstream middleware receives the same scoped service (also via injection) and reads the information filled in by
- the upstream middleware
+  the upstream middleware
 - the constructor of the leaf dispatcher (a scoped or transient service) is auto-wired with this previously filled
-scoped service
+  scoped service
 
 The chain of middleware is itself static: each dispatch does not create new middleware instances. The middleware are
 typically singletons managed by the DI container.
@@ -194,11 +194,9 @@ internal partial class Chatbot : IGreeterService
 ```
 
 [features]: ../dispatch/incoming-request#request-features
-
 [IServiceCollection]: https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
 [IServiceProvider]: https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider
 [IceRpc.Extensions.DependencyInjection]: https://github.com/icerpc/icerpc-csharp/tree/0.6.x/src/IceRpc.Extensions.DependencyInjection
-
 [Router]: csharp:IceRpc.Router
 [IDispatcherBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder
 [IServiceProviderFeature]: csharp:IceRpc.Extensions.DependencyInjection.IServiceProviderFeature

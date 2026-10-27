@@ -1,12 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import {
-  nodes,
-  Node,
-  Config,
-  RenderableTreeNode,
-  Tag
-} from '@markdoc/markdoc';
+import { nodes, Node, Config, RenderableTreeNode, Tag } from '@markdoc/markdoc';
 
 const document = {
   ...nodes.document,
@@ -16,9 +10,7 @@ const document = {
     const frontmatter = config.variables?.frontmatter;
     const path = config.variables?.path;
     const children = node.transformChildren(config) ?? [];
-    const headings = children
-      .map((child) => extractHeadings(child, []))
-      .flat();
+    const headings = children.map((child) => extractHeadings(child, [])).flat();
 
     return new Tag(
       `${this.render}`,

@@ -122,9 +122,9 @@ export const FeedbackForm = ({ title, options }: Props) => {
                   aria-controls={'feedback-fields-' + option.id}
                   tabIndex={0}
                   className={clsx(
-                    'text-primary mt-1 size-3 rounded-full border-gray-300 bg-gray-100',
-                    'dark:focus:ring-primary dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700',
-                    'focus:ring-primary focus:ring-2'
+                    'mt-1 size-3 rounded-full border-gray-300 bg-gray-100 text-primary',
+                    'dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-primary dark:focus:ring-offset-gray-700',
+                    'focus:ring-2 focus:ring-primary'
                   )}
                   onClick={() => {
                     setSelected(option.id);
@@ -166,7 +166,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
                           placeholder="Your feedback ..."
                           className={clsx(
                             'mx-2 mt-2 h-14 w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-xs',
-                            'dark:border-dark-border dark:focus:border-primary dark:focus:ring-primary dark:bg-black',
+                            'dark:border-dark-border dark:bg-black dark:focus:border-primary dark:focus:ring-primary',
                             'focus:border-primary focus:ring-primary'
                           )}
                           onChange={(e) => {
@@ -187,7 +187,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
                           placeholder="Your email address ... "
                           className={clsx(
                             'm-2 h-[40px] w-full resize-none rounded-md border border-gray-300 p-3 text-xs shadow-xs',
-                            'dark:border-dark-border dark:focus:border-primary dark:focus:ring-primary dark:bg-black',
+                            'dark:border-dark-border dark:bg-black dark:focus:border-primary dark:focus:ring-primary',
                             'focus:border-primary focus:ring-primary'
                           )}
                           onChange={(e) => {
@@ -204,7 +204,7 @@ export const FeedbackForm = ({ title, options }: Props) => {
         </ul>
         <button
           className={clsx(
-            'border-light-border bg-primary mt-4 flex h-[28px] w-[60px] items-center justify-center rounded-sm py-2',
+            'mt-4 flex h-[28px] w-[60px] items-center justify-center rounded-sm border-light-border bg-primary py-2',
             'text-center text-sm font-semibold text-white shadow-xs',
             'disabled:cursor-not-allowed disabled:bg-gray-400/80 disabled:opacity-50'
           )}

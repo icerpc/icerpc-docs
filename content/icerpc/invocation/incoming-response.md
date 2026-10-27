@@ -63,7 +63,6 @@ IceRPC is concerned, the number of bytes in this stream is unknown.
 [interceptors]: interceptor
 [middleware]: ../dispatch/middleware
 [Slice]: /slice
-
 [ResponseFieldKey]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/ResponseFieldKey.slice
 [StatusCode]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/StatusCode.slice
 [CompressionFormat]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/CompressionFormat.slice

@@ -6,7 +6,7 @@ description: Learn how basic Ice types are mapped to C#
 The Ice built-in types are mapped to C# types as shown below:
 
 | Ice    | C#     |
-|--------|--------|
+| ------ | ------ |
 | bool   | bool   |
 | byte   | byte   |
 | short  | short  |

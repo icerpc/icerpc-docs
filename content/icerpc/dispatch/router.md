@@ -26,35 +26,35 @@ These other dispatchers are registered with the router using `map` and `mount` m
 
 - `map` associates a dispatcher with a path in the router.
 
-    For example, you can map path `/greeter` to a chatbot service. It's an exact match. A request with path `/`,
-    `/greeter2` or `/greeter/foo` is not a match.
+  For example, you can map path `/greeter` to a chatbot service. It's an exact match. A request with path `/`,
+  `/greeter2` or `/greeter/foo` is not a match.
 
-    In C#, you would write:
+  In C#, you would write:
 
-    ```csharp
-    var router = new Router();
-    router.Map("/greeter", chatbot);
-    ```
+  ```csharp
+  var router = new Router();
+  router.Map("/greeter", chatbot);
+  ```
 
-    A Slice or Protobuf-generated service has a default service path. You can map such a service at this default path
-    with the `Map` overload that takes only the service:
+  A Slice or Protobuf-generated service has a default service path. You can map such a service at this default path
+  with the `Map` overload that takes only the service:
 
-    ```csharp
-    var router = new Router();
-    router.Map(new Chatbot()); // maps Chatbot at its default service path, e.g. /VisitorCenter.Greeter
-    ```
+  ```csharp
+  var router = new Router();
+  router.Map(new Chatbot()); // maps Chatbot at its default service path, e.g. /VisitorCenter.Greeter
+  ```
 
 - `mount` associates a dispatcher with a path prefix in the router.
 
-    For example, you can mount path-prefix `/user` to an account service. A request with path `/user` or
-    `/user/foo` is a match. A request with path `/` or `/user2` is not a match.
+  For example, you can mount path-prefix `/user` to an account service. A request with path `/user` or
+  `/user/foo` is a match. A request with path `/` or `/user2` is not a match.
 
-    In C#, you would write:
+  In C#, you would write:
 
-    ```csharp
-    var router = new Router();
-    router.Mount("/user", account);
-    ```
+  ```csharp
+  var router = new Router();
+  router.Mount("/user", account);
+  ```
 
 It is common to map leaf dispatchers such as services and mount sub-routers, but it's not a hard and fast rule.
 

@@ -31,7 +31,7 @@ For example, with Ice, the Slice operation `greet` is mapped to two methods on p
 
 - `greet`, which blocks the caller until the response is received and decoded
 - `greetAsync`, which does not block the caller but returns the response through a task, future or callback
- depending on the language mapping
+  depending on the language mapping
 
 When you make an invocation, you can choose to call `greet` (easy to code but you block the calling thread) or
 `greetAsync` (you don't block the calling thread but it's harder to obtain the response).

@@ -50,15 +50,15 @@ make an invocation can be the head of an invoker chain or tree, known as an "inv
 There are 3 common types of invokers:
 
 - **Leaf invoker**\
-   It's a leaf in the invocation pipeline. This leaf invoker is typically a connection.
+  It's a leaf in the invocation pipeline. This leaf invoker is typically a connection.
 
 - **Interceptor**\
-    An [interceptor](interceptor) intercepts an invocation and forwards it to the "next" interceptor. IceRPC provides
-    several built-in interceptors for logging, compression and more.
+  An [interceptor](interceptor) intercepts an invocation and forwards it to the "next" interceptor. IceRPC provides
+  several built-in interceptors for logging, compression and more.
 
 - **Pipeline**\
-    A [pipeline](invocation-pipeline) walks a request through interceptors registered with this pipeline before giving
-    the request to a leaf invoker.
+  A [pipeline](invocation-pipeline) walks a request through interceptors registered with this pipeline before giving
+  the request to a leaf invoker.
 
 ```mermaid
 ---
@@ -71,7 +71,6 @@ flowchart LR
 ```
 
 [connections]: ../connection/how-to-create-a-connection
-
 [ClientConnection]: csharp:IceRpc.ClientConnection
 [ConnectionCache]: csharp:IceRpc.ConnectionCache
 [InvokeAsync]: csharp:IceRpc.IInvoker#IceRpc_IInvoker_InvokeAsync_IceRpc_OutgoingRequest_System_Threading_CancellationToken_

@@ -16,14 +16,14 @@ export const SideNav = ({ path }: { path: string }) => {
   ));
 
   return (
-    <div className="border-light-border dark:border-dark-border/60 dark:bg-dark sticky top-[6.4rem] hidden h-screen flex-none flex-col items-end border-r pt-4 pb-[6.4rem] lg:flex">
+    <div className="sticky top-[6.4rem] hidden h-screen flex-none flex-col items-end border-r border-light-border pt-4 pb-[6.4rem] lg:flex dark:border-dark-border/60 dark:bg-dark">
       <div className="flex size-full max-w-[300px] min-w-[300px] flex-col justify-start overflow-y-auto pl-10">
-        <div className="dark:bg-dark sticky top-0 space-y-5 bg-white pr-6">
-          <div className="dark:to-dark pointer-events-none absolute inset-x-0 -bottom-9 h-9 w-full bg-linear-to-t from-transparent to-white" />
+        <div className="sticky top-0 space-y-5 bg-white pr-6 dark:bg-dark">
+          <div className="pointer-events-none absolute inset-x-0 -bottom-9 h-9 w-full bg-linear-to-t from-transparent to-white dark:to-dark" />
         </div>
         <nav>
           <ul className="top-0 mt-4 mr-2 mb-2">{cells}</ul>
-          <div className="dark:from-dark pointer-events-none sticky inset-x-0 bottom-0 h-10 w-full bg-linear-to-t from-white to-transparent" />
+          <div className="pointer-events-none sticky inset-x-0 bottom-0 h-10 w-full bg-linear-to-t from-white to-transparent dark:from-dark" />
         </nav>
       </div>
     </div>

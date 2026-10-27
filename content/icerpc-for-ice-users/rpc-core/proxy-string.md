@@ -33,7 +33,7 @@ In IceRPC, a service address without a server address has no special name: it's 
 address. The Ice adapter ID is mapped to an `adapter-id` query parameter:
 
 | Ice proxy string       | Corresponding IceRPC service address URI |
-| -----------------------| -----------------------------------------|
+| ---------------------- | ---------------------------------------- |
 | `hello`                | `ice:/hello`                             |
 | `hello@GreetersUnited` | `ice:/hello?adapter-id=GreetersUnited`   |
 

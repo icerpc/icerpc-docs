@@ -82,7 +82,7 @@ automatically by the decoding code (see below).
 
 When you define a custom type, you need to provide methods that encode and decode this type in each programming language
 you want to support. See [Custom types] for details. As a convenience, the code generator always generates these encode
-and decode methods for *Name*Proxy. This way, if you decide to create a custom type *Name*Proxy (where *Name* is the
+and decode methods for *Name*Proxy. This way, if you decide to create a custom type *Name*Proxy (where _Name_ is the
 name of a Slice interface), you don't need to implement these methods. And that's exactly what we did in the example
 above.
 

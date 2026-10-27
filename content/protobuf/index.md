@@ -25,7 +25,7 @@ In practical terms, the IceRPC + Protobuf integration for C#:
 - provides a `protoc` code generator (`protoc-gen-icerpc-csharp`) that generates code for Protobuf services
 - provides a support assembly used by this generated code, `IceRpc.Protobuf.dll`
 - provides an MSBuild integration that helps you execute `protoc` with the `protoc-gen-icerpc-csharp` code generator in
-MSBuild projects: `IceRpc.Protobuf.Tools`
+  MSBuild projects: `IceRpc.Protobuf.Tools`
 
 User-defined Protobuf types such as messages and enums are handled by the `protoc` compiler and its built-in C# code
 generator. The IceRPC + Protobuf integration does not customize this mapping in any way.

@@ -88,7 +88,6 @@ see the `UseLogger` extension method as infrastructure code exempt from this rul
 
 [features]: ../invocation/outgoing-request#request-features
 [simple-injector]: https://simpleinjector.org/
-
 [AddIceRpcInvoker]: csharp:IceRpc.Extensions.DependencyInjection.InvokerServiceCollectionExtensions#IceRpc_Extensions_DependencyInjection_InvokerServiceCollectionExtensions_AddIceRpcInvoker_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_IceRpc_Extensions_DependencyInjection_IInvokerBuilder__
 [IInvokerBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IInvokerBuilder
 [Pipeline]: csharp:IceRpc.Pipeline

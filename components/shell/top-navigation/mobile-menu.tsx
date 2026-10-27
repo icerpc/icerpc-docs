@@ -130,7 +130,7 @@ export const TopMenuModal = ({ isOpen, closeModal }: TopMenuModalProps) => {
                 </ul>
                 <div
                   className={clsx(
-                    'border-light-border mx-1 flex flex-row items-center justify-between border-t py-2 pr-3 pl-6',
+                    'mx-1 flex flex-row items-center justify-between border-t border-light-border py-2 pr-3 pl-6',
                     'dark:border-dark-border dark:text-slate-100 dark:hover:text-white'
                   )}
                 >

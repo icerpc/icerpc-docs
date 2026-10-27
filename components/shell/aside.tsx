@@ -37,7 +37,7 @@ export const Aside = ({
   return (
     <aside
       className={clsx(
-        'dark:bg-dark sticky top-[6.4rem] mr-10 hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 xl:flex',
+        'sticky top-[6.4rem] mr-10 hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 xl:flex dark:bg-dark',
         items.length > 1 ? '' : ''
       )}
     >
@@ -69,14 +69,14 @@ export const Aside = ({
           <ActionItem href={editPageUrl(path)}>
             <FontAwesomeIcon
               icon={faPenToSquare}
-              className="text-primary mr-1.5 size-3.5"
+              className="mr-1.5 size-3.5 text-primary"
             />
             Edit this page
           </ActionItem>
           <ActionItem href="https://github.com/icerpc/icerpc-csharp/discussions">
             <FontAwesomeIcon
               icon={faMessage}
-              className="text-primary mr-1.5 size-3.5"
+              className="mr-1.5 size-3.5 text-primary"
             />
             GitHub Discussions
           </ActionItem>

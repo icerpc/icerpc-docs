@@ -31,7 +31,7 @@ Slice doc comments can be attached to all Slice elements except parameters and m
 Slice doc comments support the following tags:
 
 | Tag                  | Applies to | Description                                                        |
-|----------------------|------------|--------------------------------------------------------------------|
+| -------------------- | ---------- | ------------------------------------------------------------------ |
 | `{@link identifier}` | All        | Provide a link to the Slice type, operation or field `identifier`. |
 | `@param name: ...`   | Operations | Describe the operation parameter `name`.                           |
 | `@returns name: ...` | Operations | Describe the return parameter `name`.                              |
@@ -56,4 +56,3 @@ interface WidgetFactory {
     getLastWidget() -> (widget: Proxy, timeStamp: WellKnownTypes::TimeStamp)
 }
 ```
-
