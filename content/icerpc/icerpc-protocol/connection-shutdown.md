@@ -37,8 +37,8 @@ A client or a server follows these steps when it wants to shut down an icerpc co
 6. Wait for the peer to close the inbound control stream, which means it's done (see above).
 
 7. Close the multiplexed connection with the 0 error code (0 means no error).
-   This step can fail because the peer closed the multiplexed connection first with error code 0. This remains a successful
-   shutdown.
+   This step can fail because the peer closed the multiplexed connection first with error code 0. This remains a
+   successful shutdown.
 
 The following sequence diagram shows the interactions between the client and server on connection shutdown:
 

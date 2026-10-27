@@ -15,8 +15,8 @@ connection, except for the very first step:
 2. Connect the multiplexed connection. This connect operation is transport-dependent and can be a no-op.
 
 3. Open a unidirectional stream to the peer in the connected multiplexed connection: the outbound control stream. This
-   stream must be the first stream opened by this side on the multiplexed connection (stream ID 2 for a client, stream ID
-   3 for a server).
+   stream must be the first stream opened by this side on the multiplexed connection (stream ID 2 for a client, stream
+   ID 3 for a server).
 
 4. Accept streams from the peer until the inbound control stream is accepted. Any other stream accepted in the process
    is dispatched later, once the connection is established.

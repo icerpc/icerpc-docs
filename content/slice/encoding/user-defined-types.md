@@ -15,7 +15,8 @@ For example:
 enum Fruit : uint16 { Apple, Strawberry, Orange = 300 }
 ```
 
-A `Strawberry` is encoded like a `uint16` with value 1 (on 2 bytes). An `Orange` is encoded like a `uint16` with value 300.
+A `Strawberry` is encoded like a `uint16` with value 1 (on 2 bytes). An `Orange` is encoded like a `uint16`
+with value 300.
 
 The encoding is the same for checked and unchecked enums.
 
