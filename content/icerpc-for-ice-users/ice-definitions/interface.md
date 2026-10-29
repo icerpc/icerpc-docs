@@ -169,6 +169,15 @@ namespace Draw
 This way, you can pass a "derived" proxy to a method that expects a "base" proxy, even though there is naturally no
 inheritance relationship between these proxy structs.
 
+The Ice `Object*` type maps to [IceObjectProxy]. Since
+[`Ice::Object`](/icerpc-for-ice-users/ice-definitions/ice-object-and-checked-cast) is not a base interface in IceRPC,
+a proxy struct doesn't convert implicitly to `IceObjectProxy`. Use the [ToProxy] extension method to pass any proxy as
+an `Object*` parameter or return value:
+
+```csharp
+IceObjectProxy objectProxy = widgetProxy.ToProxy<IceObjectProxy>();
+```
+
 ## I*Name*Service interface
 
 Interface I*Name*Service is a server-side helper: it helps you create a service (a C# class) that implements Ice
@@ -261,5 +270,7 @@ internal partial class MyWidget : IWidgetService,
 [cs-identifier]: https://docs.zeroc.com/ice/3.8/csharp/slice-metadata-directives#SliceMetadataDirectives-cs:identifier:csharp-identifier
 [IceEncodeOptions]: csharp:IceRpc.Ice.IceEncodeOptions
 [IceRpc.ServiceGenerator]: https://www.nuget.org/packages/IceRpc.ServiceGenerator
+[IceObjectProxy]: csharp:IceRpc.Ice.IceObjectProxy
 [IDispatcher]: csharp:IceRpc.IDispatcher
 [Service]: csharp:IceRpc.ServiceAttribute
+[ToProxy]: csharp:IceRpc.Ice.IceProxyExtensions#IceRpc_Ice_IceProxyExtensions_ToProxy__1_IceRpc_Ice_IIceProxy_
