@@ -169,10 +169,9 @@ namespace Draw
 This way, you can pass a "derived" proxy to a method that expects a "base" proxy, even though there is naturally no
 inheritance relationship between these proxy structs.
 
-The Ice `Object*` type maps to [IceObjectProxy]. Since
-[`Ice::Object`](/icerpc-for-ice-users/ice-definitions/ice-object-and-checked-cast) is not a base interface in IceRPC,
-a proxy struct doesn't convert implicitly to `IceObjectProxy`. Use the [ToProxy] extension method to pass any proxy as
-an `Object*` parameter or return value:
+The Ice `Object*` type maps to [IceObjectProxy]. With IceRPC, interfaces don't derive from
+[`Ice::Object`](/icerpc-for-ice-users/ice-definitions/ice-object-and-checked-cast), so a proxy struct has no implicit
+conversion to `IceObjectProxy`. Convert it with [ToProxy] instead:
 
 ```csharp
 IceObjectProxy objectProxy = widgetProxy.ToProxy<IceObjectProxy>();
