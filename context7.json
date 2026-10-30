@@ -1,0 +1,13 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "url": "https://context7.com/icerpc/icerpc-docs",
+  "public_key": "pk_w2Olb9T9Udhzmhwj8Rqj4",
+  "projectTitle": "IceRPC",
+  "description": "IceRPC is an RPC framework for C# and .NET that runs over QUIC or TCP, with RPCs defined in Slice or Protobuf.",
+  "folders": ["content"],
+  "excludeFiles": ["README.md", "WRITING_DOCS.md"],
+  "rules": [
+    "IceRPC and Ice are separate frameworks with different APIs: don't use Ice docs or samples for IceRPC code.",
+    "Add IceRPC to a project through NuGet: IceRpc.Slice and IceRpc.Slice.Tools for Slice, or IceRpc.Protobuf and IceRpc.Protobuf.Tools for Protobuf."
+  ]
+}
