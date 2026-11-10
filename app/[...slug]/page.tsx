@@ -1,10 +1,10 @@
 // Copyright (c) ZeroC, Inc.
 
-import path from 'path';
 import Markdoc from '@markdoc/markdoc';
 import React from 'react';
 import { components } from '@/markdoc/schema';
-import { getAllMarkdownFiles, getMarkdownContent } from '@/lib/markdown';
+import { getAllPagePaths, getMarkdownContent } from '@/lib/markdown';
+import { markdownHref } from '@/lib/page-markdown';
 import { SideNav } from '@/components';
 import { Metadata } from 'next';
 import { baseUrls } from '@/data';
@@ -29,6 +29,8 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   return {
     title,
     description,
+    // The page as Markdown, for agents and crawlers (lib/page-markdown.ts).
+    alternates: { types: { 'text/markdown': markdownHref(path) } },
     twitter: {
       title,
       description
@@ -45,37 +47,8 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   };
 }
 
-export async function generateStaticParams() {
-  const baseUrls = [
-    'slice',
-    'icerpc',
-    'icerpc-for-ice-users',
-    'getting-started',
-    'protobuf'
-  ];
-
-  const paths: { params: { slug: string[] } }[] = [];
-  for (const base of baseUrls) {
-    const markdownFiles = await getAllMarkdownFiles(
-      path.join('content', base),
-      []
-    );
-    for (const filePath of markdownFiles) {
-      const pathWithoutMd = filePath.replace(/\.md$/, '');
-      const splitPath = pathWithoutMd.split(path.sep);
-
-      // Remove "index" from the slug if it's the last element
-      if (splitPath[splitPath.length - 1] === 'index') {
-        splitPath.pop();
-      }
-
-      paths.push({ params: { slug: splitPath.slice(1) } });
-    }
-  }
-
-  return paths.map((path) => ({
-    slug: path.params.slug
-  }));
+export function generateStaticParams() {
+  return getAllPagePaths().map((path) => ({ slug: path.slice(1).split('/') }));
 }
 
 export default async function Page(props: PageProps) {

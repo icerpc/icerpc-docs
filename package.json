@@ -1,6 +1,7 @@
 {
   "name": "icerpc-docs",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -8,7 +9,8 @@
     "start": "next start",
     "lint": "eslint . --max-warnings=0",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test": "node --import ./scripts/markdoc-esm-hooks.ts --test \"lib/**/*.test.ts\""
   },
   "dependencies": {
     "@docsearch/react": "^5.1.2",

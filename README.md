@@ -33,6 +33,16 @@ npm run format        # reformat every file with Prettier
 npm run format:check  # list the files Prettier would reformat
 ```
 
+## Testing
+
+`npm test` runs the unit tests under `lib/` with Node's built-in test runner. CI runs them on every pull request.
+
+## Markdown Copies
+
+Every page is also served as Markdown, for agents and crawlers, at its URL with `.md` appended, and `/llms.txt` lists
+every page by section. `lib/page-markdown.ts` renders them, through the route under `app/md/`, and
+`lib/plain-markdown.ts` writes a page's Markdoc tree as CommonMark.
+
 ## Writing Documentation
 
 For comprehensive guidelines on writing documentation, including how to use custom nodes and tags, please refer to the

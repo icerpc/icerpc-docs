@@ -13,7 +13,7 @@ type Frontmatter = {
   description?: string;
 };
 
-export function getAllMarkdownFiles(
+function getAllMarkdownFiles(
   dirPath: string,
   arrayOfFiles: string[] = []
 ): string[] {
@@ -30,6 +30,23 @@ export function getAllMarkdownFiles(
   });
 
   return arrayOfFiles;
+}
+
+/**
+ * The path of every page, such as `/icerpc/dispatch/router`: its file under
+ * `content/`, without `.md` or `/index.md`.
+ */
+export function getAllPagePaths(): string[] {
+  const contentDir = path.join(process.cwd(), 'content');
+  return getAllMarkdownFiles(contentDir).map(
+    (file) =>
+      '/' +
+      path
+        .relative(contentDir, file)
+        .split(path.sep)
+        .join('/')
+        .replace(/(\/index)?\.md$/, '')
+  );
 }
 
 export async function getMarkdownContent(slug: string) {

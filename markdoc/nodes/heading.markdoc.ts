@@ -2,10 +2,10 @@
 
 import {
   Tag,
-  Node,
-  Config,
-  RenderableTreeNode,
-  Schema
+  type Node,
+  type Config,
+  type RenderableTreeNode,
+  type Schema
 } from '@markdoc/markdoc';
 
 const heading: Schema = {
@@ -32,14 +32,8 @@ const heading: Schema = {
   }
 };
 
-function generateID(
-  children: RenderableTreeNode[],
-  attributes: Record<string, unknown>
-) {
-  if (attributes.id && typeof attributes.id === 'string') {
-    return attributes.id;
-  }
-
+/** The anchor a heading gets from its text, unless one is set by hand. */
+export function headingAnchor(children: RenderableTreeNode[]): string {
   return children
     .filter((child) => typeof child === 'string')
     .join(' ')
@@ -47,6 +41,16 @@ function generateID(
     .replace(/\s+/g, '-')
     .replace(/-+$/, '')
     .toLowerCase();
+}
+
+function generateID(
+  children: RenderableTreeNode[],
+  attributes: Record<string, unknown>
+) {
+  if (attributes.id && typeof attributes.id === 'string') {
+    return attributes.id;
+  }
+  return headingAnchor(children);
 }
 
 // Handles converting italic and bold tags to strings

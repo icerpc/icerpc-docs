@@ -1,6 +1,12 @@
 // Copyright (c) ZeroC, Inc.
 
-import { nodes, Node, Config, RenderableTreeNode, Tag } from '@markdoc/markdoc';
+import {
+  nodes,
+  type Node,
+  type Config,
+  type RenderableTreeNode,
+  Tag
+} from '@markdoc/markdoc';
 
 const document = {
   ...nodes.document,

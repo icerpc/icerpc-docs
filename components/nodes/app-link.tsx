@@ -6,6 +6,7 @@ import { ReactNode, CSSProperties, useMemo } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { usePath } from '@/context/state';
+import { isApiLink, isExternalLink, resolveLink } from '@/lib/links';
 
 type AppLinkProps = {
   href: string;
@@ -36,18 +37,10 @@ export const AppLink = ({
 }: AppLinkProps) => {
   const path = usePath();
 
-  const href = useMemo(() => {
-    let url = isApiLink(originalHref)
-      ? resolveApiLink(originalHref)
-      : resolveRelativeLink(originalHref, path);
-
-    if (!isExternalLink(url)) {
-      const baseURL = 'https://docs.icerpc.dev';
-      const parsedUrl = new URL(url, baseURL);
-      url = parsedUrl.href.replace(baseURL, '');
-    }
-    return url;
-  }, [originalHref, path]);
+  const href = useMemo(
+    () => resolveLink(originalHref, path),
+    [originalHref, path]
+  );
 
   const style = { ...defaultStyle, ...originalStyle };
 
@@ -93,70 +86,4 @@ export const AppLink = ({
       `}</style>
     </Link>
   );
-};
-
-// Utility Functions
-
-/**
- * Check if a link is external.
- * @param {string} href - The link to check.
- * @returns {boolean} - True if it's an external link, false otherwise.
- */
-const isExternalLink = (href: string) =>
-  href.startsWith('http://') || href.startsWith('https://');
-
-/**
- * Determines if a link is an API link.
- * @param {string} href - The link to check.
- * @returns {boolean} - True if it's an API link, false otherwise.
- */
-const isApiLink = (href: string) => {
-  const supportedLanguages = ['csharp', 'rust'];
-  return (
-    supportedLanguages.some((lang) => href.startsWith(`${lang}:`)) &&
-    href.split(':').length > 1
-  );
-};
-
-/**
- * Resolves an API link to its full URL.
- * @param {string} href - The original API link.
- * @returns {string} - The resolved API link.
- */
-const resolveApiLink = (href: string) => {
-  const [language, ...rest] = href.split(':');
-  const [module, method] = rest.join('.').split('#');
-  const version = languageApiReferenceVersion(language);
-  // Right now we only support the C# API reference, so the URL is hardcoded to the C# API reference.
-  return `${
-    process.env.NEXT_PUBLIC_API_HOST
-  }/${language}/${version}/api/reference/${module}.html${method ? `#${method}` : ''}`;
-};
-
-/**
- * Resolve relative links to their full path.
- * @param {string} href - The original link.
- * @param {string} routerPath - The current route path.
- * @returns {string} - The resolved link.
- */
-const resolveRelativeLink = (href: string, routerPath: string) => {
-  if (isExternalLink(href) || href.startsWith('/')) {
-    return href;
-  }
-  if (href.startsWith('#')) {
-    return `${routerPath.split('#')[0]}${href}`;
-  }
-  return `${routerPath.replace(/\/[^/]+$/, '')}/${href}`;
-};
-
-/**
- * Returns the API reference version for a given language.
- * @param {string} language - The programming language (e.g., 'csharp').
- * @returns {string} - The API reference version.
- */
-const languageApiReferenceVersion = (language: string): string => {
-  const versions: Record<string, string> = {
-    csharp: '0.6.x'
-  };
-  return versions[language] || 'main';
 };

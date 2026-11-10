@@ -12,6 +12,7 @@ together.
 
 {% card
    title="Ice reinvented"
+   description="Learn how IceRPC compares to Ice."
    href="/icerpc-for-ice-users/high-level-comparison/ice-reinvented"
    level=2 /%}
 

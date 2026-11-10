@@ -12,6 +12,9 @@
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
+    // `npm test` runs the Markdown renderer and the Markdoc schema under plain
+    // Node, which needs the explicit extension on their imports. Safe with noEmit.
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
