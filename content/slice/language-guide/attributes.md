@@ -28,8 +28,9 @@ interface Foo {
 }
 ```
 
-You can also define a file-level attribute with double square brackets. A file-level attribute is a shortcut to apply
-this attribute to all definitions in the file that accept this attribute. For example:
+You can also define a file-level attribute with double square brackets. A file-level attribute applies to the Slice
+file as a whole. Among the attributes described on this page, only `allow` can be used as a file-level attribute.
+For example:
 
 ```slice
 
@@ -102,8 +103,8 @@ The following attributes are specific to the C# mapping. They all start with the
 | [`cs::attribute`][cs-attribute-attribute]     | Enum types, enumerators, variants, and fields                                                      | Add the specified C# attribute to the mapped C# enum, enumerator, variant, or field. |
 | [`cs::encodedReturn`][cs-encoded-return]      | Operations                                                                                         | Return an already encoded return value (server-side only).                           |
 | [`cs::identifier`](#cs::identifier-attribute) | Modules, interfaces, operations, parameters, user-defined types, fields, enumerators, and variants | Change the name of the mapped C# identifier.                                         |
-| [`cs::public`](#cs::public-attribute)         | Interfaces and user-defined types                                                                  | Map to a public C# type instead of an internal C# type.                              |
-| [`cs::readonly`][cs-readonly]                 | Structs and struct fields                                                                          | Adds `readonly` to the mapped C# struct or field.                                    |
+| [`cs::public`](#cs::public-attribute)         | Structs, enums, and interfaces                                                                     | Map to a public C# type instead of an internal C# type.                              |
+| [`cs::readonly`][cs-readonly]                 | Structs and struct fields                                                                          | Map to a readonly C# struct, or map a field to an init-only property.                |
 | `cs::type`                                    | [Custom types][custom-type], [sequences][sequence-type], and [dictionaries][dictionary-type]       | Specify the mapped C# type.                                                          |
 
 ### cs::identifier attribute
@@ -131,7 +132,7 @@ internal partial interface IRemoteEnumerator
 internal readonly partial
 record struct RemoteEnumeratorProxy :
     IRemoteEnumerator,
-    IProxy
+    ISliceProxy
 {
     ...
 }
@@ -146,7 +147,8 @@ internal partial interface IRemoteEnumeratorService
 
 ### cs::public attribute
 
-The `cs::public` attribute maps a Slice type to one or more public C# types. It does not accept any argument.
+The `cs::public` attribute maps a Slice struct, enum, or interface to one or more public C# types. It does not accept
+any argument.
 
 [compress]: operation#compress-attribute
 [cs-attribute-attribute]: enum-types#cs::attribute-attribute

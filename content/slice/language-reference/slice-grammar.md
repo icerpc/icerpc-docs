@@ -111,7 +111,7 @@ key types must be one of the following:
 - `string`
 - integral types (`int8`, `uint8`, `int16`, `uint16`, `int32`, `uint32`, `varint32`, `varuint32`, `int64`, `uint64`,
   `varint62`, `varuint62`)
-- enum types
+- basic enum types (enums with an underlying type)
 - custom types
 - compact structs where all their fields are valid key types
 
@@ -137,6 +137,26 @@ Dictionary<uint8, string>
 
 For additional information on sequences and dictionaries, see the [sequence][sequence-guide] and
 [dictionary][dictionary-guide] pages.
+
+### Result type
+
+Slice also supports a built-in generic result type, which requires two type parameters: the _success_ and _failure_
+types. Like collection types, it is referenced with its keyword (`Result`) and must have concrete types specified for its
+type parameters.
+
+```ebnf {% showTitle=false %}
+Result
+    : "Result" "<" TypeRef "," TypeRef ">"
+    ;
+```
+
+For example:
+
+```slice
+Result<string, int32>
+```
+
+For additional information on result types, see the [result type][result-type-guide] page.
 
 ### Struct types
 
@@ -330,8 +350,8 @@ For additional information on type aliases, see the [type alias][type-alias-guid
 Type references consist of any number of [type attributes][attribute], followed by a type, optionally followed by a
 question mark.
 
-Built-in types like [primitives][primitive], [sequences][sequence], and [dictionaries][dictionary] can be referenced by
-their keywords.
+Built-in types like [primitives][primitive], [sequences][sequence], [dictionaries][dictionary], and [results][result]
+can be referenced by their keywords.
 User defined types can be referenced by their (possibly scoped) [identifiers][identifier].
 
 ```ebnf {% showTitle=false %}
@@ -340,7 +360,7 @@ TypeRef
     ;
 
 TypeRefDefinition
-    : Primitive | Sequence | Dictionary | RelativeIdentifier | GlobalIdentifier
+    : Primitive | Sequence | Dictionary | Result | RelativeIdentifier | GlobalIdentifier
     ;
 ```
 
@@ -553,9 +573,10 @@ enum_keyword:       "enum";
 custom_keyword:     "custom";
 type_alias_keyword: "typealias";
 
-// Collection Keywords
+// Generic type keywords
 sequence_keyword:   "Sequence";
 dictionary_keyword: "Dictionary";
+result_keyword:     "Result";
 
 // Primitive type keywords
 bool_keyword:      "bool";
@@ -679,6 +700,10 @@ Dictionary
     : dictionary_keyword left_chevron TypeRef comma TypeRef right_chevron
     ;
 
+Result
+    : result_keyword left_chevron TypeRef comma TypeRef right_chevron
+    ;
+
 Primitive
     : bool_keyword
     | int8_keyword
@@ -706,6 +731,7 @@ TypeRefDefinition
     : Primitive
     | Sequence
     | Dictionary
+    | Result
     | RelativeIdentifier
     | GlobalIdentifier
     ;
@@ -778,6 +804,7 @@ UndelimitedList<T>
 [primitive]: #primitive-types
 [sequence]: #collection-types
 [dictionary]: #collection-types
+[result]: #result-type
 [struct]: #struct-types
 [field]: #fields
 [operation]: #operations
@@ -795,6 +822,7 @@ UndelimitedList<T>
 [primitive-type-guide]: /slice/language-guide/primitive-types
 [sequence-guide]: /slice/language-guide/sequence-types
 [dictionary-guide]: /slice/language-guide/dictionary-types
+[result-type-guide]: /slice/language-guide/result-types
 [struct-guide]: /slice/language-guide/struct-types
 [compact-struct-guide]: /slice/language-guide/struct-types#compact-struct
 [field-guide]: /slice/language-guide/fields
