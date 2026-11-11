@@ -199,10 +199,9 @@ When the response's status code is `NotFound` or `NotImplemented`, the ice proto
 transmit the response's error message. As a result, the error message is not sent to the peer or received from the peer
 with these status codes.
 
-The same applies to a response with status code `ApplicationError` and a payload: the reply carries this payload,
-typically an Ice user exception, and not the error message. A response with status code `ApplicationError` and no
-payload has only an error message, so IceRPC sends it with reply status `UnknownException` and this error message.
-IceRPC decodes such a reply as a response with status code `InternalError`.
+A response with status code `ApplicationError` and no payload has only an error message, so IceRPC sends it with reply
+status `UnknownException` and this error message. IceRPC decodes such a reply as a response with status code
+`InternalError`.
 
 ## Encapsulation
 
