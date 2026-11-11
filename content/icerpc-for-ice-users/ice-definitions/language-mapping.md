@@ -46,6 +46,47 @@ between IceRPC's core APIs and the generated `.IceRpc.cs` code—without it, the
 compile.
 {% /callout %}
 
+## Including Ice definitions shipped with IceRpc.Ice
+
+Starting with version 0.6.1, the [IceRpc.Ice] package ships the following Ice definition files. The C# code for these
+definitions is already part of the IceRpc.Ice and [IceRpc.Locator] assemblies:
+
+| File                      | C# code in     |
+| ------------------------- | -------------- |
+| `Ice/Identity.ice`        | IceRpc.Ice     |
+| `Ice/Locator.ice`         | IceRpc.Locator |
+| `Ice/LocatorRegistry.ice` | IceRpc.Locator |
+| `Ice/Process.ice`         | IceRpc.Locator |
+
+The package adds the directory holding these files to the include directories of your `SliceCompile` items, so you can
+include them in your own `.ice` files without further configuration:
+
+```ice
+#include <Ice/Identity.ice>
+
+module Inventory
+{
+    interface ItemRegistry
+    {
+        Object* findItem(Ice::Identity identity);
+        Ice::IdentitySeq listItems();
+    }
+}
+```
+
+Include these files, but don't add them as `SliceCompile` items: `slice2cs` generates code only for the files you
+compile, and your generated code uses the existing C# types. The `Ice` module of these definitions maps to the
+`IceRpc.Ice` namespace: for example, `Ice::Identity` maps to `IceRpc.Ice.Identity`, and `Ice::Locator*` maps to
+`IceRpc.Ice.LocatorProxy`. If you use a definition from `Locator.ice`, `LocatorRegistry.ice` or `Process.ice`, your
+project also needs a reference to the [IceRpc.Locator] package.
+
+If you set the `IncludeDirectories` metadata on a `SliceCompile` item, keep `%(IncludeDirectories)` in its value.
+Otherwise, your value replaces the include directory added by IceRpc.Ice:
+
+```xml
+<SliceCompile Include="../slice/Greeter.ice" IceRpc="true" IncludeDirectories="%(IncludeDirectories);../slice" />
+```
+
 ## C# language mapping
 
 This chapter describes how Ice definitions map to C# when targeting IceRPC. As you would expect, an Ice struct
@@ -67,3 +108,4 @@ There are a few notable differences between the original C# mapping (when target
 [Slice]: /slice
 [ZeroC.Ice.Slice.Tools]: https://www.nuget.org/packages/ZeroC.Ice.Slice.Tools
 [IceRpc.Ice]: https://www.nuget.org/packages/IceRpc.Ice
+[IceRpc.Locator]: https://www.nuget.org/packages/IceRpc.Locator
