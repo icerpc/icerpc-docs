@@ -91,7 +91,7 @@ above.
 The decode method generated for *Name*Proxy decodes a service address and then creates:
 
 - on the client side, a proxy with the invoker and [SliceEncodeOptions] of the proxy that sent the request
-- on the server side, a proxy with a null invoker and null `SliceEncodeOptions`
+- on the server side, a proxy with the [InvalidInvoker] (an invoker that always throws) and null `SliceEncodeOptions`
 
 You can override this default behavior by configuring a [base proxy] in the [ISliceFeature] of your
 [outgoing request features] or [incoming request features].
@@ -106,7 +106,7 @@ address with its path replaced by the path of the relative service address.
 
 When the decode method generated for *Name*Proxy decodes a relative service address, it uses as base service address:
 
-- the service address of the configured [base proxy] unless it's null or relative, or
+- the service address of the configured [base proxy], if set, or
 - (client side) the service address of the proxy that sent the request
 
 The decode method returns a relative proxy when there is no base service address to resolve the relative service
@@ -116,6 +116,7 @@ address.
 [Custom types]: custom-types
 [incoming request features]: /icerpc/dispatch/incoming-request#request-features
 [invocation pipeline]: /icerpc/invocation/invocation-pipeline
+[InvalidInvoker]: csharp:IceRpc.InvalidInvoker
 [ISliceFeature]: csharp:IceRpc.Slice.ISliceFeature
 [relative service address]: /icerpc/invocation/service-address#relative-service-address
 [service address]: /icerpc/invocation/service-address
