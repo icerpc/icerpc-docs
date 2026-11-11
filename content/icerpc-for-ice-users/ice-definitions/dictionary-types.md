@@ -50,6 +50,8 @@ between incoming and outgoing values makes sending dictionaries more convenient 
 | ----------------------------------------- | ----------------------------------- |
 | `IEnumerable<KeyValuePair<TKey, TValue>>` | `Dictionary<TKey, TValue>`          |
 
+The mapping for outgoing values is not nullable, even for optional values; see [optional parameters].
+
 You can override the default mapping for incoming values with the `"cs:generic"` metadata directive (see below). This
 gives you the C# type you specified for incoming values. `"cs:generic"` doesn't change the mapping for outgoing values.
 
@@ -64,3 +66,5 @@ For example:
 ["cs:generic:SortedDictionary"]
 dictionary<long, Employee> EmployeeMap;
 ```
+
+[optional parameters]: /icerpc-for-ice-users/ice-definitions/parameters#optional-parameters

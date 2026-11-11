@@ -11,8 +11,13 @@ For example, an Ice parameter `string name` is mapped to a C# parameter `string 
 
 ## Out parameters and return values
 
-Out parameters and return values are mapped to tuple elements of the `Task` or `ValueTask` return value. The return
-value (if any) appears before the out parameters in the tuple, and is named `ReturnValue`.
+Out parameters and return values are mapped to the result of the `Task` or `ValueTask` returned by the C# method. When
+the operation returns a single value (a return value and no out parameter, or a single out parameter and no return
+value), this result is the mapped C# type of this value. For example, both `string getName()` and
+`void getName(out string name)` map to a client-side method that returns `Task<string>`.
+
+When the operation returns two or more values, these values are mapped to tuple elements. The return value (if any)
+appears before the out parameters in the tuple, and is named `ReturnValue`.
 
 Consider this example:
 
@@ -54,6 +59,16 @@ public partial interface IExampleService
 
 The mapping for optional parameters is the same as for required parameters, except each mapped C# type is nullable,
 where null represents "not set".
+
+There are two exceptions for the values you send, namely the parameters of the client-side method and the return value
+and out parameters of the server-side method:
+
+- An optional sequence of bool or numeric type without `"cs:generic"` metadata maps to `ReadOnlyMemory<T>`, like a
+  required sequence. A default `ReadOnlyMemory<T>`, such as one created from a null array, represents "not set", while a
+  `ReadOnlyMemory<T>` created from an empty array represents an empty sequence.
+- An optional dictionary maps to `IEnumerable<KeyValuePair<TKey, TValue>>`, like a required dictionary. This C# type
+  is not nullable, but null still represents "not set": pass `null!` (or suppress the nullable warning) to send a
+  dictionary that is not set.
 
 Consider the following operation:
 
