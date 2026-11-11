@@ -75,7 +75,7 @@ internal partial interface IGreeter
       CancellationToken cancellationToken = default);
 }
 
-internal readonly partial record struct GreeterProxy : IGreeter, IProxy
+internal readonly partial record struct GreeterProxy : IGreeter, ISliceProxy
 {
    public Task<string> GreetAsync(
       string name,

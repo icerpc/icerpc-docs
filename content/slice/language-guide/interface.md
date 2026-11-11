@@ -132,7 +132,7 @@ for this service.
 In order to call a remote service, you need to construct a proxy struct using one of its "invoker" constructors:
 
 ```csharp
-internal readonly partial record struct WidgetProxy : IWidget, IProxy
+internal readonly partial record struct WidgetProxy : IWidget, ISliceProxy
 {
     internal WidgetProxy(
         IInvoker invoker,
@@ -166,7 +166,7 @@ example, the default service path of Slice interface `VisitorCenter::Greeter` is
 available as the constant `DefaultServicePath` in the generated proxy struct:
 
 ```csharp
-internal readonly partial record struct WidgetProxy : IWidget, IProxy
+internal readonly partial record struct WidgetProxy : IWidget, ISliceProxy
 {
     internal const string DefaultServicePath = "/Example.Widget";
 }
@@ -175,7 +175,7 @@ internal readonly partial record struct WidgetProxy : IWidget, IProxy
 If you want to create a [relative proxy], call the `FromPath` static method:
 
 ```csharp
-internal readonly partial record struct WidgetProxy : IWidget, IProxy
+internal readonly partial record struct WidgetProxy : IWidget, ISliceProxy
 {
     internal static WidgetProxy FromPath(string path) { ... }
 }
@@ -216,7 +216,7 @@ maps to:
 ```csharp
 namespace Draw;
 
-internal readonly partial record struct RectangleProxy : IRectangle, IProxy
+internal readonly partial record struct RectangleProxy : IRectangle, ISliceProxy
 {
     public static implicit operator ShapeProxy(RectangleProxy proxy)
     {

@@ -105,7 +105,10 @@ interface FileServer {
 }
 ```
 
-In C# with IceRPC, the generated code sets the [ICompressFeature][compress-feature] in the outgoing request features.
+In C# with IceRPC, `compress(Args)` makes the generated proxy code set the [ICompressFeature][compress-feature] in the
+outgoing request features. `compress(Return)` adds `CompressReturn = true` to the `SliceOperation` attribute of the
+generated service method, and the generated dispatch code then sets the [ICompressFeature][compress-feature] in the
+incoming request features, which the compressor middleware checks before compressing the response.
 
 This compression request is typically fulfilled by the compressor interceptor or middleware, which needs to be installed
 in your invocation resp. dispatch pipeline. If you neglect to install this interceptor or middleware, the corresponding
@@ -183,7 +186,7 @@ While the two methods are similar, please note they are not the same:
 
 The code generator generates helper nested static classes named Request and Response in *Name*Proxy and I*Name*Service.
 These nested classes provide helper methods to encode and decode the payloads of requests and responses associated with
-the interface operations, with up to 4 helper methods per operation.
+the interface operations, with up to 6 helper methods per operation.
 
 For example:
 
@@ -198,7 +201,7 @@ interface Greeter {
 produces 4 helper methods:
 
 ```csharp
-internal readonly partial record struct GreeterProxy : IGreeter, IProxy
+internal readonly partial record struct GreeterProxy : IGreeter, ISliceProxy
 {
     internal static class Request
     {
@@ -215,7 +218,7 @@ internal readonly partial record struct GreeterProxy : IGreeter, IProxy
         internal static ValueTask<string> DecodeGreetAsync(
             IncomingResponse response,
             OutgoingRequest request,
-            IProxy sender,
+            ISliceProxy sender,
             CancellationToken cancellationToken)
         {
             ...
@@ -249,10 +252,14 @@ internal partial interface IGreeterService
 
 {% callout type="note" %}
 If your operation has a stream parameter, the encode helper (in *Name*Proxy.Request) does not encode the stream
-argument; however, the decode helper (in I*Name*Service.Request) decodes all arguments, including the stream.
+argument; instead, *Name*Proxy.Request provides an additional EncodeStreamOf*OpName* helper that encodes the stream
+argument into a [PipeReader] for the `PayloadContinuation` of the outgoing request, while the Encode*OpName* helper
+produces its `Payload`. The decode helper (in I*Name*Service.Request) decodes all arguments, including the stream.
 
 Likewise, if your operation returns a stream, the encode helper (in I*Name*Service.Response) does not encode the stream
-return value, while the decode helper (in *Name*Proxy.Response) decodes everything.
+return value; instead, I*Name*Service.Response provides an additional EncodeStreamOf*OpName* helper that encodes the
+stream return value into a [PipeReader] for the `PayloadContinuation` of the outgoing response. The decode helper (in
+*Name*Proxy.Response) decodes everything.
 {% /callout %}
 These helper methods allow you to create/consume plain IceRPC requests and responses while still using the generated
 code for their payloads.
@@ -264,6 +271,12 @@ interface: this attribute makes the method return a `ValueTask<PipeReader>` inst
 
 The returned [PipeReader] represents the encoded return value. You would typically produce this value using
 the Encode*OpName* method provided by the helper [`Response` class](#request-and-response-helper-classes).
+
+If the operation also returns a stream, only the non-stream return values are replaced by this [PipeReader]: the
+method returns a tuple with the encoded return value and the stream, such as
+`ValueTask<(PipeReader Payload, IAsyncEnumerable<float> Samples)>` for an operation that returns
+`(count: int32, samples: stream float32)`. The `cs::encodedReturn` attribute can't be applied to an operation that
+returns nothing or only a stream.
 
 There are two somewhat common use-cases for this attribute:
 
