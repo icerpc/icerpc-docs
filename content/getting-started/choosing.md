@@ -35,9 +35,10 @@ IceRPC actually includes support for a third IDL, [ZeroC Ice]'s IDL. See [IceRPC
 Slice is a modern IDL and serialization format that was developed in tandem with IceRPC. It takes full advantage of all
 of IceRPC's features and is very compact, both in terms of code size and bandwidth usage.
 
-For example, IceRPC supports one-way RPCs (fire and forget with no response), and Slice provides one-way operations that
-map to these one-way RPCs. On the other hand, a Protobuf RPC method always returns a response; as a result, you can't
-send a one-way RPC using Protobuf.
+For example, IceRPC supports one-way RPCs (fire and forget with no response), and Slice lets you declare one-way
+operations in the contract. Protobuf has no way to declare a one-way RPC method: you can still make a Protobuf call
+one-way with an interceptor that sets `IsOneway` on the outgoing request, but this call then returns a default instance
+of the response message that carries no result. See [Encoding payloads with Protobuf] for details.
 
 You could see Slice as the default IDL for IceRPC: use Slice unless you have a compelling reason to go with Protobuf.
 
@@ -49,6 +50,7 @@ alternative to JSON, used extensively within Google.
 If you are already familiar with Protobuf or your application interacts with other applications that consume or send
 Protobuf messages, you should use IceRPC together with Protobuf.
 
+[Encoding payloads with Protobuf]: ../protobuf/encoding
 [IceRPC for Ice users]: ../icerpc-for-ice-users
 [Interface Definition Language]: https://en.wikipedia.org/wiki/Interface_description_language
 [Protobuf]: https://en.wikipedia.org/wiki/Protocol_Buffers
