@@ -97,14 +97,14 @@ connection created from a bare `icerpc` server address uses QUIC:
 
 ```csharp
 // QUIC is the default: a bare icerpc server address uses QUIC.
-await using var clientConnection = new ClientConnection("icerpc://hello.zeroc.com");
+await using var clientConnection = new ClientConnection(new Uri("icerpc://hello.zeroc.com"));
 ```
 
 You can also select QUIC explicitly with the `transport` parameter:
 
 ```csharp
 // Select QUIC explicitly with the transport parameter.
-await using var clientConnection = new ClientConnection("icerpc://hello.zeroc.com?transport=quic");
+await using var clientConnection = new ClientConnection(new Uri("icerpc://hello.zeroc.com?transport=quic"));
 ```
 
 You can also create the QUIC transport explicitly and pass it to the connection—for instance, to configure
@@ -114,7 +114,7 @@ QUIC options:
 // Create a multiplexed client transport (QUIC) with default options.
 var clientTransport = new QuicClientTransport();
 await using var clientConnection = new ClientConnection(
-    "icerpc://hello.zeroc.com",
+    new Uri("icerpc://hello.zeroc.com"),
     multiplexedClientTransport: clientTransport);
 ```
 
@@ -150,7 +150,7 @@ To run icerpc over Slic-over-TCP instead of QUIC, set the transport to `tcp` in 
 
 ```csharp
 // Select Slic over TCP with the transport parameter.
-await using var clientConnection = new ClientConnection("icerpc://hello.zeroc.com?transport=tcp");
+await using var clientConnection = new ClientConnection(new Uri("icerpc://hello.zeroc.com?transport=tcp"));
 ```
 
 You can also create the Slic-over-TCP transport explicitly and pass it to the connection—for instance, to
@@ -160,7 +160,7 @@ configure Slic or TCP options:
 // Create a multiplexed client transport (Slic over TCP) with default options.
 var clientTransport = new SlicClientTransport(new TcpClientTransport());
 await using var clientConnection = new ClientConnection(
-    "icerpc://hello.zeroc.com",
+    new Uri("icerpc://hello.zeroc.com"),
     multiplexedClientTransport: clientTransport);
 ```
 

@@ -40,8 +40,10 @@ dispatcher can't be null. A server shares its dispatcher with all the connection
 
 ```csharp
 // configures server to use a new Chatbot instance as its dispatcher
-await using var server = new Server(new Chatbot());
+await using var server = new Server(new Chatbot(), serverAuthenticationOptions);
 ```
+
+The server authentication options are required by the default transport, QUIC. See [Security with TLS][tls].
 
 Configuring a dispatcher for a client connection is optional since a client connection does not have to accept requests.
 
@@ -92,6 +94,7 @@ flowchart LR
 ```
 
 [connections]: ../connection/how-to-create-a-connection
+[tls]: ../connection/security-with-tls#quic
 [invoker]: ../invocation/invocation-pipeline#the-invoker-abstraction
 [Slice service]: /slice/language-guide/interface
 [IDispatcher]: csharp:IceRpc.IDispatcher
