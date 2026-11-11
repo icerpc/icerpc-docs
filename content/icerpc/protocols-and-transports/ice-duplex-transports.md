@@ -76,7 +76,8 @@ The following IceRPC features are not available with the ice protocol:
 - [payload continuations][payload-continuations]
 - [request fields][request-fields] other than Context and Idempotent
 - [response fields][response-fields]
-- [status codes][status-code] other than `Ok`, `ApplicationError`, `NotFound`, `NotImplemented` and `InternalError`
+- [status codes][status-code] other than `Ok`, `ApplicationError`, `NotFound`, `NotImplemented`, `InternalError`,
+  `InvalidData`, `Unauthorized` and `NotSupported`
 
 [duplex-transport]: ../duplex-transport
 [payload-continuations]: ../invocation/outgoing-request#request-payload-and-payload-continuation

@@ -51,7 +51,8 @@ struct HeaderData
 }
 ```
 
-The `compressionStatus` field is not used or supported by IceRPC. It must be set to 0.
+The `compressionStatus` field indicates whether the frame is compressed. IceRPC does not support compression: it always
+sends 0, accepts 0 and 1 (not compressed), and aborts the connection when it receives a compressed frame (2).
 
 The `frameSize` represents the total number of bytes in the frame, including the frame header.
 
@@ -121,7 +122,8 @@ enum ReplyStatus
     UnknownUserException,
     UnknownException,
     InvalidData,
-    Unauthorized
+    Unauthorized,
+    NotSupported
 }
 
 struct ReplyData
@@ -144,7 +146,11 @@ The `replyStatus` encodes the response's [status code][status-code] as follows:
 | NotImplemented        | OperationNotExist       |
 | InvalidData           | InvalidData             |
 | Unauthorized          | Unauthorized            |
+| NotSupported          | NotSupported            |
 | Any other status code | UnknownException        |
+
+An `ApplicationError` response with an empty payload is an exception to this mapping: it's encoded as
+`UnknownException`.
 
 When IceRPC receives a response frame, it creates an incoming response with a status code decoded from the reply status:
 
@@ -157,6 +163,7 @@ When IceRPC receives a response frame, it creates an incoming response with a st
 | OperationNotExist | NotImplemented         |
 | InvalidData       | InvalidData            |
 | Unauthorized      | Unauthorized           |
+| NotSupported      | NotSupported           |
 | All other values  | InternalError          |
 
 The format of the `replyPayload` depends on the reply status:
@@ -222,8 +229,8 @@ though IceRPC doesn't know anything about payload encoding. That's because:
   Ice encoding version 1.1.
 - if this encapsulation is received by an IceRPC application, this 1.1 version is ignored.
 
-For the same reason, when IceRPC receives an encapsulation, it makes sure the encoding version in this encapsulation is
-set to 1.1.
+For the same reason, when IceRPC receives a request, it makes sure the encoding version in the request's encapsulation is
+set to 1.1. IceRPC ignores the encoding version in the encapsulation of a response.
 
 [ice-protocol]: https://docs.zeroc.com/ice/3.8/cpp/ice-protocol
 [ice-slice]: https://docs.zeroc.com/ice/3.8/csharp/the-slice-language
