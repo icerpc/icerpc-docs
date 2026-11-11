@@ -138,19 +138,17 @@ The `requestId` field identifies the request associated with this response.
 
 The `replyStatus` encodes the response's [status code][status-code] as follows:
 
-| Status code           | Encoded as reply status |
-| --------------------- | ----------------------- |
-| Ok                    | Ok                      |
-| ApplicationError      | UserException           |
-| NotFound              | ObjectNotExist          |
-| NotImplemented        | OperationNotExist       |
-| InvalidData           | InvalidData             |
-| Unauthorized          | Unauthorized            |
-| NotSupported          | NotSupported            |
-| Any other status code | UnknownException        |
-
-An `ApplicationError` response with an empty payload is an exception to this mapping: it's encoded as
-`UnknownException`.
+| Status code                        | Encoded as reply status |
+| ---------------------------------- | ----------------------- |
+| Ok                                 | Ok                      |
+| ApplicationError with a payload    | UserException           |
+| ApplicationError without a payload | UnknownException        |
+| NotFound                           | ObjectNotExist          |
+| NotImplemented                     | OperationNotExist       |
+| InvalidData                        | InvalidData             |
+| Unauthorized                       | Unauthorized            |
+| NotSupported                       | NotSupported            |
+| Any other status code              | UnknownException        |
 
 When IceRPC receives a response frame, it creates an incoming response with a status code decoded from the reply status:
 
@@ -197,9 +195,14 @@ response's error message and then discards this `RequestFailedData`.
 
 ### Error message
 
-When the response's status code is `ApplicationError`, `NotFound` or `NotImplemented`, the ice protocol does not provide
-a mechanism to transmit the response's error message. As a result, the error message is not sent to the peer or received
-from the peer with these status codes.
+When the response's status code is `NotFound` or `NotImplemented`, the ice protocol does not provide a mechanism to
+transmit the response's error message. As a result, the error message is not sent to the peer or received from the peer
+with these status codes.
+
+The same applies to a response with status code `ApplicationError` and a payload: the reply carries this payload,
+typically an Ice user exception, and not the error message. A response with status code `ApplicationError` and no
+payload has only an error message, so IceRPC sends it with reply status `UnknownException` and this error message.
+IceRPC decodes such a reply as a response with status code `InternalError`.
 
 ## Encapsulation
 
