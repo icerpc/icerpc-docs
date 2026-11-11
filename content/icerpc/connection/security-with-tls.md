@@ -93,8 +93,8 @@ await using var connection = new ClientConnection(
 ```
 
 The ssl transport is provided solely for backward compatibility with Ice: the standard way for an Ice application to
-request a secure connection is to use a proxy with an ssl server address. When IceRPC + Slice decodes a service
-address with an ssl server address, the ssl transport captures this information ("TLS required") and ensures the client
+request a secure connection is to use a proxy with an ssl server address. When IceRPC + Ice decodes an Ice proxy
+with an ssl server address, the ssl transport captures this information ("TLS required") and ensures the client
 establishes a secure connection when it makes an invocation to this service address.
 
 {% callout %}
