@@ -3,9 +3,11 @@
 import { ReactNode } from 'react';
 import { clsx } from 'clsx';
 
+import type { CalloutType } from '@/markdoc/tags/callout.markdoc';
+
 type Props = {
   children: ReactNode;
-  type: 'danger' | 'note';
+  type: CalloutType;
 };
 
 export const Callout = ({ children, type }: Props) => {

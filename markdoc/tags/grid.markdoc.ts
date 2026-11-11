@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { Schema } from '@markdoc/markdoc';
+import type { Schema } from '@markdoc/markdoc';
 
 const grid: Schema = {
   render: 'Grid',

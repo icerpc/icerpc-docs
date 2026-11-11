@@ -1,6 +1,8 @@
 // Copyright (c) ZeroC, Inc.
 
-import { Tag, Node, Config } from '@markdoc/markdoc';
+import { Tag, type Node, type Config } from '@markdoc/markdoc';
+
+import { headingAnchor } from '../nodes/heading.markdoc.ts';
 
 const step = {
   render: 'Step',
@@ -27,7 +29,7 @@ const step = {
       {
         title,
         level,
-        id: id ?? title.replace(/[?]/g, '').replace(/\s+/g, '-').toLowerCase()
+        id: id ?? headingAnchor([title])
       },
       children
     );

@@ -1,5 +1,9 @@
 /** @type {import('next-sitemap').IConfig} */
-module.exports = {
+const config = {
   siteUrl: process.env.SITE_URL || 'https://docs.icerpc.dev',
-  generateRobotsTxt: true
+  generateRobotsTxt: true,
+  // The Markdown copies and their index name the HTML pages as canonical.
+  exclude: ['/md/*', '/llms.txt']
 };
+
+export default config;
