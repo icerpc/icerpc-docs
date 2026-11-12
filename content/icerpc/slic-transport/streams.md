@@ -27,8 +27,8 @@ The following table describes stream-specific frames:
 | ------------------ | ----------------------------------------------------------------------------- |
 | Stream             | Carries application data.                                                     |
 | StreamLast         | Carries application data and informs the peer that no more data will be sent. |
-| StreamReadsClosed  | Informs the peer of the stream reads closure.                                 |
-| StreamWritesClosed | Informs the peer of the stream writes closure.                                |
+| StreamReadsClosed  | Informs the peer that reads are closed.                                       |
+| StreamWritesClosed | Informs the peer that writes are aborted.                                     |
 | StreamWindowUpdate | Informs the peer of a stream window update.                                   |
 
 ## Stream creation
@@ -45,18 +45,27 @@ be 4.
 
 ## Stream closure
 
-Each side of a stream maintains a reads and writes closed state. When the application is done writing data on a stream,
-it closes writes on the stream. When it's done reading data, it closes reads.
+Each side of a stream maintains a reads and writes closed state. A stream is considered closed when both writes and
+reads are closed.
 
-The update of the closed state triggers the sending of one of the following frames:
+The application closes writes on a stream in one of two ways:
 
-- Slic sends a [StreamWritesClosed] frame to the peer when the application closes writes on
-  the stream. Upon receiving this frame, the peer stops reading data from the stream and closes reads on the stream.
+- It completes writes once it has written all its data. Slic sends a [StreamLast] frame to notify the peer that no more
+  data will follow.
 
-- Slic sends a [StreamReadsClosed] frame to the peer when the application closes reads on
-  the stream. Upon receiving this frame, the peer stops sending data over the stream and closes writes on the stream.
+- It aborts writes when it stops writing before all its data is written, for example because of an error. Slic sends a
+  [StreamWritesClosed] frame to the peer. Upon receiving this frame, the peer closes reads on the stream and treats the
+  data received so far as truncated.
 
-A stream is considered closed when both writes and reads are closed.
+The application aborts reads when it stops reading before it has received all the data. Slic sends a
+[StreamReadsClosed] frame to the peer. Upon receiving this frame, the peer stops sending data over the stream and closes
+writes on the stream.
+
+Reads are otherwise closed once all the data is read, as described in
+[Read-side stream states](#read-side-stream-states).
+
+These terms follow QUIC's: completing writes corresponds to ending a stream, aborting writes to resetting a stream, and
+aborting reads to aborting reading of a stream (see [RFC9000, section 2.4][RFC9000-stream-operations]).
 
 ## Sending and receiving data over a stream
 
@@ -96,6 +105,7 @@ stateDiagram
     Write --> WaitForPeerReadsClosed: <center>Write<br/><i>StreamLast</i></center>
     Ready --> Write: <center>Write<br/><i>Stream</i></center>
     Ready --> WaitForPeerReadsClosed: <center>Write<br/><i>StreamLast</i></center>
+    Ready --> Closed: Abort writes
     Write --> Closed: <center>Write<br/><i>StreamWritesClosed</i></center>
     WaitForPeerReadsClosed --> Closed: <center>Read<br/><i>StreamReadsClosed</i></center>
     Closed --> [*]
@@ -105,9 +115,8 @@ The write-side is initially in the `Ready` state. In this state, the stream is r
 application. The write-side enters the `Write` state when the application starts writing data. When the write-side is in
 the `Write` state, Slic can send `Stream` or `StreamLast` frames on that stream to carry the application data.
 
-The write-side exits the `Write` state to enter the `WaitForPeerReadsClosed` state when the application indicates that
-no more data will be written. Once it gets this notification from the application, the write-side sends a `StreamLast`
-frame to notify the peer.
+The write-side exits the `Write` state to enter the `WaitForPeerReadsClosed` state when the application completes
+writes. The write-side sends a `StreamLast` frame to notify the peer that no more data will follow.
 
 In the `WaitForPeerReadsClosed` state, the write-side waits for the peer to consume all the data. This is required to
 keep track of the number of matching remote streams opened on the peer. The application can't open a new stream if the
@@ -115,8 +124,9 @@ remote stream count has reached `MaxBidirectionalStreams` or `MaxUnidirectionalS
 the peer on [connection establishment][connection-parameters]). The peer sends the `StreamReadsClosed` frame once it has
 consumed all the data. The write-side enters the `Closed` state when the stream receives this frame.
 
-If the application closes writes, the write-side enters directly the `Closed` state and sends the `StreamWritesClosed`
-frame to notify the peer of the writes closure.
+If the application aborts writes, the write-side enters directly the `Closed` state and sends the `StreamWritesClosed`
+frame to notify the peer. The write-side doesn't send this frame when it's still in the `Ready` state: the stream was
+never created, so the peer doesn't know about it.
 
 The following state diagram shows the write state machine of a remote bidirectional stream (a remote unidirectional
 stream doesn't have a write-side):
@@ -129,11 +139,13 @@ stateDiagram
     Ready --> Write: <center>Write<br/><i>Stream</i></center>
     Ready --> Closed: <center>Write<br/><i>StreamLast</i></center>
     Write --> Closed: <center>Write<br/><i>StreamWritesClosed</i></center>
+    Ready --> Closed: <center>Write<br/><i>StreamWritesClosed</i></center>
     Closed --> [*]
 ```
 
 The state machine doesn't have the `WaitForPeerReadsClosed` state because the stream's write-side doesn't need to wait
-for the peer to consume all the data.
+for the peer to consume all the data: it enters the `Closed` state as soon as the application completes or aborts
+writes.
 
 ### Read-side stream states
 
@@ -154,13 +166,13 @@ The application accepts a remote stream following the reading of a `Stream` or `
 read-side of the stream is initially in the `Read` state. In this state the stream buffers the data received from the
 peer.
 
-The read-side enters the `WaitForAppConsume` state when the peer notifies the stream that no more data will be sent
-(with the `StreamLast` frame). In this state, the read-side waits for the application to consume all the buffered data.
+The read-side enters the `WaitForAppConsume` state when it receives the `StreamLast` frame: the peer completed writes
+and no more data will follow. In this state, the read-side waits for the application to consume all the buffered data.
 Once the application has consumed all the data, the read-side enters the `Closed` state and sends the `StreamReadsClosed`
 frame.
 
-If the application closes reads, the read-side enters directly the `Closed` state and sends the `StreamReadsClosed`
-frame to notify the peer of the reads closure.
+If the application aborts reads, the read-side enters directly the `Closed` state and sends the `StreamReadsClosed`
+frame to notify the peer.
 
 The following state diagram shows the read state machine of a local bidirectional stream (a local unidirectional stream
 doesn't have a read-side):
@@ -179,6 +191,7 @@ The state machine doesn't have the `WaitForAppConsume` state because the stream'
 peer that it's done reading.
 
 [RFC9000]: https://www.rfc-editor.org/rfc/rfc9000.html#name-stream-types-and-identifier
+[RFC9000-stream-operations]: https://www.rfc-editor.org/rfc/rfc9000.html#name-operations-on-streams
 [connection-parameters]: connection-establishment#connection-establishment-parameters
 [Stream]: protocol-frames#stream-and-streamlast-frames
 [StreamLast]: protocol-frames#stream-and-streamlast-frames
