@@ -19,7 +19,6 @@ For example:
 syntax = "proto3";
 
 package visitor_center;
-option csharp_namespace = "VisitorCenter";
 
 // A simple Greeter service.
 service Greeter {
