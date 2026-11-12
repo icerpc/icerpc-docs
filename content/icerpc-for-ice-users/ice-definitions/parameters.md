@@ -60,15 +60,11 @@ public partial interface IExampleService
 The mapping for optional parameters is the same as for required parameters, except each mapped C# type is nullable,
 where null represents "not set".
 
-There are two exceptions for the values you send, namely the parameters of the client-side method and the return value
-and out parameters of the server-side method:
-
-- An optional sequence of bool or numeric type without `"cs:generic"` metadata maps to `ReadOnlyMemory<T>`, like a
-  required sequence. A default `ReadOnlyMemory<T>`, such as one created from a null array, represents "not set", while a
-  `ReadOnlyMemory<T>` created from an empty array represents an empty sequence.
-- An optional dictionary maps to `IEnumerable<KeyValuePair<TKey, TValue>>`, like a required dictionary. This C# type
-  is not nullable, but null still represents "not set": pass `null!` (or suppress the nullable warning) to send a
-  dictionary that is not set.
+There is one exception for the values you send, namely the parameters of the client-side method and the return value
+and out parameters of the server-side method: an optional sequence of bool or numeric type without `"cs:generic"`
+metadata maps to `ReadOnlyMemory<T>`, like a required sequence. A default `ReadOnlyMemory<T>`, such as one created from
+a null array, represents "not set", while a `ReadOnlyMemory<T>` created from an empty array represents an empty
+sequence.
 
 Consider the following operation:
 
