@@ -10,7 +10,7 @@ have the .NET 10 SDK installed on your computer.
 The networked application we are building together consists of:
 
 - a server that hosts a single service (a simple greeter service)
-- a client that establishes a connection to the server and calls `greet` on this
+- a client that establishes a connection to the server and calls `Greet` on this
   greeter service
 
 The client and server are console applications that use plain .NET (no ASP.NET,
