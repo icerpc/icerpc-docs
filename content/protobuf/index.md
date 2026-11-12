@@ -38,7 +38,6 @@ For example, let's take a typical Greeter example:
 syntax = "proto3";
 
 package visitor_center;
-option csharp_namespace = "VisitorCenter";
 
 // A simple Greeter service.
 service Greeter {

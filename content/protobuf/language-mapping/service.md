@@ -14,7 +14,6 @@ For example:
 syntax = "proto3";
 
 package visitor_center;
-option csharp_namespace = "VisitorCenter";
 
 // A simple Greeter service.
 service Greeter {
@@ -59,7 +58,6 @@ For example:
 ```protobuf
 syntax = "proto3";
 package example;
-option csharp_namespace = "Example";
 
 service Widget {
     rpc Spin (SpinConfig)
@@ -141,7 +139,6 @@ For example:
 ```protobuf
 syntax = "proto3";
 package example;
-option csharp_namespace = "Example";
 
 service Widget {
     rpc Spin (SpinConfig)
@@ -185,7 +182,6 @@ names. For example:
 ```protobuf
 syntax = "proto3";
 package example;
-option csharp_namespace = "Example";
 
 service Widget {
     rpc Spin (SpinConfig)
