@@ -97,14 +97,14 @@ See [allow attribute](#allow-attribute) above for an example.
 
 The following attributes are specific to the C# mapping. They all start with the `cs::` prefix.
 
-| Attribute                                     | Applies to                                                                                         | Description                                                                          |
-| --------------------------------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [`cs::attribute`][cs-attribute-attribute]     | Enum types, enumerators, variants, and fields                                                      | Add the specified C# attribute to the mapped C# enum, enumerator, variant, or field. |
-| [`cs::encodedReturn`][cs-encoded-return]      | Operations                                                                                         | Return an already encoded return value (server-side only).                           |
-| [`cs::identifier`](#cs::identifier-attribute) | Modules, interfaces, operations, parameters, user-defined types, fields, enumerators, and variants | Change the name of the mapped C# identifier.                                         |
-| [`cs::public`](#cs::public-attribute)         | Interfaces and user-defined types                                                                  | Map to a public C# type instead of an internal C# type.                              |
-| [`cs::readonly`][cs-readonly]                 | Structs and struct fields                                                                          | Adds `readonly` to the mapped C# struct or field.                                    |
-| `cs::type`                                    | [Custom types][custom-type], [sequences][sequence-type], and [dictionaries][dictionary-type]       | Specify the mapped C# type.                                                          |
+| Attribute                                     | Applies to                                                                                         | Description                                                                 |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| [`cs::attribute`][cs-attribute-attribute]     | Basic enums, enumerators, and fields                                                               | Add the specified C# attribute to the mapped C# enum, enumerator, or field. |
+| [`cs::encodedReturn`][cs-encoded-return]      | Operations                                                                                         | Return an already encoded return value (server-side only).                  |
+| [`cs::identifier`](#cs::identifier-attribute) | Modules, interfaces, operations, parameters, user-defined types, fields, enumerators, and variants | Change the name of the mapped C# identifier.                                |
+| [`cs::public`](#cs::public-attribute)         | Interfaces and user-defined types                                                                  | Map to a public C# type instead of an internal C# type.                     |
+| [`cs::readonly`][cs-readonly]                 | Structs and struct fields                                                                          | Adds `readonly` to the mapped C# struct or field.                           |
+| `cs::type`                                    | [Custom types][custom-type], [sequences][sequence-type], and [dictionaries][dictionary-type]       | Specify the mapped C# type.                                                 |
 
 ### cs::identifier attribute
 

@@ -259,8 +259,8 @@ This `Unknown` variant can be re-encoded later without losing any information.
 
 ### cs::attribute attribute
 
-The `cs::attribute` [attribute](attributes) adds the specified C# attribute to the mapped C# enum. You typically use it
-to add the [FlagsAttribute] to the mapped C# enum. For example:
+You can apply the `cs::attribute` [attribute](attributes) to a basic enum to add the specified C# attribute to the
+mapped C# enum. You typically use it to add the [FlagsAttribute] to the mapped C# enum. For example:
 {% aside alignment="top" %}
 
 ```slice
@@ -287,8 +287,10 @@ internal enum MultiHue : byte
 ```
 
 {% /aside %}
-You can also apply `cs::attribute` to an enumerator or variant to get the specified C# attribute on the mapped C#
-enumerator or variant.
+You can also apply `cs::attribute` to an enumerator to get the specified C# attribute on the mapped C# enumerator.
+
+`cs::attribute` does not apply to variant enums and variants. They map to partial C# records, so you add a C# attribute
+with a partial declaration instead.
 
 [Dunet]: https://github.com/domn1995/dunet
 [Dunet package]: https://www.nuget.org/packages/Dunet
