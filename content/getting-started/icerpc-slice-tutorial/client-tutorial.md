@@ -74,7 +74,10 @@ This connection naturally matches our server configuration:
   `icerpc` protocol to `localhost` on the default port for `icerpc` (4062)
 - we don't specify a transport so we use the default multiplexed transport
   (`quic`)
-- Setting `clientAuthenticationOptions` is required with `quic`
+- `quic` always uses TLS; we set `clientAuthenticationOptions` so that the client
+  trusts the server certificate, which is signed by the test root CA in
+  `certs/cacert.der`. Without these options, the client validates the server
+  certificate against the system's trusted root CAs
 
 {% callout %}
 
