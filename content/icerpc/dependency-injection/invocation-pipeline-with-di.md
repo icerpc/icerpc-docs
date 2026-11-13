@@ -40,8 +40,7 @@ You must specify a final invoker with the `Into` method. With this example, the 
 [AddIceRpcClientConnection] accepts the server address as a `Uri` or a [ServerAddress] and sets the `ServerAddress`
 property of [ClientConnectionOptions]. If you call the overload without a server address, you must set
 `ClientConnectionOptions.ServerAddress` yourself, for example with
-`services.AddOptions<ClientConnectionOptions>().Configure(options => ...)`. The overloads with a server address are
-available starting with IceRPC 0.6.1.
+`services.AddOptions<ClientConnectionOptions>().Configure(options => ...)`.
 
 ## Installing an interceptor in an IInvokerBuilder
 

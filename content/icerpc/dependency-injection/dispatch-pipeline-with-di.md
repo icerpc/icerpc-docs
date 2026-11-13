@@ -60,9 +60,10 @@ to downstream dispatchers using an [IServiceProviderFeature].
 
 {% callout type="note" %}
 The DI scope is disposed as soon as the dispatcher returns its response, before IceRPC reads the response payload and
-payload continuation to send them to the peer. As a result, a response payload or a stream return value must not read
-from a disposable service of this scope (such as an EF Core `DbContext`): copy the data you need before returning, or
-give the resources used by the stream their own lifetime.
+payload continuation to send them to the peer. As a result, a response payload or a stream return value that reads
+lazily from a scoped service (such as an EF Core `DbContext`) fails with an `ObjectDisposedException` while IceRPC
+sends it. Read the data you need before returning the response, or give the resources used by the stream their own
+lifetime.
 {% /callout %}
 
 ## Installing a standard middleware in an IDispatcherBuilder
