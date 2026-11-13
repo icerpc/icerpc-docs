@@ -37,7 +37,10 @@ In C#, you create a client protocol connection with a [ClientProtocolConnectionF
 For example:
 
 ```csharp
-var clientProtocolConnectionFactory = new ClientProtocolConnectionFactory(connectionOptions, logger: logger);
+var clientProtocolConnectionFactory = new ClientProtocolConnectionFactory(
+    connectionOptions,
+    connectTimeout: TimeSpan.FromSeconds(10),
+    logger: logger);
 await using var protocolConnection = clientProtocolConnectionFactory.CreateConnection(serverAddress);
 ```
 

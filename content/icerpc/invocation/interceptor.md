@@ -46,7 +46,7 @@ For example:
 ```csharp
 Pipeline pipeline = new Pipeline()
     .UseLogger(loggerFactory)
-    .UseCompressor()
+    .UseCompressor(CompressionFormat.Brotli)
     .Into(clientConnection);
 ```
 

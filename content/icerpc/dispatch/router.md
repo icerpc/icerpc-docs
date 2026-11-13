@@ -104,7 +104,7 @@ A router can execute one or more middleware before handing over the request to a
 In C#, these middleware are registered with `Use{Name}` extension methods on class [Router]. For example:
 
 ```csharp
-Router router = new Router().UseLogger(loggerFactory).UseCompressor();
+Router router = new Router().UseLogger(loggerFactory).UseCompressor(CompressionFormat.Brotli);
 router.Map("/greeter", new Chatbot());
 ```
 
