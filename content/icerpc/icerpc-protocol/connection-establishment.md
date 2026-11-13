@@ -24,9 +24,6 @@ connection, except for the very first step:
 5. Accept streams from the peer until the inbound control stream is accepted. Any other stream accepted in the process
    is dispatched later, once the connection is established.
 
-   Each side must send its `Settings` frame before waiting for the peer's control stream: with QUIC and Slic, a peer
-   accepts a new stream only after receiving data on this stream.
-
 6. Receive the `Settings` frame from the peer over the inbound control stream.
 
 Once the client or the server receives the `Settings` frame from the peer, it considers the connection to be established
