@@ -3,7 +3,7 @@ title: Struct types
 description: Learn how Ice structs are mapped to C#
 ---
 
-An Ice struct maps to a partial record struct with the same name.
+An Ice struct maps to a partial record struct with the same name converted to Pascal case.
 
 Consider the following Ice struct:
 
@@ -24,10 +24,10 @@ public partial record struct Point
     public double Y { get; set; }
 
     /// <summary>Initializes a new instance of the <see cref="Point" /> struct.</summary>
-    public Point(double X, double Y)
+    public Point(double x, double y)
     {
-        this.X = X;
-        this.Y = Y;
+        this.X = x;
+        this.Y = y;
     }
 
     /// <summary>Initializes a new instance of the <see cref="Point" /> struct from an IceDecoder.</summary>

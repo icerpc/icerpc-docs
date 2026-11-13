@@ -3,8 +3,8 @@ title: Classes
 description: Learn how Ice classes are mapped to C#
 ---
 
-An Ice class maps to a public C# class with the same name. If the Ice class has no base class, the mapped class
-derives from [IceClass], the base class for all C# Ice classes.
+An Ice class maps to a public C# class with the same name converted to Pascal case. If the Ice class has no base class,
+the mapped class derives from [IceClass], the base class for all C# Ice classes.
 
 For example:
 

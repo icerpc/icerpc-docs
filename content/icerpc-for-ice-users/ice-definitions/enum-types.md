@@ -3,8 +3,8 @@ title: Enum types
 description: Learn how Ice enumerations are mapped to C#
 ---
 
-An Ice enumeration maps to a public C# enumeration with the same name, and each Ice enumerator maps to the C# enumerator
-with the same name. For example:
+An Ice enumeration maps to a public C# enumeration with the same name converted to Pascal case, and each Ice enumerator
+maps to the C# enumerator with the same name converted to Pascal case. For example:
 
 {% aside alignment="top" %}
 
