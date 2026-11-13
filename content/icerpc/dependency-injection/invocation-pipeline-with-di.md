@@ -30,12 +30,17 @@ using Microsoft.Extensions.DependencyInjection;
 
 // Add a new IInvoker singleton configured with an action.
 services
-    .AddIceRpcClientConnection()
+    .AddIceRpcClientConnection(new Uri("icerpc://localhost"))
     .AddIceRpcInvoker(builder => builder.Into<ClientConnection>());
 ```
 
 You must specify a final invoker with the `Into` method. With this example, the new invoker flows into the
-`ClientConnection` singleton we configured earlier.
+`ClientConnection` singleton added by [AddIceRpcClientConnection].
+
+[AddIceRpcClientConnection] accepts the server address as a `Uri` or a [ServerAddress] and sets the `ServerAddress`
+property of [ClientConnectionOptions]. If you call the overload without a server address, you must set
+`ClientConnectionOptions.ServerAddress` yourself, for example with
+`services.AddOptions<ClientConnectionOptions>().Configure(options => ...)`.
 
 ## Installing an interceptor in an IInvokerBuilder
 
@@ -56,7 +61,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 // Add a new IInvoker singleton configured with an action.
 services
-    .AddIceRpcClientConnection()
+    .AddIceRpcClientConnection(new Uri("icerpc://localhost"))
     .AddIceRpcInvoker(builder =>
         builder
             .UseLogger()
@@ -87,6 +92,9 @@ see the `UseLogger` extension method as infrastructure code exempt from this rul
 {% /callout %}
 
 [features]: ../invocation/outgoing-request#request-features
+[AddIceRpcClientConnection]: csharp:IceRpc.Extensions.DependencyInjection.ClientConnectionServiceCollectionExtensions
+[ClientConnectionOptions]: csharp:IceRpc.ClientConnectionOptions
+[ServerAddress]: csharp:IceRpc.ServerAddress
 [simple-injector]: https://simpleinjector.org/
 [AddIceRpcInvoker]: csharp:IceRpc.Extensions.DependencyInjection.InvokerServiceCollectionExtensions#IceRpc_Extensions_DependencyInjection_InvokerServiceCollectionExtensions_AddIceRpcInvoker_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_IceRpc_Extensions_DependencyInjection_IInvokerBuilder__
 [IInvokerBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IInvokerBuilder

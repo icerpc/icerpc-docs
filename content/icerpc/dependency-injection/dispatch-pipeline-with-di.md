@@ -58,6 +58,14 @@ services.AddIceRpcDispatcher(builder => builder.Map<IGreeterService>());
 The resulting dispatcher (dispatch pipeline) creates a new DI scope for each incoming request, and transmits this scope
 to downstream dispatchers using an [IServiceProviderFeature].
 
+{% callout type="note" %}
+The DI scope is disposed as soon as the dispatcher returns its response, before IceRPC reads the response payload and
+payload continuation to send them to the peer. As a result, a response payload or a stream return value that reads
+lazily from a scoped service (such as an EF Core `DbContext`) fails with an `ObjectDisposedException` while IceRPC
+sends it. Read the data you need before returning the response, or give the resources used by the stream their own
+lifetime.
+{% /callout %}
+
 ## Installing a standard middleware in an IDispatcherBuilder
 
 A standard middleware is a middleware that can be used with or without a DI container: it does not rely on a DI
@@ -177,15 +185,15 @@ using Microsoft.Extensions.DependencyInjection;
 services.AddIceRpcDispatcher(
     builder => builder
         .UseLogger()
-        .UseMiddleware<DIDeadlineMiddleware>()
+        .UseMiddleware<DIDeadlineMiddleware, DeadlineInformation>()
         .Map<IGreeterService>());
 
 // To be registered as a transient or scoped service in the DI container.
 [Service]
 internal partial class Chatbot : IGreeterService
 {
-    // DeadlineInformation is auto-wired by the DI container.
-    internal Chatbot(DeadlineInformation deadlineInfo)
+    // DeadlineInformation is auto-wired by the DI container, which requires a public constructor.
+    public Chatbot(DeadlineInformation deadlineInfo)
     {
         ...
     }
