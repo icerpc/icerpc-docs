@@ -51,7 +51,8 @@ struct HeaderData
 }
 ```
 
-The `compressionStatus` field is not used or supported by IceRPC. It must be set to 0.
+The `compressionStatus` field indicates whether the frame is compressed. IceRPC does not support compression: it always
+sends 0, accepts 0 and 1 (not compressed), and aborts the connection when it receives a compressed frame (2).
 
 The `frameSize` represents the total number of bytes in the frame, including the frame header.
 
@@ -121,7 +122,8 @@ enum ReplyStatus
     UnknownUserException,
     UnknownException,
     InvalidData,
-    Unauthorized
+    Unauthorized,
+    NotSupported
 }
 
 struct ReplyData
@@ -144,6 +146,7 @@ The `replyStatus` encodes the response's [status code][status-code] as follows:
 | NotImplemented        | OperationNotExist       |
 | InvalidData           | InvalidData             |
 | Unauthorized          | Unauthorized            |
+| NotSupported          | NotSupported            |
 | Any other status code | UnknownException        |
 
 When IceRPC receives a response frame, it creates an incoming response with a status code decoded from the reply status:
@@ -157,6 +160,7 @@ When IceRPC receives a response frame, it creates an incoming response with a st
 | OperationNotExist | NotImplemented         |
 | InvalidData       | InvalidData            |
 | Unauthorized      | Unauthorized           |
+| NotSupported      | NotSupported           |
 | All other values  | InternalError          |
 
 The format of the `replyPayload` depends on the reply status:
@@ -220,10 +224,12 @@ though IceRPC doesn't know anything about payload encoding. That's because:
 
 - if this encapsulation is received by an Ice application, the only encoding supported by both Ice and IceRPC is the
   Ice encoding version 1.1.
-- if this encapsulation is received by an IceRPC application, this 1.1 version is ignored.
+- if this encapsulation is received by an IceRPC application, this 1.1 version is ignored: the encoding of the payload
+  is selected by the generated code, not by the encapsulation.
 
-For the same reason, when IceRPC receives an encapsulation, it makes sure the encoding version in this encapsulation is
-set to 1.1.
+IceRPC nevertheless makes sure the encoding version of an encapsulation it receives is 1.1. Any other version means the
+encapsulation was created by an Ice application that uses the Ice encoding version 1.0, which IceRPC can neither decode
+nor forward to another Ice application.
 
 [ice-protocol]: https://docs.zeroc.com/ice/3.8/cpp/ice-protocol
 [ice-slice]: https://docs.zeroc.com/ice/3.8/csharp/the-slice-language
