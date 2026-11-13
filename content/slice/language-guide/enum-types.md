@@ -289,8 +289,8 @@ internal enum MultiHue : byte
 {% /aside %}
 You can also apply `cs::attribute` to an enumerator to get the specified C# attribute on the mapped C# enumerator.
 
-`cs::attribute` does not apply to variant enums and variants. They map to partial C# records, so you add a C# attribute
-with a partial declaration instead.
+`cs::attribute` cannot be applied to variant enums or variants. To add a C# attribute to a mapped record class, use a
+partial declaration.
 
 [Dunet]: https://github.com/domn1995/dunet
 [Dunet package]: https://www.nuget.org/packages/Dunet
