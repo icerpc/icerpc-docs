@@ -18,11 +18,11 @@ connection, except for the very first step:
    stream must be the first stream opened by this side on the multiplexed connection (stream ID 2 for a client, stream
    ID 3 for a server).
 
-4. Accept streams from the peer until the inbound control stream is accepted. Any other stream accepted in the process
-   is dispatched later, once the connection is established.
-
-5. Send the `Settings` frame to the peer over the outbound control stream.
+4. Send the `Settings` frame to the peer over the outbound control stream.
    The client and server typically send this `Settings` frame to each other at about the same time.
+
+5. Accept streams from the peer until the inbound control stream is accepted. Any other stream accepted in the process
+   is dispatched later, once the connection is established.
 
 6. Receive the `Settings` frame from the peer over the inbound control stream.
 
