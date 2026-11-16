@@ -1,37 +1,42 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
       interval: monthly
     cooldown:
       default-days: 7
     groups:
       npm:
-        patterns: ["*"]
+        patterns: ['*']
     ignore:
       # eslint-config-next pulls in typescript-eslint, which requires the TS 6
       # compiler API. TS 7 ships without one, so a major bump breaks `npm run
       # lint` outright. See typescript-eslint/typescript-eslint#10940.
-      - dependency-name: "typescript"
-        update-types: ["version-update:semver-major"]
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major']
+      # eslint-plugin-react, jsx-a11y, and import (via eslint-config-next) accept
+      # ESLint 9 at most. Drop this once they support 10:
+      # https://github.com/jsx-eslint/eslint-plugin-react/issues/3977
+      - dependency-name: 'eslint'
+        update-types: ['version-update:semver-major']
 
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
       interval: monthly
     cooldown:
       default-days: 7
     groups:
       github-actions:
-        patterns: ["*"]
+        patterns: ['*']
 
-  - package-ecosystem: "docker"
-    directory: "/"
+  - package-ecosystem: 'docker'
+    directory: '/'
     schedule:
       interval: monthly
     cooldown:
       default-days: 7
     groups:
       docker:
-        patterns: ["*"]
+        patterns: ['*']

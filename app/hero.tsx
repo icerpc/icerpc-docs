@@ -6,10 +6,10 @@ import Link from 'next/link';
 
 export const Hero = () => {
   return (
-    <div className="border-b-light-border dark:border-b-dark-border relative flex w-full max-w-208 flex-col items-center space-y-2 border-b py-10 sm:mx-6 md:mx-10 lg:mx-16 dark:bg-transparent">
+    <div className="relative flex w-full max-w-208 flex-col items-center space-y-2 border-b border-b-light-border py-10 sm:mx-6 md:mx-10 lg:mx-16 dark:border-b-dark-border dark:bg-transparent">
       <div className="mb-10 flex flex-col items-center gap-8">
         <div className="mx-auto flex flex-col items-center justify-center gap-5 px-6 text-center lg:gap-6">
-          <div className="border-light-border/40 dark:border-dark-border/20 relative mb-4 flex aspect-square w-28 items-center justify-center rounded-full border bg-white/40 dark:bg-transparent">
+          <div className="relative mb-4 flex aspect-square w-28 items-center justify-center rounded-full border border-light-border/40 bg-white/40 dark:border-dark-border/20 dark:bg-transparent">
             <Image
               src="/images/icerpc-logo-alt.svg"
               alt="IceRPC Logo"
@@ -17,8 +17,8 @@ export const Hero = () => {
               priority={true}
               fill
             />
-            <div className="dark:border-dark-border/40 absolute top-1/2 left-1/2 -z-10 hidden size-76 -translate-x-1/2 -translate-y-1/2 rounded-full border border-neutral-300/40 opacity-40 lg:block" />
-            <div className="dark:border-dark-border/40 absolute top-1/2 left-1/2 -z-10 hidden size-140 -translate-x-1/2 -translate-y-1/2 rounded-full border border-neutral-300/40 opacity-40 lg:block" />
+            <div className="absolute top-1/2 left-1/2 -z-10 hidden size-76 -translate-x-1/2 -translate-y-1/2 rounded-full border border-neutral-300/40 opacity-40 lg:block dark:border-dark-border/40" />
+            <div className="absolute top-1/2 left-1/2 -z-10 hidden size-140 -translate-x-1/2 -translate-y-1/2 rounded-full border border-neutral-300/40 opacity-40 lg:block dark:border-dark-border/40" />
           </div>
           <h1 className="-mb-2 bg-linear-to-r from-cyan-500 to-blue-500 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-3xl">
             IceRPC
@@ -43,7 +43,7 @@ export const Hero = () => {
               or
             </span>
             <a
-              className="dark:border-dark-border w-full min-w-[130px] rounded-lg border border-gray-500 bg-white px-3 py-2.5 text-center font-medium text-gray-500 hover:bg-gray-100 dark:bg-[#232429] dark:text-[rgba(255,255,255,0.6)]"
+              className="w-full min-w-[130px] rounded-lg border border-gray-500 bg-white px-3 py-2.5 text-center font-medium text-gray-500 hover:bg-gray-100 dark:border-dark-border dark:bg-[#232429] dark:text-[rgba(255,255,255,0.6)]"
               href="https://github.com/icerpc/icerpc-csharp/tree/0.6.x/examples"
             >
               View examples

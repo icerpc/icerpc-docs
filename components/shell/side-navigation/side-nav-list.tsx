@@ -36,7 +36,7 @@ export const SideNavList = ({
           <li key={`${category.title}-content`} className="list-none">
             <ul
               key={category.title + '-list'}
-              className="border-light-border ml-[0.1rem] border-l-[1.5px] pl-[0.1rem] dark:border-[#3D3D3D]"
+              className="ml-[0.1rem] border-l-[1.5px] border-light-border pl-[0.1rem] dark:border-[#3D3D3D]"
             >
               {category.links.map((link) =>
                 ListItem(path, link, false, onClick)
@@ -77,8 +77,8 @@ const ListItem = (
             `py-[6px] pr-3 pl-0 text-sm no-underline ${leftPadding} dark:text-[#C4C7C5]`,
             isCurrentPage
               ? noLeftPadding
-                ? 'text-primary font-medium dark:text-white'
-                : 'border-primary text-primary ml-[-3px] border-l-[1.5px] pl-[13.5px] font-medium dark:border-white/80 dark:text-white'
+                ? 'font-medium text-primary dark:text-white'
+                : 'ml-[-3px] border-l-[1.5px] border-primary pl-[13.5px] font-medium text-primary dark:border-white/80 dark:text-white'
               : 'mr-1 hover:text-zinc-900 dark:hover:text-white'
           )}
           onClick={onClick}
@@ -90,7 +90,7 @@ const ListItem = (
   } else {
     return (
       <li key={link.title} className={clsx('my-2 pr-2 pl-0', leftPadding)}>
-        <h2 className="decoration-light-border dark:decoration-dark-border text-xs font-semibold text-slate-800 uppercase underline underline-offset-10 dark:text-white">
+        <h2 className="text-xs font-semibold text-slate-800 uppercase underline decoration-light-border underline-offset-10 dark:text-white dark:decoration-dark-border">
           {link.title}
         </h2>
       </li>

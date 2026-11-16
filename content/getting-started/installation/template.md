@@ -15,7 +15,7 @@ dotnet new install IceRpc.Templates
 ## Template list
 
 | Template name               | Description                                                                                                     |
-|-----------------------------|-----------------------------------------------------------------------------------------------------------------|
+| --------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `icerpc-protobuf-client`    | A project template for creating an IceRPC + Protobuf client console application.                                |
 | `icerpc-protobuf-server`    | A project template for creating an IceRPC + Protobuf server console application.                                |
 | `icerpc-protobuf-di-client` | A project template for creating an IceRPC + Protobuf client console application using Microsoft's DI container. |

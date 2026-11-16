@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { Tag, Node, Config } from '@markdoc/markdoc';
+import { Tag, type Node, type Config } from '@markdoc/markdoc';
 
 const title = {
   render: 'Title',

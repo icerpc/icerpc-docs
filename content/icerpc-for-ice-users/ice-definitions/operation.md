@@ -3,10 +3,10 @@ title: Operation
 description: Learn how Ice operations are mapped to C#
 ---
 
-An Ice operation named *opName* in interface `Greeter` is mapped to abstract method *OpName*Async in the interface
+An Ice operation named _opName_ in interface `Greeter` is mapped to abstract method *OpName*Async in the interface
 `IGreeter` and to abstract method *OpName*Async in interface `IGreeterService`.
 
-The mapped method name is always in Pascal case, per the usual C# naming conventions, even when *opName* is not in
+The mapped method name is always in Pascal case, per the usual C# naming conventions, even when _opName_ is not in
 Pascal case.
 
 For example:

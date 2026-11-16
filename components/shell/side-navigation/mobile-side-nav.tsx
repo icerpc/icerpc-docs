@@ -47,7 +47,7 @@ export function MobileSideNav() {
 
   return (
     <>
-      <div className="border-light-border dark:border-dark-border flex h-[57px] items-center justify-start border-t p-4 text-sm lg:hidden">
+      <div className="flex h-[57px] items-center justify-start border-t border-light-border p-4 text-sm lg:hidden dark:border-dark-border">
         <button>
           <Bars3Icon
             className="ml-1 block size-5 text-slate-500 dark:text-white/80"
@@ -128,7 +128,7 @@ export function MobileSideNav() {
                           />
                         </button>
                       </div>
-                      <div className="border-light-border dark:border-dark-border mt-4 w-full border-t" />
+                      <div className="mt-4 w-full border-t border-light-border dark:border-dark-border" />
                     </section>
                     <nav
                       className={clsx(

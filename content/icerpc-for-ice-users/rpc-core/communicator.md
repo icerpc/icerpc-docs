@@ -70,8 +70,6 @@ await connection.ShutdownAsync();
 {% /aside %}
 
 [invocation-pipeline]: /icerpc/invocation/invocation-pipeline
-
 [options-pattern]: https://learn.microsoft.com/en-us/dotnet/core/extensions/options
-
 [ClientConnection]: csharp:IceRpc.ClientConnection
 [ConnectionCache]: csharp:IceRpc.ConnectionCache

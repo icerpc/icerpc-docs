@@ -54,14 +54,14 @@ C# property, and so on.
 
 There are a few notable differences between the original C# mapping (when targeting Ice) and the new mapping for IceRPC:
 
-|                        | Ice target (default)                 | IceRPC target                                            |
-|------------------------|--------------------------------------|----------------------------------------------------------|
-| C# identifier          | Same as the Ice identifier           | Follows C# conventions (Pascal case, camel case)         |
-| C# interface           | Same as the Ice interface name       | C# interface with an `I` prefix as per C# conventions    |
-| Mapping for operations | Sync and async C# methods            | Only async methods                                       |
-| Mapping for fields     | C# field (default), C# property      | C# property                                              |
-| Client-side mapping    | Prx interface such as `GreeterPrx`   | Interface (`IGreeter`) and proxy struct (`GreeterProxy`) |
-| Server-side mapping    | Skeleton class such as `GreeterDisp_`| Service interface such as `IGreeterService`              |
+|                        | Ice target (default)                  | IceRPC target                                            |
+| ---------------------- | ------------------------------------- | -------------------------------------------------------- |
+| C# identifier          | Same as the Ice identifier            | Follows C# conventions (Pascal case, camel case)         |
+| C# interface           | Same as the Ice interface name        | C# interface with an `I` prefix as per C# conventions    |
+| Mapping for operations | Sync and async C# methods             | Only async methods                                       |
+| Mapping for fields     | C# field (default), C# property       | C# property                                              |
+| Client-side mapping    | Prx interface such as `GreeterPrx`    | Interface (`IGreeter`) and proxy struct (`GreeterProxy`) |
+| Server-side mapping    | Skeleton class such as `GreeterDisp_` | Service interface such as `IGreeterService`              |
 
 [Ice Manual]: https://docs.zeroc.com/ice/3.8/csharp/the-slice-language
 [Slice]: /slice

@@ -1,6 +1,14 @@
 // Copyright (c) ZeroC, Inc.
 
-import { Schema } from '@markdoc/markdoc';
+import type { Schema } from '@markdoc/markdoc';
+
+/** The kinds of callout, each with its label in a page's Markdown copy. */
+export const CALLOUT_LABELS = {
+  note: 'Note',
+  danger: 'Danger'
+} as const;
+
+export type CalloutType = keyof typeof CALLOUT_LABELS;
 
 const callout: Schema = {
   render: 'Callout',
@@ -9,7 +17,7 @@ const callout: Schema = {
     type: {
       type: String,
       default: 'note',
-      matches: ['danger', 'note']
+      matches: Object.keys(CALLOUT_LABELS)
     }
   }
 };

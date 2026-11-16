@@ -33,6 +33,7 @@
     "idempotency",
     "ifndef",
     "jettwave",
+    "llms",
     "lucide",
     "markdoc",
     "Meou",
@@ -73,6 +74,7 @@
     "varu",
     "varuint",
     "Videocam",
+    "worktrees",
     "Xmark",
     "zeroc"
   ],
@@ -88,9 +90,7 @@
     "misc",
     "lorem-ipsum"
   ],
-  "enableFiletypes": [
-    "markdoc"
-  ],
+  "enableFiletypes": ["markdoc"],
   "ignorePaths": [
     ".vscode",
     "node_modules",

@@ -2,6 +2,7 @@
 title: Constructed types
 description: Learn how to encode constructed types with Slice.
 ---
+
 Slice provides three built-in generic types: `Dictionary<Key, Value>`, `Result<Success, Failure>`, and `Sequence<T>`.
 You need to specify the type argument(s) of such a generic type in order to get an actual type - a constructed type.
 This page describes the encoding of such constructed types.
@@ -60,7 +61,7 @@ A sequence of `int32` with values 5, 32 and 9 is encoded as:
 A sequence of N elements with an optional element type T? is encoded as a varuint62-encoded N followed by a
 [bit sequence][bit-sequence] with N bits, followed by each element with a value encoded in order.
 
-### Example: sequence of int32?
+### Example: sequence of int32? {% id="example-sequence-of-optional-int32" %}
 
 A sequence of `int32?` with values 5, no-value, 9 and no-value is encoded as:
 

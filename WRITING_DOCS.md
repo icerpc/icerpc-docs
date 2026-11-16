@@ -58,12 +58,12 @@ showNavigation: false
 ---
 ```
 
-| Attribute       | Description                                                                                     |
-| --------------- | ----------------------------------------------------------------------------------------------- |
-| title           | The title of the page.                                                                          |
-| description     | The description of the page.                                                                    |
-| showAside       | Whether or not to show table of contents to the right of the page.  Can be either `true` or `false`. Defaults to `true`|
-| showNavigation  | Whether or not to show the navigation at the bottom of the page. Can be either `true` or `false`. Defaults to `true`   |
+| Attribute      | Description                                                                                                            |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| title          | The title of the page.                                                                                                 |
+| description    | The description of the page.                                                                                           |
+| showAside      | Whether or not to show table of contents to the right of the page. Can be either `true` or `false`. Defaults to `true` |
+| showNavigation | Whether or not to show the navigation at the bottom of the page. Can be either `true` or `false`. Defaults to `true`   |
 
 ## Custom Nodes
 
@@ -78,9 +78,9 @@ opening code fence.
 
 #### Attributes
 
-| Attribute | Description                                                                                                                                             |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| title     | The title of the code block.                                                                                                                            |
+| Attribute | Description                  |
+| --------- | ---------------------------- |
+| title     | The title of the code block. |
 
 #### Examples
 
@@ -128,8 +128,8 @@ within the `callout` tag will be placed inside the callout box.
 
 #### Attributes
 
-| Attribute | Description                                                                 |
-| --------- | --------------------------------------------------------------------------- |
+| Attribute | Description                                                               |
+| --------- | ------------------------------------------------------------------------- |
 | type      | The type of callout. Can be either `note` or `danger`. Default is `note`. |
 
 #### Examples
@@ -275,7 +275,7 @@ a title, description, and link.
 #### Attributes
 
 | Attribute   | Description                                      |
-| ----------- | -------------------------------------------------|
+| ----------- | ------------------------------------------------ |
 | title       | The title of the mini card.                      |
 | description | The description of the mini card.                |
 | href        | The href used when clicking the mini card        |

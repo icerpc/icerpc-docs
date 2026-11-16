@@ -17,7 +17,7 @@ import { SearchButton } from '@/components/shell/search-button';
 export const TopNav = () => (
   <div
     className={clsx(
-      'border-light-border fixed top-0 z-10 flex w-full flex-col justify-center border-b bg-[#FCFCFC]',
+      'fixed top-0 z-10 flex w-full flex-col justify-center border-b border-light-border bg-[#FCFCFC]',
       'dark:border-dark-border/60 dark:bg-dark'
     )}
   >
@@ -30,12 +30,12 @@ export const TopNav = () => (
           <Logo />
           <div className="hidden items-center lg:flex">
             <SearchButton className="w-full min-w-75" />
-            <div className="border-light-border dark:border-dark-border mx-6 flex h-7.5 items-center border-l pl-4">
+            <div className="mx-6 flex h-7.5 items-center border-l border-light-border pl-4 dark:border-dark-border">
               <ThemeToggle />
               <Button
                 variant="outline"
                 size="icon"
-                className="dark:hover:bg-dark-accent border-none hover:bg-zinc-100 focus-visible:border-0 focus-visible:ring-transparent focus-visible:outline-hidden! dark:outline-hidden! dark:focus-visible:border-0!"
+                className="border-none hover:bg-zinc-100 focus-visible:border-0 focus-visible:ring-transparent focus-visible:outline-hidden! dark:outline-hidden! dark:hover:bg-dark-accent dark:focus-visible:border-0!"
               >
                 <a
                   className="flex h-full items-center justify-center p-4 dark:text-[rgba(255,255,255,0.8)]"

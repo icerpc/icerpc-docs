@@ -3,8 +3,8 @@ title: Constants and literals
 description: Learn how Ice constants and literals map to C#.
 ---
 
-An Ice constant is mapped to a C# static class with the same name. The generated class contains a constant named
-`Value` that holds the value of the constant. For example:
+An Ice constant is mapped to a C# static class with the same name converted to Pascal case. The generated class
+contains a constant named `Value` that holds the value of the constant. For example:
 
 {% aside alignment="top" %}
 

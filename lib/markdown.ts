@@ -7,7 +7,13 @@ import { load as yamlLoad } from 'js-yaml';
 import readingTimeFunc from 'reading-time';
 import path from 'path';
 
-export function getAllMarkdownFiles(
+/** The frontmatter fields the page metadata reads. */
+type Frontmatter = {
+  title?: string;
+  description?: string;
+};
+
+function getAllMarkdownFiles(
   dirPath: string,
   arrayOfFiles: string[] = []
 ): string[] {
@@ -24,6 +30,23 @@ export function getAllMarkdownFiles(
   });
 
   return arrayOfFiles;
+}
+
+/**
+ * The path of every page, such as `/icerpc/dispatch/router`: its file under
+ * `content/`, without `.md` or `/index.md`.
+ */
+export function getAllPagePaths(): string[] {
+  const contentDir = path.join(process.cwd(), 'content');
+  return getAllMarkdownFiles(contentDir).map(
+    (file) =>
+      '/' +
+      path
+        .relative(contentDir, file)
+        .split(path.sep)
+        .join('/')
+        .replace(/(\/index)?\.md$/, '')
+  );
 }
 
 export async function getMarkdownContent(slug: string) {
@@ -45,14 +68,11 @@ export async function getMarkdownContent(slug: string) {
 
   if (!fileContent) return { content: null };
 
-  // If there's content in the file, parse the frontmatter
-  let frontmatter;
-  if (fileContent) {
-    const ast = Markdoc.parse(fileContent);
-    frontmatter = ast.attributes.frontmatter
-      ? yamlLoad(ast.attributes.frontmatter)
-      : {};
-  }
+  // Parse the frontmatter
+  const { attributes } = Markdoc.parse(fileContent);
+  const frontmatter = (
+    attributes.frontmatter ? yamlLoad(attributes.frontmatter) : {}
+  ) as Frontmatter;
 
   // Compute the reading time
   const readingTime = readingTimeFunc(fileContent, {
@@ -73,6 +93,6 @@ export async function getMarkdownContent(slug: string) {
   };
   return {
     content: Markdoc.transform(ast, updatedConfig),
-    frontmatter: (frontmatter as any) || {}
+    frontmatter
   };
 }

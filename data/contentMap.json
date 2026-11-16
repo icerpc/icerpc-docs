@@ -414,8 +414,8 @@
       ]
     },
     {
-       "title": "Encoding payloads with Protobuf",
-       "path": "/protobuf/encoding"
+      "title": "Encoding payloads with Protobuf",
+      "path": "/protobuf/encoding"
     }
   ],
   "icerpc_for_ice_users": [

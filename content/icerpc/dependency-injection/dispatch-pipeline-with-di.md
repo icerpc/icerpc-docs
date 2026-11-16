@@ -30,9 +30,9 @@ dispatcher. However, a more idiomatic approach is to communicate using injected 
 
 - an upstream middleware receives a scoped service (via injection) and then fills in this service
 - a downstream middleware receives the same scoped service (also via injection) and reads the information filled in by
- the upstream middleware
+  the upstream middleware
 - the constructor of the leaf dispatcher (a scoped or transient service) is auto-wired with this previously filled
-scoped service
+  scoped service
 
 The chain of middleware is itself static: each dispatch does not create new middleware instances. The middleware are
 typically singletons managed by the DI container.
@@ -57,6 +57,14 @@ services.AddIceRpcDispatcher(builder => builder.Map<IGreeterService>());
 
 The resulting dispatcher (dispatch pipeline) creates a new DI scope for each incoming request, and transmits this scope
 to downstream dispatchers using an [IServiceProviderFeature].
+
+{% callout type="note" %}
+The DI scope is disposed as soon as the dispatcher returns its response, before IceRPC reads the response payload and
+payload continuation to send them to the peer. As a result, a response payload or a stream return value that reads
+lazily from a scoped service (such as an EF Core `DbContext`) fails with an `ObjectDisposedException` while IceRPC
+sends it. Read the data you need before returning the response, or give the resources used by the stream their own
+lifetime.
+{% /callout %}
 
 ## Installing a standard middleware in an IDispatcherBuilder
 
@@ -177,15 +185,15 @@ using Microsoft.Extensions.DependencyInjection;
 services.AddIceRpcDispatcher(
     builder => builder
         .UseLogger()
-        .UseMiddleware<DIDeadlineMiddleware>()
+        .UseMiddleware<DIDeadlineMiddleware, DeadlineInformation>()
         .Map<IGreeterService>());
 
 // To be registered as a transient or scoped service in the DI container.
 [Service]
 internal partial class Chatbot : IGreeterService
 {
-    // DeadlineInformation is auto-wired by the DI container.
-    internal Chatbot(DeadlineInformation deadlineInfo)
+    // DeadlineInformation is auto-wired by the DI container, which requires a public constructor.
+    public Chatbot(DeadlineInformation deadlineInfo)
     {
         ...
     }
@@ -194,11 +202,9 @@ internal partial class Chatbot : IGreeterService
 ```
 
 [features]: ../dispatch/incoming-request#request-features
-
 [IServiceCollection]: https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
 [IServiceProvider]: https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider
 [IceRpc.Extensions.DependencyInjection]: https://github.com/icerpc/icerpc-csharp/tree/0.6.x/src/IceRpc.Extensions.DependencyInjection
-
 [Router]: csharp:IceRpc.Router
 [IDispatcherBuilder]: csharp:IceRpc.Extensions.DependencyInjection.IDispatcherBuilder
 [IServiceProviderFeature]: csharp:IceRpc.Extensions.DependencyInjection.IServiceProviderFeature

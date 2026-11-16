@@ -6,7 +6,7 @@ description: Learn how Ice fields are mapped to C#
 An Ice field maps to a C# property with the same name converted to Pascal case. You can customize this C# name with the
 [`"cs:identifier"`][cs-identifier] metadata directive.
 
-The type of the C# field is the mapped Ice type; this C# type is nullable for proxies and classes.
+The type of the C# property is the mapped Ice type; this C# type is nullable for proxies and classes.
 
 For example:
 
@@ -33,8 +33,8 @@ public partial record struct Person
 
 ## Optional fields
 
-An optional field maps to a C# field with the same name converted to Pascal case. The mapped field's type is nullable,
-and the tag value is not mapped to C#.
+An optional field maps to a C# property with the same name converted to Pascal case. The mapped property's type is
+nullable, and the tag value is not mapped to C#.
 
 For example:
 

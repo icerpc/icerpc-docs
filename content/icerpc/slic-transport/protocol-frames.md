@@ -173,7 +173,8 @@ compact struct StreamClosedFrame {
 }
 ```
 
-These frames are sent when reads or writes are closed on the stream.
+A `StreamWritesClosed` frame is sent when writes are aborted on the stream. A `StreamReadsClosed` frame is sent when
+reads are closed on the stream. See [Stream closure](streams#stream-closure).
 
 ## StreamWindowUpdate frame
 

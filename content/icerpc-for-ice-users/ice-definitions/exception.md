@@ -3,8 +3,8 @@ title: Exception
 description: Learn how Ice exceptions are mapped to C#
 ---
 
-An Ice exception maps to a public C# class with the same name. If the exception doesn't derive from another exception,
-the mapped class derives from [IceException], the base class for all C# Ice exceptions.
+An Ice exception maps to a public C# class with the same name converted to Pascal case. If the exception doesn't derive
+from another exception, the mapped class derives from [IceException], the base class for all C# Ice exceptions.
 
 For example:
 

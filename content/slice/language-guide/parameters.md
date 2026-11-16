@@ -8,21 +8,21 @@ description: Learn how to define parameters in Slice.
 Parameters have the same syntax as [fields](fields), with two extensions:
 
 1. When an operation returns a single parameter, this parameter cannot have a name. The syntax for this nameless return
-parameter is simply `Type` or `tag(N) Type?`. For example:
+   parameter is simply `Type` or `tag(N) Type?`. For example:
 
-    ```slice
-    greet(name: string) -> string // the return parameter has a type (string) but no name.
-    anotherGreet(name: string) -> tag(1) string? // the return parameter is tagged
-    ```
+   ```slice
+   greet(name: string) -> string // the return parameter has a type (string) but no name.
+   anotherGreet(name: string) -> tag(1) string? // the return parameter is tagged
+   ```
 
 2. The last parameter of an operation or return type may be a [stream parameter](stream-parameters), with the
-`stream` keyword before the type. For example:
+   `stream` keyword before the type. For example:
 
-    ```slice
-    downloadFile(name: string) -> stream uint8
+   ```slice
+   downloadFile(name: string) -> stream uint8
 
-    uploadMeasurements(measurements: stream Measurement)
-    ```
+   uploadMeasurements(measurements: stream Measurement)
+   ```
 
 ## Tagged parameters
 

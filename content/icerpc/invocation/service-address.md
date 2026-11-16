@@ -103,8 +103,6 @@ IncomingResponse response = await clientConnection.InvokeAsync(request);
 ```
 
 [server addresses]: ../connection/server-address
-
 [URI]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
-
 [ServiceAddress]: csharp:IceRpc.ServiceAddress
 [Ice facet]: https://docs.zeroc.com/ice/3.8/cpp/facets

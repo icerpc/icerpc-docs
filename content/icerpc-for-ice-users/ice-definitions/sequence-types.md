@@ -51,6 +51,9 @@ incoming and outgoing values makes sending sequences more convenient and occasio
 | --------------------------- | ----------------------------------- |
 | `ReadOnlyMemory<T>`         | `T[]`                               |
 
+The `ReadOnlyMemory<T>` mapping for outgoing values is not nullable, even for optional values; see
+[optional parameters].
+
 You can override the default mapping with the `"cs:generic"` metadata directive; this gives you the C# type you
 specified for incoming values, and `IEnumerable<T>` for outgoing values.
 
@@ -105,7 +108,7 @@ sequence<MyClass> MyClassList; // OK
 sequence<MyClass> MyClassLinkedList; // Ignored
 ```
 
-In this example, sequence type `MyClassList` maps to the generic container `System.Collections.Generic.List<MyClass>`,
+In this example, sequence type `MyClassList` maps to `System.Collections.Generic.List<MyClass?>` for incoming values,
 but sequence type `MyClassLinkedList` uses the default mapping.
 
 ### Mapping to custom types
@@ -146,3 +149,5 @@ public class PriorityQueue<T> : IEnumerable<T>
     // Other methods and fields here...
 }
 ```
+
+[optional parameters]: /icerpc-for-ice-users/ice-definitions/parameters#optional-parameters

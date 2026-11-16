@@ -2,6 +2,7 @@
 title: Primitive types
 description: Learn how primitive types are encoded with Slice.
 ---
+
 ## Bool
 
 A `bool` is encoded on a single byte, where 0 means `false` and 1 means `true`. Other values are invalid.
@@ -60,8 +61,10 @@ A `float32` or `float64` is encoded on 4 resp. 8 bytes using the binary32 resp. 
 [IEEE 754].
 
 ## String
+
 A `string` is encoded using UTF-8 as a `varuint62` size followed by size UTF-8 bytes. These UTF-8 bytes don't include a
 [BOM]. For example, the string "1 μs" is usually encoded as:
+
 ```
 0x14      # size 5 encoded on 1 byte
 0x31      # '1'

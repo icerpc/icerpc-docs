@@ -37,7 +37,7 @@ export const Aside = ({
   return (
     <aside
       className={clsx(
-        'dark:bg-dark sticky top-[6.4rem] mr-10 hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 xl:flex',
+        'sticky top-[6.4rem] mr-10 hidden h-[calc(100vh-4rem)] w-[275px] shrink-0 xl:flex dark:bg-dark',
         items.length > 1 ? '' : ''
       )}
     >
@@ -69,14 +69,14 @@ export const Aside = ({
           <ActionItem href={editPageUrl(path)}>
             <FontAwesomeIcon
               icon={faPenToSquare}
-              className="text-primary mr-1.5 size-3.5"
+              className="mr-1.5 size-3.5 text-primary"
             />
             Edit this page
           </ActionItem>
           <ActionItem href="https://github.com/icerpc/icerpc-csharp/discussions">
             <FontAwesomeIcon
               icon={faMessage}
-              className="text-primary mr-1.5 size-3.5"
+              className="mr-1.5 size-3.5 text-primary"
             />
             GitHub Discussions
           </ActionItem>
@@ -150,11 +150,12 @@ function useActiveId(ids: string) {
       if (tops[active + 1] < innerHeight / 2) active++;
 
       // At the bottom of the page the last heading is active, unless the
-      // reader jumped to another one that can't pass under the header.
+      // reader jumped to another one whose jump lands there too, within the
+      // same pixel that counts as the bottom.
       if (scrollY >= maxScroll - 1) {
         const jumped = headings.findIndex((heading) => heading.id === jumpedId);
         active =
-          jumped !== -1 && targets[jumped] > maxScroll
+          jumped !== -1 && targets[jumped] > maxScroll - 1
             ? jumped
             : headings.length - 1;
       }

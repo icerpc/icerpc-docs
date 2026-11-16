@@ -1,6 +1,6 @@
 // Copyright (c) ZeroC, Inc.
 
-import { Config, Tag, nodes, Node } from '@markdoc/markdoc';
+import { type Config, Tag, nodes, type Node } from '@markdoc/markdoc';
 
 export const table = {
   render: 'Table',
