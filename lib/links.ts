@@ -11,6 +11,9 @@
 export const isExternalLink = (href: string) =>
   href.startsWith('http://') || href.startsWith('https://');
 
+/** The URL of the Markdown copy of the page at `path`: its URL with `.md` appended. */
+export const markdownHref = (path: string) => `${path}.md`;
+
 /**
  * Determines if a link is an API link.
  * @param {string} href - The link to check.
