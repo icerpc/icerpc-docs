@@ -8,10 +8,8 @@ description: How RPC methods are mapped to C#.
 A Protobuf RPC method named _RpcName_ in service `Greeter` is mapped to abstract method *RpcName*Async in interface
 `IGreeter` and to abstract method *RpcName*Async in interface `IGreeterService`.
 
-The mapped method name is _RpcName_ converted to Pascal case with the same rule as `protoc`'s C# code generator,
-followed by `Async`: the first letter and any letter that follows a digit or an underscore are converted to uppercase,
-all other letters and digits are kept as-is, and underscores are removed. For example, RPC method `get2values` is mapped
-to `Get2ValuesAsync`, and RPC method `get_http_value` is mapped to `GetHttpValueAsync`.
+The mapped method name is _RpcName_ converted to Pascal case, followed by `Async`. This conversion uses the same rule as
+[`protoc`'s C# code generator](https://protobuf.dev/reference/csharp/csharp-generated/#structure).
 
 For example:
 
@@ -62,14 +60,14 @@ While the two methods are similar, please note they are not the same:
 
 A Protobuf RPC method can accept a stream of input messages, return a stream of output messages, or both, using the
 `stream` keyword. The mapped C# methods are the same as for a unary RPC method, except a stream input is mapped to a
-`stream` parameter (instead of a `message` parameter), and a stream output is mapped to a stream return value.
+stream parameter (instead of a message parameter), and a stream output is mapped to a stream return value.
 
 The C# type of a stream depends on its direction:
 
-- an **outgoing** stream is a stream your code gives to the generated code, namely the input stream you pass to a
-  client-side method or the output stream your service method returns
-- an **incoming** stream is a stream the generated code gives to your code, namely the output stream you receive from a
-  client-side method or the input stream your service method receives
+- an **outgoing** stream is a stream your code gives to the generated code, namely the stream you pass to a
+  client-side method or the stream your service method returns
+- an **incoming** stream is a stream the generated code gives to your code, namely the stream you receive from a
+  client-side method or the stream your service method receives
 
 | Stream direction | C# type                 |
 | ---------------- | ----------------------- |
@@ -81,7 +79,6 @@ The C# type of a stream depends on its direction:
 ```protobuf
 syntax = "proto3";
 package example;
-option csharp_namespace = "Example";
 
 service Sensor {
     // Client streaming
@@ -145,9 +142,8 @@ side of the [Stream example] application.
 #### Receiving a stream
 
 [`IAsyncStream<T>`] is an `IAsyncEnumerable<T>` that is also `IDisposable`: it owns the underlying transport stream from
-which the messages are decoded. Once you start iterating over it with `await foreach`, this transport stream is released
-when the iteration ends, including when you exit the iteration early with `break`. If you don't iterate over the
-stream, you must dispose it. A `using` declaration covers both cases:
+which the messages are decoded, and you must dispose it when you're done with it. The simplest approach is a `using`
+declaration:
 
 ```csharp
 using IAsyncStream<Reading> readings = await sensor.MonitorAsync(new MonitorRequest());

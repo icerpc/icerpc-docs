@@ -42,15 +42,11 @@ describe IceRPC's support for Protobuf.
 The `protoc-gen-icerpc-csharp` code generator generates code only for Protobuf services.
 
 For Protobuf service _Name_, it creates two C# interfaces (I*Name* and I*Name*Service) and one C# struct (*Name*Client).
-The identifiers of the generated interfaces and struct use _Name_ converted to Pascal case with the same rule as
-`protoc`'s C# code generator: the first letter and any letter that follows a digit or an underscore are converted to
-uppercase, all other letters and digits are kept as-is, and underscores are removed. For example, service
-`auth2service` is mapped to `IAuth2Service`, `IAuth2ServiceService`, and `Auth2ServiceClient`.
+The identifiers of the generated interfaces and struct use _Name_ converted to Pascal case, with the same rule as
+[`protoc`'s C# code generator](https://protobuf.dev/reference/csharp/csharp-generated/#structure).
 
-The generated code is in the C# namespace specified by the `csharp_namespace` option. Without this option, the
-namespace is the Protobuf package with each period-separated segment converted to Pascal case with the same rule: for
-example, package `lower.snake_case` is mapped to namespace `Lower.SnakeCase`. This is the namespace `protoc` uses for
-the classes it generates for your messages.
+The generated code is in the same C# namespace as the classes `protoc` generates for your messages: the namespace
+specified by the `csharp_namespace` option or, without this option, the Protobuf package converted to Pascal case.
 
 ### I*Name*
 
@@ -93,7 +89,7 @@ public partial interface IWidget
 
 The generated record struct *Name*Client implements I*Name* by sending requests to a remote service with IceRPC.
 
-In order to call a remote service, you typically construct a client struct using one of its "invoker" constructors:
+In order to call a remote service, you need to construct a client struct using one of its "invoker" constructors:
 
 ```csharp
 public readonly partial record struct WidgetClient : IWidget, IProtobufClient
@@ -123,8 +119,8 @@ you to tune how request payloads are created: the memory pool and the minimum se
 payloads, and the flush threshold for streams of messages. It does not change how Protobuf messages are encoded. See
 [ProtobufEncodeOptions] for details.
 
-You can also construct a client struct with its parameterless constructor and an object initializer that sets its
-required `Invoker` property, and optionally its `ServiceAddress` and `EncodeOptions` properties.
+The generated client struct also provides a parameterless constructor. If you call this constructor directly, you also
+need to initialize the invoker, for example with `new WidgetClient { Invoker = connection }`.
 
 A `null` service address is equivalent to an icerpc service address with the default service path of the associated
 Protobuf service.
