@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: monthly
+      interval: weekly
     cooldown:
       default-days: 7
     groups:
@@ -24,7 +24,7 @@ updates:
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
-      interval: monthly
+      interval: weekly
     cooldown:
       default-days: 7
     groups:
@@ -34,7 +34,7 @@ updates:
   - package-ecosystem: 'docker'
     directory: '/'
     schedule:
-      interval: monthly
+      interval: weekly
     cooldown:
       default-days: 7
     groups:
