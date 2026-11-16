@@ -9,7 +9,30 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      { source: '/md/:path+', destination: '/:path+.md', permanent: true }
+      { source: '/md/:path+', destination: '/:path+.md', permanent: true },
+      // Old URLs of the Slice guide and the C# API reference, which other
+      // sites still link to.
+      {
+        source: '/slice1/:path*',
+        destination: '/slice/:path*',
+        permanent: true
+      },
+      {
+        source: '/slice2/:path*',
+        destination: '/slice/:path*',
+        permanent: true
+      },
+      {
+        source: '/api/csharp/api/:path*',
+        destination:
+          'https://code.icerpc.dev/csharp/0.6.x/api/reference/:path*',
+        permanent: true
+      },
+      {
+        source: '/api/csharp/:path*',
+        destination: 'https://code.icerpc.dev/csharp/0.6.x/api/index.html',
+        permanent: true
+      }
     ];
   },
   // A build with SITE_NOINDEX=true is for the dev site, which must not compete
