@@ -23,9 +23,9 @@ const nextConfig: NextConfig = {
         permanent: true
       },
       {
-        source: '/api/csharp/api/:path*',
+        source: '/api/csharp/api/:path+',
         destination:
-          'https://code.icerpc.dev/csharp/0.6.x/api/reference/:path*',
+          'https://code.icerpc.dev/csharp/0.6.x/api/reference/:path+',
         permanent: true
       },
       {
