@@ -42,8 +42,7 @@ describe IceRPC's support for Protobuf.
 The `protoc-gen-icerpc-csharp` code generator generates code only for Protobuf services.
 
 For Protobuf service _Name_, it creates two C# interfaces (I*Name* and I*Name*Service) and one C# struct (*Name*Client).
-The identifiers of the generated interfaces and struct use _Name_ converted to Pascal case, with the same rule as
-[`protoc`'s C# code generator](https://protobuf.dev/reference/csharp/csharp-generated/#structure).
+The identifiers of the generated interfaces and struct use _Name_ converted to Pascal case.
 
 The generated code is in the same C# namespace as the classes `protoc` generates for your messages: the namespace
 specified by the `csharp_namespace` option or, without this option, the Protobuf package converted to Pascal case.

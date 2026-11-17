@@ -8,8 +8,7 @@ description: How RPC methods are mapped to C#.
 A Protobuf RPC method named _RpcName_ in service `Greeter` is mapped to abstract method *RpcName*Async in interface
 `IGreeter` and to abstract method *RpcName*Async in interface `IGreeterService`.
 
-The mapped method name is _RpcName_ converted to Pascal case, followed by `Async`. This conversion uses the same rule as
-[`protoc`'s C# code generator](https://protobuf.dev/reference/csharp/csharp-generated/#structure).
+The mapped method name is _RpcName_ converted to Pascal case, followed by `Async`.
 
 For example:
 
