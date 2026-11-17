@@ -36,8 +36,8 @@ Slice is a modern IDL and serialization format that was developed in tandem with
 of IceRPC's features and is very compact, both in terms of code size and bandwidth usage.
 
 For example, IceRPC supports one-way RPCs (fire and forget with no response), and Slice provides one-way operations that
-map to these one-way RPCs. On the other hand, a Protobuf RPC method always returns a response; as a result, you can't
-send a one-way RPC using Protobuf.
+map to these one-way RPCs. Protobuf, on the other hand, has no way to declare a one-way RPC method: a Protobuf RPC
+method always returns a response.
 
 You could see Slice as the default IDL for IceRPC: use Slice unless you have a compelling reason to go with Protobuf.
 
