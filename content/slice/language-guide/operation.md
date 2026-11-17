@@ -105,10 +105,8 @@ interface FileServer {
 }
 ```
 
-In C# with IceRPC, `compress(Args)` makes the generated proxy code set the [ICompressFeature][compress-feature] in the
-outgoing request features. `compress(Return)` adds `CompressReturn = true` to the `SliceOperation` attribute of the
-generated service method, and the generated dispatch code then sets the [ICompressFeature][compress-feature] in the
-incoming request features, which the compressor middleware checks before compressing the response.
+In C# with IceRPC, the generated code sets the [ICompressFeature][compress-feature] in the outgoing request features
+(for `Args`) or in the incoming request features (for `Return`).
 
 This compression request is typically fulfilled by the compressor interceptor or middleware, which needs to be installed
 in your invocation resp. dispatch pipeline. If you neglect to install this interceptor or middleware, the corresponding
@@ -186,7 +184,7 @@ While the two methods are similar, please note they are not the same:
 
 The code generator generates helper nested static classes named Request and Response in *Name*Proxy and I*Name*Service.
 These nested classes provide helper methods to encode and decode the payloads of requests and responses associated with
-the interface operations, with up to 6 helper methods per operation.
+the interface operations, with 4 helper methods per operation.
 
 For example:
 
@@ -253,8 +251,8 @@ internal partial interface IGreeterService
 {% callout type="note" %}
 If your operation has a stream parameter, the encode helper (in *Name*Proxy.Request) does not encode the stream
 argument; instead, *Name*Proxy.Request provides an additional EncodeStreamOf*OpName* helper that encodes the stream
-argument into a [PipeReader] for the `PayloadContinuation` of the outgoing request, while the Encode*OpName* helper
-produces its `Payload`. The decode helper (in I*Name*Service.Request) decodes all arguments, including the stream.
+argument into a [PipeReader] for the `PayloadContinuation` of the outgoing request. The decode helper (in
+I*Name*Service.Request) decodes all arguments, including the stream.
 
 Likewise, if your operation returns a stream, the encode helper (in I*Name*Service.Response) does not encode the stream
 return value; instead, I*Name*Service.Response provides an additional EncodeStreamOf*OpName* helper that encodes the

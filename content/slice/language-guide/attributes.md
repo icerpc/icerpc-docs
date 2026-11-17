@@ -28,9 +28,9 @@ interface Foo {
 }
 ```
 
-You can also define a file-level attribute with double square brackets. A file-level attribute applies to the Slice
-file as a whole. Among the attributes described on this page, only `allow` can be used as a file-level attribute.
-For example:
+You can also define a file-level attribute with double square brackets. A file-level attribute is a shortcut to apply
+this attribute to all definitions in the file that accept this attribute. Among the attributes described on this page,
+only `allow` can be used as a file-level attribute. For example:
 
 ```slice
 
