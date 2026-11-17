@@ -196,8 +196,8 @@
     @apply my-1 text-black dark:text-white;
   }
 
-  code {
-    @apply rounded-sm border bg-slate-100 px-1 py-0.5 font-mono break-all shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] md:break-normal dark:border-dark-border dark:bg-transparent dark:text-white;
+  :not(pre) > code {
+    @apply inline-block rounded-sm border bg-slate-100 px-1 py-0.5 font-mono leading-[normal] wrap-anywhere shadow-[inset_0px_0px_0px_1px_var(--tw-prose-code-ring)] md:break-normal dark:border-dark-border dark:bg-transparent dark:text-white;
   }
 
   a code {
