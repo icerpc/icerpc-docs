@@ -13,24 +13,30 @@ const nextConfig: NextConfig = {
       // Old URLs of the Slice guide and the C# API reference, which other
       // sites still link to.
       {
-        source: '/slice1/:path*',
+        source: '/:guide(slice1|slice2)/language-guide/class-types',
+        destination: '/icerpc-for-ice-users/ice-definitions/class-types',
+        permanent: true
+      },
+      {
+        source: '/:guide(slice1|slice2)/language-guide/exception',
+        destination: '/icerpc-for-ice-users/ice-definitions/exception',
+        permanent: true
+      },
+      {
+        source: '/:guide(slice1|slice2)/:path*',
         destination: '/slice/:path*',
         permanent: true
       },
       {
-        source: '/slice2/:path*',
-        destination: '/slice/:path*',
-        permanent: true
-      },
-      {
-        source: '/api/csharp/api/:path+',
-        destination:
-          'https://code.icerpc.dev/csharp/0.6.x/api/reference/:path+',
-        permanent: true
-      },
-      {
-        source: '/api/csharp/:path*',
+        source: '/api/csharp',
         destination: 'https://code.icerpc.dev/csharp/0.6.x/api/index.html',
+        permanent: true
+      },
+      // The 0.5.x reference keeps the old layout and every type the old pages
+      // documented.
+      {
+        source: '/api/csharp/:path+',
+        destination: 'https://code.icerpc.dev/csharp/0.5.x/api/:path+',
         permanent: true
       }
     ];
