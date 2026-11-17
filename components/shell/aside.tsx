@@ -7,11 +7,17 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
-import { faMessage, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import {
+  faFileLines,
+  faMessage,
+  faPenToSquare
+} from '@fortawesome/free-regular-svg-icons';
 
 import { baseUrls } from '@/data';
 import { BackToTop } from './back-to-top';
 import { Divider } from '@/components/divider';
+import { markdownHref } from '@/lib/links';
+import { CopyMarkdown } from './copy-markdown';
 
 export type AsideItem = {
   id: string;
@@ -33,6 +39,7 @@ export const Aside = ({
       item.title !== 'Next steps'
   );
   const activeId = useActiveId(items.map((item) => item.id).join('\n'));
+  const markdown = markdownHref(path);
 
   return (
     <aside
@@ -66,6 +73,14 @@ export const Aside = ({
           className="m-0 p-0 pl-0.5"
           style={{ color: 'var(--primary-color)' }}
         >
+          <CopyMarkdown href={markdown} />
+          <ActionItem href={markdown}>
+            <FontAwesomeIcon
+              icon={faFileLines}
+              className="mr-1.5 size-3.5 text-primary"
+            />
+            View as Markdown
+          </ActionItem>
           <ActionItem href={editPageUrl(path)}>
             <FontAwesomeIcon
               icon={faPenToSquare}
@@ -202,12 +217,14 @@ type ActionItemProps = {
   children: ReactNode;
 };
 
+// Every action leaves the site's pages, for GitHub or a Markdown copy, so it's a
+// plain link, which Next doesn't prefetch.
 const ActionItem = ({ href, children }: ActionItemProps) => {
   return (
     <li className="mb-2 text-sm leading-6">
-      <Link href={href} className="dark:text-[rgba(255,255,255,0.8)]">
+      <a href={href} className="dark:text-[rgba(255,255,255,0.8)]">
         <div className="flex items-center gap-[0.5em]">{children}</div>
-      </Link>
+      </a>
     </li>
   );
 };

@@ -4,7 +4,7 @@ import Markdoc from '@markdoc/markdoc';
 import React from 'react';
 import { components } from '@/markdoc/schema';
 import { getAllPagePaths, getMarkdownContent } from '@/lib/markdown';
-import { markdownHref } from '@/lib/page-markdown';
+import { markdownHref } from '@/lib/links';
 import { SideNav } from '@/components';
 import { Metadata } from 'next';
 import { baseUrls } from '@/data';

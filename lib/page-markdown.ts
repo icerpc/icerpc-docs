@@ -12,7 +12,7 @@ import {
   flattenSideBarData,
   sideBarData
 } from '@/data';
-import { isExternalLink, resolveLink } from '@/lib/links';
+import { isExternalLink, markdownHref, resolveLink } from '@/lib/links';
 import { getAllPagePaths, getMarkdownContent } from '@/lib/markdown';
 import { escapeText, renderMarkdown } from '@/lib/plain-markdown';
 import { isLink } from '@/types';
@@ -26,9 +26,6 @@ const INDEX = '/llms.txt';
 
 const absolute = (href: string) =>
   new URL(href, process.env.NEXT_PUBLIC_BASE_URL).href;
-
-/** The URL of the Markdown copy of the page at `path`: its URL with `.md` appended. */
-export const markdownHref = (path: string) => `${path}.md`;
 
 /** The headers of a Markdown response: readable by a page on another origin, as a tool in a browser is. */
 export const MARKDOWN_HEADERS = {
