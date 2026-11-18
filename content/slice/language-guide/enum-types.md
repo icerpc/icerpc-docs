@@ -155,13 +155,8 @@ a Slice `uint8` corresponds to a C# `byte`.
 
 ### Variant enum in C\#
 
-C# does not provide a native discriminated union type. This mapping relies on an emulation based on record classes
-[proposed a few years ago]. Briefly, a Slice variant enum maps to a C# partial record class with the same name, and
-each variant maps to a public nested record class with the same name as the variant. This nested record class
-derives from the enclosing "enum type" record class.
-
-The Slice code generator adds the attribute `[Dunet.Union]` to the base record class, which instructs the [Dunet] source
-generator to generate additional helper code for these partial records.
+A Slice variant enum maps to a C# [union] with the same name, and each variant maps to a nested record class with the
+same name as the variant. These nested record classes are the case types of the union.
 
 For example:
 
@@ -176,20 +171,42 @@ enum Shape {
 maps to:
 
 ```csharp
-[Dunet.Union]
-internal abstract partial record class Shape
+internal readonly partial union Shape(Shape.Circle, Shape.Rectangle, Shape.Dot) : IEquatable<Shape>
 {
-    public partial record Circle(uint Radius) : Shape;
+    internal sealed partial record class Circle(uint Radius);
 
-    public partial record Rectangle(uint Width, uint Length) : Shape;
+    internal sealed partial record class Rectangle(uint Width, uint Length);
 
-    public partial record Dot : Shape;
+    internal sealed partial record class Dot;
 }
 ```
 
+The union is a value type. As a result, an optional variant enum such as `Shape?` maps to a nullable value type.
+
+The union and its nested record classes are internal by default, and public when you apply the
+[`cs::public`][cs-public] attribute to the Slice enum.
+
+An instance of a nested record class converts implicitly to the union:
+
+```csharp
+Shape shape = new Shape.Circle(10);
+```
+
+You process a variant enum value with a `switch` expression, and the C# compiler checks that this expression handles
+every variant:
+
+```csharp
+double area = shape switch
+{
+    Shape.Circle(var radius) => Math.PI * radius * radius,
+    Shape.Rectangle(var width, var length) => width * length,
+    Shape.Dot => 0,
+};
+```
+
 {% callout %}
-[ZeroC.Slice.Codec] has a dependency on the [Dunet package]; as a result, you don't need an explicit reference to Dunet
-in your project.
+A variant cannot map to a nested record class named `Value`: this name would clash with the `Value` property of the
+union. Use the [`cs::identifier`][cs-identifier] attribute to give a different name to the mapped record class.
 {% /callout %}
 
 ### Extension methods
@@ -243,15 +260,14 @@ unchecked enum Shape {
 maps to:
 
 ```csharp
-[Dunet.Union]
-internal abstract partial record class Shape
+internal readonly partial union Shape(Shape.Circle, Shape.Dot, Shape.Unknown) : IEquatable<Shape>
 {
-    public partial record Circle(uint Radius) : Shape;
+    internal sealed partial record class Circle(uint Radius);
 
-    public partial record Dot : Shape;
+    internal sealed partial record class Dot;
 
     // Extra variant when mapping an unchecked variant enum
-    public partial record Unknown(int Discriminant, ReadOnlyMemory<byte> Fields) : Shape;
+    internal sealed partial record class Unknown(int Discriminant, ReadOnlyMemory<byte> Fields);
 }
 ```
 
@@ -289,14 +305,13 @@ internal enum MultiHue : byte
 {% /aside %}
 You can also apply `cs::attribute` to an enumerator to get the specified C# attribute on the mapped C# enumerator.
 
-`cs::attribute` cannot be applied to variant enums or variants. To add a C# attribute to a mapped record class, use a
-partial declaration.
+`cs::attribute` cannot be applied to variant enums or variants. To add a C# attribute to the mapped union or to
+one of its nested record classes, use a partial declaration.
 
-[Dunet]: https://github.com/domn1995/dunet
-[Dunet package]: https://www.nuget.org/packages/Dunet
+[cs-identifier]: attributes#cs::identifier-attribute
+[cs-public]: attributes#cs::public-attribute
 [fixed-size]: primitive-types#fixed-size-integral-types
-[proposed a few years ago]: https://github.com/dotnet/csharplang/issues/8928
 [variable-size]: primitive-types#variable-size-integral-types
 [InvalidDataException]: https://learn.microsoft.com/en-us/dotnet/api/system.io.invaliddataexception
 [FlagsAttribute]: https://learn.microsoft.com/en-us/dotnet/api/system.flagsattribute
-[ZeroC.Slice.Codec]: https://www.nuget.org/packages/ZeroC.Slice.Codec
+[union]: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/union
