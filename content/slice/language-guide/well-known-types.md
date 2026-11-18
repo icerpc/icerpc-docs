@@ -13,9 +13,10 @@ All well-known types are defined in module `WellKnownTypes`:
 - [Uri][uri-type]\
   A Uniform Resource Identifier ([URI]), encoded as a string.
 - [Uuid][uuid-type]\
-  A Universally Unique Identifier ([UUID]), encoded as a 128-bit value.
+  A Universally Unique Identifier ([UUID]), encoded as 16 bytes in the network byte order specified by [RFC 9562].
 
 [custom]: custom-types
+[RFC 9562]: https://www.rfc-editor.org/rfc/rfc9562#section-4
 [URI]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
 [UUID]: https://en.wikipedia.org/wiki/Universally_unique_identifier
 [Duration]: https://github.com/icerpc/icerpc-slice/blob/main/WellKnownTypes/Duration.slice
