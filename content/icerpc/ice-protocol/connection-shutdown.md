@@ -8,28 +8,32 @@ complete successfully.
 
 ## Shutdown steps
 
-A client or a server follows these steps when it wants to shut down an ice connection:
+Either side of an ice connection, client or server, can shut down this connection. The side that initiates the shutdown
+(the initiator) proceeds as follows:
 
-1. Stop sending new requests to the peer, and stop accepting new requests from the peer.
+1. The initiator stops sending requests to the peer, and stops accepting requests from the peer.
 
-2. Wait for all (local) invocations and dispatches to complete.
+2. The initiator waits for its outstanding invocations and dispatches to complete.
 
-3. Stop sending [heartbeats](connection-establishment#validateconnection-frame) to the peer.
+3. The initiator stops sending [heartbeats](connection-establishment#validateconnection-frame) to the peer.
 
-4. Send a [CloseConnection](#closeconnection-frame) frame to the peer.\
-   The client or server skips this step if it already received a `CloseConnection` frame from the peer.
+4. The initiator sends a [CloseConnection](#closeconnection-frame) frame to the peer.
 
-5. Wait for a `CloseConnection` frame from the peer or for the peer to close the duplex connection.\
-   This indicates the peer has completed all processing and it's safe to proceed to step 6.
+5. The initiator waits for the peer to close the duplex connection or to send a `CloseConnection` frame, then closes
+   the duplex connection.
 
-6. Close the duplex connection.
+The side that receives the `CloseConnection` frame (the receiver) closes the duplex connection as soon as it has stopped
+writing; it does not wait for its dispatches to complete.
 
-The following sequence diagram shows the interactions between the client and server on connection shutdown:
+Because of steps 1 and 2, the initiator did not dispatch the requests of the receiver's outstanding invocations: the
+receiver can safely send these requests again over another connection.
+
+The following sequence diagram shows the interactions between the initiator and the receiver:
 
 ```mermaid
 sequenceDiagram
-    Client->>Server: CloseConnection frame
-    Server-->>Client: Close duplex connection
+    Initiator->>Receiver: CloseConnection frame
+    Receiver-->>Initiator: Close duplex connection
 ```
 
 ## CloseConnection frame
