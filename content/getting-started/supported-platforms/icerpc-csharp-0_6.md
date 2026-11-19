@@ -30,9 +30,4 @@ ZeroC supports IceRPC for C# on the following platforms:
 
 ZeroC provides support on a best effort basis—without any guarantee—for all other [.NET 10.0 platforms].
 
-## Previous version
-
-[IceRPC for C# 0.5]
-
-[IceRPC for C# 0.5]: icerpc-csharp-0_5
 [.NET 10.0 platforms]: https://github.com/dotnet/core/blob/main/release-notes/10.0/supported-os.md
