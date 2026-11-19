@@ -205,8 +205,8 @@ double area = shape switch
 ```
 
 {% callout %}
-A variant cannot map to a nested record class named `Value`: this name would clash with the `Value` property of the
-union. Use the [`cs::identifier`][cs-identifier] attribute to give a different name to the mapped record class.
+A variant named `Value` needs the [`cs::identifier`][cs-identifier] attribute, because its mapped record class would
+otherwise clash with the `Value` property of the union.
 {% /callout %}
 
 ### Extension methods

@@ -54,8 +54,8 @@ The Slice type parameters are mapped to C# type parameters, following the usual 
 | `Result<string?, varint32>`                | `Result<string?, int>`     |
 | `Result<MyStruct, MyEnum>`                 | `Result<MyStruct, MyEnum>` |
 
-You create a result by constructing a `Success<T>` or a `Failure<T>`: both convert implicitly to the result type. For
-example:
+You create a result by constructing a `Success<T>` or a `Failure<T>`, which both convert implicitly to the result type.
+For example:
 
 ```csharp
 Result<string, GreeterError> success = new Success<string>("hello");

@@ -119,8 +119,9 @@ A field `name: Type` is mapped to a C# property with the same name, with name co
 C# property is the mapped C# type for `Type`.
 
 When a Slice field type maps to a non-nullable C# reference type (for example, a C# string), the mapped property is
-"required". The same applies to a field whose type is a [variant enum] or a [result]. This ensures you provide a value
-for this property during construction or initialization of the enclosing type.
+"required". The same applies to a field whose type is a [variant enum] or a [result], since the default value of a union
+is not a valid value. The `required` modifier ensures you provide a value for this property during construction or
+initialization of the enclosing type.
 
 Tagged fields are mapped just like regular fields. The tag and tag number don't appear in the mapped C# API.
 
