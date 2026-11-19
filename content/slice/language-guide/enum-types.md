@@ -181,7 +181,8 @@ internal readonly partial union Shape(Shape.Circle, Shape.Rectangle, Shape.Dot) 
 }
 ```
 
-The union is a value type. As a result, an optional variant enum such as `Shape?` maps to a nullable value type.
+The union is a value type. Its default value, `default(Shape)`, holds no variant: it is not a valid value and cannot be
+encoded.
 
 The union and its nested record classes are internal by default, and public when you apply the
 [`cs::public`][cs-public] attribute to the Slice enum.
@@ -205,8 +206,9 @@ double area = shape switch
 ```
 
 {% callout %}
-A variant named `Value` needs the [`cs::identifier`][cs-identifier] attribute, because its mapped record class would
-otherwise clash with the `Value` property of the union.
+A variant named like a property or method of the union, such as `Value`, `Equals` or `ToString`, needs the
+[`cs::identifier`][cs-identifier] attribute, because its mapped record class would otherwise clash with this property
+or method.
 {% /callout %}
 
 ### Extension methods
@@ -305,7 +307,7 @@ internal enum MultiHue : byte
 {% /aside %}
 You can also apply `cs::attribute` to an enumerator to get the specified C# attribute on the mapped C# enumerator.
 
-`cs::attribute` cannot be applied to variant enums or variants. To add a C# attribute to the mapped union or to
+`cs::attribute` cannot be applied to variant enums or their variants. To add a C# attribute to the mapped union or to
 one of its nested record classes, use a partial declaration.
 
 [cs-identifier]: attributes#cs::identifier-attribute

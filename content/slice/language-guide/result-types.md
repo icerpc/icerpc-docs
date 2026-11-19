@@ -63,7 +63,9 @@ Result<string, GreeterError> failure = new Failure<GreeterError>(new GreeterErro
 ```
 
 The static class [Result] provides two factory methods, `FromSuccess` and `FromFailure`, that infer the type argument
-from the value: `Result.FromSuccess("hello")` is equivalent to `new Success<string>("hello")`.
+from the value: `Result.FromSuccess("hello")` is equivalent to `new Success<string>("hello")`. With a variant enum
+value, construct the case directly, as in the example above: `Result.FromFailure(new GreeterError.EmptyName())` infers
+`Failure<GreeterError.EmptyName>`, which does not convert to `Result<string, GreeterError>`.
 
 You process a result with a `switch` expression on its case types. For example, you can process the
 `Result<string, GreeterError>` shown earlier with the following code:
