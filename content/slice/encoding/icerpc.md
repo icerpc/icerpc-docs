@@ -11,22 +11,5 @@ arguments resp. return value (encoded into a segment).
 It fills the payload continuation of an outgoing request (resp. outgoing response) with the encoded stream argument
 resp. stream return value, if any.
 
-## Custom type ServiceAddress {% icerpcSlice=true %}
-
-A [service address] is represented in Slice by the custom type `IceRpc::ServiceAddress`:
-
-```slice
-[cs::identifier("IceRpc.Slice")]
-module IceRpc
-
-/// Represents the address of an RPC service that can be called using ice or icerpc.
-[cs::type("IceRpc.ServiceAddress")]
-custom ServiceAddress
-```
-
-A service address is encoded as its URI [string].
-
 [outgoing request]: /icerpc/invocation/outgoing-request
 [outgoing response]: /icerpc/dispatch/outgoing-response
-[service address]: /icerpc/invocation/service-address
-[string]: primitive-types#string
