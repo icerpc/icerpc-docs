@@ -12,24 +12,19 @@
   - [Card](#card)
 - [Updating Navigation](#updating-navigation)
 
-Documentation is written in Markdown and is located in the `pages`
-directory. Additionally this Markdown uses syntax extensions provided by
-[MarkDoc](https://markdoc.dev). These extensions allow the creation of custom
-components, such as code tabs, notes, and flow diagrams, all from within the
-Markdown file.
+Documentation is written in Markdown and is located in the `pages` directory. Additionally this Markdown uses syntax
+extensions provided by [MarkDoc](https://markdoc.dev). These extensions allow the creation of custom components, such as
+code tabs, notes, and flow diagrams, all from within the Markdown file.
 
-[**Nodes**](#custom-nodes) are elements that Markdoc inherits from Markdown,
-specifically the CommonMark specification. Markdoc nodes enable you to customize
-how your document renders without using any custom syntax. This consists of
-items such as code fences and tables. We can extend these nodes to add
-additional functionality with attributes.
+[**Nodes**](#custom-nodes) are elements that Markdoc inherits from Markdown, specifically the CommonMark specification.
+Markdoc nodes enable you to customize how your document renders without using any custom syntax. This consists of items
+such as code fences and tables. We can extend these nodes to add additional functionality with attributes.
 
 - [Code Fence](#code-fences)
 - [Links](#links)
 
-[**Tags**](#available-tags) are the main syntactic extension that Markdoc adds
-on top of Markdown. Each tag is enclosed with `{%` and `%}` and includes the tag
-name, attributes, and content body. Tags allow for creating custom components
+[**Tags**](#available-tags) are the main syntactic extension that Markdoc adds on top of Markdown. Each tag is enclosed
+with `{%` and `%}` and includes the tag name, attributes, and content body. Tags allow for creating custom components
 that can be used in the documentation.
 
 - [Callout](#callout)
@@ -40,14 +35,12 @@ that can be used in the documentation.
 - [Light-Mode](#light-mode)
 - [Dark-Mode](#dark-mode)
 
-[**Updating Navigation**](#updating-navigation) is done by editing the
-`/data/*.ts` files.
+[**Updating Navigation**](#updating-navigation) is done by editing the `/data/*.ts` files.
 
 ## Frontmatter
 
-Frontmatter is a way to add metadata to a page. Frontmatter is written at the top
-of a Markdown file and is enclosed by `---`. Frontmatter is written in YAML and
-is used to specify the title, description, and other metadata about the page.
+Frontmatter is a way to add metadata to a page. Frontmatter is written at the top of a Markdown file and is enclosed by
+`---`. Frontmatter is written in YAML and is used to specify the title, description, and other metadata about the page.
 
 ```yaml
 ---
@@ -69,12 +62,10 @@ showNavigation: false
 
 ### Code Fences
 
-Code fences are a way to show blocks of code in a visually clear and distinct
-way. When you use code fences, you can also specify which programming language
-the code is written in, and this helps to display it with appropriate syntax
-highlighting, which makes it easier to read and understand. To specify the
-programming language, you simply add the name of the language right after the
-opening code fence.
+Code fences are a way to show blocks of code in a visually clear and distinct way. When you use code fences, you can
+also specify which programming language the code is written in, and this helps to display it with appropriate syntax
+highlighting, which makes it easier to read and understand. To specify the programming language, you simply add the name
+of the language right after the opening code fence.
 
 #### Attributes
 
@@ -97,16 +88,14 @@ def hello(name):
 
 ### Links
 
-Links are a way to reference other pages or external resources. Links can be to
-other pages within the documentation site, or to external resources such as
-GitHub or of the API reference. Links can be created by using the Markdown link
+Links are a way to reference other pages or external resources. Links can be to other pages within the documentation
+site, or to external resources such as GitHub or of the API reference. Links can be created by using the Markdown link
 syntax.
 
 #### API Reference Links
 
-API reference links are links to the API reference. These links have a special
-shorthand syntax that allows you to link to a specific class or method. The
-syntax for these links is `<language>:<class-name>`
+API reference links are links to the API reference. These links have a special shorthand syntax that allows you to link
+to a specific class or method. The syntax for these links is `<language>:<class-name>`
 
 #### Examples
 
@@ -121,9 +110,8 @@ syntax for these links is `<language>:<class-name>`
 
 ### Callout
 
-The `callout` tag is used to create a callout box. The `callout` tag supports a
-`type` attribute that can be set to either `note` or `danger`. The `type`
-attribute is used to set the color of the callout box and icon used. Any content
+The `callout` tag is used to create a callout box. The `callout` tag supports a `type` attribute that can be set to
+either `note` or `danger`. The `type` attribute is used to set the color of the callout box and icon used. Any content
 within the `callout` tag will be placed inside the callout box.
 
 #### Attributes
@@ -158,11 +146,9 @@ This is a danger callout
 
 ### Aside
 
-The `aside` tag is used to create columns of content that are
-aside. The content is split by a vertical divider. The first item in the
-content is placed in the left column, and the second item is placed in the right
-column. In the below example, the python codeblock would be placed in the left
-column while the text would be placed in the right column.
+The `aside` tag is used to create columns of content that are aside. The content is split by a vertical divider. The
+first item in the content is placed in the left column, and the second item is placed in the right column. In the below
+example, the python codeblock would be placed in the left column while the text would be placed in the right column.
 
 #### Attributes
 
@@ -229,8 +215,7 @@ I will be on the right
 
 ### Divider
 
-The `divider` tag is used to create a horizontal divider. This is useful for
-breaking up content into sections.
+The `divider` tag is used to create a horizontal divider. This is useful for breaking up content into sections.
 
 ```markdown
 Lorem ipsum dolor sit amet.
@@ -269,8 +254,8 @@ The `grid` tag is used to create a grid of content. It is primarily intended to 
 
 ### Card
 
-The `card` tag is used to create a mini card. Mini cards are used in the grid tag. They are small cards with
-a title, description, and link.
+The `card` tag is used to create a mini card. Mini cards are used in the grid tag. They are small cards with a title,
+description, and link.
 
 #### Attributes
 
@@ -289,16 +274,13 @@ See the [`grid`](#grid) tag for an example of how to use the `card` tag.
 
 ## Updating Navigation
 
-The hierarchy of the side navigation is defined in `/data/`. Each top navigation
-item has a corresponding file, `getting-started-data.ts`, `icerpc-data.ts`, etc.
-These files export an array that defines the pages and their order in the
-sidebar. The values in the arrays are either `SideBarLink` or
-`SideBarCategory` types.
+The hierarchy of the side navigation is defined in `/data/`. Each top navigation item has a corresponding file,
+`getting-started-data.ts`, `icerpc-data.ts`, etc. These files export an array that defines the pages and their order in
+the sidebar. The values in the arrays are either `SideBarLink` or `SideBarCategory` types.
 
-For example, the following values define two `SideBarLink` objects, one with the
-title Overview that links to the `/getting-started/index.md` page, and
-another called `Foo` that links to the `/getting-started/foo.md` page.
-This generates the sidebar for the `Getting Started` top navigation item.
+For example, the following values define two `SideBarLink` objects, one with the title Overview that links to the
+`/getting-started/index.md` page, and another called `Foo` that links to the `/getting-started/foo.md` page. This
+generates the sidebar for the `Getting Started` top navigation item.
 
 ```TypeScript
 
@@ -316,12 +298,11 @@ export const gettingStartedData: SideBarSourceType[] = [
 
 ```
 
-In addition to defining the pages in the sidebar, you can also use
-`SideBarCategory` to define a category that contains a list of `SideBarLink`
-objects.
+In addition to defining the pages in the sidebar, you can also use `SideBarCategory` to define a category that contains
+a list of `SideBarLink` objects.
 
-The below array defines a `SideBarCategory` object with the title
-`Getting Started` that contains a link to the "What is IceRPC?" page.
+The below array defines a `SideBarCategory` object with the title `Getting Started` that contains a link to the "What is
+IceRPC?" page.
 
 ```TypeScript
 export const gettingStartedData: SideBarSourceType[] = [
