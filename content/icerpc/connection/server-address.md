@@ -11,8 +11,8 @@ A server address is a [URI] with the following syntax: `protocol://host[:port][?
 - `host` is a DNS name or an IP address
 - `port` is the port number; when not specified, the default port is 4061 for ice and 4062 for icerpc
 
-A server address URI must have an empty path and no fragment. It can have query parameters; these parameters are usually
-transport-specific.
+A server address URI must have an empty path and no fragment. It can have a `transport` query parameter; an ice server
+address can have additional transport-specific parameters.
 
 The query parameter `transport` specifies the name of the underlying transport. Most applications use a single transport
 and configure this transport as the only transport they can use. As a result, it is common to leave out `transport`

@@ -15,9 +15,9 @@ A service address may include one or more [server addresses]. These server addre
 connection to a server that hosts the service. The protocol of a server address is always the same as the protocol of
 the enclosing service address.
 
-A service address without a server address can have query parameters.
-
-Finally, an ice service address can have a fragment; this fragment corresponds to an [Ice facet].
+An ice service address can have a fragment; this fragment corresponds to an [Ice facet]. Without a server address, an
+ice service address can also have an `adapter-id` query parameter; this parameter corresponds to the adapter ID of an
+Ice [indirect proxy].
 
 In C#, record class [ServiceAddress] is a parsed and validated representation of a service address URI: it holds exactly
 the same information.
@@ -29,12 +29,13 @@ Service addresses can be divided into 3 categories:
 A service address with a single server address is very common:
 
 ```
-icerpc://host[:port]/<path>[?name=value][&name=value...]
-ice://host[:port]/<path>[?name=value][&name=value...][#fragment]
+icerpc://host[:port]/<path>[?transport=name]
+ice://host[:port]/<path>[?transport=name][&param=value...][#fragment]
 ```
 
 The protocol (ice or icerpc), host, port and the query parameters specify the server address of the service address. The
-path and the optional fragment are properties of the service address itself.
+path and the optional fragment are properties of the service address itself. `transport` is the only query parameter of
+an icerpc server address; an ice server address can have additional transport-specific parameters.
 
 For example:
 
@@ -63,11 +64,11 @@ Each alt-server address can have its own query parameters. For example:
 icerpc://hello.zeroc.com/hello?transport=quic&alt-server=bonjour.zeroc.com?transport=tcp,hola.zeroc.com?transport=tcp
 ```
 
-If an alt-server address has multiple query parameters, it must use '$' instead of '&' to separate these parameters.
+If an ice alt-server address has multiple query parameters, it must use '$' instead of '&' to separate these parameters.
 For example:
 
 ```
-icerpc://hello.zeroc.com/hello?alt-server=bonjour.zeroc.com?transport=tcp$other=foo
+ice://hello.zeroc.com/hello?alt-server=bonjour.zeroc.com?transport=tcp$t=30000
 ```
 
 ## Service address with no server address
@@ -75,11 +76,11 @@ icerpc://hello.zeroc.com/hello?alt-server=bonjour.zeroc.com?transport=tcp$other=
 A service address can also omit the server address altogether. Its syntax is:
 
 ```
-icerpc:/path[?name=value][&name=value...]
-ice:/path[?name=value][&name=value...][#fragment]
+icerpc:/path
+ice:/path[?adapter-id=value][#fragment]
 ```
 
-Here, the query parameters are properties of the service address itself. For example:
+Here, the `adapter-id` parameter is a property of the ice service address itself. For example:
 
 ```
 icerpc:/greeter
@@ -102,6 +103,7 @@ using var request = new OutgoingRequest(new ServiceAddress(new Uri("icerpc:/gree
 IncomingResponse response = await clientConnection.InvokeAsync(request);
 ```
 
+[indirect proxy]: /icerpc-for-ice-users/rpc-core/proxy-string#indirect-proxies
 [server addresses]: ../connection/server-address
 [URI]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
 [ServiceAddress]: csharp:IceRpc.ServiceAddress
