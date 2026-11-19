@@ -47,6 +47,20 @@ The identifiers of the generated interfaces and struct use _Name_ converted to P
 The generated code is in the same C# namespace as the classes `protoc` generates for your messages: the namespace
 specified by the `csharp_namespace` option or, without this option, the Protobuf package converted to Pascal case.
 
+The generated interfaces and struct are public by default. You can make them internal by setting the `Access` metadata
+of the `ProtoFile` item to `internal` in your project file. For example:
+
+```xml
+<ItemGroup>
+  <ProtoFile Update="greeter.proto" Access="internal" />
+</ItemGroup>
+```
+
+`Access` applies to all the code generated from the Proto file: with `internal`, the classes `protoc` generates for your
+messages are internal too.
+
+The IceRPC examples and project templates set `Access` to `internal`.
+
 ### I*Name*
 
 Interface I*Name* provides the client-side API that allows you to call the remote IceRPC service that implements
