@@ -11,7 +11,8 @@ complete successfully.
 Either side of an ice connection, client or server, can shut down this connection. The side that initiates the shutdown
 (the initiator) proceeds as follows:
 
-1. The initiator stops sending requests to the peer, and stops accepting requests from the peer.
+1. The initiator stops sending requests to the peer, and discards any request it receives from now on, without
+   dispatching it.
 
 2. The initiator waits for its outstanding invocations and dispatches to complete.
 
@@ -19,14 +20,15 @@ Either side of an ice connection, client or server, can shut down this connectio
 
 4. The initiator sends a [CloseConnection](#closeconnection-frame) frame to the peer.
 
-5. The initiator waits for the peer to close the duplex connection or to send a `CloseConnection` frame, then closes
-   the duplex connection.
+5. The initiator waits for the peer to close the underlying
+   [duplex connection](../protocols-and-transports/ice-duplex-transports) or to send a `CloseConnection` frame, then
+   closes this duplex connection.
 
 The side that receives the `CloseConnection` frame before it initiates its own shutdown (the receiver) closes the duplex
 connection as soon as it has stopped writing; it does not wait for its dispatches to complete.
 
-Because of steps 1 and 2, the initiator did not dispatch the requests of the receiver's outstanding two-way invocations:
-the receiver can safely send these requests again over another connection.
+Because of steps 1 and 2, the initiator did not dispatch the requests of the receiver's outstanding two-way
+invocations, so the receiver can safely send these requests again over another connection.
 
 The following sequence diagram shows the interactions between the initiator and the receiver:
 
