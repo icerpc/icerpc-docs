@@ -103,7 +103,7 @@ using var request = new OutgoingRequest(new ServiceAddress(new Uri("icerpc:/gree
 IncomingResponse response = await clientConnection.InvokeAsync(request);
 ```
 
-[indirect proxy]: /icerpc-for-ice-users/rpc-core/proxy-string
+[indirect proxy]: /icerpc-for-ice-users/rpc-core/proxy-string#indirect-proxies
 [server addresses]: ../connection/server-address
 [URI]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
 [ServiceAddress]: csharp:IceRpc.ServiceAddress
