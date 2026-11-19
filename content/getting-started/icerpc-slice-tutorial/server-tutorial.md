@@ -3,21 +3,17 @@ title: Writing your first IceRPC + Slice server in C#
 description: Learn how to write your first IceRPC + Slice server.
 ---
 
-This tutorial is the first part of a two part series that shows how to create a
-complete application with IceRPC for C#. We start from scratch—you just need to
-have the .NET 11 SDK installed on your computer.
+This tutorial is the first part of a two part series that shows how to create a complete application with IceRPC for C#.
+We start from scratch—you just need to have the .NET 11 SDK installed on your computer.
 
 The networked application we are building together consists of:
 
 - a server that hosts a single service (a simple greeter service)
-- a client that establishes a connection to the server and calls `greet` on this
-  greeter service
+- a client that establishes a connection to the server and calls `greet` on this greeter service
 
-The client and server are console applications that use plain .NET (no ASP.NET,
-no Dependency Injection).
+The client and server are console applications that use plain .NET (no ASP.NET, no Dependency Injection).
 
-The first part of this tutorial shows how to create the server. The second part
-shows how to [create the client].
+The first part of this tutorial shows how to create the server. The second part shows how to [create the client].
 
 Let's jump right in:
 
@@ -43,8 +39,7 @@ Let's examine each file:
 
 ### slice/VisitorCenter/Greeter.slice - the contract
 
-This file holds the contract between our client and server applications,
-specified with the [Slice] language.
+This file holds the contract between our client and server applications, specified with the [Slice] language.
 
 It's a simple greeter:
 
@@ -61,13 +56,11 @@ interface Greeter {
 }
 ```
 
-The `cs::identifier` attribute instructs the C# code generators to map module
-`VisitorCenter` to C# namespace `MySliceServer` (our project name) instead of the
-default (`VisitorCenter`).
+The `cs::identifier` attribute instructs the C# code generators to map module `VisitorCenter` to C# namespace
+`MySliceServer` (our project name) instead of the default (`VisitorCenter`).
 
-If you use this code as the starting point for a new application, you should
-update this interface to represent something meaningful for your application.
-For this tutorial, we just keep `Greeter` as-is.
+If you use this code as the starting point for a new application, you should update this interface to represent
+something meaningful for your application. For this tutorial, we just keep `Greeter` as-is.
 
 ### Chatbot.cs - the service implementation
 
@@ -88,24 +81,21 @@ internal partial class Chatbot : IGreeterService
 }
 ```
 
-The code generator for IceRPC generates C# interface `IGreeterService` from Slice
-interface `Greeter`. This C# interface is a template: we implement `Greeter` by
-implementing this interface. As you can see above, the `greet` operation
+The code generator for IceRPC generates C# interface `IGreeterService` from Slice interface `Greeter`. This C# interface
+is a template: we implement `Greeter` by implementing this interface. As you can see above, the `greet` operation
 becomes a `GreetAsync` method with two additional parameters.
 
-Since we always fulfill `greet` synchronously, the `GreetAsync` implementation
-is not marked `async`. We could write the return statement as:
+Since we always fulfill `greet` synchronously, the `GreetAsync` implementation is not marked `async`. We could write the
+return statement as:
 
 ```csharp
     return new ValueTask<string>($"Hello, {name}!");
 ```
 
-However, it's more convenient to omit the type name, especially when this type is
-complicated.
+However, it's more convenient to omit the type name, especially when this type is complicated.
 
-We mark class `Chatbot` as partial because the [Service] attribute instructs the Service
-Generator (a C# source generator) to implement interface [IDispatcher]—in other words,
-make `Chatbot` an IceRPC service implementation.
+We mark class `Chatbot` as partial because the [Service] attribute instructs the Service Generator (a C# source
+generator) to implement interface [IDispatcher]—in other words, make `Chatbot` an IceRPC service implementation.
 
 ### Program.cs - the dispatch pipeline and the server logic
 
@@ -124,24 +114,20 @@ Router router = new Router()
     .Map(new Chatbot());
 ```
 
-This router corresponds to our [dispatch pipeline][dispatch-pipeline]: when we
-receive a request, we first give it to the [Logger] middleware, then to the
-[Deadline] middleware and finally we route this request based on its path.
+This router corresponds to our [dispatch pipeline][dispatch-pipeline]: when we receive a request, we first give it to
+the [Logger] middleware, then to the [Deadline] middleware and finally we route this request based on its path.
 
-The `Map` call means if the request's path is the default service path for the `Chatbot`
-instance, route it to this `Chatbot` instance. Otherwise, the router returns a response
-with status code [NotFound].
+The `Map` call means if the request's path is the default service path for the `Chatbot` instance, route it to this
+`Chatbot` instance. Otherwise, the router returns a response with status code [NotFound].
 
-The default service path for the `Chatbot` instance is `/VisitorCenter.Greeter` because
-`Chatbot` implements a single Slice interface, `Greeter`. The `Map` call above is a
-shortcut for:
+The default service path for the `Chatbot` instance is `/VisitorCenter.Greeter` because `Chatbot` implements a single
+Slice interface, `Greeter`. The `Map` call above is a shortcut for:
 
 ```csharp
 .Map("/VisitorCenter.Greeter", new Chatbot());
 ```
 
-The main program then creates a [Server] that directs all incoming requests to
-`router`:
+The main program then creates a [Server] that directs all incoming requests to `router`:
 
 ```csharp
 using X509Certificate2 serverCertificate = X509CertificateLoader.LoadPkcs12FromFile(
@@ -155,16 +141,15 @@ await using var server = new Server(
     logger: loggerFactory.CreateLogger<Server>());
 ```
 
-We don't specify a server address so this server uses the default server address
-(`icerpc://[::0]`). This means the new server uses the `icerpc` protocol and
-will listen for connections on all network interfaces with the default port for
+We don't specify a server address so this server uses the default server address (`icerpc://[::0]`). This means the new
+server uses the `icerpc` protocol and will listen for connections on all network interfaces with the default port for
 `icerpc` (4062).
 
-We don't specify a transport either so we use the default multiplexed transport
-(`quic`). Setting `serverAuthenticationOptions` is required with `quic`.
+We don't specify a transport either so we use the default multiplexed transport (`quic`). Setting
+`serverAuthenticationOptions` is required with `quic`.
 
-At this point, the server is created but is not doing anything yet. A client
-attempting to connect would get a "connection refused" error.
+At this point, the server is created but is not doing anything yet. A client attempting to connect would get a
+"connection refused" error.
 
 The server starts listening on the next line:
 
@@ -174,8 +159,7 @@ server.Listen();
 
 `Listen` returns as soon as the server is listening (so almost immediately).
 
-The main program then awaits until it receives a Ctrl+C. After it receives
-Ctrl+C, it shuts down the server gracefully:
+The main program then awaits until it receives a Ctrl+C. After it receives Ctrl+C, it shuts down the server gracefully:
 
 ```csharp
 await CancelKeyPressed;
@@ -184,24 +168,21 @@ await server.ShutdownAsync();
 
 ### Program.Authentication.cs - AuthenticationOptions helper
 
-This file contains the `CreateServerAuthenticationOptions` helper method. It creates an
-`SslServerAuthenticationOptions` from an `X509Certificate2`.
+This file contains the `CreateServerAuthenticationOptions` helper method. It creates an `SslServerAuthenticationOptions`
+from an `X509Certificate2`.
 
 ### Program.CancelKeyPressed.cs - small Ctrl+C helper
 
-This file contains a few lines of code that `Program.cs` uses to wait for
-Ctrl+C. It's not related to RPCs.
+This file contains a few lines of code that `Program.cs` uses to wait for Ctrl+C. It's not related to RPCs.
 
 ### MySliceServer.csproj - the project file
 
-The project file is straightforward. It contains references to the required IceRpc
-NuGet packages:
+The project file is straightforward. It contains references to the required IceRpc NuGet packages:
 
 - [IceRpc.Slice] - the IceRPC + Slice integration package
-- [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into
-  `generated/Greeter.cs` and `generated/Greeter.IceRpc.cs`
-- [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two middleware
-  we installed in the dispatch pipeline
+- [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs` and
+  `generated/Greeter.IceRpc.cs`
+- [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two middleware we installed in the dispatch pipeline
 
 {% /step %}
 

@@ -3,12 +3,10 @@ title: Writing your first IceRPC + Slice client in C#
 description: Learn how to write your first IceRPC + Slice client.
 ---
 
-This tutorial is the second part of a two part series that shows how to create a
-complete application with IceRPC for C#. We start from scratch—you just need to
-have the .NET 11 SDK installed on your computer.
+This tutorial is the second part of a two part series that shows how to create a complete application with IceRPC for
+C#. We start from scratch—you just need to have the .NET 11 SDK installed on your computer.
 
-The first part of this tutorial showed how to [create the server]. This part shows how to
-create the client.
+The first part of this tutorial showed how to [create the server]. This part shows how to create the client.
 
 {% step title="Create the client" %}
 
@@ -24,8 +22,7 @@ Let's examine each file:
 
 ### slice/VisitorCenter/Greeter.slice - the contract
 
-This file is (and must be) identical or almost identical to the `Greeter.slice`
-we used for the server:
+This file is (and must be) identical or almost identical to the `Greeter.slice` we used for the server:
 
 ```slice
 [cs::identifier("MySliceClient")]
@@ -40,10 +37,9 @@ interface Greeter {
 }
 ```
 
-The only difference with our server's `Greeter.slice` is the `cs::identifier`
-attribute. That's fine: attributes don't change the contract. Here, the C# code
-generator generates the C# code in namespace `MySliceClient` and contract-wise, it
-doesn't matter that the server uses a different namespace.
+The only difference with our server's `Greeter.slice` is the `cs::identifier` attribute. That's fine: attributes don't
+change the contract. Here, the C# code generator generates the C# code in namespace `MySliceClient` and contract-wise,
+it doesn't matter that the server uses a different namespace.
 
 ### Program.cs - the client
 
@@ -70,13 +66,11 @@ await using var connection = new ClientConnection(
 
 This connection naturally matches our server configuration:
 
-- the server address is `icerpc://localhost`, meaning we connect with the
-  `icerpc` protocol to `localhost` on the default port for `icerpc` (4062)
-- we don't specify a transport so we use the default multiplexed transport
-  (`quic`)
-- `quic` always uses TLS; we set `clientAuthenticationOptions` so that the client
-  trusts the server certificate, which is signed by the test root CA in
-  `certs/cacert.der`. Without these options, the client validates the server
+- the server address is `icerpc://localhost`, meaning we connect with the `icerpc` protocol to `localhost` on the
+  default port for `icerpc` (4062)
+- we don't specify a transport so we use the default multiplexed transport (`quic`)
+- `quic` always uses TLS; we set `clientAuthenticationOptions` so that the client trusts the server certificate, which
+  is signed by the test root CA in `certs/cacert.der`. Without these options, the client validates the server
   certificate against the system's trusted root CAs
 
 {% callout %}
@@ -85,8 +79,7 @@ Creating the connection instance does not establish the connection.
 
 {% /callout %}
 
-Then, the client program creates an invocation pipeline that flows into the
-connection:
+Then, the client program creates an invocation pipeline that flows into the connection:
 
 ```csharp
 Pipeline pipeline = new Pipeline()
@@ -95,40 +88,35 @@ Pipeline pipeline = new Pipeline()
     .Into(connection);
 ```
 
-When we send a request, the request goes through the [Logger] interceptor and
-the [Deadline] interceptor before being sent over the connection. The `Deadline`
-interceptor we install here ensures the request times out after 10 seconds
+When we send a request, the request goes through the [Logger] interceptor and the [Deadline] interceptor before being
+sent over the connection. The `Deadline` interceptor we install here ensures the request times out after 10 seconds
 without a response.
 
 {% callout %}
-The Deadline interceptor communicates with the Deadline middleware via a request
-field sent alongside each request; this allows the middleware to enforce the
-deadline created by the interceptor. On the other hand, the Logger interceptor
-and middleware are totally independent.
+The Deadline interceptor communicates with the Deadline middleware via a request field sent alongside each request; this
+allows the middleware to enforce the deadline created by the interceptor. On the other hand, the Logger interceptor and
+middleware are totally independent.
 {% /callout %}
 
-Next, the client program creates a `Greeter` proxy with this invocation
-pipeline:
+Next, the client program creates a `Greeter` proxy with this invocation pipeline:
 
 ```csharp
 var greeter = new GreeterProxy(pipeline);
 ```
 
-`GreeterProxy` is a record struct that the C# code generator generated from Slice
-interface `Greeter`. This record struct allows us to send requests to a remote service
-that implements `Greeter`.
+`GreeterProxy` is a record struct that the C# code generator generated from Slice interface `Greeter`. This record
+struct allows us to send requests to a remote service that implements `Greeter`.
 
-With this code, the address of the target service (or
-[service address][service-address]) is the default for `Greeter`, namely
-`icerpc:/VisitorCenter.Greeter`. It matches the route we created in the server.
-We could also create the same proxy with an explicit service address:
+With this code, the address of the target service (or [service address][service-address]) is the default for `Greeter`,
+namely `icerpc:/VisitorCenter.Greeter`. It matches the route we created in the server. We could also create the same
+proxy with an explicit service address:
 
 ```csharp
 var greeter = new GreeterProxy(pipeline, new Uri("icerpc:/VisitorCenter.Greeter"));
 ```
 
-Finally, the client sends a `greet` request, awaits the response (the greeting),
-prints the greeting and shuts down the connection gracefully:
+Finally, the client sends a `greet` request, awaits the response (the greeting), prints the greeting and shuts down the
+connection gracefully:
 
 ```csharp
 string greeting = await greeter.GreetAsync(Environment.UserName);
@@ -137,25 +125,22 @@ Console.WriteLine(greeting);
 await connection.ShutdownAsync();
 ```
 
-When we call `greeter.GreetAsync`, the connection to the server is not yet
-established: it's the `GreetAsync` call that triggers the connection
-establishment.
+When we call `greeter.GreetAsync`, the connection to the server is not yet established: it's the `GreetAsync` call that
+triggers the connection establishment.
 
 ### Program.Authentication.cs - AuthenticationOptions helper
 
-This file contains the `CreateClientAuthenticationOptions` helper method. It creates an
-`SslClientAuthenticationOptions` from the root CA.
+This file contains the `CreateClientAuthenticationOptions` helper method. It creates an `SslClientAuthenticationOptions`
+from the root CA.
 
 ### MySliceClient.csproj - the project file
 
-The project file is identical to the server's project file, with references to 4
-separate IceRpc NuGet packages:
+The project file is identical to the server's project file, with references to 4 separate IceRpc NuGet packages:
 
 - [IceRpc.Slice] - the IceRPC + Slice integration package
-- [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into
-  `generated/Greeter.cs` and `generated/Greeter.IceRpc.cs`
-- [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two interceptors
-  we installed in our invocation pipeline
+- [IceRpc.Slice.Tools] - the package that compiles `Greeter.slice` into `generated/Greeter.cs` and
+  `generated/Greeter.IceRpc.cs`
+- [IceRpc.Deadline] and [IceRpc.Logger] - the packages with the two interceptors we installed in our invocation pipeline
 
 {% /step %}
 
