@@ -10,7 +10,7 @@ to call operations defined in Slice, they are not a construct or type in the Sli
 
 In each programming language, a proxy encapsulates an [invocation pipeline] and a [service address].
 
-If you want to transmit a proxy through a Slice operation, you define a custom type for this proxy. For example:
+To transmit a proxy through a Slice operation, define a custom type for this proxy. For example:
 
 ```slice
 interface Widget {
@@ -36,8 +36,8 @@ WidgetProxy widgetProxy = await widgetFactoryProxy.CreateWidgetAsync();
 With this custom type, you get a typed API, and the decoding code sets the invoker and other options of the proxy
 automatically (see below).
 
-The custom type encodes a proxy as a string. This string is the URI of the proxy's service address, such as
-`icerpc://widgets.example.com/widget/7`, or the percent-escaped path of a [relative proxy], such as
+The custom type [encodes a proxy as a string][proxy-encoding]. This string is the URI of the proxy's service address,
+such as `icerpc://widgets.example.com/widget/7`, or the percent-escaped path of a [relative proxy], such as
 `/widget/my%20widget`.
 
 When you define a custom type, you need to provide methods that encode and decode this type in each programming language
@@ -84,5 +84,6 @@ base proxy has the [InvalidInvoker] (an invoker that always throws) and null `Sl
 [ISliceFeature]: csharp:IceRpc.Slice.ISliceFeature
 [service address]: /icerpc/invocation/service-address
 [outgoing request features]: /icerpc/invocation/outgoing-request#request-features
+[proxy-encoding]: /slice/encoding/icerpc#proxy
 [relative proxy]: /slice/language-guide/using-proxies-as-slice-types#relative-proxy
 [SliceEncodeOptions]: csharp:IceRpc.Slice.SliceEncodeOptions
