@@ -4,7 +4,9 @@ description: Learn how to write your first IceRPC + Slice client.
 ---
 
 This tutorial is the second part of a two part series that shows how to create a complete application with IceRPC for
-C#. We start from scratch—you just need to have the .NET 11 SDK installed on your computer.
+C#. We start from scratch—you need to have the .NET 11 SDK installed on your computer. On Linux and macOS, you also need
+the `libmsquic` library for QUIC, IceRPC's default transport; see .NET's [QUIC platform dependencies] for the
+installation steps.
 
 The first part of this tutorial showed how to [create the server]. This part shows how to create the client.
 
@@ -183,4 +185,5 @@ Press Ctrl+C on the server console to shut it down.
 [IceRpc.Slice.Tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
 [IceRpc.Slice]: https://www.nuget.org/packages/IceRpc.Slice
 [Logger]: csharp:IceRpc.Logger
+[QUIC platform dependencies]: https://learn.microsoft.com/en-us/dotnet/fundamentals/networking/quic/quic-overview#platform-dependencies
 [service-address]: /icerpc/invocation/service-address

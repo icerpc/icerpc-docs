@@ -4,7 +4,9 @@ description: Learn how to write your first IceRPC + Protobuf server.
 ---
 
 This tutorial is the first part of a two part series that shows how to create a complete application with
-IceRPC + Protobuf for C#. We start from scratch—you just need to have the .NET 11 SDK installed on your computer.
+IceRPC + Protobuf for C#. We start from scratch—you need to have the .NET 11 SDK installed on your computer. On Linux
+and macOS, you also need the `libmsquic` library for QUIC, IceRPC's default transport; see .NET's
+[QUIC platform dependencies] for the installation steps.
 
 The networked application we are building together consists of:
 
@@ -224,6 +226,7 @@ Press Ctrl+C on the server console to shut it down.
 [IceRpc.Protobuf]: https://www.nuget.org/packages/IceRpc.Protobuf
 [Logger]: csharp:IceRpc.Logger
 [NotFound]: csharp:IceRpc.StatusCode#IceRpc_StatusCode_NotFound
+[QUIC platform dependencies]: https://learn.microsoft.com/en-us/dotnet/fundamentals/networking/quic/quic-overview#platform-dependencies
 [Router]: csharp:IceRpc.Router
 [Server]: csharp:IceRpc.Server
 [Protobuf]: https://protobuf.dev/
