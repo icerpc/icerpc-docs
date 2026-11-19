@@ -168,6 +168,6 @@ The client-side of the [Stream example] application receives a stream return val
 [Complete]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader.complete
 [CompleteAsync]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader.completeasync
 [PipeReader]: https://learn.microsoft.com/en-us/dotnet/api/system.io.pipelines.pipereader
-[Stream example]: https://github.com/icerpc/icerpc-csharp/tree/0.6.x/examples/slice/Stream
-[Thermostat example]: https://github.com/icerpc/icerpc-csharp/tree/0.6.x/examples/slice/Thermostat
+[Stream example]: https://github.com/icerpc/icerpc-csharp/tree/0.7.x/examples/slice/Stream
+[Thermostat example]: https://github.com/icerpc/icerpc-csharp/tree/0.7.x/examples/slice/Thermostat
 [WithCancellation]: https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskasyncenumerableextensions.withcancellation
