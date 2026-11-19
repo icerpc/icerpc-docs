@@ -114,7 +114,7 @@ syntax for these links is `<language>:<class-name>`
 
 ```markdown
 [ClientConnection](csharp:IceRpc.ClientConnection) will link to the page
-<https://code.icerpc.dev/csharp/0.6.x/api/reference/IceRpc.ClientConnection.html>
+<https://code.icerpc.dev/csharp/0.7.x/api/reference/IceRpc.ClientConnection.html>
 ```
 
 ## Available Tags

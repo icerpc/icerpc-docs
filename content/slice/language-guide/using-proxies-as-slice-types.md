@@ -76,12 +76,12 @@ The decoded string is either a service address URI or a path, which starts with 
 A proxy created with a base proxy has the invoker and [SliceEncodeOptions] of the base proxy. A proxy created without a
 base proxy has the [InvalidInvoker] (an invoker that always throws) and null `SliceEncodeOptions`.
 
-[base proxy]: csharp:IceRpc.Slice.ISliceFeature#IceRpc_Slice_ISliceFeature_BaseProxy
+[base proxy]: csharp:IceRpc.Features.ISliceFeature#IceRpc_Features_ISliceFeature_BaseProxy
 [Custom types]: custom-types
 [incoming request features]: /icerpc/dispatch/incoming-request#request-features
 [invocation pipeline]: /icerpc/invocation/invocation-pipeline
 [InvalidInvoker]: csharp:IceRpc.InvalidInvoker
-[ISliceFeature]: csharp:IceRpc.Slice.ISliceFeature
+[ISliceFeature]: csharp:IceRpc.Features.ISliceFeature
 [service address]: /icerpc/invocation/service-address
 [outgoing request features]: /icerpc/invocation/outgoing-request#request-features
 [proxy-encoding]: /slice/encoding/icerpc#proxy

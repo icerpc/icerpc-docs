@@ -107,8 +107,8 @@ exact data collected by each toolchain, see the [IceRpc.Slice.Tools][slice-tools
 [IceRpc.Protobuf.Tools][protobuf-tools-readme] READMEs.
 
 [full-list]: nuget-packages
-[slice-tools-readme]: https://github.com/icerpc/icerpc-csharp/tree/0.6.x/src/IceRpc.Slice.Tools/README.md
-[protobuf-tools-readme]: https://github.com/icerpc/icerpc-csharp/tree/0.6.x/src/IceRpc.Protobuf.Tools/README.md
+[slice-tools-readme]: https://github.com/icerpc/icerpc-csharp/tree/0.7.x/src/IceRpc.Slice.Tools/README.md
+[protobuf-tools-readme]: https://github.com/icerpc/icerpc-csharp/tree/0.7.x/src/IceRpc.Protobuf.Tools/README.md
 [ice-mapping]: /icerpc-for-ice-users/ice-definitions/language-mapping
 [IceRpc.Logger]: https://www.nuget.org/packages/IceRpc.Logger
 [IceRpc.Ice]: https://www.nuget.org/packages/IceRpc.Ice
