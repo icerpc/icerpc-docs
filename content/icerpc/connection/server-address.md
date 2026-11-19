@@ -18,6 +18,9 @@ The query parameter `transport` specifies the name of the underlying transport. 
 and configure this transport as the only transport they can use. As a result, it is common to leave out `transport`
 in server addresses.
 
+A transport name consists of ASCII letters, digits, `-`, `_` and `.`. The name of a transport-specific parameter
+follows the same rule. A parameter appears at most once in a server address.
+
 In C#, struct [ServerAddress] is just a parsed and validated representation of a server address URI:
 it holds exactly the same information.
 
