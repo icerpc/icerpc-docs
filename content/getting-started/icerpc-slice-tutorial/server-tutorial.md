@@ -231,7 +231,7 @@ Press Ctrl+C on the server console to shut it down.
 [IceRpc.Slice.Tools]: https://www.nuget.org/packages/IceRpc.Slice.Tools
 [IceRpc.Slice]: https://www.nuget.org/packages/IceRpc.Slice
 [Logger]: csharp:IceRpc.Logger
-[NotFound]: csharp:IceRpc.StatusCode#NotFound
+[NotFound]: csharp:IceRpc.StatusCode#IceRpc_StatusCode_NotFound
 [Router]: csharp:IceRpc.Router
 [Server]: csharp:IceRpc.Server
 [Service]: csharp:IceRpc.ServiceAttribute

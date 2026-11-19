@@ -239,7 +239,7 @@ Press Ctrl+C on the server console to shut it down.
 [IceRpc.Protobuf.Tools]: https://www.nuget.org/packages/IceRpc.Protobuf.Tools
 [IceRpc.Protobuf]: https://www.nuget.org/packages/IceRpc.Protobuf
 [Logger]: csharp:IceRpc.Logger
-[NotFound]: csharp:IceRpc.StatusCode#NotFound
+[NotFound]: csharp:IceRpc.StatusCode#IceRpc_StatusCode_NotFound
 [Router]: csharp:IceRpc.Router
 [Server]: csharp:IceRpc.Server
 [Protobuf]: https://protobuf.dev/

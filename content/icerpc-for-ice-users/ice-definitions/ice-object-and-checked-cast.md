@@ -92,5 +92,5 @@ WidgetProxy widgetProxy = objectProxy.ToProxy<WidgetProxy>();
 
 [AsAsync]: csharp:IceRpc.Ice.IceProxyExtensions#IceRpc_Ice_IceProxyExtensions_AsAsync__1_IceRpc_Ice_IIceProxy_IceRpc_Features_IFeatureCollection_System_Threading_CancellationToken_
 [DispatchException]: csharp:IceRpc.DispatchException
-[NotImplemented]: csharp:IceRpc.StatusCode#NotImplemented
+[NotImplemented]: csharp:IceRpc.StatusCode#IceRpc_StatusCode_NotImplemented
 [ToProxy]: csharp:IceRpc.Ice.IceProxyExtensions#IceRpc_Ice_IceProxyExtensions_ToProxy__1_IceRpc_Ice_IIceProxy_

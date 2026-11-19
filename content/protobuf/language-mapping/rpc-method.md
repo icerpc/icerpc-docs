@@ -171,5 +171,5 @@ sets the field [RequestFieldKey.Idempotent] in the outgoing request it creates; 
 [`IAsyncEnumerable<T>`]: https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iasyncenumerable-1
 [`IAsyncStream<T>`]: csharp:IceRpc.IAsyncStream-1
 [Obsolete]: https://learn.microsoft.com/en-us/dotnet/api/system.obsoleteattribute
-[RequestFieldKey.Idempotent]: csharp:IceRpc.RequestFieldKey#Idempotent
+[RequestFieldKey.Idempotent]: csharp:IceRpc.RequestFieldKey#IceRpc_RequestFieldKey_Idempotent
 [Stream example]: https://github.com/icerpc/icerpc-csharp/tree/0.7.x/examples/protobuf/Stream
