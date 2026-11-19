@@ -19,8 +19,9 @@ A service address without a server address can have query parameters.
 
 Finally, an ice service address can have a fragment; this fragment corresponds to an [Ice facet].
 
-In C#, record class [ServiceAddress] is a parsed and validated representation of a service address URI: it holds exactly
-the same information.
+In C#, [ServiceAddress] is a parsed and validated representation of a service address URI: it holds exactly the same
+information. It is a [union] of two record classes, [ServiceAddress.Ice] for an ice service address and
+[ServiceAddress.IceRpc] for an icerpc service address.
 
 Service addresses can be divided into 3 categories:
 
@@ -105,4 +106,7 @@ IncomingResponse response = await clientConnection.InvokeAsync(request);
 [server addresses]: ../connection/server-address
 [URI]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
 [ServiceAddress]: csharp:IceRpc.ServiceAddress
+[ServiceAddress.Ice]: csharp:IceRpc.ServiceAddress.Ice
+[ServiceAddress.IceRpc]: csharp:IceRpc.ServiceAddress.IceRpc
+[union]: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/union
 [Ice facet]: https://docs.zeroc.com/ice/3.8/cpp/facets
