@@ -2,9 +2,9 @@ name: 'Check spelling'
 
 on:
   push:
-    branches: [csharp-0.7-dev]
+    branches: [main]
   pull_request:
-    branches: [csharp-0.7-dev]
+    branches: [main]
 
 jobs:
   spellcheck:
