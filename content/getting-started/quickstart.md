@@ -5,9 +5,8 @@ description: Create a new IceRPC application from scratch with a few simple comm
 
 This quickstart shows how to build and run a complete client-server application with IceRPC in just a few minutes.
 
-Prerequisites: you need to have the .NET 11 SDK installed on your computer. On Linux and macOS, you also need the
-`libmsquic` library for QUIC, IceRPC's default transport; see .NET's [QUIC platform dependencies] for the installation
-steps.
+Prerequisites: you just need to have the .NET 11 SDK installed on your computer. On Linux and macOS, .NET needs extra
+setup steps to support QUIC, IceRPC's default transport; see [QUIC platform dependencies] in the .NET documentation.
 
 The networked application we are building together consists of:
 

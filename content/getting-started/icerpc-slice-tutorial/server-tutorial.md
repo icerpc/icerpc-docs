@@ -4,9 +4,9 @@ description: Learn how to write your first IceRPC + Slice server.
 ---
 
 This tutorial is the first part of a two part series that shows how to create a complete application with IceRPC for C#.
-We start from scratch—you need to have the .NET 11 SDK installed on your computer. On Linux and macOS, you also need the
-`libmsquic` library for QUIC, IceRPC's default transport; see .NET's [QUIC platform dependencies] for the installation
-steps.
+We start from scratch—you just need to have the .NET 11 SDK installed on your computer. On Linux and macOS, .NET needs
+extra setup steps to support QUIC, IceRPC's default transport; see [QUIC platform dependencies] in the .NET
+documentation.
 
 The networked application we are building together consists of:
 
